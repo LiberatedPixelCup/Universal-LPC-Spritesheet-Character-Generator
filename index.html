@@ -100,6 +100,14 @@
                                 <input type="radio" id="eyes-red" name="eyes" data-file_female="body/female/eyes/red.png" data-file_male="body/male/eyes/red.png">
                                 <label for="eyes-red">Red</label>
                             </li>
+                            <li>
+                                <input type="radio" id="eyes-yellow" name="eyes" data-file_female="body/female/eyes/yellow.png" data-file_male="body/male/eyes/yellow.png">
+                                <label for="eyes-red">Red</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="eyes-orange" name="eyes" data-file_female="body/female/eyes/orange.png" data-file_male="body/male/eyes/orange.png">
+                                <label for="eyes-orange">Orange</label>
+                            </li>
                         </ul>
                     </li>
                     <li><span class="condensed">Nose</span>
@@ -145,12 +153,88 @@
                                 <label for="clothes-none">No Clothes</label>
                             </li>
                             <li>
-                                <input type="radio" id="clothes-shirt_brown" name="clothes" data-required="sex=male" data-file="torso/shirts/longsleeve/male/brown_longsleeve.png">
-                                <label for="clothes-shirt_brown">Brown Shirt <small>(Male only)</small></label>
+                                <span class="condensed">Long Sleeve Shirt <small>(Male only)</small></span>
+                                <ul>
+                                    <li>
+                                        <input type="radio" id="clothes-longsleeve_brown" name="longsleeve" data-file="torso/shirts/longsleeve/male/brown_longsleeve.png">
+                                        <label for="clothes-longsleeve_brown">Brown</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="clothes-longsleeve_teal" name="longsleeve" data-file="torso/shirts/longsleeve/male/teal_longsleeve.png">
+                                        <label for="clothes-longsleeve_teal">Teal</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="clothes-longsleeve_maroon" name="longsleeve" data-file="torso/shirts/longsleeve/male/maroon_longsleeve.png">
+                                        <label for="clothes-longsleeve_maroon">Maroon</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="clothes-longsleeve_white" name="longsleeve" data-file="torso/shirts/longsleeve/male/white_longsleeve.png">
+                                        <label for="clothes-longsleeve_white">White</label>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
-                                <input type="radio" id="clothes-shirt_white" name="clothes" data-required="sex=male" data-file="torso/shirts/longsleeve/male/white_longsleeve.png">
-                                <label for="clothes-shirt_white">White Shirt <small>(Male only)</small></label>
+                                <span class="condensed">Sleeveless Shirt <small>(Female only)</small></span>
+                                <ul>
+                                    <li>
+                                        <input type="radio" id="clothes-sleeveless_brown" name="sleeveless" data-file="torso/shirts/sleeveless/female/brown_sleeveless.png">
+                                        <label for="clothes-sleeveless_brown">Brown</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="clothes-sleeveless_teal" name="sleeveless" data-file="torso/shirts/sleeveless/male/teal_sleeveless.png">
+                                        <label for="clothes-sleeveless_teal">Teal</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="clothes-sleeveless_maroon" name="sleeveless" data-file="torso/shirts/sleeveless/male/maroon_sleeveless.png">
+                                        <label for="clothes-sleeveless_maroon">Maroon</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="clothes-sleeveless_white" name="sleeveless" data-file="torso/shirts/sleeveless/male/white_sleeveless.png">
+                                        <label for="clothes-sleeveless_white">White</label>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="condensed">Pirate Shirt <small>(Female only)</small></span>
+                                <ul>
+                                    <li>
+                                        <input type="radio" id="clothes-pirate_brown" name="pirate" data-file="torso/shirts/sleeveless/female/brown_pirate.png">
+                                        <label for="clothes-pirate_brown">Brown</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="clothes-pirate_teal" name="pirate" data-file="torso/shirts/sleeveless/male/teal_pirate.png">
+                                        <label for="clothes-pirate_teal">Teal</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="clothes-pirate_maroon" name="pirate" data-file="torso/shirts/sleeveless/male/maroon_pirate.png">
+                                        <label for="clothes-pirate_maroon">Maroon</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="clothes-pirate_white" name="pirate" data-file="torso/shirts/sleeveless/male/white_pirate.png">
+                                        <label for="clothes-pirate_white">White</label>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="condensed">Sleeveless Tunic <small>(Female only)</small></span>
+                                <ul>
+                                    <li>
+                                        <input type="radio" id="clothes-tunic_brown" name="tunic" data-file="torso/tunics/female/brown_pirate.png">
+                                        <label for="clothes-tunic_brown">Brown</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="clothes-tunic_teal" name="tunic" data-file="torso/tunics/male/teal_pirate.png">
+                                        <label for="clothes-tunic_teal">Teal</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="clothes-tunic_maroon" name="tunic" data-file="torso/tunics/male/maroon_pirate.png">
+                                        <label for="clothes-tunic_maroon">Maroon</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="clothes-tunic_white" name="tunic" data-file="torso/tunics/male/white_pirate.png">
+                                        <label for="clothes-tunic_white">White</label>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <span class="condensed">
@@ -175,34 +259,6 @@
                             <li>
                                 <input type="radio" id="clothes-dress_sash" name="clothes" data-required="sex=female" data-file="torso/dress_female/dress_w_sash_female.png">
                                 <label for="clothes-dress_sash">Dress with Sash <small>(Female only)</small></label>
-                            </li>
-                            <li>
-                                <input type="radio" id="clothes-shirt_pirate_white" name="clothes" data-required="sex=female" data-file="torso/shirts/sleeveless/female/white_pirate.png">
-                                <label for="clothes-shirt_pirate_white">White Pirate Shirt <small>(Female only)</small></label>
-                            </li>
-                            <li>
-                                <input type="radio" id="clothes-shirt_sleeveless_maroon" name="clothes" data-required="sex=female" data-file="torso/shirts/sleeveless/female/maroon_sleeveless.png">
-                                <label for="clothes-shirt_sleeveless_maroon">Maroon Sleeveless Shirt <small>(Female only)</small></label>
-                            </li>
-                            <li>
-                                <input type="radio" id="clothes-shirt_sleeveless_teal" name="clothes" data-required="sex=female" data-file="torso/shirts/sleeveless/female/teal_sleeveless.png">
-                                <label for="clothes-shirt_sleeveless_teal">Teal Sleeveless Shirt <small>(Female only)</small></label>
-                            </li>
-                            <li>
-                                <input type="radio" id="clothes-shirt_sleeveless_white" name="clothes" data-required="sex=female" data-file="torso/shirts/sleeveless/female/white_sleeveless.png">
-                                <label for="clothes-shirt_sleeveless_white">White Sleeveless Shirt <small>(Female only)</small></label>
-                            </li>
-                            <li>
-                                <input type="radio" id="clothes-tunic_maroon" name="clothes" data-required="sex=female" data-file="torso/tunics/female/maroon_tunic.png">
-                                <label for="clothes-shirt_tunic_maroon">Maroon Tunic <small>(Female only)</small></label>
-                            </li>
-                            <li>
-                                <input type="radio" id="clothes-tunic_teal" name="clothes" data-required="sex=female" data-file="torso/tunics/female/teal_tunic.png">
-                                <label for="clothes-shirt_tunic_teal">Teal Tunic <small>(Female only)</small></label>
-                            </li>
-                            <li>
-                                <input type="radio" id="clothes-tunic_white" name="clothes" data-required="sex=female" data-file="torso/tunics/female/white_tunic.png">
-                                <label for="clothes-shirt_tunic_white">White Tunic <small>(Female only)</small></label>
                             </li>
                             <li>
                                 <span class="condensed">
@@ -1597,7 +1653,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><span class="condensed">Curly Over L. Shoulder w/Braid <small>(Female only)</small></span>
+                            <li><span class="condensed">Curly Over R. Shoulder w/Braid <small>(Female only)</small></span>
                                 <ul>
                                     <li>
                                         <input type="radio" id="hair-curlyshoulderleftbraid_black" name="hair" data-file="hair/female/curlyshoulderleftbraid/black.png" data-required="sex=female">
@@ -1697,7 +1753,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><span class="condensed">Curly Over R. Shoulder w/Braid <small>(Female only)</small></span>
+                            <li><span class="condensed">Curly Over L. Shoulder w/Braid <small>(Female only)</small></span>
                                 <ul>
                                     <li>
                                         <input type="radio" id="hair-curlyshoulderrightbraid_black" name="hair" data-file="hair/female/curlyshoulderrightbraid/black.png" data-required="sex=female">
@@ -1999,27 +2055,32 @@
                             </li>
                         </ul>
                     </li>
-                    <li><span class="condensed">Legs</span>
+                    <li>
+                        <span class="condensed">Legs</span>
                         <ul>
                             <li>
                                 <input type="radio" id="legs-none" name="legs" checked>
                                 <label for="legs-none">No Legs</label>
                             </li>
-                            <li>
-                                <input type="radio" id="legs-pants_magenta" name="legs" data-file_male="legs/pants/male/magenta_pants_male.png" data-file_female="legs/pants/female/magenta_pants_female.png">
-                                <label for="legs-pants_magenta">Magenta Pants</label>
-                            </li>
-                            <li>
-                                <input type="radio" id="legs-pants_red" name="legs" data-file_male="legs/pants/male/red_pants_male.png" data-file_female="legs/pants/female/red_pants_female.png">
-                                <label for="legs-pants_red">Red Pants</label>
-                            </li>
-                            <li>
-                                <input type="radio" id="legs-pants_teal" name="legs" data-file_male="legs/pants/male/teal_pants_male.png" data-file_female="legs/pants/female/teal_pants_female.png">
-                                <label for="legs-pants_teal">Teal Pants</label>
-                            </li>
-                            <li>
-                                <input type="radio" id="legs-pants_white" name="legs" data-file_male="legs/pants/male/white_pants_male.png" data-file_female="legs/pants/female/white_pants_female.png">
-                                <label for="legs-pants_white">White Pants</label>
+                            <li><span class="condensed">Pants</small></span>
+                                <ul>
+                                    <li>
+                                        <input type="radio" id="legs-pants_magenta" name="legs" data-file_male="legs/pants/male/magenta_pants_male.png" data-file_female="legs/pants/female/magenta_pants_female.png">
+                                        <label for="legs-pants_magenta">Magenta</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="legs-pants_red" name="legs" data-file_male="legs/pants/male/red_pants_male.png" data-file_female="legs/pants/female/red_pants_female.png">
+                                        <label for="legs-pants_red">Red</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="legs-pants_teal" name="legs" data-file_male="legs/pants/male/teal_pants_male.png" data-file_female="legs/pants/female/teal_pants_female.png">
+                                        <label for="legs-pants_teal">Teal</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="legs-pants_white" name="legs" data-file_male="legs/pants/male/white_pants_male.png" data-file_female="legs/pants/female/white_pants_female.png">
+                                        <label for="legs-pants_white">White</label>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <input type="radio" id="legs-robe_skirt" name="legs" data-required="sex=male" data-file="legs/skirt/male/robe_skirt_male.png">
@@ -2122,6 +2183,10 @@
                                 <label for="hat-none">No Hat</label>
                             </li>
                             <li>
+                                <input type="radio" id="hat-bandana_red" name="hat" data-file_male="head/bandanas/male/red.png" data-file_female="head/bandanas/female/red.png">
+                                <label for="hat-bandana_red">Red Bandana</label>
+                            </li>
+                            <li>
                                 <input type="radio" id="hat-cap_leather" name="hat" data-file_male="head/caps/male/leather_cap_male.png" data-file_female="head/caps/female/leather_cap_female.png">
                                 <label for="hat-cap_leather">Leather Cap</label>
                             </li>
@@ -2146,20 +2211,29 @@
                                 <label for="hat-helmet_golden">Golden Helmet</label>
                             </li>
                             <li>
-                                <input type="radio" id="hat-tiara_bronze" name="hat" data-required="sex=female" data-file="head/tiaras_female_no_th_or_sh/bronze.png">
-                                <label for="hat-tiara_bronze">Bronze Tiara <small>(Female only)</small> <small>(No Thrust/Shoot)</small></label>
-                            </li>
-                            <li>
-                                <input type="radio" id="hat-tiara_iron" name="hat" data-required="sex=female" data-file="head/tiaras_female_no_th_or_sh/iron.png">
-                                <label for="hat-tiara_iron">Iron Tiara <small>(Female only)</small> <small>(No Thrust/Shoot)</small></label>
-                            </li>
-                            <li>
-                                <input type="radio" id="hat-tiara_silver" name="hat" data-required="sex=female" data-file="head/tiaras_female_no_th_or_sh/silver.png">
-                                <label for="hat-tiara_silver">Silver Tiara <small>(Female only)</small> <small>(No Thrust/Shoot)</small></label>
-                            </li>
-                            <li>
-                                <input type="radio" id="hat-tiara_gold" name="hat" data-required="sex=female" data-file="head/tiaras_female_no_th_or_sh/gold.png">
-                                <label for="hat-tiara_gold">Gold Tiara <small>(Female only)</small> <small>(No Thrust/Shoot)</small></label>
+                                <span class="condensed">Tiara <small>(Female only)</small></span>
+                                <ul>
+                                    <li>
+                                        <input type="radio" id="hat-tiara_bronze" name="hat-tiara" data-file="head/tiaras_female/bronze.png">
+                                        <label for="hat-tiara_bronze">Brown</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="hat-tiara_iron" name="hat-tiara" data-file="head/tiaras_female/iron.png">
+                                        <label for="hat-tiara_iron">Iron</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="hat-tiara_silver" name="hat-tiara" data-file="head/tiaras_female/silver.png">
+                                        <label for="hat-tiara_silver">Silver</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="hat-tiara_gold" name="hat-tiara" data-file="head/tiaras_female/gold.png">
+                                        <label for="hat-tiara_gold">Gold</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="hats-tiara_purple" name="hat-tiara" data-file="head/tiaras_female/purple.png">
+                                        <label for="hat-tiara_purple">Purple</label>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </li>
@@ -2194,20 +2268,25 @@
                                 <label for="shoes-ghillies">Ghillies <small>(Female only)</small> <small>(No Thrust/Shoot)</small></label>
                             </li>
                             <li>
-                                <input type="radio" id="shoes-slippers_black" name="shoes" data-required="sex=female" data-file="feet/slippers_female/black.png">
-                                <label for="shoes-slippers_black">Black Slippers <small>(Female only)</small></label>
-                            </li>
-                            <li>
-                                <input type="radio" id="shoes-slippers_brown" name="shoes" data-required="sex=female" data-file="feet/slippers_female/brown.png">
-                                <label for="shoes-slippers_brown">Brown Slippers <small>(Female only)</small></label>
-                            </li>
-                            <li>
-                                <input type="radio" id="shoes-slippers_gray" name="shoes" data-required="sex=female" data-file="feet/slippers_female/gray.png">
-                                <label for="shoes-slippers_gray">Gray Slippers <small>(Female only)</small></label>
-                            </li>
-                            <li>
-                                <input type="radio" id="shoes-slippers_white" name="shoes" data-required="sex=female" data-file="feet/slippers_female/white.png">
-                                <label for="shoes-slippers_white">White Slippers <small>(Female only)</small></label>
+                                <span class="condensed">Slippers <small>(Female only)</small></span>
+                                <ul>
+                                    <li>
+                                        <input type="radio" id="shoes-slippers_black" name="shoes" data-required="sex=female" data-file="feet/slippers_female/black.png">
+                                        <label for="shoes-slippers_black">Black</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="shoes-slippers_brown" name="shoes" data-required="sex=female" data-file="feet/slippers_female/brown.png">
+                                        <label for="shoes-slippers_brown">Brown</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="shoes-slippers_gray" name="shoes" data-required="sex=female" data-file="feet/slippers_female/gray.png">
+                                        <label for="shoes-slippers_gray">Gray</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="shoes-slippers_white" name="shoes" data-required="sex=female" data-file="feet/slippers_female/white.png">
+                                        <label for="shoes-slippers_white">White Slippers</label>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </li>
@@ -2352,6 +2431,10 @@
                                         <label for="cape-pink">Pink</label>
                                     </li>
                                     <li>
+                                        <input type="radio" id="cape-red" name="cape" data-required="sex=female" data-file="torso/back/cape/normal/female/cape_red.png" data-file_behind="behind_body/cape/normal/female/cape_red.png">
+                                        <label for="cape-white">Red</label>
+                                    </li>
+                                    <li>
                                         <input type="radio" id="cape-white" name="cape" data-required="sex=female" data-file="torso/back/cape/normal/female/cape_white.png" data-file_behind="behind_body/cape/normal/female/cape_white.png">
                                         <label for="cape-white">White</label>
                                     </li>
@@ -2370,7 +2453,7 @@
                                     <li>
                                         <input type="radio" id="cape-tattered_black" name="cape" data-required="sex=female" data-file="torso/back/cape/tattered/female/tattercape_black.png" data-file_behind="behind_body/cape/tattered/female/tattercape_black.png">
                                         <label for="cape-tattered_black">Black</label>
-                                            </li>
+                                    </li>
                                     <li>
                                         <input type="radio" id="cape-tattered_blue" name="cape" data-required="sex=female" data-file="torso/back/cape/tattered/female/tattercape_blue.png" data-file_behind="behind_body/cape/tattered/female/tattercape_blue.png">
                                         <label for="cape-tattered_blue">Blue</label>
@@ -2394,6 +2477,10 @@
                                     <li>
                                         <input type="radio" id="cape-tattered_pink" name="cape" data-required="sex=female" data-file="torso/back/cape/tattered/female/tattercape_pink.png" data-file_behind="behind_body/cape/tattered/female/tattercape_pink.png">
                                         <label for="cape-tattered_pink">Pink</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="cape-tattered_red" name="cape" data-required="sex=female" data-file="torso/back/cape/tattered/female/tattercape_red.png" data-file_behind="behind_body/cape/tattered/female/tattercape_red.png">
+                                        <label for="cape-tattered_pink">Red</label>
                                     </li>
                                     <li>
                                         <input type="radio" id="cape-tattered_white" name="cape" data-required="sex=female" data-file="torso/back/cape/tattered/female/tattercape_white.png" data-file_behind="behind_body/cape/tattered/female/tattercape_white.png">
@@ -2448,6 +2535,10 @@
                                         <label for="capeacc-clip_pink">Pink</label>
                                     </li>
                                     <li>
+                                        <input type="radio" id="capeacc-clip_red" name="capeacc" data-required="sex=female" data-file="accessories/neck/capeclip/female/capeclip_red.png">
+                                        <label for="capeacc-clip_pink">Red</label>
+                                    </li>
+                                    <li>
                                         <input type="radio" id="capeacc-clip_white" name="capeacc" data-required="sex=female" data-file="accessories/neck/capeclip/female/capeclip_white.png">
                                         <label for="capeacc-clip_white">White</label>
                                     </li>
@@ -2490,6 +2581,10 @@
                                     <li>
                                         <input type="radio" id="capeacc-tie_pink" name="capeacc" data-required="sex=female" data-file="accessories/neck/capetie/female/capetie_pink.png">
                                         <label for="capeacc-tie_pink">Pink</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="capeacc-tie_red" name="capeacc" data-required="sex=female" data-file="accessories/neck/capetie/female/capetie_red.png">
+                                        <label for="capeacc-tie_pink">Red</label>
                                     </li>
                                     <li>
                                         <input type="radio" id="capeacc-tie_white" name="capeacc" data-required="sex=female" data-file="accessories/neck/capetie/female/capetie_white.png">
