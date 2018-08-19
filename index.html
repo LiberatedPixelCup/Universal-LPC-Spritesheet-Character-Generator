@@ -90,6 +90,30 @@
                                 <input type="radio" id="body-skeleton" name="body" data-required="sex=male" data-file="body/male/skeleton.png">
                                 <label for="body-skeleton">Skeleton <small>(Male only)</small></label>
                             </li>
+                            <li>
+                                <input type="radio" id="body-lizard_blue" name="body" data-file_female="body/female/Lizard_fem_blue.png" data-file_male="body/male/Lizard_male_blue.png">
+                                <label for="body-lizard">Lizard Blue </label>
+                            </li>
+                            <li>
+                                <input type="radio" id="body-lizard" name="body" data-file_female="body/female/Lizard_fem.png" data-file_male="body/male/Lizard_male.png">
+                                <label for="body-lizard_blue">Lizard </label>
+                            </li>
+                            <li>
+                                <input type="radio" id="body-lizard_dark" name="body" data-file_female="body/female/Lizard_fem_dark.png" data-file_male="body/male/Lizard_male_dark.png">
+                                <label for="body-lizard_dark">Lizard Dark </label>
+                            </li>
+                            <li>
+                                <input type="radio" id="body-drake_blue" name="body" data-file_female="body/female/Drake_fem_blue.png" data-file_male="body/male/Drake_male_blue.png">
+                                <label for="body-drake_blue">Drake Blue </label>
+                            </li>
+                            <li>
+                                <input type="radio" id="body-drake" name="body" data-file_female="body/female/Drake_fem.png" data-file_male="body/male/Drake_male.png">
+                                <label for="body-drake">Drake </label>
+                            </li>
+                            <li>
+                                <input type="radio" id="body-drake_dark" name="body" data-file_female="body/female/Drake_fem_dark.png" data-file_male="body/male/Drake_male_dark.png">
+                                <label for="body-drake_dark">Drake Dark </label>
+                            </li>
                         </ul>
                     </li>
                     <li><span class="condensed">Eyes</span>
@@ -176,6 +200,10 @@
                             <li>
                                 <input type="radio" id="legs-pants_white" name="legs" data-file_male="legs/pants/male/white_pants_male.png" data-file_female="legs/pants/female/white_pants_female.png">
                                 <label for="legs-pants_white">White</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="legs-roman_skirt" name="legs" data-file_male="legs/pants/male/Male_legionSkirt.png" data-file_female="legs/pants/female/Female_legionSkirt.png">
+                                <label for="legs-roman_skirt">Roman Skirt</label>
                             </li>
                         </ul>
                     </li>
@@ -403,6 +431,22 @@
                         <input type="radio" id="armor-chest_plate" name="armor" data-file_male="torso/plate/chest_male.png" data-file_female="torso/plate/chest_female.png">
                         <label for="armor-chest_plate">Plate Chest</label>
                     </li>
+                    <li>
+                        <input type="radio" id="armor-chest_legion_plate_bronze" name="armor" data-file_male="torso/plate/Male_legionplate_bronze.png" data-file_female="torso/plate/Female_legionplate_bronze.png">
+                        <label for="armor-chest_legion_plate_bronze"> Roman Legion  Bronze Plate Chest</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="armor-chest_legion_plate_gold" name="armor" data-file_male="torso/plate/Male_legionplate_gold.png" data-file_female="torso/plate/Female_legionplate_gold.png">
+                        <label for="armor-chest_legion_plate_gold"> Roman Legion  Gold Plate Chest</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="armor-chest_legion_plate_steel" name="armor" data-file_male="torso/plate/Male_legionplate_steel.png" data-file_female="torso/plate/Female_legionplate_steel.png">
+                        <label for="armor-chest_legion_plate_steel"> Roman Legion  Steel Plate Chest</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="armor-chest_legion_plate_heavy_bronze" name="armor" data-file_male="torso/plate/Male_plate_bronze(Johannes Sjîlund).png" data-file_female="torso/plate/Female_plate_bronze(Matthew Krohn).png">
+                        <label for="armor-chest_legion_plate_heavy_bronze"> Roman Legion  Heavy Bronze Plate Chest</label>
+                    </li>
                 </ul>
             </li>
             <li><span class="condensed">Jacket</span>
@@ -558,9 +602,14 @@
                     <label for="shoes-boots_golden">Golden Boots</label>
                 </li>
                 <li>
+                    <input type="radio" id="shoes-sandles_roman" name="shoes" data-file_male="feet/shoes/male/Male_sandals.png" data-file_female="feet/shoes/female/Female_sandals.png">
+                    <label for="shoes-sandles_roman"> Roman Sandals</label>
+                </li>
+                <li>
                     <input type="radio" id="shoes-ghillies" name="shoes" data-required="sex=female" data-file="feet/ghillies_female_no_th-sh.png">
                     <label for="shoes-ghillies">Ghillies <small>(Female only)</small> <small>(No Thrust/Shoot)</small></label>
                 </li>
+
                 <li>
                     <span class="condensed">Slippers <small>(Female only)</small></span>
                     <ul>
@@ -580,6 +629,7 @@
                             <input type="radio" id="shoes-slippers_white" name="shoes" data-required="sex=female" data-file="feet/slippers_female/white.png">
                             <label for="shoes-slippers_white">White Slippers</label>
                         </li>
+
                     </ul>
                 </li>
             </ul>
@@ -750,6 +800,54 @@
                 </li>
             </ul>
         </li>
+        <li><span class="condensed">Solid Cape <small>(Male only)</small></span>
+            <ul>
+                <li>
+                    <input type="radio" id="cape_black" name="cape" data-required="sex=male" data-file="torso/back/cape/normal/male/Male_cape_black.png" >
+                    <label for="cape_black">Black</small></label>
+        </li>
+        <li>
+            <input type="radio" id="cape-blue" name="cape" data-required="sex=male" data-file="torso/back/cape/normal/male/Male_cape_blue.png" >
+            <label for="cape-blue">Blue</label>
+        </li>
+        <li>
+            <input type="radio" id="cape_brown" name="cape" data-required="sex=male" data-file="torso/back/cape/normal/male/Male_cape_brown.png" >
+            <label for="cape_brown">Brown</label>
+        </li>
+        <li>
+            <input type="radio" id="cape_gray" name="cape" data-required="sex=male" data-file="torso/back/cape/normal/male/Male_cape_gray.png" >
+            <label for="cape_gray">Gray</label>
+        </li>
+        <li>
+            <input type="radio" id="cape-green" name="cape" data-required="sex=male" data-file="torso/back/cape/normal/female/Male_cape_green.png" >
+            <label for="cape-green">Green</label>
+        </li>
+        <li>
+            <input type="radio" id="cape-lavender" name="cape" data-required="sex=male" data-file="torso/back/cape/normal/male/Male_cape_lavender.png" >
+            <label for="cape-lavender">Lavender</label>
+        </li>
+        <li>
+            <input type="radio" id="cape-maroon" name="cape" data-required="sex=male" data-file="torso/back/cape/normal/male/Male_cape_maroon.png" >
+            <label for="cape-maroon">Maroon</label>
+        </li>
+        <li>
+            <input type="radio" id="cape-pink" name="cape" data-required="sex=male" data-file="torso/back/cape/normal/male/Male_cape_pink.png" >
+            <label for="cape-pink">Pink</label>
+        </li>
+        <li>
+            <input type="radio" id="cape-red" name="cape" data-required="sex=male" data-file="torso/back/cape/normal/male/Male_cape_red.png" >
+            <label for="cape-white">Red</label>
+        </li>
+        <li>
+            <input type="radio" id="cape-white" name="cape" data-required="sex=male" data-file="torso/back/cape/normal/male/Male_cape_white.png" >
+            <label for="cape-white">White</label>
+        </li>
+        <li>
+            <input type="radio" id="cape-yellow" name="cape" data-required="sex=male" data-file="torso/back/cape/normal/male/Male_cape_yellow.png" data-file_behind="behind_body/cape/normal/female/cape_yellow.png">
+            <label for="cape-yellow">Yellow</label>
+        </li>
+    </ul>
+  </li>
         <li>
             <input type="radio" id="cape-trimmed_white_blue" name="cape" data-required="sex=female" data-file="torso/back/cape/trimmed/female/trimcape_whiteblue.png" data-file_behind="behind_body/cape/normal/female/cape_white.png">
             <label for="cape-trimmed_white_blue">White Cape With Blue Trim <small>(Female only)</small></label>
@@ -970,6 +1068,26 @@
             <input type="radio" id="weapon-saber" name="weapon" data-file_male="weapons/oversize/right hand/male/saber_male.png" data-file_female="weapons/oversize/right hand/female/saber_female.png" data-oversize="2">
             <label for="weapon-saber">Saber <small>(Oversize)</small></label>
         </li>
+        <li>
+              <input type="radio" id="weapon-axe" name="weapon" data-file_male="weapons/right hand/male/axe_male.png" data-file_female="weapons/oversize/right hand/female/axe_female.png">
+              <label for="weapon-axe">Axe</label>
+          </li>
+          <li>
+                <input type="radio" id="weapon-red-sword" name="weapon" data-file_male="weapons/right hand/male/glowsword_red_male.png" data-file_female="weapons/oversize/right hand/female/glowsword_red_female.png" data-oversize="2">
+                <label for="weapon-firesword">Fire Sword</label>
+            </li>
+            <li>
+                  <input type="radio" id="weapon-blue-sword" name="weapon" data-file_male="weapons/right hand/male/glowsword_blue_male.png" data-file_female="weapons/oversize/right hand/female/glowsword_blue_female.png" data-oversize="2">
+                  <label for="weapon-icesword">Ice Sword</label>
+              </li>
+              <li>
+                    <input type="radio" id="weapon-pickaxe" name="weapon" data-file_male="weapons/right hand/male/pickaxe.png" data-file_female="weapons/oversize/right hand/female/.png">
+                    <label for="weapon-pickaxe">Pick Axe<small>(Male Only)</small></label>
+                </li>
+                <li>
+                      <input type="radio" id="weapon-warhammer" name="weapon" data-file_male="weapons/right hand/male/warhammer_male.png" data-file_female="weapons/oversize/right hand/female/warhammer_female.png">
+                      <label for="weapon-warhammer">WarHammer</label>
+                  </li>
     </ul>
 </li>
 <li><span class="condensed">Ammo</span>
@@ -997,6 +1115,30 @@
         <li>
             <input type="radio" id="shield-on" name="shield" data-file_no_hat="weapons/left hand/male/shield_male_cutoutforbody.png" data-file_hat="weapons/left hand/male/shield_male_cutoutforhat.png" data-required="sex=male">
             <label for="shield-on">Shield <small>(Male only)</small></label>
+        </li>
+        <li>
+            <input type="radio" id="shield-kite" name="shield" data-file="weapons/left hand/male/1.png" data-file_hat="weapons/left hand/female/1.png" >
+            <label for="shield-kite"> Kite Shield </label>
+        </li>
+        <li>
+            <input type="radio" id="shield-kite2" name="shield" data-file="weapons/left hand/male/2b0.png" data-file_hat="weapons/left hand/female/2b0.png" >
+            <label for="shield-kite2"> Kite Shield #2 </label>
+        </li>
+        <li>
+            <input type="radio" id="shield-kite3" name="shield" data-file="weapons/left hand/male/2b1.png" data-file_hat="weapons/left hand/female/2b1.png" >
+            <label for="shield-kite3"> Kite Shield #2 Green </label>
+        </li>
+        <li>
+            <input type="radio" id="shield-kite4" name="shield" data-file="weapons/left hand/male/2b2.png" data-file_hat="weapons/left hand/female/2b2.png" >
+            <label for="shield-kite4"> Kite Shield #2 Blue </label>
+        </li>
+        <li>
+            <input type="radio" id="shield-kite5" name="shield" data-file="weapons/left hand/male/2b3.png" data-file_hat="weapons/left hand/female/2b3.png" >
+            <label for="shield-round5"> Kite Shield #2 Grey </label>
+        </li>
+        <li>
+            <input type="radio" id="shield-kite5" name="shield" data-file="weapons/left hand/male/7.png" data-file_hat="weapons/left hand/female/7.png" >
+            <label for="shield-round5"> Round Shield #2 Yellow </label>
         </li>
     </ul>
 </li>
@@ -2749,6 +2891,42 @@
         <li>
             <input type="radio" id="hat-helmet_golden" name="hat" data-file_male="head/helms/male/golden_helm_male.png" data-file_female="head/helms/female/golden_helm_female.png">
             <label for="hat-helmet_golden">Golden Helmet</label>
+        </li>
+        <li>
+            <input type="radio" id="hat-helmet_legion_bronze" name="hat" data-file_male="head/helms/male/Male_legion1helmet_bronze.png" data-file_female="head/helms/female/Female_legion1helmet_bronze.png">
+            <label for="hat-helmet_roman_bronze">Bronze Roman Legion Hemet</label>
+        </li>
+        <li>
+            <input type="radio" id="hat-helmet_legion_gold" name="hat" data-file_male="head/helms/male/Male_legion1helmet_gold.png" data-file_female="head/helms/female/Female_legion1helmet_gold.png">
+            <label for="hat-helmet_roman_golden">Golden  Roman Legion Hemet</label>
+        </li>
+        <li>
+            <input type="radio" id="hat-helmet_legion_steel" name="hat" data-file_male="head/helms/male/Male_legion1helmet_steel.png" data-file_female="head/helms/female/Female_legion1helmet_steel.png">
+            <label for="hat-helmet_roman_steel">Steel Roman Legion Hemet</label>
+        </li>
+        <li>
+            <input type="radio" id="hat-helmet_legion_bronze_plume" name="hat" data-file_male="head/helms/male/Male_legion2helmet_bronze.png" data-file_female="head/helms/female/Female_legion2helmet_bronze.png">
+            <label for="hat-helmet_roman_steel_plume">Bronze Roman Legion Hemet With Plume</label>
+        </li>
+        <li>
+            <input type="radio" id="hat-helmet_legion_gold_plume" name="hat" data-file_male="head/helms/male/Male_legion2helmet_gold.png" data-file_female="head/helms/female/Female_legion2helmet_gold.png">
+            <label for="hat-helmet_roman_golden_plume">Golden  Roman Legion Hemet With  Plume</label>
+        </li>
+        <li>
+            <input type="radio" id="hat-helmet_legion_steel_plume" name="hat" data-file_male="head/helms/male/Male_legion2helmet_steel.png" data-file_female="head/helms/female/Female_legion2helmet_steel.png">
+            <label for="hat-helmet_roman_steel_plume">Steel Roman Legion Hemet With Plume</label>
+        </li>
+        <li>
+            <input type="radio" id="hat-helmet_legion_bronze_big_plume" name="hat" data-file_male="head/helms/male/Male_legion3helmet_bronze.png" data-file_female="head/helms/female/Female_legion3helmet_bronze.png">
+            <label for="hat-helmet_roman_bronze_big_plume">Bronze Roman Legion Hemet With Big Plume</label>
+        </li>
+        <li>
+            <input type="radio" id="hat-helmet_legion_gold_big__plume" name="hat" data-file_male="head/helms/male/Male_legion3helmet_gold.png" data-file_female="head/helms/female/Female_legion3helmet_gold.png">
+            <label for="hat-helmet_roman_golden_big_plume">Golden  Roman Legion Hemet With Big  Plume</label>
+        </li>
+        <li>
+            <input type="radio" id="hat-helmet_legion_steel_plume" name="hat" data-file_male="head/helms/male/Male_legion3helmet_steel.png" data-file_female="head/helms/female/Female_legion3helmet_steel.png">
+            <label for="hat-helmet_roman_steel_big_plume">Steel Roman Legion Hemet With Big Plume</label>
         </li>
         <li>
             <span class="condensed">Tiara <small>(Female only)</small></span>
