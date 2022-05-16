@@ -1,9 +1,9 @@
 {
-  "name" : "Pregnancy pants",
-  "type_name" : "legs",
-  "layer_1" : {
-    "zPos" : 20,
-    "pregnant" : "legs/pants/pregnant/"
+  "name": "Pregnancy pants",
+  "type_name": "legs",
+  "layer_1": {
+    "zPos": 20,
+    "pregnant": "legs/pants/pregnant/"
   },
   "variants": [
     "black",

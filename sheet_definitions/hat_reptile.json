@@ -1,12 +1,12 @@
 {
-  "name" : "Reptile",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "male" : "hat/reptile/male/",
-    "female" : "hat/reptile/female/",
-    "muscular" : "hat/reptile/male/",
-    "pregnant" : "hat/reptile/female/"
+  "name": "Reptile",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "male": "hat/reptile/male/",
+    "female": "hat/reptile/female/",
+    "muscular": "hat/reptile/male/",
+    "pregnant": "hat/reptile/female/"
   },
   "variants": [
     "bandana red",

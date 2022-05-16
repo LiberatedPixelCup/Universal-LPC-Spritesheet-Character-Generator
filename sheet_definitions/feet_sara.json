@@ -1,10 +1,10 @@
 {
-  "name" : "Sara",
-  "type_name" : "shoes",
-  "layer_1" : {
-    "zPos" : 15,
-    "female" : "feet/shoes/female/",
-    "pregnant" : "feet/shoes/female/"
+  "name": "Sara",
+  "type_name": "shoes",
+  "layer_1": {
+    "zPos": 15,
+    "female": "feet/shoes/female/",
+    "pregnant": "feet/shoes/female/"
   },
   "variants": [
     "sara"

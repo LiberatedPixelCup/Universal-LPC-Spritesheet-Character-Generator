@@ -1,9 +1,9 @@
 {
-  "name" : "Epaulets",
-  "type_name" : "shoulders",
-  "layer_1" : {
-    "zPos" : 60,
-    "male" : "shoulders/epaulets/male/"
+  "name": "Epaulets",
+  "type_name": "shoulders",
+  "layer_1": {
+    "zPos": 60,
+    "male": "shoulders/epaulets/male/"
   },
   "variants": [
     "bronze",

@@ -1,10 +1,10 @@
 {
-  "name" : "Winter",
-  "type_name" : "beard",
-  "layer_1" : {
-    "zPos" : 60,
-    "male" : "beards/winter/male/",
-    "muscular" : "beards/winter/male/"
+  "name": "Winter",
+  "type_name": "beard",
+  "layer_1": {
+    "zPos": 60,
+    "male": "beards/winter/male/",
+    "muscular": "beards/winter/male/"
   },
   "variants": [
     "blonde",

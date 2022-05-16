@@ -1,12 +1,12 @@
 {
-  "name" : "Legion Plumage",
-  "type_name" : "accessory",
-  "layer_1" : {
-    "zPos" : 139,
-    "female"   : "hat/accessory/plumage_legion/female/",
-    "pregnant" : "hat/accessory/plumage_legion/female/",
-    "male"     : "hat/accessory/plumage_legion/male/",
-    "muscular" : "hat/accessory/plumage_legion/male/"
+  "name": "Legion Plumage",
+  "type_name": "accessory",
+  "layer_1": {
+    "zPos": 139,
+    "female": "hat/accessory/plumage_legion/female/",
+    "pregnant": "hat/accessory/plumage_legion/female/",
+    "male": "hat/accessory/plumage_legion/male/",
+    "muscular": "hat/accessory/plumage_legion/male/"
   },
   "variants": [
     "black",

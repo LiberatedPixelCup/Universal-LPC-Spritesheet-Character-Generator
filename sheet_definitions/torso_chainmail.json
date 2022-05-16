@@ -1,10 +1,10 @@
 {
-  "name" : "Chainmail",
-  "type_name" : "chainmail",
-  "layer_1" : {
-    "zPos" : 50,
-    "male" : "torso/chainmail/male/",
-    "female" : "torso/chainmail/female/"
+  "name": "Chainmail",
+  "type_name": "chainmail",
+  "layer_1": {
+    "zPos": 50,
+    "male": "torso/chainmail/male/",
+    "female": "torso/chainmail/female/"
   },
   "variants": [
     "gray"

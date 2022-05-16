@@ -1,12 +1,12 @@
 {
-  "name" : "Cloth",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "male" : "hat/cloth/male/",
-    "female" : "hat/cloth/female/",
-    "muscular" : "hat/cloth/male/",
-    "pregnant" : "hat/cloth/female/"
+  "name": "Cloth",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "male": "hat/cloth/male/",
+    "female": "hat/cloth/female/",
+    "muscular": "hat/cloth/male/",
+    "pregnant": "hat/cloth/female/"
   },
   "variants": [
     "bandana gray",

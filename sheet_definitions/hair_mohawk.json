@@ -1,12 +1,12 @@
 {
-  "name" : "Mohawk",
-  "type_name" : "hair",
-  "layer_1" : {
-    "zPos" : 120,
-    "male" : "hair/mohawk/male/",
-    "muscular" : "hair/mohawk/male/",
-    "female" : "hair/mohawk/female/",
-    "pregnant" : "hair/mohawk/female/"
+  "name": "Mohawk",
+  "type_name": "hair",
+  "layer_1": {
+    "zPos": 120,
+    "male": "hair/mohawk/male/",
+    "muscular": "hair/mohawk/male/",
+    "female": "hair/mohawk/female/",
+    "pregnant": "hair/mohawk/female/"
   },
   "variants": [
     "black",

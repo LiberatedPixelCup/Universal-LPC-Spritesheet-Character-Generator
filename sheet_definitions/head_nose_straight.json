@@ -1,12 +1,12 @@
 {
-  "name" : "Straight nose",
-  "type_name" : "nose",
-  "layer_1" : {
-    "zPos" : 20,
-    "male" : "head/nose/straight/male/",
-    "muscular" : "head/nose/straight/male/",
-    "female" : "head/nose/straight/female/",
-    "pregnant" : "head/nose/straight/female/"
+  "name": "Straight nose",
+  "type_name": "nose",
+  "layer_1": {
+    "zPos": 20,
+    "male": "head/nose/straight/male/",
+    "muscular": "head/nose/straight/male/",
+    "female": "head/nose/straight/female/",
+    "pregnant": "head/nose/straight/female/"
   },
   "variants": [
     "dark",

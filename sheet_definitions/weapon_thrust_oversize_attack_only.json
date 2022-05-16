@@ -1,13 +1,13 @@
 {
-  "name" : "Thrust oversize (attack only)",
-  "type_name" : "weapon",
-  "layer_1" : {
+  "name": "Thrust oversize (attack only)",
+  "type_name": "weapon",
+  "layer_1": {
     "oversize": "thrust",
-    "zPos" : 140,
-    "male" : "weapon/thrust_oversize_attack_only/male/",
-    "muscular" : "weapon/thrust_oversize_attack_only/male/",
-    "female" : "weapon/thrust_oversize_attack_only/female/",
-    "pregnant" : "weapon/thrust_oversize_attack_only/female/"
+    "zPos": 140,
+    "male": "weapon/thrust_oversize_attack_only/male/",
+    "muscular": "weapon/thrust_oversize_attack_only/male/",
+    "female": "weapon/thrust_oversize_attack_only/female/",
+    "pregnant": "weapon/thrust_oversize_attack_only/female/"
   },
   "variants": [
     "1",

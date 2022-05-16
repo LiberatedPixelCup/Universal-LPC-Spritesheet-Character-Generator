@@ -1,9 +1,9 @@
 {
-  "name" : "Mantal",
-  "type_name" : "shoulders",
-  "layer_1" : {
-    "zPos" : 75,
-    "male" : "shoulders/mantal/male/"
+  "name": "Mantal",
+  "type_name": "shoulders",
+  "layer_1": {
+    "zPos": 75,
+    "male": "shoulders/mantal/male/"
   },
   "variants": [
     "black",

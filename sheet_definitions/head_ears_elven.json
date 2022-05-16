@@ -1,12 +1,12 @@
 {
-  "name" : "Elven ears",
-  "type_name" : "ears",
-  "layer_1" : {
-    "zPos" : 130,
-    "male" : "head/ears/elven/male/",
-    "muscular" : "head/ears/elven/male/",
-    "female" : "head/ears/elven/female/",
-    "pregnant" : "head/ears/elven/female/"
+  "name": "Elven ears",
+  "type_name": "ears",
+  "layer_1": {
+    "zPos": 130,
+    "male": "head/ears/elven/male/",
+    "muscular": "head/ears/elven/male/",
+    "female": "head/ears/elven/female/",
+    "pregnant": "head/ears/elven/female/"
   },
   "variants": [
     "dark",

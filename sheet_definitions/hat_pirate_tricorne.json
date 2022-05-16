@@ -1,10 +1,10 @@
 {
-  "name" : "Tricorne",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female" : "hat/pirate/tricorne/female/",
-    "male" :   "hat/pirate/tricorne/male/"
+  "name": "Tricorne",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/pirate/tricorne/female/",
+    "male": "hat/pirate/tricorne/male/"
   },
   "variants": [
     "black",

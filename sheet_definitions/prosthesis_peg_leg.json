@@ -1,14 +1,14 @@
 {
-  "name" : "Peg leg",
-  "type_name" : "prosthesis_leg",
-  "layer_1" : {
-    "zPos" : 100,
-    "is_mask":true,
-    "male" : "body/prosthesis/peg_leg/male/mask/"
+  "name": "Peg leg",
+  "type_name": "prosthesis_leg",
+  "layer_1": {
+    "zPos": 100,
+    "is_mask": true,
+    "male": "body/prosthesis/peg_leg/male/mask/"
   },
-  "layer_2" : {
-    "zPos" : 100,
-    "male" : "body/prosthesis/peg_leg/male/"
+  "layer_2": {
+    "zPos": 100,
+    "male": "body/prosthesis/peg_leg/male/"
   },
   "variants": [
     "peg_leg"

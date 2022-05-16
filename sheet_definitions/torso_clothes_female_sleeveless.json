@@ -1,9 +1,9 @@
 {
-  "name" : "Sleeveless",
-  "type_name" : "clothes",
-  "layer_1" : {
-    "zPos" : 35,
-    "female" : "torso/clothes/sleeveless/female/"
+  "name": "Sleeveless",
+  "type_name": "clothes",
+  "layer_1": {
+    "zPos": 35,
+    "female": "torso/clothes/sleeveless/female/"
   },
   "variants": [
     "black",

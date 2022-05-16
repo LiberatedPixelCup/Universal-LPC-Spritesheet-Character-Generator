@@ -1,9 +1,9 @@
 {
-  "name" : "Jacket pockets",
-  "type_name" : "jacket_pockets",
-  "layer_1" : {
-    "zPos" : 59,
-    "male" : "torso/jacket/trim/jacket_pockets/"
+  "name": "Jacket pockets",
+  "type_name": "jacket_pockets",
+  "layer_1": {
+    "zPos": 59,
+    "male": "torso/jacket/trim/jacket_pockets/"
   },
   "variants": [
     "black",

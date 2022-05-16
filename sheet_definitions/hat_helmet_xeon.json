@@ -1,12 +1,12 @@
 {
-  "name" : "Xeon helmet",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female"   : "hat/helmet/xeon/female/",
-    "pregnant" : "hat/helmet/xeon/female/",
-    "male"     : "hat/helmet/xeon/male/",
-    "muscular" : "hat/helmet/xeon/male/"
+  "name": "Xeon helmet",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/helmet/xeon/female/",
+    "pregnant": "hat/helmet/xeon/female/",
+    "male": "hat/helmet/xeon/male/",
+    "muscular": "hat/helmet/xeon/male/"
   },
   "variants": [
     "steel",

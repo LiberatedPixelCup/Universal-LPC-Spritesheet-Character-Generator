@@ -1,9 +1,9 @@
 {
-  "name" : "Lace Cuffs",
-  "type_name" : "wrists",
-  "layer_1" : {
-    "zPos" : 70,
-    "male" : "wrists/lace/male/"
+  "name": "Lace Cuffs",
+  "type_name": "wrists",
+  "layer_1": {
+    "zPos": 70,
+    "male": "wrists/lace/male/"
   },
   "variants": [
     "bronze",

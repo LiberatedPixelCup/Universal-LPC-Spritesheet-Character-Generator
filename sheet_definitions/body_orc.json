@@ -1,10 +1,10 @@
 {
-  "name" : "Orc",
-  "type_name" : "body",
-  "layer_1" : {
-    "zPos" : 10,
-    "male" : "body/male/orcs/",
-    "female" : "body/female/orcs/"
+  "name": "Orc",
+  "type_name": "body",
+  "layer_1": {
+    "zPos": 10,
+    "male": "body/male/orcs/",
+    "female": "body/female/orcs/"
   },
   "variants": [
     "gray",

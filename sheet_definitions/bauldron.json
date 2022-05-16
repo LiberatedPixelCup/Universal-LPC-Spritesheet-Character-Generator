@@ -1,12 +1,12 @@
 {
-  "name" : "Bauldron",
-  "type_name" : "bauldron",
-  "layer_1" : {
-    "zPos" : 65,
-    "male" : "bauldron/male/",
-    "muscular" : "bauldron/male/",
-    "female" : "bauldron/female/",
-    "pregnant" : "bauldron/female/"
+  "name": "Bauldron",
+  "type_name": "bauldron",
+  "layer_1": {
+    "zPos": 65,
+    "male": "bauldron/male/",
+    "muscular": "bauldron/male/",
+    "female": "bauldron/female/",
+    "pregnant": "bauldron/female/"
   },
   "variants": [
     "brown"

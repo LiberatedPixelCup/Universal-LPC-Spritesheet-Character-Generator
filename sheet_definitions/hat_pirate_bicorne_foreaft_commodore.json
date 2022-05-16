@@ -1,10 +1,10 @@
 {
-  "name" : "Bicorne foreaft commodore",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female" : "hat/pirate/bicorne_foreaft_commodore/female/",
-    "male" :   "hat/pirate/bicorne_foreaft_commodore/male/"
+  "name": "Bicorne foreaft commodore",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/pirate/bicorne_foreaft_commodore/female/",
+    "male": "hat/pirate/bicorne_foreaft_commodore/male/"
   },
   "variants": [
     "black_bronze",

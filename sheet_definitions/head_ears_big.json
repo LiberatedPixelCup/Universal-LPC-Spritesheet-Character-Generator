@@ -1,12 +1,12 @@
 {
-  "name" : "Big ears",
-  "type_name" : "ears",
-  "layer_1" : {
-    "zPos" : 20,
-    "male" : "head/ears/big/male/",
-    "muscular" : "head/ears/big/male/",
-    "female" : "head/ears/big/female/",
-    "pregnant" : "head/ears/big/female/"
+  "name": "Big ears",
+  "type_name": "ears",
+  "layer_1": {
+    "zPos": 20,
+    "male": "head/ears/big/male/",
+    "muscular": "head/ears/big/male/",
+    "female": "head/ears/big/female/",
+    "pregnant": "head/ears/big/female/"
   },
   "variants": [
     "dark",

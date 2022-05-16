@@ -1,9 +1,9 @@
 {
-  "name" : "Sleeveless striped",
-  "type_name" : "clothes",
-  "layer_1" : {
-    "zPos" : 35,
-    "male" : "torso/clothes/sleeveless_striped/male/"
+  "name": "Sleeveless striped",
+  "type_name": "clothes",
+  "layer_1": {
+    "zPos": 35,
+    "male": "torso/clothes/sleeveless_striped/male/"
   },
   "variants": [
     "black",

@@ -1,12 +1,12 @@
 {
-  "name" : "Gloves",
-  "type_name" : "gloves",
-  "layer_1" : {
-    "zPos" : 70,
-    "male" : "gloves/male/",
-    "female" : "gloves/female/",
-    "pregnant" : "gloves/female/",
-    "muscular" : "gloves/male/"
+  "name": "Gloves",
+  "type_name": "gloves",
+  "layer_1": {
+    "zPos": 70,
+    "male": "gloves/male/",
+    "female": "gloves/female/",
+    "pregnant": "gloves/female/",
+    "muscular": "gloves/male/"
   },
   "variants": [
     "1",

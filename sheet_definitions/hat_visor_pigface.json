@@ -1,12 +1,12 @@
 {
-  "name" : "Pigface visor",
-  "type_name" : "visor",
-  "layer_1" : {
-    "zPos" : 132,
-    "female"   : "hat/visor/pigface/female/",
-    "pregnant" : "hat/visor/pigface/female/",
-    "male"     : "hat/visor/pigface/male/",
-    "muscular" : "hat/visor/pigface/male/"
+  "name": "Pigface visor",
+  "type_name": "visor",
+  "layer_1": {
+    "zPos": 132,
+    "female": "hat/visor/pigface/female/",
+    "pregnant": "hat/visor/pigface/female/",
+    "male": "hat/visor/pigface/male/",
+    "muscular": "hat/visor/pigface/male/"
   },
   "variants": [
     "steel",

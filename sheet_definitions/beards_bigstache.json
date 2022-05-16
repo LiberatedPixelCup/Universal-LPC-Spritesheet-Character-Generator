@@ -1,10 +1,10 @@
 {
-  "name" : "Bigstache",
-  "type_name" : "beard",
-  "layer_1" : {
-    "zPos" : 20,
-    "male" : "beards/bigstache/male/",
-    "muscular" : "beards/bigstache/male/"
+  "name": "Bigstache",
+  "type_name": "beard",
+  "layer_1": {
+    "zPos": 20,
+    "male": "beards/bigstache/male/",
+    "muscular": "beards/bigstache/male/"
   },
   "variants": [
     "black",

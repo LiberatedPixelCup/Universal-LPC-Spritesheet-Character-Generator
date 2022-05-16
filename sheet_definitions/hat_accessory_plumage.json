@@ -1,12 +1,12 @@
 {
-  "name" : "Plumage",
-  "type_name" : "accessory",
-  "layer_1" : {
-    "zPos" : 139,
-    "female"   : "hat/accessory/plumage/female/",
-    "pregnant" : "hat/accessory/plumage/female/",
-    "male"     : "hat/accessory/plumage/male/",
-    "muscular" : "hat/accessory/plumage/male/"
+  "name": "Plumage",
+  "type_name": "accessory",
+  "layer_1": {
+    "zPos": 139,
+    "female": "hat/accessory/plumage/female/",
+    "pregnant": "hat/accessory/plumage/female/",
+    "male": "hat/accessory/plumage/male/",
+    "muscular": "hat/accessory/plumage/male/"
   },
   "variants": [
     "black",

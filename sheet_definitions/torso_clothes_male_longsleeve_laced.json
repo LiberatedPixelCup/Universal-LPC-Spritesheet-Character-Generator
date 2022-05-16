@@ -1,9 +1,9 @@
 {
-  "name" : "Longsleeve laced",
-  "type_name" : "clothes",
-  "layer_1" : {
-    "zPos" : 35,
-    "male" : "torso/clothes/longsleeve_laced/male/"
+  "name": "Longsleeve laced",
+  "type_name": "clothes",
+  "layer_1": {
+    "zPos": 35,
+    "male": "torso/clothes/longsleeve_laced/male/"
   },
   "variants": [
     "black",

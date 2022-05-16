@@ -1,9 +1,9 @@
 {
-  "name" : "Child shirts",
-  "type_name" : "clothes",
-  "layer_1" : {
-    "zPos" : 35,
-    "child" : "torso/clothes/shirt/child/"
+  "name": "Child shirts",
+  "type_name": "clothes",
+  "layer_1": {
+    "zPos": 35,
+    "child": "torso/clothes/shirt/child/"
   },
   "variants": [
     "black",

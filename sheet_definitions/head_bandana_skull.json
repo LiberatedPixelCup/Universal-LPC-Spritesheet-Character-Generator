@@ -1,10 +1,10 @@
 {
-  "name" : "Skull Bandana",
-  "type_name" : "bandana",
-  "layer_1" : {
-    "zPos" : 120,
-    "female" : "hat/pirate/bandana_skull/female/",
-    "male" :   "hat/pirate/bandana_skull/male/"
+  "name": "Skull Bandana",
+  "type_name": "bandana",
+  "layer_1": {
+    "zPos": 120,
+    "female": "hat/pirate/bandana_skull/female/",
+    "male": "hat/pirate/bandana_skull/male/"
   },
   "variants": [
     "black",

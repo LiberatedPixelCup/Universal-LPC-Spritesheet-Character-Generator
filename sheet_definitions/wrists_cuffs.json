@@ -1,9 +1,9 @@
 {
-  "name" : "Cuffs",
-  "type_name" : "wrists",
-  "layer_1" : {
-    "zPos" : 70,
-    "male" : "wrists/cuffs/male/"
+  "name": "Cuffs",
+  "type_name": "wrists",
+  "layer_1": {
+    "zPos": 70,
+    "male": "wrists/cuffs/male/"
   },
   "variants": [
     "black",

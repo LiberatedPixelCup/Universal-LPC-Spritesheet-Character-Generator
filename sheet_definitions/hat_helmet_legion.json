@@ -1,12 +1,12 @@
 {
-  "name" : "Legion",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female"   : "hat/helmet/legion/female/",
-    "pregnant" : "hat/helmet/legion/female/",
-    "male"     : "hat/helmet/legion/male/",
-    "muscular" : "hat/helmet/legion/male/"
+  "name": "Legion",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/helmet/legion/female/",
+    "pregnant": "hat/helmet/legion/female/",
+    "male": "hat/helmet/legion/male/",
+    "muscular": "hat/helmet/legion/male/"
   },
   "variants": [
     "steel",

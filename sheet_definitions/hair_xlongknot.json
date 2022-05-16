@@ -1,12 +1,12 @@
 {
-  "name" : "Extra longknot",
-  "type_name" : "hair",
-  "layer_1" : {
-    "zPos" : 120,
-    "male" : "hair/xlongknot/male/",
-    "muscular" : "hair/xlongknot/male/",
-    "female" : "hair/xlongknot/female/",
-    "pregnant" : "hair/xlongknot/female/"
+  "name": "Extra longknot",
+  "type_name": "hair",
+  "layer_1": {
+    "zPos": 120,
+    "male": "hair/xlongknot/male/",
+    "muscular": "hair/xlongknot/male/",
+    "female": "hair/xlongknot/female/",
+    "pregnant": "hair/xlongknot/female/"
   },
   "variants": [
     "black",

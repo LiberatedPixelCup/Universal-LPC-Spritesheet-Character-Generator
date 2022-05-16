@@ -1,10 +1,10 @@
 {
-  "name" : "Plate",
-  "type_name" : "armour",
-  "layer_1" : {
-    "zPos" : 60,
-    "male" : "torso/armour/plate/male/",
-    "female" : "torso/armour/plate/female/"
+  "name": "Plate",
+  "type_name": "armour",
+  "layer_1": {
+    "zPos": 60,
+    "male": "torso/armour/plate/male/",
+    "female": "torso/armour/plate/female/"
   },
   "variants": [
     "11",

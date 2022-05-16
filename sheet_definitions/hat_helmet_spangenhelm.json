@@ -1,12 +1,12 @@
 {
-  "name" : "Spangenhelm",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female"   : "hat/helmet/spangenhelm/female/",
-    "pregnant" : "hat/helmet/spangenhelm/female/",
-    "male"     : "hat/helmet/spangenhelm/male/",
-    "muscular" : "hat/helmet/spangenhelm/male/"
+  "name": "Spangenhelm",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/helmet/spangenhelm/female/",
+    "pregnant": "hat/helmet/spangenhelm/female/",
+    "male": "hat/helmet/spangenhelm/male/",
+    "muscular": "hat/helmet/spangenhelm/male/"
   },
   "variants": [
     "steel",

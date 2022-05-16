@@ -1,12 +1,12 @@
 {
-  "name" : "Close helm",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female"   : "hat/helmet/close/female/",
-    "pregnant" : "hat/helmet/close/female/",
-    "male"     : "hat/helmet/close/male/",
-    "muscular" : "hat/helmet/close/male/"
+  "name": "Close helm",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/helmet/close/female/",
+    "pregnant": "hat/helmet/close/female/",
+    "male": "hat/helmet/close/male/",
+    "muscular": "hat/helmet/close/male/"
   },
   "variants": [
     "steel",

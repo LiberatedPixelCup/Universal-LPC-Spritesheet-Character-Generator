@@ -1,10 +1,10 @@
 {
-  "name" : "Slippers",
-  "type_name" : "shoes",
-  "layer_1" : {
-    "zPos" : 15,
-    "female" : "feet/slippers/female/",
-    "pregnant" : "feet/slippers/female/"
+  "name": "Slippers",
+  "type_name": "shoes",
+  "layer_1": {
+    "zPos": 15,
+    "female": "feet/slippers/female/",
+    "pregnant": "feet/slippers/female/"
   },
   "variants": [
     "black",

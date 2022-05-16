@@ -1,12 +1,12 @@
 {
-  "name" : "Earring",
-  "type_name" : "earring",
-  "layer_1" : {
-    "zPos" : 25,
-    "male" :     "facial/earring/male/",
-    "muscular" : "facial/earring/male/",
-    "female" :   "facial/earring/female/",
-    "pregnant" : "facial/earring/female/"
+  "name": "Earring",
+  "type_name": "earring",
+  "layer_1": {
+    "zPos": 25,
+    "male": "facial/earring/male/",
+    "muscular": "facial/earring/male/",
+    "female": "facial/earring/female/",
+    "pregnant": "facial/earring/female/"
   },
   "variants": [
     "gold"

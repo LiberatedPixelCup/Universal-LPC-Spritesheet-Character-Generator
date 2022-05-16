@@ -1,10 +1,10 @@
 {
-  "name" : "Armour",
-  "type_name" : "legs",
-  "layer_1" : {
-    "zPos" : 20,
-    "male" : "legs/armour/male/",
-    "female" : "legs/armour/female/"
+  "name": "Armour",
+  "type_name": "legs",
+  "layer_1": {
+    "zPos": 20,
+    "male": "legs/armour/male/",
+    "female": "legs/armour/female/"
   },
   "variants": [
     "7",

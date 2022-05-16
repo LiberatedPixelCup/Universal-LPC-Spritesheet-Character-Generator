@@ -1,12 +1,12 @@
 {
-  "name" : "Facial",
-  "type_name" : "facial",
-  "layer_1" : {
-    "zPos" : 25,
-    "male" : "facial/",
-    "muscular" : "facial/",
-    "female" : "facial/",
-    "pregnant" : "facial/"
+  "name": "Facial",
+  "type_name": "facial",
+  "layer_1": {
+    "zPos": 25,
+    "male": "facial/",
+    "muscular": "facial/",
+    "female": "facial/",
+    "pregnant": "facial/"
   },
   "variants": [
     "glasses",

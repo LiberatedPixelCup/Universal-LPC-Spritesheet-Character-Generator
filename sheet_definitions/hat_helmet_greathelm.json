@@ -1,12 +1,12 @@
 {
-  "name" : "Greathelm",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female"   : "hat/helmet/greathelm/female/",
-    "pregnant" : "hat/helmet/greathelm/female/",
-    "male"     : "hat/helmet/greathelm/male/",
-    "muscular" : "hat/helmet/greathelm/male/"
+  "name": "Greathelm",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/helmet/greathelm/female/",
+    "pregnant": "hat/helmet/greathelm/female/",
+    "male": "hat/helmet/greathelm/male/",
+    "muscular": "hat/helmet/greathelm/male/"
   },
   "variants": [
     "steel",

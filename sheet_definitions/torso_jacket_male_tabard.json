@@ -1,9 +1,9 @@
 {
-  "name" : "Tabard",
-  "type_name" : "jacket",
-  "layer_1" : {
-    "zPos" : 55,
-    "male" : "torso/jacket/tabard/male/"
+  "name": "Tabard",
+  "type_name": "jacket",
+  "layer_1": {
+    "zPos": 55,
+    "male": "torso/jacket/tabard/male/"
   },
   "variants": [
     "black",

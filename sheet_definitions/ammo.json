@@ -1,12 +1,12 @@
 {
-  "name" : "Ammo",
-  "type_name" : "ammo",
-  "layer_1" : {
-    "zPos" : 150,
-    "male" : "ammo/",
-    "muscular" : "ammo/",
-    "female" : "ammo/",
-    "pregnant" : "ammo/"
+  "name": "Ammo",
+  "type_name": "ammo",
+  "layer_1": {
+    "zPos": 150,
+    "male": "ammo/",
+    "muscular": "ammo/",
+    "female": "ammo/",
+    "pregnant": "ammo/"
   },
   "variants": [
     "arrow"

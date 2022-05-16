@@ -1,10 +1,10 @@
 {
-  "name" : "Bonnie feather",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female" : "hat/pirate/bonnie_feather/female/",
-    "male" :   "hat/pirate/bonnie_feather/male/"
+  "name": "Bonnie feather",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/pirate/bonnie_feather/female/",
+    "male": "hat/pirate/bonnie_feather/male/"
   },
   "variants": [
     "black",

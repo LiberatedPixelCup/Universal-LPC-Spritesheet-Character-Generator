@@ -1,12 +1,12 @@
 {
-  "name" : "Round visor raised",
-  "type_name" : "visor",
-  "layer_1" : {
-    "zPos" : 132,
-    "female"   : "hat/visor/round_raised/female/",
-    "pregnant" : "hat/visor/round_raised/female/",
-    "male"     : "hat/visor/round_raised/male/",
-    "muscular" : "hat/visor/round_raised/male/"
+  "name": "Round visor raised",
+  "type_name": "visor",
+  "layer_1": {
+    "zPos": 132,
+    "female": "hat/visor/round_raised/female/",
+    "pregnant": "hat/visor/round_raised/female/",
+    "male": "hat/visor/round_raised/male/",
+    "muscular": "hat/visor/round_raised/male/"
   },
   "variants": [
     "steel",

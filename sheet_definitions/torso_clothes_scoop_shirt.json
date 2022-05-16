@@ -1,9 +1,9 @@
 {
-  "name" : "Scoop",
-  "type_name" : "clothes",
-  "layer_1" : {
-    "zPos" : 35,
-    "female" : "torso/clothes/scoop_shirt/female/"
+  "name": "Scoop",
+  "type_name": "clothes",
+  "layer_1": {
+    "zPos": 35,
+    "female": "torso/clothes/scoop_shirt/female/"
   },
   "variants": [
     "black",

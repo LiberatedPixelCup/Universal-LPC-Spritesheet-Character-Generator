@@ -1,12 +1,12 @@
 {
-  "name" : "Magic",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "male" : "hat/magic/male/",
-    "female" : "hat/magic/female/",
-    "muscular" : "hat/magic/male/",
-    "pregnant" : "hat/magic/female/"
+  "name": "Magic",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "male": "hat/magic/male/",
+    "female": "hat/magic/female/",
+    "muscular": "hat/magic/male/",
+    "pregnant": "hat/magic/female/"
   },
   "variants": [
     "black",

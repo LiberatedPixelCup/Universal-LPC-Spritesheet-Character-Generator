@@ -1,12 +1,12 @@
 {
-  "name" : "Horned helmet",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female"   : "hat/helmet/horned/female/",
-    "pregnant" : "hat/helmet/horned/female/",
-    "male"     : "hat/helmet/horned/male/",
-    "muscular" : "hat/helmet/horned/male/"
+  "name": "Horned helmet",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/helmet/horned/female/",
+    "pregnant": "hat/helmet/horned/female/",
+    "male": "hat/helmet/horned/male/",
+    "muscular": "hat/helmet/horned/male/"
   },
   "variants": [
     "steel",

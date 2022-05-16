@@ -1,10 +1,10 @@
 {
-  "name" : "Pants",
-  "type_name" : "legs",
-  "layer_1" : {
-    "zPos" : 20,
-    "male" : "legs/pants/male/",
-    "female" : "legs/pants/female/"
+  "name": "Pants",
+  "type_name": "legs",
+  "layer_1": {
+    "zPos": 20,
+    "male": "legs/pants/male/",
+    "female": "legs/pants/female/"
   },
   "variants": [
     "black",

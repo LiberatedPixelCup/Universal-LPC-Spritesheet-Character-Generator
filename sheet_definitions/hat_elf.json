@@ -1,10 +1,10 @@
 {
-  "name" : "Elf",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female" : "hat/elf/female/",
-    "male" :   "hat/elf/male/"
+  "name": "Elf",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/elf/female/",
+    "male": "hat/elf/male/"
   },
   "variants": [
     "forest_maroon",

@@ -1,10 +1,10 @@
 {
-  "name" : "Narrow sash",
-  "type_name" : "sash",
-  "layer_1" : {
-    "zPos" : 65,
-    "male" : "torso/waist/sash_narrow/male/",
-    "female" : "torso/waist/sash_narrow/female/"
+  "name": "Narrow sash",
+  "type_name": "sash",
+  "layer_1": {
+    "zPos": 65,
+    "male": "torso/waist/sash_narrow/male/",
+    "female": "torso/waist/sash_narrow/female/"
   },
   "variants": [
     "black",

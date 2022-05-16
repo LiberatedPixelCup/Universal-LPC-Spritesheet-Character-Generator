@@ -1,12 +1,12 @@
 {
-  "name" : "Brain",
-  "type_name" : "wound_brain",
-  "layer_1" : {
-    "zPos" : 15,
-    "male" : "body/wound/",
-    "muscular" : "body/wound/",
-    "female" : "body/wound/",
-    "pregnant" : "body/wound/"
+  "name": "Brain",
+  "type_name": "wound_brain",
+  "layer_1": {
+    "zPos": 15,
+    "male": "body/wound/",
+    "muscular": "body/wound/",
+    "female": "body/wound/",
+    "pregnant": "body/wound/"
   },
   "variants": [
     "brain"

@@ -1,10 +1,10 @@
 {
-  "name" : "Belly belt",
-  "type_name" : "belt",
-  "layer_1" : {
-    "zPos" : 70,
-    "male" : "torso/waist/belt_belly/male/",
-    "female" : "torso/waist/belt_belly/female/"
+  "name": "Belly belt",
+  "type_name": "belt",
+  "layer_1": {
+    "zPos": 70,
+    "male": "torso/waist/belt_belly/male/",
+    "female": "torso/waist/belt_belly/female/"
   },
   "variants": [
     "brown",

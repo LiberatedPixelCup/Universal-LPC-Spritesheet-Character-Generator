@@ -1,12 +1,12 @@
 {
-  "name" : "Bascinet",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female"   : "hat/helmet/bascinet/female/",
-    "pregnant" : "hat/helmet/bascinet/female/",
-    "male"     : "hat/helmet/bascinet/male/",
-    "muscular" : "hat/helmet/bascinet/male/"
+  "name": "Bascinet",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/helmet/bascinet/female/",
+    "pregnant": "hat/helmet/bascinet/female/",
+    "male": "hat/helmet/bascinet/male/",
+    "muscular": "hat/helmet/bascinet/male/"
   },
   "variants": [
     "steel",

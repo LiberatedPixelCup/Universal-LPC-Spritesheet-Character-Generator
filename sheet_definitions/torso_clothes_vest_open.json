@@ -1,9 +1,9 @@
 {
-  "name" : "Vest open",
-  "type_name" : "vest",
-  "layer_1" : {
-    "zPos" : 45,
-    "male" : "torso/clothes/vest_open/male/"
+  "name": "Vest open",
+  "type_name": "vest",
+  "layer_1": {
+    "zPos": 45,
+    "male": "torso/clothes/vest_open/male/"
   },
   "variants": [
     "black",

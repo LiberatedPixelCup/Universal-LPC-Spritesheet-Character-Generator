@@ -1,9 +1,9 @@
 {
-  "name" : "Santa coat",
-  "type_name" : "jacket",
-  "layer_1" : {
-    "zPos" : 55,
-    "male" : "torso/jacket/santa/male/"
+  "name": "Santa coat",
+  "type_name": "jacket",
+  "layer_1": {
+    "zPos": 55,
+    "male": "torso/jacket/santa/male/"
   },
   "variants": [
     "black",

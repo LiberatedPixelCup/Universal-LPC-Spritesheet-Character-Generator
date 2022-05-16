@@ -1,12 +1,12 @@
 {
-  "name" : "Shield",
-  "type_name" : "shield",
-  "layer_1" : {
-    "zPos" : 110,
-    "male" : "shield/male/",
-    "muscular" : "shield/male/",
-    "female" : "shield/female/",
-    "pregnant" : "shield/female/"
+  "name": "Shield",
+  "type_name": "shield",
+  "layer_1": {
+    "zPos": 110,
+    "male": "shield/male/",
+    "muscular": "shield/male/",
+    "female": "shield/female/",
+    "pregnant": "shield/female/"
   },
   "variants": [
     "crusader",

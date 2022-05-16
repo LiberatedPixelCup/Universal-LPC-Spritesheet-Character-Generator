@@ -1,12 +1,12 @@
 {
-  "name" : "Leather",
-  "type_name" : "shoulders",
-  "layer_1" : {
-    "zPos" : 60,
-    "male" : "shoulders/leather/male/",
-    "female" : "shoulders/leather/female/",
-    "muscular" : "shoulders/leather/male/",
-    "pregnant" : "shoulders/leather/female/"
+  "name": "Leather",
+  "type_name": "shoulders",
+  "layer_1": {
+    "zPos": 60,
+    "male": "shoulders/leather/male/",
+    "female": "shoulders/leather/female/",
+    "muscular": "shoulders/leather/male/",
+    "pregnant": "shoulders/leather/female/"
   },
   "variants": [
     "brown"

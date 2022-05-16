@@ -1,10 +1,10 @@
 {
-  "name" : "Necklace",
-  "type_name" : "necklace",
-  "layer_1" : {
-    "zPos" : 80,
-    "female" : "necklace/female/",
-    "pregnant" : "necklace/female/"
+  "name": "Necklace",
+  "type_name": "necklace",
+  "layer_1": {
+    "zPos": 80,
+    "female": "necklace/female/",
+    "pregnant": "necklace/female/"
   },
   "variants": [
     "bronze",

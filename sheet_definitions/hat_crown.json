@@ -1,12 +1,12 @@
 {
-  "name" : "Crown",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "male" : "hat/crown/",
-    "female" : "hat/crown/",
-    "muscular" : "hat/crown/",
-    "pregnant" : "hat/crown/"
+  "name": "Crown",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "male": "hat/crown/",
+    "female": "hat/crown/",
+    "muscular": "hat/crown/",
+    "pregnant": "hat/crown/"
   },
   "variants": [
     "1",

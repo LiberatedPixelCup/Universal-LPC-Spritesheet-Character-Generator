@@ -1,13 +1,13 @@
 {
-  "name" : "Shadow",
-  "type_name" : "shadow",
-  "layer_1" : {
-    "zPos" : 0,
-    "male" : "shadow/adult/",
-    "muscular" : "shadow/adult/",
-    "female" : "shadow/adult/",
-    "pregnant" : "shadow/adult/",
-    "child" : "shadow/child/"
+  "name": "Shadow",
+  "type_name": "shadow",
+  "layer_1": {
+    "zPos": 0,
+    "male": "shadow/adult/",
+    "muscular": "shadow/adult/",
+    "female": "shadow/adult/",
+    "pregnant": "shadow/adult/",
+    "child": "shadow/child/"
   },
   "variants": [
     "shadow"

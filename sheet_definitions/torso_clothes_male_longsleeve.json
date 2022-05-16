@@ -1,9 +1,9 @@
 {
-  "name" : "Sleeved",
-  "type_name" : "clothes",
-  "layer_1" : {
-    "zPos" : 35,
-    "male" : "torso/clothes/longsleeve/male/"
+  "name": "Sleeved",
+  "type_name": "clothes",
+  "layer_1": {
+    "zPos": 35,
+    "male": "torso/clothes/longsleeve/male/"
   },
   "variants": [
     "black",

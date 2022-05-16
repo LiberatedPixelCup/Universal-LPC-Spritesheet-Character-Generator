@@ -1,19 +1,19 @@
 {
-  "name" : "Solid",
-  "type_name" : "cape",
-  "layer_1" : {
-    "zPos" : 85,
-    "male" : "cape/solid/male/",
-    "muscular" : "cape/solid/male/",
-    "female" : "cape/solid/female/",
-    "pregnant" : "cape/solid/female/"
+  "name": "Solid",
+  "type_name": "cape",
+  "layer_1": {
+    "zPos": 85,
+    "male": "cape/solid/male/",
+    "muscular": "cape/solid/male/",
+    "female": "cape/solid/female/",
+    "pregnant": "cape/solid/female/"
   },
-  "layer_2" : {
-    "zPos" : 5,
-    "male" : "cape/solid_behind/",
-    "muscular" : "cape/solid_behind/",
-    "female" : "cape/solid_behind/",
-    "pregnant" : "cape/solid_behind/"
+  "layer_2": {
+    "zPos": 5,
+    "male": "cape/solid_behind/",
+    "muscular": "cape/solid_behind/",
+    "female": "cape/solid_behind/",
+    "pregnant": "cape/solid_behind/"
   },
   "variants": [
     "black",

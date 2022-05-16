@@ -1,19 +1,19 @@
 {
-  "name" : "Helmet wings",
-  "type_name" : "accessory",
-  "layer_1" : {
-    "zPos" : 139,
-    "female"   : "hat/accessory/wings/fg/female/",
-    "pregnant" : "hat/accessory/wings/fg/female/",
-    "male"     : "hat/accessory/wings/fg/male/",
-    "muscular" : "hat/accessory/wings/fg/male/"
+  "name": "Helmet wings",
+  "type_name": "accessory",
+  "layer_1": {
+    "zPos": 139,
+    "female": "hat/accessory/wings/fg/female/",
+    "pregnant": "hat/accessory/wings/fg/female/",
+    "male": "hat/accessory/wings/fg/male/",
+    "muscular": "hat/accessory/wings/fg/male/"
   },
-  "layer_2" : {
-    "zPos" : 125,
-    "female"   : "hat/accessory/wings/bg/female/",
-    "pregnant" : "hat/accessory/wings/bg/female/",
-    "male"     : "hat/accessory/wings/bg/male/",
-    "muscular" : "hat/accessory/wings/bg/male/"
+  "layer_2": {
+    "zPos": 125,
+    "female": "hat/accessory/wings/bg/female/",
+    "pregnant": "hat/accessory/wings/bg/female/",
+    "male": "hat/accessory/wings/bg/male/",
+    "muscular": "hat/accessory/wings/bg/male/"
   },
   "variants": [
     "steel",

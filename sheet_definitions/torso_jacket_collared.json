@@ -1,9 +1,9 @@
 {
-  "name" : "Collared coat",
-  "type_name" : "jacket",
-  "layer_1" : {
-    "zPos" : 55,
-    "male" : "torso/jacket/collared/male/"
+  "name": "Collared coat",
+  "type_name": "jacket",
+  "layer_1": {
+    "zPos": 55,
+    "male": "torso/jacket/collared/male/"
   },
   "variants": [
     "brown striped",

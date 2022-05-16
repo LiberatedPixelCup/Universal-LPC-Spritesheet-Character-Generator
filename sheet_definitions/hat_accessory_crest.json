@@ -1,12 +1,12 @@
 {
-  "name" : "Crest",
-  "type_name" : "accessory",
-  "layer_1" : {
-    "zPos" : 139,
-    "female"   : "hat/accessory/crest/female/",
-    "pregnant" : "hat/accessory/crest/female/",
-    "male"     : "hat/accessory/crest/male/",
-    "muscular" : "hat/accessory/crest/male/"
+  "name": "Crest",
+  "type_name": "accessory",
+  "layer_1": {
+    "zPos": 139,
+    "female": "hat/accessory/crest/female/",
+    "pregnant": "hat/accessory/crest/female/",
+    "male": "hat/accessory/crest/male/",
+    "muscular": "hat/accessory/crest/male/"
   },
   "variants": [
     "steel",

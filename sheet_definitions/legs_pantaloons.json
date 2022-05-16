@@ -1,9 +1,9 @@
 {
-  "name" : "Pantaloons",
-  "type_name" : "legs",
-  "layer_1" : {
-    "zPos" : 20,
-    "male" : "legs/pantaloons/male/"
+  "name": "Pantaloons",
+  "type_name": "legs",
+  "layer_1": {
+    "zPos": 20,
+    "male": "legs/pantaloons/male/"
   },
   "variants": [
     "black",

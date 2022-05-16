@@ -1,12 +1,12 @@
 {
-  "name" : "Button nose",
-  "type_name" : "nose",
-  "layer_1" : {
-    "zPos" : 20,
-    "male" : "head/nose/button/male/",
-    "muscular" : "head/nose/button/male/",
-    "female" : "head/nose/button/female/",
-    "pregnant" : "head/nose/button/female/"
+  "name": "Button nose",
+  "type_name": "nose",
+  "layer_1": {
+    "zPos": 20,
+    "male": "head/nose/button/male/",
+    "muscular": "head/nose/button/male/",
+    "female": "head/nose/button/female/",
+    "pregnant": "head/nose/button/female/"
   },
   "variants": [
     "dark",

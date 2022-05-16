@@ -1,13 +1,13 @@
 {
-  "name" : "Curly",
-  "type_name" : "hair",
-  "layer_1" : {
-    "zPos" : 120,
-    "male" : "hair/curly/male/",
-    "muscular" : "hair/curly/male/",
-    "female" : "hair/curly/female/",
-    "pregnant" : "hair/curly/female/",
-    "child" : "hair/curly/child/"
+  "name": "Curly",
+  "type_name": "hair",
+  "layer_1": {
+    "zPos": 120,
+    "male": "hair/curly/male/",
+    "muscular": "hair/curly/male/",
+    "female": "hair/curly/female/",
+    "pregnant": "hair/curly/female/",
+    "child": "hair/curly/child/"
   },
   "variants": [
     "black",

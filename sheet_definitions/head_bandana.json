@@ -1,10 +1,10 @@
 {
-  "name" : "Bandana",
-  "type_name" : "bandana",
-  "layer_1" : {
-    "zPos" : 120,
-    "female" : "hat/pirate/bandana/female/",
-    "male" :   "hat/pirate/bandana/male/"
+  "name": "Bandana",
+  "type_name": "bandana",
+  "layer_1": {
+    "zPos": 120,
+    "female": "hat/pirate/bandana/female/",
+    "male": "hat/pirate/bandana/male/"
   },
   "variants": [
     "black",

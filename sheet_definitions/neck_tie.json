@@ -1,12 +1,12 @@
 {
-  "name" : "Tie",
-  "type_name" : "neck",
-  "layer_1" : {
-    "zPos" : 90,
-    "male" : "neck/tie/",
-    "female" : "neck/tie/",
-    "muscular" : "neck/tie/",
-    "pregnant" : "neck/tie/"
+  "name": "Tie",
+  "type_name": "neck",
+  "layer_1": {
+    "zPos": 90,
+    "male": "neck/tie/",
+    "female": "neck/tie/",
+    "muscular": "neck/tie/",
+    "pregnant": "neck/tie/"
   },
   "variants": [
     "bow",

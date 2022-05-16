@@ -1,12 +1,12 @@
 {
-  "name" : "Viking spangenhelm",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female"   : "hat/helmet/spangenhelm_viking/female/",
-    "pregnant" : "hat/helmet/spangenhelm_viking/female/",
-    "male"     : "hat/helmet/spangenhelm_viking/male/",
-    "muscular" : "hat/helmet/spangenhelm_viking/male/"
+  "name": "Viking spangenhelm",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/helmet/spangenhelm_viking/female/",
+    "pregnant": "hat/helmet/spangenhelm_viking/female/",
+    "male": "hat/helmet/spangenhelm_viking/male/",
+    "muscular": "hat/helmet/spangenhelm_viking/male/"
   },
   "variants": [
     "steel",

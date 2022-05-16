@@ -1,12 +1,12 @@
 {
-  "name" : "Horned visor",
-  "type_name" : "visor",
-  "layer_1" : {
-    "zPos" : 132,
-    "female"   : "hat/visor/horned/female/",
-    "pregnant" : "hat/visor/horned/female/",
-    "male"     : "hat/visor/horned/male/",
-    "muscular" : "hat/visor/horned/male/"
+  "name": "Horned visor",
+  "type_name": "visor",
+  "layer_1": {
+    "zPos": 132,
+    "female": "hat/visor/horned/female/",
+    "pregnant": "hat/visor/horned/female/",
+    "male": "hat/visor/horned/male/",
+    "muscular": "hat/visor/horned/male/"
   },
   "variants": [
     "steel",

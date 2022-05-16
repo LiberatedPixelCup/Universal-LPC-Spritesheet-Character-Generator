@@ -1,9 +1,9 @@
 {
-  "name" : "Trench coat",
-  "type_name" : "jacket",
-  "layer_1" : {
-    "zPos" : 55,
-    "male" : "torso/jacket/trench/male/"
+  "name": "Trench coat",
+  "type_name": "jacket",
+  "layer_1": {
+    "zPos": 55,
+    "male": "torso/jacket/trench/male/"
   },
   "variants": [
     "dark gray",

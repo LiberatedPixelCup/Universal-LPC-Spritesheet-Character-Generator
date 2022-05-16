@@ -1,12 +1,12 @@
 {
-  "name" : "Pigface visor raised",
-  "type_name" : "visor",
-  "layer_1" : {
-    "zPos" : 132,
-    "female"   : "hat/visor/pigface_raised/female/",
-    "pregnant" : "hat/visor/pigface_raised/female/",
-    "male"     : "hat/visor/pigface_raised/male/",
-    "muscular" : "hat/visor/pigface_raised/male/"
+  "name": "Pigface visor raised",
+  "type_name": "visor",
+  "layer_1": {
+    "zPos": 132,
+    "female": "hat/visor/pigface_raised/female/",
+    "pregnant": "hat/visor/pigface_raised/female/",
+    "male": "hat/visor/pigface_raised/male/",
+    "muscular": "hat/visor/pigface_raised/male/"
   },
   "variants": [
     "steel",

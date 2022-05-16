@@ -1,9 +1,9 @@
 {
-  "name" : "Buckles",
-  "type_name" : "buckles",
-  "layer_1" : {
-    "zPos" : 75,
-    "female" : "torso/waist/buckles/female/"
+  "name": "Buckles",
+  "type_name": "buckles",
+  "layer_1": {
+    "zPos": 75,
+    "female": "torso/waist/buckles/female/"
   },
   "variants": [
     "bronze",

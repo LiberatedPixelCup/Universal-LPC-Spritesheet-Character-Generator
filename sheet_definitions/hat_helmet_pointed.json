@@ -1,12 +1,12 @@
 {
-  "name" : "Pointed helm",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 135,
-    "female"   : "hat/helmet/pointed/female/",
-    "pregnant" : "hat/helmet/pointed/female/",
-    "male"     : "hat/helmet/pointed/male/",
-    "muscular" : "hat/helmet/pointed/male/"
+  "name": "Pointed helm",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 135,
+    "female": "hat/helmet/pointed/female/",
+    "pregnant": "hat/helmet/pointed/female/",
+    "male": "hat/helmet/pointed/male/",
+    "muscular": "hat/helmet/pointed/male/"
   },
   "variants": [
     "steel",

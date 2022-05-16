@@ -1,9 +1,9 @@
 {
-  "name" : "Other belts",
-  "type_name" : "belt",
-  "layer_1" : {
-    "zPos" : 70,
-    "male" : "torso/waist/belt_other/male/"
+  "name": "Other belts",
+  "type_name": "belt",
+  "layer_1": {
+    "zPos": 70,
+    "male": "torso/waist/belt_other/male/"
   },
   "variants": [
     "formal",

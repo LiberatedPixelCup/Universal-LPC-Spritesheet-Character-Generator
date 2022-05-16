@@ -1,12 +1,12 @@
 {
-  "name" : "Pigface bascinet",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female"   : "hat/helmet/bascinet_pigface/female/",
-    "pregnant" : "hat/helmet/bascinet_pigface/female/",
-    "male"     : "hat/helmet/bascinet_pigface/male/",
-    "muscular" : "hat/helmet/bascinet_pigface/male/"
+  "name": "Pigface bascinet",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/helmet/bascinet_pigface/female/",
+    "pregnant": "hat/helmet/bascinet_pigface/female/",
+    "male": "hat/helmet/bascinet_pigface/male/",
+    "muscular": "hat/helmet/bascinet_pigface/male/"
   },
   "variants": [
     "steel",

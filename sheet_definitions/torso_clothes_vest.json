@@ -1,9 +1,9 @@
 {
-  "name" : "Vest",
-  "type_name" : "vest",
-  "layer_1" : {
-    "zPos" : 45,
-    "male" : "torso/clothes/vest/male/"
+  "name": "Vest",
+  "type_name": "vest",
+  "layer_1": {
+    "zPos": 45,
+    "male": "torso/clothes/vest/male/"
   },
   "variants": [
     "gray striped",

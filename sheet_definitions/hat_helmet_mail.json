@@ -1,12 +1,12 @@
 {
-  "name" : "Mail",
-  "type_name" : "bandana",
-  "layer_1" : {
-    "zPos" : 125,
-    "female"   : "hat/helmet/mail/female/",
-    "pregnant" : "hat/helmet/mail/female/",
-    "male"     : "hat/helmet/mail/male/",
-    "muscular" : "hat/helmet/mail/male/"
+  "name": "Mail",
+  "type_name": "bandana",
+  "layer_1": {
+    "zPos": 125,
+    "female": "hat/helmet/mail/female/",
+    "pregnant": "hat/helmet/mail/female/",
+    "male": "hat/helmet/mail/male/",
+    "muscular": "hat/helmet/mail/male/"
   },
   "variants": [
     "steel"

@@ -1,9 +1,9 @@
 {
-  "name" : "Child pants",
-  "type_name" : "legs",
-  "layer_1" : {
-    "zPos" : 20,
-    "child" : "legs/pants/child/"
+  "name": "Child pants",
+  "type_name": "legs",
+  "layer_1": {
+    "zPos": 20,
+    "child": "legs/pants/child/"
   },
   "variants": [
     "black",

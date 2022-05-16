@@ -1,12 +1,12 @@
 {
-  "name" : "Barbarian Viking",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female"   : "hat/helmet/barbarian_viking/female/",
-    "pregnant" : "hat/helmet/barbarian_viking/female/",
-    "male"     : "hat/helmet/barbarian_viking/male/",
-    "muscular" : "hat/helmet/barbarian_viking/male/"
+  "name": "Barbarian Viking",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/helmet/barbarian_viking/female/",
+    "pregnant": "hat/helmet/barbarian_viking/female/",
+    "male": "hat/helmet/barbarian_viking/male/",
+    "muscular": "hat/helmet/barbarian_viking/male/"
   },
   "variants": [
     "steel",

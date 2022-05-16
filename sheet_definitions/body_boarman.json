@@ -1,13 +1,13 @@
 {
-  "name" : "Boarman",
-  "type_name" : "body",
-  "layer_1" : {
-    "zPos" : 10,
-    "muscular" : "body/muscular/"
+  "name": "Boarman",
+  "type_name": "body",
+  "layer_1": {
+    "zPos": 10,
+    "muscular": "body/muscular/"
   },
-  "layer_2" : {
-    "zPos" : 100,
-    "muscular" : "body/muscular/head/"
+  "layer_2": {
+    "zPos": 100,
+    "muscular": "body/muscular/head/"
   },
   "variants": [
     "boarman"

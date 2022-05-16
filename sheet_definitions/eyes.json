@@ -1,12 +1,12 @@
 {
-  "name" : "Eyes",
-  "type_name" : "eyes",
-  "layer_1" : {
-    "zPos" : 20,
-    "male" : "eyes/male/",
-    "muscular" : "eyes/male/",
-    "female" : "eyes/female/",
-    "pregnant" : "eyes/female/"
+  "name": "Eyes",
+  "type_name": "eyes",
+  "layer_1": {
+    "zPos": 20,
+    "male": "eyes/male/",
+    "muscular": "eyes/male/",
+    "female": "eyes/female/",
+    "pregnant": "eyes/female/"
   },
   "variants": [
     "blue",

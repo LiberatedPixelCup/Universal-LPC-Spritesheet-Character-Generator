@@ -1,10 +1,10 @@
 {
-  "name" : "Cavalier",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female" : "hat/pirate/cavalier/female/",
-    "male" :   "hat/pirate/cavalier/male/"
+  "name": "Cavalier",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/pirate/cavalier/female/",
+    "male": "hat/pirate/cavalier/male/"
   },
   "variants": [
     "black",

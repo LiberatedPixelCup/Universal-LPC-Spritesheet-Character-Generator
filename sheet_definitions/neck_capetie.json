@@ -1,10 +1,10 @@
 {
-  "name" : "Capetie",
-  "type_name" : "neck",
-  "layer_1" : {
-    "zPos" : 90,
-    "female" : "neck/capetie/female/",
-    "pregnant" : "neck/capetie/female/"
+  "name": "Capetie",
+  "type_name": "neck",
+  "layer_1": {
+    "zPos": 90,
+    "female": "neck/capetie/female/",
+    "pregnant": "neck/capetie/female/"
   },
   "variants": [
     "black",

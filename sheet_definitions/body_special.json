@@ -1,9 +1,9 @@
 {
-  "name" : "Special",
-  "type_name" : "body",
-  "layer_1" : {
-    "zPos" : 10,
-    "male" : "body/male/special/"
+  "name": "Special",
+  "type_name": "body",
+  "layer_1": {
+    "zPos": 10,
+    "male": "body/male/special/"
   },
   "variants": [
     "bauldric",

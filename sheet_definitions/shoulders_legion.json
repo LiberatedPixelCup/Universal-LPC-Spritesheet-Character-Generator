@@ -1,12 +1,12 @@
 {
-  "name" : "Legion",
-  "type_name" : "shoulders",
-  "layer_1" : {
-    "zPos" : 60,
-    "male" : "shoulders/legion/male/",
-    "female" : "shoulders/legion/female/",
-    "muscular" : "shoulders/legion/male/",
-    "pregnant" : "shoulders/legion/female/"
+  "name": "Legion",
+  "type_name": "shoulders",
+  "layer_1": {
+    "zPos": 60,
+    "male": "shoulders/legion/male/",
+    "female": "shoulders/legion/female/",
+    "muscular": "shoulders/legion/male/",
+    "pregnant": "shoulders/legion/female/"
   },
   "variants": [
     "bronze",

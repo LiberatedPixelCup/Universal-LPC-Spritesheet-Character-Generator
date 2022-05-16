@@ -1,12 +1,12 @@
 {
-  "name" : "Thrust",
-  "type_name" : "weapon",
-  "layer_1" : {
-    "zPos" : 140,
-    "male" : "weapon/thrust/male/",
-    "muscular" : "weapon/thrust/male/",
-    "female" : "weapon/thrust/female/",
-    "pregnant" : "weapon/thrust/female/"
+  "name": "Thrust",
+  "type_name": "weapon",
+  "layer_1": {
+    "zPos": 140,
+    "male": "weapon/thrust/male/",
+    "muscular": "weapon/thrust/male/",
+    "female": "weapon/thrust/female/",
+    "pregnant": "weapon/thrust/female/"
   },
   "variants": [
     "cane",

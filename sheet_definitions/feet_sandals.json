@@ -1,12 +1,12 @@
 {
-  "name" : "Sandals",
-  "type_name" : "shoes",
-  "layer_1" : {
-    "zPos" : 15,
-    "female" : "feet/sandals/female/",
-    "pregnant" : "feet/sandals/female/",
-    "male" : "feet/sandals/male/",
-    "muscular" : "feet/sandals/male/"
+  "name": "Sandals",
+  "type_name": "shoes",
+  "layer_1": {
+    "zPos": 15,
+    "female": "feet/sandals/female/",
+    "pregnant": "feet/sandals/female/",
+    "male": "feet/sandals/male/",
+    "muscular": "feet/sandals/male/"
   },
   "variants": [
     "brown"

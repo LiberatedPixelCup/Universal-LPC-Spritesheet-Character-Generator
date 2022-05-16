@@ -1,15 +1,15 @@
 {
-  "name" : "Wolfman",
-  "type_name" : "body",
-  "layer_1" : {
-    "zPos" : 10,
-    "male" : "body/male/wolf/",
-    "female" : "body/female/wolf/"
+  "name": "Wolfman",
+  "type_name": "body",
+  "layer_1": {
+    "zPos": 10,
+    "male": "body/male/wolf/",
+    "female": "body/female/wolf/"
   },
-  "layer_2" : {
-    "zPos" : 100,
-    "male" : "body/male/wolf/head/",
-    "female" : "body/female/wolf/head/"
+  "layer_2": {
+    "zPos": 100,
+    "male": "body/male/wolf/head/",
+    "female": "body/female/wolf/head/"
   },
   "variants": [
     "black",

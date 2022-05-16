@@ -1,12 +1,12 @@
 {
-  "name" : "Morion",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 135,
-    "female"   : "hat/helmet/morion/female/",
-    "pregnant" : "hat/helmet/morion/female/",
-    "male"     : "hat/helmet/morion/male/",
-    "muscular" : "hat/helmet/morion/male/"
+  "name": "Morion",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 135,
+    "female": "hat/helmet/morion/female/",
+    "pregnant": "hat/helmet/morion/female/",
+    "male": "hat/helmet/morion/male/",
+    "muscular": "hat/helmet/morion/male/"
   },
   "variants": [
     "steel",

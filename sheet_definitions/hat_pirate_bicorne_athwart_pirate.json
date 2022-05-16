@@ -1,10 +1,10 @@
 {
-  "name" : "Bicorne athwart pirate",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female" : "hat/pirate/bicorne_athwart_pirate/female/",
-    "male" :   "hat/pirate/bicorne_athwart_pirate/male/"
+  "name": "Bicorne athwart pirate",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/pirate/bicorne_athwart_pirate/female/",
+    "male": "hat/pirate/bicorne_athwart_pirate/male/"
   },
   "variants": [
     "black",

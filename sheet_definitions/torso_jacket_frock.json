@@ -1,9 +1,9 @@
 {
-  "name" : "Frock coat",
-  "type_name" : "jacket",
-  "layer_1" : {
-    "zPos" : 55,
-    "male" : "torso/jacket/frock/male/"
+  "name": "Frock coat",
+  "type_name": "jacket",
+  "layer_1": {
+    "zPos": 55,
+    "male": "torso/jacket/frock/male/"
   },
   "variants": [
     "black",

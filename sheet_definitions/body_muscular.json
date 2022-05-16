@@ -1,9 +1,9 @@
 {
-  "name" : "Muscular",
-  "type_name" : "body",
-  "layer_1" : {
-    "zPos" : 10,
-    "muscular" : "body/muscular/"
+  "name": "Muscular",
+  "type_name": "body",
+  "layer_1": {
+    "zPos": 10,
+    "muscular": "body/muscular/"
   },
   "variants": [
     "muscular white",

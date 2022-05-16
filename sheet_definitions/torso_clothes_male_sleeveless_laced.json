@@ -1,9 +1,9 @@
 {
-  "name" : "Sleeveless laced",
-  "type_name" : "clothes",
-  "layer_1" : {
-    "zPos" : 35,
-    "male" : "torso/clothes/sleeveless_laced/male/"
+  "name": "Sleeveless laced",
+  "type_name": "clothes",
+  "layer_1": {
+    "zPos": 35,
+    "male": "torso/clothes/sleeveless_laced/male/"
   },
   "variants": [
     "black",

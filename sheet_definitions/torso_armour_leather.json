@@ -1,10 +1,10 @@
 {
-  "name" : "Leather",
-  "type_name" : "armour",
-  "layer_1" : {
-    "zPos" : 60,
-    "male" : "torso/armour/leather/male/",
-    "female" : "torso/armour/leather/female/"
+  "name": "Leather",
+  "type_name": "armour",
+  "layer_1": {
+    "zPos": 60,
+    "male": "torso/armour/leather/male/",
+    "female": "torso/armour/leather/female/"
   },
   "variants": [
     "blue",

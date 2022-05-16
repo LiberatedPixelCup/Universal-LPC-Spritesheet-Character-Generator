@@ -1,12 +1,12 @@
 {
-  "name" : "Bracers",
-  "type_name" : "bracers",
-  "layer_1" : {
-    "zPos" : 70,
-    "male" : "bracers/male/",
-    "female" : "bracers/female/",
-    "pregnant" : "bracers/female/",
-    "muscular" : "bracers/male/"
+  "name": "Bracers",
+  "type_name": "bracers",
+  "layer_1": {
+    "zPos": 70,
+    "male": "bracers/male/",
+    "female": "bracers/female/",
+    "pregnant": "bracers/female/",
+    "muscular": "bracers/male/"
   },
   "variants": [
     "1",

@@ -1,12 +1,12 @@
 {
-  "name" : "Slit visor",
-  "type_name" : "visor",
-  "layer_1" : {
-    "zPos" : 132,
-    "female"   : "hat/visor/slit/female/",
-    "pregnant" : "hat/visor/slit/female/",
-    "male"     : "hat/visor/slit/male/",
-    "muscular" : "hat/visor/slit/male/"
+  "name": "Slit visor",
+  "type_name": "visor",
+  "layer_1": {
+    "zPos": 132,
+    "female": "hat/visor/slit/female/",
+    "pregnant": "hat/visor/slit/female/",
+    "male": "hat/visor/slit/male/",
+    "muscular": "hat/visor/slit/male/"
   },
   "variants": [
     "steel",

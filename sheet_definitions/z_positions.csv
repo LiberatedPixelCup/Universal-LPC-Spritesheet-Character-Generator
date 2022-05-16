@@ -1,0 +1,293 @@
+json,layer,zPos,images
+ammo.json,layer_1,150,ammo/ ammo/ ammo/ ammo/
+arms.json,layer_1,60,arms/male/ arms/female/ arms/female/
+bauldron.json,layer_1,65,bauldron/male/ bauldron/female/ bauldron/male/ bauldron/female/
+beards_beard.json,layer_1,20,beards/beard/male/ beards/beard/male/
+beards_bigstache.json,layer_1,20,beards/bigstache/male/ beards/bigstache/male/
+beards_mustache.json,layer_1,20,beards/mustache/male/ beards/mustache/male/
+beards_winter.json,layer_1,60,beards/winter/male/ beards/winter/male/
+belt_belly.json,layer_1,70,torso/waist/belt_belly/male/ torso/waist/belt_belly/female/
+belt_double.json,layer_1,70,torso/waist/belt_double/male/ torso/waist/belt_double/female/
+belt_leather.json,layer_1,70,torso/waist/belt_leather/male/ torso/waist/belt_leather/female/
+belt_loose.json,layer_1,70,torso/waist/belt_loose/male/ torso/waist/belt_loose/female/
+belt_other_female.json,layer_1,70,torso/waist/belt_other/female/
+belt_other_male.json,layer_1,70,torso/waist/belt_other/male/
+belt_sash.json,layer_1,65,torso/waist/sash/male/ torso/waist/sash/female/
+belt_sash_narrow.json,layer_1,65,torso/waist/sash_narrow/male/ torso/waist/sash_narrow/female/
+body_boarman.json,layer_1,10,body/muscular/
+body_boarman.json,layer_2,100,body/muscular/head/
+body_child.json,layer_1,10,body/child/
+body_human.json,layer_1,10,body/male/human/ body/female/human/
+body_muscular.json,layer_1,10,body/muscular/
+body_orc.json,layer_1,10,body/male/orcs/ body/female/orcs/
+body_pregnant.json,layer_1,10,body/pregnant/
+body_reptile.json,layer_1,10,body/male/reptiles/ body/female/reptiles/
+body_skeleton.json,layer_1,10,body/skeleton/ body/skeleton/
+body_special.json,layer_1,10,body/male/special/
+body_wolfman.json,layer_1,10,body/male/wolf/ body/female/wolf/
+body_wolfman.json,layer_2,100,body/male/wolf/head/ body/female/wolf/head/
+bracers.json,layer_1,70,bracers/male/ bracers/female/ bracers/male/ bracers/female/
+buckles.json,layer_1,75,torso/waist/buckles/female/
+cape_solid.json,layer_1,85,cape/solid/male/ cape/solid/female/ cape/solid/male/ cape/solid/female/
+cape_solid.json,layer_2,5,cape/solid_behind/ cape/solid_behind/ cape/solid_behind/ cape/solid_behind/
+cape_tattered.json,layer_1,85,cape/tattered/female/ cape/tattered/female/
+cape_tattered.json,layer_2,5,cape/tattered_behind/ cape/tattered_behind/
+cape_trimmed.json,layer_1,85,cape/trimmed/female/ cape/trimmed/female/
+cape_trimmed.json,layer_2,5,cape/trimmed_behind/ cape/trimmed_behind/
+dress.json,layer_1,30,dress/female/
+eyes.json,layer_1,20,eyes/male/ eyes/female/ eyes/male/ eyes/female/
+facial.json,layer_1,25,facial/ facial/ facial/ facial/
+facial_earring.json,layer_1,25,facial/earring/male/ facial/earring/female/ facial/earring/male/ facial/earring/female/
+facial_eyepatch.json,layer_1,25,facial/eyepatch/male/ facial/eyepatch/female/ facial/eyepatch/male/ facial/eyepatch/female/
+feet_armour.json,layer_1,15,feet/armor/male/ feet/armor/female/ feet/armor/male/ feet/armor/female/
+feet_boots.json,layer_1,25,feet/boots/male/ feet/boots/female/ feet/boots/male/ feet/boots/female/
+feet_hoofs.json,layer_1,15,feet/hoofs/male/ feet/hoofs/male/
+feet_sandals.json,layer_1,15,feet/sandals/male/ feet/sandals/female/ feet/sandals/male/ feet/sandals/female/
+feet_sara.json,layer_1,15,feet/shoes/female/ feet/shoes/female/
+feet_shoes.json,layer_1,15,feet/shoes/male/ feet/shoes/female/ feet/shoes/male/ feet/shoes/female/
+feet_slippers.json,layer_1,15,feet/slippers/female/ feet/slippers/female/
+gloves.json,layer_1,70,gloves/male/ gloves/female/ gloves/male/ gloves/female/
+hair_afro.json,layer_1,120,hair/afro/male/ hair/afro/female/ hair/afro/male/ hair/afro/female/
+hair_balding.json,layer_1,120,hair/balding/male/ hair/balding/female/ hair/balding/male/ hair/balding/female/
+hair_bangs.json,layer_1,120,hair/bangs/male/ hair/bangs/female/ hair/bangs/male/ hair/bangs/female/
+hair_bangs_bun.json,layer_1,120,hair/bangs_bun/male/ hair/bangs_bun/female/ hair/bangs_bun/male/ hair/bangs_bun/female/
+hair_bangslong.json,layer_1,120,hair/bangslong/male/ hair/bangslong/female/ hair/bangslong/male/ hair/bangslong/female/
+hair_bangslong2.json,layer_1,120,hair/bangslong2/male/ hair/bangslong2/female/ hair/bangslong2/male/ hair/bangslong2/female/
+hair_bangsshort.json,layer_1,120,hair/bangsshort/male/ hair/bangsshort/female/ hair/bangsshort/male/ hair/bangsshort/female/
+hair_bedhead.json,layer_1,120,hair/bedhead/male/ hair/bedhead/female/ hair/bedhead/male/ hair/bedhead/female/
+hair_bob.json,layer_1,120,hair/bob/male/ hair/bob/female/ hair/bob/male/ hair/bob/female/
+hair_bob_side_part.json,layer_1,120,hair/bob_side_part/male/ hair/bob_side_part/female/ hair/bob_side_part/male/ hair/bob_side_part/female/
+hair_braid.json,layer_1,120,hair/braid/male/ hair/braid/female/ hair/braid/male/ hair/braid/female/
+hair_braid2.json,layer_1,120,hair/braid2/male/ hair/braid2/female/ hair/braid2/male/ hair/braid2/female/
+hair_bunches.json,layer_1,120,hair/bunches/male/ hair/bunches/female/ hair/bunches/male/ hair/bunches/female/
+hair_buzzcut.json,layer_1,120,hair/buzzcut/male/ hair/buzzcut/female/ hair/buzzcut/male/ hair/buzzcut/female/
+hair_cornrows.json,layer_1,120,hair/cornrows/male/ hair/cornrows/female/ hair/cornrows/male/ hair/cornrows/female/
+hair_cowlick.json,layer_1,120,hair/cowlick/male/ hair/cowlick/female/ hair/cowlick/male/ hair/cowlick/female/
+hair_cowlick_tall.json,layer_1,120,hair/cowlick_tall/male/ hair/cowlick_tall/female/ hair/cowlick_tall/male/ hair/cowlick_tall/female/
+hair_curly.json,layer_1,120,hair/curly/male/ hair/curly/female/ hair/curly/male/ hair/curly/female/ hair/curly/child/
+hair_curly_long.json,layer_1,120,hair/curly_long/male/ hair/curly_long/female/ hair/curly_long/male/ hair/curly_long/female/
+hair_curly_short.json,layer_1,120,hair/curly_short/male/ hair/curly_short/female/ hair/curly_short/male/ hair/curly_short/female/
+hair_curtains.json,layer_1,120,hair/curtains/male/ hair/curtains/female/ hair/curtains/male/ hair/curtains/female/
+hair_curtains_long.json,layer_1,120,hair/curtains_long/male/ hair/curtains_long/female/ hair/curtains_long/male/ hair/curtains_long/female/
+hair_dreadlocks_long.json,layer_1,120,hair/dreadlocks_long/male/ hair/dreadlocks_long/female/ hair/dreadlocks_long/male/ hair/dreadlocks_long/female/
+hair_dreadlocks_short.json,layer_1,120,hair/dreadlocks_short/male/ hair/dreadlocks_short/female/ hair/dreadlocks_short/male/ hair/dreadlocks_short/female/
+hair_flat_top_fade.json,layer_1,120,hair/flat_top_fade/male/ hair/flat_top_fade/female/ hair/flat_top_fade/male/ hair/flat_top_fade/female/
+hair_flat_top_straight.json,layer_1,120,hair/flat_top_straight/male/ hair/flat_top_straight/female/ hair/flat_top_straight/male/ hair/flat_top_straight/female/
+hair_half_up.json,layer_1,120,hair/half_up/male/ hair/half_up/female/ hair/half_up/male/ hair/half_up/female/
+hair_halfmessy.json,layer_1,120,hair/halfmessy/male/ hair/halfmessy/female/ hair/halfmessy/male/ hair/halfmessy/female/
+hair_high_and_tight.json,layer_1,120,hair/high_and_tight/male/ hair/high_and_tight/female/ hair/high_and_tight/male/ hair/high_and_tight/female/
+hair_high_ponytail.json,layer_1,120,hair/high_ponytail/male/ hair/high_ponytail/female/ hair/high_ponytail/male/ hair/high_ponytail/female/
+hair_idol.json,layer_1,120,hair/idol/male/ hair/idol/female/ hair/idol/male/ hair/idol/female/
+hair_jewfro.json,layer_1,120,hair/jewfro/male/ hair/jewfro/female/ hair/jewfro/male/ hair/jewfro/female/
+hair_lob.json,layer_1,120,hair/lob/male/ hair/lob/female/ hair/lob/male/ hair/lob/female/
+hair_long.json,layer_1,120,hair/long/male/ hair/long/female/ hair/long/male/ hair/long/female/
+hair_long_band.json,layer_1,120,hair/long_band/male/ hair/long_band/female/ hair/long_band/male/ hair/long_band/female/
+hair_long_center_part.json,layer_1,120,hair/long_center_part/male/ hair/long_center_part/female/ hair/long_center_part/male/ hair/long_center_part/female/
+hair_long_messy.json,layer_1,120,hair/long_messy/male/ hair/long_messy/female/ hair/long_messy/male/ hair/long_messy/female/
+hair_long_messy2.json,layer_1,120,hair/long_messy2/male/ hair/long_messy2/female/ hair/long_messy2/male/ hair/long_messy2/female/
+hair_long_straight.json,layer_1,120,hair/long_straight/male/ hair/long_straight/female/ hair/long_straight/male/ hair/long_straight/female/
+hair_long_tied.json,layer_1,120,hair/long_tied/male/ hair/long_tied/female/ hair/long_tied/male/ hair/long_tied/female/
+hair_longest.json,layer_1,120,hair/longest/female/ hair/longest/female/
+hair_longest.json,layer_2,8,hair/longest/female/behind/ hair/longest/female/behind/
+hair_longhawk.json,layer_1,120,hair/longhawk/male/ hair/longhawk/female/ hair/longhawk/male/ hair/longhawk/female/
+hair_longknot.json,layer_1,120,hair/longknot/male/ hair/longknot/female/ hair/longknot/male/ hair/longknot/female/
+hair_loose.json,layer_1,120,hair/loose/male/ hair/loose/female/ hair/loose/male/ hair/loose/female/
+hair_messed.json,layer_1,120,hair/messy/child/
+hair_messy1.json,layer_1,120,hair/messy1/male/ hair/messy1/female/ hair/messy1/male/ hair/messy1/female/
+hair_messy2.json,layer_1,120,hair/messy2/male/ hair/messy2/female/ hair/messy2/male/ hair/messy2/female/
+hair_messy3.json,layer_1,120,hair/messy3/male/ hair/messy3/female/ hair/messy3/male/ hair/messy3/female/
+hair_mohawk.json,layer_1,120,hair/mohawk/male/ hair/mohawk/female/ hair/mohawk/male/ hair/mohawk/female/
+hair_mop.json,layer_1,120,hair/mop/male/ hair/mop/female/ hair/mop/male/ hair/mop/female/
+hair_natural.json,layer_1,120,hair/natural/male/ hair/natural/female/ hair/natural/male/ hair/natural/female/
+hair_page.json,layer_1,120,hair/page/male/ hair/page/female/ hair/page/male/ hair/page/female/
+hair_page2.json,layer_1,120,hair/page2/male/ hair/page2/female/ hair/page2/male/ hair/page2/female/
+hair_part2.json,layer_1,120,hair/part2/male/ hair/part2/female/ hair/part2/male/ hair/part2/female/
+hair_parted.json,layer_1,120,hair/parted/male/ hair/parted/female/ hair/parted/male/ hair/parted/female/
+hair_pigtails.json,layer_1,120,hair/pigtails/male/ hair/pigtails/female/ hair/pigtails/male/ hair/pigtails/female/
+hair_pigtails_bangs.json,layer_1,120,hair/pigtails_bangs/male/ hair/pigtails_bangs/female/ hair/pigtails_bangs/male/ hair/pigtails_bangs/female/
+hair_pixie.json,layer_1,120,hair/pixie/male/ hair/pixie/female/ hair/pixie/male/ hair/pixie/female/
+hair_plain.json,layer_1,120,hair/plain/male/ hair/plain/female/ hair/plain/male/ hair/plain/female/
+hair_ponytail.json,layer_1,120,hair/ponytail/male/ hair/ponytail/female/ hair/ponytail/male/ hair/ponytail/female/
+hair_ponytail2.json,layer_1,120,hair/ponytail2/male/ hair/ponytail2/female/ hair/ponytail2/male/ hair/ponytail2/female/
+hair_princess.json,layer_1,120,hair/princess/male/ hair/princess/female/ hair/princess/male/ hair/princess/female/
+hair_sara.json,layer_1,120,hair/sara/male/ hair/sara/female/ hair/sara/male/ hair/sara/female/
+hair_shorthawk.json,layer_1,120,hair/shorthawk/male/ hair/shorthawk/female/ hair/shorthawk/male/ hair/shorthawk/female/
+hair_shortknot.json,layer_1,120,hair/shortknot/male/ hair/shortknot/female/ hair/shortknot/male/ hair/shortknot/female/
+hair_shoulderl.json,layer_1,120,hair/shoulderl/male/ hair/shoulderl/female/ hair/shoulderl/male/ hair/shoulderl/female/
+hair_shoulderr.json,layer_1,120,hair/shoulderr/male/ hair/shoulderr/female/ hair/shoulderr/male/ hair/shoulderr/female/
+hair_single.json,layer_1,120,hair/single/male/ hair/single/female/ hair/single/male/ hair/single/female/
+hair_spiked.json,layer_1,120,hair/spiked/male/ hair/spiked/female/ hair/spiked/male/ hair/spiked/female/
+hair_spiked2.json,layer_1,120,hair/spiked2/male/ hair/spiked2/female/ hair/spiked2/male/ hair/spiked2/female/
+hair_spiked_beehive.json,layer_1,120,hair/spiked_beehive/male/ hair/spiked_beehive/female/ hair/spiked_beehive/male/ hair/spiked_beehive/female/
+hair_spiked_liberty.json,layer_1,120,hair/spiked_liberty/male/ hair/spiked_liberty/female/ hair/spiked_liberty/male/ hair/spiked_liberty/female/
+hair_spiked_liberty2.json,layer_1,120,hair/spiked_liberty2/male/ hair/spiked_liberty2/female/ hair/spiked_liberty2/male/ hair/spiked_liberty2/female/
+hair_spiked_porcupine.json,layer_1,120,hair/spiked_porcupine/male/ hair/spiked_porcupine/female/ hair/spiked_porcupine/male/ hair/spiked_porcupine/female/
+hair_swoop.json,layer_1,120,hair/swoop/male/ hair/swoop/female/ hair/swoop/male/ hair/swoop/female/
+hair_twists_fade.json,layer_1,120,hair/twists_fade/male/ hair/twists_fade/female/ hair/twists_fade/male/ hair/twists_fade/female/
+hair_twists_straight.json,layer_1,120,hair/twists_straight/male/ hair/twists_straight/female/ hair/twists_straight/male/ hair/twists_straight/female/
+hair_unkempt.json,layer_1,120,hair/unkempt/male/ hair/unkempt/female/ hair/unkempt/male/ hair/unkempt/female/
+hair_wavy.json,layer_1,120,hair/wavy/male/ hair/wavy/female/ hair/wavy/male/ hair/wavy/female/
+hair_xlong.json,layer_1,120,hair/xlong/male/ hair/xlong/female/ hair/xlong/male/ hair/xlong/female/
+hair_xlongknot.json,layer_1,120,hair/xlongknot/male/ hair/xlongknot/female/ hair/xlongknot/male/ hair/xlongknot/female/
+hat_accessory_crest.json,layer_1,139,hat/accessory/crest/male/ hat/accessory/crest/female/ hat/accessory/crest/male/ hat/accessory/crest/female/
+hat_accessory_crest_centurion.json,layer_1,139,hat/accessory/crest_centurion/male/ hat/accessory/crest_centurion/female/ hat/accessory/crest_centurion/male/ hat/accessory/crest_centurion/female/
+hat_accessory_horns.json,layer_1,139,hat/accessory/horns/fg/male/ hat/accessory/horns/fg/female/ hat/accessory/horns/fg/male/ hat/accessory/horns/fg/female/
+hat_accessory_horns.json,layer_2,125,hat/accessory/horns/bg/male/ hat/accessory/horns/bg/female/ hat/accessory/horns/bg/male/ hat/accessory/horns/bg/female/
+hat_accessory_plumage.json,layer_1,139,hat/accessory/plumage/male/ hat/accessory/plumage/female/ hat/accessory/plumage/male/ hat/accessory/plumage/female/
+hat_accessory_plumage_centurion.json,layer_1,139,hat/accessory/plumage_centurion/male/ hat/accessory/plumage_centurion/female/ hat/accessory/plumage_centurion/male/ hat/accessory/plumage_centurion/female/
+hat_accessory_plumage_legion.json,layer_1,139,hat/accessory/plumage_legion/male/ hat/accessory/plumage_legion/female/ hat/accessory/plumage_legion/male/ hat/accessory/plumage_legion/female/
+hat_accessory_wings.json,layer_1,139,hat/accessory/wings/fg/male/ hat/accessory/wings/fg/female/ hat/accessory/wings/fg/male/ hat/accessory/wings/fg/female/
+hat_accessory_wings.json,layer_2,125,hat/accessory/wings/bg/male/ hat/accessory/wings/bg/female/ hat/accessory/wings/bg/male/ hat/accessory/wings/bg/female/
+hat_cloth.json,layer_1,130,hat/cloth/male/ hat/cloth/female/ hat/cloth/male/ hat/cloth/female/
+hat_crown.json,layer_1,130,hat/crown/ hat/crown/ hat/crown/ hat/crown/
+hat_elf.json,layer_1,130,hat/elf/male/ hat/elf/female/
+hat_formal.json,layer_1,130,hat/formal/ hat/formal/ hat/formal/ hat/formal/
+hat_helmet_armet.json,layer_1,130,hat/helmet/armet/male/ hat/helmet/armet/female/ hat/helmet/armet/male/ hat/helmet/armet/female/
+hat_helmet_armet_simple.json,layer_1,130,hat/helmet/armet_simple/male/ hat/helmet/armet_simple/female/ hat/helmet/armet_simple/male/ hat/helmet/armet_simple/female/
+hat_helmet_barbarian.json,layer_1,130,hat/helmet/barbarian/male/ hat/helmet/barbarian/female/ hat/helmet/barbarian/male/ hat/helmet/barbarian/female/
+hat_helmet_barbarian_nasal.json,layer_1,130,hat/helmet/barbarian_nasal/male/ hat/helmet/barbarian_nasal/female/ hat/helmet/barbarian_nasal/male/ hat/helmet/barbarian_nasal/female/
+hat_helmet_barbarian_viking.json,layer_1,130,hat/helmet/barbarian_viking/male/ hat/helmet/barbarian_viking/female/ hat/helmet/barbarian_viking/male/ hat/helmet/barbarian_viking/female/
+hat_helmet_barbuta.json,layer_1,130,hat/helmet/barbuta/male/ hat/helmet/barbuta/female/ hat/helmet/barbuta/male/ hat/helmet/barbuta/female/
+hat_helmet_barbuta_simple.json,layer_1,130,hat/helmet/barbuta_simple/male/ hat/helmet/barbuta_simple/female/ hat/helmet/barbuta_simple/male/ hat/helmet/barbuta_simple/female/
+hat_helmet_bascinet.json,layer_1,130,hat/helmet/bascinet/male/ hat/helmet/bascinet/female/ hat/helmet/bascinet/male/ hat/helmet/bascinet/female/
+hat_helmet_bascinet_pigface.json,layer_1,130,hat/helmet/bascinet_pigface/male/ hat/helmet/bascinet_pigface/female/ hat/helmet/bascinet_pigface/male/ hat/helmet/bascinet_pigface/female/
+hat_helmet_bascinet_pigface_raised.json,layer_1,130,hat/helmet/bascinet_pigface_raised/male/ hat/helmet/bascinet_pigface_raised/female/ hat/helmet/bascinet_pigface_raised/male/ hat/helmet/bascinet_pigface_raised/female/
+hat_helmet_bascinet_round.json,layer_1,130,hat/helmet/bascinet_round/male/ hat/helmet/bascinet_round/female/ hat/helmet/bascinet_round/male/ hat/helmet/bascinet_round/female/
+hat_helmet_bascinet_round_raised.json,layer_1,130,hat/helmet/bascinet_round_raised/male/ hat/helmet/bascinet_round_raised/female/ hat/helmet/bascinet_round_raised/male/ hat/helmet/bascinet_round_raised/female/
+hat_helmet_close.json,layer_1,130,hat/helmet/close/male/ hat/helmet/close/female/ hat/helmet/close/male/ hat/helmet/close/female/
+hat_helmet_flattop.json,layer_1,130,hat/helmet/flattop/male/ hat/helmet/flattop/female/ hat/helmet/flattop/male/ hat/helmet/flattop/female/
+hat_helmet_greathelm.json,layer_1,130,hat/helmet/greathelm/male/ hat/helmet/greathelm/female/ hat/helmet/greathelm/male/ hat/helmet/greathelm/female/
+hat_helmet_horned.json,layer_1,130,hat/helmet/horned/male/ hat/helmet/horned/female/ hat/helmet/horned/male/ hat/helmet/horned/female/
+hat_helmet_kettle.json,layer_1,135,hat/helmet/kettle/male/ hat/helmet/kettle/female/ hat/helmet/kettle/male/ hat/helmet/kettle/female/
+hat_helmet_legion.json,layer_1,130,hat/helmet/legion/male/ hat/helmet/legion/female/ hat/helmet/legion/male/ hat/helmet/legion/female/
+hat_helmet_mail.json,layer_1,125,hat/helmet/mail/male/ hat/helmet/mail/female/ hat/helmet/mail/male/ hat/helmet/mail/female/
+hat_helmet_maximus.json,layer_1,130,hat/helmet/maximus/male/ hat/helmet/maximus/female/ hat/helmet/maximus/male/ hat/helmet/maximus/female/
+hat_helmet_morion.json,layer_1,135,hat/helmet/morion/male/ hat/helmet/morion/female/ hat/helmet/morion/male/ hat/helmet/morion/female/
+hat_helmet_nasal.json,layer_1,130,hat/helmet/nasal/male/ hat/helmet/nasal/female/ hat/helmet/nasal/male/ hat/helmet/nasal/female/
+hat_helmet_norman.json,layer_1,135,hat/helmet/norman/male/ hat/helmet/norman/female/ hat/helmet/norman/male/ hat/helmet/norman/female/
+hat_helmet_pointed.json,layer_1,135,hat/helmet/pointed/male/ hat/helmet/pointed/female/ hat/helmet/pointed/male/ hat/helmet/pointed/female/
+hat_helmet_spangenhelm.json,layer_1,130,hat/helmet/spangenhelm/male/ hat/helmet/spangenhelm/female/ hat/helmet/spangenhelm/male/ hat/helmet/spangenhelm/female/
+hat_helmet_spangenhelm_viking.json,layer_1,130,hat/helmet/spangenhelm_viking/male/ hat/helmet/spangenhelm_viking/female/ hat/helmet/spangenhelm_viking/male/ hat/helmet/spangenhelm_viking/female/
+hat_helmet_sugarloaf.json,layer_1,130,hat/helmet/sugarloaf/male/ hat/helmet/sugarloaf/female/ hat/helmet/sugarloaf/male/ hat/helmet/sugarloaf/female/
+hat_helmet_sugarloaf_simple.json,layer_1,130,hat/helmet/sugarloaf_simple/male/ hat/helmet/sugarloaf_simple/female/ hat/helmet/sugarloaf_simple/male/ hat/helmet/sugarloaf_simple/female/
+hat_helmet_xeon.json,layer_1,130,hat/helmet/xeon/male/ hat/helmet/xeon/female/ hat/helmet/xeon/male/ hat/helmet/xeon/female/
+hat_magic.json,layer_1,130,hat/magic/male/ hat/magic/female/ hat/magic/male/ hat/magic/female/
+hat_pirate_bicorne_athwart.json,layer_1,130,hat/pirate/bicorne_athwart/male/ hat/pirate/bicorne_athwart/female/
+hat_pirate_bicorne_athwart_admiral.json,layer_1,130,hat/pirate/bicorne_athwart_admiral/male/ hat/pirate/bicorne_athwart_admiral/female/
+hat_pirate_bicorne_athwart_admiral_cockade.json,layer_1,130,hat/pirate/bicorne_athwart_admiral_cockade/male/ hat/pirate/bicorne_athwart_admiral_cockade/female/
+hat_pirate_bicorne_athwart_commodore.json,layer_1,130,hat/pirate/bicorne_athwart_commodore/male/ hat/pirate/bicorne_athwart_commodore/female/
+hat_pirate_bicorne_athwart_pirate.json,layer_1,130,hat/pirate/bicorne_athwart_pirate/male/ hat/pirate/bicorne_athwart_pirate/female/
+hat_pirate_bicorne_foreaft.json,layer_1,130,hat/pirate/bicorne_foreaft/male/ hat/pirate/bicorne_foreaft/female/
+hat_pirate_bicorne_foreaft_commodore.json,layer_1,130,hat/pirate/bicorne_foreaft_commodore/male/ hat/pirate/bicorne_foreaft_commodore/female/
+hat_pirate_bonnie.json,layer_1,130,hat/pirate/bonnie/male/ hat/pirate/bonnie/female/
+hat_pirate_bonnie_feather.json,layer_1,130,hat/pirate/bonnie_feather/male/ hat/pirate/bonnie_feather/female/
+hat_pirate_cavalier.json,layer_1,130,hat/pirate/cavalier/male/ hat/pirate/cavalier/female/
+hat_pirate_cavalier_feather.json,layer_1,130,hat/pirate/cavalier_feather/male/ hat/pirate/cavalier_feather/female/
+hat_pirate_tricorne.json,layer_1,130,hat/pirate/tricorne/male/ hat/pirate/tricorne/female/
+hat_pirate_tricorne_captain.json,layer_1,130,hat/pirate/tricorne_captain/male/ hat/pirate/tricorne_captain/female/
+hat_pirate_tricorne_captain_pirate.json,layer_1,130,hat/pirate/tricorne_captain_pirate_skull/male/ hat/pirate/tricorne_captain_pirate_skull/female/
+hat_pirate_tricorne_lieutenant.json,layer_1,130,hat/pirate/tricorne_lieutenant/male/ hat/pirate/tricorne_lieutenant/female/
+hat_pirate_tricorne_stitched.json,layer_1,130,hat/pirate/tricorne_stitched/male/ hat/pirate/tricorne_stitched/female/
+hat_pirate_tricorne_thatch.json,layer_1,130,hat/pirate/tricorne_thatch/male/ hat/pirate/tricorne_thatch/female/
+hat_reptile.json,layer_1,130,hat/reptile/male/ hat/reptile/female/ hat/reptile/male/ hat/reptile/female/
+hat_santa.json,layer_1,130,hat/santa/male/ hat/santa/female/
+hat_tiara.json,layer_1,130,hat/tiara/female/ hat/tiara/female/
+hat_visor_grated.json,layer_1,132,hat/visor/grated/male/ hat/visor/grated/female/ hat/visor/grated/male/ hat/visor/grated/female/
+hat_visor_grated_narrow.json,layer_1,132,hat/visor/grated_narrow/male/ hat/visor/grated_narrow/female/ hat/visor/grated_narrow/male/ hat/visor/grated_narrow/female/
+hat_visor_horned.json,layer_1,132,hat/visor/horned/male/ hat/visor/horned/female/ hat/visor/horned/male/ hat/visor/horned/female/
+hat_visor_pigface.json,layer_1,132,hat/visor/pigface/male/ hat/visor/pigface/female/ hat/visor/pigface/male/ hat/visor/pigface/female/
+hat_visor_pigface_raised.json,layer_1,132,hat/visor/pigface_raised/male/ hat/visor/pigface_raised/female/ hat/visor/pigface_raised/male/ hat/visor/pigface_raised/female/
+hat_visor_round.json,layer_1,132,hat/visor/round/male/ hat/visor/round/female/ hat/visor/round/male/ hat/visor/round/female/
+hat_visor_round_raised.json,layer_1,132,hat/visor/round_raised/male/ hat/visor/round_raised/female/ hat/visor/round_raised/male/ hat/visor/round_raised/female/
+hat_visor_slit.json,layer_1,132,hat/visor/slit/male/ hat/visor/slit/female/ hat/visor/slit/male/ hat/visor/slit/female/
+hat_visor_slit_narrow.json,layer_1,132,hat/visor/slit/male/ hat/visor/slit/female/ hat/visor/slit/male/ hat/visor/slit/female/
+head_band_tied.json,layer_1,125,hat/head_band_tied/male/ hat/head_band_tied/female/
+head_bandana.json,layer_1,120,hat/pirate/bandana/male/ hat/pirate/bandana/female/
+head_bandana_skull.json,layer_1,120,hat/pirate/bandana_skull/male/ hat/pirate/bandana_skull/female/
+head_ears_big.json,layer_1,20,head/ears/big/male/ head/ears/big/female/ head/ears/big/male/ head/ears/big/female/
+head_ears_elven.json,layer_1,130,head/ears/elven/male/ head/ears/elven/female/ head/ears/elven/male/ head/ears/elven/female/
+head_kerchief.json,layer_1,125,hat/pirate/kerchief/male/ hat/pirate/kerchief/female/
+head_nose_big.json,layer_1,20,head/nose/big/male/ head/nose/big/female/ head/nose/big/male/ head/nose/big/female/
+head_nose_button.json,layer_1,20,head/nose/button/male/ head/nose/button/female/ head/nose/button/male/ head/nose/button/female/
+head_nose_straight.json,layer_1,20,head/nose/straight/male/ head/nose/straight/female/ head/nose/straight/male/ head/nose/straight/female/
+legs_armour.json,layer_1,20,legs/armour/male/ legs/armour/female/
+legs_childpants.json,layer_1,20,legs/pants/child/
+legs_childskirts.json,layer_1,20,legs/skirts/child/
+legs_leggings.json,layer_1,20,legs/leggings/female/
+legs_pantaloons.json,layer_1,20,legs/pantaloons/male/
+legs_pants.json,layer_1,20,legs/pants/male/ legs/pants/female/
+legs_pregnantpants.json,layer_1,20,legs/pants/pregnant/
+legs_skirts.json,layer_1,20,legs/skirts/male/ legs/skirts/female/
+legs_widepants.json,layer_1,20,legs/pants/muscular/
+neck_capeclip.json,layer_1,90,neck/capeclip/female/ neck/capeclip/female/
+neck_capetie.json,layer_1,90,neck/capetie/female/ neck/capetie/female/
+neck_cravat.json,layer_1,90,neck/cravat/male/ neck/cravat/female/
+neck_jabot.json,layer_1,90,neck/jabot/male/ neck/jabot/female/
+neck_scarf.json,layer_1,90,neck/scarf/ neck/scarf/ neck/scarf/ neck/scarf/
+neck_tie.json,layer_1,90,neck/tie/ neck/tie/ neck/tie/ neck/tie/
+necklace.json,layer_1,80,necklace/female/ necklace/female/
+prosthesis_hook.json,layer_1,100,body/prosthesis/hook/male/mask/
+prosthesis_hook.json,layer_2,100,body/prosthesis/hook/male/
+prosthesis_peg_leg.json,layer_1,100,body/prosthesis/peg_leg/male/mask/
+prosthesis_peg_leg.json,layer_2,100,body/prosthesis/peg_leg/male/
+quiver.json,layer_1,100,quiver/ quiver/ quiver/ quiver/
+shadow.json,layer_1,0,shadow/adult/ shadow/adult/ shadow/adult/ shadow/adult/ shadow/child/
+shield.json,layer_1,110,shield/male/ shield/female/ shield/male/ shield/female/
+shoulders_epaulets.json,layer_1,60,shoulders/epaulets/male/
+shoulders_leather.json,layer_1,60,shoulders/leather/male/ shoulders/leather/female/ shoulders/leather/male/ shoulders/leather/female/
+shoulders_legion.json,layer_1,60,shoulders/legion/male/ shoulders/legion/female/ shoulders/legion/male/ shoulders/legion/female/
+shoulders_mantal.json,layer_1,75,shoulders/mantal/male/
+shoulders_plate.json,layer_1,60,shoulders/plate/male/ shoulders/plate/female/ shoulders/plate/male/ shoulders/plate/female/
+torso_armour_leather.json,layer_1,60,torso/armour/leather/male/ torso/armour/leather/female/
+torso_armour_legion.json,layer_1,60,torso/armour/legion/male/ torso/armour/legion/female/
+torso_armour_plate.json,layer_1,60,torso/armour/plate/male/ torso/armour/plate/female/
+torso_bandages.json,layer_1,45,torso/bandage/male/ torso/bandage/female/
+torso_chainmail.json,layer_1,50,torso/chainmail/male/ torso/chainmail/female/
+torso_clothes_apron.json,layer_1,40,torso/clothes/apron/male/ torso/clothes/apron/female/
+torso_clothes_blouse.json,layer_1,35,torso/clothes/blouse/female/
+torso_clothes_blouse_longsleeve.json,layer_1,35,torso/clothes/blouse_longsleeve/female/
+torso_clothes_child_shirt.json,layer_1,35,torso/clothes/shirt/child/
+torso_clothes_corset.json,layer_1,45,torso/clothes/corset/female/
+torso_clothes_female_longsleeve.json,layer_1,35,torso/clothes/longsleeve/female/
+torso_clothes_female_sleeveless.json,layer_1,35,torso/clothes/sleeveless/female/
+torso_clothes_male_longsleeve.json,layer_1,35,torso/clothes/longsleeve/male/
+torso_clothes_male_longsleeve_laced.json,layer_1,35,torso/clothes/longsleeve_laced/male/
+torso_clothes_male_sleeveless.json,layer_1,35,torso/clothes/sleeveless/male/
+torso_clothes_male_sleeveless_laced.json,layer_1,35,torso/clothes/sleeveless_laced/male/
+torso_clothes_male_sleeveless_striped.json,layer_1,35,torso/clothes/sleeveless_striped/male/
+torso_clothes_robe.json,layer_1,35,torso/clothes/robe/female/
+torso_clothes_scoop_shirt.json,layer_1,35,torso/clothes/scoop_shirt/female/
+torso_clothes_tanktop.json,layer_1,35,torso/clothes/tanktop/female/ torso/clothes/tanktop/pregnant/
+torso_clothes_tunic.json,layer_1,35,torso/clothes/tunic/female/
+torso_clothes_vest.json,layer_1,45,torso/clothes/vest/male/
+torso_clothes_vest_open.json,layer_1,45,torso/clothes/vest_open/male/
+torso_jacket_collared.json,layer_1,55,torso/jacket/collared/male/
+torso_jacket_female_tabard.json,layer_1,55,torso/jacket/tabard/female/
+torso_jacket_frock.json,layer_1,55,torso/jacket/frock/male/
+torso_jacket_frock_buttons.json,layer_1,58,torso/jacket/trim/frock_buttons/
+torso_jacket_frock_collar.json,layer_1,57,torso/jacket/trim/frock_collar/
+torso_jacket_frock_lace.json,layer_1,58,torso/jacket/trim/frock_lace/
+torso_jacket_frock_lapel.json,layer_1,58,torso/jacket/trim/frock_lapel/
+torso_jacket_iverness.json,layer_1,55,torso/jacket/iverness/male/
+torso_jacket_male_tabard.json,layer_1,55,torso/jacket/tabard/male/
+torso_jacket_pockets.json,layer_1,59,torso/jacket/trim/jacket_pockets/
+torso_jacket_santa.json,layer_1,55,torso/jacket/santa/male/
+torso_jacket_trench.json,layer_1,55,torso/jacket/trench/male/
+weapon_bow.json,layer_1,140,weapon/bow/ weapon/bow/ weapon/bow/ weapon/bow/
+weapon_slash.json,layer_1,140,weapon/slash/male/ weapon/slash/female/ weapon/slash/male/ weapon/slash/female/
+weapon_slash_oversize.json,layer_1,140,weapon/slash_oversize/male/universal/ weapon/slash_oversize/female/universal/ weapon/slash_oversize/male/universal/ weapon/slash_oversize/female/universal/
+weapon_slash_oversize.json,layer_2,150,weapon/slash_oversize/male/ weapon/slash_oversize/female/ weapon/slash_oversize/male/ weapon/slash_oversize/female/
+weapon_slash_oversize_layered.json,layer_1,140,weapon/slash_oversize_layered/all/universal/ weapon/slash_oversize_layered/all/universal/ weapon/slash_oversize_layered/all/universal/ weapon/slash_oversize_layered/all/universal/
+weapon_slash_oversize_layered.json,layer_2,9,weapon/slash_oversize_layered/all/universal/behind/ weapon/slash_oversize_layered/all/universal/behind/ weapon/slash_oversize_layered/all/universal/behind/ weapon/slash_oversize_layered/all/universal/behind/
+weapon_slash_oversize_layered.json,layer_3,150,weapon/slash_oversize_layered/all/ weapon/slash_oversize_layered/all/ weapon/slash_oversize_layered/all/ weapon/slash_oversize_layered/all/
+weapon_thrust.json,layer_1,140,weapon/thrust/male/ weapon/thrust/female/ weapon/thrust/male/ weapon/thrust/female/
+weapon_thrust_oversize.json,layer_1,140,weapon/thrust_oversize/male/universal/ weapon/thrust_oversize/female/universal/ weapon/thrust_oversize/male/universal/ weapon/thrust_oversize/female/universal/
+weapon_thrust_oversize.json,layer_2,150,weapon/thrust_oversize/male/ weapon/thrust_oversize/female/ weapon/thrust_oversize/male/ weapon/thrust_oversize/female/
+weapon_thrust_oversize_attack_only.json,layer_1,140,weapon/thrust_oversize_attack_only/male/ weapon/thrust_oversize_attack_only/female/ weapon/thrust_oversize_attack_only/male/ weapon/thrust_oversize_attack_only/female/
+wound_arm.json,layer_1,15,body/wound/ body/wound/ body/wound/ body/wound/
+wound_brain.json,layer_1,15,body/wound/ body/wound/ body/wound/ body/wound/
+wound_eye.json,layer_1,15,body/wound/ body/wound/ body/wound/ body/wound/
+wound_mouth.json,layer_1,15,body/wound/ body/wound/ body/wound/ body/wound/
+wound_ribs.json,layer_1,15,body/wound/ body/wound/ body/wound/ body/wound/
+wrists_cuffs.json,layer_1,70,wrists/cuffs/male/
+wrists_cuffs_lace.json,layer_1,70,wrists/lace/male/

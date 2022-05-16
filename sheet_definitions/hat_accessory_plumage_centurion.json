@@ -1,12 +1,12 @@
 {
-  "name" : "Centurion Plumage",
-  "type_name" : "accessory",
-  "layer_1" : {
-    "zPos" : 139,
-    "female"   : "hat/accessory/plumage_centurion/female/",
-    "pregnant" : "hat/accessory/plumage_centurion/female/",
-    "male"     : "hat/accessory/plumage_centurion/male/",
-    "muscular" : "hat/accessory/plumage_centurion/male/"
+  "name": "Centurion Plumage",
+  "type_name": "accessory",
+  "layer_1": {
+    "zPos": 139,
+    "female": "hat/accessory/plumage_centurion/female/",
+    "pregnant": "hat/accessory/plumage_centurion/female/",
+    "male": "hat/accessory/plumage_centurion/male/",
+    "muscular": "hat/accessory/plumage_centurion/male/"
   },
   "variants": [
     "black",

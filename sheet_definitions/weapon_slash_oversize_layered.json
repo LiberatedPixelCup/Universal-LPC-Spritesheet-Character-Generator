@@ -1,27 +1,27 @@
 {
-  "name" : "Slash oversize layered",
-  "type_name" : "weapon",
-  "layer_1" : {
-    "zPos" : 140,
-    "male" : "weapon/slash_oversize_layered/all/universal/",
-    "muscular" : "weapon/slash_oversize_layered/all/universal/",
-    "female" : "weapon/slash_oversize_layered/all/universal/",
-    "pregnant" : "weapon/slash_oversize_layered/all/universal/"
+  "name": "Slash oversize layered",
+  "type_name": "weapon",
+  "layer_1": {
+    "zPos": 140,
+    "male": "weapon/slash_oversize_layered/all/universal/",
+    "muscular": "weapon/slash_oversize_layered/all/universal/",
+    "female": "weapon/slash_oversize_layered/all/universal/",
+    "pregnant": "weapon/slash_oversize_layered/all/universal/"
   },
-  "layer_2" : {
-    "zPos" : 9,
-    "male" : "weapon/slash_oversize_layered/all/universal/behind/",
-    "muscular" : "weapon/slash_oversize_layered/all/universal/behind/",
-    "female" : "weapon/slash_oversize_layered/all/universal/behind/",
-    "pregnant" : "weapon/slash_oversize_layered/all/universal/behind/"
+  "layer_2": {
+    "zPos": 9,
+    "male": "weapon/slash_oversize_layered/all/universal/behind/",
+    "muscular": "weapon/slash_oversize_layered/all/universal/behind/",
+    "female": "weapon/slash_oversize_layered/all/universal/behind/",
+    "pregnant": "weapon/slash_oversize_layered/all/universal/behind/"
   },
-  "layer_3" : {
-    "zPos" : 150,
+  "layer_3": {
+    "zPos": 150,
     "oversize": "slash",
-    "male" : "weapon/slash_oversize_layered/all/",
-    "muscular" : "weapon/slash_oversize_layered/all/",
-    "female" : "weapon/slash_oversize_layered/all/",
-    "pregnant" : "weapon/slash_oversize_layered/all/"
+    "male": "weapon/slash_oversize_layered/all/",
+    "muscular": "weapon/slash_oversize_layered/all/",
+    "female": "weapon/slash_oversize_layered/all/",
+    "pregnant": "weapon/slash_oversize_layered/all/"
   },
   "variants": [
     "glowsword blue",

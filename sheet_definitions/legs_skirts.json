@@ -1,10 +1,10 @@
 {
-  "name" : "Skirts",
-  "type_name" : "legs",
-  "layer_1" : {
-    "zPos" : 20,
-    "male" : "legs/skirts/male/",
-    "female" : "legs/skirts/female/"
+  "name": "Skirts",
+  "type_name": "legs",
+  "layer_1": {
+    "zPos": 20,
+    "male": "legs/skirts/male/",
+    "female": "legs/skirts/female/"
   },
   "variants": [
     "legion",

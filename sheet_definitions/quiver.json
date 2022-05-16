@@ -1,12 +1,12 @@
 {
-  "name" : "Quiver",
-  "type_name" : "quiver",
-  "layer_1" : {
-    "zPos" : 100,
-    "male" : "quiver/",
-    "muscular" : "quiver/",
-    "female" : "quiver/",
-    "pregnant" : "quiver/"
+  "name": "Quiver",
+  "type_name": "quiver",
+  "layer_1": {
+    "zPos": 100,
+    "male": "quiver/",
+    "muscular": "quiver/",
+    "female": "quiver/",
+    "pregnant": "quiver/"
   },
   "variants": [
     "quiver"

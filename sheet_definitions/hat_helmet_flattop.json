@@ -1,12 +1,12 @@
 {
-  "name" : "Flattop",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female"   : "hat/helmet/flattop/female/",
-    "pregnant" : "hat/helmet/flattop/female/",
-    "male"     : "hat/helmet/flattop/male/",
-    "muscular" : "hat/helmet/flattop/male/"
+  "name": "Flattop",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/helmet/flattop/female/",
+    "pregnant": "hat/helmet/flattop/female/",
+    "male": "hat/helmet/flattop/male/",
+    "muscular": "hat/helmet/flattop/male/"
   },
   "variants": [
     "steel",

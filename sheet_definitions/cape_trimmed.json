@@ -1,15 +1,15 @@
 {
-  "name" : "Trimmed",
-  "type_name" : "cape",
-  "layer_1" : {
-    "zPos" : 85,
-    "female" : "cape/trimmed/female/",
-    "pregnant" : "cape/trimmed/female/"
+  "name": "Trimmed",
+  "type_name": "cape",
+  "layer_1": {
+    "zPos": 85,
+    "female": "cape/trimmed/female/",
+    "pregnant": "cape/trimmed/female/"
   },
-  "layer_2" : {
-    "zPos" : 5,
-    "female" : "cape/trimmed_behind/",
-    "pregnant" : "cape/trimmed_behind/"
+  "layer_2": {
+    "zPos": 5,
+    "female": "cape/trimmed_behind/",
+    "pregnant": "cape/trimmed_behind/"
   },
   "variants": [
     "white blue"

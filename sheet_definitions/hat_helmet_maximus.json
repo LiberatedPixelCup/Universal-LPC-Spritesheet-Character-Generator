@@ -1,12 +1,12 @@
 {
-  "name" : "Maximus",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female"   : "hat/helmet/maximus/female/",
-    "pregnant" : "hat/helmet/maximus/female/",
-    "male"     : "hat/helmet/maximus/male/",
-    "muscular" : "hat/helmet/maximus/male/"
+  "name": "Maximus",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/helmet/maximus/female/",
+    "pregnant": "hat/helmet/maximus/female/",
+    "male": "hat/helmet/maximus/male/",
+    "muscular": "hat/helmet/maximus/male/"
   },
   "variants": [
     "steel",

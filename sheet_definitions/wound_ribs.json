@@ -1,12 +1,12 @@
 {
-  "name" : "Ribs",
-  "type_name" : "wound_ribs",
-  "layer_1" : {
-    "zPos" : 15,
-    "male" : "body/wound/",
-    "muscular" : "body/wound/",
-    "female" : "body/wound/",
-    "pregnant" : "body/wound/"
+  "name": "Ribs",
+  "type_name": "wound_ribs",
+  "layer_1": {
+    "zPos": 15,
+    "male": "body/wound/",
+    "muscular": "body/wound/",
+    "female": "body/wound/",
+    "pregnant": "body/wound/"
   },
   "variants": [
     "ribs"

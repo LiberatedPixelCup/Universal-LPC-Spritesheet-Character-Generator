@@ -1,12 +1,12 @@
 {
-  "name" : "Boots",
-  "type_name" : "shoes",
-  "layer_1" : {
-    "zPos" : 25,
-    "male" : "feet/boots/male/",
-    "muscular" : "feet/boots/male/",
-    "female" : "feet/boots/female/",
-    "pregnant" : "feet/boots/female/"
+  "name": "Boots",
+  "type_name": "shoes",
+  "layer_1": {
+    "zPos": 25,
+    "male": "feet/boots/male/",
+    "muscular": "feet/boots/male/",
+    "female": "feet/boots/female/",
+    "pregnant": "feet/boots/female/"
   },
   "variants": [
     "black",

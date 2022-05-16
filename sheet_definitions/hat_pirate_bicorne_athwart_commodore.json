@@ -1,10 +1,10 @@
 {
-  "name" : "Bicorne athwart commodore",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female" : "hat/pirate/bicorne_athwart_commodore/female/",
-    "male" :   "hat/pirate/bicorne_athwart_commodore/male/"
+  "name": "Bicorne athwart commodore",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/pirate/bicorne_athwart_commodore/female/",
+    "male": "hat/pirate/bicorne_athwart_commodore/male/"
   },
   "variants": [
     "black_bronze",

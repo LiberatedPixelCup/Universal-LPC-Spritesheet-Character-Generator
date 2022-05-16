@@ -1,9 +1,9 @@
 {
-  "name" : "Blouse",
-  "type_name" : "clothes",
-  "layer_1" : {
-    "zPos" : 35,
-    "female" : "torso/clothes/blouse/female/"
+  "name": "Blouse",
+  "type_name": "clothes",
+  "layer_1": {
+    "zPos": 35,
+    "female": "torso/clothes/blouse/female/"
   },
   "variants": [
     "black",

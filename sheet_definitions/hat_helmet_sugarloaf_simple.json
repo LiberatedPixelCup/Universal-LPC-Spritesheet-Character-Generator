@@ -1,12 +1,12 @@
 {
-  "name" : "Simple sugarloaf helm",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female"   : "hat/helmet/sugarloaf_simple/female/",
-    "pregnant" : "hat/helmet/sugarloaf_simple/female/",
-    "male"     : "hat/helmet/sugarloaf_simple/male/",
-    "muscular" : "hat/helmet/sugarloaf_simple/male/"
+  "name": "Simple sugarloaf helm",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/helmet/sugarloaf_simple/female/",
+    "pregnant": "hat/helmet/sugarloaf_simple/female/",
+    "male": "hat/helmet/sugarloaf_simple/male/",
+    "muscular": "hat/helmet/sugarloaf_simple/male/"
   },
   "variants": [
     "steel",

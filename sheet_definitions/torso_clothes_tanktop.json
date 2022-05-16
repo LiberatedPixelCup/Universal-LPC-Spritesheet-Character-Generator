@@ -1,10 +1,10 @@
 {
-  "name" : "Tanktop",
-  "type_name" : "clothes",
-  "layer_1" : {
-    "zPos" : 35,
-    "pregnant" : "torso/clothes/tanktop/pregnant/",
-    "female" : "torso/clothes/tanktop/female/"
+  "name": "Tanktop",
+  "type_name": "clothes",
+  "layer_1": {
+    "zPos": 35,
+    "pregnant": "torso/clothes/tanktop/pregnant/",
+    "female": "torso/clothes/tanktop/female/"
   },
   "variants": [
     "black",

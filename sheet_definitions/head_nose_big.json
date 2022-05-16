@@ -1,12 +1,12 @@
 {
-  "name" : "Big nose",
-  "type_name" : "nose",
-  "layer_1" : {
-    "zPos" : 20,
-    "male" : "head/nose/big/male/",
-    "muscular" : "head/nose/big/male/",
-    "female" : "head/nose/big/female/",
-    "pregnant" : "head/nose/big/female/"
+  "name": "Big nose",
+  "type_name": "nose",
+  "layer_1": {
+    "zPos": 20,
+    "male": "head/nose/big/male/",
+    "muscular": "head/nose/big/male/",
+    "female": "head/nose/big/female/",
+    "pregnant": "head/nose/big/female/"
   },
   "variants": [
     "dark",

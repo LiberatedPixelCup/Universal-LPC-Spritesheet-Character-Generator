@@ -1,9 +1,9 @@
 {
-  "name" : "Longsleeve blouse",
-  "type_name" : "clothes",
-  "layer_1" : {
-    "zPos" : 35,
-    "female" : "torso/clothes/blouse_longsleeve/female/"
+  "name": "Longsleeve blouse",
+  "type_name": "clothes",
+  "layer_1": {
+    "zPos": 35,
+    "female": "torso/clothes/blouse_longsleeve/female/"
   },
   "variants": [
     "black",

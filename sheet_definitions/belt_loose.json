@@ -1,10 +1,10 @@
 {
-  "name" : "Loose Belt",
-  "type_name" : "belt",
-  "layer_1" : {
-    "zPos" : 70,
-    "male" : "torso/waist/belt_loose/male/",
-    "female" : "torso/waist/belt_loose/female/"
+  "name": "Loose Belt",
+  "type_name": "belt",
+  "layer_1": {
+    "zPos": 70,
+    "male": "torso/waist/belt_loose/male/",
+    "female": "torso/waist/belt_loose/female/"
   },
   "variants": [
     "brown",

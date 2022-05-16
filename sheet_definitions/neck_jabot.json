@@ -1,10 +1,10 @@
 {
-  "name" : "Jabot",
-  "type_name" : "neck",
-  "layer_1" : {
-    "zPos" : 90,
-    "male" :   "neck/jabot/male/",
-    "female" : "neck/jabot/female/"
+  "name": "Jabot",
+  "type_name": "neck",
+  "layer_1": {
+    "zPos": 90,
+    "male": "neck/jabot/male/",
+    "female": "neck/jabot/female/"
   },
   "variants": [
     "black",

@@ -1,10 +1,10 @@
 {
-  "name" : "Tied headband",
-  "type_name" : "headcover",
-  "layer_1" : {
-    "zPos" : 125,
-    "female" : "hat/head_band_tied/female/",
-    "male" :   "hat/head_band_tied/male/"
+  "name": "Tied headband",
+  "type_name": "headcover",
+  "layer_1": {
+    "zPos": 125,
+    "female": "hat/head_band_tied/female/",
+    "male": "hat/head_band_tied/male/"
   },
   "variants": [
     "black",

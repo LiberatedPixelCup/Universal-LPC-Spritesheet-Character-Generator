@@ -1,10 +1,10 @@
 {
-  "name" : "Bandages",
-  "type_name" : "bandages",
-  "layer_1" : {
-    "zPos" : 45,
-    "male" : "torso/bandage/male/",
-    "female" : "torso/bandage/female/"
+  "name": "Bandages",
+  "type_name": "bandages",
+  "layer_1": {
+    "zPos": 45,
+    "male": "torso/bandage/male/",
+    "female": "torso/bandage/female/"
   },
   "variants": [
     "white"

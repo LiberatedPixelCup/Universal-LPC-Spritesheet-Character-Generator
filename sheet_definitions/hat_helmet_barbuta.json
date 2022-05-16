@@ -1,12 +1,12 @@
 {
-  "name" : "Barbuta",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female"   : "hat/helmet/barbuta/female/",
-    "pregnant" : "hat/helmet/barbuta/female/",
-    "male"     : "hat/helmet/barbuta/male/",
-    "muscular" : "hat/helmet/barbuta/male/"
+  "name": "Barbuta",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/helmet/barbuta/female/",
+    "pregnant": "hat/helmet/barbuta/female/",
+    "male": "hat/helmet/barbuta/male/",
+    "muscular": "hat/helmet/barbuta/male/"
   },
   "variants": [
     "steel",

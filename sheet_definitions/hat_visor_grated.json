@@ -1,12 +1,12 @@
 {
-  "name" : "Grated visor",
-  "type_name" : "visor",
-  "layer_1" : {
-    "zPos" : 132,
-    "female"   : "hat/visor/grated/female/",
-    "pregnant" : "hat/visor/grated/female/",
-    "male"     : "hat/visor/grated/male/",
-    "muscular" : "hat/visor/grated/male/"
+  "name": "Grated visor",
+  "type_name": "visor",
+  "layer_1": {
+    "zPos": 132,
+    "female": "hat/visor/grated/female/",
+    "pregnant": "hat/visor/grated/female/",
+    "male": "hat/visor/grated/male/",
+    "muscular": "hat/visor/grated/male/"
   },
   "variants": [
     "steel",

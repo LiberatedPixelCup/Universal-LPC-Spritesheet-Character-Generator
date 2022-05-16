@@ -1,12 +1,12 @@
 {
-  "name" : "Armour",
-  "type_name" : "shoes",
-  "layer_1" : {
-    "zPos" : 15,
-    "male" : "feet/armor/male/",
-    "muscular" : "feet/armor/male/",
-    "female" : "feet/armor/female/",
-    "pregnant" : "feet/armor/female/"
+  "name": "Armour",
+  "type_name": "shoes",
+  "layer_1": {
+    "zPos": 15,
+    "male": "feet/armor/male/",
+    "muscular": "feet/armor/male/",
+    "female": "feet/armor/female/",
+    "pregnant": "feet/armor/female/"
   },
   "variants": [
     "4",

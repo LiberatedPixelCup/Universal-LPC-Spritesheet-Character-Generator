@@ -1,10 +1,10 @@
 {
-  "name" : "Santa",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female" : "hat/santa/female/",
-    "male" :   "hat/santa/male/"
+  "name": "Santa",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/santa/female/",
+    "male": "hat/santa/male/"
   },
   "variants": [
     "black",

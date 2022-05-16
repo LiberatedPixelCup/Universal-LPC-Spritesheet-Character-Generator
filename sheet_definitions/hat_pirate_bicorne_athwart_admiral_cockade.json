@@ -1,10 +1,10 @@
 {
-  "name" : "Bicorne athwart admiral with cockade",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female" : "hat/pirate/bicorne_athwart_admiral_cockade/female/",
-    "male" :   "hat/pirate/bicorne_athwart_admiral_cockade/male/"
+  "name": "Bicorne athwart admiral with cockade",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/pirate/bicorne_athwart_admiral_cockade/female/",
+    "male": "hat/pirate/bicorne_athwart_admiral_cockade/male/"
   },
   "variants": [
     "black_bronze",

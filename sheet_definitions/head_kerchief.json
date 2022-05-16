@@ -1,10 +1,10 @@
 {
-  "name" : "Kerchief",
-  "type_name" : "headcover",
-  "layer_1" : {
-    "zPos" : 125,
-    "female" : "hat/pirate/kerchief/female/",
-    "male" :   "hat/pirate/kerchief/male/"
+  "name": "Kerchief",
+  "type_name": "headcover",
+  "layer_1": {
+    "zPos": 125,
+    "female": "hat/pirate/kerchief/female/",
+    "male": "hat/pirate/kerchief/male/"
   },
   "variants": [
     "black",

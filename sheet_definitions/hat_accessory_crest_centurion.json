@@ -1,12 +1,12 @@
 {
-  "name" : "Centurion Crest",
-  "type_name" : "accessory",
-  "layer_1" : {
-    "zPos" : 139,
-    "female"   : "hat/accessory/crest_centurion/female/",
-    "pregnant" : "hat/accessory/crest_centurion/female/",
-    "male"     : "hat/accessory/crest_centurion/male/",
-    "muscular" : "hat/accessory/crest_centurion/male/"
+  "name": "Centurion Crest",
+  "type_name": "accessory",
+  "layer_1": {
+    "zPos": 139,
+    "female": "hat/accessory/crest_centurion/female/",
+    "pregnant": "hat/accessory/crest_centurion/female/",
+    "male": "hat/accessory/crest_centurion/male/",
+    "muscular": "hat/accessory/crest_centurion/male/"
   },
   "variants": [
     "steel",

@@ -1,12 +1,12 @@
 {
-  "name" : "Norman helm",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 135,
-    "female"   : "hat/helmet/norman/female/",
-    "pregnant" : "hat/helmet/norman/female/",
-    "male"     : "hat/helmet/norman/male/",
-    "muscular" : "hat/helmet/norman/male/"
+  "name": "Norman helm",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 135,
+    "female": "hat/helmet/norman/female/",
+    "pregnant": "hat/helmet/norman/female/",
+    "male": "hat/helmet/norman/male/",
+    "muscular": "hat/helmet/norman/male/"
   },
   "variants": [
     "steel",

@@ -1,12 +1,12 @@
 {
-  "name" : "Nasal helm",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female"   : "hat/helmet/nasal/female/",
-    "pregnant" : "hat/helmet/nasal/female/",
-    "male"     : "hat/helmet/nasal/male/",
-    "muscular" : "hat/helmet/nasal/male/"
+  "name": "Nasal helm",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/helmet/nasal/female/",
+    "pregnant": "hat/helmet/nasal/female/",
+    "male": "hat/helmet/nasal/male/",
+    "muscular": "hat/helmet/nasal/male/"
   },
   "variants": [
     "steel",

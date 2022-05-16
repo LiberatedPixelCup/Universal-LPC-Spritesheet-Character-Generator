@@ -1,12 +1,12 @@
 {
-  "name" : "Round bascinet raised",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female"   : "hat/helmet/bascinet_round_raised/female/",
-    "pregnant" : "hat/helmet/bascinet_round_raised/female/",
-    "male"     : "hat/helmet/bascinet_round_raised/male/",
-    "muscular" : "hat/helmet/bascinet_round_raised/male/"
+  "name": "Round bascinet raised",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/helmet/bascinet_round_raised/female/",
+    "pregnant": "hat/helmet/bascinet_round_raised/female/",
+    "male": "hat/helmet/bascinet_round_raised/male/",
+    "muscular": "hat/helmet/bascinet_round_raised/male/"
   },
   "variants": [
     "steel",

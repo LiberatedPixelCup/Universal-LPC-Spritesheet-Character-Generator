@@ -1,12 +1,12 @@
 {
-  "name" : "Barbarian nasal",
-  "type_name" : "hat",
-  "layer_1" : {
-    "zPos" : 130,
-    "female"   : "hat/helmet/barbarian_nasal/female/",
-    "pregnant" : "hat/helmet/barbarian_nasal/female/",
-    "male"     : "hat/helmet/barbarian_nasal/male/",
-    "muscular" : "hat/helmet/barbarian_nasal/male/"
+  "name": "Barbarian nasal",
+  "type_name": "hat",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/helmet/barbarian_nasal/female/",
+    "pregnant": "hat/helmet/barbarian_nasal/female/",
+    "male": "hat/helmet/barbarian_nasal/male/",
+    "muscular": "hat/helmet/barbarian_nasal/male/"
   },
   "variants": [
     "steel",
