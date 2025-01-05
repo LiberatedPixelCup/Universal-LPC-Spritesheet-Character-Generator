@@ -5,9 +5,9 @@
     "zPos": 115,
     "male": "facial/earrings/princess/male/",
     "muscular": "facial/earrings/princess/male/",
-    "female": "facial/earrings/princess/female",
-    "pregnant": "facial/earrings/princess/female",
-    "teen": "facial/earrings/princess/female"
+    "female": "facial/earrings/princess/female/",
+    "pregnant": "facial/earrings/princess/female/",
+    "teen": "facial/earrings/princess/female/"
   },
   "variants": [
     "blue",

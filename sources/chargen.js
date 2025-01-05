@@ -565,11 +565,10 @@ $(document).ready(function() {
   }
 
   function getImage2(imgRef, callback, layers, prevctx) {
-    if (images[imgRef]) {
+    if (imgRef && images[imgRef]) {
       callback(layers, prevctx);
       return images[imgRef];
-    } else {
-
+    } else if (imgRef) {
       var img = new Image();
       img.src = "spritesheets/" + imgRef;
       img.onload = function() { callback(layers, prevctx) };
@@ -609,11 +608,13 @@ $(document).ready(function() {
             }
           }
           try {
-            layers.forEach((layer) =>{
-              prevctx.drawImage(images[layer.link], previewColumn * universalFrameSize + previewXOffset, previewRow * universalFrameSize + previewYOffset, universalFrameSize, universalFrameSize, 0, 0, universalFrameSize, universalFrameSize);
+            layers.forEach((layer) => {
+              if (layer && layer.link) {
+                prevctx.drawImage(images[layer.link], previewColumn * universalFrameSize + previewXOffset, previewRow * universalFrameSize + previewYOffset, universalFrameSize, universalFrameSize, 0, 0, universalFrameSize, universalFrameSize);
+              }
             });
           } catch (err) {
-            console.log(err);
+            console.error(err);
           }
         };
 

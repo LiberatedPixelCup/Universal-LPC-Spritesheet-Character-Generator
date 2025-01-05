@@ -5,9 +5,9 @@
     "zPos": 115,
     "male": "facial/earrings/stud/male/",
     "muscular": "facial/earrings/stud/male/",
-    "female": "facial/earrings/stud/female",
-    "pregnant": "facial/earrings/stud/female",
-    "teen": "facial/earrings/stud/female"
+    "female": "facial/earrings/stud/female/",
+    "pregnant": "facial/earrings/stud/female/",
+    "teen": "facial/earrings/stud/female/"
   },
   "variants": [
     "steel",

@@ -5,9 +5,9 @@
     "zPos": 115,
     "male": "facial/earrings/emerald/male/",
     "muscular": "facial/earrings/emerald/male/",
-    "female": "facial/earrings/emerald/female",
-    "pregnant": "facial/earrings/emerald/female",
-    "teen": "facial/earrings/emerald/female"
+    "female": "facial/earrings/emerald/female/",
+    "pregnant": "facial/earrings/emerald/female/",
+    "teen": "facial/earrings/emerald/female/"
   },
   "variants": [
     "blue",
