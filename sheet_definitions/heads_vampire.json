@@ -56,16 +56,17 @@
   "credits": [
     {
       "file": "head/heads/vampire",
-      "notes": "original head by Redshrike",
+      "notes": "original head by Redshrike, gaunt version by bluecarrot16, vampire fangs by bluecarrot16",
       "authors": [
-        "gaunt version by bluecarrot16"
+        "Stephen Challener (Redshrike)",
+        "bluecarrot16"
       ],
       "licenses": [
-        "vampire fangs by bluecarrot16"
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0", 
+        "GPL 3.0"
       ],
       "urls": [
-        "Stephen Challener (Redshrike), bluecarrot16",
-        "OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0",
         "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
         "https://opengameart.org/content/lpc-folk"
       ]

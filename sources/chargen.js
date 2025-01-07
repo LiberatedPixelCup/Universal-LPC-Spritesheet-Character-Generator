@@ -35,7 +35,6 @@ $(document).ready(function() {
     params = jHash.val();
     interpretParams();
     redraw();
-    showOrHideElements();
   });
 
   interpretParams();
@@ -354,6 +353,16 @@ $(document).ready(function() {
     return "any";
   }
 
+  $('.licenseCheckBox').click(function() {
+    showOrHideElements();
+  })
+
+  function getAllowedLicenses() {
+    return  $('.licenseCheckBox:checkbox:checked').map(function() {
+      return $(this).val().split(",");
+    }).get().map(license => license.trim());
+  }
+
   function redraw() {
     itemsToDraw = [];
     const bodyTypeName = getBodyTypeName();
@@ -492,6 +501,7 @@ $(document).ready(function() {
   function showOrHideElements() {
     const bodyType = getBodyTypeName();
     const selectedAnim = getSelectedAnimation();
+    const allowedLicenses = getAllowedLicenses();
     $("li").each(function(index) {
       // Toggle Required Body Type
       var display = true;
@@ -515,6 +525,26 @@ $(document).ready(function() {
         $(this).prop("style", "");
       } else {
         $(this).prop("style", "display:none");
+      }
+    });
+
+    $("input[type=radio]").each(function() {
+      var display = true;
+      
+      // Toggle allowed licenses
+      const licenses = $(this).data(`layer_1_${getBodyTypeName()}_licenses`)
+      if (licenses !== undefined) {
+        const licensesForAsset = licenses.split(",");
+        if (!allowedLicenses.some(allowedLicense => licensesForAsset.includes(allowedLicense))) {
+          display = false;
+        }
+      }
+
+      // Display Result
+      if(display) {
+        $(this).parent().prop("style", "");
+      } else {
+        $(this).parent().prop("style", "display:none");
       }
     });
   }

@@ -34,16 +34,18 @@
   "credits": [
     {
       "file": "dress/bodice",
-      "notes": "original princess.xcf by Sharm",
+      "notes": "original princess.xcf by Sharm, extended to all poses by makrohn, edited to v3 bases and animation cleanup by bluecarrot16",
       "authors": [
-        "extended to all poses by makrohn"
+        "bluecarrot16",
+        "Matthew Krohn (makrohn)", 
+        "Lanea Zimmerman (Sharm)"
       ],
       "licenses": [
-        "edited to v3 bases and animation cleanup by bluecarrot16"
+        "OGA-BY 3.0", 
+        "CC-BY-SA 3.0", 
+        "GPL 3.0"
       ],
       "urls": [
-        "bluecarrot16, Matthew Krohn (makrohn), Lanea Zimmerman (Sharm)",
-        "OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0",
         "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
         "https://opengameart.org/content/lpc-dress-in-combat-poses",
         "http://opengameart.org/content/lpc-clothing-updates"

@@ -53,16 +53,17 @@
   "credits": [
     {
       "file": "weapon/ranged/bow/normal",
-      "notes": "original by wulax",
+      "notes": "original by wulax, walk animations by pvigier, split into layers and tweaked for v3 character bases by bluecarrot16. pvigier has agreed to license this sheet as OGA-BY 3.0+.",
       "authors": [
-        "walk animations by pvigier"
+        "Johannes Sjölund (wulax)",
+        "Pierre Vigier (pvigier)"
       ],
       "licenses": [
-        "split into layers and tweaked for v3 character bases by bluecarrot16. pvigier has agreed to license this sheet as OGA-BY 3.0+."
+        "OGA-BY 3.0+", 
+        "GPL 3.0", 
+        "CC-BY 4.0"
       ],
       "urls": [
-        "Johannes Sjölund (wulax), Pierre Vigier (pvigier)",
-        "OGA-BY 3.0+, GPL 3.0, CC-BY 4.0",
         "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
         "https://opengameart.org/content/lpc-walk-animations-for-bows"
       ]

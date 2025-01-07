@@ -26,9 +26,8 @@ Either way, make sure this credits file is accessible from within your game or a
 
 **Important: all art submitted to this project must be available under the [Creative Commons Attribution-ShareAlike 3.0](http://creativecommons.org/licenses/by-sa/3.0/) and/or the [GNU GPL 3.0](http://www.gnu.org/licenses/gpl-3.0.html) licenses**.
 - **By contributing original work to this project, you agree to license any orginal contributions made by you under _both_ of these licenses.**
-- If you are submitting art that was made by (or derived from work made by) someone else, please be sure that you have the rights to distribute that art under one of the two licenses.
 
-When adding files to the project, please add a row to `CREDITS.csv` for each file you add. Note the entire list of authors for that image, a URL for each piece of art from which this image is derived, and a list of licenses under which the art is available.
+- If you are submitting art that was made by (or derived from work made by) someone else, please be sure that you have the rights to distribute that art under one of the two licenses.
 
 To add sheets to an existing category, add the sheets to the correct folder(s) in `spritesheets/`.
 In addition, locate the correct `sheet_definition` in `sheet_definitions/`, and add the name of your added sheet to the `variants` array.
@@ -70,8 +69,10 @@ Finally, to get your sheet to appear, in `source_index.html`, add your new categ
 
 Make sure the name starts with `div_sheet_`, and match the postfix with the name of your json, in this case `body_robot`.
 
+When adding files to the project, please add valid licensing information inside the json files as well. Note the entire list of authors for that image, a URL for each piece of art from which this image is derived, and a list of licenses under which the art is available. If you don't add license information for your newly added files, the generation of the site sources will fail.
+
 At this point, you will need to run a script that will generate the final `index.html`.
-In order to do that, run `node scripts/generate_html.js` from the root folder.
+In order to do that, run `node scripts/generate_sources.js` from the root folder.
 This will generate the `index.html` from the `source_index.html`.
 
 In case you want to push your changes, be sure to run this script and never change the `index.html` manually.

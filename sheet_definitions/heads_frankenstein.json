@@ -56,16 +56,17 @@
   "credits": [
     {
       "file": "head/heads/frankenstein",
-      "notes": "original head by Redshrike",
+      "notes": "original head by Redshrike, frankenstein's monster version by bluecarrot16",
       "authors": [
-        "frankenstein's monster version by bluecarrot16"
-      ],
-      "licenses": [
         "Stephen Challener (Redshrike)",
         "bluecarrot16"
       ],
+      "licenses": [
+       "OGA-BY 3.0", 
+       "CC-BY-SA 3.0", 
+       "GPL 3.0"
+      ],
       "urls": [
-        "OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0",
         "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
         "https://opengameart.org/content/lpc-folk"
       ]

@@ -19,7 +19,7 @@ jobs:
 
       - name: Validate HTML generation
         run: |
-          node scripts/generate_html.js
+          node scripts/generate_sources.js
       - name: Assert git diff
         run: |
           if [[ `git status --porcelain` ]]; then

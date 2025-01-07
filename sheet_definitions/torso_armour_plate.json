@@ -39,35 +39,36 @@
   "credits": [
     {
       "file": "torso/armour/plate/male",
-      "notes": "original by wulax",
+      "notes": "original by wulax, recolor by bigbeargames, color reduced to 7 colors and adapted to v3 bases by bluecarrot16, run/jump/sit/climb/revised combat by JaidynReiman",
       "authors": [
-        "recolor by bigbeargames"
+        "JaidynReiman, bluecarrot16, Michael Whitlock (bigbeargames), Johannes Sjölund (wulax)"
       ],
       "licenses": [
-        "color reduced to 7 colors and adapted to v3 bases by bluecarrot16"
+        "OGA-BY 3.0", 
+        "CC-BY-SA 3.0", 
+        "GPL 3.0"
       ],
       "urls": [
-        "run/jump/sit/climb/revised combat by JaidynReiman",
-        "JaidynReiman, bluecarrot16, Michael Whitlock (bigbeargames), Johannes Sjölund (wulax)",
-        "OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0",
         "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
         "https://opengameart.org/content/lpc-combat-armor-for-women"
       ]
     },
     {
       "file": "torso/armour/plate/female",
-      "notes": "original by wulax",
+      "notes": "original by wulax, adapted to female base by makrohn, recolor by bigbeargames, color reduced to 7 colors and adapted to v3 bases by bluecarrot16, run/jump/sit/climb/revised combat by JaidynReiman",
       "authors": [
-        "adapted to female base by makrohn"
+        "JaidynReiman", 
+        "bluecarrot16", 
+        "Michael Whitlock (bigbeargames)", 
+        "Matthew Krohn (makrohn)", 
+        "Johannes Sjölund (wulax)"
       ],
       "licenses": [
-        "recolor by bigbeargames"
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0", 
+        "GPL 3.0"
       ],
       "urls": [
-        "color reduced to 7 colors and adapted to v3 bases by bluecarrot16",
-        "run/jump/sit/climb/revised combat by JaidynReiman",
-        "JaidynReiman, bluecarrot16, Michael Whitlock (bigbeargames), Matthew Krohn (makrohn), Johannes Sjölund (wulax)",
-        "OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0",
         "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
         "https://opengameart.org/content/lpc-combat-armor-for-women",
         "http://opengameart.org/content/lpc-clothing-updates"
@@ -75,16 +76,17 @@
     },
     {
       "file": "torso/armour/plate/teen",
-      "notes": "original by wulax",
+      "notes": "original by wulax, color reduced to 7 colors and adapted to v3 bases by bluecarrot16, adapted to teen base from male/female by JaidynReiman",
       "authors": [
-        "color reduced to 7 colors and adapted to v3 bases by bluecarrot16"
+        "JaidynReiman", 
+        "bluecarrot16", 
+        "Michael Whitlock (bigbeargames)", 
+        "Johannes Sjölund (wulax)"
       ],
       "licenses": [
-        "adapted to teen base from male/female by JaidynReiman"
+       "OGA-BY 3.0", "CC-BY-SA 3.0", "GPL 3.0"
       ],
       "urls": [
-        "JaidynReiman, bluecarrot16, Michael Whitlock (bigbeargames), Johannes Sjölund (wulax)",
-        "OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0",
         "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
         "https://opengameart.org/content/lpc-combat-armor-for-women"
       ]

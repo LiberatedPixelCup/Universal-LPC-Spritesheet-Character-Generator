@@ -52,17 +52,18 @@
     },
     {
       "file": "torso/armour/leather/female",
-      "notes": "recolor of torso/armour/leather/female/brown.png",
+      "notes": "recolor of torso/armour/leather/female/brown.png, adapted to v3 bases by bluecarrot16",
       "authors": [
-        "adapted to v3 bases by bluecarrot16"
-      ],
-      "licenses": [
         "Michael Whitlock (bigbeargames)",
         "Matthew Krohn (makrohn)",
         "Johannes Sjölund (wulax)"
       ],
+      "licenses": [
+        "OGA-BY 3.0", 
+        "CC-BY-SA 3.0", 
+        "GPL 3.0"
+      ],
       "urls": [
-        "OGA-BY 3.0, CC-BY-SA 3.0, GPL 3.0",
         "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
         "https://opengameart.org/content/lpc-combat-armor-for-women",
         "http://opengameart.org/content/lpc-clothing-updates"
