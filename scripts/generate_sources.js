@@ -42,7 +42,7 @@ function parseJson(json) {
 
   var requiredSexes = [];
   var animations = [];
-  var previewRow = 10;
+  var previewRow = 0;
   var previewColumn = 0;
   var previewXOffset = 0;
   var previewYOffset = 0;

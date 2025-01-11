@@ -11,14 +11,14 @@ const animationRowsLayout = {
   "slash-w": 12,
   "slash-s": 13,
   "slash-e": 14,
-  "backslash-n": 37,
-  "backslash-w": 38,
-  "backslash-s": 39,
-  "backslash-e": 40,
-  "halfslash-n": 41,
-  "halfslash-w": 42,
-  "halfslash-s": 43,
-  "halfslash-e": 44
+  "backslash-n": 45,
+  "backslash-w": 46,
+  "backslash-s": 47,
+  "backslash-e": 48,
+  "halfslash-n": 49,
+  "halfslash-w": 50,
+  "halfslash-s": 51,
+  "halfslash-e": 52
 }
 
 const customAnimations = {
