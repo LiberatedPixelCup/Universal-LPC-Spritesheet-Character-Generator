@@ -18,7 +18,25 @@ $(document).ready(function() {
   var images = {};
   const universalFrameSize = 64;
   const universalSheetWidth = 832;
-  const universalSheetHeight = 2944;
+  const universalSheetHeight = 3456;
+
+  const base_animations = {
+    "spellcast" : 0, 
+    "thrust" : 4*universalFrameSize, 
+    "walk" : 8*universalFrameSize, 
+    "slash" : 12*universalFrameSize, 
+    "shoot" : 16*universalFrameSize, 
+    "hurt" : 20*universalFrameSize, 
+    "climb" : 21*universalFrameSize, 
+    "idle" : 22*universalFrameSize,
+    "combat_idle" : 26*universalFrameSize, 
+    "jump" : 30*universalFrameSize, 
+    "sit" : 34*universalFrameSize, 
+    "emote" : 38*universalFrameSize, 
+    "run" : 42*universalFrameSize,
+    "backslash" : 46*universalFrameSize,
+    "halfslash" : 50*universalFrameSize
+  }
 
   // Preview Animation
   var anim = $("#previewAnimations").get(0);
@@ -472,11 +490,11 @@ $(document).ready(function() {
       return parseInt(lhs.zPos) - parseInt(rhs.zPos);
     });
     for (item in itemsToDraw) {
-      const fileName = itemsToDraw[itemIdx].fileName;
-      const img = getImage(fileName);
+      const filePath = itemsToDraw[itemIdx].fileName;
       const custom_animation = itemsToDraw[itemIdx].custom_animation;
 
       if (custom_animation !== undefined) {
+        const img = getImage(filePath);
         const customAnimationDefinition = customAnimations[custom_animation];
         const frameSize = customAnimationDefinition.frameSize;
 
@@ -512,12 +530,40 @@ $(document).ready(function() {
         }
         ctx.drawImage(img, 0, universalSheetHeight+offSetInAdditionToOtherCustomActions);
       } else {
-        drawImage(ctx, img);
+        const assetDirectory = getDirectoryForAsset(filePath);
+        const assetName = getFileNameForAssetPath(filePath);
+
+        for (const [key, value] of Object.entries(base_animations)) {
+          const newFile = `${assetDirectory}/${key}${assetName}`;
+          const img = getImage(newFile);
+          drawImage(ctx, img, value);
+        }
       }
       itemIdx+=1;
     }
     addCustomAnimationPreviews();
   }
+
+  function getDirectoryForAsset(filePath) {
+    const index = filePath.lastIndexOf("\/");
+    if (index > -1) {
+        return filePath.substring(0, index);
+    } else {
+      console.error(`Could not determine directory from path ${filePath}`);
+      return undefined;
+    }
+  }
+
+  function getFileNameForAssetPath(filePath) {
+    const index = filePath.lastIndexOf('/');
+    if (index > -1) {
+        return filePath.substring(index);
+    } else {
+      console.error(`Could not determine filename from path ${filePath}`);
+      return undefined;
+    }
+  }
+
 
   function showOrHideElements() {
     const bodyType = getBodyTypeName();
@@ -639,9 +685,9 @@ $(document).ready(function() {
     }
   }
 
-  function drawImage(ctx, img) {
+  function drawImage(ctx, img, dy) {
     try {
-      ctx.drawImage(img, 0, 0);
+      ctx.drawImage(img, 0, dy);
       zPosition++;
     } catch(err) {
       console.error("Error: could not find " + img.src);
@@ -684,20 +730,27 @@ $(document).ready(function() {
         const previewToDraw = {};
         const animation =  $(this).data(`layer_1_custom_animation`);
 
-        if($(this).data(`layer_1_${getBodyTypeName()}`) === undefined){
-          previewToDraw.link = $(this).data(`layer_1_${getBodyTypeName()}`);
+        if($(this).data(`layer_1_${getBodyTypeName()}`) === undefined) {
+          var imageLink = $(this).data(`layer_1_${getBodyTypeName()}`);
+          if (imageLink !== undefined) {
+            imageLink = updatePreviewLink(imageLink);
+          }
+          previewToDraw.link = imageLink;
           previewToDraw.zPos = $(this).data(`layer_1_zpos`);
           layers.push(previewToDraw);
-        } else{
-          for(jdx = 1; jdx < 10; jdx++){
+        } else {
+          for (jdx = 1; jdx < 10; jdx++){
             if($(this).data(`layer_${jdx}_${getBodyTypeName()}`)){
-              if(animation === $(this).data(`layer_${jdx}_custom_animation`)){
+              if(animation === $(this).data(`layer_${jdx}_custom_animation`)) {
                 const previewToDraw = {};
-                previewToDraw.link = $(this).data(`layer_${jdx}_${getBodyTypeName()}`);
+                var imageLink = $(this).data(`layer_${jdx}_${getBodyTypeName()}`);
+                if (imageLink !== undefined) {
+                  imageLink = updatePreviewLink(imageLink);
+                }
+                previewToDraw.link = imageLink;
                 previewToDraw.zPos = $(this).data(`layer_${jdx}_zpos`);
                 layers.push(previewToDraw);
               }
-
             } else {
               break;
             }
@@ -719,6 +772,13 @@ $(document).ready(function() {
       }
     });
   };
+
+  function updatePreviewLink(imageLink) {
+    const assetDirectory = getDirectoryForAsset(imageLink);
+    const assetName = getFileNameForAssetPath(imageLink);
+    imageLink = `${assetDirectory}/walk${assetName}`
+    return imageLink
+  }
 
   function nextFrame() {
     animCtx.clearRect(0, 0, anim.width, anim.height);
