@@ -5,6 +5,8 @@ $.expr[':'].icontains = function(a, i, m) {
       .indexOf(m[3].toUpperCase()) >= 0;
 };
 
+$.fn.reverse = [].reverse;
+
 $(document).ready(function() {
 
   var matchBodyColor = true;
@@ -136,6 +138,26 @@ $(document).ready(function() {
       redraw();
       showOrHideElements();
     }, 0, false);
+  });
+
+  $(".removeIncompatibleWithLicenses").click(function() {
+    const allowedLicenses = getAllowedLicenses();
+    $("input[type=radio]").each(function() {      
+      // Toggle allowed licenses
+      const licenses = $(this).data(`layer_1_${getBodyTypeName()}_licenses`)
+      if (licenses !== undefined) {
+        const licensesForAsset = licenses.split(",");
+        if (!allowedLicenses.some(allowedLicense => licensesForAsset.includes(allowedLicense))) {
+          if ($(this).prop("checked")) {
+            $(this).attr("checked", false).prop("checked", false);
+            $(this).closest('ul').find("input[type=radio][id$=none]").click();
+          }
+        }
+      }
+    });
+    setParams();
+    redraw();
+    showOrHideElements();
   });
 
   $(".replacePinkMask").click(function() {
@@ -283,7 +305,6 @@ $(document).ready(function() {
       credit.notes = notes;
       sheetCredits.push(credit);
     }
-    $("textarea#creditsText").val(sheetCreditsToTxt());
   }
 
   function sheetCreditsToCSV() {
@@ -408,12 +429,14 @@ $(document).ready(function() {
         }
       }
     });
-    itemsMeta["credits"] = sheetCreditsToTxt();
+    const creditsTxt = sheetCreditsToTxt()
+    $("textarea#creditsText").val(creditsTxt);
+    itemsMeta["credits"] = creditsTxt;
 
     if (images["uploaded"] != null) {
       const itemToDraw = {};
       itemToDraw.fileName = "uploaded";
-      itemToDraw.zPos = parseInt(document.getElementById("ZPOS").value) || 0;;
+      itemToDraw.zPos = parseInt(document.getElementById("ZPOS").value) || 0;
       itemsToDraw.push(itemToDraw);
     }
     drawItems(itemsToDraw);
@@ -528,6 +551,8 @@ $(document).ready(function() {
       }
     });
 
+    let hasProhibited = false;
+
     $("input[type=radio]").each(function() {
       var display = true;
       
@@ -537,6 +562,9 @@ $(document).ready(function() {
         const licensesForAsset = licenses.split(",");
         if (!allowedLicenses.some(allowedLicense => licensesForAsset.includes(allowedLicense))) {
           display = false;
+          if ($(this).prop("checked")) {
+            hasProhibited = true;
+          }
         }
       }
 
@@ -547,10 +575,16 @@ $(document).ready(function() {
         $(this).parent().prop("style", "display:none");
       }
     });
+
+    if (hasProhibited) {
+      $(".removeIncompatibleWithLicenses").show();
+    } else {
+      $(".removeIncompatibleWithLicenses").hide();
+    }
   }
 
   function interpretParams() {
-    $("input[type=radio]").each(function() {
+    $("input[type=radio]").reverse().each(function() {
       var words = _.words($(this).attr('id'), '-');
       var initial = _.initial(words).join('-');
       $(this).prop("checked", $(this).attr("checked") || params[initial] == _.last(words));
