@@ -1,0 +1,29 @@
+name: Validate site sources
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  validate_site_sources:
+    name: Validate site sources
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Validate site sources generation
+        run: |
+          node scripts/generate_sources.js
+      - name: Assert git diff
+        run: |
+          if [[ `git status --porcelain` ]]; then
+            echo "Differences found after (re)generation of the site sources"
+            echo "Please refer to the README in order to learn how to generate the site's sources properly."
+            exit -1
+          fi

@@ -1,6 +1,8 @@
 const fs = require('fs');
 const readline = require('readline');
 
+require('child_process').fork('scripts/zPositioning/parse_zpos.js');
+
 var licensesFound = [];
 function searchCredit(fileName, credits, origFileName) {
   if (credits.count <= 0) {

@@ -11,7 +11,7 @@
     "child": "head/ears/cat/child_front/"
   },
   "layer_2": {
-    "zPos": 8.8,
+    "zPos": 8,
     "male": "head/ears/cat/adult_back/",
     "muscular": "head/ears/cat/adult_back/",
     "female": "head/ears/cat/adult_back/",

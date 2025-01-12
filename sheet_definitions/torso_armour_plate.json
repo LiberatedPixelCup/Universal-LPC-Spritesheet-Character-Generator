@@ -44,8 +44,8 @@
         "JaidynReiman, bluecarrot16, Michael Whitlock (bigbeargames), Johannes Sjölund (wulax)"
       ],
       "licenses": [
-        "OGA-BY 3.0", 
-        "CC-BY-SA 3.0", 
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
         "GPL 3.0"
       ],
       "urls": [
@@ -57,15 +57,15 @@
       "file": "torso/armour/plate/female",
       "notes": "original by wulax, adapted to female base by makrohn, recolor by bigbeargames, color reduced to 7 colors and adapted to v3 bases by bluecarrot16, run/jump/sit/climb/revised combat by JaidynReiman",
       "authors": [
-        "JaidynReiman", 
-        "bluecarrot16", 
-        "Michael Whitlock (bigbeargames)", 
-        "Matthew Krohn (makrohn)", 
+        "JaidynReiman",
+        "bluecarrot16",
+        "Michael Whitlock (bigbeargames)",
+        "Matthew Krohn (makrohn)",
         "Johannes Sjölund (wulax)"
       ],
       "licenses": [
         "OGA-BY 3.0",
-        "CC-BY-SA 3.0", 
+        "CC-BY-SA 3.0",
         "GPL 3.0"
       ],
       "urls": [
@@ -78,13 +78,15 @@
       "file": "torso/armour/plate/teen",
       "notes": "original by wulax, color reduced to 7 colors and adapted to v3 bases by bluecarrot16, adapted to teen base from male/female by JaidynReiman",
       "authors": [
-        "JaidynReiman", 
-        "bluecarrot16", 
-        "Michael Whitlock (bigbeargames)", 
+        "JaidynReiman",
+        "bluecarrot16",
+        "Michael Whitlock (bigbeargames)",
         "Johannes Sjölund (wulax)"
       ],
       "licenses": [
-       "OGA-BY 3.0", "CC-BY-SA 3.0", "GPL 3.0"
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
       ],
       "urls": [
         "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",

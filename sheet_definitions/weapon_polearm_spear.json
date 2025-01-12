@@ -38,8 +38,8 @@
       "file": "weapon/polearm/spear",
       "notes": "original by wulax, walk animations redone by pvigier, split into layers and tweaked for v3 character bases by bluecarrot16",
       "authors": [
-        "Pierre Vigier (pvigier)", 
-        "Johannes Sjölund (wulax)", 
+        "Pierre Vigier (pvigier)",
+        "Johannes Sjölund (wulax)",
         "Inboxninja"
       ],
       "licenses": [
