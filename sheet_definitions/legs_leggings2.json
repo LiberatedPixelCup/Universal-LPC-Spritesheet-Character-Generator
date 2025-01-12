@@ -49,7 +49,7 @@
     "climb",
     "combat",
     "1h_slash",
-    "1h_bgslash",
+    "1h_backslash",
     "1h_halfslash"
   ],
   "credits": [
@@ -57,9 +57,13 @@
       "file": "legs/leggings2/male",
       "notes": "original overalls by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, leggings by JaidynReiman",
       "authors": [
+        "bluecarrot16",
         "ElizaWy",
         "JaidynReiman",
-        "Bluecarrot16"
+        "Mandi Paugh",
+        "William.Thompsonj",
+        "Johannes Sjölund (wulax)",
+        "Stephen Challener (Redshrike)"
       ],
       "licenses": [
         "OGA-BY 3.0",
@@ -75,7 +79,9 @@
       "notes": "original by ElizaWy, remaining frames",
       "authors": [
         "ElizaWy",
-        "JaidynReiman"
+        "JaidynReiman",
+        "Johannes Sjölund (wulax)",
+        "Stephen Challener (Redshrike)"
       ],
       "licenses": [
         "OGA-BY 3.0"

@@ -49,17 +49,19 @@
     "climb",
     "combat",
     "1h_slash",
-    "1h_bgslash",
+    "1h_backslash",
     "1h_halfslash"
   ],
   "credits": [
     {
       "file": "legs/cuffed/male",
-      "notes": "original overalls by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, pants by JaidynReiman",
+      "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original overalls by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, pants by JaidynReiman",
       "authors": [
         "JaidynReiman",
         "ElizaWy",
-        "Bluecarrot16"
+        "Bluecarrot16",
+        "Johannes Sjölund (wulax)",
+        "Stephen Challener (Redshrike)"
       ],
       "licenses": [
         "OGA-BY 3.0",
@@ -73,10 +75,12 @@
     },
     {
       "file": "legs/cuffed",
-      "notes": "original by ElizaWy, remaining frames by JaidynReiman",
+      "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original cuffed pants by ElizaWy, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
       "authors": [
         "ElizaWy",
-        "JaidynReiman"
+        "JaidynReiman",
+        "Johannes Sjölund (wulax)",
+        "Stephen Challener (Redshrike)"
       ],
       "licenses": [
         "OGA-BY 3.0"

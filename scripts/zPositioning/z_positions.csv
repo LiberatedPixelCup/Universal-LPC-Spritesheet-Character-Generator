@@ -69,13 +69,13 @@ eyebrows_thick.json,layer_1,106,eyes/eyebrows/thick/adult/ eyes/eyebrows/thick/a
 eyebrows_thin.json,layer_1,106,eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/child/
 eyes.json,layer_1,105,eyes/human/adult/ eyes/human/adult/ eyes/human/adult/ eyes/human/adult/ eyes/human/child/
 eyes_cyclops.json,layer_1,105,eyes/cyclops/adult/ eyes/cyclops/adult/ eyes/cyclops/adult/ eyes/cyclops/adult/ eyes/cyclops/child/
-facial_earring_left.json,layer_1,115,facial/earrings/simple/left/adult/ facial/earrings/simple/left/adult/ facial/earrings/simple/left/adult/ facial/earrings/simple/left/adult/ facial/earrings/simple/left/child/
-facial_earring_right.json,layer_1,115,facial/earrings/simple/right/adult/ facial/earrings/simple/right/adult/ facial/earrings/simple/right/adult/ facial/earrings/simple/right/adult/ facial/earrings/simple/right/child/
 facial_earrings_emerald.json,layer_1,115,facial/earrings/emerald/male/ facial/earrings/emerald/female/ facial/earrings/emerald/male/ facial/earrings/emerald/female/
 facial_earrings_moon.json,layer_1,115,facial/earrings/moon/male/ facial/earrings/moon/female/ facial/earrings/moon/male/ facial/earrings/moon/female/
 facial_earrings_pear.json,layer_1,115,facial/earrings/pear/male/ facial/earrings/pear/female/ facial/earrings/pear/male/ facial/earrings/pear/female/
 facial_earrings_princess.json,layer_1,115,facial/earrings/princess/male/ facial/earrings/princess/female/ facial/earrings/princess/male/ facial/earrings/princess/female/
 facial_earrings_stud.json,layer_1,115,facial/earrings/stud/male/ facial/earrings/stud/female/ facial/earrings/stud/male/ facial/earrings/stud/female/
+facial_earring_left.json,layer_1,115,facial/earrings/simple/left/adult/ facial/earrings/simple/left/adult/ facial/earrings/simple/left/adult/ facial/earrings/simple/left/adult/ facial/earrings/simple/left/child/
+facial_earring_right.json,layer_1,115,facial/earrings/simple/right/adult/ facial/earrings/simple/right/adult/ facial/earrings/simple/right/adult/ facial/earrings/simple/right/adult/ facial/earrings/simple/right/child/
 facial_eyepatch2_left.json,layer_1,115,facial/patches/eyepatch2/left/adult/ facial/patches/eyepatch2/left/adult/ facial/patches/eyepatch2/left/adult/ facial/patches/eyepatch2/left/adult/ facial/patches/eyepatch2/left/child/
 facial_eyepatch2_right.json,layer_1,115,facial/patches/eyepatch2/right/adult/ facial/patches/eyepatch2/right/adult/ facial/patches/eyepatch2/right/adult/ facial/patches/eyepatch2/right/adult/ facial/patches/eyepatch2/right/child/
 facial_eyepatch_ambi.json,layer_1,115,facial/patches/eyepatch/ambi/adult/ facial/patches/eyepatch/ambi/adult/ facial/patches/eyepatch/ambi/adult/ facial/patches/eyepatch/ambi/adult/ facial/patches/eyepatch/ambi/child/
@@ -111,13 +111,24 @@ feet_slippers.json,layer_1,15,feet/slippers/male/ feet/slippers/female/ feet/sli
 feet_socks_ankle.json,layer_1,14,feet/socks/ankle/male/ feet/socks/ankle/thin/ feet/socks/ankle/thin/
 feet_socks_high.json,layer_1,14,feet/socks/high/male/ feet/socks/high/thin/ feet/socks/high/thin/
 feet_socks_tabi.json,layer_1,14,feet/socks/tabi/male/ feet/socks/tabi/thin/ feet/socks/tabi/male/ feet/socks/tabi/thin/
+hairext_braidl.json,layer_1,128,hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/child/
+hairext_braidr.json,layer_1,128,hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/child/
+hairext_topknot_long.json,layer_1,128,hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/child/fg/
+hairext_topknot_long.json,layer_2,9,hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/child/bg/
+hairext_topknot_short.json,layer_1,128,hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/child/
+hairext_xlong_bangl.json,layer_1,128,hair/extensions/bangs/xlong_bangl/adult/ hair/extensions/bangs/xlong_bangl/adult/ hair/extensions/bangs/xlong_bangl/adult/ hair/extensions/bangs/xlong_bangl/adult/ hair/extensions/bangs/xlong_bangl/child/
+hairext_xlong_bangr.json,layer_1,128,hair/extensions/bangs/xlong_bangr/adult/ hair/extensions/bangs/xlong_bangr/adult/ hair/extensions/bangs/xlong_bangr/adult/ hair/extensions/bangs/xlong_bangr/adult/ hair/extensions/bangs/xlong_bangr/child/
+hairext_xlong_braidl.json,layer_1,128,hair/extensions/bangs/xlong_braidl/adult/fg/ hair/extensions/bangs/xlong_braidl/adult/fg/ hair/extensions/bangs/xlong_braidl/adult/fg/ hair/extensions/bangs/xlong_braidl/adult/fg/ hair/extensions/bangs/xlong_braidl/child/fg/
+hairext_xlong_braidl.json,layer_2,9,hair/extensions/bangs/xlong_braidl/adult/bg/ hair/extensions/bangs/xlong_braidl/adult/bg/ hair/extensions/bangs/xlong_braidl/adult/bg/ hair/extensions/bangs/xlong_braidl/adult/bg/ hair/extensions/bangs/xlong_braidl/child/bg/
+hairext_xlong_braidr.json,layer_1,128,hair/extensions/bangs/xlong_braidr/adult/fg/ hair/extensions/bangs/xlong_braidr/adult/fg/ hair/extensions/bangs/xlong_braidr/adult/fg/ hair/extensions/bangs/xlong_braidr/adult/fg/ hair/extensions/bangs/xlong_braidr/child/fg/
+hairext_xlong_braidr.json,layer_2,9,hair/extensions/bangs/xlong_braidr/adult/bg/ hair/extensions/bangs/xlong_braidr/adult/bg/ hair/extensions/bangs/xlong_braidr/adult/bg/ hair/extensions/bangs/xlong_braidr/adult/bg/ hair/extensions/bangs/xlong_braidr/child/bg/
 hair_afro.json,layer_1,120,hair/afro/male/ hair/afro/male/ hair/afro/male/ hair/afro/male/
 hair_balding.json,layer_1,120,hair/balding/adult/ hair/balding/adult/ hair/balding/adult/ hair/balding/adult/
 hair_bangs.json,layer_1,120,hair/bangs/male/ hair/bangs/female/ hair/bangs/male/ hair/bangs/female/
-hair_bangs_bun.json,layer_1,120,hair/bangs_bun/adult/ hair/bangs_bun/adult/ hair/bangs_bun/adult/ hair/bangs_bun/adult/
 hair_bangslong.json,layer_1,120,hair/bangslong/male/ hair/bangslong/female/ hair/bangslong/male/ hair/bangslong/female/
 hair_bangslong2.json,layer_1,120,hair/bangslong2/male/ hair/bangslong2/female/ hair/bangslong2/male/ hair/bangslong2/female/
 hair_bangsshort.json,layer_1,120,hair/bangsshort/male/ hair/bangsshort/female/ hair/bangsshort/male/ hair/bangsshort/female/
+hair_bangs_bun.json,layer_1,120,hair/bangs_bun/adult/ hair/bangs_bun/adult/ hair/bangs_bun/adult/ hair/bangs_bun/adult/
 hair_bedhead.json,layer_1,120,hair/bedhead/male/ hair/bedhead/female/ hair/bedhead/male/ hair/bedhead/female/
 hair_bob.json,layer_1,120,hair/bob/adult/ hair/bob/adult/ hair/bob/adult/ hair/bob/adult/
 hair_bob_side_part.json,layer_1,120,hair/bob_side_part/adult/ hair/bob_side_part/adult/ hair/bob_side_part/adult/ hair/bob_side_part/adult/
@@ -137,21 +148,21 @@ hair_dreadlocks_long.json,layer_1,120,hair/dreadlocks_long/male/ hair/dreadlocks
 hair_dreadlocks_short.json,layer_1,120,hair/dreadlocks_short/adult/ hair/dreadlocks_short/adult/ hair/dreadlocks_short/adult/ hair/dreadlocks_short/adult/
 hair_flat_top_fade.json,layer_1,120,hair/flat_top_fade/adult/ hair/flat_top_fade/adult/ hair/flat_top_fade/adult/ hair/flat_top_fade/adult/
 hair_flat_top_straight.json,layer_1,120,hair/flat_top_straight/adult/ hair/flat_top_straight/adult/ hair/flat_top_straight/adult/ hair/flat_top_straight/adult/
-hair_half_up.json,layer_1,120,hair/half_up/male/ hair/half_up/female/ hair/half_up/male/ hair/half_up/female/
 hair_halfmessy.json,layer_1,120,hair/halfmessy/male/ hair/halfmessy/female/ hair/halfmessy/male/ hair/halfmessy/female/
+hair_half_up.json,layer_1,120,hair/half_up/male/ hair/half_up/female/ hair/half_up/male/ hair/half_up/female/
 hair_high_and_tight.json,layer_1,120,hair/high_and_tight/male/ hair/high_and_tight/female/ hair/high_and_tight/male/ hair/high_and_tight/female/
 hair_high_ponytail.json,layer_1,120,hair/high_ponytail/male/ hair/high_ponytail/female/ hair/high_ponytail/male/ hair/high_ponytail/female/
 hair_idol.json,layer_1,120,hair/idol/adult/ hair/idol/adult/ hair/idol/adult/ hair/idol/adult/
 hair_jewfro.json,layer_1,120,hair/jewfro/adult/ hair/jewfro/adult/ hair/jewfro/adult/ hair/jewfro/adult/ hair/jewfro/child/
 hair_lob.json,layer_1,120,hair/lob/male/ hair/lob/female/ hair/lob/male/ hair/lob/female/
 hair_long.json,layer_1,120,hair/long/male/ hair/long/female/ hair/long/male/ hair/long/female/
+hair_longhawk.json,layer_1,120,hair/longhawk/male/ hair/longhawk/female/ hair/longhawk/male/ hair/longhawk/female/
 hair_long_band.json,layer_1,120,hair/long_band/male/ hair/long_band/female/ hair/long_band/male/ hair/long_band/female/
 hair_long_center_part.json,layer_1,120,hair/long_center_part/male/ hair/long_center_part/female/ hair/long_center_part/male/ hair/long_center_part/female/
 hair_long_messy.json,layer_1,120,hair/long_messy/male/ hair/long_messy/female/ hair/long_messy/male/ hair/long_messy/female/
 hair_long_messy2.json,layer_1,120,hair/long_messy2/male/ hair/long_messy2/female/ hair/long_messy2/male/ hair/long_messy2/female/
 hair_long_straight.json,layer_1,120,hair/long_straight/male/ hair/long_straight/female/ hair/long_straight/male/ hair/long_straight/female/
 hair_long_tied.json,layer_1,120,hair/long_tied/male/ hair/long_tied/female/ hair/long_tied/male/ hair/long_tied/female/
-hair_longhawk.json,layer_1,120,hair/longhawk/male/ hair/longhawk/female/ hair/longhawk/male/ hair/longhawk/female/
 hair_loose.json,layer_1,120,hair/loose/male/ hair/loose/female/ hair/loose/male/ hair/loose/female/
 hair_messed.json,layer_1,120,hair/messy/child/
 hair_messy1.json,layer_1,120,hair/messy1/male/ hair/messy1/female/ hair/messy1/male/ hair/messy1/female/
@@ -205,17 +216,6 @@ hair_twists_straight.json,layer_1,120,hair/twists_straight/adult/ hair/twists_st
 hair_unkempt.json,layer_1,120,hair/unkempt/male/ hair/unkempt/female/ hair/unkempt/male/ hair/unkempt/female/
 hair_wavy.json,layer_1,120,hair/wavy/male/ hair/wavy/female/ hair/wavy/male/ hair/wavy/female/ hair/wavy/child/
 hair_xlong.json,layer_1,120,hair/xlong/male/ hair/xlong/female/ hair/xlong/male/ hair/xlong/female/
-hairext_braidl.json,layer_1,128,hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/child/
-hairext_braidr.json,layer_1,128,hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/child/
-hairext_topknot_long.json,layer_1,128,hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/child/fg/
-hairext_topknot_long.json,layer_2,9,hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/child/bg/
-hairext_topknot_short.json,layer_1,128,hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/child/
-hairext_xlong_bangl.json,layer_1,128,hair/extensions/bangs/xlong_bangl/adult/ hair/extensions/bangs/xlong_bangl/adult/ hair/extensions/bangs/xlong_bangl/adult/ hair/extensions/bangs/xlong_bangl/adult/ hair/extensions/bangs/xlong_bangl/child/
-hairext_xlong_bangr.json,layer_1,128,hair/extensions/bangs/xlong_bangr/adult/ hair/extensions/bangs/xlong_bangr/adult/ hair/extensions/bangs/xlong_bangr/adult/ hair/extensions/bangs/xlong_bangr/adult/ hair/extensions/bangs/xlong_bangr/child/
-hairext_xlong_braidl.json,layer_1,128,hair/extensions/bangs/xlong_braidl/adult/fg/ hair/extensions/bangs/xlong_braidl/adult/fg/ hair/extensions/bangs/xlong_braidl/adult/fg/ hair/extensions/bangs/xlong_braidl/adult/fg/ hair/extensions/bangs/xlong_braidl/child/fg/
-hairext_xlong_braidl.json,layer_2,9,hair/extensions/bangs/xlong_braidl/adult/bg/ hair/extensions/bangs/xlong_braidl/adult/bg/ hair/extensions/bangs/xlong_braidl/adult/bg/ hair/extensions/bangs/xlong_braidl/adult/bg/ hair/extensions/bangs/xlong_braidl/child/bg/
-hairext_xlong_braidr.json,layer_1,128,hair/extensions/bangs/xlong_braidr/adult/fg/ hair/extensions/bangs/xlong_braidr/adult/fg/ hair/extensions/bangs/xlong_braidr/adult/fg/ hair/extensions/bangs/xlong_braidr/adult/fg/ hair/extensions/bangs/xlong_braidr/child/fg/
-hairext_xlong_braidr.json,layer_2,9,hair/extensions/bangs/xlong_braidr/adult/bg/ hair/extensions/bangs/xlong_braidr/adult/bg/ hair/extensions/bangs/xlong_braidr/adult/bg/ hair/extensions/bangs/xlong_braidr/adult/bg/ hair/extensions/bangs/xlong_braidr/child/bg/
 hat_accessory_crest.json,layer_1,139,hat/accessory/crest/adult/ hat/accessory/crest/adult/ hat/accessory/crest/adult/ hat/accessory/crest/adult/
 hat_accessory_crest_centurion.json,layer_1,139,hat/accessory/crest_centurion/adult/ hat/accessory/crest_centurion/adult/ hat/accessory/crest_centurion/adult/ hat/accessory/crest_centurion/adult/
 hat_accessory_horns_downward.json,layer_1,139,hat/accessory/horns_downward/fg/adult/ hat/accessory/horns_downward/fg/adult/ hat/accessory/horns_downward/fg/adult/ hat/accessory/horns_downward/fg/adult/
@@ -319,38 +319,6 @@ hat_visor_round.json,layer_1,132,hat/visor/round/adult/ hat/visor/round/adult/ h
 hat_visor_round_raised.json,layer_1,132,hat/visor/round_raised/adult/ hat/visor/round_raised/adult/ hat/visor/round_raised/adult/ hat/visor/round_raised/adult/
 hat_visor_slit.json,layer_1,132,hat/visor/slit/adult/ hat/visor/slit/adult/ hat/visor/slit/adult/ hat/visor/slit/adult/
 hat_visor_slit_narrow.json,layer_1,132,hat/visor/slit/adult/ hat/visor/slit/adult/ hat/visor/slit/adult/ hat/visor/slit/adult/
-head_ears_avyon.json,layer_1,130,head/ears/avyon/adult/ head/ears/avyon/adult/ head/ears/avyon/adult/ head/ears/avyon/adult/ head/ears/avyon/child/
-head_ears_avyon_skin.json,layer_1,131,head/ears/avyon/skin/adult/ head/ears/avyon/skin/adult/ head/ears/avyon/skin/adult/ head/ears/avyon/skin/adult/ head/ears/avyon/skin/child/
-head_ears_big.json,layer_1,105,head/ears/big/adult/ head/ears/big/adult/ head/ears/big/adult/ head/ears/big/adult/ head/ears/big/child/
-head_ears_cat.json,layer_1,130,head/ears/cat/adult_front/ head/ears/cat/adult_front/ head/ears/cat/adult_front/ head/ears/cat/adult_front/ head/ears/cat/child_front/
-head_ears_cat.json,layer_2,8,head/ears/cat/adult_back/ head/ears/cat/adult_back/ head/ears/cat/adult_back/ head/ears/cat/adult_back/ head/ears/cat/child_back/
-head_ears_cat_skin.json,layer_1,131,head/ears/cat/skin/adult_front/ head/ears/cat/skin/adult_front/ head/ears/cat/skin/adult_front/ head/ears/cat/skin/adult_front/ head/ears/cat/skin/child_front/
-head_ears_cat_skin.json,layer_2,9,head/ears/cat/skin/adult_back/ head/ears/cat/skin/adult_back/ head/ears/cat/skin/adult_back/ head/ears/cat/skin/adult_back/ head/ears/cat/skin/child_back/
-head_ears_down.json,layer_1,130,head/ears/down/adult/ head/ears/down/adult/ head/ears/down/adult/ head/ears/down/adult/ head/ears/down/child/
-head_ears_dragon.json,layer_1,130,head/ears/dragon/adult/ head/ears/dragon/adult/ head/ears/dragon/adult/ head/ears/dragon/adult/ head/ears/dragon/child/
-head_ears_elven.json,layer_1,130,head/ears/elven/adult/ head/ears/elven/adult/ head/ears/elven/adult/ head/ears/elven/adult/ head/ears/elven/child/
-head_ears_hang.json,layer_1,130,head/ears/hang/adult/ head/ears/hang/adult/ head/ears/hang/adult/ head/ears/hang/adult/ head/ears/hang/child/
-head_ears_long.json,layer_1,130,head/ears/long/adult/ head/ears/long/adult/ head/ears/long/adult/ head/ears/long/adult/ head/ears/long/child/
-head_ears_lykon.json,layer_1,130,head/ears/lykon/adult/ head/ears/lykon/adult/ head/ears/lykon/adult/ head/ears/lykon/adult/ head/ears/lykon/child/
-head_ears_lykon_skin.json,layer_1,131,head/ears/lykon/skin/adult/ head/ears/lykon/skin/adult/ head/ears/lykon/skin/adult/ head/ears/lykon/skin/adult/ head/ears/lykon/skin/child/
-head_ears_medium.json,layer_1,130,head/ears/medium/adult/ head/ears/medium/adult/ head/ears/medium/adult/ head/ears/medium/adult/ head/ears/medium/child/
-head_ears_wolf.json,layer_1,130,head/ears/wolf/adult_front/ head/ears/wolf/adult_front/ head/ears/wolf/adult_front/ head/ears/wolf/adult_front/ head/ears/wolf/child_front/
-head_ears_wolf.json,layer_2,8,head/ears/wolf/adult_back/ head/ears/wolf/adult_back/ head/ears/wolf/adult_back/ head/ears/wolf/adult_back/ head/ears/wolf/child_back/
-head_ears_wolf_skin.json,layer_1,131,head/ears/wolf/skin/adult_front/ head/ears/wolf/skin/adult_front/ head/ears/wolf/skin/adult_front/ head/ears/wolf/skin/adult_front/ head/ears/wolf/skin/child_front/
-head_ears_wolf_skin.json,layer_2,9,head/ears/wolf/skin/adult_back/ head/ears/wolf/skin/adult_back/ head/ears/wolf/skin/adult_back/ head/ears/wolf/skin/adult_back/ head/ears/wolf/skin/child_back/
-head_ears_zabos.json,layer_1,130,head/ears/zabos/adult/ head/ears/zabos/adult/ head/ears/zabos/adult/ head/ears/zabos/adult/ head/ears/zabos/child/
-head_ears_zabos_skin.json,layer_1,131,head/ears/zabos/skin/adult/ head/ears/zabos/skin/adult/ head/ears/zabos/skin/adult/ head/ears/zabos/skin/adult/ head/ears/zabos/skin/child/
-head_fins_fin.json,layer_1,125,head/fins/fin/adult/ head/fins/fin/adult/ head/fins/fin/adult/ head/fins/fin/adult/ head/fins/fin/child/
-head_fins_fin_short.json,layer_1,125,head/fins/fin_short/adult/ head/fins/fin_short/adult/ head/fins/fin_short/adult/ head/fins/fin_short/adult/ head/fins/fin_short/child/
-head_horns_backwards.json,layer_1,126,head/horns/backwards/adult/fg/ head/horns/backwards/adult/fg/ head/horns/backwards/adult/fg/ head/horns/backwards/adult/fg/ head/horns/backwards/child/fg/
-head_horns_backwards.json,layer_2,7,head/horns/backwards/adult/bg/ head/horns/backwards/adult/bg/ head/horns/backwards/adult/bg/ head/horns/backwards/adult/bg/ head/horns/backwards/child/bg/
-head_horns_curled.json,layer_1,126,head/horns/curled/adult/ head/horns/curled/adult/ head/horns/curled/adult/ head/horns/curled/adult/ head/horns/curled/child/
-head_nose_big.json,layer_1,105,head/nose/big/adult/ head/nose/big/adult/ head/nose/big/adult/ head/nose/big/adult/
-head_nose_button.json,layer_1,105,head/nose/button/adult/ head/nose/button/adult/ head/nose/button/adult/ head/nose/button/adult/
-head_nose_elderly.json,layer_1,105,head/nose/elderly/adult/ head/nose/elderly/adult/ head/nose/elderly/adult/ head/nose/elderly/adult/
-head_nose_large.json,layer_1,105,head/nose/large/adult/ head/nose/large/adult/ head/nose/large/adult/ head/nose/large/adult/
-head_nose_straight.json,layer_1,105,head/nose/straight/adult/ head/nose/straight/adult/ head/nose/straight/adult/ head/nose/straight/adult/
-head_wrinkles.json,layer_1,102,head/wrinkles/ head/wrinkles/ head/wrinkles/ head/wrinkles/
 heads_alien.json,layer_1,100,head/heads/alien/adult/ head/heads/alien/adult/ head/heads/alien/adult/ head/heads/alien/adult/
 heads_boarman.json,layer_1,100,head/heads/boarman/adult/ head/heads/boarman/adult/ head/heads/boarman/adult/ head/heads/boarman/adult/
 heads_boarman_child.json,layer_1,100,head/heads/boarman/child/
@@ -396,6 +364,38 @@ heads_wolf_child.json,layer_1,100,head/heads/wolf/child/
 heads_wolf_female.json,layer_1,100,head/heads/wolf/female/ head/heads/wolf/female/ head/heads/wolf/female/ head/heads/wolf/female/
 heads_wolf_male.json,layer_1,100,head/heads/wolf/male/ head/heads/wolf/male/ head/heads/wolf/male/ head/heads/wolf/male/
 heads_zombie.json,layer_1,100,head/heads/zombie/adult/ head/heads/zombie/adult/ head/heads/zombie/adult/ head/heads/zombie/adult/
+head_ears_avyon.json,layer_1,130,head/ears/avyon/adult/ head/ears/avyon/adult/ head/ears/avyon/adult/ head/ears/avyon/adult/ head/ears/avyon/child/
+head_ears_avyon_skin.json,layer_1,131,head/ears/avyon/skin/adult/ head/ears/avyon/skin/adult/ head/ears/avyon/skin/adult/ head/ears/avyon/skin/adult/ head/ears/avyon/skin/child/
+head_ears_big.json,layer_1,105,head/ears/big/adult/ head/ears/big/adult/ head/ears/big/adult/ head/ears/big/adult/ head/ears/big/child/
+head_ears_cat.json,layer_1,130,head/ears/cat/adult_front/ head/ears/cat/adult_front/ head/ears/cat/adult_front/ head/ears/cat/adult_front/ head/ears/cat/child_front/
+head_ears_cat.json,layer_2,8,head/ears/cat/adult_back/ head/ears/cat/adult_back/ head/ears/cat/adult_back/ head/ears/cat/adult_back/ head/ears/cat/child_back/
+head_ears_cat_skin.json,layer_1,131,head/ears/cat/skin/adult_front/ head/ears/cat/skin/adult_front/ head/ears/cat/skin/adult_front/ head/ears/cat/skin/adult_front/ head/ears/cat/skin/child_front/
+head_ears_cat_skin.json,layer_2,9,head/ears/cat/skin/adult_back/ head/ears/cat/skin/adult_back/ head/ears/cat/skin/adult_back/ head/ears/cat/skin/adult_back/ head/ears/cat/skin/child_back/
+head_ears_down.json,layer_1,130,head/ears/down/adult/ head/ears/down/adult/ head/ears/down/adult/ head/ears/down/adult/ head/ears/down/child/
+head_ears_dragon.json,layer_1,130,head/ears/dragon/adult/ head/ears/dragon/adult/ head/ears/dragon/adult/ head/ears/dragon/adult/ head/ears/dragon/child/
+head_ears_elven.json,layer_1,130,head/ears/elven/adult/ head/ears/elven/adult/ head/ears/elven/adult/ head/ears/elven/adult/ head/ears/elven/child/
+head_ears_hang.json,layer_1,130,head/ears/hang/adult/ head/ears/hang/adult/ head/ears/hang/adult/ head/ears/hang/adult/ head/ears/hang/child/
+head_ears_long.json,layer_1,130,head/ears/long/adult/ head/ears/long/adult/ head/ears/long/adult/ head/ears/long/adult/ head/ears/long/child/
+head_ears_lykon.json,layer_1,130,head/ears/lykon/adult/ head/ears/lykon/adult/ head/ears/lykon/adult/ head/ears/lykon/adult/ head/ears/lykon/child/
+head_ears_lykon_skin.json,layer_1,131,head/ears/lykon/skin/adult/ head/ears/lykon/skin/adult/ head/ears/lykon/skin/adult/ head/ears/lykon/skin/adult/ head/ears/lykon/skin/child/
+head_ears_medium.json,layer_1,130,head/ears/medium/adult/ head/ears/medium/adult/ head/ears/medium/adult/ head/ears/medium/adult/ head/ears/medium/child/
+head_ears_wolf.json,layer_1,130,head/ears/wolf/adult_front/ head/ears/wolf/adult_front/ head/ears/wolf/adult_front/ head/ears/wolf/adult_front/ head/ears/wolf/child_front/
+head_ears_wolf.json,layer_2,8,head/ears/wolf/adult_back/ head/ears/wolf/adult_back/ head/ears/wolf/adult_back/ head/ears/wolf/adult_back/ head/ears/wolf/child_back/
+head_ears_wolf_skin.json,layer_1,131,head/ears/wolf/skin/adult_front/ head/ears/wolf/skin/adult_front/ head/ears/wolf/skin/adult_front/ head/ears/wolf/skin/adult_front/ head/ears/wolf/skin/child_front/
+head_ears_wolf_skin.json,layer_2,9,head/ears/wolf/skin/adult_back/ head/ears/wolf/skin/adult_back/ head/ears/wolf/skin/adult_back/ head/ears/wolf/skin/adult_back/ head/ears/wolf/skin/child_back/
+head_ears_zabos.json,layer_1,130,head/ears/zabos/adult/ head/ears/zabos/adult/ head/ears/zabos/adult/ head/ears/zabos/adult/ head/ears/zabos/child/
+head_ears_zabos_skin.json,layer_1,131,head/ears/zabos/skin/adult/ head/ears/zabos/skin/adult/ head/ears/zabos/skin/adult/ head/ears/zabos/skin/adult/ head/ears/zabos/skin/child/
+head_fins_fin.json,layer_1,125,head/fins/fin/adult/ head/fins/fin/adult/ head/fins/fin/adult/ head/fins/fin/adult/ head/fins/fin/child/
+head_fins_fin_short.json,layer_1,125,head/fins/fin_short/adult/ head/fins/fin_short/adult/ head/fins/fin_short/adult/ head/fins/fin_short/adult/ head/fins/fin_short/child/
+head_horns_backwards.json,layer_1,126,head/horns/backwards/adult/fg/ head/horns/backwards/adult/fg/ head/horns/backwards/adult/fg/ head/horns/backwards/adult/fg/ head/horns/backwards/child/fg/
+head_horns_backwards.json,layer_2,7,head/horns/backwards/adult/bg/ head/horns/backwards/adult/bg/ head/horns/backwards/adult/bg/ head/horns/backwards/adult/bg/ head/horns/backwards/child/bg/
+head_horns_curled.json,layer_1,126,head/horns/curled/adult/ head/horns/curled/adult/ head/horns/curled/adult/ head/horns/curled/adult/ head/horns/curled/child/
+head_nose_big.json,layer_1,105,head/nose/big/adult/ head/nose/big/adult/ head/nose/big/adult/ head/nose/big/adult/
+head_nose_button.json,layer_1,105,head/nose/button/adult/ head/nose/button/adult/ head/nose/button/adult/ head/nose/button/adult/
+head_nose_elderly.json,layer_1,105,head/nose/elderly/adult/ head/nose/elderly/adult/ head/nose/elderly/adult/ head/nose/elderly/adult/
+head_nose_large.json,layer_1,105,head/nose/large/adult/ head/nose/large/adult/ head/nose/large/adult/ head/nose/large/adult/
+head_nose_straight.json,layer_1,105,head/nose/straight/adult/ head/nose/straight/adult/ head/nose/straight/adult/ head/nose/straight/adult/
+head_wrinkles.json,layer_1,102,head/wrinkles/ head/wrinkles/ head/wrinkles/ head/wrinkles/
 legs_armour.json,layer_1,20,legs/armour/plate/male/ legs/armour/plate/female/
 legs_childpants.json,layer_1,20,legs/pants/child/
 legs_childskirts.json,layer_1,20,legs/skirts/child/
@@ -412,12 +412,12 @@ legs_pants2.json,layer_1,20,legs/pants2/male/ legs/pants2/thin/
 legs_pregnantpants.json,layer_1,20,legs/pants/pregnant/
 legs_shorts.json,layer_1,20,legs/shorts/shorts/male/ legs/shorts/shorts/thin/ legs/shorts/shorts/thin/
 legs_shorts_short.json,layer_1,20,legs/shorts/short_shorts/male/ legs/shorts/short_shorts/thin/ legs/shorts/short_shorts/thin/
-legs_skirt_belle.json,layer_1,20,legs/skirts/belle/female/ legs/skirts/belle/female/
-legs_skirt_overskirt.json,layer_1,35,legs/skirts/overskirt/female/ legs/skirts/overskirt/female/
-legs_skirt_straight.json,layer_1,20,legs/skirts/straight/female/ legs/skirts/straight/female/
 legs_skirts_legion.json,layer_1,20,legs/skirts/legion/male/ legs/skirts/legion/female/ legs/skirts/legion/male/ legs/skirts/legion/female/
 legs_skirts_plain.json,layer_1,20,legs/skirts/plain/male/ legs/skirts/plain/female/ legs/skirts/plain/female/
 legs_skirts_slit.json,layer_1,20,legs/skirts/slit/female/ legs/skirts/slit/female/
+legs_skirt_belle.json,layer_1,20,legs/skirts/belle/female/ legs/skirts/belle/female/
+legs_skirt_overskirt.json,layer_1,35,legs/skirts/overskirt/female/ legs/skirts/overskirt/female/
+legs_skirt_straight.json,layer_1,20,legs/skirts/straight/female/ legs/skirts/straight/female/
 legs_widepants.json,layer_1,20,legs/pants/muscular/
 neck_amulet_cross.json,layer_1,81,neck/amulet/cross/male/ neck/amulet/cross/female/ neck/amulet/cross/male/ neck/amulet/cross/female/
 neck_amulet_dangle.json,layer_1,81,neck/amulet/dangle/male/ neck/amulet/dangle/female/ neck/amulet/dangle/male/ neck/amulet/dangle/female/
@@ -464,12 +464,12 @@ shield_heater_pattern_barry.json,layer_1,4,shield/heater/original/pattern/barry/
 shield_heater_pattern_barry.json,layer_2,112,shield/heater/original/pattern/barry/fg/ shield/heater/original/pattern/barry/fg/ shield/heater/original/pattern/barry/fg/ shield/heater/original/pattern/barry/fg/
 shield_heater_pattern_bend.json,layer_1,4,shield/heater/original/pattern/bend/bg/ shield/heater/original/pattern/bend/bg/ shield/heater/original/pattern/bend/bg/ shield/heater/original/pattern/bend/bg/
 shield_heater_pattern_bend.json,layer_2,112,shield/heater/original/pattern/bend/fg/ shield/heater/original/pattern/bend/fg/ shield/heater/original/pattern/bend/fg/ shield/heater/original/pattern/bend/fg/
-shield_heater_pattern_bend_sinister.json,layer_1,4,shield/heater/original/pattern/bend_sinister/bg/ shield/heater/original/pattern/bend_sinister/bg/ shield/heater/original/pattern/bend_sinister/bg/ shield/heater/original/pattern/bend_sinister/bg/
-shield_heater_pattern_bend_sinister.json,layer_2,112,shield/heater/original/pattern/bend_sinister/fg/ shield/heater/original/pattern/bend_sinister/fg/ shield/heater/original/pattern/bend_sinister/fg/ shield/heater/original/pattern/bend_sinister/fg/
 shield_heater_pattern_bendy.json,layer_1,4,shield/heater/original/pattern/bendy/bg/ shield/heater/original/pattern/bendy/bg/ shield/heater/original/pattern/bendy/bg/ shield/heater/original/pattern/bendy/bg/
 shield_heater_pattern_bendy.json,layer_2,112,shield/heater/original/pattern/bendy/fg/ shield/heater/original/pattern/bendy/fg/ shield/heater/original/pattern/bendy/fg/ shield/heater/original/pattern/bendy/fg/
 shield_heater_pattern_bendy_sinister.json,layer_1,4,shield/heater/original/pattern/bendy_sinister/bg/ shield/heater/original/pattern/bendy_sinister/bg/ shield/heater/original/pattern/bendy_sinister/bg/ shield/heater/original/pattern/bendy_sinister/bg/
 shield_heater_pattern_bendy_sinister.json,layer_2,112,shield/heater/original/pattern/bendy_sinister/fg/ shield/heater/original/pattern/bendy_sinister/fg/ shield/heater/original/pattern/bendy_sinister/fg/ shield/heater/original/pattern/bendy_sinister/fg/
+shield_heater_pattern_bend_sinister.json,layer_1,4,shield/heater/original/pattern/bend_sinister/bg/ shield/heater/original/pattern/bend_sinister/bg/ shield/heater/original/pattern/bend_sinister/bg/ shield/heater/original/pattern/bend_sinister/bg/
+shield_heater_pattern_bend_sinister.json,layer_2,112,shield/heater/original/pattern/bend_sinister/fg/ shield/heater/original/pattern/bend_sinister/fg/ shield/heater/original/pattern/bend_sinister/fg/ shield/heater/original/pattern/bend_sinister/fg/
 shield_heater_pattern_bordure.json,layer_1,4,shield/heater/original/pattern/bordure/bg/ shield/heater/original/pattern/bordure/bg/ shield/heater/original/pattern/bordure/bg/ shield/heater/original/pattern/bordure/bg/
 shield_heater_pattern_bordure.json,layer_2,112,shield/heater/original/pattern/bordure/fg/ shield/heater/original/pattern/bordure/fg/ shield/heater/original/pattern/bordure/fg/ shield/heater/original/pattern/bordure/fg/
 shield_heater_pattern_chevron.json,layer_1,4,shield/heater/original/pattern/chevron/bg/ shield/heater/original/pattern/chevron/bg/ shield/heater/original/pattern/chevron/bg/ shield/heater/original/pattern/chevron/bg/
@@ -514,12 +514,12 @@ shield_heater_revised_pattern_barry.json,layer_1,4,shield/heater/revised/pattern
 shield_heater_revised_pattern_barry.json,layer_2,112,shield/heater/revised/pattern/barry/fg/ shield/heater/revised/pattern/barry/fg/ shield/heater/revised/pattern/barry/fg/ shield/heater/revised/pattern/barry/fg/
 shield_heater_revised_pattern_bend.json,layer_1,4,shield/heater/revised/pattern/bend/bg/ shield/heater/revised/pattern/bend/bg/ shield/heater/revised/pattern/bend/bg/ shield/heater/revised/pattern/bend/bg/
 shield_heater_revised_pattern_bend.json,layer_2,112,shield/heater/revised/pattern/bend/fg/ shield/heater/revised/pattern/bend/fg/ shield/heater/revised/pattern/bend/fg/ shield/heater/revised/pattern/bend/fg/
-shield_heater_revised_pattern_bend_sinister.json,layer_1,4,shield/heater/revised/pattern/bend_sinister/bg/ shield/heater/revised/pattern/bend_sinister/bg/ shield/heater/revised/pattern/bend_sinister/bg/ shield/heater/revised/pattern/bend_sinister/bg/
-shield_heater_revised_pattern_bend_sinister.json,layer_2,112,shield/heater/revised/pattern/bend_sinister/fg/ shield/heater/revised/pattern/bend_sinister/fg/ shield/heater/revised/pattern/bend_sinister/fg/ shield/heater/revised/pattern/bend_sinister/fg/
 shield_heater_revised_pattern_bendy.json,layer_1,4,shield/heater/revised/pattern/bendy/bg/ shield/heater/revised/pattern/bendy/bg/ shield/heater/revised/pattern/bendy/bg/ shield/heater/revised/pattern/bendy/bg/
 shield_heater_revised_pattern_bendy.json,layer_2,112,shield/heater/revised/pattern/bendy/fg/ shield/heater/revised/pattern/bendy/fg/ shield/heater/revised/pattern/bendy/fg/ shield/heater/revised/pattern/bendy/fg/
 shield_heater_revised_pattern_bendy_sinister.json,layer_1,4,shield/heater/revised/pattern/bendy_sinister/bg/ shield/heater/revised/pattern/bendy_sinister/bg/ shield/heater/revised/pattern/bendy_sinister/bg/ shield/heater/revised/pattern/bendy_sinister/bg/
 shield_heater_revised_pattern_bendy_sinister.json,layer_2,112,shield/heater/revised/pattern/bendy_sinister/fg/ shield/heater/revised/pattern/bendy_sinister/fg/ shield/heater/revised/pattern/bendy_sinister/fg/ shield/heater/revised/pattern/bendy_sinister/fg/
+shield_heater_revised_pattern_bend_sinister.json,layer_1,4,shield/heater/revised/pattern/bend_sinister/bg/ shield/heater/revised/pattern/bend_sinister/bg/ shield/heater/revised/pattern/bend_sinister/bg/ shield/heater/revised/pattern/bend_sinister/bg/
+shield_heater_revised_pattern_bend_sinister.json,layer_2,112,shield/heater/revised/pattern/bend_sinister/fg/ shield/heater/revised/pattern/bend_sinister/fg/ shield/heater/revised/pattern/bend_sinister/fg/ shield/heater/revised/pattern/bend_sinister/fg/
 shield_heater_revised_pattern_bordure.json,layer_1,4,shield/heater/revised/pattern/bordure/bg/ shield/heater/revised/pattern/bordure/bg/ shield/heater/revised/pattern/bordure/bg/ shield/heater/revised/pattern/bordure/bg/
 shield_heater_revised_pattern_bordure.json,layer_2,112,shield/heater/revised/pattern/bordure/fg/ shield/heater/revised/pattern/bordure/fg/ shield/heater/revised/pattern/bordure/fg/ shield/heater/revised/pattern/bordure/fg/
 shield_heater_revised_pattern_chevron.json,layer_1,4,shield/heater/revised/pattern/chevron/bg/ shield/heater/revised/pattern/chevron/bg/ shield/heater/revised/pattern/chevron/bg/ shield/heater/revised/pattern/chevron/bg/

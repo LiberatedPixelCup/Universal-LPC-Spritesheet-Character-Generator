@@ -51,7 +51,7 @@
     "climb",
     "combat",
     "1h_slash",
-    "1h_bgslash",
+    "1h_backslash",
     "1h_halfslash"
   ],
   "credits": [
@@ -63,7 +63,8 @@
         "JaidynReiman",
         "ElizaWy",
         "Matthew Krohn (makrohn)",
-        "Johannes Sjölund (wulax)"
+        "Johannes Sjölund (wulax)",
+        "Stephen Challener (Redshrike)"
       ],
       "licenses": [
         "OGA-BY 3.0",
@@ -85,7 +86,8 @@
         "ElizaWy",
         "Joe White",
         "Matthew Krohn (makrohn)",
-        "Johannes Sjölund (wulax)"
+        "Johannes Sjölund (wulax)",
+        "Stephen Challener (Redshrike)"
       ],
       "licenses": [
         "OGA-BY 3.0",

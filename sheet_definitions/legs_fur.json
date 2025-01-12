@@ -59,22 +59,20 @@
     "climb",
     "combat",
     "1h_slash",
-    "1h_bgslash",
+    "1h_backslash",
     "1h_halfslash"
   ],
   "credits": [
     {
       "file": "legs/fur",
-      "notes": "Original pants by Stephen Challener (Redshrike), Fur Pants Color by Evert, Edited to V3 Bases by Bluecarrot16, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
+      "notes": "Original pants by Stephen Challener (Redshrike), thrust/shoot bases by Wulax, Fur Pants Color by Evert, Edited to V3 Bases by Bluecarrot16, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
       "authors": [
-        "Lanea Zimmerman (Sharm)",
-        "Stephen Challener (Redshrike)",
-        "Manuel Riecke (MrBeast)",
-        "Charles Sanchez (CharlesGabriel)",
+        "Bluecarrot16",
+        "JaidynReiman",
         "Evert",
         "ElizaWy",
-        "Daniel Eddeland (daneeklu)",
         "Nila122",
+        "Johannes Sjölund (wulax)",
         "Stephen Challener (Redshrike)"
       ],
       "licenses": [
@@ -89,16 +87,14 @@
     },
     {
       "file": "legs/fur/thin",
-      "notes": "Original pants by Stephen Challener (Redshrike), Fur Pants Color by Evert, Edited to V3 Bases by Bluecarrot16, Female/Thin version by JaidynReiman",
+      "notes": "Original pants by Stephen Challener (Redshrike), thrust/shoot bases by Wulax, Fur Pants Color by Evert, Edited to V3 Bases by Bluecarrot16, Female/Thin version by JaidynReiman",
       "authors": [
-        "Lanea Zimmerman (Sharm)",
-        "Stephen Challener (Redshrike)",
-        "Manuel Riecke (MrBeast)",
-        "Charles Sanchez (CharlesGabriel)",
+        "Bluecarrot16",
+        "JaidynReiman",
         "Evert",
         "ElizaWy",
-        "Daniel Eddeland (daneeklu)",
         "Nila122",
+        "Johannes Sjölund (wulax)",
         "Stephen Challener (Redshrike)"
       ],
       "licenses": [

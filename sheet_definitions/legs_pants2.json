@@ -49,7 +49,7 @@
     "climb",
     "combat",
     "1h_slash",
-    "1h_bgslash",
+    "1h_backslash",
     "1h_halfslash"
   ],
   "credits": [
@@ -59,7 +59,9 @@
       "authors": [
         "JaidynReiman",
         "ElizaWy",
-        "Bluecarrot16"
+        "Bluecarrot16",
+        "Johannes Sjölund (wulax)",
+        "Stephen Challener (Redshrike)"
       ],
       "licenses": [
         "OGA-BY 3.0",
@@ -73,10 +75,12 @@
     },
     {
       "file": "legs/pants2",
-      "notes": "original by ElizaWy, remaining frames by JaidynReiman",
+      "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original pants by ElizaWy, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
       "authors": [
         "ElizaWy",
-        "JaidynReiman"
+        "JaidynReiman",
+        "Johannes Sjölund (wulax)",
+        "Stephen Challener (Redshrike)"
       ],
       "licenses": [
         "OGA-BY 3.0"

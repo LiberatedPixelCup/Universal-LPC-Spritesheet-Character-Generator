@@ -59,16 +59,18 @@
       "notes": "see details at https://opengameart.org/content/lpc-character-bases; 'Thick' Male Revised Run/Climb by JaidynReiman (based on ElizaWy's LPC Revised)",
       "authors": [
         "bluecarrot16",
+        "JaidynReiman",
         "Benjamin K. Smith (BenCreating)",
         "Evert",
         "Eliza Wyatt (ElizaWy)",
         "TheraHedwig",
         "MuffinElZangano",
         "Durrani",
-        "Johannes Sj?lund (wulax)",
+        "Johannes Sjölund (wulax)",
         "Stephen Challener (Redshrike)"
       ],
       "licenses": [
+        "OGA-BY 3.0",
         "CC-BY-SA 3.0",
         "GPL 3.0"
       ],
@@ -123,6 +125,7 @@
       "notes": "see details at https://opengameart.org/content/lpc-character-bases",
       "authors": [
         "bluecarrot16",
+        "JaidynReiman",
         "Evert",
         "TheraHedwig",
         "MuffinElZangano",
@@ -163,10 +166,11 @@
         "Pierre Vigier (pvigier)",
         "Eliza Wyatt (ElizaWy)",
         "Matthew Krohn (makrohn)",
-        "Johannes Sj?lund (wulax)",
+        "Johannes Sjölund (wulax)",
         "Stephen Challener (Redshrike)"
       ],
       "licenses": [
+        "OGA-BY 3.0",
         "CC-BY-SA 3.0",
         "GPL 3.0"
       ],
@@ -188,6 +192,7 @@
       "notes": "see details at https://opengameart.org/content/lpc-character-bases; Pregnant Revised Run/Combat Idle/Emotes by JaidynReiman (based on ElizaWy's LPC Revised)",
       "authors": [
         "bluecarrot16",
+        "JaidynReiman",
         "Evert",
         "TheraHedwig",
         "MuffinElZangano",
@@ -196,7 +201,7 @@
         "Pierre Vigier (pvigier)",
         "Eliza Wyatt (ElizaWy)",
         "Matthew Krohn (makrohn)",
-        "Johannes Sj?lund (wulax)",
+        "Johannes Sjölund (wulax)",
         "Stephen Challener (Redshrike)"
       ],
       "licenses": [

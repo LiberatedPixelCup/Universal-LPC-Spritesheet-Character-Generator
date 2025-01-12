@@ -51,19 +51,21 @@
     "climb",
     "combat",
     "1h_slash",
-    "1h_bgslash",
+    "1h_backslash",
     "1h_halfslash"
   ],
   "credits": [
     {
       "file": "legs/pantaloons",
-      "notes": "",
+      "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, Original Pantaloons by Nila122, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
       "authors": [
         "Nila122",
+        "JaidynReiman",
         "Johannes Sjölund (wulax)",
         "Stephen Challener (Redshrike)"
       ],
       "licenses": [
+        "OGA-BY 3.0",
         "GPL 2.0",
         "GPL 3.0",
         "CC-BY-SA 3.0"
@@ -76,7 +78,7 @@
     },
     {
       "file": "legs/pantaloons/thin",
-      "notes": "Original Pantaloons by Nilla122, Female/Teen version by JaidynReiman",
+      "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, Original Pantaloons by Nila122, Female/Teen version by JaidynReiman",
       "authors": [
         "Nila122",
         "JaidynReiman",

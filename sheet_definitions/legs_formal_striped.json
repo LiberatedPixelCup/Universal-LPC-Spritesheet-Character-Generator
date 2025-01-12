@@ -52,20 +52,22 @@
     "climb",
     "combat",
     "1h_slash",
-    "1h_bgslash",
+    "1h_backslash",
     "1h_halfslash"
   ],
   "credits": [
     {
       "file": "legs/formal_striped",
-      "notes": "Original pants by Stephen Challener (Redshrike), Striped Formal Pants by Bluecarrot16",
+      "notes": "Original pants by Stephen Challener (Redshrike), thrust/shoot bases by Wulax, Striped Formal Pants by Bluecarrot16, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
       "authors": [
         "bluecarrot16",
-        "Thane Brimhall (pennomi)",
-        "laetissima",
+        "JaidynReiman",
+        "ElizaWy",
+        "Johannes Sjölund (wulax)",
         "Stephen Challener (Redshrike)"
       ],
       "licenses": [
+        "OGA-BY 3.0",
         "CC-BY-SA 3.0",
         "GPL 3.0"
       ],
@@ -79,14 +81,16 @@
     },
     {
       "file": "legs/formal_striped/thin",
-      "notes": "Original pants by Stephen Challener (Redshrike), Striped Formal Pants by Bluecarrot16, Female/Thin version by JaidynReiman",
+      "notes": "Original pants by Stephen Challener (Redshrike), thrust/shoot bases by Wulax, Striped Formal Pants by Bluecarrot16, Female/Thin version by JaidynReiman",
       "authors": [
         "bluecarrot16",
-        "Thane Brimhall (pennomi)",
-        "laetissima",
+        "JaidynReiman",
+        "ElizaWy",
+        "Johannes Sjölund (wulax)",
         "Stephen Challener (Redshrike)"
       ],
       "licenses": [
+        "OGA-BY 3.0",
         "CC-BY-SA 3.0",
         "GPL 3.0"
       ],

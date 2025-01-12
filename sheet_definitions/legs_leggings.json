@@ -49,17 +49,21 @@
     "climb",
     "combat",
     "1h_slash",
-    "1h_bgslash",
+    "1h_backslash",
     "1h_halfslash"
   ],
   "credits": [
     {
       "file": "legs/leggings/male",
-      "notes": "original overalls by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, leggings by JaidynReiman",
+      "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original overalls by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, leggings by JaidynReiman",
       "authors": [
+        "bluecarrot16",
         "ElizaWy",
         "JaidynReiman",
-        "Bluecarrot16"
+        "Mandi Paugh",
+        "William.Thompsonj",
+        "Johannes Sjölund (wulax)",
+        "Stephen Challener (Redshrike)"
       ],
       "licenses": [
         "OGA-BY 3.0",
@@ -72,14 +76,15 @@
     },
     {
       "file": "legs/leggings",
-      "notes": "adapted from sara's leggings to v3 bases by bluecarrot16, jump/run/sit by JaidynReiman based on ElizaWy's and modified to match",
+      "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, adapted from sara's leggings to v3 bases by bluecarrot16, jump/run/sit by JaidynReiman based on ElizaWy's and modified to match",
       "authors": [
         "bluecarrot16",
+        "ElizaWy",
         "JaidynReiman",
         "Mandi Paugh",
-        "Stephen Challener (Redshrike)",
         "William.Thompsonj",
-        "ElizaWy"
+        "Johannes Sjölund (wulax)",
+        "Stephen Challener (Redshrike)"
       ],
       "licenses": [
         "OGA-BY 3.0"
