@@ -1,3 +1,6 @@
+LPC Spritesheet Character Generator
+=============================================
+
 This generator attempts to include all [LPC](https://lpc.opengameart.org) created art up to now.
 
 Try it [here](https://liberatedpixelcup.github.io/Universal-LPC-Spritesheet-Character-Generator/).
