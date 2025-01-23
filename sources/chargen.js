@@ -137,11 +137,12 @@ $(document).ready(function () {
       const matches = results.length;
       $('#matches').text(`${matches} matches.`);
       let parents = results.parents("ul");
+      parents = parents.filter(function() {
+        return $(this).find("li>ul").length > 1;
+      });
       parents.prev("span").addClass("expanded").removeClass("condensed");
       for (const parent of parents.toArray().reverse()) {
-        $(parent).delay(50).show().map((i, el) => {
-          setTimeout(() => drawPreviews.call(el), 50 * i);
-        });
+        $(parent).delay(50).show();
       }
     }
   }
@@ -967,9 +968,9 @@ $(document).ready(function () {
       await new Promise((resolve) => {
         img.addEventListener('load', function () {
           callback(layers, prevctx);
-          resolve();
+          setTimeout(resolve, 4);
         });
-        img.addEventListener('error', resolve);
+        img.addEventListener('error', () => setTimeout(resolve, 50));
       });
       return img;
     }
