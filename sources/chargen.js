@@ -140,7 +140,7 @@ $(document).ready(function () {
       parents.prev("span").addClass("expanded").removeClass("condensed");
       for (const parent of parents.toArray().reverse()) {
         $(parent).delay(50).show().map((i, el) => {
-          setTimeout(() => drawPreviews.call(el), 50 * i);
+          setTimeout(() => drawPreviews.call(el, true), 200 * i);
         });
       }
     }
@@ -951,7 +951,7 @@ $(document).ready(function () {
     imageLoadDone();
   }
 
-  async function getImage2(imgRef, callback, layers, prevctx) {
+  async function getImage2(imgRef, callback, layers, prevctx, fromSearch) {
     if (imgRef && images[imgRef] && images[imgRef].complete) {
       callback(layers, prevctx);
       return images[imgRef];
@@ -967,9 +967,9 @@ $(document).ready(function () {
       await new Promise((resolve) => {
         img.addEventListener('load', function () {
           callback(layers, prevctx);
-          resolve();
+          setTimeout(resolve, fromSearch ? 50 : 4);
         });
-        img.addEventListener('error', resolve);
+        img.addEventListener('error', () => setTimeout(resolve, 50));
       });
       return img;
     }
@@ -984,7 +984,7 @@ $(document).ready(function () {
     }
   }
 
-  async function drawPreviews() {
+  async function drawPreviews(fromSearch = false) {
     const buttons = $(this).find("input[type=radio]")
       .filter(function () {
         return $(this).is(":visible");
@@ -1081,7 +1081,7 @@ $(document).ready(function () {
         });
 
         for (const layer of layers) {
-          img = await getImage2(layer.link, callback, layers, prevctx);
+          img = await getImage2(layer.link, callback, layers, prevctx, fromSearch);
         }
 
         if (img && !$(button).parent().hasClass("hasPreview")) {
@@ -1093,7 +1093,7 @@ $(document).ready(function () {
             .addClass("hasPreview");
         }
 
-        await setTimeout(() => Promise.resolve(), 4);
+        await setTimeout(() => Promise.resolve(), fromSearch ? 50 : 4);
       }
     }
   }
