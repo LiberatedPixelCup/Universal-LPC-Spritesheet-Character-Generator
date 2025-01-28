@@ -1,0 +1,60 @@
+{
+  "name": "Default Eyes",
+  "type_name": "eyes",
+  "layer_1": {
+    "zPos": 105,
+    "male": "eyes/human/adult/default/",
+    "muscular": "eyes/human/adult/default/",
+    "female": "eyes/human/adult/default/",
+    "teen": "eyes/human/adult/default/",
+    "pregnant": "eyes/human/adult/default/"
+  },
+  "variants": [
+    "blue",
+    "brown",
+    "gray",
+    "green",
+    "orange",
+    "purple",
+    "red",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "eyes/human/adult/default",
+      "notes": "original by Redshrike, mapped to all frames by Matthew Krohn & JaidynReiman",
+      "authors": [
+        "JaidynReiman",
+        "Matthew Krohn (makrohn)",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
+      ]
+    }
+  ]
+}

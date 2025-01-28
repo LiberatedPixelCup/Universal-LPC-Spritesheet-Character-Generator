@@ -28,7 +28,6 @@ canvas {
 
 body {
   margin: 10px 15px;
-  min-width: 1280px;
   font-size: 10pt;
   font-family: monospace;
 }
@@ -58,6 +57,9 @@ header > section {
 
 #preview-animations {
   padding-top: 15px;
+  z-index: 2;
+  opacity: 1;
+  background-color: white;
 }
 
 h1 {
@@ -105,16 +107,8 @@ p {
   max-width: calc(100vw - 80px);
 }
 
-#advanced {
-  float: left;
-}
-
 input[type=button], input[type=reset] {
   padding: 2px 1em;
-}
-
-#previewAnimationsBox {
-  margin-bottom: -64px;
 }
 
 #previewAnimationsBox > * {
@@ -143,7 +137,8 @@ input[type=button], input[type=reset] {
 #chooser {
   overflow-y: auto;
   min-width: 200px;
-  max-height: calc(100vh - 380px);
+  max-height: calc(100vh - 320px);
+  margin-top: 80px;
   margin-left: 15px;
   order: 2;
 }
@@ -165,23 +160,57 @@ input[type=button], input[type=reset] {
 }
 
 #credits, #advanced {
+  margin-top: 15px;
+  padding-top: 15px;
   margin-left: 15px;
 }
 
-/* tablet view 800 - 1280 px */
+summary {
+  display: none;
+}
+
+.ZPOS {
+  white-space: nowrap;
+}
+
+/* portrait mode 800 - 1280 px width, > 1200 px height */
 @media screen and (max-width: 1280px) {
+  body, header {
+    max-width: calc(100vw - 30px);
+  }
+
   header {
     flex-direction: column;
   }
 
+  #header-left {
+    width: calc(100vw - 140px);
+    min-height: 180px;
+    overflow-y: auto;
+  }
+
   #customizeChar {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
+    max-width: calc(100vw - 30px);
   }
 
   #preview {
     margin-top: 180px;
     max-height: none;
+    min-width: unset;
+  }
+
+  #preview.anim-canvas-64 {
+    margin-top: 244px;
+  }
+
+  #preview.anim-canvas-128 {
+    margin-top: 308px;
+  }
+
+  #preview.anim-canvas-192 {
+    margin-top: 372px;
   }
 
   #customizeChar > section {
@@ -191,6 +220,8 @@ input[type=button], input[type=reset] {
   #chooser {
     height: auto;
     max-height: none;
+    margin-top: -30px;
+    padding-top: 30px;
   }
 
   #controls {
@@ -202,24 +233,34 @@ input[type=button], input[type=reset] {
     padding-bottom: 20px;
   }
 
+  #controls>details[open] {
+    margin-left: -10px;
+    margin-bottom: -40px;
+    padding-left: 10px;
+    padding-bottom: 40px;
+  }
+
   /* override #customizeChar > section */
   #customizeChar > #controls {
-    width: 100%;
+    width: calc(100vw - 80px);
   }
 
   #preview-animations {
     margin-left: 15px;
     position: relative;
-    top: 150px;
-    z-index: 2;
-    opacity: 1;
-    background-color: white;
+    top: 130px;
     margin-top: -60px;
     padding-top: 40px;
-    width: 100%;
+    width: calc(100vw - 80px);
+  }
+
+  #credits {
+    margin-top: 0;
+    padding-top: 0;
   }
 }
 
+/* tablet view 800 - 1280 px, <= 1200 px height */
 @media screen and (max-width: 1280px) and (max-height: 1200px) {
   header {
     position: static;
@@ -236,12 +277,41 @@ input[type=button], input[type=reset] {
 
   #preview-animations {
     position: absolute;
-    z-index: 0;
-    top: 350px;
+    top: 340px;
+    margin-top: -40px;
+    padding-top: 40px;
+  }
+
+  #preview-animations.controls-open {
+    top: 260px;
   }
 
   #preview {
     margin-top: 260px;
+    padding-top: 30px;
+    min-width: unset;
+  }
+
+  summary {
+    display: list-item;
+  }
+
+  details {
+    position: relative;
+    top: -4rex;
+  }
+
+  #controls:has(>details:not([open])) {
+    position: relative;
+    top: 40px;
+  }
+
+  #preview:has(+#controls>details:not([open])) {
+    margin-top: 170px;
+  }
+
+  #preview:has(>details[open]) {
+    margin-bottom: 60px;
   }
 }
 
@@ -259,7 +329,7 @@ ul {
   list-style-type: none;
 }
 
-#chooser>ul {
+#chooser>details>ul {
   border-left: solid 1px silver;
   padding-left: 0.5em;
   margin-left: 0.5em;
@@ -287,7 +357,7 @@ ul {
   background-color: yellow;
 }
 
-#chooser>ul ul {
+#chooser>details>ul ul {
   display: none;
   margin-left: 0.5em;
   border-left:  solid 1px silver;
@@ -338,13 +408,7 @@ label[for="displayMode-compact"] {
 }
 
 #creditsText {
-  width: 100%;
-}
-
-#github {
-  position: fixed;
-  top: 0;
-  right: 0;
+  width: calc(100vw - 80px);
 }
 
 a {

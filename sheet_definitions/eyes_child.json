@@ -1,0 +1,45 @@
+{
+  "name": "Child Eyes",
+  "type_name": "eyes",
+  "layer_1": {
+    "zPos": 105,
+    "child": "eyes/human/child/"
+  },
+  "variants": [
+    "blue",
+    "brown",
+    "gray",
+    "green",
+    "orange",
+    "purple",
+    "red",
+    "yellow"
+  ],
+  "animations": [
+    "walk",
+    "slash",
+    "hurt",
+    "idle",
+    "jump",
+    "sit"
+  ],
+  "credits": [
+    {
+      "file": "eyes/human/child",
+      "notes": "original by Redshrike, mapped to all frames by Matthew Krohn & JaidynReiman",
+      "authors": [
+        "JaidynReiman",
+        "Matthew Krohn (makrohn)",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
+      ]
+    }
+  ]
+}

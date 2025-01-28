@@ -1,0 +1,60 @@
+{
+  "name": "Default Elderly Eyes",
+  "type_name": "eyes",
+  "layer_1": {
+    "zPos": 105,
+    "male": "eyes/human/elderly/default/",
+    "muscular": "eyes/human/elderly/default/",
+    "female": "eyes/human/elderly/default/",
+    "teen": "eyes/human/elderly/default/",
+    "pregnant": "eyes/human/elderly/default/"
+  },
+  "variants": [
+    "blue",
+    "brown",
+    "gray",
+    "green",
+    "orange",
+    "purple",
+    "red",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "eyes/human/elderly/default",
+      "notes": "original by Redshrike, Elders by ElizaWy, split from head and mapped to all frames by JaidynReiman",
+      "authors": [
+        "JaidynReiman",
+        "Matthew Krohn (makrohn)",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
+      ]
+    }
+  ]
+}
