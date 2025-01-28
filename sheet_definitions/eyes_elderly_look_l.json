@@ -1,0 +1,59 @@
+{
+  "name": "Elderly Eyes Looking Left",
+  "type_name": "eyes",
+  "layer_1": {
+    "zPos": 105,
+    "male": "eyes/human/elderly/look_l/",
+    "muscular": "eyes/human/elderly/look_l/",
+    "female": "eyes/human/elderly/look_l/",
+    "teen": "eyes/human/elderly/look_l/",
+    "pregnant": "eyes/human/elderly/look_l/"
+  },
+  "variants": [
+    "blue",
+    "brown",
+    "gray",
+    "green",
+    "orange",
+    "purple",
+    "red",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "eyes/human/elderly/look_l",
+      "notes": "original by Redshrike, Elders + Left Look Expression by ElizaWy, split from expression and mapped to all frames by JaidynReiman",
+      "authors": [
+        "JaidynReiman",
+        "ElizaWy",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://github.com/ElizaWy/LPC/tree/main/Characters/Head",
+        "https://opengameart.org/content/ulpc-expanded-expressions"
+      ]
+    }
+  ]
+}
