@@ -3,7 +3,7 @@
   "type_name": "eyes",
   "template": {
     "face": {
-      "default": "default",
+      "face_none": "default",
       "face_closing": "closing",
       "face_look_l": "look_l",
       "face_look_r": "look_r",
