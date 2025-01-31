@@ -395,21 +395,59 @@
 				<li data-required="male,female,muscular,pregnant,teen">
 					<span class="condensed">Face</span>
 					<ul>
-						div_sheet_face_closing
-						div_sheet_face_closed
-						div_sheet_face_look_r
-						div_sheet_face_look_l
-						div_sheet_face_eyeroll
-						div_sheet_face_shock
-						div_sheet_face_angry
-						div_sheet_face_angry2
-						div_sheet_face_sad
-						div_sheet_face_sad2
-						div_sheet_face_happy
-						div_sheet_face_happy2
-						div_sheet_face_blush
-						div_sheet_face_shame
-						div_sheet_face_tears
+						<!-- Male -->
+						<li>
+							<span class="condensed">Male Expressions</span>
+							<ul>
+								div_sheet_face_closing%head=human_male
+								div_sheet_face_closed%head=human_male
+								div_sheet_face_look_r%head=human_male
+								div_sheet_face_look_l%head=human_male
+								div_sheet_face_eyeroll%head=human_male
+								div_sheet_face_shock%head=human_male
+								div_sheet_face_angry%head=human_male
+								div_sheet_face_sad%head=human_male
+								div_sheet_face_happy%head=human_male
+								div_sheet_face_blush%head=human_male
+								div_sheet_face_shame%head=human_male
+							</ul>
+						</li>
+
+						<!-- Female -->
+						<li>
+							<span class="condensed">Female Expressions</span>
+							<ul>
+								div_sheet_face_closing%head=human_female
+								div_sheet_face_closed%head=human_female
+								div_sheet_face_look_r%head=human_female
+								div_sheet_face_look_l%head=human_female
+								div_sheet_face_eyeroll%head=human_female
+								div_sheet_face_shock%head=human_female
+								div_sheet_face_angry%head=human_female
+								div_sheet_face_sad%head=human_female
+								div_sheet_face_happy%head=human_female
+								div_sheet_face_blush%head=human_female
+								div_sheet_face_shame%head=human_female
+							</ul>
+						</li>
+
+						<!-- Elderly -->
+						<li>
+							<span class="condensed">Elderly Expressions</span>
+							<ul>
+								div_sheet_face_closing%head=human_elderly_small
+								div_sheet_face_closed%head=human_elderly_small
+								div_sheet_face_look_r%head=human_elderly_small
+								div_sheet_face_look_l%head=human_elderly_small
+								div_sheet_face_eyeroll%head=human_elderly_small
+								div_sheet_face_shock%head=human_elderly_small
+								div_sheet_face_angry%head=human_elderly_small
+								div_sheet_face_sad%head=human_elderly_small
+								div_sheet_face_happy%head=human_elderly_small
+								div_sheet_face_blush%head=human_elderly_small
+								div_sheet_face_shame%head=human_elderly_small
+							</ul>
+						</li>
 					</ul>
 				</li>
 
@@ -417,18 +455,40 @@
 				<li>
 					<span class="condensed">Eyes</span>
 					<ul>
-						div_sheet_eyes_adult
 						div_sheet_eyes_child
 						div_sheet_eyes_cyclops
-					</ul>
-				</li>
 
-				<!-- Eyebrows -->
-				<li>
-					<span class="condensed">Eyebrows</span>
-					<ul>
-						div_sheet_eyebrows_thick
-						div_sheet_eyebrows_thin
+						<!-- Adult -->
+						<li data-required="male,female,muscular,pregnant,teen">
+							<span class="condensed">Adult Human Eyes</span>
+							<ul>
+								div_sheet_eyes_adult%face=face_none
+								div_sheet_eyes_adult%face=face_closing
+								div_sheet_eyes_adult%face=face_look_r
+								div_sheet_eyes_adult%face=face_look_l
+								div_sheet_eyes_adult%face=face_eyeroll
+								div_sheet_eyes_adult%face=face_shock
+								div_sheet_eyes_adult%face=face_anger
+								div_sheet_eyes_adult%face=face_sad
+								div_sheet_eyes_adult%face=face_shame
+							</ul>
+						</li>
+
+						<!-- Child -->
+						<li data-required="male,female,muscular,pregnant,teen">
+							<span class="condensed">Child Human Eyes</span>
+							<ul>
+								div_sheet_eyes_child%face=face_none
+								div_sheet_eyes_child%face=face_closing
+								div_sheet_eyes_child%face=face_look_r
+								div_sheet_eyes_child%face=face_look_l
+								div_sheet_eyes_child%face=face_eyeroll
+								div_sheet_eyes_child%face=face_shock
+								div_sheet_eyes_child%face=face_anger
+								div_sheet_eyes_child%face=face_sad
+								div_sheet_eyes_child%face=face_shame
+							</ul>
+						</li>
 					</ul>
 				</li>
 
@@ -482,6 +542,15 @@
 						div_sheet_head_nose_straight
 						div_sheet_head_nose_elderly
 						div_sheet_head_nose_large
+					</ul>
+				</li>
+
+				<!-- Eyebrows -->
+				<li>
+					<span class="condensed">Eyebrows</span>
+					<ul>
+						div_sheet_eyebrows_thick
+						div_sheet_eyebrows_thin
 					</ul>
 				</li>
 

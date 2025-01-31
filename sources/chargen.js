@@ -15,22 +15,6 @@ function debounce(fn, delay) {
   };
 }
 
-function pushOntoArray(obj, key, value) {
-  if (obj[key]) {
-    obj[key].push(value);
-  } else {
-    obj[key] = [value];
-  }
-}
-
-function invertKeyValue(obj) {
-  const inverted = {};
-  Object.entries(obj).forEach(([key, val]) => {
-    pushOntoArray(inverted, val, key);
-  });
-  return inverted;
-}
-
 // DEBUG mode will be turned on if on localhost and off in production
 // but this can be overridden by adding debug=(true|false) to the querystring.
 /*
@@ -89,7 +73,7 @@ $(document).ready(function () {
 
   const sexes = ["male", "female", "teen", "child", "muscular", "pregnant"];
 
-  const allElements = document.querySelectorAll("*[id]");
+  const allElements = document.querySelectorAll("#chooser [id][type=radio]");
   const ids = Array.prototype.map.call(allElements, (el) => el.id);
 
   const getBodyTypeName = () => {
@@ -573,15 +557,34 @@ $(document).ready(function () {
     link.download = filename;
   }
 
-  function getElementByIdStart(ids, idPrefix) {
-    const re = new RegExp(String.raw`^${idPrefix}`, "i");
-    const els = [];
-    for (const id of ids) {
-      if (re.test(id)) {
-        els.push(document.getElementById(id));
+  function findIdsByRegExp(ids, regExps) {
+    const reLen = regExps.length;
+    const els = new Array(reLen);
+    for (let i = 0; i < reLen; ++i) {
+      els[i] = false;
+      const re = regExps[i];
+      for (const id of ids) {
+        if (re.test(id)) {
+          const el = document.getElementById(id);
+          if (el.checked) {
+            els[i] = true;
+            return els;
+          }
+        }
       }
     }
     return els;
+  }
+
+  function whichPropChecked(ids, key, vals) {
+    const regExps = vals.map(val => new RegExp(String.raw`^${key}-${val}`, "i"));
+    const els = findIdsByRegExp(ids, regExps);
+    for (let i = 0; i < vals.length; ++i) {
+      if (els[i] === true) {
+        return vals[i];
+      }
+    }
+    return "ERROR";
   }
 
   function whichPropCheckedExact(key, vals) {
@@ -589,18 +592,6 @@ $(document).ready(function () {
       const el = document.getElementById(`${key}-${val}`);
       if (el.checked) {
         return val;
-      }
-    }
-    return "ERROR";
-  }
-
-  function whichPropChecked(ids, key, vals) {
-    for (const val of vals) {
-      const els = getElementByIdStart(ids, `${key}-${val}`);
-      for (const el of els) {
-        if (el.checked) {
-          return val;
-        }
       }
     }
     return "ERROR";
@@ -891,9 +882,11 @@ $(document).ready(function () {
 
     $("#chooser li").each(function (index) {
       // Toggle Required Body Type
+      const $this = $(this);
+      const dataRequired = $this.data("required");
       let display = true;
-      if ($(this).data("required")) {
-        const requiredTypes = $(this).data("required").split(",");
+      if (dataRequired) {
+        const requiredTypes = dataRequired.split(",");
         if (!requiredTypes.includes(bodyType)) {
           display = false;
         }
@@ -901,7 +894,7 @@ $(document).ready(function () {
 
       if (display) {
         // Filter by template
-        const mungedTemplate = $(this)
+        const mungedTemplate = $this
           .find("input[type=radio]")
           .data("layer_1_template");
         if (mungedTemplate) {
@@ -916,8 +909,6 @@ $(document).ready(function () {
             const keys = Object.keys(parsedTemplate);
             for (const key of keys) {
               const requiredVals = Object.keys(parsedTemplate[key]);
-              // const reversedTemplate = invertKeyValue(parsedTemplate[key]);
-              // console.log('reversedTemplate', reversedTemplate);
               const prop = whichPropChecked(ids, key, requiredVals);
               if (prop === "ERROR") {
                 display = false;
@@ -930,13 +921,14 @@ $(document).ready(function () {
 
       if (display) {
         // Toggle Required Animations
-        if ($(this).data("animations") && selectedAnims.length > 0) {
-          const requiredAnimations = $(this).data("animations").split(",");
+        const anims = $this.data("animations");
+        if (anims && selectedAnims.length > 0) {
+          const requiredAnimations = anims.split(",");
           for (const selectedAnim of selectedAnims) {
             if (!requiredAnimations.includes(selectedAnim)) {
               display = false;
               if (
-                $(this).find("input[type=radio]:checked:not([id*=none])")
+                $this.find("input[type=radio]:checked:not([id*=none])")
                   .length > 0
               ) {
                 hasUnsupported = true;
@@ -949,17 +941,18 @@ $(document).ready(function () {
 
       // Display Result
       if (display) {
-        $(this).show();
+        $this.show();
       } else {
-        $(this).hide();
+        $this.hide();
       }
     });
 
     $("input[type=radio]").each(function () {
+      const $this = $(this);
       let display = true;
 
       // Toggle allowed licenses
-      const licenses = $(this).data(`layer_1_${getBodyTypeName()}_licenses`);
+      const licenses = $this.data(`layer_1_${getBodyTypeName()}_licenses`);
       if (licenses !== undefined) {
         const licensesForAsset = licenses.split(",");
         if (
@@ -968,7 +961,7 @@ $(document).ready(function () {
           )
         ) {
           display = false;
-          if ($(this).prop("checked")) {
+          if (this.checked) {
             hasProhibited = true;
           }
         }
@@ -976,9 +969,9 @@ $(document).ready(function () {
 
       // Display Result
       if (display) {
-        $(this).parent().show();
+        $this.parent().show();
       } else {
-        $(this).parent().hide();
+        $this.parent().hide();
       }
     });
 

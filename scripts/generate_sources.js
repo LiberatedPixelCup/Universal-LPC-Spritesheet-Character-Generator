@@ -54,11 +54,6 @@ function parseJson(json) {
     searchFileName = searchFileName.substring(0, templateIndex);
     const query = json.substring(templateIndex + 1);
     queryObj = Object.fromEntries(new URLSearchParams(query));
-    const replObj = Object.fromEntries(
-      Object.keys(queryObj).map((key) => [key, ""])
-    );
-    searchFileName = es6DynamicTemplate(searchFileName, replObj)
-      .replace(/_+/, "_");
   }
   const filePath = `sheet_definitions/${searchFileName}.json`;
   if (DEBUG && (!onlyIfTemplate || queryObj))
@@ -102,15 +97,20 @@ function parseJson(json) {
 
   const endHTML = "</ul></li>";
 
-  var idx = 0;
   var listItemsHTML = `<li><input type="radio" id="${typeName}-none_${name}" name="${typeName}"> <label for="${typeName}-none">No ${typeName}</label></li>`;
   var listItemsCSV = "";
   var addedCreditsFor = [];
   for (const variant of variants) {
-    const itemName = variants[idx];
+    const itemName = variant;
     const snakeName = name.replaceAll(" ", "_");
-    const snakeItemName = itemName.replaceAll(" ", "_")
+    let snakeItemName = itemName.replaceAll(" ", "_");
+    if (queryObj) {
+      const queryVals = Object.values(queryObj).join("_")
+      snakeItemName = queryVals + "_" + snakeItemName;
+    }
     const itemIdFor = `${typeName}-${snakeName}_${snakeItemName}`;
+    if (DEBUG && (!onlyIfTemplate || queryObj))
+      console.log(itemIdFor)
     var matchBodyColor = false;
     if (definition[`match_body_color`] !== undefined) {
       matchBodyColor = true;
@@ -139,7 +139,17 @@ function parseJson(json) {
                 fileNameForCreditSearch,
                 queryObj
               );
-              imageFileName = es6DynamicTemplate(imageFileName, queryObj);
+              if (template) {
+                const replacements = Object.fromEntries(
+                  Object.entries(queryObj)
+                   .map(([key, val]) => ([key, template[key][val]] ?? val))
+                );
+                console.log(imageFileName);
+                console.log(replacements);
+                imageFileName = es6DynamicTemplate(imageFileName, replacements);
+              } else {
+                console.error('template missing for', filePath);
+              }
             }
             if (DEBUG && (!onlyIfTemplate || queryObj))
               console.log(
@@ -201,7 +211,6 @@ function parseJson(json) {
       .replaceAll("[MATCH_BODY_COLOR]", matchBodyColor)
       .replaceAll("[VARIANT]", itemName)
       .replaceAll("[DATA_FILE]", dataFiles);
-    idx += 1;
   }
   const html = startHTML + listItemsHTML + endHTML;
   let parsed = {};
