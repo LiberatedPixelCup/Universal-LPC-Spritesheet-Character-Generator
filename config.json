@@ -1,0 +1,32 @@
+{
+  "sheet_definitions_path": "sheet_definitions",
+  "output_dir": "tmp",
+  "sprites": [
+    {
+      "definition_name": "arms_armour",
+      "variant": "steel",
+      "sex": "male",
+      "output_name": "arms_armour_steel_male.png",
+      "template_params": {
+        "color": "steel",
+        "style": "default"
+      }
+    },
+    {
+      "definition_name": "arms_armour",
+      "variant": "gold",
+      "sex": "female",
+      "output_name": "arms_armour_gold_female.png"
+    }
+  ],
+  "batch_jobs": [
+    {
+      "definition_name": "arms_armour",
+      "variants": ["steel", "gold"],
+      "sexes": ["male", "female"],
+      "template_params": {
+        "style": "fancy"
+      }
+    }
+  ]
+}

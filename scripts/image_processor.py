@@ -1,5 +1,6 @@
 import json
 import os
+from pathlib import Path
 from PIL import Image
 from typing import Dict, List, Optional, Union
 
@@ -149,3 +150,49 @@ class SpriteLayerer:
                     print(f"Generated {output_path}")
                 except (ValueError, FileNotFoundError) as e:
                     print(f"Error processing {output_name}: {str(e)}")
+
+    def process_config(self, config_path: str) -> None:
+        """
+        Process sprites based on a configuration file.
+        
+        Args:
+            config_path: Path to the JSON configuration file
+        """
+        with open(config_path, 'r') as f:
+            config = json.load(f)
+
+        # Update sheet definitions path if specified
+        if "sheet_definitions_path" in config:
+            self.sheet_definitions_path = config["sheet_definitions_path"]
+
+        # Create output directory
+        output_dir = config.get("output_dir", "output")
+        os.makedirs(output_dir, exist_ok=True)
+
+        # Process individual sprites
+        for sprite in config.get("sprites", []):
+            try:
+                output_path = os.path.join(output_dir, sprite["output_name"])
+                self.layer_images(
+                    sprite["definition_name"],
+                    sprite["variant"],
+                    sprite["sex"],
+                    output_path,
+                    sprite.get("template_params")
+                )
+                print(f"Generated {output_path}")
+            except (KeyError, ValueError, FileNotFoundError) as e:
+                print(f"Error processing sprite {sprite.get('output_name', 'unknown')}: {str(e)}")
+
+        # Process batch jobs
+        for job in config.get("batch_jobs", []):
+            try:
+                self.batch_process(
+                    job["definition_name"],
+                    output_dir,
+                    job.get("variants"),
+                    job.get("sexes"),
+                    job.get("template_params")
+                )
+            except (KeyError, ValueError, FileNotFoundError) as e:
+                print(f"Error processing batch job for {job.get('definition_name', 'unknown')}: {str(e)}")

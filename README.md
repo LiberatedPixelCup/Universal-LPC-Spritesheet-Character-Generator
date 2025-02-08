@@ -137,28 +137,61 @@ A Python module is available to programmatically layer sprite images based on JS
 
 #### Basic Usage
 
-```python
-from image_processor import SpriteLayerer
+The Python image processor can be configured using a JSON configuration file. Here's an example:
 
-# Initialize the sprite layerer
-layerer = SpriteLayerer()
-
-# Process a single variant and sex
-layerer.layer_images(
-    definition_name="arms_armour",  # JSON file name without extension
-    variant="steel",                # One of the variants from the JSON
-    sex="male",                     # One of: male, female, teen, child, muscular, pregnant
-    output_path="output/arms_armour_steel_male.png"
-)
-
-# Batch process multiple variants and sexes
-layerer.batch_process(
-    definition_name="arms_armour",
-    output_dir="output",
-    variants=["steel", "gold"],     # Optional: specific variants to process
-    sexes=["male", "female"]        # Optional: specific sexes to process
-)
+1. Create a configuration file `config.json`:
+```json
+{
+  "sheet_definitions_path": "sheet_definitions",
+  "output_dir": "tmp",
+  "sprites": [
+    {
+      "definition_name": "arms_armour",
+      "variant": "steel",
+      "sex": "male",
+      "output_name": "arms_armour_steel_male.png",
+      "template_params": {
+        "color": "steel",
+        "style": "default"
+      }
+    }
+  ],
+  "batch_jobs": [
+    {
+      "definition_name": "arms_armour",
+      "variants": ["steel", "gold"],
+      "sexes": ["male", "female"],
+      "template_params": {
+        "style": "fancy"
+      }
+    }
+  ]
+}
 ```
+
+2. Run the processor:
+```bash
+python scripts/example.py config.json
+```
+
+The configuration file supports:
+- `sheet_definitions_path`: Path to JSON definition files (optional, default: "sheet_definitions")
+- `output_dir`: Directory for output files (optional, default: "output")
+- `sprites`: List of individual sprites to generate
+- `batch_jobs`: List of batch jobs to process multiple variants/sexes at once
+
+Each sprite in `sprites` requires:
+- `definition_name`: JSON file name without extension
+- `variant`: One of the variants from the JSON
+- `sex`: One of: male, female, teen, child, muscular, pregnant
+- `output_name`: Output file name
+- `template_params`: Optional template parameters
+
+Each job in `batch_jobs` requires:
+- `definition_name`: JSON file name without extension
+- `variants`: Optional list of variants to process
+- `sexes`: Optional list of sexes to process
+- `template_params`: Optional template parameters
 
 #### Features
 
