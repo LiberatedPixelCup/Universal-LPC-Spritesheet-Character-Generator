@@ -217,13 +217,61 @@ The `config.json` file supports the following options:
    }
    ```
 
+##### Directory Structure
+
+The processor expects sprite images to be organized in the following structure:
+```
+spritesheets/
+  └── category/
+      └── type/
+          └── style/
+              └── sex/
+                  ├── hurt/
+                  │   └── variant.png
+                  ├── shoot/
+                  │   └── variant.png
+                  ├── slash/
+                  │   └── variant.png
+                  ├── spellcast/
+                  │   └── variant.png
+                  ├── thrust/
+                  │   └── variant.png
+                  └── walk/
+                      └── variant.png
+```
+
+For example:
+```
+spritesheets/
+  └── arms/
+      └── armour/
+          └── plate/
+              ├── male/
+              │   ├── hurt/
+              │   │   ├── steel.png
+              │   │   └── gold.png
+              │   └── walk/
+              │       ├── steel.png
+              │       └── gold.png
+              └── female/
+                  ├── hurt/
+                  │   ├── steel.png
+                  │   └── gold.png
+                  └── walk/
+                      ├── steel.png
+                      └── gold.png
+```
+
 ##### Output Structure
 
 The processor will:
 1. Create the output directory if it doesn't exist
 2. Generate individual sprites as specified in `sprites`
 3. Process any batch jobs, creating files named `{definition_name}_{variant}_{sex}.png`
-4. Maintain the original transparency and layer order from the source images
+4. Combine all animations (hurt, shoot, slash, etc.) horizontally in the output image
+5. Maintain the original transparency and layer order from the source images
+
+Each output image will contain all animation frames laid out horizontally in the order specified by the definition's `animations` list (or using the default animation order if not specified).
 
 ##### Error Handling
 
