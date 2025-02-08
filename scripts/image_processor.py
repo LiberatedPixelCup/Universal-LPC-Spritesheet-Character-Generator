@@ -13,8 +13,7 @@ class SpriteLayerer:
             "walk",
             "slash",
             "shoot",
-            "hurt",
-            "watering",
+            "hurt"
         ]
         self.supported_sexes = ["male", "female", "teen", "child", "muscular", "pregnant"]
 
