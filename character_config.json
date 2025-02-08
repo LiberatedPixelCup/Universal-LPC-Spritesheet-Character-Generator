@@ -1,0 +1,43 @@
+{
+    "output_dir": "tmp",
+    "characters": [
+        {
+            "name": "warrior_male",
+            "sex": "male",
+            "body_variant": "light",
+            "components": {
+                "hair": {
+                    "style": "long",
+                    "variant": "black"
+                },
+                "eyes": {
+                    "style": "normal",
+                    "variant": "blue"
+                },
+                "torso": {
+                    "style": "clothes_shirt",
+                    "variant": "white"
+                }
+            }
+        },
+        {
+            "name": "mage_female",
+            "sex": "female",
+            "body_variant": "light",
+            "components": {
+                "hair": {
+                    "style": "long",
+                    "variant": "blonde"
+                },
+                "eyes": {
+                    "style": "normal",
+                    "variant": "green"
+                },
+                "torso": {
+                    "style": "clothes_robe",
+                    "variant": "blue"
+                }
+            }
+        }
+    ]
+}
