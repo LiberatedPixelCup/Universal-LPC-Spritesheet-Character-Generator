@@ -35,9 +35,13 @@ class SpriteLayerer:
         """Get list of supported animations from the definition."""
         return definition.get("animations", self.default_animations)
 
-    def get_image_path(self, base_path: str, variant: str) -> str:
-        """Construct full image path from base path and variant."""
-        return f"{base_path}{variant}.png"
+    def get_image_paths(self, base_path: str, variant: str, animations: List[str]) -> List[str]:
+        """
+        Construct full image paths for all animations from base path and variant.
+        Returns a list of paths in the order of animations.
+        """
+        base_path = os.path.join("spritesheets", base_path)
+        return [os.path.join(base_path, anim, f"{variant}.png") for anim in animations]
 
     def layer_images(
         self,
@@ -66,10 +70,8 @@ class SpriteLayerer:
         if variant not in definition["variants"]:
             raise ValueError(f"Variant '{variant}' not found in definition {definition_name}")
 
-        # Create a new transparent image for the base
-        # Assuming standard spritesheet size - this could be made configurable
-        width, height = 832, 1344  # 13 columns × 21 rows × 64 pixels
-        final_image = Image.new("RGBA", (width, height), (0, 0, 0, 0))
+        # Create a new transparent image - size will be set when processing first layer
+        final_image = Image.new("RGBA", (1, 1), (0, 0, 0, 0))
 
         # Layer each defined layer
         for layer_idx in range(1, 10):  # Support up to 9 layers
@@ -93,18 +95,43 @@ class SpriteLayerer:
                 for old, new in definition["replace_in_path"].items():
                     base_path = base_path.replace(old, new)
 
-            image_path = self.get_image_path(base_path, variant)
+            # Get paths for all animations
+            animations = self.get_animations(definition)
+            image_paths = self.get_image_paths(base_path, variant, animations)
             
-            try:
-                layer_image = Image.open(image_path)
-                if layer_image.mode != "RGBA":
-                    layer_image = layer_image.convert("RGBA")
-                
-                # Composite the layer onto the final image
-                final_image = Image.alpha_composite(final_image, layer_image)
-            except FileNotFoundError:
-                print(f"Warning: Image not found at {image_path}")
+            # Create a composite image from all animations
+            animation_images = []
+            for path in image_paths:
+                try:
+                    img = Image.open(path)
+                    if img.mode != "RGBA":
+                        img = img.convert("RGBA")
+                    animation_images.append(img)
+                except FileNotFoundError:
+                    print(f"Warning: Image not found at {path}")
+                    continue
+            
+            if not animation_images:
+                print(f"Warning: No images found for {base_path} {variant}")
                 continue
+            
+            # Calculate the total width and height for all animations
+            total_width = sum(img.width for img in animation_images)
+            max_height = max(img.height for img in animation_images)
+            
+            # Create a new image to hold all animations
+            combined = Image.new("RGBA", (total_width, max_height), (0, 0, 0, 0))
+            
+            # Paste each animation image
+            x_offset = 0
+            for img in animation_images:
+                combined.paste(img, (x_offset, 0), img)
+                x_offset += img.width
+            
+            # Composite the combined layer onto the final image
+            if final_image.size != combined.size:
+                final_image = Image.new("RGBA", combined.size, (0, 0, 0, 0))
+            final_image = Image.alpha_composite(final_image, combined)
 
         # Save the final layered image
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
