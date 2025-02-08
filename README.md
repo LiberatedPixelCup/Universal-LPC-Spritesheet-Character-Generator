@@ -95,11 +95,157 @@ You may instead wish to use a web server locally for development. Some free reco
 - brew serve (Mac only)
 - Lighttpd
 
-#### Python Image Processor
+#### Python Character Generator
 
-The project includes a Python module for programmatically generating sprite sheets. This is useful for batch processing or automation workflows.
+The project includes Python modules for programmatically generating character sprites. There are two approaches available:
+
+#### 1. Component-Based Character Generator
+
+This generator creates complete characters by layering different components (body, hair, eyes, clothes, etc.) from the spritesheets directory. This is the recommended approach for creating full characters.
 
 ##### Setup
+
+1. Requirements:
+   ```bash
+   pip install pillow
+   ```
+
+2. Create a configuration file `character_config.json`:
+   ```json
+   {
+       "output_dir": "tmp",
+       "characters": [
+           {
+               "name": "warrior_male",
+               "sex": "male",
+               "body_variant": "light",
+               "components": {
+                   "hair": {
+                       "style": "long",
+                       "variant": "black"
+                   },
+                   "eyes": {
+                       "style": "normal",
+                       "variant": "blue"
+                   },
+                   "torso": {
+                       "style": "clothes_shirt",
+                       "variant": "white"
+                   }
+               }
+           }
+       ]
+   }
+   ```
+
+3. Run the generator:
+   ```bash
+   python scripts/generate_character.py character_config.json
+   ```
+
+##### Configuration Options
+
+1. Global Settings:
+   - `output_dir` (optional): Directory for output files (default: "output")
+
+2. Character Configuration:
+   - `name` (required): Output filename (without .png)
+   - `sex` (required): One of: male, female, teen, child, muscular, pregnant
+   - `body_variant` (optional): Body base variant (default: "light")
+   - `components` (optional): Dictionary of components to layer
+
+3. Component Structure:
+   Each component in the `components` dictionary needs:
+   - `style`: The style/type of the component (e.g., "long" for hair)
+   - `variant`: The specific variant of that style (e.g., "black" for hair color)
+
+##### Available Components
+
+Components are organized in the spritesheets directory:
+
+1. Base Body (Required):
+   - Location: `spritesheets/body/bodies/`
+   - Variants: light, dark, orc, etc.
+
+2. Hair:
+   - Location: `spritesheets/hair/`
+   - Styles: long, short, braid, etc.
+   - Variants: black, blonde, brown, etc.
+
+3. Eyes:
+   - Location: `spritesheets/eyes/`
+   - Styles: normal, cyclops, etc.
+   - Variants: blue, green, brown, etc.
+
+4. Clothing:
+   - Location: `spritesheets/torso/`
+   - Styles: clothes_shirt, clothes_robe, armour, etc.
+   - Variants: white, blue, steel, etc.
+
+##### Example Configurations
+
+1. Simple Warrior:
+   ```json
+   {
+       "output_dir": "tmp",
+       "characters": [
+           {
+               "name": "warrior",
+               "sex": "male",
+               "body_variant": "light",
+               "components": {
+                   "hair": {"style": "short", "variant": "brown"},
+                   "torso": {"style": "armour", "variant": "steel"}
+               }
+           }
+       ]
+   }
+   ```
+
+2. Multiple Characters:
+   ```json
+   {
+       "output_dir": "tmp/party",
+       "characters": [
+           {
+               "name": "warrior",
+               "sex": "male",
+               "components": {
+                   "hair": {"style": "short", "variant": "brown"},
+                   "torso": {"style": "armour", "variant": "steel"}
+               }
+           },
+           {
+               "name": "mage",
+               "sex": "female",
+               "components": {
+                   "hair": {"style": "long", "variant": "blonde"},
+                   "torso": {"style": "clothes_robe", "variant": "blue"}
+               }
+           }
+       ]
+   }
+   ```
+
+##### Output Format
+
+The generator will:
+1. Create a spritesheet for each character
+2. Include all standard animations (spellcast, thrust, walk, slash, shoot, hurt)
+3. Maintain proper layering and transparency
+4. Save as PNG with transparency
+
+##### Error Handling
+
+Common issues and solutions:
+- Missing component: Check if the style and variant exist in spritesheets/
+- Incorrect sex type: Use one of the supported types
+- Layer order issues: Components are layered in the order specified
+- Missing animations: Ensure the component has all required animations
+
+#### 2. Individual Component Processor
+
+The project also includes a module for processing individual sprite components. This is useful for development and testing.
 
 1. Requirements:
    ```bash
