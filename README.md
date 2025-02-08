@@ -80,6 +80,8 @@ Also, each animation has a frame cycle documented which you can see next to the 
 
 ### Run
 
+#### Web Interface
+
 Traditionally, you could run this project, by opening `index.html` in your browser of choice.
 However, today's browsers have some security restrictions that do make this somewhat impractical.
 You will likely have to change your browser's settings to enable it to open a file url this way.
@@ -92,6 +94,147 @@ You may instead wish to use a web server locally for development. Some free reco
 - npx serve
 - brew serve (Mac only)
 - Lighttpd
+
+#### Python Image Processor
+
+The project includes a Python module for programmatically generating sprite sheets. This is useful for batch processing or automation workflows.
+
+##### Setup
+
+1. Requirements:
+   ```bash
+   pip install pillow
+   ```
+
+2. Create a configuration file `config.json`:
+   ```json
+   {
+     "sheet_definitions_path": "sheet_definitions",
+     "output_dir": "tmp",
+     "sprites": [
+       {
+         "definition_name": "arms_armour",
+         "variant": "steel",
+         "sex": "male",
+         "output_name": "steel_male_armour.png"
+       },
+       {
+         "definition_name": "arms_armour",
+         "variant": "gold",
+         "sex": "female",
+         "output_name": "gold_female_armour.png",
+         "template_params": {
+           "style": "fancy"
+         }
+       }
+     ],
+     "batch_jobs": [
+       {
+         "definition_name": "arms_armour",
+         "variants": ["steel", "gold", "silver"],
+         "sexes": ["male", "female"],
+         "template_params": {
+           "style": "default"
+         }
+       }
+     ]
+   }
+   ```
+
+3. Run the processor:
+   ```bash
+   python scripts/example.py config.json
+   ```
+
+##### Configuration Options
+
+The `config.json` file supports the following options:
+
+1. Global Settings:
+   - `sheet_definitions_path` (optional): Path to JSON definition files (default: "sheet_definitions")
+   - `output_dir` (optional): Directory for output files (default: "output")
+
+2. Individual Sprites (`sprites` array):
+   - `definition_name` (required): JSON file name without extension (e.g., "arms_armour")
+   - `variant` (required): One of the variants defined in the JSON file
+   - `sex` (required): One of: male, female, teen, child, muscular, pregnant
+   - `output_name` (required): Output file name (e.g., "my_sprite.png")
+   - `template_params` (optional): Parameters for template substitution
+
+3. Batch Jobs (`batch_jobs` array):
+   - `definition_name` (required): JSON file name without extension
+   - `variants` (optional): List of variants to process (default: all variants)
+   - `sexes` (optional): List of sexes to process (default: all supported sexes)
+   - `template_params` (optional): Parameters for template substitution
+
+##### Example Configurations
+
+1. Basic Single Sprite:
+   ```json
+   {
+     "output_dir": "tmp",
+     "sprites": [
+       {
+         "definition_name": "arms_armour",
+         "variant": "steel",
+         "sex": "male",
+         "output_name": "steel_male_armour.png"
+       }
+     ]
+   }
+   ```
+
+2. Multiple Sprites with Templates:
+   ```json
+   {
+     "output_dir": "tmp/armour",
+     "sprites": [
+       {
+         "definition_name": "arms_armour",
+         "variant": "gold",
+         "sex": "female",
+         "output_name": "fancy_gold_armour.png",
+         "template_params": {
+           "style": "fancy",
+           "trim": "gold"
+         }
+       }
+     ]
+   }
+   ```
+
+3. Batch Processing:
+   ```json
+   {
+     "output_dir": "tmp/batch",
+     "batch_jobs": [
+       {
+         "definition_name": "arms_armour",
+         "variants": ["steel", "gold"],
+         "sexes": ["male", "female"]
+       }
+     ]
+   }
+   ```
+
+##### Output Structure
+
+The processor will:
+1. Create the output directory if it doesn't exist
+2. Generate individual sprites as specified in `sprites`
+3. Process any batch jobs, creating files named `{definition_name}_{variant}_{sex}.png`
+4. Maintain the original transparency and layer order from the source images
+
+##### Error Handling
+
+The processor provides error messages for common issues:
+- Missing or invalid configuration file
+- Invalid sprite definition names
+- Unsupported variants or sex types
+- Missing template parameters
+- File system access errors
+
+For debugging, use the error messages to identify which sprite or batch job failed and why.
 
 ### FAQ
 
