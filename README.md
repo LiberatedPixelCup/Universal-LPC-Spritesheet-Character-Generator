@@ -219,24 +219,33 @@ The `config.json` file supports the following options:
 
 ##### Directory Structure
 
-The processor expects sprite images to be organized in the following structure:
+The processor expects sprite images to be organized in the following structure under the `spritesheets` directory. Each sprite must include the following animation types:
+
+- spellcast
+- thrust
+- walk
+- slash
+- shoot
+- hurt
+
+Directory structure example:
 ```
 spritesheets/
   └── category/
       └── type/
           └── style/
               └── sex/
-                  ├── hurt/
-                  │   └── variant.png
-                  ├── shoot/
-                  │   └── variant.png
-                  ├── slash/
-                  │   └── variant.png
                   ├── spellcast/
                   │   └── variant.png
                   ├── thrust/
                   │   └── variant.png
-                  └── walk/
+                  ├── walk/
+                  │   └── variant.png
+                  ├── slash/
+                  │   └── variant.png
+                  ├── shoot/
+                  │   └── variant.png
+                  └── hurt/
                       └── variant.png
 ```
 
