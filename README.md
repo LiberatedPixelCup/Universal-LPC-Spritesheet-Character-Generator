@@ -126,5 +126,95 @@ You may instead wish to use a web server locally for development. Some free reco
 
 - [lpctools](https://github.com/bluecarrot16/lpctools)
 
+### Python Image Processor
+
+A Python module is available to programmatically layer sprite images based on JSON configuration files. The module is located in `scripts/image_processor.py`.
+
+#### Requirements
+
+- Python 3.x
+- Pillow (PIL) library: `pip install pillow`
+
+#### Basic Usage
+
+```python
+from image_processor import SpriteLayerer
+
+# Initialize the sprite layerer
+layerer = SpriteLayerer()
+
+# Process a single variant and sex
+layerer.layer_images(
+    definition_name="arms_armour",  # JSON file name without extension
+    variant="steel",                # One of the variants from the JSON
+    sex="male",                     # One of: male, female, teen, child, muscular, pregnant
+    output_path="output/arms_armour_steel_male.png"
+)
+
+# Batch process multiple variants and sexes
+layerer.batch_process(
+    definition_name="arms_armour",
+    output_dir="output",
+    variants=["steel", "gold"],     # Optional: specific variants to process
+    sexes=["male", "female"]        # Optional: specific sexes to process
+)
+```
+
+#### Features
+
+- **Layer Support**: Handles up to 9 layers per sprite (layer_1 through layer_9)
+- **Template Substitution**: Supports dynamic path templates from JSON definitions
+- **Path Replacements**: Handles path replacements specified in JSON definitions
+- **Multiple Sex Types**: Supports all base types (male, female, teen, child, muscular, pregnant)
+- **Batch Processing**: Can process multiple variants and sex types in one call
+- **Error Handling**: Gracefully handles missing images and invalid configurations
+- **Transparent Backgrounds**: Uses RGBA mode for proper transparency
+
+#### Advanced Usage
+
+1. **Template Parameters**:
+```python
+# For JSON definitions that use templates
+layerer.layer_images(
+    definition_name="my_template_def",
+    variant="basic",
+    sex="male",
+    output_path="output/result.png",
+    template_params={
+        "color": "red",
+        "style": "fancy"
+    }
+)
+```
+
+2. **Custom Sheet Definitions Path**:
+```python
+# If your JSON definitions are in a different directory
+layerer = SpriteLayerer(sheet_definitions_path="my/custom/path")
+```
+
+3. **Selective Batch Processing**:
+```python
+# Process specific combinations
+layerer.batch_process(
+    definition_name="arms_armour",
+    output_dir="output",
+    variants=["steel", "gold"],
+    sexes=["male"],
+    template_params={"style": "fancy"}
+)
+```
+
+#### Error Handling
+
+The module includes error handling for common issues:
+- Invalid sex type for the definition
+- Invalid variant name
+- Missing image files
+- Invalid JSON structure
+- Missing required fields
+
+Errors are reported with descriptive messages to help identify and fix issues.
+
 ### Examples
 ![example](/readme-images/example.png)
