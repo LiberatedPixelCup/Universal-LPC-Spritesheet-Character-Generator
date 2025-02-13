@@ -2,7 +2,7 @@
   "name": "Side Cat Ears",
   "type_name": "ears",
   "layer_1": {
-    "zPos": 130,
+    "zPos": 126,
     "male": "head/ears/zabos/adult/",
     "muscular": "head/ears/zabos/adult/",
     "female": "head/ears/zabos/adult/",

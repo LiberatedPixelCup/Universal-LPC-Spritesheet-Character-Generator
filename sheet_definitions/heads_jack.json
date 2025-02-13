@@ -1,6 +1,7 @@
 {
   "name": "Jack O Lantern",
   "type_name": "head",
+  "tags": ["monster"],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/jack/adult/",

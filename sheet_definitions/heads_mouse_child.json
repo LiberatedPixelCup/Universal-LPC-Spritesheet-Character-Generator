@@ -1,6 +1,7 @@
 {
   "name": "Mouse child",
   "type_name": "head",
+  "tags": ["animal", "child"],
   "layer_1": {
     "zPos": 100,
     "child": "head/heads/mouse/child/"

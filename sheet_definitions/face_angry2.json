@@ -1,6 +1,8 @@
 {
   "name": "Angry Alt",
   "type_name": "expression",
+  "tags": ["expression"],
+  "required_tags": ["human"],
   "layer_1": {
     "zPos": 106,
     "male": "head/faces/global/angry2/",

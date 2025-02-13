@@ -348,27 +348,27 @@ hat_visor_round.json,layer_1,132,hat/visor/round/adult/ hat/visor/round/adult/ h
 hat_visor_round_raised.json,layer_1,132,hat/visor/round_raised/adult/ hat/visor/round_raised/adult/ hat/visor/round_raised/adult/ hat/visor/round_raised/adult/
 hat_visor_slit.json,layer_1,132,hat/visor/slit/adult/ hat/visor/slit/adult/ hat/visor/slit/adult/ hat/visor/slit/adult/
 hat_visor_slit_narrow.json,layer_1,132,hat/visor/slit/adult/ hat/visor/slit/adult/ hat/visor/slit/adult/ hat/visor/slit/adult/
-head_ears_avyon.json,layer_1,130,head/ears/avyon/adult/ head/ears/avyon/adult/ head/ears/avyon/adult/ head/ears/avyon/adult/ head/ears/avyon/child/
-head_ears_avyon_skin.json,layer_1,131,head/ears/avyon/skin/adult/ head/ears/avyon/skin/adult/ head/ears/avyon/skin/adult/ head/ears/avyon/skin/adult/ head/ears/avyon/skin/child/
+head_ears_avyon.json,layer_1,126,head/ears/avyon/adult/ head/ears/avyon/adult/ head/ears/avyon/adult/ head/ears/avyon/adult/ head/ears/avyon/child/
+head_ears_avyon_skin.json,layer_1,127,head/ears/avyon/skin/adult/ head/ears/avyon/skin/adult/ head/ears/avyon/skin/adult/ head/ears/avyon/skin/adult/ head/ears/avyon/skin/child/
 head_ears_big.json,layer_1,105,head/ears/big/adult/ head/ears/big/adult/ head/ears/big/adult/ head/ears/big/adult/ head/ears/big/child/
 head_ears_cat.json,layer_1,130,head/ears/cat/adult_front/ head/ears/cat/adult_front/ head/ears/cat/adult_front/ head/ears/cat/adult_front/ head/ears/cat/child_front/
 head_ears_cat.json,layer_2,8,head/ears/cat/adult_back/ head/ears/cat/adult_back/ head/ears/cat/adult_back/ head/ears/cat/adult_back/ head/ears/cat/child_back/
 head_ears_cat_skin.json,layer_1,131,head/ears/cat/skin/adult_front/ head/ears/cat/skin/adult_front/ head/ears/cat/skin/adult_front/ head/ears/cat/skin/adult_front/ head/ears/cat/skin/child_front/
 head_ears_cat_skin.json,layer_2,9,head/ears/cat/skin/adult_back/ head/ears/cat/skin/adult_back/ head/ears/cat/skin/adult_back/ head/ears/cat/skin/adult_back/ head/ears/cat/skin/child_back/
-head_ears_down.json,layer_1,130,head/ears/down/adult/ head/ears/down/adult/ head/ears/down/adult/ head/ears/down/adult/ head/ears/down/child/
-head_ears_dragon.json,layer_1,130,head/ears/dragon/adult/ head/ears/dragon/adult/ head/ears/dragon/adult/ head/ears/dragon/adult/ head/ears/dragon/child/
-head_ears_elven.json,layer_1,130,head/ears/elven/adult/ head/ears/elven/adult/ head/ears/elven/adult/ head/ears/elven/adult/ head/ears/elven/child/
-head_ears_hang.json,layer_1,130,head/ears/hang/adult/ head/ears/hang/adult/ head/ears/hang/adult/ head/ears/hang/adult/ head/ears/hang/child/
-head_ears_long.json,layer_1,130,head/ears/long/adult/ head/ears/long/adult/ head/ears/long/adult/ head/ears/long/adult/ head/ears/long/child/
-head_ears_lykon.json,layer_1,130,head/ears/lykon/adult/ head/ears/lykon/adult/ head/ears/lykon/adult/ head/ears/lykon/adult/ head/ears/lykon/child/
-head_ears_lykon_skin.json,layer_1,131,head/ears/lykon/skin/adult/ head/ears/lykon/skin/adult/ head/ears/lykon/skin/adult/ head/ears/lykon/skin/adult/ head/ears/lykon/skin/child/
-head_ears_medium.json,layer_1,130,head/ears/medium/adult/ head/ears/medium/adult/ head/ears/medium/adult/ head/ears/medium/adult/ head/ears/medium/child/
+head_ears_down.json,layer_1,126,head/ears/down/adult/ head/ears/down/adult/ head/ears/down/adult/ head/ears/down/adult/ head/ears/down/child/
+head_ears_dragon.json,layer_1,126,head/ears/dragon/adult/ head/ears/dragon/adult/ head/ears/dragon/adult/ head/ears/dragon/adult/ head/ears/dragon/child/
+head_ears_elven.json,layer_1,126,head/ears/elven/adult/ head/ears/elven/adult/ head/ears/elven/adult/ head/ears/elven/adult/ head/ears/elven/child/
+head_ears_hang.json,layer_1,126,head/ears/hang/adult/ head/ears/hang/adult/ head/ears/hang/adult/ head/ears/hang/adult/ head/ears/hang/child/
+head_ears_long.json,layer_1,126,head/ears/long/adult/ head/ears/long/adult/ head/ears/long/adult/ head/ears/long/adult/ head/ears/long/child/
+head_ears_lykon.json,layer_1,126,head/ears/lykon/adult/ head/ears/lykon/adult/ head/ears/lykon/adult/ head/ears/lykon/adult/ head/ears/lykon/child/
+head_ears_lykon_skin.json,layer_1,127,head/ears/lykon/skin/adult/ head/ears/lykon/skin/adult/ head/ears/lykon/skin/adult/ head/ears/lykon/skin/adult/ head/ears/lykon/skin/child/
+head_ears_medium.json,layer_1,126,head/ears/medium/adult/ head/ears/medium/adult/ head/ears/medium/adult/ head/ears/medium/adult/ head/ears/medium/child/
 head_ears_wolf.json,layer_1,130,head/ears/wolf/adult_front/ head/ears/wolf/adult_front/ head/ears/wolf/adult_front/ head/ears/wolf/adult_front/ head/ears/wolf/child_front/
 head_ears_wolf.json,layer_2,8,head/ears/wolf/adult_back/ head/ears/wolf/adult_back/ head/ears/wolf/adult_back/ head/ears/wolf/adult_back/ head/ears/wolf/child_back/
 head_ears_wolf_skin.json,layer_1,131,head/ears/wolf/skin/adult_front/ head/ears/wolf/skin/adult_front/ head/ears/wolf/skin/adult_front/ head/ears/wolf/skin/adult_front/ head/ears/wolf/skin/child_front/
 head_ears_wolf_skin.json,layer_2,9,head/ears/wolf/skin/adult_back/ head/ears/wolf/skin/adult_back/ head/ears/wolf/skin/adult_back/ head/ears/wolf/skin/adult_back/ head/ears/wolf/skin/child_back/
-head_ears_zabos.json,layer_1,130,head/ears/zabos/adult/ head/ears/zabos/adult/ head/ears/zabos/adult/ head/ears/zabos/adult/ head/ears/zabos/child/
-head_ears_zabos_skin.json,layer_1,131,head/ears/zabos/skin/adult/ head/ears/zabos/skin/adult/ head/ears/zabos/skin/adult/ head/ears/zabos/skin/adult/ head/ears/zabos/skin/child/
+head_ears_zabos.json,layer_1,126,head/ears/zabos/adult/ head/ears/zabos/adult/ head/ears/zabos/adult/ head/ears/zabos/adult/ head/ears/zabos/child/
+head_ears_zabos_skin.json,layer_1,127,head/ears/zabos/skin/adult/ head/ears/zabos/skin/adult/ head/ears/zabos/skin/adult/ head/ears/zabos/skin/adult/ head/ears/zabos/skin/child/
 head_fins_fin.json,layer_1,125,head/fins/fin/adult/ head/fins/fin/adult/ head/fins/fin/adult/ head/fins/fin/adult/ head/fins/fin/child/
 head_fins_fin_short.json,layer_1,125,head/fins/fin_short/adult/ head/fins/fin_short/adult/ head/fins/fin_short/adult/ head/fins/fin_short/adult/ head/fins/fin_short/child/
 head_horns_backwards.json,layer_1,126,head/horns/backwards/adult/fg/ head/horns/backwards/adult/fg/ head/horns/backwards/adult/fg/ head/horns/backwards/adult/fg/ head/horns/backwards/child/fg/

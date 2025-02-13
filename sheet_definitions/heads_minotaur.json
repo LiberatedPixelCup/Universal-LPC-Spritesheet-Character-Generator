@@ -1,6 +1,7 @@
 {
   "name": "Minotaur",
   "type_name": "head",
+  "tags": ["minotaur", "adult"],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/minotaur/male/",

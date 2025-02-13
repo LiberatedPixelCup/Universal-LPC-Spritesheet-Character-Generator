@@ -1,6 +1,7 @@
 {
   "name": "Skeleton",
   "type_name": "head",
+  "tags": ["monster", "skeleton"],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/skeleton/adult/",

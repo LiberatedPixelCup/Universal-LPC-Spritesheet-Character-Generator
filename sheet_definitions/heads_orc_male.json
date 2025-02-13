@@ -1,6 +1,7 @@
 {
   "name": "Orc male",
   "type_name": "head",
+  "tags": ["orc", "adult"],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/orc/male/",

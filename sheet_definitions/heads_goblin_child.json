@@ -1,6 +1,7 @@
 {
   "name": "Goblin child",
   "type_name": "head",
+  "tags": ["goblin", "child"],
   "layer_1": {
     "zPos": 100,
     "child": "head/heads/goblin/child/"

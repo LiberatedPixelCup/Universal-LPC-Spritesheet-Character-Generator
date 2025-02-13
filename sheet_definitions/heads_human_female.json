@@ -1,6 +1,7 @@
 {
   "name": "Human female",
   "type_name": "head",
+  "tags": ["human", "adult", "small"],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/human/female/",

@@ -2,7 +2,7 @@
   "name": "Side Wolf Ears",
   "type_name": "ears",
   "layer_1": {
-    "zPos": 130,
+    "zPos": 126,
     "male": "head/ears/lykon/adult/",
     "muscular": "head/ears/lykon/adult/",
     "female": "head/ears/lykon/adult/",

@@ -1,12 +1,19 @@
 {
   "name": "Sad",
   "type_name": "expression",
-  "template": {
+  "tags": ["expression"],
+  "required_tags": ["human"],
+  "replace_in_path": {
     "head": {
-      "human_male": "male",
-      "human_female": "female",
-      "human_male_elderly": "elderly",
-      "human_female_elderly": "elderly"
+      "Human_male": "male",
+      "Human_male_small": "male",
+      "Human_male_plump": "male",
+      "Human_male_gaunt": "male",
+      "Human_female": "female",
+      "Human_female_small": "female",
+      "Human_male_elderly": "elderly",
+      "Human_female_elderly": "elderly",
+      "Human_elderly_small": "elderly"
     }
   },
   "layer_1": {
@@ -62,6 +69,22 @@
     "1h_halfslash"
   ],
   "credits": [
+    {
+      "file": "head/faces",
+      "notes": "Original by Redshrike, Expressions by ElizaWy, mapped to all frames by JaidynReiman",
+      "authors": [
+        "JaidynReiman",
+        "ElizaWy",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://github.com/ElizaWy/LPC/tree/main/Characters/Head",
+        "https://opengameart.org/content/ulpc-expanded-expressions"
+      ]
+    },
     {
       "file": "head/faces/elderly/sad",
       "notes": "Original by Redshrike, Sad Expression by ElizaWy, mapped to all frames by JaidynReiman",

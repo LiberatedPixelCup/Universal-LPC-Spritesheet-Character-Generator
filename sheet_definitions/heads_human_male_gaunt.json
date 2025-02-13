@@ -1,6 +1,7 @@
 {
   "name": "Human male gaunt",
   "type_name": "head",
+  "tags": ["human", "adult"],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/human/male_gaunt/",

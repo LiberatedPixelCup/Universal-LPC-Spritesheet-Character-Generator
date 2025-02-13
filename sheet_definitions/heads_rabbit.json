@@ -1,6 +1,7 @@
 {
   "name": "Rabbit",
   "type_name": "head",
+  "tags": ["animal", "adult"],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/rabbit/adult/",

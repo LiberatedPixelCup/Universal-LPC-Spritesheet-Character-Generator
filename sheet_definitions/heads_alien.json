@@ -1,6 +1,7 @@
 {
   "name": "Alien",
   "type_name": "head",
+  "tags": ["alien"],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/alien/adult/",

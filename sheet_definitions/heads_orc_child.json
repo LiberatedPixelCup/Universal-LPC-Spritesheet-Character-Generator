@@ -1,6 +1,7 @@
 {
   "name": "Orc child",
   "type_name": "head",
+  "tags": ["orc", "child"],
   "layer_1": {
     "zPos": 100,
     "child": "head/heads/orc/child/"

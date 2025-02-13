@@ -1,6 +1,7 @@
 {
   "name": "Frankenstein",
   "type_name": "head",
+  "tags": ["monster", "frankenstein"],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/frankenstein/adult/",

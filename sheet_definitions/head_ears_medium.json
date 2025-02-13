@@ -2,7 +2,7 @@
   "name": "Medium Elven Ears",
   "type_name": "ears",
   "layer_1": {
-    "zPos": 130,
+    "zPos": 126,
     "male": "head/ears/medium/adult/",
     "muscular": "head/ears/medium/adult/",
     "female": "head/ears/medium/adult/",

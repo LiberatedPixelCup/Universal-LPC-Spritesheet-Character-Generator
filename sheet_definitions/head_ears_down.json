@@ -2,7 +2,7 @@
   "name": "Downward Elven Ears",
   "type_name": "ears",
   "layer_1": {
-    "zPos": 130,
+    "zPos": 126,
     "male": "head/ears/down/adult/",
     "muscular": "head/ears/down/adult/",
     "female": "head/ears/down/adult/",
