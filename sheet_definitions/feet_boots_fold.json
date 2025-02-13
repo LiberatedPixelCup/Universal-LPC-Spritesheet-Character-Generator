@@ -3,11 +3,11 @@
   "type_name": "shoes",
   "layer_1": {
     "zPos": 25,
-    "male": "feet/boots_fold/universal/male/",
-    "muscular": "feet/boots_fold/universal/male/",
-    "female": "feet/boots_fold/universal/female/",
-    "teen": "feet/boots_fold/universal/female/",
-    "pregnant": "feet/boots_fold/universal/female/"
+    "male": "feet/boots_fold/male/",
+    "muscular": "feet/boots_fold/male/",
+    "female": "feet/boots_fold/thin/",
+    "teen": "feet/boots_fold/thin/",
+    "pregnant": "feet/boots_fold/thin/"
   },
   "variants": [
     "black",
@@ -42,6 +42,21 @@
     "bronze",
     "silver",
     "gold"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "sit",
+    "emote",
+    "climb",
+    "combat"
   ],
   "credits": [
     {

@@ -3,11 +3,11 @@
   "type_name": "shoes_plate",
   "layer_1": {
     "zPos": 26,
-    "male": "feet/boots_plating/universal/male/",
-    "muscular": "feet/boots_plating/universal/male/",
-    "female": "feet/boots_plating/universal/female/",
-    "teen": "feet/boots_plating/universal/female/",
-    "pregnant": "feet/boots_plating/universal/female/"
+    "male": "feet/boots_plating/male/",
+    "muscular": "feet/boots_plating/male/",
+    "female": "feet/boots_plating/thin/",
+    "teen": "feet/boots_plating/thin/",
+    "pregnant": "feet/boots_plating/thin/"
   },
   "variants": [
     "steel",

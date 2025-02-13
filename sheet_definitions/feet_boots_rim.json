@@ -3,11 +3,11 @@
   "type_name": "shoes",
   "layer_1": {
     "zPos": 25,
-    "male": "feet/boots_rim/universal/male/",
-    "muscular": "feet/boots_rim/universal/male/",
-    "female": "feet/boots_rim/universal/female/",
-    "teen": "feet/boots_rim/universal/female/",
-    "pregnant": "feet/boots_rim/universal/female/"
+    "male": "feet/boots_rim/male/",
+    "muscular": "feet/boots_rim/male/",
+    "female": "feet/boots_rim/thin/",
+    "teen": "feet/boots_rim/thin/",
+    "pregnant": "feet/boots_rim/thin/"
   },
   "variants": [
     "black",
@@ -42,6 +42,21 @@
     "bronze",
     "silver",
     "gold"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "sit",
+    "emote",
+    "climb",
+    "combat"
   ],
   "credits": [
     {
