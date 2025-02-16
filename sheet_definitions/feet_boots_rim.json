@@ -53,10 +53,14 @@
     "watering",
     "idle",
     "jump",
+    "run",
     "sit",
     "emote",
     "climb",
-    "combat"
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
   ],
   "credits": [
     {
