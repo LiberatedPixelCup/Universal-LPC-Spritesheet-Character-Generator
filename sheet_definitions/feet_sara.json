@@ -3,29 +3,42 @@
   "type_name": "shoes",
   "layer_1": {
     "zPos": 15,
-    "female": "feet/shoes/female/",
-    "pregnant": "feet/shoes/female/",
-    "teen": "feet/shoes/female/"
+    "female": "feet/sara/thin/",
+    "pregnant": "feet/sara/thin/",
+    "teen": "feet/sara/thin/"
   },
   "variants": [
     "sara"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle"
+  ],
   "credits": [
     {
-      "file": "feet/shoes/female",
-      "notes": "original by wulax, edited for female base by Joe White, edited for v3 base by bluecarrot16",
+      "file": "feet/sara/thin",
+      "notes": "LPC Sara by Redshrike, contributed by William Thompsonj, Shoes Separated by Bluecarrot16",
       "authors": [
-        "Joe White",
-        "Johannes Sjölund (wulax)"
+        "Bluecarrot16",
+        "Mandi Paugh",
+        "Stephen Challener (Redshrike)",
+        "William.Thompsonj"
       ],
       "licenses": [
         "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
+        "CC-BY 3.0+",
+        "GPL 2.0",
         "GPL 3.0"
       ],
       "urls": [
-        "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-        "http://opengameart.org/content/lpc-clothing-updates"
+        "http://opengameart.org/content/sara-wizard",
+        "https://opengameart.org/content/lpc-sara"
       ]
     }
   ]
