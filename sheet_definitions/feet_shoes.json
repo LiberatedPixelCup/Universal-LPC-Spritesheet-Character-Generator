@@ -35,11 +35,31 @@
     "white",
     "yellow"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
   "credits": [
     {
       "file": "feet/shoes",
-      "notes": "original by wulax, edited for v3 base by bluecarrot16",
+      "notes": "original by wulax, edited for v3 base by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
       "authors": [
+        "JaidynReiman",
         "bluecarrot16",
         "Johannes Sjölund (wulax)"
       ],
@@ -55,8 +75,9 @@
     },
     {
       "file": "feet/shoes/female",
-      "notes": "original by wulax, edited for female base by Joe White, edited for v3 base by bluecarrot16",
+      "notes": "original by wulax, edited for female base by Joe White, edited for v3 base by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
       "authors": [
+        "JaidynReiman",
         "Joe White",
         "Johannes Sjölund (wulax)"
       ],

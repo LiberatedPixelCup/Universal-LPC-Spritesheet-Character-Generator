@@ -35,11 +35,31 @@
     "white",
     "yellow"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
   "credits": [
     {
       "file": "feet/boots",
-      "notes": "original by Nila122, edited for male and v3 bases by bluecarrot16",
+      "notes": "original by Nila122, edited for male and v3 bases by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
       "authors": [
+        "JaidynReiman",
         "bluecarrot16",
         "Nila122"
       ],
@@ -55,8 +75,9 @@
     },
     {
       "file": "feet/boots/female",
-      "notes": "original by Nila122, edited for v3 bases by bluecarrot16",
+      "notes": "original by Nila122, edited for v3 bases by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
       "authors": [
+        "JaidynReiman",
         "bluecarrot16",
         "Nila122"
       ],
