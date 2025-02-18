@@ -3,46 +3,12 @@
   "type_name": "shoes",
   "layer_1": {
     "zPos": 15,
-    "male": "feet/sara/male/",
-    "muscular": "feet/sara/male/",
-    "female": "feet/sara/thin/",
-    "pregnant": "feet/sara/thin/",
-    "teen": "feet/sara/thin/"
+    "female": "feet/shoes/sara/thin/",
+    "pregnant": "feet/shoes/sara/thin/",
+    "teen": "feet/shoes/sara/thin/"
   },
   "variants": [
-    "sara",
-    "black",
-    "blue",
-    "bluegray",
-    "brown",
-    "charcoal",
-    "forest",
-    "gray",
-    "green",
-    "lavender",
-    "leather",
-    "maroon",
-    "navy",
-    "orange",
-    "pink",
-    "purple",
-    "red",
-    "rose",
-    "sky",
-    "slate",
-    "tan",
-    "teal",
-    "walnut",
-    "white",
-    "yellow",
-    "steel",
-    "iron",
-    "ceramic",
-    "brass",
-    "copper",
-    "bronze",
-    "silver",
-    "gold"
+    "sara"
   ],
   "animations": [
     "spellcast",
@@ -52,20 +18,11 @@
     "shoot",
     "hurt",
     "watering",
-    "idle",
-    "jump",
-    "run",
-    "sit",
-    "emote",
-    "climb",
-    "combat",
-    "1h_slash",
-    "1h_backslash",
-    "1h_halfslash"
+    "idle"
   ],
   "credits": [
     {
-      "file": "feet/sara/thin",
+      "file": "feet/shoes/sara/thin",
       "notes": "LPC Sara by Redshrike, contributed by William Thompsonj, Shoes Separated by Bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
       "authors": [
         "JaidynReiman",
@@ -86,7 +43,7 @@
       ]
     },
     {
-      "file": "feet/sara/male",
+      "file": "feet/shoes/sara/male",
       "notes": "LPC Sara by Redshrike, contributed by William Thompsonj, Shoes Separated by Bluecarrot16, Male Version and Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
       "authors": [
         "JaidynReiman",
