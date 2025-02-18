@@ -1,13 +1,13 @@
 {
-  "name": "Rim Boots",
+  "name": "Rimmed Boots",
   "type_name": "shoes",
   "layer_1": {
     "zPos": 25,
-    "male": "feet/boots_rim/male/",
-    "muscular": "feet/boots_rim/male/",
-    "female": "feet/boots_rim/thin/",
-    "teen": "feet/boots_rim/thin/",
-    "pregnant": "feet/boots_rim/thin/"
+    "male": "feet/boots/rim/male/",
+    "muscular": "feet/boots/rim/male/",
+    "female": "feet/boots/rim/thin/",
+    "teen": "feet/boots/rim/thin/",
+    "pregnant": "feet/boots/rim/thin/"
   },
   "variants": [
     "black",
@@ -64,7 +64,7 @@
   ],
   "credits": [
     {
-      "file": "feet/boots_rim",
+      "file": "feet/boots/rim",
       "notes": "",
       "authors": [
         "JaidynReiman"

@@ -1,13 +1,13 @@
 {
-  "name": "Boots",
+  "name": "Basic Boots",
   "type_name": "shoes",
   "layer_1": {
     "zPos": 25,
-    "male": "feet/boots/male/",
-    "muscular": "feet/boots/male/",
-    "female": "feet/boots/female/",
-    "teen": "feet/boots/female/",
-    "pregnant": "feet/boots/female/"
+    "male": "feet/boots/basic/male/",
+    "muscular": "feet/boots/basic/male/",
+    "female": "feet/boots/basic/thin/",
+    "teen": "feet/boots/basic/thin/",
+    "pregnant": "feet/boots/basic/thin/"
   },
   "variants": [
     "black",
@@ -56,7 +56,7 @@
   ],
   "credits": [
     {
-      "file": "feet/boots",
+      "file": "feet/boots/basic",
       "notes": "original by Nila122, edited for male and v3 bases by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
       "authors": [
         "JaidynReiman",
@@ -74,7 +74,7 @@
       ]
     },
     {
-      "file": "feet/boots/female",
+      "file": "feet/boots/basic/thin",
       "notes": "original by Nila122, edited for v3 bases by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
       "authors": [
         "JaidynReiman",

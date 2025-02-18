@@ -1,13 +1,13 @@
 {
-  "name": "Fold Boots",
+  "name": "Folded Rim Boots",
   "type_name": "shoes",
   "layer_1": {
     "zPos": 25,
-    "male": "feet/boots_fold/male/",
-    "muscular": "feet/boots_fold/male/",
-    "female": "feet/boots_fold/thin/",
-    "teen": "feet/boots_fold/thin/",
-    "pregnant": "feet/boots_fold/thin/"
+    "male": "feet/boots/fold/male/",
+    "muscular": "feet/boots/fold/male/",
+    "female": "feet/boots/fold/thin/",
+    "teen": "feet/boots/fold/thin/",
+    "pregnant": "feet/boots/fold/thin/"
   },
   "variants": [
     "black",
@@ -64,7 +64,7 @@
   ],
   "credits": [
     {
-      "file": "feet/boots_fold",
+      "file": "feet/boots/fold",
       "notes": "",
       "authors": [
         "JaidynReiman"

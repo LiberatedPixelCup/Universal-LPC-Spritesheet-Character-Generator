@@ -122,17 +122,17 @@ facial_monocle_left_frame.json,layer_1,115,facial/monocle/left/frame/adult/ faci
 facial_monocle_right.json,layer_1,115,facial/monocle/right/adult/ facial/monocle/right/adult/ facial/monocle/right/adult/ facial/monocle/right/adult/ facial/monocle/right/child/
 facial_monocle_right_frame.json,layer_1,115,facial/monocle/right/frame/adult/ facial/monocle/right/frame/adult/ facial/monocle/right/frame/adult/ facial/monocle/right/frame/adult/ facial/monocle/right/frame/child/
 feet_armour.json,layer_1,15,feet/armour/plate/male/ feet/armour/plate/female/ feet/armour/plate/male/ feet/armour/plate/female/
-feet_boots.json,layer_1,25,feet/boots/male/ feet/boots/female/ feet/boots/male/ feet/boots/female/
-feet_boots2.json,layer_1,25,feet/boots2/male/ feet/boots2/thin/ feet/boots2/thin/
-feet_boots_fold.json,layer_1,25,feet/boots_fold/male/ feet/boots_fold/thin/ feet/boots_fold/male/ feet/boots_fold/thin/
-feet_boots_plate.json,layer_1,26,feet/boots_plating/male/ feet/boots_plating/thin/ feet/boots_plating/male/ feet/boots_plating/thin/
-feet_boots_rim.json,layer_1,25,feet/boots_rim/male/ feet/boots_rim/thin/ feet/boots_rim/male/ feet/boots_rim/thin/
-feet_ghillies.json,layer_1,15,feet/ghillies/male/ feet/ghillies/female/ feet/ghillies/male/ feet/ghillies/female/
+feet_boots_basic.json,layer_1,25,feet/boots/basic/male/ feet/boots/basic/thin/ feet/boots/basic/male/ feet/boots/basic/thin/
+feet_boots_fold.json,layer_1,25,feet/boots/fold/male/ feet/boots/fold/thin/ feet/boots/fold/male/ feet/boots/fold/thin/
+feet_boots_plate.json,layer_1,26,feet/boots/plating/male/ feet/boots/plating/thin/ feet/boots/plating/male/ feet/boots/plating/thin/
+feet_boots_revised.json,layer_1,25,feet/boots/revised/male/ feet/boots/revised/thin/ feet/boots/revised/male/ feet/boots/revised/thin/
+feet_boots_rim.json,layer_1,25,feet/boots/rim/male/ feet/boots/rim/thin/ feet/boots/rim/male/ feet/boots/rim/thin/
 feet_hoofs.json,layer_1,15,feet/hoofs/male/ feet/hoofs/female/ feet/hoofs/male/ feet/hoofs/female/
 feet_sandals.json,layer_1,15,feet/sandals/male/ feet/sandals/female/ feet/sandals/male/ feet/sandals/female/
-feet_sara.json,layer_1,15,feet/sara/thin/ feet/sara/thin/
-feet_shoes.json,layer_1,15,feet/shoes/male/ feet/shoes/female/ feet/shoes/male/ feet/shoes/female/
-feet_shoes2.json,layer_1,15,feet/shoes2/male/ feet/shoes2/thin/ feet/shoes2/thin/
+feet_shoes_basic.json,layer_1,15,feet/shoes/basic/male/ feet/shoes/basic/thin/ feet/shoes/basic/male/ feet/shoes/basic/thin/
+feet_shoes_ghillies.json,layer_1,15,feet/shoes/ghillies/male/ feet/shoes/ghillies/thin/ feet/shoes/ghillies/male/ feet/shoes/ghillies/thin/
+feet_shoes_revised.json,layer_1,15,feet/shoes/revised/male/ feet/shoes/revised/thin/ feet/shoes/revised/thin/
+feet_shoes_sara.json,layer_1,15,feet/sara/male/ feet/sara/thin/ feet/sara/male/ feet/sara/thin/
 feet_slippers.json,layer_1,15,feet/slippers/male/ feet/slippers/female/ feet/slippers/male/ feet/slippers/female/
 feet_socks_ankle.json,layer_1,14,feet/socks/ankle/male/ feet/socks/ankle/thin/ feet/socks/ankle/thin/
 feet_socks_high.json,layer_1,14,feet/socks/high/male/ feet/socks/high/thin/ feet/socks/high/thin/

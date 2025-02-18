@@ -3,11 +3,11 @@
   "type_name": "shoes",
   "layer_1": {
     "zPos": 15,
-    "female": "feet/ghillies/female/",
-    "teen": "feet/ghillies/female/",
-    "pregnant": "feet/ghillies/female/",
-    "male": "feet/ghillies/male/",
-    "muscular": "feet/ghillies/male/"
+    "female": "feet/shoes/ghillies/thin/",
+    "teen": "feet/shoes/ghillies/thin/",
+    "pregnant": "feet/shoes/ghillies/thin/",
+    "male": "feet/shoes/ghillies/male/",
+    "muscular": "feet/shoes/ghillies/male/"
   },
   "variants": [
     "black",
@@ -37,7 +37,7 @@
   ],
   "credits": [
     {
-      "file": "feet/ghillies",
+      "file": "feet/shoes/ghillies",
       "notes": "original by pennomi, laetissima and makrohn; edited for v3 bases by bluecarrot16",
       "authors": [
         "bluecarrot16",

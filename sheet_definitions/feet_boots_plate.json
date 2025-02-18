@@ -1,13 +1,13 @@
 {
-  "name": "Boots Metal Plating",
+  "name": "Boots Plating",
   "type_name": "shoes_plate",
   "layer_1": {
     "zPos": 26,
-    "male": "feet/boots_plating/male/",
-    "muscular": "feet/boots_plating/male/",
-    "female": "feet/boots_plating/thin/",
-    "teen": "feet/boots_plating/thin/",
-    "pregnant": "feet/boots_plating/thin/"
+    "male": "feet/boots/plating/male/",
+    "muscular": "feet/boots/plating/male/",
+    "female": "feet/boots/plating/thin/",
+    "teen": "feet/boots/plating/thin/",
+    "pregnant": "feet/boots/plating/thin/"
   },
   "variants": [
     "steel",
@@ -40,7 +40,7 @@
   ],
   "credits": [
     {
-      "file": "feet/boots_plating",
+      "file": "feet/boots/plating",
       "notes": "",
       "authors": [
         "JaidynReiman"

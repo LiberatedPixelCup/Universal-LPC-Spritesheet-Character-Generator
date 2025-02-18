@@ -1,12 +1,13 @@
 {
-  "name": "Boots 2",
+  "name": "Revised Boots",
   "type_name": "shoes",
   "layer_1": {
     "zPos": 25,
-    "male": "feet/boots2/male/",
-    "female": "feet/boots2/thin/",
-    "teen": "feet/boots2/thin/",
-    "pregnant": "feet/boots2/thin/"
+    "male": "feet/boots/revised/male/",
+    "muscular": "feet/boots/revised/male/",
+    "female": "feet/boots/revised/thin/",
+    "teen": "feet/boots/revised/thin/",
+    "pregnant": "feet/boots/revised/thin/"
   },
   "variants": [
     "black",
@@ -63,7 +64,7 @@
   ],
   "credits": [
     {
-      "file": "feet/boots2/male",
+      "file": "feet/boots/revised/male",
       "notes": "original overalls and boots by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, boots by JaidynReiman",
       "authors": [
         "JaidynReiman",
@@ -82,7 +83,7 @@
       ]
     },
     {
-      "file": "feet/boots2",
+      "file": "feet/boots/revised",
       "notes": "original by ElizaWy, remaining frames by JaidynReiman",
       "authors": [
         "ElizaWy",
