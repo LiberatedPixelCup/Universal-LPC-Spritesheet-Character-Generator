@@ -80,3 +80,7 @@ Custom Palettes are for specific assets that may have one or more unique colors.
 #### 17. ulpc-fur-pants-palettes.json
 - Path: spritesheets/legs/fur
 - Just a variation of the "cloth" palettes including the original base color of the "fur brown" pants, along with extra fur colors as a bonus.
+
+#### 18. ulpc-sara-shoes-palettes.json
+- Path: spritesheets/feet/shoes/sara
+- Just a variation of the "cloth" palettes including the original base color of the "sara" shoes.
