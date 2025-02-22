@@ -1,13 +1,13 @@
 {
-  "name": "Boots Plating",
-  "type_name": "shoes_plate",
+  "name": "Plated Toe",
+  "type_name": "shoes_toe",
   "layer_1": {
-    "zPos": 26,
-    "male": "feet/boots/plating/male/",
-    "muscular": "feet/boots/plating/male/",
-    "female": "feet/boots/plating/thin/",
-    "teen": "feet/boots/plating/thin/",
-    "pregnant": "feet/boots/plating/thin/"
+    "zPos": 27,
+    "male": "feet/accessory/plate_toe/male/",
+    "muscular": "feet/accessory/plate_toe/male/",
+    "female": "feet/accessory/plate_toe/thin/",
+    "teen": "feet/accessory/plate_toe/thin/",
+    "pregnant": "feet/accessory/plate_toe/thin/"
   },
   "variants": [
     "steel",
@@ -40,7 +40,7 @@
   ],
   "credits": [
     {
-      "file": "feet/boots/plating",
+      "file": "feet/accessory/plate_toe",
       "notes": "",
       "authors": [
         "JaidynReiman"
