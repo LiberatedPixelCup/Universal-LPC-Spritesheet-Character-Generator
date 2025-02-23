@@ -124,10 +124,11 @@ facial_monocle_right_frame.json,layer_1,115,facial/monocle/right/frame/adult/ fa
 feet_armour.json,layer_1,15,feet/armour/plate/male/ feet/armour/plate/female/ feet/armour/plate/male/ feet/armour/plate/female/
 feet_boots_basic.json,layer_1,25,feet/boots/basic/male/ feet/boots/basic/thin/ feet/boots/basic/male/ feet/boots/basic/thin/
 feet_boots_fold.json,layer_1,25,feet/boots/fold/male/ feet/boots/fold/thin/ feet/boots/fold/male/ feet/boots/fold/thin/
-feet_boots_plate.json,layer_1,26,feet/boots/plating/male/ feet/boots/plating/thin/ feet/boots/plating/male/ feet/boots/plating/thin/
 feet_boots_revised.json,layer_1,25,feet/boots/revised/male/ feet/boots/revised/thin/ feet/boots/revised/male/ feet/boots/revised/thin/
-feet_boots_rim.json,layer_1,25,feet/boots/rim/male/ feet/boots/rim/thin/ feet/boots/rim/male/ feet/boots/rim/thin/
+feet_boots_rim.json,layer_1,25,feet/boots/rimmed/male/ feet/boots/rimmed/thin/ feet/boots/rimmed/male/ feet/boots/rimmed/thin/
 feet_hoofs.json,layer_1,15,feet/hoofs/male/ feet/hoofs/female/ feet/hoofs/male/ feet/hoofs/female/
+feet_plate_toe.json,layer_1,27,feet/accessory/plate_toe/male/ feet/accessory/plate_toe/thin/ feet/accessory/plate_toe/male/ feet/accessory/plate_toe/thin/
+feet_plate_toe_thick.json,layer_1,27,feet/accessory/plate_toe_thick/male/ feet/accessory/plate_toe_thick/thin/ feet/accessory/plate_toe_thick/male/ feet/accessory/plate_toe_thick/thin/
 feet_sandals.json,layer_1,15,feet/sandals/male/ feet/sandals/female/ feet/sandals/male/ feet/sandals/female/
 feet_shoes_basic.json,layer_1,15,feet/shoes/basic/male/ feet/shoes/basic/thin/ feet/shoes/basic/male/ feet/shoes/basic/thin/
 feet_shoes_ghillies.json,layer_1,15,feet/shoes/ghillies/male/ feet/shoes/ghillies/thin/ feet/shoes/ghillies/male/ feet/shoes/ghillies/thin/

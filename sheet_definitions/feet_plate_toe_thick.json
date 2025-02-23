@@ -1,13 +1,13 @@
 {
-  "name": "Plated Sole",
-  "type_name": "shoes_sole",
+  "name": "Thick Plated Toe",
+  "type_name": "shoes_toe",
   "layer_1": {
     "zPos": 27,
-    "male": "feet/accessory/plate_sole/male/",
-    "muscular": "feet/accessory/plate_sole/male/",
-    "female": "feet/accessory/plate_sole/thin/",
-    "teen": "feet/accessory/plate_sole/thin/",
-    "pregnant": "feet/accessory/plate_sole/thin/"
+    "male": "feet/accessory/plate_toe_thick/male/",
+    "muscular": "feet/accessory/plate_toe_thick/male/",
+    "female": "feet/accessory/plate_toe_thick/thin/",
+    "teen": "feet/accessory/plate_toe_thick/thin/",
+    "pregnant": "feet/accessory/plate_toe_thick/thin/"
   },
   "variants": [
     "steel",
@@ -40,7 +40,7 @@
   ],
   "credits": [
     {
-      "file": "feet/accessory/plate_sole",
+      "file": "feet/accessory/plate_toe_thick",
       "notes": "",
       "authors": [
         "JaidynReiman"
