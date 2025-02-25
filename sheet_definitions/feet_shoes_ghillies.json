@@ -33,7 +33,15 @@
     "teal",
     "walnut",
     "white",
-    "yellow"
+    "yellow",
+    "steel",
+    "iron",
+    "ceramic",
+    "brass",
+    "copper",
+    "bronze",
+    "silver",
+    "gold"
   ],
   "animations": [
     "spellcast",
@@ -71,7 +79,8 @@
       ],
       "urls": [
         "https://opengameart.org/content/lpc-2-characters",
-        "http://opengameart.org/content/lpc-clothing-updates"
+        "http://opengameart.org/content/lpc-clothing-updates",
+        "https://opengameart.org/content/lpc-expanded-socks-shoes"
       ]
     }
   ]
