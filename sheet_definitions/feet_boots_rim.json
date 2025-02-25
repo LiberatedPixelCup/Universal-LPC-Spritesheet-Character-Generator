@@ -3,11 +3,11 @@
   "type_name": "shoes",
   "layer_1": {
     "zPos": 25,
-    "male": "feet/boots/rim/male/",
-    "muscular": "feet/boots/rim/male/",
-    "female": "feet/boots/rim/thin/",
-    "teen": "feet/boots/rim/thin/",
-    "pregnant": "feet/boots/rim/thin/"
+    "male": "feet/boots/rimmed/male/",
+    "muscular": "feet/boots/rimmed/male/",
+    "female": "feet/boots/rimmed/thin/",
+    "teen": "feet/boots/rimmed/thin/",
+    "pregnant": "feet/boots/rimmed/thin/"
   },
   "variants": [
     "black",
@@ -64,7 +64,7 @@
   ],
   "credits": [
     {
-      "file": "feet/boots/rim",
+      "file": "feet/boots/rimmed",
       "notes": "",
       "authors": [
         "JaidynReiman"
