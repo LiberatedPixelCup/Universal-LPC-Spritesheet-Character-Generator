@@ -5,9 +5,9 @@
     "zPos": 15,
     "male": "feet/slippers/male/",
     "muscular": "feet/slippers/male/",
-    "female": "feet/slippers/female/",
-    "teen": "feet/slippers/female/",
-    "pregnant": "feet/slippers/female/"
+    "female": "feet/slippers/thin/",
+    "teen": "feet/slippers/thin/",
+    "pregnant": "feet/slippers/thin/"
   },
   "variants": [
     "black",
@@ -69,7 +69,7 @@
         "GPL 3.0"
       ],
       "urls": [
-        "https://opengameart.org/content/female-mage-clothing-set",
+        "https://opengameart.org/content/thin-mage-clothing-set",
         "http://opengameart.org/content/lpc-clothing-updates",
         "https://opengameart.org/content/lpc-expanded-socks-shoes"
       ]
