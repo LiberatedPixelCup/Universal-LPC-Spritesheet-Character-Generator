@@ -64,8 +64,9 @@
   "credits": [
     {
       "file": "body/wings/lizard",
-      "notes": "edited for v3 bases and recolored by bluecarrot16",
+      "notes": "edited for v3 bases and recolored by bluecarrot16, sit/jump/run/emote/revised combat by JaidynReiman",
       "authors": [
+        "JaidynReiman",
         "Nila122",
         "bluecarrot16"
       ],
@@ -75,7 +76,8 @@
         "GPL 3.0"
       ],
       "urls": [
-        "https://opengameart.org/content/drakes-and-lizardfolk"
+        "https://opengameart.org/content/drakes-and-lizardfolk",
+        "https://opengameart.org/content/lpc-wings-new-animations"
       ]
     }
   ]

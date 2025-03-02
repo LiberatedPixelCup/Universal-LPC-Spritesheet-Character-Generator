@@ -86,7 +86,7 @@
   "credits": [
     {
       "file": "body/wings/bat",
-      "notes": "",
+      "notes": "Original by ElizaWy, added to most remaining frames by JaidynReiman",
       "authors": [
         "ElizaWy",
         "JaidynReiman"
@@ -95,7 +95,7 @@
         "OGA-BY 3.0"
       ],
       "urls": [
-        "https://opengameart.org/content/lpc-revised-ulpc-wings"
+        "https://opengameart.org/content/lpc-wings-new-animations"
       ]
     }
   ]
