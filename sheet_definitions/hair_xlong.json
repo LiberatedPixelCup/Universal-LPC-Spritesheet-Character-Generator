@@ -3,11 +3,19 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/xlong/male/",
-    "muscular": "hair/xlong/male/",
-    "female": "hair/xlong/female/",
-    "pregnant": "hair/xlong/female/",
-    "teen": "hair/xlong/male/"
+    "male": "hair/xlong/fg/",
+    "muscular": "hair/xlong/fg/",
+    "female": "hair/xlong/fg/",
+    "pregnant": "hair/xlong/fg/",
+    "teen": "hair/xlong/fg/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "hair/xlong/bg/",
+    "muscular": "hair/xlong/bg/",
+    "female": "hair/xlong/bg/",
+    "pregnant": "hair/xlong/bg/",
+    "teen": "hair/xlong/bg/"
   },
   "variants": [
     "blonde",
@@ -40,8 +48,9 @@
   "credits": [
     {
       "file": "hair/xlong",
-      "notes": "",
+      "notes": "Original by Nila122; cleaned up, resplit into separate layers, and added jump/run/sit/revised combat by JaidynReiman",
       "authors": [
+        "JaidynReiman",
         "Nila122"
       ],
       "licenses": [
@@ -51,7 +60,8 @@
         "GPL 3.0"
       ],
       "urls": [
-        "https://opengameart.org/content/lpc-clothes-and-hair"
+        "https://opengameart.org/content/lpc-clothes-and-hair",
+        "https://opengameart.org/content/lpc-expanded-xlong-hair"
       ]
     }
   ]
