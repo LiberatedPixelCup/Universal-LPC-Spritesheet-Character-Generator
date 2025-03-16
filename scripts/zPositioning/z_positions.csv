@@ -231,7 +231,8 @@ hair_twists_fade.json,layer_1,120,hair/twists_fade/adult/ hair/twists_fade/adult
 hair_twists_straight.json,layer_1,120,hair/twists_straight/adult/ hair/twists_straight/adult/ hair/twists_straight/adult/ hair/twists_straight/adult/
 hair_unkempt.json,layer_1,120,hair/unkempt/male/ hair/unkempt/female/ hair/unkempt/male/ hair/unkempt/female/
 hair_wavy.json,layer_1,120,hair/wavy/male/ hair/wavy/female/ hair/wavy/male/ hair/wavy/female/ hair/wavy/child/
-hair_xlong.json,layer_1,120,hair/xlong/male/ hair/xlong/female/ hair/xlong/male/ hair/xlong/female/
+hair_xlong.json,layer_1,120,hair/xlong/fg/ hair/xlong/fg/ hair/xlong/fg/ hair/xlong/fg/
+hair_xlong.json,layer_2,9,hair/xlong/bg/ hair/xlong/bg/ hair/xlong/bg/ hair/xlong/bg/
 hairext_braidl.json,layer_1,128,hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/child/
 hairext_braidr.json,layer_1,128,hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/child/
 hairext_topknot_long.json,layer_1,128,hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/child/fg/
