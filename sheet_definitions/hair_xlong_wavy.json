@@ -1,0 +1,83 @@
+{
+  "name": "XLong Wavy",
+  "type_name": "hair",
+  "layer_1": {
+    "zPos": 120,
+    "male": "hair/xlong_wavy/adult/fg/",
+    "muscular": "hair/xlong_wavy/adult/fg/",
+    "female": "hair/xlong_wavy/adult/fg/",
+    "pregnant": "hair/xlong_wavy/adult/fg/",
+    "teen": "hair/xlong_wavy/adult/fg/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "hair/xlong_wavy/adult/bg/",
+    "muscular": "hair/xlong_wavy/adult/bg/",
+    "female": "hair/xlong_wavy/adult/bg/",
+    "pregnant": "hair/xlong_wavy/adult/bg/",
+    "teen": "hair/xlong_wavy/adult/bg/"
+  },
+  "variants": [
+    "blonde",
+    "ash",
+    "sandy",
+    "platinum",
+    "strawberry",
+    "redhead",
+    "ginger",
+    "carrot",
+    "chestnut",
+    "light brown",
+    "dark brown",
+    "black",
+    "raven",
+    "dark gray",
+    "gray",
+    "white",
+    "red",
+    "orange",
+    "gold",
+    "green",
+    "blue",
+    "navy",
+    "violet",
+    "purple",
+    "pink",
+    "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hair/xlong_wavy",
+      "notes": "Custom by JaidynReiman; inspiration for spellcast frames from Nila122's XLong",
+      "authors": [
+        "JaidynReiman",
+        "Nila122"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-expanded-xlong-hair"
+      ]
+    }
+  ]
+}
