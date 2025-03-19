@@ -1,23 +1,21 @@
 {
-  "name": "Right XLong Braid",
+  "name": "Right Long Wavy",
   "type_name": "hairextr",
   "layer_1": {
     "zPos": 128,
-    "male": "hair/extensions/bangs/xlong_braidr/adult/fg/",
-    "muscular": "hair/extensions/bangs/xlong_braidr/adult/fg/",
-    "female": "hair/extensions/bangs/xlong_braidr/adult/fg/",
-    "pregnant": "hair/extensions/bangs/xlong_braidr/adult/fg/",
-    "teen": "hair/extensions/bangs/xlong_braidr/adult/fg/",
-    "child": "hair/extensions/bangs/xlong_braidr/child/fg/"
+    "male": "hair/extensions/bangs/long_wavyr/adult/fg/",
+    "muscular": "hair/extensions/bangs/long_wavyr/adult/fg/",
+    "female": "hair/extensions/bangs/long_wavyr/adult/fg/",
+    "pregnant": "hair/extensions/bangs/long_wavyr/adult/fg/",
+    "teen": "hair/extensions/bangs/long_wavyr/adult/fg/"
   },
   "layer_2": {
     "zPos": 9,
-    "male": "hair/extensions/bangs/xlong_braidr/adult/bg/",
-    "muscular": "hair/extensions/bangs/xlong_braidr/adult/bg/",
-    "female": "hair/extensions/bangs/xlong_braidr/adult/bg/",
-    "pregnant": "hair/extensions/bangs/xlong_braidr/adult/bg/",
-    "teen": "hair/extensions/bangs/xlong_braidr/adult/bg/",
-    "child": "hair/extensions/bangs/xlong_braidr/child/bg/"
+    "male": "hair/extensions/bangs/long_wavyr/adult/bg/",
+    "muscular": "hair/extensions/bangs/long_wavyr/adult/bg/",
+    "female": "hair/extensions/bangs/long_wavyr/adult/bg/",
+    "pregnant": "hair/extensions/bangs/long_wavyr/adult/bg/",
+    "teen": "hair/extensions/bangs/long_wavyr/adult/bg/"
   },
   "variants": [
     "blonde",
@@ -68,7 +66,7 @@
   ],
   "credits": [
     {
-      "file": "hair/extensions/bangs/xlong_braidr",
+      "file": "hair/extensions/bangs/long_wavyr",
       "notes": "",
       "authors": [
         "JaidynReiman"
@@ -79,8 +77,7 @@
         "GPL 3.0"
       ],
       "urls": [
-        "https://opengameart.org/content/lpc-relm-hair-xlong-ponytail",
-        "https://opengameart.org/content/lpc-expanded-xlong-hair"
+        "https://opengameart.org/content/lpc-expanded-long-hair"
       ]
     }
   ]

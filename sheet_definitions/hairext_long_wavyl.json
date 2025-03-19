@@ -1,14 +1,21 @@
 {
-  "name": "Short Topknot",
-  "type_name": "ponytail",
+  "name": "Left Long Wavy",
+  "type_name": "hairextl",
   "layer_1": {
     "zPos": 128,
-    "male": "hair/extensions/ponytails/topknot_short/adult/",
-    "muscular": "hair/extensions/ponytails/topknot_short/adult/",
-    "female": "hair/extensions/ponytails/topknot_short/adult/",
-    "pregnant": "hair/extensions/ponytails/topknot_short/adult/",
-    "teen": "hair/extensions/ponytails/topknot_short/adult/",
-    "child": "hair/extensions/ponytails/topknot_short/child/"
+    "male": "hair/extensions/bangs/long_wavyl/adult/fg/",
+    "muscular": "hair/extensions/bangs/long_wavyl/adult/fg/",
+    "female": "hair/extensions/bangs/long_wavyl/adult/fg/",
+    "pregnant": "hair/extensions/bangs/long_wavyl/adult/fg/",
+    "teen": "hair/extensions/bangs/long_wavyl/adult/fg/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "hair/extensions/bangs/long_wavyl/adult/bg/",
+    "muscular": "hair/extensions/bangs/long_wavyl/adult/bg/",
+    "female": "hair/extensions/bangs/long_wavyl/adult/bg/",
+    "pregnant": "hair/extensions/bangs/long_wavyl/adult/bg/",
+    "teen": "hair/extensions/bangs/long_wavyl/adult/bg/"
   },
   "variants": [
     "blonde",
@@ -59,7 +66,7 @@
   ],
   "credits": [
     {
-      "file": "hair/extensions/ponytails/topknot_short",
+      "file": "hair/extensions/bangs/long_wavyl",
       "notes": "",
       "authors": [
         "JaidynReiman"
@@ -67,11 +74,10 @@
       "licenses": [
         "OGA-BY 3.0+",
         "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
         "GPL 3.0"
       ],
       "urls": [
-        "https://opengameart.org/content/lpc-1-hairstyle-2-hair-extensions-3-previously-unofficially-released-hairstyles"
+        "https://opengameart.org/content/lpc-expanded-long-hair"
       ]
     }
   ]
