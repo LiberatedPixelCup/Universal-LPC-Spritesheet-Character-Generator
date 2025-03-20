@@ -1,0 +1,84 @@
+{
+  "name": "Large Curls",
+  "type_name": "hair",
+  "layer_1": {
+    "zPos": 120,
+    "male": "hair/curls_large/adult/fg/",
+    "muscular": "hair/curls_large/adult/fg/",
+    "female": "hair/curls_large/adult/fg/",
+    "pregnant": "hair/curls_large/adult/fg/",
+    "teen": "hair/curls_large/adult/fg/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "hair/curls_large/adult/bg/",
+    "muscular": "hair/curls_large/adult/bg/",
+    "female": "hair/curls_large/adult/bg/",
+    "pregnant": "hair/curls_large/adult/bg/",
+    "teen": "hair/curls_large/adult/bg/"
+  },
+  "variants": [
+    "blonde",
+    "ash",
+    "sandy",
+    "platinum",
+    "strawberry",
+    "redhead",
+    "ginger",
+    "carrot",
+    "chestnut",
+    "light brown",
+    "dark brown",
+    "black",
+    "raven",
+    "dark gray",
+    "gray",
+    "white",
+    "red",
+    "orange",
+    "gold",
+    "green",
+    "blue",
+    "navy",
+    "violet",
+    "purple",
+    "pink",
+    "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hair/curls_large",
+      "notes": "",
+      "authors": [
+        "JaidynReiman"
+      ],
+      "licenses": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0+"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-expanded-xlong-hair"
+      ]
+    }
+  ]
+}

@@ -3,11 +3,19 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/sara/male/",
-    "muscular": "hair/sara/male/",
-    "female": "hair/sara/female/",
-    "pregnant": "hair/sara/female/",
-    "teen": "hair/sara/male/"
+    "male": "hair/sara/adult/fg/",
+    "muscular": "hair/sara/adult/fg/",
+    "female": "hair/sara/adult/fg/",
+    "pregnant": "hair/sara/adult/fg/",
+    "teen": "hair/sara/adult/fg/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "hair/sara/adult/bg/",
+    "muscular": "hair/sara/adult/bg/",
+    "female": "hair/sara/adult/bg/",
+    "pregnant": "hair/sara/adult/bg/",
+    "teen": "hair/sara/adult/bg/"
   },
   "variants": [
     "blonde",
@@ -37,6 +45,25 @@
     "pink",
     "rose"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
   "credits": [
     {
       "file": "hair/sara",
@@ -53,7 +80,8 @@
       ],
       "urls": [
         "https://opengameart.org/content/lpc-sara",
-        "https://opengameart.org/content/lpc-hair"
+        "https://opengameart.org/content/lpc-hair",
+        "https://opengameart.org/content/lpc-expanded-xlong-hair"
       ]
     }
   ]
