@@ -3,19 +3,11 @@
   "type_name": "hairextl",
   "layer_1": {
     "zPos": 128,
-    "male": "hair/extensions/bangs/long_wavyl/adult/fg/",
-    "muscular": "hair/extensions/bangs/long_wavyl/adult/fg/",
-    "female": "hair/extensions/bangs/long_wavyl/adult/fg/",
-    "pregnant": "hair/extensions/bangs/long_wavyl/adult/fg/",
-    "teen": "hair/extensions/bangs/long_wavyl/adult/fg/"
-  },
-  "layer_2": {
-    "zPos": 9,
-    "male": "hair/extensions/bangs/long_wavyl/adult/bg/",
-    "muscular": "hair/extensions/bangs/long_wavyl/adult/bg/",
-    "female": "hair/extensions/bangs/long_wavyl/adult/bg/",
-    "pregnant": "hair/extensions/bangs/long_wavyl/adult/bg/",
-    "teen": "hair/extensions/bangs/long_wavyl/adult/bg/"
+    "male": "hair/extensions/bangs/long_wavyl/adult/",
+    "muscular": "hair/extensions/bangs/long_wavyl/adult/",
+    "female": "hair/extensions/bangs/long_wavyl/adult/",
+    "pregnant": "hair/extensions/bangs/long_wavyl/adult/",
+    "teen": "hair/extensions/bangs/long_wavyl/adult/"
   },
   "variants": [
     "blonde",

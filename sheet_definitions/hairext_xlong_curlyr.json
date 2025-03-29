@@ -3,19 +3,11 @@
   "type_name": "hairextr",
   "layer_1": {
     "zPos": 128,
-    "male": "hair/extensions/bangs/xlong_curlyr/adult/fg/",
-    "muscular": "hair/extensions/bangs/xlong_curlyr/adult/fg/",
-    "female": "hair/extensions/bangs/xlong_curlyr/adult/fg/",
-    "pregnant": "hair/extensions/bangs/xlong_curlyr/adult/fg/",
-    "teen": "hair/extensions/bangs/xlong_curlyr/adult/fg/"
-  },
-  "layer_2": {
-    "zPos": 9,
-    "male": "hair/extensions/bangs/xlong_curlyr/adult/bg/",
-    "muscular": "hair/extensions/bangs/xlong_curlyr/adult/bg/",
-    "female": "hair/extensions/bangs/xlong_curlyr/adult/bg/",
-    "pregnant": "hair/extensions/bangs/xlong_curlyr/adult/bg/",
-    "teen": "hair/extensions/bangs/xlong_curlyr/adult/bg/"
+    "male": "hair/extensions/bangs/xlong_curlyr/adult/",
+    "muscular": "hair/extensions/bangs/xlong_curlyr/adult/",
+    "female": "hair/extensions/bangs/xlong_curlyr/adult/",
+    "pregnant": "hair/extensions/bangs/xlong_curlyr/adult/",
+    "teen": "hair/extensions/bangs/xlong_curlyr/adult/"
   },
   "variants": [
     "blonde",

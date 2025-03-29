@@ -1,13 +1,13 @@
 {
-  "name": "Right XLong Wavy",
+  "name": "Right Long Straight",
   "type_name": "hairextr",
   "layer_1": {
     "zPos": 128,
-    "male": "hair/extensions/bangs/xlong_wavyr/adult/",
-    "muscular": "hair/extensions/bangs/xlong_wavyr/adult/",
-    "female": "hair/extensions/bangs/xlong_wavyr/adult/",
-    "pregnant": "hair/extensions/bangs/xlong_wavyr/adult/",
-    "teen": "hair/extensions/bangs/xlong_wavyr/adult/"
+    "male": "hair/extensions/bangs/long_straightr/adult/",
+    "muscular": "hair/extensions/bangs/long_straightr/adult/",
+    "female": "hair/extensions/bangs/long_straightr/adult/",
+    "pregnant": "hair/extensions/bangs/long_straightr/adult/",
+    "teen": "hair/extensions/bangs/long_straightr/adult/"
   },
   "variants": [
     "blonde",
@@ -58,7 +58,7 @@
   ],
   "credits": [
     {
-      "file": "hair/extensions/bangs/xlong_wavyr",
+      "file": "hair/extensions/bangs/long_straightr",
       "notes": "",
       "authors": [
         "JaidynReiman"
@@ -69,7 +69,7 @@
         "GPL 3.0"
       ],
       "urls": [
-        "https://opengameart.org/content/lpc-expanded-xlong-hair"
+        "https://opengameart.org/content/lpc-expanded-long-hair"
       ]
     }
   ]
