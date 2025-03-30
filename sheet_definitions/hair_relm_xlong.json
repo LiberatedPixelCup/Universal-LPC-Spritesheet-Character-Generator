@@ -1,21 +1,21 @@
 {
-  "name": "Relm Down",
+  "name": "Relm XLong",
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/relm_down/adult/fg/",
-    "muscular": "hair/relm_down/adult/fg/",
-    "female": "hair/relm_down/adult/fg/",
-    "pregnant": "hair/relm_down/adult/fg/",
-    "teen": "hair/relm_down/adult/fg/"
+    "male": "hair/relm_xlong/adult/fg/",
+    "muscular": "hair/relm_xlong/adult/fg/",
+    "female": "hair/relm_xlong/adult/fg/",
+    "pregnant": "hair/relm_xlong/adult/fg/",
+    "teen": "hair/relm_xlong/adult/fg/"
   },
   "layer_2": {
     "zPos": 9,
-    "male": "hair/relm_down/adult/bg/",
-    "muscular": "hair/relm_down/adult/bg/",
-    "female": "hair/relm_down/adult/bg/",
-    "pregnant": "hair/relm_down/adult/bg/",
-    "teen": "hair/relm_down/adult/bg/"
+    "male": "hair/relm_xlong/adult/bg/",
+    "muscular": "hair/relm_xlong/adult/bg/",
+    "female": "hair/relm_xlong/adult/bg/",
+    "pregnant": "hair/relm_xlong/adult/bg/",
+    "teen": "hair/relm_xlong/adult/bg/"
   },
   "variants": [
     "blonde",
@@ -66,7 +66,7 @@
   ],
   "credits": [
     {
-      "file": "hair/relm_down",
+      "file": "hair/relm_xlong",
       "notes": "",
       "authors": [
         "JaidynReiman"
