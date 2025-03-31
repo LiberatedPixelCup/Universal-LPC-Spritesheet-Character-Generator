@@ -1,0 +1,76 @@
+{
+  "name": "Right Long Wavy",
+  "type_name": "hairextr",
+  "layer_1": {
+    "zPos": 128,
+    "male": "hair/extensions/bangs/long_wavyr/adult/",
+    "muscular": "hair/extensions/bangs/long_wavyr/adult/",
+    "female": "hair/extensions/bangs/long_wavyr/adult/",
+    "pregnant": "hair/extensions/bangs/long_wavyr/adult/",
+    "teen": "hair/extensions/bangs/long_wavyr/adult/"
+  },
+  "variants": [
+    "blonde",
+    "ash",
+    "sandy",
+    "platinum",
+    "strawberry",
+    "redhead",
+    "ginger",
+    "carrot",
+    "chestnut",
+    "light brown",
+    "dark brown",
+    "black",
+    "raven",
+    "dark gray",
+    "gray",
+    "white",
+    "red",
+    "orange",
+    "gold",
+    "green",
+    "blue",
+    "navy",
+    "violet",
+    "purple",
+    "pink",
+    "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hair/extensions/bangs/long_wavyr",
+      "notes": "",
+      "authors": [
+        "JaidynReiman"
+      ],
+      "licenses": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-expanded-long-hair"
+      ]
+    }
+  ]
+}

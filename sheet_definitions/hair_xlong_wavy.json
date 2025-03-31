@@ -1,21 +1,21 @@
 {
-  "name": "Sara",
+  "name": "XLong Wavy",
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/sara/adult/fg/",
-    "muscular": "hair/sara/adult/fg/",
-    "female": "hair/sara/adult/fg/",
-    "pregnant": "hair/sara/adult/fg/",
-    "teen": "hair/sara/adult/fg/"
+    "male": "hair/xlong_wavy/adult/fg/",
+    "muscular": "hair/xlong_wavy/adult/fg/",
+    "female": "hair/xlong_wavy/adult/fg/",
+    "pregnant": "hair/xlong_wavy/adult/fg/",
+    "teen": "hair/xlong_wavy/adult/fg/"
   },
   "layer_2": {
     "zPos": 9,
-    "male": "hair/sara/adult/bg/",
-    "muscular": "hair/sara/adult/bg/",
-    "female": "hair/sara/adult/bg/",
-    "pregnant": "hair/sara/adult/bg/",
-    "teen": "hair/sara/adult/bg/"
+    "male": "hair/xlong_wavy/adult/bg/",
+    "muscular": "hair/xlong_wavy/adult/bg/",
+    "female": "hair/xlong_wavy/adult/bg/",
+    "pregnant": "hair/xlong_wavy/adult/bg/",
+    "teen": "hair/xlong_wavy/adult/bg/"
   },
   "variants": [
     "blonde",
@@ -66,21 +66,16 @@
   ],
   "credits": [
     {
-      "file": "hair/sara",
-      "notes": "",
+      "file": "hair/xlong_wavy",
+      "notes": "Custom by JaidynReiman; inspiration for spellcast frames from Nila122's XLong",
       "authors": [
-        "Stephen Challener (Redshrike)",
-        "William.Thompsonj",
-        "Mandi Paugh",
-        "bluecarrot16"
+        "JaidynReiman",
+        "Nila122"
       ],
       "licenses": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
+        "OGA-BY 3.0"
       ],
       "urls": [
-        "https://opengameart.org/content/lpc-sara",
-        "https://opengameart.org/content/lpc-hair",
         "https://opengameart.org/content/lpc-expanded-xlong-hair"
       ]
     }

@@ -1,32 +1,21 @@
 {
-  "name": "Relm w/Ponytail",
-  "type_name": "hair",
+  "name": "Relm Topknot",
+  "type_name": "ponytail",
   "layer_1": {
-    "zPos": 120,
-    "male": "hair/relm_ponytail/adult/mg/",
-    "muscular": "hair/relm_ponytail/adult/mg/",
-    "female": "hair/relm_ponytail/adult/mg/",
-    "pregnant": "hair/relm_ponytail/adult/mg/",
-    "teen": "hair/relm_ponytail/adult/mg/",
-    "child": "hair/relm_ponytail/child/mg/"
+    "zPos": 128,
+    "male": "hair/extensions/ponytails/relm_ponytail/adult/fg/",
+    "muscular": "hair/extensions/ponytails/relm_ponytail/adult/fg/",
+    "female": "hair/extensions/ponytails/relm_ponytail/adult/fg/",
+    "pregnant": "hair/extensions/ponytails/relm_ponytail/adult/fg/",
+    "teen": "hair/extensions/ponytails/relm_ponytail/adult/fg/"
   },
   "layer_2": {
     "zPos": 9,
-    "male": "hair/relm_ponytail/adult/bg/",
-    "muscular": "hair/relm_ponytail/adult/bg/",
-    "female": "hair/relm_ponytail/adult/bg/",
-    "pregnant": "hair/relm_ponytail/adult/bg/",
-    "teen": "hair/relm_ponytail/adult/bg/",
-    "child": "hair/relm_ponytail/child/bg/"
-  },
-  "layer_3": {
-    "zPos": 145,
-    "male": "hair/relm_ponytail/adult/fg/",
-    "muscular": "hair/relm_ponytail/adult/fg/",
-    "female": "hair/relm_ponytail/adult/fg/",
-    "pregnant": "hair/relm_ponytail/adult/fg/",
-    "teen": "hair/relm_ponytail/adult/fg/",
-    "child": "hair/relm_ponytail/child/fg/"
+    "male": "hair/extensions/ponytails/relm_ponytail/adult/bg/",
+    "muscular": "hair/extensions/ponytails/relm_ponytail/adult/bg/",
+    "female": "hair/extensions/ponytails/relm_ponytail/adult/bg/",
+    "pregnant": "hair/extensions/ponytails/relm_ponytail/adult/bg/",
+    "teen": "hair/extensions/ponytails/relm_ponytail/adult/bg/"
   },
   "variants": [
     "blonde",
@@ -77,7 +66,7 @@
   ],
   "credits": [
     {
-      "file": "hair/relm_ponytail",
+      "file": "hair/extensions/ponytails/relm_ponytail",
       "notes": "",
       "authors": [
         "JaidynReiman"

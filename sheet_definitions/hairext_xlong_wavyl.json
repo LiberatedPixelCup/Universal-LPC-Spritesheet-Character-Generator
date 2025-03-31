@@ -1,21 +1,13 @@
 {
-  "name": "Sara",
-  "type_name": "hair",
+  "name": "Left XLong Wavy",
+  "type_name": "hairextl",
   "layer_1": {
-    "zPos": 120,
-    "male": "hair/sara/adult/fg/",
-    "muscular": "hair/sara/adult/fg/",
-    "female": "hair/sara/adult/fg/",
-    "pregnant": "hair/sara/adult/fg/",
-    "teen": "hair/sara/adult/fg/"
-  },
-  "layer_2": {
-    "zPos": 9,
-    "male": "hair/sara/adult/bg/",
-    "muscular": "hair/sara/adult/bg/",
-    "female": "hair/sara/adult/bg/",
-    "pregnant": "hair/sara/adult/bg/",
-    "teen": "hair/sara/adult/bg/"
+    "zPos": 128,
+    "male": "hair/extensions/bangs/xlong_wavyl/adult/",
+    "muscular": "hair/extensions/bangs/xlong_wavyl/adult/",
+    "female": "hair/extensions/bangs/xlong_wavyl/adult/",
+    "pregnant": "hair/extensions/bangs/xlong_wavyl/adult/",
+    "teen": "hair/extensions/bangs/xlong_wavyl/adult/"
   },
   "variants": [
     "blonde",
@@ -66,21 +58,17 @@
   ],
   "credits": [
     {
-      "file": "hair/sara",
+      "file": "hair/extensions/bangs/xlong_wavyl",
       "notes": "",
       "authors": [
-        "Stephen Challener (Redshrike)",
-        "William.Thompsonj",
-        "Mandi Paugh",
-        "bluecarrot16"
+        "JaidynReiman"
       ],
       "licenses": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
       ],
       "urls": [
-        "https://opengameart.org/content/lpc-sara",
-        "https://opengameart.org/content/lpc-hair",
         "https://opengameart.org/content/lpc-expanded-xlong-hair"
       ]
     }

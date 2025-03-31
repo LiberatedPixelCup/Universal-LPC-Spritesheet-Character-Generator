@@ -1,32 +1,21 @@
 {
-  "name": "Relm w/Ponytail",
+  "name": "Relm XLong",
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/relm_ponytail/adult/mg/",
-    "muscular": "hair/relm_ponytail/adult/mg/",
-    "female": "hair/relm_ponytail/adult/mg/",
-    "pregnant": "hair/relm_ponytail/adult/mg/",
-    "teen": "hair/relm_ponytail/adult/mg/",
-    "child": "hair/relm_ponytail/child/mg/"
+    "male": "hair/relm_xlong/adult/fg/",
+    "muscular": "hair/relm_xlong/adult/fg/",
+    "female": "hair/relm_xlong/adult/fg/",
+    "pregnant": "hair/relm_xlong/adult/fg/",
+    "teen": "hair/relm_xlong/adult/fg/"
   },
   "layer_2": {
     "zPos": 9,
-    "male": "hair/relm_ponytail/adult/bg/",
-    "muscular": "hair/relm_ponytail/adult/bg/",
-    "female": "hair/relm_ponytail/adult/bg/",
-    "pregnant": "hair/relm_ponytail/adult/bg/",
-    "teen": "hair/relm_ponytail/adult/bg/",
-    "child": "hair/relm_ponytail/child/bg/"
-  },
-  "layer_3": {
-    "zPos": 145,
-    "male": "hair/relm_ponytail/adult/fg/",
-    "muscular": "hair/relm_ponytail/adult/fg/",
-    "female": "hair/relm_ponytail/adult/fg/",
-    "pregnant": "hair/relm_ponytail/adult/fg/",
-    "teen": "hair/relm_ponytail/adult/fg/",
-    "child": "hair/relm_ponytail/child/fg/"
+    "male": "hair/relm_xlong/adult/bg/",
+    "muscular": "hair/relm_xlong/adult/bg/",
+    "female": "hair/relm_xlong/adult/bg/",
+    "pregnant": "hair/relm_xlong/adult/bg/",
+    "teen": "hair/relm_xlong/adult/bg/"
   },
   "variants": [
     "blonde",
@@ -77,7 +66,7 @@
   ],
   "credits": [
     {
-      "file": "hair/relm_ponytail",
+      "file": "hair/relm_xlong",
       "notes": "",
       "authors": [
         "JaidynReiman"
@@ -88,7 +77,6 @@
         "GPL 3.0"
       ],
       "urls": [
-        "https://opengameart.org/content/lpc-relm-hair-xlong-ponytail",
         "https://opengameart.org/content/lpc-expanded-xlong-hair"
       ]
     }
