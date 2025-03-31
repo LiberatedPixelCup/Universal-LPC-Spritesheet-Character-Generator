@@ -3,11 +3,19 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/xlong/male/",
-    "muscular": "hair/xlong/male/",
-    "female": "hair/xlong/female/",
-    "pregnant": "hair/xlong/female/",
-    "teen": "hair/xlong/male/"
+    "male": "hair/xlong/adult/fg/",
+    "muscular": "hair/xlong/adult/fg/",
+    "female": "hair/xlong/adult/fg/",
+    "pregnant": "hair/xlong/adult/fg/",
+    "teen": "hair/xlong/adult/fg/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "hair/xlong/adult/bg/",
+    "muscular": "hair/xlong/adult/bg/",
+    "female": "hair/xlong/adult/bg/",
+    "pregnant": "hair/xlong/adult/bg/",
+    "teen": "hair/xlong/adult/bg/"
   },
   "variants": [
     "blonde",
@@ -37,11 +45,31 @@
     "pink",
     "rose"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
   "credits": [
     {
       "file": "hair/xlong",
-      "notes": "",
+      "notes": "Original by Nila122; cleaned up, resplit into separate layers, and added jump/run/sit/revised combat by JaidynReiman",
       "authors": [
+        "JaidynReiman",
         "Nila122"
       ],
       "licenses": [
@@ -51,7 +79,8 @@
         "GPL 3.0"
       ],
       "urls": [
-        "https://opengameart.org/content/lpc-clothes-and-hair"
+        "https://opengameart.org/content/lpc-clothes-and-hair",
+        "https://opengameart.org/content/lpc-expanded-xlong-hair"
       ]
     }
   ]

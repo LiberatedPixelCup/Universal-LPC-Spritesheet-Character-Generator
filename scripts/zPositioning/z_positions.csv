@@ -238,11 +238,13 @@ hair_twists_fade.json,layer_1,120,hair/twists_fade/adult/ hair/twists_fade/adult
 hair_twists_straight.json,layer_1,120,hair/twists_straight/adult/ hair/twists_straight/adult/ hair/twists_straight/adult/ hair/twists_straight/adult/
 hair_unkempt.json,layer_1,120,hair/unkempt/male/ hair/unkempt/female/ hair/unkempt/male/ hair/unkempt/female/
 hair_wavy.json,layer_1,120,hair/wavy/male/ hair/wavy/female/ hair/wavy/male/ hair/wavy/female/ hair/wavy/child/
-hair_xlong.json,layer_1,120,hair/xlong/male/ hair/xlong/female/ hair/xlong/male/ hair/xlong/female/
+hair_xlong.json,layer_1,120,hair/xlong/adult/fg/ hair/xlong/adult/fg/ hair/xlong/adult/fg/ hair/xlong/adult/fg/
+hair_xlong.json,layer_2,9,hair/xlong/adult/bg/ hair/xlong/adult/bg/ hair/xlong/adult/bg/ hair/xlong/adult/bg/
 hair_xlong_wavy.json,layer_1,120,hair/xlong_wavy/adult/fg/ hair/xlong_wavy/adult/fg/ hair/xlong_wavy/adult/fg/ hair/xlong_wavy/adult/fg/
 hair_xlong_wavy.json,layer_2,9,hair/xlong_wavy/adult/bg/ hair/xlong_wavy/adult/bg/ hair/xlong_wavy/adult/bg/ hair/xlong_wavy/adult/bg/
 hairext_braidl.json,layer_1,128,hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/child/
 hairext_braidr.json,layer_1,128,hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/child/
+hairext_high_bun.json,layer_1,128,hair/extensions/ties/high_bun/adult/ hair/extensions/ties/high_bun/adult/ hair/extensions/ties/high_bun/adult/ hair/extensions/ties/high_bun/adult/
 hairext_long_straightl.json,layer_1,128,hair/extensions/bangs/long_straightl/adult/ hair/extensions/bangs/long_straightl/adult/ hair/extensions/bangs/long_straightl/adult/ hair/extensions/bangs/long_straightl/adult/
 hairext_long_straightr.json,layer_1,128,hair/extensions/bangs/long_straightr/adult/ hair/extensions/bangs/long_straightr/adult/ hair/extensions/bangs/long_straightr/adult/ hair/extensions/bangs/long_straightr/adult/
 hairext_long_wavyl.json,layer_1,128,hair/extensions/bangs/long_wavyl/adult/ hair/extensions/bangs/long_wavyl/adult/ hair/extensions/bangs/long_wavyl/adult/ hair/extensions/bangs/long_wavyl/adult/
