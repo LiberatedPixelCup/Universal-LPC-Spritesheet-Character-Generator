@@ -155,6 +155,10 @@ hair_buzzcut.json,layer_1,120,hair/buzzcut/adult/ hair/buzzcut/adult/ hair/buzzc
 hair_cornrows.json,layer_1,120,hair/cornrows/adult/ hair/cornrows/adult/ hair/cornrows/adult/ hair/cornrows/adult/
 hair_cowlick.json,layer_1,120,hair/cowlick/adult/ hair/cowlick/adult/ hair/cowlick/adult/ hair/cowlick/adult/
 hair_cowlick_tall.json,layer_1,120,hair/cowlick_tall/male/ hair/cowlick_tall/female/ hair/cowlick_tall/male/ hair/cowlick_tall/female/
+hair_curls_large.json,layer_1,120,hair/curls_large/adult/fg/ hair/curls_large/adult/fg/ hair/curls_large/adult/fg/ hair/curls_large/adult/fg/
+hair_curls_large.json,layer_2,9,hair/curls_large/adult/bg/ hair/curls_large/adult/bg/ hair/curls_large/adult/bg/ hair/curls_large/adult/bg/
+hair_curls_large_xlong.json,layer_1,120,hair/curls_large_xlong/adult/fg/ hair/curls_large_xlong/adult/fg/ hair/curls_large_xlong/adult/fg/ hair/curls_large_xlong/adult/fg/
+hair_curls_large_xlong.json,layer_2,9,hair/curls_large_xlong/adult/bg/ hair/curls_large_xlong/adult/bg/ hair/curls_large_xlong/adult/bg/ hair/curls_large_xlong/adult/bg/
 hair_curly_long.json,layer_1,120,hair/curly_long/male/ hair/curly_long/female/ hair/curly_long/male/ hair/curly_long/female/
 hair_curly_short.json,layer_1,120,hair/curly_short/adult/ hair/curly_short/adult/ hair/curly_short/adult/ hair/curly_short/adult/
 hair_curly_short2.json,layer_1,120,hair/curly_short2/adult/ hair/curly_short2/adult/ hair/curly_short2/adult/ hair/curly_short2/adult/
@@ -204,7 +208,10 @@ hair_relm_ponytail.json,layer_1,120,hair/relm_ponytail/adult/mg/ hair/relm_ponyt
 hair_relm_ponytail.json,layer_2,9,hair/relm_ponytail/adult/bg/ hair/relm_ponytail/adult/bg/ hair/relm_ponytail/adult/bg/ hair/relm_ponytail/adult/bg/ hair/relm_ponytail/child/bg/
 hair_relm_ponytail.json,layer_3,145,hair/relm_ponytail/adult/fg/ hair/relm_ponytail/adult/fg/ hair/relm_ponytail/adult/fg/ hair/relm_ponytail/adult/fg/ hair/relm_ponytail/child/fg/
 hair_relm_short.json,layer_1,120,hair/relm_short/adult/ hair/relm_short/adult/ hair/relm_short/adult/ hair/relm_short/adult/ hair/relm_short/child/
-hair_sara.json,layer_1,120,hair/sara/male/ hair/sara/female/ hair/sara/male/ hair/sara/female/
+hair_relm_xlong.json,layer_1,120,hair/relm_xlong/adult/fg/ hair/relm_xlong/adult/fg/ hair/relm_xlong/adult/fg/ hair/relm_xlong/adult/fg/
+hair_relm_xlong.json,layer_2,9,hair/relm_xlong/adult/bg/ hair/relm_xlong/adult/bg/ hair/relm_xlong/adult/bg/ hair/relm_xlong/adult/bg/
+hair_sara.json,layer_1,120,hair/sara/adult/fg/ hair/sara/adult/fg/ hair/sara/adult/fg/ hair/sara/adult/fg/
+hair_sara.json,layer_2,9,hair/sara/adult/bg/ hair/sara/adult/bg/ hair/sara/adult/bg/ hair/sara/adult/bg/
 hair_shorthawk.json,layer_1,120,hair/shorthawk/male/ hair/shorthawk/female/ hair/shorthawk/male/ hair/shorthawk/female/
 hair_shoulderl.json,layer_1,120,hair/shoulderl/adult/ hair/shoulderl/adult/ hair/shoulderl/adult/ hair/shoulderl/adult/
 hair_shoulderr.json,layer_1,120,hair/shoulderr/adult/ hair/shoulderr/adult/ hair/shoulderr/adult/ hair/shoulderr/adult/
@@ -232,10 +239,18 @@ hair_twists_straight.json,layer_1,120,hair/twists_straight/adult/ hair/twists_st
 hair_unkempt.json,layer_1,120,hair/unkempt/male/ hair/unkempt/female/ hair/unkempt/male/ hair/unkempt/female/
 hair_wavy.json,layer_1,120,hair/wavy/male/ hair/wavy/female/ hair/wavy/male/ hair/wavy/female/ hair/wavy/child/
 hair_xlong.json,layer_1,120,hair/xlong/male/ hair/xlong/female/ hair/xlong/male/ hair/xlong/female/
+hair_xlong_wavy.json,layer_1,120,hair/xlong_wavy/adult/fg/ hair/xlong_wavy/adult/fg/ hair/xlong_wavy/adult/fg/ hair/xlong_wavy/adult/fg/
+hair_xlong_wavy.json,layer_2,9,hair/xlong_wavy/adult/bg/ hair/xlong_wavy/adult/bg/ hair/xlong_wavy/adult/bg/ hair/xlong_wavy/adult/bg/
 hairext_braidl.json,layer_1,128,hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/child/
 hairext_braidr.json,layer_1,128,hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/child/
+hairext_long_straightl.json,layer_1,128,hair/extensions/bangs/long_straightl/adult/ hair/extensions/bangs/long_straightl/adult/ hair/extensions/bangs/long_straightl/adult/ hair/extensions/bangs/long_straightl/adult/
+hairext_long_straightr.json,layer_1,128,hair/extensions/bangs/long_straightr/adult/ hair/extensions/bangs/long_straightr/adult/ hair/extensions/bangs/long_straightr/adult/ hair/extensions/bangs/long_straightr/adult/
+hairext_long_wavyl.json,layer_1,128,hair/extensions/bangs/long_wavyl/adult/ hair/extensions/bangs/long_wavyl/adult/ hair/extensions/bangs/long_wavyl/adult/ hair/extensions/bangs/long_wavyl/adult/
+hairext_long_wavyr.json,layer_1,128,hair/extensions/bangs/long_wavyr/adult/ hair/extensions/bangs/long_wavyr/adult/ hair/extensions/bangs/long_wavyr/adult/ hair/extensions/bangs/long_wavyr/adult/
 hairext_topknot_long.json,layer_1,128,hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/child/fg/
 hairext_topknot_long.json,layer_2,9,hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/child/bg/
+hairext_topknot_relm.json,layer_1,128,hair/extensions/ponytails/relm_ponytail/adult/fg/ hair/extensions/ponytails/relm_ponytail/adult/fg/ hair/extensions/ponytails/relm_ponytail/adult/fg/ hair/extensions/ponytails/relm_ponytail/adult/fg/
+hairext_topknot_relm.json,layer_2,9,hair/extensions/ponytails/relm_ponytail/adult/bg/ hair/extensions/ponytails/relm_ponytail/adult/bg/ hair/extensions/ponytails/relm_ponytail/adult/bg/ hair/extensions/ponytails/relm_ponytail/adult/bg/
 hairext_topknot_short.json,layer_1,128,hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/child/
 hairext_xlong_bangl.json,layer_1,128,hair/extensions/bangs/xlong_bangl/adult/ hair/extensions/bangs/xlong_bangl/adult/ hair/extensions/bangs/xlong_bangl/adult/ hair/extensions/bangs/xlong_bangl/adult/ hair/extensions/bangs/xlong_bangl/child/
 hairext_xlong_bangr.json,layer_1,128,hair/extensions/bangs/xlong_bangr/adult/ hair/extensions/bangs/xlong_bangr/adult/ hair/extensions/bangs/xlong_bangr/adult/ hair/extensions/bangs/xlong_bangr/adult/ hair/extensions/bangs/xlong_bangr/child/
@@ -243,6 +258,10 @@ hairext_xlong_braidl.json,layer_1,128,hair/extensions/bangs/xlong_braidl/adult/f
 hairext_xlong_braidl.json,layer_2,9,hair/extensions/bangs/xlong_braidl/adult/bg/ hair/extensions/bangs/xlong_braidl/adult/bg/ hair/extensions/bangs/xlong_braidl/adult/bg/ hair/extensions/bangs/xlong_braidl/adult/bg/ hair/extensions/bangs/xlong_braidl/child/bg/
 hairext_xlong_braidr.json,layer_1,128,hair/extensions/bangs/xlong_braidr/adult/fg/ hair/extensions/bangs/xlong_braidr/adult/fg/ hair/extensions/bangs/xlong_braidr/adult/fg/ hair/extensions/bangs/xlong_braidr/adult/fg/ hair/extensions/bangs/xlong_braidr/child/fg/
 hairext_xlong_braidr.json,layer_2,9,hair/extensions/bangs/xlong_braidr/adult/bg/ hair/extensions/bangs/xlong_braidr/adult/bg/ hair/extensions/bangs/xlong_braidr/adult/bg/ hair/extensions/bangs/xlong_braidr/adult/bg/ hair/extensions/bangs/xlong_braidr/child/bg/
+hairext_xlong_curlyl.json,layer_1,128,hair/extensions/bangs/xlong_curlyl/adult/ hair/extensions/bangs/xlong_curlyl/adult/ hair/extensions/bangs/xlong_curlyl/adult/ hair/extensions/bangs/xlong_curlyl/adult/
+hairext_xlong_curlyr.json,layer_1,128,hair/extensions/bangs/xlong_curlyr/adult/ hair/extensions/bangs/xlong_curlyr/adult/ hair/extensions/bangs/xlong_curlyr/adult/ hair/extensions/bangs/xlong_curlyr/adult/
+hairext_xlong_wavyl.json,layer_1,128,hair/extensions/bangs/xlong_wavyl/adult/ hair/extensions/bangs/xlong_wavyl/adult/ hair/extensions/bangs/xlong_wavyl/adult/ hair/extensions/bangs/xlong_wavyl/adult/
+hairext_xlong_wavyr.json,layer_1,128,hair/extensions/bangs/xlong_wavyr/adult/ hair/extensions/bangs/xlong_wavyr/adult/ hair/extensions/bangs/xlong_wavyr/adult/ hair/extensions/bangs/xlong_wavyr/adult/
 hat_accessory_crest.json,layer_1,139,hat/accessory/crest/adult/ hat/accessory/crest/adult/ hat/accessory/crest/adult/ hat/accessory/crest/adult/
 hat_accessory_crest_centurion.json,layer_1,139,hat/accessory/crest_centurion/adult/ hat/accessory/crest_centurion/adult/ hat/accessory/crest_centurion/adult/ hat/accessory/crest_centurion/adult/
 hat_accessory_horns_downward.json,layer_1,139,hat/accessory/horns_downward/fg/adult/ hat/accessory/horns_downward/fg/adult/ hat/accessory/horns_downward/fg/adult/ hat/accessory/horns_downward/fg/adult/
