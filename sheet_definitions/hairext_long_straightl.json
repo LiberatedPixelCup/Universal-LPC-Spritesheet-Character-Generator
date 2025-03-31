@@ -1,6 +1,6 @@
 {
-  "name": "Right Long Straight",
-  "type_name": "hairextr",
+  "name": "Left Long Straight",
+  "type_name": "hairextl",
   "layer_1": {
     "zPos": 128,
     "male": "hair/extensions/bangs/long_straightl/adult/",
