@@ -1,8 +1,9 @@
 LPC Sprite Character Tools
 =============================================
 
-These assets are various tools to help generate sheets. It is recommended to use these in conjunction with lpctools:
-https://github.com/bluecarrot16/lpctools
+These assets are various tools to help generate sheets.
+
+It is recommended to [use these in conjunction with lpctools.](LPCTOOLS.md)
 
 
 ### Masks
