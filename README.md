@@ -127,6 +127,7 @@ You may instead wish to use a web server locally for development. Some free reco
 - [lpctools](https://github.com/bluecarrot16/lpctools)
 - [how to install lpctools](tools/LPCTOOLS.md)
 - [recompile full sheets using lpctools](tools/REBUILD.md)
+- [convert assets to vitruvian studios](tools/VITRUVIAN.md)
 
 ### Examples
 ![example](/readme-images/example.png)

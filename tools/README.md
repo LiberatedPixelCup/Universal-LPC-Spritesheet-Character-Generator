@@ -23,11 +23,13 @@ The base "palettes" directory contains the standard palettes used by this genera
 
 Layouts are for use in lpctools, like so:
 ```
-lpctools arrange distribute --layout universal-expanded --input /path/to/split/assets --output hat/helmet/bascinet/adult.png --offsets tools/masks/reference_points.png --mask tools/masks/masks_male_head.png
-lpctools arrange separate --layout universal-expanded --input hat/helmet/bascinet/adult.png --output characters/updates/hat/helmet/bascinet/_separated/
+lpctools arrange distribute --layout layout/universal-expanded.json --input /path/to/split/assets --output hat/helmet/bascinet/adult.png --offsets tools/masks/reference_points.png --mask tools/masks/masks_male_head.png
+lpctools arrange separate --layout layout/universal-expanded.json --input hat/helmet/bascinet/adult.png --output characters/updates/hat/helmet/bascinet/_separated/
 ```
 
 Arrange a set of assets to all frames with the correct layout. `universal-expanded.json` is the new set that includes idle, run, jump, climb, sit, emotes, backslash, and halfslash. In the future I'd also like to add grab/carry/lift. You can also separate the assets into individual animations using the "separate" comman.
+
+These are also equivalent to the built-in lpctools layout's "universal" and "universal-expanded".
 
 
 
