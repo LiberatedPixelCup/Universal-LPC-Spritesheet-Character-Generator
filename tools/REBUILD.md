@@ -46,8 +46,8 @@ To get repalettes, simply run the following command:
 You can do this with any files and any of the palette sheets. The palette sheet name applies to the type of material used in the sheet, and you can usually figure out what matches it based on the sheet. If the base colors to not match the "source" in the palette sheet, the repalette won't work.
 
 For more information on palettes, check out the following:
-- (Standard ULPC Palettes)[palettes/README.md]
-- (Custom Palettes)[palettes/custom/README.md] (used for specific assets)
-- (Convert to LPC Revised Palettes or Visa-Versa)[palettes/conversions/README.md]
+- [Standard ULPC Palettes](palettes/README.md)
+- [Custom Palettes](palettes/custom/README.md) (used for specific assets)
+- [Convert to LPC Revised Palettes or Visa-Versa](palettes/conversions/README.md)
 
 Brand new custom palette sheets can be made by following the existing examples, but the ones collected here are fairly standard.

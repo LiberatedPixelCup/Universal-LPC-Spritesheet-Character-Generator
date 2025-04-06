@@ -17,7 +17,7 @@ If running on windows, I highly recommend installing wsl. It makes the process m
 I used these instructions to install wsl:
 [https://kontext.tech/article/308/how-to-install-windows-subsystem-for-linux-on-a-non-c-drive]
 
-These instructions install Ubuntu, but [you can replace Ubuntu with other distros by clicking here.][https://kontext.tech/article/308/how-to-install-windows-subsystem-for-linux-on-a-non-c-drive#h-download-a-linux-distro]. Just remember to change the filename in the instructions below.
+These instructions install Ubuntu, but [you can replace Ubuntu with other distros by clicking here.](https://kontext.tech/article/308/how-to-install-windows-subsystem-for-linux-on-a-non-c-drive#h-download-a-linux-distro). Just remember to change the filename in the instructions below.
 
 Steps:
 1. Open Powershell as Administrator
