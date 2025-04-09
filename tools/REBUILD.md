@@ -7,7 +7,7 @@ The instructions below can be used to build or rebuild sheets if so desired usin
 ### Install LPCTools
 [LPCTools](https://github.com/bluecarrot16/lpctools) must be installed first.
 
-[Install LPCTools and its prerequisites using these instructions.](../../../../tools/LPCTOOLS.md)
+[Install LPCTools and its prerequisites using these instructions.](LPCTOOLS.md)
 
 
 #### Rebuild Sheets

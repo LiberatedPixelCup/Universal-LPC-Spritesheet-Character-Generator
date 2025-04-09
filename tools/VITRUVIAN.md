@@ -25,4 +25,4 @@ What this sets up here is converting base colors from ULPC to the base color of 
 
 This is merely an example using existing assets, but you will need to update to include your own paths.
 
-(All conversion palettes can be found here)[tools/palettes/conversions/README.md], so please look carefully through them. Match the base color with the base color used on vitruvian.
+(All conversion palettes can be found here)[palettes/conversions/README.md], so please look carefully through them. Match the base color with the base color used on vitruvian.
