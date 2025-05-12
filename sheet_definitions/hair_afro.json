@@ -3,11 +3,11 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/afro/male/",
-    "muscular": "hair/afro/male/",
-    "female": "hair/afro/male/",
-    "pregnant": "hair/afro/male/",
-    "teen": "hair/afro/male/"
+    "male": "hair/afro/adult/",
+    "muscular": "hair/afro/adult/",
+    "female": "hair/afro/adult/",
+    "pregnant": "hair/afro/adult/",
+    "teen": "hair/afro/adult/"
   },
   "variants": [
     "blonde",
@@ -36,6 +36,25 @@
     "purple",
     "pink",
     "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
   ],
   "credits": [
     {

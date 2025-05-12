@@ -3,11 +3,11 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/pigtails_bangs/male/",
-    "muscular": "hair/pigtails_bangs/male/",
-    "female": "hair/pigtails_bangs/female/",
-    "pregnant": "hair/pigtails_bangs/female/",
-    "teen": "hair/pigtails_bangs/male/"
+    "male": "hair/pigtails_bangs/adult/",
+    "muscular": "hair/pigtails_bangs/adult/",
+    "female": "hair/pigtails_bangs/adult/",
+    "pregnant": "hair/pigtails_bangs/adult/",
+    "teen": "hair/pigtails_bangs/adult/"
   },
   "variants": [
     "blonde",
@@ -36,6 +36,25 @@
     "purple",
     "pink",
     "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
   ],
   "credits": [
     {

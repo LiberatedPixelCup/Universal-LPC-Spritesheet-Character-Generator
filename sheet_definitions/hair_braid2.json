@@ -3,11 +3,11 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/braid2/male/",
-    "muscular": "hair/braid2/male/",
-    "female": "hair/braid2/female/",
-    "pregnant": "hair/braid2/female/",
-    "teen": "hair/braid2/male/"
+    "male": "hair/braid2/adult/",
+    "muscular": "hair/braid2/adult/",
+    "female": "hair/braid2/adult/",
+    "pregnant": "hair/braid2/adult/",
+    "teen": "hair/braid2/adult/"
   },
   "variants": [
     "blonde",
@@ -36,6 +36,25 @@
     "purple",
     "pink",
     "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
   ],
   "credits": [
     {

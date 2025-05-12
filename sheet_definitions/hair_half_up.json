@@ -3,11 +3,11 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/half_up/male/",
-    "muscular": "hair/half_up/male/",
-    "female": "hair/half_up/female/",
-    "pregnant": "hair/half_up/female/",
-    "teen": "hair/half_up/male/"
+    "male": "hair/half_up/adult/",
+    "muscular": "hair/half_up/adult/",
+    "female": "hair/half_up/adult/",
+    "pregnant": "hair/half_up/adult/",
+    "teen": "hair/half_up/adult/"
   },
   "variants": [
     "blonde",
@@ -36,6 +36,25 @@
     "purple",
     "pink",
     "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
   ],
   "credits": [
     {

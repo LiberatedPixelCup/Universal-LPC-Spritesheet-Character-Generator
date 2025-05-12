@@ -3,11 +3,11 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/high_ponytail/male/",
-    "muscular": "hair/high_ponytail/male/",
-    "female": "hair/high_ponytail/female/",
-    "pregnant": "hair/high_ponytail/female/",
-    "teen": "hair/high_ponytail/male/"
+    "male": "hair/high_ponytail/adult/",
+    "muscular": "hair/high_ponytail/adult/",
+    "female": "hair/high_ponytail/adult/",
+    "pregnant": "hair/high_ponytail/adult/",
+    "teen": "hair/high_ponytail/adult/"
   },
   "variants": [
     "blonde",
@@ -36,6 +36,25 @@
     "purple",
     "pink",
     "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
   ],
   "credits": [
     {

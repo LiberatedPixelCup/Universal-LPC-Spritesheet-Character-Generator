@@ -3,11 +3,11 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/curtains/male/",
-    "muscular": "hair/curtains/male/",
-    "female": "hair/curtains/female/",
-    "pregnant": "hair/curtains/female/",
-    "teen": "hair/curtains/male/"
+    "male": "hair/curtains/adult/",
+    "muscular": "hair/curtains/adult/",
+    "female": "hair/curtains/adult/",
+    "pregnant": "hair/curtains/adult/",
+    "teen": "hair/curtains/adult/"
   },
   "variants": [
     "blonde",
@@ -36,6 +36,25 @@
     "purple",
     "pink",
     "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
   ],
   "credits": [
     {
