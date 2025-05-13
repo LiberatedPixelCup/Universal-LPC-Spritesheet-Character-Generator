@@ -3,11 +3,19 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/braid/adult/",
-    "muscular": "hair/braid/adult/",
-    "female": "hair/braid/adult/",
-    "pregnant": "hair/braid/adult/",
-    "teen": "hair/braid/adult/"
+    "male": "hair/braid/adult/fg/",
+    "muscular": "hair/braid/adult/fg/",
+    "female": "hair/braid/adult/fg/",
+    "pregnant": "hair/braid/adult/fg/",
+    "teen": "hair/braid/adult/fg/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "hair/braid/adult/bg/",
+    "muscular": "hair/braid/adult/bg/",
+    "female": "hair/braid/adult/bg/",
+    "pregnant": "hair/braid/adult/bg/",
+    "teen": "hair/braid/adult/bg/"
   },
   "variants": [
     "blonde",
