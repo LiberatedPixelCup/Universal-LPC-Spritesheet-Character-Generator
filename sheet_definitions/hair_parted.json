@@ -3,11 +3,11 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/parted/male/",
-    "muscular": "hair/parted/male/",
-    "female": "hair/parted/female/",
-    "pregnant": "hair/parted/female/",
-    "teen": "hair/parted/male/"
+    "male": "hair/parted/adult/",
+    "muscular": "hair/parted/adult/",
+    "female": "hair/parted/adult/",
+    "pregnant": "hair/parted/adult/",
+    "teen": "hair/parted/adult/"
   },
   "variants": [
     "blonde",
@@ -37,6 +37,25 @@
     "pink",
     "rose"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
   "credits": [
     {
       "file": "hair/parted",
@@ -52,7 +71,8 @@
       ],
       "urls": [
         "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-        "https://github.com/jrconway3/Universal-LPC-spritesheet/commit/46ddcf05a0e43e7aa6ffd47d350eef0eb529ac24"
+        "https://github.com/jrconway3/Universal-LPC-spritesheet/commit/46ddcf05a0e43e7aa6ffd47d350eef0eb529ac24",
+        "https://opengameart.org/content/lpc-expanded-hair"
       ]
     }
   ]

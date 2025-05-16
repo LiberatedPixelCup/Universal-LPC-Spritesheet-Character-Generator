@@ -140,19 +140,22 @@ feet_socks_high.json,layer_1,14,feet/socks/high/male/ feet/socks/high/thin/ feet
 feet_socks_tabi.json,layer_1,14,feet/socks/tabi/male/ feet/socks/tabi/thin/ feet/socks/tabi/male/ feet/socks/tabi/thin/
 hair_afro.json,layer_1,120,hair/afro/adult/ hair/afro/adult/ hair/afro/adult/ hair/afro/adult/
 hair_balding.json,layer_1,120,hair/balding/adult/ hair/balding/adult/ hair/balding/adult/ hair/balding/adult/
-hair_bangs.json,layer_1,120,hair/bangs/male/ hair/bangs/female/ hair/bangs/male/ hair/bangs/female/
+hair_bangs.json,layer_1,120,hair/bangs/adult/ hair/bangs/adult/ hair/bangs/adult/ hair/bangs/adult/
 hair_bangs_bun.json,layer_1,120,hair/bangs_bun/adult/ hair/bangs_bun/adult/ hair/bangs_bun/adult/ hair/bangs_bun/adult/
-hair_bangslong.json,layer_1,120,hair/bangslong/male/ hair/bangslong/female/ hair/bangslong/male/ hair/bangslong/female/
-hair_bangslong2.json,layer_1,120,hair/bangslong2/male/ hair/bangslong2/female/ hair/bangslong2/male/ hair/bangslong2/female/
-hair_bangsshort.json,layer_1,120,hair/bangsshort/male/ hair/bangsshort/female/ hair/bangsshort/male/ hair/bangsshort/female/
-hair_bedhead.json,layer_1,120,hair/bedhead/male/ hair/bedhead/female/ hair/bedhead/male/ hair/bedhead/female/
+hair_bangslong.json,layer_1,120,hair/bangslong/adult/ hair/bangslong/adult/ hair/bangslong/adult/ hair/bangslong/adult/
+hair_bangslong2.json,layer_1,120,hair/bangslong2/adult/fg/ hair/bangslong2/adult/fg/ hair/bangslong2/adult/fg/ hair/bangslong2/adult/fg/
+hair_bangslong2.json,layer_2,9,hair/bangslong2/adult/bg/ hair/bangslong2/adult/bg/ hair/bangslong2/adult/bg/ hair/bangslong2/adult/bg/
+hair_bangsshort.json,layer_1,120,hair/bangsshort/adult/ hair/bangsshort/adult/ hair/bangsshort/adult/ hair/bangsshort/adult/
+hair_bedhead.json,layer_1,120,hair/bedhead/adult/fg/ hair/bedhead/adult/fg/ hair/bedhead/adult/fg/ hair/bedhead/adult/fg/
+hair_bedhead.json,layer_2,9,hair/bedhead/adult/bg/ hair/bedhead/adult/bg/ hair/bedhead/adult/bg/ hair/bedhead/adult/bg/
 hair_bob.json,layer_1,120,hair/bob/adult/ hair/bob/adult/ hair/bob/adult/ hair/bob/adult/
 hair_bob_side_part.json,layer_1,120,hair/bob_side_part/adult/ hair/bob_side_part/adult/ hair/bob_side_part/adult/ hair/bob_side_part/adult/
 hair_braid.json,layer_1,120,hair/braid/adult/fg/ hair/braid/adult/fg/ hair/braid/adult/fg/ hair/braid/adult/fg/
 hair_braid.json,layer_2,9,hair/braid/adult/bg/ hair/braid/adult/bg/ hair/braid/adult/bg/ hair/braid/adult/bg/
 hair_braid2.json,layer_1,120,hair/braid2/adult/fg/ hair/braid2/adult/fg/ hair/braid2/adult/fg/ hair/braid2/adult/fg/
 hair_braid2.json,layer_2,9,hair/braid2/adult/bg/ hair/braid2/adult/bg/ hair/braid2/adult/bg/ hair/braid2/adult/bg/
-hair_bunches.json,layer_1,120,hair/bunches/male/ hair/bunches/female/ hair/bunches/male/ hair/bunches/female/
+hair_bunches.json,layer_1,120,hair/bunches/adult/fg/ hair/bunches/adult/fg/ hair/bunches/adult/fg/ hair/bunches/adult/fg/
+hair_bunches.json,layer_2,9,hair/bunches/adult/bg/ hair/bunches/adult/bg/ hair/bunches/adult/bg/ hair/bunches/adult/bg/
 hair_buzzcut.json,layer_1,120,hair/buzzcut/adult/ hair/buzzcut/adult/ hair/buzzcut/adult/ hair/buzzcut/adult/
 hair_cornrows.json,layer_1,120,hair/cornrows/adult/ hair/cornrows/adult/ hair/cornrows/adult/ hair/cornrows/adult/
 hair_cowlick.json,layer_1,120,hair/cowlick/adult/ hair/cowlick/adult/ hair/cowlick/adult/ hair/cowlick/adult/
@@ -173,41 +176,46 @@ hair_flat_top_straight.json,layer_1,120,hair/flat_top_straight/adult/ hair/flat_
 hair_half_up.json,layer_1,120,hair/half_up/adult/ hair/half_up/adult/ hair/half_up/adult/ hair/half_up/adult/
 hair_halfmessy.json,layer_1,120,hair/halfmessy/adult/ hair/halfmessy/adult/ hair/halfmessy/adult/ hair/halfmessy/adult/
 hair_high_and_tight.json,layer_1,120,hair/high_and_tight/adult/ hair/high_and_tight/adult/ hair/high_and_tight/adult/ hair/high_and_tight/adult/
-hair_high_ponytail.json,layer_1,120,hair/high_ponytail/adult/ hair/high_ponytail/adult/ hair/high_ponytail/adult/ hair/high_ponytail/adult/
+hair_high_ponytail.json,layer_1,120,hair/high_ponytail/adult/fg/ hair/high_ponytail/adult/fg/ hair/high_ponytail/adult/fg/ hair/high_ponytail/adult/fg/
+hair_high_ponytail.json,layer_2,9,hair/high_ponytail/adult/bg/ hair/high_ponytail/adult/bg/ hair/high_ponytail/adult/bg/ hair/high_ponytail/adult/bg/
 hair_idol.json,layer_1,120,hair/idol/adult/ hair/idol/adult/ hair/idol/adult/ hair/idol/adult/
 hair_jewfro.json,layer_1,120,hair/jewfro/adult/ hair/jewfro/adult/ hair/jewfro/adult/ hair/jewfro/adult/ hair/jewfro/child/
 hair_lob.json,layer_1,120,hair/lob/adult/ hair/lob/adult/ hair/lob/adult/ hair/lob/adult/
-hair_long.json,layer_1,120,hair/long/male/ hair/long/female/ hair/long/male/ hair/long/female/
+hair_long.json,layer_1,120,hair/long/adult/ hair/long/adult/ hair/long/adult/ hair/long/adult/
 hair_long_band.json,layer_1,120,hair/long_band/adult/fg/ hair/long_band/adult/fg/ hair/long_band/adult/fg/ hair/long_band/adult/fg/
 hair_long_band.json,layer_2,9,hair/long_band/adult/bg/ hair/long_band/adult/bg/ hair/long_band/adult/bg/ hair/long_band/adult/bg/
 hair_long_center_part.json,layer_1,120,hair/long_center_part/adult/fg/ hair/long_center_part/adult/fg/ hair/long_center_part/adult/fg/ hair/long_center_part/adult/fg/
 hair_long_center_part.json,layer_2,9,hair/long_center_part/adult/bg/ hair/long_center_part/adult/bg/ hair/long_center_part/adult/bg/ hair/long_center_part/adult/bg/
 hair_long_messy.json,layer_1,120,hair/long_messy/adult/ hair/long_messy/adult/ hair/long_messy/adult/ hair/long_messy/adult/
 hair_long_messy2.json,layer_1,120,hair/long_messy2/adult/ hair/long_messy2/adult/ hair/long_messy2/adult/ hair/long_messy2/adult/
-hair_long_straight.json,layer_1,120,hair/long_straight/male/ hair/long_straight/female/ hair/long_straight/male/ hair/long_straight/female/
-hair_long_tied.json,layer_1,120,hair/long_tied/adult/ hair/long_tied/adult/ hair/long_tied/adult/ hair/long_tied/adult/
-hair_longhawk.json,layer_1,120,hair/longhawk/male/ hair/longhawk/female/ hair/longhawk/male/ hair/longhawk/female/
-hair_loose.json,layer_1,120,hair/loose/male/ hair/loose/female/ hair/loose/male/ hair/loose/female/
+hair_long_straight.json,layer_1,120,hair/long_straight/adult/ hair/long_straight/adult/ hair/long_straight/adult/ hair/long_straight/adult/
+hair_long_tied.json,layer_1,120,hair/long_tied/adult/fg/ hair/long_tied/adult/fg/ hair/long_tied/adult/fg/ hair/long_tied/adult/fg/
+hair_long_tied.json,layer_2,9,hair/long_tied/adult/bg/ hair/long_tied/adult/bg/ hair/long_tied/adult/bg/ hair/long_tied/adult/bg/
+hair_longhawk.json,layer_1,120,hair/longhawk/adult/ hair/longhawk/adult/ hair/longhawk/adult/ hair/longhawk/adult/
+hair_loose.json,layer_1,120,hair/loose/adult/ hair/loose/adult/ hair/loose/adult/ hair/loose/adult/
 hair_messed.json,layer_1,120,hair/messy/child/
-hair_messy1.json,layer_1,120,hair/messy1/male/ hair/messy1/female/ hair/messy1/male/ hair/messy1/female/
-hair_messy2.json,layer_1,120,hair/messy2/male/ hair/messy2/female/ hair/messy2/male/ hair/messy2/female/
+hair_messy1.json,layer_1,120,hair/messy1/adult/ hair/messy1/adult/ hair/messy1/adult/ hair/messy1/adult/
+hair_messy2.json,layer_1,120,hair/messy2/adult/ hair/messy2/adult/ hair/messy2/adult/ hair/messy2/adult/
 hair_messy3.json,layer_1,120,hair/messy3/adult/ hair/messy3/adult/ hair/messy3/adult/ hair/messy3/adult/
 hair_mop.json,layer_1,120,hair/mop/adult/ hair/mop/adult/ hair/mop/adult/ hair/mop/adult/
 hair_natural.json,layer_1,120,hair/natural/adult/ hair/natural/adult/ hair/natural/adult/ hair/natural/adult/
 hair_page.json,layer_1,120,hair/page/male/ hair/page/female/ hair/page/male/ hair/page/female/
 hair_page2.json,layer_1,120,hair/page2/adult/ hair/page2/adult/ hair/page2/adult/ hair/page2/adult/
-hair_parted.json,layer_1,120,hair/parted/male/ hair/parted/female/ hair/parted/male/ hair/parted/female/
+hair_parted.json,layer_1,120,hair/parted/adult/ hair/parted/adult/ hair/parted/adult/ hair/parted/adult/
 hair_parted2.json,layer_1,120,hair/parted2/adult/ hair/parted2/adult/ hair/parted2/adult/ hair/parted2/adult/
 hair_parted3.json,layer_1,120,hair/parted3/adult/ hair/parted3/adult/ hair/parted3/adult/ hair/parted3/adult/
 hair_parted_side_bangs.json,layer_1,120,hair/parted_side_bangs/adult/ hair/parted_side_bangs/adult/ hair/parted_side_bangs/adult/ hair/parted_side_bangs/adult hair/parted_side_bangs/child/
 hair_parted_side_bangs2.json,layer_1,120,hair/parted_side_bangs2/adult/ hair/parted_side_bangs2/adult/ hair/parted_side_bangs2/adult/ hair/parted_side_bangs2/adult hair/parted_side_bangs2/child/
 hair_pigtails.json,layer_1,120,hair/pigtails/adult/ hair/pigtails/adult/ hair/pigtails/adult/ hair/pigtails/adult/
 hair_pigtails_bangs.json,layer_1,120,hair/pigtails_bangs/adult/ hair/pigtails_bangs/adult/ hair/pigtails_bangs/adult/ hair/pigtails_bangs/adult/
-hair_pixie.json,layer_1,120,hair/pixie/male/ hair/pixie/female/ hair/pixie/male/ hair/pixie/female/
-hair_plain.json,layer_1,120,hair/plain/male/ hair/plain/female/ hair/plain/male/ hair/plain/female/
-hair_ponytail.json,layer_1,120,hair/ponytail/male/ hair/ponytail/female/ hair/ponytail/male/ hair/ponytail/female/
-hair_ponytail2.json,layer_1,120,hair/ponytail2/male/ hair/ponytail2/female/ hair/ponytail2/male/ hair/ponytail2/female/
-hair_princess.json,layer_1,120,hair/princess/male/ hair/princess/female/ hair/princess/male/ hair/princess/female/
+hair_pixie.json,layer_1,120,hair/pixie/adult/ hair/pixie/adult/ hair/pixie/adult/ hair/pixie/adult/
+hair_plain.json,layer_1,120,hair/plain/adult/ hair/plain/adult/ hair/plain/adult/ hair/plain/adult/
+hair_ponytail.json,layer_1,120,hair/ponytail/adult/fg/ hair/ponytail/adult/fg/ hair/ponytail/adult/fg/ hair/ponytail/adult/fg/
+hair_ponytail.json,layer_2,9,hair/ponytail/adult/bg/ hair/ponytail/adult/bg/ hair/ponytail/adult/bg/ hair/ponytail/adult/bg/
+hair_ponytail2.json,layer_1,120,hair/ponytail2/adult/fg/ hair/ponytail2/adult/fg/ hair/ponytail2/adult/fg/ hair/ponytail2/adult/fg/
+hair_ponytail2.json,layer_2,9,hair/ponytail2/adult/bg/ hair/ponytail2/adult/bg/ hair/ponytail2/adult/bg/ hair/ponytail2/adult/bg/
+hair_princess.json,layer_1,120,hair/princess/adult/fg/ hair/princess/adult/fg/ hair/princess/adult/fg/ hair/princess/adult/fg/
+hair_princess.json,layer_2,9,hair/princess/adult/bg/ hair/princess/adult/bg/ hair/princess/adult/bg/ hair/princess/adult/bg/
 hair_relm_ponytail.json,layer_1,120,hair/relm_ponytail/adult/mg/ hair/relm_ponytail/adult/mg/ hair/relm_ponytail/adult/mg/ hair/relm_ponytail/adult/mg/ hair/relm_ponytail/child/mg/
 hair_relm_ponytail.json,layer_2,9,hair/relm_ponytail/adult/bg/ hair/relm_ponytail/adult/bg/ hair/relm_ponytail/adult/bg/ hair/relm_ponytail/adult/bg/ hair/relm_ponytail/child/bg/
 hair_relm_ponytail.json,layer_3,145,hair/relm_ponytail/adult/fg/ hair/relm_ponytail/adult/fg/ hair/relm_ponytail/adult/fg/ hair/relm_ponytail/adult/fg/ hair/relm_ponytail/child/fg/
@@ -216,9 +224,11 @@ hair_relm_xlong.json,layer_1,120,hair/relm_xlong/adult/fg/ hair/relm_xlong/adult
 hair_relm_xlong.json,layer_2,9,hair/relm_xlong/adult/bg/ hair/relm_xlong/adult/bg/ hair/relm_xlong/adult/bg/ hair/relm_xlong/adult/bg/
 hair_sara.json,layer_1,120,hair/sara/adult/fg/ hair/sara/adult/fg/ hair/sara/adult/fg/ hair/sara/adult/fg/
 hair_sara.json,layer_2,9,hair/sara/adult/bg/ hair/sara/adult/bg/ hair/sara/adult/bg/ hair/sara/adult/bg/
-hair_shorthawk.json,layer_1,120,hair/shorthawk/male/ hair/shorthawk/female/ hair/shorthawk/male/ hair/shorthawk/female/
-hair_shoulderl.json,layer_1,120,hair/shoulderl/adult/ hair/shoulderl/adult/ hair/shoulderl/adult/ hair/shoulderl/adult/
-hair_shoulderr.json,layer_1,120,hair/shoulderr/adult/ hair/shoulderr/adult/ hair/shoulderr/adult/ hair/shoulderr/adult/
+hair_shorthawk.json,layer_1,120,hair/shorthawk/adult/ hair/shorthawk/adult/ hair/shorthawk/adult/ hair/shorthawk/adult/
+hair_shoulderl.json,layer_1,120,hair/shoulderl/adult/fg/ hair/shoulderl/adult/fg/ hair/shoulderl/adult/fg/ hair/shoulderl/adult/fg/
+hair_shoulderl.json,layer_2,9,hair/shoulderl/adult/bg/ hair/shoulderl/adult/bg/ hair/shoulderl/adult/bg/ hair/shoulderl/adult/bg/
+hair_shoulderr.json,layer_1,120,hair/shoulderr/adult/fg/ hair/shoulderr/adult/fg/ hair/shoulderr/adult/fg/ hair/shoulderr/adult/fg/
+hair_shoulderr.json,layer_2,9,hair/shoulderr/adult/bg/ hair/shoulderr/adult/bg/ hair/shoulderr/adult/bg/ hair/shoulderr/adult/bg/
 hair_single.json,layer_1,120,hair/single/male/ hair/single/female/ hair/single/male/ hair/single/female/
 hair_spiked.json,layer_1,120,hair/spiked/adult/ hair/spiked/adult/ hair/spiked/adult/ hair/spiked/adult/
 hair_spiked2.json,layer_1,120,hair/spiked2/adult/ hair/spiked2/adult/ hair/spiked2/adult/ hair/spiked2/adult/
@@ -226,7 +236,7 @@ hair_spiked_beehive.json,layer_1,120,hair/spiked_beehive/adult/ hair/spiked_beeh
 hair_spiked_liberty.json,layer_1,120,hair/spiked_liberty/adult/ hair/spiked_liberty/adult/ hair/spiked_liberty/adult/ hair/spiked_liberty/adult/
 hair_spiked_liberty2.json,layer_1,120,hair/spiked_liberty2/adult/ hair/spiked_liberty2/adult/ hair/spiked_liberty2/adult/ hair/spiked_liberty2/adult/
 hair_spiked_porcupine.json,layer_1,120,hair/spiked_porcupine/adult/ hair/spiked_porcupine/adult/ hair/spiked_porcupine/adult/ hair/spiked_porcupine/adult/
-hair_swoop.json,layer_1,120,hair/swoop/male/ hair/swoop/female/ hair/swoop/male/ hair/swoop/female/
+hair_swoop.json,layer_1,120,hair/swoop/adult/ hair/swoop/adult/ hair/swoop/adult/ hair/swoop/adult/
 hair_swoop_side.json,layer_1,120,hair/swoop_side/adult/ hair/swoop_side/adult/ hair/swoop_side/adult/ hair/swoop_side/adult/ hair/swoop_side/child/
 hair_topknot_long.json,layer_1,120,hair/parted_side_bangs/adult/ hair/parted_side_bangs/adult/ hair/parted_side_bangs/adult/ hair/parted_side_bangs/adult/ hair/parted_side_bangs/child/
 hair_topknot_long.json,layer_2,9,hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/child/bg/
@@ -240,7 +250,7 @@ hair_topknot_short2.json,layer_1,120,hair/parted_side_bangs2/adult/ hair/parted_
 hair_topknot_short2.json,layer_2,145,hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/child/
 hair_twists_fade.json,layer_1,120,hair/twists_fade/adult/ hair/twists_fade/adult/ hair/twists_fade/adult/ hair/twists_fade/adult/
 hair_twists_straight.json,layer_1,120,hair/twists_straight/adult/ hair/twists_straight/adult/ hair/twists_straight/adult/ hair/twists_straight/adult/
-hair_unkempt.json,layer_1,120,hair/unkempt/male/ hair/unkempt/female/ hair/unkempt/male/ hair/unkempt/female/
+hair_unkempt.json,layer_1,120,hair/unkempt/adult/ hair/unkempt/adult/ hair/unkempt/adult/ hair/unkempt/adult/
 hair_wavy.json,layer_1,120,hair/wavy/male/ hair/wavy/female/ hair/wavy/male/ hair/wavy/female/ hair/wavy/child/
 hair_xlong.json,layer_1,120,hair/xlong/adult/fg/ hair/xlong/adult/fg/ hair/xlong/adult/fg/ hair/xlong/adult/fg/
 hair_xlong.json,layer_2,9,hair/xlong/adult/bg/ hair/xlong/adult/bg/ hair/xlong/adult/bg/ hair/xlong/adult/bg/

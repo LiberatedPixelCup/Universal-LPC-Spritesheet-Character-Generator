@@ -3,11 +3,11 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/bangsshort/male/",
-    "muscular": "hair/bangsshort/male/",
-    "female": "hair/bangsshort/female/",
-    "pregnant": "hair/bangsshort/female/",
-    "teen": "hair/bangsshort/male/"
+    "male": "hair/bangsshort/adult/",
+    "muscular": "hair/bangsshort/adult/",
+    "female": "hair/bangsshort/adult/",
+    "pregnant": "hair/bangsshort/adult/",
+    "teen": "hair/bangsshort/adult/"
   },
   "variants": [
     "blonde",
@@ -37,11 +37,31 @@
     "pink",
     "rose"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
   "credits": [
     {
       "file": "hair/bangsshort",
       "notes": "",
       "authors": [
+        "JaidynReiman",
         "Manuel Riecke (MrBeast)"
       ],
       "licenses": [
@@ -49,7 +69,8 @@
         "GPL 3.0"
       ],
       "urls": [
-        "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+        "https://opengameart.org/content/lpc-expanded-hair"
       ]
     }
   ]

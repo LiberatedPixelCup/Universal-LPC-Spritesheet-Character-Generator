@@ -3,11 +3,19 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/shoulderr/adult/",
-    "muscular": "hair/shoulderr/adult/",
-    "female": "hair/shoulderr/adult/",
-    "pregnant": "hair/shoulderr/adult/",
-    "teen": "hair/shoulderr/adult/"
+    "male": "hair/shoulderr/adult/fg/",
+    "muscular": "hair/shoulderr/adult/fg/",
+    "female": "hair/shoulderr/adult/fg/",
+    "pregnant": "hair/shoulderr/adult/fg/",
+    "teen": "hair/shoulderr/adult/fg/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "hair/shoulderr/adult/bg/",
+    "muscular": "hair/shoulderr/adult/bg/",
+    "female": "hair/shoulderr/adult/bg/",
+    "pregnant": "hair/shoulderr/adult/bg/",
+    "teen": "hair/shoulderr/adult/bg/"
   },
   "variants": [
     "blonde",
@@ -37,6 +45,25 @@
     "pink",
     "rose"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
   "credits": [
     {
       "file": "hair/shoulderr",
@@ -53,7 +80,8 @@
       ],
       "urls": [
         "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-        "https://github.com/jrconway3/Universal-LPC-spritesheet/commit/c32ce8a7edd9fc7fe7daa62a39cf64e5946020a2"
+        "https://github.com/jrconway3/Universal-LPC-spritesheet/commit/c32ce8a7edd9fc7fe7daa62a39cf64e5946020a2",
+        "https://opengameart.org/content/lpc-expanded-hair"
       ]
     }
   ]

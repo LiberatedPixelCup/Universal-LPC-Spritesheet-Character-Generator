@@ -3,11 +3,19 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/high_ponytail/adult/",
-    "muscular": "hair/high_ponytail/adult/",
-    "female": "hair/high_ponytail/adult/",
-    "pregnant": "hair/high_ponytail/adult/",
-    "teen": "hair/high_ponytail/adult/"
+    "male": "hair/high_ponytail/adult/fg/",
+    "muscular": "hair/high_ponytail/adult/fg/",
+    "female": "hair/high_ponytail/adult/fg/",
+    "pregnant": "hair/high_ponytail/adult/fg/",
+    "teen": "hair/high_ponytail/adult/fg/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "hair/high_ponytail/adult/bg/",
+    "muscular": "hair/high_ponytail/adult/bg/",
+    "female": "hair/high_ponytail/adult/bg/",
+    "pregnant": "hair/high_ponytail/adult/bg/",
+    "teen": "hair/high_ponytail/adult/bg/"
   },
   "variants": [
     "blonde",
@@ -61,6 +69,7 @@
       "file": "hair/high_ponytail",
       "notes": "",
       "authors": [
+        "JaidynReiman",
         "ElizaWy",
         "bluecarrot16"
       ],
@@ -68,7 +77,8 @@
         "OGA-BY 3.0"
       ],
       "urls": [
-        "https://opengameart.org/content/lpc-hair"
+        "https://opengameart.org/content/lpc-hair",
+        "https://opengameart.org/content/lpc-expanded-hair"
       ]
     }
   ]

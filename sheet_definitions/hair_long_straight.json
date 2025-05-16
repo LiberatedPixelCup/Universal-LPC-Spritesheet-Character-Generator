@@ -3,31 +3,65 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/long_straight/male/",
-    "muscular": "hair/long_straight/male/",
-    "female": "hair/long_straight/female/",
-    "pregnant": "hair/long_straight/female/",
-    "teen": "hair/long_straight/male/"
+    "male": "hair/long_straight/adult/",
+    "muscular": "hair/long_straight/adult/",
+    "female": "hair/long_straight/adult/",
+    "pregnant": "hair/long_straight/adult/",
+    "teen": "hair/long_straight/adult/"
   },
   "variants": [
-    "ashblonde",
-    "ashplatinum",
-    "black",
     "blonde",
-    "blue",
-    "brown",
-    "brown2",
-    "green",
+    "ash",
+    "sandy",
+    "platinum",
+    "strawberry",
+    "redhead",
+    "ginger",
+    "carrot",
+    "chestnut",
+    "light brown",
+    "dark brown",
+    "black",
+    "raven",
+    "dark gray",
+    "gray",
+    "white",
+    "red",
     "orange",
-    "pink",
+    "gold",
+    "green",
+    "blue",
+    "navy",
+    "violet",
     "purple",
-    "red"
+    "pink",
+    "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
   ],
   "credits": [
     {
       "file": "hair/long_straight",
       "notes": "",
       "authors": [
+        "JaidynReiman",
         "thecilekli",
         "bluecarrot16"
       ],
@@ -36,7 +70,8 @@
       ],
       "urls": [
         "https://opengameart.org/content/lpc-long-straight-hair-with-12-colors",
-        "https://opengameart.org/content/lpc-hair"
+        "https://opengameart.org/content/lpc-hair",
+        "https://opengameart.org/content/lpc-expanded-hair"
       ]
     }
   ]
