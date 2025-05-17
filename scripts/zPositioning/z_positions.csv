@@ -250,7 +250,9 @@ hair_topknot_short2.json,layer_2,145,hair/extensions/ponytails/topknot_short/adu
 hair_twists_fade.json,layer_1,120,hair/twists_fade/adult/ hair/twists_fade/adult/ hair/twists_fade/adult/ hair/twists_fade/adult/
 hair_twists_straight.json,layer_1,120,hair/twists_straight/adult/ hair/twists_straight/adult/ hair/twists_straight/adult/ hair/twists_straight/adult/
 hair_unkempt.json,layer_1,120,hair/unkempt/adult/ hair/unkempt/adult/ hair/unkempt/adult/ hair/unkempt/adult/
-hair_wavy.json,layer_1,120,hair/wavy/male/ hair/wavy/female/ hair/wavy/male/ hair/wavy/female/ hair/wavy/child/
+hair_wavy.json,layer_1,120,hair/wavy/adult/fg/ hair/wavy/adult/fg/ hair/wavy/adult/fg/ hair/wavy/adult/fg/
+hair_wavy.json,layer_2,9,hair/wavy/adult/bg/ hair/wavy/adult/bg/ hair/wavy/adult/bg/ hair/wavy/adult/bg/
+hair_wavy_child.json,layer_1,120,hair/wavy/child
 hair_xlong.json,layer_1,120,hair/xlong/adult/fg/ hair/xlong/adult/fg/ hair/xlong/adult/fg/ hair/xlong/adult/fg/
 hair_xlong.json,layer_2,9,hair/xlong/adult/bg/ hair/xlong/adult/bg/ hair/xlong/adult/bg/ hair/xlong/adult/bg/
 hair_xlong_wavy.json,layer_1,120,hair/xlong_wavy/adult/fg/ hair/xlong_wavy/adult/fg/ hair/xlong_wavy/adult/fg/ hair/xlong_wavy/adult/fg/
