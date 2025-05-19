@@ -198,7 +198,7 @@ hair_messy2.json,layer_1,120,hair/messy2/adult/ hair/messy2/adult/ hair/messy2/a
 hair_messy3.json,layer_1,120,hair/messy3/adult/ hair/messy3/adult/ hair/messy3/adult/ hair/messy3/adult/
 hair_mop.json,layer_1,120,hair/mop/adult/ hair/mop/adult/ hair/mop/adult/ hair/mop/adult/
 hair_natural.json,layer_1,120,hair/natural/adult/ hair/natural/adult/ hair/natural/adult/ hair/natural/adult/
-hair_page.json,layer_1,120,hair/page/male/ hair/page/female/ hair/page/male/ hair/page/female/
+hair_page.json,layer_1,120,hair/page/adult/ hair/page/adult/ hair/page/adult/ hair/page/adult/
 hair_page2.json,layer_1,120,hair/page2/adult/ hair/page2/adult/ hair/page2/adult/ hair/page2/adult/
 hair_parted.json,layer_1,120,hair/parted/adult/ hair/parted/adult/ hair/parted/adult/ hair/parted/adult/
 hair_parted2.json,layer_1,120,hair/parted2/adult/ hair/parted2/adult/ hair/parted2/adult/ hair/parted2/adult/
@@ -228,7 +228,8 @@ hair_shoulderl.json,layer_1,120,hair/shoulderl/adult/fg/ hair/shoulderl/adult/fg
 hair_shoulderl.json,layer_2,9,hair/shoulderl/adult/bg/ hair/shoulderl/adult/bg/ hair/shoulderl/adult/bg/ hair/shoulderl/adult/bg/
 hair_shoulderr.json,layer_1,120,hair/shoulderr/adult/fg/ hair/shoulderr/adult/fg/ hair/shoulderr/adult/fg/ hair/shoulderr/adult/fg/
 hair_shoulderr.json,layer_2,9,hair/shoulderr/adult/bg/ hair/shoulderr/adult/bg/ hair/shoulderr/adult/bg/ hair/shoulderr/adult/bg/
-hair_single.json,layer_1,120,hair/single/male/ hair/single/female/ hair/single/male/ hair/single/female/
+hair_single.json,layer_1,120,hair/single/adult/fg/ hair/single/adult/fg/ hair/single/adult/fg/ hair/single/adult/fg/
+hair_single.json,layer_2,9,hair/single/adult/bg/ hair/single/adult/bg/ hair/single/adult/bg/ hair/single/adult/bg/
 hair_spiked.json,layer_1,120,hair/spiked/adult/ hair/spiked/adult/ hair/spiked/adult/ hair/spiked/adult/
 hair_spiked2.json,layer_1,120,hair/spiked2/adult/ hair/spiked2/adult/ hair/spiked2/adult/ hair/spiked2/adult/
 hair_spiked_beehive.json,layer_1,120,hair/spiked_beehive/adult/ hair/spiked_beehive/adult/ hair/spiked_beehive/adult/ hair/spiked_beehive/adult/
@@ -252,7 +253,7 @@ hair_twists_straight.json,layer_1,120,hair/twists_straight/adult/ hair/twists_st
 hair_unkempt.json,layer_1,120,hair/unkempt/adult/ hair/unkempt/adult/ hair/unkempt/adult/ hair/unkempt/adult/
 hair_wavy.json,layer_1,120,hair/wavy/adult/fg/ hair/wavy/adult/fg/ hair/wavy/adult/fg/ hair/wavy/adult/fg/
 hair_wavy.json,layer_2,9,hair/wavy/adult/bg/ hair/wavy/adult/bg/ hair/wavy/adult/bg/ hair/wavy/adult/bg/
-hair_wavy_child.json,layer_1,120,hair/wavy/child
+hair_wavy_child.json,layer_1,120,hair/wavy/child/
 hair_xlong.json,layer_1,120,hair/xlong/adult/fg/ hair/xlong/adult/fg/ hair/xlong/adult/fg/ hair/xlong/adult/fg/
 hair_xlong.json,layer_2,9,hair/xlong/adult/bg/ hair/xlong/adult/bg/ hair/xlong/adult/bg/ hair/xlong/adult/bg/
 hair_xlong_wavy.json,layer_1,120,hair/xlong_wavy/adult/fg/ hair/xlong_wavy/adult/fg/ hair/xlong_wavy/adult/fg/ hair/xlong_wavy/adult/fg/

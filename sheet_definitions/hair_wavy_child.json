@@ -3,7 +3,7 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "child": "hair/wavy/child"
+    "child": "hair/wavy/child/"
   },
   "variants": [
     "blonde",
@@ -35,7 +35,7 @@
   ],
   "credits": [
     {
-      "file": "hair/wavy_child",
+      "file": "hair/wavy/child",
       "notes": "",
       "authors": [
         "Nila122"

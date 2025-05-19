@@ -3,11 +3,11 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/page/male/",
-    "muscular": "hair/page/male/",
-    "female": "hair/page/female/",
-    "pregnant": "hair/page/female/",
-    "teen": "hair/page/male/"
+    "male": "hair/page/adult/",
+    "muscular": "hair/page/adult/",
+    "female": "hair/page/adult/",
+    "pregnant": "hair/page/adult/",
+    "teen": "hair/page/adult/"
   },
   "variants": [
     "blonde",
@@ -37,11 +37,31 @@
     "pink",
     "rose"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
   "credits": [
     {
       "file": "hair/page",
       "notes": "",
       "authors": [
+        "Page",
         "Johannes Sjölund (wulax)"
       ],
       "licenses": [
@@ -50,7 +70,8 @@
         "GPL 3.0"
       ],
       "urls": [
-        "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+        "https://opengameart.org/content/lpc-expanded-hair"
       ]
     }
   ]
