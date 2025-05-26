@@ -706,6 +706,7 @@ $(".exportSplitAnimations").click(async function() {
   function selectDefaults() {
     $(`#${"body-Body_color_light"}`).prop("checked", true);
     $(`#${"head-Human_male_light"}`).prop("checked", true);
+    $(`#${"expression-Neutral_light"}`).prop("checked", true);
     setParams();
   }
 
