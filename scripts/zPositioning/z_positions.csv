@@ -65,7 +65,7 @@ dress_kimono_split_trim.json,layer_1,31,dress/kimono/split/trim/universal/female
 dress_kimono_trim.json,layer_1,31,dress/kimono/normal/trim/universal/female/
 dress_sash.json,layer_1,30,dress/sash/female/
 dress_slit.json,layer_1,30,dress/slit/female/
-eye_color.json,layer_1,105,eyes/human/adult/${expression}/ eyes/human/adult/${expression}/ eyes/human/adult/${expression}/ eyes/human/adult/${expression}/ eyes/human/child/${expression}/
+eye_color.json,layer_1,105,eyes/human/${head}/${expression}/ eyes/human/${head}/${expression}/ eyes/human/${head}/${expression}/ eyes/human/${head}/${expression}/ eyes/human/child/${expression}/
 eyebrows_thick.json,layer_1,106,eyes/eyebrows/thick/adult/ eyes/eyebrows/thick/adult/ eyes/eyebrows/thick/adult/ eyes/eyebrows/thick/adult/ eyes/eyebrows/thick/child/
 eyebrows_thin.json,layer_1,106,eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/child/
 eyes_child.json,layer_1,105,eyes/human/child/

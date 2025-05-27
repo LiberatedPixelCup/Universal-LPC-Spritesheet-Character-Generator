@@ -900,7 +900,8 @@ $(".exportSplitAnimations").click(async function() {
               variant,
               supportedAnimations,
             };
-            addCreditFor(fileName, licenses, authors, urls, notes);
+            dynamicReplacements(itemToDraw)
+            addCreditFor(itemToDraw.fileName, licenses, authors, urls, notes);
             itemsToDraw.push(itemToDraw);
           }
         } else {
@@ -941,7 +942,11 @@ $(".exportSplitAnimations").click(async function() {
         const keys = Object.keys(parsedReplacements);
         const entries = keys.map(key => {
           const id = `${key}-${jHash.val(key)}`;
-          return [key, parsedReplacements[key][getParent(id)]];
+          let parent = 'none';
+          if(document.getElementById(id)) {
+            parent = getParent(id);
+          }
+          return [key, parsedReplacements[key][parent]];
         });
         const replObj = Object.fromEntries(entries);
         fileName = es6DynamicTemplate(fileName, replObj);
@@ -953,6 +958,7 @@ $(".exportSplitAnimations").click(async function() {
   function dynamicReplacements(itemToDraw) {
     const { fileName, name, parentName, variant } = itemToDraw;
     const el = document.getElementById(`${parentName}-${name}_${variant}`);
+    console.log('dynamic replacements');
     itemToDraw.fileName = makeDynamicSubstitutions(fileName, $(el), 1);
   }
 

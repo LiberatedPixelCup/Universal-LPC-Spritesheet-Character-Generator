@@ -34,11 +34,11 @@
   },
   "layer_1": {
     "zPos": 105,
-    "male": "eyes/human/adult/${expression}/",
-    "muscular": "eyes/human/adult/${expression}/",
-    "female": "eyes/human/adult/${expression}/",
-    "teen": "eyes/human/adult/${expression}/",
-    "pregnant": "eyes/human/adult/${expression}/",
+    "male": "eyes/human/${head}/${expression}/",
+    "muscular": "eyes/human/${head}/${expression}/",
+    "female": "eyes/human/${head}/${expression}/",
+    "teen": "eyes/human/${head}/${expression}/",
+    "pregnant": "eyes/human/${head}/${expression}/",
     "child": "eyes/human/child/${expression}/"
   },
   "variants": [
