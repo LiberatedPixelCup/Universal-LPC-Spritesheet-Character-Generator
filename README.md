@@ -1,3 +1,5 @@
+[中文说明](./README_ZH.md)
+
  LPC Spritesheet Character Generator
  =============================================
 
