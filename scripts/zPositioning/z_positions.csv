@@ -703,7 +703,7 @@ torso_clothes_longsleeve_laced.json,layer_1,35,torso/clothes/longsleeve/laced/ma
 torso_clothes_longsleeve_scoop.json,layer_1,35,torso/clothes/longsleeve/scoop/female/ torso/clothes/longsleeve/scoop/pregnant/
 torso_clothes_robe.json,layer_1,35,torso/clothes/robe/female/
 torso_clothes_shortsleeve.json,layer_1,35,torso/clothes/shortsleeve/shortsleeve/male/ torso/clothes/shortsleeve/shortsleeve/female/ torso/clothes/shortsleeve/shortsleeve/pregnant/
-torso_clothes_shortsleeve_polo.json,layer_1,35,torso/clothes/shortsleeve/shortsleeve_polo/female/
+torso_clothes_shortsleeve_polo.json,layer_1,35,torso/clothes/shortsleeve/shortsleeve_polo/male/ torso/clothes/shortsleeve/shortsleeve_polo/female/
 torso_clothes_sleeveless.json,layer_1,35,torso/clothes/sleeveless/sleeveless/male/ torso/clothes/sleeveless/sleeveless/female/
 torso_clothes_sleeveless2.json,layer_1,35,torso/clothes/sleeveless/sleeveless2/male/ torso/clothes/sleeveless/sleeveless2/female/
 torso_clothes_sleeveless2_buttoned.json,layer_1,35,torso/clothes/sleeveless/sleeveless2_buttoned/male/ torso/clothes/sleeveless/sleeveless2_buttoned/female/
@@ -713,10 +713,10 @@ torso_clothes_sleeveless2_vneck.json,layer_1,35,torso/clothes/sleeveless/sleevel
 torso_clothes_sleeveless_laced.json,layer_1,35,torso/clothes/sleeveless/laced/male/
 torso_clothes_sleeveless_striped.json,layer_1,35,torso/clothes/sleeveless/striped/male/
 torso_clothes_sleeveless_tanktop.json,layer_1,35,torso/clothes/sleeveless/tanktop/female/ torso/clothes/sleeveless/tanktop/pregnant/
-torso_clothes_tshirt.json,layer_1,35,torso/clothes/shortsleeve/tshirt/female/
-torso_clothes_tshirt_buttoned.json,layer_1,35,torso/clothes/shortsleeve/tshirt_buttoned/female/
-torso_clothes_tshirt_scoop.json,layer_1,35,torso/clothes/shortsleeve/tshirt_scoop/female/
-torso_clothes_tshirt_vneck.json,layer_1,35,torso/clothes/shortsleeve/tshirt_vneck/female/
+torso_clothes_tshirt.json,layer_1,35,torso/clothes/shortsleeve/tshirt/male/ torso/clothes/shortsleeve/tshirt/female/
+torso_clothes_tshirt_buttoned.json,layer_1,35,torso/clothes/shortsleeve/tshirt_buttoned/male/ torso/clothes/shortsleeve/tshirt_buttoned/female/
+torso_clothes_tshirt_scoop.json,layer_1,35,torso/clothes/shortsleeve/tshirt_scoop/male/ torso/clothes/shortsleeve/tshirt_scoop/female/
+torso_clothes_tshirt_vneck.json,layer_1,35,torso/clothes/shortsleeve/tshirt_vneck/male/ torso/clothes/shortsleeve/tshirt_vneck/female/
 torso_clothes_tunic.json,layer_1,35,torso/clothes/tunic/female/
 torso_clothes_tunic_sara.json,layer_1,35,torso/clothes/tunic_sara/female/
 torso_clothes_vest.json,layer_1,45,torso/clothes/vest/male/
