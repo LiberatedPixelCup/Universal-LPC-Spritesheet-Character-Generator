@@ -689,15 +689,15 @@ const addMetadataToZip = (zip, bodyType, timestamp, exportedStandard, failedStan
   /**
    * 
    * @param {*} folder 
-   * @param {string} name 
+   * @param {string} fileName 
    * @param {CanvasImageSource} src 
    * @param {{x: number?, y: number?, width: number, height: number}?} srcRect 
    */
-  async function addAnimationToZipFolder(folder, name, src, srcRect) {
+  async function addAnimationToZipFolder(folder, fileName, src, srcRect) {
     const animCanvas = newAnimationFromSheet(src, srcRect);
     if (animCanvas) {
       const blob = await canvasToBlob(animCanvas);
-      folder.file(`${name}.png`, blob);
+      folder.file(fileName, blob);
     }
     return animCanvas;
   }
@@ -730,7 +730,7 @@ $(".exportSplitAnimations").click(async function() {
           width: frames * universalFrameSize,
           height: rows * universalFrameSize
         };
-        const animCanvas = await addAnimationToZipFolder(standardFolder, name,
+        const animCanvas = await addAnimationToZipFolder(standardFolder, `${name}.png`,
           canvas, srcRect);
 
         if (animCanvas)
@@ -754,7 +754,7 @@ $(".exportSplitAnimations").click(async function() {
         }
 
         const srcRect = { x: 0, y, ...customAnimationSize(anim) };
-        const animCanvas = await addAnimationToZipFolder(customFolder, animName,
+        const animCanvas = await addAnimationToZipFolder(customFolder, `${animName}.png`,
           canvas, srcRect);
 
         if (animCanvas)
