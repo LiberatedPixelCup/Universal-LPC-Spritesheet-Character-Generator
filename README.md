@@ -97,11 +97,11 @@ You may instead wish to use a web server locally for development. Some free reco
 
 <dl>
   <dt>May I use this art in my commercial game?</dt>
-  <dd>Yes, however you must follow all the terms of the license(s) for the art you are using. See [Licensing and Attribution (Credits)](#licensing-and-attribution-credits)</dd>
+  <dd>Yes, however you must follow all the terms of the license(s) for the art you are using. See <a href="#licensing-and-attribution-credits">Licensing and Attribution (Credits)</a></dd>
   <dt>How do I use the output of this generator in &lt;insert game engine&gt;?</dt>
   <dd>There may be resources available to do this already. We are working on providing a list in the future for a few common game engines. For now, try Google. In most cases, however, you will likely have to write some code.</dd>
   <dt>I downloaded the image, but I forgot to get the &lt;url, credits, etc.&gt; How do I get back to where I was?</dt>
-  <dd>It is recommended that you "export to JSON" to avoid this problem in the future and save the json file with the png image file. See [issue #143](https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator/issues/143)</dd>
+  <dd>It is recommended that you "export to JSON" to avoid this problem in the future and save the json file with the png image file. See <a href="https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator/issues/143">Issue #143</a></dd>
 </dl>
 
 ### Terms
@@ -112,9 +112,9 @@ You may instead wish to use a web server locally for development. Some free reco
   <dt>Universal LPC (ULPC)</dt>
   <dd>LPC originally expanded to add some new animation sizes and bases. This generator helped ensure that many assets covered all those bases and animations. LPC originally included only spellcast, slash, thrust, walk, shoot, and hurt animations for male and female adult bases. It also stuck to a standard 64x64 format. The most notable change in ULPC was to add weapons with oversize animation frames.</dd>
   <dt>LPC Revised (LPCR)</dt>
-  <dd>LPC changes proposed by [@ElizaWy](https://github.com/ElizaWy) that in some cases changed the number and order of animation frames, a new color palette, and the smaller heads.</dd>
+  <dd>LPC changes proposed by <a href="https://github.com/ElizaWy">@ElizaWy</a> that in some cases changed the number and order of animation frames, a new color palette, and the smaller heads.</dd>
   <dt>LPC Expanded (LPCE)</dt>
-  <dd>Additional expansion of animations and bases proposed by [@ElizaWy](https://github.com/ElizaWy) and others. New animations included bow, climb, run, and jump. New bases included child and elderly. Many of the assets in this repository are not yet drawn for these new animations and bases. Help wanted.</dd>
+  <dd>Additional expansion of animations and bases proposed by <a href="https://github.com/ElizaWy">@ElizaWy</a> and others. New animations included bow, climb, run, and jump. New bases included child and elderly. Many of the assets in this repository are not yet drawn for these new animations and bases. Help wanted.</dd>
 </dl>
 
 ### Alternative LPC Character generators
