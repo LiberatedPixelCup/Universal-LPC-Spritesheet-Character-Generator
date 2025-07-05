@@ -691,12 +691,12 @@ torso_clothes_blouse_longsleeve.json,layer_1,35,torso/clothes/blouse_longsleeve/
 torso_clothes_child_shirt.json,layer_1,35,torso/clothes/shirt/child/
 torso_clothes_corset.json,layer_1,45,torso/clothes/corset/female/
 torso_clothes_longsleeve.json,layer_1,35,torso/clothes/longsleeve/longsleeve/male/ torso/clothes/longsleeve/longsleeve/female/ torso/clothes/longsleeve/longsleeve/pregnant/
-torso_clothes_longsleeve2.json,layer_1,35,torso/clothes/longsleeve/longsleeve2/female/
-torso_clothes_longsleeve2_buttoned.json,layer_1,35,torso/clothes/longsleeve/longsleeve2_buttoned/female/
+torso_clothes_longsleeve2.json,layer_1,35,torso/clothes/longsleeve/longsleeve2/male/ torso/clothes/longsleeve/longsleeve2/female/
+torso_clothes_longsleeve2_buttoned.json,layer_1,35,torso/clothes/longsleeve/longsleeve2_buttoned/male/ torso/clothes/longsleeve/longsleeve2_buttoned/female/
 torso_clothes_longsleeve2_cardigan.json,layer_1,35,torso/clothes/longsleeve/longsleeve2_cardigan/female/
-torso_clothes_longsleeve2_polo.json,layer_1,35,torso/clothes/longsleeve/longsleeve2_polo/female/
-torso_clothes_longsleeve2_scoop.json,layer_1,35,torso/clothes/longsleeve/longsleeve2_scoop/female/
-torso_clothes_longsleeve2_vneck.json,layer_1,35,torso/clothes/longsleeve/longsleeve2_vneck/female/
+torso_clothes_longsleeve2_polo.json,layer_1,35,torso/clothes/longsleeve/longsleeve2_polo/male/ torso/clothes/longsleeve/longsleeve2_polo/female/
+torso_clothes_longsleeve2_scoop.json,layer_1,35,torso/clothes/longsleeve/longsleeve2_scoop/male/ torso/clothes/longsleeve/longsleeve2_scoop/female/
+torso_clothes_longsleeve2_vneck.json,layer_1,35,torso/clothes/longsleeve/longsleeve2_vneck/male/ torso/clothes/longsleeve/longsleeve2_vneck/female/
 torso_clothes_longsleeve_formal.json,layer_1,35,torso/clothes/longsleeve/formal/male/
 torso_clothes_longsleeve_formal_striped.json,layer_1,35,torso/clothes/longsleeve/formal_striped/male/
 torso_clothes_longsleeve_laced.json,layer_1,35,torso/clothes/longsleeve/laced/male/
