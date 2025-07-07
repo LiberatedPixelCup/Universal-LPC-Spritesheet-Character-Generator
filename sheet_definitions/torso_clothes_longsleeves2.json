@@ -1,11 +1,11 @@
 {
-  "name": "TShirt Scoop",
-  "type_name": "clothes",
+  "name": "Longsleeves 2",
+  "type_name": "sleeves",
   "layer_1": {
-    "zPos": 35,
-    "male": "torso/clothes/shortsleeve/tshirt_scoop/male/",
-    "female": "torso/clothes/shortsleeve/tshirt_scoop/female/",
-    "teen": "torso/clothes/shortsleeve/tshirt_scoop/teen/"
+    "zPos": 36,
+    "male": "torso/clothes/longsleeve/longsleeves2/male/",
+    "female": "torso/clothes/longsleeve/longsleeves2/female/",
+    "teen": "torso/clothes/longsleeve/longsleeves2/teen/"
   },
   "variants": [
     "black",
@@ -54,8 +54,8 @@
   ],
   "credits": [
     {
-      "file": "torso/clothes/shortsleeve/tshirt_scoop",
-      "notes": "original by ElizaWy; spellcast/thrust/shoot/hurt/male adapted from original by JaidynReiman",
+      "file": "torso/clothes/longsleeve/longsleeves2",
+      "notes": "original by ElizaWy; spellcast/thrust/shoot/hurt/male/standalone sleeves adapted from original by JaidynReiman",
       "authors": [
         "ElizaWy",
         "JaidynReiman",
@@ -68,8 +68,7 @@
       "urls": [
         "http://opengameart.org/content/lpc-revised-character-basics",
         "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
-        "https://opengameart.org/content/lpc-expanded-simple-shirts"
+        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
       ]
     }
   ]

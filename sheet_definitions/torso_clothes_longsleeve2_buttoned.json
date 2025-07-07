@@ -55,7 +55,7 @@
   "credits": [
     {
       "file": "torso/clothes/longsleeve/longsleeve2_buttoned",
-      "notes": "original by ElizaWy; spellcast/thrust/shoot/hurt adapted from original by JaidynReiman",
+      "notes": "original by ElizaWy; spellcast/thrust/shoot/hurt/male adapted from original by JaidynReiman",
       "authors": [
         "ElizaWy",
         "JaidynReiman",
@@ -69,7 +69,7 @@
         "http://opengameart.org/content/lpc-revised-character-basics",
         "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
         "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
-        "https://opengameart.org/content/lpc-expanded-male-shirts"
+        "https://opengameart.org/content/lpc-expanded-simple-shirts"
       ]
     }
   ]
