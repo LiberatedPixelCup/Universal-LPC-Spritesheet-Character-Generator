@@ -12,6 +12,9 @@
     "female": "dress/kimono/sleeves/universal/female_front/",
     "teen": "dress/kimono/sleeves/universal/female_front/"
   },
+  "animations": [
+    "shoot"
+  ],
   "variants": [
     "black",
     "blue",

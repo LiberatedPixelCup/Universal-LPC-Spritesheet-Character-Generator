@@ -13,6 +13,14 @@
   "variants": [
     "shadow"
   ],
+  "animations": [
+    "hurt",
+    "shoot",
+    "slash",
+    "spellcast",
+    "thrust",
+    "walk"
+  ],
   "credits": [
     {
       "file": "shadow",

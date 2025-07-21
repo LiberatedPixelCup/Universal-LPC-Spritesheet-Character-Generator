@@ -6,8 +6,8 @@
     "male": "torso/clothes/vest/male/"
   },
   "variants": [
-    "gray striped",
-    "green striped",
+    "gray_striped",
+    "green_striped",
     "black",
     "blue",
     "bluegray",
