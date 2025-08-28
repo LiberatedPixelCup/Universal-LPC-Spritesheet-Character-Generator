@@ -816,7 +816,7 @@ weapon_ranged_bow_recurve.json,layer_1,-1,weapon/ranged/bow/recurve/universal/ba
 weapon_ranged_bow_recurve.json,layer_2,140,weapon/ranged/bow/recurve/universal/foreground/ weapon/ranged/bow/recurve/universal/foreground/ weapon/ranged/bow/recurve/universal/foreground/ weapon/ranged/bow/recurve/universal/foreground/
 weapon_ranged_bow_recurve.json,layer_3,-1,weapon/ranged/bow/recurve/walk/background/ weapon/ranged/bow/recurve/walk/background/ weapon/ranged/bow/recurve/walk/background/ weapon/ranged/bow/recurve/walk/background/
 weapon_ranged_bow_recurve.json,layer_4,141,weapon/ranged/bow/recurve/walk/foreground/ weapon/ranged/bow/recurve/walk/foreground/ weapon/ranged/bow/recurve/walk/foreground/ weapon/ranged/bow/recurve/walk/foreground/
-weapon_ranged_crossbow.json,layer_1,140,weapon/ranged/crossbow/background/ weapon/ranged/crossbow/background/ weapon/ranged/crossbow/background/ weapon/ranged/crossbow/background/
+weapon_ranged_crossbow.json,layer_1,-1,weapon/ranged/crossbow/background/ weapon/ranged/crossbow/background/ weapon/ranged/crossbow/background/ weapon/ranged/crossbow/background/
 weapon_ranged_crossbow.json,layer_2,140,weapon/ranged/crossbow/foreground/ weapon/ranged/crossbow/foreground/ weapon/ranged/crossbow/foreground/ weapon/ranged/crossbow/foreground/
 weapon_ranged_slingshot.json,layer_1,140,weapon/ranged/slingshot/foreground/ weapon/ranged/slingshot/foreground/ weapon/ranged/slingshot/foreground/ weapon/ranged/slingshot/foreground/
 weapon_ranged_slingshot.json,layer_2,9,weapon/ranged/slingshot/background/ weapon/ranged/slingshot/background/ weapon/ranged/slingshot/background/ weapon/ranged/slingshot/background/
