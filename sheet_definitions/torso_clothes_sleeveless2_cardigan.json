@@ -1,0 +1,76 @@
+{
+  "name": "Sleeveless 2 Cardigan",
+  "type_name": "clothes",
+  "layer_1": {
+    "zPos": 35,
+    "male": "torso/clothes/sleeveless/sleeveless2_cardigan/male/",
+    "female": "torso/clothes/sleeveless/sleeveless2_cardigan/female/",
+    "teen": "torso/clothes/sleeveless/sleeveless2_cardigan/teen/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "torso/clothes/sleeveless/sleeveless2_cardigan",
+      "notes": "original by ElizaWy; sleeveless adapted from original by JaidynReiman",
+      "authors": [
+        "ElizaWy",
+        "JaidynReiman",
+        "Stephen Challener (Redshrike)",
+        "Johannes Sjölund (wulax)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "http://opengameart.org/content/lpc-revised-character-basics",
+        "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+        "https://opengameart.org/content/lpc-expanded-simple-shirts"
+      ]
+    }
+  ]
+}

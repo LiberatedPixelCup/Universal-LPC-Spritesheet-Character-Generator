@@ -3,6 +3,7 @@
   "type_name": "clothes",
   "layer_1": {
     "zPos": 35,
+    "male": "torso/clothes/sleeveless/sleeveless2_vneck/male/",
     "female": "torso/clothes/sleeveless/sleeveless2_vneck/female/",
     "teen": "torso/clothes/sleeveless/sleeveless2_vneck/teen/"
   },
@@ -67,7 +68,8 @@
       "urls": [
         "http://opengameart.org/content/lpc-revised-character-basics",
         "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
+        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+        "https://opengameart.org/content/lpc-expanded-simple-shirts"
       ]
     }
   ]

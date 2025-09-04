@@ -3,11 +3,11 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/messy3/male/",
-    "muscular": "hair/messy3/male/",
-    "female": "hair/messy3/female/",
-    "pregnant": "hair/messy3/female/",
-    "teen": "hair/messy3/male/"
+    "male": "hair/messy3/adult/",
+    "muscular": "hair/messy3/adult/",
+    "female": "hair/messy3/adult/",
+    "pregnant": "hair/messy3/adult/",
+    "teen": "hair/messy3/adult/"
   },
   "variants": [
     "blonde",
@@ -36,6 +36,25 @@
     "purple",
     "pink",
     "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
   ],
   "credits": [
     {

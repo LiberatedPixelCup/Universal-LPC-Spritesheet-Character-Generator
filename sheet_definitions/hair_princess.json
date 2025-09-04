@@ -3,11 +3,19 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/princess/male/",
-    "muscular": "hair/princess/male/",
-    "female": "hair/princess/female/",
-    "pregnant": "hair/princess/female/",
-    "teen": "hair/princess/male/"
+    "male": "hair/princess/adult/fg/",
+    "muscular": "hair/princess/adult/fg/",
+    "female": "hair/princess/adult/fg/",
+    "pregnant": "hair/princess/adult/fg/",
+    "teen": "hair/princess/adult/fg/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "hair/princess/adult/bg/",
+    "muscular": "hair/princess/adult/bg/",
+    "female": "hair/princess/adult/bg/",
+    "pregnant": "hair/princess/adult/bg/",
+    "teen": "hair/princess/adult/bg/"
   },
   "variants": [
     "blonde",
@@ -37,6 +45,25 @@
     "pink",
     "rose"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
   "credits": [
     {
       "file": "hair/princess",
@@ -51,7 +78,8 @@
         "GPL 3.0"
       ],
       "urls": [
-        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
+        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+        "https://opengameart.org/content/lpc-expanded-hair"
       ]
     }
   ]

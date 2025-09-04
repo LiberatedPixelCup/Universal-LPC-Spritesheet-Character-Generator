@@ -3,11 +3,11 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/swoop/male/",
-    "muscular": "hair/swoop/male/",
-    "female": "hair/swoop/female/",
-    "pregnant": "hair/swoop/female/",
-    "teen": "hair/swoop/male/"
+    "male": "hair/swoop/adult/",
+    "muscular": "hair/swoop/adult/",
+    "female": "hair/swoop/adult/",
+    "pregnant": "hair/swoop/adult/",
+    "teen": "hair/swoop/adult/"
   },
   "variants": [
     "blonde",
@@ -37,11 +37,31 @@
     "pink",
     "rose"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
   "credits": [
     {
       "file": "hair/swoop",
       "notes": "",
       "authors": [
+        "JaidynReiman",
         "Manuel Riecke (MrBeast)"
       ],
       "licenses": [
@@ -49,7 +69,8 @@
         "GPL 3.0"
       ],
       "urls": [
-        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
+        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+        "https://opengameart.org/content/lpc-expanded-hair"
       ]
     }
   ]

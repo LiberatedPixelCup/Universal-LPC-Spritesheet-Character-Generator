@@ -9,6 +9,7 @@
 	<script type="text/javascript" src="sources/jhash-2.2.min.js"></script>
 	<script type="text/javascript" src="sources/custom-animations.js"></script>
 	<script type="text/javascript" src="sources/jszip.min.js"></script>
+	<script type="text/javascript" src="sources/copy-image.js"></script>
 	<script type="module">
 		// make sure modern ESM library TinyGesture is loaded before chargen.js
 		import TinyGesture from 'https://cdn.jsdelivr.net/npm/tinygesture@3.0.0/+esm';
@@ -35,8 +36,10 @@
 					<button type="button" class="generateSheetCreditsCsv">Credits (CSV)</button>
 				</div>
 				<div>
-					<label class="control-label">Download pack:</label>
-					<button type="button" class="exportSplitAnimations">Spritesheet split animation images, credits, JSON (ZIP)</button>
+					<label class="control-label">Download image pack with credits and JSON (ZIP):</label>
+					<button type="button" class="exportSplitAnimations">Split by animation</button>
+					<button type="button" class="exportSplitItemSheets">Split by item</button>
+					<button type="button" class="exportSplitItemAnimations">Split by animation and item</button>
 				</div>
 				<div>
 					<label class="control-label">Import/Export:</label>
@@ -584,6 +587,7 @@
 							div_sheet_hair_plain
 							div_sheet_hair_pixie
 							div_sheet_hair_page
+							div_sheet_hair_page2
 							div_sheet_hair_idol
 							div_sheet_hair_mop
 							div_sheet_hair_parted
@@ -596,12 +600,11 @@
 							div_sheet_hair_messy3
 							div_sheet_hair_bedhead
 							div_sheet_hair_unkempt
+							div_sheet_hair_bangs
 							div_sheet_hair_bangsshort
 							div_sheet_hair_swoop
 							div_sheet_hair_swoop_side
 							div_sheet_hair_curtains
-							div_sheet_hair_page2
-							div_sheet_hair_bangs
 							div_sheet_hair_single
 							div_sheet_hair_cowlick
 							div_sheet_hair_cowlick_tall
@@ -652,6 +655,7 @@
 							div_sheet_hair_long_messy2
 							div_sheet_hair_curtains_long
 							div_sheet_hair_wavy
+							div_sheet_hair_wavy_child
 							div_sheet_hair_long_center_part
 							div_sheet_hair_long_straight
 						</ul></li>
@@ -1098,6 +1102,17 @@
 						div_sheet_torso_clothes_child_shirt
 						<!-- Longsleeve Shirts -->
 						<li data-required="male,female,pregnant,teen">
+							<span class="condensed">Sleeves</span>
+							<ul>
+								div_sheet_torso_clothes_shortsleeves
+								div_sheet_torso_clothes_shortsleeves2
+								div_sheet_torso_clothes_longsleeves
+								div_sheet_torso_clothes_longsleeves2
+								div_sheet_torso_clothes_longsleeves_cuffed
+							</ul>
+						</li>
+						<!-- Longsleeve Shirts -->
+						<li data-required="male,female,pregnant,teen">
 							<span class="condensed">Longsleeve</span>
 							<ul>
 								div_sheet_torso_clothes_longsleeve
@@ -1119,6 +1134,7 @@
 							<ul>
 								div_sheet_torso_clothes_shortsleeve
 								div_sheet_torso_clothes_shortsleeve_polo
+								div_sheet_torso_clothes_shortsleeve_cardigan
 								div_sheet_torso_clothes_tshirt
 								div_sheet_torso_clothes_tshirt_vneck
 								div_sheet_torso_clothes_tshirt_scoop
@@ -1133,11 +1149,13 @@
 								div_sheet_torso_clothes_sleeveless_laced
 								div_sheet_torso_clothes_sleeveless_striped
 								div_sheet_torso_clothes_sleeveless_tanktop
+								div_sheet_torso_clothes_sleeveless1
 								div_sheet_torso_clothes_sleeveless2
 								div_sheet_torso_clothes_sleeveless2_vneck
 								div_sheet_torso_clothes_sleeveless2_scoop
 								div_sheet_torso_clothes_sleeveless2_buttoned
 								div_sheet_torso_clothes_sleeveless2_polo
+								div_sheet_torso_clothes_sleeveless2_cardigan
 							</ul>
 						</li>
 						div_sheet_torso_clothes_corset
@@ -1352,7 +1370,6 @@
 						div_sheet_feet_boots_revised
 						div_sheet_feet_boots_fold
 						div_sheet_feet_boots_rim
-						div_sheet_feet_boots_plate
 					</ul>
 				</li>
 

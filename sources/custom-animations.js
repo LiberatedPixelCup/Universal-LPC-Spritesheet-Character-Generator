@@ -1,3 +1,7 @@
+/**
+ * @typedef {Record<string, number>} AnimationRowsLayout
+ * @type {AnimationRowsLayout}
+ */
 const animationRowsLayout = {
   "thrust-n": 3,
   "thrust-w": 4,
@@ -25,6 +29,10 @@ const animationRowsLayout = {
   "sit-e": 32,
 }
 
+/**
+ * @typedef {{frameSize: number, frames: string[][]}} CustomAnimationDefinition
+ * @type {Record<string, CustomAnimationDefinition>} 
+ */
 const customAnimations = {
   wheelchair: {
     frameSize: 64,
@@ -136,3 +144,19 @@ const customAnimations = {
     ]
   },
 }
+
+/**
+ * 
+ * @param {CustomAnimationDefinition} customAnimation 
+ * @returns {{width:number, height:number}}
+ */
+const customAnimationSize = (customAnimation) => ({
+  width: customAnimation.frameSize * customAnimation.frames[0].length,
+  height: customAnimation.frameSize * customAnimation.frames.length
+})
+
+const customAnimationBase = (custAnim) =>
+  (custAnim.frames[0][0].split(",")[0].split("-")[0])
+
+const isCustomAnimationBasedOnStandardAnimation = (custAnim, stdAnimName) =>
+  (customAnimationBase(custAnim) === stdAnimName)

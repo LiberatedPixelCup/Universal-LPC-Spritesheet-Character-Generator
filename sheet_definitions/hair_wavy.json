@@ -3,12 +3,19 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/wavy/male/",
-    "muscular": "hair/wavy/male/",
-    "female": "hair/wavy/female/",
-    "pregnant": "hair/wavy/female/",
-    "teen": "hair/wavy/male/",
-    "child": "hair/wavy/child/"
+    "male": "hair/wavy/adult/fg/",
+    "muscular": "hair/wavy/adult/fg/",
+    "female": "hair/wavy/adult/fg/",
+    "pregnant": "hair/wavy/adult/fg/",
+    "teen": "hair/wavy/adult/fg/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "hair/wavy/adult/bg/",
+    "muscular": "hair/wavy/adult/bg/",
+    "female": "hair/wavy/adult/bg/",
+    "pregnant": "hair/wavy/adult/bg/",
+    "teen": "hair/wavy/adult/bg/"
   },
   "variants": [
     "blonde",
@@ -38,11 +45,31 @@
     "pink",
     "rose"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
   "credits": [
     {
       "file": "hair/wavy",
       "notes": "",
       "authors": [
+        "JaidynReiman",
         "Nila122"
       ],
       "licenses": [
@@ -52,7 +79,8 @@
         "GPL 3.0"
       ],
       "urls": [
-        "https://opengameart.org/content/3-hairs-for-lpc"
+        "https://opengameart.org/content/3-hairs-for-lpc",
+        "https://opengameart.org/content/lpc-expanded-hair"
       ]
     }
   ]

@@ -1,0 +1,130 @@
+{
+  "name": "Original Sleeveless",
+  "type_name": "clothes",
+  "layer_1": {
+    "zPos": 35,
+    "female": "torso/clothes/sleeveless/sleeveless1/female/",
+    "male": "torso/clothes/sleeveless/sleeveless1/male/",
+    "teen": "torso/clothes/sleeveless/sleeveless1/teen/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "torso/clothes/sleeveless/sleeveless1/male",
+      "notes": "original by ElizaWy walkcycle only; extended to all animations by adapting from longsleeve, edited to v3 bases by bluecarrot16; sleeveless variant by JaidynReiman",
+      "authors": [
+        "bluecarrot16",
+        "ElizaWy",
+        "JaidynReiman",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+        "http://opengameart.org/content/lpc-revised-character-basics",
+        "http://opengameart.org/content/lpc-clothing-updates",
+        "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+        "https://opengameart.org/content/lpc-expanded-simple-shirts"
+      ]
+    },
+    {
+      "file": "torso/clothes/sleeveless/sleeveless1/female",
+      "notes": "original by ElizaWy walkcycle only; extended to all animations by adapting from longsleeve, edited to v3 bases by bluecarrot16; sleeveless variant by JaidynReiman",
+      "authors": [
+        "bluecarrot16",
+        "ElizaWy",
+        "JaidynReiman",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+        "https://opengameart.org/content/lpc-7-womens-shirts",
+        "http://opengameart.org/content/lpc-revised-character-basics",
+        "http://opengameart.org/content/lpc-clothing-updates",
+        "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+        "https://opengameart.org/content/lpc-expanded-simple-shirts"
+      ]
+    },
+    {
+      "file": "torso/clothes/sleeveless/sleeveless1/teen",
+      "notes": "original by ElizaWy walkcycle only; extended to all animations by adapting from longsleeve, edited to v3 bases by bluecarrot16; sleeveless variant by JaidynReiman",
+      "authors": [
+        "Nyom",
+        "bluecarrot16",
+        "ElizaWy",
+        "JaidynReiman",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+        "https://opengameart.org/content/lpc-7-womens-shirts",
+        "http://opengameart.org/content/lpc-revised-character-basics",
+        "http://opengameart.org/content/lpc-clothing-updates",
+        "https://opengameart.org/content/lpc-teen-androgynous-short-sleeve-shirt",
+        "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+        "https://opengameart.org/content/lpc-expanded-simple-shirts"
+      ]
+    }
+  ]
+}

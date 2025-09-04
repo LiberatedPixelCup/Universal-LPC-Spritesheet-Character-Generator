@@ -1,0 +1,54 @@
+{
+  "name": "Child Wavy",
+  "type_name": "hair",
+  "layer_1": {
+    "zPos": 120,
+    "child": "hair/wavy/child/"
+  },
+  "variants": [
+    "blonde",
+    "ash",
+    "sandy",
+    "platinum",
+    "strawberry",
+    "redhead",
+    "ginger",
+    "carrot",
+    "chestnut",
+    "light brown",
+    "dark brown",
+    "black",
+    "raven",
+    "dark gray",
+    "gray",
+    "white",
+    "red",
+    "orange",
+    "gold",
+    "green",
+    "blue",
+    "navy",
+    "violet",
+    "purple",
+    "pink",
+    "rose"
+  ],
+  "credits": [
+    {
+      "file": "hair/wavy/child",
+      "notes": "",
+      "authors": [
+        "Nila122"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/3-hairs-for-lpc"
+      ]
+    }
+  ]
+}

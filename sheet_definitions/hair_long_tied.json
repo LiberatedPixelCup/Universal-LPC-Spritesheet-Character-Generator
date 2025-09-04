@@ -3,11 +3,19 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/long_tied/male/",
-    "muscular": "hair/long_tied/male/",
-    "female": "hair/long_tied/female/",
-    "pregnant": "hair/long_tied/female/",
-    "teen": "hair/long_tied/male/"
+    "male": "hair/long_tied/adult/fg/",
+    "muscular": "hair/long_tied/adult/fg/",
+    "female": "hair/long_tied/adult/fg/",
+    "pregnant": "hair/long_tied/adult/fg/",
+    "teen": "hair/long_tied/adult/fg/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "hair/long_tied/adult/bg/",
+    "muscular": "hair/long_tied/adult/bg/",
+    "female": "hair/long_tied/adult/bg/",
+    "pregnant": "hair/long_tied/adult/bg/",
+    "teen": "hair/long_tied/adult/bg/"
   },
   "variants": [
     "blonde",
@@ -37,11 +45,31 @@
     "pink",
     "rose"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
   "credits": [
     {
       "file": "hair/long_tied",
       "notes": "",
       "authors": [
+        "JaidynReiman",
         "thecilekli",
         "bluecarrot16"
       ],
@@ -50,7 +78,8 @@
       ],
       "urls": [
         "https://opengameart.org/content/lpc-long-tied-hair-with-12-colors",
-        "https://opengameart.org/content/lpc-hair"
+        "https://opengameart.org/content/lpc-hair",
+        "https://opengameart.org/content/lpc-expanded-hair"
       ]
     }
   ]

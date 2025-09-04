@@ -3,11 +3,19 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/bunches/male/",
-    "muscular": "hair/bunches/male/",
-    "female": "hair/bunches/female/",
-    "pregnant": "hair/bunches/female/",
-    "teen": "hair/bunches/male/"
+    "male": "hair/bunches/adult/fg/",
+    "muscular": "hair/bunches/adult/fg/",
+    "female": "hair/bunches/adult/fg/",
+    "pregnant": "hair/bunches/adult/fg/",
+    "teen": "hair/bunches/adult/fg/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "hair/bunches/adult/bg/",
+    "muscular": "hair/bunches/adult/bg/",
+    "female": "hair/bunches/adult/bg/",
+    "pregnant": "hair/bunches/adult/bg/",
+    "teen": "hair/bunches/adult/bg/"
   },
   "variants": [
     "blonde",
@@ -37,11 +45,31 @@
     "pink",
     "rose"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
   "credits": [
     {
       "file": "hair/bunches",
       "notes": "",
       "authors": [
+        "JaidynReiman",
         "Barbara Riviera",
         "Manuel Riecke (MrBeast)"
       ],
@@ -51,7 +79,8 @@
       ],
       "urls": [
         "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-        "https://opengameart.org/content/concept-art-for-lpc-entry"
+        "https://opengameart.org/content/concept-art-for-lpc-entry",
+        "https://opengameart.org/content/lpc-expanded-hair"
       ]
     }
   ]

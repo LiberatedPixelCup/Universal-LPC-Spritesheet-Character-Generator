@@ -6,7 +6,7 @@
   "preview_x_offset": 0,
   "preview_y_offset": 18,
   "layer_1": {
-    "zPos": 140,
+    "zPos": -1,
     "male": "weapon/ranged/crossbow/background/",
     "muscular": "weapon/ranged/crossbow/background/",
     "female": "weapon/ranged/crossbow/background/",

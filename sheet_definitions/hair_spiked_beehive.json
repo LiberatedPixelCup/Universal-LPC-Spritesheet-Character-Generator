@@ -3,11 +3,11 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/spiked_beehive/male/",
-    "muscular": "hair/spiked_beehive/male/",
-    "female": "hair/spiked_beehive/female/",
-    "pregnant": "hair/spiked_beehive/female/",
-    "teen": "hair/spiked_beehive/male/"
+    "male": "hair/spiked_beehive/adult/",
+    "muscular": "hair/spiked_beehive/adult/",
+    "female": "hair/spiked_beehive/adult/",
+    "pregnant": "hair/spiked_beehive/adult/",
+    "teen": "hair/spiked_beehive/adult/"
   },
   "variants": [
     "blonde",
@@ -36,6 +36,25 @@
     "purple",
     "pink",
     "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
   ],
   "credits": [
     {

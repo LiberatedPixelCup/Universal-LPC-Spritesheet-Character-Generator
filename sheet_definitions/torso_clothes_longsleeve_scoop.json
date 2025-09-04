@@ -3,8 +3,10 @@
   "type_name": "clothes",
   "layer_1": {
     "zPos": 35,
+    "male": "torso/clothes/longsleeve/scoop/male/",
     "female": "torso/clothes/longsleeve/scoop/female/",
-    "pregnant": "torso/clothes/longsleeve/scoop/pregnant/"
+    "pregnant": "torso/clothes/longsleeve/scoop/pregnant/",
+    "teen": "torso/clothes/longsleeve/scoop/female/"
   },
   "variants": [
     "black",
@@ -32,13 +34,33 @@
     "white",
     "yellow"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
   "credits": [
     {
       "file": "torso/clothes/longsleeve/scoop/female",
-      "notes": "body by Redshrike, scoop shirt by ElizaWy derived from base; adapted to v3 bodies by bluecarrot16",
+      "notes": "body by Redshrike, scoop shirt by ElizaWy derived from base; adapted to v3 bodies by bluecarrot16; climb/jump/run/sit/emote/revised combat adapted from LPC Revised by JaidynReiman",
       "authors": [
         "bluecarrot16",
         "ElizaWy",
+        "JaidynReiman",
         "Stephen Challener (Redshrike)"
       ],
       "licenses": [
@@ -49,12 +71,16 @@
         "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
         "https://opengameart.org/content/lpc-pregnancy-bases-maternity-wear",
         "https://opengameart.org/content/lpc-7-womens-shirts",
-        "http://opengameart.org/content/lpc-clothing-updates"
+        "http://opengameart.org/content/lpc-clothing-updates",
+        "https://opengameart.org/content/lpc-revised-character-basics",
+        "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+        "https://opengameart.org/content/lpc-expanded-simple-shirts"
       ]
     },
     {
       "file": "torso/clothes/longsleeve/scoop/pregnant",
-      "notes": "body by Redshrike, scoop shirt by ElizaWy derived from base; pregnant tanktop by ElizaWy; tanktop edited by bluecarrot16 to make other pregnant shirts and match v3 bases",
+      "notes": "body by Redshrike, scoop shirt by ElizaWy derived from base; pregnant tanktop by ElizaWy; tanktop edited by bluecarrot16 to make other pregnant shirts and match v3 bases; climb/jump/run/sit/emote/revised combat adapted from LPC Revised by JaidynReiman",
       "authors": [
         "bluecarrot16",
         "ElizaWy",
@@ -69,7 +95,55 @@
         "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
         "https://opengameart.org/content/lpc-pregnancy-bases-maternity-wear",
         "https://opengameart.org/content/lpc-7-womens-shirts",
-        "http://opengameart.org/content/lpc-clothing-updates"
+        "http://opengameart.org/content/lpc-clothing-updates",
+        "https://opengameart.org/content/lpc-revised-character-basics",
+        "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+        "https://opengameart.org/content/lpc-expanded-simple-shirts"
+      ]
+    },
+    {
+      "file": "torso/clothes/longsleeve/scoop/male",
+      "notes": "body by Redshrike, scoop shirt by ElizaWy derived from base; adapted to v3 bodies by bluecarrot16; male version adapted from female cutouts and male longsleeve by JaidynReiman, climb/jump/run/sit/emote/revised combat adapted from LPC Revised by JaidynReiman",
+      "authors": [
+        "bluecarrot16",
+        "ElizaWy",
+        "JaidynReiman",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+        "http://opengameart.org/content/lpc-clothing-updates",
+        "https://opengameart.org/content/lpc-revised-character-basics",
+        "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+        "https://opengameart.org/content/lpc-expanded-simple-shirts"
+      ]
+    },
+    {
+      "file": "torso/clothes/longsleeve/scoop/teen",
+      "notes": "body by Redshrike, scoop shirt by ElizaWy derived from base; adapted to v3 bodies by bluecarrot16; teen version adapted from female cutouts and teen longsleeve by JaidynReiman, climb/jump/run/sit/emote/revised combat adapted from LPC Revised by JaidynReiman",
+      "authors": [
+        "bluecarrot16",
+        "ElizaWy",
+        "JaidynReiman",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+        "http://opengameart.org/content/lpc-clothing-updates",
+        "https://opengameart.org/content/lpc-revised-character-basics",
+        "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+        "https://opengameart.org/content/lpc-expanded-simple-shirts"
       ]
     }
   ]

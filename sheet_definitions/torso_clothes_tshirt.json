@@ -3,6 +3,7 @@
   "type_name": "clothes",
   "layer_1": {
     "zPos": 35,
+    "male": "torso/clothes/shortsleeve/tshirt/male/",
     "female": "torso/clothes/shortsleeve/tshirt/female/",
     "teen": "torso/clothes/shortsleeve/tshirt/teen/"
   },
@@ -54,7 +55,7 @@
   "credits": [
     {
       "file": "torso/clothes/shortsleeve/tshirt",
-      "notes": "original by ElizaWy; spellcast/thrust/shoot/hurt adapted from original by JaidynReiman",
+      "notes": "original by ElizaWy; spellcast/thrust/shoot/hurt/male adapted from original by JaidynReiman",
       "authors": [
         "ElizaWy",
         "JaidynReiman",
@@ -65,9 +66,10 @@
         "OGA-BY 3.0"
       ],
       "urls": [
-        "http://opengameart.org/content/lpc-revised-character-basics",
+        "https://opengameart.org/content/lpc-revised-character-basics",
         "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
+        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+        "https://opengameart.org/content/lpc-expanded-simple-shirts"
       ]
     }
   ]

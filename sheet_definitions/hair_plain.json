@@ -3,11 +3,11 @@
   "type_name": "hair",
   "layer_1": {
     "zPos": 120,
-    "male": "hair/plain/male/",
-    "muscular": "hair/plain/male/",
-    "female": "hair/plain/female/",
-    "pregnant": "hair/plain/female/",
-    "teen": "hair/plain/male/"
+    "male": "hair/plain/adult/",
+    "muscular": "hair/plain/adult/",
+    "female": "hair/plain/adult/",
+    "pregnant": "hair/plain/adult/",
+    "teen": "hair/plain/adult/"
   },
   "variants": [
     "blonde",
@@ -37,11 +37,31 @@
     "pink",
     "rose"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
   "credits": [
     {
       "file": "hair/plain",
       "notes": "",
       "authors": [
+        "JaidynReiman",
         "Manuel Riecke (MrBeast)",
         "Joe White"
       ],
@@ -52,7 +72,8 @@
       ],
       "urls": [
         "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-        "https://opengameart.org/content/ponytail-and-plain-hairstyles"
+        "https://opengameart.org/content/ponytail-and-plain-hairstyles",
+        "https://opengameart.org/content/lpc-expanded-hair"
       ]
     }
   ]

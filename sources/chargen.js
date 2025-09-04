@@ -1,3 +1,25 @@
+/**
+
+ * @typedef {{
+    fileName:string,
+    zPos: number,
+    custom_animation: string?,
+    parentName: string,
+    name: string,
+    variant: string,
+    supportedAnimations: string
+  }} ItemToDraw
+
+ * @typedef {{
+      bodyTypeName: string,
+      url: string,
+      spritesheets: string,
+      version: number,
+      datetime: string,
+      credits: string[],
+  }} ItemsMeta
+ */
+
 $.expr[":"].icontains = function (a, i, m) {
   return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
 };
@@ -41,8 +63,13 @@ const DEBUG = debugQueryString() ?? isLocalhost;
 
 $(document).ready(function () {
   let matchBodyColor = true;
+  
+  /** @type {ItemToDraw[]} */
   let itemsToDraw = [];
+
+  /** @type {ItemsMeta} */
   let itemsMeta = {};
+
   let params = jHash.val();
   let sheetCredits = [];
 
@@ -376,7 +403,7 @@ $(document).ready(function () {
 
   $(".exportToClipboard").click(function () {
     const spritesheet = Object.assign({}, itemsMeta);
-    spritesheet["layers"] = itemsToDraw;
+    spritesheet.layers = itemsToDraw;
     navigator.clipboard.writeText(JSON.stringify(spritesheet, null, "  "));
   });
 
@@ -456,68 +483,258 @@ $(document).ready(function () {
     $("#frame-cycle").text(animationItems.join("-"));
   });
   
+  function newZip() {
+    const zip = new JSZip();
+
+    const creditsFolder = zip.folder("credits");
+    
+    if (!creditsFolder) {
+      throw new Error("Failed to create folder structure in zip file");
+    }
+
+    // Add JSON export
+    try {
+      const spritesheet = Object.assign({}, itemsMeta);
+      spritesheet.layers = itemsToDraw;
+      zip.file("character.json", JSON.stringify(spritesheet, null, 2));
+    } catch (err) {
+      throw new Error(`Failed to add character.json: ${err.message}`);
+    }
+
+    // Add credits in multiple formats
+    try {
+      creditsFolder.file("credits.txt", sheetCreditsToTxt());
+      creditsFolder.file("credits.csv", sheetCreditsToCSV());
+    } catch (err) {
+      throw new Error(`Failed to add credits files: ${err.message}`);
+    }
+
+    return zip
+  }
+
+  async function downloadZip(zip, filename) {
+    try {
+      const content = await zip.generateAsync({
+        type: 'blob',
+        compression: 'DEFLATE',
+        compressionOptions: { level: 9 }
+      });
+
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = URL.createObjectURL(content);
+      link.click();
+      URL.revokeObjectURL(link.href);
+    } catch (err) {
+      throw new Error(`Failed to generate zip file: ${err.message}`);
+    }
+  }
+
+  // Helper to convert canvas to blob
+  const canvasToBlob = (canvas) => {
+    return new Promise((resolve, reject) => {
+      try {
+        canvas.toBlob((blob) => {
+          if (blob) {
+            resolve(blob);
+          } else {
+            reject(new Error("Failed to create blob from canvas"));
+          }
+        }, 'image/png');
+      } catch (err) {
+        reject(new Error(`Canvas to Blob conversion failed: ${err.message}`));
+      }
+    });
+  };
+
+const newTimeStamp = () => new Date().toISOString().replace(/[:\.]/g, '-').substring(0, 19);
+
+const addMetadataToZip = (zip, bodyType, timestamp, exportedStandard, failedStandard, exportedCustom, failedCustom) => {
+  const metadata = {
+    exportTimestamp: timestamp,
+    bodyType: bodyType,
+    standardAnimations: {
+      exported: exportedStandard,
+      failed: failedStandard
+    },
+    customAnimations: {
+      exported: exportedCustom,
+      failed: failedCustom
+    },
+    frameSize: universalFrameSize,
+    frameCounts: animationFrameCounts
+  };
+  try {
+    const creditsFolder = zip.folder("credits");
+    creditsFolder.file("metadata.json", JSON.stringify(metadata, null, 2));
+  } catch (err) {
+    throw new Error(`Failed to add metadata.json: ${err.message}`);
+  }
+  return metadata;
+}
+
+  /**
+   * 
+   * @param {string} custom_animation 
+   * @param {string[]} addedCustomAnimations 
+   * @returns 
+   */
+  function customAnimationY(custom_animation, addedCustomAnimations) {
+    let y = universalSheetHeight;
+    for (const custAnimName of addedCustomAnimations) {
+      if (custAnimName === custom_animation)
+        break;
+      const otherCustomAction = customAnimations[custAnimName];
+      y += customAnimationSize(otherCustomAction).height;
+    }
+    return y;
+  }
+
+  /**
+   * 
+   * @param {CanvasRenderingContext2D} destCtx 
+   * @param {CanvasImageSource} baseCanvas
+   * @param {ItemToDraw} itemToDraw 
+   * @param {number} requiredCanvasWidth 
+   * @param {number} requiredCanvasHeight 
+   * @param {string?} didPutUniversalForCustomAnimation 
+   * @returns 
+   */
+  function drawCustomAnimationItem(destCtx, itemToDraw, addedCustomAnimations) {
+    const custom_animation = itemToDraw.custom_animation;
+    const filePath = itemToDraw.fileName;
+    const img = loadImage(filePath, false);
+    const y = customAnimationY(custom_animation, addedCustomAnimations);
+    destCtx.drawImage(img, 0, y);
+  }
+
+  /**
+   * 
+   * @param {CanvasImageSource} src 
+   * @param {{x: number?, y: number?, width: number, height: number}?} srcRect
+   */
+  function newAnimationFromSheet(src, srcRect) {
+    const { x, y, width, height } = srcRect || { width: src.width, height: src.height };
+    const fromSubregion = x !== undefined && y !== undefined;
+    if (fromSubregion) {
+      if (!hasContentInRegion(src.getContext("2d"), x, y, width, height))
+        return null;
+    }
+
+    const animCanvas = document.createElement('canvas');
+    animCanvas.width = width;
+    animCanvas.height = height;
+    const animCtx = animCanvas.getContext('2d');
+
+    if (!animCtx) {
+      throw new Error("Failed to get canvas context");
+    }
+
+    if (fromSubregion) {
+      animCtx.drawImage(src,
+        x, y, width, height,
+        0, 0, width, height);
+    } else {
+      animCtx.drawImage(src, 0, 0);
+    }
+
+    return animCanvas;
+  }
+
+  function newStandardAnimationForCustomAnimation(src, custAnim) {
+    const custCanvas = document.createElement("canvas");
+    const {width: custWidth, height: custHeight} = customAnimationSize(custAnim);
+    custCanvas.width = custWidth;
+    custCanvas.height = custHeight;
+    const custCtx = custCanvas.getContext("2d");
+    drawFramesToCustomAnimation(custCtx, custAnim, 0, src, null);
+    return custCanvas;
+  }
+
+  async function addStandardAnimationToZipCustomFolder(custAnimFolder, itemFileName, src, custAnim) {
+    const custCanvas = newStandardAnimationForCustomAnimation(src, custAnim);
+    const custBlob = await canvasToBlob(custCanvas);
+    custAnimFolder.file(itemFileName, custBlob);
+    return custCanvas;
+  }
+
+  /**
+   * 
+   * @param {HTMLCanvasElement} destCanvas 
+   * @param {ItemToDraw} itemToDraw 
+   * @param {string[]} addedCustomAnimations 
+   */
+  function drawItemSheet(destCanvas, itemToDraw, addedCustomAnimations) {
+    const destCtx = destCanvas.getContext("2d");
+    const custom_animation = itemToDraw.custom_animation;
+    if (custom_animation !== undefined) {
+      drawCustomAnimationItem(destCtx, itemToDraw, addedCustomAnimations);
+    } else {
+      for (const [key, value] of Object.entries(base_animations)) {
+        if (!drawItemOnStandardAnimation(destCtx, value, key, itemToDraw))
+          continue;
+
+        let offSetY = universalSheetHeight;
+        for (const custAnimName of addedCustomAnimations) {
+          const custAnim = customAnimations[custAnimName];
+          if (key === customAnimationBase(custAnim)) {
+            drawFramesToCustomAnimation(destCtx, custAnim, offSetY, destCanvas, animationRowsLayout);
+          }
+          offSetY += customAnimationSize(custAnim).height;
+        }
+      }
+    }
+  }
+
+  /**
+   * 
+   * @param {*} folder 
+   * @param {string} fileName 
+   * @param {CanvasImageSource} src 
+   * @param {{x: number?, y: number?, width: number, height: number}?} srcRect 
+   */
+  async function addAnimationToZipFolder(folder, fileName, src, srcRect) {
+    const animCanvas = newAnimationFromSheet(src, srcRect);
+    if (animCanvas) {
+      const blob = await canvasToBlob(animCanvas);
+      folder.file(fileName, blob);
+    }
+    return animCanvas;
+  }
+
 $(".exportSplitAnimations").click(async function() {
   try {
-    const zip = new JSZip();
+    const zip = newZip();
     const bodyType = getBodyTypeName();
-    const timestamp = new Date().toISOString().replace(/[:\.]/g, '-').substring(0, 19);
+    const timestamp = newTimeStamp()
 
     // Create folders in zip
     const standardFolder = zip.folder("standard");
     const customFolder = zip.folder("custom");
     const creditsFolder = zip.folder("credits");
-    
+
     if (!standardFolder || !customFolder || !creditsFolder) {
       throw new Error("Failed to create folder structure in zip file");
     }
 
-    // Helper to convert canvas to blob
-    const canvasToBlob = (canvas) => {
-      return new Promise((resolve, reject) => {
-        try {
-          canvas.toBlob((blob) => {
-            if (blob) {
-              resolve(blob);
-            } else {
-              reject(new Error("Failed to create blob from canvas"));
-            }
-          }, 'image/png');
-        } catch (err) {
-          reject(new Error(`Canvas to Blob conversion failed: ${err.message}`));
-        }
-      });
-    };
-
     // Export standard animations
     const exportedStandard = [];
     const failedStandard = [];
-    
-    for (const [name, startY] of Object.entries(base_animations)) {
+
+    for (const [name, y] of Object.entries(base_animations)) {
       try {
         const rows = name === 'hurt' || name === 'climb' ? 1 : 4;
         const frames = animationFrameCounts[name];
-        
-        if (hasContentInRegion(ctx, 0, startY, frames * universalFrameSize, rows * universalFrameSize)) {
-          const animCanvas = document.createElement('canvas');
-          animCanvas.width = frames * universalFrameSize;
-          animCanvas.height = rows * universalFrameSize;
-          const animCtx = animCanvas.getContext('2d');
-          
-          if (!animCtx) {
-            throw new Error("Failed to get canvas context");
-          }
-          
-          animCtx.drawImage(canvas, 
-            0, startY,
-            frames * universalFrameSize, rows * universalFrameSize,
-            0, 0,
-            frames * universalFrameSize, rows * universalFrameSize
-          );
+        const srcRect = {
+          x: 0, y,
+          width: frames * universalFrameSize,
+          height: rows * universalFrameSize
+        };
+        const animCanvas = await addAnimationToZipFolder(standardFolder, `${name}.png`,
+          canvas, srcRect);
 
-          const blob = await canvasToBlob(animCanvas);
-          await standardFolder.file(`${name}.png`, blob);
+        if (animCanvas)
           exportedStandard.push(name);
-        }
       } catch (err) {
         console.error(`Failed to export standard animation ${name}:`, err);
         failedStandard.push(name);
@@ -527,8 +744,8 @@ $(".exportSplitAnimations").click(async function() {
     // Handle custom animations
     const exportedCustom = [];
     const failedCustom = [];
-    let currentY = universalSheetHeight;
-    
+    let y = universalSheetHeight;
+
     for (const animName of addedCustomAnimations) {
       try {
         const anim = customAnimations[animName];
@@ -536,100 +753,36 @@ $(".exportSplitAnimations").click(async function() {
           throw new Error("Animation definition not found");
         }
 
-        const width = anim.frameSize * anim.frames[0].length;
-        const height = anim.frameSize * anim.frames.length;
+        const srcRect = { x: 0, y, ...customAnimationSize(anim) };
+        const animCanvas = await addAnimationToZipFolder(customFolder, `${animName}.png`,
+          canvas, srcRect);
 
-        if (hasContentInRegion(ctx, 0, currentY, width, height)) {
-          const animCanvas = document.createElement('canvas'); 
-          animCanvas.width = width;
-          animCanvas.height = height;
-          const animCtx = animCanvas.getContext('2d');
-          
-          if (!animCtx) {
-            throw new Error("Failed to get canvas context");
-          }
-
-          animCtx.drawImage(canvas,
-            0, currentY, width, height,
-            0, 0, width, height
-          );
-
-          const blob = await canvasToBlob(animCanvas);
-          await customFolder.file(`${animName}.png`, blob);
+        if (animCanvas)
           exportedCustom.push(animName);
-        }
-        currentY += height;
+
+        y += srcRect.height;
       } catch (err) {
         console.error(`Failed to export custom animation ${animName}:`, err);
         failedCustom.push(animName);
       }
     }
 
-    // Add JSON export
-    try {
-      const spritesheet = Object.assign({}, itemsMeta);
-      spritesheet["layers"] = itemsToDraw;
-      await zip.file("character.json", JSON.stringify(spritesheet, null, 2));
-    } catch (err) {
-      throw new Error(`Failed to add character.json: ${err.message}`);
-    }
-
-    // Add credits in multiple formats
-    try {
-      await creditsFolder.file("credits.txt", sheetCreditsToTxt());
-      await creditsFolder.file("credits.csv", sheetCreditsToCSV());
-    } catch (err) {
-      throw new Error(`Failed to add credits files: ${err.message}`);
-    }
-
     // Add metadata about the export
-    try {
-      const metadata = {
-        exportTimestamp: timestamp,
-        bodyType: bodyType,
-        standardAnimations: {
-          exported: exportedStandard,
-          failed: failedStandard
-        },
-        customAnimations: {
-          exported: exportedCustom,
-          failed: failedCustom
-        },
-        frameSize: universalFrameSize,
-        frameCounts: animationFrameCounts
-      };
-      await creditsFolder.file("metadata.json", JSON.stringify(metadata, null, 2));
-    } catch (err) {
-      throw new Error(`Failed to add metadata.json: ${err.message}`);
-    }
+    addMetadataToZip(zip, bodyType, timestamp, exportedStandard, failedStandard, exportedCustom, failedCustom);
 
     // Generate and download zip
-    try {
-      const content = await zip.generateAsync({
-        type: 'blob',
-        compression: 'DEFLATE',
-        compressionOptions: { level: 9 }
-      });
+    await downloadZip(zip, `lpc_${bodyType}_animations_${timestamp}.zip`);
 
-      const link = document.createElement('a');
-      link.download = `lpc_${bodyType}_animations_${timestamp}.zip`;
-      link.href = URL.createObjectURL(content);
-      link.click();
-      URL.revokeObjectURL(link.href);
-
-      // Show success message with any failures
-      if (failedStandard.length > 0 || failedCustom.length > 0) {
-        const failureMessage = [];
-        if (failedStandard.length > 0) {
-          failureMessage.push(`Failed to export standard animations: ${failedStandard.join(', ')}`);
-        }
-        if (failedCustom.length > 0) {
-          failureMessage.push(`Failed to export custom animations: ${failedCustom.join(', ')}`);
-        }
-        alert(`Export completed with some issues:\n${failureMessage.join('\n')}`);
+    // Show success message with any failures
+    if (failedStandard.length > 0 || failedCustom.length > 0) {
+      const failureMessage = [];
+      if (failedStandard.length > 0) {
+        failureMessage.push(`Failed to export standard animations: ${failedStandard.join(', ')}`);
       }
-    } catch (err) {
-      throw new Error(`Failed to generate zip file: ${err.message}`);
+      if (failedCustom.length > 0) {
+        failureMessage.push(`Failed to export custom animations: ${failedCustom.join(', ')}`);
+      }
+      alert(`Export completed with some issues:\n${failureMessage.join('\n')}`);
     }
 
   } catch (error) {
@@ -637,6 +790,145 @@ $(".exportSplitAnimations").click(async function() {
     alert(`Export failed: ${error.message}\nCheck console for details.`);
   }
 });
+
+  const getItemFileName = (item) =>
+    `${item.zPos}`.padStart(3, '0') + ` ${item.fileName.replace(/\//g, ' ')}`;
+
+  function reportFailedItemAnimations(failedStandard, failedCustom) {
+    const numFailedStandard = Object.keys(failedStandard).length;
+    const numFailedCustom = Object.keys(failedCustom).length;
+    if (numFailedStandard > 0 || numFailedCustom > 0) {
+      const failureMessage = [];
+      if (numFailedStandard > 0) {
+        failureMessage.push("Failed to export standard animations:");
+        for (const [anim, failedItems] of Object.entries(failedStandard)) {
+          for (const item of failedItems) {
+            failureMessage.push(`${anim}/${item}`)
+          }
+        }
+      }
+      if (numFailedCustom > 0) {
+        failureMessage.push("Failed to export custom animations:");
+        for (const [anim, failedItems] of Object.entries(failedCustom)) {
+          for (const item of failedItems) {
+            failureMessage.push(`${anim}/${item}`)
+          }
+        }
+      }
+      alert(`Export completed with some issues:\n${failureMessage.join('\n')}`);
+    }
+  }
+
+  $(".exportSplitItemAnimations").click(async function() {
+    try {
+      const zip = newZip();
+      const bodyType = getBodyTypeName();
+      const timestamp = newTimeStamp();
+
+      // Create folders in zip
+      const standardFolder = zip.folder("standard");
+      const customFolder = zip.folder("custom");
+      const creditsFolder = zip.folder("credits");
+
+      if (!standardFolder || !customFolder || !creditsFolder) {
+        throw new Error("Failed to create folder structure in zip file");
+      }
+
+      // Export items to standard animations,
+      // and custom animations where applicable
+      const exportedStandard = {};
+      const failedStandard = {};
+      const exportedCustom = {};
+      const failedCustom = {};
+      
+      for (const name of Object.keys(base_animations)) {
+        const animFolder = standardFolder.folder(name);
+        const exportedItems = [];
+        exportedStandard[name] = exportedItems;
+        const failedItems = [];
+
+        for (item of itemsToDraw) {
+          const itemFileName = getItemFileName(item);
+
+          try {
+            const img = getItemAnimationImage(item, name);
+            if (!img)
+              continue;
+
+            const animCanvas = await addAnimationToZipFolder(animFolder, itemFileName, img, null);
+            if (!animCanvas)
+              continue;
+
+            exportedItems.push(itemFileName);
+
+            for (const custAnimName of addedCustomAnimations) {
+              const custAnim = customAnimations[custAnimName];
+              if (!isCustomAnimationBasedOnStandardAnimation(custAnim, name))
+                continue;
+
+              const custExportedItems = exportedCustom[custAnimName] || [];
+              exportedCustom[custAnimName] = custExportedItems;
+              const custFailedItems = failedCustom[custAnimName] || [];
+              try {
+                const custAnimFolder = customFolder.folder(custAnimName);
+                if (addStandardAnimationToZipCustomFolder(custAnimFolder, itemFileName, img, custAnim))
+                  custExportedItems.push(itemFileName);
+              } catch (err) {
+                console.error(`Failed to export item ${itemFileName} in custom animation ${custAnimName}:`, err);
+                custFailedItems.push(itemFileName);
+                failedCustom[custAnimName] = custFailedItems;
+              }
+            }
+          } catch (err) {
+            console.error(`Failed to export item ${itemFileName} in standard animation ${name}:`, err);
+            failedItems.push(itemFileName);
+            failedStandard[name] = failedItems;
+          }
+        }
+      }
+
+      // Export items exclusive to custom animations
+      for (item of itemsToDraw) {
+        const custName = item.custom_animation;
+        if (!custName)
+          continue;
+
+        const itemFileName = getItemFileName(item);
+        const custExportedItems = exportedCustom[custName] || [];
+        exportedCustom[custName] = custExportedItems;
+        const custFailedItems = failedCustom[custName] || [];
+
+        try {
+          const img = loadImage(item.fileName, false);
+          if (!img)
+            continue;
+
+          const custAnim = customAnimations[custName];
+          const custSize = customAnimationSize(custAnim);
+          const animFolder = customFolder.folder(custName);
+          if (await addAnimationToZipFolder(animFolder, itemFileName, img, custSize))
+            custExportedItems.push(itemFileName);
+        } catch (err) {
+          console.error(`Failed to export item ${itemFileName} in custom animation ${custName}:`, err);
+          custFailedItems.push(itemFileName);
+          failedCustom[custName] = custFailedItems;
+        }
+      }
+
+      // Add metadata about the export
+      addMetadataToZip(zip, bodyType, timestamp, exportedStandard, failedStandard, exportedCustom, failedCustom);
+
+      // Generate and download zip
+      await downloadZip(zip, `lpc_${bodyType}_item_animations_${timestamp}.zip`);
+
+      // Show success message with any failures
+      reportFailedItemAnimations(failedStandard, failedCustom);
+
+    } catch (error) {
+      console.error('Export error:', error);
+      alert(`Export failed: ${error.message}\nCheck console for details.`);
+    }
+  });
 
   // Helper function to check if a region has non-transparent pixels
   function hasContentInRegion(ctx, x, y, width, height) {
@@ -648,6 +940,57 @@ $(".exportSplitAnimations").click(async function() {
       return false;
     }
   }
+
+  $(".exportSplitItemSheets").click(async () => {
+    try {
+      const zip = newZip();
+
+      const itemsFolder = zip.folder("items");
+      if (!itemsFolder) {
+        throw new Error("Failed to create folder structure in zip file");
+      }
+
+      const exportedItems = [];
+      const failedItems = [];
+
+      const itemCanvas = document.createElement("canvas");
+      itemCanvas.width = canvas.width;
+      itemCanvas.height = canvas.height;
+      const itemCtx = itemCanvas.getContext("2d");
+
+      for (let itemToDraw of itemsToDraw) {
+        const fileName = getItemFileName(itemToDraw);
+
+        try {
+          itemCtx.clearRect(0, 0, itemCanvas.width, itemCanvas.height);
+          drawItemSheet(itemCanvas, itemToDraw, addedCustomAnimations);
+
+          const blob = await canvasToBlob(itemCanvas);
+          await itemsFolder.file(fileName, blob);
+          exportedItems.push(fileName);
+        } catch (err) {
+          console.error(`Failed to export item spritesheet ${fileName}:`, err);
+          failedItems.push(fileName);
+        }
+      }
+
+      const bodyType = getBodyTypeName();
+      const timestamp = newTimeStamp();
+      await downloadZip(zip, `lpc_${bodyType}_item_spritesheets_${timestamp}.zip`);
+
+      // Show success message with any failures
+      if (failedItems.length > 0) {
+        const failureMessage = [];
+        if (failedItems.length > 0) {
+          failureMessage.push(`Failed to export item spritesheets: ${failedItems.join(', ')}`);
+        }
+        alert(`Export completed with some issues:\n${failureMessage.join('\n')}`);
+      }
+    } catch (error) {
+      console.error('Export error:', error);
+      alert(`Export failed: ${error.message}\nCheck console for details.`);
+    }
+  });
 
   function clearCustomAnimationPreviews() {
     for (let i = 0; i < addedCustomAnimations.length; ++i) {
@@ -869,7 +1212,6 @@ $(".exportSplitAnimations").click(async function() {
       credits: "",
     };
 
-    zPosition = 0;
     $("#chooser input[type=radio]:checked").each(function (index) {
       const $this = $(this);
       for (jdx = 1; jdx < 10; jdx++) {
@@ -900,7 +1242,8 @@ $(".exportSplitAnimations").click(async function() {
               variant,
               supportedAnimations,
             };
-            addCreditFor(fileName, licenses, authors, urls, notes);
+            dynamicReplacements(itemToDraw)
+            addCreditFor(itemToDraw.fileName, licenses, authors, urls, notes);
             itemsToDraw.push(itemToDraw);
           }
         } else {
@@ -941,7 +1284,11 @@ $(".exportSplitAnimations").click(async function() {
         const keys = Object.keys(parsedReplacements);
         const entries = keys.map(key => {
           const id = `${key}-${jHash.val(key)}`;
-          return [key, parsedReplacements[key][getParent(id)]];
+          let parent = 'none';
+          if(document.getElementById(id)) {
+            parent = getParent(id);
+          }
+          return [key, parsedReplacements[key][parent]];
         });
         const replObj = Object.fromEntries(entries);
         fileName = es6DynamicTemplate(fileName, replObj);
@@ -953,6 +1300,7 @@ $(".exportSplitAnimations").click(async function() {
   function dynamicReplacements(itemToDraw) {
     const { fileName, name, parentName, variant } = itemToDraw;
     const el = document.getElementById(`${parentName}-${name}_${variant}`);
+    console.log('dynamic replacements');
     itemToDraw.fileName = makeDynamicSubstitutions(fileName, $(el), 1);
   }
 
@@ -996,6 +1344,107 @@ $(".exportSplitAnimations").click(async function() {
     }
   }
 
+  /**
+   * 
+   * @param {CanvasRenderingContext2D} customAnimationContext 
+   * @param {CustomAnimationDefinition} customAnimationDefinition 
+   * @param {number} offSetY 
+   * @param {CanvasImageSource} src 
+   * @param {AnimationRowsLayout} srcRowsLayout 
+   */
+  function drawFramesToCustomAnimation(customAnimationContext, customAnimationDefinition, offSetY, src, srcRowsLayout) {
+    const frameSize = customAnimationDefinition.frameSize;
+    for (let i = 0; i < customAnimationDefinition.frames.length; ++i) {
+      const frames = customAnimationDefinition.frames[i];
+      for (let j = 0; j < frames.length; ++j) {
+        const srcColumn = parseInt(frames[j].split(",")[1]);
+        const srcRowName = frames[j].split(",")[0];
+        const srcRow = srcRowsLayout ? (srcRowsLayout[srcRowName] + 1) : i;
+
+        drawFrameToFrame(customAnimationContext,
+          {
+            x: frameSize * j,
+            y: frameSize * i + offSetY
+          },
+          frameSize,
+          src,
+          {
+            x: universalFrameSize * srcColumn,
+            y: universalFrameSize * srcRow,
+          },
+          universalFrameSize)
+      }
+    }
+  }
+
+  function getItemAnimationImage(itemToDraw, animName) {
+    let animationToCheck = animName;
+    if (animName === "combat_idle") {
+      animationToCheck = "combat";
+    } else if (animName === "backslash") {
+      animationToCheck = "1h_slash";
+    } else if (animName === "halfslash") {
+      animationToCheck = "1h_halfslash";
+    }
+    const supportedAnimations = itemToDraw.supportedAnimations;
+    if (supportedAnimations.includes(animationToCheck)) {
+      const filePath = itemToDraw.fileName;
+      const splitPath = splitFilePath(filePath);
+      const newFile = `${splitPath.directory}/${animName}/${splitPath.file}`;
+      return loadImage(newFile, false);
+    } else {
+      if (DEBUG)
+        console.log(`supportedAnimations does not contain ${animationToCheck} for asset ${itemToDraw.fileName}. skipping render`);
+    }
+    return null;
+  }
+
+  function drawItemOnStandardAnimation(destCtx, destY, animName, itemToDraw) {
+    const img = getItemAnimationImage(itemToDraw, animName);
+    if (img)
+      destCtx.drawImage(img, 0, destY);
+    return img;
+  }
+
+  /**
+   * 
+   * @param {ItemToDraw[]} items 
+   * @returns {string[]}
+   */
+  function buildCustomAnimationList(items) {
+    const list = [];
+    for (const item of items) {
+      const customAnimationString = item.custom_animation;
+      if (customAnimationString !== undefined) {
+        if (!list.includes(customAnimationString)) {
+          list.push(customAnimationString);
+        }
+      }
+    }
+    return list;
+  }
+
+  /**
+   * 
+   * @param {string[]} customAnimationList 
+   * @returns {{width:number, height:number}}
+   */
+  function getTotalSheetSize(customAnimationList) {
+    let sheetHeight = universalSheetHeight;
+    let sheetWidth = universalSheetWidth;
+    for (const customAnimationString of customAnimationList) {
+        const customAnimation = customAnimations[customAnimationString];
+        const {width: customAnimationWidth, height: customAnimationHeight} =
+          customAnimationSize(customAnimation)
+        sheetWidth = Math.max(
+          sheetWidth,
+          customAnimationWidth
+        );
+        sheetHeight = sheetHeight + customAnimationHeight;
+    }
+    return {width: sheetWidth, height: sheetHeight};
+  }
+
   function drawItemsToDraw() {
     if (!canRender()) {
       return;
@@ -1003,120 +1452,18 @@ $(".exportSplitAnimations").click(async function() {
     if (DEBUG) console.log(`Start drawItemsToDraw`);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    let requiredCanvasHeight = universalSheetHeight;
-    let requiredCanvasWidth = universalSheetWidth;
     clearCustomAnimationPreviews();
-    addedCustomAnimations = [];
-    for (let i = 0; i < itemsToDraw.length; ++i) {
-      const customAnimationString = itemsToDraw[i].custom_animation;
-      if (customAnimationString !== undefined) {
-        if (addedCustomAnimations.includes(customAnimationString)) {
-          continue;
-        }
-        addedCustomAnimations.push(customAnimationString);
-        const customAnimation = customAnimations[customAnimationString];
-        const customAnimationWidth =
-          customAnimation.frameSize * customAnimation.frames[0].length;
-        const customAnimationHeight =
-          customAnimation.frameSize * customAnimation.frames.length;
-        requiredCanvasWidth = Math.max(
-          requiredCanvasWidth,
-          customAnimationWidth
-        );
-        requiredCanvasHeight = requiredCanvasHeight + customAnimationHeight;
-      }
-    }
-    canvas.width = requiredCanvasWidth;
-    canvas.height = requiredCanvasHeight;
+    addedCustomAnimations = buildCustomAnimationList(itemsToDraw);
+    const {width, height} = getTotalSheetSize(addedCustomAnimations);
+    canvas.width = width;
+    canvas.height = height;
 
-    let itemIdx = 0;
-    let didPutUniversalForCustomAnimation = "";
     itemsToDraw.sort(function (lhs, rhs) {
       return parseInt(lhs.zPos) - parseInt(rhs.zPos);
     });
-    for (item in itemsToDraw) {
-      const itemToDraw = itemsToDraw[itemIdx];
-      const supportedAnimations = itemToDraw.supportedAnimations;
-      const custom_animation = itemToDraw.custom_animation;
-
+    for (const itemToDraw of itemsToDraw) {
       dynamicReplacements(itemToDraw);
-      const filePath = itemToDraw.fileName;
-
-      if (custom_animation !== undefined) {
-        const img = loadImage(filePath, false);
-        const customAnimationDefinition = customAnimations[custom_animation];
-        const frameSize = customAnimationDefinition.frameSize;
-
-        const customAnimationCanvas = document.createElement("canvas");
-        customAnimationCanvas.width = requiredCanvasWidth;
-        customAnimationCanvas.height =
-          requiredCanvasHeight - universalSheetHeight;
-        const customAnimationContext = customAnimationCanvas.getContext("2d");
-
-        const indexInArray = addedCustomAnimations.indexOf(custom_animation);
-        let offSetInAdditionToOtherCustomActions = 0;
-        for (let i = 0; i < indexInArray; ++i) {
-          const otherCustomAction = customAnimations[addedCustomAnimations[i]];
-          offSetInAdditionToOtherCustomActions +=
-            otherCustomAction.frameSize * otherCustomAction.frames.length;
-        }
-
-        if (didPutUniversalForCustomAnimation !== custom_animation) {
-          for (let i = 0; i < customAnimationDefinition.frames.length; ++i) {
-            const frames = customAnimationDefinition.frames[i];
-            for (let j = 0; j < frames.length; ++j) {
-              const frameCoordinateX = parseInt(frames[j].split(",")[1]);
-              const frameCoordinateRowName = frames[j].split(",")[0];
-              const frameCoordinateY =
-                animationRowsLayout[frameCoordinateRowName] + 1;
-              const offSet = (frameSize - universalFrameSize) / 2;
-
-              const imgDataSingleFrame = ctx.getImageData(
-                universalFrameSize * frameCoordinateX,
-                universalFrameSize * frameCoordinateY,
-                universalFrameSize,
-                universalFrameSize
-              );
-              customAnimationContext.putImageData(
-                imgDataSingleFrame,
-                frameSize * j + offSet,
-                frameSize * i + offSet + offSetInAdditionToOtherCustomActions
-              );
-            }
-          }
-          ctx.drawImage(customAnimationCanvas, 0, universalSheetHeight);
-          if (itemToDraw.zPos >= 140) {
-            didPutUniversalForCustomAnimation = custom_animation;
-          }
-        }
-        ctx.drawImage(
-          img,
-          0,
-          universalSheetHeight + offSetInAdditionToOtherCustomActions
-        );
-      } else {
-        const splitPath = splitFilePath(filePath);
-
-        for (const [key, value] of Object.entries(base_animations)) {
-          let animationToCheck = key;
-          if (key === "combat_idle") {
-            animationToCheck = "combat";
-          } else if (key === "backslash") {
-            animationToCheck = "1h_slash";
-          } else if (key === "halfslash") {
-            animationToCheck = "1h_halfslash";
-          }
-          if (supportedAnimations.includes(animationToCheck)) {
-            const newFile = `${splitPath.directory}/${key}/${splitPath.file}`;
-            const img = loadImage(newFile, false);
-            drawImage(ctx, img, value);
-          } else {
-            // Enable this to see missing animations in the console
-            // console.warn(`supportedAnimations does not contain ${key} for asset ${file}. skipping render`)
-          }
-        }
-      }
-      itemIdx += 1;
+      drawItemSheet(canvas, itemToDraw, addedCustomAnimations);
     }
     addCustomAnimationPreviews();
   }
@@ -1377,18 +1724,19 @@ $(".exportSplitAnimations").click(async function() {
     if (!allowLoading) {
       return images[imgRef];
     }
-    imagesToLoad += 1;
     if (images[imgRef]) {
+      imagesToLoad += 1;
       setTimeout(function () {
         imageLoadDone();
       }, 10);
       return images[imgRef];
-    } else {
+    } else if(!(imgRef in images)) {
+      imagesToLoad += 1;
       if (DEBUG) console.log(`loading new image ${imgRef}`);
       const img = new Image();
       img.src = "spritesheets/" + imgRef;
       img.onload = imageLoadDone;
-      img.onerror = imageLoadError;
+      img.onerror = (event) => imageLoadError(event, imgRef);
       images[imgRef] = img;
       return img;
     }
@@ -1402,9 +1750,10 @@ $(".exportSplitAnimations").click(async function() {
     }
   }
 
-  function imageLoadError(event) {
+  function imageLoadError(event, imgRef) {
     if (DEBUG)
       console.error("There was an error loading image:", event.target.src);
+    images[imgRef] = null;
     imageLoadDone();
   }
 
@@ -1424,18 +1773,12 @@ $(".exportSplitAnimations").click(async function() {
       img.addEventListener("load", function () {
         callback(layers, prevctx);
       });
+      img.addEventListener("error", function (event) {
+        if (DEBUG)
+          console.error("There was an error loading image:", event.target.src);
+        images[imgRef] = null;
+      });
       return img;
-    }
-  }
-
-  function drawImage(ctx, img, dy) {
-    if (ctx && img) {
-      try {
-        ctx.drawImage(img, 0, dy);
-        zPosition++;
-      } catch (err) {
-        if (DEBUG) console.error("Error: could not find " + img.src);
-      }
     }
   }
 
