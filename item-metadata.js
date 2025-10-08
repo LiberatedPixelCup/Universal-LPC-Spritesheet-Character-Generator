@@ -1,6 +1,7 @@
 // THIS FILE IS AUTO-GENERATED. PLEASE DON'T ALTER IT MANUALLY
 // Generated from sheet_definitions/*.json by scripts/generate_sources.js
 // Contains metadata for all customization items to avoid DOM queries at runtime
+// MANUAL CHANGE: This file is now out of date
 
 window.itemMetadata = {
   "shadow-Shadow": {
