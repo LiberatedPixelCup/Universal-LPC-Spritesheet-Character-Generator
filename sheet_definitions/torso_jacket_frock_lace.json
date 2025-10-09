@@ -1,6 +1,5 @@
 {
   "name": "Frock coat lace",
-  "type_name": "jacket_trim",
   "layer_1": {
     "zPos": 58,
     "male": "torso/jacket/trim/frock_lace/"
@@ -28,5 +27,11 @@
         "https://opengameart.org/content/lpc-pirates"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "jacket",
+    "jacket trim",
+    "torso_jacket_frock_lace"
   ]
 }

@@ -1,6 +1,5 @@
 {
   "name": "5 O'clock Shadow",
-  "type_name": "beard",
   "layer_1": {
     "zPos": 111,
     "male": "beards/beard/5oclock_shadow/",
@@ -73,5 +72,10 @@
         "https://opengameart.org/content/lpc-base-character-expressions"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "beards",
+    "beards_5oclock_shadow"
   ]
 }

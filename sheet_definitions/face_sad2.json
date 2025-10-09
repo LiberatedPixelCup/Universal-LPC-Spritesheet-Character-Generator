@@ -1,8 +1,12 @@
 {
   "name": "Sad Alt",
-  "type_name": "expression",
-  "tags": ["expression"],
-  "required_tags": ["human", "adult"],
+  "tags": [
+    "expression"
+  ],
+  "required_tags": [
+    "human",
+    "adult"
+  ],
   "layer_1": {
     "zPos": 101,
     "male": "head/faces/global/sad2/",
@@ -74,5 +78,10 @@
         "https://opengameart.org/content/ulpc-expanded-expressions"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "face",
+    "face_sad2"
   ]
 }

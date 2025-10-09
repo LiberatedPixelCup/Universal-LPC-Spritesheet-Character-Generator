@@ -1,6 +1,5 @@
 {
   "name": "Heater Shield Paint",
-  "type_name": "shield_paint",
   "layer_1": {
     "zPos": 3,
     "male": "shield/heater/original/paint/bg/",
@@ -130,5 +129,11 @@
         "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
       ]
     }
+  ],
+  "path": [
+    "weapons",
+    "shield",
+    "heater shield",
+    "shield_heater_paint"
   ]
 }

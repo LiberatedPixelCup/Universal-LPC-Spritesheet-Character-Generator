@@ -1,8 +1,12 @@
 {
   "name": "Cape Trim",
-  "type_name": "cape_trim",
-  "tags": ["back", "cape_trim"],
-  "required_tags": ["cape"],
+  "tags": [
+    "back",
+    "cape_trim"
+  ],
+  "required_tags": [
+    "cape"
+  ],
   "layer_1": {
     "zPos": 90,
     "male": "cape/trim/female/",
@@ -55,5 +59,10 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "cape",
+    "cape_trim"
   ]
 }

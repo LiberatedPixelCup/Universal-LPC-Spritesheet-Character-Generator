@@ -1,6 +1,5 @@
 {
   "name": "Ammo",
-  "type_name": "ammo",
   "preview_row": 3,
   "preview_column": 2,
   "preview_x_offset": 0,
@@ -35,5 +34,11 @@
         "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
       ]
     }
+  ],
+  "path": [
+    "weapons",
+    "ranged",
+    "bow",
+    "weapon_ranged_bow_arrow"
   ]
 }

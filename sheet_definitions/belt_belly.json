@@ -1,6 +1,5 @@
 {
   "name": "Belly belt",
-  "type_name": "belt",
   "layer_1": {
     "zPos": 70,
     "male": "torso/waist/belt_belly/male/",
@@ -36,5 +35,10 @@
         "https://opengameart.org/content/lpc-santa"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "waist",
+    "belt_belly"
   ]
 }

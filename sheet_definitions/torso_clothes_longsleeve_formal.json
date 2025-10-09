@@ -1,6 +1,5 @@
 {
   "name": "Collared/Formal Longsleeve",
-  "type_name": "clothes",
   "layer_1": {
     "zPos": 35,
     "male": "torso/clothes/longsleeve/formal/male/"
@@ -29,5 +28,11 @@
         "https://opengameart.org/content/lpc-gentleman"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "shirts",
+    "longsleeve",
+    "torso_clothes_longsleeve_formal"
   ]
 }

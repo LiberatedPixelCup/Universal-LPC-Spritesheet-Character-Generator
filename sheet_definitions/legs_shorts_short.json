@@ -1,6 +1,5 @@
 {
   "name": "Short Shorts",
-  "type_name": "legs",
   "layer_1": {
     "zPos": 20,
     "male": "legs/shorts/short_shorts/male/",
@@ -91,5 +90,10 @@
         "https://opengameart.org/content/lpc-expanded-pants"
       ]
     }
+  ],
+  "path": [
+    "legs",
+    "shorts",
+    "legs_shorts_short"
   ]
 }

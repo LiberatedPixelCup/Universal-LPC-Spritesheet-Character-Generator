@@ -1,6 +1,5 @@
 {
   "name": "Capeclip",
-  "type_name": "neck",
   "layer_1": {
     "zPos": 90,
     "male": "neck/capeclip/male/",
@@ -53,5 +52,21 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "neck",
+    "neck_capeclip"
   ]
 }

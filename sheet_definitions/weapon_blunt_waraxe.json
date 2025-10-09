@@ -1,6 +1,5 @@
 {
   "name": "Waraxe",
-  "type_name": "weapon",
   "layer_1": {
     "zPos": 9,
     "male": "weapon/blunt/waraxe/behind/",
@@ -51,5 +50,10 @@
         "https://opengameart.org/content/lpc-medieval-weapons"
       ]
     }
+  ],
+  "path": [
+    "weapons",
+    "blunt",
+    "weapon_blunt_waraxe"
   ]
 }

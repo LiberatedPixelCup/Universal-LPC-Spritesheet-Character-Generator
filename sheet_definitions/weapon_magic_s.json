@@ -1,6 +1,5 @@
 {
   "name": "S staff",
-  "type_name": "weapon",
   "layer_1": {
     "zPos": 140,
     "male": "weapon/magic/s/universal/foreground/",
@@ -66,5 +65,10 @@
         "https://opengameart.org/content/lpc-magic-staff"
       ]
     }
+  ],
+  "path": [
+    "weapons",
+    "magic",
+    "weapon_magic_s"
   ]
 }

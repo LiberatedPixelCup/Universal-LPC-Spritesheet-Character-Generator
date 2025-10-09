@@ -1,8 +1,12 @@
 {
   "name": "Wizard Hat Buckle",
-  "type_name": "hat_buckle",
-  "tags": ["wizard", "hat_buckle"],
-  "required_tags": ["pointed_wizard"],
+  "tags": [
+    "wizard",
+    "hat_buckle"
+  ],
+  "required_tags": [
+    "pointed_wizard"
+  ],
   "layer_1": {
     "zPos": 132,
     "male": "hat/magic/wizard/buckle/adult/",
@@ -60,5 +64,23 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "hats",
+    "magic",
+    "wizard",
+    "hat_magic_wizard_buckle"
   ]
 }

@@ -1,7 +1,9 @@
 {
   "name": "Sheep child",
-  "type_name": "head",
-  "tags": ["animal", "child"],
+  "tags": [
+    "animal",
+    "child"
+  ],
   "layer_1": {
     "zPos": 100,
     "child": "head/heads/sheep/child/"
@@ -67,5 +69,10 @@
         "http://opengameart.org/content/lpc-folk"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_sheep_child"
   ]
 }

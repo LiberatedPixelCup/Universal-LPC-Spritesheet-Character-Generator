@@ -150,18 +150,18 @@ $(document).ready(function () {
   let activeCustomAnimation = "";
   let addedCustomAnimations = [];
 
-  // on hash (url) change event, interpret and redraw
-  jHash.change(function () {
+  // Handle browser back/forward navigation
+  window.addEventListener("popstate", function() {
     params = jHash.val();
     interpretParams();
     redraw();
+    showOrHideElements();
   });
 
   interpretParams();
   if (Object.keys(params).length == 0) {
     $("input[type=reset]").click();
-    setParams();
-    selectDefaults();
+    selectDefaults(); // selectDefaults() calls setParams() internally
   }
   redraw();
   showOrHideElements();
@@ -184,7 +184,8 @@ $(document).ready(function () {
           selectColorsToMatch($(this).attr("variant"));
         }
       }
-      setParams();
+
+      setParams(); // Updates hash, skips callback by default
       redraw();
       showOrHideElements();
     });
@@ -1503,11 +1504,11 @@ $(".exportSplitAnimations").click(async function() {
 
   function showOrHideElements() {
     profiler.mark('showOrHideElements:start');
+
+    // Cache these values once instead of calling thousands of times
     const bodyType = getBodyTypeName();
     const selectedAnims = getSelectedAnimations();
     const allowedLicenses = getAllowedLicenses();
-    const promises = [];
-    const lists = new Set();
 
     // only interested in tags if on a selected item
     const selectedTags = new Set();
@@ -1520,70 +1521,58 @@ $(".exportSplitAnimations").click(async function() {
 
     let hasUnsupported = false;
     let hasProhibited = false;
+    const listsToRedraw = [];
 
-    $("#chooser li[data-required]").each(function (index) {
+    // Use metadata object instead of massive DOM queries
+    for (const [itemId, metadata] of Object.entries(window.itemMetadata)) {
+      // Escape special characters in ID for jQuery selector
+      const escapedId = itemId.replace(/[!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~]/g, '\\$&');
+      const $listItem = $(`#${escapedId}`);
+      if ($listItem.length === 0) continue;
+
+      let display = true;
       let hasExcluded = false;
       let excludedText = '';
 
-      // Toggle Required Body Type
-      const $this = $(this);
-      const dataRequired = $this.data("required");
-      let display = true;
-      if (dataRequired) {
-        const requiredTypes = dataRequired.split(",");
-        if (!requiredTypes.includes(bodyType)) {
+      // Check body type compatibility
+      if (metadata.required && metadata.required.length > 0) {
+        if (!metadata.required.includes(bodyType)) {
           display = false;
         }
       }
 
-      if (display) {
-        // Toggle based on tags/required_tags
-        const $firstButton = $this
-        .find("input[type=radio][parentname]")
-        .eq(0);
-        if ($firstButton.length > 0) {
-          const requiredTags = $this
-            .find("input[type=radio]")
-            .data("required_tags");
-          requiredTags?.split(",")?.forEach(tag => {
-            if (tag && !selectedTags.has(tag)) {
-              display = false;
-            }
-          });
+      // Check required tags
+      if (display && metadata.required_tags && metadata.required_tags.length > 0) {
+        for (const tag of metadata.required_tags) {
+          if (tag && !selectedTags.has(tag)) {
+            display = false;
+            break;
+          }
         }
       }
 
-      if (display) {
-        // Toggle based on tags/excluded_tags
-        const $firstButton = $this
-          .find("input[type=radio][parentname]")
-          .eq(0);
-        if ($firstButton.length > 0) {
-          const excludedTags = $firstButton
-            .data("excluded_tags");
-          excludedTags?.split(",")?.forEach(tag => {
-            if (tag && selectedTags.has(tag)) {
-              hasExcluded = true;
+      // Check excluded tags
+      if (display && metadata.excluded_tags && metadata.excluded_tags.length > 0) {
+        for (const tag of metadata.excluded_tags) {
+          if (tag && selectedTags.has(tag)) {
+            hasExcluded = true;
+            const $firstButton = $listItem.find("input[type=radio][parentname]").eq(0);
+            if ($firstButton.length > 0) {
               excludedText = `${$firstButton.attr("name")} is not allowed with ${tag}`;
             }
-          });
+            break;
+          }
         }
       }
 
+      // Check template compatibility (still needs DOM query for this one)
       if (display) {
-        // Filter by template
-        const mungedTemplate = $this
-          .find("input[type=radio]")
-          .data("layer_1_template");
+        const $firstButton = $listItem.find("input[type=radio]").eq(0);
+        const mungedTemplate = $firstButton.data("layer_1_template");
         if (mungedTemplate) {
           const template = mungedTemplate.replace(/'/g, '"');
-          let parsedTemplate = null;
           try {
-            parsedTemplate = JSON.parse(template);
-          } catch {
-            console.error("Error parsing template", template);
-          }
-          if (parsedTemplate) {
+            const parsedTemplate = JSON.parse(template);
             const keys = Object.keys(parsedTemplate);
             for (const key of keys) {
               const requiredVals = Object.keys(parsedTemplate[key]);
@@ -1593,95 +1582,90 @@ $(".exportSplitAnimations").click(async function() {
                 break;
               }
             }
+          } catch {
+            console.error("Error parsing template", template);
           }
         }
       }
 
+      // Check animation compatibility
+      if (display && metadata.animations && selectedAnims.length > 0) {
+        for (const selectedAnim of selectedAnims) {
+          if (!metadata.animations.includes(selectedAnim)) {
+            display = false;
+            if ($listItem.find("input[type=radio]:checked:not([id*=none])").length > 0) {
+              hasUnsupported = true;
+            }
+            break;
+          }
+        }
+      }
+
+      // Apply visibility
       if (display) {
-        // Toggle Required Animations
-        const anims = $this.data("animations");
-        if (anims && selectedAnims.length > 0) {
-          const requiredAnimations = anims.split(",");
-          for (const selectedAnim of selectedAnims) {
-            if (!requiredAnimations.includes(selectedAnim)) {
-              display = false;
-              if (
-                $this.find("input[type=radio]:checked:not([id*=none])")
-                  .length > 0
-              ) {
-                hasUnsupported = true;
-              }
+        $listItem.show();
+        listsToRedraw.push($listItem.get(0));
+      } else {
+        $listItem.hide();
+      }
+
+      // Handle excluded tag UI
+      if (hasExcluded) {
+        $listItem.find('.excluded-hide').hide().attr('hidden', 'hidden');
+        $listItem.find('.excluded-text').show().attr('hidden', null).text(excludedText);
+      } else {
+        $listItem.find('.excluded-hide').show().attr('hidden', null);
+        $listItem.find('.excluded-text').hide().attr('hidden', 'hidden').text('');
+      }
+
+      // Check license compatibility for individual radio buttons within this list
+      $listItem.find("input[type=radio]:not(.none)").each(function () {
+        const $radio = $(this);
+        let radioDisplay = true;
+
+        // Check licenses using metadata
+        if (metadata.licenses && metadata.licenses[bodyType]) {
+          const licensesForAsset = metadata.licenses[bodyType];
+          if (!allowedLicenses.some((allowedLicense) =>
+            licensesForAsset.includes(allowedLicense)
+          )) {
+            radioDisplay = false;
+            if (this.checked) {
+              hasProhibited = true;
+            }
+          }
+        }
+
+        // Check required tags (already in metadata)
+        if (radioDisplay && metadata.required_tags && metadata.required_tags.length > 0) {
+          for (const tag of metadata.required_tags) {
+            if (tag && !selectedTags.has(tag)) {
+              radioDisplay = false;
               break;
             }
           }
         }
-      }
 
-      // Display Result
-      if (display) {
-        promises.push($this.show().promise());
-        lists.add($this);
-      } else {
-        $this.hide();
-      }
-
-      if (hasExcluded) {
-        $this.find('.excluded-hide').each(function() { $(this).hide().attr('hidden', 'hidden'); });
-        $this.find('.excluded-text').each(function() { $(this).show().attr('hidden', null).text(excludedText); });
-      } else {
-        $this.find('.excluded-hide').each(function() { $(this).show().attr('hidden', null); });
-        $this.find('.excluded-text').each(function() { $(this).hide().attr('hidden', 'hidden').text(''); });
-      }
-    });
-
-    $("input[type=radio]:not(.none)").each(function () {
-      const $this = $(this);
-      let display = true;
-
-      // Toggle allowed licenses
-      const bodyTypeName = getBodyTypeName();
-      const licenses =
-        $this.data(`layer_1_${bodyTypeName}_licenses`) ||
-        $this.closest("li.variant-list").data(`${bodyTypeName}_licenses`);
-      if (licenses !== undefined) {
-        const licensesForAsset = licenses.split(",");
-        if (
-          !allowedLicenses.some((allowedLicense) =>
-            licensesForAsset.includes(allowedLicense)
-          )
-        ) {
-          display = false;
-          if (this.checked) {
-            hasProhibited = true;
+        // Check excluded tags (already in metadata)
+        if (radioDisplay && metadata.excluded_tags && metadata.excluded_tags.length > 0) {
+          for (const tag of metadata.excluded_tags) {
+            if (tag && selectedTags.has(tag)) {
+              radioDisplay = false;
+              break;
+            }
           }
         }
-      }
 
-      // Toggle based on tags/required_tags
-      const requiredTags = $this.data("required_tags");
-      requiredTags?.split(",")?.forEach(tag => {
-        if (tag && !selectedTags.has(tag)) {
-          display = false;
+        // Apply visibility to radio button
+        if (radioDisplay) {
+          $radio.parent().show();
+        } else {
+          $radio.parent().hide();
         }
       });
+    }
 
-      // Toggle based on tags/excluded_tags
-      const excludedTags = $this.data("excluded_tags");
-      excludedTags?.split(",")?.forEach(tag => {
-        if (tag && selectedTags.has(tag)) {
-          display = false;
-        }
-      });
-
-      // Display Result
-      if (display) {
-        promises.push($this.parent().show().promise());
-        lists.add($this);
-      } else {
-        $this.parent().hide();
-      }
-    });
-
+    // Update warning buttons
     if (hasUnsupported) {
       $(".removeUnsupported").show();
     } else {
@@ -1694,18 +1678,13 @@ $(".exportSplitAnimations").click(async function() {
       $(".removeIncompatibleWithLicenses").hide();
     }
 
-    if (promises.length > 0) {
-      Promise.allSettled(promises).finally(() => {
-        for (const $li of lists) {
-          drawPreviews.call($li.get(0));
-        }
-        profiler.mark('showOrHideElements:end');
-        profiler.measure('showOrHideElements', 'showOrHideElements:start', 'showOrHideElements:end');
-      });
-    } else {
-      profiler.mark('showOrHideElements:end');
-      profiler.measure('showOrHideElements', 'showOrHideElements:start', 'showOrHideElements:end');
+    // Redraw previews for visible items
+    for (const listElement of listsToRedraw) {
+      drawPreviews.call(listElement);
     }
+
+    profiler.mark('showOrHideElements:end');
+    profiler.measure('showOrHideElements', 'showOrHideElements:start', 'showOrHideElements:end');
   }
 
   function interpretParams() {

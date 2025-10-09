@@ -1,7 +1,9 @@
 {
   "name": "Tattered",
-  "type_name": "cape",
-  "tags": ["back", "cape"],
+  "tags": [
+    "back",
+    "cape"
+  ],
   "layer_1": {
     "zPos": 85,
     "male": "cape/tattered/female/",
@@ -79,5 +81,10 @@
         "https://opengameart.org/content/lpc-roman-armor"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "cape",
+    "cape_tattered"
   ]
 }

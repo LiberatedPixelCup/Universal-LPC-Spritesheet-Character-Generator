@@ -1,6 +1,5 @@
 {
   "name": "Bicorne Athwart",
-  "type_name": "hat",
   "layer_1": {
     "zPos": 130,
     "male": "hat/pirate/bicorne/athwart/basic/adult/",
@@ -69,5 +68,23 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "hats",
+    "bicorne athwart",
+    "basic",
+    "hat_bicorne_athwart_basic"
   ]
 }

@@ -1,6 +1,5 @@
 {
   "name": "Crest",
-  "type_name": "accessory",
   "layer_1": {
     "zPos": 139,
     "female": "hat/accessory/crest/adult/",
@@ -53,5 +52,22 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "helmets",
+    "helmet accessories",
+    "hat_accessory_crest"
   ]
 }

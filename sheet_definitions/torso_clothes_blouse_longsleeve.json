@@ -1,6 +1,5 @@
 {
   "name": "Longsleeve blouse",
-  "type_name": "clothes",
   "layer_1": {
     "zPos": 35,
     "female": "torso/clothes/blouse_longsleeve/female/"
@@ -45,5 +44,10 @@
         "https://opengameart.org/content/lpc-7-womens-shirts"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "shirts",
+    "torso_clothes_blouse_longsleeve"
   ]
 }

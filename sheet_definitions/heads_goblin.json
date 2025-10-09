@@ -1,7 +1,9 @@
 {
   "name": "Goblin",
-  "type_name": "head",
-  "tags": ["goblin", "adult"],
+  "tags": [
+    "goblin",
+    "adult"
+  ],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/goblin/adult/",
@@ -74,5 +76,10 @@
         "https://opengameart.org/content/lpc-folk"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_goblin"
   ]
 }

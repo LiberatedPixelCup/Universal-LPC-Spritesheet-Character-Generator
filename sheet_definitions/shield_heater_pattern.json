@@ -1,6 +1,5 @@
 {
   "name": "Heater shield pattern",
-  "type_name": "shield_pattern",
   "layer_1": {
     "zPos": 112,
     "male": "shield/heater/pattern/universal/",
@@ -50,5 +49,9 @@
         "https://opengameart.org/content/lpc-shields"
       ]
     }
+  ],
+  "path": [
+    "category_not_found",
+    "shield_heater_pattern"
   ]
 }

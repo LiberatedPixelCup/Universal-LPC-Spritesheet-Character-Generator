@@ -1,7 +1,8 @@
 {
   "name": "Pixie Wings",
-  "type_name": "wings",
-  "tags": ["wings"],
+  "tags": [
+    "wings"
+  ],
   "layer_1": {
     "zPos": 140,
     "male": "body/wings/pixie/solid/fg/",
@@ -66,5 +67,11 @@
         "https://opengameart.org/content/lpc-fairy-wings"
       ]
     }
+  ],
+  "path": [
+    "body",
+    "wings",
+    "pixie wings",
+    "wings_pixie"
   ]
 }

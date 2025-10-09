@@ -1,6 +1,5 @@
 {
   "name": "Bandages",
-  "type_name": "bandages",
   "layer_1": {
     "zPos": 110,
     "male": "torso/bandage/male/",
@@ -27,5 +26,9 @@
         "https://opengameart.org/content/lpc-bandages"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "torso_bandages"
   ]
 }

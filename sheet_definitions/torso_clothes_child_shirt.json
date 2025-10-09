@@ -1,6 +1,5 @@
 {
   "name": "Child shirts",
-  "type_name": "clothes",
   "layer_1": {
     "zPos": 35,
     "child": "torso/clothes/shirt/child/"
@@ -36,5 +35,10 @@
         "https://opengameart.org/content/lpc-clothes-for-children"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "shirts",
+    "torso_clothes_child_shirt"
   ]
 }

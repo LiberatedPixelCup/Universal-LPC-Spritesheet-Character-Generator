@@ -1,6 +1,5 @@
 {
   "name": "Elderly Eyes Looking Right",
-  "type_name": "eyes",
   "layer_1": {
     "zPos": 105,
     "male": "eyes/human/elderly/look_r/",
@@ -55,5 +54,9 @@
         "https://opengameart.org/content/ulpc-expanded-expressions"
       ]
     }
+  ],
+  "path": [
+    "category_not_found",
+    "eyes_elderly_look_r"
   ]
 }

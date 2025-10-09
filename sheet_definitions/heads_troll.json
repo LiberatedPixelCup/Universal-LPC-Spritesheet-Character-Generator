@@ -1,7 +1,9 @@
 {
   "name": "Troll",
-  "type_name": "head",
-  "tags": ["troll", "adult"],
+  "tags": [
+    "troll",
+    "adult"
+  ],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/troll/adult/",
@@ -72,5 +74,10 @@
         "https://opengameart.org/content/lpc-folk"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_troll"
   ]
 }

@@ -1,6 +1,5 @@
 {
   "name": "Spartan shield",
-  "type_name": "shield",
   "layer_1": {
     "zPos": 2,
     "male": "shield/spartan/bg/",
@@ -33,5 +32,10 @@
         "https://opengameart.org/content/lpc-shields"
       ]
     }
+  ],
+  "path": [
+    "weapons",
+    "shield",
+    "shield_spartan"
   ]
 }

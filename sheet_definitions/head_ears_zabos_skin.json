@@ -1,6 +1,5 @@
 {
   "name": "Side Cat Ears Skintone",
-  "type_name": "ears_inner",
   "layer_1": {
     "zPos": 127,
     "male": "head/ears/zabos/skin/adult/",
@@ -70,5 +69,11 @@
         "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "furry ears",
+    "side ears",
+    "head_ears_zabos_skin"
   ]
 }

@@ -1,6 +1,5 @@
 {
   "name": "Child Eyes",
-  "type_name": "eyes",
   "layer_1": {
     "zPos": 105,
     "child": "eyes/human/child/"
@@ -41,5 +40,10 @@
         "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "other eyes",
+    "eyes_child"
   ]
 }

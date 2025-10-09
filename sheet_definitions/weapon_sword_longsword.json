@@ -1,6 +1,5 @@
 {
   "name": "Longsword",
-  "type_name": "weapon",
   "layer_1": {
     "zPos": 140,
     "male": "weapon/sword/longsword/",
@@ -83,5 +82,10 @@
         "https://opengameart.org/content/lpc-extended-weapon-animations"
       ]
     }
+  ],
+  "path": [
+    "weapons",
+    "sword",
+    "weapon_sword_longsword"
   ]
 }

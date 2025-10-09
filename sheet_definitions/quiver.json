@@ -1,6 +1,5 @@
 {
   "name": "Quiver",
-  "type_name": "quiver",
   "layer_1": {
     "zPos": 8,
     "male": "quiver/",
@@ -28,5 +27,10 @@
         "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "backpack",
+    "quiver"
   ]
 }

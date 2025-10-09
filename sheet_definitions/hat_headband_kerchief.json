@@ -1,6 +1,5 @@
 {
   "name": "Kerchief",
-  "type_name": "headcover",
   "layer_1": {
     "zPos": 125,
     "male": "hat/pirate/kerchief/adult/",
@@ -75,5 +74,22 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "head coverings",
+    "headbands",
+    "hat_headband_kerchief"
   ]
 }

@@ -1,6 +1,5 @@
 {
   "name": "Child skirts",
-  "type_name": "legs",
   "layer_1": {
     "zPos": 20,
     "child": "legs/skirts/child/"
@@ -36,5 +35,10 @@
         "https://opengameart.org/content/lpc-clothes-for-children"
       ]
     }
+  ],
+  "path": [
+    "legs",
+    "skirts",
+    "legs_childskirts"
   ]
 }

@@ -1,6 +1,5 @@
 {
   "name": "Long ears",
-  "type_name": "ears",
   "layer_1": {
     "zPos": 126,
     "male": "head/ears/long/adult/",
@@ -73,5 +72,10 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "ears",
+    "head_ears_long"
   ]
 }

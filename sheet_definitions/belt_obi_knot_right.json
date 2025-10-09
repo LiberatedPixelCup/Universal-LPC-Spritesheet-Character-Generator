@@ -1,6 +1,5 @@
 {
   "name": "Obi Knot Right",
-  "type_name": "sash_tie",
   "layer_1": {
     "zPos": 66,
     "male": "torso/waist/obi/knot/right/male/",
@@ -70,5 +69,11 @@
         "https://opengameart.org/content/lpc-kimono-relm"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "waist",
+    "obi",
+    "belt_obi_knot_right"
   ]
 }

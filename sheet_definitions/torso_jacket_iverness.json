@@ -1,6 +1,5 @@
 {
   "name": "Iverness cloak",
-  "type_name": "jacket",
   "layer_1": {
     "zPos": 55,
     "male": "torso/jacket/iverness/male/"
@@ -23,5 +22,10 @@
         "https://opengameart.org/content/lpc-gentleman"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "jacket",
+    "torso_jacket_iverness"
   ]
 }

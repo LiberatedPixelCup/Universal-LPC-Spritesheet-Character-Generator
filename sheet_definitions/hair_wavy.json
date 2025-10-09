@@ -1,6 +1,5 @@
 {
   "name": "Wavy",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/wavy/adult/fg/",
@@ -83,5 +82,20 @@
         "https://opengameart.org/content/lpc-expanded-hair"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "hair_wavy"
   ]
 }

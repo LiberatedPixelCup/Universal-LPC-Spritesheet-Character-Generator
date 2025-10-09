@@ -1,6 +1,5 @@
 {
   "name": "Jabot",
-  "type_name": "neck",
   "layer_1": {
     "zPos": 90,
     "male": "neck/jabot/male/",
@@ -48,5 +47,21 @@
         "https://opengameart.org/content/lpc-pirates"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "neck",
+    "neck_jabot"
   ]
 }

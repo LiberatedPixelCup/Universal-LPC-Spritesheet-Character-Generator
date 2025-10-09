@@ -1,6 +1,5 @@
 {
   "name": "Afro",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/afro/adult/",
@@ -70,5 +69,12 @@
         "https://opengameart.org/content/lpc-hair"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "hair_afro"
   ]
 }

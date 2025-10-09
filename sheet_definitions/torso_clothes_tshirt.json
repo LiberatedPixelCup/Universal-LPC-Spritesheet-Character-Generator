@@ -1,6 +1,5 @@
 {
   "name": "TShirt",
-  "type_name": "clothes",
   "layer_1": {
     "zPos": 35,
     "male": "torso/clothes/shortsleeve/tshirt/male/",
@@ -72,5 +71,11 @@
         "https://opengameart.org/content/lpc-expanded-simple-shirts"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "shirts",
+    "shortsleeve",
+    "torso_clothes_tshirt"
   ]
 }

@@ -1,7 +1,8 @@
 {
   "name": "Alien",
-  "type_name": "head",
-  "tags": ["alien"],
+  "tags": [
+    "alien"
+  ],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/alien/adult/",
@@ -72,5 +73,10 @@
         "https://opengameart.org/content/lpc-character-bases"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_alien"
   ]
 }

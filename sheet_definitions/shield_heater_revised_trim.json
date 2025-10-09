@@ -1,7 +1,8 @@
 {
   "name": "Revised Heater Shield Trim",
-  "type_name": "shield_trim",
-  "required_tags": ["heater"],
+  "required_tags": [
+    "heater"
+  ],
   "layer_1": {
     "zPos": 6,
     "male": "shield/heater/revised/trim/bg/",
@@ -63,5 +64,11 @@
         "https://opengameart.org/content/lpc-shields"
       ]
     }
+  ],
+  "path": [
+    "weapons",
+    "shield",
+    "heater shield",
+    "shield_heater_revised_trim"
   ]
 }

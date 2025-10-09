@@ -1,6 +1,5 @@
 {
   "name": "Leather Cap Feather",
-  "type_name": "hat_accessory",
   "layer_1": {
     "zPos": 131,
     "male": "hat/cloth/leather_cap/feather/adult/",
@@ -73,5 +72,22 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "hats",
+    "caps",
+    "hat_cap_leather_feather"
   ]
 }

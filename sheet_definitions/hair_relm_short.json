@@ -1,6 +1,5 @@
 {
   "name": "Relm Short",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/relm_short/adult/",
@@ -73,5 +72,18 @@
         "https://opengameart.org/content/lpc-relm-hair-xlong-ponytail"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "hair_relm_short"
   ]
 }

@@ -1,6 +1,5 @@
 {
   "name": "Short fin",
-  "type_name": "fins",
   "layer_1": {
     "zPos": 125,
     "male": "head/fins/fin_short/adult/",
@@ -70,5 +69,21 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "appendages",
+    "head_fins_fin_short"
   ]
 }

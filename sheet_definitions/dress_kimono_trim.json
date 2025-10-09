@@ -1,8 +1,12 @@
 {
   "name": "Kimono Trim",
-  "type_name": "dress_trim",
-  "tags": ["dress", "kimono_trim"],
-  "required_tags": ["kimono_simple"],
+  "tags": [
+    "dress",
+    "kimono_trim"
+  ],
+  "required_tags": [
+    "kimono_simple"
+  ],
   "layer_1": {
     "zPos": 31,
     "female": "dress/kimono/normal/trim/universal/female/",
@@ -52,5 +56,11 @@
         "https://opengameart.org/content/lpc-kimono-relm"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "dresses",
+    "kimono",
+    "dress_kimono_trim"
   ]
 }

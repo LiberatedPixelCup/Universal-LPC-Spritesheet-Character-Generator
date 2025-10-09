@@ -1,6 +1,5 @@
 {
   "name": "Natural",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/natural/adult/",
@@ -73,5 +72,12 @@
         "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "hair_natural"
   ]
 }

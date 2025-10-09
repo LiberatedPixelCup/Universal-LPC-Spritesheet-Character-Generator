@@ -1,6 +1,5 @@
 {
   "name": "Two engrailed shield trim",
-  "type_name": "shield_trim",
   "layer_1": {
     "zPos": 3,
     "male": "shield/two_engrailed/trim/bg/",
@@ -33,5 +32,11 @@
         "https://opengameart.org/content/lpc-shields"
       ]
     }
+  ],
+  "path": [
+    "weapons",
+    "shield",
+    "two-engrailed shield",
+    "shield_two_engrailed_trim"
   ]
 }

@@ -1,6 +1,5 @@
 {
   "name": "Armour",
-  "type_name": "arms",
   "layer_1": {
     "zPos": 60,
     "male": "arms/armour/plate/male/",
@@ -57,5 +56,9 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
+  ],
+  "path": [
+    "arms",
+    "arms_armour"
   ]
 }

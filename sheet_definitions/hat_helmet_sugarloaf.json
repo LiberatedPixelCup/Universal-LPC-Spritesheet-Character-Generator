@@ -1,6 +1,5 @@
 {
   "name": "Sugarloaf greathelm",
-  "type_name": "hat",
   "layer_1": {
     "zPos": 130,
     "female": "hat/helmet/sugarloaf/female/",
@@ -57,5 +56,22 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "helmets",
+    "helmets",
+    "hat_helmet_sugarloaf"
   ]
 }

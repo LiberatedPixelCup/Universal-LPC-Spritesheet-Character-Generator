@@ -1,6 +1,5 @@
 {
   "name": "Vest open",
-  "type_name": "vest",
   "layer_1": {
     "zPos": 45,
     "male": "torso/clothes/vest_open/male/"
@@ -50,5 +49,10 @@
         "https://opengameart.org/content/lpc-pirates"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "vest",
+    "torso_clothes_vest_open"
   ]
 }

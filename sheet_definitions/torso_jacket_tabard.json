@@ -1,6 +1,5 @@
 {
   "name": "Tabard",
-  "type_name": "jacket",
   "layer_1": {
     "zPos": 55,
     "female": "torso/jacket/tabard/female/",
@@ -65,5 +64,10 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "jacket",
+    "torso_jacket_tabard"
   ]
 }

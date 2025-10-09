@@ -1,6 +1,5 @@
 {
   "name": "Eye Color",
-  "type_name": "eye_color",
   "replace_in_path": {
     "head": {
       "Human_male": "adult",
@@ -141,5 +140,9 @@
         "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "eye_color"
   ]
 }

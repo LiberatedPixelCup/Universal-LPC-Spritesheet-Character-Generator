@@ -1,6 +1,5 @@
 {
   "name": "Plate",
-  "type_name": "shoulders",
   "layer_1": {
     "zPos": 65,
     "male": "shoulders/plate/male/",
@@ -55,5 +54,10 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
+  ],
+  "path": [
+    "arms",
+    "shoulders",
+    "shoulders_plate"
   ]
 }

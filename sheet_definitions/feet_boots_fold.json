@@ -1,6 +1,5 @@
 {
   "name": "Folded Rim Boots",
-  "type_name": "shoes",
   "layer_1": {
     "zPos": 25,
     "male": "feet/boots/fold/male/",
@@ -79,5 +78,10 @@
         "https://opengameart.org/content/lpc-expanded-socks-shoes"
       ]
     }
+  ],
+  "path": [
+    "feet",
+    "boots",
+    "feet_boots_fold"
   ]
 }

@@ -1,6 +1,5 @@
 {
   "name": "Thick Plated Toe",
-  "type_name": "shoes_toe",
   "layer_1": {
     "zPos": 27,
     "male": "feet/accessory/plate_toe_thick/male/",
@@ -55,5 +54,10 @@
         "https://opengameart.org/content/lpc-expanded-socks-shoes"
       ]
     }
+  ],
+  "path": [
+    "feet",
+    "shoe accessory",
+    "feet_plate_toe_thick"
   ]
 }

@@ -1,7 +1,9 @@
 {
   "name": "Human male",
-  "type_name": "head",
-  "tags": ["human", "adult"],
+  "tags": [
+    "human",
+    "adult"
+  ],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/human/male/",
@@ -73,5 +75,10 @@
         "https://opengameart.org/content/lpc-character-bases"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_human_male"
   ]
 }

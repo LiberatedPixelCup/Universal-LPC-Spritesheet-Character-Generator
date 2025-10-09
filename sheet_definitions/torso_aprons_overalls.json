@@ -1,6 +1,5 @@
 {
   "name": "Overalls",
-  "type_name": "overalls",
   "layer_1": {
     "zPos": 38,
     "male": "torso/aprons/overalls/male/",
@@ -70,5 +69,10 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "aprons",
+    "torso_aprons_overalls"
   ]
 }

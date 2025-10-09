@@ -1,6 +1,5 @@
 {
   "name": "Side Parted w/Bangs 2",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/parted_side_bangs2/adult/",
@@ -75,5 +74,15 @@
         "https://github.com/jrconway3/Universal-LPC-spritesheet/commit/46ddcf05a0e43e7aa6ffd47d350eef0eb529ac24"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "hair_parted_side_bangs2"
   ]
 }

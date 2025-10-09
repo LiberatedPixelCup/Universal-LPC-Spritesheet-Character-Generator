@@ -1,6 +1,5 @@
 {
   "name": "Jacket pockets",
-  "type_name": "jacket_pockets",
   "layer_1": {
     "zPos": 59,
     "male": "torso/jacket/trim/jacket_pockets/"
@@ -45,5 +44,11 @@
         "https://opengameart.org/content/lpc-pirates"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "jacket",
+    "jacket trim",
+    "torso_jacket_pockets"
   ]
 }

@@ -1,6 +1,5 @@
 {
   "name": "Left XLong Curly",
-  "type_name": "hairextl",
   "layer_1": {
     "zPos": 128,
     "male": "hair/extensions/bangs/xlong_curlyl/adult/",
@@ -72,5 +71,12 @@
         "https://opengameart.org/content/lpc-expanded-xlong-hair"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "bangs",
+    "hairext_xlong_curlyl"
   ]
 }

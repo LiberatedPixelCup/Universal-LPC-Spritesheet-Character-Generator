@@ -1,6 +1,5 @@
 {
   "name": "Body color",
-  "type_name": "body",
   "layer_1": {
     "zPos": 10,
     "male": "body/bodies/male/",
@@ -249,5 +248,9 @@
         "https://opengameart.org/content/lpc-jump-expanded"
       ]
     }
+  ],
+  "path": [
+    "body",
+    "body"
   ]
 }

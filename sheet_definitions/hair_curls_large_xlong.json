@@ -1,6 +1,5 @@
 {
   "name": "Large Curls XLong",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/curls_large_xlong/adult/fg/",
@@ -80,5 +79,13 @@
         "https://opengameart.org/content/lpc-expanded-xlong-hair"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "hair_curls_large_xlong"
   ]
 }

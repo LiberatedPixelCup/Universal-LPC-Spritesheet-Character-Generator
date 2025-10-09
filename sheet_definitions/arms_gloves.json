@@ -1,6 +1,5 @@
 {
   "name": "Gloves",
-  "type_name": "gloves",
   "layer_1": {
     "zPos": 70,
     "male": "arms/gloves/male/",
@@ -102,5 +101,9 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
+  ],
+  "path": [
+    "arms",
+    "arms_gloves"
   ]
 }

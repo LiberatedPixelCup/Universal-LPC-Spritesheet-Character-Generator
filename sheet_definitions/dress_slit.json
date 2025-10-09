@@ -1,6 +1,5 @@
 {
   "name": "Slit dress",
-  "type_name": "dress",
   "layer_1": {
     "zPos": 30,
     "female": "dress/slit/female/"
@@ -51,5 +50,10 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "dresses",
+    "dress_slit"
   ]
 }

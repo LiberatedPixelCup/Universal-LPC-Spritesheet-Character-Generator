@@ -1,6 +1,5 @@
 {
   "name": "Long straight",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/long_straight/adult/",
@@ -74,5 +73,20 @@
         "https://opengameart.org/content/lpc-expanded-hair"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "hair_long_straight"
   ]
 }

@@ -1,6 +1,5 @@
 {
   "name": "Frock collar",
-  "type_name": "jacket_collar",
   "layer_1": {
     "zPos": 57,
     "male": "torso/jacket/trim/frock_collar/"
@@ -28,5 +27,11 @@
         "https://opengameart.org/content/lpc-pirates"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "jacket",
+    "jacket trim",
+    "torso_jacket_frock_collar"
   ]
 }

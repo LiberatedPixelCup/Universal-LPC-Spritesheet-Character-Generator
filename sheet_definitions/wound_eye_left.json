@@ -1,6 +1,5 @@
 {
   "name": "Left Eye",
-  "type_name": "wound_eye_left",
   "layer_1": {
     "zPos": 115,
     "male": "body/wound/",
@@ -48,5 +47,10 @@
         "https://opengameart.org/content/lpc-zombie"
       ]
     }
+  ],
+  "path": [
+    "body",
+    "wounds",
+    "wound_eye_left"
   ]
 }

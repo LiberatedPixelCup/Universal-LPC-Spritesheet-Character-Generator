@@ -1,7 +1,9 @@
 {
   "name": "Frankenstein",
-  "type_name": "head",
-  "tags": ["monster", "frankenstein"],
+  "tags": [
+    "monster",
+    "frankenstein"
+  ],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/frankenstein/adult/",
@@ -72,5 +74,10 @@
         "https://opengameart.org/content/lpc-folk"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_frankenstein"
   ]
 }

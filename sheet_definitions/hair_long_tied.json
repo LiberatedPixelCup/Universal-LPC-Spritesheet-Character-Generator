@@ -1,6 +1,5 @@
 {
   "name": "Long tied",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/long_tied/adult/fg/",
@@ -82,5 +81,19 @@
         "https://opengameart.org/content/lpc-expanded-hair"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "hair_long_tied"
   ]
 }

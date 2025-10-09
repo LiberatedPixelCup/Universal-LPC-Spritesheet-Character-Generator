@@ -1,7 +1,9 @@
 {
   "name": "Minotaur",
-  "type_name": "head",
-  "tags": ["minotaur", "adult"],
+  "tags": [
+    "minotaur",
+    "adult"
+  ],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/minotaur/male/",
@@ -73,5 +75,10 @@
         "https://opengameart.org/content/lpc-faun-and-minotaur"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_minotaur"
   ]
 }

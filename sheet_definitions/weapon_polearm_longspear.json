@@ -1,6 +1,5 @@
 {
   "name": "Long spear",
-  "type_name": "weapon",
   "preview_row": 0,
   "preview_column": 0,
   "preview_x_offset": 13,
@@ -71,5 +70,10 @@
         "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
       ]
     }
+  ],
+  "path": [
+    "weapons",
+    "polearm",
+    "weapon_polearm_longspear"
   ]
 }

@@ -1,6 +1,5 @@
 {
   "name": "Mustache",
-  "type_name": "mustache",
   "layer_1": {
     "zPos": 111,
     "male": "beards/mustache/basic/",
@@ -72,5 +71,10 @@
         "https://opengameart.org/content/lpc-brunet-mustache"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "mustaches",
+    "beards_mustache"
   ]
 }

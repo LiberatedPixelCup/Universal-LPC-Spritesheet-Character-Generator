@@ -1,6 +1,5 @@
 {
   "name": "Robe",
-  "type_name": "clothes",
   "layer_1": {
     "zPos": 35,
     "female": "torso/clothes/robe/female/"
@@ -32,5 +31,10 @@
         "https://opengameart.org/content/female-mage-clothing-set"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "shirts",
+    "torso_clothes_robe"
   ]
 }

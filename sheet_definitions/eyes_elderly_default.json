@@ -1,6 +1,5 @@
 {
   "name": "Default Elderly Eyes",
-  "type_name": "eyes",
   "layer_1": {
     "zPos": 105,
     "male": "eyes/human/elderly/default/",
@@ -56,5 +55,9 @@
         "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
       ]
     }
+  ],
+  "path": [
+    "category_not_found",
+    "eyes_elderly_default"
   ]
 }

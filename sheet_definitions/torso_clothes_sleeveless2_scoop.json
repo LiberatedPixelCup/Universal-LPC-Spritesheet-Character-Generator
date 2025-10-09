@@ -1,6 +1,5 @@
 {
   "name": "Sleeveless 2 Scoop",
-  "type_name": "clothes",
   "layer_1": {
     "zPos": 35,
     "male": "torso/clothes/sleeveless/sleeveless2_scoop/male/",
@@ -72,5 +71,11 @@
         "https://opengameart.org/content/lpc-expanded-simple-shirts"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "shirts",
+    "sleeveless",
+    "torso_clothes_sleeveless2_scoop"
   ]
 }

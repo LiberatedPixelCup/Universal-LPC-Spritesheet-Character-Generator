@@ -1,6 +1,5 @@
 {
   "name": "Plain",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/plain/adult/",
@@ -76,5 +75,15 @@
         "https://opengameart.org/content/lpc-expanded-hair"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "hair_plain"
   ]
 }

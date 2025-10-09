@@ -1,6 +1,5 @@
 {
   "name": "Braid2",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/braid2/adult/fg/",
@@ -81,5 +80,19 @@
         "https://opengameart.org/content/lpc-hair"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "hair_braid2"
   ]
 }

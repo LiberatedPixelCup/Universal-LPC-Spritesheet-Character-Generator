@@ -1,6 +1,5 @@
 {
   "name": "Simple staff",
-  "type_name": "weapon",
   "layer_1": {
     "zPos": 140,
     "male": "weapon/magic/simple/foreground/",
@@ -35,5 +34,10 @@
         "https://opengameart.org/content/lpc-simple-staff"
       ]
     }
+  ],
+  "path": [
+    "weapons",
+    "magic",
+    "weapon_magic_simple"
   ]
 }

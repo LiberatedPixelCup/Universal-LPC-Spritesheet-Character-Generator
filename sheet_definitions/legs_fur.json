@@ -1,6 +1,5 @@
 {
   "name": "Fur Pants",
-  "type_name": "legs",
   "layer_1": {
     "zPos": 20,
     "male": "legs/fur/male/",
@@ -107,5 +106,10 @@
         "https://opengameart.org/content/lpc-expanded-pants"
       ]
     }
+  ],
+  "path": [
+    "legs",
+    "pants",
+    "legs_fur"
   ]
 }

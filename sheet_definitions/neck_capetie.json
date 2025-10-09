@@ -1,6 +1,5 @@
 {
   "name": "Capetie",
-  "type_name": "neck",
   "layer_1": {
     "zPos": 90,
     "male": "neck/capetie/male/",
@@ -52,5 +51,21 @@
         "https://opengameart.org/content/lpc-curly-hair-elven-ears-white-cape-with-blue-trim-and-more"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "neck",
+    "neck_capetie"
   ]
 }

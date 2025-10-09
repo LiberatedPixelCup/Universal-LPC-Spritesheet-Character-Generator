@@ -1,6 +1,5 @@
 {
   "name": "Bicorne Athwart Commodore Trim",
-  "type_name": "hat_trim",
   "layer_1": {
     "zPos": 131,
     "male": "hat/pirate/bicorne/athwart/commodore/trim/adult/",
@@ -79,5 +78,23 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "hats",
+    "bicorne athwart",
+    "commodore",
+    "hat_bicorne_athwart_commodore_trim"
   ]
 }

@@ -1,7 +1,9 @@
 {
   "name": "Human child",
-  "type_name": "head",
-  "tags": ["human", "child"],
+  "tags": [
+    "human",
+    "child"
+  ],
   "layer_1": {
     "zPos": 100,
     "child": "head/heads/human/child/"
@@ -70,5 +72,10 @@
         "https://opengameart.org/content/lpc-character-bases"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_human_child"
   ]
 }

@@ -1,6 +1,5 @@
 {
   "name": "Legion",
-  "type_name": "shoulders",
   "layer_1": {
     "zPos": 60,
     "male": "shoulders/legion/male/",
@@ -30,5 +29,10 @@
         "https://opengameart.org/content/lpc-roman-armor"
       ]
     }
+  ],
+  "path": [
+    "arms",
+    "shoulders",
+    "shoulders_legion"
   ]
 }

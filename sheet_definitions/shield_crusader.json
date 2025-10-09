@@ -1,6 +1,5 @@
 {
   "name": "Crusader shield",
-  "type_name": "shield",
   "layer_1": {
     "zPos": 2,
     "male": "shield/crusader/bg/",
@@ -33,5 +32,11 @@
         "https://opengameart.org/content/lpc-shields"
       ]
     }
+  ],
+  "path": [
+    "weapons",
+    "shield",
+    "two-engrailed shield",
+    "shield_crusader"
   ]
 }

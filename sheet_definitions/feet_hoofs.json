@@ -1,6 +1,5 @@
 {
   "name": "Hoofs",
-  "type_name": "shoes",
   "layer_1": {
     "zPos": 15,
     "male": "feet/hoofs/male/",
@@ -63,5 +62,9 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
+  ],
+  "path": [
+    "feet",
+    "feet_hoofs"
   ]
 }

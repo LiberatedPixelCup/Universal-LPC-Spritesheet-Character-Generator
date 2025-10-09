@@ -1,7 +1,10 @@
 {
   "name": "Boarman",
-  "type_name": "head",
-  "tags": ["animal", "boarman", "adult"],
+  "tags": [
+    "animal",
+    "boarman",
+    "adult"
+  ],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/boarman/adult/",
@@ -72,5 +75,10 @@
         "https://opengameart.org/content/lpc-boarman"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_boarman"
   ]
 }

@@ -1,6 +1,5 @@
 {
   "name": "Wolf Ears",
-  "type_name": "furry_ears",
   "layer_1": {
     "zPos": 130,
     "male": "head/ears/wolf/adult_front/",
@@ -89,5 +88,11 @@
         "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "furry ears",
+    "top ears",
+    "head_ears_wolf"
   ]
 }

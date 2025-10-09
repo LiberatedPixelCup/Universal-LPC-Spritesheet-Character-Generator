@@ -1,6 +1,5 @@
 {
   "name": "Right Long Straight",
-  "type_name": "hairextr",
   "layer_1": {
     "zPos": 128,
     "male": "hair/extensions/bangs/long_straightr/adult/",
@@ -72,5 +71,12 @@
         "https://opengameart.org/content/lpc-expanded-long-hair"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "bangs",
+    "hairext_long_straightr"
   ]
 }

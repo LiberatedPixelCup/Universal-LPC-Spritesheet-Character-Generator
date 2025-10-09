@@ -1,6 +1,5 @@
 {
   "name": "Buckles",
-  "type_name": "buckles",
   "layer_1": {
     "zPos": 75,
     "female": "torso/waist/buckles/female/"
@@ -26,5 +25,9 @@
         "https://opengameart.org/content/female-mage-clothing-set"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "buckles"
   ]
 }

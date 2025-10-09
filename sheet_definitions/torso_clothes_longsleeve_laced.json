@@ -1,6 +1,5 @@
 {
   "name": "Longsleeve laced",
-  "type_name": "clothes",
   "layer_1": {
     "zPos": 35,
     "male": "torso/clothes/longsleeve/laced/male/"
@@ -50,5 +49,11 @@
         "https://opengameart.org/content/lpc-pirates"
       ]
     }
+  ],
+  "path": [
+    "torso",
+    "shirts",
+    "longsleeve",
+    "torso_clothes_longsleeve_laced"
   ]
 }

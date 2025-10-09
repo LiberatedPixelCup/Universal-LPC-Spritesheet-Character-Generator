@@ -1,6 +1,5 @@
 {
   "name": "Belle skirt",
-  "type_name": "legs",
   "layer_1": {
     "zPos": 20,
     "female": "legs/skirts/belle/female/",
@@ -53,5 +52,10 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
+  ],
+  "path": [
+    "legs",
+    "skirts",
+    "legs_skirt_belle"
   ]
 }

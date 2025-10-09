@@ -1,8 +1,13 @@
 {
   "name": "Bicorne Athwart Admiral Trim",
-  "type_name": "hat_trim",
-  "tags": ["bicorne", "athwart", "admiral_trim"],
-  "required_tags": ["athwart_admiral"],
+  "tags": [
+    "bicorne",
+    "athwart",
+    "admiral_trim"
+  ],
+  "required_tags": [
+    "athwart_admiral"
+  ],
   "layer_1": {
     "zPos": 131,
     "male": "hat/pirate/bicorne/athwart/admiral/trim/adult/",
@@ -81,5 +86,23 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "hats",
+    "bicorne athwart",
+    "admiral",
+    "hat_bicorne_athwart_admiral_trim"
   ]
 }

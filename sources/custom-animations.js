@@ -160,3 +160,12 @@ const customAnimationBase = (custAnim) =>
 
 const isCustomAnimationBasedOnStandardAnimation = (custAnim, stdAnimName) =>
   (customAnimationBase(custAnim) === stdAnimName)
+
+// Expose to window for use in other scripts
+if (typeof window !== 'undefined') {
+  window.animationRowsLayout = animationRowsLayout;
+  window.customAnimations = customAnimations;
+  window.customAnimationSize = customAnimationSize;
+  window.customAnimationBase = customAnimationBase;
+  window.isCustomAnimationBasedOnStandardAnimation = isCustomAnimationBasedOnStandardAnimation;
+}

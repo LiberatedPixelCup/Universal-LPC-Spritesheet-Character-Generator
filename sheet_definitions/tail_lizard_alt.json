@@ -1,6 +1,5 @@
 {
   "name": "Lizard Tail (Alt Colors)",
-  "type_name": "tail",
   "layer_1": {
     "zPos": 85,
     "male": "body/tail/lizard/alt/adult/fg/",
@@ -91,5 +90,10 @@
         "https://opengameart.org/content/drakes-and-lizardfolk"
       ]
     }
+  ],
+  "path": [
+    "body",
+    "tails",
+    "tail_lizard_alt"
   ]
 }

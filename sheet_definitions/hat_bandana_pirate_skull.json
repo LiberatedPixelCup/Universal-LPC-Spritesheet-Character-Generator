@@ -1,6 +1,5 @@
 {
   "name": "Skull Bandana Overlay",
-  "type_name": "bandana_overlay",
   "layer_1": {
     "zPos": 121,
     "male": "hat/pirate/bandana/skull/adult/",
@@ -71,5 +70,22 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "head coverings",
+    "bandanas",
+    "hat_bandana_pirate_skull"
   ]
 }

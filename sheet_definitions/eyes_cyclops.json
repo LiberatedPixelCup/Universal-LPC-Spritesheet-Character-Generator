@@ -1,6 +1,5 @@
 {
   "name": "Cyclops Eyes",
-  "type_name": "eyes",
   "layer_1": {
     "zPos": 105,
     "male": "eyes/cyclops/adult/",
@@ -55,5 +54,10 @@
         "https://opengameart.org/content/cyclops-and-his-eye"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "other eyes",
+    "eyes_cyclops"
   ]
 }

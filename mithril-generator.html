@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<title>Universal LPC Sprite Sheet Character Generator</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+	<link rel="stylesheet" type="text/css" href="sources/chargen.css">
+	<style>
+		#chooser-column {
+			float: left;
+			width: 50%;
+			padding: 1rem;
+		}
+		#preview-column {
+			float: right;
+			width: 50%;
+			padding: 1rem;
+		}
+		.tree-node {
+			margin-left: 1rem;
+		}
+		.tree-label {
+			cursor: pointer;
+			user-select: none;
+			padding: 0.25rem 0;
+			display: block;
+		}
+		.tree-label:hover {
+			background-color: #f5f5f5;
+		}
+		.tree-arrow {
+			display: inline-block;
+			width: 1rem;
+			text-align: center;
+			margin-right: 0.5rem;
+		}
+		.tree-arrow.collapsed::before {
+			content: "▶";
+		}
+		.tree-arrow.expanded::before {
+			content: "▼";
+		}
+		.box {
+			margin-bottom: 1rem;
+		}
+		.search-result {
+			background-color: #fffbea;
+		}
+		.search-result:hover {
+			background-color: #fff3cd;
+		}
+	</style>
+	<script src="https://unpkg.com/mithril@2.2.2/mithril.min.js"></script>
+	<script type="text/javascript" src="sources/jszip.min.js"></script>
+	<script type="text/javascript" src="sources/custom-animations.js"></script>
+	<script type="text/javascript" src="item-metadata.js"></script>
+</head>
+<body>
+	<section id="header-left" class="sticky">
+		<h1>Universal LPC Spritesheet Generator <a href="https://github.com/liberatedpixelcup/Universal-LPC-Spritesheet-Character-Generator"><img src="sources/github-mark.png" alt="View on GitHub" style="width:24px;height:24px;"></a></h1>
+		<p>Free/Libre pixel art from the <a href="https://lpc.opengameart.org">Liberated Pixel Cup</a></p>
+	</section>
+
+	<div id="chooser-column">
+		<div id="mithril-filters"></div>
+	</div>
+
+	<div id="preview-column">
+		<div id="mithril-preview"></div>
+		<canvas id="spritesheet" width="832" height="1344"></canvas>
+	</div>
+
+	<script type="module">
+		import {
+			initCanvas,
+			renderCharacter,
+			initPreviewCanvas,
+			setPreviewAnimation,
+			getAnimationList,
+			startPreviewAnimation,
+			stopPreviewAnimation,
+			downloadAsPNG,
+			getCanvasBlob,
+			exportStateAsJSON,
+			importStateFromJSON,
+			extractAnimationFromCanvas,
+			getCanvas,
+			renderSingleItem,
+			renderSingleItemAnimation
+		} from './sources/canvas-renderer.js';
+
+		window.canvasRenderer = {
+			initCanvas,
+			renderCharacter,
+			initPreviewCanvas,
+			setPreviewAnimation,
+			getAnimationList,
+			startPreviewAnimation,
+			stopPreviewAnimation,
+			downloadAsPNG,
+			getCanvasBlob,
+			exportStateAsJSON,
+			importStateFromJSON,
+			extractAnimationFromCanvas,
+			getCanvas,
+			renderSingleItem,
+			renderSingleItemAnimation
+		};
+
+		// Wait for canvas to be ready, then load Mithril app
+		document.addEventListener('DOMContentLoaded', () => {
+			const canvas = document.getElementById("spritesheet");
+			if (canvas) {
+				initCanvas(canvas);
+
+				// Set defaults after canvas is ready
+				if (window.setDefaultSelections) {
+					window.setDefaultSelections();
+				}
+			}
+		});
+	</script>
+	<script type="text/javascript" src="sources/mithril-app.js"></script>
+</body>
+</html>

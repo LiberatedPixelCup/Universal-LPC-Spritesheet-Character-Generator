@@ -1,6 +1,5 @@
 {
   "name": "Wand",
-  "type_name": "weapon",
   "preview_row": 1,
   "preview_column": 0,
   "layer_1": {
@@ -32,5 +31,10 @@
         "https://opengameart.org/content/lpc-wands"
       ]
     }
+  ],
+  "path": [
+    "weapons",
+    "magic",
+    "weapon_magic_wand"
   ]
 }

@@ -1,6 +1,5 @@
 {
   "name": "Stud earrings",
-  "type_name": "earrings",
   "layer_1": {
     "zPos": 115,
     "male": "facial/earrings/stud/male/",
@@ -33,5 +32,22 @@
         "https://opengameart.org/content/lpc-jewelry"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "accessories",
+    "earrings",
+    "facial_earrings_stud"
   ]
 }

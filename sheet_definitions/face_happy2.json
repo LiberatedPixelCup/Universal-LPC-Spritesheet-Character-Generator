@@ -1,8 +1,11 @@
 {
   "name": "Happy Alt",
-  "type_name": "expression",
-  "tags": ["expression"],
-  "required_tags": ["human"],
+  "tags": [
+    "expression"
+  ],
+  "required_tags": [
+    "human"
+  ],
   "layer_1": {
     "zPos": 106,
     "male": "head/faces/global/happy2/",
@@ -74,5 +77,10 @@
         "https://opengameart.org/content/ulpc-expanded-expressions"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "face",
+    "face_happy2"
   ]
 }

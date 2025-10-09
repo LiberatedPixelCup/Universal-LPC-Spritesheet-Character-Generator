@@ -1,6 +1,5 @@
 {
   "name": "Lampshade Mustache",
-  "type_name": "mustache",
   "layer_1": {
     "zPos": 111,
     "male": "beards/mustache/lampshade/",
@@ -71,5 +70,10 @@
         "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
       ]
     }
+  ],
+  "path": [
+    "head",
+    "mustaches",
+    "beards_lampshade"
   ]
 }

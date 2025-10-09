@@ -1,6 +1,5 @@
 {
   "name": "Scythe",
-  "type_name": "weapon",
   "preview_row": 0,
   "preview_column": 0,
   "preview_x_offset": 11,
@@ -52,5 +51,10 @@
         "https://opengameart.org/content/lpc-extended-weapon-animations"
       ]
     }
+  ],
+  "path": [
+    "weapons",
+    "polearm",
+    "weapon_polearm_scythe"
   ]
 }

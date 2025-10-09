@@ -1,8 +1,11 @@
 {
   "name": "Monarch Wings Dots",
-  "type_name": "wings_dots",
-  "tags": ["wings"],
-  "required_tags": ["monarch"],
+  "tags": [
+    "wings"
+  ],
+  "required_tags": [
+    "monarch"
+  ],
   "layer_1": {
     "zPos": 106,
     "male": "body/wings/monarch/dots/fg/",
@@ -66,5 +69,11 @@
         "https://opengameart.org/content/lpc-fairy-wings"
       ]
     }
+  ],
+  "path": [
+    "body",
+    "wings",
+    "monarch wings",
+    "wings_monarch_dots"
   ]
 }
