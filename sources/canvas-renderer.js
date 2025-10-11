@@ -537,12 +537,20 @@ export async function renderCharacter(selections, bodyType, showTransparencyGrid
           continue;
         }
 
-        // Custom animations use direct file path
-        const spritePath = `spritesheets/${basePath}${variantToFilename(variant)}.png`;
+        // For body items with palette recoloring enabled, always use 'light' variant
+        // The palette system will recolor it at runtime
+        const paletteSystem = window.getPaletteSystem ? window.getPaletteSystem() : null;
+        const shouldUsePalette = itemId === 'body-body' &&
+                                 paletteSystem?.enabled &&
+                                 paletteSystem?.palettes &&
+                                 variant !== 'light';
+
+        const filenameVariant = shouldUsePalette ? 'light' : variant;
+        const spritePath = `spritesheets/${basePath}${variantToFilename(filenameVariant)}.png`;
 
         customAnimationItems.push({
           itemId,
-          variant,
+          variant,  // Keep original variant for palette recoloring
           spritePath,
           zPos,
           layerNum,

@@ -522,7 +522,8 @@ const ItemWithVariants = {
 								const isBodyItem = itemId === 'body-body';
 								const canUsePalette = isBodyItem &&
 								                       state.paletteRecoloring.enabled &&
-								                       state.paletteRecoloring.palettes;
+								                       state.paletteRecoloring.palettes &&
+								                       variant !== 'light'; // Don't recolor light variant (it's the base)
 
 								if (canUsePalette) {
 									// Use palette recoloring for body items
@@ -1605,6 +1606,7 @@ const App = {
 };
 
 // Initialize palette recoloring system BEFORE mounting components
+window.paletteSystemInitStarted = true;
 (async function() {
 	await initializePaletteRecoloring();
 
@@ -1655,7 +1657,18 @@ window.addEventListener('hashchange', function() {
 });
 
 // Expose initialization to be called after canvas init
-window.setDefaultSelections = function() {
+window.setDefaultSelections = async function() {
+	// Wait for palette system to be ready before rendering
+	// This prevents trying to load body variants before palettes are initialized
+	while (!state.paletteRecoloring.enabled && state.paletteRecoloring.palettes === null) {
+		// Check if palette system failed to load (both enabled=false and palettes=null means it hasn't tried yet)
+		// If it failed, enabled will be false but we'll have tried, so break after a timeout
+		await new Promise(resolve => setTimeout(resolve, 50));
+
+		// Timeout after 5 seconds to prevent infinite loop
+		if (!window.paletteSystemInitStarted) break;
+	}
+
 	// First, try to load from URL hash
 	loadSelectionsFromHash();
 
