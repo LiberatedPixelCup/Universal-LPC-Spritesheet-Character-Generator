@@ -1,6 +1,8 @@
 // Mithril-based character generator
 // Clean rewrite without jQuery dependencies
 
+import { initPaletteRecoloring, recolorImage } from './palette-recolor.js';
+
 /**
  * Convert variant name to filename format (spaces to underscores)
  * @param {string} variant - Variant name (e.g., "light brown")
@@ -92,7 +94,12 @@ const state = {
 	// Animation filters - all disabled by default (filter only active when at least one is checked)
 	enabledAnimations: Object.fromEntries(
 		ANIMATIONS.map(anim => [anim.value, false])
-	)
+	),
+	// Palette recoloring data
+	paletteRecoloring: {
+		enabled: false,
+		palettes: null // Loaded palette definitions (source + target palettes)
+	}
 };
 
 // URL hash parameter management
@@ -221,6 +228,29 @@ function resetAll() {
 	state.selections = {};
 	selectDefaults();
 	m.redraw();
+}
+
+// Initialize palette recoloring system - just load the palettes, don't pre-generate variants
+async function initializePaletteRecoloring() {
+	try {
+		console.log('Initializing palette recoloring system...');
+
+		// Load palette definitions
+		const response = await fetch('tools/palettes/ulpc-body-palettes.json');
+		if (!response.ok) {
+			throw new Error(`Failed to load palette: ${response.statusText}`);
+		}
+		const palettes = await response.json();
+
+		state.paletteRecoloring.enabled = true;
+		state.paletteRecoloring.palettes = palettes;
+
+		console.log(`✓ Palette recoloring initialized with ${Object.keys(palettes).length} palette definitions`);
+		console.log('Palette keys:', Object.keys(palettes));
+	} catch (error) {
+		console.error('Failed to initialize palette recoloring:', error);
+		state.paletteRecoloring.enabled = false;
+	}
 }
 
 // Helper function to capitalize strings for display
@@ -488,6 +518,49 @@ const ItemWithVariants = {
 								const canvas = canvasVnode.dom;
 								const ctx = canvas.getContext('2d');
 
+								// Check if this is a body item that can use palette recoloring
+								const isBodyItem = itemId === 'body-body';
+								const canUsePalette = isBodyItem &&
+								                       state.paletteRecoloring.enabled &&
+								                       state.paletteRecoloring.palettes;
+
+								if (canUsePalette) {
+									// Use palette recoloring for body items
+									const sourcePalette = state.paletteRecoloring.palettes.source || state.paletteRecoloring.palettes.light;
+									const targetPalette = state.paletteRecoloring.palettes[variant];
+
+									if (targetPalette) {
+										console.log(`✓ Using palette recoloring for body-body variant: ${variant}`);
+
+										// Load the base light variant image
+										const layer1 = meta.layers?.layer_1;
+										const basePath = layer1?.[state.bodyType];
+										const defaultAnim = meta.animations.includes('walk') ? 'walk' : meta.animations[0];
+										const baseImagePath = `spritesheets/${basePath}${defaultAnim}/light.png`;
+
+										const baseImg = new Image();
+										baseImg.onload = () => {
+											// Recolor the image using palette
+											const recoloredCanvas = recolorImage(baseImg, sourcePalette, targetPalette);
+
+											// Draw the recolored frame to preview canvas
+											ctx.drawImage(
+												recoloredCanvas,
+												previewCol * 64 - previewXOffset, previewRow * 64 - previewYOffset, 64, 64,
+												0, 0, 64, 64
+											);
+										};
+										baseImg.onerror = () => {
+											console.error('Failed to load base image for palette recoloring:', baseImagePath);
+										};
+										baseImg.src = baseImagePath;
+										return; // Skip normal image loading
+									} else {
+										console.warn(`Palette not found for variant: ${variant}, falling back to normal image loading`);
+									}
+								}
+
+								// Normal image loading for non-body items or when palette is not available
 								// Collect all layers for this item
 								const layersToLoad = [];
 								for (let layerNum = 1; layerNum < 10; layerNum++) {
@@ -1531,9 +1604,14 @@ const App = {
 	}
 };
 
-// Mount the components
-m.mount(document.getElementById("mithril-filters"), App);
-m.mount(document.getElementById("mithril-preview"), AnimationPreview);
+// Initialize palette recoloring system BEFORE mounting components
+(async function() {
+	await initializePaletteRecoloring();
+
+	// Mount the components after palette system is ready
+	m.mount(document.getElementById("mithril-filters"), App);
+	m.mount(document.getElementById("mithril-preview"), AnimationPreview);
+})();
 
 // Store the current hash to detect external changes
 let lastKnownHash = window.location.hash;
@@ -1592,4 +1670,9 @@ window.setDefaultSelections = function() {
 	}
 
 	// Note: m.redraw() not needed - called from oninit which auto-redraws after lifecycle hooks
+};
+
+// Expose palette system for canvas renderer
+window.getPaletteSystem = function() {
+	return state.paletteRecoloring;
 };

@@ -1,6 +1,8 @@
 // Canvas rendering module for Mithril UI
 // Simplified renderer that draws character sprites based on selections
 
+import { recolorImage } from './palette-recolor.js';
+
 const FRAME_SIZE = 64;
 const SHEET_HEIGHT = 3456; // Full universal sheet height
 const SHEET_WIDTH = 832; // 13 frames * 64px
@@ -291,10 +293,69 @@ function getZPos(itemId, layerNum = 1) {
 }
 
 /**
- * Load an image
+ * Load an image with optional palette recoloring
+ * @param {string} src - Image source path
+ * @param {Object} options - Options for loading
+ * @param {string} options.itemId - Item ID (for checking if it's body-body)
+ * @param {string} options.variant - Variant name
+ * @param {Object} options.paletteSystem - Palette system from state (enabled, palettes)
+ * @returns {Promise<HTMLImageElement|HTMLCanvasElement>}
  */
-function loadImage(src) {
+function loadImage(src, options = {}) {
   return new Promise((resolve, reject) => {
+    const { itemId, variant, paletteSystem } = options;
+
+    // Check if we should use palette recoloring
+    const shouldUsePalette = itemId === 'body-body' &&
+                             paletteSystem?.enabled &&
+                             paletteSystem?.palettes &&
+                             variant !== 'light'; // Don't recolor light variant (it's the base)
+
+    console.log('loadImage check:', { src, itemId, variant, shouldUsePalette, paletteEnabled: paletteSystem?.enabled, palettesLoaded: !!paletteSystem?.palettes });
+
+    if (shouldUsePalette) {
+      const targetPalette = paletteSystem.palettes[variant];
+      const sourcePalette = paletteSystem.palettes.source || paletteSystem.palettes.light;
+
+      if (targetPalette) {
+        // Load the base "light" variant and recolor it
+        const variantFilename = variantToFilename(variant);
+        const baseSrc = src.replace(`/${variantFilename}.png`, '/light.png');
+        console.log(`Palette recolor request: ${variant}`, { src, variantFilename, baseSrc });
+        const cacheKey = `${baseSrc}_recolored_${variant}`;
+
+        // Check cache first
+        if (loadedImages[cacheKey]) {
+          resolve(loadedImages[cacheKey]);
+          return;
+        }
+
+        const baseImg = new Image();
+        baseImg.onload = () => {
+          try {
+            const recoloredCanvas = recolorImage(baseImg, sourcePalette, targetPalette);
+            loadedImages[cacheKey] = recoloredCanvas;
+            imagesLoaded++;
+            console.log(`✓ Recolored body variant: ${variant}`);
+            resolve(recoloredCanvas);
+          } catch (err) {
+            console.error(`Failed to recolor ${variant}:`, err);
+            imagesLoaded++;
+            reject(err);
+          }
+        };
+        baseImg.onerror = () => {
+          console.error(`Failed to load base image for recoloring: ${baseSrc}`);
+          imagesLoaded++;
+          reject(new Error(`Failed to load ${baseSrc}`));
+        };
+        baseImg.src = baseSrc;
+        imagesToLoad++;
+        return;
+      }
+    }
+
+    // Normal image loading (non-body items or light variant)
     if (loadedImages[src]) {
       resolve(loadedImages[src]);
       return;
@@ -320,11 +381,16 @@ function loadImage(src) {
  * Load multiple images in parallel
  * @param {Array} items - Array of items with a spritePath property
  * @param {Function} getPath - Optional function to extract path from item (defaults to item.spritePath)
+ * @param {Object} paletteSystem - Optional palette system for recoloring
  * @returns {Promise<Array>} Array of {item, img, success} objects
  */
-async function loadImagesInParallel(items, getPath = (item) => item.spritePath) {
+async function loadImagesInParallel(items, getPath = (item) => item.spritePath, paletteSystem = null) {
   const promises = items.map(item =>
-    loadImage(getPath(item))
+    loadImage(getPath(item), {
+      itemId: item.itemId,
+      variant: item.variant,
+      paletteSystem
+    })
       .then(img => ({ item, img, success: true }))
       .catch(err => {
         console.warn(`Failed to load sprite: ${getPath(item)}`);
@@ -441,6 +507,8 @@ export async function renderCharacter(selections, bodyType, showTransparencyGrid
   for (const [categoryPath, selection] of Object.entries(selections)) {
     const { itemId, variant } = selection;
     const meta = window.itemMetadata[itemId];
+
+    console.log('Processing selection:', { categoryPath, itemId, variant, selection });
 
     if (!meta) continue;
 
@@ -579,8 +647,11 @@ export async function renderCharacter(selections, bodyType, showTransparencyGrid
     }
   }
 
+  // Get palette system for recoloring body variants
+  const paletteSystem = window.getPaletteSystem ? window.getPaletteSystem() : null;
+
   // First, load all standard animation images in parallel
-  const loadedImages = await loadImagesInParallel(itemsToDraw);
+  const loadedImages = await loadImagesInParallel(itemsToDraw, undefined, paletteSystem);
 
   // Then draw them in order (maintaining zPos ordering)
   for (const { item, img, success } of loadedImages) {
@@ -609,7 +680,8 @@ export async function renderCharacter(selections, bodyType, showTransparencyGrid
             type: 'custom_sprite',
             zPos: item.zPos,
             spritePath: item.spritePath,
-            itemId: item.itemId
+            itemId: item.itemId,
+            variant: item.variant  // Add variant for palette recoloring
           });
         }
       }
@@ -624,6 +696,7 @@ export async function renderCharacter(selections, bodyType, showTransparencyGrid
               zPos: item.zPos,
               spritePath: item.spritePath,
               itemId: item.itemId,
+              variant: item.variant,  // Add variant for palette recoloring
               animation: item.animation
             });
           }
@@ -634,7 +707,7 @@ export async function renderCharacter(selections, bodyType, showTransparencyGrid
       customAreaItems.sort((a, b) => a.zPos - b.zPos);
 
       // Load all custom area images in parallel
-      const loadedCustomImages = await loadImagesInParallel(customAreaItems);
+      const loadedCustomImages = await loadImagesInParallel(customAreaItems, undefined, paletteSystem);
 
       // Draw in zPos order
       for (const { item: areaItem, img, success } of loadedCustomImages) {
@@ -829,14 +902,17 @@ export async function renderSingleItem(itemId, variant, bodyType, selections) {
       if (!basePath) continue;
 
       const spritePath = `spritesheets/${basePath}${variantToFilename(variant)}.png`;
-      customSprites.push({ spritePath, zPos });
+      customSprites.push({ itemId, variant, spritePath, zPos });
     }
 
     // Sort by zPos
     customSprites.sort((a, b) => a.zPos - b.zPos);
 
+    // Get palette system
+    const paletteSystem = window.getPaletteSystem ? window.getPaletteSystem() : null;
+
     // Load all layers in parallel
-    const loadedSprites = await loadImagesInParallel(customSprites);
+    const loadedSprites = await loadImagesInParallel(customSprites, undefined, paletteSystem);
 
     // Draw layers in order
     for (const { item: sprite, img, success } of loadedSprites) {
@@ -900,8 +976,11 @@ export async function renderSingleItem(itemId, variant, bodyType, selections) {
       return a.zPos - b.zPos;
     });
 
+    // Get palette system
+    const paletteSystem = window.getPaletteSystem ? window.getPaletteSystem() : null;
+
     // Load all images in parallel
-    const loadedImages = await loadImagesInParallel(spritesToDraw);
+    const loadedImages = await loadImagesInParallel(spritesToDraw, undefined, paletteSystem);
 
     // Draw images in order
     for (const { item: sprite, img, success } of loadedImages) {
@@ -984,6 +1063,8 @@ export async function renderSingleItemAnimation(itemId, variant, bodyType, anima
     const spritePath = getSpritePath(itemId, variant, bodyType, animationName, layerNum, selections, meta);
 
     spritesToDraw.push({
+      itemId,
+      variant,
       spritePath,
       zPos,
       layerNum
@@ -993,8 +1074,11 @@ export async function renderSingleItemAnimation(itemId, variant, bodyType, anima
   // Sort by zPos
   spritesToDraw.sort((a, b) => a.zPos - b.zPos);
 
+  // Get palette system
+  const paletteSystem = window.getPaletteSystem ? window.getPaletteSystem() : null;
+
   // Load all images in parallel
-  const loadedImages = await loadImagesInParallel(spritesToDraw);
+  const loadedImages = await loadImagesInParallel(spritesToDraw, undefined, paletteSystem);
 
   // Draw images in order
   for (const { item: sprite, img, success } of loadedImages) {
