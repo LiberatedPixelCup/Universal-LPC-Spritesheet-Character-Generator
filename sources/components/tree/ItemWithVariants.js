@@ -20,7 +20,6 @@ export const ItemWithVariants = {
 				m("span", displayName)
 			]),
 			isExpanded ? m("div", [
-				m("div.title.is-6.mt-2.mb-2.ml-5.has-text-weight-semibold", displayName),
 				m("div.variants-container.ml-5.is-flex.is-flex-wrap-wrap",
 					meta.variants.map(variant => {
 					const selectionGroup = getSelectionGroup(itemId);
