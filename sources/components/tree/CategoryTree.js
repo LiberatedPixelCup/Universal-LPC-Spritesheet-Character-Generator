@@ -36,7 +36,11 @@ export const CategoryTree = {
 								}
 							}
 						}
-					}, "Expand Selected")
+					}, "Expand Selected"),
+					m("button.button.is-small", {
+						class: state.compactDisplay ? "is-link" : "",
+						onclick: () => { state.compactDisplay = !state.compactDisplay; }
+					}, "CompactDisplay"),
 				])
 			]),
 			m("div.mb-3", [

@@ -6,6 +6,7 @@ export const ItemWithVariants = {
 	view: function(vnode) {
 		const { itemId, meta, isSearchMatch } = vnode.attrs;
 		const isExpanded = state.expandedNodes[itemId] || false;
+		const compactDisplay = state.compactDisplay;
 		const displayName = meta.name;
 
 		return m("div", {
@@ -25,7 +26,7 @@ export const ItemWithVariants = {
 					meta.variants.map(variant => {
 					const selectionGroup = getSelectionGroup(itemId);
 					const isSelected = state.selections[selectionGroup]?.itemId === itemId &&
-					                    state.selections[selectionGroup]?.variant === variant;
+						state.selections[selectionGroup]?.variant === variant;
 					const variantDisplayName = variant.replaceAll("_", " ");
 
 					// Get preview metadata from item metadata
@@ -93,10 +94,10 @@ export const ItemWithVariants = {
 					}, [
 						m("span.variant-display-name.has-text-centered.is-size-7",
 							capitalize(variantDisplayName)),
-						m("canvas.variant-canvas", {
-							width: 64,
-							height: 64,
-							class: "box p-0",
+						m("canvas.variant-canvas.box.p-0", {
+							width: compactDisplay ? 32 : 64,
+							height: compactDisplay ? 32 : 64,
+							class: (compactDisplay ? " compact-display" : ""),
 							style: (isSelected ? " hsl(217, 71%, 53%)" : " hsl(0, 0%, 86%)"),
 							oncreate: (canvasVnode) => {
 								const canvas = canvasVnode.dom;
@@ -157,17 +158,36 @@ export const ItemWithVariants = {
 										img.src = layer.path;
 									});
 								})).then(loadedLayers => {
+									canvas.loadedLayers = loadedLayers;
 									// Draw each layer in zPos order
 									for (const { img, layer } of loadedLayers) {
 										if (img) {
+											const size = compactDisplay ? 32 : 64;
 											ctx.drawImage(
 												img,
 												previewCol * 64 - previewXOffset, previewRow * 64 - previewYOffset, 64, 64,
-												0, 0, 64, 64
+												0, 0, size, size
 											);
 										}
 									}
 								});
+							},
+							onupdate: (canvasVnode) => {
+								const canvas = canvasVnode.dom;
+								const ctx = canvas.getContext('2d');
+								if (canvas.loadedLayers) {
+									// Draw each layer in zPos order
+									for (const { img, layer } of canvas.loadedLayers) {
+										if (img) {
+											const size = compactDisplay ? 32 : 64;
+											ctx.drawImage(
+												img,
+												previewCol * 64 - previewXOffset, previewRow * 64 - previewYOffset, 64, 64,
+												0, 0, size, size
+											);
+										}
+									}
+								}
 							}
 						})
 					]);

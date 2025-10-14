@@ -9,6 +9,7 @@ export const state = {
 	searchQuery: "", // current search query
 	showTransparencyGrid: true, // show checkered transparency background
 	matchBodyColorEnabled: false, // auto-match body color to other items (default: disabled)
+	compactDisplay: false, // compact item variant display (smaller thumbnails)
 	customUploadedImage: null, // custom uploaded image (Image object)
 	customImageZPos: 0, // z-position for custom uploaded image
 	// License filters - all enabled by default (derived from LICENSE_CONFIG)
