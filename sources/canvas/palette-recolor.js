@@ -13,14 +13,16 @@ let config = {
 const USE_WEBGL = config.useWebGL && !config.forceCPU;
 
 // Log which method will be used
-if (USE_WEBGL) {
-	console.log('🎨 Palette recoloring: WebGL GPU-accelerated mode enabled');
-	console.log('💡 To check stats, run: window.getPaletteRecolorStats()');
-	console.log('💡 To force CPU mode, run: window.setPaletteRecolorMode("cpu")');
-} else if (config.forceCPU) {
-	console.log('🎨 Palette recoloring: CPU mode (forced by configuration)');
-} else {
-	console.log('🎨 Palette recoloring: CPU mode (WebGL not available)');
+if (DEBUG) {
+	if (USE_WEBGL) {
+		console.log('🎨 Palette recoloring: WebGL GPU-accelerated mode enabled');
+		console.log('💡 To check stats, run: window.getPaletteRecolorStats()');
+		console.log('💡 To force CPU mode, run: window.setPaletteRecolorMode("cpu")');
+	} else if (config.forceCPU) {
+		console.log('🎨 Palette recoloring: CPU mode (forced by configuration)');
+	} else {
+		console.log('🎨 Palette recoloring: CPU mode (WebGL not available)');
+	};
 }
 
 /**
@@ -277,7 +279,9 @@ async function ensurePaletteLoaded(paletteType) {
 
 		try {
 			loadedPalettes[paletteType] = await loadPalette(paletteFile);
-			console.log(`Loaded ${paletteType} palette with ${Object.keys(loadedPalettes[paletteType]).length} variants`);
+			if (DEBUG) {
+				console.log(`Loaded ${paletteType} palette with ${Object.keys(loadedPalettes[paletteType]).length} variants`);
+			}
 		} catch (err) {
 			throw new Error(`Failed to load ${paletteType} palette from ${paletteFile}: ${err.message}`);
 		}

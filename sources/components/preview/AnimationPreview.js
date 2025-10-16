@@ -134,7 +134,7 @@ export const AnimationPreview = {
 				])
 			]),
 			m("div.mt-3", [
-				m("div", { class: console.log(state.isRenderingCharacter) || state.isRenderingCharacter ? "loading" : "" }),
+				m("div", { class: state.isRenderingCharacter ? "loading" : "" }),
 				m(PreviewCanvas, {
 					selectedAnimation: vnode.state.selectedAnimation,
 					zoomLevel: vnode.state.zoomLevel,

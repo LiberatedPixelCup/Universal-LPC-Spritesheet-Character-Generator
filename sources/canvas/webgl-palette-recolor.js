@@ -237,7 +237,9 @@ function initSharedWebGL() {
 	// Setup quad geometry once
 	setupQuad(sharedGL, sharedProgram);
 
-	console.log('WebGL palette recoloring initialized (shared context)');
+	if (DEBUG) {
+		console.log('WebGL palette recoloring initialized (shared context)');
+	}
 }
 
 /**
