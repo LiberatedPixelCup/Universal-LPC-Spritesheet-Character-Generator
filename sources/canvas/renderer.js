@@ -2,6 +2,7 @@
 // Simplified renderer that draws character sprites based on selections
 
 import { state } from '../state/state.js';
+import { loadImage, loadImagesInParallel } from './load-image.js';
 
 const FRAME_SIZE = 64;
 const SHEET_HEIGHT = 3456; // Full universal sheet height
@@ -48,9 +49,6 @@ let canvas = null;
 let ctx = null;
 let previewCanvas = null;
 let previewCtx = null;
-let loadedImages = {};
-let imagesToLoad = 0;
-let imagesLoaded = 0;
 
 // Animation preview state
 let animationFrames = [1, 2, 3, 4, 5, 6, 7, 8]; // default for walk
@@ -330,64 +328,6 @@ function getZPos(itemId, layerNum = 1) {
 }
 
 /**
- * Load an image
- */
-function loadImage(src) {
-  return new Promise((resolve, reject) => {
-    if (loadedImages[src]) {
-      resolve(loadedImages[src]);
-      return;
-    }
-
-    // Mark start of image load for profiling
-    const profiler = window.profiler;
-    if (profiler) {
-      profiler.mark(`image-load:${src}:start`);
-    }
-
-    const img = new Image();
-    img.onload = () => {
-      loadedImages[src] = img;
-      imagesLoaded++;
-
-      // Mark end and measure
-      if (profiler) {
-        profiler.mark(`image-load:${src}:end`);
-        profiler.measure(`image-load:${src}`, `image-load:${src}:start`, `image-load:${src}:end`);
-      }
-
-      resolve(img);
-    };
-    img.onerror = () => {
-      console.error(`Failed to load image: ${src}`);
-      imagesLoaded++;
-      reject(new Error(`Failed to load ${src}`));
-    };
-    img.src = src;
-    imagesToLoad++;
-  });
-}
-
-/**
- * Load multiple images in parallel
- * @param {Array} items - Array of items with a spritePath property
- * @param {Function} getPath - Optional function to extract path from item (defaults to item.spritePath)
- * @returns {Promise<Array>} Array of {item, img, success} objects
- */
-async function loadImagesInParallel(items, getPath = (item) => item.spritePath) {
-  const promises = items.map(item =>
-    loadImage(getPath(item))
-      .then(img => ({ item, img, success: true }))
-      .catch(err => {
-        console.warn(`Failed to load sprite: ${getPath(item)}`);
-        return { item, img: null, success: false };
-      })
-  );
-
-  return Promise.all(promises);
-}
-
-/**
  * Draw a single frame from source to destination
  * If source is smaller than destination, center it without scaling
  * @param {CanvasRenderingContext2D} destCtx - Destination context
@@ -635,10 +575,6 @@ export async function renderCharacter(selections, bodyType, targetCanvas = null)
 
   // Clear canvas (no transparency background on offscreen canvas)
   renderCtx.clearRect(0, 0, renderCanvas.width, renderCanvas.height);
-
-  // Load and draw standard animation images
-  imagesLoaded = 0;
-  imagesToLoad = 0;
 
   // Calculate custom animation Y positions first (needed for drawing standard items into custom areas)
   const customAnimYPositions = {};
