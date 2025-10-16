@@ -25,24 +25,32 @@ export const state = {
 };
 
 // Helper function to get selection group from itemId
-// Selection group = first 2 levels of path (e.g., ["head", "heads"] → "head-heads")
-// This ensures only one item per category can be selected (mimics old radio button behavior)
+// Selection group = type_name (e.g., "body", "heads", "ears")
+// This ensures only one item per type can be selected (mimics old radio button behavior)
 export function getSelectionGroup(itemId) {
 	const meta = window.itemMetadata?.[itemId];
-	if (!meta || !meta.path || meta.path.length < 2) return itemId;
-	return meta.path.slice(0, 2).join('-');
+	if (!meta || !meta.type_name) return itemId;
+	return meta.type_name;
 }
 
 // URL hash parameter management
 function getHashParams() {
-	const hash = window.location.hash.substring(1); // Remove '#'
+	let hash = window.location.hash.substring(1); // Remove '#'
+
+	// Handle case where hash starts with '?' (some old URLs might have this)
+	if (hash.startsWith('?')) {
+		hash = hash.substring(1);
+	}
+
 	if (!hash) return {};
 
 	const params = {};
 	hash.split('&').forEach(pair => {
 		const [key, value] = pair.split('=');
 		if (key && value) {
-			params[decodeURIComponent(key)] = decodeURIComponent(value);
+			// Remove leading '?' from key if present
+			const cleanKey = key.startsWith('?') ? key.substring(1) : key;
+			params[decodeURIComponent(cleanKey)] = decodeURIComponent(value);
 		}
 	});
 	return params;
@@ -58,20 +66,24 @@ function setHashParams(params) {
 export function syncSelectionsToHash() {
 	const params = {};
 
-	// Add body type
-	params.bodyType = state.bodyType;
+	// Add body type (using 'sex' for backwards compatibility with old URLs)
+	params.sex = state.bodyType;
 
-	// Add selections - use itemId as key (for URL readability)
-	// state.selections is now keyed by selectionGroup, but we store itemId in the URL
-	// itemId "body-body" with variant "light" -> "body-body=light"
-	// itemId "body-shadow" with variant "shadow" -> "body-shadow=shadow"
-	// itemId "head-heads-heads_human_male" with variant "light" -> "head-heads-heads_human_male=light"
+	// Add selections - use old format: type_name=Name_variant
+	// Format: "body=Body_color_light", "shoes=Sara_sara"
 	for (const [selectionGroup, selection] of Object.entries(state.selections)) {
-		// Use the itemId directly as the key
-		const key = selection.itemId;
+		const meta = window.itemMetadata?.[selection.itemId];
+		if (!meta || !meta.type_name) continue;
 
-		// Use variant as value (or empty string if no variant)
-		const value = selection.variant || '';
+		// Use type_name as key (selection group)
+		const key = meta.type_name;
+
+		// Build name part for URL: use full name with underscores
+		// "Body color" -> "Body_color", "Sara Shoes" -> "Sara_Shoes", "Waistband" -> "Waistband"
+		const namePart = meta.name.replaceAll(' ', '_');
+
+		const variantPart = selection.variant ? `_${selection.variant}` : '';
+		const value = namePart + variantPart;
 
 		params[key] = value;
 	}
@@ -86,28 +98,66 @@ export function loadSelectionsFromHash() {
 	const newSelections = {};
 
 	// Load selections
-	// Format: "body-body=light", "body-shadow=shadow", "head-heads-heads_human_male=light"
-	for (const [itemId, variant] of Object.entries(params)) {
-		if (itemId === 'bodyType') continue;
+	// Old format: type_name=Name_variant (e.g., "body=Body_color_light", "sash=Waistband_rose")
+	for (const [typeName, nameAndVariant] of Object.entries(params)) {
+		// Handle special parameters
+		if (typeName === 'bodyType' || typeName === 'sex') {
+			state.bodyType = nameAndVariant;
+			continue;
+		}
 
-		// Look up the item in metadata
-		const meta = window.itemMetadata?.[itemId];
-		if (!meta || !meta.path || meta.path.length < 2) {
+		// Skip "none" selections
+		if (nameAndVariant === 'none') continue;
+
+		// Parse the Name_variant format by trying different split positions
+		// Try from left to right to find a valid name+variant combination
+		// e.g., "Tiara_tiara_silver" -> try "Tiara" + "tiara_silver" ✓
+		// e.g., "Human_female_light" -> try "Human_female" + "light" ✓
+
+		let foundItemId = null;
+		let matchedVariant = '';
+
+		// Split on underscores and try different combinations
+		const parts = nameAndVariant.split('_');
+
+		// Try each possible split point (from left to right)
+		for (let i = 1; i <= parts.length; i++) {
+			const nameToMatch = parts.slice(0, i).join('_');
+			const variantToMatch = parts.slice(i).join('_');
+
+			// Search for item with this name and variant
+			for (const [itemId, meta] of Object.entries(window.itemMetadata || {})) {
+				if (meta.type_name !== typeName) continue;
+
+				const metaNameNormalized = meta.name.replaceAll(' ', '_');
+
+				// Check if name matches and variant exists (or no variant required)
+				if (metaNameNormalized === nameToMatch &&
+				    (variantToMatch === '' || meta.variants?.includes(variantToMatch))) {
+					foundItemId = itemId;
+					matchedVariant = variantToMatch;
+					break;
+				}
+			}
+
+			if (foundItemId) break;
+		}
+
+		if (!foundItemId) {
 			if (window.DEBUG) {
-				console.warn(`Unknown itemId in URL hash: ${itemId}`);
+				console.warn(`No item found with type_name "${typeName}" and nameAndVariant "${nameAndVariant}"`);
 			}
 			continue;
 		}
 
-		// Use the variant from URL, or first variant, or empty string
-		const actualVariant = variant || meta.variants?.[0] || '';
+		const meta = window.itemMetadata[foundItemId];
 
-		// Calculate selection group and store selection keyed by it
-		const selectionGroup = getSelectionGroup(itemId);
+		// Use type_name as selection group
+		const selectionGroup = typeName;
 		newSelections[selectionGroup] = {
-			itemId: itemId,
-			variant: actualVariant,
-			name: meta.name + (actualVariant ? ` (${actualVariant})` : '')
+			itemId: foundItemId,
+			variant: matchedVariant || meta.variants?.[0] || '',
+			name: meta.name + (matchedVariant ? ` (${matchedVariant})` : '')
 		};
 	}
 
@@ -123,8 +173,8 @@ export function loadSelectionsFromHash() {
 // Select default items (body color light + human male light head)
 export function selectDefaults() {
 	// Set default body color (light)
-	// selectionGroup for "body-body" is "body-body" (first 2 path levels)
-	const bodyItemId = "body-body";
+	// itemId is now based on filename (e.g., "body")
+	const bodyItemId = "body";
 	const bodySelectionGroup = getSelectionGroup(bodyItemId);
 	state.selections[bodySelectionGroup] = {
 		itemId: bodyItemId,
@@ -133,8 +183,8 @@ export function selectDefaults() {
 	};
 
 	// Set default head (human male light)
-	// selectionGroup for "head-heads-heads_human_male" is "head-heads"
-	const headItemId = "head-heads-heads_human_male";
+	// itemId is now based on filename (e.g., "heads_human_male")
+	const headItemId = "heads_human_male";
 	const headSelectionGroup = getSelectionGroup(headItemId);
 	state.selections[headSelectionGroup] = {
 		itemId: headItemId,

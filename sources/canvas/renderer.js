@@ -293,8 +293,8 @@ function getSpritePath(itemId, variant, bodyType, animation, layerNum = 1, selec
     // Find the selected head and extract its type from the itemId
     for (const [categoryPath, selection] of Object.entries(selections)) {
       const selMeta = window.itemMetadata[selection.itemId];
-      if (selMeta && selMeta.path && selMeta.path[0] === 'head' && selMeta.path[1] === 'heads') {
-        // Extract head type from itemId: "head-heads-heads_human_male" -> "male"
+      if (selMeta && selMeta.type_name === 'head') {
+        // Extract head type from itemId: "heads_human_male" -> "male"
         // The pattern is usually: heads_<type>_<subtype> or heads_<type>
         const itemIdParts = selection.itemId.split('_');
         const headType = itemIdParts[itemIdParts.length - 1]; // Last part is the type (male, female, elderly, etc.)

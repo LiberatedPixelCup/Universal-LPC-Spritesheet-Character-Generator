@@ -3,8 +3,9 @@
 // Contains metadata for all customization items to avoid DOM queries at runtime
 
 window.itemMetadata = {
-  "body-shadow": {
+  "shadow": {
     "name": "Shadow",
+    "type_name": "shadow",
     "required": [
       "male",
       "female",
@@ -84,8 +85,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-body": {
+  "body": {
     "name": "Body color",
+    "type_name": "body",
     "required": [
       "male",
       "female",
@@ -389,8 +391,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-special-body_zombie": {
+  "body_zombie": {
     "name": "Zombie",
+    "type_name": "body",
     "required": [
       "male",
       "female",
@@ -471,8 +474,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-special-body_skeleton": {
+  "body_skeleton": {
     "name": "Skeleton",
+    "type_name": "body",
     "required": [
       "male",
       "female",
@@ -551,8 +555,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-wounds-wound_arm": {
+  "wound_arm": {
     "name": "Arm",
+    "type_name": "wound_arm",
     "required": [
       "male",
       "female",
@@ -635,8 +640,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-wounds-wound_brain": {
+  "wound_brain": {
     "name": "Brain",
+    "type_name": "wound_brain",
     "required": [
       "male",
       "female",
@@ -729,8 +735,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-wounds-wound_ribs": {
+  "wound_ribs": {
     "name": "Ribs",
+    "type_name": "wound_ribs",
     "required": [
       "male",
       "female",
@@ -813,8 +820,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-wounds-wound_eye_left": {
+  "wound_eye_left": {
     "name": "Left Eye",
+    "type_name": "wound_eye_left",
     "required": [
       "male",
       "female",
@@ -908,8 +916,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-wounds-wound_eye_right": {
+  "wound_eye_right": {
     "name": "Right Eye",
+    "type_name": "wound_eye_right",
     "required": [
       "male",
       "female",
@@ -1002,8 +1011,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-wounds-wound_mouth": {
+  "wound_mouth": {
     "name": "Mouth",
+    "type_name": "wound_mouth",
     "required": [
       "male",
       "female",
@@ -1096,8 +1106,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-prostheses-prosthesis_hook": {
+  "prosthesis_hook": {
     "name": "Hook hand",
+    "type_name": "prosthesis_hand",
     "required": [
       "male"
     ],
@@ -1158,8 +1169,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-prostheses-prosthesis_peg_leg": {
+  "prosthesis_peg_leg": {
     "name": "Peg leg",
+    "type_name": "prosthesis_leg",
     "required": [
       "male"
     ],
@@ -1220,8 +1232,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-wheelchair-wheelchair": {
+  "wheelchair": {
     "name": "Wheelchair",
+    "type_name": "wheelchair",
     "required": [
       "male",
       "female",
@@ -1317,8 +1330,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-tails-tail_wolf": {
+  "tail_wolf": {
     "name": "Wolf Tail",
+    "type_name": "tail",
     "required": [
       "male",
       "female",
@@ -1464,8 +1478,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-tails-tail_wolf_fluffy": {
+  "tail_wolf_fluffy": {
     "name": "Fluffy Wolf Tail",
+    "type_name": "tail",
     "required": [
       "male",
       "female",
@@ -1611,8 +1626,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-tails-tail_cat": {
+  "tail_cat": {
     "name": "Cat Tail",
+    "type_name": "tail",
     "required": [
       "male",
       "female",
@@ -1758,8 +1774,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-tails-tail_lizard_alt": {
+  "tail_lizard_alt": {
     "name": "Lizard Tail (Alt Colors)",
+    "type_name": "tail",
     "required": [
       "male",
       "female",
@@ -1907,8 +1924,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-wings-wings_feathered": {
+  "wings_feathered": {
     "name": "Feathered Wings",
+    "type_name": "wings",
     "required": [
       "male",
       "female",
@@ -2038,8 +2056,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-wings-wings_bat": {
+  "wings_bat": {
     "name": "Bat Wings",
+    "type_name": "wings",
     "required": [
       "male",
       "female",
@@ -2179,8 +2198,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-wings-wings_lizard_alt": {
+  "wings_lizard_alt": {
     "name": "Lizard Wings (Alt Colors)",
+    "type_name": "wings",
     "required": [
       "male",
       "female",
@@ -2323,8 +2343,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-wings-monarch wings-wings_monarch": {
+  "wings_monarch": {
     "name": "Monarch Wings",
+    "type_name": "wings",
     "required": [
       "male",
       "female",
@@ -2453,8 +2474,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-wings-monarch wings-wings_monarch_edge": {
+  "wings_monarch_edge": {
     "name": "Monarch Wings Edge",
+    "type_name": "wings_edge",
     "required": [
       "male",
       "female",
@@ -2583,8 +2605,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-wings-monarch wings-wings_monarch_dots": {
+  "wings_monarch_dots": {
     "name": "Monarch Wings Dots",
+    "type_name": "wings_dots",
     "required": [
       "male",
       "female",
@@ -2713,8 +2736,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-wings-pixie wings-wings_pixie": {
+  "wings_pixie": {
     "name": "Pixie Wings",
+    "type_name": "wings",
     "required": [
       "male",
       "female",
@@ -2842,8 +2866,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-wings-pixie wings-wings_pixie_transparent": {
+  "wings_pixie_transparent": {
     "name": "Transparent Pixie Wings",
+    "type_name": "wings",
     "required": [
       "male",
       "female",
@@ -2971,8 +2996,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-wings-wings_lunar": {
+  "wings_lunar": {
     "name": "Lunar Wings",
+    "type_name": "wings",
     "required": [
       "male",
       "female",
@@ -3099,8 +3125,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-wings-dragonfly wings-wings_dragonfly": {
+  "wings_dragonfly": {
     "name": "Dragonfly Wings",
+    "type_name": "wings",
     "required": [
       "male",
       "female",
@@ -3228,8 +3255,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-wings-dragonfly wings-wings_dragonfly_transparent": {
+  "wings_dragonfly_transparent": {
     "name": "Transparent Dragonfly Wings",
+    "type_name": "wings",
     "required": [
       "male",
       "female",
@@ -3357,8 +3385,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-lizard-wings_lizard": {
+  "wings_lizard": {
     "name": "Lizard Wings",
+    "type_name": "wings",
     "required": [
       "male",
       "female",
@@ -3489,8 +3518,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-lizard-wings_lizard_bat": {
+  "wings_lizard_bat": {
     "name": "Batlike Lizard Wings",
+    "type_name": "wings",
     "required": [
       "male",
       "female",
@@ -3607,8 +3637,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "body-lizard-tail_lizard": {
+  "tail_lizard": {
     "name": "Lizard tail",
+    "type_name": "tail",
     "required": [
       "male",
       "female",
@@ -3744,8 +3775,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_human_child": {
+  "heads_human_child": {
     "name": "Human child",
+    "type_name": "head",
     "required": [
       "child"
     ],
@@ -3843,8 +3875,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_human_female": {
+  "heads_human_female": {
     "name": "Human female",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -3970,8 +4003,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_human_male": {
+  "heads_human_male": {
     "name": "Human male",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -4096,8 +4130,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_human_female_elderly": {
+  "heads_human_female_elderly": {
     "name": "Human female elderly",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -4217,8 +4252,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_human_male_elderly": {
+  "heads_human_male_elderly": {
     "name": "Human male elderly",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -4338,8 +4374,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_human_male_plump": {
+  "heads_human_male_plump": {
     "name": "Human male plump",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -4457,8 +4494,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_human_male_gaunt": {
+  "heads_human_male_gaunt": {
     "name": "Human male gaunt",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -4582,8 +4620,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_human_male_small": {
+  "heads_human_male_small": {
     "name": "Human male small",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -4699,8 +4738,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_human_female_small": {
+  "heads_human_female_small": {
     "name": "Human female small",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -4816,8 +4856,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_human_elderly_small": {
+  "heads_human_elderly_small": {
     "name": "Human elderly small",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -4933,8 +4974,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_boarman": {
+  "heads_boarman": {
     "name": "Boarman",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -5054,8 +5096,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_boarman_child": {
+  "heads_boarman_child": {
     "name": "Boarman child",
+    "type_name": "head",
     "required": [
       "child"
     ],
@@ -5153,8 +5196,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_pig": {
+  "heads_pig": {
     "name": "Pig",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -5272,8 +5316,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_pig_child": {
+  "heads_pig_child": {
     "name": "Pig child",
+    "type_name": "head",
     "required": [
       "child"
     ],
@@ -5367,8 +5412,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_sheep": {
+  "heads_sheep": {
     "name": "Sheep",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -5486,8 +5532,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_sheep_child": {
+  "heads_sheep_child": {
     "name": "Sheep child",
+    "type_name": "head",
     "required": [
       "child"
     ],
@@ -5581,8 +5628,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_minotaur": {
+  "heads_minotaur": {
     "name": "Minotaur",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -5702,8 +5750,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_minotaur_female": {
+  "heads_minotaur_female": {
     "name": "Minotaur female",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -5823,8 +5872,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_minotaur_child": {
+  "heads_minotaur_child": {
     "name": "Minotaur child",
+    "type_name": "head",
     "required": [
       "child"
     ],
@@ -5922,8 +5972,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_wartotaur": {
+  "heads_wartotaur": {
     "name": "Wartotaur",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -6043,8 +6094,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_wolf_child": {
+  "heads_wolf_child": {
     "name": "Wolf child",
+    "type_name": "head",
     "required": [
       "child"
     ],
@@ -6143,8 +6195,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_wolf_female": {
+  "heads_wolf_female": {
     "name": "Wolf female",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -6267,8 +6320,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_wolf_male": {
+  "heads_wolf_male": {
     "name": "Wolf male",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -6391,8 +6445,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_rabbit": {
+  "heads_rabbit": {
     "name": "Rabbit",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -6516,8 +6571,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_rabbit_child": {
+  "heads_rabbit_child": {
     "name": "Rabbit child",
+    "type_name": "head",
     "required": [
       "child"
     ],
@@ -6613,8 +6669,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_rat": {
+  "heads_rat": {
     "name": "Rat",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -6738,8 +6795,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_rat_child": {
+  "heads_rat_child": {
     "name": "Rat child",
+    "type_name": "head",
     "required": [
       "child"
     ],
@@ -6835,8 +6893,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_mouse": {
+  "heads_mouse": {
     "name": "Mouse",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -6959,8 +7018,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_mouse_child": {
+  "heads_mouse_child": {
     "name": "Mouse child",
+    "type_name": "head",
     "required": [
       "child"
     ],
@@ -7056,8 +7116,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_lizard_child": {
+  "heads_lizard_child": {
     "name": "Lizard child",
+    "type_name": "head",
     "required": [
       "child"
     ],
@@ -7146,8 +7207,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_lizard_female": {
+  "heads_lizard_female": {
     "name": "Lizard female",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -7264,8 +7326,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_lizard_male": {
+  "heads_lizard_male": {
     "name": "Lizard male",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -7382,8 +7445,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_orc_child": {
+  "heads_orc_child": {
     "name": "Orc child",
+    "type_name": "head",
     "required": [
       "child"
     ],
@@ -7481,8 +7545,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_orc_female": {
+  "heads_orc_female": {
     "name": "Orc female",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -7602,8 +7667,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_orc_male": {
+  "heads_orc_male": {
     "name": "Orc male",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -7731,8 +7797,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_goblin": {
+  "heads_goblin": {
     "name": "Goblin",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -7863,8 +7930,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_goblin_child": {
+  "heads_goblin_child": {
     "name": "Goblin child",
+    "type_name": "head",
     "required": [
       "child"
     ],
@@ -7963,8 +8031,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_alien": {
+  "heads_alien": {
     "name": "Alien",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -8087,8 +8156,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_troll": {
+  "heads_troll": {
     "name": "Troll",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -8202,8 +8272,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_troll_child": {
+  "heads_troll_child": {
     "name": "Troll child",
+    "type_name": "head",
     "required": [
       "child"
     ],
@@ -8297,8 +8368,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_skeleton": {
+  "heads_skeleton": {
     "name": "Skeleton",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -8404,8 +8476,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_zombie": {
+  "heads_zombie": {
     "name": "Zombie",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -8526,8 +8599,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_jack": {
+  "heads_jack": {
     "name": "Jack O Lantern",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -8623,8 +8697,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_vampire": {
+  "heads_vampire": {
     "name": "Vampire",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -8748,8 +8823,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-heads-heads_frankenstein": {
+  "heads_frankenstein": {
     "name": "Frankenstein",
+    "type_name": "head",
     "required": [
       "male",
       "female",
@@ -8873,8 +8949,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-face-face_neutral": {
+  "face_neutral": {
     "name": "Neutral",
+    "type_name": "expression",
     "required": [
       "male",
       "female",
@@ -9041,8 +9118,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-face-face_closing": {
+  "face_closing": {
     "name": "Closing Eyes",
+    "type_name": "expression",
     "required": [
       "male",
       "female",
@@ -9204,8 +9282,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-face-face_closed": {
+  "face_closed": {
     "name": "Closed Eyes",
+    "type_name": "expression",
     "required": [
       "male",
       "female",
@@ -9367,8 +9446,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-face-face_look_r": {
+  "face_look_r": {
     "name": "Looking Right",
+    "type_name": "expression",
     "required": [
       "male",
       "female",
@@ -9530,8 +9610,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-face-face_look_l": {
+  "face_look_l": {
     "name": "Looking Left",
+    "type_name": "expression",
     "required": [
       "male",
       "female",
@@ -9693,8 +9774,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-face-face_eyeroll": {
+  "face_eyeroll": {
     "name": "Rolling Eyes",
+    "type_name": "expression",
     "required": [
       "male",
       "female",
@@ -9856,8 +9938,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-face-face_shock": {
+  "face_shock": {
     "name": "Shock",
+    "type_name": "expression",
     "required": [
       "male",
       "female",
@@ -10019,8 +10102,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-face-face_angry": {
+  "face_angry": {
     "name": "Angry",
+    "type_name": "expression",
     "required": [
       "male",
       "female",
@@ -10182,8 +10266,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-face-face_angry2": {
+  "face_angry2": {
     "name": "Angry Alt",
+    "type_name": "expression",
     "required": [
       "male",
       "female",
@@ -10304,8 +10389,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-face-face_sad": {
+  "face_sad": {
     "name": "Sad",
+    "type_name": "expression",
     "required": [
       "male",
       "female",
@@ -10467,8 +10553,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-face-face_sad2": {
+  "face_sad2": {
     "name": "Sad Alt",
+    "type_name": "expression",
     "required": [
       "male",
       "female",
@@ -10590,8 +10677,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-face-face_happy": {
+  "face_happy": {
     "name": "Happy",
+    "type_name": "expression",
     "required": [
       "male",
       "female",
@@ -10753,8 +10841,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-face-face_happy2": {
+  "face_happy2": {
     "name": "Happy Alt",
+    "type_name": "expression",
     "required": [
       "male",
       "female",
@@ -10875,8 +10964,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-face-face_blush": {
+  "face_blush": {
     "name": "Blush",
+    "type_name": "expression",
     "required": [
       "male",
       "female",
@@ -11038,8 +11128,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-face-face_shame": {
+  "face_shame": {
     "name": "Shame",
+    "type_name": "expression",
     "required": [
       "male",
       "female",
@@ -11201,8 +11292,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-face-face_tears": {
+  "face_tears": {
     "name": "Tears",
+    "type_name": "expression_crying",
     "required": [
       "male",
       "female",
@@ -11302,8 +11394,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-eye_color": {
+  "eye_color": {
     "name": "Eye Color",
+    "type_name": "eye_color",
     "required": [
       "male",
       "female",
@@ -11469,8 +11562,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-other eyes-eyes_child": {
+  "eyes_child": {
     "name": "Child Eyes",
+    "type_name": "eyes",
     "required": [
       "child"
     ],
@@ -11538,8 +11632,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-other eyes-eyes_cyclops": {
+  "eyes_cyclops": {
     "name": "Cyclops Eyes",
+    "type_name": "eyes",
     "required": [
       "male",
       "female",
@@ -11639,8 +11734,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-ears-head_ears_big": {
+  "head_ears_big": {
     "name": "Big ears",
+    "type_name": "ears",
     "required": [
       "male",
       "female",
@@ -11764,8 +11860,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-ears-head_ears_elven": {
+  "head_ears_elven": {
     "name": "Elven ears",
+    "type_name": "ears",
     "required": [
       "male",
       "female",
@@ -11890,8 +11987,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-ears-head_ears_long": {
+  "head_ears_long": {
     "name": "Long ears",
+    "type_name": "ears",
     "required": [
       "male",
       "female",
@@ -12020,8 +12118,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-ears-head_ears_medium": {
+  "head_ears_medium": {
     "name": "Medium Elven Ears",
+    "type_name": "ears",
     "required": [
       "male",
       "female",
@@ -12147,8 +12246,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-ears-head_ears_hang": {
+  "head_ears_hang": {
     "name": "Hanging Elven Ears",
+    "type_name": "ears",
     "required": [
       "male",
       "female",
@@ -12274,8 +12374,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-ears-head_ears_down": {
+  "head_ears_down": {
     "name": "Downward Elven Ears",
+    "type_name": "ears",
     "required": [
       "male",
       "female",
@@ -12401,8 +12502,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-ears-head_ears_dragon": {
+  "head_ears_dragon": {
     "name": "Dragon Ears",
+    "type_name": "ears",
     "required": [
       "male",
       "female",
@@ -12528,8 +12630,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-furry ears-top ears-head_ears_cat": {
+  "head_ears_cat": {
     "name": "Cat Ears",
+    "type_name": "furry_ears",
     "required": [
       "male",
       "female",
@@ -12676,8 +12779,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-furry ears-top ears-head_ears_cat_skin": {
+  "head_ears_cat_skin": {
     "name": "Cat Ears Skintone",
+    "type_name": "furry_ears_skin",
     "required": [
       "male",
       "female",
@@ -12813,8 +12917,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-furry ears-top ears-head_ears_wolf": {
+  "head_ears_wolf": {
     "name": "Wolf Ears",
+    "type_name": "furry_ears",
     "required": [
       "male",
       "female",
@@ -12961,8 +13066,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-furry ears-top ears-head_ears_wolf_skin": {
+  "head_ears_wolf_skin": {
     "name": "Wolf Ears Skintone",
+    "type_name": "furry_ears_skin",
     "required": [
       "male",
       "female",
@@ -13098,8 +13204,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-furry ears-side ears-head_ears_lykon": {
+  "head_ears_lykon": {
     "name": "Side Wolf Ears",
+    "type_name": "ears",
     "required": [
       "male",
       "female",
@@ -13237,8 +13344,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-furry ears-side ears-head_ears_lykon_skin": {
+  "head_ears_lykon_skin": {
     "name": "Side Wolf Ears Skintone",
+    "type_name": "ears_inner",
     "required": [
       "male",
       "female",
@@ -13365,8 +13473,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-furry ears-side ears-head_ears_zabos": {
+  "head_ears_zabos": {
     "name": "Side Cat Ears",
+    "type_name": "ears",
     "required": [
       "male",
       "female",
@@ -13504,8 +13613,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-furry ears-side ears-head_ears_zabos_skin": {
+  "head_ears_zabos_skin": {
     "name": "Side Cat Ears Skintone",
+    "type_name": "ears_inner",
     "required": [
       "male",
       "female",
@@ -13632,8 +13742,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-furry ears-side ears-head_ears_avyon": {
+  "head_ears_avyon": {
     "name": "Feather Ears",
+    "type_name": "ears",
     "required": [
       "male",
       "female",
@@ -13771,8 +13882,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-furry ears-side ears-head_ears_avyon_skin": {
+  "head_ears_avyon_skin": {
     "name": "Feather Ears Skintone",
+    "type_name": "ears_inner",
     "required": [
       "male",
       "female",
@@ -13899,8 +14011,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-nose-head_nose_big": {
+  "head_nose_big": {
     "name": "Big nose",
+    "type_name": "nose",
     "required": [
       "male",
       "female",
@@ -14015,8 +14128,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-nose-head_nose_button": {
+  "head_nose_button": {
     "name": "Button nose",
+    "type_name": "nose",
     "required": [
       "male",
       "female",
@@ -14131,8 +14245,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-nose-head_nose_straight": {
+  "head_nose_straight": {
     "name": "Straight nose",
+    "type_name": "nose",
     "required": [
       "male",
       "female",
@@ -14247,8 +14362,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-nose-head_nose_elderly": {
+  "head_nose_elderly": {
     "name": "Elderly nose",
+    "type_name": "nose",
     "required": [
       "male",
       "female",
@@ -14355,8 +14471,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-nose-head_nose_large": {
+  "head_nose_large": {
     "name": "Large nose",
+    "type_name": "nose",
     "required": [
       "male",
       "female",
@@ -14464,8 +14581,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-eyebrows-eyebrows_thick": {
+  "eyebrows_thick": {
     "name": "Thick Eyebrows",
+    "type_name": "eyebrows",
     "required": [
       "male",
       "female",
@@ -14582,8 +14700,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-eyebrows-eyebrows_thin": {
+  "eyebrows_thin": {
     "name": "Thin Eyebrows",
+    "type_name": "eyebrows",
     "required": [
       "male",
       "female",
@@ -14700,8 +14819,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-head_wrinkles": {
+  "head_wrinkles": {
     "name": "Wrinkles",
+    "type_name": "wrinkes",
     "required": [
       "male",
       "female",
@@ -14805,8 +14925,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-beards-beards_beard": {
+  "beards_beard": {
     "name": "Basic Beard",
+    "type_name": "beard",
     "required": [
       "male",
       "female",
@@ -14924,8 +15045,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-beards-beards_winter": {
+  "beards_winter": {
     "name": "Winter Beard",
+    "type_name": "beard",
     "required": [
       "male",
       "female",
@@ -15036,8 +15158,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-beards-beards_5oclock_shadow": {
+  "beards_5oclock_shadow": {
     "name": "5 O'clock Shadow",
+    "type_name": "beard",
     "required": [
       "male",
       "female",
@@ -15156,8 +15279,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-beards-beards_trimmed": {
+  "beards_trimmed": {
     "name": "Trimmed Beard",
+    "type_name": "beard",
     "required": [
       "male",
       "female",
@@ -15269,8 +15393,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-beards-beards_medium": {
+  "beards_medium": {
     "name": "Medium Beard",
+    "type_name": "beard",
     "required": [
       "male",
       "female",
@@ -15382,8 +15507,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-mustaches-beards_bigstache": {
+  "beards_bigstache": {
     "name": "Big Mustache",
+    "type_name": "mustache",
     "required": [
       "male",
       "female",
@@ -15502,8 +15628,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-mustaches-beards_mustache": {
+  "beards_mustache": {
     "name": "Mustache",
+    "type_name": "mustache",
     "required": [
       "male",
       "female",
@@ -15621,8 +15748,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-mustaches-beards_french": {
+  "beards_french": {
     "name": "French Mustache",
+    "type_name": "mustache",
     "required": [
       "male",
       "female",
@@ -15741,8 +15869,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-mustaches-beards_walrus": {
+  "beards_walrus": {
     "name": "Walrus Mustache",
+    "type_name": "mustache",
     "required": [
       "male",
       "female",
@@ -15854,8 +15983,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-mustaches-beards_chevron": {
+  "beards_chevron": {
     "name": "Chevron Mustache",
+    "type_name": "mustache",
     "required": [
       "male",
       "female",
@@ -15967,8 +16097,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-mustaches-beards_handlebar": {
+  "beards_handlebar": {
     "name": "Handlebar Mustache",
+    "type_name": "mustache",
     "required": [
       "male",
       "female",
@@ -16080,8 +16211,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-mustaches-beards_lampshade": {
+  "beards_lampshade": {
     "name": "Lampshade Mustache",
+    "type_name": "mustache",
     "required": [
       "male",
       "female",
@@ -16193,8 +16325,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-mustaches-beards_horseshoe": {
+  "beards_horseshoe": {
     "name": "Horseshoe Mustache",
+    "type_name": "mustache",
     "required": [
       "male",
       "female",
@@ -16306,8 +16439,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-bangs-hairext_braidl": {
+  "hairext_braidl": {
     "name": "Left Braid",
+    "type_name": "hairextl",
     "required": [
       "male",
       "female",
@@ -16446,8 +16580,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-bangs-hairext_braidr": {
+  "hairext_braidr": {
     "name": "Right Braid",
+    "type_name": "hairextr",
     "required": [
       "male",
       "female",
@@ -16586,8 +16721,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-bangs-hairext_xlong_bangl": {
+  "hairext_xlong_bangl": {
     "name": "Left XLong Bang",
+    "type_name": "hairextl",
     "required": [
       "male",
       "female",
@@ -16720,8 +16856,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-bangs-hairext_xlong_bangr": {
+  "hairext_xlong_bangr": {
     "name": "Right XLong Bang",
+    "type_name": "hairextr",
     "required": [
       "male",
       "female",
@@ -16854,8 +16991,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-bangs-hairext_xlong_braidl": {
+  "hairext_xlong_braidl": {
     "name": "Left XLong Braid",
+    "type_name": "hairextl",
     "required": [
       "male",
       "female",
@@ -16997,8 +17135,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-bangs-hairext_xlong_braidr": {
+  "hairext_xlong_braidr": {
     "name": "Right XLong Braid",
+    "type_name": "hairextr",
     "required": [
       "male",
       "female",
@@ -17140,8 +17279,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-bangs-hairext_long_straightl": {
+  "hairext_long_straightl": {
     "name": "Left Long Straight",
+    "type_name": "hairextl",
     "required": [
       "male",
       "female",
@@ -17266,8 +17406,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-bangs-hairext_long_straightr": {
+  "hairext_long_straightr": {
     "name": "Right Long Straight",
+    "type_name": "hairextr",
     "required": [
       "male",
       "female",
@@ -17392,8 +17533,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-bangs-hairext_long_wavyl": {
+  "hairext_long_wavyl": {
     "name": "Left Long Wavy",
+    "type_name": "hairextl",
     "required": [
       "male",
       "female",
@@ -17518,8 +17660,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-bangs-hairext_long_wavyr": {
+  "hairext_long_wavyr": {
     "name": "Right Long Wavy",
+    "type_name": "hairextr",
     "required": [
       "male",
       "female",
@@ -17644,8 +17787,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-bangs-hairext_xlong_wavyl": {
+  "hairext_xlong_wavyl": {
     "name": "Left XLong Wavy",
+    "type_name": "hairextl",
     "required": [
       "male",
       "female",
@@ -17770,8 +17914,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-bangs-hairext_xlong_wavyr": {
+  "hairext_xlong_wavyr": {
     "name": "Right XLong Wavy",
+    "type_name": "hairextr",
     "required": [
       "male",
       "female",
@@ -17896,8 +18041,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-bangs-hairext_xlong_curlyl": {
+  "hairext_xlong_curlyl": {
     "name": "Left XLong Curly",
+    "type_name": "hairextl",
     "required": [
       "male",
       "female",
@@ -18022,8 +18168,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-bangs-hairext_xlong_curlyr": {
+  "hairext_xlong_curlyr": {
     "name": "Right XLong Curly",
+    "type_name": "hairextr",
     "required": [
       "male",
       "female",
@@ -18148,8 +18295,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-ponytails-hairext_topknot_short": {
+  "hairext_topknot_short": {
     "name": "Short Topknot",
+    "type_name": "ponytail",
     "required": [
       "male",
       "female",
@@ -18288,8 +18436,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-ponytails-hairext_topknot_long": {
+  "hairext_topknot_long": {
     "name": "Long Topknot",
+    "type_name": "ponytail",
     "required": [
       "male",
       "female",
@@ -18437,8 +18586,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-ponytails-hairext_topknot_relm": {
+  "hairext_topknot_relm": {
     "name": "Relm Topknot",
+    "type_name": "ponytail",
     "required": [
       "male",
       "female",
@@ -18572,8 +18722,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-knot / ties-hairext_high_bun": {
+  "hairext_high_bun": {
     "name": "High Bun",
+    "type_name": "updo",
     "required": [
       "male",
       "female",
@@ -18686,8 +18837,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-hair_afro": {
+  "hair_afro": {
     "name": "Afro",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -18800,8 +18952,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-hair_natural": {
+  "hair_natural": {
     "name": "Natural",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -18917,8 +19070,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-hair_dreadlocks_short": {
+  "hair_dreadlocks_short": {
     "name": "Dreadlocks short",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -19034,8 +19188,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-hair_twists_fade": {
+  "hair_twists_fade": {
     "name": "Twists fade",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -19148,8 +19303,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-hair_twists_straight": {
+  "hair_twists_straight": {
     "name": "Twists straight",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -19262,8 +19418,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-hair_dreadlocks_long": {
+  "hair_dreadlocks_long": {
     "name": "Dreadlocks long",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -19376,8 +19533,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-hair_flat_top_straight": {
+  "hair_flat_top_straight": {
     "name": "Flat top straight",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -19493,8 +19651,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-hair_flat_top_fade": {
+  "hair_flat_top_fade": {
     "name": "Flat top fade",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -19610,8 +19769,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-hair_cornrows": {
+  "hair_cornrows": {
     "name": "Cornrows",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -19727,8 +19887,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-hair_jewfro": {
+  "hair_jewfro": {
     "name": "Jewfro",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -19869,8 +20030,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-hair_curly_short": {
+  "hair_curly_short": {
     "name": "Curly short",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -19985,8 +20147,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-hair_curly_long": {
+  "hair_curly_long": {
     "name": "Curly long",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -20100,8 +20263,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-hair_curls_large": {
+  "hair_curls_large": {
     "name": "Large Curls",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -20235,8 +20399,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-hair_curls_large_xlong": {
+  "hair_curls_large_xlong": {
     "name": "Large Curls XLong",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -20370,8 +20535,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-hair_balding": {
+  "hair_balding": {
     "name": "Balding",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -20486,8 +20652,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-hair_longhawk": {
+  "hair_longhawk": {
     "name": "Longhawk",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -20610,8 +20777,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-hair_shorthawk": {
+  "hair_shorthawk": {
     "name": "Shorthawk",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -20734,8 +20902,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-hair_high_and_tight": {
+  "hair_high_and_tight": {
     "name": "High and tight",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -20858,8 +21027,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-hair_buzzcut": {
+  "hair_buzzcut": {
     "name": "Buzzcut",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -20974,8 +21144,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_plain": {
+  "hair_plain": {
     "name": "Plain",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -21107,8 +21278,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_pixie": {
+  "hair_pixie": {
     "name": "Pixie",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -21232,8 +21404,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_page": {
+  "hair_page": {
     "name": "Page",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -21363,8 +21536,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_page2": {
+  "hair_page2": {
     "name": "Page2",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -21496,8 +21670,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_idol": {
+  "hair_idol": {
     "name": "Idol",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -21617,8 +21792,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_mop": {
+  "hair_mop": {
     "name": "Mop",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -21742,8 +21918,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_parted": {
+  "hair_parted": {
     "name": "Parted",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -21869,8 +22046,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_parted2": {
+  "hair_parted2": {
     "name": "Parted 2",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -21994,8 +22172,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_parted3": {
+  "hair_parted3": {
     "name": "Parted 3",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -22112,8 +22291,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_parted_side_bangs": {
+  "hair_parted_side_bangs": {
     "name": "Side Parted w/Bangs",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -22256,8 +22436,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_parted_side_bangs2": {
+  "hair_parted_side_bangs2": {
     "name": "Side Parted w/Bangs 2",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -22400,8 +22581,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_messy1": {
+  "hair_messy1": {
     "name": "Messy1",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -22525,8 +22707,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_messy2": {
+  "hair_messy2": {
     "name": "Messy2",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -22650,8 +22833,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_messy3": {
+  "hair_messy3": {
     "name": "Messy3",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -22769,8 +22953,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_bedhead": {
+  "hair_bedhead": {
     "name": "Bedhead",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -22894,8 +23079,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_unkempt": {
+  "hair_unkempt": {
     "name": "Unkempt",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -23019,8 +23205,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_bangs": {
+  "hair_bangs": {
     "name": "Bangs",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -23144,8 +23331,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_bangsshort": {
+  "hair_bangsshort": {
     "name": "Bangsshort",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -23269,8 +23457,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_swoop": {
+  "hair_swoop": {
     "name": "Swoop",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -23394,8 +23583,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_swoop_side": {
+  "hair_swoop_side": {
     "name": "Side Swoop",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -23538,8 +23728,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_curtains": {
+  "hair_curtains": {
     "name": "Curtains",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -23669,8 +23860,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_single": {
+  "hair_single": {
     "name": "Single",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -23814,8 +24006,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_cowlick": {
+  "hair_cowlick": {
     "name": "Cowlick",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -23934,8 +24127,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_cowlick_tall": {
+  "hair_cowlick_tall": {
     "name": "Cowlick tall",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -24053,8 +24247,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-hair_spiked_porcupine": {
+  "hair_spiked_porcupine": {
     "name": "Spiked porcupine",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -24173,8 +24368,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-hair_spiked_liberty2": {
+  "hair_spiked_liberty2": {
     "name": "Spiked liberty2",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -24293,8 +24489,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-hair_spiked_liberty": {
+  "hair_spiked_liberty": {
     "name": "Spiked liberty",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -24413,8 +24610,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-hair_spiked_beehive": {
+  "hair_spiked_beehive": {
     "name": "Spiked beehive",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -24533,8 +24731,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-hair_spiked": {
+  "hair_spiked": {
     "name": "Spiked",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -24652,8 +24851,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-hair_spiked2": {
+  "hair_spiked2": {
     "name": "Spiked2",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -24772,8 +24972,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-hair_halfmessy": {
+  "hair_halfmessy": {
     "name": "Halfmessy",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -24910,8 +25111,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-hair_bunches": {
+  "hair_bunches": {
     "name": "Bunches",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -25047,8 +25249,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-hair_pigtails": {
+  "hair_pigtails": {
     "name": "Pigtails",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -25174,8 +25377,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-hair_pigtails_bangs": {
+  "hair_pigtails_bangs": {
     "name": "Pigtails bangs",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -25301,8 +25505,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-hair_bob": {
+  "hair_bob": {
     "name": "Bob",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -25424,8 +25629,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-hair_lob": {
+  "hair_lob": {
     "name": "Lob",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -25544,8 +25750,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-hair_bob_side_part": {
+  "hair_bob_side_part": {
     "name": "Bob side part",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -25669,8 +25876,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-hair_relm_short": {
+  "hair_relm_short": {
     "name": "Relm Short",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -25808,8 +26016,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_half_up": {
+  "hair_half_up": {
     "name": "Half up",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -25929,8 +26138,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_bangs_bun": {
+  "hair_bangs_bun": {
     "name": "Bangs bun",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -26053,8 +26263,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_topknot_short": {
+  "hair_topknot_short": {
     "name": "Short Topknot",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -26226,8 +26437,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_topknot_short2": {
+  "hair_topknot_short2": {
     "name": "Short Topknot 2",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -26399,8 +26611,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_topknot_long": {
+  "hair_topknot_long": {
     "name": "Long Topknot",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -26581,8 +26794,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_topknot_long2": {
+  "hair_topknot_long2": {
     "name": "Long Topknot 2",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -26763,8 +26977,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_ponytail": {
+  "hair_ponytail": {
     "name": "Ponytail",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -26900,8 +27115,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_ponytail2": {
+  "hair_ponytail2": {
     "name": "Ponytail2",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -27045,8 +27261,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_high_ponytail": {
+  "hair_high_ponytail": {
     "name": "High ponytail",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -27177,8 +27394,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_braid": {
+  "hair_braid": {
     "name": "Braid",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -27326,8 +27544,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_braid2": {
+  "hair_braid2": {
     "name": "Braid2",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -27463,8 +27682,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_shoulderl": {
+  "hair_shoulderl": {
     "name": "Shoulderl",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -27608,8 +27828,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_shoulderr": {
+  "hair_shoulderr": {
     "name": "Shoulderr",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -27753,8 +27974,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_long_tied": {
+  "hair_long_tied": {
     "name": "Long tied",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -27886,8 +28108,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_relm_ponytail": {
+  "hair_relm_ponytail": {
     "name": "Relm w/Ponytail",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -28045,8 +28268,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_loose": {
+  "hair_loose": {
     "name": "Loose",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -28175,8 +28399,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_bangslong": {
+  "hair_bangslong": {
     "name": "Bangslong",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -28305,8 +28530,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_bangslong2": {
+  "hair_bangslong2": {
     "name": "Bangslong2",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -28445,8 +28671,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_long": {
+  "hair_long": {
     "name": "Long",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -28575,8 +28802,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_long_messy": {
+  "hair_long_messy": {
     "name": "Long messy",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -28711,8 +28939,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_long_messy2": {
+  "hair_long_messy2": {
     "name": "Long messy2",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -28841,8 +29070,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_curtains_long": {
+  "hair_curtains_long": {
     "name": "Curtains long",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -28977,8 +29207,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_wavy": {
+  "hair_wavy": {
     "name": "Wavy",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -29127,8 +29358,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_wavy_child": {
+  "hair_wavy_child": {
     "name": "Child Wavy",
+    "type_name": "hair",
     "required": [
       "child"
     ],
@@ -29225,8 +29457,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_long_center_part": {
+  "hair_long_center_part": {
     "name": "Long center part",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -29357,8 +29590,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_long_straight": {
+  "hair_long_straight": {
     "name": "Long straight",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -29483,8 +29717,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-very long-hair_princess": {
+  "hair_princess": {
     "name": "Princess",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -29628,8 +29863,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-very long-hair_sara": {
+  "hair_sara": {
     "name": "Sara",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -29770,8 +30006,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-very long-hair_long_band": {
+  "hair_long_band": {
     "name": "Long band",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -29903,8 +30140,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-very long-hair_xlong": {
+  "hair_xlong": {
     "name": "Xlong",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -30054,8 +30292,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-very long-hair_xlong_wavy": {
+  "hair_xlong_wavy": {
     "name": "XLong Wavy",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -30186,8 +30425,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-very long-hair_relm_xlong": {
+  "hair_relm_xlong": {
     "name": "Relm XLong",
+    "type_name": "hair",
     "required": [
       "male",
       "female",
@@ -30329,8 +30569,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-appendages-head_horns_backwards": {
+  "head_horns_backwards": {
     "name": "Backwards Horns",
+    "type_name": "horns",
     "required": [
       "male",
       "female",
@@ -30511,8 +30752,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-appendages-head_horns_curled": {
+  "head_horns_curled": {
     "name": "Curled Horns",
+    "type_name": "horns",
     "required": [
       "male",
       "female",
@@ -30684,8 +30926,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-appendages-head_fins_fin": {
+  "head_fins_fin": {
     "name": "Fin",
+    "type_name": "fins",
     "required": [
       "male",
       "female",
@@ -30823,8 +31066,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-appendages-head_fins_fin_short": {
+  "head_fins_fin_short": {
     "name": "Short fin",
+    "type_name": "fins",
     "required": [
       "male",
       "female",
@@ -30962,8 +31206,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-hoods-hat_hood_cloth": {
+  "hat_hood_cloth": {
     "name": "Hood",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -31101,8 +31346,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-hoods-hat_hood_sack_cloth": {
+  "hat_hood_sack_cloth": {
     "name": "Sack Cloth Hood",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -31238,8 +31484,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-hoods-hat_hood_hijab": {
+  "hat_hood_hijab": {
     "name": "Hijab",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -31362,8 +31609,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-hoods-hat_helmet_mail": {
+  "hat_helmet_mail": {
     "name": "Mail",
+    "type_name": "bandana",
     "required": [
       "male",
       "female",
@@ -31483,8 +31731,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-bandanas-hat_bandana": {
+  "hat_bandana": {
     "name": "Bandana",
+    "type_name": "bandana",
     "required": [
       "male",
       "female",
@@ -31619,8 +31868,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-bandanas-hat_bandana2": {
+  "hat_bandana2": {
     "name": "Bordered Bandana",
+    "type_name": "bandana",
     "required": [
       "male",
       "female",
@@ -31753,8 +32003,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-bandanas-hat_bandana_pirate": {
+  "hat_bandana_pirate": {
     "name": "Pirate Bandana",
+    "type_name": "bandana",
     "required": [
       "male",
       "female",
@@ -31878,8 +32129,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-bandanas-hat_bandana_pirate_skull": {
+  "hat_bandana_pirate_skull": {
     "name": "Skull Bandana Overlay",
+    "type_name": "bandana_overlay",
     "required": [
       "male",
       "female",
@@ -32003,8 +32255,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-headbands-hat_headband_kerchief": {
+  "hat_headband_kerchief": {
     "name": "Kerchief",
+    "type_name": "headcover",
     "required": [
       "male",
       "female",
@@ -32147,8 +32400,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-headbands-hat_headband_tied": {
+  "hat_headband_tied": {
     "name": "Tied Headband",
+    "type_name": "headcover",
     "required": [
       "male",
       "female",
@@ -32282,8 +32536,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-headbands-hat_headband_thick": {
+  "hat_headband_thick": {
     "name": "Thick Headband",
+    "type_name": "headcover",
     "required": [
       "male",
       "female",
@@ -32424,8 +32679,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-headbands-hat_headband_thick_rune": {
+  "hat_headband_thick_rune": {
     "name": "Thick Headband Rune",
+    "type_name": "headcover_rune",
     "required": [
       "male",
       "female",
@@ -32566,8 +32822,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-headbands-hat_headband_hairtie": {
+  "hat_headband_hairtie": {
     "name": "Hair Tie",
+    "type_name": "hairtie",
     "required": [
       "male",
       "female",
@@ -32708,8 +32965,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-headbands-hat_headband_hairtie_rune": {
+  "hat_headband_hairtie_rune": {
     "name": "Hair Tie Rune",
+    "type_name": "hairtie_rune",
     "required": [
       "male",
       "female",
@@ -32850,8 +33108,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-caps-hat_cap_leather": {
+  "hat_cap_leather": {
     "name": "Leather Cap",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -32988,8 +33247,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-caps-hat_cap_leather_feather": {
+  "hat_cap_leather_feather": {
     "name": "Leather Cap Feather",
+    "type_name": "hat_accessory",
     "required": [
       "male",
       "female",
@@ -33125,8 +33385,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-caps-hat_cap_bonnie": {
+  "hat_cap_bonnie": {
     "name": "Bonnie",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -33249,8 +33510,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-caps-hat_cap_bonnie_tilt": {
+  "hat_cap_bonnie_tilt": {
     "name": "Bonnie Alt Tilt",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -33373,8 +33635,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-caps-hat_cap_bonnie_feather": {
+  "hat_cap_bonnie_feather": {
     "name": "Bonnie feather",
+    "type_name": "hat_accessory",
     "required": [
       "male",
       "female",
@@ -33497,8 +33760,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-caps-hat_cap_cavalier": {
+  "hat_cap_cavalier": {
     "name": "Cavalier",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -33621,8 +33885,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-caps-hat_cap_cavalier_feather": {
+  "hat_cap_cavalier_feather": {
     "name": "Cavalier feather",
+    "type_name": "hat_accessory",
     "required": [
       "male",
       "female",
@@ -33745,8 +34010,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-tricorne-basic-hat_tricorne": {
+  "hat_tricorne": {
     "name": "Tricorne",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -33872,8 +34138,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-tricorne-basic-hat_tricorne_stitched": {
+  "hat_tricorne_stitched": {
     "name": "Tricorne Stitching",
+    "type_name": "hat_trim",
     "required": [
       "male",
       "female",
@@ -34002,8 +34269,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-tricorne-basic-hat_tricorne_thatch": {
+  "hat_tricorne_thatch": {
     "name": "Tricorne Thatching",
+    "type_name": "hat_trim",
     "required": [
       "male",
       "female",
@@ -34132,8 +34400,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-tricorne-lieutenant-hat_tricorne_lieutenant": {
+  "hat_tricorne_lieutenant": {
     "name": "Tricorne Lieutenant",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -34259,8 +34528,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-tricorne-lieutenant-hat_tricorne_lieutenant_trim": {
+  "hat_tricorne_lieutenant_trim": {
     "name": "Tricorne Lieutenant Trim",
+    "type_name": "hat_trim",
     "required": [
       "male",
       "female",
@@ -34397,8 +34667,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-tricorne-captain-hat_tricorne_captain": {
+  "hat_tricorne_captain": {
     "name": "Tricorne Captain",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -34524,8 +34795,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-tricorne-captain-hat_tricorne_captain_trim": {
+  "hat_tricorne_captain_trim": {
     "name": "Tricorne Captain Trim",
+    "type_name": "hat_trim",
     "required": [
       "male",
       "female",
@@ -34662,8 +34934,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-tricorne-captain-hat_tricorne_captain_skull": {
+  "hat_tricorne_captain_skull": {
     "name": "Tricorne Captain Skull",
+    "type_name": "hat_overlay",
     "required": [
       "male",
       "female",
@@ -34786,8 +35059,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne athwart-basic-hat_bicorne_athwart_basic": {
+  "hat_bicorne_athwart_basic": {
     "name": "Bicorne Athwart",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -34910,8 +35184,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne athwart-basic-hat_bicorne_athwart_basic_skull": {
+  "hat_bicorne_athwart_basic_skull": {
     "name": "Bicorne Athwart Skull",
+    "type_name": "hat_overlay",
     "required": [
       "male",
       "female",
@@ -35035,8 +35310,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne athwart-captain-hat_bicorne_athwart_captain": {
+  "hat_bicorne_athwart_captain": {
     "name": "Bicorne Athwart Captain",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -35160,8 +35436,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne athwart-captain-hat_bicorne_athwart_captain_skull": {
+  "hat_bicorne_athwart_captain_skull": {
     "name": "Bicorne Athwart Captain Skull",
+    "type_name": "hat_overlay",
     "required": [
       "male",
       "female",
@@ -35285,8 +35562,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne athwart-admiral-hat_bicorne_athwart_admiral": {
+  "hat_bicorne_athwart_admiral": {
     "name": "Bicorne Athwart Admiral",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -35414,8 +35692,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne athwart-admiral-hat_bicorne_athwart_admiral_trim": {
+  "hat_bicorne_athwart_admiral_trim": {
     "name": "Bicorne Athwart Admiral Trim",
+    "type_name": "hat_trim",
     "required": [
       "male",
       "female",
@@ -35554,8 +35833,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne athwart-admiral-hat_bicorne_athwart_admiral_cockade": {
+  "hat_bicorne_athwart_admiral_cockade": {
     "name": "Bicorne Athwart Admiral Cockade",
+    "type_name": "hat_accessory",
     "required": [
       "male",
       "female",
@@ -35679,8 +35959,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne athwart-commodore-hat_bicorne_athwart_commodore": {
+  "hat_bicorne_athwart_commodore": {
     "name": "Bicorne Athwart Commodore",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -35804,8 +36085,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne athwart-commodore-hat_bicorne_athwart_commodore_trim": {
+  "hat_bicorne_athwart_commodore_trim": {
     "name": "Bicorne Athwart Commodore Trim",
+    "type_name": "hat_trim",
     "required": [
       "male",
       "female",
@@ -35938,8 +36220,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne foreaft-hat_bicorne_foreaft": {
+  "hat_bicorne_foreaft": {
     "name": "Bicorne foreaft",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -36062,8 +36345,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne foreaft-hat_bicorne_foreaft_commodore": {
+  "hat_bicorne_foreaft_commodore": {
     "name": "Bicorne Foreaft Commodore",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -36190,8 +36474,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne foreaft-hat_bicorne_foreaft_commodore_trim": {
+  "hat_bicorne_foreaft_commodore_trim": {
     "name": "Bicorne Foreaft Commodore Trim",
+    "type_name": "hat_trim",
     "required": [
       "male",
       "female",
@@ -36329,8 +36614,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-magic-hat_magic_large": {
+  "hat_magic_large": {
     "name": "Large Hat",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -36432,8 +36718,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-magic-wizard-hat_magic_wizard": {
+  "hat_magic_wizard": {
     "name": "Wizard Hat Base",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -36580,8 +36867,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-magic-wizard-hat_magic_wizard_belt": {
+  "hat_magic_wizard_belt": {
     "name": "Wizard Hat Belt",
+    "type_name": "hat_trim",
     "required": [
       "male",
       "female",
@@ -36730,8 +37018,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-magic-wizard-hat_magic_wizard_buckle": {
+  "hat_magic_wizard_buckle": {
     "name": "Wizard Hat Buckle",
+    "type_name": "hat_buckle",
     "required": [
       "male",
       "female",
@@ -36858,8 +37147,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-magic-celestial-hat_magic_celestial": {
+  "hat_magic_celestial": {
     "name": "Celestial Wizard Hat",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -36987,8 +37277,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-magic-celestial-hat_magic_celestial_trim": {
+  "hat_magic_celestial_trim": {
     "name": "Celestial Wizard Hat Second Color",
+    "type_name": "hat_trim",
     "required": [
       "male",
       "female",
@@ -37127,8 +37418,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-magic-celestial-hat_magic_celestial_moon": {
+  "hat_magic_celestial_moon": {
     "name": "Celestial Wizard Moon Hat",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -37256,8 +37548,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-magic-celestial-hat_magic_celestial_moon_trim": {
+  "hat_magic_celestial_moon_trim": {
     "name": "Celestial Wizard Moon Hat Second Color",
+    "type_name": "hat_trim",
     "required": [
       "male",
       "female",
@@ -37395,8 +37688,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-formal-hat_formal_tophat": {
+  "hat_formal_tophat": {
     "name": "Formal Tophat",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -37526,8 +37820,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-formal-hat_formal_bowler": {
+  "hat_formal_bowler": {
     "name": "Formal Bowler Hat",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -37657,8 +37952,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-formal-hat_formal_crown": {
+  "hat_formal_crown": {
     "name": "Crown",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -37800,8 +38096,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-formal-hat_formal_tiara": {
+  "hat_formal_tiara": {
     "name": "Tiara",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -37942,8 +38239,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-holiday-hat_holiday_christmas": {
+  "hat_holiday_christmas": {
     "name": "Christmas Hat",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -38075,8 +38373,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-holiday-hat_holiday_santa": {
+  "hat_holiday_santa": {
     "name": "Santa Trim",
+    "type_name": "hat_trim",
     "required": [
       "male",
       "female",
@@ -38210,8 +38509,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-holiday-hat_holiday_elf": {
+  "hat_holiday_elf": {
     "name": "Elf Trim",
+    "type_name": "hat_trim",
     "required": [
       "male",
       "female",
@@ -38345,8 +38645,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_armet": {
+  "hat_helmet_armet": {
     "name": "Armet",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -38465,8 +38766,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_armet_simple": {
+  "hat_helmet_armet_simple": {
     "name": "Simple Armet",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -38585,8 +38887,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_barbarian": {
+  "hat_helmet_barbarian": {
     "name": "Barbarian",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -38716,8 +39019,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_barbarian_nasal": {
+  "hat_helmet_barbarian_nasal": {
     "name": "Barbarian nasal",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -38847,8 +39151,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_barbarian_viking": {
+  "hat_helmet_barbarian_viking": {
     "name": "Barbarian Viking",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -38978,8 +39283,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_barbuta": {
+  "hat_helmet_barbuta": {
     "name": "Barbuta",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -39109,8 +39415,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_barbuta_simple": {
+  "hat_helmet_barbuta_simple": {
     "name": "Simple barbuta",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -39240,8 +39547,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_bascinet": {
+  "hat_helmet_bascinet": {
     "name": "Bascinet",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -39368,8 +39676,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_bascinet_round": {
+  "hat_helmet_bascinet_round": {
     "name": "Round bascinet",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -39497,8 +39806,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_close": {
+  "hat_helmet_close": {
     "name": "Close helm",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -39628,8 +39938,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_flattop": {
+  "hat_helmet_flattop": {
     "name": "Flattop",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -39759,8 +40070,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_greathelm": {
+  "hat_helmet_greathelm": {
     "name": "Greathelm",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -39890,8 +40202,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_horned": {
+  "hat_helmet_horned": {
     "name": "Horned helmet",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -40010,8 +40323,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_kettle": {
+  "hat_helmet_kettle": {
     "name": "Kettle helm",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -40122,8 +40436,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_legion": {
+  "hat_helmet_legion": {
     "name": "Legion",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -40251,8 +40566,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_maximus": {
+  "hat_helmet_maximus": {
     "name": "Maximus",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -40382,8 +40698,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_morion": {
+  "hat_helmet_morion": {
     "name": "Morion",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -40508,8 +40825,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_nasal": {
+  "hat_helmet_nasal": {
     "name": "Nasal helm",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -40639,8 +40957,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_norman": {
+  "hat_helmet_norman": {
     "name": "Norman helm",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -40765,8 +41084,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_pointed": {
+  "hat_helmet_pointed": {
     "name": "Pointed helm",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -40896,8 +41216,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_spangenhelm": {
+  "hat_helmet_spangenhelm": {
     "name": "Spangenhelm",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -41027,8 +41348,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_spangenhelm_viking": {
+  "hat_helmet_spangenhelm_viking": {
     "name": "Viking spangenhelm",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -41158,8 +41480,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_sugarloaf": {
+  "hat_helmet_sugarloaf": {
     "name": "Sugarloaf greathelm",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -41289,8 +41612,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_sugarloaf_simple": {
+  "hat_helmet_sugarloaf_simple": {
     "name": "Simple sugarloaf helm",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -41420,8 +41744,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_xeon": {
+  "hat_helmet_xeon": {
     "name": "Xeon helmet",
+    "type_name": "hat",
     "required": [
       "male",
       "female",
@@ -41527,8 +41852,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-visors-hat_visor_grated": {
+  "hat_visor_grated": {
     "name": "Grated visor",
+    "type_name": "visor",
     "required": [
       "male",
       "female",
@@ -41658,8 +41984,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-visors-hat_visor_grated_narrow": {
+  "hat_visor_grated_narrow": {
     "name": "Narrow grated visor",
+    "type_name": "visor",
     "required": [
       "male",
       "female",
@@ -41789,8 +42116,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-visors-hat_visor_horned": {
+  "hat_visor_horned": {
     "name": "Horned visor",
+    "type_name": "visor",
     "required": [
       "male",
       "female",
@@ -41909,8 +42237,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-visors-hat_visor_pigface": {
+  "hat_visor_pigface": {
     "name": "Pigface visor",
+    "type_name": "visor",
     "required": [
       "male",
       "female",
@@ -42037,8 +42366,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-visors-hat_visor_pigface_raised": {
+  "hat_visor_pigface_raised": {
     "name": "Pigface visor raised",
+    "type_name": "visor",
     "required": [
       "male",
       "female",
@@ -42165,8 +42495,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-visors-hat_visor_round": {
+  "hat_visor_round": {
     "name": "Round visor",
+    "type_name": "visor",
     "required": [
       "male",
       "female",
@@ -42293,8 +42624,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-visors-hat_visor_round_raised": {
+  "hat_visor_round_raised": {
     "name": "Round visor raised",
+    "type_name": "visor",
     "required": [
       "male",
       "female",
@@ -42421,8 +42753,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-visors-hat_visor_slit": {
+  "hat_visor_slit": {
     "name": "Slit visor",
+    "type_name": "visor",
     "required": [
       "male",
       "female",
@@ -42541,8 +42874,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-visors-hat_visor_slit_narrow": {
+  "hat_visor_slit_narrow": {
     "name": "Narrow slit visor",
+    "type_name": "visor",
     "required": [
       "male",
       "female",
@@ -42661,8 +42995,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmet accessories-hat_accessory_crest": {
+  "hat_accessory_crest": {
     "name": "Crest",
+    "type_name": "accessory",
     "required": [
       "male",
       "female",
@@ -42768,8 +43103,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmet accessories-hat_accessory_crest_centurion": {
+  "hat_accessory_crest_centurion": {
     "name": "Centurion Crest",
+    "type_name": "accessory",
     "required": [
       "male",
       "female",
@@ -42878,8 +43214,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmet accessories-hat_accessory_wings": {
+  "hat_accessory_wings": {
     "name": "Helmet wings",
+    "type_name": "accessory",
     "required": [
       "male",
       "female",
@@ -43014,8 +43351,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmet accessories-hat_accessory_horns_short": {
+  "hat_accessory_horns_short": {
     "name": "Short Horns",
+    "type_name": "accessory",
     "required": [
       "male",
       "female",
@@ -43147,8 +43485,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmet accessories-hat_accessory_horns_upward": {
+  "hat_accessory_horns_upward": {
     "name": "Upward Horns",
+    "type_name": "accessory",
     "required": [
       "male",
       "female",
@@ -43280,8 +43619,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmet accessories-hat_accessory_horns_downward": {
+  "hat_accessory_horns_downward": {
     "name": "Downward Horns",
+    "type_name": "accessory",
     "required": [
       "male",
       "female",
@@ -43413,8 +43753,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmet accessories-hat_accessory_plumage": {
+  "hat_accessory_plumage": {
     "name": "Plumage",
+    "type_name": "accessory",
     "required": [
       "male",
       "female",
@@ -43554,8 +43895,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmet accessories-hat_accessory_plumage_centurion": {
+  "hat_accessory_plumage_centurion": {
     "name": "Centurion Plumage",
+    "type_name": "accessory",
     "required": [
       "male",
       "female",
@@ -43680,8 +44022,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmet accessories-hat_accessory_plumage_legion": {
+  "hat_accessory_plumage_legion": {
     "name": "Legion Plumage",
+    "type_name": "accessory",
     "required": [
       "male",
       "female",
@@ -43826,8 +44169,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-glasses-facial_glasses": {
+  "facial_glasses": {
     "name": "Glasses",
+    "type_name": "facial_eyes",
     "required": [
       "male",
       "female",
@@ -43962,8 +44306,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-glasses-facial_glasses_halfmoon": {
+  "facial_glasses_halfmoon": {
     "name": "Halfmoon Glasses",
+    "type_name": "facial_eyes",
     "required": [
       "male",
       "female",
@@ -44098,8 +44443,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-glasses-facial_glasses_nerd": {
+  "facial_glasses_nerd": {
     "name": "Nerd Glasses",
+    "type_name": "facial_eyes",
     "required": [
       "male",
       "female",
@@ -44242,8 +44588,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-glasses-facial_glasses_shades": {
+  "facial_glasses_shades": {
     "name": "Shades",
+    "type_name": "facial_eyes",
     "required": [
       "male",
       "female",
@@ -44387,8 +44734,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-glasses-facial_glasses_secretary": {
+  "facial_glasses_secretary": {
     "name": "Secretary Glasses",
+    "type_name": "facial_eyes",
     "required": [
       "male",
       "female",
@@ -44531,8 +44879,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-glasses-facial_glasses_round": {
+  "facial_glasses_round": {
     "name": "Round Glasses",
+    "type_name": "facial_eyes",
     "required": [
       "male",
       "female",
@@ -44678,8 +45027,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-glasses-facial_glasses_sunglasses": {
+  "facial_glasses_sunglasses": {
     "name": "Sunglasses",
+    "type_name": "facial_eyes",
     "required": [
       "male",
       "female",
@@ -44825,8 +45175,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-monocle-facial_monocle_left": {
+  "facial_monocle_left": {
     "name": "Left Monocle",
+    "type_name": "facial_left",
     "required": [
       "male",
       "female",
@@ -44951,8 +45302,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-monocle-facial_monocle_left_frame": {
+  "facial_monocle_left_frame": {
     "name": "Left Monocle Frame Color",
+    "type_name": "facial_left_trim",
     "required": [
       "male",
       "female",
@@ -45103,8 +45455,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-monocle-facial_monocle_right": {
+  "facial_monocle_right": {
     "name": "Right Monocle",
+    "type_name": "facial_right",
     "required": [
       "male",
       "female",
@@ -45229,8 +45582,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-monocle-facial_monocle_right_frame": {
+  "facial_monocle_right_frame": {
     "name": "Right Monocle Frame Color",
+    "type_name": "facial_right_trim",
     "required": [
       "male",
       "female",
@@ -45381,8 +45735,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-eyepatches-facial_eyepatch_ambi": {
+  "facial_eyepatch_ambi": {
     "name": "Eyepatch Ambidextrous",
+    "type_name": "facial_eyes",
     "required": [
       "male",
       "female",
@@ -45517,8 +45872,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-eyepatches-facial_eyepatch_left": {
+  "facial_eyepatch_left": {
     "name": "Eyepatch Left",
+    "type_name": "facial_eyes",
     "required": [
       "male",
       "female",
@@ -45653,8 +46009,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-eyepatches-facial_eyepatch_right": {
+  "facial_eyepatch_right": {
     "name": "Eyepatch Right",
+    "type_name": "facial_eyes",
     "required": [
       "male",
       "female",
@@ -45789,8 +46146,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-eyepatches-facial_eyepatch2_left": {
+  "facial_eyepatch2_left": {
     "name": "Eyepatch 2 Left",
+    "type_name": "facial_eyes",
     "required": [
       "male",
       "female",
@@ -45917,8 +46275,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-eyepatches-facial_eyepatch2_right": {
+  "facial_eyepatch2_right": {
     "name": "Eyepatch 2 Right",
+    "type_name": "facial_eyes",
     "required": [
       "male",
       "female",
@@ -46045,8 +46404,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-eyepatches-facial_eyepatch_small_left": {
+  "facial_eyepatch_small_left": {
     "name": "Small Eyepatch Left",
+    "type_name": "facial_eyes",
     "required": [
       "male",
       "female",
@@ -46182,8 +46542,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-eyepatches-facial_eyepatch_small_right": {
+  "facial_eyepatch_small_right": {
     "name": "Small Eyepatch Right",
+    "type_name": "facial_eyes",
     "required": [
       "male",
       "female",
@@ -46319,8 +46680,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-facial_mask_plain": {
+  "facial_mask_plain": {
     "name": "Plain Mask",
+    "type_name": "facial_mask",
     "required": [
       "male",
       "female",
@@ -46477,8 +46839,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-earrings-facial_earring_left": {
+  "facial_earring_left": {
     "name": "Simple Earring Left",
+    "type_name": "earring_left",
     "required": [
       "male",
       "female",
@@ -46613,8 +46976,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-earrings-facial_earring_right": {
+  "facial_earring_right": {
     "name": "Simple Earring Right",
+    "type_name": "earring_right",
     "required": [
       "male",
       "female",
@@ -46749,8 +47113,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-earrings-facial_earrings_emerald": {
+  "facial_earrings_emerald": {
     "name": "Emerald earrings",
+    "type_name": "earrings",
     "required": [
       "male",
       "female",
@@ -46843,8 +47208,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-earrings-facial_earrings_moon": {
+  "facial_earrings_moon": {
     "name": "Moon earrings",
+    "type_name": "earrings",
     "required": [
       "male",
       "female",
@@ -46939,8 +47305,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-earrings-facial_earrings_pear": {
+  "facial_earrings_pear": {
     "name": "Pear earrings",
+    "type_name": "earrings",
     "required": [
       "male",
       "female",
@@ -47033,8 +47400,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-earrings-facial_earrings_princess": {
+  "facial_earrings_princess": {
     "name": "Princess earrings",
+    "type_name": "earrings",
     "required": [
       "male",
       "female",
@@ -47127,8 +47495,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-earrings-facial_earrings_stud": {
+  "facial_earrings_stud": {
     "name": "Stud earrings",
+    "type_name": "earrings",
     "required": [
       "male",
       "female",
@@ -47223,8 +47592,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_bowtie": {
+  "neck_bowtie": {
     "name": "Bowtie",
+    "type_name": "neck",
     "required": [
       "male",
       "female",
@@ -47356,8 +47726,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_bowtie2": {
+  "neck_bowtie2": {
     "name": "Bowtie 2",
+    "type_name": "neck",
     "required": [
       "male",
       "female",
@@ -47479,8 +47850,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_necktie": {
+  "neck_necktie": {
     "name": "Necktie",
+    "type_name": "neck",
     "required": [
       "male",
       "female",
@@ -47612,8 +47984,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_scarf": {
+  "neck_scarf": {
     "name": "Scarf",
+    "type_name": "neck",
     "required": [
       "male",
       "female",
@@ -47725,8 +48098,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_capeclip": {
+  "neck_capeclip": {
     "name": "Capeclip",
+    "type_name": "neck",
     "required": [
       "male",
       "female",
@@ -47850,8 +48224,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_capetie": {
+  "neck_capetie": {
     "name": "Capetie",
+    "type_name": "neck",
     "required": [
       "male",
       "female",
@@ -47974,8 +48349,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_jabot": {
+  "neck_jabot": {
     "name": "Jabot",
+    "type_name": "neck",
     "required": [
       "male",
       "female",
@@ -48079,8 +48455,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_cravat": {
+  "neck_cravat": {
     "name": "Cravat",
+    "type_name": "neck",
     "required": [
       "male",
       "female",
@@ -48184,8 +48561,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_necklace": {
+  "neck_necklace": {
     "name": "Necklace",
+    "type_name": "necklace",
     "required": [
       "male",
       "female",
@@ -48288,8 +48666,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_necklace_simple": {
+  "neck_necklace_simple": {
     "name": "Simple Necklace",
+    "type_name": "necklace",
     "required": [
       "male",
       "female",
@@ -48383,8 +48762,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_necklace_chain": {
+  "neck_necklace_chain": {
     "name": "Chain Necklace",
+    "type_name": "necklace",
     "required": [
       "male",
       "female",
@@ -48478,8 +48858,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_necklace_beaded_small": {
+  "neck_necklace_beaded_small": {
     "name": "Small Beaded Necklace",
+    "type_name": "necklace",
     "required": [
       "male",
       "female",
@@ -48573,8 +48954,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_necklace_beaded_large": {
+  "neck_necklace_beaded_large": {
     "name": "Large Beaded Necklace",
+    "type_name": "necklace",
     "required": [
       "male",
       "female",
@@ -48668,8 +49050,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_charm_box": {
+  "neck_charm_box": {
     "name": "Box Charm",
+    "type_name": "charm",
     "required": [
       "male",
       "female",
@@ -48764,8 +49147,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_charm_oval": {
+  "neck_charm_oval": {
     "name": "Oval Charm",
+    "type_name": "charm",
     "required": [
       "male",
       "female",
@@ -48860,8 +49244,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_charm_ring": {
+  "neck_charm_ring": {
     "name": "Ring Charm",
+    "type_name": "charm",
     "required": [
       "male",
       "female",
@@ -48956,8 +49341,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_charm_star": {
+  "neck_charm_star": {
     "name": "Star Charm",
+    "type_name": "charm",
     "required": [
       "male",
       "female",
@@ -49052,8 +49438,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_gem_emerald": {
+  "neck_gem_emerald": {
     "name": "Emerald cut Gem",
+    "type_name": "charm",
     "required": [
       "male",
       "female",
@@ -49146,8 +49533,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_gem_marquise": {
+  "neck_gem_marquise": {
     "name": "Marquise cut Gem",
+    "type_name": "charm",
     "required": [
       "male",
       "female",
@@ -49240,8 +49628,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_gem_natural": {
+  "neck_gem_natural": {
     "name": "Natural cut Gem",
+    "type_name": "charm",
     "required": [
       "male",
       "female",
@@ -49334,8 +49723,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_gem_pear": {
+  "neck_gem_pear": {
     "name": "Pear cut Gem",
+    "type_name": "charm",
     "required": [
       "male",
       "female",
@@ -49428,8 +49818,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_gem_pearl": {
+  "neck_gem_pearl": {
     "name": "Pearl Gem",
+    "type_name": "charm",
     "required": [
       "male",
       "female",
@@ -49522,8 +49913,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_gem_princess": {
+  "neck_gem_princess": {
     "name": "Princess cut Gem",
+    "type_name": "charm",
     "required": [
       "male",
       "female",
@@ -49616,8 +50008,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_gem_round": {
+  "neck_gem_round": {
     "name": "Round cut Gem",
+    "type_name": "charm",
     "required": [
       "male",
       "female",
@@ -49710,8 +50103,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_gem_trilliant": {
+  "neck_gem_trilliant": {
     "name": "Trilliant cut Gem",
+    "type_name": "charm",
     "required": [
       "male",
       "female",
@@ -49804,8 +50198,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_amulet_cross": {
+  "neck_amulet_cross": {
     "name": "Cross amulet",
+    "type_name": "charm",
     "required": [
       "male",
       "female",
@@ -49940,8 +50335,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_amulet_dangle": {
+  "neck_amulet_dangle": {
     "name": "Dangling amulet",
+    "type_name": "charm",
     "required": [
       "male",
       "female",
@@ -50079,8 +50475,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_amulet_spider": {
+  "neck_amulet_spider": {
     "name": "Spider amulet",
+    "type_name": "charm",
     "required": [
       "male",
       "female",
@@ -50215,8 +50612,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "arms-shoulders-shoulders_legion": {
+  "shoulders_legion": {
     "name": "Legion",
+    "type_name": "shoulders",
     "required": [
       "male",
       "female",
@@ -50304,8 +50702,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "arms-shoulders-shoulders_plate": {
+  "shoulders_plate": {
     "name": "Plate",
+    "type_name": "shoulders",
     "required": [
       "male",
       "female",
@@ -50414,8 +50813,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "arms-shoulders-shoulders_leather": {
+  "shoulders_leather": {
     "name": "Leather",
+    "type_name": "shoulders",
     "required": [
       "male",
       "female",
@@ -50521,8 +50921,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "arms-shoulders-shoulders_epaulets": {
+  "shoulders_epaulets": {
     "name": "Epaulets",
+    "type_name": "shoulders",
     "required": [
       "male"
     ],
@@ -50584,8 +50985,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "arms-shoulders-shoulders_mantal": {
+  "shoulders_mantal": {
     "name": "Mantal",
+    "type_name": "shoulders",
     "required": [
       "male"
     ],
@@ -50664,8 +51066,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "arms-arms_armour": {
+  "arms_armour": {
     "name": "Armour",
+    "type_name": "arms",
     "required": [
       "male",
       "female",
@@ -50781,8 +51184,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "arms-bauldron": {
+  "bauldron": {
     "name": "Bauldron",
+    "type_name": "bauldron",
     "required": [
       "male",
       "female",
@@ -50881,8 +51285,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "arms-wrists-arms_bracers": {
+  "arms_bracers": {
     "name": "Bracers",
+    "type_name": "bracers",
     "required": [
       "male",
       "female",
@@ -50971,8 +51376,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "arms-wrists-wrists_cuffs": {
+  "wrists_cuffs": {
     "name": "Cuffs",
+    "type_name": "wrists",
     "required": [
       "male"
     ],
@@ -51051,8 +51457,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "arms-wrists-wrists_cuffs_lace": {
+  "wrists_cuffs_lace": {
     "name": "Lace Cuffs",
+    "type_name": "wrists",
     "required": [
       "male"
     ],
@@ -51114,8 +51521,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "arms-arms_gloves": {
+  "arms_gloves": {
     "name": "Gloves",
+    "type_name": "gloves",
     "required": [
       "male",
       "female",
@@ -51267,8 +51675,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "arms-arms_hands_ring_stud": {
+  "arms_hands_ring_stud": {
     "name": "Stud Ring",
+    "type_name": "ring",
     "required": [
       "male",
       "female",
@@ -51348,8 +51757,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-dresses-dress_sash": {
+  "dress_sash": {
     "name": "Sash dress",
+    "type_name": "dress",
     "required": [
       "female"
     ],
@@ -51433,8 +51843,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-dresses-dress_slit": {
+  "dress_slit": {
     "name": "Slit dress",
+    "type_name": "dress",
     "required": [
       "female"
     ],
@@ -51522,8 +51933,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-dresses-dress_bodice": {
+  "dress_bodice": {
     "name": "Bodice",
+    "type_name": "vest",
     "required": [
       "female"
     ],
@@ -51610,8 +52022,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-dresses-kimono-dress_kimono": {
+  "dress_kimono": {
     "name": "Kimono",
+    "type_name": "dress",
     "required": [
       "female",
       "teen"
@@ -51708,8 +52121,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-dresses-kimono-dress_kimono_trim": {
+  "dress_kimono_trim": {
     "name": "Kimono Trim",
+    "type_name": "dress_trim",
     "required": [
       "female",
       "teen"
@@ -51807,8 +52221,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-dresses-kimono-dress_kimono_split": {
+  "dress_kimono_split": {
     "name": "Split Kimono",
+    "type_name": "dress",
     "required": [
       "female",
       "teen"
@@ -51905,8 +52320,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-dresses-kimono-dress_kimono_split_trim": {
+  "dress_kimono_split_trim": {
     "name": "Split Kimono Trim",
+    "type_name": "dress_trim",
     "required": [
       "female",
       "teen"
@@ -52004,8 +52420,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-dresses-kimono-dress_kimono_longsleeve": {
+  "dress_kimono_longsleeve": {
     "name": "Kimono Sleeves",
+    "type_name": "dress_sleeves",
     "required": [
       "female",
       "teen"
@@ -52107,8 +52524,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-dresses-kimono-dress_kimono_longsleeve_trim": {
+  "dress_kimono_longsleeve_trim": {
     "name": "Kimono Sleeves Trim",
+    "type_name": "dress_sleeves_trim",
     "required": [
       "female",
       "teen"
@@ -52211,8 +52629,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-dresses-kimono-dress_kimono_oversize": {
+  "dress_kimono_oversize": {
     "name": "Kimono Oversized Sleeves",
+    "type_name": "dress_sleeves",
     "required": [
       "female",
       "teen"
@@ -52314,8 +52733,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-dresses-kimono-dress_kimono_oversize_trim": {
+  "dress_kimono_oversize_trim": {
     "name": "Kimono Oversized Sleeves Trim",
+    "type_name": "dress_sleeves_trim",
     "required": [
       "female",
       "teen"
@@ -52418,8 +52838,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-torso_clothes_child_shirt": {
+  "torso_clothes_child_shirt": {
     "name": "Child shirts",
+    "type_name": "clothes",
     "required": [
       "child"
     ],
@@ -52482,8 +52903,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-sleeves-torso_clothes_shortsleeves": {
+  "torso_clothes_shortsleeves": {
     "name": "Original Shortsleeves Overlay",
+    "type_name": "sleeves",
     "required": [
       "male",
       "female",
@@ -52645,8 +53067,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-sleeves-torso_clothes_shortsleeves2": {
+  "torso_clothes_shortsleeves2": {
     "name": "Shortsleeves 2 Overlay",
+    "type_name": "sleeves",
     "required": [
       "male",
       "female",
@@ -52752,8 +53175,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-sleeves-torso_clothes_longsleeves": {
+  "torso_clothes_longsleeves": {
     "name": "Original Longsleeves Overlay",
+    "type_name": "sleeves",
     "required": [
       "male",
       "female",
@@ -52915,8 +53339,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-sleeves-torso_clothes_longsleeves2": {
+  "torso_clothes_longsleeves2": {
     "name": "Longsleeves 2 Overlay",
+    "type_name": "sleeves",
     "required": [
       "male",
       "female",
@@ -53022,8 +53447,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-sleeves-torso_clothes_longsleeves_cuffed": {
+  "torso_clothes_longsleeves_cuffed": {
     "name": "Cuffed Longsleeves Overlay",
+    "type_name": "sleeves",
     "required": [
       "male",
       "female",
@@ -53129,8 +53555,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-longsleeve-torso_clothes_longsleeve": {
+  "torso_clothes_longsleeve": {
     "name": "Longsleeve",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -53321,8 +53748,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-longsleeve-torso_clothes_longsleeve_scoop": {
+  "torso_clothes_longsleeve_scoop": {
     "name": "Scoop",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -53510,8 +53938,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-longsleeve-torso_clothes_longsleeve_formal": {
+  "torso_clothes_longsleeve_formal": {
     "name": "Collared/Formal Longsleeve",
+    "type_name": "clothes",
     "required": [
       "male"
     ],
@@ -53576,8 +54005,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-longsleeve-torso_clothes_longsleeve_formal_striped": {
+  "torso_clothes_longsleeve_formal_striped": {
     "name": "Striped Collared/Formal Longsleeve",
+    "type_name": "clothes",
     "required": [
       "male"
     ],
@@ -53641,8 +54071,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-longsleeve-torso_clothes_longsleeve_laced": {
+  "torso_clothes_longsleeve_laced": {
     "name": "Longsleeve laced",
+    "type_name": "clothes",
     "required": [
       "male"
     ],
@@ -53728,8 +54159,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-longsleeve-torso_clothes_longsleeve2": {
+  "torso_clothes_longsleeve2": {
     "name": "Longsleeve 2",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -53835,8 +54267,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-longsleeve-torso_clothes_longsleeve2_vneck": {
+  "torso_clothes_longsleeve2_vneck": {
     "name": "Longsleeve 2 VNeck",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -53942,8 +54375,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-longsleeve-torso_clothes_longsleeve2_scoop": {
+  "torso_clothes_longsleeve2_scoop": {
     "name": "Longsleeve 2 Scoop",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -54049,8 +54483,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-longsleeve-torso_clothes_longsleeve2_buttoned": {
+  "torso_clothes_longsleeve2_buttoned": {
     "name": "Longsleeve 2 Buttoned",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -54156,8 +54591,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-longsleeve-torso_clothes_longsleeve2_polo": {
+  "torso_clothes_longsleeve2_polo": {
     "name": "Longsleeve Polo",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -54263,8 +54699,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-longsleeve-torso_clothes_longsleeve2_cardigan": {
+  "torso_clothes_longsleeve2_cardigan": {
     "name": "Cardigan",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -54370,8 +54807,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-shortsleeve-torso_clothes_shortsleeve": {
+  "torso_clothes_shortsleeve": {
     "name": "Shortsleeve",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -54564,8 +55002,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-shortsleeve-torso_clothes_shortsleeve_polo": {
+  "torso_clothes_shortsleeve_polo": {
     "name": "Shortsleeve Polo",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -54671,8 +55110,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-shortsleeve-torso_clothes_shortsleeve_cardigan": {
+  "torso_clothes_shortsleeve_cardigan": {
     "name": "Shortsleeve Cardigan",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -54777,8 +55217,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-shortsleeve-torso_clothes_tshirt": {
+  "torso_clothes_tshirt": {
     "name": "TShirt",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -54884,8 +55325,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-shortsleeve-torso_clothes_tshirt_vneck": {
+  "torso_clothes_tshirt_vneck": {
     "name": "TShirt VNeck",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -54991,8 +55433,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-shortsleeve-torso_clothes_tshirt_scoop": {
+  "torso_clothes_tshirt_scoop": {
     "name": "TShirt Scoop",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -55098,8 +55541,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-shortsleeve-torso_clothes_tshirt_buttoned": {
+  "torso_clothes_tshirt_buttoned": {
     "name": "TShirt Buttoned",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -55205,8 +55649,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-sleeveless-torso_clothes_sleeveless": {
+  "torso_clothes_sleeveless": {
     "name": "Sleeveless",
+    "type_name": "clothes",
     "required": [
       "male",
       "female"
@@ -55329,8 +55774,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-sleeveless-torso_clothes_sleeveless_laced": {
+  "torso_clothes_sleeveless_laced": {
     "name": "Sleeveless laced",
+    "type_name": "clothes",
     "required": [
       "male"
     ],
@@ -55423,8 +55869,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-sleeveless-torso_clothes_sleeveless_striped": {
+  "torso_clothes_sleeveless_striped": {
     "name": "Sleeveless striped",
+    "type_name": "clothes",
     "required": [
       "male"
     ],
@@ -55517,8 +55964,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-sleeveless-torso_clothes_sleeveless_tanktop": {
+  "torso_clothes_sleeveless_tanktop": {
     "name": "Tanktop",
+    "type_name": "clothes",
     "required": [
       "female",
       "pregnant"
@@ -55639,8 +56087,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-sleeveless-torso_clothes_sleeveless1": {
+  "torso_clothes_sleeveless1": {
     "name": "Original Sleeveless",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -55806,8 +56255,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-sleeveless-torso_clothes_sleeveless2": {
+  "torso_clothes_sleeveless2": {
     "name": "Sleeveless 2",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -55913,8 +56363,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-sleeveless-torso_clothes_sleeveless2_vneck": {
+  "torso_clothes_sleeveless2_vneck": {
     "name": "Sleeveless 2 VNeck",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -56020,8 +56471,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-sleeveless-torso_clothes_sleeveless2_scoop": {
+  "torso_clothes_sleeveless2_scoop": {
     "name": "Sleeveless 2 Scoop",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -56127,8 +56579,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-sleeveless-torso_clothes_sleeveless2_buttoned": {
+  "torso_clothes_sleeveless2_buttoned": {
     "name": "Sleeveless 2 Buttoned",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -56234,8 +56687,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-sleeveless-torso_clothes_sleeveless2_polo": {
+  "torso_clothes_sleeveless2_polo": {
     "name": "Sleeveless 2 Polo",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -56341,8 +56795,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-sleeveless-torso_clothes_sleeveless2_cardigan": {
+  "torso_clothes_sleeveless2_cardigan": {
     "name": "Sleeveless 2 Cardigan",
+    "type_name": "clothes",
     "required": [
       "male",
       "female",
@@ -56448,8 +56903,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-torso_clothes_corset": {
+  "torso_clothes_corset": {
     "name": "Corset",
+    "type_name": "vest",
     "required": [
       "female"
     ],
@@ -56529,8 +56985,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-torso_clothes_blouse": {
+  "torso_clothes_blouse": {
     "name": "Blouse",
+    "type_name": "clothes",
     "required": [
       "female"
     ],
@@ -56611,8 +57068,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-torso_clothes_blouse_longsleeve": {
+  "torso_clothes_blouse_longsleeve": {
     "name": "Longsleeve blouse",
+    "type_name": "clothes",
     "required": [
       "female"
     ],
@@ -56693,8 +57151,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-torso_clothes_tunic": {
+  "torso_clothes_tunic": {
     "name": "Tunic",
+    "type_name": "clothes",
     "required": [
       "female"
     ],
@@ -56784,8 +57243,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-torso_clothes_tunic_sara": {
+  "torso_clothes_tunic_sara": {
     "name": "Sara Tunic",
+    "type_name": "clothes",
     "required": [
       "female"
     ],
@@ -56868,8 +57328,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-shirts-torso_clothes_robe": {
+  "torso_clothes_robe": {
     "name": "Robe",
+    "type_name": "clothes",
     "required": [
       "female"
     ],
@@ -56936,8 +57397,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-aprons-torso_aprons_overalls": {
+  "torso_aprons_overalls": {
     "name": "Overalls",
+    "type_name": "overalls",
     "required": [
       "male",
       "female",
@@ -57043,8 +57505,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-aprons-torso_aprons_suspenders": {
+  "torso_aprons_suspenders": {
     "name": "Suspenders",
+    "type_name": "overalls",
     "required": [
       "male",
       "female",
@@ -57155,8 +57618,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-aprons-torso_aprons_apron": {
+  "torso_aprons_apron": {
     "name": "Apron",
+    "type_name": "apron",
     "required": [
       "male",
       "female",
@@ -57257,8 +57721,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-aprons-torso_aprons_apron_half": {
+  "torso_aprons_apron_half": {
     "name": "Apron half",
+    "type_name": "apron",
     "required": [
       "female"
     ],
@@ -57340,8 +57805,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-aprons-torso_aprons_apron_full": {
+  "torso_aprons_apron_full": {
     "name": "Apron full",
+    "type_name": "apron",
     "required": [
       "female"
     ],
@@ -57423,8 +57889,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-torso_bandages": {
+  "torso_bandages": {
     "name": "Bandages",
+    "type_name": "bandages",
     "required": [
       "male",
       "female",
@@ -57501,8 +57968,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-torso_chainmail": {
+  "torso_chainmail": {
     "name": "Chainmail",
+    "type_name": "chainmail",
     "required": [
       "male",
       "female",
@@ -57575,8 +58043,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-jacket-torso_jacket_collared": {
+  "torso_jacket_collared": {
     "name": "Collared coat",
+    "type_name": "jacket",
     "required": [
       "male"
     ],
@@ -57659,8 +58128,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-jacket-torso_jacket_iverness": {
+  "torso_jacket_iverness": {
     "name": "Iverness cloak",
+    "type_name": "jacket",
     "required": [
       "male"
     ],
@@ -57718,8 +58188,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-jacket-torso_jacket_trench": {
+  "torso_jacket_trench": {
     "name": "Trench coat",
+    "type_name": "jacket",
     "required": [
       "male"
     ],
@@ -57778,8 +58249,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-jacket-torso_jacket_tabard": {
+  "torso_jacket_tabard": {
     "name": "Tabard",
+    "type_name": "jacket",
     "required": [
       "male",
       "female",
@@ -57892,8 +58364,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-jacket-torso_jacket_frock": {
+  "torso_jacket_frock": {
     "name": "Frock coat",
+    "type_name": "jacket",
     "required": [
       "male"
     ],
@@ -57972,8 +58445,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-jacket-torso_jacket_santa": {
+  "torso_jacket_santa": {
     "name": "Santa coat",
+    "type_name": "jacket",
     "required": [
       "male"
     ],
@@ -58055,8 +58529,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-jacket-jacket trim-torso_jacket_frock_collar": {
+  "torso_jacket_frock_collar": {
     "name": "Frock collar",
+    "type_name": "jacket_collar",
     "required": [
       "male"
     ],
@@ -58119,8 +58594,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-jacket-jacket trim-torso_jacket_frock_lace": {
+  "torso_jacket_frock_lace": {
     "name": "Frock coat lace",
+    "type_name": "jacket_trim",
     "required": [
       "male"
     ],
@@ -58183,8 +58659,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-jacket-jacket trim-torso_jacket_frock_lapel": {
+  "torso_jacket_frock_lapel": {
     "name": "Frock coat lapel",
+    "type_name": "jacket_trim",
     "required": [
       "male"
     ],
@@ -58247,8 +58724,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-jacket-jacket trim-torso_jacket_frock_buttons": {
+  "torso_jacket_frock_buttons": {
     "name": "Frock coat buttons",
+    "type_name": "jacket_trim",
     "required": [
       "male"
     ],
@@ -58311,8 +58789,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-jacket-jacket trim-torso_jacket_pockets": {
+  "torso_jacket_pockets": {
     "name": "Jacket pockets",
+    "type_name": "jacket_pockets",
     "required": [
       "male"
     ],
@@ -58392,8 +58871,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-vest-torso_clothes_vest": {
+  "torso_clothes_vest": {
     "name": "Vest",
+    "type_name": "vest",
     "required": [
       "male"
     ],
@@ -58516,8 +58996,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-vest-torso_clothes_vest_open": {
+  "torso_clothes_vest_open": {
     "name": "Vest open",
+    "type_name": "vest",
     "required": [
       "male"
     ],
@@ -58602,8 +59083,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-armour-torso_armour_plate": {
+  "torso_armour_plate": {
     "name": "Plate",
+    "type_name": "armour",
     "required": [
       "male",
       "female",
@@ -58735,8 +59217,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-armour-torso_armour_leather": {
+  "torso_armour_leather": {
     "name": "Leather",
+    "type_name": "armour",
     "required": [
       "male",
       "female",
@@ -58853,8 +59336,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-armour-torso_armour_legion": {
+  "torso_armour_legion": {
     "name": "Legion",
+    "type_name": "armour",
     "required": [
       "male",
       "female",
@@ -58951,8 +59435,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-cape-cape_solid": {
+  "cape_solid": {
     "name": "Solid",
+    "type_name": "cape",
     "required": [
       "male",
       "female",
@@ -59094,8 +59579,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-cape-cape_tattered": {
+  "cape_tattered": {
     "name": "Tattered",
+    "type_name": "cape",
     "required": [
       "male",
       "female",
@@ -59236,8 +59722,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-cape-cape_trim": {
+  "cape_trim": {
     "name": "Cape Trim",
+    "type_name": "cape_trim",
     "required": [
       "male",
       "female",
@@ -59355,8 +59842,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-backpack-backpack_straps": {
+  "backpack_straps": {
     "name": "Straps",
+    "type_name": "backpack_straps",
     "required": [
       "male",
       "female",
@@ -59457,8 +59945,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-backpack-backpack": {
+  "backpack": {
     "name": "Backpack",
+    "type_name": "backpack",
     "required": [
       "male",
       "female",
@@ -59557,8 +60046,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-backpack-backpack_squarepack": {
+  "backpack_squarepack": {
     "name": "Square pack",
+    "type_name": "backpack",
     "required": [
       "male",
       "female",
@@ -59656,8 +60146,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-backpack-backpack_jetpack": {
+  "backpack_jetpack": {
     "name": "Jetpack",
+    "type_name": "backpack",
     "required": [
       "male",
       "female",
@@ -59740,8 +60231,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-backpack-backpack_jetpack_fins": {
+  "backpack_jetpack_fins": {
     "name": "Jetpack fins",
+    "type_name": "cargo",
     "required": [
       "male",
       "female",
@@ -59824,8 +60316,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-backpack-backpack_basket": {
+  "backpack_basket": {
     "name": "Basket",
+    "type_name": "backpack",
     "required": [
       "male",
       "female",
@@ -59908,8 +60401,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-backpack-quiver": {
+  "quiver": {
     "name": "Quiver",
+    "type_name": "quiver",
     "required": [
       "male",
       "female",
@@ -59997,8 +60491,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-backpack-backpack cargo-backpack_contents_wood": {
+  "backpack_contents_wood": {
     "name": "Wood",
+    "type_name": "cargo",
     "required": [
       "male",
       "female",
@@ -60090,8 +60585,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-backpack-backpack cargo-backpack_contents_ore": {
+  "backpack_contents_ore": {
     "name": "Ore",
+    "type_name": "cargo",
     "required": [
       "male",
       "female",
@@ -60182,8 +60678,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-waist-belt_leather": {
+  "belt_leather": {
     "name": "Leather Belt",
+    "type_name": "belt",
     "required": [
       "male",
       "female",
@@ -60266,8 +60763,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-waist-belt_double": {
+  "belt_double": {
     "name": "Double Belt",
+    "type_name": "belt",
     "required": [
       "male",
       "female",
@@ -60350,8 +60848,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-waist-belt_loose": {
+  "belt_loose": {
     "name": "Loose Belt",
+    "type_name": "belt",
     "required": [
       "male",
       "female",
@@ -60434,8 +60933,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-waist-belt_belly": {
+  "belt_belly": {
     "name": "Belly belt",
+    "type_name": "belt",
     "required": [
       "male",
       "female",
@@ -60519,8 +61019,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-waist-belt_other_female": {
+  "belt_other_female": {
     "name": "Other belts",
+    "type_name": "belt",
     "required": [
       "female"
     ],
@@ -60633,8 +61134,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-waist-belt_other_male": {
+  "belt_other_male": {
     "name": "Other belts",
+    "type_name": "belt",
     "required": [
       "male"
     ],
@@ -60727,8 +61229,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-waist-belt_sash": {
+  "belt_sash": {
     "name": "Sash",
+    "type_name": "sash",
     "required": [
       "male",
       "female",
@@ -60831,8 +61334,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-waist-belt_sash_narrow": {
+  "belt_sash_narrow": {
     "name": "Narrow sash",
+    "type_name": "sash",
     "required": [
       "male",
       "female",
@@ -60935,8 +61439,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-waist-belt_waistband": {
+  "belt_waistband": {
     "name": "Waistband",
+    "type_name": "sash",
     "required": [
       "female",
       "teen"
@@ -61042,8 +61547,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-waist-obi-belt_obi": {
+  "belt_obi": {
     "name": "Obi",
+    "type_name": "sash",
     "required": [
       "male",
       "female",
@@ -61165,8 +61671,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-waist-obi-belt_obi_knot_left": {
+  "belt_obi_knot_left": {
     "name": "Obi Knot Left",
+    "type_name": "sash_tie",
     "required": [
       "male",
       "female",
@@ -61288,8 +61795,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-waist-obi-belt_obi_knot_right": {
+  "belt_obi_knot_right": {
     "name": "Obi Knot Right",
+    "type_name": "sash_tie",
     "required": [
       "male",
       "female",
@@ -61411,8 +61919,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso-buckles": {
+  "buckles": {
     "name": "Buckles",
+    "type_name": "buckles",
     "required": [
       "female"
     ],
@@ -61472,8 +61981,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-legs_armour": {
+  "legs_armour": {
     "name": "Armour",
+    "type_name": "legs",
     "required": [
       "male",
       "female",
@@ -61561,8 +62071,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-pants-legs_widepants": {
+  "legs_widepants": {
     "name": "Wide pants",
+    "type_name": "legs",
     "required": [
       "muscular"
     ],
@@ -61649,8 +62160,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-pants-legs_pants": {
+  "legs_pants": {
     "name": "Pants",
+    "type_name": "legs",
     "required": [
       "male",
       "female",
@@ -61802,8 +62314,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-pants-legs_pants2": {
+  "legs_pants2": {
     "name": "Long Pants",
+    "type_name": "legs",
     "required": [
       "male",
       "female",
@@ -61930,8 +62443,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-pants-legs_cuffed": {
+  "legs_cuffed": {
     "name": "Cuffed Pants",
+    "type_name": "legs",
     "required": [
       "male",
       "female",
@@ -62058,8 +62572,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-pants-legs_pantaloons": {
+  "legs_pantaloons": {
     "name": "Pantaloons",
+    "type_name": "legs",
     "required": [
       "male",
       "female",
@@ -62229,8 +62744,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-pants-legs_formal": {
+  "legs_formal": {
     "name": "Formal Pants",
+    "type_name": "legs",
     "required": [
       "male",
       "female",
@@ -62383,8 +62899,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-pants-legs_formal_striped": {
+  "legs_formal_striped": {
     "name": "Striped Formal Pants",
+    "type_name": "legs",
     "required": [
       "male",
       "female",
@@ -62537,8 +63054,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-pants-legs_fur": {
+  "legs_fur": {
     "name": "Fur Pants",
+    "type_name": "legs",
     "required": [
       "male",
       "female",
@@ -62691,8 +63209,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-pants-legs_pregnantpants": {
+  "legs_pregnantpants": {
     "name": "Pregnancy pants",
+    "type_name": "legs",
     "required": [
       "pregnant"
     ],
@@ -62777,8 +63296,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-pants-legs_childpants": {
+  "legs_childpants": {
     "name": "Child pants",
+    "type_name": "legs",
     "required": [
       "child"
     ],
@@ -62840,8 +63360,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-leggings-legs_leggings": {
+  "legs_leggings": {
     "name": "Leggings",
+    "type_name": "legs",
     "required": [
       "male",
       "female",
@@ -62972,8 +63493,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-leggings-legs_leggings2": {
+  "legs_leggings2": {
     "name": "Leggings 2",
+    "type_name": "legs",
     "required": [
       "male",
       "female",
@@ -63101,8 +63623,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-leggings-legs_hose": {
+  "legs_hose": {
     "name": "Hose",
+    "type_name": "legs",
     "required": [
       "male",
       "female",
@@ -63230,8 +63753,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-shorts-legs_shorts": {
+  "legs_shorts": {
     "name": "Shorts",
+    "type_name": "legs",
     "required": [
       "male",
       "female",
@@ -63363,8 +63887,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-shorts-legs_shorts_short": {
+  "legs_shorts_short": {
     "name": "Short Shorts",
+    "type_name": "legs",
     "required": [
       "male",
       "female",
@@ -63496,8 +64021,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-skirts-legs_childskirts": {
+  "legs_childskirts": {
     "name": "Child skirts",
+    "type_name": "legs",
     "required": [
       "child"
     ],
@@ -63560,8 +64086,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-skirts-legs_skirts_plain": {
+  "legs_skirts_plain": {
     "name": "Plain skirt",
+    "type_name": "legs",
     "required": [
       "male",
       "female",
@@ -63667,8 +64194,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-skirts-legs_skirts_slit": {
+  "legs_skirts_slit": {
     "name": "Slit skirt",
+    "type_name": "legs",
     "required": [
       "male",
       "female"
@@ -63764,8 +64292,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-skirts-legs_skirts_legion": {
+  "legs_skirts_legion": {
     "name": "Legion skirt",
+    "type_name": "legs",
     "required": [
       "male",
       "female",
@@ -63884,8 +64413,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-skirts-legs_skirt_straight": {
+  "legs_skirt_straight": {
     "name": "Straight skirt",
+    "type_name": "legs",
     "required": [
       "female",
       "teen",
@@ -63979,8 +64509,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-skirts-legs_skirt_belle": {
+  "legs_skirt_belle": {
     "name": "Belle skirt",
+    "type_name": "legs",
     "required": [
       "female",
       "teen",
@@ -64081,8 +64612,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs-skirts-legs_skirt_overskirt": {
+  "legs_skirt_overskirt": {
     "name": "Overskirt",
+    "type_name": "apron",
     "required": [
       "female",
       "teen",
@@ -64183,8 +64715,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "feet-feet_armour": {
+  "feet_armour": {
     "name": "Armour",
+    "type_name": "shoes",
     "required": [
       "male",
       "female",
@@ -64295,8 +64828,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "feet-shoes-feet_shoes_basic": {
+  "feet_shoes_basic": {
     "name": "Basic Shoes",
+    "type_name": "shoes",
     "required": [
       "male",
       "female",
@@ -64448,8 +64982,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "feet-shoes-feet_shoes_revised": {
+  "feet_shoes_revised": {
     "name": "Revised Shoes",
+    "type_name": "shoes",
     "required": [
       "male",
       "female",
@@ -64593,8 +65128,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "feet-shoes-feet_shoes_sara": {
+  "feet_shoes_sara": {
     "name": "Sara Shoes",
+    "type_name": "shoes",
     "required": [
       "male",
       "female",
@@ -64758,8 +65294,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "feet-shoes-feet_shoes_ghillies": {
+  "feet_shoes_ghillies": {
     "name": "Ghillies",
+    "type_name": "shoes",
     "required": [
       "male",
       "female",
@@ -64888,8 +65425,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "feet-boots-feet_boots_basic": {
+  "feet_boots_basic": {
     "name": "Basic Boots",
+    "type_name": "shoes",
     "required": [
       "male",
       "female",
@@ -65046,8 +65584,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "feet-boots-feet_boots_revised": {
+  "feet_boots_revised": {
     "name": "Revised Boots",
+    "type_name": "shoes",
     "required": [
       "male",
       "female",
@@ -65193,8 +65732,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "feet-boots-feet_boots_fold": {
+  "feet_boots_fold": {
     "name": "Folded Rim Boots",
+    "type_name": "shoes",
     "required": [
       "male",
       "female",
@@ -65324,8 +65864,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "feet-boots-feet_boots_rim": {
+  "feet_boots_rim": {
     "name": "Rimmed Boots",
+    "type_name": "shoes",
     "required": [
       "male",
       "female",
@@ -65455,8 +65996,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "feet-shoe accessory-feet_plate_toe": {
+  "feet_plate_toe": {
     "name": "Plated Toe",
+    "type_name": "shoes_toe",
     "required": [
       "male",
       "female",
@@ -65562,8 +66104,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "feet-shoe accessory-feet_plate_toe_thick": {
+  "feet_plate_toe_thick": {
     "name": "Thick Plated Toe",
+    "type_name": "shoes_toe",
     "required": [
       "male",
       "female",
@@ -65669,8 +66212,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "feet-socks-feet_socks_ankle": {
+  "feet_socks_ankle": {
     "name": "Ankle Socks",
+    "type_name": "socks",
     "required": [
       "male",
       "female",
@@ -65800,8 +66344,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "feet-socks-feet_socks_high": {
+  "feet_socks_high": {
     "name": "High Socks",
+    "type_name": "socks",
     "required": [
       "male",
       "female",
@@ -65931,8 +66476,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "feet-socks-feet_socks_tabi": {
+  "feet_socks_tabi": {
     "name": "Tabi Socks",
+    "type_name": "socks",
     "required": [
       "male",
       "female",
@@ -66056,8 +66602,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "feet-feet_slippers": {
+  "feet_slippers": {
     "name": "Slippers",
+    "type_name": "shoes",
     "required": [
       "male",
       "female",
@@ -66176,8 +66723,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "feet-feet_sandals": {
+  "feet_sandals": {
     "name": "Sandals",
+    "type_name": "shoes",
     "required": [
       "male",
       "female",
@@ -66316,8 +66864,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "feet-feet_hoofs": {
+  "feet_hoofs": {
     "name": "Hoofs",
+    "type_name": "shoes",
     "required": [
       "male",
       "female",
@@ -66434,8 +66983,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "tools-tool_rod": {
+  "tool_rod": {
     "name": "Rod",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -66524,8 +67074,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "tools-tool_smash": {
+  "tool_smash": {
     "name": "Smash",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -66624,8 +67175,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "tools-tool_thrust": {
+  "tool_thrust": {
     "name": "Thrust",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -66714,8 +67266,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "tools-tool_whip": {
+  "tool_whip": {
     "name": "Whip",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -66812,8 +67365,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-shield": {
+  "shield": {
     "name": "Shield",
+    "type_name": "shield",
     "required": [
       "male",
       "female",
@@ -67144,8 +67698,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-shield_kite": {
+  "shield_kite": {
     "name": "Kite",
+    "type_name": "shield",
     "required": [
       "male",
       "female",
@@ -67238,8 +67793,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-shield_spartan": {
+  "shield_spartan": {
     "name": "Spartan shield",
+    "type_name": "shield",
     "required": [
       "male",
       "female",
@@ -67318,8 +67874,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-two-engrailed shield-shield_two_engrailed": {
+  "shield_two_engrailed": {
     "name": "Two engrailed shield",
+    "type_name": "shield",
     "required": [
       "male",
       "female",
@@ -67399,8 +67956,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-two-engrailed shield-shield_two_engrailed_trim": {
+  "shield_two_engrailed_trim": {
     "name": "Two engrailed shield trim",
+    "type_name": "shield_trim",
     "required": [
       "male",
       "female",
@@ -67480,8 +68038,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-two-engrailed shield-shield_crusader": {
+  "shield_crusader": {
     "name": "Crusader shield",
+    "type_name": "shield",
     "required": [
       "male",
       "female",
@@ -67561,8 +68120,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-two-engrailed shield-shield_plus": {
+  "shield_plus": {
     "name": "Plus shield",
+    "type_name": "shield",
     "required": [
       "male",
       "female",
@@ -67642,8 +68202,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-scutum shield-shield_scutum": {
+  "shield_scutum": {
     "name": "Scutum shield",
+    "type_name": "shield",
     "required": [
       "male",
       "female",
@@ -67723,8 +68284,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-scutum shield-shield_scutum_trim": {
+  "shield_scutum_trim": {
     "name": "Scutum shield trim",
+    "type_name": "shield_trim",
     "required": [
       "male",
       "female",
@@ -67804,8 +68366,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-shield_heater_wood": {
+  "shield_heater_wood": {
     "name": "Heater Shield Base",
+    "type_name": "shield",
     "required": [
       "male",
       "female",
@@ -67908,8 +68471,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-shield_heater_paint": {
+  "shield_heater_paint": {
     "name": "Heater Shield Paint",
+    "type_name": "shield_paint",
     "required": [
       "male",
       "female",
@@ -68081,8 +68645,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-shield_heater_trim": {
+  "shield_heater_trim": {
     "name": "Heater Shield Trim",
+    "type_name": "shield_trim",
     "required": [
       "male",
       "female",
@@ -68187,8 +68752,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_barry": {
+  "shield_heater_pattern_barry": {
     "name": "barry",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -68309,8 +68875,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_bend_sinister": {
+  "shield_heater_pattern_bend_sinister": {
     "name": "bend_sinister",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -68431,8 +68998,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_bend": {
+  "shield_heater_pattern_bend": {
     "name": "bend",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -68553,8 +69121,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_bendy_sinister": {
+  "shield_heater_pattern_bendy_sinister": {
     "name": "bendy_sinister",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -68676,8 +69245,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_bendy": {
+  "shield_heater_pattern_bendy": {
     "name": "bendy",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -68799,8 +69369,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_bordure": {
+  "shield_heater_pattern_bordure": {
     "name": "bordure",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -68921,8 +69492,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_chevron_inverted": {
+  "shield_heater_pattern_chevron_inverted": {
     "name": "chevron_inverted",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -69043,8 +69615,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_chevron": {
+  "shield_heater_pattern_chevron": {
     "name": "chevron",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -69165,8 +69738,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_chief": {
+  "shield_heater_pattern_chief": {
     "name": "chief",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -69287,8 +69861,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_cross": {
+  "shield_heater_pattern_cross": {
     "name": "cross",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -69409,8 +69984,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_fess": {
+  "shield_heater_pattern_fess": {
     "name": "fess",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -69531,8 +70107,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_lozengy": {
+  "shield_heater_pattern_lozengy": {
     "name": "lozengy",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -69654,8 +70231,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_pale": {
+  "shield_heater_pattern_pale": {
     "name": "pale",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -69776,8 +70354,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_pall": {
+  "shield_heater_pattern_pall": {
     "name": "pall",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -69898,8 +70477,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_paly": {
+  "shield_heater_pattern_paly": {
     "name": "paly",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -70021,8 +70601,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_per_bend_sinister": {
+  "shield_heater_pattern_per_bend_sinister": {
     "name": "per_bend_sinister",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -70143,8 +70724,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_per_bend": {
+  "shield_heater_pattern_per_bend": {
     "name": "per_bend",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -70265,8 +70847,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_per_chevron_inverted": {
+  "shield_heater_pattern_per_chevron_inverted": {
     "name": "per_chevron_inverted",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -70387,8 +70970,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_per_chevron": {
+  "shield_heater_pattern_per_chevron": {
     "name": "per_chevron",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -70509,8 +71093,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_per_fess": {
+  "shield_heater_pattern_per_fess": {
     "name": "per_fess",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -70631,8 +71216,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_per_pale": {
+  "shield_heater_pattern_per_pale": {
     "name": "per_pale",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -70753,8 +71339,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_per_saltire": {
+  "shield_heater_pattern_per_saltire": {
     "name": "per_saltire",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -70875,8 +71462,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_quarterly": {
+  "shield_heater_pattern_quarterly": {
     "name": "quarterly",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -70997,8 +71585,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_saltire": {
+  "shield_heater_pattern_saltire": {
     "name": "saltire",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -71119,8 +71708,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-shield_heater_revised_wood": {
+  "shield_heater_revised_wood": {
     "name": "Revised Heater Shield Base",
+    "type_name": "shield",
     "required": [
       "male",
       "female",
@@ -71224,8 +71814,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-shield_heater_revised_paint": {
+  "shield_heater_revised_paint": {
     "name": "Revised Heater Shield Paint",
+    "type_name": "shield_paint",
     "required": [
       "male",
       "female",
@@ -71397,8 +71988,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-shield_heater_revised_trim": {
+  "shield_heater_revised_trim": {
     "name": "Revised Heater Shield Trim",
+    "type_name": "shield_trim",
     "required": [
       "male",
       "female",
@@ -71504,8 +72096,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_barry": {
+  "shield_heater_revised_pattern_barry": {
     "name": "revised_barry",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -71627,8 +72220,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_bend_sinister": {
+  "shield_heater_revised_pattern_bend_sinister": {
     "name": "revised_bend_sinister",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -71750,8 +72344,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_bend": {
+  "shield_heater_revised_pattern_bend": {
     "name": "revised_bend",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -71873,8 +72468,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_bendy_sinister": {
+  "shield_heater_revised_pattern_bendy_sinister": {
     "name": "revised_bendy_sinister",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -71996,8 +72592,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_bendy": {
+  "shield_heater_revised_pattern_bendy": {
     "name": "revised_bendy",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -72119,8 +72716,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_bordure": {
+  "shield_heater_revised_pattern_bordure": {
     "name": "revised_bordure",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -72242,8 +72840,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_chevron_inverted": {
+  "shield_heater_revised_pattern_chevron_inverted": {
     "name": "revised_chevron_inverted",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -72365,8 +72964,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_chevron": {
+  "shield_heater_revised_pattern_chevron": {
     "name": "revised_chevron",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -72488,8 +73088,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_chief": {
+  "shield_heater_revised_pattern_chief": {
     "name": "revised_chief",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -72611,8 +73212,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_cross": {
+  "shield_heater_revised_pattern_cross": {
     "name": "revised_cross",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -72734,8 +73336,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_fess": {
+  "shield_heater_revised_pattern_fess": {
     "name": "revised_fess",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -72857,8 +73460,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_lozengy": {
+  "shield_heater_revised_pattern_lozengy": {
     "name": "revised_lozengy",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -72980,8 +73584,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_pale": {
+  "shield_heater_revised_pattern_pale": {
     "name": "revised_pale",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -73103,8 +73708,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_pall": {
+  "shield_heater_revised_pattern_pall": {
     "name": "revised_pall",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -73226,8 +73832,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_paly": {
+  "shield_heater_revised_pattern_paly": {
     "name": "revised_paly",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -73349,8 +73956,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_per_bend_sinister": {
+  "shield_heater_revised_pattern_per_bend_sinister": {
     "name": "revised_per_bend_sinister",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -73472,8 +74080,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_per_bend": {
+  "shield_heater_revised_pattern_per_bend": {
     "name": "revised_per_bend",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -73595,8 +74204,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_per_chevron_inverted": {
+  "shield_heater_revised_pattern_per_chevron_inverted": {
     "name": "revised_per_chevron_inverted",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -73718,8 +74328,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_per_chevron": {
+  "shield_heater_revised_pattern_per_chevron": {
     "name": "revised_per_chevron",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -73841,8 +74452,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_per_fess": {
+  "shield_heater_revised_pattern_per_fess": {
     "name": "revised_per_fess",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -73964,8 +74576,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_per_pale": {
+  "shield_heater_revised_pattern_per_pale": {
     "name": "revised_per_pale",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -74087,8 +74700,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_per_saltire": {
+  "shield_heater_revised_pattern_per_saltire": {
     "name": "revised_per_saltire",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -74210,8 +74824,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_quarterly": {
+  "shield_heater_revised_pattern_quarterly": {
     "name": "revised_quarterly",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -74333,8 +74948,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_saltire": {
+  "shield_heater_revised_pattern_saltire": {
     "name": "revised_saltire",
+    "type_name": "shield_pattern",
     "required": [
       "male",
       "female",
@@ -74456,8 +75072,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-ranged-weapon_ranged_crossbow": {
+  "weapon_ranged_crossbow": {
     "name": "Crossbow",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -74536,8 +75153,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-ranged-weapon_ranged_slingshot": {
+  "weapon_ranged_slingshot": {
     "name": "Slingshot",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -74625,8 +75243,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-ranged-weapon_ranged_boomerang": {
+  "weapon_ranged_boomerang": {
     "name": "Boomerang",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -74708,8 +75327,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-ranged-bow-weapon_ranged_bow_arrow": {
+  "weapon_ranged_bow_arrow": {
     "name": "Ammo",
+    "type_name": "ammo",
     "required": [
       "male",
       "female",
@@ -74792,8 +75412,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-ranged-bow-weapon_ranged_bow_great": {
+  "weapon_ranged_bow_great": {
     "name": "Great",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -74906,8 +75527,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-ranged-bow-weapon_ranged_bow_normal": {
+  "weapon_ranged_bow_normal": {
     "name": "Normal",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -75030,8 +75652,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-ranged-bow-weapon_ranged_bow_recurve": {
+  "weapon_ranged_bow_recurve": {
     "name": "Recurve",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -75144,8 +75767,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-sword-weapon_sword_dagger": {
+  "weapon_sword_dagger": {
     "name": "Dagger",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -75236,8 +75860,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-sword-weapon_sword_glowsword": {
+  "weapon_sword_glowsword": {
     "name": "Glowsword",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -75341,8 +75966,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-sword-weapon_sword_longsword": {
+  "weapon_sword_longsword": {
     "name": "Longsword",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -75475,8 +76101,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-sword-weapon_sword_rapier": {
+  "weapon_sword_rapier": {
     "name": "Rapier",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -75577,8 +76204,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-sword-weapon_sword_saber": {
+  "weapon_sword_saber": {
     "name": "Saber",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -75676,8 +76304,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-sword-weapon_sword_katana": {
+  "weapon_sword_katana": {
     "name": "Katana",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -75773,8 +76402,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-sword-weapon_sword_scimitar": {
+  "weapon_sword_scimitar": {
     "name": "Scimitar",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -75870,8 +76500,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-sword-weapon_sword_longsword_alt": {
+  "weapon_sword_longsword_alt": {
     "name": "Longsword alt",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -75967,8 +76598,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-sword-weapon_sword_arming": {
+  "weapon_sword_arming": {
     "name": "Arming Sword",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -76124,8 +76756,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-blunt-weapon_blunt_flail": {
+  "weapon_blunt_flail": {
     "name": "Flail",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -76226,8 +76859,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-blunt-weapon_blunt_mace": {
+  "weapon_blunt_mace": {
     "name": "Mace",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -76328,8 +76962,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-blunt-weapon_blunt_waraxe": {
+  "weapon_blunt_waraxe": {
     "name": "Waraxe",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -76430,8 +77065,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-blunt-weapon_blunt_club": {
+  "weapon_blunt_club": {
     "name": "Club",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -76521,8 +77157,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-polearm-weapon_polearm_cane": {
+  "weapon_polearm_cane": {
     "name": "Cane",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -76593,8 +77230,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-polearm-weapon_polearm_spear": {
+  "weapon_polearm_spear": {
     "name": "Spear",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -76688,8 +77326,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-polearm-weapon_polearm_scythe": {
+  "weapon_polearm_scythe": {
     "name": "Scythe",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -76783,8 +77422,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-polearm-weapon_polearm_halberd": {
+  "weapon_polearm_halberd": {
     "name": "Halberd",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -76901,8 +77541,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-polearm-weapon_polearm_longspear": {
+  "weapon_polearm_longspear": {
     "name": "Long spear",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -77019,8 +77660,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-polearm-weapon_polearm_dragonspear": {
+  "weapon_polearm_dragonspear": {
     "name": "Dragon spear",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -77138,8 +77780,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-polearm-weapon_polearm_trident": {
+  "weapon_polearm_trident": {
     "name": "Trident",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -77257,8 +77900,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-magic-weapon_magic_simple": {
+  "weapon_magic_simple": {
     "name": "Simple staff",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -77343,8 +77987,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-magic-weapon_magic_loop": {
+  "weapon_magic_loop": {
     "name": "Loop staff",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -77469,8 +78114,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-magic-weapon_magic_diamond": {
+  "weapon_magic_diamond": {
     "name": "Diamond staff",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -77595,8 +78241,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-magic-weapon_magic_gnarled": {
+  "weapon_magic_gnarled": {
     "name": "Gnarled staff",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -77721,8 +78368,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-magic-weapon_magic_s": {
+  "weapon_magic_s": {
     "name": "S staff",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -77838,8 +78486,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-magic-weapon_magic_crystal": {
+  "weapon_magic_crystal": {
     "name": "Crystal",
+    "type_name": "weapon_magic_crystal",
     "required": [
       "male",
       "female",
@@ -77958,8 +78607,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapons-magic-weapon_magic_wand": {
+  "weapon_magic_wand": {
     "name": "Wand",
+    "type_name": "weapon",
     "required": [
       "male",
       "female",
@@ -78041,77 +78691,77 @@ window.categoryTree = {
   "children": {
     "body": {
       "items": [
-        "body-shadow",
-        "body-body"
+        "shadow",
+        "body"
       ],
       "children": {
         "special": {
           "items": [
-            "body-special-body_zombie",
-            "body-special-body_skeleton"
+            "body_zombie",
+            "body_skeleton"
           ],
           "children": {}
         },
         "wounds": {
           "items": [
-            "body-wounds-wound_arm",
-            "body-wounds-wound_brain",
-            "body-wounds-wound_ribs",
-            "body-wounds-wound_eye_left",
-            "body-wounds-wound_eye_right",
-            "body-wounds-wound_mouth"
+            "wound_arm",
+            "wound_brain",
+            "wound_ribs",
+            "wound_eye_left",
+            "wound_eye_right",
+            "wound_mouth"
           ],
           "children": {}
         },
         "prostheses": {
           "items": [
-            "body-prostheses-prosthesis_hook",
-            "body-prostheses-prosthesis_peg_leg"
+            "prosthesis_hook",
+            "prosthesis_peg_leg"
           ],
           "children": {}
         },
         "wheelchair": {
           "items": [
-            "body-wheelchair-wheelchair"
+            "wheelchair"
           ],
           "children": {}
         },
         "tails": {
           "items": [
-            "body-tails-tail_wolf",
-            "body-tails-tail_wolf_fluffy",
-            "body-tails-tail_cat",
-            "body-tails-tail_lizard_alt"
+            "tail_wolf",
+            "tail_wolf_fluffy",
+            "tail_cat",
+            "tail_lizard_alt"
           ],
           "children": {}
         },
         "wings": {
           "items": [
-            "body-wings-wings_feathered",
-            "body-wings-wings_bat",
-            "body-wings-wings_lizard_alt",
-            "body-wings-wings_lunar"
+            "wings_feathered",
+            "wings_bat",
+            "wings_lizard_alt",
+            "wings_lunar"
           ],
           "children": {
             "monarch wings": {
               "items": [
-                "body-wings-monarch wings-wings_monarch",
-                "body-wings-monarch wings-wings_monarch_edge",
-                "body-wings-monarch wings-wings_monarch_dots"
+                "wings_monarch",
+                "wings_monarch_edge",
+                "wings_monarch_dots"
               ],
               "children": {}
             },
             "pixie wings": {
               "items": [
-                "body-wings-pixie wings-wings_pixie",
-                "body-wings-pixie wings-wings_pixie_transparent"
+                "wings_pixie",
+                "wings_pixie_transparent"
               ],
               "children": {}
             },
             "dragonfly wings": {
               "items": [
-                "body-wings-dragonfly wings-wings_dragonfly",
-                "body-wings-dragonfly wings-wings_dragonfly_transparent"
+                "wings_dragonfly",
+                "wings_dragonfly_transparent"
               ],
               "children": {}
             }
@@ -78119,9 +78769,9 @@ window.categoryTree = {
         },
         "lizard": {
           "items": [
-            "body-lizard-wings_lizard",
-            "body-lizard-wings_lizard_bat",
-            "body-lizard-tail_lizard"
+            "wings_lizard",
+            "wings_lizard_bat",
+            "tail_lizard"
           ],
           "children": {}
         }
@@ -78129,97 +78779,97 @@ window.categoryTree = {
     },
     "head": {
       "items": [
-        "head-eye_color",
-        "head-head_wrinkles"
+        "eye_color",
+        "head_wrinkles"
       ],
       "children": {
         "heads": {
           "items": [
-            "head-heads-heads_human_child",
-            "head-heads-heads_human_female",
-            "head-heads-heads_human_male",
-            "head-heads-heads_human_female_elderly",
-            "head-heads-heads_human_male_elderly",
-            "head-heads-heads_human_male_plump",
-            "head-heads-heads_human_male_gaunt",
-            "head-heads-heads_human_male_small",
-            "head-heads-heads_human_female_small",
-            "head-heads-heads_human_elderly_small",
-            "head-heads-heads_boarman",
-            "head-heads-heads_boarman_child",
-            "head-heads-heads_pig",
-            "head-heads-heads_pig_child",
-            "head-heads-heads_sheep",
-            "head-heads-heads_sheep_child",
-            "head-heads-heads_minotaur",
-            "head-heads-heads_minotaur_female",
-            "head-heads-heads_minotaur_child",
-            "head-heads-heads_wartotaur",
-            "head-heads-heads_wolf_child",
-            "head-heads-heads_wolf_female",
-            "head-heads-heads_wolf_male",
-            "head-heads-heads_rabbit",
-            "head-heads-heads_rabbit_child",
-            "head-heads-heads_rat",
-            "head-heads-heads_rat_child",
-            "head-heads-heads_mouse",
-            "head-heads-heads_mouse_child",
-            "head-heads-heads_lizard_child",
-            "head-heads-heads_lizard_female",
-            "head-heads-heads_lizard_male",
-            "head-heads-heads_orc_child",
-            "head-heads-heads_orc_female",
-            "head-heads-heads_orc_male",
-            "head-heads-heads_goblin",
-            "head-heads-heads_goblin_child",
-            "head-heads-heads_alien",
-            "head-heads-heads_troll",
-            "head-heads-heads_troll_child",
-            "head-heads-heads_skeleton",
-            "head-heads-heads_zombie",
-            "head-heads-heads_jack",
-            "head-heads-heads_vampire",
-            "head-heads-heads_frankenstein"
+            "heads_human_child",
+            "heads_human_female",
+            "heads_human_male",
+            "heads_human_female_elderly",
+            "heads_human_male_elderly",
+            "heads_human_male_plump",
+            "heads_human_male_gaunt",
+            "heads_human_male_small",
+            "heads_human_female_small",
+            "heads_human_elderly_small",
+            "heads_boarman",
+            "heads_boarman_child",
+            "heads_pig",
+            "heads_pig_child",
+            "heads_sheep",
+            "heads_sheep_child",
+            "heads_minotaur",
+            "heads_minotaur_female",
+            "heads_minotaur_child",
+            "heads_wartotaur",
+            "heads_wolf_child",
+            "heads_wolf_female",
+            "heads_wolf_male",
+            "heads_rabbit",
+            "heads_rabbit_child",
+            "heads_rat",
+            "heads_rat_child",
+            "heads_mouse",
+            "heads_mouse_child",
+            "heads_lizard_child",
+            "heads_lizard_female",
+            "heads_lizard_male",
+            "heads_orc_child",
+            "heads_orc_female",
+            "heads_orc_male",
+            "heads_goblin",
+            "heads_goblin_child",
+            "heads_alien",
+            "heads_troll",
+            "heads_troll_child",
+            "heads_skeleton",
+            "heads_zombie",
+            "heads_jack",
+            "heads_vampire",
+            "heads_frankenstein"
           ],
           "children": {}
         },
         "face": {
           "items": [
-            "head-face-face_neutral",
-            "head-face-face_closing",
-            "head-face-face_closed",
-            "head-face-face_look_r",
-            "head-face-face_look_l",
-            "head-face-face_eyeroll",
-            "head-face-face_shock",
-            "head-face-face_angry",
-            "head-face-face_angry2",
-            "head-face-face_sad",
-            "head-face-face_sad2",
-            "head-face-face_happy",
-            "head-face-face_happy2",
-            "head-face-face_blush",
-            "head-face-face_shame",
-            "head-face-face_tears"
+            "face_neutral",
+            "face_closing",
+            "face_closed",
+            "face_look_r",
+            "face_look_l",
+            "face_eyeroll",
+            "face_shock",
+            "face_angry",
+            "face_angry2",
+            "face_sad",
+            "face_sad2",
+            "face_happy",
+            "face_happy2",
+            "face_blush",
+            "face_shame",
+            "face_tears"
           ],
           "children": {}
         },
         "other eyes": {
           "items": [
-            "head-other eyes-eyes_child",
-            "head-other eyes-eyes_cyclops"
+            "eyes_child",
+            "eyes_cyclops"
           ],
           "children": {}
         },
         "ears": {
           "items": [
-            "head-ears-head_ears_big",
-            "head-ears-head_ears_elven",
-            "head-ears-head_ears_long",
-            "head-ears-head_ears_medium",
-            "head-ears-head_ears_hang",
-            "head-ears-head_ears_down",
-            "head-ears-head_ears_dragon"
+            "head_ears_big",
+            "head_ears_elven",
+            "head_ears_long",
+            "head_ears_medium",
+            "head_ears_hang",
+            "head_ears_down",
+            "head_ears_dragon"
           ],
           "children": {}
         },
@@ -78228,21 +78878,21 @@ window.categoryTree = {
           "children": {
             "top ears": {
               "items": [
-                "head-furry ears-top ears-head_ears_cat",
-                "head-furry ears-top ears-head_ears_cat_skin",
-                "head-furry ears-top ears-head_ears_wolf",
-                "head-furry ears-top ears-head_ears_wolf_skin"
+                "head_ears_cat",
+                "head_ears_cat_skin",
+                "head_ears_wolf",
+                "head_ears_wolf_skin"
               ],
               "children": {}
             },
             "side ears": {
               "items": [
-                "head-furry ears-side ears-head_ears_lykon",
-                "head-furry ears-side ears-head_ears_lykon_skin",
-                "head-furry ears-side ears-head_ears_zabos",
-                "head-furry ears-side ears-head_ears_zabos_skin",
-                "head-furry ears-side ears-head_ears_avyon",
-                "head-furry ears-side ears-head_ears_avyon_skin"
+                "head_ears_lykon",
+                "head_ears_lykon_skin",
+                "head_ears_zabos",
+                "head_ears_zabos_skin",
+                "head_ears_avyon",
+                "head_ears_avyon_skin"
               ],
               "children": {}
             }
@@ -78250,41 +78900,41 @@ window.categoryTree = {
         },
         "nose": {
           "items": [
-            "head-nose-head_nose_big",
-            "head-nose-head_nose_button",
-            "head-nose-head_nose_straight",
-            "head-nose-head_nose_elderly",
-            "head-nose-head_nose_large"
+            "head_nose_big",
+            "head_nose_button",
+            "head_nose_straight",
+            "head_nose_elderly",
+            "head_nose_large"
           ],
           "children": {}
         },
         "eyebrows": {
           "items": [
-            "head-eyebrows-eyebrows_thick",
-            "head-eyebrows-eyebrows_thin"
+            "eyebrows_thick",
+            "eyebrows_thin"
           ],
           "children": {}
         },
         "beards": {
           "items": [
-            "head-beards-beards_beard",
-            "head-beards-beards_winter",
-            "head-beards-beards_5oclock_shadow",
-            "head-beards-beards_trimmed",
-            "head-beards-beards_medium"
+            "beards_beard",
+            "beards_winter",
+            "beards_5oclock_shadow",
+            "beards_trimmed",
+            "beards_medium"
           ],
           "children": {}
         },
         "mustaches": {
           "items": [
-            "head-mustaches-beards_bigstache",
-            "head-mustaches-beards_mustache",
-            "head-mustaches-beards_french",
-            "head-mustaches-beards_walrus",
-            "head-mustaches-beards_chevron",
-            "head-mustaches-beards_handlebar",
-            "head-mustaches-beards_lampshade",
-            "head-mustaches-beards_horseshoe"
+            "beards_bigstache",
+            "beards_mustache",
+            "beards_french",
+            "beards_walrus",
+            "beards_chevron",
+            "beards_handlebar",
+            "beards_lampshade",
+            "beards_horseshoe"
           ],
           "children": {}
         },
@@ -78296,173 +78946,173 @@ window.categoryTree = {
               "children": {
                 "bangs": {
                   "items": [
-                    "head-hair-hair extensions-bangs-hairext_braidl",
-                    "head-hair-hair extensions-bangs-hairext_braidr",
-                    "head-hair-hair extensions-bangs-hairext_xlong_bangl",
-                    "head-hair-hair extensions-bangs-hairext_xlong_bangr",
-                    "head-hair-hair extensions-bangs-hairext_xlong_braidl",
-                    "head-hair-hair extensions-bangs-hairext_xlong_braidr",
-                    "head-hair-hair extensions-bangs-hairext_long_straightl",
-                    "head-hair-hair extensions-bangs-hairext_long_straightr",
-                    "head-hair-hair extensions-bangs-hairext_long_wavyl",
-                    "head-hair-hair extensions-bangs-hairext_long_wavyr",
-                    "head-hair-hair extensions-bangs-hairext_xlong_wavyl",
-                    "head-hair-hair extensions-bangs-hairext_xlong_wavyr",
-                    "head-hair-hair extensions-bangs-hairext_xlong_curlyl",
-                    "head-hair-hair extensions-bangs-hairext_xlong_curlyr"
+                    "hairext_braidl",
+                    "hairext_braidr",
+                    "hairext_xlong_bangl",
+                    "hairext_xlong_bangr",
+                    "hairext_xlong_braidl",
+                    "hairext_xlong_braidr",
+                    "hairext_long_straightl",
+                    "hairext_long_straightr",
+                    "hairext_long_wavyl",
+                    "hairext_long_wavyr",
+                    "hairext_xlong_wavyl",
+                    "hairext_xlong_wavyr",
+                    "hairext_xlong_curlyl",
+                    "hairext_xlong_curlyr"
                   ],
                   "children": {}
                 },
                 "ponytails": {
                   "items": [
-                    "head-hair-hair extensions-ponytails-hairext_topknot_short",
-                    "head-hair-hair extensions-ponytails-hairext_topknot_long",
-                    "head-hair-hair extensions-ponytails-hairext_topknot_relm"
+                    "hairext_topknot_short",
+                    "hairext_topknot_long",
+                    "hairext_topknot_relm"
                   ],
                   "children": {}
                 },
                 "knot / ties": {
                   "items": [
-                    "head-hair-hair extensions-knot / ties-hairext_high_bun"
+                    "hairext_high_bun"
                   ],
                   "children": {}
                 },
                 "afro": {
                   "items": [
-                    "head-hair-hair extensions-afro-hair_afro",
-                    "head-hair-hair extensions-afro-hair_natural",
-                    "head-hair-hair extensions-afro-hair_dreadlocks_short",
-                    "head-hair-hair extensions-afro-hair_twists_fade",
-                    "head-hair-hair extensions-afro-hair_twists_straight",
-                    "head-hair-hair extensions-afro-hair_dreadlocks_long",
-                    "head-hair-hair extensions-afro-hair_flat_top_straight",
-                    "head-hair-hair extensions-afro-hair_flat_top_fade",
-                    "head-hair-hair extensions-afro-hair_cornrows"
+                    "hair_afro",
+                    "hair_natural",
+                    "hair_dreadlocks_short",
+                    "hair_twists_fade",
+                    "hair_twists_straight",
+                    "hair_dreadlocks_long",
+                    "hair_flat_top_straight",
+                    "hair_flat_top_fade",
+                    "hair_cornrows"
                   ],
                   "children": {
                     "curly": {
                       "items": [
-                        "head-hair-hair extensions-afro-curly-hair_jewfro",
-                        "head-hair-hair extensions-afro-curly-hair_curly_short",
-                        "head-hair-hair extensions-afro-curly-hair_curly_long",
-                        "head-hair-hair extensions-afro-curly-hair_curls_large",
-                        "head-hair-hair extensions-afro-curly-hair_curls_large_xlong"
+                        "hair_jewfro",
+                        "hair_curly_short",
+                        "hair_curly_long",
+                        "hair_curls_large",
+                        "hair_curls_large_xlong"
                       ],
                       "children": {
                         "bald/shaved": {
                           "items": [
-                            "head-hair-hair extensions-afro-curly-bald/shaved-hair_balding",
-                            "head-hair-hair extensions-afro-curly-bald/shaved-hair_longhawk",
-                            "head-hair-hair extensions-afro-curly-bald/shaved-hair_shorthawk",
-                            "head-hair-hair extensions-afro-curly-bald/shaved-hair_high_and_tight",
-                            "head-hair-hair extensions-afro-curly-bald/shaved-hair_buzzcut"
+                            "hair_balding",
+                            "hair_longhawk",
+                            "hair_shorthawk",
+                            "hair_high_and_tight",
+                            "hair_buzzcut"
                           ],
                           "children": {
                             "short": {
                               "items": [
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_plain",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_pixie",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_page",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_page2",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_idol",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_mop",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_parted",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_parted2",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_parted3",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_parted_side_bangs",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_parted_side_bangs2",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_messy1",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_messy2",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_messy3",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_bedhead",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_unkempt",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_bangs",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_bangsshort",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_swoop",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_swoop_side",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_curtains",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_single",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_cowlick",
-                                "head-hair-hair extensions-afro-curly-bald/shaved-short-hair_cowlick_tall"
+                                "hair_plain",
+                                "hair_pixie",
+                                "hair_page",
+                                "hair_page2",
+                                "hair_idol",
+                                "hair_mop",
+                                "hair_parted",
+                                "hair_parted2",
+                                "hair_parted3",
+                                "hair_parted_side_bangs",
+                                "hair_parted_side_bangs2",
+                                "hair_messy1",
+                                "hair_messy2",
+                                "hair_messy3",
+                                "hair_bedhead",
+                                "hair_unkempt",
+                                "hair_bangs",
+                                "hair_bangsshort",
+                                "hair_swoop",
+                                "hair_swoop_side",
+                                "hair_curtains",
+                                "hair_single",
+                                "hair_cowlick",
+                                "hair_cowlick_tall"
                               ],
                               "children": {
                                 "spiky": {
                                   "items": [
-                                    "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-hair_spiked_porcupine",
-                                    "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-hair_spiked_liberty2",
-                                    "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-hair_spiked_liberty",
-                                    "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-hair_spiked_beehive",
-                                    "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-hair_spiked",
-                                    "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-hair_spiked2",
-                                    "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-hair_halfmessy"
+                                    "hair_spiked_porcupine",
+                                    "hair_spiked_liberty2",
+                                    "hair_spiked_liberty",
+                                    "hair_spiked_beehive",
+                                    "hair_spiked",
+                                    "hair_spiked2",
+                                    "hair_halfmessy"
                                   ],
                                   "children": {
                                     "pigtails": {
                                       "items": [
-                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-hair_bunches",
-                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-hair_pigtails",
-                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-hair_pigtails_bangs"
+                                        "hair_bunches",
+                                        "hair_pigtails",
+                                        "hair_pigtails_bangs"
                                       ],
                                       "children": {
                                         "bob": {
                                           "items": [
-                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-hair_bob",
-                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-hair_lob",
-                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-hair_bob_side_part",
-                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-hair_relm_short"
+                                            "hair_bob",
+                                            "hair_lob",
+                                            "hair_bob_side_part",
+                                            "hair_relm_short"
                                           ],
                                           "children": {
                                             "braids, ponytails, updos": {
                                               "items": [
-                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_half_up",
-                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_bangs_bun",
-                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_topknot_short",
-                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_topknot_short2",
-                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_topknot_long",
-                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_topknot_long2",
-                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_ponytail",
-                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_ponytail2",
-                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_high_ponytail",
-                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_braid",
-                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_braid2",
-                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_shoulderl",
-                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_shoulderr",
-                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_long_tied",
-                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-hair_relm_ponytail"
+                                                "hair_half_up",
+                                                "hair_bangs_bun",
+                                                "hair_topknot_short",
+                                                "hair_topknot_short2",
+                                                "hair_topknot_long",
+                                                "hair_topknot_long2",
+                                                "hair_ponytail",
+                                                "hair_ponytail2",
+                                                "hair_high_ponytail",
+                                                "hair_braid",
+                                                "hair_braid2",
+                                                "hair_shoulderl",
+                                                "hair_shoulderr",
+                                                "hair_long_tied",
+                                                "hair_relm_ponytail"
                                               ],
                                               "children": {
                                                 "long": {
                                                   "items": [
-                                                    "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_loose",
-                                                    "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_bangslong",
-                                                    "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_bangslong2",
-                                                    "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_long",
-                                                    "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_long_messy",
-                                                    "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_long_messy2",
-                                                    "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_curtains_long",
-                                                    "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_wavy",
-                                                    "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_wavy_child",
-                                                    "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_long_center_part",
-                                                    "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hair_long_straight"
+                                                    "hair_loose",
+                                                    "hair_bangslong",
+                                                    "hair_bangslong2",
+                                                    "hair_long",
+                                                    "hair_long_messy",
+                                                    "hair_long_messy2",
+                                                    "hair_curtains_long",
+                                                    "hair_wavy",
+                                                    "hair_wavy_child",
+                                                    "hair_long_center_part",
+                                                    "hair_long_straight"
                                                   ],
                                                   "children": {
                                                     "very long": {
                                                       "items": [
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-very long-hair_princess",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-very long-hair_sara",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-very long-hair_long_band",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-very long-hair_xlong",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-very long-hair_xlong_wavy",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-very long-hair_relm_xlong"
+                                                        "hair_princess",
+                                                        "hair_sara",
+                                                        "hair_long_band",
+                                                        "hair_xlong",
+                                                        "hair_xlong_wavy",
+                                                        "hair_relm_xlong"
                                                       ],
                                                       "children": {}
                                                     },
                                                     "appendages": {
                                                       "items": [
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-appendages-head_horns_backwards",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-appendages-head_horns_curled",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-appendages-head_fins_fin",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-appendages-head_fins_fin_short"
+                                                        "head_horns_backwards",
+                                                        "head_horns_curled",
+                                                        "head_fins_fin",
+                                                        "head_fins_fin_short"
                                                       ],
                                                       "children": {}
                                                     },
@@ -78471,30 +79121,30 @@ window.categoryTree = {
                                                       "children": {
                                                         "hoods": {
                                                           "items": [
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-hoods-hat_hood_cloth",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-hoods-hat_hood_sack_cloth",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-hoods-hat_hood_hijab",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-hoods-hat_helmet_mail"
+                                                            "hat_hood_cloth",
+                                                            "hat_hood_sack_cloth",
+                                                            "hat_hood_hijab",
+                                                            "hat_helmet_mail"
                                                           ],
                                                           "children": {}
                                                         },
                                                         "bandanas": {
                                                           "items": [
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-bandanas-hat_bandana",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-bandanas-hat_bandana2",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-bandanas-hat_bandana_pirate",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-bandanas-hat_bandana_pirate_skull"
+                                                            "hat_bandana",
+                                                            "hat_bandana2",
+                                                            "hat_bandana_pirate",
+                                                            "hat_bandana_pirate_skull"
                                                           ],
                                                           "children": {}
                                                         },
                                                         "headbands": {
                                                           "items": [
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-headbands-hat_headband_kerchief",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-headbands-hat_headband_tied",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-headbands-hat_headband_thick",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-headbands-hat_headband_thick_rune",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-headbands-hat_headband_hairtie",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-head coverings-headbands-hat_headband_hairtie_rune"
+                                                            "hat_headband_kerchief",
+                                                            "hat_headband_tied",
+                                                            "hat_headband_thick",
+                                                            "hat_headband_thick_rune",
+                                                            "hat_headband_hairtie",
+                                                            "hat_headband_hairtie_rune"
                                                           ],
                                                           "children": {}
                                                         }
@@ -78505,13 +79155,13 @@ window.categoryTree = {
                                                       "children": {
                                                         "caps": {
                                                           "items": [
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-caps-hat_cap_leather",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-caps-hat_cap_leather_feather",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-caps-hat_cap_bonnie",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-caps-hat_cap_bonnie_tilt",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-caps-hat_cap_bonnie_feather",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-caps-hat_cap_cavalier",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-caps-hat_cap_cavalier_feather"
+                                                            "hat_cap_leather",
+                                                            "hat_cap_leather_feather",
+                                                            "hat_cap_bonnie",
+                                                            "hat_cap_bonnie_tilt",
+                                                            "hat_cap_bonnie_feather",
+                                                            "hat_cap_cavalier",
+                                                            "hat_cap_cavalier_feather"
                                                           ],
                                                           "children": {}
                                                         },
@@ -78520,24 +79170,24 @@ window.categoryTree = {
                                                           "children": {
                                                             "basic": {
                                                               "items": [
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-tricorne-basic-hat_tricorne",
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-tricorne-basic-hat_tricorne_stitched",
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-tricorne-basic-hat_tricorne_thatch"
+                                                                "hat_tricorne",
+                                                                "hat_tricorne_stitched",
+                                                                "hat_tricorne_thatch"
                                                               ],
                                                               "children": {}
                                                             },
                                                             "lieutenant": {
                                                               "items": [
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-tricorne-lieutenant-hat_tricorne_lieutenant",
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-tricorne-lieutenant-hat_tricorne_lieutenant_trim"
+                                                                "hat_tricorne_lieutenant",
+                                                                "hat_tricorne_lieutenant_trim"
                                                               ],
                                                               "children": {}
                                                             },
                                                             "captain": {
                                                               "items": [
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-tricorne-captain-hat_tricorne_captain",
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-tricorne-captain-hat_tricorne_captain_trim",
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-tricorne-captain-hat_tricorne_captain_skull"
+                                                                "hat_tricorne_captain",
+                                                                "hat_tricorne_captain_trim",
+                                                                "hat_tricorne_captain_skull"
                                                               ],
                                                               "children": {}
                                                             }
@@ -78548,30 +79198,30 @@ window.categoryTree = {
                                                           "children": {
                                                             "basic": {
                                                               "items": [
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne athwart-basic-hat_bicorne_athwart_basic",
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne athwart-basic-hat_bicorne_athwart_basic_skull"
+                                                                "hat_bicorne_athwart_basic",
+                                                                "hat_bicorne_athwart_basic_skull"
                                                               ],
                                                               "children": {}
                                                             },
                                                             "captain": {
                                                               "items": [
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne athwart-captain-hat_bicorne_athwart_captain",
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne athwart-captain-hat_bicorne_athwart_captain_skull"
+                                                                "hat_bicorne_athwart_captain",
+                                                                "hat_bicorne_athwart_captain_skull"
                                                               ],
                                                               "children": {}
                                                             },
                                                             "admiral": {
                                                               "items": [
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne athwart-admiral-hat_bicorne_athwart_admiral",
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne athwart-admiral-hat_bicorne_athwart_admiral_trim",
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne athwart-admiral-hat_bicorne_athwart_admiral_cockade"
+                                                                "hat_bicorne_athwart_admiral",
+                                                                "hat_bicorne_athwart_admiral_trim",
+                                                                "hat_bicorne_athwart_admiral_cockade"
                                                               ],
                                                               "children": {}
                                                             },
                                                             "commodore": {
                                                               "items": [
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne athwart-commodore-hat_bicorne_athwart_commodore",
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne athwart-commodore-hat_bicorne_athwart_commodore_trim"
+                                                                "hat_bicorne_athwart_commodore",
+                                                                "hat_bicorne_athwart_commodore_trim"
                                                               ],
                                                               "children": {}
                                                             }
@@ -78579,31 +79229,31 @@ window.categoryTree = {
                                                         },
                                                         "bicorne foreaft": {
                                                           "items": [
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne foreaft-hat_bicorne_foreaft",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne foreaft-hat_bicorne_foreaft_commodore",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-bicorne foreaft-hat_bicorne_foreaft_commodore_trim"
+                                                            "hat_bicorne_foreaft",
+                                                            "hat_bicorne_foreaft_commodore",
+                                                            "hat_bicorne_foreaft_commodore_trim"
                                                           ],
                                                           "children": {}
                                                         },
                                                         "magic": {
                                                           "items": [
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-magic-hat_magic_large"
+                                                            "hat_magic_large"
                                                           ],
                                                           "children": {
                                                             "wizard": {
                                                               "items": [
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-magic-wizard-hat_magic_wizard",
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-magic-wizard-hat_magic_wizard_belt",
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-magic-wizard-hat_magic_wizard_buckle"
+                                                                "hat_magic_wizard",
+                                                                "hat_magic_wizard_belt",
+                                                                "hat_magic_wizard_buckle"
                                                               ],
                                                               "children": {}
                                                             },
                                                             "celestial": {
                                                               "items": [
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-magic-celestial-hat_magic_celestial",
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-magic-celestial-hat_magic_celestial_trim",
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-magic-celestial-hat_magic_celestial_moon",
-                                                                "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-magic-celestial-hat_magic_celestial_moon_trim"
+                                                                "hat_magic_celestial",
+                                                                "hat_magic_celestial_trim",
+                                                                "hat_magic_celestial_moon",
+                                                                "hat_magic_celestial_moon_trim"
                                                               ],
                                                               "children": {}
                                                             }
@@ -78611,18 +79261,18 @@ window.categoryTree = {
                                                         },
                                                         "formal": {
                                                           "items": [
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-formal-hat_formal_tophat",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-formal-hat_formal_bowler",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-formal-hat_formal_crown",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-formal-hat_formal_tiara"
+                                                            "hat_formal_tophat",
+                                                            "hat_formal_bowler",
+                                                            "hat_formal_crown",
+                                                            "hat_formal_tiara"
                                                           ],
                                                           "children": {}
                                                         },
                                                         "holiday": {
                                                           "items": [
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-holiday-hat_holiday_christmas",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-holiday-hat_holiday_santa",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-hats-holiday-hat_holiday_elf"
+                                                            "hat_holiday_christmas",
+                                                            "hat_holiday_santa",
+                                                            "hat_holiday_elf"
                                                           ],
                                                           "children": {}
                                                         }
@@ -78633,59 +79283,59 @@ window.categoryTree = {
                                                       "children": {
                                                         "helmets": {
                                                           "items": [
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_armet",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_armet_simple",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_barbarian",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_barbarian_nasal",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_barbarian_viking",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_barbuta",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_barbuta_simple",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_bascinet",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_bascinet_round",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_close",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_flattop",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_greathelm",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_horned",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_kettle",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_legion",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_maximus",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_morion",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_nasal",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_norman",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_pointed",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_spangenhelm",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_spangenhelm_viking",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_sugarloaf",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_sugarloaf_simple",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmets-hat_helmet_xeon"
+                                                            "hat_helmet_armet",
+                                                            "hat_helmet_armet_simple",
+                                                            "hat_helmet_barbarian",
+                                                            "hat_helmet_barbarian_nasal",
+                                                            "hat_helmet_barbarian_viking",
+                                                            "hat_helmet_barbuta",
+                                                            "hat_helmet_barbuta_simple",
+                                                            "hat_helmet_bascinet",
+                                                            "hat_helmet_bascinet_round",
+                                                            "hat_helmet_close",
+                                                            "hat_helmet_flattop",
+                                                            "hat_helmet_greathelm",
+                                                            "hat_helmet_horned",
+                                                            "hat_helmet_kettle",
+                                                            "hat_helmet_legion",
+                                                            "hat_helmet_maximus",
+                                                            "hat_helmet_morion",
+                                                            "hat_helmet_nasal",
+                                                            "hat_helmet_norman",
+                                                            "hat_helmet_pointed",
+                                                            "hat_helmet_spangenhelm",
+                                                            "hat_helmet_spangenhelm_viking",
+                                                            "hat_helmet_sugarloaf",
+                                                            "hat_helmet_sugarloaf_simple",
+                                                            "hat_helmet_xeon"
                                                           ],
                                                           "children": {}
                                                         },
                                                         "visors": {
                                                           "items": [
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-visors-hat_visor_grated",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-visors-hat_visor_grated_narrow",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-visors-hat_visor_horned",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-visors-hat_visor_pigface",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-visors-hat_visor_pigface_raised",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-visors-hat_visor_round",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-visors-hat_visor_round_raised",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-visors-hat_visor_slit",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-visors-hat_visor_slit_narrow"
+                                                            "hat_visor_grated",
+                                                            "hat_visor_grated_narrow",
+                                                            "hat_visor_horned",
+                                                            "hat_visor_pigface",
+                                                            "hat_visor_pigface_raised",
+                                                            "hat_visor_round",
+                                                            "hat_visor_round_raised",
+                                                            "hat_visor_slit",
+                                                            "hat_visor_slit_narrow"
                                                           ],
                                                           "children": {}
                                                         },
                                                         "helmet accessories": {
                                                           "items": [
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmet accessories-hat_accessory_crest",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmet accessories-hat_accessory_crest_centurion",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmet accessories-hat_accessory_wings",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmet accessories-hat_accessory_horns_short",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmet accessories-hat_accessory_horns_upward",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmet accessories-hat_accessory_horns_downward",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmet accessories-hat_accessory_plumage",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmet accessories-hat_accessory_plumage_centurion",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-helmets-helmet accessories-hat_accessory_plumage_legion"
+                                                            "hat_accessory_crest",
+                                                            "hat_accessory_crest_centurion",
+                                                            "hat_accessory_wings",
+                                                            "hat_accessory_horns_short",
+                                                            "hat_accessory_horns_upward",
+                                                            "hat_accessory_horns_downward",
+                                                            "hat_accessory_plumage",
+                                                            "hat_accessory_plumage_centurion",
+                                                            "hat_accessory_plumage_legion"
                                                           ],
                                                           "children": {}
                                                         }
@@ -78693,51 +79343,51 @@ window.categoryTree = {
                                                     },
                                                     "accessories": {
                                                       "items": [
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-facial_mask_plain"
+                                                        "facial_mask_plain"
                                                       ],
                                                       "children": {
                                                         "glasses": {
                                                           "items": [
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-glasses-facial_glasses",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-glasses-facial_glasses_halfmoon",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-glasses-facial_glasses_nerd",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-glasses-facial_glasses_shades",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-glasses-facial_glasses_secretary",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-glasses-facial_glasses_round",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-glasses-facial_glasses_sunglasses"
+                                                            "facial_glasses",
+                                                            "facial_glasses_halfmoon",
+                                                            "facial_glasses_nerd",
+                                                            "facial_glasses_shades",
+                                                            "facial_glasses_secretary",
+                                                            "facial_glasses_round",
+                                                            "facial_glasses_sunglasses"
                                                           ],
                                                           "children": {}
                                                         },
                                                         "monocle": {
                                                           "items": [
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-monocle-facial_monocle_left",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-monocle-facial_monocle_left_frame",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-monocle-facial_monocle_right",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-monocle-facial_monocle_right_frame"
+                                                            "facial_monocle_left",
+                                                            "facial_monocle_left_frame",
+                                                            "facial_monocle_right",
+                                                            "facial_monocle_right_frame"
                                                           ],
                                                           "children": {}
                                                         },
                                                         "eyepatches": {
                                                           "items": [
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-eyepatches-facial_eyepatch_ambi",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-eyepatches-facial_eyepatch_left",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-eyepatches-facial_eyepatch_right",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-eyepatches-facial_eyepatch2_left",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-eyepatches-facial_eyepatch2_right",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-eyepatches-facial_eyepatch_small_left",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-eyepatches-facial_eyepatch_small_right"
+                                                            "facial_eyepatch_ambi",
+                                                            "facial_eyepatch_left",
+                                                            "facial_eyepatch_right",
+                                                            "facial_eyepatch2_left",
+                                                            "facial_eyepatch2_right",
+                                                            "facial_eyepatch_small_left",
+                                                            "facial_eyepatch_small_right"
                                                           ],
                                                           "children": {}
                                                         },
                                                         "earrings": {
                                                           "items": [
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-earrings-facial_earring_left",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-earrings-facial_earring_right",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-earrings-facial_earrings_emerald",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-earrings-facial_earrings_moon",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-earrings-facial_earrings_pear",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-earrings-facial_earrings_princess",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-accessories-earrings-facial_earrings_stud"
+                                                            "facial_earring_left",
+                                                            "facial_earring_right",
+                                                            "facial_earrings_emerald",
+                                                            "facial_earrings_moon",
+                                                            "facial_earrings_pear",
+                                                            "facial_earrings_princess",
+                                                            "facial_earrings_stud"
                                                           ],
                                                           "children": {}
                                                         }
@@ -78745,38 +79395,38 @@ window.categoryTree = {
                                                     },
                                                     "neck": {
                                                       "items": [
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_bowtie",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_bowtie2",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_necktie",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_scarf",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_capeclip",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_capetie",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_jabot",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_cravat",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_necklace",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_necklace_simple",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_necklace_chain",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_necklace_beaded_small",
-                                                        "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-neck_necklace_beaded_large"
+                                                        "neck_bowtie",
+                                                        "neck_bowtie2",
+                                                        "neck_necktie",
+                                                        "neck_scarf",
+                                                        "neck_capeclip",
+                                                        "neck_capetie",
+                                                        "neck_jabot",
+                                                        "neck_cravat",
+                                                        "neck_necklace",
+                                                        "neck_necklace_simple",
+                                                        "neck_necklace_chain",
+                                                        "neck_necklace_beaded_small",
+                                                        "neck_necklace_beaded_large"
                                                       ],
                                                       "children": {
                                                         "necklace charms": {
                                                           "items": [
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_charm_box",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_charm_oval",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_charm_ring",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_charm_star",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_gem_emerald",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_gem_marquise",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_gem_natural",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_gem_pear",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_gem_pearl",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_gem_princess",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_gem_round",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_gem_trilliant",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_amulet_cross",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_amulet_dangle",
-                                                            "head-hair-hair extensions-afro-curly-bald/shaved-short-spiky-pigtails-bob-braids, ponytails, updos-long-neck-necklace charms-neck_amulet_spider"
+                                                            "neck_charm_box",
+                                                            "neck_charm_oval",
+                                                            "neck_charm_ring",
+                                                            "neck_charm_star",
+                                                            "neck_gem_emerald",
+                                                            "neck_gem_marquise",
+                                                            "neck_gem_natural",
+                                                            "neck_gem_pear",
+                                                            "neck_gem_pearl",
+                                                            "neck_gem_princess",
+                                                            "neck_gem_round",
+                                                            "neck_gem_trilliant",
+                                                            "neck_amulet_cross",
+                                                            "neck_amulet_dangle",
+                                                            "neck_amulet_spider"
                                                           ],
                                                           "children": {}
                                                         }
@@ -78808,27 +79458,27 @@ window.categoryTree = {
     },
     "arms": {
       "items": [
-        "arms-arms_armour",
-        "arms-bauldron",
-        "arms-arms_gloves",
-        "arms-arms_hands_ring_stud"
+        "arms_armour",
+        "bauldron",
+        "arms_gloves",
+        "arms_hands_ring_stud"
       ],
       "children": {
         "shoulders": {
           "items": [
-            "arms-shoulders-shoulders_legion",
-            "arms-shoulders-shoulders_plate",
-            "arms-shoulders-shoulders_leather",
-            "arms-shoulders-shoulders_epaulets",
-            "arms-shoulders-shoulders_mantal"
+            "shoulders_legion",
+            "shoulders_plate",
+            "shoulders_leather",
+            "shoulders_epaulets",
+            "shoulders_mantal"
           ],
           "children": {}
         },
         "wrists": {
           "items": [
-            "arms-wrists-arms_bracers",
-            "arms-wrists-wrists_cuffs",
-            "arms-wrists-wrists_cuffs_lace"
+            "arms_bracers",
+            "wrists_cuffs",
+            "wrists_cuffs_lace"
           ],
           "children": {}
         }
@@ -78836,28 +79486,28 @@ window.categoryTree = {
     },
     "torso": {
       "items": [
-        "torso-torso_bandages",
-        "torso-torso_chainmail",
-        "torso-buckles"
+        "torso_bandages",
+        "torso_chainmail",
+        "buckles"
       ],
       "children": {
         "dresses": {
           "items": [
-            "torso-dresses-dress_sash",
-            "torso-dresses-dress_slit",
-            "torso-dresses-dress_bodice"
+            "dress_sash",
+            "dress_slit",
+            "dress_bodice"
           ],
           "children": {
             "kimono": {
               "items": [
-                "torso-dresses-kimono-dress_kimono",
-                "torso-dresses-kimono-dress_kimono_trim",
-                "torso-dresses-kimono-dress_kimono_split",
-                "torso-dresses-kimono-dress_kimono_split_trim",
-                "torso-dresses-kimono-dress_kimono_longsleeve",
-                "torso-dresses-kimono-dress_kimono_longsleeve_trim",
-                "torso-dresses-kimono-dress_kimono_oversize",
-                "torso-dresses-kimono-dress_kimono_oversize_trim"
+                "dress_kimono",
+                "dress_kimono_trim",
+                "dress_kimono_split",
+                "dress_kimono_split_trim",
+                "dress_kimono_longsleeve",
+                "dress_kimono_longsleeve_trim",
+                "dress_kimono_oversize",
+                "dress_kimono_oversize_trim"
               ],
               "children": {}
             }
@@ -78865,66 +79515,66 @@ window.categoryTree = {
         },
         "shirts": {
           "items": [
-            "torso-shirts-torso_clothes_child_shirt",
-            "torso-shirts-torso_clothes_corset",
-            "torso-shirts-torso_clothes_blouse",
-            "torso-shirts-torso_clothes_blouse_longsleeve",
-            "torso-shirts-torso_clothes_tunic",
-            "torso-shirts-torso_clothes_tunic_sara",
-            "torso-shirts-torso_clothes_robe"
+            "torso_clothes_child_shirt",
+            "torso_clothes_corset",
+            "torso_clothes_blouse",
+            "torso_clothes_blouse_longsleeve",
+            "torso_clothes_tunic",
+            "torso_clothes_tunic_sara",
+            "torso_clothes_robe"
           ],
           "children": {
             "sleeves": {
               "items": [
-                "torso-shirts-sleeves-torso_clothes_shortsleeves",
-                "torso-shirts-sleeves-torso_clothes_shortsleeves2",
-                "torso-shirts-sleeves-torso_clothes_longsleeves",
-                "torso-shirts-sleeves-torso_clothes_longsleeves2",
-                "torso-shirts-sleeves-torso_clothes_longsleeves_cuffed"
+                "torso_clothes_shortsleeves",
+                "torso_clothes_shortsleeves2",
+                "torso_clothes_longsleeves",
+                "torso_clothes_longsleeves2",
+                "torso_clothes_longsleeves_cuffed"
               ],
               "children": {}
             },
             "longsleeve": {
               "items": [
-                "torso-shirts-longsleeve-torso_clothes_longsleeve",
-                "torso-shirts-longsleeve-torso_clothes_longsleeve_scoop",
-                "torso-shirts-longsleeve-torso_clothes_longsleeve_formal",
-                "torso-shirts-longsleeve-torso_clothes_longsleeve_formal_striped",
-                "torso-shirts-longsleeve-torso_clothes_longsleeve_laced",
-                "torso-shirts-longsleeve-torso_clothes_longsleeve2",
-                "torso-shirts-longsleeve-torso_clothes_longsleeve2_vneck",
-                "torso-shirts-longsleeve-torso_clothes_longsleeve2_scoop",
-                "torso-shirts-longsleeve-torso_clothes_longsleeve2_buttoned",
-                "torso-shirts-longsleeve-torso_clothes_longsleeve2_polo",
-                "torso-shirts-longsleeve-torso_clothes_longsleeve2_cardigan"
+                "torso_clothes_longsleeve",
+                "torso_clothes_longsleeve_scoop",
+                "torso_clothes_longsleeve_formal",
+                "torso_clothes_longsleeve_formal_striped",
+                "torso_clothes_longsleeve_laced",
+                "torso_clothes_longsleeve2",
+                "torso_clothes_longsleeve2_vneck",
+                "torso_clothes_longsleeve2_scoop",
+                "torso_clothes_longsleeve2_buttoned",
+                "torso_clothes_longsleeve2_polo",
+                "torso_clothes_longsleeve2_cardigan"
               ],
               "children": {}
             },
             "shortsleeve": {
               "items": [
-                "torso-shirts-shortsleeve-torso_clothes_shortsleeve",
-                "torso-shirts-shortsleeve-torso_clothes_shortsleeve_polo",
-                "torso-shirts-shortsleeve-torso_clothes_shortsleeve_cardigan",
-                "torso-shirts-shortsleeve-torso_clothes_tshirt",
-                "torso-shirts-shortsleeve-torso_clothes_tshirt_vneck",
-                "torso-shirts-shortsleeve-torso_clothes_tshirt_scoop",
-                "torso-shirts-shortsleeve-torso_clothes_tshirt_buttoned"
+                "torso_clothes_shortsleeve",
+                "torso_clothes_shortsleeve_polo",
+                "torso_clothes_shortsleeve_cardigan",
+                "torso_clothes_tshirt",
+                "torso_clothes_tshirt_vneck",
+                "torso_clothes_tshirt_scoop",
+                "torso_clothes_tshirt_buttoned"
               ],
               "children": {}
             },
             "sleeveless": {
               "items": [
-                "torso-shirts-sleeveless-torso_clothes_sleeveless",
-                "torso-shirts-sleeveless-torso_clothes_sleeveless_laced",
-                "torso-shirts-sleeveless-torso_clothes_sleeveless_striped",
-                "torso-shirts-sleeveless-torso_clothes_sleeveless_tanktop",
-                "torso-shirts-sleeveless-torso_clothes_sleeveless1",
-                "torso-shirts-sleeveless-torso_clothes_sleeveless2",
-                "torso-shirts-sleeveless-torso_clothes_sleeveless2_vneck",
-                "torso-shirts-sleeveless-torso_clothes_sleeveless2_scoop",
-                "torso-shirts-sleeveless-torso_clothes_sleeveless2_buttoned",
-                "torso-shirts-sleeveless-torso_clothes_sleeveless2_polo",
-                "torso-shirts-sleeveless-torso_clothes_sleeveless2_cardigan"
+                "torso_clothes_sleeveless",
+                "torso_clothes_sleeveless_laced",
+                "torso_clothes_sleeveless_striped",
+                "torso_clothes_sleeveless_tanktop",
+                "torso_clothes_sleeveless1",
+                "torso_clothes_sleeveless2",
+                "torso_clothes_sleeveless2_vneck",
+                "torso_clothes_sleeveless2_scoop",
+                "torso_clothes_sleeveless2_buttoned",
+                "torso_clothes_sleeveless2_polo",
+                "torso_clothes_sleeveless2_cardigan"
               ],
               "children": {}
             }
@@ -78932,31 +79582,31 @@ window.categoryTree = {
         },
         "aprons": {
           "items": [
-            "torso-aprons-torso_aprons_overalls",
-            "torso-aprons-torso_aprons_suspenders",
-            "torso-aprons-torso_aprons_apron",
-            "torso-aprons-torso_aprons_apron_half",
-            "torso-aprons-torso_aprons_apron_full"
+            "torso_aprons_overalls",
+            "torso_aprons_suspenders",
+            "torso_aprons_apron",
+            "torso_aprons_apron_half",
+            "torso_aprons_apron_full"
           ],
           "children": {}
         },
         "jacket": {
           "items": [
-            "torso-jacket-torso_jacket_collared",
-            "torso-jacket-torso_jacket_iverness",
-            "torso-jacket-torso_jacket_trench",
-            "torso-jacket-torso_jacket_tabard",
-            "torso-jacket-torso_jacket_frock",
-            "torso-jacket-torso_jacket_santa"
+            "torso_jacket_collared",
+            "torso_jacket_iverness",
+            "torso_jacket_trench",
+            "torso_jacket_tabard",
+            "torso_jacket_frock",
+            "torso_jacket_santa"
           ],
           "children": {
             "jacket trim": {
               "items": [
-                "torso-jacket-jacket trim-torso_jacket_frock_collar",
-                "torso-jacket-jacket trim-torso_jacket_frock_lace",
-                "torso-jacket-jacket trim-torso_jacket_frock_lapel",
-                "torso-jacket-jacket trim-torso_jacket_frock_buttons",
-                "torso-jacket-jacket trim-torso_jacket_pockets"
+                "torso_jacket_frock_collar",
+                "torso_jacket_frock_lace",
+                "torso_jacket_frock_lapel",
+                "torso_jacket_frock_buttons",
+                "torso_jacket_pockets"
               ],
               "children": {}
             }
@@ -78964,42 +79614,42 @@ window.categoryTree = {
         },
         "vest": {
           "items": [
-            "torso-vest-torso_clothes_vest",
-            "torso-vest-torso_clothes_vest_open"
+            "torso_clothes_vest",
+            "torso_clothes_vest_open"
           ],
           "children": {}
         },
         "armour": {
           "items": [
-            "torso-armour-torso_armour_plate",
-            "torso-armour-torso_armour_leather",
-            "torso-armour-torso_armour_legion"
+            "torso_armour_plate",
+            "torso_armour_leather",
+            "torso_armour_legion"
           ],
           "children": {}
         },
         "cape": {
           "items": [
-            "torso-cape-cape_solid",
-            "torso-cape-cape_tattered",
-            "torso-cape-cape_trim"
+            "cape_solid",
+            "cape_tattered",
+            "cape_trim"
           ],
           "children": {}
         },
         "backpack": {
           "items": [
-            "torso-backpack-backpack_straps",
-            "torso-backpack-backpack",
-            "torso-backpack-backpack_squarepack",
-            "torso-backpack-backpack_jetpack",
-            "torso-backpack-backpack_jetpack_fins",
-            "torso-backpack-backpack_basket",
-            "torso-backpack-quiver"
+            "backpack_straps",
+            "backpack",
+            "backpack_squarepack",
+            "backpack_jetpack",
+            "backpack_jetpack_fins",
+            "backpack_basket",
+            "quiver"
           ],
           "children": {
             "backpack cargo": {
               "items": [
-                "torso-backpack-backpack cargo-backpack_contents_wood",
-                "torso-backpack-backpack cargo-backpack_contents_ore"
+                "backpack_contents_wood",
+                "backpack_contents_ore"
               ],
               "children": {}
             }
@@ -79007,22 +79657,22 @@ window.categoryTree = {
         },
         "waist": {
           "items": [
-            "torso-waist-belt_leather",
-            "torso-waist-belt_double",
-            "torso-waist-belt_loose",
-            "torso-waist-belt_belly",
-            "torso-waist-belt_other_female",
-            "torso-waist-belt_other_male",
-            "torso-waist-belt_sash",
-            "torso-waist-belt_sash_narrow",
-            "torso-waist-belt_waistband"
+            "belt_leather",
+            "belt_double",
+            "belt_loose",
+            "belt_belly",
+            "belt_other_female",
+            "belt_other_male",
+            "belt_sash",
+            "belt_sash_narrow",
+            "belt_waistband"
           ],
           "children": {
             "obi": {
               "items": [
-                "torso-waist-obi-belt_obi",
-                "torso-waist-obi-belt_obi_knot_left",
-                "torso-waist-obi-belt_obi_knot_right"
+                "belt_obi",
+                "belt_obi_knot_left",
+                "belt_obi_knot_right"
               ],
               "children": {}
             }
@@ -79032,48 +79682,48 @@ window.categoryTree = {
     },
     "legs": {
       "items": [
-        "legs-legs_armour"
+        "legs_armour"
       ],
       "children": {
         "pants": {
           "items": [
-            "legs-pants-legs_widepants",
-            "legs-pants-legs_pants",
-            "legs-pants-legs_pants2",
-            "legs-pants-legs_cuffed",
-            "legs-pants-legs_pantaloons",
-            "legs-pants-legs_formal",
-            "legs-pants-legs_formal_striped",
-            "legs-pants-legs_fur",
-            "legs-pants-legs_pregnantpants",
-            "legs-pants-legs_childpants"
+            "legs_widepants",
+            "legs_pants",
+            "legs_pants2",
+            "legs_cuffed",
+            "legs_pantaloons",
+            "legs_formal",
+            "legs_formal_striped",
+            "legs_fur",
+            "legs_pregnantpants",
+            "legs_childpants"
           ],
           "children": {}
         },
         "leggings": {
           "items": [
-            "legs-leggings-legs_leggings",
-            "legs-leggings-legs_leggings2",
-            "legs-leggings-legs_hose"
+            "legs_leggings",
+            "legs_leggings2",
+            "legs_hose"
           ],
           "children": {}
         },
         "shorts": {
           "items": [
-            "legs-shorts-legs_shorts",
-            "legs-shorts-legs_shorts_short"
+            "legs_shorts",
+            "legs_shorts_short"
           ],
           "children": {}
         },
         "skirts": {
           "items": [
-            "legs-skirts-legs_childskirts",
-            "legs-skirts-legs_skirts_plain",
-            "legs-skirts-legs_skirts_slit",
-            "legs-skirts-legs_skirts_legion",
-            "legs-skirts-legs_skirt_straight",
-            "legs-skirts-legs_skirt_belle",
-            "legs-skirts-legs_skirt_overskirt"
+            "legs_childskirts",
+            "legs_skirts_plain",
+            "legs_skirts_slit",
+            "legs_skirts_legion",
+            "legs_skirt_straight",
+            "legs_skirt_belle",
+            "legs_skirt_overskirt"
           ],
           "children": {}
         }
@@ -79081,42 +79731,42 @@ window.categoryTree = {
     },
     "feet": {
       "items": [
-        "feet-feet_armour",
-        "feet-feet_slippers",
-        "feet-feet_sandals",
-        "feet-feet_hoofs"
+        "feet_armour",
+        "feet_slippers",
+        "feet_sandals",
+        "feet_hoofs"
       ],
       "children": {
         "shoes": {
           "items": [
-            "feet-shoes-feet_shoes_basic",
-            "feet-shoes-feet_shoes_revised",
-            "feet-shoes-feet_shoes_sara",
-            "feet-shoes-feet_shoes_ghillies"
+            "feet_shoes_basic",
+            "feet_shoes_revised",
+            "feet_shoes_sara",
+            "feet_shoes_ghillies"
           ],
           "children": {}
         },
         "boots": {
           "items": [
-            "feet-boots-feet_boots_basic",
-            "feet-boots-feet_boots_revised",
-            "feet-boots-feet_boots_fold",
-            "feet-boots-feet_boots_rim"
+            "feet_boots_basic",
+            "feet_boots_revised",
+            "feet_boots_fold",
+            "feet_boots_rim"
           ],
           "children": {}
         },
         "shoe accessory": {
           "items": [
-            "feet-shoe accessory-feet_plate_toe",
-            "feet-shoe accessory-feet_plate_toe_thick"
+            "feet_plate_toe",
+            "feet_plate_toe_thick"
           ],
           "children": {}
         },
         "socks": {
           "items": [
-            "feet-socks-feet_socks_ankle",
-            "feet-socks-feet_socks_high",
-            "feet-socks-feet_socks_tabi"
+            "feet_socks_ankle",
+            "feet_socks_high",
+            "feet_socks_tabi"
           ],
           "children": {}
         }
@@ -79124,10 +79774,10 @@ window.categoryTree = {
     },
     "tools": {
       "items": [
-        "tools-tool_rod",
-        "tools-tool_smash",
-        "tools-tool_thrust",
-        "tools-tool_whip"
+        "tool_rod",
+        "tool_smash",
+        "tool_thrust",
+        "tool_whip"
       ],
       "children": {}
     },
@@ -79136,92 +79786,92 @@ window.categoryTree = {
       "children": {
         "shield": {
           "items": [
-            "weapons-shield-shield",
-            "weapons-shield-shield_kite",
-            "weapons-shield-shield_spartan"
+            "shield",
+            "shield_kite",
+            "shield_spartan"
           ],
           "children": {
             "two-engrailed shield": {
               "items": [
-                "weapons-shield-two-engrailed shield-shield_two_engrailed",
-                "weapons-shield-two-engrailed shield-shield_two_engrailed_trim",
-                "weapons-shield-two-engrailed shield-shield_crusader",
-                "weapons-shield-two-engrailed shield-shield_plus"
+                "shield_two_engrailed",
+                "shield_two_engrailed_trim",
+                "shield_crusader",
+                "shield_plus"
               ],
               "children": {}
             },
             "scutum shield": {
               "items": [
-                "weapons-shield-scutum shield-shield_scutum",
-                "weapons-shield-scutum shield-shield_scutum_trim"
+                "shield_scutum",
+                "shield_scutum_trim"
               ],
               "children": {}
             },
             "heater shield": {
               "items": [
-                "weapons-shield-heater shield-shield_heater_wood",
-                "weapons-shield-heater shield-shield_heater_paint",
-                "weapons-shield-heater shield-shield_heater_trim",
-                "weapons-shield-heater shield-shield_heater_revised_wood",
-                "weapons-shield-heater shield-shield_heater_revised_paint",
-                "weapons-shield-heater shield-shield_heater_revised_trim"
+                "shield_heater_wood",
+                "shield_heater_paint",
+                "shield_heater_trim",
+                "shield_heater_revised_wood",
+                "shield_heater_revised_paint",
+                "shield_heater_revised_trim"
               ],
               "children": {
                 "heater shield pattern": {
                   "items": [
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_barry",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_bend_sinister",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_bend",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_bendy_sinister",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_bendy",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_bordure",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_chevron_inverted",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_chevron",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_chief",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_cross",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_fess",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_lozengy",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_pale",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_pall",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_paly",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_per_bend_sinister",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_per_bend",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_per_chevron_inverted",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_per_chevron",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_per_fess",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_per_pale",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_per_saltire",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_quarterly",
-                    "weapons-shield-heater shield-heater shield pattern-shield_heater_pattern_saltire"
+                    "shield_heater_pattern_barry",
+                    "shield_heater_pattern_bend_sinister",
+                    "shield_heater_pattern_bend",
+                    "shield_heater_pattern_bendy_sinister",
+                    "shield_heater_pattern_bendy",
+                    "shield_heater_pattern_bordure",
+                    "shield_heater_pattern_chevron_inverted",
+                    "shield_heater_pattern_chevron",
+                    "shield_heater_pattern_chief",
+                    "shield_heater_pattern_cross",
+                    "shield_heater_pattern_fess",
+                    "shield_heater_pattern_lozengy",
+                    "shield_heater_pattern_pale",
+                    "shield_heater_pattern_pall",
+                    "shield_heater_pattern_paly",
+                    "shield_heater_pattern_per_bend_sinister",
+                    "shield_heater_pattern_per_bend",
+                    "shield_heater_pattern_per_chevron_inverted",
+                    "shield_heater_pattern_per_chevron",
+                    "shield_heater_pattern_per_fess",
+                    "shield_heater_pattern_per_pale",
+                    "shield_heater_pattern_per_saltire",
+                    "shield_heater_pattern_quarterly",
+                    "shield_heater_pattern_saltire"
                   ],
                   "children": {}
                 },
                 "revised heater shield pattern": {
                   "items": [
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_barry",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_bend_sinister",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_bend",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_bendy_sinister",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_bendy",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_bordure",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_chevron_inverted",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_chevron",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_chief",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_cross",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_fess",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_lozengy",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_pale",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_pall",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_paly",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_per_bend_sinister",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_per_bend",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_per_chevron_inverted",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_per_chevron",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_per_fess",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_per_pale",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_per_saltire",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_quarterly",
-                    "weapons-shield-heater shield-revised heater shield pattern-shield_heater_revised_pattern_saltire"
+                    "shield_heater_revised_pattern_barry",
+                    "shield_heater_revised_pattern_bend_sinister",
+                    "shield_heater_revised_pattern_bend",
+                    "shield_heater_revised_pattern_bendy_sinister",
+                    "shield_heater_revised_pattern_bendy",
+                    "shield_heater_revised_pattern_bordure",
+                    "shield_heater_revised_pattern_chevron_inverted",
+                    "shield_heater_revised_pattern_chevron",
+                    "shield_heater_revised_pattern_chief",
+                    "shield_heater_revised_pattern_cross",
+                    "shield_heater_revised_pattern_fess",
+                    "shield_heater_revised_pattern_lozengy",
+                    "shield_heater_revised_pattern_pale",
+                    "shield_heater_revised_pattern_pall",
+                    "shield_heater_revised_pattern_paly",
+                    "shield_heater_revised_pattern_per_bend_sinister",
+                    "shield_heater_revised_pattern_per_bend",
+                    "shield_heater_revised_pattern_per_chevron_inverted",
+                    "shield_heater_revised_pattern_per_chevron",
+                    "shield_heater_revised_pattern_per_fess",
+                    "shield_heater_revised_pattern_per_pale",
+                    "shield_heater_revised_pattern_per_saltire",
+                    "shield_heater_revised_pattern_quarterly",
+                    "shield_heater_revised_pattern_saltire"
                   ],
                   "children": {}
                 }
@@ -79231,17 +79881,17 @@ window.categoryTree = {
         },
         "ranged": {
           "items": [
-            "weapons-ranged-weapon_ranged_crossbow",
-            "weapons-ranged-weapon_ranged_slingshot",
-            "weapons-ranged-weapon_ranged_boomerang"
+            "weapon_ranged_crossbow",
+            "weapon_ranged_slingshot",
+            "weapon_ranged_boomerang"
           ],
           "children": {
             "bow": {
               "items": [
-                "weapons-ranged-bow-weapon_ranged_bow_arrow",
-                "weapons-ranged-bow-weapon_ranged_bow_great",
-                "weapons-ranged-bow-weapon_ranged_bow_normal",
-                "weapons-ranged-bow-weapon_ranged_bow_recurve"
+                "weapon_ranged_bow_arrow",
+                "weapon_ranged_bow_great",
+                "weapon_ranged_bow_normal",
+                "weapon_ranged_bow_recurve"
               ],
               "children": {}
             }
@@ -79249,48 +79899,48 @@ window.categoryTree = {
         },
         "sword": {
           "items": [
-            "weapons-sword-weapon_sword_dagger",
-            "weapons-sword-weapon_sword_glowsword",
-            "weapons-sword-weapon_sword_longsword",
-            "weapons-sword-weapon_sword_rapier",
-            "weapons-sword-weapon_sword_saber",
-            "weapons-sword-weapon_sword_katana",
-            "weapons-sword-weapon_sword_scimitar",
-            "weapons-sword-weapon_sword_longsword_alt",
-            "weapons-sword-weapon_sword_arming"
+            "weapon_sword_dagger",
+            "weapon_sword_glowsword",
+            "weapon_sword_longsword",
+            "weapon_sword_rapier",
+            "weapon_sword_saber",
+            "weapon_sword_katana",
+            "weapon_sword_scimitar",
+            "weapon_sword_longsword_alt",
+            "weapon_sword_arming"
           ],
           "children": {}
         },
         "blunt": {
           "items": [
-            "weapons-blunt-weapon_blunt_flail",
-            "weapons-blunt-weapon_blunt_mace",
-            "weapons-blunt-weapon_blunt_waraxe",
-            "weapons-blunt-weapon_blunt_club"
+            "weapon_blunt_flail",
+            "weapon_blunt_mace",
+            "weapon_blunt_waraxe",
+            "weapon_blunt_club"
           ],
           "children": {}
         },
         "polearm": {
           "items": [
-            "weapons-polearm-weapon_polearm_cane",
-            "weapons-polearm-weapon_polearm_spear",
-            "weapons-polearm-weapon_polearm_scythe",
-            "weapons-polearm-weapon_polearm_halberd",
-            "weapons-polearm-weapon_polearm_longspear",
-            "weapons-polearm-weapon_polearm_dragonspear",
-            "weapons-polearm-weapon_polearm_trident"
+            "weapon_polearm_cane",
+            "weapon_polearm_spear",
+            "weapon_polearm_scythe",
+            "weapon_polearm_halberd",
+            "weapon_polearm_longspear",
+            "weapon_polearm_dragonspear",
+            "weapon_polearm_trident"
           ],
           "children": {}
         },
         "magic": {
           "items": [
-            "weapons-magic-weapon_magic_simple",
-            "weapons-magic-weapon_magic_loop",
-            "weapons-magic-weapon_magic_diamond",
-            "weapons-magic-weapon_magic_gnarled",
-            "weapons-magic-weapon_magic_s",
-            "weapons-magic-weapon_magic_crystal",
-            "weapons-magic-weapon_magic_wand"
+            "weapon_magic_simple",
+            "weapon_magic_loop",
+            "weapon_magic_diamond",
+            "weapon_magic_gnarled",
+            "weapon_magic_s",
+            "weapon_magic_crystal",
+            "weapon_magic_wand"
           ],
           "children": {}
         }
