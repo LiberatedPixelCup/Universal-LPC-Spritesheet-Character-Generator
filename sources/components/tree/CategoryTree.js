@@ -55,7 +55,12 @@ export const CategoryTree = {
 							state.matchBodyColorEnabled = e.target.checked;
 							// If enabling the checkbox, immediately apply match body color
 							if (e.target.checked) {
-								applyMatchBodyColor();
+								// Use body-body as the source if available
+								const bodySelectionGroup = getSelectionGroup('body-body');
+								const bodySelection = state.selections[bodySelectionGroup];
+								if (bodySelection?.variant) {
+									applyMatchBodyColor(bodySelection.variant);
+								}
 							}
 						}
 					}),

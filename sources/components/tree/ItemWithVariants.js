@@ -84,9 +84,9 @@ export const ItemWithVariants = {
 									name: `${displayName} (${variantDisplayName})`
 								};
 
-								// If this is the body color, apply match body color to other items
-								if (itemId === 'body-body') {
-									applyMatchBodyColor();
+								// If this item has matchBodyColor enabled, apply to all other body-colored items
+								if (meta.matchBodyColor) {
+									applyMatchBodyColor(variant);
 								}
 							}
 						}

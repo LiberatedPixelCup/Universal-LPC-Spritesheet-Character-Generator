@@ -163,37 +163,27 @@ export function resetAll() {
 	m.redraw();
 }
 
-// Apply match body color - when body color changes, update all items with matchBodyColor: true
-export function applyMatchBodyColor() {
+// Apply match body color - when any body-colored part changes, update all items with matchBodyColor: true
+export function applyMatchBodyColor(variantToMatch) {
 	// Only apply if feature is enabled
 	if (!state.matchBodyColorEnabled) return;
 
-	// Get the current body selection
-	const bodySelectionGroup = getSelectionGroup('body-body');
-	const bodySelection = state.selections[bodySelectionGroup];
-
-	// If no body selected, nothing to match
-	if (!bodySelection) return;
-
-	const bodyVariant = bodySelection.variant;
-	if (!bodyVariant) return;
+	// If no variant specified, nothing to match
+	if (!variantToMatch) return;
 
 	// Update all selected items that have matchBodyColor: true
 	for (const [selectionGroup, selection] of Object.entries(state.selections)) {
-		// Skip the body itself
-		if (selectionGroup === bodySelectionGroup) continue;
-
 		const itemId = selection.itemId;
 		const meta = window.itemMetadata?.[itemId];
 
 		// Skip if no metadata or matchBodyColor is not enabled for this item
 		if (!meta || !meta.matchBodyColor) continue;
 
-		// Check if this item has the body variant available
-		if (meta.variants && meta.variants.includes(bodyVariant)) {
-			// Update the variant to match the body
-			selection.variant = bodyVariant;
-			selection.name = meta.name + ` (${bodyVariant})`;
+		// Check if this item has the variant available
+		if (meta.variants && meta.variants.includes(variantToMatch)) {
+			// Update the variant to match
+			selection.variant = variantToMatch;
+			selection.name = meta.name + ` (${variantToMatch})`;
 		}
 	}
 }
