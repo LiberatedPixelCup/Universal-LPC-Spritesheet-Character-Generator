@@ -141,5 +141,6 @@
     "head",
     "face",
     "face_blush"
-  ]
+  ],
+  "type_name": "expression"
 }

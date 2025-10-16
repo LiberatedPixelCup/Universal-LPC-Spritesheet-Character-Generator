@@ -97,5 +97,6 @@
     "torso",
     "armour",
     "torso_armour_plate"
-  ]
+  ],
+  "type_name": "armour"
 }

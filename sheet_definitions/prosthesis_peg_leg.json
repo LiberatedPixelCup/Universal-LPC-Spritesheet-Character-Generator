@@ -31,5 +31,6 @@
     "body",
     "prostheses",
     "prosthesis_peg_leg"
-  ]
+  ],
+  "type_name": "prosthesis_leg"
 }

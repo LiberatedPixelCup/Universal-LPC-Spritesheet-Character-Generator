@@ -69,5 +69,6 @@
     "torso",
     "jacket",
     "torso_jacket_tabard"
-  ]
+  ],
+  "type_name": "jacket"
 }

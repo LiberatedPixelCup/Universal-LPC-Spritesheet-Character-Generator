@@ -67,5 +67,6 @@
     "dresses",
     "kimono",
     "dress_kimono_longsleeve_trim"
-  ]
+  ],
+  "type_name": "dress_sleeves_trim"
 }

@@ -59,5 +59,6 @@
     "weapons",
     "polearm",
     "weapon_polearm_spear"
-  ]
+  ],
+  "type_name": "weapon"
 }

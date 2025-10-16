@@ -99,5 +99,6 @@
     "accessories",
     "glasses",
     "facial_glasses_sunglasses"
-  ]
+  ],
+  "type_name": "facial_eyes"
 }

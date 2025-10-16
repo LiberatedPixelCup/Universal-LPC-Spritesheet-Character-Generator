@@ -99,5 +99,6 @@
     "helmets",
     "helmet accessories",
     "hat_accessory_horns_short"
-  ]
+  ],
+  "type_name": "accessory"
 }

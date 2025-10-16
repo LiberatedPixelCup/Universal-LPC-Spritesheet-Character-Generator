@@ -77,5 +77,6 @@
     "shirts",
     "shortsleeve",
     "torso_clothes_tshirt"
-  ]
+  ],
+  "type_name": "clothes"
 }

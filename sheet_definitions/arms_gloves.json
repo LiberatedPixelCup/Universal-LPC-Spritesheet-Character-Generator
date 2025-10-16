@@ -105,5 +105,6 @@
   "path": [
     "arms",
     "arms_gloves"
-  ]
+  ],
+  "type_name": "gloves"
 }

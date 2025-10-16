@@ -36,5 +36,6 @@
     "weapons",
     "magic",
     "weapon_magic_wand"
-  ]
+  ],
+  "type_name": "weapon"
 }

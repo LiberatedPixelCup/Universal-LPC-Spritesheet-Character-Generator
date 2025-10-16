@@ -80,5 +80,6 @@
     "head",
     "heads",
     "heads_zombie"
-  ]
+  ],
+  "type_name": "head"
 }

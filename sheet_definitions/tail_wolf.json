@@ -93,5 +93,6 @@
     "body",
     "tails",
     "tail_wolf"
-  ]
+  ],
+  "type_name": "tail"
 }

@@ -39,5 +39,6 @@
     "torso",
     "waist",
     "belt_leather"
-  ]
+  ],
+  "type_name": "belt"
 }

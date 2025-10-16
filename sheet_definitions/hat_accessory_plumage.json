@@ -88,5 +88,6 @@
     "helmets",
     "helmet accessories",
     "hat_accessory_plumage"
-  ]
+  ],
+  "type_name": "accessory"
 }

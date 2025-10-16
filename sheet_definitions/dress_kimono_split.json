@@ -60,5 +60,6 @@
     "dresses",
     "kimono",
     "dress_kimono_split"
-  ]
+  ],
+  "type_name": "dress"
 }

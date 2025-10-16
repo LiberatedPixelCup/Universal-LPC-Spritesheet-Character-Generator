@@ -59,5 +59,6 @@
     "torso",
     "armour",
     "torso_armour_legion"
-  ]
+  ],
+  "type_name": "armour"
 }

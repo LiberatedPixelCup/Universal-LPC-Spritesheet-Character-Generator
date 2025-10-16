@@ -56,5 +56,6 @@
     "weapons",
     "sword",
     "weapon_sword_saber"
-  ]
+  ],
+  "type_name": "weapon"
 }

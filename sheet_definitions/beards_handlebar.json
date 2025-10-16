@@ -75,5 +75,6 @@
     "head",
     "mustaches",
     "beards_handlebar"
-  ]
+  ],
+  "type_name": "mustache"
 }

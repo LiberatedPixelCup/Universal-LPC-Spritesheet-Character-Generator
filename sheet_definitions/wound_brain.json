@@ -51,5 +51,6 @@
     "body",
     "wounds",
     "wound_brain"
-  ]
+  ],
+  "type_name": "wound_brain"
 }

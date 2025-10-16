@@ -73,5 +73,6 @@
     "helmets",
     "visors",
     "hat_visor_grated_narrow"
-  ]
+  ],
+  "type_name": "visor"
 }

@@ -69,5 +69,6 @@
     "weapons",
     "magic",
     "weapon_magic_diamond"
-  ]
+  ],
+  "type_name": "weapon"
 }

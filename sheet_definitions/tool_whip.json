@@ -45,5 +45,6 @@
   "path": [
     "tools",
     "tool_whip"
-  ]
+  ],
+  "type_name": "weapon"
 }

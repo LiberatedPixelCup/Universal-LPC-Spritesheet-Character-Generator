@@ -38,5 +38,6 @@
     "shield",
     "scutum shield",
     "shield_scutum"
-  ]
+  ],
+  "type_name": "shield"
 }

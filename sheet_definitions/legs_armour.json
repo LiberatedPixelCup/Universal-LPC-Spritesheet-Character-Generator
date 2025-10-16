@@ -53,5 +53,6 @@
   "path": [
     "legs",
     "legs_armour"
-  ]
+  ],
+  "type_name": "legs"
 }

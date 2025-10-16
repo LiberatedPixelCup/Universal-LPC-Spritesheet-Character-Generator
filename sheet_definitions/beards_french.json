@@ -77,5 +77,6 @@
     "head",
     "mustaches",
     "beards_french"
-  ]
+  ],
+  "type_name": "mustache"
 }

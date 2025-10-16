@@ -47,5 +47,6 @@
   "path": [
     "tools",
     "tool_rod"
-  ]
+  ],
+  "type_name": "weapon"
 }

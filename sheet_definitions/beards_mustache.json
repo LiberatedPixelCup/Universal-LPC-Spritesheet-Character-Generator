@@ -76,5 +76,6 @@
     "head",
     "mustaches",
     "beards_mustache"
-  ]
+  ],
+  "type_name": "mustache"
 }

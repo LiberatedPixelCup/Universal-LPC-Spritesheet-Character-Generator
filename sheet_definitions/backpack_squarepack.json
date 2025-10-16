@@ -54,5 +54,6 @@
     "torso",
     "backpack",
     "backpack_squarepack"
-  ]
+  ],
+  "type_name": "backpack"
 }

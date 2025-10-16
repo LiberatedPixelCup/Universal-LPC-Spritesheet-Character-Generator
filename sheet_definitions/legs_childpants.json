@@ -39,5 +39,6 @@
     "legs",
     "pants",
     "legs_childpants"
-  ]
+  ],
+  "type_name": "legs"
 }

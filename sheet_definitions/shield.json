@@ -289,5 +289,6 @@
     "weapons",
     "shield",
     "shield"
-  ]
+  ],
+  "type_name": "shield"
 }

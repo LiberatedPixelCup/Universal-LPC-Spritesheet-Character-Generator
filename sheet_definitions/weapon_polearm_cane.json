@@ -36,5 +36,6 @@
     "weapons",
     "polearm",
     "weapon_polearm_cane"
-  ]
+  ],
+  "type_name": "weapon"
 }

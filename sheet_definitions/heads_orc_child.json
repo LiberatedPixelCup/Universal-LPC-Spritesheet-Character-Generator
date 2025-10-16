@@ -77,5 +77,6 @@
     "head",
     "heads",
     "heads_orc_child"
-  ]
+  ],
+  "type_name": "head"
 }

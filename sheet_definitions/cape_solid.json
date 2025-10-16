@@ -87,5 +87,6 @@
     "torso",
     "cape",
     "cape_solid"
-  ]
+  ],
+  "type_name": "cape"
 }

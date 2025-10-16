@@ -77,5 +77,6 @@
     "head",
     "beards",
     "beards_5oclock_shadow"
-  ]
+  ],
+  "type_name": "beard"
 }

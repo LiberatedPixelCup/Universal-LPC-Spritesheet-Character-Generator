@@ -58,5 +58,6 @@
     "weapons",
     "sword",
     "weapon_sword_glowsword"
-  ]
+  ],
+  "type_name": "weapon"
 }

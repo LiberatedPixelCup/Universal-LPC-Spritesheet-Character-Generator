@@ -78,5 +78,6 @@
     "ranged",
     "bow",
     "weapon_ranged_bow_normal"
-  ]
+  ],
+  "type_name": "weapon"
 }

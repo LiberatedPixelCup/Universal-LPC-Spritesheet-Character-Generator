@@ -31,5 +31,6 @@
     "body",
     "prostheses",
     "prosthesis_hook"
-  ]
+  ],
+  "type_name": "prosthesis_hand"
 }

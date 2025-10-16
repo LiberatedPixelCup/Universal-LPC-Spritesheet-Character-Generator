@@ -68,5 +68,6 @@
     "shield",
     "heater shield",
     "shield_heater_revised_wood"
-  ]
+  ],
+  "type_name": "shield"
 }

@@ -29,5 +29,6 @@
   "path": [
     "torso",
     "buckles"
-  ]
+  ],
+  "type_name": "buckles"
 }

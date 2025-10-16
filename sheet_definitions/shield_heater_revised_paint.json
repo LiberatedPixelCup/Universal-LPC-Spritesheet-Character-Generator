@@ -135,5 +135,6 @@
     "shield",
     "heater shield",
     "shield_heater_revised_paint"
-  ]
+  ],
+  "type_name": "shield_paint"
 }

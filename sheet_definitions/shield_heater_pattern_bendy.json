@@ -85,5 +85,6 @@
     "heater shield",
     "heater shield pattern",
     "shield_heater_pattern_bendy"
-  ]
+  ],
+  "type_name": "shield_pattern"
 }

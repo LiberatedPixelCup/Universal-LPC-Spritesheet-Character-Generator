@@ -51,5 +51,6 @@
     "backpack",
     "backpack cargo",
     "backpack_contents_ore"
-  ]
+  ],
+  "type_name": "cargo"
 }

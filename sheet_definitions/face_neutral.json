@@ -146,5 +146,6 @@
     "head",
     "face",
     "face_neutral"
-  ]
+  ],
+  "type_name": "expression"
 }

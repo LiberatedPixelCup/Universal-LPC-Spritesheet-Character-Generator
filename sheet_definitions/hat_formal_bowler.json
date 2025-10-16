@@ -88,5 +88,6 @@
     "hats",
     "formal",
     "hat_formal_bowler"
-  ]
+  ],
+  "type_name": "hat"
 }

@@ -40,5 +40,6 @@
     "ranged",
     "bow",
     "weapon_ranged_bow_arrow"
-  ]
+  ],
+  "type_name": "ammo"
 }

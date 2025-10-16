@@ -39,5 +39,6 @@
     "weapons",
     "magic",
     "weapon_magic_simple"
-  ]
+  ],
+  "type_name": "weapon"
 }

@@ -141,5 +141,6 @@
     "head",
     "face",
     "face_angry"
-  ]
+  ],
+  "type_name": "expression"
 }

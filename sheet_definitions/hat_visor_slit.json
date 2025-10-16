@@ -72,5 +72,6 @@
     "helmets",
     "visors",
     "hat_visor_slit"
-  ]
+  ],
+  "type_name": "visor"
 }

@@ -69,5 +69,6 @@
   "path": [
     "category_not_found",
     "tail_fin"
-  ]
+  ],
+  "type_name": "tail"
 }

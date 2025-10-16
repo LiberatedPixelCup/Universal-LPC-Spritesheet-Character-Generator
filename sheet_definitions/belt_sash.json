@@ -56,5 +56,6 @@
     "torso",
     "waist",
     "belt_sash"
-  ]
+  ],
+  "type_name": "sash"
 }

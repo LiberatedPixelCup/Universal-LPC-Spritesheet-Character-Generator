@@ -32,5 +32,6 @@
     "torso",
     "backpack",
     "quiver"
-  ]
+  ],
+  "type_name": "quiver"
 }

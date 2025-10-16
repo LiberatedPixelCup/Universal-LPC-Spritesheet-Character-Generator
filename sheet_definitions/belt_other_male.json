@@ -62,5 +62,6 @@
     "torso",
     "waist",
     "belt_other_male"
-  ]
+  ],
+  "type_name": "belt"
 }

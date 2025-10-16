@@ -38,5 +38,6 @@
     "weapons",
     "ranged",
     "weapon_ranged_slingshot"
-  ]
+  ],
+  "type_name": "weapon"
 }

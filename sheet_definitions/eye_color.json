@@ -144,5 +144,6 @@
   "path": [
     "head",
     "eye_color"
-  ]
+  ],
+  "type_name": "eye_color"
 }

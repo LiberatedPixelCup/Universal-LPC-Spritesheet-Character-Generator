@@ -49,5 +49,6 @@
     "torso",
     "shirts",
     "torso_clothes_blouse"
-  ]
+  ],
+  "type_name": "clothes"
 }

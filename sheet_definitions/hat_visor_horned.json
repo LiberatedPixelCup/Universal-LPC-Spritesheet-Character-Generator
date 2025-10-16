@@ -77,5 +77,6 @@
     "helmets",
     "visors",
     "hat_visor_horned"
-  ]
+  ],
+  "type_name": "visor"
 }

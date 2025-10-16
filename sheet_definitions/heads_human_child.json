@@ -77,5 +77,6 @@
     "head",
     "heads",
     "heads_human_child"
-  ]
+  ],
+  "type_name": "head"
 }

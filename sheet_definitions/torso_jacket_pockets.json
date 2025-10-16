@@ -50,5 +50,6 @@
     "jacket",
     "jacket trim",
     "torso_jacket_pockets"
-  ]
+  ],
+  "type_name": "jacket_pockets"
 }

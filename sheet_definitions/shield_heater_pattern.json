@@ -53,5 +53,6 @@
   "path": [
     "category_not_found",
     "shield_heater_pattern"
-  ]
+  ],
+  "type_name": "shield_pattern"
 }

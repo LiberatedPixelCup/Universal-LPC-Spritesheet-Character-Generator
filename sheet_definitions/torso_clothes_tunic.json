@@ -58,5 +58,6 @@
     "torso",
     "shirts",
     "torso_clothes_tunic"
-  ]
+  ],
+  "type_name": "clothes"
 }

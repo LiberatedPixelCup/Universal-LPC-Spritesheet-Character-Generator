@@ -106,5 +106,6 @@
     "accessories",
     "monocle",
     "facial_monocle_right_frame"
-  ]
+  ],
+  "type_name": "facial_right_trim"
 }

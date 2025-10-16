@@ -89,5 +89,6 @@
     "hats",
     "caps",
     "hat_cap_leather_feather"
-  ]
+  ],
+  "type_name": "hat_accessory"
 }

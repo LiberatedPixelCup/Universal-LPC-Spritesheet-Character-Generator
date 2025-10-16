@@ -85,5 +85,6 @@
     "heater shield",
     "revised heater shield pattern",
     "shield_heater_revised_pattern_per_fess"
-  ]
+  ],
+  "type_name": "shield_pattern"
 }

@@ -84,5 +84,6 @@
     "heater shield",
     "heater shield pattern",
     "shield_heater_pattern_per_saltire"
-  ]
+  ],
+  "type_name": "shield_pattern"
 }

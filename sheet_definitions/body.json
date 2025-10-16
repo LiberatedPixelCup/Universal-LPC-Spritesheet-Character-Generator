@@ -252,5 +252,6 @@
   "path": [
     "body",
     "body"
-  ]
+  ],
+  "type_name": "body"
 }

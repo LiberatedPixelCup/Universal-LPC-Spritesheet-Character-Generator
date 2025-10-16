@@ -41,5 +41,6 @@
     "weapons",
     "ranged",
     "weapon_ranged_crossbow"
-  ]
+  ],
+  "type_name": "weapon"
 }

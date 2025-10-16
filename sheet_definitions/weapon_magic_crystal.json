@@ -63,5 +63,6 @@
     "weapons",
     "magic",
     "weapon_magic_crystal"
-  ]
+  ],
+  "type_name": "weapon_magic_crystal"
 }

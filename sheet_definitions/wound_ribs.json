@@ -32,5 +32,6 @@
     "body",
     "wounds",
     "wound_ribs"
-  ]
+  ],
+  "type_name": "wound_ribs"
 }

@@ -141,5 +141,6 @@
     "head",
     "face",
     "face_look_r"
-  ]
+  ],
+  "type_name": "expression"
 }

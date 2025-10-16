@@ -82,5 +82,6 @@
     "torso",
     "waist",
     "belt_other_female"
-  ]
+  ],
+  "type_name": "belt"
 }

@@ -76,5 +76,6 @@
     "weapons",
     "polearm",
     "weapon_polearm_dragonspear"
-  ]
+  ],
+  "type_name": "weapon"
 }

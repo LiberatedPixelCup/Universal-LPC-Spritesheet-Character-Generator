@@ -83,5 +83,6 @@
     "head",
     "face",
     "face_sad2"
-  ]
+  ],
+  "type_name": "expression"
 }

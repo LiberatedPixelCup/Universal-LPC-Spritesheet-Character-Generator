@@ -43,5 +43,6 @@
     "weapons",
     "shield",
     "shield_kite"
-  ]
+  ],
+  "type_name": "shield"
 }

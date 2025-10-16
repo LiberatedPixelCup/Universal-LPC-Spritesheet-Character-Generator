@@ -39,5 +39,6 @@
     "torso",
     "backpack",
     "backpack_jetpack"
-  ]
+  ],
+  "type_name": "backpack"
 }

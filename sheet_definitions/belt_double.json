@@ -39,5 +39,6 @@
     "torso",
     "waist",
     "belt_double"
-  ]
+  ],
+  "type_name": "belt"
 }

@@ -52,5 +52,6 @@
     "body",
     "wounds",
     "wound_eye_left"
-  ]
+  ],
+  "type_name": "wound_eye_left"
 }

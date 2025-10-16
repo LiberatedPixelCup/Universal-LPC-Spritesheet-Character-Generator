@@ -84,5 +84,6 @@
     "body",
     "lizard",
     "tail_lizard"
-  ]
+  ],
+  "type_name": "tail"
 }

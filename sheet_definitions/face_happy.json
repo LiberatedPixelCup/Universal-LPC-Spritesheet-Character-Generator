@@ -141,5 +141,6 @@
     "head",
     "face",
     "face_happy"
-  ]
+  ],
+  "type_name": "expression"
 }

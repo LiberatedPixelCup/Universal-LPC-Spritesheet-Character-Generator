@@ -51,5 +51,6 @@
     "torso",
     "aprons",
     "torso_aprons_apron_half"
-  ]
+  ],
+  "type_name": "apron"
 }

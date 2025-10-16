@@ -48,5 +48,6 @@
     "backpack",
     "backpack cargo",
     "backpack_contents_wood"
-  ]
+  ],
+  "type_name": "cargo"
 }

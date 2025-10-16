@@ -32,5 +32,6 @@
     "body",
     "wounds",
     "wound_arm"
-  ]
+  ],
+  "type_name": "wound_arm"
 }
