@@ -34,7 +34,7 @@ export function getSelectionGroup(itemId) {
 }
 
 // URL hash parameter management
-function getHashParams() {
+export function getHashParams() {
 	let hash = window.location.hash.substring(1); // Remove '#'
 
 	// Handle case where hash starts with '?' (some old URLs might have this)
@@ -56,14 +56,14 @@ function getHashParams() {
 	return params;
 }
 
-function setHashParams(params) {
+export function setHashParams(params) {
 	const hash = Object.entries(params)
 		.map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
 		.join('&');
 	window.location.hash = hash;
 }
 
-export function syncSelectionsToHash() {
+export function getHashParamsforSelections(selections) {
 	const params = {};
 
 	// Add body type (using 'sex' for backwards compatibility with old URLs)
@@ -71,7 +71,7 @@ export function syncSelectionsToHash() {
 
 	// Add selections - use old format: type_name=Name_variant
 	// Format: "body=Body_color_light", "shoes=Sara_sara"
-	for (const [selectionGroup, selection] of Object.entries(state.selections)) {
+	for (const [selectionGroup, selection] of Object.entries(selections)) {
 		const meta = window.itemMetadata?.[selection.itemId];
 		if (!meta || !meta.type_name) continue;
 
@@ -88,6 +88,11 @@ export function syncSelectionsToHash() {
 		params[key] = value;
 	}
 
+	return params;
+}
+
+export function syncSelectionsToHash() {
+	const params = getHashParamsforSelections(state.selections);
 	setHashParams(params);
 }
 
