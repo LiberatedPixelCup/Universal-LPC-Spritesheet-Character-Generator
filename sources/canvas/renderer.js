@@ -291,9 +291,14 @@ function getSpritePath(itemId, variant, bodyType, animation, layerNum = 1, selec
 
   // Replace template variables like ${head}
   if (basePath.includes('${')) {
-    // Find the selected head and extract its type from the itemId
+	// get params from selections
+	// TODO: this could be optimized to avoid recomputing every time
+	// or to only do it when relevant selections change
+	// or just use the selections directly instead of recomputing the hash params
+	const hashParams = getHashParamsforSelections(selections);
     const replacements = Object.fromEntries(
-		Object.entries(getHashParamsforSelections(selections)).map(([typeName, nameAndVariant]) => {
+		Object.entries(hashParams).map(([typeName, nameAndVariant]) => {
+			// TODO: this works for head, eye color, and faces but probably not for everything
 			const name = nameAndVariant.substr(0, nameAndVariant.lastIndexOf('_')); // Extract name before variant
 			const replacement = meta.replace_in_path[typeName]?.[name];
 			return [typeName, replacement];
