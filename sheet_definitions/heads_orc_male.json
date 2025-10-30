@@ -84,5 +84,9 @@
     "heads",
     "heads_orc_male"
   ],
+  "recolors": {
+    "base": "light",
+    "palette": "body"
+  },
   "type_name": "head"
 }

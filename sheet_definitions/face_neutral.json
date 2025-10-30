@@ -147,5 +147,9 @@
     "face",
     "face_neutral"
   ],
+  "recolors": {
+    "base": "light",
+    "palette": "body"
+  },
   "type_name": "expression"
 }

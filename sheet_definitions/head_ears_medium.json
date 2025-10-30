@@ -75,5 +75,9 @@
     "ears",
     "head_ears_medium"
   ],
+  "recolors": {
+    "base": "light",
+    "palette": "body"
+  },
   "type_name": "ears"
 }

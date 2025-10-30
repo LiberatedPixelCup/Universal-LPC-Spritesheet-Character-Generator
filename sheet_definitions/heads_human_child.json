@@ -78,5 +78,9 @@
     "heads",
     "heads_human_child"
   ],
+  "recolors": {
+    "base": "light",
+    "palette": "body"
+  },
   "type_name": "head"
 }

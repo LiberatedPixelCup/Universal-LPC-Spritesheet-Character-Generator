@@ -80,5 +80,9 @@
     "heads",
     "heads_human_male_gaunt"
   ],
+  "recolors": {
+    "base": "light",
+    "palette": "body"
+  },
   "type_name": "head"
 }

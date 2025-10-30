@@ -80,5 +80,9 @@
     "heads",
     "heads_frankenstein"
   ],
+  "recolors": {
+    "base": "light",
+    "palette": "body"
+  },
   "type_name": "head"
 }

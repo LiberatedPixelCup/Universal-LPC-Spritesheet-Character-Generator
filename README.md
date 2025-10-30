@@ -169,5 +169,47 @@ The generator includes built-in performance profiling tools to help identify ren
 - Frame rate (FPS)
 - Memory usage
 
+#### Palette Recoloring System
+
+The generator uses GPU-accelerated WebGL shaders for real-time palette-based recoloring of body colors. This provides significant performance improvements over traditional CPU-based pixel manipulation.
+
+**For Contributors:** See [PALETTE_RECOLOR_GUIDE.md](PALETTE_RECOLOR_GUIDE.md) for a complete guide on integrating items with the palette system.
+
+**Console Commands:**
+
+Check current rendering mode:
+```javascript
+getPaletteRecolorConfig()
+// Returns: { forceCPU: false, useWebGL: true, activeMode: "webgl" }
+```
+
+View recolor statistics:
+```javascript
+getPaletteRecolorStats()
+// Shows breakdown of WebGL vs CPU operations
+```
+
+Force CPU mode (useful for testing/debugging):
+```javascript
+setPaletteRecolorMode("cpu")
+```
+
+Switch back to WebGL mode:
+```javascript
+setPaletteRecolorMode("webgl")
+```
+
+**Technical Details:**
+- **WebGL Mode** (default): GPU-accelerated palette swapping using fragment shaders
+  - Single shared WebGL context to avoid browser context limits
+  - Palette encoded as texture for fast GPU lookups
+  - Significantly faster than CPU mode for multiple color variants (90ms-120ms vs 190ms-230ms per preview spreadsheet)
+- **CPU Mode** (fallback): Traditional per-pixel color replacement
+  - Automatically used if WebGL is unavailable
+  - Can be manually forced for compatibility testing
+- **Palette Flexibility**: Palettes support 1-32 colors per variant (not limited to 8)
+
+The system automatically detects WebGL availability and falls back to CPU mode if needed.
+
 ### Examples
 ![example](/readme-images/example.png)

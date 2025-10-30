@@ -116,14 +116,16 @@ canvas {
 }
 
 .variant-canvas {
-  width: 64px;
-  height: 64px;
   image-rendering: pixelated;
   flex-shrink: 0;
   border: 2px solid;
+  /* Canvas is always 64x64 internally, CSS controls display size */
+  width: 64px;
+  height: 64px;
 }
 
 .variant-canvas.compact-display {
+  /* Scale down to 32x32 using CSS only - no canvas redraw needed */
   width: 32px;
   height: 32px;
   margin-bottom: 4px;

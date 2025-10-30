@@ -83,5 +83,9 @@
     "face",
     "face_happy2"
   ],
+  "recolors": {
+    "base": "light",
+    "palette": "body"
+  },
   "type_name": "expression"
 }

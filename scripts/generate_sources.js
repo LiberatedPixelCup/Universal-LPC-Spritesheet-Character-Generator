@@ -154,7 +154,8 @@ function parseJson(json) {
     preview_column: previewColumn,
     preview_x_offset: previewXOffset,
     preview_y_offset: previewYOffset,
-    matchBodyColor: definition.match_body_color || false
+    matchBodyColor: definition.match_body_color || false,
+    recolors: definition.recolors || null
   };
 
   let startHTML = `<li id="[ID_FOR]" class="variant-list" data-required="[REQUIRED_SEX]" data-animations="[SUPPORTED_ANIMATIONS]" [DATA_FILE]><span class="condensed">${name}</span><ul>`
