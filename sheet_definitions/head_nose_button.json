@@ -1,6 +1,5 @@
 {
   "name": "Button nose",
-  "type_name": "nose",
   "layer_1": {
     "zPos": 105,
     "male": "head/nose/button/adult/",
@@ -70,5 +69,11 @@
         "https://opengameart.org/content/lpc-base-character-expressions"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "nose",
+    "head_nose_button"
+  ],
+  "type_name": "nose"
 }

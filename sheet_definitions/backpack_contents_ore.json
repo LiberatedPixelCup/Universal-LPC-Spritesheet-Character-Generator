@@ -1,8 +1,12 @@
 {
   "name": "Ore",
-  "type_name": "cargo",
-  "tags": ["back", "basket_contents"],
-  "required_tags": ["basket"],
+  "tags": [
+    "back",
+    "basket_contents"
+  ],
+  "required_tags": [
+    "basket"
+  ],
   "layer_1": {
     "zPos": 140,
     "male": "backpack/basket_contents/ore/fg/",
@@ -41,5 +45,12 @@
         "https://opengameart.org/content/lpc-more-backpacks"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "backpack",
+    "backpack cargo",
+    "backpack_contents_ore"
+  ],
+  "type_name": "cargo"
 }

@@ -1,6 +1,5 @@
 {
   "name": "Shortsleeves 2 Overlay",
-  "type_name": "sleeves",
   "layer_1": {
     "zPos": 36,
     "male": "torso/clothes/shortsleeve/shortsleeves2/male/",
@@ -72,5 +71,12 @@
         "https://opengameart.org/content/lpc-expanded-simple-shirts"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "shirts",
+    "sleeves",
+    "torso_clothes_shortsleeves2"
+  ],
+  "type_name": "sleeves"
 }

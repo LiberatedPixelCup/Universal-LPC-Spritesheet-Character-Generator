@@ -1,8 +1,12 @@
 {
   "name": "Kimono Sleeves Trim",
-  "type_name": "dress_sleeves_trim",
-  "tags": ["arms", "sleeves_trim"],
-  "required_tags": ["kimono_long_sleeves"],
+  "tags": [
+    "arms",
+    "sleeves_trim"
+  ],
+  "required_tags": [
+    "kimono_long_sleeves"
+  ],
   "layer_1": {
     "zPos": 32,
     "female": "dress/kimono/sleeves/trim/universal/female/",
@@ -57,5 +61,12 @@
         "https://opengameart.org/content/lpc-kimono-relm"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "dresses",
+    "kimono",
+    "dress_kimono_longsleeve_trim"
+  ],
+  "type_name": "dress_sleeves_trim"
 }

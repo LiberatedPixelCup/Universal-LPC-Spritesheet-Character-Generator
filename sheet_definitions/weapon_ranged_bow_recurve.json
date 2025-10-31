@@ -1,6 +1,5 @@
 {
   "name": "Recurve",
-  "type_name": "weapon",
   "preview_row": 1,
   "preview_column": 5,
   "layer_1": {
@@ -73,5 +72,12 @@
         "https://opengameart.org/content/lpc-walk-animations-for-bows"
       ]
     }
-  ]
+  ],
+  "path": [
+    "weapons",
+    "ranged",
+    "bow",
+    "weapon_ranged_bow_recurve"
+  ],
+  "type_name": "weapon"
 }

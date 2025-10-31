@@ -1,6 +1,5 @@
 {
   "name": "Frock coat",
-  "type_name": "jacket",
   "layer_1": {
     "zPos": 55,
     "male": "torso/jacket/frock/male/"
@@ -45,5 +44,11 @@
         "https://opengameart.org/content/lpc-pirates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "jacket",
+    "torso_jacket_frock"
+  ],
+  "type_name": "jacket"
 }

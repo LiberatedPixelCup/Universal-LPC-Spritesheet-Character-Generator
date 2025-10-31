@@ -1,7 +1,10 @@
 {
   "name": "Kimono Sleeves",
-  "type_name": "dress_sleeves",
-  "tags": ["arms", "sleeves", "kimono_long_sleeves"],
+  "tags": [
+    "arms",
+    "sleeves",
+    "kimono_long_sleeves"
+  ],
   "layer_1": {
     "zPos": 31,
     "female": "dress/kimono/sleeves/universal/female/",
@@ -56,5 +59,12 @@
         "https://opengameart.org/content/lpc-kimono-relm"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "dresses",
+    "kimono",
+    "dress_kimono_longsleeve"
+  ],
+  "type_name": "dress_sleeves"
 }

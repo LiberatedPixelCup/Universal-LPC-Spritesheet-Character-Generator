@@ -1,6 +1,5 @@
 {
   "name": "Bracers",
-  "type_name": "bracers",
   "layer_1": {
     "zPos": 70,
     "male": "arms/bracers/male/",
@@ -35,5 +34,11 @@
         "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
       ]
     }
-  ]
+  ],
+  "path": [
+    "arms",
+    "wrists",
+    "arms_bracers"
+  ],
+  "type_name": "bracers"
 }

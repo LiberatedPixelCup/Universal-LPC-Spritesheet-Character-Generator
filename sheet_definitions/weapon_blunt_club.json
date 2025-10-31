@@ -1,6 +1,5 @@
 {
   "name": "Club",
-  "type_name": "weapon",
   "preview_row": 1,
   "preview_column": 1,
   "preview_x_offset": 16,
@@ -40,5 +39,11 @@
         "https://opengameart.org/content/lpc-more-weapons"
       ]
     }
-  ]
+  ],
+  "path": [
+    "weapons",
+    "blunt",
+    "weapon_blunt_club"
+  ],
+  "type_name": "weapon"
 }

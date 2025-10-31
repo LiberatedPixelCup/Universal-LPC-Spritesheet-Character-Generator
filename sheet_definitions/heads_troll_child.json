@@ -1,7 +1,9 @@
 {
   "name": "Troll child",
-  "type_name": "head",
-  "tags": ["troll", "child"],
+  "tags": [
+    "troll",
+    "child"
+  ],
   "layer_1": {
     "zPos": 100,
     "child": "head/heads/troll/child/"
@@ -68,5 +70,11 @@
         "https://opengameart.org/content/lpc-folk"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_troll_child"
+  ],
+  "type_name": "head"
 }

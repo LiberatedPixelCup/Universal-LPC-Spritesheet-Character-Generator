@@ -1,6 +1,5 @@
 {
   "name": "Halfmessy",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/halfmessy/adult/",
@@ -75,5 +74,17 @@
         "https://opengameart.org/content/lpc-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "hair_halfmessy"
+  ],
+  "type_name": "hair"
 }

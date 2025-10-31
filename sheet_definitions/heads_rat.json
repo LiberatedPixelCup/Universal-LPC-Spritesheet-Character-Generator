@@ -1,7 +1,9 @@
 {
   "name": "Rat",
-  "type_name": "head",
-  "tags": ["animal", "adult"],
+  "tags": [
+    "animal",
+    "adult"
+  ],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/rat/adult/",
@@ -72,5 +74,11 @@
         "http://opengameart.org/content/lpc-folk"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_rat"
+  ],
+  "type_name": "head"
 }

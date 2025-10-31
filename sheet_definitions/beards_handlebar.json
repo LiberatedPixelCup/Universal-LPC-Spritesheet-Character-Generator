@@ -1,6 +1,5 @@
 {
   "name": "Handlebar Mustache",
-  "type_name": "mustache",
   "layer_1": {
     "zPos": 111,
     "male": "beards/mustache/handlebar/",
@@ -71,5 +70,11 @@
         "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "mustaches",
+    "beards_handlebar"
+  ],
+  "type_name": "mustache"
 }

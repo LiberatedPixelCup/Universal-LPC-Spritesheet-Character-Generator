@@ -1,8 +1,11 @@
 {
   "name": "Tears",
-  "type_name": "expression_crying",
-  "tags": ["expression"],
-  "required_tags": ["human"],
+  "tags": [
+    "expression"
+  ],
+  "required_tags": [
+    "human"
+  ],
   "layer_1": {
     "zPos": 107,
     "male": "head/faces/global/tears/",
@@ -52,5 +55,11 @@
         "https://opengameart.org/content/ulpc-expanded-expressions"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "face",
+    "face_tears"
+  ],
+  "type_name": "expression_crying"
 }

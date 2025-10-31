@@ -1,8 +1,12 @@
 {
   "name": "Straps",
-  "type_name": "backpack_straps",
-  "tags": ["back", "backpack_straps"],
-  "required_tags": ["backpack"],
+  "tags": [
+    "back",
+    "backpack_straps"
+  ],
+  "required_tags": [
+    "backpack"
+  ],
   "layer_1": {
     "zPos": 110,
     "male": "backpack/straps/male/",
@@ -48,5 +52,11 @@
         "https://opengameart.org/content/lpc-backpacks"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "backpack",
+    "backpack_straps"
+  ],
+  "type_name": "backpack_straps"
 }

@@ -1,6 +1,5 @@
 {
   "name": "Rod",
-  "type_name": "weapon",
   "preview_row": 0,
   "preview_column": 0,
   "preview_x_offset": 304,
@@ -44,5 +43,10 @@
         "https://opengameart.org/content/lpc-hand-tools"
       ]
     }
-  ]
+  ],
+  "path": [
+    "tools",
+    "tool_rod"
+  ],
+  "type_name": "weapon"
 }

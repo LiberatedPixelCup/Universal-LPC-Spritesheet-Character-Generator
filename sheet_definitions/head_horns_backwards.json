@@ -1,6 +1,5 @@
 {
   "name": "Backwards Horns",
-  "type_name": "horns",
   "layer_1": {
     "zPos": 126,
     "male": "head/horns/backwards/adult/fg/",
@@ -113,5 +112,22 @@
         "https://opengameart.org/content/lpc-lizard-headgear"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "appendages",
+    "head_horns_backwards"
+  ],
+  "type_name": "horns"
 }

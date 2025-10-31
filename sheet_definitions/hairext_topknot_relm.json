@@ -1,6 +1,5 @@
 {
   "name": "Relm Topknot",
-  "type_name": "ponytail",
   "layer_1": {
     "zPos": 128,
     "male": "hair/extensions/ponytails/relm_ponytail/adult/fg/",
@@ -81,5 +80,13 @@
         "https://opengameart.org/content/lpc-expanded-xlong-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "ponytails",
+    "hairext_topknot_relm"
+  ],
+  "type_name": "ponytail"
 }

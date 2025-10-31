@@ -1,7 +1,8 @@
 {
   "name": "Transparent Dragonfly Wings",
-  "type_name": "wings",
-  "tags": ["wings"],
+  "tags": [
+    "wings"
+  ],
   "layer_1": {
     "zPos": 105,
     "male": "body/wings/dragonfly/transparent/fg/",
@@ -66,5 +67,12 @@
         "https://opengameart.org/content/lpc-fairy-wings-pack-2"
       ]
     }
-  ]
+  ],
+  "path": [
+    "body",
+    "wings",
+    "dragonfly wings",
+    "wings_dragonfly_transparent"
+  ],
+  "type_name": "wings"
 }

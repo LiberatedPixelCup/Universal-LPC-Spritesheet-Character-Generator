@@ -1,6 +1,5 @@
 {
   "name": "Thick Eyebrows",
-  "type_name": "eyebrows",
   "layer_1": {
     "zPos": 106,
     "male": "eyes/eyebrows/thick/adult/",
@@ -72,5 +71,11 @@
         "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "eyebrows",
+    "eyebrows_thick"
+  ],
+  "type_name": "eyebrows"
 }

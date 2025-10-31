@@ -1,6 +1,5 @@
 {
   "name": "Sack Cloth Hood",
-  "type_name": "hat",
   "layer_1": {
     "zPos": 130,
     "male": "hat/cloth/hood_sack/adult/",
@@ -73,5 +72,23 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "head coverings",
+    "hoods",
+    "hat_hood_sack_cloth"
+  ],
+  "type_name": "hat"
 }

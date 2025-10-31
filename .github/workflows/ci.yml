@@ -1,0 +1,52 @@
+name: Test browsers
+
+on:
+  push:
+    branches:
+      - master
+      - full_rewrite
+      - paint-in-place-for-real
+  pull_request:
+    branches:
+      - master
+      - full_rewrite
+      - paint-in-place-for-real
+
+jobs:
+  ci:
+    name: Test browsers
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: 'latest'
+
+      - name: Install Firefox
+        uses: browser-actions/setup-firefox@v1
+        with:
+          firefox-version: 'latest'
+
+      - name: Install Xvfb
+        run: sudo apt-get install -y xvfb
+
+      - name: Run browser tests
+        run: |
+          export DISPLAY=':99.0'
+          Xvfb $DISPLAY -screen 0 1920x1080x24 &
+          sleep 3
+          export XDG_RUNTIME_DIR="/run/user/$(id -u)"
+          export DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
+          dbus-run-session npx testem ci

@@ -1,6 +1,5 @@
 {
   "name": "Halberd",
-  "type_name": "weapon",
   "preview_row": 0,
   "preview_column": 0,
   "layer_1": {
@@ -69,5 +68,11 @@
         "https://opengameart.org/content/lpc-medieval-weapons"
       ]
     }
-  ]
+  ],
+  "path": [
+    "weapons",
+    "polearm",
+    "weapon_polearm_halberd"
+  ],
+  "type_name": "weapon"
 }

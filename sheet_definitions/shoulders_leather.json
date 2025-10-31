@@ -1,6 +1,5 @@
 {
   "name": "Leather",
-  "type_name": "shoulders",
   "layer_1": {
     "zPos": 60,
     "male": "shoulders/leather/male/",
@@ -52,5 +51,11 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "arms",
+    "shoulders",
+    "shoulders_leather"
+  ],
+  "type_name": "shoulders"
 }

@@ -1,6 +1,5 @@
 {
   "name": "High Bun",
-  "type_name": "updo",
   "layer_1": {
     "zPos": 128,
     "male": "hair/extensions/ties/high_bun/adult/",
@@ -70,5 +69,13 @@
         "https://opengameart.org/content/lpc-expanded-xlong-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "knot / ties",
+    "hairext_high_bun"
+  ],
+  "type_name": "updo"
 }

@@ -5,6 +5,7 @@
  * All measurements appear in Chrome DevTools Performance tab as User Timing marks.
  *
  * Usage:
+ *   import { PerformanceProfiler } from './performance-profiler.js';
  *   const profiler = new PerformanceProfiler({ enabled: true });
  *   profiler.mark('operation:start');
  *   // ... do work ...
@@ -12,7 +13,7 @@
  *   profiler.measure('operation', 'operation:start', 'operation:end');
  */
 
-class PerformanceProfiler {
+export class PerformanceProfiler {
   constructor(options = {}) {
     this.enabled = options.enabled ?? false; // Default: disabled
     this.logSlowOperations = options.logSlowOperations !== false;
@@ -258,9 +259,4 @@ class PerformanceProfiler {
       console.warn('Failed to clear performance data:', e);
     }
   }
-}
-
-// Export for use in chargen.js
-if (typeof window !== 'undefined') {
-  window.PerformanceProfiler = PerformanceProfiler;
 }

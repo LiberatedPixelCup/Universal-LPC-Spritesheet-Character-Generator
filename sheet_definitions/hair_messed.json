@@ -1,6 +1,5 @@
 {
   "name": "Messed",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "child": "hair/messy/child/"
@@ -51,5 +50,10 @@
         "https://opengameart.org/content/lpc-clothes-for-children"
       ]
     }
-  ]
+  ],
+  "path": [
+    "category_not_found",
+    "hair_messed"
+  ],
+  "type_name": "hair"
 }

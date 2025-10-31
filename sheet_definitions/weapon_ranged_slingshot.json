@@ -1,6 +1,5 @@
 {
   "name": "Slingshot",
-  "type_name": "weapon",
   "layer_1": {
     "zPos": 140,
     "male": "weapon/ranged/slingshot/foreground/",
@@ -34,5 +33,11 @@
         "https://opengameart.org/content/lpc-more-weapons"
       ]
     }
-  ]
+  ],
+  "path": [
+    "weapons",
+    "ranged",
+    "weapon_ranged_slingshot"
+  ],
+  "type_name": "weapon"
 }

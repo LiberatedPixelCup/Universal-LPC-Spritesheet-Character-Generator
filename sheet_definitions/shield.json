@@ -1,6 +1,5 @@
 {
   "name": "Shield",
-  "type_name": "shield",
   "layer_1": {
     "zPos": 110,
     "male": "shield/male/",
@@ -285,5 +284,11 @@
         "https://opengameart.org/content/lpc-shields-pack"
       ]
     }
-  ]
+  ],
+  "path": [
+    "weapons",
+    "shield",
+    "shield"
+  ],
+  "type_name": "shield"
 }

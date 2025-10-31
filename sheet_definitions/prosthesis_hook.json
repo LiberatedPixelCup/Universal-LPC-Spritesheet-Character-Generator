@@ -1,6 +1,5 @@
 {
   "name": "Hook hand",
-  "type_name": "prosthesis_hand",
   "layer_1": {
     "zPos": 100,
     "is_mask": true,
@@ -27,5 +26,11 @@
         "https://opengameart.org/content/lpc-pirates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "body",
+    "prostheses",
+    "prosthesis_hook"
+  ],
+  "type_name": "prosthesis_hand"
 }

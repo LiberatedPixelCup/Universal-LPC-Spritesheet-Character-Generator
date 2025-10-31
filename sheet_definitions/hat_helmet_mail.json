@@ -1,6 +1,5 @@
 {
   "name": "Mail",
-  "type_name": "bandana",
   "layer_1": {
     "zPos": 125,
     "female": "hat/helmet/mail/adult/",
@@ -57,5 +56,23 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "head coverings",
+    "hoods",
+    "hat_helmet_mail"
+  ],
+  "type_name": "bandana"
 }

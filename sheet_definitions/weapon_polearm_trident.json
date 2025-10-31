@@ -1,6 +1,5 @@
 {
   "name": "Trident",
-  "type_name": "weapon",
   "preview_row": 0,
   "preview_column": 0,
   "preview_x_offset": 9,
@@ -72,5 +71,11 @@
         "https://opengameart.org/content/lpc-extended-weapon-animations"
       ]
     }
-  ]
+  ],
+  "path": [
+    "weapons",
+    "polearm",
+    "weapon_polearm_trident"
+  ],
+  "type_name": "weapon"
 }

@@ -1,6 +1,5 @@
 {
   "name": "Lizard tail",
-  "type_name": "tail",
   "layer_1": {
     "zPos": 85,
     "male": "body/tail/lizard/adult/fg/",
@@ -80,5 +79,11 @@
         "https://opengameart.org/content/drakes-and-lizardfolk"
       ]
     }
-  ]
+  ],
+  "path": [
+    "body",
+    "lizard",
+    "tail_lizard"
+  ],
+  "type_name": "tail"
 }

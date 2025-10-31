@@ -1,6 +1,5 @@
 {
   "name": "Basic Beard",
-  "type_name": "beard",
   "layer_1": {
     "zPos": 110,
     "male": "beards/beard/basic/",
@@ -72,5 +71,11 @@
         "https://opengameart.org/content/lpc-white-beard"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "beards",
+    "beards_beard"
+  ],
+  "type_name": "beard"
 }

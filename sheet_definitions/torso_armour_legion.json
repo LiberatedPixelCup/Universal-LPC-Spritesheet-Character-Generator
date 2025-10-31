@@ -1,6 +1,5 @@
 {
   "name": "Legion",
-  "type_name": "armour",
   "layer_1": {
     "zPos": 60,
     "male": "torso/armour/legion/male/",
@@ -55,5 +54,11 @@
         "https://opengameart.org/content/lpc-roman-armor"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "armour",
+    "torso_armour_legion"
+  ],
+  "type_name": "armour"
 }

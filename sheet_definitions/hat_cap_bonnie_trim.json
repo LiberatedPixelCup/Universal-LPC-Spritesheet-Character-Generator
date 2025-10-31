@@ -1,6 +1,5 @@
 {
   "name": "Bonnie Center Trim",
-  "type_name": "hat_trim",
   "layer_1": {
     "zPos": 131,
     "male": "hat/pirate/bonnie/trim/adult/",
@@ -70,5 +69,10 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
-  ]
+  ],
+  "path": [
+    "category_not_found",
+    "hat_cap_bonnie_trim"
+  ],
+  "type_name": "hat_trim"
 }

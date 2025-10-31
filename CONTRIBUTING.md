@@ -86,6 +86,69 @@ This will generate the `index.html` from the `source_index.html`.
 In case you want to push your changes, be sure to run this script and never change the `index.html` manually.
 The CI will reject any PR's that contain manual changes made on the `index.html`.
 
+#### Running Tests
+
+The project includes automated tests for the Mithril components that run directly in the browser.
+
+**Running Tests Locally**:
+
+1. Start a local HTTP server in the project root:
+   ```bash
+   python -m http.server 8080
+   # or use any other HTTP server
+   ```
+
+2. Open the test runner in your browser:
+   ```
+   http://localhost:8080/tests_run.html
+   ```
+
+The tests will display with visual pass/fail indicators, error details, and a summary.
+
+**CI Integration**: Tests run automatically in GitHub Actions on every push and pull request using Chrome headless. All tests must pass before a PR can be merged.
+
+**Test Framework**: The project uses [ospec](https://github.com/MithrilJS/mithril.js/tree/master/ospec) (Mithril's official test framework) running directly in the browser with real DOM.
+
+**Test Autodiscovery**: Test files are automatically discovered - just drop any `*.test.js` file in the `tests/` directory and it will be found and executed automatically. No configuration needed!
+
+**Adding New Tests**: When adding new Mithril components, please add corresponding test files in the `tests/` directory. Test files should:
+- Be named `ComponentName.test.js`
+- Use `window.o` and `window.m` (globally available in the test runner)
+- Use `o.spec()` to group related tests
+- Create and cleanup DOM containers in `beforeEach`/`afterEach`
+- Use `m.render()` to render components to the real DOM
+- Use native DOM queries (`querySelector`, etc.) for assertions
+
+Example test structure:
+```javascript
+import { MyComponent } from "../sources/components/MyComponent.js";
+
+const o = window.o;
+const m = window.m;
+
+o.spec("MyComponent", function() {
+  let container;
+
+  o.beforeEach(function() {
+    container = document.createElement('div');
+    document.body.appendChild(container);
+  });
+
+  o.afterEach(function() {
+    if (container && container.parentNode) {
+      container.parentNode.removeChild(container);
+    }
+  });
+
+  o("renders correctly", function() {
+    m.render(container, m(MyComponent, { prop: "value" }));
+    const element = container.querySelector(".expected-class");
+    o(element).notEquals(null);
+    o(element.textContent).equals("expected content");
+  });
+});
+```
+
 #### z-positions
 
 In order to facilitate easier management of the z-positions of the assets in this repo, there is a [script](/scripts/zPositioning/parse_zpos.js) that traverses all JSON files and write's the layer's z-position to a CSV.

@@ -1,6 +1,5 @@
 {
   "name": "Page",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/page/adult/",
@@ -74,5 +73,16 @@
         "https://opengameart.org/content/lpc-expanded-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "hair_page"
+  ],
+  "type_name": "hair"
 }

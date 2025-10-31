@@ -1,6 +1,5 @@
 {
   "name": "Plain skirt",
-  "type_name": "legs",
   "layer_1": {
     "zPos": 20,
     "male": "legs/skirts/plain/male/",
@@ -52,5 +51,11 @@
         "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
       ]
     }
-  ]
+  ],
+  "path": [
+    "legs",
+    "skirts",
+    "legs_skirts_plain"
+  ],
+  "type_name": "legs"
 }

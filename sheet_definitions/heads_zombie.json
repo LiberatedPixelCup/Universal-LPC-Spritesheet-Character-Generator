@@ -1,7 +1,9 @@
 {
   "name": "Zombie",
-  "type_name": "head",
-  "tags": ["monster", "zombie"],
+  "tags": [
+    "monster",
+    "zombie"
+  ],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/zombie/adult/",
@@ -73,5 +75,11 @@
         "https://opengameart.org/content/lpc-character-bases"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_zombie"
+  ],
+  "type_name": "head"
 }

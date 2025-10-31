@@ -1,6 +1,5 @@
 {
   "name": "Wrinkles",
-  "type_name": "wrinkes",
   "layer_1": {
     "zPos": 102,
     "male": "head/wrinkles/",
@@ -65,5 +64,10 @@
       ],
       "urls": []
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "head_wrinkles"
+  ],
+  "type_name": "wrinkes"
 }

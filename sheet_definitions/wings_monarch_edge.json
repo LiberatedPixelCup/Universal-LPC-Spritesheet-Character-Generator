@@ -1,8 +1,11 @@
 {
   "name": "Monarch Wings Edge",
-  "type_name": "wings_edge",
-  "tags": ["wings"],
-  "required_tags": ["monarch"],
+  "tags": [
+    "wings"
+  ],
+  "required_tags": [
+    "monarch"
+  ],
   "layer_1": {
     "zPos": 106,
     "male": "body/wings/monarch/edge/fg/",
@@ -66,5 +69,12 @@
         "https://opengameart.org/content/lpc-fairy-wings"
       ]
     }
-  ]
+  ],
+  "path": [
+    "body",
+    "wings",
+    "monarch wings",
+    "wings_monarch_edge"
+  ],
+  "type_name": "wings_edge"
 }

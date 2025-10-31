@@ -1,6 +1,5 @@
 {
   "name": "Left XLong Wavy",
-  "type_name": "hairextl",
   "layer_1": {
     "zPos": 128,
     "male": "hair/extensions/bangs/xlong_wavyl/adult/",
@@ -72,5 +71,13 @@
         "https://opengameart.org/content/lpc-expanded-xlong-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "bangs",
+    "hairext_xlong_wavyl"
+  ],
+  "type_name": "hairextl"
 }

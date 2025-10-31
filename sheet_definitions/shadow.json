@@ -1,6 +1,5 @@
 {
   "name": "Shadow",
-  "type_name": "shadow",
   "layer_1": {
     "zPos": 0,
     "male": "shadow/adult/",
@@ -27,5 +26,10 @@
         "https://opengameart.org/content/shadow-for-lpc-sprite"
       ]
     }
-  ]
+  ],
+  "path": [
+    "body",
+    "shadow"
+  ],
+  "type_name": "shadow"
 }

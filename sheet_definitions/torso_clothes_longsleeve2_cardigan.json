@@ -1,6 +1,5 @@
 {
   "name": "Cardigan",
-  "type_name": "clothes",
   "layer_1": {
     "zPos": 35,
     "male": "torso/clothes/longsleeve/longsleeve2_cardigan/male/",
@@ -72,5 +71,12 @@
         "https://opengameart.org/content/lpc-expanded-simple-shirts"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "shirts",
+    "longsleeve",
+    "torso_clothes_longsleeve2_cardigan"
+  ],
+  "type_name": "clothes"
 }

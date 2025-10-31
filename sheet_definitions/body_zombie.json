@@ -1,6 +1,5 @@
 {
   "name": "Zombie",
-  "type_name": "body",
   "layer_1": {
     "zPos": 10,
     "male": "body/bodies/zombie/",
@@ -33,5 +32,11 @@
         "https://opengameart.org/content/lpc-character-bases"
       ]
     }
-  ]
+  ],
+  "path": [
+    "body",
+    "special",
+    "body_zombie"
+  ],
+  "type_name": "body"
 }

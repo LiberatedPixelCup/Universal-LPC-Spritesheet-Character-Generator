@@ -1,6 +1,5 @@
 {
   "name": "Wheelchair",
-  "type_name": "wheelchair",
   "layer_1": {
     "custom_animation": "wheelchair",
     "zPos": -2,
@@ -41,5 +40,11 @@
         "https://opengameart.org/content/lpc-revised-elders"
       ]
     }
-  ]
+  ],
+  "path": [
+    "body",
+    "wheelchair",
+    "wheelchair"
+  ],
+  "type_name": "wheelchair"
 }

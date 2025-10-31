@@ -1,8 +1,13 @@
 {
   "name": "Right Monocle Frame Color",
-  "type_name": "facial_right_trim",
-  "tags": ["facial", "monocle", "monocle_trim"],
-  "required_tags": ["monocle_right"],
+  "tags": [
+    "facial",
+    "monocle",
+    "monocle_trim"
+  ],
+  "required_tags": [
+    "monocle_right"
+  ],
   "layer_1": {
     "zPos": 115,
     "male": "facial/monocle/right/frame/adult/",
@@ -84,5 +89,23 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "accessories",
+    "monocle",
+    "facial_monocle_right_frame"
+  ],
+  "type_name": "facial_right_trim"
 }

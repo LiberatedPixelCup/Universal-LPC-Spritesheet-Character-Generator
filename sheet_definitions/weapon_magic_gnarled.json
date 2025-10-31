@@ -1,6 +1,5 @@
 {
   "name": "Gnarled staff",
-  "type_name": "weapon",
   "layer_1": {
     "zPos": 140,
     "male": "weapon/magic/gnarled/universal/foreground/",
@@ -65,5 +64,11 @@
         "https://opengameart.org/content/lpc-more-weapons"
       ]
     }
-  ]
+  ],
+  "path": [
+    "weapons",
+    "magic",
+    "weapon_magic_gnarled"
+  ],
+  "type_name": "weapon"
 }

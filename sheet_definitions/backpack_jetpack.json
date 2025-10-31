@@ -1,7 +1,10 @@
 {
   "name": "Jetpack",
-  "type_name": "backpack",
-  "tags": ["back", "backpack", "jetpack"],
+  "tags": [
+    "back",
+    "backpack",
+    "jetpack"
+  ],
   "preview_row": 0,
   "layer_1": {
     "zPos": 110,
@@ -31,5 +34,11 @@
         "https://opengameart.org/content/lpc-backpacks"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "backpack",
+    "backpack_jetpack"
+  ],
+  "type_name": "backpack"
 }

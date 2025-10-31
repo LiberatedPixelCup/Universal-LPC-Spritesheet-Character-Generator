@@ -1,6 +1,5 @@
 {
   "name": "Ghillies",
-  "type_name": "shoes",
   "layer_1": {
     "zPos": 15,
     "female": "feet/shoes/ghillies/thin/",
@@ -83,5 +82,11 @@
         "https://opengameart.org/content/lpc-expanded-socks-shoes"
       ]
     }
-  ]
+  ],
+  "path": [
+    "feet",
+    "shoes",
+    "feet_shoes_ghillies"
+  ],
+  "type_name": "shoes"
 }

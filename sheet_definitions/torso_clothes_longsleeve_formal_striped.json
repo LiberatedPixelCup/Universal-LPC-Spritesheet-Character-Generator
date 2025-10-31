@@ -1,6 +1,5 @@
 {
   "name": "Striped Collared/Formal Longsleeve",
-  "type_name": "clothes",
   "layer_1": {
     "zPos": 35,
     "male": "torso/clothes/longsleeve/formal_striped/male/"
@@ -28,5 +27,12 @@
         "https://opengameart.org/content/lpc-2-characters"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "shirts",
+    "longsleeve",
+    "torso_clothes_longsleeve_formal_striped"
+  ],
+  "type_name": "clothes"
 }

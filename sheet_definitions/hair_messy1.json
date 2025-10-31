@@ -1,6 +1,5 @@
 {
   "name": "Messy1",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/messy1/adult/",
@@ -73,5 +72,16 @@
         "https://opengameart.org/content/lpc-expanded-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "hair_messy1"
+  ],
+  "type_name": "hair"
 }

@@ -1,6 +1,5 @@
 {
   "name": "Crossbow",
-  "type_name": "weapon",
   "preview_row": 1,
   "preview_column": 0,
   "preview_x_offset": 0,
@@ -37,5 +36,11 @@
         "https://opengameart.org/content/lpc-crossbow-final"
       ]
     }
-  ]
+  ],
+  "path": [
+    "weapons",
+    "ranged",
+    "weapon_ranged_crossbow"
+  ],
+  "type_name": "weapon"
 }

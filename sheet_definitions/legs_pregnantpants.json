@@ -1,6 +1,5 @@
 {
   "name": "Pregnancy pants",
-  "type_name": "legs",
   "layer_1": {
     "zPos": 20,
     "pregnant": "legs/pants/pregnant/"
@@ -50,5 +49,11 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "legs",
+    "pants",
+    "legs_pregnantpants"
+  ],
+  "type_name": "legs"
 }

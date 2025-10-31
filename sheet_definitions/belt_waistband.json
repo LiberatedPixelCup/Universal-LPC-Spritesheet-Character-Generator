@@ -1,6 +1,5 @@
 {
   "name": "Waistband",
-  "type_name": "sash",
   "layer_1": {
     "zPos": 65,
     "female": "torso/waist/waistband/female/",
@@ -68,5 +67,11 @@
         "https://opengameart.org/content/lpc-pirates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "waist",
+    "belt_waistband"
+  ],
+  "type_name": "sash"
 }

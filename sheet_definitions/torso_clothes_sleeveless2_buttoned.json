@@ -1,6 +1,5 @@
 {
   "name": "Sleeveless 2 Buttoned",
-  "type_name": "clothes",
   "layer_1": {
     "zPos": 35,
     "male": "torso/clothes/sleeveless/sleeveless2_buttoned/male/",
@@ -72,5 +71,12 @@
         "https://opengameart.org/content/lpc-expanded-simple-shirts"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "shirts",
+    "sleeveless",
+    "torso_clothes_sleeveless2_buttoned"
+  ],
+  "type_name": "clothes"
 }

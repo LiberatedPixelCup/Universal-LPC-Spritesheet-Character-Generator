@@ -1,6 +1,5 @@
 {
   "name": "Bicorne Athwart Admiral Cockade",
-  "type_name": "hat_accessory",
   "layer_1": {
     "zPos": 132,
     "male": "hat/pirate/bicorne/athwart/admiral/cockade/adult/",
@@ -70,5 +69,24 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "hats",
+    "bicorne athwart",
+    "admiral",
+    "hat_bicorne_athwart_admiral_cockade"
+  ],
+  "type_name": "hat_accessory"
 }

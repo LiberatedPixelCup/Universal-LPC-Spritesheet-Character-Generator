@@ -1,6 +1,5 @@
 {
   "name": "Revised Boots",
-  "type_name": "shoes",
   "layer_1": {
     "zPos": 25,
     "male": "feet/boots/revised/male/",
@@ -100,5 +99,11 @@
         "https://opengameart.org/content/lpc-expanded-socks-shoes"
       ]
     }
-  ]
+  ],
+  "path": [
+    "feet",
+    "boots",
+    "feet_boots_revised"
+  ],
+  "type_name": "shoes"
 }

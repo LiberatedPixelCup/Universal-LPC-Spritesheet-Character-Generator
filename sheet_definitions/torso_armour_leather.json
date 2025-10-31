@@ -1,6 +1,5 @@
 {
   "name": "Leather",
-  "type_name": "armour",
   "layer_1": {
     "zPos": 60,
     "male": "torso/armour/leather/male/",
@@ -69,5 +68,11 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "armour",
+    "torso_armour_leather"
+  ],
+  "type_name": "armour"
 }

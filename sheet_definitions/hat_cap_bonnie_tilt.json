@@ -1,6 +1,5 @@
 {
   "name": "Bonnie Alt Tilt",
-  "type_name": "hat",
   "layer_1": {
     "zPos": 130,
     "male": "hat/pirate/bonnie/tilt/adult/",
@@ -70,5 +69,23 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "hats",
+    "caps",
+    "hat_cap_bonnie_tilt"
+  ],
+  "type_name": "hat"
 }

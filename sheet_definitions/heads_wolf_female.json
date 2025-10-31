@@ -1,7 +1,9 @@
 {
   "name": "Wolf female",
-  "type_name": "head",
-  "tags": ["animal", "adult"],
+  "tags": [
+    "animal",
+    "adult"
+  ],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/wolf/female/",
@@ -76,5 +78,11 @@
         "https://opengameart.org/content/lpc-character-bases"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_wolf_female"
+  ],
+  "type_name": "head"
 }

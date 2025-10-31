@@ -1,7 +1,10 @@
 {
   "name": "Human elderly small",
-  "type_name": "head",
-  "tags": ["human", "elderly", "small"],
+  "tags": [
+    "human",
+    "elderly",
+    "small"
+  ],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/human/elderly_small/",
@@ -68,5 +71,11 @@
       ],
       "urls": []
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_human_elderly_small"
+  ],
+  "type_name": "head"
 }

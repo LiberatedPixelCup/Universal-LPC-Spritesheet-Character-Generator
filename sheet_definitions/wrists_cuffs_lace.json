@@ -1,6 +1,5 @@
 {
   "name": "Lace Cuffs",
-  "type_name": "wrists",
   "layer_1": {
     "zPos": 70,
     "male": "wrists/lace/male/"
@@ -28,5 +27,11 @@
         "https://opengameart.org/content/lpc-pirates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "arms",
+    "wrists",
+    "wrists_cuffs_lace"
+  ],
+  "type_name": "wrists"
 }

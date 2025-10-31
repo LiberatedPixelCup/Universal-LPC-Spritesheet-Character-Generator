@@ -1,6 +1,5 @@
 {
   "name": "Armour",
-  "type_name": "shoes",
   "layer_1": {
     "zPos": 15,
     "male": "feet/armour/plate/male/",
@@ -52,5 +51,10 @@
         "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
       ]
     }
-  ]
+  ],
+  "path": [
+    "feet",
+    "feet_armour"
+  ],
+  "type_name": "shoes"
 }

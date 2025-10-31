@@ -1,6 +1,5 @@
 {
   "name": "Bodice",
-  "type_name": "vest",
   "layer_1": {
     "zPos": 45,
     "female": "dress/bodice/female/"
@@ -51,5 +50,11 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "dresses",
+    "dress_bodice"
+  ],
+  "type_name": "vest"
 }

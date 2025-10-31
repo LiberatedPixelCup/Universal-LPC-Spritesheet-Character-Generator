@@ -1,6 +1,5 @@
 {
   "name": "Legion skirt",
-  "type_name": "legs",
   "layer_1": {
     "zPos": 20,
     "male": "legs/skirts/legion/male/",
@@ -54,5 +53,11 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "legs",
+    "skirts",
+    "legs_skirts_legion"
+  ],
+  "type_name": "legs"
 }

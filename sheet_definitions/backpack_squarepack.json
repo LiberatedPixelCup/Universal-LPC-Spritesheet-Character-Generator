@@ -1,7 +1,8 @@
 {
   "name": "Square pack",
-  "type_name": "backpack",
-  "tags": ["backpack"],
+  "tags": [
+    "backpack"
+  ],
   "preview_row": 0,
   "layer_1": {
     "zPos": 110,
@@ -48,5 +49,11 @@
         "https://opengameart.org/content/lpc-backpacks"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "backpack",
+    "backpack_squarepack"
+  ],
+  "type_name": "backpack"
 }

@@ -1,6 +1,5 @@
 {
   "name": "Big Mustache",
-  "type_name": "mustache",
   "layer_1": {
     "zPos": 111,
     "male": "beards/mustache/bigstache/",
@@ -73,5 +72,11 @@
         "https://opengameart.org/content/lpc-base-character-expressions"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "mustaches",
+    "beards_bigstache"
+  ],
+  "type_name": "mustache"
 }

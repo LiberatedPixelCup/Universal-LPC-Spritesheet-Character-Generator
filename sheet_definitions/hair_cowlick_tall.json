@@ -1,6 +1,5 @@
 {
   "name": "Cowlick tall",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/cowlick_tall/adult/",
@@ -72,5 +71,16 @@
         "https://opengameart.org/content/lpc-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "hair_cowlick_tall"
+  ],
+  "type_name": "hair"
 }

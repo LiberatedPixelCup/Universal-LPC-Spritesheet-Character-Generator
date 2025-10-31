@@ -1,6 +1,5 @@
 {
   "name": "Small Eyepatch Right",
-  "type_name": "facial_eyes",
   "layer_1": {
     "zPos": 115,
     "male": "facial/patches/small/right/adult/",
@@ -73,5 +72,23 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "accessories",
+    "eyepatches",
+    "facial_eyepatch_small_right"
+  ],
+  "type_name": "facial_eyes"
 }

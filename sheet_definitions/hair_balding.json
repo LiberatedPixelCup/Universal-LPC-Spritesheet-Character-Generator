@@ -1,6 +1,5 @@
 {
   "name": "Balding",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/balding/adult/",
@@ -70,5 +69,15 @@
         "https://opengameart.org/content/lpc-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "hair_balding"
+  ],
+  "type_name": "hair"
 }

@@ -1,6 +1,5 @@
 {
   "name": "Chainmail",
-  "type_name": "chainmail",
   "layer_1": {
     "zPos": 50,
     "male": "torso/chainmail/male/",
@@ -26,5 +25,10 @@
         "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "torso_chainmail"
+  ],
+  "type_name": "chainmail"
 }

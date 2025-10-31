@@ -2,9 +2,15 @@ name: Validate site sources
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
+      - full_rewrite
+      - paint-in-place-for-real
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
+      - full_rewrite
+      - paint-in-place-for-real
 
 jobs:
   validate_site_sources:
@@ -17,13 +23,28 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
       - name: Validate site sources generation
         run: |
           node scripts/generate_sources.js
+
       - name: Assert git diff
         run: |
           if [[ `git status --porcelain` ]]; then
             echo "Differences found after (re)generation of the site sources"
             echo "Please refer to the README in order to learn how to generate the site's sources properly."
+            echo ""
+            echo "Files changed:"
+            git status --porcelain
+            echo ""
+            echo "Git diff:"
+            git diff
+            echo ""
+            echo "Git diff for untracked files:"
+            git ls-files --others --exclude-standard
             exit -1
           fi

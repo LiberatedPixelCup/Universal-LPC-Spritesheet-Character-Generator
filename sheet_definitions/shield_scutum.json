@@ -1,6 +1,5 @@
 {
   "name": "Scutum shield",
-  "type_name": "shield",
   "layer_1": {
     "zPos": 2,
     "male": "shield/scutum/paint/bg/",
@@ -33,5 +32,12 @@
         "https://opengameart.org/content/lpc-shields"
       ]
     }
-  ]
+  ],
+  "path": [
+    "weapons",
+    "shield",
+    "scutum shield",
+    "shield_scutum"
+  ],
+  "type_name": "shield"
 }

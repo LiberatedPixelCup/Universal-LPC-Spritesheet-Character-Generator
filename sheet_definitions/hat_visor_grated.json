@@ -1,6 +1,5 @@
 {
   "name": "Grated visor",
-  "type_name": "visor",
   "layer_1": {
     "zPos": 132,
     "female": "hat/visor/grated/adult/",
@@ -57,5 +56,23 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "helmets",
+    "visors",
+    "hat_visor_grated"
+  ],
+  "type_name": "visor"
 }

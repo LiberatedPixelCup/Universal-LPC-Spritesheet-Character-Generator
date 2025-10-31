@@ -1,6 +1,5 @@
 {
   "name": "Dreadlocks long",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/dreadlocks_long/adult/",
@@ -70,5 +69,13 @@
         "https://opengameart.org/content/lpc-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "hair_dreadlocks_long"
+  ],
+  "type_name": "hair"
 }

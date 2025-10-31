@@ -1,7 +1,9 @@
 {
   "name": "Mouse",
-  "type_name": "head",
-  "tags": ["animal", "adult"],
+  "tags": [
+    "animal",
+    "adult"
+  ],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/mouse/adult/",
@@ -71,5 +73,11 @@
         "http://opengameart.org/content/lpc-folk"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_mouse"
+  ],
+  "type_name": "head"
 }

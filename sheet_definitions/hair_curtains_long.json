@@ -1,6 +1,5 @@
 {
   "name": "Curtains long",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/curtains_long/adult/",
@@ -74,5 +73,21 @@
         "https://opengameart.org/content/lpc-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "hair_curtains_long"
+  ],
+  "type_name": "hair"
 }

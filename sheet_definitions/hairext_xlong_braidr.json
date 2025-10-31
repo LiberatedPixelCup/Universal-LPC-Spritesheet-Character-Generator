@@ -1,6 +1,5 @@
 {
   "name": "Right XLong Braid",
-  "type_name": "hairextr",
   "layer_1": {
     "zPos": 128,
     "male": "hair/extensions/bangs/xlong_braidr/adult/fg/",
@@ -83,5 +82,13 @@
         "https://opengameart.org/content/lpc-expanded-xlong-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "bangs",
+    "hairext_xlong_braidr"
+  ],
+  "type_name": "hairextr"
 }

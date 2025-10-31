@@ -1,6 +1,5 @@
 {
   "name": "Crystal",
-  "type_name": "weapon_magic_crystal",
   "layer_1": {
     "zPos": 140,
     "male": "weapon/magic/crystal/universal/foreground/",
@@ -59,5 +58,11 @@
         "https://opengameart.org/content/lpc-more-weapons"
       ]
     }
-  ]
+  ],
+  "path": [
+    "weapons",
+    "magic",
+    "weapon_magic_crystal"
+  ],
+  "type_name": "weapon_magic_crystal"
 }

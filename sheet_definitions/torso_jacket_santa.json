@@ -1,6 +1,5 @@
 {
   "name": "Santa coat",
-  "type_name": "jacket",
   "layer_1": {
     "zPos": 55,
     "male": "torso/jacket/santa/male/"
@@ -47,5 +46,11 @@
         "https://opengameart.org/content/lpc-santa"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "jacket",
+    "torso_jacket_santa"
+  ],
+  "type_name": "jacket"
 }

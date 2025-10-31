@@ -1,7 +1,9 @@
 {
   "name": "Lizard child",
-  "type_name": "head",
-  "tags": ["lizard", "child"],
+  "tags": [
+    "lizard",
+    "child"
+  ],
   "layer_1": {
     "zPos": 100,
     "child": "head/heads/lizard/child/"
@@ -61,5 +63,11 @@
         "https://opengameart.org/content/lpc-character-bases"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_lizard_child"
+  ],
+  "type_name": "head"
 }

@@ -1,6 +1,5 @@
 {
   "name": "Tanktop",
-  "type_name": "clothes",
   "layer_1": {
     "zPos": 35,
     "pregnant": "torso/clothes/sleeveless/tanktop/pregnant/",
@@ -78,5 +77,12 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "shirts",
+    "sleeveless",
+    "torso_clothes_sleeveless_tanktop"
+  ],
+  "type_name": "clothes"
 }

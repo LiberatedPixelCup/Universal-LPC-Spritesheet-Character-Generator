@@ -1,6 +1,5 @@
 {
   "name": "Elven ears",
-  "type_name": "ears",
   "layer_1": {
     "zPos": 126,
     "male": "head/ears/elven/adult/",
@@ -75,5 +74,11 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "ears",
+    "head_ears_elven"
+  ],
+  "type_name": "ears"
 }

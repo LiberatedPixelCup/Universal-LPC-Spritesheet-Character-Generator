@@ -1,6 +1,5 @@
 {
   "name": "Twists straight",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/twists_straight/adult/",
@@ -70,5 +69,13 @@
         "https://opengameart.org/content/lpc-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "hair_twists_straight"
+  ],
+  "type_name": "hair"
 }

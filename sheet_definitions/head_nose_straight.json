@@ -1,6 +1,5 @@
 {
   "name": "Straight nose",
-  "type_name": "nose",
   "layer_1": {
     "zPos": 105,
     "male": "head/nose/straight/adult/",
@@ -70,5 +69,11 @@
         "https://opengameart.org/content/lpc-base-character-expressions"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "nose",
+    "head_nose_straight"
+  ],
+  "type_name": "nose"
 }

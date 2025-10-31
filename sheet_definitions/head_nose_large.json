@@ -1,6 +1,5 @@
 {
   "name": "Large nose",
-  "type_name": "nose",
   "layer_1": {
     "zPos": 105,
     "male": "head/nose/large/adult/",
@@ -68,5 +67,11 @@
         "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "nose",
+    "head_nose_large"
+  ],
+  "type_name": "nose"
 }

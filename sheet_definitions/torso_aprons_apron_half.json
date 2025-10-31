@@ -1,6 +1,5 @@
 {
   "name": "Apron half",
-  "type_name": "apron",
   "layer_1": {
     "zPos": 40,
     "female": "torso/aprons/apron_half/female/"
@@ -47,5 +46,11 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "aprons",
+    "torso_aprons_apron_half"
+  ],
+  "type_name": "apron"
 }

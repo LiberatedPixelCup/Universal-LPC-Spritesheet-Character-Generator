@@ -1,6 +1,5 @@
 {
   "name": "Round Glasses",
-  "type_name": "facial_eyes",
   "layer_1": {
     "zPos": 115,
     "male": "facial/glasses/round/adult/",
@@ -83,5 +82,23 @@
         "https://opengameart.org/content/lpc-gentleman"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "accessories",
+    "glasses",
+    "facial_glasses_round"
+  ],
+  "type_name": "facial_eyes"
 }

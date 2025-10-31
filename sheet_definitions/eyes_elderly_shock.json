@@ -1,6 +1,5 @@
 {
   "name": "Shock Elderly Eyes",
-  "type_name": "eyes",
   "layer_1": {
     "zPos": 105,
     "male": "eyes/human/elderly/shock/",
@@ -55,5 +54,10 @@
         "https://opengameart.org/content/ulpc-expanded-expressions"
       ]
     }
-  ]
+  ],
+  "path": [
+    "category_not_found",
+    "eyes_elderly_shock"
+  ],
+  "type_name": "eyes"
 }

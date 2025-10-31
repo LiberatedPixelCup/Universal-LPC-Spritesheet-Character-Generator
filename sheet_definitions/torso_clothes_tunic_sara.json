@@ -1,6 +1,5 @@
 {
   "name": "Sara Tunic",
-  "type_name": "clothes",
   "layer_1": {
     "zPos": 35,
     "female": "torso/clothes/tunic_sara/female/"
@@ -49,5 +48,11 @@
         "https://opengameart.org/content/lpc-sara"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "shirts",
+    "torso_clothes_tunic_sara"
+  ],
+  "type_name": "clothes"
 }

@@ -1,6 +1,5 @@
 {
   "name": "Scarf",
-  "type_name": "neck",
   "layer_1": {
     "zPos": 90,
     "male": "neck/scarf/",
@@ -36,5 +35,22 @@
         "https://opengameart.org/content/more-lpc-clothes-and-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "neck",
+    "neck_scarf"
+  ],
+  "type_name": "neck"
 }

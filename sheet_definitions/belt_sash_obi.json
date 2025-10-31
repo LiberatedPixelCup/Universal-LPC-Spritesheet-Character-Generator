@@ -1,6 +1,5 @@
 {
   "name": "Obi Sash",
-  "type_name": "sash_obi",
   "layer_1": {
     "zPos": 65,
     "male": "torso/waist/sash/male/",
@@ -52,5 +51,10 @@
         "https://opengameart.org/content/lpc-pirates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "category_not_found",
+    "belt_sash_obi"
+  ],
+  "type_name": "sash_obi"
 }

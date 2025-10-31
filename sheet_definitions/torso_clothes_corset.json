@@ -1,6 +1,5 @@
 {
   "name": "Corset",
-  "type_name": "vest",
   "layer_1": {
     "zPos": 45,
     "female": "torso/clothes/corset/female/"
@@ -44,5 +43,11 @@
         "https://opengameart.org/content/lpc-7-womens-shirts"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "shirts",
+    "torso_clothes_corset"
+  ],
+  "type_name": "vest"
 }

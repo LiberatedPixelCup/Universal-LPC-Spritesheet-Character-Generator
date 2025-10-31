@@ -1,6 +1,5 @@
 {
   "name": "Hair Tie",
-  "type_name": "hairtie",
   "layer_1": {
     "zPos": 125,
     "female": "hat/headband/hairtie/adult/",
@@ -72,5 +71,23 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "head coverings",
+    "headbands",
+    "hat_headband_hairtie"
+  ],
+  "type_name": "hairtie"
 }

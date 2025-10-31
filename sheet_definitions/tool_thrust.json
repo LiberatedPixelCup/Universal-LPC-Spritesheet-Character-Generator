@@ -1,6 +1,5 @@
 {
   "name": "Thrust",
-  "type_name": "weapon",
   "layer_1": {
     "zPos": 9,
     "male": "tools/thrust/background/",
@@ -40,5 +39,10 @@
         "https://opengameart.org/content/lpc-hand-tools"
       ]
     }
-  ]
+  ],
+  "path": [
+    "tools",
+    "tool_thrust"
+  ],
+  "type_name": "weapon"
 }

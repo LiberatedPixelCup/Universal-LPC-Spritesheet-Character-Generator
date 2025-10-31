@@ -1,6 +1,5 @@
 {
   "name": "Sleeveless laced",
-  "type_name": "clothes",
   "layer_1": {
     "zPos": 35,
     "male": "torso/clothes/sleeveless/laced/male/"
@@ -56,5 +55,12 @@
         "https://opengameart.org/content/lpc-pirates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "shirts",
+    "sleeveless",
+    "torso_clothes_sleeveless_laced"
+  ],
+  "type_name": "clothes"
 }

@@ -1,7 +1,9 @@
 {
   "name": "Wolf child",
-  "type_name": "head",
-  "tags": ["animal", "child"],
+  "tags": [
+    "animal",
+    "child"
+  ],
   "layer_1": {
     "zPos": 100,
     "child": "head/heads/wolf/child/"
@@ -72,5 +74,11 @@
         "https://opengameart.org/content/lpc-character-bases"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_wolf_child"
+  ],
+  "type_name": "head"
 }

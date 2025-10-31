@@ -1,287 +1,107 @@
-# Performance Profiling Guide
+# Performance Profiling
 
-## Overview
+## How to Enable Profiling
 
-The Universal LPC Spritesheet Character Generator now includes built-in performance profiling to help identify bottlenecks in:
-- **Drawing/rendering operations** (canvas drawing, image compositing)
-- **UI blocking** (main thread work, DOM updates)
-- **Image loading** (individual image load times)
-- **Animation performance** (frame rate monitoring)
+The app includes a performance profiler that is automatically enabled when:
+1. Running on localhost (127.0.0.1 or localhost)
+2. Adding `?debug=true` to the URL query string (overrides localhost detection)
+3. Adding `?debug=false` to disable it even on localhost
 
-## Quick Start
+The DEBUG flag and profiler are initialized in `sources/main.js`.
 
-### 1. Serve the Application Locally
+## Profiled Operations
 
-```bash
-# Generate the HTML (if you made changes to sources)
-node scripts/generate_sources.js
+The profiler tracks these expensive operations:
 
-# Start local server
-npx http-server -p 8080
+### Image Loading
+- **Operation:** `loadImage()` in `sources/canvas/renderer.js`
+- **Measures:** Individual image load times
+- **Format:** `image-load:<path>`
 
-# Open browser to: http://localhost:8080
-```
+### Character Rendering
+- **Operation:** `renderCharacter()` in `sources/canvas/renderer.js`
+- **Measures:** Total rendering time including image loading and canvas operations
+- **Format:** `renderCharacter`
 
-### 2. Enable Profiling
+## Using the Profiler
 
-The profiler uses the same `DEBUG` flag as the application's console logging:
+### Via Browser Console
 
-**Automatic Activation:**
-- ✅ **Enabled on localhost** (default)
-- ❌ **Disabled in production** (default)
-
-**Manual Override:**
-- Add `?debug=true` to URL to enable anywhere
-- Add `?debug=false` to URL to disable even on localhost
-
-When enabled, you'll see:
-```
-📊 Performance Profiler enabled
-💡 Type "profiler.report()" in console for summary.
-```
-
-**Runtime Control:**
-You can also enable/disable at any time via console:
-```javascript
-profiler.enable()   // Start profiling
-profiler.disable()  // Stop profiling
-```
-
-The profiler is always available at `window.profiler`.
-
-### 3. Use the Application
-
-Interact with the character generator:
-- Select different body types
-- Add/remove clothing items
-- Change animations
-- Search for items
-- Export spritesheets
-
-As you interact, performance data is collected automatically (when enabled).
-
-## Observing Performance
-
-### Method 1: Chrome DevTools Performance Tab (Best for Visual Analysis)
-
-1. Open Chrome DevTools (F12)
-2. Go to **Performance** tab
-3. Click **Record** (⚫)
-4. Interact with the character generator (click items, change options)
-5. Click **Stop** (⏹️)
-
-**What you'll see:**
-- 🔵 **User Timing** track shows all our custom marks:
-  - `redraw` - Full redraw cycle time
-  - `loadItemsToDraw` - Image loading orchestration
-  - `drawItemsToDraw` - Canvas rendering time
-  - `drawPreviews` - Thumbnail generation
-  - `showOrHideElements` - DOM filtering/updates
-  - `image-load:*` - Individual image load times
-
-- 📊 **Main thread** shows JavaScript execution
-- 🎬 **Frames** shows frame rate (green = 60fps, yellow/red = dropped frames)
-- 💾 **Memory** shows heap usage over time
-
-### Method 2: Console Performance Report
-
-Open the browser console and type:
+1. Enable DEBUG mode (see above)
+2. Open the browser console (F12)
+3. Perform actions in the app (change selections, render character, etc.)
+4. Use these commands:
 
 ```javascript
-profiler.report()
+// Get a full performance report
+window.profiler.report()
+
+// Get measurements for a specific operation
+window.profiler.getMeasures('renderCharacter')
+
+// Clear all profiling data
+window.profiler.clear()
+
+// Check if profiler is enabled
+window.profiler.enabled
+
+// Enable/disable profiler manually
+window.profiler.enable()
+window.profiler.disable()
 ```
 
-**Example output:**
-```
-📊 Performance Report
-  ⏱️ Timing Summary
-    imageLoads: 45 ops, 1250.32ms total, 27.78ms avg
-    draws: 12 ops, 345.67ms total, 28.81ms avg
-    previews: 8 ops, 156.23ms total, 19.53ms avg
-    domUpdates: 5 ops, 89.45ms total, 17.89ms avg
+### Configuration
 
-  🎬 Current FPS: 58
-
-  💾 Memory Usage
-    usedJSHeapSize: 45.23 MB
-    totalJSHeapSize: 67.50 MB
-    jsHeapSizeLimit: 2048.00 MB
-
-  📏 All Measurements (top 20 by duration)
-    Operation                          Duration (ms)
-    ─────────────────────────────────────────────
-    drawItemsToDraw                    145.23
-    loadItemsToDraw                    89.45
-    redraw                             78.90
-    ...
-
-💡 Tip: Open DevTools → Performance tab and click Record to see visual timeline
-```
-
-### Method 3: Real-Time Console Warnings
-
-Slow operations (>50ms) are automatically logged:
-
-```
-⚠️ Slow operation: drawItemsToDraw took 152.34ms
-🐌 Long task blocked UI for 87.65ms at 1234.56ms
-```
-
-### Method 4: Live FPS Monitoring (Verbose Mode)
-
-Enable verbose logging in the console:
+The profiler is configured in `sources/main.js`:
 
 ```javascript
-profiler.verbose = true;
+const profiler = new window.PerformanceProfiler({
+  enabled: DEBUG,           // Enable/disable profiler
+  verbose: false,           // Log all marks/measures to console
+  logSlowOperations: true   // Log warnings for slow operations
+});
 ```
 
-You'll see:
+## Example Output
+
 ```
-✅ FPS: 60
-🔵 Mark: redraw:start
-⏱️ redraw: 45.67ms
+[Profiler] renderCharacter took 145.2ms
+[Profiler] Warning: image-load:spritesheets/body/male/walk/light.png took 85ms (threshold: 50ms)
 ```
 
-## What to Look For
+## Performance Report
 
-### Performance Issues
+Call `window.profiler.report()` to see a summary:
 
-| Symptom | Likely Cause | Location |
-|---------|--------------|----------|
-| **Slow initial load** | Too many images loading sequentially | `image-load:*` marks, Network tab |
-| **Laggy UI when clicking** | Heavy DOM updates or rendering | `showOrHideElements`, `drawPreviews` |
-| **Stuttering animation** | Dropped frames, FPS < 30 | Frames track, `drawItemsToDraw` |
-| **Long pauses** | Blocking operations > 50ms | Long task warnings, Main thread |
-| **Memory growth** | Image cache not releasing | Memory tab, heap snapshots |
+```
+=== Performance Report ===
+renderCharacter: 3 measurements, avg: 142ms, min: 128ms, max: 167ms
+image-load:...: 15 measurements, avg: 23ms, min: 8ms, max: 85ms
+```
 
-### Good Performance Baseline
+## Adding New Profiling Points
 
-- ✅ **FPS**: 55-60 (smooth animation)
-- ✅ **Redraw time**: < 100ms
-- ✅ **Image load**: < 30ms per image
-- ✅ **DOM updates**: < 50ms
-- ✅ **No long tasks**: No warnings about UI blocking
-
-## Advanced Usage
-
-### Clear Performance Data
+To profile a new operation:
 
 ```javascript
-profiler.clear()
+// Mark start
+const profiler = window.profiler;
+if (profiler) {
+  profiler.mark('myOperation:start');
+}
+
+// ... do expensive work ...
+
+// Mark end and measure
+if (profiler) {
+  profiler.mark('myOperation:end');
+  profiler.measure('myOperation', 'myOperation:start', 'myOperation:end');
+}
 ```
 
-### Get Current FPS
+## Tips
 
-```javascript
-profiler.getFPS()
-// Returns: 58
-```
-
-### Get Memory Usage (Chrome only)
-
-```javascript
-profiler.getMemoryUsage()
-// Returns: { usedJSHeapSize: "45.23 MB", ... }
-```
-
-### Time Custom Code
-
-```javascript
-profiler.mark('myOperation:start');
-// ... your code ...
-profiler.mark('myOperation:end');
-profiler.measure('myOperation', 'myOperation:start', 'myOperation:end');
-```
-
-## Instrumented Functions
-
-The following operations are automatically profiled:
-
-| Function | What it measures | Category |
-|----------|-----------------|----------|
-| `redraw()` | Full character redraw cycle | draws |
-| `loadItemsToDraw()` | Setting up image loads | imageLoads |
-| `drawItemsToDraw()` | Canvas rendering (main bottleneck) | draws |
-| `drawItemSheet()` | Individual item compositing | draws |
-| `drawPreviews()` | Thumbnail generation | previews |
-| `showOrHideElements()` | DOM filtering/visibility updates | domUpdates |
-| `loadImage()` | Individual image load time | imageLoads |
-
-## Enabling and Disabling the Profiler
-
-### Default Behavior
-
-| Environment | Profiler State | Debug Logs |
-|-------------|----------------|------------|
-| localhost | ✅ Enabled | ✅ Enabled |
-| Production | ❌ Disabled | ❌ Disabled |
-
-### Manual Control
-
-**Via URL:**
-```
-http://localhost:8080/?debug=true   # Force enable anywhere
-http://localhost:8080/?debug=false  # Force disable anywhere
-```
-
-**Via Console:**
-```javascript
-profiler.enable()   // Enable at runtime
-profiler.disable()  // Disable at runtime
-```
-
-**Performance Impact:**
-- When disabled: **zero overhead** (all methods early-return)
-- When enabled: <1ms per operation (minimal impact)
-
-## Troubleshooting
-
-### "profiler is not defined"
-
-The profiler should always be available at `window.profiler`. If not:
-- Make sure the page has loaded completely
-- Check that `sources/performance-profiler.js` is included in the HTML
-- Verify in DevTools → Console that there are no script errors
-
-### No User Timing marks in DevTools
-
-Make sure:
-1. You've interacted with the app while recording
-2. You're looking at the **User Timing** swim lane (expand it)
-3. You're zoomed in enough to see the marks
-
-### Performance seems worse with profiler enabled
-
-The profiler itself has minimal overhead (<1ms per operation). If you see significant impact, you can reduce `verbose` mode or check that you're not accidentally running in a loop.
-
-## Browser Support
-
-- ✅ **Chrome/Edge**: Full support (including memory profiling)
-- ✅ **Firefox**: Full support (except memory API)
-- ✅ **Safari**: Full support
-
-## Example Workflow
-
-1. **Baseline measurement**:
-   ```javascript
-   profiler.clear();
-   // Load default character
-   profiler.report();
-   ```
-
-2. **Test specific scenario**:
-   ```javascript
-   profiler.clear();
-   // Add 10 clothing items
-   // Change animation 5 times
-   profiler.report();
-   ```
-
-3. **Compare before/after optimization**:
-   - Record metrics with `profiler.report()`
-   - Make code changes
-   - Record again and compare
-
----
-
-**Questions?** See the Performance Profiler source code in `sources/performance-profiler.js`
+- Use meaningful operation names (e.g., `render-body`, `load-sprites`)
+- Add profiling marks around suspected bottlenecks
+- Use the profiler.report() to identify patterns and outliers
+- Compare measurements before/after optimizations

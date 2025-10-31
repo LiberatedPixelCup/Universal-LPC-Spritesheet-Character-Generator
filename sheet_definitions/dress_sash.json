@@ -1,6 +1,5 @@
 {
   "name": "Sash dress",
-  "type_name": "dress",
   "layer_1": {
     "zPos": 30,
     "female": "dress/sash/female/"
@@ -49,5 +48,11 @@
         "https://opengameart.org/content/lpc-2-characters"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "dresses",
+    "dress_sash"
+  ],
+  "type_name": "dress"
 }

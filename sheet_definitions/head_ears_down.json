@@ -1,6 +1,5 @@
 {
   "name": "Downward Elven Ears",
-  "type_name": "ears",
   "layer_1": {
     "zPos": 126,
     "male": "head/ears/down/adult/",
@@ -70,5 +69,11 @@
         "https://opengameart.org/content/lpc-new-elven-ear-variants"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "ears",
+    "head_ears_down"
+  ],
+  "type_name": "ears"
 }

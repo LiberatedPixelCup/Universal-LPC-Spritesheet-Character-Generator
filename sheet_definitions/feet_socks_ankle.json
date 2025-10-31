@@ -1,6 +1,5 @@
 {
   "name": "Ankle Socks",
-  "type_name": "socks",
   "layer_1": {
     "zPos": 14,
     "male": "feet/socks/ankle/male/",
@@ -89,5 +88,11 @@
         "https://opengameart.org/content/lpc-expanded-socks-shoes"
       ]
     }
-  ]
+  ],
+  "path": [
+    "feet",
+    "socks",
+    "feet_socks_ankle"
+  ],
+  "type_name": "socks"
 }

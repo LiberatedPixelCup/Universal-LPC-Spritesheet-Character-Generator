@@ -1,6 +1,5 @@
 {
   "name": "Fluffy Wolf Tail",
-  "type_name": "tail",
   "layer_1": {
     "zPos": 125,
     "male": "body/tail/fluffy/adult/fg/",
@@ -89,5 +88,11 @@
         "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
       ]
     }
-  ]
+  ],
+  "path": [
+    "body",
+    "tails",
+    "tail_wolf_fluffy"
+  ],
+  "type_name": "tail"
 }

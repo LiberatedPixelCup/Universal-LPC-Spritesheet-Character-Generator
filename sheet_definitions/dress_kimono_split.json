@@ -1,7 +1,10 @@
 {
   "name": "Split Kimono",
-  "type_name": "dress",
-  "tags": ["dress", "kimono", "kimono_split"],
+  "tags": [
+    "dress",
+    "kimono",
+    "kimono_split"
+  ],
   "layer_1": {
     "zPos": 30,
     "female": "dress/kimono/split/universal/female/",
@@ -51,5 +54,12 @@
         "https://opengameart.org/content/lpc-kimono-relm"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "dresses",
+    "kimono",
+    "dress_kimono_split"
+  ],
+  "type_name": "dress"
 }

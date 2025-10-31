@@ -1,6 +1,5 @@
 {
   "name": "Longhawk",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/longhawk/adult/",
@@ -73,5 +72,15 @@
         "https://opengameart.org/content/lpc-expanded-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "hair_longhawk"
+  ],
+  "type_name": "hair"
 }

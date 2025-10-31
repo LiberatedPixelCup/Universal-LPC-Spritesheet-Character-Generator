@@ -1,6 +1,5 @@
 {
   "name": "lozengy",
-  "type_name": "shield_pattern",
   "layer_1": {
     "zPos": 4,
     "male": "shield/heater/original/pattern/lozengy/bg/",
@@ -79,5 +78,13 @@
         "https://opengameart.org/content/lpc-shields"
       ]
     }
-  ]
+  ],
+  "path": [
+    "weapons",
+    "shield",
+    "heater shield",
+    "heater shield pattern",
+    "shield_heater_pattern_lozengy"
+  ],
+  "type_name": "shield_pattern"
 }

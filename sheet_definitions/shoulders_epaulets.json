@@ -1,6 +1,5 @@
 {
   "name": "Epaulets",
-  "type_name": "shoulders",
   "layer_1": {
     "zPos": 60,
     "male": "shoulders/epaulets/male/"
@@ -28,5 +27,11 @@
         "https://opengameart.org/content/lpc-pirates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "arms",
+    "shoulders",
+    "shoulders_epaulets"
+  ],
+  "type_name": "shoulders"
 }

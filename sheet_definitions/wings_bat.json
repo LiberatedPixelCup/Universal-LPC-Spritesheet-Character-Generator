@@ -1,7 +1,8 @@
 {
   "name": "Bat Wings",
-  "type_name": "wings",
-  "tags": ["wings"],
+  "tags": [
+    "wings"
+  ],
   "layer_1": {
     "zPos": 105,
     "male": "body/wings/bat/adult/fg/",
@@ -98,5 +99,11 @@
         "https://opengameart.org/content/lpc-wings-new-animations"
       ]
     }
-  ]
+  ],
+  "path": [
+    "body",
+    "wings",
+    "wings_bat"
+  ],
+  "type_name": "wings"
 }

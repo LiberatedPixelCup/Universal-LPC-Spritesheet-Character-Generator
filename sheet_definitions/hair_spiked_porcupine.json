@@ -1,6 +1,5 @@
 {
   "name": "Spiked porcupine",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/spiked_porcupine/adult/",
@@ -72,5 +71,17 @@
         "https://opengameart.org/content/lpc-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "hair_spiked_porcupine"
+  ],
+  "type_name": "hair"
 }

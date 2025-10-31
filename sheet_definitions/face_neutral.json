@@ -1,8 +1,11 @@
 {
   "name": "Neutral",
-  "type_name": "expression",
-  "tags": ["expression"],
-  "required_tags": ["human"],
+  "tags": [
+    "expression"
+  ],
+  "required_tags": [
+    "human"
+  ],
   "replace_in_path": {
     "head": {
       "Human_male": "male",
@@ -138,5 +141,11 @@
         "https://opengameart.org/content/ulpc-expanded-expressions"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "face",
+    "face_neutral"
+  ],
+  "type_name": "expression"
 }

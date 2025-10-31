@@ -1,7 +1,9 @@
 {
   "name": "Tricorne Captain",
-  "type_name": "hat",
-  "tags": ["tricorne", "captain"],
+  "tags": [
+    "tricorne",
+    "captain"
+  ],
   "layer_1": {
     "zPos": 130,
     "male": "hat/pirate/tricorne/captain/adult/",
@@ -70,5 +72,24 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "hats",
+    "tricorne",
+    "captain",
+    "hat_tricorne_captain"
+  ],
+  "type_name": "hat"
 }

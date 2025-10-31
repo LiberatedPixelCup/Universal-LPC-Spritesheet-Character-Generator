@@ -1,6 +1,5 @@
 {
   "name": "Suspenders",
-  "type_name": "overalls",
   "layer_1": {
     "zPos": 38,
     "male": "torso/aprons/suspenders/male/",
@@ -70,5 +69,11 @@
         "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "aprons",
+    "torso_aprons_suspenders"
+  ],
+  "type_name": "overalls"
 }

@@ -1,6 +1,5 @@
 {
   "name": "Bicorne Athwart Captain Skull",
-  "type_name": "hat_overlay",
   "layer_1": {
     "zPos": 131,
     "male": "hat/pirate/bicorne/athwart/captain/skull/adult/",
@@ -70,5 +69,24 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "hats",
+    "bicorne athwart",
+    "captain",
+    "hat_bicorne_athwart_captain_skull"
+  ],
+  "type_name": "hat_overlay"
 }

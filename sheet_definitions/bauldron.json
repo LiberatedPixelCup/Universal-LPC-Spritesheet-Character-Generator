@@ -1,6 +1,5 @@
 {
   "name": "Bauldron",
-  "type_name": "bauldron",
   "layer_1": {
     "zPos": 65,
     "male": "bauldron/male/",
@@ -35,5 +34,10 @@
         "https://opengameart.org/content/more-lpc-clothes-and-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "arms",
+    "bauldron"
+  ],
+  "type_name": "bauldron"
 }

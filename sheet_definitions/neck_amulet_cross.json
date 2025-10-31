@@ -1,6 +1,5 @@
 {
   "name": "Cross amulet",
-  "type_name": "charm",
   "layer_1": {
     "zPos": 81,
     "male": "neck/amulet/cross/male/",
@@ -73,5 +72,23 @@
         "https://opengameart.org/content/lpc-jewelry"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "neck",
+    "necklace charms",
+    "neck_amulet_cross"
+  ],
+  "type_name": "charm"
 }

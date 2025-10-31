@@ -1,6 +1,5 @@
 {
   "name": "Trench coat",
-  "type_name": "jacket",
   "layer_1": {
     "zPos": 55,
     "male": "torso/jacket/trench/male/"
@@ -24,5 +23,11 @@
         "https://opengameart.org/content/lpc-gentleman"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "jacket",
+    "torso_jacket_trench"
+  ],
+  "type_name": "jacket"
 }

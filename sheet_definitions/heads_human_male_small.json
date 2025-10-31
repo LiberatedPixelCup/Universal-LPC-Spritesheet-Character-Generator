@@ -1,7 +1,10 @@
 {
   "name": "Human male small",
-  "type_name": "head",
-  "tags": ["human", "adult", "small"],
+  "tags": [
+    "human",
+    "adult",
+    "small"
+  ],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/human/male_small/",
@@ -68,5 +71,11 @@
       ],
       "urls": []
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_human_male_small"
+  ],
+  "type_name": "head"
 }

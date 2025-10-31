@@ -1,6 +1,5 @@
 {
   "name": "Curly long",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/curly_long/adult/",
@@ -70,5 +69,14 @@
         "https://opengameart.org/content/lpc-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "hair_curly_long"
+  ],
+  "type_name": "hair"
 }

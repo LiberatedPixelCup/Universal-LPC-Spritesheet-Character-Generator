@@ -1,6 +1,5 @@
 {
   "name": "Longsleeve",
-  "type_name": "clothes",
   "layer_1": {
     "zPos": 35,
     "female": "torso/clothes/longsleeve/longsleeve/female/",
@@ -145,5 +144,12 @@
         "https://opengameart.org/content/lpc-expanded-simple-shirts"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "shirts",
+    "longsleeve",
+    "torso_clothes_longsleeve"
+  ],
+  "type_name": "clothes"
 }

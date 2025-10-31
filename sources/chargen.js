@@ -154,18 +154,18 @@ $(document).ready(function () {
   let activeCustomAnimation = "";
   let addedCustomAnimations = [];
 
-  // on hash (url) change event, interpret and redraw
-  jHash.change(function () {
+  // Handle browser back/forward navigation
+  window.addEventListener("popstate", function() {
     params = jHash.val();
     interpretParams();
     redraw();
+    showOrHideElements();
   });
 
   interpretParams();
   if (Object.keys(params).length == 0) {
     $("input[type=reset]").click();
-    setParams();
-    selectDefaults();
+    selectDefaults(); // selectDefaults() calls setParams() internally
   }
   redraw();
   showOrHideElements();
@@ -189,7 +189,7 @@ $(document).ready(function () {
         }
       }
 
-      setParams();
+      setParams(); // Updates hash, skips callback by default
       redraw();
       showOrHideElements();
     });

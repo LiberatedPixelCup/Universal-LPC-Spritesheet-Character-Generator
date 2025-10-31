@@ -1,6 +1,5 @@
 {
   "name": "Thick Headband Rune",
-  "type_name": "headcover_rune",
   "layer_1": {
     "zPos": 126,
     "female": "hat/headband/thick/rune/adult/",
@@ -72,5 +71,23 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "head coverings",
+    "headbands",
+    "hat_headband_thick_rune"
+  ],
+  "type_name": "headcover_rune"
 }

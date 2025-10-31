@@ -1,6 +1,5 @@
 {
   "name": "Loose Belt",
-  "type_name": "belt",
   "layer_1": {
     "zPos": 70,
     "male": "torso/waist/belt_loose/male/",
@@ -35,5 +34,11 @@
         "https://opengameart.org/content/lpc-pirates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "waist",
+    "belt_loose"
+  ],
+  "type_name": "belt"
 }

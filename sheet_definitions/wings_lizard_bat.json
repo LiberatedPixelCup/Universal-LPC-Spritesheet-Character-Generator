@@ -1,7 +1,8 @@
 {
   "name": "Batlike Lizard Wings",
-  "type_name": "wings",
-  "tags": ["wings"],
+  "tags": [
+    "wings"
+  ],
   "layer_1": {
     "zPos": 105,
     "male": "body/wings/bat/lizard/adult/fg/",
@@ -76,5 +77,11 @@
         "https://opengameart.org/content/lpc-wings-new-animations"
       ]
     }
-  ]
+  ],
+  "path": [
+    "body",
+    "lizard",
+    "wings_lizard_bat"
+  ],
+  "type_name": "wings"
 }

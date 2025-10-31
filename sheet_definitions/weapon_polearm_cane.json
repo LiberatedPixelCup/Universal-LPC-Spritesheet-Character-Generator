@@ -1,6 +1,5 @@
 {
   "name": "Cane",
-  "type_name": "weapon",
   "preview_row": 1,
   "preview_column": 8,
   "layer_1": {
@@ -32,5 +31,11 @@
         "https://opengameart.org/content/lpc-gentleman"
       ]
     }
-  ]
+  ],
+  "path": [
+    "weapons",
+    "polearm",
+    "weapon_polearm_cane"
+  ],
+  "type_name": "weapon"
 }

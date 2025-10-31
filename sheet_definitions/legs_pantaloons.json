@@ -1,6 +1,5 @@
 {
   "name": "Pantaloons",
-  "type_name": "legs",
   "layer_1": {
     "zPos": 20,
     "male": "legs/pantaloons/male/",
@@ -114,5 +113,11 @@
         "https://opengameart.org/content/more-lpc-clothes-and-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "legs",
+    "pants",
+    "legs_pantaloons"
+  ],
+  "type_name": "legs"
 }

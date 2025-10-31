@@ -1,6 +1,5 @@
 {
   "name": "Stud Ring",
-  "type_name": "ring",
   "layer_1": {
     "zPos": 75,
     "male": "arms/hands/ring/stud/male/",
@@ -31,5 +30,10 @@
         "https://opengameart.org/content/lpc-jewelry"
       ]
     }
-  ]
+  ],
+  "path": [
+    "arms",
+    "arms_hands_ring_stud"
+  ],
+  "type_name": "ring"
 }

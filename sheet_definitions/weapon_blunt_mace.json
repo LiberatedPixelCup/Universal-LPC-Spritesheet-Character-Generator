@@ -1,6 +1,5 @@
 {
   "name": "Mace",
-  "type_name": "weapon",
   "layer_1": {
     "zPos": 140,
     "male": "weapon/blunt/mace/",
@@ -51,5 +50,11 @@
         "https://opengameart.org/content/lpc-extended-weapon-animations"
       ]
     }
-  ]
+  ],
+  "path": [
+    "weapons",
+    "blunt",
+    "weapon_blunt_mace"
+  ],
+  "type_name": "weapon"
 }

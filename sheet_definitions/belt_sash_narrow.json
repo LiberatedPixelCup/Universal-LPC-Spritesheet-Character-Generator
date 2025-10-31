@@ -1,6 +1,5 @@
 {
   "name": "Narrow sash",
-  "type_name": "sash",
   "layer_1": {
     "zPos": 65,
     "male": "torso/waist/sash_narrow/male/",
@@ -52,5 +51,11 @@
         "https://opengameart.org/content/lpc-pirates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "waist",
+    "belt_sash_narrow"
+  ],
+  "type_name": "sash"
 }

@@ -1,6 +1,5 @@
 {
   "name": "Twists fade",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/twists_fade/adult/",
@@ -70,5 +69,13 @@
         "https://opengameart.org/content/lpc-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "hair_twists_fade"
+  ],
+  "type_name": "hair"
 }

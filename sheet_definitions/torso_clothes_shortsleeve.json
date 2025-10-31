@@ -1,6 +1,5 @@
 {
   "name": "Shortsleeve",
-  "type_name": "clothes",
   "layer_1": {
     "zPos": 35,
     "female": "torso/clothes/shortsleeve/shortsleeve/female/",
@@ -147,5 +146,12 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "shirts",
+    "shortsleeve",
+    "torso_clothes_shortsleeve"
+  ],
+  "type_name": "clothes"
 }

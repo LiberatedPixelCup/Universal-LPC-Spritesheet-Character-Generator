@@ -1,6 +1,5 @@
 {
   "name": "Boomerang",
-  "type_name": "weapon",
   "preview_row": 1,
   "preview_column": 4,
   "preview_x_offset": 16,
@@ -32,5 +31,11 @@
         "https://opengameart.org/content/lpc-more-weapons"
       ]
     }
-  ]
+  ],
+  "path": [
+    "weapons",
+    "ranged",
+    "weapon_ranged_boomerang"
+  ],
+  "type_name": "weapon"
 }

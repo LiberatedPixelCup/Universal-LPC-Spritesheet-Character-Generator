@@ -1,6 +1,5 @@
 {
   "name": "Mantal",
-  "type_name": "shoulders",
   "layer_1": {
     "zPos": 75,
     "male": "shoulders/mantal/male/"
@@ -45,5 +44,11 @@
         "https://opengameart.org/content/lpc-pirates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "arms",
+    "shoulders",
+    "shoulders_mantal"
+  ],
+  "type_name": "shoulders"
 }

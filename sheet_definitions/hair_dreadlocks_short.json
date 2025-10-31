@@ -1,6 +1,5 @@
 {
   "name": "Dreadlocks short",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/dreadlocks_short/adult/",
@@ -73,5 +72,13 @@
         "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "hair_dreadlocks_short"
+  ],
+  "type_name": "hair"
 }

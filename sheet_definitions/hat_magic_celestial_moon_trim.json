@@ -1,8 +1,12 @@
 {
   "name": "Celestial Wizard Moon Hat Second Color",
-  "type_name": "hat_trim",
-  "tags": ["wizard", "hat_trim"],
-  "required_tags": ["celestial_moon"],
+  "tags": [
+    "wizard",
+    "hat_trim"
+  ],
+  "required_tags": [
+    "celestial_moon"
+  ],
   "layer_1": {
     "zPos": 131,
     "male": "hat/magic/celestial_moon/trim/adult/",
@@ -81,5 +85,24 @@
         "https:/opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "hats",
+    "magic",
+    "celestial",
+    "hat_magic_celestial_moon_trim"
+  ],
+  "type_name": "hat_trim"
 }

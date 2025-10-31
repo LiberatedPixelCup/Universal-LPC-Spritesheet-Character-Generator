@@ -1,7 +1,9 @@
 {
   "name": "Wartotaur",
-  "type_name": "head",
-  "tags": ["animal", "wartotaur"],
+  "tags": [
+    "animal",
+    "wartotaur"
+  ],
   "layer_1": {
     "zPos": 100,
     "male": "head/heads/wartotaur/adult/",
@@ -73,5 +75,11 @@
         "https://opengameart.org/content/lpc-folk"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_wartotaur"
+  ],
+  "type_name": "head"
 }

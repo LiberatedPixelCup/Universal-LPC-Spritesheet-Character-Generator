@@ -1,6 +1,5 @@
 {
   "name": "Two engrailed shield",
-  "type_name": "shield",
   "layer_1": {
     "zPos": 2,
     "male": "shield/two_engrailed/paint/bg/",
@@ -33,5 +32,12 @@
         "https://opengameart.org/content/lpc-shields"
       ]
     }
-  ]
+  ],
+  "path": [
+    "weapons",
+    "shield",
+    "two-engrailed shield",
+    "shield_two_engrailed"
+  ],
+  "type_name": "shield"
 }

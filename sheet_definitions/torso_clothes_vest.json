@@ -1,6 +1,5 @@
 {
   "name": "Vest",
-  "type_name": "vest",
   "layer_1": {
     "zPos": 45,
     "male": "torso/clothes/vest/male/"
@@ -88,5 +87,11 @@
         "https://opengameart.org/content/lpc-2-characters"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "vest",
+    "torso_clothes_vest"
+  ],
+  "type_name": "vest"
 }

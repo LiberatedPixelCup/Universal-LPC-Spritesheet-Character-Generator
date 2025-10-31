@@ -1,6 +1,5 @@
 {
   "name": "Parted 2",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/parted2/adult/",
@@ -73,5 +72,16 @@
         "https://opengameart.org/content/lpc-hair"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "hair_parted2"
+  ],
+  "type_name": "hair"
 }

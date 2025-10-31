@@ -1,7 +1,9 @@
 {
   "name": "Celestial Wizard Moon Hat",
-  "type_name": "hat",
-  "tags": ["wizard", "celestial_moon"],
+  "tags": [
+    "wizard",
+    "celestial_moon"
+  ],
   "layer_1": {
     "zPos": 130,
     "male": "hat/magic/celestial_moon/adult/",
@@ -72,5 +74,24 @@
         "https:/opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "hats",
+    "magic",
+    "celestial",
+    "hat_magic_celestial_moon"
+  ],
+  "type_name": "hat"
 }

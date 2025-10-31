@@ -1,7 +1,8 @@
 {
   "name": "Lizard Wings (Alt Colors)",
-  "type_name": "wings",
-  "tags": ["wings"],
+  "tags": [
+    "wings"
+  ],
   "layer_1": {
     "zPos": 105,
     "male": "body/wings/lizard/alt/adult/fg/",
@@ -91,5 +92,11 @@
         "https://opengameart.org/content/lpc-wings-new-animations"
       ]
     }
-  ]
+  ],
+  "path": [
+    "body",
+    "wings",
+    "wings_lizard_alt"
+  ],
+  "type_name": "wings"
 }

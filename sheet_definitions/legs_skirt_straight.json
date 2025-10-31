@@ -1,6 +1,5 @@
 {
   "name": "Straight skirt",
-  "type_name": "legs",
   "layer_1": {
     "zPos": 20,
     "female": "legs/skirts/straight/female/",
@@ -49,5 +48,11 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "legs",
+    "skirts",
+    "legs_skirt_straight"
+  ],
+  "type_name": "legs"
 }

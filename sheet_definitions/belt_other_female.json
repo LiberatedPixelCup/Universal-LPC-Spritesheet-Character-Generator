@@ -1,6 +1,5 @@
 {
   "name": "Other belts",
-  "type_name": "belt",
   "layer_1": {
     "zPos": 70,
     "female": "torso/waist/belt_other/female/"
@@ -78,5 +77,11 @@
         "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "waist",
+    "belt_other_female"
+  ],
+  "type_name": "belt"
 }

@@ -1,6 +1,5 @@
 {
   "name": "Overskirt",
-  "type_name": "apron",
   "layer_1": {
     "zPos": 35,
     "female": "legs/skirts/overskirt/female/",
@@ -53,5 +52,11 @@
         "http://opengameart.org/content/lpc-clothing-updates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "legs",
+    "skirts",
+    "legs_skirt_overskirt"
+  ],
+  "type_name": "apron"
 }

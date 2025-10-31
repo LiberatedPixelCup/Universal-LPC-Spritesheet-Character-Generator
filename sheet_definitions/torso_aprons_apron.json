@@ -1,6 +1,5 @@
 {
   "name": "Apron",
-  "type_name": "apron",
   "layer_1": {
     "zPos": 40,
     "male": "torso/aprons/apron/male/",
@@ -50,5 +49,11 @@
         "https://opengameart.org/content/lpc-aprons"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "aprons",
+    "torso_aprons_apron"
+  ],
+  "type_name": "apron"
 }

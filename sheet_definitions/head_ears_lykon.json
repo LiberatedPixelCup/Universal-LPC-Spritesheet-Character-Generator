@@ -1,6 +1,5 @@
 {
   "name": "Side Wolf Ears",
-  "type_name": "ears",
   "layer_1": {
     "zPos": 126,
     "male": "head/ears/lykon/adult/",
@@ -80,5 +79,12 @@
         "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "furry ears",
+    "side ears",
+    "head_ears_lykon"
+  ],
+  "type_name": "ears"
 }

@@ -1,6 +1,5 @@
 {
   "name": "Smash",
-  "type_name": "weapon",
   "layer_1": {
     "zPos": 140,
     "male": "tools/smash/universal/male/",
@@ -50,5 +49,10 @@
         "https://opengameart.org/content/lpc-hand-tools"
       ]
     }
-  ]
+  ],
+  "path": [
+    "tools",
+    "tool_smash"
+  ],
+  "type_name": "weapon"
 }

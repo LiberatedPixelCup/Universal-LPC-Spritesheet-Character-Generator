@@ -1,6 +1,5 @@
 {
   "name": "Star amulet",
-  "type_name": "charm",
   "layer_1": {
     "zPos": 81,
     "male": "neck/amulet/star/male/",
@@ -77,5 +76,10 @@
         "https://opengameart.org/content/lpc-jewelry"
       ]
     }
-  ]
+  ],
+  "path": [
+    "category_not_found",
+    "neck_amulet_star"
+  ],
+  "type_name": "charm"
 }

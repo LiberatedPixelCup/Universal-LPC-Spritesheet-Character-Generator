@@ -1,6 +1,5 @@
 {
   "name": "Whip",
-  "type_name": "weapon",
   "preview_row": 3,
   "preview_column": 12,
   "preview_x_offset": 24,
@@ -42,5 +41,10 @@
         "https://opengameart.org/content/lpc-more-weapons"
       ]
     }
-  ]
+  ],
+  "path": [
+    "tools",
+    "tool_whip"
+  ],
+  "type_name": "weapon"
 }

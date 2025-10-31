@@ -1,6 +1,5 @@
 {
   "name": "Obi",
-  "type_name": "sash",
   "layer_1": {
     "zPos": 65,
     "male": "torso/waist/obi/male/",
@@ -70,5 +69,12 @@
         "https://opengameart.org/content/lpc-kimono-relm"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "waist",
+    "obi",
+    "belt_obi"
+  ],
+  "type_name": "sash"
 }

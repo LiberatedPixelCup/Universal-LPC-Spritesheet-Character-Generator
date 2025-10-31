@@ -1,6 +1,5 @@
 {
   "name": "Collared coat",
-  "type_name": "jacket",
   "layer_1": {
     "zPos": 55,
     "male": "torso/jacket/collared/male/"
@@ -48,5 +47,11 @@
         "https://opengameart.org/content/lpc-pirates"
       ]
     }
-  ]
+  ],
+  "path": [
+    "torso",
+    "jacket",
+    "torso_jacket_collared"
+  ],
+  "type_name": "jacket"
 }

@@ -1,7 +1,9 @@
 {
   "name": "Wizard Hat Base",
-  "type_name": "hat",
-  "tags": ["wizard", "pointed_wizard"],
+  "tags": [
+    "wizard",
+    "pointed_wizard"
+  ],
   "layer_1": {
     "zPos": 130,
     "male": "hat/magic/wizard/base/adult/",
@@ -81,5 +83,24 @@
         "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "bald/shaved",
+    "short",
+    "spiky",
+    "pigtails",
+    "bob",
+    "braids, ponytails, updos",
+    "long",
+    "hats",
+    "magic",
+    "wizard",
+    "hat_magic_wizard"
+  ],
+  "type_name": "hat"
 }

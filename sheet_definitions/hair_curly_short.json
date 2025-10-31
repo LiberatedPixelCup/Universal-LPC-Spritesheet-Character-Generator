@@ -1,6 +1,5 @@
 {
   "name": "Curly short",
-  "type_name": "hair",
   "layer_1": {
     "zPos": 120,
     "male": "hair/curly_short/adult/",
@@ -71,5 +70,14 @@
         "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
       ]
     }
-  ]
+  ],
+  "path": [
+    "head",
+    "hair",
+    "hair extensions",
+    "afro",
+    "curly",
+    "hair_curly_short"
+  ],
+  "type_name": "hair"
 }

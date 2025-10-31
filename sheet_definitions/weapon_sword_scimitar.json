@@ -1,6 +1,5 @@
 {
   "name": "Scimitar",
-  "type_name": "weapon",
   "preview_row": 5,
   "preview_column": 0,
   "preview_x_offset": 28,
@@ -54,5 +53,11 @@
         "https://opengameart.org/content/lpc-dcss-swords"
       ]
     }
-  ]
+  ],
+  "path": [
+    "weapons",
+    "sword",
+    "weapon_sword_scimitar"
+  ],
+  "type_name": "weapon"
 }
