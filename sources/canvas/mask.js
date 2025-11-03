@@ -1,13 +1,8 @@
-import { getCanvas } from './renderer.js';
-import { get2DContext } from './canvas-utils.js';
-
-export function applyTransparencyMaskToCanvas() {
-	const canvas = getCanvas();
+export function applyTransparencyMaskToCanvas(canvas, ctx) {
 	if (!canvas) {
 	  console.error("Canvas not initialized");
 	  return;
 	}
-	const ctx = get2DContext(canvas);
     const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height),
       pix = imgData.data,
       n = pix.length;

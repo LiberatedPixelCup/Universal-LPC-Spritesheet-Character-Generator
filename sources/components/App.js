@@ -25,7 +25,8 @@ export const App = {
 		if (currentSelections !== vnode.state.prevSelections ||
 		    currentBodyType !== vnode.state.prevBodyType ||
 		    currentCustomImage !== vnode.state.prevCustomImage ||
-		    currentCustomZPos !== vnode.state.prevCustomZPos) {
+		    currentCustomZPos !== vnode.state.prevCustomZPos
+		) {
 			syncSelectionsToHash();
 			if (window.canvasRenderer) {
 				// Render to offscreen canvas (async)

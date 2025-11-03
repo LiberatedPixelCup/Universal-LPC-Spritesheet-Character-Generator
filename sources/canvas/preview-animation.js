@@ -1,7 +1,8 @@
 import { previewCanvas, previewCtx } from "./preview-canvas.js";
 import { state } from "../state/state.js";
 import { FRAME_SIZE, ANIMATION_CONFIGS } from "../state/constants.js";
-import { drawTransparencyBackground } from "./canvas-utils.js";
+import { get2DContext, drawTransparencyBackground } from "./canvas-utils.js";
+import { applyTransparencyMaskToCanvas } from "./mask.js";
 import { canvas } from "./renderer.js";
 import { customAnimations } from "../custom-animations.js";
 
@@ -112,13 +113,27 @@ export function startPreviewAnimation() {
 					}
 				}
 
+				let tmpCanvas;
+				if (state.applyTransparencyMask) {
+					// using a tmpCanvas here to avoid modifying the original offscreen canvas
+					// which causes a bug if the user toggles the checkbox multiple times
+					tmpCanvas = document.createElement("canvas");
+					tmpCanvas.width = canvas.width;
+					tmpCanvas.height = canvas.height;
+					const tmpCtx = get2DContext(tmpCanvas);
+					tmpCtx.drawImage(canvas, 0, 0);
+					applyTransparencyMaskToCanvas(tmpCanvas, tmpCtx);
+				} else {
+					tmpCanvas = canvas;
+				}
+
 				// Draw stacked rows from main canvas to preview
 				for (let i = 0; i < animRowNum; i++) {
 					const srcY = activeCustomAnimation
 						? yOffset + i * frameSize // Custom animation: use Y offset + row * frameSize
 						: (animRowStart + i) * FRAME_SIZE; // Standard animation: use row * 64
 					previewCtx.drawImage(
-						canvas,
+						tmpCanvas,
 						currentFrame * frameSize, // source x
 						srcY, // source y
 						frameSize, // source width
