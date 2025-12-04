@@ -31,6 +31,15 @@
     "fur_grey",
     "fur_white"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "idle"
+  ],
   "credits": [
     {
       "file": "feet/hoofs",
