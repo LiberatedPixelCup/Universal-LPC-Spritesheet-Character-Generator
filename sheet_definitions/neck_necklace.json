@@ -19,6 +19,15 @@
     "gold",
     "pirate"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "idle"
+  ],
   "credits": [
     {
       "file": "neck/necklace",
