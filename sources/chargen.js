@@ -146,7 +146,7 @@ $(document).ready(function () {
   // Preview Animation
   let past = Date.now();
   const anim = $("#previewAnimations").get(0);
-  const animCtx = anim.getContext("2d");
+  const animCtx = anim.getContext("2d", { willReadFrequently: true });
   let animationItems = [1, 2, 3, 4, 5, 6, 7, 8]; // default for walk
   let animRowStart = 8; // default for walk
   let animRowNum = 4; // default for walk
@@ -639,7 +639,7 @@ const addMetadataToZip = (zip, bodyType, timestamp, exportedStandard, failedStan
     const animCanvas = document.createElement('canvas');
     animCanvas.width = width;
     animCanvas.height = height;
-    const animCtx = animCanvas.getContext('2d');
+    const animCtx = animCanvas.getContext('2d', { willReadFrequently: true });
 
     if (!animCtx) {
       throw new Error("Failed to get canvas context");
@@ -661,7 +661,7 @@ const addMetadataToZip = (zip, bodyType, timestamp, exportedStandard, failedStan
     const {width: custWidth, height: custHeight} = customAnimationSize(custAnim);
     custCanvas.width = custWidth;
     custCanvas.height = custHeight;
-    const custCtx = custCanvas.getContext("2d");
+    const custCtx = custCanvas.getContext("2d", { willReadFrequently: true });
     drawFramesToCustomAnimation(custCtx, custAnim, 0, src, null);
     return custCanvas;
   }
@@ -680,7 +680,7 @@ const addMetadataToZip = (zip, bodyType, timestamp, exportedStandard, failedStan
    * @param {string[]} addedCustomAnimations 
    */
   function drawItemSheet(destCanvas, itemToDraw, addedCustomAnimations) {
-    const destCtx = destCanvas.getContext("2d");
+    const destCtx = destCanvas.getContext("2d", { willReadFrequently: true });
     const custom_animation = itemToDraw.custom_animation;
     if (custom_animation !== undefined) {
       drawCustomAnimationItem(destCtx, itemToDraw, addedCustomAnimations);
@@ -971,7 +971,7 @@ $(".exportSplitAnimations").click(async function() {
       const itemCanvas = document.createElement("canvas");
       itemCanvas.width = canvas.width;
       itemCanvas.height = canvas.height;
-      const itemCtx = itemCanvas.getContext("2d");
+      const itemCtx = itemCanvas.getContext("2d", { willReadFrequently: true });
 
       for (let itemToDraw of itemsToDraw) {
         const fileName = getItemFileName(itemToDraw);
@@ -1812,7 +1812,7 @@ $(".exportSplitAnimations").click(async function() {
         const prev = document.createElement("canvas");
         prev.setAttribute("width", universalFrameSize);
         prev.setAttribute("height", universalFrameSize);
-        const prevctx = prev.getContext("2d");
+        const prevctx = prev.getContext("2d", { willReadFrequently: true });
         let img = null;
         const previewRow = parseInt($this.data("preview_row"));
         const previewColumn = parseInt($this.data("preview_column"));

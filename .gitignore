@@ -1,3 +1,4 @@
 _universal/
 node_modules/
 test-results-*.html
+.idea/

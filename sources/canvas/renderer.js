@@ -56,7 +56,7 @@ export async function renderCharacter(selections, bodyType, targetCanvas = null)
 
   // Use provided canvas or default to main canvas
   const renderCanvas = targetCanvas || canvas;
-  const renderCtx = renderCanvas.getContext('2d');
+  const renderCtx = renderCanvas.getContext('2d', { willReadFrequently: true });
 
   if (!renderCanvas || !renderCtx) {
     console.error('Canvas not initialized');

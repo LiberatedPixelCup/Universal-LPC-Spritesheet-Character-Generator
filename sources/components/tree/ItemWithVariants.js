@@ -106,7 +106,7 @@ export const ItemWithVariants = {
 							style: (isSelected ? " hsl(217, 71%, 53%)" : " hsl(0, 0%, 86%)"),
 							oncreate: (canvasVnode) => {
 								const canvas = canvasVnode.dom;
-								const ctx = canvas.getContext('2d');
+								const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
 								// Collect all layers for this item
 								// Only include layers that match layer_1's custom animation (if any)
@@ -178,7 +178,7 @@ export const ItemWithVariants = {
 							},
 							onupdate: (canvasVnode) => {
 								const canvas = canvasVnode.dom;
-								const ctx = canvas.getContext('2d');
+								const ctx = canvas.getContext('2d', { willReadFrequently: true });
 								if (canvas.loadedLayers) {
 									// Draw each layer in zPos order
 									// Use universalFrameSize (64) for all calculations, matching master branch

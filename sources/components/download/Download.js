@@ -5,7 +5,7 @@ import { getAllCredits, creditsToCsv, creditsToTxt } from '../../utils/credits.j
 import { CollapsibleSection } from '../CollapsibleSection.js';
 import { downloadFile, downloadAsPNG } from '../../canvas/download.js';
 import { importStateFromJSON, exportStateAsJSON } from '../../state/json.js';
-import { exportSplitAnimations, exportSplitItemSheets, exportSplitItemAnimations } from '../../state/zip.js';
+import { exportSplitAnimations, exportSplitItemSheets, exportSplitItemAnimations, exportIndividualFrames } from '../../state/zip.js';
 
 export const Download = {
 	view: function() {
@@ -71,6 +71,8 @@ export const Download = {
 				state.zipByItem.isRunning ? m("span.loading") : null,
 				m("button.button.is-small.is-info", { onclick: exportSplitItemAnimations }, "ZIP: Split by animation and item"),
 				state.zipByAnimimationAndItem.isRunning ? m("span.loading") : null,
+				m("button.button.is-small.is-info", { onclick: exportIndividualFrames }, "ZIP: Individual frames"),
+				state.zipIndividualFrames && state.zipIndividualFrames.isRunning ? m("span.loading") : null,
 				m("button.button.is-small.is-link", { onclick: exportToClipboard }, "Export to Clipboard (JSON)"),
 				m("button.button.is-small.is-link", { onclick: importFromClipboard }, "Import from Clipboard (JSON)")
 			])
