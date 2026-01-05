@@ -5,7 +5,7 @@ import { variantToFilename, capitalize } from '../../utils/helpers.js';
 
 export const ItemWithVariants = {
 	view: function(vnode) {
-		const { itemId, meta, isSearchMatch } = vnode.attrs;
+		const { itemId, meta, isSearchMatch, isCompatible, tooltipText } = vnode.attrs;
 		const compactDisplay = state.compactDisplay;
 		const displayName = meta.name;
 		let nodePath = itemId;
@@ -15,15 +15,17 @@ export const ItemWithVariants = {
 		const isExpanded = state.expandedNodes[nodePath] || false;
 
 		return m("div", {
-			class: isSearchMatch ? "search-result" : ""
+			class: `${isSearchMatch ? "search-result" : ""} ${!isCompatible ? "has-text-grey" : ""}`
 		}, [
 			m("div.tree-label", {
+				title: tooltipText,
 				onclick: () => {
 					state.expandedNodes[nodePath] = !isExpanded;
 				}
 			}, [
 				m("span.tree-arrow", { class: isExpanded ? 'expanded' : 'collapsed' }),
-				m("span", displayName)
+				m("span", displayName),
+				!isCompatible ? m("span.ml-1", "⚠️") : null
 			]),
 			isExpanded ? m("div", [
 				m("div.variants-container.ml-5.is-flex.is-flex-wrap-wrap",
@@ -69,16 +71,21 @@ export const ItemWithVariants = {
 					return m("div.variant-item.is-flex.is-flex-direction-column.is-align-items-center.is-clickable", {
 						key: variant,
 						class: isSelected ? "has-background-link-light has-text-weight-bold has-text-link" : "",
+						title: tooltipText,
+						style: !isCompatible ? "opacity: 0.5; pointer-events: none;" : "",
 						onmouseover: (e) => {
+							if (!isCompatible) return;
 							const div = e.currentTarget;
 							if (!isSelected) div.classList.add('has-background-white-ter');
 						},
 						onmouseout: (e) => {
+							if (!isCompatible) return;
 							const div = e.currentTarget;
 
 							if (!isSelected) div.classList.remove('has-background-white-ter');
 						},
 						onclick: () => {
+							if (!isCompatible) return; // Prevent selecting incompatible
 							const selectionGroup = getSelectionGroup(itemId);
 
 							if (isSelected) {
