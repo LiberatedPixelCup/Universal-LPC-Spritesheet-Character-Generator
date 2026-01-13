@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.28.5",
+    "eslint": "^8.57.1"
+  }
+}

@@ -18,11 +18,6 @@
     "teen": "weapon/polearm/spear/background/",
     "pregnant": "weapon/polearm/spear/background/"
   },
-  "animations": [
-    "walk",
-    "thrust",
-    "hurt"
-  ],
   "variants": [
     "medium",
     "light",
@@ -36,6 +31,11 @@
     "iron",
     "silver",
     "steel"
+  ],
+  "animations": [
+    "walk",
+    "thrust",
+    "hurt"
   ],
   "credits": [
     {

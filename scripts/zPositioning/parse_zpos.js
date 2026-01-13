@@ -10,7 +10,7 @@ fs.readdirSync(testFolder).forEach(file => {
   }
   const json = file;
   const definition = JSON.parse(fs.readFileSync(`sheet_definitions/${file}`));
-  for (jdx =1; jdx < 10; jdx++) {
+  for (let jdx =1; jdx < 10; jdx++) {
     const layerDefinition = definition[`layer_${jdx}`];
     if (layerDefinition !== undefined) {
       const layer = `layer_${jdx}`;
@@ -18,7 +18,7 @@ fs.readdirSync(testFolder).forEach(file => {
       var images = "";
       var bodyIndex = 0;
       var firstImage = true;
-      for (item in possibleBodies) {
+      for (let item in possibleBodies) {
         const body = possibleBodies[bodyIndex];
         const imageRef = layerDefinition[`${body}`];
         if (imageRef !== undefined) {

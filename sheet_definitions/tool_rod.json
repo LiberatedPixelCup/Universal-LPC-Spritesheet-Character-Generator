@@ -25,6 +25,7 @@
   "variants": [
     "rod"
   ],
+  "animations": [],
   "credits": [
     {
       "file": "tools/rod",

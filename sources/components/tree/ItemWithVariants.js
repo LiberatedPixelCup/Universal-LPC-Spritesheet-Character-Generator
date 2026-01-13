@@ -7,17 +7,21 @@ import { variantToFilename, capitalize } from '../../utils/helpers.js';
 export const ItemWithVariants = {
 	view: function(vnode) {
 		const { itemId, meta, isSearchMatch } = vnode.attrs;
-		const isExpanded = state.expandedNodes[itemId] || false;
 		const compactDisplay = state.compactDisplay;
 		const displayName = meta.name;
 		const rootViewNode = vnode;
+		let nodePath = itemId;
+		if (displayName === 'Body color') {
+			nodePath = 'body-body';
+		}
+		const isExpanded = state.expandedNodes[nodePath] || false;
 
 		return m("div", {
 			class: isSearchMatch ? "search-result" : ""
 		}, [
 			m("div.tree-label", {
 				onclick: () => {
-					state.expandedNodes[itemId] = !isExpanded;
+					state.expandedNodes[nodePath] = !isExpanded;
 				},
 				oninit: () => {
 					rootViewNode.state.isLoading = meta.variants.length > 0;
@@ -117,7 +121,7 @@ export const ItemWithVariants = {
 							style: (isSelected ? " hsl(217, 71%, 53%)" : " hsl(0, 0%, 86%)"),
 							oncreate: (canvasVnode) => {
 								const canvas = canvasVnode.dom;
-								const ctx = canvas.getContext('2d');
+								const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
 								// Collect all layers for this item
 								// Only include layers that match layer_1's custom animation (if any)
@@ -197,7 +201,7 @@ export const ItemWithVariants = {
 							},
 							onupdate: (canvasVnode) => {
 								const canvas = canvasVnode.dom;
-								const ctx = canvas.getContext('2d');
+								const ctx = canvas.getContext('2d', { willReadFrequently: true });
 								if (canvas.loadedLayers) {
 									// Draw each layer in zPos order
 									// Use universalFrameSize (64) for all calculations, matching master branch

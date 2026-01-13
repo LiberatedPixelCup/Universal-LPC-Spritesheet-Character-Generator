@@ -53,11 +53,11 @@ export const ANIMATIONS = [
 	{ value: 'sit', label: 'Sit' },
 	{ value: 'emote', label: 'Emote' },
 	{ value: 'run', label: 'Run' },
-	{ value: 'watering', label: 'Watering' },
-	{ value: 'combat', label: 'Combat Idle' },
-	{ value: '1h_slash', label: '1-Handed Slash' },
-	{ value: '1h_backslash', label: '1-Handed Backslash' },
-	{ value: '1h_halfslash', label: '1-Handed Halfslash' }
+	{ value: 'watering', label: 'Watering', noExport: true },
+	{ value: 'combat', label: 'Combat Idle', folderName: 'combat_idle' },
+	{ value: '1h_slash', label: '1-Handed Slash', folderName: 'backslash', noExport: true },
+	{ value: '1h_backslash', label: '1-Handed Backslash', folderName: 'backslash'},
+	{ value: '1h_halfslash', label: '1-Handed Halfslash', folderName: 'halfslash' }
 ];
 
 // Animation offsets (y-positions on spritesheet) - matches chargen.js base_animations

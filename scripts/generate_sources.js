@@ -185,7 +185,7 @@ function parseJson(json) {
     let dataFiles = "";
     for (const sex of requiredSexes) {
       // TODO: move any non-layer, non-variant specific code here!
-      for (jdx = 1; jdx < 10; jdx++) {
+      for (let jdx = 1; jdx < 10; jdx++) {
         const layerDefinition = definition[`layer_${jdx}`];
         if (layerDefinition === undefined) {
           break;

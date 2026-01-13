@@ -34,6 +34,15 @@
     "white",
     "yellow"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "idle"
+  ],
   "credits": [
     {
       "file": "neck/capeclip",
@@ -55,17 +64,6 @@
   ],
   "path": [
     "head",
-    "hair",
-    "hair extensions",
-    "afro",
-    "curly",
-    "bald/shaved",
-    "short",
-    "spiky",
-    "pigtails",
-    "bob",
-    "braids, ponytails, updos",
-    "long",
     "neck",
     "neck_capeclip"
   ],

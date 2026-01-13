@@ -21,6 +21,11 @@
   "variants": [
     "crossbow"
   ],
+  "animations": [
+    "thrust",
+    "walk",
+    "hurt"
+  ],
   "credits": [
     {
       "file": "weapon/ranged/crossbow",

@@ -18,6 +18,15 @@
     "silver",
     "gold"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "idle"
+  ],
   "credits": [
     {
       "file": "neck/charm",
@@ -35,17 +44,6 @@
   ],
   "path": [
     "head",
-    "hair",
-    "hair extensions",
-    "afro",
-    "curly",
-    "bald/shaved",
-    "short",
-    "spiky",
-    "pigtails",
-    "bob",
-    "braids, ponytails, updos",
-    "long",
     "neck",
     "necklace charms",
     "neck_charm_star"

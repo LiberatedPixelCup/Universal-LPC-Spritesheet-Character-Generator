@@ -7,11 +7,11 @@ fs.readdirSync('sheet_definitions').forEach(file => {
     return
   }
   const definition = JSON.parse(fs.readFileSync(`sheet_definitions/${file}`));
-  for (jdx =1; jdx < 10; jdx++) {
+  for (let jdx=1; jdx < 10; jdx++) {
     const layerDefinition = definition[`layer_${jdx}`];
     if (layerDefinition !== undefined) {
       var entryIdx = 0;
-      for (entry in csv) {
+      for (let entry in csv) {
         const item = csv[entryIdx];
         if (item.includes(file) && item.includes(`layer_${jdx}`)) {
           const requiredZposition = parseInt(item.split(",")[2]);

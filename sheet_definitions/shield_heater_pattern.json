@@ -51,7 +51,9 @@
     }
   ],
   "path": [
-    "category_not_found",
+    "weapons",
+    "shield",
+    "heater shield",
     "shield_heater_pattern"
   ],
   "type_name": "shield_pattern"

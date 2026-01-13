@@ -34,6 +34,10 @@
     "blue",
     "red"
   ],
+  "animations": [
+    "walk",
+    "hurt"
+  ],
   "credits": [
     {
       "file": "weapon/sword/glowsword",

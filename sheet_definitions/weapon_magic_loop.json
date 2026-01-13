@@ -48,6 +48,10 @@
     "silver",
     "steel"
   ],
+  "animations": [
+    "walk",
+    "hurt"
+  ],
   "credits": [
     {
       "file": "weapon/magic/loop",

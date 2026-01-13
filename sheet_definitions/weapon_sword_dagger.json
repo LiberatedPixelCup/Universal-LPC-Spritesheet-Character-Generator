@@ -17,6 +17,12 @@
   "variants": [
     "dagger"
   ],
+  "animations": [
+    "thrust",
+    "walk",
+    "slash",
+    "hurt"
+  ],
   "credits": [
     {
       "file": "weapon/sword/dagger",

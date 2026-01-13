@@ -71,7 +71,9 @@
     }
   ],
   "path": [
-    "category_not_found",
+    "head",
+    "hats",
+    "caps",
     "hat_cap_bonnie_trim"
   ],
   "type_name": "hat_trim"

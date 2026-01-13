@@ -16,6 +16,15 @@
     "red",
     "yellow"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "idle"
+  ],
   "credits": [
     {
       "file": "neck/gem",
@@ -33,17 +42,6 @@
   ],
   "path": [
     "head",
-    "hair",
-    "hair extensions",
-    "afro",
-    "curly",
-    "bald/shaved",
-    "short",
-    "spiky",
-    "pigtails",
-    "bob",
-    "braids, ponytails, updos",
-    "long",
     "neck",
     "necklace charms",
     "neck_gem_emerald"

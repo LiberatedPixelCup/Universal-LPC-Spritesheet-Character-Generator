@@ -1,5 +1,6 @@
 import { createHashStringFromParams, getHashParamsforSelections, loadSelectionsFromHash } from "./hash.js";
 import { getAllCredits } from "../utils/credits.js";
+import { state } from "../state/state.js";
 
 /**
  * Export current state as JSON string
@@ -13,6 +14,7 @@ export function exportStateAsJSON(state, layers) {
 		selections: state.selections,
 		selectedAnimation: state.selectedAnimation,
 		showTransparencyGrid: state.showTransparencyGrid,
+		applyTransparencyMask: state.applyTransparencyMask,
 		matchBodyColorEnabled: state.matchBodyColorEnabled,
 		compactDisplay: state.compactDisplay,
 		enabledLicenses: state.enabledLicenses,
@@ -41,6 +43,7 @@ export function importStateFromJSON(jsonString) {
 				selections: importedState.selections,
 				selectedAnimation: importedState.selectedAnimation ?? state.selectedAnimation,
 				showTransparencyGrid: importedState.showTransparencyGrid ?? state.showTransparencyGrid,
+				applyTransparencyMask: importedState.applyTransparencyMask ?? state.applyTransparencyMask,
 				matchBodyColorEnabled: importedState.matchBodyColorEnabled ?? state.matchBodyColorEnabled,
 				compactDisplay: importedState.compactDisplay ?? state.compactDisplay,
 				enabledLicenses: importedState.enabledLicenses ?? state.enabledLicenses,

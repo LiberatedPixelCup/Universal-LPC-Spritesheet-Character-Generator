@@ -58,6 +58,15 @@
     "steel_red",
     "steel_yellow"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "idle"
+  ],
   "credits": [
     {
       "file": "neck/amulet/star",
@@ -78,7 +87,9 @@
     }
   ],
   "path": [
-    "category_not_found",
+    "head",
+    "neck",
+    "necklace charms",
     "neck_amulet_star"
   ],
   "type_name": "charm"

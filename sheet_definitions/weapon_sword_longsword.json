@@ -65,6 +65,10 @@
   "variants": [
     "longsword"
   ],
+  "animations": [
+    "walk",
+    "hurt"
+  ],
   "credits": [
     {
       "file": "weapon/sword/longsword",

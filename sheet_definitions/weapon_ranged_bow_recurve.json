@@ -51,6 +51,7 @@
     "steel"
   ],
   "animations": [
+    "walk",
     "shoot",
     "hurt"
   ],

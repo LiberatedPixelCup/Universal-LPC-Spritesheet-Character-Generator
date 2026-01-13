@@ -17,6 +17,11 @@
   "variants": [
     "slingshot"
   ],
+  "animations": [
+    "walk",
+    "shoot",
+    "hurt"
+  ],
   "credits": [
     {
       "file": "weapon/ranged/slingshot",

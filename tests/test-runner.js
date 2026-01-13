@@ -167,3 +167,5 @@ async function discoverAndRunTests() {
     throw error;
   }
 }
+
+window.discoverAndRunTests = discoverAndRunTests;

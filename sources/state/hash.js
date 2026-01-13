@@ -1,4 +1,4 @@
-import { state } from './state.js';
+import { state, selectDefaults } from './state.js';
 
 // URL hash parameter management
 export function getHashParams() {

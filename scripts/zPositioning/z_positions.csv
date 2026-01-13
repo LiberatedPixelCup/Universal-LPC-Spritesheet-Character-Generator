@@ -39,7 +39,6 @@ belt_other_female.json,layer_1,70,torso/waist/belt_other/female/
 belt_other_male.json,layer_1,70,torso/waist/belt_other/male/
 belt_sash.json,layer_1,65,torso/waist/sash/male/ torso/waist/sash/female/
 belt_sash_narrow.json,layer_1,65,torso/waist/sash_narrow/male/ torso/waist/sash_narrow/female/
-belt_sash_obi.json,layer_1,65,torso/waist/sash/male/ torso/waist/sash/female/
 belt_waistband.json,layer_1,65,torso/waist/waistband/female/
 body.json,layer_1,10,body/bodies/male/ body/bodies/female/ body/bodies/muscular/ body/bodies/pregnant/ body/bodies/child/
 body_skeleton.json,layer_1,10,body/bodies/skeleton/ body/bodies/skeleton/
@@ -192,7 +191,7 @@ hair_long_tied.json,layer_1,120,hair/long_tied/adult/fg/ hair/long_tied/adult/fg
 hair_long_tied.json,layer_2,9,hair/long_tied/adult/bg/ hair/long_tied/adult/bg/ hair/long_tied/adult/bg/ hair/long_tied/adult/bg/
 hair_longhawk.json,layer_1,120,hair/longhawk/adult/ hair/longhawk/adult/ hair/longhawk/adult/ hair/longhawk/adult/
 hair_loose.json,layer_1,120,hair/loose/adult/ hair/loose/adult/ hair/loose/adult/ hair/loose/adult/
-hair_messed.json,layer_1,120,hair/messy/child/
+hair_messy.json,layer_1,120,hair/messy/child/
 hair_messy1.json,layer_1,120,hair/messy1/adult/ hair/messy1/adult/ hair/messy1/adult/ hair/messy1/adult/
 hair_messy2.json,layer_1,120,hair/messy2/adult/ hair/messy2/adult/ hair/messy2/adult/ hair/messy2/adult/
 hair_messy3.json,layer_1,120,hair/messy3/adult/ hair/messy3/adult/ hair/messy3/adult/ hair/messy3/adult/

@@ -1,43 +1,52 @@
 // Canvas rendering module for Mithril UI
 // Simplified renderer that draws character sprites based on selections
 
-import { loadImage, loadImagesInParallel } from './load-image.js';
-import { getSpritePath } from '../state/path.js';
+import { loadImage, loadImagesInParallel } from "./load-image.js";
+import { getSpritePath } from "../state/path.js";
 import { getImageToDraw } from './palette-recolor.js';
-import { get2DContext, getZPos } from './canvas-utils.js';
-import { variantToFilename } from '../utils/helpers.js';
-import { drawFramesToCustomAnimation } from './draw-frames.js';
-import { FRAME_SIZE, ANIMATION_OFFSETS, ANIMATION_CONFIGS } from '../state/constants.js';
-import { customAnimations, customAnimationBase } from '../custom-animations.js';
-import { setCurrentCustomAnimations, setCustomAnimYPositions } from './preview-animation.js';
+import { get2DContext, getZPos } from "./canvas-utils.js";
+import { variantToFilename } from "../utils/helpers.js";
+import { drawFramesToCustomAnimation } from "./draw-frames.js";
+import {
+  FRAME_SIZE,
+  ANIMATION_OFFSETS,
+  ANIMATION_CONFIGS,
+} from "../state/constants.js";
+import { customAnimations, customAnimationBase } from "../custom-animations.js";
+import {
+  setCurrentCustomAnimations,
+  setCustomAnimYPositions,
+} from "./preview-animation.js";
+import { getSortedLayersByAnim } from "../state/meta.js";
 
-const SHEET_HEIGHT = 3456; // Full universal sheet height
-const SHEET_WIDTH = 832; // 13 frames * 64px
-
-// Map metadata animation names to actual folder names
-// Metadata uses "combat", "1h_slash", etc. but folders are named differently
-const METADATA_TO_FOLDER = {
-  'combat': 'combat_idle',
-  '1h_slash': 'backslash',
-  '1h_backslash': 'backslash',
-  '1h_halfslash': 'halfslash'
-};
+export const SHEET_HEIGHT = 3456; // Full universal sheet height
+export const SHEET_WIDTH = 832; // 13 frames * 64px
 
 let canvas = null;
 let ctx = null;
 let layers = [];
+let itemsToDraw = [];
+let addedCustomAnimations = new Set();
+let customAreaItems = {};
 
 /**
  * Initialize the canvas (creates offscreen canvas)
  */
 export function initCanvas() {
-  canvas = document.createElement('canvas');
+  canvas = document.createElement("canvas");
   ctx = get2DContext(canvas);
   canvas.width = SHEET_WIDTH;
   canvas.height = SHEET_HEIGHT;
 }
 
-export { canvas, ctx, layers };
+export {
+  canvas,
+  ctx,
+  layers,
+  addedCustomAnimations,
+  itemsToDraw,
+  customAreaItems,
+};
 
 /**
  * Render character based on selections
@@ -45,12 +54,31 @@ export { canvas, ctx, layers };
  * @param {string} bodyType - Body type
  * @param {HTMLCanvasElement} targetCanvas - Canvas to render to (defaults to main canvas)
  */
-export async function renderCharacter(selections, bodyType, targetCanvas = null) {
+export async function renderCharacter(
+  selections,
+  bodyType,
+  targetCanvas = null
+) {
   // Mark start for profiling
   const profiler = window.profiler;
   if (profiler) {
-    profiler.mark('renderCharacter:start');
+    profiler.mark("renderCharacter:start");
   }
+
+  // Use provided canvas or default to main canvas
+  const renderCanvas = targetCanvas || canvas;
+  const renderCtx = renderCanvas.getContext('2d', { willReadFrequently: true });
+
+  if (!renderCanvas || !renderCtx) {
+    console.error("Canvas not initialized");
+    return;
+  }
+
+  // Build list of items to draw
+  itemsToDraw = [];
+  const customAnimationItems = []; // Track items with custom animations
+  addedCustomAnimations = new Set(); // Track which custom animations we've added
+
   // Import state to access custom uploaded image
   const appState = await import('../state/state.js').then(m => m.state);
   appState.isRenderingCharacter = true;
@@ -62,7 +90,7 @@ export async function renderCharacter(selections, bodyType, targetCanvas = null)
     const renderCtx = get2DContext(renderCanvas);
 
     if (!renderCanvas || !renderCtx) {
-      console.error('Canvas not initialized');
+      console.error("Canvas not initialized");
       return;
     }
 
@@ -103,7 +131,9 @@ export async function renderCharacter(selections, bodyType, targetCanvas = null)
           }
 
           // Custom animations use direct file path
-          const spritePath = `spritesheets/${basePath}${variantToFilename(variant)}.png`;
+          const spritePath = `spritesheets/${basePath}${variantToFilename(
+            variant
+          )}.png`;
 
           customAnimationItems.push({
             itemId,
@@ -112,7 +142,7 @@ export async function renderCharacter(selections, bodyType, targetCanvas = null)
             zPos,
             layerNum,
             customAnimation: customAnimName,
-            isCustom: true
+            isCustom: true,
           });
 
           continue; // Skip standard animation processing for this layer
@@ -128,27 +158,33 @@ export async function renderCharacter(selections, bodyType, targetCanvas = null)
           // Map folder name to metadata name for checking support
           // e.g., "combat_idle" -> check for "combat" or "1h_slash" in metadata
           let metadataAnimName = animName;
-          if (animName === 'combat_idle') {
-            // combat_idle is supported if item has "combat" OR "1h_slash" in metadata
-            if (!meta.animations.includes('combat') && !meta.animations.includes('1h_slash')) {
-              continue;
-            }
-          } else if (animName === 'backslash') {
+          if (animName === "combat_idle") {
+            // combat_idle is supported if item has "combat" in metadata
+            if (!meta.animations.includes("combat")) continue;
+          } else if (animName === "backslash") {
             // backslash is supported if item has "1h_slash" OR "1h_backslash" in metadata
-            if (!meta.animations.includes('1h_slash') && !meta.animations.includes('1h_backslash')) {
+            if (
+              !meta.animations.includes("1h_slash") &&
+              !meta.animations.includes("1h_backslash")
+            )
               continue;
-            }
-          } else if (animName === 'halfslash') {
+          } else if (animName === "halfslash") {
             // halfslash is supported if item has "1h_halfslash" in metadata
-            if (!meta.animations.includes('1h_halfslash')) {
-              continue;
-            }
+            if (!meta.animations.includes("1h_halfslash")) continue;
           } else {
             // For all other animations, direct match required
             if (!meta.animations.includes(animName)) continue;
           }
 
-          const spritePath = getSpritePath(itemId, variant, bodyType, animName, layerNum, selections, meta);
+          const spritePath = getSpritePath(
+            itemId,
+            variant,
+            bodyType,
+            animName,
+            layerNum,
+            selections,
+            meta
+          );
 
           itemsToDraw.push({
             itemId,
@@ -170,7 +206,7 @@ export async function renderCharacter(selections, bodyType, targetCanvas = null)
       // Add custom image to be drawn at all standard animation positions
       for (const [animName, yPos] of Object.entries(ANIMATION_OFFSETS)) {
         itemsToDraw.push({
-          itemId: 'custom-upload',
+          itemId: "custom-upload",
           variant: null,
           spritePath: null, // Will draw directly from Image object
           zPos: appState.customImageZPos,
@@ -178,7 +214,7 @@ export async function renderCharacter(selections, bodyType, targetCanvas = null)
           animation: animName,
           yPos,
           isCustom: false,
-          customImage: appState.customUploadedImage // Store the Image object
+          customImage: appState.customUploadedImage, // Store the Image object
         });
       }
     }
@@ -187,42 +223,46 @@ export async function renderCharacter(selections, bodyType, targetCanvas = null)
     // This ensures shadow (zPos=0) is drawn before body (zPos=10), etc.
     itemsToDraw.sort((a, b) => a.zPos - b.zPos);
 
-	// save layers for external access
-	layers = itemsToDraw
-		.map(item => {
-			const layer = Object.assign({}, item);
-			layer.fileName = item.spritePath.substring('spritesheets/'.length);
-			delete layer.spritePath;
-			return layer;
-		})
-		.reduce((acc, layer) => {
-			const animation = layer.animation;
-			const accLayer = acc.find(l => l.itemId === layer.itemId && l.layerNum === layer.layerNum);
-			if (!accLayer) {
-				layer.supportedAnimations = [animation];
-				delete layer.animation;
-				acc.push(layer);
-			} else {
-				accLayer.supportedAnimations.push(animation);
-			}
-			return acc;
-		}, []);
+    // save layers for external access
+    layers = itemsToDraw
+      .map((item) => {
+        const layer = Object.assign({}, item);
+        layer.fileName = item.spritePath.substring("spritesheets/".length);
+        delete layer.spritePath;
+        return layer;
+      })
+      .reduce((acc, layer) => {
+        const animation = layer.animation;
+        const accLayer = acc.find(
+          (l) => l.itemId === layer.itemId && l.layerNum === layer.layerNum
+        );
+        if (!accLayer) {
+          layer.supportedAnimations = [animation];
+          delete layer.animation;
+          acc.push(layer);
+        } else {
+          accLayer.supportedAnimations.push(animation);
+        }
+        return acc;
+      }, []);
 
     // Calculate total canvas height needed (standard sheet + custom animations)
     let totalHeight = SHEET_HEIGHT;
     let totalWidth = SHEET_WIDTH;
-	let currentCustomAnimations = {};
+    let currentCustomAnimations = {};
 
     if (addedCustomAnimations.size > 0 && customAnimations) {
       for (const customAnimName of addedCustomAnimations) {
         const customAnimDef = customAnimations[customAnimName];
         if (customAnimDef) {
-          const animHeight = customAnimDef.frameSize * customAnimDef.frames.length;
-          const animWidth = customAnimDef.frameSize * customAnimDef.frames[0].length;
+          const animHeight =
+            customAnimDef.frameSize * customAnimDef.frames.length;
+          const animWidth =
+            customAnimDef.frameSize * customAnimDef.frames[0].length;
           totalHeight += animHeight;
           totalWidth = Math.max(totalWidth, animWidth);
         }
-		currentCustomAnimations[customAnimName] = customAnimDef;
+        currentCustomAnimations[customAnimName] = customAnimDef;
       }
     }
 
@@ -233,8 +273,8 @@ export async function renderCharacter(selections, bodyType, targetCanvas = null)
     // Clear canvas (no transparency background on offscreen canvas)
     renderCtx.clearRect(0, 0, renderCanvas.width, renderCanvas.height);
 
-	// Store custom animations for animation preview dropdown
-	setCurrentCustomAnimations(currentCustomAnimations);
+    // Store custom animations for animation preview dropdown
+    setCurrentCustomAnimations(currentCustomAnimations);
 
     // Calculate custom animation Y positions first (needed for drawing standard items into custom areas)
     const customAnimYPositions = {};
@@ -244,26 +284,29 @@ export async function renderCharacter(selections, bodyType, targetCanvas = null)
         customAnimYPositions[customAnimName] = currentY;
         const customAnimDef = customAnimations[customAnimName];
         if (customAnimDef) {
-          const animHeight = customAnimDef.frameSize * customAnimDef.frames.length;
+          const animHeight =
+            customAnimDef.frameSize * customAnimDef.frames.length;
           currentY += animHeight;
         }
       }
     }
 
-	// Store Y positions for external access
-	setCustomAnimYPositions(customAnimYPositions);
+    // Store Y positions for external access
+    setCustomAnimYPositions(customAnimYPositions);
 
     // Load all standard animation images in parallel and attach them to their items
-    const loadPromises = itemsToDraw.map(item => {
+    const loadPromises = itemsToDraw.map((item) => {
       if (item.customImage) {
         // Custom image already loaded
         return Promise.resolve({ item, img: item.customImage, success: true });
       } else {
         // Load standard image
         return loadImage(item.spritePath)
-          .then(img => ({ item, img, success: true }))
-          .catch(err => {
-            console.warn(`Failed to load sprite: ${item.spritePath}`);
+          .then((img) => ({ item, img, success: true }))
+          .catch((err) => {
+            if (window.DEBUG) {
+              console.warn(`Failed to load sprite: ${item.spritePath}`);
+            }
             return { item, img: null, success: false };
           });
       }
@@ -287,19 +330,22 @@ export async function renderCharacter(selections, bodyType, targetCanvas = null)
         if (!customAnimDef) continue;
 
         const offsetY = customAnimYPositions[customAnimName];
-        const baseAnim = customAnimationBase ? customAnimationBase(customAnimDef) : null;
+        const baseAnim = customAnimationBase
+          ? customAnimationBase(customAnimDef)
+          : null;
 
         // Collect all items that need to be drawn in this custom animation area
-        const customAreaItems = [];
+        customAreaItems[customAnimName] = [];
 
         // 1. Add custom animation sprite layers (wheelchair background/foreground)
         for (const item of customAnimationItems) {
           if (item.customAnimation === customAnimName) {
-            customAreaItems.push({
-              type: 'custom_sprite',
+            customAreaItems[customAnimName].push({
+              type: "custom_sprite",
               zPos: item.zPos,
               spritePath: item.spritePath,
-              itemId: item.itemId
+              itemId: item.itemId,
+              animation: customAnimName,
             });
           }
         }
@@ -309,8 +355,8 @@ export async function renderCharacter(selections, bodyType, targetCanvas = null)
         if (baseAnim) {
           for (const item of itemsToDraw) {
             if (item.animation === baseAnim) {
-              customAreaItems.push({
-                type: 'extracted_frames',
+              customAreaItems[customAnimName].push({
+                type: "extracted_frames",
                 zPos: item.zPos,
                 spritePath: item.spritePath,
                 itemId: item.itemId,
@@ -323,10 +369,12 @@ export async function renderCharacter(selections, bodyType, targetCanvas = null)
         }
 
         // Sort by zPos to get correct layer order
-        customAreaItems.sort((a, b) => a.zPos - b.zPos);
+        customAreaItems[customAnimName].sort((a, b) => a.zPos - b.zPos);
 
         // Load all custom area images in parallel
-        const loadedCustomImages = await loadImagesInParallel(customAreaItems);
+        const loadedCustomImages = await loadImagesInParallel(
+          customAreaItems[customAnimName]
+        );
 
         // Draw in zPos order
         for (const { item: areaItem, img, success } of loadedCustomImages) {
@@ -338,20 +386,29 @@ export async function renderCharacter(selections, bodyType, targetCanvas = null)
               renderCtx.drawImage(imageToUse, 0, offsetY);
             } else if (areaItem.type === 'extracted_frames') {
               // Extract and draw frames from standard sprite
-              drawFramesToCustomAnimation(renderCtx, customAnimDef, offsetY, imageToUse);
+              drawFramesToCustomAnimation(
+                renderCtx,
+                customAnimDef,
+                offsetY,
+                img
+              );
             }
           }
         }
       }
     }
-
-  } finally { 
+  } finally {
     appState.isRenderingCharacter = false;
     m.redraw();
+
     // Mark end and measure
     if (profiler) {
-      profiler.mark('renderCharacter:end');
-      profiler.measure('renderCharacter', 'renderCharacter:start', 'renderCharacter:end');
+      profiler.mark("renderCharacter:end");
+      profiler.measure(
+        "renderCharacter",
+        "renderCharacter:start",
+        "renderCharacter:end"
+      );
     }
   }
 }
@@ -367,7 +424,7 @@ export function extractAnimationFromCanvas(animationName) {
 
   const config = ANIMATION_CONFIGS[animationName];
   if (!config) {
-    console.error('Unknown animation:', animationName);
+    console.error("Unknown animation:", animationName);
     return null;
   }
 
@@ -376,13 +433,23 @@ export function extractAnimationFromCanvas(animationName) {
   const srcHeight = num * FRAME_SIZE;
 
   // Create new canvas for this animation
-  const animCanvas = document.createElement('canvas');
+  const animCanvas = document.createElement("canvas");
   animCanvas.width = SHEET_WIDTH;
   animCanvas.height = srcHeight;
   const animCtx = get2DContext(animCanvas);
 
   // Copy animation from main canvas
-  animCtx.drawImage(canvas, 0, srcY, SHEET_WIDTH, srcHeight, 0, 0, SHEET_WIDTH, srcHeight);
+  animCtx.drawImage(
+    canvas,
+    0,
+    srcY,
+    SHEET_WIDTH,
+    srcHeight,
+    0,
+    0,
+    SHEET_WIDTH,
+    srcHeight
+  );
 
   return animCanvas;
 }
@@ -398,21 +465,28 @@ export function getCanvas() {
  * Render a single item to a new canvas
  * Returns a canvas with just this one item rendered
  */
-export async function renderSingleItem(itemId, variant, bodyType, selections) {
+export async function renderSingleItem(
+  itemId,
+  variant,
+  bodyType,
+  selections,
+  singleLayer = null
+) {
   const meta = window.itemMetadata[itemId];
   if (!meta) {
-    console.error('Item metadata not found:', itemId);
+    console.error("Item metadata not found:", itemId);
     return null;
   }
 
   // Check if this body type is supported
   if (!meta.required.includes(bodyType)) {
-    console.error('Body type not supported for this item:', bodyType, itemId);
+    console.error("Body type not supported for this item:", bodyType, itemId);
     return null;
   }
 
   // Check if this is a custom animation item
-  const layer1 = meta.layers?.layer_1;
+  const layer1 =
+    meta.layers && Object.values(meta.layers).find((l) => l.custom_animation);
   const hasCustomAnimation = layer1 && layer1.custom_animation;
 
   let itemCanvas, itemCtx;
@@ -422,31 +496,52 @@ export async function renderSingleItem(itemId, variant, bodyType, selections) {
     const customAnimName = layer1.custom_animation;
     const customAnimDef = customAnimations[customAnimName];
     if (!customAnimDef) {
-      console.error('Custom animation definition not found:', customAnimName);
+      console.error("Custom animation definition not found:", customAnimName);
       return null;
     }
 
     const animHeight = customAnimDef.frameSize * customAnimDef.frames.length;
     const animWidth = customAnimDef.frameSize * customAnimDef.frames[0].length;
 
-    itemCanvas = document.createElement('canvas');
+    const customLayers = Object.values(meta.layers).filter(
+      (l) => l.custom_animation
+    );
+    const customAnimationsInItem = customLayers
+      .map((l) => l.custom_animation)
+      .filter((value, index, array) => array.indexOf(value) === index);
+    const numCustomAnims = customAnimationsInItem.length;
+    const getYPosForCustomAnim = (name) => {
+      const index = customAnimationsInItem.indexOf(name);
+      return SHEET_HEIGHT + index * animHeight;
+    };
+
+    itemCanvas = document.createElement("canvas");
     itemCanvas.width = animWidth;
-    itemCanvas.height = animHeight;
+    itemCanvas.height = SHEET_HEIGHT + animHeight * numCustomAnims;
     itemCtx = get2DContext(itemCanvas);
 
     // Render all layers of this custom animation item
     const customSprites = [];
-    for (let layerNum = 1; layerNum < 10; layerNum++) {
-      const layerKey = `layer_${layerNum}`;
-      const layer = meta.layers?.[layerKey];
-      if (!layer) break;
+    const animsList = getSortedLayersByAnim(itemId, true);
+    for (const animName in animsList) {
+      for (let layerNum = 1; layerNum < 10; layerNum++) {
+        if (singleLayer !== null && layerNum !== singleLayer) continue;
+        const animLayer = animsList[animName].find(
+          (l) => l.animLayerNum === layerNum
+        );
+        const layerKey = `layer_${animLayer.layerNum}`;
+        const layer = meta.layers?.[layerKey];
+        if (!layer) break;
 
-      const zPos = getZPos(itemId, layerNum);
-      let basePath = layer[bodyType];
-      if (!basePath) continue;
+        const yPos = getYPosForCustomAnim(layer.custom_animation);
+        let basePath = layer[bodyType];
+        if (!basePath) continue;
 
-      const spritePath = `spritesheets/${basePath}${variantToFilename(variant)}.png`;
-      customSprites.push({ spritePath, zPos });
+        const spritePath = `spritesheets/${basePath}${variantToFilename(
+          variant
+        )}.png`;
+        customSprites.push({ spritePath, zPos: animLayer.zPos, yPos });
+      }
     }
 
     // Sort by zPos
@@ -459,57 +554,64 @@ export async function renderSingleItem(itemId, variant, bodyType, selections) {
     for (const { item: sprite, img, success } of loadedSprites) {
       if (success && img) {
         const imageToDraw = await getImageToDraw(img, itemId, variant);
-        itemCtx.drawImage(imageToDraw, 0, 0);
+        itemCtx.drawImage(imageToDraw, 0, sprite.yPos);
       }
     }
   } else {
     // Standard animation item - use standard sheet size
-    itemCanvas = document.createElement('canvas');
+    itemCanvas = document.createElement("canvas");
     itemCanvas.width = SHEET_WIDTH;
     itemCanvas.height = SHEET_HEIGHT;
     itemCtx = get2DContext(itemCanvas);
+  }
 
-    // Build list of sprites to draw for this item
-    const spritesToDraw = [];
+  // Build list of sprites to draw for this item
+  const spritesToDraw = [];
 
-    for (let layerNum = 1; layerNum < 10; layerNum++) {
-      const layerKey = `layer_${layerNum}`;
-      if (!meta.layers?.[layerKey]) break;
+  for (let layerNum = 1; layerNum < 10; layerNum++) {
+    if (singleLayer !== null && layerNum !== singleLayer) continue;
+    const layerKey = `layer_${layerNum}`;
+    if (!meta.layers?.[layerKey]) break;
 
-      const zPos = getZPos(itemId, layerNum);
+    const zPos = getZPos(itemId, layerNum);
 
-      // Add each animation for this layer
-      for (const [animName, yPos] of Object.entries(ANIMATION_OFFSETS)) {
-        // Check animation support (same logic as renderCharacter)
-        let metadataAnimName = animName;
-        if (animName === 'combat_idle') {
-          if (!meta.animations.includes('combat') && !meta.animations.includes('1h_slash')) {
-            continue;
-          }
-        } else if (animName === 'backslash') {
-          if (!meta.animations.includes('1h_slash') && !meta.animations.includes('1h_backslash')) {
-            continue;
-          }
-        } else if (animName === 'halfslash') {
-          if (!meta.animations.includes('1h_halfslash')) {
-            continue;
-          }
-        } else {
-          if (!meta.animations.includes(animName)) continue;
-        }
-
-        const spritePath = getSpritePath(itemId, variant, bodyType, animName, layerNum, selections, meta);
-
-        spritesToDraw.push({
-          itemId,
-          variant,
-          spritePath,
-          zPos,
-          layerNum,
-          animation: animName,
-          yPos
-        });
+    // Add each animation for this layer
+    for (const [animName, yPos] of Object.entries(ANIMATION_OFFSETS)) {
+      // Check animation support (same logic as renderCharacter)
+      let metadataAnimName = animName;
+      if (animName === "combat_idle") {
+        if (!meta.animations.includes("combat")) continue;
+      } else if (animName === "backslash") {
+        if (
+          !meta.animations.includes("1h_slash") &&
+          !meta.animations.includes("1h_backslash")
+        )
+          continue;
+      } else if (animName === "halfslash") {
+        if (!meta.animations.includes("1h_halfslash")) continue;
+      } else {
+        if (!meta.animations.includes(animName)) continue;
       }
+
+      const spritePath = getSpritePath(
+        itemId,
+        variant,
+        bodyType,
+        animName,
+        layerNum,
+        selections,
+        meta
+      );
+
+      spritesToDraw.push({
+        itemId,
+        variant,
+        spritePath,
+        zPos,
+        layerNum,
+        animation: animName,
+        yPos,
+      });
     }
 
     // Sort by animation first, then by zPos
@@ -537,10 +639,17 @@ export async function renderSingleItem(itemId, variant, bodyType, selections) {
  * Render a single item for a single animation to a new canvas
  * Returns a canvas with just this one item's one animation rendered
  */
-export async function renderSingleItemAnimation(itemId, variant, bodyType, animationName, selections) {
+export async function renderSingleItemAnimation(
+  itemId,
+  variant,
+  bodyType,
+  animationName,
+  selections,
+  singleLayer = null
+) {
   const meta = window.itemMetadata[itemId];
   if (!meta) {
-    console.error('Item metadata not found:', itemId);
+    console.error("Item metadata not found:", itemId);
     return null;
   }
 
@@ -560,16 +669,16 @@ export async function renderSingleItemAnimation(itemId, variant, bodyType, anima
 
   const config = ANIMATION_CONFIGS[animationName];
   if (!config) {
-    console.error('Unknown animation:', animationName);
+    console.error("Unknown animation:", animationName);
     return null;
   }
 
   const { row, num } = config;
-  const animYPos = row * FRAME_SIZE;
+  const animYPos = 0;
   const animHeight = num * FRAME_SIZE;
 
   // Create a new canvas for this animation
-  const animCanvas = document.createElement('canvas');
+  const animCanvas = document.createElement("canvas");
   animCanvas.width = SHEET_WIDTH;
   animCanvas.height = animHeight;
   const animCtx = get2DContext(animCanvas);
@@ -578,34 +687,41 @@ export async function renderSingleItemAnimation(itemId, variant, bodyType, anima
   const spritesToDraw = [];
 
   for (let layerNum = 1; layerNum < 10; layerNum++) {
+    if (singleLayer !== null && layerNum !== singleLayer) continue;
     const layerKey = `layer_${layerNum}`;
     if (!meta.layers?.[layerKey]) break;
 
     const zPos = getZPos(itemId, layerNum);
 
     // Check animation support
-    if (animationName === 'combat_idle') {
-      if (!meta.animations.includes('combat') && !meta.animations.includes('1h_slash')) {
+    if (animationName === "combat_idle") {
+      if (!meta.animations.includes("combat")) continue;
+    } else if (animationName === "backslash") {
+      if (
+        !meta.animations.includes("1h_slash") &&
+        !meta.animations.includes("1h_backslash")
+      )
         continue;
-      }
-    } else if (animationName === 'backslash') {
-      if (!meta.animations.includes('1h_slash') && !meta.animations.includes('1h_backslash')) {
-        continue;
-      }
-    } else if (animationName === 'halfslash') {
-      if (!meta.animations.includes('1h_halfslash')) {
-        continue;
-      }
+    } else if (animationName === "halfslash") {
+      if (!meta.animations.includes("1h_halfslash")) continue;
     } else {
       if (!meta.animations.includes(animationName)) continue;
     }
 
-    const spritePath = getSpritePath(itemId, variant, bodyType, animationName, layerNum, selections, meta);
+    const spritePath = getSpritePath(
+      itemId,
+      variant,
+      bodyType,
+      animationName,
+      layerNum,
+      selections,
+      meta
+    );
 
     spritesToDraw.push({
       spritePath,
       zPos,
-      layerNum
+      layerNum,
     });
   }
 
@@ -620,7 +736,17 @@ export async function renderSingleItemAnimation(itemId, variant, bodyType, anima
     if (success && img) {
       const imageToDraw = await getImageToDraw(img, itemId, variant);
       // Draw at y=0 since this canvas is only for this animation
-      animCtx.drawImage(imageToDraw, 0, animYPos, SHEET_WIDTH, animHeight, 0, 0, SHEET_WIDTH, animHeight);
+      animCtx.drawImage(
+        img,
+        0,
+        animYPos,
+        SHEET_WIDTH,
+        animHeight,
+        0,
+        0,
+        SHEET_WIDTH,
+        animHeight
+      );
     }
   }
 

@@ -52,7 +52,9 @@ export async function loadImagesInParallel(items, getPath = (item) => item.sprit
     loadImage(getPath(item))
       .then(img => ({ item, img, success: true }))
       .catch(err => {
-        console.warn(`Failed to load sprite: ${getPath(item)}`);
+        if (window.DEBUG) {
+          console.warn(`Failed to load sprite: ${getPath(item)}`);
+        }
         return { item, img: null, success: false };
       })
   );

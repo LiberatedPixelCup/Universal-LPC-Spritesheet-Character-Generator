@@ -1,5 +1,5 @@
 {
-  "name": "Messed",
+  "name": "Messy",
   "layer_1": {
     "zPos": 120,
     "child": "hair/messy/child/"
@@ -52,8 +52,10 @@
     }
   ],
   "path": [
-    "category_not_found",
-    "hair_messed"
+    "head",
+    "hair",
+    "short",
+    "hair_messy"
   ],
   "type_name": "hair"
 }

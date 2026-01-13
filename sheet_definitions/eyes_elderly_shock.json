@@ -56,7 +56,9 @@
     }
   ],
   "path": [
-    "category_not_found",
+    "head",
+    "eye_color",
+    "elderly",
     "eyes_elderly_shock"
   ],
   "type_name": "eyes"

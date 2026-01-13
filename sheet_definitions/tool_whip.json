@@ -25,6 +25,7 @@
   "variants": [
     "whip"
   ],
+  "animations": [],
   "credits": [
     {
       "file": "tools/whip",

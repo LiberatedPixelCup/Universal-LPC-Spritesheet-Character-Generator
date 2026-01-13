@@ -57,7 +57,9 @@
     }
   ],
   "path": [
-    "category_not_found",
+    "head",
+    "eye_color",
+    "elderly",
     "eyes_elderly_default"
   ],
   "type_name": "eyes"

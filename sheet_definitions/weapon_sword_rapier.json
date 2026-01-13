@@ -33,6 +33,10 @@
   "variants": [
     "rapier"
   ],
+  "animations": [
+    "walk",
+    "hurt"
+  ],
   "credits": [
     {
       "file": "weapon/sword/rapier",

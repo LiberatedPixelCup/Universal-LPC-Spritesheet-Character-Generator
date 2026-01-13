@@ -19549,7 +19549,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
       "afro",
       "hair_afro"
     ],
@@ -19666,7 +19665,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
       "afro",
       "hair_natural"
     ],
@@ -19786,7 +19784,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
       "afro",
       "hair_dreadlocks_short"
     ],
@@ -19906,7 +19903,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
       "afro",
       "hair_twists_fade"
     ],
@@ -20023,7 +20019,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
       "afro",
       "hair_twists_straight"
     ],
@@ -20140,7 +20135,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
       "afro",
       "hair_dreadlocks_long"
     ],
@@ -20257,7 +20251,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
       "afro",
       "hair_flat_top_straight"
     ],
@@ -20377,7 +20370,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
       "afro",
       "hair_flat_top_fade"
     ],
@@ -20497,7 +20489,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
       "afro",
       "hair_cornrows"
     ],
@@ -20618,8 +20609,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
       "curly",
       "hair_jewfro"
     ],
@@ -20762,8 +20751,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
       "curly",
       "hair_curly_short"
     ],
@@ -20881,8 +20868,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
       "curly",
       "hair_curly_long"
     ],
@@ -20999,8 +20984,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
       "curly",
       "hair_curls_large"
     ],
@@ -21137,8 +21120,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
       "curly",
       "hair_curls_large_xlong"
     ],
@@ -21275,9 +21256,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
       "bald/shaved",
       "hair_balding"
     ],
@@ -21394,9 +21372,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
       "bald/shaved",
       "hair_longhawk"
     ],
@@ -21521,9 +21496,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
       "bald/shaved",
       "hair_shorthawk"
     ],
@@ -21648,9 +21620,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
       "bald/shaved",
       "hair_high_and_tight"
     ],
@@ -21775,9 +21744,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
       "bald/shaved",
       "hair_buzzcut"
     ],
@@ -21894,10 +21860,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_plain"
     ],
@@ -22030,10 +21992,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_pixie"
     ],
@@ -22158,10 +22116,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_page"
     ],
@@ -22292,10 +22246,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_page2"
     ],
@@ -22428,10 +22378,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_idol"
     ],
@@ -22552,10 +22498,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_mop"
     ],
@@ -22680,10 +22622,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_parted"
     ],
@@ -22810,10 +22748,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_parted2"
     ],
@@ -22938,10 +22872,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_parted3"
     ],
@@ -23060,10 +22990,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_parted_side_bangs"
     ],
@@ -23207,10 +23133,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_parted_side_bangs2"
     ],
@@ -23353,10 +23275,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_messy1"
     ],
@@ -23481,10 +23399,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_messy2"
     ],
@@ -23609,10 +23523,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_messy3"
     ],
@@ -23731,10 +23641,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_bedhead"
     ],
@@ -23859,10 +23765,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_unkempt"
     ],
@@ -23987,10 +23889,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_bangs"
     ],
@@ -24115,10 +24013,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_bangsshort"
     ],
@@ -24243,10 +24137,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_swoop"
     ],
@@ -24372,10 +24262,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_swoop_side"
     ],
@@ -24518,10 +24404,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_curtains"
     ],
@@ -24652,10 +24534,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_single"
     ],
@@ -24800,10 +24678,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_cowlick"
     ],
@@ -24923,10 +24797,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
       "short",
       "hair_cowlick_tall"
     ],
@@ -25045,11 +24915,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
       "spiky",
       "hair_spiked_porcupine"
     ],
@@ -25168,11 +25033,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
       "spiky",
       "hair_spiked_liberty2"
     ],
@@ -25291,11 +25151,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
       "spiky",
       "hair_spiked_liberty"
     ],
@@ -25414,11 +25269,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
       "spiky",
       "hair_spiked_beehive"
     ],
@@ -25537,11 +25387,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
       "spiky",
       "hair_spiked"
     ],
@@ -25659,11 +25504,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
       "spiky",
       "hair_spiked2"
     ],
@@ -25782,11 +25622,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
       "spiky",
       "hair_halfmessy"
     ],
@@ -25923,12 +25758,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
       "pigtails",
       "hair_bunches"
     ],
@@ -26063,12 +25892,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
       "pigtails",
       "hair_pigtails"
     ],
@@ -26193,12 +26016,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
       "pigtails",
       "hair_pigtails_bangs"
     ],
@@ -26323,13 +26140,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
       "bob",
       "hair_bob"
     ],
@@ -26449,13 +26259,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
       "bob",
       "hair_lob"
     ],
@@ -26572,13 +26375,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
       "bob",
       "hair_bob_side_part"
     ],
@@ -26701,13 +26497,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
       "bob",
       "hair_relm_short"
     ],
@@ -26842,14 +26631,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
       "braids, ponytails, updos",
       "hair_half_up"
     ],
@@ -26966,14 +26747,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
       "braids, ponytails, updos",
       "hair_bangs_bun"
     ],
@@ -27094,14 +26867,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
       "braids, ponytails, updos",
       "hair_topknot_short"
     ],
@@ -27270,14 +27035,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
       "braids, ponytails, updos",
       "hair_topknot_short2"
     ],
@@ -27446,14 +27203,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
       "braids, ponytails, updos",
       "hair_topknot_long"
     ],
@@ -27631,14 +27380,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
       "braids, ponytails, updos",
       "hair_topknot_long2"
     ],
@@ -27815,14 +27556,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
       "braids, ponytails, updos",
       "hair_ponytail"
     ],
@@ -27955,14 +27688,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
       "braids, ponytails, updos",
       "hair_ponytail2"
     ],
@@ -28103,14 +27828,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
       "braids, ponytails, updos",
       "hair_high_ponytail"
     ],
@@ -28238,14 +27955,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
       "braids, ponytails, updos",
       "hair_braid"
     ],
@@ -28390,14 +28099,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
       "braids, ponytails, updos",
       "hair_braid2"
     ],
@@ -28530,14 +28231,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
       "braids, ponytails, updos",
       "hair_shoulderl"
     ],
@@ -28678,14 +28371,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
       "braids, ponytails, updos",
       "hair_shoulderr"
     ],
@@ -28826,14 +28511,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
       "braids, ponytails, updos",
       "hair_long_tied"
     ],
@@ -28963,14 +28640,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
       "braids, ponytails, updos",
       "hair_relm_ponytail"
     ],
@@ -29124,15 +28793,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
       "long",
       "hair_loose"
     ],
@@ -29257,15 +28917,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
       "long",
       "hair_bangslong"
     ],
@@ -29390,15 +29041,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
       "long",
       "hair_bangslong2"
     ],
@@ -29533,15 +29175,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
       "long",
       "hair_long"
     ],
@@ -29666,15 +29299,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
       "long",
       "hair_long_messy"
     ],
@@ -29805,15 +29429,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
       "long",
       "hair_long_messy2"
     ],
@@ -29938,15 +29553,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
       "long",
       "hair_curtains_long"
     ],
@@ -30077,15 +29683,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
       "long",
       "hair_wavy"
     ],
@@ -30216,15 +29813,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
       "long",
       "hair_wavy_child"
     ],
@@ -30331,15 +29919,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
       "long",
       "hair_long_center_part"
     ],
@@ -30466,15 +30045,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
       "long",
       "hair_long_straight"
     ],
@@ -30595,16 +30165,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "very long",
       "hair_princess"
     ],
@@ -30743,16 +30303,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "very long",
       "hair_sara"
     ],
@@ -30888,16 +30438,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "very long",
       "hair_long_band"
     ],
@@ -31024,16 +30564,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "very long",
       "hair_xlong"
     ],
@@ -31178,16 +30708,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "very long",
       "hair_xlong_wavy"
     ],
@@ -31313,16 +30833,6 @@ window.itemMetadata = {
     "path": [
       "head",
       "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "very long",
       "hair_relm_xlong"
     ],
@@ -31459,17 +30969,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "appendages",
       "head_horns_backwards"
     ],
@@ -31644,17 +31143,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "appendages",
       "head_horns_curled"
     ],
@@ -31820,17 +31308,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "appendages",
       "head_fins_fin"
     ],
@@ -31962,17 +31439,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "appendages",
       "head_fins_fin_short"
     ],
@@ -32103,17 +31569,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "head coverings",
       "hoods",
       "hat_hood_cloth"
@@ -32245,17 +31700,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "head coverings",
       "hoods",
       "hat_hood_sack_cloth"
@@ -32385,17 +31829,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "head coverings",
       "hoods",
       "hat_hood_hijab"
@@ -32512,17 +31945,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "head coverings",
       "hoods",
       "hat_helmet_mail"
@@ -32636,17 +32058,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "head coverings",
       "bandanas",
       "hat_bandana"
@@ -32775,17 +32186,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "head coverings",
       "bandanas",
       "hat_bandana2"
@@ -32912,17 +32312,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "head coverings",
       "bandanas",
       "hat_bandana_pirate"
@@ -33040,17 +32429,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "head coverings",
       "bandanas",
       "hat_bandana_pirate_skull"
@@ -33168,17 +32546,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "head coverings",
       "headbands",
       "hat_headband_kerchief"
@@ -33315,17 +32682,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "head coverings",
       "headbands",
       "hat_headband_tied"
@@ -33454,17 +32810,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "head coverings",
       "headbands",
       "hat_headband_thick"
@@ -33599,17 +32944,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "head coverings",
       "headbands",
       "hat_headband_thick_rune"
@@ -33744,17 +33078,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "head coverings",
       "headbands",
       "hat_headband_hairtie"
@@ -33889,17 +33212,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "head coverings",
       "headbands",
       "hat_headband_hairtie_rune"
@@ -34033,17 +33345,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "caps",
       "hat_cap_leather"
@@ -34174,17 +33475,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "caps",
       "hat_cap_leather_feather"
@@ -34314,17 +33604,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "caps",
       "hat_cap_bonnie"
@@ -34441,17 +33720,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "caps",
       "hat_cap_bonnie_tilt"
@@ -34568,17 +33836,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "caps",
       "hat_cap_bonnie_feather"
@@ -34695,17 +33952,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "caps",
       "hat_cap_cavalier"
@@ -34822,17 +34068,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "caps",
       "hat_cap_cavalier_feather"
@@ -34952,17 +34187,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "tricorne",
       "basic",
@@ -35085,17 +34309,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "tricorne",
       "basic",
@@ -35218,17 +34431,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "tricorne",
       "basic",
@@ -35348,17 +34550,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "tricorne",
       "lieutenant",
@@ -35480,17 +34671,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "tricorne",
       "lieutenant",
@@ -35619,17 +34799,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "tricorne",
       "captain",
@@ -35751,17 +34920,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "tricorne",
       "captain",
@@ -35887,17 +35045,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "tricorne",
       "captain",
@@ -36014,17 +35161,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "bicorne athwart",
       "basic",
@@ -36141,17 +35277,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "bicorne athwart",
       "basic",
@@ -36269,17 +35394,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "bicorne athwart",
       "captain",
@@ -36397,17 +35511,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "bicorne athwart",
       "captain",
@@ -36529,17 +35632,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "bicorne athwart",
       "admiral",
@@ -36663,17 +35755,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "bicorne athwart",
       "admiral",
@@ -36800,17 +35881,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "bicorne athwart",
       "admiral",
@@ -36928,17 +35998,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "bicorne athwart",
       "commodore",
@@ -37056,17 +36115,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "bicorne athwart",
       "commodore",
@@ -37193,17 +36241,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "bicorne foreaft",
       "hat_bicorne_foreaft"
@@ -37324,17 +36361,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "bicorne foreaft",
       "hat_bicorne_foreaft_commodore"
@@ -37457,17 +36483,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "bicorne foreaft",
       "hat_bicorne_foreaft_commodore_trim"
@@ -37593,17 +36608,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "magic",
       "hat_magic_large"
@@ -37702,17 +36706,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "magic",
       "wizard",
@@ -37855,17 +36848,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "magic",
       "wizard",
@@ -38008,17 +36990,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "magic",
       "wizard",
@@ -38137,17 +37108,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "magic",
       "celestial",
@@ -38271,17 +37231,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "magic",
       "celestial",
@@ -38412,17 +37361,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "magic",
       "celestial",
@@ -38546,17 +37484,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "magic",
       "celestial",
@@ -38683,17 +37610,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "formal",
       "hat_formal_tophat"
@@ -38817,17 +37733,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "formal",
       "hat_formal_bowler"
@@ -38951,17 +37856,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "formal",
       "hat_formal_crown"
@@ -39097,17 +37991,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "formal",
       "hat_formal_tiara"
@@ -39245,17 +38128,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "holiday",
       "hat_holiday_christmas"
@@ -39383,17 +38255,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "holiday",
       "hat_holiday_santa"
@@ -39521,17 +38382,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "hats",
       "holiday",
       "hat_holiday_elf"
@@ -39654,17 +38504,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_armet"
@@ -39777,17 +38616,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_armet_simple"
@@ -39900,17 +38728,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_barbarian"
@@ -40034,17 +38851,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_barbarian_nasal"
@@ -40168,17 +38974,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_barbarian_viking"
@@ -40302,17 +39097,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_barbuta"
@@ -40436,17 +39220,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_barbuta_simple"
@@ -40570,17 +39343,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_bascinet"
@@ -40701,17 +39463,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_bascinet_round"
@@ -40833,17 +39584,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_close"
@@ -40967,17 +39707,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_flattop"
@@ -41101,17 +39830,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_greathelm"
@@ -41235,17 +39953,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_horned"
@@ -41358,17 +40065,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_kettle"
@@ -41473,17 +40169,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_legion"
@@ -41605,17 +40290,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_maximus"
@@ -41739,17 +40413,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_morion"
@@ -41868,17 +40531,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_nasal"
@@ -42002,17 +40654,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_norman"
@@ -42131,17 +40772,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_pointed"
@@ -42265,17 +40895,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_spangenhelm"
@@ -42399,17 +41018,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_spangenhelm_viking"
@@ -42533,17 +41141,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_sugarloaf"
@@ -42667,17 +41264,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_sugarloaf_simple"
@@ -42801,17 +41387,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmets",
       "hat_helmet_xeon"
@@ -42911,17 +41486,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "visors",
       "hat_visor_grated"
@@ -43045,17 +41609,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "visors",
       "hat_visor_grated_narrow"
@@ -43179,17 +41732,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "visors",
       "hat_visor_horned"
@@ -43302,17 +41844,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "visors",
       "hat_visor_pigface"
@@ -43433,17 +41964,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "visors",
       "hat_visor_pigface_raised"
@@ -43564,17 +42084,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "visors",
       "hat_visor_round"
@@ -43695,17 +42204,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "visors",
       "hat_visor_round_raised"
@@ -43826,17 +42324,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "visors",
       "hat_visor_slit"
@@ -43949,17 +42436,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "visors",
       "hat_visor_slit_narrow"
@@ -44072,17 +42548,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmet accessories",
       "hat_accessory_crest"
@@ -44182,17 +42647,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmet accessories",
       "hat_accessory_crest_centurion"
@@ -44294,17 +42748,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmet accessories",
       "hat_accessory_wings"
@@ -44433,17 +42876,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmet accessories",
       "hat_accessory_horns_short"
@@ -44569,17 +43001,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmet accessories",
       "hat_accessory_horns_upward"
@@ -44705,17 +43126,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmet accessories",
       "hat_accessory_horns_downward"
@@ -44842,17 +43252,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmet accessories",
       "hat_accessory_plumage"
@@ -44986,17 +43385,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmet accessories",
       "hat_accessory_plumage_centurion"
@@ -45115,17 +43503,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "helmets",
       "helmet accessories",
       "hat_accessory_plumage_legion"
@@ -45265,17 +43642,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "glasses",
       "facial_glasses"
@@ -45404,17 +43770,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "glasses",
       "facial_glasses_halfmoon"
@@ -45543,17 +43898,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "glasses",
       "facial_glasses_nerd"
@@ -45690,17 +44034,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "glasses",
       "facial_glasses_shades"
@@ -45838,17 +44171,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "glasses",
       "facial_glasses_secretary"
@@ -45985,17 +44307,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "glasses",
       "facial_glasses_round"
@@ -46135,17 +44446,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "glasses",
       "facial_glasses_sunglasses"
@@ -46289,17 +44589,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "monocle",
       "facial_monocle_left"
@@ -46420,17 +44709,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "monocle",
       "facial_monocle_left_frame"
@@ -46573,17 +44851,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "monocle",
       "facial_monocle_right"
@@ -46704,17 +44971,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "monocle",
       "facial_monocle_right_frame"
@@ -46853,17 +45109,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "eyepatches",
       "facial_eyepatch_ambi"
@@ -46992,17 +45237,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "eyepatches",
       "facial_eyepatch_left"
@@ -47131,17 +45365,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "eyepatches",
       "facial_eyepatch_right"
@@ -47270,17 +45493,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "eyepatches",
       "facial_eyepatch2_left"
@@ -47401,17 +45613,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "eyepatches",
       "facial_eyepatch2_right"
@@ -47532,17 +45733,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "eyepatches",
       "facial_eyepatch_small_left"
@@ -47672,17 +45862,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "eyepatches",
       "facial_eyepatch_small_right"
@@ -47812,17 +45991,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "facial_mask_plain"
     ],
@@ -47973,17 +46141,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "earrings",
       "facial_earring_left"
@@ -48112,17 +46269,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "earrings",
       "facial_earring_right"
@@ -48240,17 +46386,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "earrings",
       "facial_earrings_emerald"
@@ -48337,17 +46472,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "earrings",
       "facial_earrings_moon"
@@ -48436,17 +46560,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "earrings",
       "facial_earrings_pear"
@@ -48533,17 +46646,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "earrings",
       "facial_earrings_princess"
@@ -48630,17 +46732,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "accessories",
       "earrings",
       "facial_earrings_stud"
@@ -48739,17 +46830,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "neck_bowtie"
     ],
@@ -48875,17 +46955,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "neck_bowtie2"
     ],
@@ -49001,17 +47070,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "neck_necktie"
     ],
@@ -49120,24 +47178,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "neck_scarf"
     ],
@@ -49236,24 +47283,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "neck_capeclip"
     ],
@@ -49364,24 +47400,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "neck_capetie"
     ],
@@ -49489,24 +47514,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "neck_jabot"
     ],
@@ -49597,24 +47611,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "neck_cravat"
     ],
@@ -49707,24 +47710,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "neck_necklace"
     ],
@@ -49814,24 +47806,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "neck_necklace_simple"
     ],
@@ -49912,24 +47893,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "neck_necklace_chain"
     ],
@@ -50010,24 +47980,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "neck_necklace_beaded_small"
     ],
@@ -50108,24 +48067,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "neck_necklace_beaded_large"
     ],
@@ -50206,24 +48154,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "necklace charms",
       "neck_charm_box"
@@ -50305,24 +48242,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "necklace charms",
       "neck_charm_oval"
@@ -50404,24 +48330,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "necklace charms",
       "neck_charm_ring"
@@ -50503,24 +48418,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "necklace charms",
       "neck_charm_star"
@@ -50602,24 +48506,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "necklace charms",
       "neck_gem_emerald"
@@ -50699,24 +48592,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "necklace charms",
       "neck_gem_marquise"
@@ -50796,24 +48678,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "necklace charms",
       "neck_gem_natural"
@@ -50893,24 +48764,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "necklace charms",
       "neck_gem_pear"
@@ -50990,24 +48850,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "necklace charms",
       "neck_gem_pearl"
@@ -51087,24 +48936,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "necklace charms",
       "neck_gem_princess"
@@ -51184,24 +49022,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "necklace charms",
       "neck_gem_round"
@@ -51281,24 +49108,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "necklace charms",
       "neck_gem_trilliant"
@@ -51378,24 +49194,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "necklace charms",
       "neck_amulet_cross"
@@ -51517,24 +49322,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "necklace charms",
       "neck_amulet_dangle"
@@ -51659,24 +49453,13 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
     "path": [
       "head",
-      "hair",
-      "hair extensions",
-      "afro",
-      "curly",
-      "bald/shaved",
-      "short",
-      "spiky",
-      "pigtails",
-      "bob",
-      "braids, ponytails, updos",
-      "long",
       "neck",
       "necklace charms",
       "neck_amulet_spider"
@@ -51797,7 +49580,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
@@ -51889,7 +49672,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
@@ -52002,7 +49785,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
@@ -52109,7 +49892,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
@@ -52175,7 +49958,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
@@ -52262,7 +50045,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
@@ -52484,7 +50267,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
@@ -52574,7 +50357,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
@@ -52657,7 +50440,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
@@ -52883,7 +50666,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
@@ -52963,7 +50746,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
@@ -53051,7 +50834,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
@@ -53143,7 +50926,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
@@ -53235,7 +51018,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [
       "dress",
@@ -53336,7 +51119,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [
       "dress",
@@ -53438,7 +51221,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [
       "dress",
@@ -53539,7 +51322,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [
       "dress",
@@ -53641,7 +51424,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [
       "arms",
@@ -53747,7 +51530,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [
       "arms",
@@ -53854,7 +51637,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [
       "arms",
@@ -53960,7 +51743,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [
       "arms",
@@ -60217,7 +58000,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
@@ -60344,7 +58127,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
@@ -66171,7 +63954,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
@@ -68352,7 +66135,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
@@ -68466,15 +66249,7 @@ window.itemMetadata = {
       "muscular",
       "pregnant"
     ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
+    "animations": [],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
@@ -68560,13 +66335,7 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "walk"
     ],
     "tags": [],
     "required_tags": [],
@@ -68663,13 +66432,8 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
       "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -68755,15 +66519,7 @@ window.itemMetadata = {
       "muscular",
       "pregnant"
     ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
+    "animations": [],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
@@ -76689,13 +74445,9 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
       "thrust",
       "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -76772,13 +74524,9 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
       "walk",
-      "slash",
       "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -76863,15 +74611,7 @@ window.itemMetadata = {
       "muscular",
       "pregnant"
     ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
+    "animations": [],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
@@ -77038,6 +74778,7 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
+      "walk",
       "shoot",
       "hurt"
     ],
@@ -77155,6 +74896,7 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
+      "walk",
       "shoot",
       "hurt"
     ],
@@ -77282,6 +75024,7 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
+      "walk",
       "shoot",
       "hurt"
     ],
@@ -77398,13 +75141,10 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
       "thrust",
       "walk",
       "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -77493,13 +75233,8 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
       "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -77601,13 +75336,8 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
       "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -77738,13 +75468,8 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
       "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -77843,13 +75568,8 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
       "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -77945,13 +75665,8 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
       "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -78045,13 +75760,7 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "walk"
     ],
     "tags": [],
     "required_tags": [],
@@ -78144,15 +75853,7 @@ window.itemMetadata = {
       "muscular",
       "pregnant"
     ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
+    "animations": [],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
@@ -78246,23 +75947,10 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
       "walk",
-      "slash",
-      "shoot",
       "hurt",
-      "watering",
       "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
+      "combat"
     ],
     "tags": [],
     "required_tags": [],
@@ -78405,13 +76093,8 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
       "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -78510,13 +76193,8 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
       "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -78615,13 +76293,8 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
       "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -78719,15 +76392,7 @@ window.itemMetadata = {
       "muscular",
       "pregnant"
     ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
+    "animations": [],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
@@ -78987,13 +76652,8 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
       "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -79085,13 +76745,8 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
       "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -79206,15 +76861,7 @@ window.itemMetadata = {
       "muscular",
       "pregnant"
     ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
+    "animations": [],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
@@ -79327,15 +76974,7 @@ window.itemMetadata = {
       "muscular",
       "pregnant"
     ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
+    "animations": [],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
@@ -79449,15 +77088,7 @@ window.itemMetadata = {
       "muscular",
       "pregnant"
     ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
+    "animations": [],
     "tags": [],
     "required_tags": [],
     "excluded_tags": [],
@@ -79575,10 +77206,7 @@ window.itemMetadata = {
       "spellcast",
       "thrust",
       "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -79661,13 +77289,8 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
       "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -79790,13 +77413,8 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
       "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -79919,13 +77537,8 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
       "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -80048,13 +77661,8 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
       "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -80168,13 +77776,8 @@ window.itemMetadata = {
       "pregnant"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
       "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
+      "hurt"
     ],
     "tags": [],
     "required_tags": [],
@@ -80651,481 +78254,472 @@ window.categoryTree = {
                     "hairext_high_bun"
                   ],
                   "children": {}
-                },
-                "afro": {
-                  "items": [
-                    "hair_afro",
-                    "hair_natural",
-                    "hair_dreadlocks_short",
-                    "hair_twists_fade",
-                    "hair_twists_straight",
-                    "hair_dreadlocks_long",
-                    "hair_flat_top_straight",
-                    "hair_flat_top_fade",
-                    "hair_cornrows"
-                  ],
-                  "children": {
-                    "curly": {
-                      "items": [
-                        "hair_jewfro",
-                        "hair_curly_short",
-                        "hair_curly_long",
-                        "hair_curls_large",
-                        "hair_curls_large_xlong"
-                      ],
-                      "children": {
-                        "bald/shaved": {
-                          "items": [
-                            "hair_balding",
-                            "hair_longhawk",
-                            "hair_shorthawk",
-                            "hair_high_and_tight",
-                            "hair_buzzcut"
-                          ],
-                          "children": {
-                            "short": {
-                              "items": [
-                                "hair_plain",
-                                "hair_pixie",
-                                "hair_page",
-                                "hair_page2",
-                                "hair_idol",
-                                "hair_mop",
-                                "hair_parted",
-                                "hair_parted2",
-                                "hair_parted3",
-                                "hair_parted_side_bangs",
-                                "hair_parted_side_bangs2",
-                                "hair_messy1",
-                                "hair_messy2",
-                                "hair_messy3",
-                                "hair_bedhead",
-                                "hair_unkempt",
-                                "hair_bangs",
-                                "hair_bangsshort",
-                                "hair_swoop",
-                                "hair_swoop_side",
-                                "hair_curtains",
-                                "hair_single",
-                                "hair_cowlick",
-                                "hair_cowlick_tall"
-                              ],
-                              "children": {
-                                "spiky": {
-                                  "items": [
-                                    "hair_spiked_porcupine",
-                                    "hair_spiked_liberty2",
-                                    "hair_spiked_liberty",
-                                    "hair_spiked_beehive",
-                                    "hair_spiked",
-                                    "hair_spiked2",
-                                    "hair_halfmessy"
-                                  ],
-                                  "children": {
-                                    "pigtails": {
-                                      "items": [
-                                        "hair_bunches",
-                                        "hair_pigtails",
-                                        "hair_pigtails_bangs"
-                                      ],
-                                      "children": {
-                                        "bob": {
-                                          "items": [
-                                            "hair_bob",
-                                            "hair_lob",
-                                            "hair_bob_side_part",
-                                            "hair_relm_short"
-                                          ],
-                                          "children": {
-                                            "braids, ponytails, updos": {
-                                              "items": [
-                                                "hair_half_up",
-                                                "hair_bangs_bun",
-                                                "hair_topknot_short",
-                                                "hair_topknot_short2",
-                                                "hair_topknot_long",
-                                                "hair_topknot_long2",
-                                                "hair_ponytail",
-                                                "hair_ponytail2",
-                                                "hair_high_ponytail",
-                                                "hair_braid",
-                                                "hair_braid2",
-                                                "hair_shoulderl",
-                                                "hair_shoulderr",
-                                                "hair_long_tied",
-                                                "hair_relm_ponytail"
-                                              ],
-                                              "children": {
-                                                "long": {
-                                                  "items": [
-                                                    "hair_loose",
-                                                    "hair_bangslong",
-                                                    "hair_bangslong2",
-                                                    "hair_long",
-                                                    "hair_long_messy",
-                                                    "hair_long_messy2",
-                                                    "hair_curtains_long",
-                                                    "hair_wavy",
-                                                    "hair_wavy_child",
-                                                    "hair_long_center_part",
-                                                    "hair_long_straight"
-                                                  ],
-                                                  "children": {
-                                                    "very long": {
-                                                      "items": [
-                                                        "hair_princess",
-                                                        "hair_sara",
-                                                        "hair_long_band",
-                                                        "hair_xlong",
-                                                        "hair_xlong_wavy",
-                                                        "hair_relm_xlong"
-                                                      ],
-                                                      "children": {}
-                                                    },
-                                                    "appendages": {
-                                                      "items": [
-                                                        "head_horns_backwards",
-                                                        "head_horns_curled",
-                                                        "head_fins_fin",
-                                                        "head_fins_fin_short"
-                                                      ],
-                                                      "children": {}
-                                                    },
-                                                    "head coverings": {
-                                                      "items": [],
-                                                      "children": {
-                                                        "hoods": {
-                                                          "items": [
-                                                            "hat_hood_cloth",
-                                                            "hat_hood_sack_cloth",
-                                                            "hat_hood_hijab",
-                                                            "hat_helmet_mail"
-                                                          ],
-                                                          "children": {}
-                                                        },
-                                                        "bandanas": {
-                                                          "items": [
-                                                            "hat_bandana",
-                                                            "hat_bandana2",
-                                                            "hat_bandana_pirate",
-                                                            "hat_bandana_pirate_skull"
-                                                          ],
-                                                          "children": {}
-                                                        },
-                                                        "headbands": {
-                                                          "items": [
-                                                            "hat_headband_kerchief",
-                                                            "hat_headband_tied",
-                                                            "hat_headband_thick",
-                                                            "hat_headband_thick_rune",
-                                                            "hat_headband_hairtie",
-                                                            "hat_headband_hairtie_rune"
-                                                          ],
-                                                          "children": {}
-                                                        }
-                                                      }
-                                                    },
-                                                    "hats": {
-                                                      "items": [],
-                                                      "children": {
-                                                        "caps": {
-                                                          "items": [
-                                                            "hat_cap_leather",
-                                                            "hat_cap_leather_feather",
-                                                            "hat_cap_bonnie",
-                                                            "hat_cap_bonnie_tilt",
-                                                            "hat_cap_bonnie_feather",
-                                                            "hat_cap_cavalier",
-                                                            "hat_cap_cavalier_feather"
-                                                          ],
-                                                          "children": {}
-                                                        },
-                                                        "tricorne": {
-                                                          "items": [],
-                                                          "children": {
-                                                            "basic": {
-                                                              "items": [
-                                                                "hat_tricorne",
-                                                                "hat_tricorne_stitched",
-                                                                "hat_tricorne_thatch"
-                                                              ],
-                                                              "children": {}
-                                                            },
-                                                            "lieutenant": {
-                                                              "items": [
-                                                                "hat_tricorne_lieutenant",
-                                                                "hat_tricorne_lieutenant_trim"
-                                                              ],
-                                                              "children": {}
-                                                            },
-                                                            "captain": {
-                                                              "items": [
-                                                                "hat_tricorne_captain",
-                                                                "hat_tricorne_captain_trim",
-                                                                "hat_tricorne_captain_skull"
-                                                              ],
-                                                              "children": {}
-                                                            }
-                                                          }
-                                                        },
-                                                        "bicorne athwart": {
-                                                          "items": [],
-                                                          "children": {
-                                                            "basic": {
-                                                              "items": [
-                                                                "hat_bicorne_athwart_basic",
-                                                                "hat_bicorne_athwart_basic_skull"
-                                                              ],
-                                                              "children": {}
-                                                            },
-                                                            "captain": {
-                                                              "items": [
-                                                                "hat_bicorne_athwart_captain",
-                                                                "hat_bicorne_athwart_captain_skull"
-                                                              ],
-                                                              "children": {}
-                                                            },
-                                                            "admiral": {
-                                                              "items": [
-                                                                "hat_bicorne_athwart_admiral",
-                                                                "hat_bicorne_athwart_admiral_trim",
-                                                                "hat_bicorne_athwart_admiral_cockade"
-                                                              ],
-                                                              "children": {}
-                                                            },
-                                                            "commodore": {
-                                                              "items": [
-                                                                "hat_bicorne_athwart_commodore",
-                                                                "hat_bicorne_athwart_commodore_trim"
-                                                              ],
-                                                              "children": {}
-                                                            }
-                                                          }
-                                                        },
-                                                        "bicorne foreaft": {
-                                                          "items": [
-                                                            "hat_bicorne_foreaft",
-                                                            "hat_bicorne_foreaft_commodore",
-                                                            "hat_bicorne_foreaft_commodore_trim"
-                                                          ],
-                                                          "children": {}
-                                                        },
-                                                        "magic": {
-                                                          "items": [
-                                                            "hat_magic_large"
-                                                          ],
-                                                          "children": {
-                                                            "wizard": {
-                                                              "items": [
-                                                                "hat_magic_wizard",
-                                                                "hat_magic_wizard_belt",
-                                                                "hat_magic_wizard_buckle"
-                                                              ],
-                                                              "children": {}
-                                                            },
-                                                            "celestial": {
-                                                              "items": [
-                                                                "hat_magic_celestial",
-                                                                "hat_magic_celestial_trim",
-                                                                "hat_magic_celestial_moon",
-                                                                "hat_magic_celestial_moon_trim"
-                                                              ],
-                                                              "children": {}
-                                                            }
-                                                          }
-                                                        },
-                                                        "formal": {
-                                                          "items": [
-                                                            "hat_formal_tophat",
-                                                            "hat_formal_bowler",
-                                                            "hat_formal_crown",
-                                                            "hat_formal_tiara"
-                                                          ],
-                                                          "children": {}
-                                                        },
-                                                        "holiday": {
-                                                          "items": [
-                                                            "hat_holiday_christmas",
-                                                            "hat_holiday_santa",
-                                                            "hat_holiday_elf"
-                                                          ],
-                                                          "children": {}
-                                                        }
-                                                      }
-                                                    },
-                                                    "helmets": {
-                                                      "items": [],
-                                                      "children": {
-                                                        "helmets": {
-                                                          "items": [
-                                                            "hat_helmet_armet",
-                                                            "hat_helmet_armet_simple",
-                                                            "hat_helmet_barbarian",
-                                                            "hat_helmet_barbarian_nasal",
-                                                            "hat_helmet_barbarian_viking",
-                                                            "hat_helmet_barbuta",
-                                                            "hat_helmet_barbuta_simple",
-                                                            "hat_helmet_bascinet",
-                                                            "hat_helmet_bascinet_round",
-                                                            "hat_helmet_close",
-                                                            "hat_helmet_flattop",
-                                                            "hat_helmet_greathelm",
-                                                            "hat_helmet_horned",
-                                                            "hat_helmet_kettle",
-                                                            "hat_helmet_legion",
-                                                            "hat_helmet_maximus",
-                                                            "hat_helmet_morion",
-                                                            "hat_helmet_nasal",
-                                                            "hat_helmet_norman",
-                                                            "hat_helmet_pointed",
-                                                            "hat_helmet_spangenhelm",
-                                                            "hat_helmet_spangenhelm_viking",
-                                                            "hat_helmet_sugarloaf",
-                                                            "hat_helmet_sugarloaf_simple",
-                                                            "hat_helmet_xeon"
-                                                          ],
-                                                          "children": {}
-                                                        },
-                                                        "visors": {
-                                                          "items": [
-                                                            "hat_visor_grated",
-                                                            "hat_visor_grated_narrow",
-                                                            "hat_visor_horned",
-                                                            "hat_visor_pigface",
-                                                            "hat_visor_pigface_raised",
-                                                            "hat_visor_round",
-                                                            "hat_visor_round_raised",
-                                                            "hat_visor_slit",
-                                                            "hat_visor_slit_narrow"
-                                                          ],
-                                                          "children": {}
-                                                        },
-                                                        "helmet accessories": {
-                                                          "items": [
-                                                            "hat_accessory_crest",
-                                                            "hat_accessory_crest_centurion",
-                                                            "hat_accessory_wings",
-                                                            "hat_accessory_horns_short",
-                                                            "hat_accessory_horns_upward",
-                                                            "hat_accessory_horns_downward",
-                                                            "hat_accessory_plumage",
-                                                            "hat_accessory_plumage_centurion",
-                                                            "hat_accessory_plumage_legion"
-                                                          ],
-                                                          "children": {}
-                                                        }
-                                                      }
-                                                    },
-                                                    "accessories": {
-                                                      "items": [
-                                                        "facial_mask_plain"
-                                                      ],
-                                                      "children": {
-                                                        "glasses": {
-                                                          "items": [
-                                                            "facial_glasses",
-                                                            "facial_glasses_halfmoon",
-                                                            "facial_glasses_nerd",
-                                                            "facial_glasses_shades",
-                                                            "facial_glasses_secretary",
-                                                            "facial_glasses_round",
-                                                            "facial_glasses_sunglasses"
-                                                          ],
-                                                          "children": {}
-                                                        },
-                                                        "monocle": {
-                                                          "items": [
-                                                            "facial_monocle_left",
-                                                            "facial_monocle_left_frame",
-                                                            "facial_monocle_right",
-                                                            "facial_monocle_right_frame"
-                                                          ],
-                                                          "children": {}
-                                                        },
-                                                        "eyepatches": {
-                                                          "items": [
-                                                            "facial_eyepatch_ambi",
-                                                            "facial_eyepatch_left",
-                                                            "facial_eyepatch_right",
-                                                            "facial_eyepatch2_left",
-                                                            "facial_eyepatch2_right",
-                                                            "facial_eyepatch_small_left",
-                                                            "facial_eyepatch_small_right"
-                                                          ],
-                                                          "children": {}
-                                                        },
-                                                        "earrings": {
-                                                          "items": [
-                                                            "facial_earring_left",
-                                                            "facial_earring_right",
-                                                            "facial_earrings_emerald",
-                                                            "facial_earrings_moon",
-                                                            "facial_earrings_pear",
-                                                            "facial_earrings_princess",
-                                                            "facial_earrings_stud"
-                                                          ],
-                                                          "children": {}
-                                                        }
-                                                      }
-                                                    },
-                                                    "neck": {
-                                                      "items": [
-                                                        "neck_bowtie",
-                                                        "neck_bowtie2",
-                                                        "neck_necktie",
-                                                        "neck_scarf",
-                                                        "neck_capeclip",
-                                                        "neck_capetie",
-                                                        "neck_jabot",
-                                                        "neck_cravat",
-                                                        "neck_necklace",
-                                                        "neck_necklace_simple",
-                                                        "neck_necklace_chain",
-                                                        "neck_necklace_beaded_small",
-                                                        "neck_necklace_beaded_large"
-                                                      ],
-                                                      "children": {
-                                                        "necklace charms": {
-                                                          "items": [
-                                                            "neck_charm_box",
-                                                            "neck_charm_oval",
-                                                            "neck_charm_ring",
-                                                            "neck_charm_star",
-                                                            "neck_gem_emerald",
-                                                            "neck_gem_marquise",
-                                                            "neck_gem_natural",
-                                                            "neck_gem_pear",
-                                                            "neck_gem_pearl",
-                                                            "neck_gem_princess",
-                                                            "neck_gem_round",
-                                                            "neck_gem_trilliant",
-                                                            "neck_amulet_cross",
-                                                            "neck_amulet_dangle",
-                                                            "neck_amulet_spider"
-                                                          ],
-                                                          "children": {}
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
                 }
               }
+            },
+            "afro": {
+              "items": [
+                "hair_afro",
+                "hair_natural",
+                "hair_dreadlocks_short",
+                "hair_twists_fade",
+                "hair_twists_straight",
+                "hair_dreadlocks_long",
+                "hair_flat_top_straight",
+                "hair_flat_top_fade",
+                "hair_cornrows"
+              ],
+              "children": {}
+            },
+            "curly": {
+              "items": [
+                "hair_jewfro",
+                "hair_curly_short",
+                "hair_curly_long",
+                "hair_curls_large",
+                "hair_curls_large_xlong"
+              ],
+              "children": {}
+            },
+            "bald/shaved": {
+              "items": [
+                "hair_balding",
+                "hair_longhawk",
+                "hair_shorthawk",
+                "hair_high_and_tight",
+                "hair_buzzcut"
+              ],
+              "children": {}
+            },
+            "short": {
+              "items": [
+                "hair_plain",
+                "hair_pixie",
+                "hair_page",
+                "hair_page2",
+                "hair_idol",
+                "hair_mop",
+                "hair_parted",
+                "hair_parted2",
+                "hair_parted3",
+                "hair_parted_side_bangs",
+                "hair_parted_side_bangs2",
+                "hair_messy1",
+                "hair_messy2",
+                "hair_messy3",
+                "hair_bedhead",
+                "hair_unkempt",
+                "hair_bangs",
+                "hair_bangsshort",
+                "hair_swoop",
+                "hair_swoop_side",
+                "hair_curtains",
+                "hair_single",
+                "hair_cowlick",
+                "hair_cowlick_tall"
+              ],
+              "children": {}
+            },
+            "spiky": {
+              "items": [
+                "hair_spiked_porcupine",
+                "hair_spiked_liberty2",
+                "hair_spiked_liberty",
+                "hair_spiked_beehive",
+                "hair_spiked",
+                "hair_spiked2",
+                "hair_halfmessy"
+              ],
+              "children": {}
+            },
+            "pigtails": {
+              "items": [
+                "hair_bunches",
+                "hair_pigtails",
+                "hair_pigtails_bangs"
+              ],
+              "children": {}
+            },
+            "bob": {
+              "items": [
+                "hair_bob",
+                "hair_lob",
+                "hair_bob_side_part",
+                "hair_relm_short"
+              ],
+              "children": {}
+            },
+            "braids, ponytails, updos": {
+              "items": [
+                "hair_half_up",
+                "hair_bangs_bun",
+                "hair_topknot_short",
+                "hair_topknot_short2",
+                "hair_topknot_long",
+                "hair_topknot_long2",
+                "hair_ponytail",
+                "hair_ponytail2",
+                "hair_high_ponytail",
+                "hair_braid",
+                "hair_braid2",
+                "hair_shoulderl",
+                "hair_shoulderr",
+                "hair_long_tied",
+                "hair_relm_ponytail"
+              ],
+              "children": {}
+            },
+            "long": {
+              "items": [
+                "hair_loose",
+                "hair_bangslong",
+                "hair_bangslong2",
+                "hair_long",
+                "hair_long_messy",
+                "hair_long_messy2",
+                "hair_curtains_long",
+                "hair_wavy",
+                "hair_wavy_child",
+                "hair_long_center_part",
+                "hair_long_straight"
+              ],
+              "children": {}
+            },
+            "very long": {
+              "items": [
+                "hair_princess",
+                "hair_sara",
+                "hair_long_band",
+                "hair_xlong",
+                "hair_xlong_wavy",
+                "hair_relm_xlong"
+              ],
+              "children": {}
+            }
+          }
+        },
+        "appendages": {
+          "items": [
+            "head_horns_backwards",
+            "head_horns_curled",
+            "head_fins_fin",
+            "head_fins_fin_short"
+          ],
+          "children": {}
+        },
+        "head coverings": {
+          "items": [],
+          "children": {
+            "hoods": {
+              "items": [
+                "hat_hood_cloth",
+                "hat_hood_sack_cloth",
+                "hat_hood_hijab",
+                "hat_helmet_mail"
+              ],
+              "children": {}
+            },
+            "bandanas": {
+              "items": [
+                "hat_bandana",
+                "hat_bandana2",
+                "hat_bandana_pirate",
+                "hat_bandana_pirate_skull"
+              ],
+              "children": {}
+            },
+            "headbands": {
+              "items": [
+                "hat_headband_kerchief",
+                "hat_headband_tied",
+                "hat_headband_thick",
+                "hat_headband_thick_rune",
+                "hat_headband_hairtie",
+                "hat_headband_hairtie_rune"
+              ],
+              "children": {}
+            }
+          }
+        },
+        "hats": {
+          "items": [],
+          "children": {
+            "caps": {
+              "items": [
+                "hat_cap_leather",
+                "hat_cap_leather_feather",
+                "hat_cap_bonnie",
+                "hat_cap_bonnie_tilt",
+                "hat_cap_bonnie_feather",
+                "hat_cap_cavalier",
+                "hat_cap_cavalier_feather"
+              ],
+              "children": {}
+            },
+            "tricorne": {
+              "items": [],
+              "children": {
+                "basic": {
+                  "items": [
+                    "hat_tricorne",
+                    "hat_tricorne_stitched",
+                    "hat_tricorne_thatch"
+                  ],
+                  "children": {}
+                },
+                "lieutenant": {
+                  "items": [
+                    "hat_tricorne_lieutenant",
+                    "hat_tricorne_lieutenant_trim"
+                  ],
+                  "children": {}
+                },
+                "captain": {
+                  "items": [
+                    "hat_tricorne_captain",
+                    "hat_tricorne_captain_trim",
+                    "hat_tricorne_captain_skull"
+                  ],
+                  "children": {}
+                }
+              }
+            },
+            "bicorne athwart": {
+              "items": [],
+              "children": {
+                "basic": {
+                  "items": [
+                    "hat_bicorne_athwart_basic",
+                    "hat_bicorne_athwart_basic_skull"
+                  ],
+                  "children": {}
+                },
+                "captain": {
+                  "items": [
+                    "hat_bicorne_athwart_captain",
+                    "hat_bicorne_athwart_captain_skull"
+                  ],
+                  "children": {}
+                },
+                "admiral": {
+                  "items": [
+                    "hat_bicorne_athwart_admiral",
+                    "hat_bicorne_athwart_admiral_trim",
+                    "hat_bicorne_athwart_admiral_cockade"
+                  ],
+                  "children": {}
+                },
+                "commodore": {
+                  "items": [
+                    "hat_bicorne_athwart_commodore",
+                    "hat_bicorne_athwart_commodore_trim"
+                  ],
+                  "children": {}
+                }
+              }
+            },
+            "bicorne foreaft": {
+              "items": [
+                "hat_bicorne_foreaft",
+                "hat_bicorne_foreaft_commodore",
+                "hat_bicorne_foreaft_commodore_trim"
+              ],
+              "children": {}
+            },
+            "magic": {
+              "items": [
+                "hat_magic_large"
+              ],
+              "children": {
+                "wizard": {
+                  "items": [
+                    "hat_magic_wizard",
+                    "hat_magic_wizard_belt",
+                    "hat_magic_wizard_buckle"
+                  ],
+                  "children": {}
+                },
+                "celestial": {
+                  "items": [
+                    "hat_magic_celestial",
+                    "hat_magic_celestial_trim",
+                    "hat_magic_celestial_moon",
+                    "hat_magic_celestial_moon_trim"
+                  ],
+                  "children": {}
+                }
+              }
+            },
+            "formal": {
+              "items": [
+                "hat_formal_tophat",
+                "hat_formal_bowler",
+                "hat_formal_crown",
+                "hat_formal_tiara"
+              ],
+              "children": {}
+            },
+            "holiday": {
+              "items": [
+                "hat_holiday_christmas",
+                "hat_holiday_santa",
+                "hat_holiday_elf"
+              ],
+              "children": {}
+            }
+          }
+        },
+        "helmets": {
+          "items": [],
+          "children": {
+            "helmets": {
+              "items": [
+                "hat_helmet_armet",
+                "hat_helmet_armet_simple",
+                "hat_helmet_barbarian",
+                "hat_helmet_barbarian_nasal",
+                "hat_helmet_barbarian_viking",
+                "hat_helmet_barbuta",
+                "hat_helmet_barbuta_simple",
+                "hat_helmet_bascinet",
+                "hat_helmet_bascinet_round",
+                "hat_helmet_close",
+                "hat_helmet_flattop",
+                "hat_helmet_greathelm",
+                "hat_helmet_horned",
+                "hat_helmet_kettle",
+                "hat_helmet_legion",
+                "hat_helmet_maximus",
+                "hat_helmet_morion",
+                "hat_helmet_nasal",
+                "hat_helmet_norman",
+                "hat_helmet_pointed",
+                "hat_helmet_spangenhelm",
+                "hat_helmet_spangenhelm_viking",
+                "hat_helmet_sugarloaf",
+                "hat_helmet_sugarloaf_simple",
+                "hat_helmet_xeon"
+              ],
+              "children": {}
+            },
+            "visors": {
+              "items": [
+                "hat_visor_grated",
+                "hat_visor_grated_narrow",
+                "hat_visor_horned",
+                "hat_visor_pigface",
+                "hat_visor_pigface_raised",
+                "hat_visor_round",
+                "hat_visor_round_raised",
+                "hat_visor_slit",
+                "hat_visor_slit_narrow"
+              ],
+              "children": {}
+            },
+            "helmet accessories": {
+              "items": [
+                "hat_accessory_crest",
+                "hat_accessory_crest_centurion",
+                "hat_accessory_wings",
+                "hat_accessory_horns_short",
+                "hat_accessory_horns_upward",
+                "hat_accessory_horns_downward",
+                "hat_accessory_plumage",
+                "hat_accessory_plumage_centurion",
+                "hat_accessory_plumage_legion"
+              ],
+              "children": {}
+            }
+          }
+        },
+        "accessories": {
+          "items": [
+            "facial_mask_plain"
+          ],
+          "children": {
+            "glasses": {
+              "items": [
+                "facial_glasses",
+                "facial_glasses_halfmoon",
+                "facial_glasses_nerd",
+                "facial_glasses_shades",
+                "facial_glasses_secretary",
+                "facial_glasses_round",
+                "facial_glasses_sunglasses"
+              ],
+              "children": {}
+            },
+            "monocle": {
+              "items": [
+                "facial_monocle_left",
+                "facial_monocle_left_frame",
+                "facial_monocle_right",
+                "facial_monocle_right_frame"
+              ],
+              "children": {}
+            },
+            "eyepatches": {
+              "items": [
+                "facial_eyepatch_ambi",
+                "facial_eyepatch_left",
+                "facial_eyepatch_right",
+                "facial_eyepatch2_left",
+                "facial_eyepatch2_right",
+                "facial_eyepatch_small_left",
+                "facial_eyepatch_small_right"
+              ],
+              "children": {}
+            },
+            "earrings": {
+              "items": [
+                "facial_earring_left",
+                "facial_earring_right",
+                "facial_earrings_emerald",
+                "facial_earrings_moon",
+                "facial_earrings_pear",
+                "facial_earrings_princess",
+                "facial_earrings_stud"
+              ],
+              "children": {}
+            }
+          }
+        },
+        "neck": {
+          "items": [
+            "neck_bowtie",
+            "neck_bowtie2",
+            "neck_necktie",
+            "neck_scarf",
+            "neck_capeclip",
+            "neck_capetie",
+            "neck_jabot",
+            "neck_cravat",
+            "neck_necklace",
+            "neck_necklace_simple",
+            "neck_necklace_chain",
+            "neck_necklace_beaded_small",
+            "neck_necklace_beaded_large"
+          ],
+          "children": {
+            "necklace charms": {
+              "items": [
+                "neck_charm_box",
+                "neck_charm_oval",
+                "neck_charm_ring",
+                "neck_charm_star",
+                "neck_gem_emerald",
+                "neck_gem_marquise",
+                "neck_gem_natural",
+                "neck_gem_pear",
+                "neck_gem_pearl",
+                "neck_gem_princess",
+                "neck_gem_round",
+                "neck_gem_trilliant",
+                "neck_amulet_cross",
+                "neck_amulet_dangle",
+                "neck_amulet_spider"
+              ],
+              "children": {}
             }
           }
         }

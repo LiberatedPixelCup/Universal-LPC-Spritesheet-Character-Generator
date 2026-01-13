@@ -58,6 +58,15 @@
     "steel_red",
     "steel_yellow"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "idle"
+  ],
   "credits": [
     {
       "file": "neck/amulet/dangle",
@@ -78,17 +87,6 @@
   ],
   "path": [
     "head",
-    "hair",
-    "hair extensions",
-    "afro",
-    "curly",
-    "bald/shaved",
-    "short",
-    "spiky",
-    "pigtails",
-    "bob",
-    "braids, ponytails, updos",
-    "long",
     "neck",
     "necklace charms",
     "neck_amulet_dangle"

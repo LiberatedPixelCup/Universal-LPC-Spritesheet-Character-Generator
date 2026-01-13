@@ -19,6 +19,12 @@
   "variants": [
     "simple"
   ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "hurt"
+  ],
   "credits": [
     {
       "file": "weapon/magic/simple",
