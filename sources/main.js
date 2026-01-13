@@ -45,7 +45,7 @@ function boolMap() {
 		true: true,
 		false: false,
 	}
-};
+}
 function bool(s) {
 	return boolMap()[s] ?? null;
 }
@@ -58,7 +58,7 @@ export function getDebugParam() {
 	const urlParams = new URLSearchParams(window.location.search);
 	const debugParam = urlParams.get('debug');
 	return bool(debugParam) ?? isLocalhost();
-};
+}
 
 export const DEBUG = getDebugParam();
 
