@@ -1,5 +1,4 @@
 import { getZPos } from '../canvas/canvas-utils.js';
-import { PALETTE_TYPES, PALETTE_FILES } from '../state/constants.js';
 
 /**
  * Sort Layers by zPos
