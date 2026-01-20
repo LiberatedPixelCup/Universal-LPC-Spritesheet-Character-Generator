@@ -60,7 +60,7 @@
   ],
   "recolors": {
     "type": "body",
-    "base": "lpcr.green",
+    "base": "ulpc.green",
     "palettes": [
       "ulpc",
       "lpcr",
