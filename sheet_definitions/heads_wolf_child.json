@@ -58,11 +58,11 @@
   ],
   "recolors": {
     "type": "body",
-    "base": "ulpc.body.fur_brown",
+    "base": "ulpc.fur_brown",
     "palettes": [
-      "ulpc.body",
-      "lpcr.body",
-      "lpcr.all"
+      "ulpc",
+      "lpcr",
+      "all.lpcr"
     ]
   },
   "type_name": "head"

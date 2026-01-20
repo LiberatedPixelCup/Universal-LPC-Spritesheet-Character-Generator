@@ -56,11 +56,11 @@
   ],
   "recolors": {
     "type": "body",
-    "base": "lpcr.body.green",
+    "base": "lpcr.green",
     "palettes": [
-      "ulpc.body",
-      "lpcr.body",
-      "lpcr.all"
+      "ulpc",
+      "lpcr",
+      "all.lpcr"
     ]
   },
   "type_name": "head"

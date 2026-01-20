@@ -61,16 +61,16 @@
     "color_1": {
       "type": "body",
       "palettes": [
-        "ulpc.body",
-        "lpcr.body",
-        "lpcr.all"
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     },
     "color_2": {
       "type": "eye",
       "palettes": [
         "ulpc.eye",
-        "lpcr.eye"
+        "lpcr"
       ]
     }
   },

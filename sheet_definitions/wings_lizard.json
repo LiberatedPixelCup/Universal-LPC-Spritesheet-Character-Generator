@@ -67,9 +67,9 @@
   "recolors": {
     "type": "body",
     "palettes": [
-      "ulpc.body",
-      "lpcr.body",
-      "lpcr.all"
+      "ulpc",
+      "lpcr",
+      "all.lpcr"
     ]
   },
   "type_name": "wings"

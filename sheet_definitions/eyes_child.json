@@ -39,8 +39,8 @@
   "recolors": {
     "type": "eyes",
     "palettes": [
-      "ulpc.eyes",
-      "lpcr.eyes"
+      "ulpc",
+      "lpcrs"
     ]
   },
   "type_name": "eyes"

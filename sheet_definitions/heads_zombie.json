@@ -59,11 +59,11 @@
   ],
   "recolors": {
     "type": "body",
-    "base": "ulpc.body.zombie",
+    "base": "ulpc.zombie",
     "palettes": [
-      "ulpc.body",
-      "lpcr.body",
-      "lpcr.all"
+      "ulpc",
+      "lpcr",
+      "all.lpcr"
     ]
   },
   "type_name": "head"
