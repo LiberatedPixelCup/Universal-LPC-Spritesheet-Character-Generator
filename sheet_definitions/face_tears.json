@@ -17,25 +17,6 @@
   "variants": [
     "blue"
   ],
-  "animations": [
-    "spellcast",
-    "thrust",
-    "walk",
-    "slash",
-    "shoot",
-    "hurt",
-    "watering",
-    "idle",
-    "jump",
-    "run",
-    "sit",
-    "emote",
-    "climb",
-    "combat",
-    "1h_slash",
-    "1h_backslash",
-    "1h_halfslash"
-  ],
   "credits": [
     {
       "file": "head/faces/global/tears",
@@ -62,8 +43,21 @@
     "face_tears"
   ],
   "recolors": {
-    "base": "light",
-    "palette": "body"
+    "color_1": {
+      "type": "body",
+      "palettes": [
+        "ulpc.body",
+        "lpcr.body",
+        "lpcr.all"
+      ]
+    },
+    "color_2": {
+      "type": "eye",
+      "palettes": [
+        "ulpc.eye",
+        "lpcr.eye"
+      ]
+    }
   },
   "type_name": "expression_crying"
 }

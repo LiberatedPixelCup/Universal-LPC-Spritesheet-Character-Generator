@@ -27,30 +27,6 @@
     "teen": "head/faces/${head}/look_r/",
     "pregnant": "head/faces/${head}/look_r/"
   },
-  "variants": [
-    "light",
-    "amber",
-    "olive",
-    "taupe",
-    "bronze",
-    "brown",
-    "black",
-    "lavender",
-    "blue",
-    "zombie_green",
-    "green",
-    "pale_green",
-    "bright_green",
-    "dark_green",
-    "fur_black",
-    "fur_brown",
-    "fur_tan",
-    "fur_copper",
-    "fur_gold",
-    "fur_grey",
-    "fur_white",
-    "zombie"
-  ],
   "match_body_color": true,
   "animations": [
     "spellcast",
@@ -143,8 +119,21 @@
     "face_look_r"
   ],
   "recolors": {
-    "base": "light",
-    "palette": "body"
+    "color_1": {
+      "type": "body",
+      "palettes": [
+        "ulpc.body",
+        "lpcr.body",
+        "lpcr.all"
+      ]
+    },
+    "color_2": {
+      "type": "eye",
+      "palettes": [
+        "ulpc.eye",
+        "lpcr.eye"
+      ]
+    }
   },
   "type_name": "expression"
 }

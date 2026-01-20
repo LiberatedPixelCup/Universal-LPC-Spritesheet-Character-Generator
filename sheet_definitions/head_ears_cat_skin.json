@@ -18,30 +18,6 @@
     "teen": "head/ears/cat/skin/adult_back/",
     "child": "head/ears/cat/skin/child_back/"
   },
-  "variants": [
-    "light",
-    "amber",
-    "olive",
-    "taupe",
-    "bronze",
-    "brown",
-    "black",
-    "lavender",
-    "blue",
-    "zombie_green",
-    "green",
-    "pale_green",
-    "bright_green",
-    "dark_green",
-    "fur_black",
-    "fur_brown",
-    "fur_tan",
-    "fur_copper",
-    "fur_gold",
-    "fur_grey",
-    "fur_white",
-    "zombie"
-  ],
   "match_body_color": true,
   "animations": [
     "spellcast",
@@ -85,5 +61,13 @@
     "top ears",
     "head_ears_cat_skin"
   ],
+  "recolors": {
+    "type": "body",
+    "palettes": [
+      "ulpc.body",
+      "lpcr.body",
+      "lpcr.all"
+    ]
+  },
   "type_name": "furry_ears_skin"
 }

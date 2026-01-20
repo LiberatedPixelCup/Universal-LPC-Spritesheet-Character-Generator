@@ -4,16 +4,6 @@
     "zPos": 105,
     "child": "eyes/human/child/"
   },
-  "variants": [
-    "blue",
-    "brown",
-    "gray",
-    "green",
-    "orange",
-    "purple",
-    "red",
-    "yellow"
-  ],
   "animations": [
     "walk",
     "slash",
@@ -46,5 +36,12 @@
     "other eyes",
     "eyes_child"
   ],
+  "recolors": {
+    "type": "eyes",
+    "palettes": [
+      "ulpc.eyes",
+      "lpcr.eyes"
+    ]
+  },
   "type_name": "eyes"
 }

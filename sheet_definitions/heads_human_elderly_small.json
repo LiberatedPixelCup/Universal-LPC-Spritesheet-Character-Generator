@@ -13,30 +13,6 @@
     "pregnant": "head/heads/human/elderly_small/",
     "teen": "head/heads/human/elderly_small/"
   },
-  "variants": [
-    "light",
-    "amber",
-    "olive",
-    "taupe",
-    "bronze",
-    "brown",
-    "black",
-    "lavender",
-    "blue",
-    "zombie_green",
-    "green",
-    "pale_green",
-    "bright_green",
-    "dark_green",
-    "zombie",
-    "fur_black",
-    "fur_brown",
-    "fur_tan",
-    "fur_copper",
-    "fur_gold",
-    "fur_grey",
-    "fur_white"
-  ],
   "match_body_color": true,
   "animations": [
     "spellcast",
@@ -78,8 +54,12 @@
     "heads_human_elderly_small"
   ],
   "recolors": {
-    "base": "light",
-    "palette": "body"
+    "type": "body",
+    "palettes": [
+      "ulpc.body",
+      "lpcr.body",
+      "lpcr.all"
+    ]
   },
   "type_name": "head"
 }

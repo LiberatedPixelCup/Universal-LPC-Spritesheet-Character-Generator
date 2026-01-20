@@ -143,8 +143,21 @@
     "face_closing"
   ],
   "recolors": {
-    "base": "light",
-    "palette": "body"
+    "color_1": {
+      "type": "body",
+      "palettes": [
+        "ulpc.body",
+        "lpcr.body",
+        "lpcr.all"
+      ]
+    },
+    "color_2": {
+      "type": "eye",
+      "palettes": [
+        "ulpc.eye",
+        "lpcr.eye"
+      ]
+    }
   },
   "type_name": "expression"
 }

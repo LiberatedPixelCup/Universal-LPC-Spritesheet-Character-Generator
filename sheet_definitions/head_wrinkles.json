@@ -8,30 +8,6 @@
     "teen": "head/wrinkles/",
     "pregnant": "head/wrinkles/"
   },
-  "variants": [
-    "light",
-    "amber",
-    "olive",
-    "taupe",
-    "bronze",
-    "brown",
-    "black",
-    "lavender",
-    "blue",
-    "zombie_green",
-    "green",
-    "pale_green",
-    "bright_green",
-    "dark_green",
-    "fur_black",
-    "fur_brown",
-    "fur_tan",
-    "fur_copper",
-    "fur_gold",
-    "fur_grey",
-    "fur_white",
-    "zombie"
-  ],
   "match_body_color": true,
   "animations": [
     "spellcast",
@@ -70,8 +46,12 @@
     "head_wrinkles"
   ],
   "recolors": {
-    "base": "light",
-    "palette": "body"
+    "type": "body",
+    "palettes": [
+      "ulpc.body",
+      "lpcr.body",
+      "lpcr.all"
+    ]
   },
-  "type_name": "wrinkes"
+  "type_name": "wrinkles"
 }

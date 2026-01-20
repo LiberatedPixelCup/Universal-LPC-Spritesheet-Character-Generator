@@ -8,22 +8,6 @@
     "zPos": 100,
     "child": "head/heads/lizard/child/"
   },
-  "variants": [
-    "light",
-    "amber",
-    "olive",
-    "taupe",
-    "bronze",
-    "brown",
-    "black",
-    "lavender",
-    "blue",
-    "zombie_green",
-    "green",
-    "pale_green",
-    "bright_green",
-    "dark_green"
-  ],
   "match_body_color": true,
   "animations": [
     "spellcast",
@@ -70,8 +54,13 @@
     "heads_lizard_child"
   ],
   "recolors": {
-    "base": "light",
-    "palette": "body"
+    "type": "body",
+    "base": "ulpc.body.green",
+    "palettes": [
+      "ulpc.body",
+      "lpcr.body",
+      "lpcr.all"
+    ]
   },
   "type_name": "head"
 }
