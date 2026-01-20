@@ -231,21 +231,12 @@
     "body"
   ],
   "recolors": {
-    "color_1": {
-      "type": "body",
-      "palettes": [
-        "ulpc.body",
-        "lpcr.body",
-        "lpcr.all"
-      ]
-    },
-    "color_2": {
-      "type": "eye",
-      "palettes": [
-        "ulpc.eye",
-        "lpcr.eye"
-      ]
-    }
+    "type": "body",
+    "palettes": [
+      "ulpc.body",
+      "lpcr.body",
+      "lpcr.all"
+    ]
   },
   "type_name": "body"
 }
