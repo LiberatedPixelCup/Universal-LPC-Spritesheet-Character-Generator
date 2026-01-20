@@ -35,7 +35,8 @@
   ],
   "animations": [
     "walk",
-    "hurt"
+    "hurt",
+    "slash_oversize"
   ],
   "credits": [
     {

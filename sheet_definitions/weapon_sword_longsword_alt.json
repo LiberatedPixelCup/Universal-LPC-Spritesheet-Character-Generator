@@ -39,7 +39,10 @@
   "variants": [
     "longsword_alt"
   ],
-  "animations": [],
+  "animations": [
+    "walk_128",
+    "slash_128"
+  ],
   "credits": [
     {
       "file": "weapon/sword/longsword_alt",

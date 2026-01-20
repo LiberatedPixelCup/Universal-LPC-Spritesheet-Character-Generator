@@ -41,7 +41,9 @@
   ],
   "animations": [
     "walk",
-    "hurt"
+    "hurt",
+    "walk_128",
+    "slash_128"
   ],
   "credits": [
     {

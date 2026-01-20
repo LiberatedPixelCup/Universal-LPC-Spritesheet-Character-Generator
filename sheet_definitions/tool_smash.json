@@ -32,7 +32,8 @@
     "pickaxe"
   ],
   "animations": [
-    "walk"
+    "walk",
+    "slash_128"
   ],
   "credits": [
     {

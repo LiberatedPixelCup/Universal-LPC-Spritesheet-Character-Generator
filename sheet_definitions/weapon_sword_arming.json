@@ -84,7 +84,10 @@
     "walk",
     "hurt",
     "idle",
-    "combat"
+    "combat",
+    "slash_128",
+    "backslash_128",
+    "halfslash_128"
   ],
   "credits": [
     {
