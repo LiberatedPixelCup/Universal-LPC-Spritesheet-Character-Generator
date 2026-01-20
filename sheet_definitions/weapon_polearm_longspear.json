@@ -54,7 +54,10 @@
     "silver",
     "steel"
   ],
-  "animations": [],
+  "animations": [
+    "walk_128",
+    "thrust_oversize"
+  ],
   "credits": [
     {
       "file": "weapon/polearm/longspear",

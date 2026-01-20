@@ -216,3 +216,9 @@ canvas {
 #netlify-link {
   margin: -6px auto 0 0;
 }
+
+.is-not-compatible.is-clickable {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed !important;
+}

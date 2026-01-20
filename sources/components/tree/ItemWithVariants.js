@@ -4,9 +4,11 @@ import { getImageToDraw, getPaletteForItem } from '../../canvas/palette-recolor.
 import { replaceInPath } from '../../state/path.js';
 import { variantToFilename, capitalize } from '../../utils/helpers.js';
 
+const classNames = window.classNames;
+
 export const ItemWithVariants = {
 	view: function(vnode) {
-		const { itemId, meta, isSearchMatch } = vnode.attrs;
+		const { itemId, meta, isSearchMatch, isCompatible, tooltipText } = vnode.attrs;
 		const compactDisplay = state.compactDisplay;
 		const displayName = meta.name;
 		const rootViewNode = vnode;
@@ -17,9 +19,13 @@ export const ItemWithVariants = {
 		const isExpanded = state.expandedNodes[nodePath] || false;
 
 		return m("div", {
-			class: isSearchMatch ? "search-result" : ""
+			class: classNames({
+        "search-result": isSearchMatch,
+        "has-text-grey": !isCompatible,
+      })
 		}, [
 			m("div.tree-label", {
+				title: tooltipText,
 				onclick: () => {
 					state.expandedNodes[nodePath] = !isExpanded;
 				},
@@ -37,7 +43,8 @@ export const ItemWithVariants = {
 				}
 			}, [
 				m("span.tree-arrow", { class: isExpanded ? 'expanded' : 'collapsed' }),
-				m("span", displayName)
+				m("span", displayName),
+				!isCompatible ? m("span.ml-1", "⚠️") : null
 			]),
 			isExpanded ? m("div", [
 				m("div", { class: rootViewNode.state.isLoading ? "loading" : "" }),
@@ -83,17 +90,24 @@ export const ItemWithVariants = {
 
 					return m("div.variant-item.is-flex.is-flex-direction-column.is-align-items-center.is-clickable", {
 						key: variant,
-						class: isSelected ? "has-background-link-light has-text-weight-bold has-text-link" : "",
+						class: classNames({
+              "has-background-link-light has-text-weight-bold has-text-link": isSelected,
+              "is-not-compatible": !isCompatible,
+            }),
+						title: tooltipText,
 						onmouseover: (e) => {
+							if (!isCompatible) return;
 							const div = e.currentTarget;
 							if (!isSelected) div.classList.add('has-background-white-ter');
 						},
 						onmouseout: (e) => {
+							if (!isCompatible) return;
 							const div = e.currentTarget;
 
 							if (!isSelected) div.classList.remove('has-background-white-ter');
 						},
 						onclick: () => {
+							if (!isCompatible) return; // Prevent selecting incompatible
 							const selectionGroup = getSelectionGroup(itemId);
 
 							if (isSelected) {

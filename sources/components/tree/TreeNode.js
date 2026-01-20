@@ -45,12 +45,6 @@ export const TreeNode = {
 							return false;
 						}
 
-						// Filter: Only show items compatible with selected licenses
-						if (!isItemLicenseCompatible(itemId)) return false;
-
-						// Filter: Only show items compatible with selected animations
-						if (!isItemAnimationCompatible(itemId)) return false;
-
 						return true;
 					})
 					.map(itemId => {
@@ -59,26 +53,62 @@ export const TreeNode = {
 						const hasVariants = meta.variants && meta.variants.length > 0;
 						const isSearchMatch = searchQuery && searchQuery.length >= 2 && matchesSearch(meta.name, searchQuery);
 
+						const isLicenseCompatibleFlag = isItemLicenseCompatible(itemId);
+						const isAnimCompatibleFlag = isItemAnimationCompatible(itemId);
+						const isCompatible = isLicenseCompatibleFlag && isAnimCompatibleFlag;
+
+						// Build tooltip text
+						const allLicenses = new Set();
+						if (meta?.credits) {
+							meta.credits.forEach(credit => {
+								if (credit.licenses) {
+									credit.licenses.forEach(lic => allLicenses.add(lic.trim()));
+								}
+							});
+						}
+						const licensesText = allLicenses.size > 0 ?
+							`Licenses: ${Array.from(allLicenses).join(', ')}` :
+							'No license info';
+
+						const supportedAnims = meta?.animations || [];
+						const animsText = supportedAnims.length > 0 ?
+							`Animations: ${supportedAnims.join(', ')}` :
+							'No animation info';
+
+						let tooltipText = '';
+						if (!isCompatible) {
+							const issues = [];
+							if (!isLicenseCompatibleFlag) issues.push('licenses');
+							if (!isAnimCompatibleFlag) issues.push('animations');
+							tooltipText = `⚠️ Incompatible with selected ${issues.join(' and ')}\n`;
+						}
+						tooltipText += `${licensesText}\n${animsText}`;
+
 						if (!hasVariants) {
 							// Simple item with no variants
 							const selectionGroup = getSelectionGroup(itemId);
 							const isSelected = state.selections[selectionGroup]?.itemId === itemId;
 							return m("div.tree-node", {
 								key: itemId,
-								class: isSearchMatch ? "search-result" : "",
+								class: `${isSearchMatch ? "search-result" : ""} ${!isCompatible ? "has-text-grey" : ""}`,
 								style: (isSelected ? " font-weight: bold; color: #3273dc;" : ""),
+								title: tooltipText,
 								onclick: () => {
+									if (!isCompatible) return; // Prevent selecting incompatible
 									if (isSelected) {
 										delete state.selections[selectionGroup];
 									} else {
 										state.selections[selectionGroup] = { itemId, name: displayName };
 									}
 								}
-							}, displayName);
+							}, [
+								displayName,
+								!isCompatible ? m("span.ml-1", "⚠️") : null
+							]);
 						}
 
 						// Item with variants - create a sub-component
-						return m(ItemWithVariants, { key: itemId, itemId, meta, isSearchMatch });
+						return m(ItemWithVariants, { key: itemId, itemId, meta, isSearchMatch, isCompatible, tooltipText });
 					})
 			]) : null
 		);
