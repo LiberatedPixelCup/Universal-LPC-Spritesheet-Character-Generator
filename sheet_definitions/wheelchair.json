@@ -25,6 +25,9 @@
     "tan",
     "white"
   ],
+  "animations": [
+    "wheelchair"
+  ],
   "credits": [
     {
       "file": "body/wheelchair",

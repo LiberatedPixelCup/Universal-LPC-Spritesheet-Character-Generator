@@ -2,6 +2,7 @@
 import { LICENSE_CONFIG, ANIMATIONS } from "./constants.js";
 import { syncSelectionsToHash, loadSelectionsFromHash } from "./hash.js";
 import { renderCharacter } from "../canvas/renderer.js";
+import { customAnimationBase, customAnimations } from "../custom-animations.js";
 
 // Global state
 export const state = {
@@ -179,6 +180,12 @@ export function isItemAnimationCompatible(itemId) {
 	// Check if item supports at least one enabled animation
 	for (const itemAnim of meta.animations) {
 		if (enabledAnims.includes(itemAnim)) return true;
+
+    // check if enabledAnims includes base version of itemAnim
+    const customAnim = customAnimations[itemAnim];
+    if (!customAnim) continue;
+    const baseItemAnim = customAnimationBase(customAnim);
+    if (baseItemAnim && enabledAnims.includes(baseItemAnim)) return true;
 	}
 
 	return false;

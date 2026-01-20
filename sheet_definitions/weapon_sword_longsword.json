@@ -67,7 +67,10 @@
   ],
   "animations": [
     "walk",
-    "hurt"
+    "hurt",
+    "slash_oversize",
+    "slash_reverse_oversize",
+    "thrust_oversize"
   ],
   "credits": [
     {

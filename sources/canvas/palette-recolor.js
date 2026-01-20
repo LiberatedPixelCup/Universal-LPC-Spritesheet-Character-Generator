@@ -1,16 +1,19 @@
 // Runtime palette swapping for LPC sprites
 // Recolors body sprites on-demand without caching
 
-import { recolorImageWebGL, isWebGLAvailable } from './webgl-palette-recolor.js';
-import { getDebugParam } from '../main.js';
-import { get2DContext } from './canvas-utils.js';
+import {
+  recolorImageWebGL,
+  isWebGLAvailable,
+} from "./webgl-palette-recolor.js";
+import { getDebugParam } from "../main.js";
+import { get2DContext } from "./canvas-utils.js";
 import { getPaletteFile } from '../state/meta.js';
 import { PALETTE_TYPES, PALETTE_FILES } from '../state/constants.js';
 
 // Configuration flags
 let config = {
-	forceCPU: false,  // Set to true to force CPU mode even if WebGL is available
-	useWebGL: isWebGLAvailable()
+  forceCPU: false, // Set to true to force CPU mode even if WebGL is available
+  useWebGL: isWebGLAvailable(),
 };
 
 // Check WebGL availability once at module load
@@ -19,15 +22,17 @@ const USE_WEBGL = config.useWebGL && !config.forceCPU;
 // Log which method will be used
 const DEBUG = getDebugParam();
 if (DEBUG) {
-	if (USE_WEBGL) {
-		console.log('🎨 Palette recoloring: WebGL GPU-accelerated mode enabled');
-		console.log('💡 To check stats, run: window.getPaletteRecolorStats()');
-		console.log('💡 To force CPU mode, run: window.setPaletteRecolorMode("cpu")');
-	} else if (config.forceCPU) {
-		console.log('🎨 Palette recoloring: CPU mode (forced by configuration)');
-	} else {
-		console.log('🎨 Palette recoloring: CPU mode (WebGL not available)');
-	};
+  if (USE_WEBGL) {
+    console.log("🎨 Palette recoloring: WebGL GPU-accelerated mode enabled");
+    console.log("💡 To check stats, run: window.getPaletteRecolorStats()");
+    console.log(
+      '💡 To force CPU mode, run: window.setPaletteRecolorMode("cpu")'
+    );
+  } else if (config.forceCPU) {
+    console.log("🎨 Palette recoloring: CPU mode (forced by configuration)");
+  } else {
+    console.log("🎨 Palette recoloring: CPU mode (WebGL not available)");
+  }
 }
 
 /**
@@ -36,12 +41,14 @@ if (DEBUG) {
  * @returns {{r: number, g: number, b: number}}
  */
 function hexToRgb(hex) {
-	const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-	return result ? {
-		r: parseInt(result[1], 16),
-		g: parseInt(result[2], 16),
-		b: parseInt(result[3], 16)
-	} : null;
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16),
+      }
+    : null;
 }
 
 /**
@@ -52,7 +59,7 @@ function hexToRgb(hex) {
  * @returns {number} Packed integer
  */
 function packRgb(r, g, b) {
-	return (r << 16) | (g << 8) | b;
+  return (r << 16) | (g << 8) | b;
 }
 
 /**
@@ -63,18 +70,18 @@ function packRgb(r, g, b) {
  * @returns {Array<{source: {r: number, g: number, b: number}, target: {r: number, g: number, b: number}}>}
  */
 function buildColorMap(sourcePalette, targetPalette) {
-	const colorPairs = [];
+  const colorPairs = [];
 
-	for (let i = 0; i < sourcePalette.length; i++) {
-		const sourceRgb = hexToRgb(sourcePalette[i]);
-		const targetRgb = hexToRgb(targetPalette[i]);
+  for (let i = 0; i < sourcePalette.length; i++) {
+    const sourceRgb = hexToRgb(sourcePalette[i]);
+    const targetRgb = hexToRgb(targetPalette[i]);
 
-		if (sourceRgb && targetRgb) {
-			colorPairs.push({ source: sourceRgb, target: targetRgb });
-		}
-	}
+    if (sourceRgb && targetRgb) {
+      colorPairs.push({ source: sourceRgb, target: targetRgb });
+    }
+  }
 
-	return colorPairs;
+  return colorPairs;
 }
 
 /**
@@ -87,16 +94,16 @@ function buildColorMap(sourcePalette, targetPalette) {
  * @returns {{r: number, g: number, b: number}|null} Target color or null if no match
  */
 function findMatchingColor(r, g, b, colorPairs, tolerance = 1) {
-	for (const pair of colorPairs) {
-		const dr = Math.abs(r - pair.source.r);
-		const dg = Math.abs(g - pair.source.g);
-		const db = Math.abs(b - pair.source.b);
+  for (const pair of colorPairs) {
+    const dr = Math.abs(r - pair.source.r);
+    const dg = Math.abs(g - pair.source.g);
+    const db = Math.abs(b - pair.source.b);
 
-		if (dr <= tolerance && dg <= tolerance && db <= tolerance) {
-			return pair.target;
-		}
-	}
-	return null;
+    if (dr <= tolerance && dg <= tolerance && db <= tolerance) {
+      return pair.target;
+    }
+  }
+  return null;
 }
 
 /**
@@ -107,47 +114,47 @@ function findMatchingColor(r, g, b, colorPairs, tolerance = 1) {
  * @returns {HTMLCanvasElement} Recolored canvas
  */
 function recolorImageCPU(sourceImage, sourcePalette, targetPalette) {
-	// Create offscreen canvas
-	const canvas = document.createElement('canvas');
-	canvas.width = sourceImage.width;
-	canvas.height = sourceImage.height;
-	const ctx = get2DContext(canvas);
+  // Create offscreen canvas
+  const canvas = document.createElement("canvas");
+  canvas.width = sourceImage.width;
+  canvas.height = sourceImage.height;
+  const ctx = get2DContext(canvas);
 
-	// Draw source image
-	ctx.drawImage(sourceImage, 0, 0);
+  // Draw source image
+  ctx.drawImage(sourceImage, 0, 0);
 
-	// Get pixel data
-	const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-	const pixels = imageData.data;
+  // Get pixel data
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const pixels = imageData.data;
 
-	// Build color mapping
-	const colorPairs = buildColorMap(sourcePalette, targetPalette);
+  // Build color mapping
+  const colorPairs = buildColorMap(sourcePalette, targetPalette);
 
-	// Recolor pixels with tolerance matching (like WebGL)
-	for (let i = 0; i < pixels.length; i += 4) {
-		const r = pixels[i];
-		const g = pixels[i + 1];
-		const b = pixels[i + 2];
-		const a = pixels[i + 3];
+  // Recolor pixels with tolerance matching (like WebGL)
+  for (let i = 0; i < pixels.length; i += 4) {
+    const r = pixels[i];
+    const g = pixels[i + 1];
+    const b = pixels[i + 2];
+    const a = pixels[i + 3];
 
-		// Skip transparent pixels
-		if (a === 0) continue;
+    // Skip transparent pixels
+    if (a === 0) continue;
 
-		// Find matching color with tolerance
-		const newColor = findMatchingColor(r, g, b, colorPairs);
+    // Find matching color with tolerance
+    const newColor = findMatchingColor(r, g, b, colorPairs);
 
-		if (newColor) {
-			pixels[i] = newColor.r;
-			pixels[i + 1] = newColor.g;
-			pixels[i + 2] = newColor.b;
-			// Keep alpha unchanged
-		}
-	}
+    if (newColor) {
+      pixels[i] = newColor.r;
+      pixels[i + 1] = newColor.g;
+      pixels[i + 2] = newColor.b;
+      // Keep alpha unchanged
+    }
+  }
 
-	// Write back
-	ctx.putImageData(imageData, 0, 0);
+  // Write back
+  ctx.putImageData(imageData, 0, 0);
 
-	return canvas;
+  return canvas;
 }
 
 // Track recolor stats for debugging
@@ -158,14 +165,14 @@ let recolorStats = { webgl: 0, cpu: 0, fallback: 0 };
  * @returns {Object} Stats object with webgl, cpu, and fallback counts
  */
 export function getRecolorStats() {
-	return { ...recolorStats };
+  return { ...recolorStats };
 }
 
 /**
  * Reset recolor statistics
  */
 export function resetRecolorStats() {
-	recolorStats = { webgl: 0, cpu: 0, fallback: 0 };
+  recolorStats = { webgl: 0, cpu: 0, fallback: 0 };
 }
 
 /**
@@ -173,19 +180,19 @@ export function resetRecolorStats() {
  * @param {string} mode - "webgl" or "cpu"
  */
 export function setPaletteRecolorMode(mode) {
-	if (mode === 'cpu') {
-		config.forceCPU = true;
-		console.log('🎨 Switched to CPU mode (forced)');
-	} else if (mode === 'webgl') {
-		if (config.useWebGL) {
-			config.forceCPU = false;
-			console.log('🎨 Switched to WebGL mode');
-		} else {
-			console.warn('⚠️ WebGL not available on this browser');
-		}
-	} else {
-		console.error('Invalid mode. Use "webgl" or "cpu"');
-	}
+  if (mode === "cpu") {
+    config.forceCPU = true;
+    console.log("🎨 Switched to CPU mode (forced)");
+  } else if (mode === "webgl") {
+    if (config.useWebGL) {
+      config.forceCPU = false;
+      console.log("🎨 Switched to WebGL mode");
+    } else {
+      console.warn("⚠️ WebGL not available on this browser");
+    }
+  } else {
+    console.error('Invalid mode. Use "webgl" or "cpu"');
+  }
 }
 
 /**
@@ -193,10 +200,10 @@ export function setPaletteRecolorMode(mode) {
  * @returns {Object} Current config
  */
 export function getPaletteRecolorConfig() {
-	return {
-		...config,
-		activeMode: (!config.forceCPU && config.useWebGL) ? 'webgl' : 'cpu'
-	};
+  return {
+    ...config,
+    activeMode: !config.forceCPU && config.useWebGL ? "webgl" : "cpu",
+  };
 }
 
 /**
@@ -208,20 +215,20 @@ export function getPaletteRecolorConfig() {
  * @returns {HTMLCanvasElement} Recolored canvas
  */
 export function recolorImage(sourceImage, sourcePalette, targetPalette) {
-	const shouldUseWebGL = config.useWebGL && !config.forceCPU;
+  const shouldUseWebGL = config.useWebGL && !config.forceCPU;
 
-	if (shouldUseWebGL) {
-		try {
-			recolorStats.webgl++;
-			return recolorImageWebGL(sourceImage, sourcePalette, targetPalette);
-		} catch (error) {
-			console.warn('⚠️ WebGL recoloring failed, falling back to CPU:', error);
-			recolorStats.fallback++;
-			return recolorImageCPU(sourceImage, sourcePalette, targetPalette);
-		}
-	}
-	recolorStats.cpu++;
-	return recolorImageCPU(sourceImage, sourcePalette, targetPalette);
+  if (shouldUseWebGL) {
+    try {
+      recolorStats.webgl++;
+      return recolorImageWebGL(sourceImage, sourcePalette, targetPalette);
+    } catch (error) {
+      console.warn("⚠️ WebGL recoloring failed, falling back to CPU:", error);
+      recolorStats.fallback++;
+      return recolorImageCPU(sourceImage, sourcePalette, targetPalette);
+    }
+  }
+  recolorStats.cpu++;
+  return recolorImageCPU(sourceImage, sourcePalette, targetPalette);
 }
 
 /**
@@ -230,11 +237,11 @@ export function recolorImage(sourceImage, sourcePalette, targetPalette) {
  * @returns {Promise<Object>} Palette data
  */
 export async function loadPalette(url) {
-	const response = await fetch(url);
-	if (!response.ok) {
-		throw new Error(`Failed to load palette: ${response.statusText}`);
-	}
-	return await response.json();
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Failed to load palette: ${response.statusText}`);
+  }
+  return await response.json();
 }
 
 // Module state for loaded palettes
@@ -258,7 +265,10 @@ export async function getImageToDraw(img, itemId, variant) {
     try {
       return await recolorWithPalette(img, variant, paletteConfig.type);
     } catch (err) {
-      console.warn(`Failed to recolor ${paletteConfig.type} variant ${variant}:`, err);
+      console.warn(
+        `Failed to recolor ${paletteConfig.type} variant ${variant}:`,
+        err
+      );
       return img; // Fallback to original on error
     }
   }
@@ -272,7 +282,7 @@ export async function getImageToDraw(img, itemId, variant) {
  * @returns {Object|null} Palette config object with {type, base, palette} or null if item doesn't use palette recoloring
  */
 export function getPaletteForItem(itemId, meta) {
-	if (!meta || !meta.recolors) return null;
+  if (!meta || !meta.recolors) return null;
 
 	// Return the recolors config from item metadata
 	// This includes: { base: 'light', palette: 'body' }
@@ -289,23 +299,31 @@ export function getPaletteForItem(itemId, meta) {
  * @returns {Promise<Object>} Palette data
  */
 async function ensurePaletteLoaded(paletteType) {
-	if (!loadedPalettes[paletteType]) {
-		const paletteFile = getPaletteFile(paletteType);
-		if (!paletteFile) {
-			throw new Error(`Unknown palette type: ${paletteType} (no file mapping found)`);
-		}
+  if (!loadedPalettes[paletteType]) {
+    const paletteFile = PALETTE_FILES[paletteType];
+    if (!paletteFile) {
+      throw new Error(
+        `Unknown palette type: ${paletteType} (no file mapping found)`
+      );
+    }
 
-		try {
-			loadedPalettes[paletteType] = await loadPalette(paletteFile);
-			if (DEBUG) {
-				console.log(`Loaded ${paletteType} palette with ${Object.keys(loadedPalettes[paletteType]).length} variants`);
-			}
-		} catch (err) {
-			throw new Error(`Failed to load ${paletteType} palette from ${paletteFile}: ${err.message}`);
-		}
-	}
+    try {
+      loadedPalettes[paletteType] = await loadPalette(paletteFile);
+      if (DEBUG) {
+        console.log(
+          `Loaded ${paletteType} palette with ${
+            Object.keys(loadedPalettes[paletteType]).length
+          } variants`
+        );
+      }
+    } catch (err) {
+      throw new Error(
+        `Failed to load ${paletteType} palette from ${paletteFile}: ${err.message}`
+      );
+    }
+  }
 
-	return loadedPalettes[paletteType];
+  return loadedPalettes[paletteType];
 }
 
 /**
@@ -316,16 +334,20 @@ async function ensurePaletteLoaded(paletteType) {
  * @param {string} paletteType - Palette type to use (e.g., "body", "hair", "cloth")
  * @returns {Promise<HTMLCanvasElement>} Recolored canvas
  */
-export async function recolorWithPalette(sourceImage, targetVariant, paletteType) {
-	// Lazy-load palette on first use
-	const palette = await ensurePaletteLoaded(paletteType);
+export async function recolorWithPalette(
+  sourceImage,
+  targetVariant,
+  paletteType
+) {
+  // Lazy-load palette on first use
+  const palette = await ensurePaletteLoaded(paletteType);
 
-	const sourcePalette = palette.source || palette.light;
-	const targetPalette = palette[targetVariant];
+  const sourcePalette = palette.source || palette.light;
+  const targetPalette = palette[targetVariant];
 
-	if (!targetPalette) {
-		throw new Error(`Unknown ${paletteType} variant: ${targetVariant}`);
-	}
+  if (!targetPalette) {
+    throw new Error(`Unknown ${paletteType} variant: ${targetVariant}`);
+  }
 
-	return recolorImage(sourceImage, sourcePalette, targetPalette);
+  return recolorImage(sourceImage, sourcePalette, targetPalette);
 }

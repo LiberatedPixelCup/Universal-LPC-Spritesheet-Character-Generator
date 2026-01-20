@@ -40,7 +40,9 @@
     "scimitar"
   ],
   "animations": [
-    "walk"
+    "walk",
+    "walk_128",
+    "slash_128"
   ],
   "credits": [
     {
