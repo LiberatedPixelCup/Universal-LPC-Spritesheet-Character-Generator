@@ -65,7 +65,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -339,14 +339,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "body_zombie": {
     "name": "Zombie",
@@ -414,7 +527,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -497,7 +610,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -579,7 +692,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -676,7 +789,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -763,7 +876,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -861,7 +974,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -958,7 +1071,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -1055,7 +1168,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -1137,7 +1250,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -1202,7 +1315,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -1279,7 +1392,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY 3.0",
@@ -1419,7 +1532,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -1569,7 +1682,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -1719,7 +1832,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -1871,7 +1984,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -2020,7 +2133,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -2164,7 +2277,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -2301,7 +2414,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -2435,7 +2548,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 4.0",
@@ -2568,7 +2681,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 4.0",
@@ -2701,7 +2814,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 4.0",
@@ -2833,7 +2946,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 4.0",
@@ -2965,7 +3078,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 4.0",
@@ -3096,7 +3209,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 4.0",
@@ -3228,7 +3341,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 4.0",
@@ -3360,7 +3473,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 4.0",
@@ -3472,14 +3585,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "wings_lizard_bat": {
     "name": "Batlike Lizard Wings",
@@ -3561,14 +3787,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "tail_lizard": {
     "name": "Lizard tail",
@@ -3654,14 +3993,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_human_child": {
     "name": "Human child",
@@ -3733,23 +4185,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "heads_human_female": {
     "name": "Human female",
@@ -3829,23 +4410,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "heads_human_male": {
     "name": "Human male",
@@ -3924,23 +4634,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "heads_human_female_elderly": {
     "name": "Human female elderly",
@@ -4019,23 +4858,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "heads_human_male_elderly": {
     "name": "Human male elderly",
@@ -4114,23 +5082,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "heads_human_male_plump": {
     "name": "Human male plump",
@@ -4207,23 +5304,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "heads_human_male_gaunt": {
     "name": "Human male gaunt",
@@ -4301,23 +5527,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "heads_human_male_small": {
     "name": "Human male small",
@@ -4392,23 +5747,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "heads_human_female_small": {
     "name": "Human female small",
@@ -4483,23 +5967,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "heads_human_elderly_small": {
     "name": "Human elderly small",
@@ -4574,23 +6187,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "heads_boarman": {
     "name": "Boarman",
@@ -4669,14 +6411,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_boarman_child": {
     "name": "Boarman child",
@@ -4749,14 +6604,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_pig": {
     "name": "Pig",
@@ -4833,14 +6801,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_pig_child": {
     "name": "Pig child",
@@ -4909,14 +6990,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_sheep": {
     "name": "Sheep",
@@ -4993,15 +7187,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.fur_white",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.fur_white",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_sheep_child": {
     "name": "Sheep child",
@@ -5070,15 +7376,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.fur_white",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.fur_white",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_minotaur": {
     "name": "Minotaur",
@@ -5157,15 +7575,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.fur_tan",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.fur_tan",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_minotaur_female": {
     "name": "Minotaur female",
@@ -5244,15 +7774,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.fur_tan",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.fur_tan",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_minotaur_child": {
     "name": "Minotaur child",
@@ -5325,15 +7967,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.fur_tan",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.fur_tan",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_wartotaur": {
     "name": "Wartotaur",
@@ -5412,15 +8166,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.fur_brown",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.fur_brown",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_wolf_child": {
     "name": "Wolf child",
@@ -5494,15 +8360,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.fur_brown",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.fur_brown",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_wolf_female": {
     "name": "Wolf female",
@@ -5584,15 +8562,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.fur_brown",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.fur_brown",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_wolf_male": {
     "name": "Wolf male",
@@ -5674,15 +8764,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.fur_brown",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.fur_brown",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_rabbit": {
     "name": "Rabbit",
@@ -5760,15 +8962,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.fur_white",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.fur_white",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_rabbit_child": {
     "name": "Rabbit child",
@@ -5838,15 +9152,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.fur_white",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.fur_white",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_rat": {
     "name": "Rat",
@@ -5924,15 +9350,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.fur_white",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.fur_white",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_rat_child": {
     "name": "Rat child",
@@ -6002,15 +9540,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.fur_white",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.fur_white",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_mouse": {
     "name": "Mouse",
@@ -6088,15 +9738,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.fur_tan",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.fur_tan",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_mouse_child": {
     "name": "Mouse child",
@@ -6166,15 +9928,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.fur_white",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.fur_white",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_lizard_child": {
     "name": "Lizard child",
@@ -6245,15 +10119,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.green",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.green",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_lizard_female": {
     "name": "Lizard female",
@@ -6332,15 +10318,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.green",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.green",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_lizard_male": {
     "name": "Lizard male",
@@ -6419,15 +10517,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.green",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.green",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_orc_child": {
     "name": "Orc child",
@@ -6499,15 +10709,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.green",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.green",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_orc_female": {
     "name": "Orc female",
@@ -6589,15 +10911,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.green",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.green",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_orc_male": {
     "name": "Orc male",
@@ -6679,15 +11113,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.green",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.green",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_goblin": {
     "name": "Goblin",
@@ -6767,15 +11313,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.green",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.green",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_goblin_child": {
     "name": "Goblin child",
@@ -6847,15 +11505,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.green",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.green",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_alien": {
     "name": "Alien",
@@ -6933,14 +11703,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_troll": {
     "name": "Troll",
@@ -7018,15 +11901,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.green",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.green",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_troll_child": {
     "name": "Troll child",
@@ -7096,15 +12091,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.green",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.green",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_skeleton": {
     "name": "Skeleton",
@@ -7187,7 +12294,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -7294,15 +12401,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": {
-      "type": "body",
-      "base": "ulpc.zombie",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.zombie",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_jack": {
     "name": "Jack O Lantern",
@@ -7380,7 +12599,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -7480,14 +12699,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "heads_frankenstein": {
     "name": "Frankenstein",
@@ -7565,14 +12897,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "face_neutral": {
     "name": "Neutral",
@@ -7715,23 +13160,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "face_closing": {
     "name": "Closing Eyes",
@@ -7892,23 +13466,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    },
+    ],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -8063,14 +13766,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "face_look_r": {
     "name": "Looking Right",
@@ -8208,23 +14024,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "face_look_l": {
     "name": "Looking Left",
@@ -8362,23 +14307,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "face_eyeroll": {
     "name": "Rolling Eyes",
@@ -8516,23 +14590,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "face_shock": {
     "name": "Shock",
@@ -8658,23 +14861,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "face_angry": {
     "name": "Angry",
@@ -8812,23 +15144,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "face_angry2": {
     "name": "Angry Alt",
@@ -8908,23 +15369,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "face_sad": {
     "name": "Sad",
@@ -9062,23 +15652,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "face_sad2": {
     "name": "Sad Alt",
@@ -9159,23 +15878,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "face_happy": {
     "name": "Happy",
@@ -9313,23 +16161,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "face_happy2": {
     "name": "Happy Alt",
@@ -9409,23 +16386,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "face_blush": {
     "name": "Blush",
@@ -9563,23 +16669,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "face_shame": {
     "name": "Shame",
@@ -9705,23 +16940,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    }
+    ]
   },
   "face_tears": {
     "name": "Tears",
@@ -9793,23 +17157,152 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": {
-      "color_1": {
-        "type": "body",
-        "palettes": [
-          "ulpc",
-          "lpcr",
-          "all.lpcr"
-        ]
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
       },
-      "color_2": {
-        "type": "eye",
-        "palettes": [
-          "ulpc.eye",
-          "lpcr"
-        ]
+      {
+        "material": "eye",
+        "base": "ulpc.blue",
+        "variants": {
+          "eye.ulpc": [
+            "blue",
+            "green",
+            "purple",
+            "red",
+            "orange",
+            "yellow",
+            "brown",
+            "gray"
+          ],
+          "eye.lpcr": [
+            "black",
+            "blue",
+            "brown",
+            "gray",
+            "green",
+            "hazel",
+            "purple"
+          ]
+        }
       }
-    },
+    ],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -9999,7 +17492,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -10030,68 +17523,6 @@ window.itemMetadata = {
         "OGA-BY 3.0",
         "CC-BY-SA 3.0",
         "GPL 3.0"
-      ]
-    }
-  },
-  "eyes_child": {
-    "name": "Child Eyes",
-    "type_name": "eyes",
-    "required": [
-      "child"
-    ],
-    "animations": [
-      "walk",
-      "slash",
-      "hurt",
-      "idle",
-      "jump",
-      "sit"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "other eyes",
-      "eyes_child"
-    ],
-    "replace_in_path": {},
-    "variants": [],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "child": "eyes/human/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "eyes/human/child",
-        "notes": "original by Redshrike, mapped to all frames by Matthew Krohn & JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "Matthew Krohn (makrohn)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "recolors": {
-      "type": "eyes",
-      "palettes": [
-        "ulpc",
-        "lpcrs"
       ]
     }
   },
@@ -10177,7 +17608,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -10276,14 +17707,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "head_ears_elven": {
     "name": "Elven ears",
@@ -10363,14 +17907,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "head_ears_long": {
     "name": "Long ears",
@@ -10448,14 +18105,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "head_ears_medium": {
     "name": "Medium Elven Ears",
@@ -10530,14 +18300,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "head_ears_hang": {
     "name": "Hanging Elven Ears",
@@ -10612,14 +18495,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "head_ears_down": {
     "name": "Downward Elven Ears",
@@ -10694,14 +18690,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "head_ears_dragon": {
     "name": "Dragon Ears",
@@ -10776,14 +18885,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "head_ears_cat": {
     "name": "Cat Ears",
@@ -10902,7 +19124,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -11019,14 +19241,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "head_ears_wolf": {
     "name": "Wolf Ears",
@@ -11145,7 +19480,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -11262,14 +19597,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "head_ears_lykon": {
     "name": "Side Wolf Ears",
@@ -11379,7 +19827,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -11487,14 +19935,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "head_ears_zabos": {
     "name": "Side Cat Ears",
@@ -11604,7 +20165,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -11712,14 +20273,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "head_ears_avyon": {
     "name": "Feather Ears",
@@ -11829,7 +20503,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -11937,14 +20611,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "head_nose_big": {
     "name": "Big nose",
@@ -12018,14 +20805,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "head_nose_button": {
     "name": "Button nose",
@@ -12099,14 +20999,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "head_nose_straight": {
     "name": "Straight nose",
@@ -12180,14 +21193,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "head_nose_elderly": {
     "name": "Elderly nose",
@@ -12258,14 +21384,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "head_nose_large": {
     "name": "Large nose",
@@ -12337,14 +21576,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "eyebrows_thick": {
     "name": "Thick Eyebrows",
@@ -12445,7 +21797,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -12566,7 +21918,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -12654,14 +22006,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "beards_beard": {
     "name": "Basic Beard",
@@ -12761,7 +22226,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -12881,7 +22346,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -12999,7 +22464,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -13120,7 +22585,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -13236,7 +22701,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -13354,7 +22819,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -13476,7 +22941,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -13599,7 +23064,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -13720,7 +23185,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -13836,7 +23301,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -13952,7 +23417,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -14068,7 +23533,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -14184,7 +23649,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -14306,7 +23771,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -14449,7 +23914,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -14592,7 +24057,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -14729,7 +24194,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -14875,7 +24340,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -15021,7 +24486,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -15155,7 +24620,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -15284,7 +24749,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -15413,7 +24878,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -15542,7 +25007,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -15671,7 +25136,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -15800,7 +25265,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -15929,7 +25394,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -16058,7 +25523,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -16190,7 +25655,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -16342,7 +25807,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -16491,7 +25956,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -16618,7 +26083,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -16734,7 +26199,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -16853,7 +26318,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -16972,7 +26437,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -17088,7 +26553,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -17204,7 +26669,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -17320,7 +26785,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -17439,7 +26904,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -17558,7 +27023,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -17677,7 +27142,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -17799,7 +27264,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -17937,7 +27402,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -18053,7 +27518,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -18179,7 +27644,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -18315,7 +27780,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -18441,7 +27906,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -18560,7 +28025,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -18684,7 +28149,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -18808,7 +28273,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -18929,7 +28394,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -19051,7 +28516,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -19180,7 +28645,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -19305,7 +28770,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -19437,7 +28902,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -19567,7 +29032,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -19686,7 +29151,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -19812,7 +29277,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -19936,7 +29401,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -20058,7 +29523,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -20180,7 +29645,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -20323,7 +29788,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -20463,7 +29928,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -20587,7 +30052,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -20710,7 +30175,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -20829,7 +30294,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -20953,7 +30418,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -21077,7 +30542,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -21201,7 +30666,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -21325,7 +30790,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -21452,7 +30917,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -21593,7 +31058,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "GPL 2.0",
@@ -21732,7 +31197,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -21866,7 +31331,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -21984,7 +31449,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -22102,7 +31567,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -22220,7 +31685,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY 3.0"
@@ -22338,7 +31803,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -22456,7 +31921,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -22573,7 +32038,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY 4.0"
@@ -22691,7 +32156,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -22812,7 +32277,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -22956,7 +32421,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -23080,7 +32545,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -23204,7 +32669,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -23328,7 +32793,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -23444,7 +32909,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -23565,7 +33030,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -23685,7 +33150,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -23816,7 +33281,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -23935,7 +33400,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -24082,7 +33547,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -24250,7 +33715,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -24427,7 +33892,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -24604,7 +34069,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -24752,7 +34217,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -24887,7 +34352,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -25024,7 +34489,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -25153,7 +34618,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -25295,7 +34760,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -25430,7 +34895,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -25570,7 +35035,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -25708,7 +35173,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -25847,7 +35312,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -25981,7 +35446,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -26105,7 +35570,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -26239,7 +35704,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -26363,7 +35828,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -26488,7 +35953,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "GPL 2.0",
@@ -26617,7 +36082,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -26742,7 +36207,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "GPL 2.0",
@@ -26881,7 +36346,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -26997,7 +36462,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "child": [
         "OGA-BY 3.0",
@@ -27114,7 +36579,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -27234,7 +36699,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -27362,7 +36827,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -27502,7 +36967,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -27633,7 +37098,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -27762,7 +37227,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -27902,7 +37367,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -28028,7 +37493,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -28197,7 +37662,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -28362,7 +37827,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -28471,14 +37936,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "head_fins_fin_short": {
     "name": "Short fin",
@@ -28555,14 +38133,127 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": {
-      "type": "body",
-      "palettes": [
-        "ulpc",
-        "lpcr",
-        "all.lpcr"
-      ]
-    }
+    "recolors": [
+      {
+        "material": "body",
+        "base": "ulpc.light",
+        "variants": {
+          "body.ulpc": [
+            "light",
+            "amber",
+            "olive",
+            "taupe",
+            "bronze",
+            "brown",
+            "black",
+            "blue",
+            "bright_green",
+            "dark_green",
+            "fur_black",
+            "fur_brown",
+            "fur_copper",
+            "fur_gold",
+            "fur_grey",
+            "fur_tan",
+            "fur_white",
+            "green",
+            "lavender",
+            "pale_green",
+            "zombie",
+            "zombie_green"
+          ],
+          "body.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee"
+          ],
+          "all.lpcr": [
+            "ivory",
+            "porcelain",
+            "peach",
+            "tan",
+            "tawny",
+            "honey",
+            "bronze",
+            "brown",
+            "coffee",
+            "aegean",
+            "amber",
+            "amethyst",
+            "apple",
+            "apricot",
+            "azure",
+            "beige",
+            "black",
+            "blue",
+            "blue_violet",
+            "cerise",
+            "cerulean",
+            "charcoal",
+            "chocolate",
+            "coral",
+            "cornflower",
+            "cyan",
+            "denim",
+            "dove",
+            "emerald",
+            "fern",
+            "forest",
+            "garnet",
+            "gray",
+            "green",
+            "heather",
+            "ice",
+            "indigo",
+            "lavender",
+            "leather",
+            "lemon",
+            "linen",
+            "mauve",
+            "midnight",
+            "mint",
+            "mustard",
+            "navy",
+            "neptune",
+            "oak",
+            "ochre",
+            "olivine",
+            "orange",
+            "pearl",
+            "periwinkle",
+            "pink",
+            "plum",
+            "powder",
+            "purple",
+            "red",
+            "red_orange",
+            "royal",
+            "salmon",
+            "sepia",
+            "shadow",
+            "silver",
+            "sky",
+            "smoke",
+            "soot",
+            "spring",
+            "swamp",
+            "teal",
+            "tumeric",
+            "umber",
+            "white",
+            "wine",
+            "yellow",
+            "source"
+          ]
+        }
+      }
+    ]
   },
   "hat_hood_cloth": {
     "name": "Hood",
@@ -28666,7 +38357,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -28795,7 +38486,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -28921,7 +38612,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -29024,7 +38715,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -29157,7 +38848,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -29283,7 +38974,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -29405,7 +39096,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -29522,7 +39213,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -29643,7 +39334,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -29775,7 +39466,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -29904,7 +39595,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -30038,7 +39729,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -30172,7 +39863,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -30306,7 +39997,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -30441,7 +40132,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -30570,7 +40261,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -30696,7 +40387,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -30812,7 +40503,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -30928,7 +40619,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -31044,7 +40735,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -31160,7 +40851,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -31279,7 +40970,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -31401,7 +41092,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -31523,7 +41214,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -31642,7 +41333,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -31772,7 +41463,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -31891,7 +41582,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -32021,7 +41712,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -32137,7 +41828,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -32253,7 +41944,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -32370,7 +42061,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -32487,7 +42178,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -32604,7 +42295,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -32725,7 +42416,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -32857,7 +42548,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -32974,7 +42665,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -33091,7 +42782,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -33217,7 +42908,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -33333,7 +43024,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -33453,7 +43144,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -33584,7 +43275,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -33679,7 +43370,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -33809,7 +43500,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -33951,7 +43642,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -34071,7 +43762,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -34202,7 +43893,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY 3.0"
@@ -34334,7 +44025,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY 3.0"
@@ -34455,7 +44146,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY 3.0"
@@ -34586,7 +44277,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY 3.0"
@@ -34704,7 +44395,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -34827,7 +44518,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -34962,7 +44653,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -35096,7 +44787,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -35221,7 +44912,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -35348,7 +45039,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -35475,7 +45166,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -35582,7 +45273,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -35694,7 +45385,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -35807,7 +45498,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY 3.0",
@@ -35930,7 +45621,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY 3.0",
@@ -36053,7 +45744,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY 3.0",
@@ -36176,7 +45867,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -36299,7 +45990,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -36424,7 +46115,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -36545,7 +46236,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -36663,7 +46354,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -36786,7 +46477,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -36909,7 +46600,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -37036,7 +46727,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -37135,7 +46826,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -37251,7 +46942,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -37369,7 +47060,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY 3.0",
@@ -37492,7 +47183,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -37610,7 +47301,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY 3.0",
@@ -37733,7 +47424,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -37851,7 +47542,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY 3.0",
@@ -37974,7 +47665,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY 3.0",
@@ -38097,7 +47788,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY 3.0",
@@ -38220,7 +47911,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY 3.0",
@@ -38343,7 +48034,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY 3.0",
@@ -38462,7 +48153,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -38565,7 +48256,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY 3.0",
@@ -38688,7 +48379,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY 3.0",
@@ -38815,7 +48506,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -38925,7 +48616,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -39045,7 +48736,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -39165,7 +48856,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -39285,7 +48976,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -39402,7 +49093,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -39514,7 +49205,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -39623,7 +49314,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -39725,7 +49416,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -39856,7 +49547,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -39981,7 +49672,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -40106,7 +49797,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -40231,7 +49922,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -40346,7 +50037,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -40479,7 +50170,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -40602,7 +50293,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -40742,7 +50433,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -40870,7 +50561,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -41000,7 +50691,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -41137,7 +50828,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -41273,7 +50964,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -41412,7 +51103,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -41551,7 +51242,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -41669,7 +51360,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -41813,7 +51504,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -41931,7 +51622,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -42075,7 +51766,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -42203,7 +51894,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -42331,7 +52022,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -42459,7 +52150,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -42585,7 +52276,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -42705,7 +52396,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -42828,7 +52519,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -42957,7 +52648,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -43095,7 +52786,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -43241,7 +52932,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -43369,7 +53060,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -43458,7 +53149,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -43546,7 +53237,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -43632,7 +53323,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -43718,7 +53409,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -43806,7 +53497,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -43926,7 +53617,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -44046,7 +53737,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -44166,7 +53857,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -44261,7 +53952,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-SA 3.0",
@@ -44383,7 +54074,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -44499,7 +54190,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -44609,7 +54300,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -44706,7 +54397,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -44794,7 +54485,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -44886,7 +54577,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -44973,7 +54664,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -45060,7 +54751,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -45147,7 +54838,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -45235,7 +54926,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -45323,7 +55014,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -45411,7 +55102,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -45499,7 +55190,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -45585,7 +55276,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -45671,7 +55362,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -45757,7 +55448,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -45843,7 +55534,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -45929,7 +55620,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -46015,7 +55706,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -46101,7 +55792,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -46187,7 +55878,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -46315,7 +56006,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -46446,7 +56137,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -46574,7 +56265,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -46657,7 +56348,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -46774,7 +56465,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -46884,7 +56575,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -46967,7 +56658,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -47050,7 +56741,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -47148,7 +56839,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -47246,7 +56937,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "GPL 2.0",
@@ -47349,7 +57040,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -47449,7 +57140,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -47515,7 +57206,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -47649,7 +57340,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -47743,7 +57434,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -47842,7 +57533,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "CC-BY-SA 3.0",
@@ -47932,7 +57623,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0",
@@ -48024,7 +57715,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0",
@@ -48120,7 +57811,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0+",
@@ -48222,7 +57913,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0+",
@@ -48323,7 +58014,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0+",
@@ -48425,7 +58116,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0+",
@@ -48531,7 +58222,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0+",
@@ -48638,7 +58329,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0+",
@@ -48744,7 +58435,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0+",
@@ -48851,7 +58542,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0+",
@@ -48923,7 +58614,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "child": [
         "OGA-BY 3.0",
@@ -49079,7 +58770,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -49195,7 +58886,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -49355,7 +59046,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -49471,7 +59162,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -49581,7 +59272,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -49765,7 +59456,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -49961,7 +59652,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -50042,7 +59733,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -50110,7 +59801,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -50200,7 +59891,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -50305,7 +59996,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -50415,7 +60106,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -50525,7 +60216,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -50635,7 +60326,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -50745,7 +60436,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -50855,7 +60546,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -51041,7 +60732,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -51162,7 +60853,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -51271,7 +60962,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -51381,7 +61072,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -51491,7 +61182,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -51601,7 +61292,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -51711,7 +61402,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -51837,7 +61528,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -51939,7 +61630,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -52036,7 +61727,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -52156,7 +61847,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0",
@@ -52321,7 +62012,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -52437,7 +62128,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -52547,7 +62238,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -52657,7 +62348,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -52767,7 +62458,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -52877,7 +62568,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -52987,7 +62678,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -53075,7 +62766,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-SA 3.0",
@@ -53160,7 +62851,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0",
@@ -53245,7 +62936,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0",
@@ -53339,7 +63030,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0",
@@ -53428,7 +63119,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0"
@@ -53498,7 +63189,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "CC-BY-SA 3.0",
@@ -53600,7 +63291,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -53712,7 +63403,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -53814,7 +63505,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -53914,7 +63605,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0",
@@ -54000,7 +63691,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0",
@@ -54067,7 +63758,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -54147,7 +63838,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -54245,7 +63936,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -54307,7 +63998,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -54370,7 +64061,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -54476,7 +64167,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -54571,7 +64262,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -54656,7 +64347,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -54724,7 +64415,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -54791,7 +64482,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -54858,7 +64549,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -54925,7 +64616,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -55009,7 +64700,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -55135,7 +64826,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -55224,7 +64915,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -55349,7 +65040,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -55470,7 +65161,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -55568,7 +65259,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -55707,7 +65398,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -55852,7 +65543,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -55974,7 +65665,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -56088,7 +65779,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -56191,7 +65882,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -56293,7 +65984,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -56380,7 +66071,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -56467,7 +66158,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -56558,7 +66249,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -56637,7 +66328,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -56742,7 +66433,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -56841,7 +66532,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -56925,7 +66616,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -57012,7 +66703,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -57099,7 +66790,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -57187,7 +66878,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -57315,7 +67006,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "CC-BY-SA 3.0",
@@ -57412,7 +67103,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -57505,7 +67196,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -57612,7 +67303,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -57734,7 +67425,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0"
@@ -57841,7 +67532,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -57967,7 +67658,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -58093,7 +67784,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -58178,7 +67869,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "CC-BY-SA 3.0",
@@ -58259,7 +67950,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -58361,7 +68052,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "muscular": [
         "CC-BY-SA 3.0",
@@ -58496,7 +68187,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -58640,7 +68331,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -58771,7 +68462,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -58927,7 +68618,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -59089,7 +68780,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -59246,7 +68937,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -59408,7 +69099,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -59513,7 +69204,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "pregnant": [
         "CC-BY-SA 3.0",
@@ -59578,7 +69269,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "child": [
         "OGA-BY 3.0",
@@ -59706,7 +69397,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -59838,7 +69529,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -59970,7 +69661,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -60102,7 +69793,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -60238,7 +69929,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -60316,7 +70007,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "child": [
         "OGA-BY 3.0",
@@ -60411,7 +70102,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -60519,7 +70210,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -60624,7 +70315,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -60740,7 +70431,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0",
@@ -60842,7 +70533,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0",
@@ -60947,7 +70638,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "female": [
         "OGA-BY 3.0",
@@ -61052,7 +70743,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -61208,7 +70899,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -61361,7 +71052,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -61519,7 +71210,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -61662,7 +71353,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -61813,7 +71504,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -61973,7 +71664,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -62102,7 +71793,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -62236,7 +71927,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -62346,7 +72037,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -62456,7 +72147,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -62599,7 +72290,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -62733,7 +72424,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -62852,7 +72543,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -62980,7 +72671,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -63113,7 +72804,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -63244,7 +72935,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -63336,7 +73027,7 @@ window.itemMetadata = {
     "preview_x_offset": 304,
     "preview_y_offset": 24,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -63434,7 +73125,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -63522,7 +73213,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -63607,7 +73298,7 @@ window.itemMetadata = {
     "preview_x_offset": 24,
     "preview_y_offset": 48,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -63955,7 +73646,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -64044,7 +73735,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -64135,7 +73826,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -64219,7 +73910,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -64303,7 +73994,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -64387,7 +74078,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -64471,7 +74162,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -64555,7 +74246,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -64639,7 +74330,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -64743,7 +74434,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -64919,7 +74610,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -65028,7 +74719,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -65153,7 +74844,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -65278,7 +74969,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -65403,7 +75094,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -65529,7 +75220,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -65655,7 +75346,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -65780,7 +75471,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -65905,7 +75596,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -66030,7 +75721,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -66155,7 +75846,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -66280,7 +75971,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -66405,7 +76096,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -66531,7 +76222,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -66656,7 +76347,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -66781,7 +76472,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -66907,7 +76598,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -67032,7 +76723,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -67157,7 +76848,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -67282,7 +76973,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -67407,7 +77098,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -67532,7 +77223,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -67657,7 +77348,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -67782,7 +77473,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -67907,7 +77598,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -68032,7 +77723,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -68140,7 +77831,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -68316,7 +78007,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -68426,7 +78117,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -68552,7 +78243,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -68678,7 +78369,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -68804,7 +78495,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -68930,7 +78621,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -69056,7 +78747,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -69182,7 +78873,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -69308,7 +78999,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -69434,7 +79125,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -69560,7 +79251,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -69686,7 +79377,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -69812,7 +79503,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -69938,7 +79629,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -70064,7 +79755,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -70190,7 +79881,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -70316,7 +80007,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -70442,7 +80133,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -70568,7 +80259,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -70694,7 +80385,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -70820,7 +80511,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -70946,7 +80637,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -71072,7 +80763,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -71198,7 +80889,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -71324,7 +81015,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -71450,7 +81141,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -71532,7 +81223,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 18,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -71612,7 +81303,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -71692,7 +81383,7 @@ window.itemMetadata = {
     "preview_x_offset": 16,
     "preview_y_offset": -12,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -71774,7 +81465,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -71903,7 +81594,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -72022,7 +81713,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -72151,7 +81842,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -72238,7 +81929,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -72346,7 +82037,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -72481,7 +82172,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -72582,7 +82273,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -72684,7 +82375,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -72781,7 +82472,7 @@ window.itemMetadata = {
     "preview_x_offset": 28,
     "preview_y_offset": -16,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -72877,7 +82568,7 @@ window.itemMetadata = {
     "preview_x_offset": 28,
     "preview_y_offset": -16,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -72972,7 +82663,7 @@ window.itemMetadata = {
     "preview_x_offset": 28,
     "preview_y_offset": -16,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -73119,7 +82810,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0"
@@ -73219,7 +82910,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -73320,7 +83011,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -73421,7 +83112,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -73505,7 +83196,7 @@ window.itemMetadata = {
     "preview_x_offset": 16,
     "preview_y_offset": -16,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -73584,7 +83275,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -73683,7 +83374,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -73780,7 +83471,7 @@ window.itemMetadata = {
     "preview_x_offset": 11,
     "preview_y_offset": 204,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -73894,7 +83585,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -74011,7 +83702,7 @@ window.itemMetadata = {
     "preview_x_offset": 13,
     "preview_y_offset": 170,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -74128,7 +83819,7 @@ window.itemMetadata = {
     "preview_x_offset": 9,
     "preview_y_offset": 48,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -74245,7 +83936,7 @@ window.itemMetadata = {
     "preview_x_offset": 9,
     "preview_y_offset": 38,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
@@ -74331,7 +84022,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -74446,7 +84137,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -74571,7 +84262,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -74696,7 +84387,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -74822,7 +84513,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC0"
@@ -74931,7 +84622,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "OGA-BY 3.0+",
@@ -75015,7 +84706,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
+    "recolors": [],
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -75211,7 +84902,6 @@ window.categoryTree = {
         },
         "other eyes": {
           "items": [
-            "eyes_child",
             "eyes_cyclops"
           ],
           "children": {}
@@ -76291,6 +85981,1652 @@ window.categoryTree = {
           "children": {}
         }
       }
+    }
+  }
+};
+
+window.paletteMetadata = {
+  "all": {
+    "lpcr": {
+      "ivory": [
+        "#2a1722",
+        "#99423c",
+        "#cc8665",
+        "#e4a47c",
+        "#f9d5ba",
+        "#faece7"
+      ],
+      "porcelain": [
+        "#2a1722",
+        "#99423c",
+        "#e4a47c",
+        "#edc5a8",
+        "#faece7",
+        "#ffffff"
+      ],
+      "peach": [
+        "#2a1722",
+        "#95381c",
+        "#ae6b3f",
+        "#d38b59",
+        "#edc5a8",
+        "#f9d5ba"
+      ],
+      "tan": [
+        "#271920",
+        "#6a1d16",
+        "#965b38",
+        "#c07a4b",
+        "#e4a47c",
+        "#edc5a8"
+      ],
+      "tawny": [
+        "#1a1213",
+        "#6a1d16",
+        "#7f4c31",
+        "#ae6b3f",
+        "#d38b59",
+        "#e4a47c"
+      ],
+      "honey": [
+        "#1a1213",
+        "#3e111a",
+        "#603429",
+        "#7f4c31",
+        "#ae6b3f",
+        "#d38b59"
+      ],
+      "bronze": [
+        "#000000",
+        "#3e111a",
+        "#442725",
+        "#603429",
+        "#7f4c31",
+        "#965b38"
+      ],
+      "brown": [
+        "#000000",
+        "#1a1213",
+        "#2e1f1c",
+        "#442725",
+        "#6b3c2e",
+        "#7f4c31"
+      ],
+      "coffee": [
+        "#000000",
+        "#1a1213",
+        "#2e1f1c",
+        "#2a1722",
+        "#442725",
+        "#603429"
+      ],
+      "aegean": [
+        "#0f1218",
+        "#172038",
+        "#253a5e",
+        "#3a5a72",
+        "#4f899d",
+        "#6ca3b3"
+      ],
+      "amber": [
+        "#1a1213",
+        "#442725",
+        "#794117",
+        "#a16018",
+        "#d19428",
+        "#f3c35f"
+      ],
+      "amethyst": [
+        "#1a1213",
+        "#4c3b64",
+        "#7c6ea6",
+        "#988fba",
+        "#a4b0dc",
+        "#d2d8ef"
+      ],
+      "apple": [
+        "#1b192b",
+        "#1c4525",
+        "#30642f",
+        "#468232",
+        "#75a743",
+        "#a8ca58"
+      ],
+      "apricot": [
+        "#2a1722",
+        "#99423c",
+        "#ec7456",
+        "#ff8c68",
+        "#ffb186",
+        "#edc5a8"
+      ],
+      "azure": [
+        "#1d2560",
+        "#293982",
+        "#324f9a",
+        "#4273c9",
+        "#588de2",
+        "#6bb3f5"
+      ],
+      "beige": [
+        "#2a1722",
+        "#99423c",
+        "#e09c4c",
+        "#f8bc76",
+        "#f4d7a0",
+        "#fdf5cc"
+      ],
+      "black": [
+        "#000000",
+        "#0f1218",
+        "#1b192b",
+        "#29253a",
+        "#343043",
+        "#484152"
+      ],
+      "blue": [
+        "#101025",
+        "#1d2560",
+        "#293982",
+        "#324f9a",
+        "#4273c9",
+        "#588de2"
+      ],
+      "blue_violet": [
+        "#2c2452",
+        "#3b428e",
+        "#324f9a",
+        "#636fc7",
+        "#838ad1",
+        "#a4b0dc"
+      ],
+      "cerise": [
+        "#1a1213",
+        "#481945",
+        "#792a53",
+        "#aa3a6a",
+        "#bd5169",
+        "#ef747e"
+      ],
+      "cerulean": [
+        "#0f1218",
+        "#0d283e",
+        "#18506f",
+        "#217087",
+        "#2a8598",
+        "#3aafc2"
+      ],
+      "charcoal": [
+        "#000000",
+        "#0f1218",
+        "#251f25",
+        "#382b33",
+        "#52414b",
+        "#5b4f55"
+      ],
+      "chocolate": [
+        "#1a1213",
+        "#2b2511",
+        "#40361d",
+        "#61482c",
+        "#75502d",
+        "#946b44"
+      ],
+      "coral": [
+        "#1a1213",
+        "#3e111a",
+        "#6a1d16",
+        "#99423c",
+        "#cd543d",
+        "#ec7456"
+      ],
+      "cornflower": [
+        "#172038",
+        "#253a5e",
+        "#3c5e8b",
+        "#4f8fba",
+        "#73bed3",
+        "#a4dddb"
+      ],
+      "cyan": [
+        "#0d283e",
+        "#18506f",
+        "#217087",
+        "#2a8598",
+        "#3aafc2",
+        "#6cdce7"
+      ],
+      "denim": [
+        "#000000",
+        "#0f1218",
+        "#172038",
+        "#253a5e",
+        "#3a5a72",
+        "#4f899d"
+      ],
+      "dove": [
+        "#2a1722",
+        "#6f6464",
+        "#958080",
+        "#c4b59f",
+        "#e3e7d3",
+        "#ebede9"
+      ],
+      "emerald": [
+        "#0f1218",
+        "#172038",
+        "#19332d",
+        "#1c4525",
+        "#25562e",
+        "#30642f"
+      ],
+      "fern": [
+        "#1b192b",
+        "#19332d",
+        "#314829",
+        "#456238",
+        "#5f874d",
+        "#86b278"
+      ],
+      "forest": [
+        "#000000",
+        "#0f1218",
+        "#172038",
+        "#19332d",
+        "#314829",
+        "#456238"
+      ],
+      "garnet": [
+        "#000000",
+        "#1a1213",
+        "#3e111a",
+        "#591515",
+        "#7b2008",
+        "#95381c"
+      ],
+      "gray": [
+        "#1b192b",
+        "#343043",
+        "#4b4b60",
+        "#6a7587",
+        "#818e97",
+        "#a8b3b8"
+      ],
+      "green": [
+        "#1b192b",
+        "#19332d",
+        "#1c4525",
+        "#30642f",
+        "#5c9a2a",
+        "#468232"
+      ],
+      "heather": [
+        "#2a1722",
+        "#5e3349",
+        "#914d68",
+        "#a1626b",
+        "#ae7771",
+        "#be9694"
+      ],
+      "ice": [
+        "#29253a",
+        "#595e70",
+        "#818e97",
+        "#c7cfcc",
+        "#e0f2f3",
+        "#ffffff"
+      ],
+      "indigo": [
+        "#1a1213",
+        "#29253a",
+        "#4c3b64",
+        "#655789",
+        "#7c6ea6",
+        "#988fba"
+      ],
+      "lavender": [
+        "#1a1213",
+        "#4c3b64",
+        "#988fba",
+        "#a4b0dc",
+        "#d2d8ef",
+        "#e0f2f3"
+      ],
+      "leather": [
+        "#1a1213",
+        "#40361d",
+        "#61482c",
+        "#75502d",
+        "#946b44",
+        "#ad844f"
+      ],
+      "lemon": [
+        "#2b2511",
+        "#61482c",
+        "#af8a35",
+        "#dbbd00",
+        "#f0e059",
+        "#f4e48d"
+      ],
+      "linen": [
+        "#2a1722",
+        "#794117",
+        "#a16018",
+        "#e09c4c",
+        "#f8bc76",
+        "#f4d7a0"
+      ],
+      "mauve": [
+        "#1a1213",
+        "#2a1722",
+        "#5e3349",
+        "#914d68",
+        "#a1626b",
+        "#ae7771"
+      ],
+      "midnight": [
+        "#000000",
+        "#0f1218",
+        "#172038",
+        "#0d283e",
+        "#253a5e",
+        "#3a5a72"
+      ],
+      "mint": [
+        "#19332d",
+        "#456238",
+        "#5f874d",
+        "#86b278",
+        "#adcca6",
+        "#d9f1d8"
+      ],
+      "mustard": [
+        "#2b2511",
+        "#40361d",
+        "#61482c",
+        "#836332",
+        "#af8a35",
+        "#bca51c"
+      ],
+      "navy": [
+        "#000000",
+        "#0f1218",
+        "#101025",
+        "#1d2560",
+        "#293982",
+        "#324f9a"
+      ],
+      "neptune": [
+        "#172038",
+        "#253a5e",
+        "#3a5a72",
+        "#4f899d",
+        "#6ca3b3",
+        "#8abec9"
+      ],
+      "oak": [
+        "#1a1213",
+        "#40361d",
+        "#75502d",
+        "#946b44",
+        "#ad844f",
+        "#bf9d5b"
+      ],
+      "ochre": [
+        "#2b2511",
+        "#61482c",
+        "#af8a35",
+        "#bca51c",
+        "#dbbd00",
+        "#f0e059"
+      ],
+      "olivine": [
+        "#1b192b",
+        "#314829",
+        "#456238",
+        "#5f874d",
+        "#86b278",
+        "#adcca6"
+      ],
+      "orange": [
+        "#3e111a",
+        "#95381c",
+        "#b54936",
+        "#cf6f30",
+        "#e09c4c",
+        "#f8bc76"
+      ],
+      "pearl": [
+        "#2a1722",
+        "#6f6464",
+        "#958080",
+        "#ad988e",
+        "#c4b59f",
+        "#d8d4c0"
+      ],
+      "periwinkle": [
+        "#2a1722",
+        "#5e3349",
+        "#a1626b",
+        "#ae7771",
+        "#be9694",
+        "#d9ada9"
+      ],
+      "pink": [
+        "#2a1722",
+        "#792a53",
+        "#bd5169",
+        "#ef747e",
+        "#f78f8a",
+        "#ffad97"
+      ],
+      "plum": [
+        "#1a1213",
+        "#2a1722",
+        "#481945",
+        "#5e2043",
+        "#792a53",
+        "#aa3a6a"
+      ],
+      "powder": [
+        "#0f1218",
+        "#172038",
+        "#253a5e",
+        "#3c5e8b",
+        "#4f8fba",
+        "#73bed3"
+      ],
+      "purple": [
+        "#000000",
+        "#1b192b",
+        "#29253a",
+        "#4c3b64",
+        "#655789",
+        "#7c6ea6"
+      ],
+      "red": [
+        "#1a1213",
+        "#3e111a",
+        "#591515",
+        "#7b2008",
+        "#95381c",
+        "#b54936"
+      ],
+      "red_orange": [
+        "#3e111a",
+        "#6a1d16",
+        "#95381c",
+        "#b54936",
+        "#cf6f30",
+        "#ff8a00"
+      ],
+      "royal": [
+        "#000000",
+        "#101025",
+        "#1d2560",
+        "#293982",
+        "#324f9a",
+        "#4273c9"
+      ],
+      "salmon": [
+        "#2a1722",
+        "#6a1d16",
+        "#99423c",
+        "#cd543d",
+        "#ec7456",
+        "#ff8c68"
+      ],
+      "sepia": [
+        "#1a1213",
+        "#603429",
+        "#7f4c31",
+        "#ae6b3f",
+        "#e09c4c",
+        "#f8bc76"
+      ],
+      "shadow": [
+        "#0f1218",
+        "#29253a",
+        "#343043",
+        "#4b4b60",
+        "#595e70",
+        "#6a7587"
+      ],
+      "silver": [
+        "#29253a",
+        "#4b4b60",
+        "#6a7587",
+        "#818e97",
+        "#a8b3b8",
+        "#c7cfcc"
+      ],
+      "sky": [
+        "#1d2560",
+        "#324f9a",
+        "#4273c9",
+        "#588de2",
+        "#6bb3f5",
+        "#91cfff"
+      ],
+      "smoke": [
+        "#0f1218",
+        "#52414b",
+        "#5b4f55",
+        "#6f6464",
+        "#958080",
+        "#ad988e"
+      ],
+      "soot": [
+        "#000000",
+        "#0f1218",
+        "#1a1213",
+        "#2b2511",
+        "#40361d",
+        "#61482c"
+      ],
+      "spring": [
+        "#1b192b",
+        "#25562e",
+        "#468232",
+        "#75a743",
+        "#a8ca58",
+        "#d0da91"
+      ],
+      "swamp": [
+        "#0f1218",
+        "#172038",
+        "#19332d",
+        "#314829",
+        "#456238",
+        "#5f874d"
+      ],
+      "teal": [
+        "#000000",
+        "#172038",
+        "#173a55",
+        "#18506f",
+        "#217087",
+        "#2a8598"
+      ],
+      "tumeric": [
+        "#2a1722",
+        "#603429",
+        "#a16018",
+        "#d19428",
+        "#f3c35f",
+        "#f4e48d"
+      ],
+      "umber": [
+        "#000000",
+        "#1a1213",
+        "#2b2511",
+        "#40361d",
+        "#61482c",
+        "#75502d"
+      ],
+      "white": [
+        "#382b33",
+        "#6f6464",
+        "#ad988e",
+        "#d8d4c0",
+        "#ebede9",
+        "#ffffff"
+      ],
+      "wine": [
+        "#000000",
+        "#1a1213",
+        "#2a1722",
+        "#3e111a",
+        "#591515",
+        "#6a1d16"
+      ],
+      "yellow": [
+        "#442725",
+        "#a16018",
+        "#d19428",
+        "#f3c35f",
+        "#f4e48d",
+        "#fdf5cc"
+      ],
+      "source": [
+        "#271920",
+        "#6f6464",
+        "#ad988e",
+        "#d8d4c0",
+        "#ebede9",
+        "#ffffff"
+      ]
+    }
+  },
+  "body": {
+    "lpcr": {
+      "ivory": [
+        "#2a1722",
+        "#99423c",
+        "#cc8665",
+        "#e4a47c",
+        "#f9d5ba",
+        "#faece7"
+      ],
+      "porcelain": [
+        "#2a1722",
+        "#99423c",
+        "#e4a47c",
+        "#edc5a8",
+        "#faece7",
+        "#ffffff"
+      ],
+      "peach": [
+        "#2a1722",
+        "#95381c",
+        "#ae6b3f",
+        "#d38b59",
+        "#edc5a8",
+        "#f9d5ba"
+      ],
+      "tan": [
+        "#271920",
+        "#6a1d16",
+        "#965b38",
+        "#c07a4b",
+        "#e4a47c",
+        "#edc5a8"
+      ],
+      "tawny": [
+        "#271920",
+        "#6a1d16",
+        "#7f4c31",
+        "#ae6b3f",
+        "#d38b59",
+        "#e4a47c"
+      ],
+      "honey": [
+        "#271920",
+        "#3e111a",
+        "#603429",
+        "#7f4c31",
+        "#ae6b3f",
+        "#d38b59"
+      ],
+      "bronze": [
+        "#000000",
+        "#3e111a",
+        "#442725",
+        "#603429",
+        "#7f4c31",
+        "#965b38"
+      ],
+      "brown": [
+        "#000000",
+        "#1a1213",
+        "#2e1f1c",
+        "#442725",
+        "#6b3c2e",
+        "#7f4c31"
+      ],
+      "coffee": [
+        "#000000",
+        "#1a1213",
+        "#2e1f1c",
+        "#2a1722",
+        "#442725",
+        "#603429"
+      ]
+    },
+    "ulpc": {
+      "light": [
+        "#271920",
+        "#99423c",
+        "#cc8665",
+        "#E4A47C",
+        "#F9D5BA",
+        "#FAECE7"
+      ],
+      "amber": [
+        "#281716",
+        "#9E3E37",
+        "#D28144",
+        "#EA9F54",
+        "#FDD082",
+        "#FBE7A4"
+      ],
+      "olive": [
+        "#271920",
+        "#442725",
+        "#7F4C31",
+        "#AE6B3F",
+        "#D38B59",
+        "#E4A47C"
+      ],
+      "taupe": [
+        "#271920",
+        "#503734",
+        "#785946",
+        "#936849",
+        "#BA8454",
+        "#C7935F"
+      ],
+      "bronze": [
+        "#1A1213",
+        "#442725",
+        "#644133",
+        "#7F4C31",
+        "#AE6B3F",
+        "#D38B59"
+      ],
+      "brown": [
+        "#120E10",
+        "#412B29",
+        "#5F4539",
+        "#76513A",
+        "#9C663E",
+        "#B8773F"
+      ],
+      "black": [
+        "#000000",
+        "#1A1213",
+        "#2E1F1C",
+        "#442725",
+        "#603429",
+        "#7F4C31"
+      ],
+      "blue": [
+        "#16171B",
+        "#46425D",
+        "#586B90",
+        "#748DA4",
+        "#A9C9CA",
+        "#C8E8E8"
+      ],
+      "bright_green": [
+        "#02280E",
+        "#06410E",
+        "#255E1D",
+        "#5B8F11",
+        "#75AE23",
+        "#99D248"
+      ],
+      "dark_green": [
+        "#011708",
+        "#02280E",
+        "#06410E",
+        "#255E1D",
+        "#508A48",
+        "#509E59"
+      ],
+      "fur_black": [
+        "#040510",
+        "#0A0E1B",
+        "#0D1621",
+        "#14212C",
+        "#1B2C36",
+        "#154259"
+      ],
+      "fur_brown": [
+        "#000000",
+        "#1E120E",
+        "#251B19",
+        "#473730",
+        "#624135",
+        "#975B5A"
+      ],
+      "fur_copper": [
+        "#0F0506",
+        "#300500",
+        "#6A1A00",
+        "#9C3B01",
+        "#CC6901",
+        "#FAA301"
+      ],
+      "fur_gold": [
+        "#200808",
+        "#552B15",
+        "#AC5D1F",
+        "#E09E2B",
+        "#FCCF56",
+        "#FFE67D"
+      ],
+      "fur_grey": [
+        "#0F0F11",
+        "#36363F",
+        "#55585F",
+        "#6A6E74",
+        "#909699",
+        "#B8BBBC"
+      ],
+      "fur_tan": [
+        "#222121",
+        "#3A200E",
+        "#663A1A",
+        "#975F43",
+        "#B88751",
+        "#DB8E60"
+      ],
+      "fur_white": [
+        "#17171A",
+        "#36363F",
+        "#484E57",
+        "#8B9498",
+        "#B8BBBC",
+        "#D8DCDC"
+      ],
+      "green": [
+        "#140C09",
+        "#09320B",
+        "#19541D",
+        "#228236",
+        "#39AA4E",
+        "#53BF71"
+      ],
+      "lavender": [
+        "#16171B",
+        "#393B44",
+        "#787C8F",
+        "#A0A5BC",
+        "#C9D0EE",
+        "#FBECE6"
+      ],
+      "pale_green": [
+        "#271920",
+        "#314829",
+        "#456238",
+        "#5F874D",
+        "#86B278",
+        "#ADCCA6"
+      ],
+      "zombie": [
+        "#281820",
+        "#6B5C40",
+        "#928364",
+        "#A79778",
+        "#C5B38F",
+        "#DBCBAB"
+      ],
+      "zombie_green": [
+        "#101925",
+        "#074337",
+        "#4A7A69",
+        "#839F6E",
+        "#D4D887",
+        "#F2F0C4"
+      ]
+    }
+  },
+  "cloth": {
+    "ulpc": {
+      "brown": [
+        "#1d131e",
+        "#411E05",
+        "#4B2B13",
+        "#62351C",
+        "#744B30",
+        "#996B4A"
+      ],
+      "leather": [
+        "#2b1c1d",
+        "#311210",
+        "#4B2B13",
+        "#704325",
+        "#75502D",
+        "#9A6F37"
+      ],
+      "walnut": [
+        "#1d0f0e",
+        "#3e2613",
+        "#62351c",
+        "#744b30",
+        "#996b4a",
+        "#a17c50"
+      ],
+      "yellow": [
+        "#301723",
+        "#5F2F25",
+        "#BA5B23",
+        "#D99431",
+        "#F3C03F",
+        "#FFE360"
+      ],
+      "tan": [
+        "#3e2613",
+        "#684415",
+        "#986A20",
+        "#B78C41",
+        "#B7996A",
+        "#CFC587"
+      ],
+      "orange": [
+        "#301723",
+        "#5F1D1B",
+        "#9C3F23",
+        "#D75B1A",
+        "#EF7E19",
+        "#FFA749"
+      ],
+      "rose": [
+        "#1d131e",
+        "#301723",
+        "#562323",
+        "#77372B",
+        "#8A3D28",
+        "#B05F3C"
+      ],
+      "maroon": [
+        "#1d131e",
+        "#400B1F",
+        "#551C22",
+        "#682121",
+        "#832121",
+        "#AE424A"
+      ],
+      "red": [
+        "#1d131e",
+        "#400B1F",
+        "#651117",
+        "#82171C",
+        "#AB1E1E",
+        "#CD2429"
+      ],
+      "pink": [
+        "#1d131e",
+        "#54242E",
+        "#6C3536",
+        "#AE424A",
+        "#C36072",
+        "#E08080"
+      ],
+      "lavender": [
+        "#13112d",
+        "#2B225A",
+        "#402E82",
+        "#7141B2",
+        "#A966DD",
+        "#D085ED"
+      ],
+      "purple": [
+        "#180716",
+        "#13112D",
+        "#261044",
+        "#411357",
+        "#621E78",
+        "#813089"
+      ],
+      "blue": [
+        "#180716",
+        "#281E41",
+        "#322D6A",
+        "#3C49AD",
+        "#466AC9",
+        "#61A0EF"
+      ],
+      "navy": [
+        "#180716",
+        "#20102B",
+        "#281E41",
+        "#322D6A",
+        "#3C49AD",
+        "#466AC9"
+      ],
+      "teal": [
+        "#180716",
+        "#1B2B47",
+        "#0E4E72",
+        "#156C99",
+        "#0098B2",
+        "#00CFDF"
+      ],
+      "bluegray": [
+        "#11150b",
+        "#0B2B28",
+        "#2E403A",
+        "#315B49",
+        "#557E85",
+        "#79979D"
+      ],
+      "forest": [
+        "#09131d",
+        "#07391D",
+        "#0B1F25",
+        "#0B2B28",
+        "#134507",
+        "#1B5502"
+      ],
+      "green": [
+        "#101820",
+        "#192832",
+        "#0B5C2F",
+        "#214437",
+        "#2F8136",
+        "#64A42C"
+      ],
+      "white": [
+        "#281820",
+        "#4D4A5D",
+        "#958080",
+        "#C4B59F",
+        "#E5E6C7",
+        "#FFFFFF"
+      ],
+      "sky": [
+        "#1a0d18",
+        "#313148",
+        "#586B90",
+        "#9FBBCB",
+        "#C6EEFD",
+        "#FFFFFF"
+      ],
+      "slate": [
+        "#1d131e",
+        "#31313E",
+        "#4A5057",
+        "#818B8B",
+        "#B3AFA1",
+        "#E5E6C7"
+      ],
+      "gray": [
+        "#0e0e18",
+        "#201E2B",
+        "#373340",
+        "#585561",
+        "#797580",
+        "#A2A0A4"
+      ],
+      "black": [
+        "#000000",
+        "#101414",
+        "#1C2222",
+        "#22282A",
+        "#2A3034",
+        "#4A5057"
+      ],
+      "charcoal": [
+        "#000000",
+        "#130D14",
+        "#1C2222",
+        "#2A3034",
+        "#4A5057",
+        "#6E7675"
+      ]
+    }
+  },
+  "eye": {
+    "lpcr": {
+      "black": [
+        "#18506f",
+        "#52414b",
+        "#818e97"
+      ],
+      "blue": [
+        "#18506f",
+        "#4f8fba",
+        "#a4dddb"
+      ],
+      "brown": [
+        "#18506f",
+        "#a16018",
+        "#a4dddb"
+      ],
+      "gray": [
+        "#18506f",
+        "#818e97",
+        "#a4dddb"
+      ],
+      "green": [
+        "#18506f",
+        "#7cb82f",
+        "#a4dddb"
+      ],
+      "hazel": [
+        "#18506f",
+        "#ad844f",
+        "#a4dddb"
+      ],
+      "purple": [
+        "#18506f",
+        "#ae7771",
+        "#a4b0dc"
+      ]
+    },
+    "ulpc": {
+      "blue": [
+        "#293d4b",
+        "#5187b3",
+        "#50d4ec"
+      ],
+      "green": [
+        "#2b4b29",
+        "#53b351",
+        "#84ec50"
+      ],
+      "purple": [
+        "#710862",
+        "#b90da0",
+        "#eba0e0"
+      ],
+      "red": [
+        "#532421",
+        "#cb4a39",
+        "#ff3d62"
+      ],
+      "orange": [
+        "#a45227",
+        "#be734b",
+        "#ea9b71"
+      ],
+      "yellow": [
+        "#b69953",
+        "#d9bf46",
+        "#fedf47"
+      ],
+      "brown": [
+        "#232017",
+        "#544c2e",
+        "#7e4e20"
+      ],
+      "gray": [
+        "#3d3c37",
+        "#8b8979",
+        "#ada18f"
+      ]
+    }
+  },
+  "hair": {
+    "lpcr": {
+      "ash_brown": [
+        "#2b2511",
+        "#40361d",
+        "#61482c",
+        "#75502d",
+        "#946b44",
+        "#ad844f"
+      ],
+      "black": [
+        "#000000",
+        "#0f1218",
+        "#1b192b",
+        "#251f25",
+        "#382b33",
+        "#484152"
+      ],
+      "blonde": [
+        "#442725",
+        "#794117",
+        "#a16018",
+        "#d19428",
+        "#f3c35f",
+        "#fdd082"
+      ],
+      "blue": [
+        "#101025",
+        "#181842",
+        "#1d2560",
+        "#293982",
+        "#324f9a",
+        "#4273c9"
+      ],
+      "brown": [
+        "#1a1213",
+        "#2e1f1c",
+        "#442725",
+        "#603429",
+        "#6b3c2e",
+        "#7f4c31"
+      ],
+      "charcoal": [
+        "#000000",
+        "#0f1218",
+        "#251f25",
+        "#382b33",
+        "#52414b",
+        "#5b4f55"
+      ],
+      "chestnut": [
+        "#2e1f1c",
+        "#442725",
+        "#603429",
+        "#7f4c31",
+        "#ae6b3f",
+        "#d38b59"
+      ],
+      "gray": [
+        "#0f1218",
+        "#1b192b",
+        "#343043",
+        "#4b4b60",
+        "#595e70",
+        "#6a7587"
+      ],
+      "green": [
+        "#0d283e",
+        "#19332d",
+        "#25562e",
+        "#468232",
+        "#75a743",
+        "#a8ca58"
+      ],
+      "orange": [
+        "#3e111a",
+        "#95381c",
+        "#b54936",
+        "#cf6f30",
+        "#e09c4c",
+        "#f8bc76"
+      ],
+      "pink": [
+        "#481945",
+        "#792a53",
+        "#bd5169",
+        "#ef747e",
+        "#ffad97",
+        "#edc5a8"
+      ],
+      "platinum": [
+        "#40361d",
+        "#836332",
+        "#af8a35",
+        "#eecc8c",
+        "#f4d7a0",
+        "#fdf5cc"
+      ],
+      "purple": [
+        "#101025",
+        "#181842",
+        "#2c2452",
+        "#4c3b64",
+        "#655789",
+        "#7c6ea6"
+      ],
+      "raven": [
+        "#000000",
+        "#0f1218",
+        "#1b192b",
+        "#29253a",
+        "#343043",
+        "#484152"
+      ],
+      "red": [
+        "#3e111a",
+        "#6a1d16",
+        "#7b2008",
+        "#95381c",
+        "#b54936",
+        "#cf6f30"
+      ],
+      "ruby": [
+        "#2a1722",
+        "#3e111a",
+        "#6a1d16",
+        "#7b2008",
+        "#a42600",
+        "#c7341b"
+      ],
+      "silver": [
+        "#343043",
+        "#4b4b60",
+        "#6a7587",
+        "#818e97",
+        "#a8b3b8",
+        "#c7cfcc"
+      ],
+      "teal": [
+        "#101025",
+        "#0d283e",
+        "#18506f",
+        "#217087",
+        "#2a8598",
+        "#3aafc2"
+      ],
+      "violent": [
+        "#2a1722",
+        "#481945",
+        "#5e2043",
+        "#792a53",
+        "#aa3a6a",
+        "#bd5169"
+      ],
+      "white": [
+        "#484152",
+        "#6f6464",
+        "#958080",
+        "#c4b59f",
+        "#e3e7d3",
+        "#ebede9"
+      ]
+    },
+    "ulpc": {
+      "orange": [
+        "#260D14",
+        "#6A1108",
+        "#A42600",
+        "#BF4000",
+        "#E55600",
+        "#FF8A00"
+      ],
+      "ash": [
+        "#2D061B",
+        "#642442",
+        "#935065",
+        "#C18F8A",
+        "#EDDF95",
+        "#FFF1C1"
+      ],
+      "platinum": [
+        "#1C0E06",
+        "#7D5D5D",
+        "#A87D52",
+        "#C0AB81",
+        "#EDDF95",
+        "#F6F6F3"
+      ],
+      "white": [
+        "#1D1D21",
+        "#484E57",
+        "#8B9498",
+        "#B8BBBC",
+        "#D8DCDC",
+        "#FFFFFF"
+      ],
+      "gray": [
+        "#0E0E0E",
+        "#292929",
+        "#4B4B4B",
+        "#777777",
+        "#AAAAAA",
+        "#D9D9D9"
+      ],
+      "blonde": [
+        "#331313",
+        "#552B15",
+        "#AC5D1F",
+        "#E09E2B",
+        "#FCCF56",
+        "#FFE67D"
+      ],
+      "sandy": [
+        "#1C0E06",
+        "#633E2C",
+        "#99622D",
+        "#BF9D5A",
+        "#EDDC7E",
+        "#F6F6C2"
+      ],
+      "strawberry": [
+        "#300700",
+        "#6A2800",
+        "#9C5900",
+        "#CCA000",
+        "#FAF080",
+        "#F6F6C2"
+      ],
+      "gold": [
+        "#5C0D00",
+        "#902900",
+        "#E47100",
+        "#FFA913",
+        "#FFE453",
+        "#EEFE7E"
+      ],
+      "ginger": [
+        "#300500",
+        "#6A1A00",
+        "#9C3B01",
+        "#CC6901",
+        "#FAA301",
+        "#FFE01E"
+      ],
+      "carrot": [
+        "#5A1500",
+        "#8A2000",
+        "#AC2800",
+        "#EC673E",
+        "#F68764",
+        "#FFB39C"
+      ],
+      "redhead": [
+        "#260D14",
+        "#3E111A",
+        "#73171E",
+        "#9E1F1F",
+        "#C7341B",
+        "#E74716"
+      ],
+      "red": [
+        "#300000",
+        "#870000",
+        "#A40712",
+        "#CB0000",
+        "#E21414",
+        "#F1583A"
+      ],
+      "light_brown": [
+        "#1A0E04",
+        "#301B07",
+        "#60350F",
+        "#7D4513",
+        "#AE682A",
+        "#C88D58"
+      ],
+      "chestnut": [
+        "#200C0D",
+        "#3A130E",
+        "#63200B",
+        "#81310A",
+        "#B6550E",
+        "#D28102"
+      ],
+      "dark_brown": [
+        "#050100",
+        "#160701",
+        "#290E02",
+        "#421603",
+        "#5F1F04",
+        "#792806"
+      ],
+      "dark_gray": [
+        "#000000",
+        "#0E0E0E",
+        "#1B1B1B",
+        "#3B3B3B",
+        "#7C7C7C",
+        "#C1C1C1"
+      ],
+      "black": [
+        "#000000",
+        "#080A0A",
+        "#101414",
+        "#1C2222",
+        "#31313E",
+        "#4A5057"
+      ],
+      "raven": [
+        "#010107",
+        "#040B18",
+        "#061421",
+        "#071F2A",
+        "#0D384D",
+        "#1A5369"
+      ],
+      "rose": [
+        "#30051F",
+        "#6A1E4B",
+        "#9C4373",
+        "#CC789D",
+        "#FABBC6",
+        "#FAE1E5"
+      ],
+      "pink": [
+        "#330410",
+        "#71043A",
+        "#B60A68",
+        "#E941AA",
+        "#E976C4",
+        "#EA95D5"
+      ],
+      "purple": [
+        "#13112D",
+        "#2B225A",
+        "#402E82",
+        "#7141B2",
+        "#A966DD",
+        "#D085ED"
+      ],
+      "violet": [
+        "#1E032E",
+        "#30035C",
+        "#380392",
+        "#3C07D8",
+        "#5662F3",
+        "#5792F2"
+      ],
+      "navy": [
+        "#180716",
+        "#20102B",
+        "#281E41",
+        "#322D6A",
+        "#3C49AD",
+        "#466AC9"
+      ],
+      "blue": [
+        "#000027",
+        "#00005E",
+        "#000091",
+        "#0041B4",
+        "#0074CB",
+        "#1E85EF"
+      ],
+      "green": [
+        "#000400",
+        "#001400",
+        "#002D00",
+        "#005000",
+        "#007C00",
+        "#00A700"
+      ]
+    }
+  },
+  "metal": {
+    "lpcr": {
+      "brass": [
+        "#1b1313",
+        "#3f371e",
+        "#60492c",
+        "#b08a36",
+        "#fcd081",
+        "#fcf6cb"
+      ],
+      "copper": [
+        "#1b1313",
+        "#462825",
+        "#603429",
+        "#794118",
+        "#a26118",
+        "#e19d4d"
+      ],
+      "bronze": [
+        "#1b1313",
+        "#6b1d16",
+        "#94381d",
+        "#b54936",
+        "#eb7129",
+        "#ffb187"
+      ],
+      "iron": [
+        "#000000",
+        "#252025",
+        "#392b34",
+        "#52414a",
+        "#6f6563",
+        "#948081"
+      ],
+      "steel": [
+        "#1b192b",
+        "#484152",
+        "#726b7e",
+        "#867e7f",
+        "#a8b3b8",
+        "#e3e7d3"
+      ],
+      "silver": [
+        "#182039",
+        "#4a4c60",
+        "#6b7588",
+        "#a8b3b8",
+        "#ebedeb",
+        "#e1f3f4"
+      ],
+      "gold": [
+        "#291821",
+        "#794118",
+        "#a26118",
+        "#d19529",
+        "#efcd8c",
+        "#fcf6cb"
+      ]
+    },
+    "ulpc": {
+      "ceramic": [
+        "#181009",
+        "#32251A",
+        "#594435",
+        "#7D604D",
+        "#BA9069",
+        "#FBE3B0"
+      ],
+      "brass": [
+        "#1A1213",
+        "#61482C",
+        "#836332",
+        "#AF8A35",
+        "#FDD082",
+        "#FDF5CC"
+      ],
+      "copper": [
+        "#691503",
+        "#7B2008",
+        "#973C23",
+        "#9D5427",
+        "#EC855C",
+        "#FFC95A"
+      ],
+      "bronze": [
+        "#4F2313",
+        "#6D4A00",
+        "#966600",
+        "#BF8200",
+        "#E7A820",
+        "#FBE3B0"
+      ],
+      "iron": [
+        "#000000",
+        "#1B192B",
+        "#29253A",
+        "#343043",
+        "#484152",
+        "#726B7E"
+      ],
+      "steel": [
+        "#1D131E",
+        "#4D4A5D",
+        "#726B7E",
+        "#867E7F",
+        "#C4B59F",
+        "#FFFFFF"
+      ],
+      "silver": [
+        "#1D131E",
+        "#31313E",
+        "#4A5057",
+        "#818B8B",
+        "#D6E1D3",
+        "#FFFFFF"
+      ],
+      "gold": [
+        "#2E2533",
+        "#6D4A00",
+        "#966600",
+        "#DC6F35",
+        "#FFC95A",
+        "#FFFF61"
+      ]
     }
   }
 };

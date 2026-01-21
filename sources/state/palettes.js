@@ -1,15 +1,15 @@
-// Palette Variants
-export const PALETTE_VARIANTS = {
+// Palette Versions
+export const PALETTE_VERSIONS = {
 	"ulpc": {
-		"label": "Universal LPC Generator"
+		"label": "Universal LPC"
 	},
 	"lpcr": {
 		"label": "LPC Revised"
 	}
 };
 
-// Palette Types Mapping
-export const PALETTE_TYPES = {
+// Palette Materials Mapping
+export const PALETTE_MATERIALS = {
 	"body": {
         "label": "Skintone",
         "default": "ulpc",
@@ -42,36 +42,6 @@ export const PALETTE_TYPES = {
     }
 };
 
-// Palettes Directory
-const PALETTES_DIR = "palette_definitions/";
-
-// Palette Files Mapping
-export const PALETTE_FILES = {
-	"body": {
-        "ulpc": "ulpc_body",
-        "lpcr": "lpcr_body"
-    },
-	"hair": {
-        "ulpc": "ulpc_hair",
-        "lpcr": "lpcr_hair"
-    },
-	"cloth": {
-        "ulpc": "ulpc_cloth",
-        "lpcr": "lpcr_cloth"
-    },
-	"metal": {
-        "ulpc": "ulpc_metal",
-        "lpcr": "lpcr_metal"
-	},
-	"eye": {
-        "ulpc": "ulpc_eyes",
-        "lpcr": "lpcr_eyes"
-	},
-	"all": {
-        "lpcr": "lpcr_all"
-	}
-};
-
 
 // Function to get Multiple Palettes from Recolors Config
 export function getMultiPalettes(recolors) {
@@ -98,8 +68,8 @@ export function getMultiPalettes(recolors) {
 
 // Function to get palette file info
 export function getBasePalette(type, base = null) {
-    // Check Palette Type Exists
-    const typeData = PALETTE_TYPES[type];
+    // Check Palette Material Exists
+    const typeData = PALETTE_MATERIALS[type];
     if (!typeData) {
         console.error(`Palette type not found: ${type}`);
         return null;
@@ -124,7 +94,7 @@ export function getPaletteFile(type, palette) {
     // Get palette data for the specified type
     const fileData = PALETTE_FILES[trueType];
     if (!fileData) {
-        console.error(`Alternate Palette Type does not exist: ${trueType}`);
+        console.error(`Palette Type does not exist: ${trueType}`);
         return null;
     }
 

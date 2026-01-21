@@ -1,5 +1,6 @@
 const fs = require("fs");
 const readline = require("readline");
+const { PALETTE_MATERIALS } = require("../sources/state/palettes.js");
 
 const DEBUG = false; // change this to print debug log
 const onlyIfTemplate = false; // print debugging log only if there is a template
@@ -14,6 +15,7 @@ const es6DynamicTemplate = (templateString, templateVariables) =>
 const templateHTML = fs.readFileSync("scripts/template-general.html", "utf8");
 
 const licensesFound = [];
+const paletteMetadata = {};
 const itemMetadata = {}; // Collect metadata for runtime use
 function searchCredit(fileName, credits, origFileName) {
   if (credits.count <= 0) {
@@ -136,6 +138,47 @@ function parseJson(json) {
     }
   }
 
+  // Collect recolor information
+  const recolors = [];
+  if (definition.recolors !== undefined) {
+    for (let n = 1; n < 10; n++) {
+      const colorDef = definition.recolors[`color_${n}`];
+      if (colorDef) {
+        recolors.push(colorDef);
+      } else {
+        break;
+      }
+    }
+
+    // If no multiple recolors, add single recolor definition
+    if (recolors.length === 0) {
+      recolors.push(definition.recolors);
+    }
+
+    // Add All Palettes
+    for (const recolor of recolors) {
+      // Get Alt Type if Exists
+      const variants = {};
+      if (!recolor.base) {
+        const material = PALETTE_MATERIALS[recolor.material];
+        recolor.base = `${material.default}.${material.base}`;
+      }
+      for (const palette of recolor.palettes) {
+        let [material, version] = palette.split(".");
+        if (!version) {
+            version = material;
+            material = recolor.material;
+        }
+
+        // Append Palettes
+        variants[`${material}.${version}`] = Object.keys(paletteMetadata[material][version]);
+      }
+      delete recolor.palettes;
+      recolor.variants = variants;
+    }
+  }
+
+
   // Collect metadata for this item
   itemMetadata[itemId] = {
     name: name,
@@ -155,7 +198,7 @@ function parseJson(json) {
     preview_x_offset: previewXOffset,
     preview_y_offset: previewYOffset,
     matchBodyColor: definition.match_body_color || false,
-    recolors: definition.recolors || null
+    recolors: recolors || []
   };
 
   let startHTML = `<li id="[ID_FOR]" class="variant-list" data-required="[REQUIRED_SEX]" data-animations="[SUPPORTED_ANIMATIONS]" [DATA_FILE]><span class="condensed">${name}</span><ul>`
@@ -312,6 +355,24 @@ function parseJson(json) {
   return parsed;
 } // fn parseJson
 
+// Walk Palettes Definitions and build Metadata
+const PALETTES_DIR = "palette_definitions/";
+const palettes = fs.readdirSync(PALETTES_DIR);
+for (const palette of palettes) {
+  const filename = palette.replaceAll("\t", "");
+  const [material, version] = palette.replace(".json", "").split("_");
+  try {
+    definition = JSON.parse(fs.readFileSync(PALETTES_DIR + filename));
+    if (!paletteMetadata[material]) {
+      paletteMetadata[material] = {};
+    }
+    paletteMetadata[material][version] = definition;
+  } catch (e) {
+    console.log(`Error parsing palette file: ${filename}`);
+    continue;
+  }
+}
+
 const lineReader = readline.createInterface({
   input: fs.createReadStream("sources/source_index.html")
 });
@@ -371,6 +432,8 @@ lineReader.on("close", function(line) {
 window.itemMetadata = ${JSON.stringify(itemMetadata, null, 2)};
 
 window.categoryTree = ${JSON.stringify(categoryTree, null, 2)};
+
+window.paletteMetadata = ${JSON.stringify(paletteMetadata, null, 2)};
 `;
 
   fs.writeFile("item-metadata.js", metadataJS, function(err) {
