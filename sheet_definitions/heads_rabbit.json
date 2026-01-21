@@ -57,7 +57,7 @@
     "heads_rabbit"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "base": "ulpc.fur_white",
     "palettes": [
       "ulpc",

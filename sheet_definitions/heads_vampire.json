@@ -57,7 +57,7 @@
     "heads_vampire"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "palettes": [
       "ulpc",
       "lpcr",

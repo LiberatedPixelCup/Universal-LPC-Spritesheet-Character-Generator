@@ -37,7 +37,7 @@
     "eyes_child"
   ],
   "recolors": {
-    "type": "eyes",
+    "material": "eyes",
     "palettes": [
       "ulpc",
       "lpcrs"

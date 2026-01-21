@@ -52,7 +52,7 @@
     "head_nose_straight"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "palettes": [
       "ulpc",
       "lpcr",

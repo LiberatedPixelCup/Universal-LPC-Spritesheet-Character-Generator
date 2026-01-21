@@ -59,7 +59,7 @@
     "heads_goblin"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "base": "ulpc.green",
     "palettes": [
       "ulpc",

@@ -50,7 +50,7 @@
     "head_nose_large"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "palettes": [
       "ulpc",
       "lpcr",

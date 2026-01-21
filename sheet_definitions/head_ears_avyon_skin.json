@@ -53,7 +53,7 @@
     "head_ears_avyon_skin"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "palettes": [
       "ulpc",
       "lpcr",

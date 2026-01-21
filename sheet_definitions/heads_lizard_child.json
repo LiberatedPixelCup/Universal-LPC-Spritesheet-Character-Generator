@@ -54,7 +54,7 @@
     "heads_lizard_child"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "base": "ulpc.green",
     "palettes": [
       "ulpc",

@@ -58,7 +58,7 @@
     "heads_zombie"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "base": "ulpc.zombie",
     "palettes": [
       "ulpc",

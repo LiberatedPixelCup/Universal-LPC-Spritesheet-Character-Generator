@@ -52,7 +52,7 @@
     "head_nose_button"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "palettes": [
       "ulpc",
       "lpcr",

@@ -58,7 +58,7 @@
     "heads_minotaur_female"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "base": "ulpc.fur_tan",
     "palettes": [
       "ulpc",

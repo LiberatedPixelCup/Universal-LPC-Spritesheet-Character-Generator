@@ -58,7 +58,7 @@
     "heads_lizard_female"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "base": "ulpc.green",
     "palettes": [
       "ulpc",

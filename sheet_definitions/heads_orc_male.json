@@ -61,7 +61,7 @@
     "heads_orc_male"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "base": "ulpc.green",
     "palettes": [
       "ulpc",

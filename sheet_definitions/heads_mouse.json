@@ -57,7 +57,7 @@
     "heads_mouse"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "base": "ulpc.fur_tan",
     "palettes": [
       "ulpc",

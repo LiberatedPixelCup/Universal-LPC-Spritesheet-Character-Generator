@@ -56,7 +56,7 @@
     "heads_pig"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "palettes": [
       "ulpc",
       "lpcr",

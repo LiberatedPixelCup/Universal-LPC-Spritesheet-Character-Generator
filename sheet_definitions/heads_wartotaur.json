@@ -58,7 +58,7 @@
     "heads_wartotaur"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "base": "ulpc.fur_brown",
     "palettes": [
       "ulpc",

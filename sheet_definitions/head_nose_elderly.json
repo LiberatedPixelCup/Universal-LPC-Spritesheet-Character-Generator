@@ -49,7 +49,7 @@
     "head_nose_elderly"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "palettes": [
       "ulpc",
       "lpcr",

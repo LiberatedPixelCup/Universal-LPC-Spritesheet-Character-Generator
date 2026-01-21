@@ -61,7 +61,7 @@
     "heads_wolf_female"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "base": "ulpc.fur_brown",
     "palettes": [
       "ulpc",

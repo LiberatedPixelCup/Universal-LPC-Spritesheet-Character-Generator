@@ -56,7 +56,7 @@
     "heads_sheep"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "base": "ulpc.fur_white",
     "palettes": [
       "ulpc",

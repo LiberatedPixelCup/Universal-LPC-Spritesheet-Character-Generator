@@ -58,7 +58,7 @@
   ],
   "recolors": {
     "color_1": {
-      "type": "body",
+      "material": "body",
       "palettes": [
         "ulpc",
         "lpcr",
@@ -66,9 +66,9 @@
       ]
     },
     "color_2": {
-      "type": "eye",
+      "material": "eye",
       "palettes": [
-        "ulpc.eye",
+        "eye.ulpc",
         "lpcr"
       ]
     }

@@ -55,7 +55,7 @@
     "head_ears_long"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "palettes": [
       "ulpc",
       "lpcr",

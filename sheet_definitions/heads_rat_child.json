@@ -53,7 +53,7 @@
     "heads_rat_child"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "base": "ulpc.fur_white",
     "palettes": [
       "ulpc",

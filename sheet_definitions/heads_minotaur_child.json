@@ -56,7 +56,7 @@
     "heads_minotaur_child"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "base": "ulpc.fur_tan",
     "palettes": [
       "ulpc",

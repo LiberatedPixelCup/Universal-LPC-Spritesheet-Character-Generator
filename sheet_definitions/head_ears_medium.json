@@ -52,7 +52,7 @@
     "head_ears_medium"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "palettes": [
       "ulpc",
       "lpcr",

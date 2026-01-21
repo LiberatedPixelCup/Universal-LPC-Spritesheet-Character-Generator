@@ -58,7 +58,7 @@
     "heads_boarman"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "palettes": [
       "ulpc",
       "lpcr",

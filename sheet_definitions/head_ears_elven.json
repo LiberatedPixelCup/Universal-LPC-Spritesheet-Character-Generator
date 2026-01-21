@@ -57,7 +57,7 @@
     "head_ears_elven"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "palettes": [
       "ulpc",
       "lpcr",

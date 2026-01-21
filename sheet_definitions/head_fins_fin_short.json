@@ -53,7 +53,7 @@
     "head_fins_fin_short"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "palettes": [
       "ulpc",
       "lpcr",

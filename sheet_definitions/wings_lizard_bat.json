@@ -61,7 +61,7 @@
     "wings_lizard_bat"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "palettes": [
       "ulpc",
       "lpcr",

@@ -52,7 +52,7 @@
     "head_ears_hang"
   ],
   "recolors": {
-    "type": "body",
+    "material": "body",
     "palettes": [
       "ulpc",
       "lpcr",
