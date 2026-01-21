@@ -237,61 +237,53 @@ function parseJson(json) {
   return parsed;
 } // fn parseJson
 
-// TODO: remove the need for the file sources/source_index.html
-// we could replace with a json
-// or walk sheet_definitions tree?
-const lineReader = readline.createInterface({
-  input: fs.createReadStream("sources/source_index.html")
-});
+// Walk Sheet Definitions and build CSV
+const files = fs.readdirSync("./sheet_definitions/");
 let csvGenerated = "filename,notes,authors,licenses,urls\n";
 
-lineReader.on("line", function(line) {
-  if (line.includes("div_sheet_")) {
-    const definition = line.replace("div_sheet_", "");
-    let parsedResult = null;
-    try {
-      parsedResult = parseJson(definition.replaceAll("\t", ""));
-    } catch (e) {
-      return;
-    }
-    csvGenerated += parsedResult.csv;
+for (const file of files) {
+  let parsedResult = null;
+  try {
+    parsedResult = parseJson(file.replace('.json', '').replaceAll("\t", ""));
+  } catch (e) {
+    return;
+  }
+  csvGenerated += parsedResult.csv;
+}
+
+fs.writeFile("CREDITS.csv", csvGenerated, function(err) {
+  if (err) {
+    return console.error(err);
+  } else {
+    console.log("CSV Updated!");
+    printArray(licensesFound, "Found licenses");
   }
 });
 
-lineReader.on("close", function() {
-  fs.writeFile("CREDITS.csv", csvGenerated, function(err) {
-    if (err) {
-      return console.error(err);
-    } else {
-      console.log("CSV Updated!");
-      printArray(licensesFound, "Found licenses");
+// Generate item-metadata.js for runtime use
+// Build category tree from paths
+const categoryTree = { items: [], children: {} };
+
+for (const [itemId, meta] of Object.entries(itemMetadata)) {
+  const itemPath = meta.path || ["Other"];
+
+  // Navigate/create tree structure (skip the last element which is the filename)
+  let current = categoryTree;
+  // Only use path elements except the last one (which is the filename)
+  const categoryPath = itemPath.slice(0, -1);
+
+  for (const segment of categoryPath) {
+    if (!current.children[segment]) {
+      current.children[segment] = { items: [], children: {} };
     }
-  });
+    current = current.children[segment];
+  }
 
-  // Generate item-metadata.js for runtime use
-  // Build category tree from paths
-  const categoryTree = { items: [], children: {} };
+  // Add item to the category (not as a child)
+  current.items.push(itemId);
+} // for itemMetadata
 
-  for (const [itemId, meta] of Object.entries(itemMetadata)) {
-    const itemPath = meta.path || ["Other"];
-
-    // Navigate/create tree structure (skip the last element which is the filename)
-    let current = categoryTree;
-    // Only use path elements except the last one (which is the filename)
-    const categoryPath = itemPath.slice(0, -1);
-
-    for (const segment of categoryPath) {
-      if (!current.children[segment]) {
-        current.children[segment] = { items: [], children: {} };
-      }
-      current = current.children[segment];
-    }
-
-    // Add item to the category (not as a child)
-    current.items.push(itemId);
-  } // for itemMetadata
-
-  const metadataJS = `// THIS FILE IS AUTO-GENERATED. PLEASE DON'T ALTER IT MANUALLY
+const metadataJS = `// THIS FILE IS AUTO-GENERATED. PLEASE DON'T ALTER IT MANUALLY
 // Generated from sheet_definitions/*.json by scripts/generate_sources.js
 // Contains metadata for all customization items to avoid DOM queries at runtime
 
@@ -300,14 +292,13 @@ window.itemMetadata = ${JSON.stringify(itemMetadata, null, 2)};
 window.categoryTree = ${JSON.stringify(categoryTree, null, 2)};
 `;
 
-  fs.writeFile("item-metadata.js", metadataJS, function(err) {
-    if (err) {
-      return console.error(err);
-    } else {
-      console.log("Item Metadata JS Updated!");
-    }
-  });
-}); // lineReader.on('close')
+fs.writeFile("item-metadata.js", metadataJS, function(err) {
+  if (err) {
+    return console.error(err);
+  } else {
+    console.log("Item Metadata JS Updated!");
+  }
+});
 
 function printArray(array, label) {
   const colors = {

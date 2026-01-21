@@ -652,12 +652,6 @@ shoulders_mantal.json,layer_1,75,shoulders/mantal/male/
 shoulders_plate.json,layer_1,65,shoulders/plate/male/ shoulders/plate/female/ shoulders/plate/male/ shoulders/plate/female/
 tail_cat.json,layer_1,125,body/tail/cat/adult/fg/ body/tail/cat/adult/fg/ body/tail/cat/adult/fg/ body/tail/cat/adult/fg/ body/tail/cat/child/fg/
 tail_cat.json,layer_2,5,body/tail/cat/adult/bg/ body/tail/cat/adult/bg/ body/tail/cat/adult/bg/ body/tail/cat/adult/bg/ body/tail/cat/child/bg/
-tail_dragon.json,layer_1,85,body/tail/dragon/adult/fg/ body/tail/dragon/adult/fg/ body/tail/dragon/adult/fg/ body/tail/dragon/adult/fg/ body/tail/dragon/child/fg/
-tail_dragon.json,layer_2,5,body/tail/dragon/adult/bg/ body/tail/dragon/adult/bg/ body/tail/dragon/adult/bg/ body/tail/dragon/adult/bg/ body/tail/dragon/child/bg/
-tail_feather.json,layer_1,85,body/tail/feather/adult/fg/ body/tail/feather/adult/fg/ body/tail/feather/adult/fg/ body/tail/feather/adult/fg/ body/tail/feather/child/fg/
-tail_feather.json,layer_2,5,body/tail/feather/adult/bg/ body/tail/feather/adult/bg/ body/tail/feather/adult/bg/ body/tail/feather/adult/bg/ body/tail/feather/child/bg/
-tail_fin.json,layer_1,85,body/tail/fin/adult/fg/ body/tail/fin/adult/fg/ body/tail/fin/adult/fg/ body/tail/fin/adult/fg/ body/tail/fin/child/fg/
-tail_fin.json,layer_2,5,body/tail/fin/adult/bg/ body/tail/fin/adult/bg/ body/tail/fin/adult/bg/ body/tail/fin/adult/bg/ body/tail/fin/child/bg/
 tail_lizard.json,layer_1,85,body/tail/lizard/adult/fg/ body/tail/lizard/adult/fg/ body/tail/lizard/adult/fg/ body/tail/lizard/adult/fg/ body/tail/lizard/child/fg/
 tail_lizard.json,layer_2,5,body/tail/lizard/adult/bg/ body/tail/lizard/adult/bg/ body/tail/lizard/adult/bg/ body/tail/lizard/adult/bg/ body/tail/lizard/child/bg/
 tail_lizard_alt.json,layer_1,85,body/tail/lizard/alt/adult/fg/ body/tail/lizard/alt/adult/fg/ body/tail/lizard/alt/adult/fg/ body/tail/lizard/alt/adult/fg/ body/tail/lizard/alt/child/fg/
