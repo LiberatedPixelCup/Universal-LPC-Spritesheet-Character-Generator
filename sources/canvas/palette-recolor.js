@@ -7,7 +7,7 @@ import {
 } from "./webgl-palette-recolor.js";
 import { getDebugParam } from "../main.js";
 import { get2DContext } from "./canvas-utils.js";
-import { getBasePalette, getPaletteFile, getPaletteFiles } from '../state/palettes.js';
+import { getBasePalette, getMultiPalettes, getPaletteFile, getPaletteFiles } from '../state/palettes.js';
 
 // Configuration flags
 let config = {
@@ -292,7 +292,7 @@ export function getPaletteForItem(itemId, meta) {
     results.push({
       type: palette.type,
       sourceColor: getBasePalette(palette.type, palette.base ?? null), // TO DO: This should be the colors, not simply the palette name, maybe?!
-      file: getPaletteFiles(palette.type, palette.recolors)
+      file: getPaletteFiles(palette.type, palette.palettes)
     });
   }
 

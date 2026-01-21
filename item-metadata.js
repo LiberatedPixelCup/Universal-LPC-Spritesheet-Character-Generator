@@ -125,29 +125,7 @@ window.itemMetadata = {
       "body"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 10,
@@ -362,39 +340,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -3478,29 +3428,7 @@ window.itemMetadata = {
       "wings_lizard"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 105,
@@ -3544,32 +3472,12 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": null,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+    "recolors": {
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -3613,29 +3521,7 @@ window.itemMetadata = {
       "wings_lizard_bat"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 105,
@@ -3675,22 +3561,12 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": null,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
+    "recolors": {
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -3733,29 +3609,7 @@ window.itemMetadata = {
       "tail_lizard"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 85,
@@ -3800,37 +3654,12 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": null,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+    "recolors": {
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -3871,30 +3700,7 @@ window.itemMetadata = {
       "heads_human_child"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -3928,15 +3734,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "heads_human_female": {
@@ -3981,30 +3793,7 @@ window.itemMetadata = {
       "heads_human_female"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -4041,35 +3830,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "heads_human_male": {
@@ -4113,30 +3888,7 @@ window.itemMetadata = {
       "heads_human_male"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -4173,35 +3925,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "heads_human_female_elderly": {
@@ -4245,30 +3983,7 @@ window.itemMetadata = {
       "heads_human_female_elderly"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -4305,30 +4020,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "heads_human_male_elderly": {
@@ -4372,30 +4078,7 @@ window.itemMetadata = {
       "heads_human_male_elderly"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -4432,30 +4115,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "heads_human_male_plump": {
@@ -4499,30 +4173,7 @@ window.itemMetadata = {
       "heads_human_male_plump"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -4557,30 +4208,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "heads_human_male_gaunt": {
@@ -4624,30 +4266,7 @@ window.itemMetadata = {
       "heads_human_male_gaunt"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -4683,35 +4302,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "heads_human_male_small": {
@@ -4756,30 +4361,7 @@ window.itemMetadata = {
       "heads_human_male_small"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -4811,30 +4393,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "heads_human_female_small": {
@@ -4879,30 +4452,7 @@ window.itemMetadata = {
       "heads_human_female_small"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -4934,30 +4484,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "heads_human_elderly_small": {
@@ -5002,30 +4543,7 @@ window.itemMetadata = {
       "heads_human_elderly_small"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -5057,30 +4575,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "heads_boarman": {
@@ -5125,30 +4634,7 @@ window.itemMetadata = {
       "heads_boarman"
     ],
     "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -5184,29 +4670,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "CC-BY 3.0",
-        "GPL 2.0"
-      ],
-      "female": [
-        "CC-BY 3.0",
-        "GPL 2.0"
-      ],
-      "teen": [
-        "CC-BY 3.0",
-        "GPL 2.0"
-      ],
-      "muscular": [
-        "CC-BY 3.0",
-        "GPL 2.0"
-      ],
-      "pregnant": [
-        "CC-BY 3.0",
-        "GPL 2.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -5248,30 +4716,7 @@ window.itemMetadata = {
       "heads_boarman_child"
     ],
     "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -5305,13 +4750,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "child": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -5356,30 +4799,7 @@ window.itemMetadata = {
       "heads_pig"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -5414,29 +4834,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -5477,30 +4879,7 @@ window.itemMetadata = {
       "heads_pig_child"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -5531,13 +4910,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "child": [
-        "CC-BY 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -5582,30 +4959,7 @@ window.itemMetadata = {
       "heads_sheep"
     ],
     "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -5640,29 +4994,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "base": "ulpc.fur_white",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -5703,30 +5040,7 @@ window.itemMetadata = {
       "heads_sheep_child"
     ],
     "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -5757,13 +5071,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "child": [
-        "CC-BY 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "base": "ulpc.fur_white",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -5808,30 +5121,7 @@ window.itemMetadata = {
       "heads_minotaur"
     ],
     "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -5868,29 +5158,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "base": "ulpc.fur_tan",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -5935,30 +5208,7 @@ window.itemMetadata = {
       "heads_minotaur_female"
     ],
     "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -5995,29 +5245,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "base": "ulpc.fur_tan",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -6058,30 +5291,7 @@ window.itemMetadata = {
       "heads_minotaur_child"
     ],
     "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -6116,13 +5326,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "child": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "base": "ulpc.fur_tan",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -6167,30 +5376,7 @@ window.itemMetadata = {
       "heads_wartotaur"
     ],
     "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -6227,29 +5413,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
+      "type": "body",
+      "base": "ulpc.fur_brown",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -6290,30 +5459,7 @@ window.itemMetadata = {
       "heads_wolf_child"
     ],
     "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -6349,13 +5495,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "child": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "base": "ulpc.fur_brown",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -6400,30 +5545,7 @@ window.itemMetadata = {
       "heads_wolf_female"
     ],
     "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -6463,29 +5585,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "base": "ulpc.fur_brown",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -6530,30 +5635,7 @@ window.itemMetadata = {
       "heads_wolf_male"
     ],
     "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -6593,29 +5675,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "base": "ulpc.fur_brown",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -6660,30 +5725,7 @@ window.itemMetadata = {
       "heads_rabbit"
     ],
     "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -6719,34 +5761,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
+      "type": "body",
+      "base": "ulpc.fur_white",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -6787,30 +5807,7 @@ window.itemMetadata = {
       "heads_rabbit_child"
     ],
     "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -6842,14 +5839,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
+      "type": "body",
+      "base": "ulpc.fur_white",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -6894,30 +5889,7 @@ window.itemMetadata = {
       "heads_rat"
     ],
     "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -6953,34 +5925,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
+      "type": "body",
+      "base": "ulpc.fur_white",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -7021,30 +5971,7 @@ window.itemMetadata = {
       "heads_rat_child"
     ],
     "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -7076,14 +6003,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
+      "type": "body",
+      "base": "ulpc.fur_white",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -7128,29 +6053,7 @@ window.itemMetadata = {
       "heads_mouse"
     ],
     "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -7186,34 +6089,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
+      "type": "body",
+      "base": "ulpc.fur_tan",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -7254,30 +6135,7 @@ window.itemMetadata = {
       "heads_mouse_child"
     ],
     "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -7309,14 +6167,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
+      "type": "body",
+      "base": "ulpc.fur_white",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -7357,22 +6213,7 @@ window.itemMetadata = {
       "heads_lizard_child"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -7405,14 +6246,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "base": "ulpc.green",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -7457,22 +6296,7 @@ window.itemMetadata = {
       "heads_lizard_female"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -7509,34 +6333,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "base": "ulpc.green",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -7581,22 +6383,7 @@ window.itemMetadata = {
       "heads_lizard_male"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -7633,34 +6420,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "base": "ulpc.green",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -7701,30 +6466,7 @@ window.itemMetadata = {
       "heads_orc_child"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -7758,14 +6500,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "base": "ulpc.green",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -7810,22 +6550,7 @@ window.itemMetadata = {
       "heads_orc_female"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -7865,34 +6590,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "base": "ulpc.green",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -7937,30 +6640,7 @@ window.itemMetadata = {
       "heads_orc_male"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -8000,34 +6680,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "base": "ulpc.green",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -8072,30 +6730,7 @@ window.itemMetadata = {
       "heads_goblin"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -8133,39 +6768,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY 4.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY 4.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY 4.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY 4.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY 4.0",
-        "GPL 2.0",
-        "GPL 3.0"
+      "type": "body",
+      "base": "ulpc.green",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -8206,30 +6814,7 @@ window.itemMetadata = {
       "heads_goblin_child"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -8263,15 +6848,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY 4.0",
-        "GPL 2.0",
-        "GPL 3.0"
+      "type": "body",
+      "base": "ulpc.green",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -8315,29 +6897,7 @@ window.itemMetadata = {
       "heads_alien"
     ],
     "replace_in_path": {},
-    "variants": [
-      "lavender",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -8374,34 +6934,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -8446,30 +6983,7 @@ window.itemMetadata = {
       "heads_troll"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -8505,24 +7019,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "CC-BY 3.0"
-      ],
-      "female": [
-        "CC-BY 3.0"
-      ],
-      "teen": [
-        "CC-BY 3.0"
-      ],
-      "muscular": [
-        "CC-BY 3.0"
-      ],
-      "pregnant": [
-        "CC-BY 3.0"
+      "type": "body",
+      "base": "ulpc.green",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -8563,30 +7065,7 @@ window.itemMetadata = {
       "heads_troll_child"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -8618,12 +7097,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "child": [
-        "CC-BY 3.0"
+      "type": "body",
+      "base": "ulpc.green",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -8708,10 +7187,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
+    "recolors": null,
     "licenses": {
       "male": [
         "OGA-BY 3.0",
@@ -8781,30 +7257,7 @@ window.itemMetadata = {
       "heads_zombie"
     ],
     "replace_in_path": {},
-    "variants": [
-      "zombie",
-      "zombie_green",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -8842,29 +7295,12 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": false,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "base": "ulpc.zombie",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -8944,10 +7380,7 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
+    "recolors": null,
     "licenses": {
       "male": [
         "CC-BY-SA 3.0",
@@ -9012,30 +7445,7 @@ window.itemMetadata = {
       "heads_vampire"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -9071,34 +7481,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -9143,30 +7530,7 @@ window.itemMetadata = {
       "heads_frankenstein"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 100,
@@ -9202,34 +7566,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -9287,30 +7628,7 @@ window.itemMetadata = {
         "Human_elderly_small": "elderly"
       }
     },
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 101,
@@ -9398,25 +7716,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "face_closing": {
@@ -9579,8 +7893,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     },
     "licenses": {
       "male": [
@@ -9654,30 +7981,7 @@ window.itemMetadata = {
         "Human_elderly_small": "elderly"
       }
     },
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 101,
@@ -9760,24 +8064,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -9835,30 +8126,7 @@ window.itemMetadata = {
         "Human_elderly_small": "elderly"
       }
     },
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 101,
@@ -9941,25 +8209,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "face_look_l": {
@@ -10016,30 +8280,7 @@ window.itemMetadata = {
         "Human_elderly_small": "elderly"
       }
     },
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 101,
@@ -10122,25 +8363,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "face_eyeroll": {
@@ -10197,30 +8434,7 @@ window.itemMetadata = {
         "Human_elderly_small": "elderly"
       }
     },
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 101,
@@ -10303,25 +8517,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "face_shock": {
@@ -10366,30 +8576,7 @@ window.itemMetadata = {
       "face_shock"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 101,
@@ -10472,25 +8659,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "face_angry": {
@@ -10547,30 +8730,7 @@ window.itemMetadata = {
         "Human_elderly_small": "elderly"
       }
     },
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 101,
@@ -10653,25 +8813,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "face_angry2": {
@@ -10716,30 +8872,7 @@ window.itemMetadata = {
       "face_angry2"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 106,
@@ -10776,30 +8909,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "face_sad": {
@@ -10856,30 +8980,7 @@ window.itemMetadata = {
         "Human_elderly_small": "elderly"
       }
     },
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 101,
@@ -10962,25 +9063,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "face_sad2": {
@@ -11026,30 +9123,7 @@ window.itemMetadata = {
       "face_sad2"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 101,
@@ -11086,30 +9160,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "face_happy": {
@@ -11166,30 +9231,7 @@ window.itemMetadata = {
         "Human_elderly_small": "elderly"
       }
     },
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 101,
@@ -11272,25 +9314,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "face_happy2": {
@@ -11335,30 +9373,7 @@ window.itemMetadata = {
       "face_happy2"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 106,
@@ -11395,30 +9410,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "face_blush": {
@@ -11475,30 +9481,7 @@ window.itemMetadata = {
         "Human_elderly_small": "elderly"
       }
     },
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 101,
@@ -11581,25 +9564,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "face_shame": {
@@ -11644,30 +9623,7 @@ window.itemMetadata = {
       "face_shame"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 101,
@@ -11750,25 +9706,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     }
   },
   "face_tears": {
@@ -11788,17 +9740,7 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
+      "watering"
     ],
     "tags": [
       "expression"
@@ -11852,8 +9794,21 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": false,
     "recolors": {
-      "base": "light",
-      "palette": "body"
+      "color_1": {
+        "type": "body",
+        "palettes": [
+          "ulpc",
+          "lpcr",
+          "all.lpcr"
+        ]
+      },
+      "color_2": {
+        "type": "eye",
+        "palettes": [
+          "ulpc.eye",
+          "lpcr"
+        ]
+      }
     },
     "licenses": {
       "male": [
@@ -12101,16 +10056,7 @@ window.itemMetadata = {
       "eyes_child"
     ],
     "replace_in_path": {},
-    "variants": [
-      "blue",
-      "brown",
-      "gray",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 105,
@@ -12141,12 +10087,11 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
+    "recolors": {
+      "type": "eyes",
+      "palettes": [
+        "ulpc",
+        "lpcrs"
       ]
     }
   },
@@ -12293,30 +10238,7 @@ window.itemMetadata = {
       "head_ears_big"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 105,
@@ -12355,33 +10277,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "child": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -12424,30 +10324,7 @@ window.itemMetadata = {
       "head_ears_elven"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 126,
@@ -12487,33 +10364,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "child": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -12556,30 +10411,7 @@ window.itemMetadata = {
       "head_ears_long"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 126,
@@ -12617,39 +10449,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -12692,30 +10496,7 @@ window.itemMetadata = {
       "head_ears_medium"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 126,
@@ -12750,39 +10531,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -12825,30 +10578,7 @@ window.itemMetadata = {
       "head_ears_hang"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 126,
@@ -12883,39 +10613,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -12958,30 +10660,7 @@ window.itemMetadata = {
       "head_ears_down"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 126,
@@ -13016,39 +10695,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -13091,30 +10742,7 @@ window.itemMetadata = {
       "head_ears_dragon"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 126,
@@ -13149,39 +10777,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -13376,30 +10976,7 @@ window.itemMetadata = {
       "head_ears_cat_skin"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 131,
@@ -13442,37 +11019,12 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": null,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
+    "recolors": {
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -13667,30 +11219,7 @@ window.itemMetadata = {
       "head_ears_wolf_skin"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 131,
@@ -13733,37 +11262,12 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": null,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
+    "recolors": {
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -13949,30 +11453,7 @@ window.itemMetadata = {
       "head_ears_lykon_skin"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 127,
@@ -14006,37 +11487,12 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": null,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
+    "recolors": {
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -14222,30 +11678,7 @@ window.itemMetadata = {
       "head_ears_zabos_skin"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 127,
@@ -14279,37 +11712,12 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": null,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
+    "recolors": {
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -14495,30 +11903,7 @@ window.itemMetadata = {
       "head_ears_avyon_skin"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 127,
@@ -14552,37 +11937,12 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": true,
-    "recolors": null,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
+    "recolors": {
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -14624,30 +11984,7 @@ window.itemMetadata = {
       "head_nose_big"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 105,
@@ -14682,29 +12019,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -14746,30 +12065,7 @@ window.itemMetadata = {
       "head_nose_button"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 105,
@@ -14804,29 +12100,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -14868,30 +12146,7 @@ window.itemMetadata = {
       "head_nose_straight"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 105,
@@ -14926,29 +12181,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -14990,30 +12227,7 @@ window.itemMetadata = {
       "head_nose_elderly"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 105,
@@ -15045,24 +12259,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -15104,30 +12305,7 @@ window.itemMetadata = {
       "head_nose_large"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 105,
@@ -15160,24 +12338,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -15425,7 +12590,7 @@ window.itemMetadata = {
   },
   "head_wrinkles": {
     "name": "Wrinkles",
-    "type_name": "wrinkes",
+    "type_name": "wrinkles",
     "required": [
       "male",
       "female",
@@ -15460,30 +12625,7 @@ window.itemMetadata = {
       "head_wrinkles"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 102,
@@ -15513,24 +12655,11 @@ window.itemMetadata = {
     "preview_y_offset": 0,
     "matchBodyColor": true,
     "recolors": {
-      "base": "light",
-      "palette": "body"
-    },
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -31306,29 +28435,7 @@ window.itemMetadata = {
       "head_fins_fin"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 125,
@@ -31364,37 +28471,12 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
+    "recolors": {
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },
@@ -31437,29 +28519,7 @@ window.itemMetadata = {
       "head_fins_fin_short"
     ],
     "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
+    "variants": [],
     "layers": {
       "layer_1": {
         "zPos": 125,
@@ -31495,37 +28555,12 @@ window.itemMetadata = {
     "preview_x_offset": 0,
     "preview_y_offset": 0,
     "matchBodyColor": false,
-    "recolors": null,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
+    "recolors": {
+      "type": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
       ]
     }
   },

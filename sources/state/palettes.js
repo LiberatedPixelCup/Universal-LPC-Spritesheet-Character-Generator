@@ -119,12 +119,13 @@ export function getPaletteFile(type, palette) {
     if (!variant) {
         variant = trueType;
         trueType = type;
-    } else {
-        fileData = PALETTE_FILES[trueType];
-        if (!fileData) {
-            console.error(`Alternate Palette Type does not exist: ${trueType}`);
-            return null;
-        }
+    }
+
+    // Get palette data for the specified type
+    const fileData = PALETTE_FILES[trueType];
+    if (!fileData) {
+        console.error(`Alternate Palette Type does not exist: ${trueType}`);
+        return null;
     }
 
     // Variant Does Not Exist?!
@@ -141,12 +142,17 @@ export function getPaletteFile(type, palette) {
 }
 
 // Get All Palette Files
-export function getPaletteFiles(type, palettes) {
+export function getPaletteFiles(type, palettes = null) {
     // Get palette data for the specified type
     let fileData = PALETTE_FILES[type];
     if (!fileData) {
         console.error(`Palette Type does not exist: ${type}`);
         return null;
+    }
+
+    // If palettes is null, use all available palettes for the type
+    if (palettes === null) {
+        palettes = Object.keys(fileData);
     }
 
     // Get List of Supported Palettes
