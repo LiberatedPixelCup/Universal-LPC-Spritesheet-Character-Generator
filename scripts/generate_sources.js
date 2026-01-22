@@ -13,8 +13,10 @@ require("child_process").fork("scripts/zPositioning/parse_zpos.js");
 const es6DynamicTemplate = (templateString, templateVariables) =>
   templateString.replace(/\${(.*?)}/g, (_, g) => templateVariables[g]);
 
+// Collect metadata for runtime use
 const licensesFound = [];
-const itemMetadata = {}; // Collect metadata for runtime use
+const itemMetadata = {};
+const categoryTree = { items: [], children: {} };
 
 function searchCredit(fileName, credits, origFileName) {
   if (credits.count <= 0) {
@@ -66,15 +68,29 @@ function parseTree(filePath, fileName) {
     throw e;
   }
 
-  const { label, priority, path: itemPath } = meta;
+  const { label, priority, required, animations, path: itemPath } = meta;
 
+  let current = categoryTree;
+  const categoryPath = filePath.replace("sheet_definitions" + path.sep, "").split(path.sep);
   const treeId = filePath.split(path.sep).pop();
-  categoryTree.children[treeId] = {
-    items: [],
-    children: {},
-    label: label || treeId,
-    priority: priority || 100
-  };
+
+  for (let segment of categoryPath) {
+    if (!current.children[segment]) {
+      current.children[segment] = {
+        items: [],
+        children: {}
+      };
+
+      // Only Set Metadata on Current Tree ID
+      if (segment === treeId) {
+        current.children[segment].label = label;
+        current.children[segment].priority = priority || null;
+        current.children[segment].required = required || [];
+        current.children[segment].animations = animations || [];
+      }
+    }
+    current = current.children[segment];
+  }
 } // fn parseTree
 
 // Parse Asset JSON File
@@ -98,6 +114,8 @@ function parseJson(filePath, fileName) {
   const searchFileName = fileName.replace(".json", "");
   if (DEBUG && (!onlyIfTemplate || queryObj))
     console.log(`Parsing ${fullPath}`);
+
+  // Read JSON Definition
   let definition = null;
   try {
     definition = JSON.parse(fs.readFileSync(fullPath));
@@ -105,13 +123,23 @@ function parseJson(filePath, fileName) {
     console.error("error in", fullPath);
     throw e;
   }
+
   const {
     variants,
     name,
     credits,
     replace_in_path,
-    path: itemPath
+    //path: itemPath,
+    priority,
+    ignore
   } = definition;
+
+  // Skip Ignored Items
+  if (ignore === true) {
+    throw Error(`Skipping ignored item: ${searchFileName}`);
+  }
+
+
   const { tags = [], required_tags = [], excluded_tags = [] } = definition;
   const typeName = definition.type_name;
   const defaultAnimations = [
@@ -149,6 +177,8 @@ function parseJson(filePath, fileName) {
       .join("_");
     itemId = `${itemId}_${vals}`;
   }*/
+  const itemPath = filePath.replace("sheet_definitions" + path.sep, "").split(path.sep);
+  itemPath.push(itemId);
 
   // Collect layer information (file paths and zPos)
   const layers = {};
@@ -164,13 +194,14 @@ function parseJson(filePath, fileName) {
   // Collect metadata for this item
   itemMetadata[itemId] = {
     name: name,
+    priority: priority || null,
     type_name: typeName,
     required: requiredSexes,
     animations: animations,
     tags: tags,
     required_tags: required_tags,
     excluded_tags: excluded_tags,
-    path: itemPath || ["other"],
+    path: itemPath || treePath || ["other"],
     replace_in_path: replace_in_path || {},
     variants: variants || [],
     layers: layers,
@@ -280,14 +311,15 @@ files.forEach(file => {
     return;
   } else if (file.name.startsWith("meta_")) {
     // Handle Category Tree
-    //parseTree(file.path, file.name);
+    parseTree(file.path, file.name);
     return;
   } else {
     let parsedResult = null;
     try {
       parsedResult = parseJson(file.path, file.name);
     } catch (e) {
-      console.log(e);
+      if (DEBUG && !onlyIfTemplate)
+        console.log(e);
       return;
     }
     csvGenerated += parsedResult.csv;
@@ -304,9 +336,6 @@ fs.writeFile("CREDITS.csv", csvGenerated, function(err) {
 });
 
 // Generate item-metadata.js for runtime use
-// Build category tree from paths
-const categoryTree = { items: [], children: {} };
-
 for (const [itemId, meta] of Object.entries(itemMetadata)) {
   const itemPath = meta.path || ["Other"];
 
@@ -325,6 +354,43 @@ for (const [itemId, meta] of Object.entries(itemMetadata)) {
   // Add item to the category (not as a child)
   current.items.push(itemId);
 } // for itemMetadata
+
+function sortCategoryTree(node) {
+  const sortedChildren = Object.entries(node.children || {}).sort(
+    ([keyA, valA], [keyB, valB]) => {
+      const a = valA.priority ?? Number.POSITIVE_INFINITY;
+      const b = valB.priority ?? Number.POSITIVE_INFINITY;
+      if (a !== b) return a - b;
+      const labelA = valA.label ?? keyA;
+      const labelB = valB.label ?? keyB;
+      return labelA.localeCompare(labelB);
+    }
+  );
+
+  const reordered = {};
+  for (const [key, child] of sortedChildren) {
+    sortCategoryTree(child);
+    reordered[key] = child;
+  }
+  node.children = reordered;
+
+  if (node.items) {
+    node.items.sort((idA, idB) => {
+      const metaA = itemMetadata[idA] || {};
+      const metaB = itemMetadata[idB] || {};
+      const a = metaA.priority ?? Number.POSITIVE_INFINITY;
+      const b = metaB.priority ?? Number.POSITIVE_INFINITY;
+      if (a !== b) return a - b;
+      const nameA = metaA.name ?? idA;
+      const nameB = metaB.name ?? idB;
+      return nameA.localeCompare(nameB);
+    });
+  }
+
+  return node;
+}
+
+sortCategoryTree(categoryTree);
 
 const metadataJS = `// THIS FILE IS AUTO-GENERATED. PLEASE DON'T ALTER IT MANUALLY
 // Generated from sheet_definitions/*.json by scripts/generate_sources.js

@@ -5,6 +5,7 @@
 window.itemMetadata = {
   "wound_arm": {
     "name": "Arm",
+    "priority": null,
     "type_name": "wound_arm",
     "required": [
       "male",
@@ -91,6 +92,7 @@ window.itemMetadata = {
   },
   "wound_brain": {
     "name": "Brain",
+    "priority": null,
     "type_name": "wound_brain",
     "required": [
       "male",
@@ -187,6 +189,7 @@ window.itemMetadata = {
   },
   "wound_eye_left": {
     "name": "Left Eye",
+    "priority": null,
     "type_name": "wound_eye_left",
     "required": [
       "male",
@@ -284,6 +287,7 @@ window.itemMetadata = {
   },
   "wound_eye_right": {
     "name": "Right Eye",
+    "priority": null,
     "type_name": "wound_eye_right",
     "required": [
       "male",
@@ -380,6 +384,7 @@ window.itemMetadata = {
   },
   "wound_mouth": {
     "name": "Mouth",
+    "priority": null,
     "type_name": "wound_mouth",
     "required": [
       "male",
@@ -476,6 +481,7 @@ window.itemMetadata = {
   },
   "wound_ribs": {
     "name": "Ribs",
+    "priority": null,
     "type_name": "wound_ribs",
     "required": [
       "male",
@@ -562,6 +568,7 @@ window.itemMetadata = {
   },
   "arms_armour": {
     "name": "Armour",
+    "priority": 20,
     "type_name": "arms",
     "required": [
       "male",
@@ -679,100 +686,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "arms_bracers": {
-    "name": "Bracers",
-    "type_name": "bracers",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "arms",
-      "wrists",
-      "arms_bracers"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "steel",
-      "iron",
-      "ceramic",
-      "brass",
-      "copper",
-      "bronze",
-      "silver",
-      "gold"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 70,
-        "male": "arms/bracers/male/",
-        "female": "arms/bracers/female/",
-        "pregnant": "arms/bracers/female/",
-        "muscular": "arms/bracers/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "arms/bracers",
-        "notes": "",
-        "authors": [
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
   "arms_gloves": {
     "name": "Gloves",
+    "priority": null,
     "type_name": "gloves",
     "required": [
       "male",
@@ -928,6 +844,7 @@ window.itemMetadata = {
   },
   "arms_hands_ring_stud": {
     "name": "Stud Ring",
+    "priority": null,
     "type_name": "ring",
     "required": [
       "male",
@@ -1011,6 +928,7 @@ window.itemMetadata = {
   },
   "bauldron": {
     "name": "Bauldron",
+    "priority": null,
     "type_name": "bauldron",
     "required": [
       "male",
@@ -1111,155 +1029,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "wrists_cuffs": {
-    "name": "Cuffs",
-    "type_name": "wrists",
-    "required": [
-      "male"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "arms",
-      "wrists",
-      "wrists_cuffs"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 70,
-        "male": "wrists/cuffs/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "wrists/cuffs",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-pirates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "wrists_cuffs_lace": {
-    "name": "Lace Cuffs",
-    "type_name": "wrists",
-    "required": [
-      "male"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "arms",
-      "wrists",
-      "wrists_cuffs_lace"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "bronze",
-      "gold",
-      "silver",
-      "red",
-      "blue",
-      "teal",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 70,
-        "male": "wrists/lace/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "wrists/lace",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-pirates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "body": {
+  "body_color": {
     "name": "Body Color",
+    "priority": 10,
     "type_name": "body",
     "required": [
       "male",
@@ -1293,7 +1065,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "body",
-      "body"
+      "body_color"
     ],
     "replace_in_path": {},
     "variants": [
@@ -1567,6 +1339,7 @@ window.itemMetadata = {
   },
   "shadow": {
     "name": "Shadow",
+    "priority": 20,
     "type_name": "shadow",
     "required": [
       "male",
@@ -1650,6 +1423,7 @@ window.itemMetadata = {
   },
   "wheelchair": {
     "name": "Wheelchair",
+    "priority": 40,
     "type_name": "wheelchair",
     "required": [
       "male",
@@ -1666,7 +1440,6 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "body",
-      "wheelchair",
       "wheelchair"
     ],
     "replace_in_path": {},
@@ -1741,8 +1514,5006 @@ window.itemMetadata = {
       ]
     }
   },
+  "feet_armour": {
+    "name": "Armour",
+    "priority": 50,
+    "type_name": "shoes",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "feet",
+      "feet_armour"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "steel",
+      "iron",
+      "ceramic",
+      "brass",
+      "copper",
+      "bronze",
+      "silver",
+      "gold"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 15,
+        "male": "feet/armour/plate/male/",
+        "muscular": "feet/armour/plate/male/",
+        "female": "feet/armour/plate/female/",
+        "pregnant": "feet/armour/plate/female/",
+        "teen": "feet/armour/plate/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "feet/armour/plate",
+        "notes": "original by wulax, recolors by bigbeargames, edits for v3 base and recolors by bluecarrot16",
+        "authors": [
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      },
+      {
+        "file": "feet/armour/plate/female",
+        "notes": "original by wulax, edited for female base by makrohn, recolors by bigbeargames, edits for v3 base and recolors by bluecarrot16",
+        "authors": [
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "feet_hoofs": {
+    "name": "Hoofs",
+    "priority": 80,
+    "type_name": "shoes",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "feet",
+      "feet_hoofs"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 15,
+        "male": "feet/hoofs/male/",
+        "muscular": "feet/hoofs/male/",
+        "female": "feet/hoofs/female/",
+        "teen": "feet/hoofs/female/",
+        "pregnant": "feet/hoofs/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "feet/hoofs",
+        "notes": "",
+        "authors": [
+          "Evert"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-faun-and-minotaur"
+        ]
+      },
+      {
+        "file": "feet/hoofs/female",
+        "notes": "edited for v3 female bases by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Evert"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-faun-and-minotaur",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "feet_sandals": {
+    "name": "Sandals",
+    "priority": 70,
+    "type_name": "shoes",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "feet",
+      "feet_sandals"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow",
+      "steel",
+      "iron",
+      "ceramic",
+      "brass",
+      "copper",
+      "bronze",
+      "silver",
+      "gold"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 15,
+        "female": "feet/sandals/thin/",
+        "teen": "feet/sandals/thin/",
+        "pregnant": "feet/sandals/thin/",
+        "male": "feet/sandals/male/",
+        "muscular": "feet/sandals/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "feet/sandals",
+        "notes": "edited for v3 bases by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
+        "authors": [
+          "Nila122",
+          "JaidynReiman",
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 2.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-roman-armor",
+          "http://opengameart.org/content/lpc-clothing-updates",
+          "https://opengameart.org/content/lpc-expanded-socks-shoes"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "feet_slippers": {
+    "name": "Slippers",
+    "priority": 60,
+    "type_name": "shoes",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "feet",
+      "feet_slippers"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 15,
+        "male": "feet/slippers/male/",
+        "muscular": "feet/slippers/male/",
+        "female": "feet/slippers/thin/",
+        "teen": "feet/slippers/thin/",
+        "pregnant": "feet/slippers/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "feet/slippers",
+        "notes": "original by Luke Mehl, Joe White did thrust/shoot animations, edited for v3 bases and male sprites by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
+        "authors": [
+          "bluecarrot16",
+          "JaidynReiman",
+          "Joe White",
+          "Luke Mehl"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/thin-mage-clothing-set",
+          "http://opengameart.org/content/lpc-clothing-updates",
+          "https://opengameart.org/content/lpc-expanded-socks-shoes"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "eyes_child": {
+    "name": "Child Eyes",
+    "priority": null,
+    "type_name": "eyes",
+    "required": [
+      "child"
+    ],
+    "animations": [
+      "walk",
+      "slash",
+      "hurt",
+      "idle",
+      "jump",
+      "sit"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "eyes_child"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blue",
+      "brown",
+      "gray",
+      "green",
+      "orange",
+      "purple",
+      "red",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 105,
+        "child": "eyes/human/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "eyes/human/child",
+        "notes": "original by Redshrike, mapped to all frames by Matthew Krohn & JaidynReiman",
+        "authors": [
+          "JaidynReiman",
+          "Matthew Krohn (makrohn)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "child": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_wrinkles": {
+    "name": "Wrinkles",
+    "priority": 80,
+    "type_name": "wrinkes",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "head_wrinkles"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 102,
+        "male": "head/wrinkles/",
+        "muscular": "head/wrinkles/",
+        "female": "head/wrinkles/",
+        "teen": "head/wrinkles/",
+        "pregnant": "head/wrinkles/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/wrinkles",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": []
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "legs_armour": {
+    "name": "Armour",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "climb",
+      "idle",
+      "jump",
+      "sit",
+      "emotes"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "legs_armour"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "steel",
+      "iron",
+      "ceramic",
+      "brass",
+      "copper",
+      "bronze",
+      "silver",
+      "gold"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "male": "legs/armour/plate/male/",
+        "female": "legs/armour/plate/thin/",
+        "teen": "legs/armour/plate/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/armour/plate",
+        "notes": "reduced to 7 colors an adapted to v3 bases by bluecarrot16, climb/jump/sit/emotes by JaidynReiman",
+        "authors": [
+          "bluecarrot16",
+          "JaidynReiman",
+          "Michael Whitlock (bigbeargames)",
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "tool_rod": {
+    "name": "Rod",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "tool_rod"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "tools",
+      "tool_rod"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "rod"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 9,
+        "custom_animation": "tool_rod",
+        "male": "tools/rod/background/",
+        "muscular": "tools/rod/background/",
+        "female": "tools/rod/background/",
+        "pregnant": "tools/rod/background/",
+        "teen": "tools/rod/background/"
+      },
+      "layer_2": {
+        "zPos": 150,
+        "custom_animation": "tool_rod",
+        "male": "tools/rod/foreground/",
+        "muscular": "tools/rod/foreground/",
+        "female": "tools/rod/foreground/",
+        "pregnant": "tools/rod/foreground/",
+        "teen": "tools/rod/foreground/"
+      }
+    },
+    "credits": [
+      {
+        "file": "tools/rod",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Pierre Vigier (pvigier)",
+          "Tuomo Untinen (reemax)",
+          "Johannes Sjölund (wulax)",
+          "and Inboxninja"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-hand-tools"
+        ]
+      }
+    ],
+    "preview_row": 0,
+    "preview_column": 0,
+    "preview_x_offset": 304,
+    "preview_y_offset": 24,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "tool_smash": {
+    "name": "Smash",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "slash_128"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "tools",
+      "tool_smash"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "axe",
+      "hammer",
+      "pickaxe"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "tools/smash/universal/male/",
+        "muscular": "tools/smash/universal/male/",
+        "female": "tools/smash/universal/female/",
+        "pregnant": "tools/smash/universal/female/",
+        "teen": "tools/smash/universal/female/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "custom_animation": "slash_128",
+        "male": "tools/smash/background/",
+        "muscular": "tools/smash/background/",
+        "female": "tools/smash/background/",
+        "pregnant": "tools/smash/background/",
+        "teen": "tools/smash/background/"
+      },
+      "layer_3": {
+        "zPos": 150,
+        "custom_animation": "slash_128",
+        "male": "tools/smash/foreground/",
+        "muscular": "tools/smash/foreground/",
+        "female": "tools/smash/foreground/",
+        "pregnant": "tools/smash/foreground/",
+        "teen": "tools/smash/foreground/"
+      }
+    },
+    "credits": [
+      {
+        "file": "tools/smash",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Pierre Vigier (pvigier)",
+          "Tuomo Untinen (reemax)",
+          "Johannes Sjölund (wulax)",
+          "and Inboxninja"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-hand-tools"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "tool_thrust": {
+    "name": "Thrust",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "hurt"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "tools",
+      "tool_thrust"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "hoe",
+      "shovel",
+      "watering"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 9,
+        "male": "tools/thrust/background/",
+        "muscular": "tools/thrust/background/",
+        "female": "tools/thrust/background/",
+        "pregnant": "tools/thrust/background/",
+        "teen": "tools/thrust/background/"
+      },
+      "layer_2": {
+        "zPos": 150,
+        "male": "tools/thrust/foreground/",
+        "muscular": "tools/thrust/foreground/",
+        "female": "tools/thrust/foreground/",
+        "pregnant": "tools/thrust/foreground/",
+        "teen": "tools/thrust/foreground/"
+      }
+    },
+    "credits": [
+      {
+        "file": "tools/thrust",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Pierre Vigier (pvigier)",
+          "Tuomo Untinen (reemax)",
+          "Johannes Sjölund (wulax)",
+          "and Inboxninja"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-hand-tools"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "tool_whip": {
+    "name": "Whip",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "tool_whip"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "tools",
+      "tool_whip"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "whip"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 9,
+        "custom_animation": "tool_whip",
+        "male": "tools/whip/background/",
+        "muscular": "tools/whip/background/",
+        "female": "tools/whip/background/",
+        "pregnant": "tools/whip/background/",
+        "teen": "tools/whip/background/"
+      },
+      "layer_2": {
+        "zPos": 150,
+        "custom_animation": "tool_whip",
+        "male": "tools/whip/",
+        "muscular": "tools/whip/",
+        "female": "tools/whip/",
+        "pregnant": "tools/whip/",
+        "teen": "tools/whip/"
+      }
+    },
+    "credits": [
+      {
+        "file": "tools/whip",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "GPL 3.0",
+          "CC-BY 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-more-weapons"
+        ]
+      }
+    ],
+    "preview_row": 3,
+    "preview_column": 12,
+    "preview_x_offset": 24,
+    "preview_y_offset": 48,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ]
+    }
+  },
+  "torso_bandages": {
+    "name": "Bandages",
+    "priority": 80,
+    "type_name": "bandages",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "torso_bandages"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 110,
+        "male": "torso/bandage/male/",
+        "female": "torso/bandage/female/",
+        "teen": "torso/bandage/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/bandage",
+        "notes": "",
+        "authors": [
+          "Nila122"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 2.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-bandages"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_chainmail": {
+    "name": "Chainmail",
+    "priority": 70,
+    "type_name": "chainmail",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "torso_chainmail"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "gray"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 50,
+        "male": "torso/chainmail/male/",
+        "female": "torso/chainmail/female/",
+        "teen": "torso/chainmail/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/chainmail",
+        "notes": "minor edits by bluecarrot16",
+        "authors": [
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "shoulders_epaulets": {
+    "name": "Epaulets",
+    "priority": null,
+    "type_name": "shoulders",
+    "required": [
+      "male"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "arms",
+      "shoulders",
+      "shoulders_epaulets"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "bronze",
+      "gold",
+      "silver",
+      "red",
+      "blue",
+      "teal",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 60,
+        "male": "shoulders/epaulets/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shoulders/epaulets",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-pirates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "shoulders_leather": {
+    "name": "Leather",
+    "priority": null,
+    "type_name": "shoulders",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "arms",
+      "shoulders",
+      "shoulders_leather"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "leather",
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 60,
+        "male": "shoulders/leather/male/",
+        "female": "shoulders/leather/female/",
+        "muscular": "shoulders/leather/male/",
+        "pregnant": "shoulders/leather/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shoulders/leather",
+        "notes": "adapted to female base by makrohn, adapted to v3 bases by bluecarrot16",
+        "authors": [
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "shoulders_legion": {
+    "name": "Legion",
+    "priority": null,
+    "type_name": "shoulders",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "arms",
+      "shoulders",
+      "shoulders_legion"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "bronze",
+      "steel",
+      "gold"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 60,
+        "male": "shoulders/legion/male/",
+        "female": "shoulders/legion/female/",
+        "muscular": "shoulders/legion/male/",
+        "pregnant": "shoulders/legion/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shoulders/legion",
+        "notes": "",
+        "authors": [
+          "Nila122"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 2.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-roman-armor"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "shoulders_mantal": {
+    "name": "Mantal",
+    "priority": null,
+    "type_name": "shoulders",
+    "required": [
+      "male"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "arms",
+      "shoulders",
+      "shoulders_mantal"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 75,
+        "male": "shoulders/mantal/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shoulders/mantal",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-pirates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "shoulders_plate": {
+    "name": "Plate",
+    "priority": null,
+    "type_name": "shoulders",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "arms",
+      "shoulders",
+      "shoulders_plate"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "steel",
+      "iron",
+      "ceramic",
+      "brass",
+      "copper",
+      "bronze",
+      "silver",
+      "gold"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 65,
+        "male": "shoulders/plate/male/",
+        "female": "shoulders/plate/female/",
+        "muscular": "shoulders/plate/male/",
+        "pregnant": "shoulders/plate/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shoulders/plate",
+        "notes": "recolors, adapted to v3 bases by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      },
+      {
+        "file": "shoulders/plate/female",
+        "notes": "adapted to female base by makrohn, adapted to v3 bases by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-combat-armor-for-women",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "arms_bracers": {
+    "name": "Bracers",
+    "priority": null,
+    "type_name": "bracers",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "arms",
+      "wrists",
+      "arms_bracers"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "steel",
+      "iron",
+      "ceramic",
+      "brass",
+      "copper",
+      "bronze",
+      "silver",
+      "gold"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 70,
+        "male": "arms/bracers/male/",
+        "female": "arms/bracers/female/",
+        "pregnant": "arms/bracers/female/",
+        "muscular": "arms/bracers/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "arms/bracers",
+        "notes": "",
+        "authors": [
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "wrists_cuffs": {
+    "name": "Cuffs",
+    "priority": null,
+    "type_name": "wrists",
+    "required": [
+      "male"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "arms",
+      "wrists",
+      "wrists_cuffs"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 70,
+        "male": "wrists/cuffs/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "wrists/cuffs",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-pirates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "wrists_cuffs_lace": {
+    "name": "Lace Cuffs",
+    "priority": null,
+    "type_name": "wrists",
+    "required": [
+      "male"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "arms",
+      "wrists",
+      "wrists_cuffs_lace"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "bronze",
+      "gold",
+      "silver",
+      "red",
+      "blue",
+      "teal",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 70,
+        "male": "wrists/lace/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "wrists/lace",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-pirates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "prosthesis_hook": {
+    "name": "Hook hand",
+    "priority": null,
+    "type_name": "prosthesis_hand",
+    "required": [
+      "male"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "prostheses",
+      "prosthesis_hook"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "hook"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "is_mask": true,
+        "male": "body/prosthesis/hook/male/mask/"
+      },
+      "layer_2": {
+        "zPos": 100,
+        "male": "body/prosthesis/hook/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/prosthesis/hook",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-pirates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "prosthesis_peg_leg": {
+    "name": "Peg leg",
+    "priority": null,
+    "type_name": "prosthesis_leg",
+    "required": [
+      "male"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "prostheses",
+      "prosthesis_peg_leg"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "peg_leg"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "is_mask": true,
+        "male": "body/prosthesis/peg_leg/male/mask/"
+      },
+      "layer_2": {
+        "zPos": 100,
+        "male": "body/prosthesis/peg_leg/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/prosthesis/peg_leg",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-pirates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "body_skeleton": {
+    "name": "Skeleton",
+    "priority": null,
+    "type_name": "body",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "special",
+      "body_skeleton"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "skeleton"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 10,
+        "male": "body/bodies/skeleton/",
+        "female": "body/bodies/skeleton/",
+        "teen": "body/bodies/skeleton/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/bodies/skeleton",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-skeleton",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "body_zombie": {
+    "name": "Zombie",
+    "priority": null,
+    "type_name": "body",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "special",
+      "body_zombie"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 10,
+        "male": "body/bodies/zombie/",
+        "female": "body/bodies/zombie/",
+        "teen": "body/bodies/zombie/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/bodies/zombie",
+        "notes": "",
+        "authors": [
+          "Stephen Challener (Redshrike)",
+          "Johannes Sjölund (wulax)",
+          "Sander Frenken (castelonia)",
+          "Benjamin K. Smith (BenCreating)",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-zombie",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "tail_cat": {
+    "name": "Cat Tail",
+    "priority": null,
+    "type_name": "tail",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "tails",
+      "tail_cat"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 125,
+        "male": "body/tail/cat/adult/fg/",
+        "muscular": "body/tail/cat/adult/fg/",
+        "female": "body/tail/cat/adult/fg/",
+        "pregnant": "body/tail/cat/adult/fg/",
+        "teen": "body/tail/cat/adult/fg/",
+        "child": "body/tail/cat/child/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/tail/cat/adult/bg/",
+        "muscular": "body/tail/cat/adult/bg/",
+        "female": "body/tail/cat/adult/bg/",
+        "pregnant": "body/tail/cat/adult/bg/",
+        "teen": "body/tail/cat/adult/bg/",
+        "child": "body/tail/cat/child/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/tail/cat",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "tail_lizard": {
+    "name": "Lizard tail",
+    "priority": null,
+    "type_name": "tail",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "tails",
+      "tail_lizard"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 85,
+        "male": "body/tail/lizard/adult/fg/",
+        "muscular": "body/tail/lizard/adult/fg/",
+        "female": "body/tail/lizard/adult/fg/",
+        "pregnant": "body/tail/lizard/adult/fg/",
+        "teen": "body/tail/lizard/adult/fg/",
+        "child": "body/tail/lizard/child/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/tail/lizard/adult/bg/",
+        "muscular": "body/tail/lizard/adult/bg/",
+        "female": "body/tail/lizard/adult/bg/",
+        "pregnant": "body/tail/lizard/adult/bg/",
+        "teen": "body/tail/lizard/adult/bg/",
+        "child": "body/tail/lizard/child/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/tail/lizard",
+        "notes": "edited for v3 bases and recolored by bluecarrot16, additional animations added by JaidynReiman",
+        "authors": [
+          "Nila122",
+          "bluecarrot16",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/drakes-and-lizardfolk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "tail_lizard_alt": {
+    "name": "Lizard Tail (Alt Colors)",
+    "priority": null,
+    "type_name": "tail",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "tails",
+      "tail_lizard_alt"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 85,
+        "male": "body/tail/lizard/alt/adult/fg/",
+        "muscular": "body/tail/lizard/alt/adult/fg/",
+        "female": "body/tail/lizard/alt/adult/fg/",
+        "pregnant": "body/tail/lizard/alt/adult/fg/",
+        "teen": "body/tail/lizard/alt/adult/fg/",
+        "child": "body/tail/lizard/alt/child/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/tail/lizard/alt/adult/bg/",
+        "muscular": "body/tail/lizard/alt/adult/bg/",
+        "female": "body/tail/lizard/alt/adult/bg/",
+        "pregnant": "body/tail/lizard/alt/adult/bg/",
+        "teen": "body/tail/lizard/alt/adult/bg/",
+        "child": "body/tail/lizard/alt/child/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/tail/lizard",
+        "notes": "edited for v3 bases and recolored by bluecarrot16, additional animations added by JaidynReiman",
+        "authors": [
+          "Nila122",
+          "bluecarrot16",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/drakes-and-lizardfolk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "tail_wolf": {
+    "name": "Wolf Tail",
+    "priority": null,
+    "type_name": "tail",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "tails",
+      "tail_wolf"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 125,
+        "male": "body/tail/wolf/adult/fg/",
+        "muscular": "body/tail/wolf/adult/fg/",
+        "female": "body/tail/wolf/adult/fg/",
+        "pregnant": "body/tail/wolf/adult/fg/",
+        "teen": "body/tail/wolf/adult/fg/",
+        "child": "body/tail/wolf/child/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/tail/wolf/adult/bg/",
+        "muscular": "body/tail/wolf/adult/bg/",
+        "female": "body/tail/wolf/adult/bg/",
+        "pregnant": "body/tail/wolf/adult/bg/",
+        "teen": "body/tail/wolf/adult/bg/",
+        "child": "body/tail/wolf/child/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/tail/wolf",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "tail_wolf_fluffy": {
+    "name": "Fluffy Wolf Tail",
+    "priority": null,
+    "type_name": "tail",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "tails",
+      "tail_wolf_fluffy"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 125,
+        "male": "body/tail/fluffy/adult/fg/",
+        "muscular": "body/tail/fluffy/adult/fg/",
+        "female": "body/tail/fluffy/adult/fg/",
+        "pregnant": "body/tail/fluffy/adult/fg/",
+        "teen": "body/tail/fluffy/adult/fg/",
+        "child": "body/tail/fluffy/child/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/tail/fluffy/adult/bg/",
+        "muscular": "body/tail/fluffy/adult/bg/",
+        "female": "body/tail/fluffy/adult/bg/",
+        "pregnant": "body/tail/fluffy/adult/bg/",
+        "teen": "body/tail/fluffy/adult/bg/",
+        "child": "body/tail/fluffy/child/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/tail/fluffy",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "wings_bat": {
+    "name": "Bat Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "wings_bat"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "lavender",
+      "zombie_green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 105,
+        "male": "body/wings/bat/adult/fg/",
+        "muscular": "body/wings/bat/adult/fg/",
+        "female": "body/wings/bat/adult/fg/",
+        "pregnant": "body/wings/bat/adult/fg/",
+        "teen": "body/wings/bat/adult/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/bat/adult/bg/",
+        "muscular": "body/wings/bat/adult/bg/",
+        "female": "body/wings/bat/adult/bg/",
+        "pregnant": "body/wings/bat/adult/bg/",
+        "teen": "body/wings/bat/adult/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/bat",
+        "notes": "Original by ElizaWy, added to most remaining frames by JaidynReiman",
+        "authors": [
+          "ElizaWy",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-wings-new-animations"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "wings_dragonfly": {
+    "name": "Dragonfly Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "wings_dragonfly"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "dragonfly",
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 105,
+        "male": "body/wings/dragonfly/solid/fg/",
+        "muscular": "body/wings/dragonfly/solid/fg/",
+        "female": "body/wings/dragonfly/solid/fg/",
+        "pregnant": "body/wings/dragonfly/solid/fg/",
+        "teen": "body/wings/dragonfly/solid/fg/",
+        "child": "body/wings/dragonfly/solid/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/dragonfly/solid/bg/",
+        "muscular": "body/wings/dragonfly/solid/bg/",
+        "female": "body/wings/dragonfly/solid/bg/",
+        "pregnant": "body/wings/dragonfly/solid/bg/",
+        "teen": "body/wings/dragonfly/solid/bg/",
+        "child": "body/wings/dragonfly/solid/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/dragonfly",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings-pack-2"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "wings_dragonfly_transparent": {
+    "name": "Transparent Dragonfly Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "wings_dragonfly_transparent"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "dragonfly",
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 105,
+        "male": "body/wings/dragonfly/transparent/fg/",
+        "muscular": "body/wings/dragonfly/transparent/fg/",
+        "female": "body/wings/dragonfly/transparent/fg/",
+        "pregnant": "body/wings/dragonfly/transparent/fg/",
+        "teen": "body/wings/dragonfly/transparent/fg/",
+        "child": "body/wings/dragonfly/transparent/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/dragonfly/transparent/bg/",
+        "muscular": "body/wings/dragonfly/transparent/bg/",
+        "female": "body/wings/dragonfly/transparent/bg/",
+        "pregnant": "body/wings/dragonfly/transparent/bg/",
+        "teen": "body/wings/dragonfly/transparent/bg/",
+        "child": "body/wings/dragonfly/transparent/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/dragonfly",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings-pack-2"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "wings_feathered": {
+    "name": "Feathered Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "wings_feathered"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 105,
+        "male": "body/wings/feathered/adult/fg/",
+        "muscular": "body/wings/feathered/adult/fg/",
+        "female": "body/wings/feathered/adult/fg/",
+        "pregnant": "body/wings/feathered/adult/fg/",
+        "teen": "body/wings/feathered/adult/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/feathered/adult/bg/",
+        "muscular": "body/wings/feathered/adult/bg/",
+        "female": "body/wings/feathered/adult/bg/",
+        "pregnant": "body/wings/feathered/adult/bg/",
+        "teen": "body/wings/feathered/adult/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/feathered",
+        "notes": "Original by ElizaWy, added to most remaining frames by JaidynReiman",
+        "authors": [
+          "ElizaWy",
+          "Stephen Challener (Redshrike)",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-wings-new-animations"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "wings_lizard": {
+    "name": "Lizard Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "wings_lizard"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 105,
+        "male": "body/wings/lizard/adult/fg/",
+        "muscular": "body/wings/lizard/adult/fg/",
+        "female": "body/wings/lizard/adult/fg/",
+        "pregnant": "body/wings/lizard/adult/fg/",
+        "teen": "body/wings/lizard/adult/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/lizard/adult/bg/",
+        "muscular": "body/wings/lizard/adult/bg/",
+        "female": "body/wings/lizard/adult/bg/",
+        "pregnant": "body/wings/lizard/adult/bg/",
+        "teen": "body/wings/lizard/adult/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/lizard",
+        "notes": "edited for v3 bases and recolored by bluecarrot16, sit/jump/run/emote/revised combat by JaidynReiman",
+        "authors": [
+          "JaidynReiman",
+          "Nila122",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/drakes-and-lizardfolk",
+          "https://opengameart.org/content/lpc-wings-new-animations"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "wings_lizard_alt": {
+    "name": "Lizard Wings (Alt Colors)",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "wings_lizard_alt"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 105,
+        "male": "body/wings/lizard/alt/adult/fg/",
+        "muscular": "body/wings/lizard/alt/adult/fg/",
+        "female": "body/wings/lizard/alt/adult/fg/",
+        "pregnant": "body/wings/lizard/alt/adult/fg/",
+        "teen": "body/wings/lizard/alt/adult/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/lizard/alt/adult/bg/",
+        "muscular": "body/wings/lizard/alt/adult/bg/",
+        "female": "body/wings/lizard/alt/adult/bg/",
+        "pregnant": "body/wings/lizard/alt/adult/bg/",
+        "teen": "body/wings/lizard/alt/adult/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/lizard",
+        "notes": "edited for v3 bases and recolored by bluecarrot16, sit/jump/run/emote/revised combat by JaidynReiman",
+        "authors": [
+          "JaidynReiman",
+          "Nila122",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/drakes-and-lizardfolk",
+          "https://opengameart.org/content/lpc-wings-new-animations"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "wings_lizard_bat": {
+    "name": "Batlike Lizard Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "wings_lizard_bat"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 105,
+        "male": "body/wings/bat/lizard/adult/fg/",
+        "muscular": "body/wings/bat/lizard/adult/fg/",
+        "female": "body/wings/bat/lizard/adult/fg/",
+        "pregnant": "body/wings/bat/lizard/adult/fg/",
+        "teen": "body/wings/bat/lizard/adult/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/bat/lizard/adult/bg/",
+        "muscular": "body/wings/bat/lizard/adult/bg/",
+        "female": "body/wings/bat/lizard/adult/bg/",
+        "pregnant": "body/wings/bat/lizard/adult/bg/",
+        "teen": "body/wings/bat/lizard/adult/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/bat",
+        "notes": "Original by ElizaWy, added to most remaining frames by JaidynReiman",
+        "authors": [
+          "ElizaWy",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-wings-new-animations"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "wings_lunar": {
+    "name": "Lunar Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "wings_lunar"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "lunar",
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 105,
+        "male": "body/wings/lunar/fg/",
+        "muscular": "body/wings/lunar/fg/",
+        "female": "body/wings/lunar/fg/",
+        "pregnant": "body/wings/lunar/fg/",
+        "teen": "body/wings/lunar/fg/",
+        "child": "body/wings/lunar/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/lunar/bg/",
+        "muscular": "body/wings/lunar/bg/",
+        "female": "body/wings/lunar/bg/",
+        "pregnant": "body/wings/lunar/bg/",
+        "teen": "body/wings/lunar/bg/",
+        "child": "body/wings/lunar/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/lunar",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings-pack-2"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "wings_monarch": {
+    "name": "Monarch Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings",
+      "monarch"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "wings_monarch"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "monarch",
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 105,
+        "male": "body/wings/monarch/base/fg/",
+        "muscular": "body/wings/monarch/base/fg/",
+        "female": "body/wings/monarch/base/fg/",
+        "pregnant": "body/wings/monarch/base/fg/",
+        "teen": "body/wings/monarch/base/fg/",
+        "child": "body/wings/monarch/base/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/monarch/base/bg/",
+        "muscular": "body/wings/monarch/base/bg/",
+        "female": "body/wings/monarch/base/bg/",
+        "pregnant": "body/wings/monarch/base/bg/",
+        "teen": "body/wings/monarch/base/bg/",
+        "child": "body/wings/monarch/base/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/monarch",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "wings_monarch_dots": {
+    "name": "Monarch Wings Dots",
+    "priority": null,
+    "type_name": "wings_dots",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [
+      "monarch"
+    ],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "wings_monarch_dots"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 106,
+        "male": "body/wings/monarch/dots/fg/",
+        "muscular": "body/wings/monarch/dots/fg/",
+        "female": "body/wings/monarch/dots/fg/",
+        "pregnant": "body/wings/monarch/dots/fg/",
+        "teen": "body/wings/monarch/dots/fg/",
+        "child": "body/wings/monarch/dots/fg/"
+      },
+      "layer_2": {
+        "zPos": 6,
+        "male": "body/wings/monarch/dots/bg/",
+        "muscular": "body/wings/monarch/dots/bg/",
+        "female": "body/wings/monarch/dots/bg/",
+        "pregnant": "body/wings/monarch/dots/bg/",
+        "teen": "body/wings/monarch/dots/bg/",
+        "child": "body/wings/monarch/dots/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/monarch",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "wings_monarch_edge": {
+    "name": "Monarch Wings Edge",
+    "priority": null,
+    "type_name": "wings_edge",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [
+      "monarch"
+    ],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "wings_monarch_edge"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 106,
+        "male": "body/wings/monarch/edge/fg/",
+        "muscular": "body/wings/monarch/edge/fg/",
+        "female": "body/wings/monarch/edge/fg/",
+        "pregnant": "body/wings/monarch/edge/fg/",
+        "teen": "body/wings/monarch/edge/fg/",
+        "child": "body/wings/monarch/edge/fg/"
+      },
+      "layer_2": {
+        "zPos": 6,
+        "male": "body/wings/monarch/edge/bg/",
+        "muscular": "body/wings/monarch/edge/bg/",
+        "female": "body/wings/monarch/edge/bg/",
+        "pregnant": "body/wings/monarch/edge/bg/",
+        "teen": "body/wings/monarch/edge/bg/",
+        "child": "body/wings/monarch/edge/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/monarch",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "wings_pixie": {
+    "name": "Pixie Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "wings_pixie"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "pixie",
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "body/wings/pixie/solid/fg/",
+        "muscular": "body/wings/pixie/solid/fg/",
+        "female": "body/wings/pixie/solid/fg/",
+        "pregnant": "body/wings/pixie/solid/fg/",
+        "teen": "body/wings/pixie/solid/fg/",
+        "child": "body/wings/pixie/solid/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/pixie/solid/bg/",
+        "muscular": "body/wings/pixie/solid/bg/",
+        "female": "body/wings/pixie/solid/bg/",
+        "pregnant": "body/wings/pixie/solid/bg/",
+        "teen": "body/wings/pixie/solid/bg/",
+        "child": "body/wings/pixie/solid/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/pixie",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "wings_pixie_transparent": {
+    "name": "Transparent Pixie Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "wings_pixie_transparent"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "pixie",
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "body/wings/pixie/transparent/fg/",
+        "muscular": "body/wings/pixie/transparent/fg/",
+        "female": "body/wings/pixie/transparent/fg/",
+        "pregnant": "body/wings/pixie/transparent/fg/",
+        "teen": "body/wings/pixie/transparent/fg/",
+        "child": "body/wings/pixie/transparent/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/pixie/transparent/bg/",
+        "muscular": "body/wings/pixie/transparent/bg/",
+        "female": "body/wings/pixie/transparent/bg/",
+        "pregnant": "body/wings/pixie/transparent/bg/",
+        "teen": "body/wings/pixie/transparent/bg/",
+        "child": "body/wings/pixie/transparent/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/pixie",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "feet_plate_toe": {
+    "name": "Plated Toe",
+    "priority": null,
+    "type_name": "shoes_toe",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "feet",
+      "accessory",
+      "feet_plate_toe"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "steel",
+      "iron",
+      "ceramic",
+      "brass",
+      "copper",
+      "bronze",
+      "silver",
+      "gold"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 27,
+        "male": "feet/accessory/plate_toe/male/",
+        "muscular": "feet/accessory/plate_toe/male/",
+        "female": "feet/accessory/plate_toe/thin/",
+        "teen": "feet/accessory/plate_toe/thin/",
+        "pregnant": "feet/accessory/plate_toe/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "feet/accessory/plate_toe",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-kimono-relm",
+          "https://opengameart.org/content/lpc-expanded-socks-shoes"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "feet_plate_toe_thick": {
+    "name": "Thick Plated Toe",
+    "priority": null,
+    "type_name": "shoes_toe",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "feet",
+      "accessory",
+      "feet_plate_toe_thick"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "steel",
+      "iron",
+      "ceramic",
+      "brass",
+      "copper",
+      "bronze",
+      "silver",
+      "gold"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 27,
+        "male": "feet/accessory/plate_toe_thick/male/",
+        "muscular": "feet/accessory/plate_toe_thick/male/",
+        "female": "feet/accessory/plate_toe_thick/thin/",
+        "teen": "feet/accessory/plate_toe_thick/thin/",
+        "pregnant": "feet/accessory/plate_toe_thick/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "feet/accessory/plate_toe_thick",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-kimono-relm",
+          "https://opengameart.org/content/lpc-expanded-socks-shoes"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
   "feet_boots_basic": {
     "name": "Basic Boots",
+    "priority": 10,
     "type_name": "shoes",
     "required": [
       "male",
@@ -1903,6 +6674,7 @@ window.itemMetadata = {
   },
   "feet_boots_fold": {
     "name": "Folded Rim Boots",
+    "priority": 30,
     "type_name": "shoes",
     "required": [
       "male",
@@ -2036,6 +6808,7 @@ window.itemMetadata = {
   },
   "feet_boots_revised": {
     "name": "Revised Boots",
+    "priority": 20,
     "type_name": "shoes",
     "required": [
       "male",
@@ -2185,6 +6958,7 @@ window.itemMetadata = {
   },
   "feet_boots_rim": {
     "name": "Rimmed Boots",
+    "priority": 40,
     "type_name": "shoes",
     "required": [
       "male",
@@ -2316,5532 +7090,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "feet_hoofs": {
-    "name": "Hoofs",
-    "type_name": "shoes",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "feet",
-      "feet_hoofs"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 15,
-        "male": "feet/hoofs/male/",
-        "muscular": "feet/hoofs/male/",
-        "female": "feet/hoofs/female/",
-        "teen": "feet/hoofs/female/",
-        "pregnant": "feet/hoofs/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "feet/hoofs",
-        "notes": "",
-        "authors": [
-          "Evert"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-faun-and-minotaur"
-        ]
-      },
-      {
-        "file": "feet/hoofs/female",
-        "notes": "edited for v3 female bases by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Evert"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-faun-and-minotaur",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "feet_sandals": {
-    "name": "Sandals",
-    "type_name": "shoes",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "feet",
-      "feet_sandals"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow",
-      "steel",
-      "iron",
-      "ceramic",
-      "brass",
-      "copper",
-      "bronze",
-      "silver",
-      "gold"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 15,
-        "female": "feet/sandals/thin/",
-        "teen": "feet/sandals/thin/",
-        "pregnant": "feet/sandals/thin/",
-        "male": "feet/sandals/male/",
-        "muscular": "feet/sandals/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "feet/sandals",
-        "notes": "edited for v3 bases by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
-        "authors": [
-          "Nila122",
-          "JaidynReiman",
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 2.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-roman-armor",
-          "http://opengameart.org/content/lpc-clothing-updates",
-          "https://opengameart.org/content/lpc-expanded-socks-shoes"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "feet_slippers": {
-    "name": "Slippers",
-    "type_name": "shoes",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "feet",
-      "feet_slippers"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 15,
-        "male": "feet/slippers/male/",
-        "muscular": "feet/slippers/male/",
-        "female": "feet/slippers/thin/",
-        "teen": "feet/slippers/thin/",
-        "pregnant": "feet/slippers/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "feet/slippers",
-        "notes": "original by Luke Mehl, Joe White did thrust/shoot animations, edited for v3 bases and male sprites by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
-        "authors": [
-          "bluecarrot16",
-          "JaidynReiman",
-          "Joe White",
-          "Luke Mehl"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/thin-mage-clothing-set",
-          "http://opengameart.org/content/lpc-clothing-updates",
-          "https://opengameart.org/content/lpc-expanded-socks-shoes"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "feet_socks_ankle": {
-    "name": "Ankle Socks",
-    "type_name": "socks",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "feet",
-      "socks",
-      "feet_socks_ankle"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "leather",
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 14,
-        "male": "feet/socks/ankle/male/",
-        "female": "feet/socks/ankle/thin/",
-        "teen": "feet/socks/ankle/thin/",
-        "pregnant": "feet/socks/ankle/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "feet/socks/ankle/male",
-        "notes": "original overalls and thin socks by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, socks by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "ElizaWy",
-          "Bluecarrot16",
-          "Stephen Challener (Redshrike)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-          "https://opengameart.org/content/lpc-expanded-socks-shoes"
-        ]
-      },
-      {
-        "file": "feet/socks/ankle",
-        "notes": "original by ElizaWy, remaining frames by JaidynReiman",
-        "authors": [
-          "ElizaWy",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
-          "https://opengameart.org/content/lpc-expanded-socks-shoes"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "feet_socks_high": {
-    "name": "High Socks",
-    "type_name": "socks",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "feet",
-      "socks",
-      "feet_socks_high"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "leather",
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 14,
-        "male": "feet/socks/high/male/",
-        "female": "feet/socks/high/thin/",
-        "teen": "feet/socks/high/thin/",
-        "pregnant": "feet/socks/high/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "feet/socks/high/male",
-        "notes": "original overalls and thin socks by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, socks by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "ElizaWy",
-          "Bluecarrot16",
-          "Stephen Challener (Redshrike)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-          "https://opengameart.org/content/lpc-expanded-socks-shoes"
-        ]
-      },
-      {
-        "file": "feet/socks/high",
-        "notes": "original by ElizaWy, remaining frames by JaidynReiman",
-        "authors": [
-          "ElizaWy",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
-          "https://opengameart.org/content/lpc-expanded-socks-shoes"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "feet_socks_tabi": {
-    "name": "Tabi Socks",
-    "type_name": "socks",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "feet",
-      "socks",
-      "feet_socks_tabi"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 14,
-        "male": "feet/socks/tabi/male/",
-        "muscular": "feet/socks/tabi/male/",
-        "female": "feet/socks/tabi/thin/",
-        "teen": "feet/socks/tabi/thin/",
-        "pregnant": "feet/socks/tabi/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "feet/socks/tabi",
-        "notes": "",
-        "authors": [
-          "JaidynReiman",
-          "Stephen Challener (Redshrike)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-kimono-relm",
-          "https://opengameart.org/content/lpc-expanded-socks-shoes"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "eye_color": {
-    "name": "Eye Color",
-    "type_name": "eye_color",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "eye_color"
-    ],
-    "replace_in_path": {
-      "head": {
-        "Human_male": "adult",
-        "Human_male_small": "adult",
-        "Human_male_plump": "adult",
-        "Human_male_gaunt": "adult",
-        "Human_female": "adult",
-        "Human_female_small": "adult",
-        "Human_male_elderly": "elderly",
-        "Human_female_elderly": "elderly",
-        "Human_elderly_small": "elderly"
-      },
-      "expression": {
-        "none": "default",
-        "Neutral": "neutral",
-        "Closing_Eyes": "closing",
-        "Closed_Eyes": "none",
-        "Looking_Left": "look_l",
-        "Looking_Right": "look_r",
-        "Rolling_Eyes": "eyeroll",
-        "Shock": "shock",
-        "Angry": "anger",
-        "Angry_Alt": "default",
-        "Sad": "sad",
-        "Sad_Alt": "sad2",
-        "Happy": "none",
-        "Happy_Alt": "none",
-        "Blush": "none",
-        "Shame": "shame"
-      }
-    },
-    "variants": [
-      "blue",
-      "brown",
-      "gray",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "eyes/human/${head}/${expression}/",
-        "muscular": "eyes/human/${head}/${expression}/",
-        "female": "eyes/human/${head}/${expression}/",
-        "teen": "eyes/human/${head}/${expression}/",
-        "pregnant": "eyes/human/${head}/${expression}/",
-        "child": "eyes/human/child/${expression}/"
-      }
-    },
-    "credits": [
-      {
-        "file": "eyes/human",
-        "notes": "original by Redshrike, mapped to all frames by Matthew Krohn & JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "Matthew Krohn (makrohn)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
-        ]
-      },
-      {
-        "file": "eyes/human/adult",
-        "notes": "original by Redshrike, Expressions by ElizaWy, eyes split from expressions and mapped to all frames by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "ElizaWy",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      },
-      {
-        "file": "eyes/human/adult/default",
-        "notes": "original by Redshrike, mapped to all frames by Matthew Krohn & JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "Matthew Krohn (makrohn)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
-        ]
-      },
-      {
-        "file": "eyes/human/elderly",
-        "notes": "original by Redshrike, Elderly Heads and Expressions by ElizaWy, eyes split from expressions and mapped to all frames by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "ElizaWy",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "head_wrinkles": {
-    "name": "Wrinkles",
-    "type_name": "wrinkes",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "head_wrinkles"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 102,
-        "male": "head/wrinkles/",
-        "muscular": "head/wrinkles/",
-        "female": "head/wrinkles/",
-        "teen": "head/wrinkles/",
-        "pregnant": "head/wrinkles/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/wrinkles",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": []
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "feet_armour": {
-    "name": "Armour",
-    "type_name": "shoes",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "feet",
-      "feet_armour"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "steel",
-      "iron",
-      "ceramic",
-      "brass",
-      "copper",
-      "bronze",
-      "silver",
-      "gold"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 15,
-        "male": "feet/armour/plate/male/",
-        "muscular": "feet/armour/plate/male/",
-        "female": "feet/armour/plate/female/",
-        "pregnant": "feet/armour/plate/female/",
-        "teen": "feet/armour/plate/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "feet/armour/plate",
-        "notes": "original by wulax, recolors by bigbeargames, edits for v3 base and recolors by bluecarrot16",
-        "authors": [
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      },
-      {
-        "file": "feet/armour/plate/female",
-        "notes": "original by wulax, edited for female base by makrohn, recolors by bigbeargames, edits for v3 base and recolors by bluecarrot16",
-        "authors": [
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_armour": {
-    "name": "Armour",
-    "type_name": "legs",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "climb",
-      "idle",
-      "jump",
-      "sit",
-      "emotes"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "legs_armour"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "steel",
-      "iron",
-      "ceramic",
-      "brass",
-      "copper",
-      "bronze",
-      "silver",
-      "gold"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "male": "legs/armour/plate/male/",
-        "female": "legs/armour/plate/thin/",
-        "teen": "legs/armour/plate/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/armour/plate",
-        "notes": "reduced to 7 colors an adapted to v3 bases by bluecarrot16, climb/jump/sit/emotes by JaidynReiman",
-        "authors": [
-          "bluecarrot16",
-          "JaidynReiman",
-          "Michael Whitlock (bigbeargames)",
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "tool_rod": {
-    "name": "Rod",
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "tool_rod"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "tools",
-      "tool_rod"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "rod"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 9,
-        "custom_animation": "tool_rod",
-        "male": "tools/rod/background/",
-        "muscular": "tools/rod/background/",
-        "female": "tools/rod/background/",
-        "pregnant": "tools/rod/background/",
-        "teen": "tools/rod/background/"
-      },
-      "layer_2": {
-        "zPos": 150,
-        "custom_animation": "tool_rod",
-        "male": "tools/rod/foreground/",
-        "muscular": "tools/rod/foreground/",
-        "female": "tools/rod/foreground/",
-        "pregnant": "tools/rod/foreground/",
-        "teen": "tools/rod/foreground/"
-      }
-    },
-    "credits": [
-      {
-        "file": "tools/rod",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Pierre Vigier (pvigier)",
-          "Tuomo Untinen (reemax)",
-          "Johannes Sjölund (wulax)",
-          "and Inboxninja"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-hand-tools"
-        ]
-      }
-    ],
-    "preview_row": 0,
-    "preview_column": 0,
-    "preview_x_offset": 304,
-    "preview_y_offset": 24,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "tool_smash": {
-    "name": "Smash",
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "slash_128"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "tools",
-      "tool_smash"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "axe",
-      "hammer",
-      "pickaxe"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "tools/smash/universal/male/",
-        "muscular": "tools/smash/universal/male/",
-        "female": "tools/smash/universal/female/",
-        "pregnant": "tools/smash/universal/female/",
-        "teen": "tools/smash/universal/female/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "custom_animation": "slash_128",
-        "male": "tools/smash/background/",
-        "muscular": "tools/smash/background/",
-        "female": "tools/smash/background/",
-        "pregnant": "tools/smash/background/",
-        "teen": "tools/smash/background/"
-      },
-      "layer_3": {
-        "zPos": 150,
-        "custom_animation": "slash_128",
-        "male": "tools/smash/foreground/",
-        "muscular": "tools/smash/foreground/",
-        "female": "tools/smash/foreground/",
-        "pregnant": "tools/smash/foreground/",
-        "teen": "tools/smash/foreground/"
-      }
-    },
-    "credits": [
-      {
-        "file": "tools/smash",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Pierre Vigier (pvigier)",
-          "Tuomo Untinen (reemax)",
-          "Johannes Sjölund (wulax)",
-          "and Inboxninja"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-hand-tools"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "tool_thrust": {
-    "name": "Thrust",
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "hurt"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "tools",
-      "tool_thrust"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "hoe",
-      "shovel",
-      "watering"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 9,
-        "male": "tools/thrust/background/",
-        "muscular": "tools/thrust/background/",
-        "female": "tools/thrust/background/",
-        "pregnant": "tools/thrust/background/",
-        "teen": "tools/thrust/background/"
-      },
-      "layer_2": {
-        "zPos": 150,
-        "male": "tools/thrust/foreground/",
-        "muscular": "tools/thrust/foreground/",
-        "female": "tools/thrust/foreground/",
-        "pregnant": "tools/thrust/foreground/",
-        "teen": "tools/thrust/foreground/"
-      }
-    },
-    "credits": [
-      {
-        "file": "tools/thrust",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Pierre Vigier (pvigier)",
-          "Tuomo Untinen (reemax)",
-          "Johannes Sjölund (wulax)",
-          "and Inboxninja"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-hand-tools"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "tool_whip": {
-    "name": "Whip",
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "tool_whip"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "tools",
-      "tool_whip"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "whip"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 9,
-        "custom_animation": "tool_whip",
-        "male": "tools/whip/background/",
-        "muscular": "tools/whip/background/",
-        "female": "tools/whip/background/",
-        "pregnant": "tools/whip/background/",
-        "teen": "tools/whip/background/"
-      },
-      "layer_2": {
-        "zPos": 150,
-        "custom_animation": "tool_whip",
-        "male": "tools/whip/",
-        "muscular": "tools/whip/",
-        "female": "tools/whip/",
-        "pregnant": "tools/whip/",
-        "teen": "tools/whip/"
-      }
-    },
-    "credits": [
-      {
-        "file": "tools/whip",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "GPL 3.0",
-          "CC-BY 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-more-weapons"
-        ]
-      }
-    ],
-    "preview_row": 3,
-    "preview_column": 12,
-    "preview_x_offset": 24,
-    "preview_y_offset": 48,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ]
-    }
-  },
-  "torso_bandages": {
-    "name": "Bandages",
-    "type_name": "bandages",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "torso_bandages"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 110,
-        "male": "torso/bandage/male/",
-        "female": "torso/bandage/female/",
-        "teen": "torso/bandage/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/bandage",
-        "notes": "",
-        "authors": [
-          "Nila122"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 2.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-bandages"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_chainmail": {
-    "name": "Chainmail",
-    "type_name": "chainmail",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "torso_chainmail"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "gray"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 50,
-        "male": "torso/chainmail/male/",
-        "female": "torso/chainmail/female/",
-        "teen": "torso/chainmail/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/chainmail",
-        "notes": "minor edits by bluecarrot16",
-        "authors": [
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "shoulders_epaulets": {
-    "name": "Epaulets",
-    "type_name": "shoulders",
-    "required": [
-      "male"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "arms",
-      "shoulders",
-      "shoulders_epaulets"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "bronze",
-      "gold",
-      "silver",
-      "red",
-      "blue",
-      "teal",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 60,
-        "male": "shoulders/epaulets/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shoulders/epaulets",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-pirates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "shoulders_leather": {
-    "name": "Leather",
-    "type_name": "shoulders",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "arms",
-      "shoulders",
-      "shoulders_leather"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "leather",
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 60,
-        "male": "shoulders/leather/male/",
-        "female": "shoulders/leather/female/",
-        "muscular": "shoulders/leather/male/",
-        "pregnant": "shoulders/leather/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shoulders/leather",
-        "notes": "adapted to female base by makrohn, adapted to v3 bases by bluecarrot16",
-        "authors": [
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "shoulders_legion": {
-    "name": "Legion",
-    "type_name": "shoulders",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "arms",
-      "shoulders",
-      "shoulders_legion"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "bronze",
-      "steel",
-      "gold"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 60,
-        "male": "shoulders/legion/male/",
-        "female": "shoulders/legion/female/",
-        "muscular": "shoulders/legion/male/",
-        "pregnant": "shoulders/legion/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shoulders/legion",
-        "notes": "",
-        "authors": [
-          "Nila122"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 2.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-roman-armor"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "shoulders_mantal": {
-    "name": "Mantal",
-    "type_name": "shoulders",
-    "required": [
-      "male"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "arms",
-      "shoulders",
-      "shoulders_mantal"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 75,
-        "male": "shoulders/mantal/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shoulders/mantal",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-pirates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "shoulders_plate": {
-    "name": "Plate",
-    "type_name": "shoulders",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "arms",
-      "shoulders",
-      "shoulders_plate"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "steel",
-      "iron",
-      "ceramic",
-      "brass",
-      "copper",
-      "bronze",
-      "silver",
-      "gold"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 65,
-        "male": "shoulders/plate/male/",
-        "female": "shoulders/plate/female/",
-        "muscular": "shoulders/plate/male/",
-        "pregnant": "shoulders/plate/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shoulders/plate",
-        "notes": "recolors, adapted to v3 bases by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      },
-      {
-        "file": "shoulders/plate/female",
-        "notes": "adapted to female base by makrohn, adapted to v3 bases by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-combat-armor-for-women",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "prosthesis_hook": {
-    "name": "Hook hand",
-    "type_name": "prosthesis_hand",
-    "required": [
-      "male"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "prostheses",
-      "prosthesis_hook"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "hook"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "is_mask": true,
-        "male": "body/prosthesis/hook/male/mask/"
-      },
-      "layer_2": {
-        "zPos": 100,
-        "male": "body/prosthesis/hook/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/prosthesis/hook",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-pirates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "prosthesis_peg_leg": {
-    "name": "Peg leg",
-    "type_name": "prosthesis_leg",
-    "required": [
-      "male"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "prostheses",
-      "prosthesis_peg_leg"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "peg_leg"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "is_mask": true,
-        "male": "body/prosthesis/peg_leg/male/mask/"
-      },
-      "layer_2": {
-        "zPos": 100,
-        "male": "body/prosthesis/peg_leg/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/prosthesis/peg_leg",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-pirates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "body_skeleton": {
-    "name": "Skeleton",
-    "type_name": "body",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "special",
-      "body_skeleton"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "skeleton"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 10,
-        "male": "body/bodies/skeleton/",
-        "female": "body/bodies/skeleton/",
-        "teen": "body/bodies/skeleton/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/bodies/skeleton",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-skeleton",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "body_zombie": {
-    "name": "Zombie",
-    "type_name": "body",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "special",
-      "body_zombie"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 10,
-        "male": "body/bodies/zombie/",
-        "female": "body/bodies/zombie/",
-        "teen": "body/bodies/zombie/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/bodies/zombie",
-        "notes": "",
-        "authors": [
-          "Stephen Challener (Redshrike)",
-          "Johannes Sjölund (wulax)",
-          "Sander Frenken (castelonia)",
-          "Benjamin K. Smith (BenCreating)",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-zombie",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "tail_cat": {
-    "name": "Cat Tail",
-    "type_name": "tail",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "tails",
-      "tail_cat"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 125,
-        "male": "body/tail/cat/adult/fg/",
-        "muscular": "body/tail/cat/adult/fg/",
-        "female": "body/tail/cat/adult/fg/",
-        "pregnant": "body/tail/cat/adult/fg/",
-        "teen": "body/tail/cat/adult/fg/",
-        "child": "body/tail/cat/child/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/tail/cat/adult/bg/",
-        "muscular": "body/tail/cat/adult/bg/",
-        "female": "body/tail/cat/adult/bg/",
-        "pregnant": "body/tail/cat/adult/bg/",
-        "teen": "body/tail/cat/adult/bg/",
-        "child": "body/tail/cat/child/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/tail/cat",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "tail_dragon": {
-    "name": "Dragon Tail (PLACEHOLDER; assets coming soon!)",
-    "type_name": "tail",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "tails",
-      "tail_dragon"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 85,
-        "male": "body/tail/dragon/adult/fg/",
-        "muscular": "body/tail/dragon/adult/fg/",
-        "female": "body/tail/dragon/adult/fg/",
-        "pregnant": "body/tail/dragon/adult/fg/",
-        "teen": "body/tail/dragon/adult/fg/",
-        "child": "body/tail/dragon/child/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/tail/dragon/adult/bg/",
-        "muscular": "body/tail/dragon/adult/bg/",
-        "female": "body/tail/dragon/adult/bg/",
-        "pregnant": "body/tail/dragon/adult/bg/",
-        "teen": "body/tail/dragon/adult/bg/",
-        "child": "body/tail/dragon/child/bg/"
-      }
-    },
-    "credits": [],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false
-  },
-  "tail_feather": {
-    "name": "Tail Feathers (PLACEHOLDER; assets coming soon!)",
-    "type_name": "tail",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "tails",
-      "tail_feather"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 85,
-        "male": "body/tail/feather/adult/fg/",
-        "muscular": "body/tail/feather/adult/fg/",
-        "female": "body/tail/feather/adult/fg/",
-        "pregnant": "body/tail/feather/adult/fg/",
-        "teen": "body/tail/feather/adult/fg/",
-        "child": "body/tail/feather/child/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/tail/feather/adult/bg/",
-        "muscular": "body/tail/feather/adult/bg/",
-        "female": "body/tail/feather/adult/bg/",
-        "pregnant": "body/tail/feather/adult/bg/",
-        "teen": "body/tail/feather/adult/bg/",
-        "child": "body/tail/feather/child/bg/"
-      }
-    },
-    "credits": [],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false
-  },
-  "tail_fin": {
-    "name": "Tail Fin (PLACEHOLDER; assets coming soon!)",
-    "type_name": "tail",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "tails",
-      "tail_fin"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 85,
-        "male": "body/tail/fin/adult/fg/",
-        "muscular": "body/tail/fin/adult/fg/",
-        "female": "body/tail/fin/adult/fg/",
-        "pregnant": "body/tail/fin/adult/fg/",
-        "teen": "body/tail/fin/adult/fg/",
-        "child": "body/tail/fin/child/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/tail/fin/adult/bg/",
-        "muscular": "body/tail/fin/adult/bg/",
-        "female": "body/tail/fin/adult/bg/",
-        "pregnant": "body/tail/fin/adult/bg/",
-        "teen": "body/tail/fin/adult/bg/",
-        "child": "body/tail/fin/child/bg/"
-      }
-    },
-    "credits": [],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false
-  },
-  "tail_lizard": {
-    "name": "Lizard tail",
-    "type_name": "tail",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "lizard",
-      "tail_lizard"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 85,
-        "male": "body/tail/lizard/adult/fg/",
-        "muscular": "body/tail/lizard/adult/fg/",
-        "female": "body/tail/lizard/adult/fg/",
-        "pregnant": "body/tail/lizard/adult/fg/",
-        "teen": "body/tail/lizard/adult/fg/",
-        "child": "body/tail/lizard/child/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/tail/lizard/adult/bg/",
-        "muscular": "body/tail/lizard/adult/bg/",
-        "female": "body/tail/lizard/adult/bg/",
-        "pregnant": "body/tail/lizard/adult/bg/",
-        "teen": "body/tail/lizard/adult/bg/",
-        "child": "body/tail/lizard/child/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/tail/lizard",
-        "notes": "edited for v3 bases and recolored by bluecarrot16, additional animations added by JaidynReiman",
-        "authors": [
-          "Nila122",
-          "bluecarrot16",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/drakes-and-lizardfolk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "tail_lizard_alt": {
-    "name": "Lizard Tail (Alt Colors)",
-    "type_name": "tail",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "tails",
-      "tail_lizard_alt"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 85,
-        "male": "body/tail/lizard/alt/adult/fg/",
-        "muscular": "body/tail/lizard/alt/adult/fg/",
-        "female": "body/tail/lizard/alt/adult/fg/",
-        "pregnant": "body/tail/lizard/alt/adult/fg/",
-        "teen": "body/tail/lizard/alt/adult/fg/",
-        "child": "body/tail/lizard/alt/child/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/tail/lizard/alt/adult/bg/",
-        "muscular": "body/tail/lizard/alt/adult/bg/",
-        "female": "body/tail/lizard/alt/adult/bg/",
-        "pregnant": "body/tail/lizard/alt/adult/bg/",
-        "teen": "body/tail/lizard/alt/adult/bg/",
-        "child": "body/tail/lizard/alt/child/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/tail/lizard",
-        "notes": "edited for v3 bases and recolored by bluecarrot16, additional animations added by JaidynReiman",
-        "authors": [
-          "Nila122",
-          "bluecarrot16",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/drakes-and-lizardfolk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "tail_wolf": {
-    "name": "Wolf Tail",
-    "type_name": "tail",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "tails",
-      "tail_wolf"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 125,
-        "male": "body/tail/wolf/adult/fg/",
-        "muscular": "body/tail/wolf/adult/fg/",
-        "female": "body/tail/wolf/adult/fg/",
-        "pregnant": "body/tail/wolf/adult/fg/",
-        "teen": "body/tail/wolf/adult/fg/",
-        "child": "body/tail/wolf/child/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/tail/wolf/adult/bg/",
-        "muscular": "body/tail/wolf/adult/bg/",
-        "female": "body/tail/wolf/adult/bg/",
-        "pregnant": "body/tail/wolf/adult/bg/",
-        "teen": "body/tail/wolf/adult/bg/",
-        "child": "body/tail/wolf/child/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/tail/wolf",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "tail_wolf_fluffy": {
-    "name": "Fluffy Wolf Tail",
-    "type_name": "tail",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "tails",
-      "tail_wolf_fluffy"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 125,
-        "male": "body/tail/fluffy/adult/fg/",
-        "muscular": "body/tail/fluffy/adult/fg/",
-        "female": "body/tail/fluffy/adult/fg/",
-        "pregnant": "body/tail/fluffy/adult/fg/",
-        "teen": "body/tail/fluffy/adult/fg/",
-        "child": "body/tail/fluffy/child/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/tail/fluffy/adult/bg/",
-        "muscular": "body/tail/fluffy/adult/bg/",
-        "female": "body/tail/fluffy/adult/bg/",
-        "pregnant": "body/tail/fluffy/adult/bg/",
-        "teen": "body/tail/fluffy/adult/bg/",
-        "child": "body/tail/fluffy/child/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/tail/fluffy",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "wings_bat": {
-    "name": "Bat Wings",
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "wings_bat"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "lavender",
-      "zombie_green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "body/wings/bat/adult/fg/",
-        "muscular": "body/wings/bat/adult/fg/",
-        "female": "body/wings/bat/adult/fg/",
-        "pregnant": "body/wings/bat/adult/fg/",
-        "teen": "body/wings/bat/adult/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/bat/adult/bg/",
-        "muscular": "body/wings/bat/adult/bg/",
-        "female": "body/wings/bat/adult/bg/",
-        "pregnant": "body/wings/bat/adult/bg/",
-        "teen": "body/wings/bat/adult/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/bat",
-        "notes": "Original by ElizaWy, added to most remaining frames by JaidynReiman",
-        "authors": [
-          "ElizaWy",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-wings-new-animations"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "wings_dragonfly": {
-    "name": "Dragonfly Wings",
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "dragonfly wings",
-      "wings_dragonfly"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "dragonfly",
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "body/wings/dragonfly/solid/fg/",
-        "muscular": "body/wings/dragonfly/solid/fg/",
-        "female": "body/wings/dragonfly/solid/fg/",
-        "pregnant": "body/wings/dragonfly/solid/fg/",
-        "teen": "body/wings/dragonfly/solid/fg/",
-        "child": "body/wings/dragonfly/solid/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/dragonfly/solid/bg/",
-        "muscular": "body/wings/dragonfly/solid/bg/",
-        "female": "body/wings/dragonfly/solid/bg/",
-        "pregnant": "body/wings/dragonfly/solid/bg/",
-        "teen": "body/wings/dragonfly/solid/bg/",
-        "child": "body/wings/dragonfly/solid/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/dragonfly",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings-pack-2"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "wings_dragonfly_transparent": {
-    "name": "Transparent Dragonfly Wings",
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "dragonfly wings",
-      "wings_dragonfly_transparent"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "dragonfly",
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "body/wings/dragonfly/transparent/fg/",
-        "muscular": "body/wings/dragonfly/transparent/fg/",
-        "female": "body/wings/dragonfly/transparent/fg/",
-        "pregnant": "body/wings/dragonfly/transparent/fg/",
-        "teen": "body/wings/dragonfly/transparent/fg/",
-        "child": "body/wings/dragonfly/transparent/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/dragonfly/transparent/bg/",
-        "muscular": "body/wings/dragonfly/transparent/bg/",
-        "female": "body/wings/dragonfly/transparent/bg/",
-        "pregnant": "body/wings/dragonfly/transparent/bg/",
-        "teen": "body/wings/dragonfly/transparent/bg/",
-        "child": "body/wings/dragonfly/transparent/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/dragonfly",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings-pack-2"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "wings_feathered": {
-    "name": "Feathered Wings",
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "wings_feathered"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "body/wings/feathered/adult/fg/",
-        "muscular": "body/wings/feathered/adult/fg/",
-        "female": "body/wings/feathered/adult/fg/",
-        "pregnant": "body/wings/feathered/adult/fg/",
-        "teen": "body/wings/feathered/adult/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/feathered/adult/bg/",
-        "muscular": "body/wings/feathered/adult/bg/",
-        "female": "body/wings/feathered/adult/bg/",
-        "pregnant": "body/wings/feathered/adult/bg/",
-        "teen": "body/wings/feathered/adult/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/feathered",
-        "notes": "Original by ElizaWy, added to most remaining frames by JaidynReiman",
-        "authors": [
-          "ElizaWy",
-          "Stephen Challener (Redshrike)",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-wings-new-animations"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "wings_lizard": {
-    "name": "Lizard Wings",
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "lizard",
-      "wings_lizard"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "body/wings/lizard/adult/fg/",
-        "muscular": "body/wings/lizard/adult/fg/",
-        "female": "body/wings/lizard/adult/fg/",
-        "pregnant": "body/wings/lizard/adult/fg/",
-        "teen": "body/wings/lizard/adult/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/lizard/adult/bg/",
-        "muscular": "body/wings/lizard/adult/bg/",
-        "female": "body/wings/lizard/adult/bg/",
-        "pregnant": "body/wings/lizard/adult/bg/",
-        "teen": "body/wings/lizard/adult/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/lizard",
-        "notes": "edited for v3 bases and recolored by bluecarrot16, sit/jump/run/emote/revised combat by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "Nila122",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/drakes-and-lizardfolk",
-          "https://opengameart.org/content/lpc-wings-new-animations"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "wings_lizard_alt": {
-    "name": "Lizard Wings (Alt Colors)",
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "wings_lizard_alt"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "body/wings/lizard/alt/adult/fg/",
-        "muscular": "body/wings/lizard/alt/adult/fg/",
-        "female": "body/wings/lizard/alt/adult/fg/",
-        "pregnant": "body/wings/lizard/alt/adult/fg/",
-        "teen": "body/wings/lizard/alt/adult/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/lizard/alt/adult/bg/",
-        "muscular": "body/wings/lizard/alt/adult/bg/",
-        "female": "body/wings/lizard/alt/adult/bg/",
-        "pregnant": "body/wings/lizard/alt/adult/bg/",
-        "teen": "body/wings/lizard/alt/adult/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/lizard",
-        "notes": "edited for v3 bases and recolored by bluecarrot16, sit/jump/run/emote/revised combat by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "Nila122",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/drakes-and-lizardfolk",
-          "https://opengameart.org/content/lpc-wings-new-animations"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "wings_lizard_bat": {
-    "name": "Batlike Lizard Wings",
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "lizard",
-      "wings_lizard_bat"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "body/wings/bat/lizard/adult/fg/",
-        "muscular": "body/wings/bat/lizard/adult/fg/",
-        "female": "body/wings/bat/lizard/adult/fg/",
-        "pregnant": "body/wings/bat/lizard/adult/fg/",
-        "teen": "body/wings/bat/lizard/adult/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/bat/lizard/adult/bg/",
-        "muscular": "body/wings/bat/lizard/adult/bg/",
-        "female": "body/wings/bat/lizard/adult/bg/",
-        "pregnant": "body/wings/bat/lizard/adult/bg/",
-        "teen": "body/wings/bat/lizard/adult/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/bat",
-        "notes": "Original by ElizaWy, added to most remaining frames by JaidynReiman",
-        "authors": [
-          "ElizaWy",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-wings-new-animations"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "wings_lunar": {
-    "name": "Lunar Wings",
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "wings_lunar"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "lunar",
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "body/wings/lunar/fg/",
-        "muscular": "body/wings/lunar/fg/",
-        "female": "body/wings/lunar/fg/",
-        "pregnant": "body/wings/lunar/fg/",
-        "teen": "body/wings/lunar/fg/",
-        "child": "body/wings/lunar/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/lunar/bg/",
-        "muscular": "body/wings/lunar/bg/",
-        "female": "body/wings/lunar/bg/",
-        "pregnant": "body/wings/lunar/bg/",
-        "teen": "body/wings/lunar/bg/",
-        "child": "body/wings/lunar/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/lunar",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings-pack-2"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "wings_monarch": {
-    "name": "Monarch Wings",
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings",
-      "monarch"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "monarch wings",
-      "wings_monarch"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "monarch",
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "body/wings/monarch/base/fg/",
-        "muscular": "body/wings/monarch/base/fg/",
-        "female": "body/wings/monarch/base/fg/",
-        "pregnant": "body/wings/monarch/base/fg/",
-        "teen": "body/wings/monarch/base/fg/",
-        "child": "body/wings/monarch/base/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/monarch/base/bg/",
-        "muscular": "body/wings/monarch/base/bg/",
-        "female": "body/wings/monarch/base/bg/",
-        "pregnant": "body/wings/monarch/base/bg/",
-        "teen": "body/wings/monarch/base/bg/",
-        "child": "body/wings/monarch/base/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/monarch",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "wings_monarch_dots": {
-    "name": "Monarch Wings Dots",
-    "type_name": "wings_dots",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [
-      "monarch"
-    ],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "monarch wings",
-      "wings_monarch_dots"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 106,
-        "male": "body/wings/monarch/dots/fg/",
-        "muscular": "body/wings/monarch/dots/fg/",
-        "female": "body/wings/monarch/dots/fg/",
-        "pregnant": "body/wings/monarch/dots/fg/",
-        "teen": "body/wings/monarch/dots/fg/",
-        "child": "body/wings/monarch/dots/fg/"
-      },
-      "layer_2": {
-        "zPos": 6,
-        "male": "body/wings/monarch/dots/bg/",
-        "muscular": "body/wings/monarch/dots/bg/",
-        "female": "body/wings/monarch/dots/bg/",
-        "pregnant": "body/wings/monarch/dots/bg/",
-        "teen": "body/wings/monarch/dots/bg/",
-        "child": "body/wings/monarch/dots/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/monarch",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "wings_monarch_edge": {
-    "name": "Monarch Wings Edge",
-    "type_name": "wings_edge",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [
-      "monarch"
-    ],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "monarch wings",
-      "wings_monarch_edge"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 106,
-        "male": "body/wings/monarch/edge/fg/",
-        "muscular": "body/wings/monarch/edge/fg/",
-        "female": "body/wings/monarch/edge/fg/",
-        "pregnant": "body/wings/monarch/edge/fg/",
-        "teen": "body/wings/monarch/edge/fg/",
-        "child": "body/wings/monarch/edge/fg/"
-      },
-      "layer_2": {
-        "zPos": 6,
-        "male": "body/wings/monarch/edge/bg/",
-        "muscular": "body/wings/monarch/edge/bg/",
-        "female": "body/wings/monarch/edge/bg/",
-        "pregnant": "body/wings/monarch/edge/bg/",
-        "teen": "body/wings/monarch/edge/bg/",
-        "child": "body/wings/monarch/edge/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/monarch",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "wings_pixie": {
-    "name": "Pixie Wings",
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "pixie wings",
-      "wings_pixie"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "pixie",
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "body/wings/pixie/solid/fg/",
-        "muscular": "body/wings/pixie/solid/fg/",
-        "female": "body/wings/pixie/solid/fg/",
-        "pregnant": "body/wings/pixie/solid/fg/",
-        "teen": "body/wings/pixie/solid/fg/",
-        "child": "body/wings/pixie/solid/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/pixie/solid/bg/",
-        "muscular": "body/wings/pixie/solid/bg/",
-        "female": "body/wings/pixie/solid/bg/",
-        "pregnant": "body/wings/pixie/solid/bg/",
-        "teen": "body/wings/pixie/solid/bg/",
-        "child": "body/wings/pixie/solid/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/pixie",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "wings_pixie_transparent": {
-    "name": "Transparent Pixie Wings",
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "pixie wings",
-      "wings_pixie_transparent"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "pixie",
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "body/wings/pixie/transparent/fg/",
-        "muscular": "body/wings/pixie/transparent/fg/",
-        "female": "body/wings/pixie/transparent/fg/",
-        "pregnant": "body/wings/pixie/transparent/fg/",
-        "teen": "body/wings/pixie/transparent/fg/",
-        "child": "body/wings/pixie/transparent/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/pixie/transparent/bg/",
-        "muscular": "body/wings/pixie/transparent/bg/",
-        "female": "body/wings/pixie/transparent/bg/",
-        "pregnant": "body/wings/pixie/transparent/bg/",
-        "teen": "body/wings/pixie/transparent/bg/",
-        "child": "body/wings/pixie/transparent/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/pixie",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "feet_plate_toe": {
-    "name": "Plated Toe",
-    "type_name": "shoes_toe",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "feet",
-      "shoe accessory",
-      "feet_plate_toe"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "steel",
-      "iron",
-      "ceramic",
-      "brass",
-      "copper",
-      "bronze",
-      "silver",
-      "gold"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 27,
-        "male": "feet/accessory/plate_toe/male/",
-        "muscular": "feet/accessory/plate_toe/male/",
-        "female": "feet/accessory/plate_toe/thin/",
-        "teen": "feet/accessory/plate_toe/thin/",
-        "pregnant": "feet/accessory/plate_toe/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "feet/accessory/plate_toe",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-kimono-relm",
-          "https://opengameart.org/content/lpc-expanded-socks-shoes"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "feet_plate_toe_thick": {
-    "name": "Thick Plated Toe",
-    "type_name": "shoes_toe",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "feet",
-      "shoe accessory",
-      "feet_plate_toe_thick"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "steel",
-      "iron",
-      "ceramic",
-      "brass",
-      "copper",
-      "bronze",
-      "silver",
-      "gold"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 27,
-        "male": "feet/accessory/plate_toe_thick/male/",
-        "muscular": "feet/accessory/plate_toe_thick/male/",
-        "female": "feet/accessory/plate_toe_thick/thin/",
-        "teen": "feet/accessory/plate_toe_thick/thin/",
-        "pregnant": "feet/accessory/plate_toe_thick/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "feet/accessory/plate_toe_thick",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-kimono-relm",
-          "https://opengameart.org/content/lpc-expanded-socks-shoes"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
   "feet_shoes_basic": {
     "name": "Basic Shoes",
+    "priority": 10,
     "type_name": "shoes",
     "required": [
       "male",
@@ -7997,6 +7248,7 @@ window.itemMetadata = {
   },
   "feet_shoes_ghillies": {
     "name": "Ghillies",
+    "priority": 40,
     "type_name": "shoes",
     "required": [
       "male",
@@ -8129,6 +7381,7 @@ window.itemMetadata = {
   },
   "feet_shoes_revised": {
     "name": "Revised Shoes",
+    "priority": 20,
     "type_name": "shoes",
     "required": [
       "male",
@@ -8276,6 +7529,7 @@ window.itemMetadata = {
   },
   "feet_shoes_sara": {
     "name": "Sara Shoes",
+    "priority": 30,
     "type_name": "shoes",
     "required": [
       "male",
@@ -8441,8 +7695,405 @@ window.itemMetadata = {
       ]
     }
   },
+  "feet_socks_ankle": {
+    "name": "Ankle Socks",
+    "priority": null,
+    "type_name": "socks",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "feet",
+      "socks",
+      "feet_socks_ankle"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "leather",
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 14,
+        "male": "feet/socks/ankle/male/",
+        "female": "feet/socks/ankle/thin/",
+        "teen": "feet/socks/ankle/thin/",
+        "pregnant": "feet/socks/ankle/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "feet/socks/ankle/male",
+        "notes": "original overalls and thin socks by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, socks by JaidynReiman",
+        "authors": [
+          "JaidynReiman",
+          "ElizaWy",
+          "Bluecarrot16",
+          "Stephen Challener (Redshrike)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+          "https://opengameart.org/content/lpc-expanded-socks-shoes"
+        ]
+      },
+      {
+        "file": "feet/socks/ankle",
+        "notes": "original by ElizaWy, remaining frames by JaidynReiman",
+        "authors": [
+          "ElizaWy",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+          "https://opengameart.org/content/lpc-expanded-socks-shoes"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "feet_socks_high": {
+    "name": "High Socks",
+    "priority": null,
+    "type_name": "socks",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "feet",
+      "socks",
+      "feet_socks_high"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "leather",
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 14,
+        "male": "feet/socks/high/male/",
+        "female": "feet/socks/high/thin/",
+        "teen": "feet/socks/high/thin/",
+        "pregnant": "feet/socks/high/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "feet/socks/high/male",
+        "notes": "original overalls and thin socks by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, socks by JaidynReiman",
+        "authors": [
+          "JaidynReiman",
+          "ElizaWy",
+          "Bluecarrot16",
+          "Stephen Challener (Redshrike)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+          "https://opengameart.org/content/lpc-expanded-socks-shoes"
+        ]
+      },
+      {
+        "file": "feet/socks/high",
+        "notes": "original by ElizaWy, remaining frames by JaidynReiman",
+        "authors": [
+          "ElizaWy",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+          "https://opengameart.org/content/lpc-expanded-socks-shoes"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "feet_socks_tabi": {
+    "name": "Tabi Socks",
+    "priority": null,
+    "type_name": "socks",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "feet",
+      "socks",
+      "feet_socks_tabi"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 14,
+        "male": "feet/socks/tabi/male/",
+        "muscular": "feet/socks/tabi/male/",
+        "female": "feet/socks/tabi/thin/",
+        "teen": "feet/socks/tabi/thin/",
+        "pregnant": "feet/socks/tabi/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "feet/socks/tabi",
+        "notes": "",
+        "authors": [
+          "JaidynReiman",
+          "Stephen Challener (Redshrike)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-kimono-relm",
+          "https://opengameart.org/content/lpc-expanded-socks-shoes"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
   "hair_afro": {
     "name": "Afro",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -8474,7 +8125,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "afro",
       "hair_afro"
@@ -8558,6 +8208,7 @@ window.itemMetadata = {
   },
   "hair_cornrows": {
     "name": "Cornrows",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -8589,7 +8240,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "afro",
       "hair_cornrows"
@@ -8676,6 +8326,7 @@ window.itemMetadata = {
   },
   "hair_dreadlocks_long": {
     "name": "Dreadlocks long",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -8707,7 +8358,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "afro",
       "hair_dreadlocks_long"
@@ -8791,6 +8441,7 @@ window.itemMetadata = {
   },
   "hair_dreadlocks_short": {
     "name": "Dreadlocks short",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -8822,7 +8473,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "afro",
       "hair_dreadlocks_short"
@@ -8909,6 +8559,7 @@ window.itemMetadata = {
   },
   "hair_flat_top_fade": {
     "name": "Flat top fade",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -8940,7 +8591,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "afro",
       "hair_flat_top_fade"
@@ -9027,6 +8677,7 @@ window.itemMetadata = {
   },
   "hair_flat_top_straight": {
     "name": "Flat top straight",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -9058,7 +8709,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "afro",
       "hair_flat_top_straight"
@@ -9145,6 +8795,7 @@ window.itemMetadata = {
   },
   "hair_natural": {
     "name": "Natural",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -9176,7 +8827,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "afro",
       "hair_natural"
@@ -9263,6 +8913,7 @@ window.itemMetadata = {
   },
   "hair_twists_fade": {
     "name": "Twists fade",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -9294,7 +8945,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "afro",
       "hair_twists_fade"
@@ -9378,6 +9028,7 @@ window.itemMetadata = {
   },
   "hair_twists_straight": {
     "name": "Twists straight",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -9409,7 +9060,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "afro",
       "hair_twists_straight"
@@ -9493,6 +9143,7 @@ window.itemMetadata = {
   },
   "hair_balding": {
     "name": "Balding",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -9524,9 +9175,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "bald/shaved",
+      "bald",
       "hair_balding"
     ],
     "replace_in_path": {},
@@ -9608,6 +9258,7 @@ window.itemMetadata = {
   },
   "hair_buzzcut": {
     "name": "Buzzcut",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -9639,9 +9290,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "bald/shaved",
+      "bald",
       "hair_buzzcut"
     ],
     "replace_in_path": {},
@@ -9723,6 +9373,7 @@ window.itemMetadata = {
   },
   "hair_high_and_tight": {
     "name": "High and tight",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -9754,9 +9405,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "bald/shaved",
+      "bald",
       "hair_high_and_tight"
     ],
     "replace_in_path": {},
@@ -9846,6 +9496,7 @@ window.itemMetadata = {
   },
   "hair_longhawk": {
     "name": "Longhawk",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -9877,9 +9528,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "bald/shaved",
+      "bald",
       "hair_longhawk"
     ],
     "replace_in_path": {},
@@ -9969,6 +9619,7 @@ window.itemMetadata = {
   },
   "hair_shorthawk": {
     "name": "Shorthawk",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -10000,9 +9651,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "bald/shaved",
+      "bald",
       "hair_shorthawk"
     ],
     "replace_in_path": {},
@@ -10092,6 +9742,7 @@ window.itemMetadata = {
   },
   "beards_5oclock_shadow": {
     "name": "5 O'clock Shadow",
+    "priority": null,
     "type_name": "beard",
     "required": [
       "male",
@@ -10123,7 +9774,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "hair",
       "beards",
       "beards_5oclock_shadow"
     ],
@@ -10214,6 +9865,7 @@ window.itemMetadata = {
   },
   "beards_beard": {
     "name": "Basic Beard",
+    "priority": null,
     "type_name": "beard",
     "required": [
       "male",
@@ -10245,7 +9897,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "hair",
       "beards",
       "beards_beard"
     ],
@@ -10333,712 +9985,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "beards_bigstache": {
-    "name": "Big Mustache",
-    "type_name": "mustache",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "mustaches",
-      "beards_bigstache"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 111,
-        "male": "beards/mustache/bigstache/",
-        "female": "beards/mustache/bigstache/",
-        "muscular": "beards/mustache/bigstache/",
-        "teen": "beards/mustache/bigstache/",
-        "pregnant": "beards/mustache/bigstache/"
-      }
-    },
-    "credits": [
-      {
-        "file": "beards/mustache/bigstache",
-        "notes": "Original by Pennomi, repositioning by JaidynReiman.",
-        "authors": [
-          "JaidynReiman",
-          "Thane Brimhall (pennomi)",
-          "laetissima"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-base-character-expressions"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "beards_chevron": {
-    "name": "Chevron Mustache",
-    "type_name": "mustache",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "mustaches",
-      "beards_chevron"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 111,
-        "male": "beards/mustache/chevron/",
-        "female": "beards/mustache/chevron/",
-        "muscular": "beards/mustache/chevron/",
-        "teen": "beards/mustache/chevron/",
-        "pregnant": "beards/mustache/chevron/"
-      }
-    },
-    "credits": [
-      {
-        "file": "beards/mustache/chevron",
-        "notes": "",
-        "authors": [
-          "ElizaWy"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Hair",
-          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "beards_french": {
-    "name": "French Mustache",
-    "type_name": "mustache",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "mustaches",
-      "beards_french"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 111,
-        "male": "beards/mustache/french/",
-        "female": "beards/mustache/french/",
-        "muscular": "beards/mustache/french/",
-        "teen": "beards/mustache/french/",
-        "pregnant": "beards/mustache/french/"
-      }
-    },
-    "credits": [
-      {
-        "file": "beards/mustache/french",
-        "notes": "Original by Pennomi, repositioning by JaidynReiman.",
-        "authors": [
-          "JaidynReiman",
-          "Thane Brimhall (pennomi)",
-          "laetissima"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-base-character-expressions"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "beards_handlebar": {
-    "name": "Handlebar Mustache",
-    "type_name": "mustache",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "mustaches",
-      "beards_handlebar"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 111,
-        "male": "beards/mustache/handlebar/",
-        "female": "beards/mustache/handlebar/",
-        "muscular": "beards/mustache/handlebar/",
-        "teen": "beards/mustache/handlebar/",
-        "pregnant": "beards/mustache/handlebar/"
-      }
-    },
-    "credits": [
-      {
-        "file": "beards/mustache/handlebar",
-        "notes": "",
-        "authors": [
-          "ElizaWy"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Hair",
-          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "beards_horseshoe": {
-    "name": "Horseshoe Mustache",
-    "type_name": "mustache",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "mustaches",
-      "beards_horseshoe"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 111,
-        "male": "beards/mustache/horseshoe/",
-        "female": "beards/mustache/horseshoe/",
-        "muscular": "beards/mustache/horseshoe/",
-        "teen": "beards/mustache/horseshoe/",
-        "pregnant": "beards/mustache/horseshoe/"
-      }
-    },
-    "credits": [
-      {
-        "file": "beards/mustache/horseshoe",
-        "notes": "",
-        "authors": [
-          "ElizaWy"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Hair",
-          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "beards_lampshade": {
-    "name": "Lampshade Mustache",
-    "type_name": "mustache",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "mustaches",
-      "beards_lampshade"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 111,
-        "male": "beards/mustache/lampshade/",
-        "female": "beards/mustache/lampshade/",
-        "muscular": "beards/mustache/lampshade/",
-        "teen": "beards/mustache/lampshade/",
-        "pregnant": "beards/mustache/lampshade/"
-      }
-    },
-    "credits": [
-      {
-        "file": "beards/mustache/lampshade",
-        "notes": "",
-        "authors": [
-          "ElizaWy"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Hair",
-          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
   "beards_medium": {
     "name": "Medium Beard",
+    "priority": null,
     "type_name": "beard",
     "required": [
       "male",
@@ -11070,7 +10019,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "hair",
       "beards",
       "beards_medium"
     ],
@@ -11152,129 +10101,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "beards_mustache": {
-    "name": "Mustache",
-    "type_name": "mustache",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "mustaches",
-      "beards_mustache"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 111,
-        "male": "beards/mustache/basic/",
-        "female": "beards/mustache/basic/",
-        "muscular": "beards/mustache/basic/",
-        "teen": "beards/mustache/basic/",
-        "pregnant": "beards/mustache/basic/"
-      }
-    },
-    "credits": [
-      {
-        "file": "beards/mustache/basic",
-        "notes": "Original by Nemisys, repositioning by JaidynReiman.",
-        "authors": [
-          "JaidynReiman",
-          "Carlo Enrico Victoria (Nemisys)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-brunet-mustache"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
   "beards_trimmed": {
     "name": "Trimmed Beard",
+    "priority": null,
     "type_name": "beard",
     "required": [
       "male",
@@ -11306,7 +10135,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "hair",
       "beards",
       "beards_trimmed"
     ],
@@ -11388,123 +10217,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "beards_walrus": {
-    "name": "Walrus Mustache",
-    "type_name": "mustache",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "mustaches",
-      "beards_walrus"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 111,
-        "male": "beards/mustache/walrus/",
-        "female": "beards/mustache/walrus/",
-        "muscular": "beards/mustache/walrus/",
-        "teen": "beards/mustache/walrus/",
-        "pregnant": "beards/mustache/walrus/"
-      }
-    },
-    "credits": [
-      {
-        "file": "beards/mustache/walrus",
-        "notes": "",
-        "authors": [
-          "ElizaWy"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Hair",
-          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
   "beards_winter": {
     "name": "Winter Beard",
+    "priority": null,
     "type_name": "beard",
     "required": [
       "male",
@@ -11536,7 +10251,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "hair",
       "beards",
       "beards_winter"
     ],
@@ -11619,6 +10334,7 @@ window.itemMetadata = {
   },
   "hair_bob": {
     "name": "Bob",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -11650,7 +10366,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "bob",
       "hair_bob"
@@ -11737,6 +10452,7 @@ window.itemMetadata = {
   },
   "hair_bob_side_part": {
     "name": "Bob side part",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -11768,7 +10484,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "bob",
       "hair_bob_side_part"
@@ -11857,6 +10572,7 @@ window.itemMetadata = {
   },
   "hair_lob": {
     "name": "Lob",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -11888,7 +10604,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "bob",
       "hair_lob"
@@ -11972,6 +10687,7 @@ window.itemMetadata = {
   },
   "hair_relm_short": {
     "name": "Relm Short",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -12004,7 +10720,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "bob",
       "hair_relm_short"
@@ -12106,6 +10821,7 @@ window.itemMetadata = {
   },
   "hair_bangs_bun": {
     "name": "Bangs bun",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -12137,9 +10853,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "braids, ponytails, updos",
+      "braids",
       "hair_bangs_bun"
     ],
     "replace_in_path": {},
@@ -12224,6 +10939,7 @@ window.itemMetadata = {
   },
   "hair_braid": {
     "name": "Braid",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -12255,9 +10971,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "braids, ponytails, updos",
+      "braids",
       "hair_braid"
     ],
     "replace_in_path": {},
@@ -12367,6 +11082,7 @@ window.itemMetadata = {
   },
   "hair_braid2": {
     "name": "Braid2",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -12398,9 +11114,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "braids, ponytails, updos",
+      "braids",
       "hair_braid2"
     ],
     "replace_in_path": {},
@@ -12498,6 +11213,7 @@ window.itemMetadata = {
   },
   "hair_half_up": {
     "name": "Half up",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -12529,9 +11245,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "braids, ponytails, updos",
+      "braids",
       "hair_half_up"
     ],
     "replace_in_path": {},
@@ -12613,6 +11328,7 @@ window.itemMetadata = {
   },
   "hair_high_ponytail": {
     "name": "High ponytail",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -12644,9 +11360,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "braids, ponytails, updos",
+      "braids",
       "hair_high_ponytail"
     ],
     "replace_in_path": {},
@@ -12739,6 +11454,7 @@ window.itemMetadata = {
   },
   "hair_long_tied": {
     "name": "Long tied",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -12770,9 +11486,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "braids, ponytails, updos",
+      "braids",
       "hair_long_tied"
     ],
     "replace_in_path": {},
@@ -12866,6 +11581,7 @@ window.itemMetadata = {
   },
   "hair_ponytail": {
     "name": "Ponytail",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -12897,9 +11613,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "braids, ponytails, updos",
+      "braids",
       "hair_ponytail"
     ],
     "replace_in_path": {},
@@ -12997,6 +11712,7 @@ window.itemMetadata = {
   },
   "hair_ponytail2": {
     "name": "Ponytail2",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -13028,9 +11744,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "braids, ponytails, updos",
+      "braids",
       "hair_ponytail2"
     ],
     "replace_in_path": {},
@@ -13136,6 +11851,7 @@ window.itemMetadata = {
   },
   "hair_relm_ponytail": {
     "name": "Relm w/Ponytail",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -13168,9 +11884,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "braids, ponytails, updos",
+      "braids",
       "hair_relm_ponytail"
     ],
     "replace_in_path": {},
@@ -13289,6 +12004,7 @@ window.itemMetadata = {
   },
   "hair_relm_xlong": {
     "name": "Relm XLong",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -13320,9 +12036,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "very long",
+      "braids",
       "hair_relm_xlong"
     ],
     "replace_in_path": {},
@@ -13424,6 +12139,7 @@ window.itemMetadata = {
   },
   "hair_shoulderl": {
     "name": "Shoulderl",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -13455,9 +12171,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "braids, ponytails, updos",
+      "braids",
       "hair_shoulderl"
     ],
     "replace_in_path": {},
@@ -13563,6 +12278,7 @@ window.itemMetadata = {
   },
   "hair_shoulderr": {
     "name": "Shoulderr",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -13594,9 +12310,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "braids, ponytails, updos",
+      "braids",
       "hair_shoulderr"
     ],
     "replace_in_path": {},
@@ -13702,6 +12417,7 @@ window.itemMetadata = {
   },
   "hair_topknot_long": {
     "name": "Long Topknot",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -13734,9 +12450,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "braids, ponytails, updos",
+      "braids",
       "hair_topknot_long"
     ],
     "replace_in_path": {},
@@ -13878,6 +12593,7 @@ window.itemMetadata = {
   },
   "hair_topknot_long2": {
     "name": "Long Topknot 2",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -13910,9 +12626,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "braids, ponytails, updos",
+      "braids",
       "hair_topknot_long2"
     ],
     "replace_in_path": {},
@@ -14054,6 +12769,7 @@ window.itemMetadata = {
   },
   "hair_topknot_short": {
     "name": "Short Topknot",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -14086,9 +12802,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "braids, ponytails, updos",
+      "braids",
       "hair_topknot_short"
     ],
     "replace_in_path": {},
@@ -14221,6 +12936,7 @@ window.itemMetadata = {
   },
   "hair_topknot_short2": {
     "name": "Short Topknot 2",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -14253,9 +12969,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "braids, ponytails, updos",
+      "braids",
       "hair_topknot_short2"
     ],
     "replace_in_path": {},
@@ -14388,6 +13103,7 @@ window.itemMetadata = {
   },
   "hair_curls_large": {
     "name": "Large Curls",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -14419,7 +13135,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "curly",
       "hair_curls_large"
@@ -14523,6 +13238,7 @@ window.itemMetadata = {
   },
   "hair_curls_large_xlong": {
     "name": "Large Curls XLong",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -14554,7 +13270,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "curly",
       "hair_curls_large_xlong"
@@ -14658,6 +13373,7 @@ window.itemMetadata = {
   },
   "hair_curly_long": {
     "name": "Curly long",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -14689,7 +13405,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "curly",
       "hair_curly_long"
@@ -14773,6 +13488,7 @@ window.itemMetadata = {
   },
   "hair_curly_short": {
     "name": "Curly short",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -14804,7 +13520,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "curly",
       "hair_curly_short"
@@ -14889,6 +13604,7 @@ window.itemMetadata = {
   },
   "hair_curly_short2": {
     "name": "Curly short 2",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -14920,7 +13636,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "curly",
       "hair_curly_short2"
@@ -15005,6 +13720,7 @@ window.itemMetadata = {
   },
   "hair_jewfro": {
     "name": "Jewfro",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -15037,7 +13753,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "curly",
       "hair_jewfro"
@@ -15147,6 +13862,7 @@ window.itemMetadata = {
   },
   "hair_bangslong": {
     "name": "Bangslong",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -15178,7 +13894,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "long",
       "hair_bangslong"
@@ -15270,6 +13985,7 @@ window.itemMetadata = {
   },
   "hair_bangslong2": {
     "name": "Bangslong2",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -15301,7 +14017,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "long",
       "hair_bangslong2"
@@ -15403,6 +14118,7 @@ window.itemMetadata = {
   },
   "hair_curtains_long": {
     "name": "Curtains long",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -15434,7 +14150,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "long",
       "hair_curtains_long"
@@ -15532,6 +14247,7 @@ window.itemMetadata = {
   },
   "hair_long": {
     "name": "Long",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -15563,7 +14279,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "long",
       "hair_long"
@@ -15655,6 +14370,7 @@ window.itemMetadata = {
   },
   "hair_long_center_part": {
     "name": "Long center part",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -15686,7 +14402,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "long",
       "hair_long_center_part"
@@ -15780,6 +14495,7 @@ window.itemMetadata = {
   },
   "hair_long_messy": {
     "name": "Long messy",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -15811,7 +14527,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "long",
       "hair_long_messy"
@@ -15909,6 +14624,7 @@ window.itemMetadata = {
   },
   "hair_long_messy2": {
     "name": "Long messy2",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -15940,7 +14656,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "long",
       "hair_long_messy2"
@@ -16032,6 +14747,7 @@ window.itemMetadata = {
   },
   "hair_long_straight": {
     "name": "Long straight",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -16063,7 +14779,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "long",
       "hair_long_straight"
@@ -16151,6 +14866,7 @@ window.itemMetadata = {
   },
   "hair_loose": {
     "name": "Loose",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -16182,7 +14898,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "long",
       "hair_loose"
@@ -16274,6 +14989,7 @@ window.itemMetadata = {
   },
   "hair_wavy": {
     "name": "Wavy",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -16305,7 +15021,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "long",
       "hair_wavy"
@@ -16417,6 +15132,7 @@ window.itemMetadata = {
   },
   "hair_wavy_child": {
     "name": "Child Wavy",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "child"
@@ -16434,7 +15150,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "long",
       "hair_wavy_child"
@@ -16506,8 +15221,957 @@ window.itemMetadata = {
       ]
     }
   },
+  "beards_bigstache": {
+    "name": "Big Mustache",
+    "priority": null,
+    "type_name": "mustache",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "mustaches",
+      "beards_bigstache"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 111,
+        "male": "beards/mustache/bigstache/",
+        "female": "beards/mustache/bigstache/",
+        "muscular": "beards/mustache/bigstache/",
+        "teen": "beards/mustache/bigstache/",
+        "pregnant": "beards/mustache/bigstache/"
+      }
+    },
+    "credits": [
+      {
+        "file": "beards/mustache/bigstache",
+        "notes": "Original by Pennomi, repositioning by JaidynReiman.",
+        "authors": [
+          "JaidynReiman",
+          "Thane Brimhall (pennomi)",
+          "laetissima"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-base-character-expressions"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "beards_chevron": {
+    "name": "Chevron Mustache",
+    "priority": null,
+    "type_name": "mustache",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "mustaches",
+      "beards_chevron"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 111,
+        "male": "beards/mustache/chevron/",
+        "female": "beards/mustache/chevron/",
+        "muscular": "beards/mustache/chevron/",
+        "teen": "beards/mustache/chevron/",
+        "pregnant": "beards/mustache/chevron/"
+      }
+    },
+    "credits": [
+      {
+        "file": "beards/mustache/chevron",
+        "notes": "",
+        "authors": [
+          "ElizaWy"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Hair",
+          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "beards_french": {
+    "name": "French Mustache",
+    "priority": null,
+    "type_name": "mustache",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "mustaches",
+      "beards_french"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 111,
+        "male": "beards/mustache/french/",
+        "female": "beards/mustache/french/",
+        "muscular": "beards/mustache/french/",
+        "teen": "beards/mustache/french/",
+        "pregnant": "beards/mustache/french/"
+      }
+    },
+    "credits": [
+      {
+        "file": "beards/mustache/french",
+        "notes": "Original by Pennomi, repositioning by JaidynReiman.",
+        "authors": [
+          "JaidynReiman",
+          "Thane Brimhall (pennomi)",
+          "laetissima"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-base-character-expressions"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "beards_handlebar": {
+    "name": "Handlebar Mustache",
+    "priority": null,
+    "type_name": "mustache",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "mustaches",
+      "beards_handlebar"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 111,
+        "male": "beards/mustache/handlebar/",
+        "female": "beards/mustache/handlebar/",
+        "muscular": "beards/mustache/handlebar/",
+        "teen": "beards/mustache/handlebar/",
+        "pregnant": "beards/mustache/handlebar/"
+      }
+    },
+    "credits": [
+      {
+        "file": "beards/mustache/handlebar",
+        "notes": "",
+        "authors": [
+          "ElizaWy"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Hair",
+          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "beards_horseshoe": {
+    "name": "Horseshoe Mustache",
+    "priority": null,
+    "type_name": "mustache",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "mustaches",
+      "beards_horseshoe"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 111,
+        "male": "beards/mustache/horseshoe/",
+        "female": "beards/mustache/horseshoe/",
+        "muscular": "beards/mustache/horseshoe/",
+        "teen": "beards/mustache/horseshoe/",
+        "pregnant": "beards/mustache/horseshoe/"
+      }
+    },
+    "credits": [
+      {
+        "file": "beards/mustache/horseshoe",
+        "notes": "",
+        "authors": [
+          "ElizaWy"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Hair",
+          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "beards_lampshade": {
+    "name": "Lampshade Mustache",
+    "priority": null,
+    "type_name": "mustache",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "mustaches",
+      "beards_lampshade"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 111,
+        "male": "beards/mustache/lampshade/",
+        "female": "beards/mustache/lampshade/",
+        "muscular": "beards/mustache/lampshade/",
+        "teen": "beards/mustache/lampshade/",
+        "pregnant": "beards/mustache/lampshade/"
+      }
+    },
+    "credits": [
+      {
+        "file": "beards/mustache/lampshade",
+        "notes": "",
+        "authors": [
+          "ElizaWy"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Hair",
+          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "beards_mustache": {
+    "name": "Mustache",
+    "priority": null,
+    "type_name": "mustache",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "mustaches",
+      "beards_mustache"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 111,
+        "male": "beards/mustache/basic/",
+        "female": "beards/mustache/basic/",
+        "muscular": "beards/mustache/basic/",
+        "teen": "beards/mustache/basic/",
+        "pregnant": "beards/mustache/basic/"
+      }
+    },
+    "credits": [
+      {
+        "file": "beards/mustache/basic",
+        "notes": "Original by Nemisys, repositioning by JaidynReiman.",
+        "authors": [
+          "JaidynReiman",
+          "Carlo Enrico Victoria (Nemisys)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-brunet-mustache"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "beards_walrus": {
+    "name": "Walrus Mustache",
+    "priority": null,
+    "type_name": "mustache",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "mustaches",
+      "beards_walrus"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 111,
+        "male": "beards/mustache/walrus/",
+        "female": "beards/mustache/walrus/",
+        "muscular": "beards/mustache/walrus/",
+        "teen": "beards/mustache/walrus/",
+        "pregnant": "beards/mustache/walrus/"
+      }
+    },
+    "credits": [
+      {
+        "file": "beards/mustache/walrus",
+        "notes": "",
+        "authors": [
+          "ElizaWy"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Hair",
+          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
   "hair_bunches": {
     "name": "Bunches",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -16539,7 +16203,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "pigtails",
       "hair_bunches"
@@ -16641,6 +16304,7 @@ window.itemMetadata = {
   },
   "hair_pigtails": {
     "name": "Pigtails",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -16672,7 +16336,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "pigtails",
       "hair_pigtails"
@@ -16764,6 +16427,7 @@ window.itemMetadata = {
   },
   "hair_pigtails_bangs": {
     "name": "Pigtails bangs",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -16795,7 +16459,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "pigtails",
       "hair_pigtails_bangs"
@@ -16887,6 +16550,7 @@ window.itemMetadata = {
   },
   "hair_bangs": {
     "name": "Bangs",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -16918,7 +16582,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_bangs"
@@ -17010,6 +16673,7 @@ window.itemMetadata = {
   },
   "hair_bangsshort": {
     "name": "Bangsshort",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -17041,7 +16705,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_bangsshort"
@@ -17133,6 +16796,7 @@ window.itemMetadata = {
   },
   "hair_bedhead": {
     "name": "Bedhead",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -17164,7 +16828,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_bedhead"
@@ -17256,6 +16919,7 @@ window.itemMetadata = {
   },
   "hair_cowlick": {
     "name": "Cowlick",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -17287,7 +16951,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_cowlick"
@@ -17374,6 +17037,7 @@ window.itemMetadata = {
   },
   "hair_cowlick_tall": {
     "name": "Cowlick tall",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -17405,7 +17069,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_cowlick_tall"
@@ -17491,6 +17154,7 @@ window.itemMetadata = {
   },
   "hair_curtains": {
     "name": "Curtains",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -17522,7 +17186,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_curtains"
@@ -17620,6 +17283,7 @@ window.itemMetadata = {
   },
   "hair_idol": {
     "name": "Idol",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -17651,7 +17315,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_idol"
@@ -17739,6 +17402,7 @@ window.itemMetadata = {
   },
   "hair_messy": {
     "name": "Messy",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "child"
@@ -17756,7 +17420,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_messy"
@@ -17830,6 +17493,7 @@ window.itemMetadata = {
   },
   "hair_messy1": {
     "name": "Messy1",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -17861,7 +17525,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_messy1"
@@ -17953,6 +17616,7 @@ window.itemMetadata = {
   },
   "hair_messy2": {
     "name": "Messy2",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -17984,7 +17648,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_messy2"
@@ -18076,6 +17739,7 @@ window.itemMetadata = {
   },
   "hair_messy3": {
     "name": "Messy3",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -18107,7 +17771,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_messy3"
@@ -18193,6 +17856,7 @@ window.itemMetadata = {
   },
   "hair_mop": {
     "name": "Mop",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -18224,7 +17888,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_mop"
@@ -18316,6 +17979,7 @@ window.itemMetadata = {
   },
   "hair_page": {
     "name": "Page",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -18347,7 +18011,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_page"
@@ -18445,6 +18108,7 @@ window.itemMetadata = {
   },
   "hair_page2": {
     "name": "Page2",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -18476,7 +18140,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_page2"
@@ -18576,6 +18239,7 @@ window.itemMetadata = {
   },
   "hair_parted": {
     "name": "Parted",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -18607,7 +18271,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_parted"
@@ -18701,6 +18364,7 @@ window.itemMetadata = {
   },
   "hair_parted2": {
     "name": "Parted 2",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -18732,7 +18396,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_parted2"
@@ -18824,6 +18487,7 @@ window.itemMetadata = {
   },
   "hair_parted3": {
     "name": "Parted 3",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -18855,7 +18519,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_parted3"
@@ -18940,6 +18603,7 @@ window.itemMetadata = {
   },
   "hair_parted_side_bangs": {
     "name": "Side Parted w/Bangs",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -18972,7 +18636,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_parted_side_bangs"
@@ -19082,6 +18745,7 @@ window.itemMetadata = {
   },
   "hair_parted_side_bangs2": {
     "name": "Side Parted w/Bangs 2",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -19114,7 +18778,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_parted_side_bangs2"
@@ -19224,6 +18887,7 @@ window.itemMetadata = {
   },
   "hair_pixie": {
     "name": "Pixie",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -19255,7 +18919,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_pixie"
@@ -19347,6 +19010,7 @@ window.itemMetadata = {
   },
   "hair_plain": {
     "name": "Plain",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -19378,7 +19042,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_plain"
@@ -19478,6 +19141,7 @@ window.itemMetadata = {
   },
   "hair_single": {
     "name": "Single",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -19509,7 +19173,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_single"
@@ -19621,6 +19284,7 @@ window.itemMetadata = {
   },
   "hair_swoop": {
     "name": "Swoop",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -19652,7 +19316,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_swoop"
@@ -19744,6 +19407,7 @@ window.itemMetadata = {
   },
   "hair_swoop_side": {
     "name": "Side Swoop",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -19776,7 +19440,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_swoop_side"
@@ -19886,6 +19549,7 @@ window.itemMetadata = {
   },
   "hair_unkempt": {
     "name": "Unkempt",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -19917,7 +19581,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "short",
       "hair_unkempt"
@@ -20009,6 +19672,7 @@ window.itemMetadata = {
   },
   "hair_halfmessy": {
     "name": "Halfmessy",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -20040,7 +19704,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "spiky",
       "hair_halfmessy"
@@ -20144,6 +19807,7 @@ window.itemMetadata = {
   },
   "hair_spiked": {
     "name": "Spiked",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -20175,7 +19839,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "spiky",
       "hair_spiked"
@@ -20260,6 +19923,7 @@ window.itemMetadata = {
   },
   "hair_spiked2": {
     "name": "Spiked2",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -20291,7 +19955,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "spiky",
       "hair_spiked2"
@@ -20377,6 +20040,7 @@ window.itemMetadata = {
   },
   "hair_spiked_beehive": {
     "name": "Spiked beehive",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -20408,7 +20072,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "spiky",
       "hair_spiked_beehive"
@@ -20494,6 +20157,7 @@ window.itemMetadata = {
   },
   "hair_spiked_liberty": {
     "name": "Spiked liberty",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -20525,7 +20189,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "spiky",
       "hair_spiked_liberty"
@@ -20611,6 +20274,7 @@ window.itemMetadata = {
   },
   "hair_spiked_liberty2": {
     "name": "Spiked liberty2",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -20642,7 +20306,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "spiky",
       "hair_spiked_liberty2"
@@ -20728,6 +20391,7 @@ window.itemMetadata = {
   },
   "hair_spiked_porcupine": {
     "name": "Spiked porcupine",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -20759,7 +20423,6 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
       "spiky",
       "hair_spiked_porcupine"
@@ -20845,6 +20508,7 @@ window.itemMetadata = {
   },
   "hair_long_band": {
     "name": "Long band",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -20876,9 +20540,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "very long",
+      "xlong",
       "hair_long_band"
     ],
     "replace_in_path": {},
@@ -20970,6 +20633,7 @@ window.itemMetadata = {
   },
   "hair_princess": {
     "name": "Princess",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -21001,9 +20665,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "very long",
+      "xlong",
       "hair_princess"
     ],
     "replace_in_path": {},
@@ -21107,6 +20770,7 @@ window.itemMetadata = {
   },
   "hair_sara": {
     "name": "Sara",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -21138,9 +20802,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "very long",
+      "xlong",
       "hair_sara"
     ],
     "replace_in_path": {},
@@ -21241,6 +20904,7 @@ window.itemMetadata = {
   },
   "hair_xlong": {
     "name": "Xlong",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -21272,9 +20936,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "very long",
+      "xlong",
       "hair_xlong"
     ],
     "replace_in_path": {},
@@ -21384,6 +21047,7 @@ window.itemMetadata = {
   },
   "hair_xlong_wavy": {
     "name": "XLong Wavy",
+    "priority": null,
     "type_name": "hair",
     "required": [
       "male",
@@ -21415,9 +21079,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "very long",
+      "xlong",
       "hair_xlong_wavy"
     ],
     "replace_in_path": {},
@@ -21508,6 +21171,7 @@ window.itemMetadata = {
   },
   "head_fins_fin": {
     "name": "Fin",
+    "priority": null,
     "type_name": "fins",
     "required": [
       "male",
@@ -21638,6 +21302,7 @@ window.itemMetadata = {
   },
   "head_fins_fin_short": {
     "name": "Short fin",
+    "priority": null,
     "type_name": "fins",
     "required": [
       "male",
@@ -21768,6 +21433,7 @@ window.itemMetadata = {
   },
   "head_horns_backwards": {
     "name": "Backwards Horns",
+    "priority": null,
     "type_name": "horns",
     "required": [
       "male",
@@ -21941,6 +21607,7 @@ window.itemMetadata = {
   },
   "head_horns_curled": {
     "name": "Curled Horns",
+    "priority": null,
     "type_name": "horns",
     "required": [
       "male",
@@ -22103,279 +21770,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head_ears_avyon": {
-    "name": "Feather Ears",
-    "type_name": "ears",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry ears",
-      "side ears",
-      "head_ears_avyon"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 126,
-        "male": "head/ears/avyon/adult/",
-        "muscular": "head/ears/avyon/adult/",
-        "female": "head/ears/avyon/adult/",
-        "teen": "head/ears/avyon/adult/",
-        "pregnant": "head/ears/avyon/adult/",
-        "child": "head/ears/avyon/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/avyon",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "head_ears_avyon_skin": {
-    "name": "Feather Ears Skintone",
-    "type_name": "ears_inner",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry ears",
-      "side ears",
-      "head_ears_avyon_skin"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 127,
-        "male": "head/ears/avyon/skin/adult/",
-        "muscular": "head/ears/avyon/skin/adult/",
-        "female": "head/ears/avyon/skin/adult/",
-        "teen": "head/ears/avyon/skin/adult/",
-        "pregnant": "head/ears/avyon/skin/adult/",
-        "child": "head/ears/avyon/skin/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/avyon",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
   "head_ears_big": {
     "name": "Big ears",
+    "priority": null,
     "type_name": "ears",
     "required": [
       "male",
@@ -22501,297 +21898,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head_ears_cat": {
-    "name": "Cat Ears",
-    "type_name": "furry_ears",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry ears",
-      "top ears",
-      "head_ears_cat"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 130,
-        "male": "head/ears/cat/adult_front/",
-        "muscular": "head/ears/cat/adult_front/",
-        "female": "head/ears/cat/adult_front/",
-        "teen": "head/ears/cat/adult_front/",
-        "pregnant": "head/ears/cat/adult_front/",
-        "child": "head/ears/cat/child_front/"
-      },
-      "layer_2": {
-        "zPos": 8,
-        "male": "head/ears/cat/adult_back/",
-        "muscular": "head/ears/cat/adult_back/",
-        "female": "head/ears/cat/adult_back/",
-        "pregnant": "head/ears/cat/adult_back/",
-        "teen": "head/ears/cat/adult_back/",
-        "child": "head/ears/cat/child_back/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/cat",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "head_ears_cat_skin": {
-    "name": "Cat Ears Skintone",
-    "type_name": "furry_ears_skin",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry ears",
-      "top ears",
-      "head_ears_cat_skin"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 131,
-        "male": "head/ears/cat/skin/adult_front/",
-        "muscular": "head/ears/cat/skin/adult_front/",
-        "female": "head/ears/cat/skin/adult_front/",
-        "teen": "head/ears/cat/skin/adult_front/",
-        "pregnant": "head/ears/cat/skin/adult_front/",
-        "child": "head/ears/cat/skin/child_front/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "head/ears/cat/skin/adult_back/",
-        "muscular": "head/ears/cat/skin/adult_back/",
-        "female": "head/ears/cat/skin/adult_back/",
-        "pregnant": "head/ears/cat/skin/adult_back/",
-        "teen": "head/ears/cat/skin/adult_back/",
-        "child": "head/ears/cat/skin/child_back/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/cat",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
   "head_ears_down": {
     "name": "Downward Elven Ears",
+    "priority": null,
     "type_name": "ears",
     "required": [
       "male",
@@ -22921,6 +22030,7 @@ window.itemMetadata = {
   },
   "head_ears_dragon": {
     "name": "Dragon Ears",
+    "priority": null,
     "type_name": "ears",
     "required": [
       "male",
@@ -23050,6 +22160,7 @@ window.itemMetadata = {
   },
   "head_ears_elven": {
     "name": "Elven ears",
+    "priority": null,
     "type_name": "ears",
     "required": [
       "male",
@@ -23178,6 +22289,7 @@ window.itemMetadata = {
   },
   "head_ears_hang": {
     "name": "Hanging Elven Ears",
+    "priority": null,
     "type_name": "ears",
     "required": [
       "male",
@@ -23307,6 +22419,7 @@ window.itemMetadata = {
   },
   "head_ears_long": {
     "name": "Long ears",
+    "priority": null,
     "type_name": "ears",
     "required": [
       "male",
@@ -23437,279 +22550,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head_ears_lykon": {
-    "name": "Side Wolf Ears",
-    "type_name": "ears",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry ears",
-      "side ears",
-      "head_ears_lykon"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 126,
-        "male": "head/ears/lykon/adult/",
-        "muscular": "head/ears/lykon/adult/",
-        "female": "head/ears/lykon/adult/",
-        "teen": "head/ears/lykon/adult/",
-        "pregnant": "head/ears/lykon/adult/",
-        "child": "head/ears/lykon/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/lykon",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "head_ears_lykon_skin": {
-    "name": "Side Wolf Ears Skintone",
-    "type_name": "ears_inner",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry ears",
-      "side ears",
-      "head_ears_lykon_skin"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 127,
-        "male": "head/ears/lykon/skin/adult/",
-        "muscular": "head/ears/lykon/skin/adult/",
-        "female": "head/ears/lykon/skin/adult/",
-        "teen": "head/ears/lykon/skin/adult/",
-        "pregnant": "head/ears/lykon/skin/adult/",
-        "child": "head/ears/lykon/skin/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/lykon",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
   "head_ears_medium": {
     "name": "Medium Elven Ears",
+    "priority": null,
     "type_name": "ears",
     "required": [
       "male",
@@ -23837,568 +22680,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "head_ears_wolf": {
-    "name": "Wolf Ears",
-    "type_name": "furry_ears",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry ears",
-      "top ears",
-      "head_ears_wolf"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 130,
-        "male": "head/ears/wolf/adult_front/",
-        "muscular": "head/ears/wolf/adult_front/",
-        "female": "head/ears/wolf/adult_front/",
-        "teen": "head/ears/wolf/adult_front/",
-        "pregnant": "head/ears/wolf/adult_front/",
-        "child": "head/ears/wolf/child_front/"
-      },
-      "layer_2": {
-        "zPos": 8,
-        "male": "head/ears/wolf/adult_back/",
-        "muscular": "head/ears/wolf/adult_back/",
-        "female": "head/ears/wolf/adult_back/",
-        "pregnant": "head/ears/wolf/adult_back/",
-        "teen": "head/ears/wolf/adult_back/",
-        "child": "head/ears/wolf/child_back/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/wolf",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "head_ears_wolf_skin": {
-    "name": "Wolf Ears Skintone",
-    "type_name": "furry_ears_skin",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry ears",
-      "top ears",
-      "head_ears_wolf_skin"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 131,
-        "male": "head/ears/wolf/skin/adult_front/",
-        "muscular": "head/ears/wolf/skin/adult_front/",
-        "female": "head/ears/wolf/skin/adult_front/",
-        "teen": "head/ears/wolf/skin/adult_front/",
-        "pregnant": "head/ears/wolf/skin/adult_front/",
-        "child": "head/ears/wolf/skin/child_front/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "head/ears/wolf/skin/adult_back/",
-        "muscular": "head/ears/wolf/skin/adult_back/",
-        "female": "head/ears/wolf/skin/adult_back/",
-        "pregnant": "head/ears/wolf/skin/adult_back/",
-        "teen": "head/ears/wolf/skin/adult_back/",
-        "child": "head/ears/wolf/skin/child_back/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/wolf",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "head_ears_zabos": {
-    "name": "Side Cat Ears",
-    "type_name": "ears",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry ears",
-      "side ears",
-      "head_ears_zabos"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 126,
-        "male": "head/ears/zabos/adult/",
-        "muscular": "head/ears/zabos/adult/",
-        "female": "head/ears/zabos/adult/",
-        "teen": "head/ears/zabos/adult/",
-        "pregnant": "head/ears/zabos/adult/",
-        "child": "head/ears/zabos/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/zabos",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "head_ears_zabos_skin": {
-    "name": "Side Cat Ears Skintone",
-    "type_name": "ears_inner",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry ears",
-      "side ears",
-      "head_ears_zabos_skin"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 127,
-        "male": "head/ears/zabos/skin/adult/",
-        "muscular": "head/ears/zabos/skin/adult/",
-        "female": "head/ears/zabos/skin/adult/",
-        "teen": "head/ears/zabos/skin/adult/",
-        "pregnant": "head/ears/zabos/skin/adult/",
-        "child": "head/ears/zabos/skin/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/zabos",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
   "eyebrows_thick": {
     "name": "Thick Eyebrows",
+    "priority": null,
     "type_name": "eyebrows",
     "required": [
       "male",
@@ -24519,6 +22803,7 @@ window.itemMetadata = {
   },
   "eyebrows_thin": {
     "name": "Thin Eyebrows",
+    "priority": null,
     "type_name": "eyebrows",
     "required": [
       "male",
@@ -24637,79 +22922,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "eyes_child": {
-    "name": "Child Eyes",
-    "type_name": "eyes",
-    "required": [
-      "child"
-    ],
-    "animations": [
-      "walk",
-      "slash",
-      "hurt",
-      "idle",
-      "jump",
-      "sit"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "other eyes",
-      "eyes_child"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "brown",
-      "gray",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "child": "eyes/human/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "eyes/human/child",
-        "notes": "original by Redshrike, mapped to all frames by Matthew Krohn & JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "Matthew Krohn (makrohn)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
   "eyes_cyclops": {
     "name": "Cyclops Eyes",
+    "priority": null,
     "type_name": "eyes",
     "required": [
       "male",
@@ -24743,7 +22958,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "other eyes",
+      "eyes",
       "eyes_cyclops"
     ],
     "replace_in_path": {},
@@ -24811,13 +23026,15 @@ window.itemMetadata = {
       ]
     }
   },
-  "eyes_elderly_anger": {
-    "name": "Angry Elderly Eyes",
-    "type_name": "eyes",
+  "eye_color": {
+    "name": "Eye Color",
+    "priority": 20,
+    "type_name": "eye_color",
     "required": [
       "male",
       "female",
       "teen",
+      "child",
       "muscular",
       "pregnant"
     ],
@@ -24845,11 +23062,40 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "eye_color",
-      "elderly",
-      "eyes_elderly_anger"
+      "eyes",
+      "eye_color"
     ],
-    "replace_in_path": {},
+    "replace_in_path": {
+      "head": {
+        "Human_male": "adult",
+        "Human_male_small": "adult",
+        "Human_male_plump": "adult",
+        "Human_male_gaunt": "adult",
+        "Human_female": "adult",
+        "Human_female_small": "adult",
+        "Human_male_elderly": "elderly",
+        "Human_female_elderly": "elderly",
+        "Human_elderly_small": "elderly"
+      },
+      "expression": {
+        "none": "default",
+        "Neutral": "neutral",
+        "Closing_Eyes": "closing",
+        "Closed_Eyes": "none",
+        "Looking_Left": "look_l",
+        "Looking_Right": "look_r",
+        "Rolling_Eyes": "eyeroll",
+        "Shock": "shock",
+        "Angry": "anger",
+        "Angry_Alt": "default",
+        "Sad": "sad",
+        "Sad_Alt": "sad2",
+        "Happy": "none",
+        "Happy_Alt": "none",
+        "Blush": "none",
+        "Shame": "shame"
+      }
+    },
     "variants": [
       "blue",
       "brown",
@@ -24863,217 +23109,18 @@ window.itemMetadata = {
     "layers": {
       "layer_1": {
         "zPos": 105,
-        "male": "eyes/human/elderly/anger/",
-        "muscular": "eyes/human/elderly/anger/",
-        "female": "eyes/human/elderly/anger/",
-        "teen": "eyes/human/elderly/anger/",
-        "pregnant": "eyes/human/elderly/anger/"
+        "male": "eyes/human/${head}/${expression}/",
+        "muscular": "eyes/human/${head}/${expression}/",
+        "female": "eyes/human/${head}/${expression}/",
+        "teen": "eyes/human/${head}/${expression}/",
+        "pregnant": "eyes/human/${head}/${expression}/",
+        "child": "eyes/human/child/${expression}/"
       }
     },
     "credits": [
       {
-        "file": "eyes/human/elderly/anger",
-        "notes": "original by Redshrike, Elders + Anger Expression by ElizaWy, split from expression and mapped to all frames by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "ElizaWy",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Head",
-          "https://opengameart.org/content/ulpc-expanded-expressions"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "eyes_elderly_closing": {
-    "name": "Closing Elderly Eyes",
-    "type_name": "eyes",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "eye_color",
-      "elderly",
-      "eyes_elderly_closing"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "brown",
-      "gray",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "eyes/human/elderly/closing/",
-        "muscular": "eyes/human/elderly/closing/",
-        "female": "eyes/human/elderly/closing/",
-        "teen": "eyes/human/elderly/closing/",
-        "pregnant": "eyes/human/elderly/closing/"
-      }
-    },
-    "credits": [
-      {
-        "file": "eyes/human/elderly/closing",
-        "notes": "original by Redshrike, Elders + Closing Eyes Expression by ElizaWy, split from expression and mapped to all frames by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "ElizaWy",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Head",
-          "https://opengameart.org/content/ulpc-expanded-expressions"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "eyes_elderly_default": {
-    "name": "Default Elderly Eyes",
-    "type_name": "eyes",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "eye_color",
-      "elderly",
-      "eyes_elderly_default"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "brown",
-      "gray",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "eyes/human/elderly/default/",
-        "muscular": "eyes/human/elderly/default/",
-        "female": "eyes/human/elderly/default/",
-        "teen": "eyes/human/elderly/default/",
-        "pregnant": "eyes/human/elderly/default/"
-      }
-    },
-    "credits": [
-      {
-        "file": "eyes/human/elderly/default",
-        "notes": "original by Redshrike, Elders by ElizaWy, split from head and mapped to all frames by JaidynReiman",
+        "file": "eyes/human",
+        "notes": "original by Redshrike, mapped to all frames by Matthew Krohn & JaidynReiman",
         "authors": [
           "JaidynReiman",
           "Matthew Krohn (makrohn)",
@@ -25087,6 +23134,59 @@ window.itemMetadata = {
         "urls": [
           "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
         ]
+      },
+      {
+        "file": "eyes/human/adult",
+        "notes": "original by Redshrike, Expressions by ElizaWy, eyes split from expressions and mapped to all frames by JaidynReiman",
+        "authors": [
+          "JaidynReiman",
+          "ElizaWy",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      },
+      {
+        "file": "eyes/human/adult/default",
+        "notes": "original by Redshrike, mapped to all frames by Matthew Krohn & JaidynReiman",
+        "authors": [
+          "JaidynReiman",
+          "Matthew Krohn (makrohn)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
+        ]
+      },
+      {
+        "file": "eyes/human/elderly",
+        "notes": "original by Redshrike, Elderly Heads and Expressions by ElizaWy, eyes split from expressions and mapped to all frames by JaidynReiman",
+        "authors": [
+          "JaidynReiman",
+          "ElizaWy",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
       }
     ],
     "preview_row": 2,
@@ -25110,6 +23210,11 @@ window.itemMetadata = {
         "CC-BY-SA 3.0",
         "GPL 3.0"
       ],
+      "child": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
       "muscular": [
         "OGA-BY 3.0",
         "CC-BY-SA 3.0",
@@ -25119,611 +23224,12 @@ window.itemMetadata = {
         "OGA-BY 3.0",
         "CC-BY-SA 3.0",
         "GPL 3.0"
-      ]
-    }
-  },
-  "eyes_elderly_eyeroll": {
-    "name": "Rolling Elderly Eyes",
-    "type_name": "eyes",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "eye_color",
-      "elderly",
-      "eyes_elderly_eyeroll"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "brown",
-      "gray",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "eyes/human/elderly/eyeroll/",
-        "muscular": "eyes/human/elderly/eyeroll/",
-        "female": "eyes/human/elderly/eyeroll/",
-        "teen": "eyes/human/elderly/eyeroll/",
-        "pregnant": "eyes/human/elderly/eyeroll/"
-      }
-    },
-    "credits": [
-      {
-        "file": "eyes/human/elderly/eyeroll",
-        "notes": "original by Redshrike, Elders + Eyeroll Expression by ElizaWy, split from expression and mapped to all frames by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "ElizaWy",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Head",
-          "https://opengameart.org/content/ulpc-expanded-expressions"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "eyes_elderly_look_l": {
-    "name": "Elderly Eyes Looking Left",
-    "type_name": "eyes",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "eye_color",
-      "elderly",
-      "eyes_elderly_look_l"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "brown",
-      "gray",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "eyes/human/elderly/look_l/",
-        "muscular": "eyes/human/elderly/look_l/",
-        "female": "eyes/human/elderly/look_l/",
-        "teen": "eyes/human/elderly/look_l/",
-        "pregnant": "eyes/human/elderly/look_l/"
-      }
-    },
-    "credits": [
-      {
-        "file": "eyes/human/elderly/look_l",
-        "notes": "original by Redshrike, Elders + Left Look Expression by ElizaWy, split from expression and mapped to all frames by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "ElizaWy",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Head",
-          "https://opengameart.org/content/ulpc-expanded-expressions"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "eyes_elderly_look_r": {
-    "name": "Elderly Eyes Looking Right",
-    "type_name": "eyes",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "eye_color",
-      "elderly",
-      "eyes_elderly_look_r"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "brown",
-      "gray",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "eyes/human/elderly/look_r/",
-        "muscular": "eyes/human/elderly/look_r/",
-        "female": "eyes/human/elderly/look_r/",
-        "teen": "eyes/human/elderly/look_r/",
-        "pregnant": "eyes/human/elderly/look_r/"
-      }
-    },
-    "credits": [
-      {
-        "file": "eyes/human/elderly/look_r",
-        "notes": "original by Redshrike, Elders + Right Look Expression by ElizaWy, split from expression and mapped to all frames by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "ElizaWy",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Head",
-          "https://opengameart.org/content/ulpc-expanded-expressions"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "eyes_elderly_sad": {
-    "name": "Sad Elderly Eyes",
-    "type_name": "eyes",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "eye_color",
-      "elderly",
-      "eyes_elderly_sad"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "brown",
-      "gray",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "eyes/human/elderly/sad/",
-        "muscular": "eyes/human/elderly/sad/",
-        "female": "eyes/human/elderly/sad/",
-        "teen": "eyes/human/elderly/sad/",
-        "pregnant": "eyes/human/elderly/sad/"
-      }
-    },
-    "credits": [
-      {
-        "file": "eyes/human/elderly/sad",
-        "notes": "original by Redshrike, Elders + Sad Expression by ElizaWy, split from expression and mapped to all frames by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "ElizaWy",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Head",
-          "https://opengameart.org/content/ulpc-expanded-expressions"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "eyes_elderly_shame": {
-    "name": "Shame Elderly Eyes",
-    "type_name": "eyes",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "eye_color",
-      "elderly",
-      "eyes_elderly_shame"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "brown",
-      "gray",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "eyes/human/elderly/shame/",
-        "muscular": "eyes/human/elderly/shame/",
-        "female": "eyes/human/elderly/shame/",
-        "teen": "eyes/human/elderly/shame/",
-        "pregnant": "eyes/human/elderly/shame/"
-      }
-    },
-    "credits": [
-      {
-        "file": "eyes/human/elderly/shame",
-        "notes": "original by Redshrike, Elders + Shame Expression by ElizaWy, split from expression and mapped to all frames by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "ElizaWy",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Head",
-          "https://opengameart.org/content/ulpc-expanded-expressions"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "eyes_elderly_shock": {
-    "name": "Shock Elderly Eyes",
-    "type_name": "eyes",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "eye_color",
-      "elderly",
-      "eyes_elderly_shock"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "brown",
-      "gray",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "eyes/human/elderly/shock/",
-        "muscular": "eyes/human/elderly/shock/",
-        "female": "eyes/human/elderly/shock/",
-        "teen": "eyes/human/elderly/shock/",
-        "pregnant": "eyes/human/elderly/shock/"
-      }
-    },
-    "credits": [
-      {
-        "file": "eyes/human/elderly/shock",
-        "notes": "original by Redshrike, Elders + Shock Expression by ElizaWy, split from expression and mapped to all frames by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "ElizaWy",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Head",
-          "https://opengameart.org/content/ulpc-expanded-expressions"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
       ]
     }
   },
   "face_angry": {
     "name": "Angry",
+    "priority": null,
     "type_name": "expression",
     "required": [
       "male",
@@ -25760,7 +23266,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "face",
+      "faces",
       "face_angry"
     ],
     "replace_in_path": {
@@ -25901,6 +23407,7 @@ window.itemMetadata = {
   },
   "face_angry2": {
     "name": "Angry Alt",
+    "priority": null,
     "type_name": "expression",
     "required": [
       "male",
@@ -25937,7 +23444,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "face",
+      "faces",
       "face_angry2"
     ],
     "replace_in_path": {},
@@ -26025,6 +23532,7 @@ window.itemMetadata = {
   },
   "face_blush": {
     "name": "Blush",
+    "priority": null,
     "type_name": "expression",
     "required": [
       "male",
@@ -26061,7 +23569,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "face",
+      "faces",
       "face_blush"
     ],
     "replace_in_path": {
@@ -26202,6 +23710,7 @@ window.itemMetadata = {
   },
   "face_closed": {
     "name": "Closed Eyes",
+    "priority": null,
     "type_name": "expression",
     "required": [
       "male",
@@ -26238,7 +23747,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "face",
+      "faces",
       "face_closed"
     ],
     "replace_in_path": {
@@ -26379,6 +23888,7 @@ window.itemMetadata = {
   },
   "face_closing": {
     "name": "Closing Eyes",
+    "priority": null,
     "type_name": "expression",
     "required": [
       "male",
@@ -26415,7 +23925,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "face",
+      "faces",
       "face_closing"
     ],
     "replace_in_path": {
@@ -26556,6 +24066,7 @@ window.itemMetadata = {
   },
   "face_eyeroll": {
     "name": "Rolling Eyes",
+    "priority": null,
     "type_name": "expression",
     "required": [
       "male",
@@ -26592,7 +24103,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "face",
+      "faces",
       "face_eyeroll"
     ],
     "replace_in_path": {
@@ -26733,6 +24244,7 @@ window.itemMetadata = {
   },
   "face_happy": {
     "name": "Happy",
+    "priority": null,
     "type_name": "expression",
     "required": [
       "male",
@@ -26769,7 +24281,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "face",
+      "faces",
       "face_happy"
     ],
     "replace_in_path": {
@@ -26910,6 +24422,7 @@ window.itemMetadata = {
   },
   "face_happy2": {
     "name": "Happy Alt",
+    "priority": null,
     "type_name": "expression",
     "required": [
       "male",
@@ -26946,7 +24459,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "face",
+      "faces",
       "face_happy2"
     ],
     "replace_in_path": {},
@@ -27034,6 +24547,7 @@ window.itemMetadata = {
   },
   "face_look_l": {
     "name": "Looking Left",
+    "priority": null,
     "type_name": "expression",
     "required": [
       "male",
@@ -27070,7 +24584,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "face",
+      "faces",
       "face_look_l"
     ],
     "replace_in_path": {
@@ -27211,6 +24725,7 @@ window.itemMetadata = {
   },
   "face_look_r": {
     "name": "Looking Right",
+    "priority": null,
     "type_name": "expression",
     "required": [
       "male",
@@ -27247,7 +24762,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "face",
+      "faces",
       "face_look_r"
     ],
     "replace_in_path": {
@@ -27388,6 +24903,7 @@ window.itemMetadata = {
   },
   "face_neutral": {
     "name": "Neutral",
+    "priority": null,
     "type_name": "expression",
     "required": [
       "male",
@@ -27424,7 +24940,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "face",
+      "faces",
       "face_neutral"
     ],
     "replace_in_path": {
@@ -27570,6 +25086,7 @@ window.itemMetadata = {
   },
   "face_sad": {
     "name": "Sad",
+    "priority": null,
     "type_name": "expression",
     "required": [
       "male",
@@ -27606,7 +25123,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "face",
+      "faces",
       "face_sad"
     ],
     "replace_in_path": {
@@ -27747,6 +25264,7 @@ window.itemMetadata = {
   },
   "face_sad2": {
     "name": "Sad Alt",
+    "priority": null,
     "type_name": "expression",
     "required": [
       "male",
@@ -27784,7 +25302,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "face",
+      "faces",
       "face_sad2"
     ],
     "replace_in_path": {},
@@ -27872,6 +25390,7 @@ window.itemMetadata = {
   },
   "face_shame": {
     "name": "Shame",
+    "priority": null,
     "type_name": "expression",
     "required": [
       "male",
@@ -27908,7 +25427,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "face",
+      "faces",
       "face_shame"
     ],
     "replace_in_path": {},
@@ -28037,6 +25556,7 @@ window.itemMetadata = {
   },
   "face_shock": {
     "name": "Shock",
+    "priority": null,
     "type_name": "expression",
     "required": [
       "male",
@@ -28073,7 +25593,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "face",
+      "faces",
       "face_shock"
     ],
     "replace_in_path": {},
@@ -28202,6 +25722,7 @@ window.itemMetadata = {
   },
   "face_tears": {
     "name": "Tears",
+    "priority": null,
     "type_name": "expression_crying",
     "required": [
       "male",
@@ -28238,7 +25759,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "head",
-      "face",
+      "faces",
       "face_tears"
     ],
     "replace_in_path": {},
@@ -28305,6 +25826,7 @@ window.itemMetadata = {
   },
   "heads_alien": {
     "name": "Alien",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -28431,6 +25953,7 @@ window.itemMetadata = {
   },
   "heads_boarman": {
     "name": "Boarman",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -28554,6 +26077,7 @@ window.itemMetadata = {
   },
   "heads_boarman_child": {
     "name": "Boarman child",
+    "priority": null,
     "type_name": "head",
     "required": [
       "child"
@@ -28655,6 +26179,7 @@ window.itemMetadata = {
   },
   "heads_frankenstein": {
     "name": "Frankenstein",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -28782,6 +26307,7 @@ window.itemMetadata = {
   },
   "heads_goblin": {
     "name": "Goblin",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -28916,6 +26442,7 @@ window.itemMetadata = {
   },
   "heads_goblin_child": {
     "name": "Goblin child",
+    "priority": null,
     "type_name": "head",
     "required": [
       "child"
@@ -29018,6 +26545,7 @@ window.itemMetadata = {
   },
   "heads_human_child": {
     "name": "Human child",
+    "priority": null,
     "type_name": "head",
     "required": [
       "child"
@@ -29119,6 +26647,7 @@ window.itemMetadata = {
   },
   "heads_human_elderly_small": {
     "name": "Human elderly small",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -29238,6 +26767,7 @@ window.itemMetadata = {
   },
   "heads_human_female": {
     "name": "Human female",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -29367,6 +26897,7 @@ window.itemMetadata = {
   },
   "heads_human_female_elderly": {
     "name": "Human female elderly",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -29490,6 +27021,7 @@ window.itemMetadata = {
   },
   "heads_human_female_small": {
     "name": "Human female small",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -29609,6 +27141,7 @@ window.itemMetadata = {
   },
   "heads_human_male": {
     "name": "Human male",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -29737,6 +27270,7 @@ window.itemMetadata = {
   },
   "heads_human_male_elderly": {
     "name": "Human male elderly",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -29860,6 +27394,7 @@ window.itemMetadata = {
   },
   "heads_human_male_gaunt": {
     "name": "Human male gaunt",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -29987,6 +27522,7 @@ window.itemMetadata = {
   },
   "heads_human_male_plump": {
     "name": "Human male plump",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -30108,6 +27644,7 @@ window.itemMetadata = {
   },
   "heads_human_male_small": {
     "name": "Human male small",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -30227,6 +27764,7 @@ window.itemMetadata = {
   },
   "heads_jack": {
     "name": "Jack O Lantern",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -30326,6 +27864,7 @@ window.itemMetadata = {
   },
   "heads_lizard_child": {
     "name": "Lizard child",
+    "priority": null,
     "type_name": "head",
     "required": [
       "child"
@@ -30418,6 +27957,7 @@ window.itemMetadata = {
   },
   "heads_lizard_female": {
     "name": "Lizard female",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -30538,6 +28078,7 @@ window.itemMetadata = {
   },
   "heads_lizard_male": {
     "name": "Lizard male",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -30658,6 +28199,7 @@ window.itemMetadata = {
   },
   "heads_minotaur": {
     "name": "Minotaur",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -30781,6 +28323,7 @@ window.itemMetadata = {
   },
   "heads_minotaur_child": {
     "name": "Minotaur child",
+    "priority": null,
     "type_name": "head",
     "required": [
       "child"
@@ -30882,6 +28425,7 @@ window.itemMetadata = {
   },
   "heads_minotaur_female": {
     "name": "Minotaur female",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -31005,6 +28549,7 @@ window.itemMetadata = {
   },
   "heads_mouse": {
     "name": "Mouse",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -31131,6 +28676,7 @@ window.itemMetadata = {
   },
   "heads_mouse_child": {
     "name": "Mouse child",
+    "priority": null,
     "type_name": "head",
     "required": [
       "child"
@@ -31230,6 +28776,7 @@ window.itemMetadata = {
   },
   "heads_orc_child": {
     "name": "Orc child",
+    "priority": null,
     "type_name": "head",
     "required": [
       "child"
@@ -31331,6 +28878,7 @@ window.itemMetadata = {
   },
   "heads_orc_female": {
     "name": "Orc female",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -31454,6 +29002,7 @@ window.itemMetadata = {
   },
   "heads_orc_male": {
     "name": "Orc male",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -31585,6 +29134,7 @@ window.itemMetadata = {
   },
   "heads_pig": {
     "name": "Pig",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -31706,6 +29256,7 @@ window.itemMetadata = {
   },
   "heads_pig_child": {
     "name": "Pig child",
+    "priority": null,
     "type_name": "head",
     "required": [
       "child"
@@ -31803,6 +29354,7 @@ window.itemMetadata = {
   },
   "heads_rabbit": {
     "name": "Rabbit",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -31930,6 +29482,7 @@ window.itemMetadata = {
   },
   "heads_rabbit_child": {
     "name": "Rabbit child",
+    "priority": null,
     "type_name": "head",
     "required": [
       "child"
@@ -32029,6 +29582,7 @@ window.itemMetadata = {
   },
   "heads_rat": {
     "name": "Rat",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -32156,6 +29710,7 @@ window.itemMetadata = {
   },
   "heads_rat_child": {
     "name": "Rat child",
+    "priority": null,
     "type_name": "head",
     "required": [
       "child"
@@ -32255,6 +29810,7 @@ window.itemMetadata = {
   },
   "heads_sheep": {
     "name": "Sheep",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -32376,6 +29932,7 @@ window.itemMetadata = {
   },
   "heads_sheep_child": {
     "name": "Sheep child",
+    "priority": null,
     "type_name": "head",
     "required": [
       "child"
@@ -32473,6 +30030,7 @@ window.itemMetadata = {
   },
   "heads_skeleton": {
     "name": "Skeleton",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -32582,6 +30140,7 @@ window.itemMetadata = {
   },
   "heads_troll": {
     "name": "Troll",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -32699,6 +30258,7 @@ window.itemMetadata = {
   },
   "heads_troll_child": {
     "name": "Troll child",
+    "priority": null,
     "type_name": "head",
     "required": [
       "child"
@@ -32796,6 +30356,7 @@ window.itemMetadata = {
   },
   "heads_vampire": {
     "name": "Vampire",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -32923,6 +30484,7 @@ window.itemMetadata = {
   },
   "heads_wartotaur": {
     "name": "Wartotaur",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -33046,6 +30608,7 @@ window.itemMetadata = {
   },
   "heads_wolf_child": {
     "name": "Wolf child",
+    "priority": null,
     "type_name": "head",
     "required": [
       "child"
@@ -33148,6 +30711,7 @@ window.itemMetadata = {
   },
   "heads_wolf_female": {
     "name": "Wolf female",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -33274,6 +30838,7 @@ window.itemMetadata = {
   },
   "heads_wolf_male": {
     "name": "Wolf male",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -33400,6 +30965,7 @@ window.itemMetadata = {
   },
   "heads_zombie": {
     "name": "Zombie",
+    "priority": null,
     "type_name": "head",
     "required": [
       "male",
@@ -33524,6 +31090,7 @@ window.itemMetadata = {
   },
   "neck_bowtie": {
     "name": "Bowtie",
+    "priority": 20,
     "type_name": "neck",
     "required": [
       "male",
@@ -33648,6 +31215,7 @@ window.itemMetadata = {
   },
   "neck_bowtie2": {
     "name": "Bowtie 2",
+    "priority": 30,
     "type_name": "neck",
     "required": [
       "male",
@@ -33762,6 +31330,7 @@ window.itemMetadata = {
   },
   "neck_capeclip": {
     "name": "Capeclip",
+    "priority": 60,
     "type_name": "neck",
     "required": [
       "male",
@@ -33878,6 +31447,7 @@ window.itemMetadata = {
   },
   "neck_capetie": {
     "name": "Capetie",
+    "priority": 70,
     "type_name": "neck",
     "required": [
       "male",
@@ -33993,6 +31563,7 @@ window.itemMetadata = {
   },
   "neck_cravat": {
     "name": "Cravat",
+    "priority": 90,
     "type_name": "neck",
     "required": [
       "male",
@@ -34089,6 +31660,7 @@ window.itemMetadata = {
   },
   "neck_jabot": {
     "name": "Jabot",
+    "priority": 80,
     "type_name": "neck",
     "required": [
       "male",
@@ -34185,6 +31757,7 @@ window.itemMetadata = {
   },
   "neck_necklace": {
     "name": "Necklace",
+    "priority": 100,
     "type_name": "necklace",
     "required": [
       "male",
@@ -34280,6 +31853,7 @@ window.itemMetadata = {
   },
   "neck_necklace_beaded_large": {
     "name": "Large Beaded Necklace",
+    "priority": 140,
     "type_name": "necklace",
     "required": [
       "male",
@@ -34366,6 +31940,7 @@ window.itemMetadata = {
   },
   "neck_necklace_beaded_small": {
     "name": "Small Beaded Necklace",
+    "priority": 130,
     "type_name": "necklace",
     "required": [
       "male",
@@ -34452,6 +32027,7 @@ window.itemMetadata = {
   },
   "neck_necklace_chain": {
     "name": "Chain Necklace",
+    "priority": 120,
     "type_name": "necklace",
     "required": [
       "male",
@@ -34538,6 +32114,7 @@ window.itemMetadata = {
   },
   "neck_necklace_simple": {
     "name": "Simple Necklace",
+    "priority": 110,
     "type_name": "necklace",
     "required": [
       "male",
@@ -34624,6 +32201,7 @@ window.itemMetadata = {
   },
   "neck_necktie": {
     "name": "Necktie",
+    "priority": 40,
     "type_name": "neck",
     "required": [
       "male",
@@ -34748,6 +32326,7 @@ window.itemMetadata = {
   },
   "neck_scarf": {
     "name": "Scarf",
+    "priority": 50,
     "type_name": "neck",
     "required": [
       "male",
@@ -34852,6 +32431,7 @@ window.itemMetadata = {
   },
   "head_nose_big": {
     "name": "Big nose",
+    "priority": null,
     "type_name": "nose",
     "required": [
       "male",
@@ -34970,6 +32550,7 @@ window.itemMetadata = {
   },
   "head_nose_button": {
     "name": "Button nose",
+    "priority": null,
     "type_name": "nose",
     "required": [
       "male",
@@ -35088,6 +32669,7 @@ window.itemMetadata = {
   },
   "head_nose_elderly": {
     "name": "Elderly nose",
+    "priority": null,
     "type_name": "nose",
     "required": [
       "male",
@@ -35198,6 +32780,7 @@ window.itemMetadata = {
   },
   "head_nose_large": {
     "name": "Large nose",
+    "priority": null,
     "type_name": "nose",
     "required": [
       "male",
@@ -35309,6 +32892,7 @@ window.itemMetadata = {
   },
   "head_nose_straight": {
     "name": "Straight nose",
+    "priority": null,
     "type_name": "nose",
     "required": [
       "male",
@@ -35427,6 +33011,7 @@ window.itemMetadata = {
   },
   "facial_mask_plain": {
     "name": "Plain Mask",
+    "priority": 50,
     "type_name": "facial_mask",
     "required": [
       "male",
@@ -35459,7 +33044,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
       "facial_mask_plain"
     ],
@@ -35576,6 +33161,7 @@ window.itemMetadata = {
   },
   "legs_hose": {
     "name": "Hose",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "male",
@@ -35707,6 +33293,7 @@ window.itemMetadata = {
   },
   "legs_leggings": {
     "name": "Leggings",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "male",
@@ -35841,6 +33428,7 @@ window.itemMetadata = {
   },
   "legs_leggings2": {
     "name": "Leggings 2",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "male",
@@ -35972,6 +33560,7 @@ window.itemMetadata = {
   },
   "legs_childpants": {
     "name": "Child pants",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "child"
@@ -36037,6 +33626,7 @@ window.itemMetadata = {
   },
   "legs_cuffed": {
     "name": "Cuffed Pants",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "male",
@@ -36167,6 +33757,7 @@ window.itemMetadata = {
   },
   "legs_formal": {
     "name": "Formal Pants",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "male",
@@ -36323,6 +33914,7 @@ window.itemMetadata = {
   },
   "legs_formal_striped": {
     "name": "Striped Formal Pants",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "male",
@@ -36479,6 +34071,7 @@ window.itemMetadata = {
   },
   "legs_fur": {
     "name": "Fur Pants",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "male",
@@ -36635,6 +34228,7 @@ window.itemMetadata = {
   },
   "legs_pantaloons": {
     "name": "Pantaloons",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "male",
@@ -36808,6 +34402,7 @@ window.itemMetadata = {
   },
   "legs_pants": {
     "name": "Pants",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "male",
@@ -36963,6 +34558,7 @@ window.itemMetadata = {
   },
   "legs_pants2": {
     "name": "Long Pants",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "male",
@@ -37093,6 +34689,7 @@ window.itemMetadata = {
   },
   "legs_pregnantpants": {
     "name": "Pregnancy pants",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "pregnant"
@@ -37181,6 +34778,7 @@ window.itemMetadata = {
   },
   "legs_widepants": {
     "name": "Wide pants",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "muscular"
@@ -37271,6 +34869,7 @@ window.itemMetadata = {
   },
   "legs_shorts": {
     "name": "Shorts",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "male",
@@ -37406,6 +35005,7 @@ window.itemMetadata = {
   },
   "legs_shorts_short": {
     "name": "Short Shorts",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "male",
@@ -37541,6 +35141,7 @@ window.itemMetadata = {
   },
   "legs_childskirts": {
     "name": "Child skirts",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "child"
@@ -37607,6 +35208,7 @@ window.itemMetadata = {
   },
   "legs_skirts_legion": {
     "name": "Legion skirt",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "male",
@@ -37729,6 +35331,7 @@ window.itemMetadata = {
   },
   "legs_skirts_plain": {
     "name": "Plain skirt",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "male",
@@ -37838,6 +35441,7 @@ window.itemMetadata = {
   },
   "legs_skirts_slit": {
     "name": "Slit skirt",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "male",
@@ -37937,6 +35541,7 @@ window.itemMetadata = {
   },
   "legs_skirt_belle": {
     "name": "Belle skirt",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "female",
@@ -38041,6 +35646,7 @@ window.itemMetadata = {
   },
   "legs_skirt_overskirt": {
     "name": "Overskirt",
+    "priority": null,
     "type_name": "apron",
     "required": [
       "female",
@@ -38145,6 +35751,7 @@ window.itemMetadata = {
   },
   "legs_skirt_straight": {
     "name": "Straight skirt",
+    "priority": null,
     "type_name": "legs",
     "required": [
       "female",
@@ -38242,6 +35849,7 @@ window.itemMetadata = {
   },
   "torso_aprons_apron": {
     "name": "Apron",
+    "priority": null,
     "type_name": "apron",
     "required": [
       "male",
@@ -38346,6 +35954,7 @@ window.itemMetadata = {
   },
   "torso_aprons_apron_full": {
     "name": "Apron full",
+    "priority": null,
     "type_name": "apron",
     "required": [
       "female"
@@ -38431,6 +36040,7 @@ window.itemMetadata = {
   },
   "torso_aprons_apron_half": {
     "name": "Apron half",
+    "priority": null,
     "type_name": "apron",
     "required": [
       "female"
@@ -38516,6 +36126,7 @@ window.itemMetadata = {
   },
   "torso_aprons_overalls": {
     "name": "Overalls",
+    "priority": null,
     "type_name": "overalls",
     "required": [
       "male",
@@ -38625,6 +36236,7 @@ window.itemMetadata = {
   },
   "torso_aprons_suspenders": {
     "name": "Suspenders",
+    "priority": null,
     "type_name": "overalls",
     "required": [
       "male",
@@ -38739,6 +36351,7 @@ window.itemMetadata = {
   },
   "torso_armour_leather": {
     "name": "Leather",
+    "priority": null,
     "type_name": "armour",
     "required": [
       "male",
@@ -38859,6 +36472,7 @@ window.itemMetadata = {
   },
   "torso_armour_legion": {
     "name": "Legion",
+    "priority": null,
     "type_name": "armour",
     "required": [
       "male",
@@ -38959,6 +36573,7 @@ window.itemMetadata = {
   },
   "torso_armour_plate": {
     "name": "Plate",
+    "priority": null,
     "type_name": "armour",
     "required": [
       "male",
@@ -39094,6 +36709,7 @@ window.itemMetadata = {
   },
   "backpack": {
     "name": "Backpack",
+    "priority": null,
     "type_name": "backpack",
     "required": [
       "male",
@@ -39196,6 +36812,7 @@ window.itemMetadata = {
   },
   "backpack_basket": {
     "name": "Basket",
+    "priority": null,
     "type_name": "backpack",
     "required": [
       "male",
@@ -39282,6 +36899,7 @@ window.itemMetadata = {
   },
   "backpack_jetpack": {
     "name": "Jetpack",
+    "priority": null,
     "type_name": "backpack",
     "required": [
       "male",
@@ -39368,6 +36986,7 @@ window.itemMetadata = {
   },
   "backpack_jetpack_fins": {
     "name": "Jetpack fins",
+    "priority": null,
     "type_name": "cargo",
     "required": [
       "male",
@@ -39454,6 +37073,7 @@ window.itemMetadata = {
   },
   "backpack_squarepack": {
     "name": "Square pack",
+    "priority": null,
     "type_name": "backpack",
     "required": [
       "male",
@@ -39555,6 +37175,7 @@ window.itemMetadata = {
   },
   "backpack_straps": {
     "name": "Straps",
+    "priority": null,
     "type_name": "backpack_straps",
     "required": [
       "male",
@@ -39659,6 +37280,7 @@ window.itemMetadata = {
   },
   "quiver": {
     "name": "Quiver",
+    "priority": null,
     "type_name": "quiver",
     "required": [
       "male",
@@ -39750,6 +37372,7 @@ window.itemMetadata = {
   },
   "cape_solid": {
     "name": "Solid",
+    "priority": null,
     "type_name": "cape",
     "required": [
       "male",
@@ -39895,6 +37518,7 @@ window.itemMetadata = {
   },
   "cape_tattered": {
     "name": "Tattered",
+    "priority": null,
     "type_name": "cape",
     "required": [
       "male",
@@ -40039,6 +37663,7 @@ window.itemMetadata = {
   },
   "cape_trim": {
     "name": "Cape Trim",
+    "priority": null,
     "type_name": "cape_trim",
     "required": [
       "male",
@@ -40160,6 +37785,7 @@ window.itemMetadata = {
   },
   "dress_bodice": {
     "name": "Bodice",
+    "priority": 10,
     "type_name": "vest",
     "required": [
       "female"
@@ -40250,6 +37876,7 @@ window.itemMetadata = {
   },
   "dress_sash": {
     "name": "Sash dress",
+    "priority": 30,
     "type_name": "dress",
     "required": [
       "female"
@@ -40337,6 +37964,7 @@ window.itemMetadata = {
   },
   "dress_slit": {
     "name": "Slit dress",
+    "priority": 20,
     "type_name": "dress",
     "required": [
       "female"
@@ -40428,6 +38056,7 @@ window.itemMetadata = {
   },
   "torso_jacket_collared": {
     "name": "Collared coat",
+    "priority": null,
     "type_name": "jacket",
     "required": [
       "male"
@@ -40514,6 +38143,7 @@ window.itemMetadata = {
   },
   "torso_jacket_frock": {
     "name": "Frock coat",
+    "priority": null,
     "type_name": "jacket",
     "required": [
       "male"
@@ -40596,6 +38226,7 @@ window.itemMetadata = {
   },
   "torso_jacket_iverness": {
     "name": "Iverness cloak",
+    "priority": null,
     "type_name": "jacket",
     "required": [
       "male"
@@ -40657,6 +38288,7 @@ window.itemMetadata = {
   },
   "torso_jacket_santa": {
     "name": "Santa coat",
+    "priority": null,
     "type_name": "jacket",
     "required": [
       "male"
@@ -40742,6 +38374,7 @@ window.itemMetadata = {
   },
   "torso_jacket_tabard": {
     "name": "Tabard",
+    "priority": null,
     "type_name": "jacket",
     "required": [
       "male",
@@ -40858,6 +38491,7 @@ window.itemMetadata = {
   },
   "torso_jacket_trench": {
     "name": "Trench coat",
+    "priority": null,
     "type_name": "jacket",
     "required": [
       "male"
@@ -40920,6 +38554,7 @@ window.itemMetadata = {
   },
   "torso_clothes_blouse": {
     "name": "Blouse",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "female"
@@ -41004,6 +38639,7 @@ window.itemMetadata = {
   },
   "torso_clothes_blouse_longsleeve": {
     "name": "Longsleeve blouse",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "female"
@@ -41088,6 +38724,7 @@ window.itemMetadata = {
   },
   "torso_clothes_child_shirt": {
     "name": "Child shirts",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "child"
@@ -41154,6 +38791,7 @@ window.itemMetadata = {
   },
   "torso_clothes_corset": {
     "name": "Corset",
+    "priority": null,
     "type_name": "vest",
     "required": [
       "female"
@@ -41237,6 +38875,7 @@ window.itemMetadata = {
   },
   "torso_clothes_robe": {
     "name": "Robe",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "female"
@@ -41307,6 +38946,7 @@ window.itemMetadata = {
   },
   "torso_clothes_tunic": {
     "name": "Tunic",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "female"
@@ -41400,6 +39040,7 @@ window.itemMetadata = {
   },
   "torso_clothes_tunic_sara": {
     "name": "Sara Tunic",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "female"
@@ -41486,6 +39127,7 @@ window.itemMetadata = {
   },
   "torso_clothes_vest": {
     "name": "Vest",
+    "priority": null,
     "type_name": "vest",
     "required": [
       "male"
@@ -41612,6 +39254,7 @@ window.itemMetadata = {
   },
   "torso_clothes_vest_open": {
     "name": "Vest open",
+    "priority": null,
     "type_name": "vest",
     "required": [
       "male"
@@ -41700,6 +39343,7 @@ window.itemMetadata = {
   },
   "belt_belly": {
     "name": "Belly belt",
+    "priority": 40,
     "type_name": "belt",
     "required": [
       "male",
@@ -41787,6 +39431,7 @@ window.itemMetadata = {
   },
   "belt_double": {
     "name": "Double Belt",
+    "priority": 20,
     "type_name": "belt",
     "required": [
       "male",
@@ -41873,6 +39518,7 @@ window.itemMetadata = {
   },
   "belt_leather": {
     "name": "Leather Belt",
+    "priority": 10,
     "type_name": "belt",
     "required": [
       "male",
@@ -41959,6 +39605,7 @@ window.itemMetadata = {
   },
   "belt_loose": {
     "name": "Loose Belt",
+    "priority": 30,
     "type_name": "belt",
     "required": [
       "male",
@@ -42043,383 +39690,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "belt_obi": {
-    "name": "Obi",
-    "type_name": "sash",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "waist",
-      "obi",
-      "belt_obi"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 65,
-        "male": "torso/waist/obi/male/",
-        "muscular": "torso/waist/obi/male/",
-        "female": "torso/waist/obi/thin/",
-        "pregnant": "torso/waist/obi/thin/",
-        "teen": "torso/waist/obi/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/waist/obi",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-kimono-relm"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "belt_obi_knot_left": {
-    "name": "Obi Knot Left",
-    "type_name": "sash_tie",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "waist",
-      "obi",
-      "belt_obi_knot_left"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 66,
-        "male": "torso/waist/obi/knot/left/male/",
-        "muscular": "torso/waist/obi/knot/left/male/",
-        "female": "torso/waist/obi/knot/left/thin/",
-        "pregnant": "torso/waist/obi/knot/left/thin/",
-        "teen": "torso/waist/obi/knot/left/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/waist/obi/knot",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-kimono-relm"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "belt_obi_knot_right": {
-    "name": "Obi Knot Right",
-    "type_name": "sash_tie",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "waist",
-      "obi",
-      "belt_obi_knot_right"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 66,
-        "male": "torso/waist/obi/knot/right/male/",
-        "muscular": "torso/waist/obi/knot/right/male/",
-        "female": "torso/waist/obi/knot/right/thin/",
-        "pregnant": "torso/waist/obi/knot/right/thin/",
-        "teen": "torso/waist/obi/knot/right/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/waist/obi/knot",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-kimono-relm"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
   "belt_other_female": {
     "name": "Other belts",
+    "priority": 50,
     "type_name": "belt",
     "required": [
       "female"
@@ -42536,6 +39809,7 @@ window.itemMetadata = {
   },
   "belt_other_male": {
     "name": "Other belts",
+    "priority": 50,
     "type_name": "belt",
     "required": [
       "male"
@@ -42632,6 +39906,7 @@ window.itemMetadata = {
   },
   "belt_sash": {
     "name": "Sash",
+    "priority": 60,
     "type_name": "sash",
     "required": [
       "male",
@@ -42738,6 +40013,7 @@ window.itemMetadata = {
   },
   "belt_sash_narrow": {
     "name": "Narrow sash",
+    "priority": 70,
     "type_name": "sash",
     "required": [
       "male",
@@ -42844,6 +40120,7 @@ window.itemMetadata = {
   },
   "belt_waistband": {
     "name": "Waistband",
+    "priority": 90,
     "type_name": "sash",
     "required": [
       "female",
@@ -42953,6 +40230,7 @@ window.itemMetadata = {
   },
   "buckles": {
     "name": "Buckles",
+    "priority": 100,
     "type_name": "buckles",
     "required": [
       "female"
@@ -43017,6 +40295,7 @@ window.itemMetadata = {
   },
   "weapon_blunt_club": {
     "name": "Club",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -43104,6 +40383,7 @@ window.itemMetadata = {
   },
   "weapon_blunt_flail": {
     "name": "Flail",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -43204,6 +40484,7 @@ window.itemMetadata = {
   },
   "weapon_blunt_mace": {
     "name": "Mace",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -43304,6 +40585,7 @@ window.itemMetadata = {
   },
   "weapon_blunt_waraxe": {
     "name": "Waraxe",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -43404,6 +40686,7 @@ window.itemMetadata = {
   },
   "weapon_magic_crystal": {
     "name": "Crystal",
+    "priority": null,
     "type_name": "weapon_magic_crystal",
     "required": [
       "male",
@@ -43522,6 +40805,7 @@ window.itemMetadata = {
   },
   "weapon_magic_diamond": {
     "name": "Diamond staff",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -43646,6 +40930,7 @@ window.itemMetadata = {
   },
   "weapon_magic_gnarled": {
     "name": "Gnarled staff",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -43770,6 +41055,7 @@ window.itemMetadata = {
   },
   "weapon_magic_loop": {
     "name": "Loop staff",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -43894,6 +41180,7 @@ window.itemMetadata = {
   },
   "weapon_magic_s": {
     "name": "S staff",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -44009,6 +41296,7 @@ window.itemMetadata = {
   },
   "weapon_magic_simple": {
     "name": "Simple staff",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -44094,6 +41382,7 @@ window.itemMetadata = {
   },
   "weapon_magic_wand": {
     "name": "Wand",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -44172,6 +41461,7 @@ window.itemMetadata = {
   },
   "weapon_polearm_cane": {
     "name": "Cane",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -44246,6 +41536,7 @@ window.itemMetadata = {
   },
   "weapon_polearm_dragonspear": {
     "name": "Dragon spear",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -44362,6 +41653,7 @@ window.itemMetadata = {
   },
   "weapon_polearm_halberd": {
     "name": "Halberd",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -44479,6 +41771,7 @@ window.itemMetadata = {
   },
   "weapon_polearm_longspear": {
     "name": "Long spear",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -44594,6 +41887,7 @@ window.itemMetadata = {
   },
   "weapon_polearm_scythe": {
     "name": "Scythe",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -44687,6 +41981,7 @@ window.itemMetadata = {
   },
   "weapon_polearm_spear": {
     "name": "Spear",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -44784,6 +42079,7 @@ window.itemMetadata = {
   },
   "weapon_polearm_trident": {
     "name": "Trident",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -44900,6 +42196,7 @@ window.itemMetadata = {
   },
   "weapon_ranged_boomerang": {
     "name": "Boomerang",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -44979,6 +42276,7 @@ window.itemMetadata = {
   },
   "weapon_ranged_crossbow": {
     "name": "Crossbow",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -45057,6 +42355,7 @@ window.itemMetadata = {
   },
   "weapon_ranged_slingshot": {
     "name": "Slingshot",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -45144,6 +42443,7 @@ window.itemMetadata = {
   },
   "shield": {
     "name": "Shield",
+    "priority": 10,
     "type_name": "shield",
     "required": [
       "male",
@@ -45165,7 +42465,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
+      "shields",
       "shield"
     ],
     "replace_in_path": {},
@@ -45478,6 +42778,7 @@ window.itemMetadata = {
   },
   "shield_kite": {
     "name": "Kite",
+    "priority": 20,
     "type_name": "shield",
     "required": [
       "male",
@@ -45499,7 +42800,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
+      "shields",
       "shield_kite"
     ],
     "replace_in_path": {},
@@ -45574,6 +42875,7 @@ window.itemMetadata = {
   },
   "shield_spartan": {
     "name": "Spartan shield",
+    "priority": 50,
     "type_name": "shield",
     "required": [
       "male",
@@ -45595,7 +42897,7 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
+      "shields",
       "shield_spartan"
     ],
     "replace_in_path": {},
@@ -45656,6 +42958,7 @@ window.itemMetadata = {
   },
   "weapon_sword_arming": {
     "name": "Arming Sword",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -45805,6 +43108,7 @@ window.itemMetadata = {
   },
   "weapon_sword_dagger": {
     "name": "Dagger",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -45896,6 +43200,7 @@ window.itemMetadata = {
   },
   "weapon_sword_glowsword": {
     "name": "Glowsword",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -45999,6 +43304,7 @@ window.itemMetadata = {
   },
   "weapon_sword_katana": {
     "name": "Katana",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -46095,6 +43401,7 @@ window.itemMetadata = {
   },
   "weapon_sword_longsword": {
     "name": "Longsword",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -46229,6 +43536,7 @@ window.itemMetadata = {
   },
   "weapon_sword_longsword_alt": {
     "name": "Longsword alt",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -46323,6 +43631,7 @@ window.itemMetadata = {
   },
   "weapon_sword_rapier": {
     "name": "Rapier",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -46423,6 +43732,7 @@ window.itemMetadata = {
   },
   "weapon_sword_saber": {
     "name": "Saber",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -46520,6 +43830,7 @@ window.itemMetadata = {
   },
   "weapon_sword_scimitar": {
     "name": "Scimitar",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -46615,6 +43926,7 @@ window.itemMetadata = {
   },
   "hairext_braidl": {
     "name": "Left Braid",
+    "priority": null,
     "type_name": "hairextl",
     "required": [
       "male",
@@ -46647,9 +43959,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "hair extensions",
+      "extensions",
       "bangs",
       "hairext_braidl"
     ],
@@ -46757,6 +44068,7 @@ window.itemMetadata = {
   },
   "hairext_braidr": {
     "name": "Right Braid",
+    "priority": null,
     "type_name": "hairextr",
     "required": [
       "male",
@@ -46789,9 +44101,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "hair extensions",
+      "extensions",
       "bangs",
       "hairext_braidr"
     ],
@@ -46899,6 +44210,7 @@ window.itemMetadata = {
   },
   "hairext_long_straightl": {
     "name": "Left Long Straight",
+    "priority": null,
     "type_name": "hairextl",
     "required": [
       "male",
@@ -46930,9 +44242,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "hair extensions",
+      "extensions",
       "bangs",
       "hairext_long_straightl"
     ],
@@ -47027,6 +44338,7 @@ window.itemMetadata = {
   },
   "hairext_long_straightr": {
     "name": "Right Long Straight",
+    "priority": null,
     "type_name": "hairextr",
     "required": [
       "male",
@@ -47058,9 +44370,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "hair extensions",
+      "extensions",
       "bangs",
       "hairext_long_straightr"
     ],
@@ -47155,6 +44466,7 @@ window.itemMetadata = {
   },
   "hairext_long_wavyl": {
     "name": "Left Long Wavy",
+    "priority": null,
     "type_name": "hairextl",
     "required": [
       "male",
@@ -47186,9 +44498,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "hair extensions",
+      "extensions",
       "bangs",
       "hairext_long_wavyl"
     ],
@@ -47283,6 +44594,7 @@ window.itemMetadata = {
   },
   "hairext_long_wavyr": {
     "name": "Right Long Wavy",
+    "priority": null,
     "type_name": "hairextr",
     "required": [
       "male",
@@ -47314,9 +44626,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "hair extensions",
+      "extensions",
       "bangs",
       "hairext_long_wavyr"
     ],
@@ -47411,6 +44722,7 @@ window.itemMetadata = {
   },
   "hairext_xlong_bangl": {
     "name": "Left XLong Bang",
+    "priority": null,
     "type_name": "hairextl",
     "required": [
       "male",
@@ -47443,9 +44755,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "hair extensions",
+      "extensions",
       "bangs",
       "hairext_xlong_bangl"
     ],
@@ -47547,6 +44858,7 @@ window.itemMetadata = {
   },
   "hairext_xlong_bangr": {
     "name": "Right XLong Bang",
+    "priority": null,
     "type_name": "hairextr",
     "required": [
       "male",
@@ -47579,9 +44891,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "hair extensions",
+      "extensions",
       "bangs",
       "hairext_xlong_bangr"
     ],
@@ -47683,6 +44994,7 @@ window.itemMetadata = {
   },
   "hairext_xlong_braidl": {
     "name": "Left XLong Braid",
+    "priority": null,
     "type_name": "hairextl",
     "required": [
       "male",
@@ -47715,9 +45027,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "hair extensions",
+      "extensions",
       "bangs",
       "hairext_xlong_braidl"
     ],
@@ -47828,6 +45139,7 @@ window.itemMetadata = {
   },
   "hairext_xlong_braidr": {
     "name": "Right XLong Braid",
+    "priority": null,
     "type_name": "hairextr",
     "required": [
       "male",
@@ -47860,9 +45172,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "hair extensions",
+      "extensions",
       "bangs",
       "hairext_xlong_braidr"
     ],
@@ -47973,6 +45284,7 @@ window.itemMetadata = {
   },
   "hairext_xlong_curlyl": {
     "name": "Left XLong Curly",
+    "priority": null,
     "type_name": "hairextl",
     "required": [
       "male",
@@ -48004,9 +45316,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "hair extensions",
+      "extensions",
       "bangs",
       "hairext_xlong_curlyl"
     ],
@@ -48101,6 +45412,7 @@ window.itemMetadata = {
   },
   "hairext_xlong_curlyr": {
     "name": "Right XLong Curly",
+    "priority": null,
     "type_name": "hairextr",
     "required": [
       "male",
@@ -48132,9 +45444,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "hair extensions",
+      "extensions",
       "bangs",
       "hairext_xlong_curlyr"
     ],
@@ -48229,6 +45540,7 @@ window.itemMetadata = {
   },
   "hairext_xlong_wavyl": {
     "name": "Left XLong Wavy",
+    "priority": null,
     "type_name": "hairextl",
     "required": [
       "male",
@@ -48260,9 +45572,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "hair extensions",
+      "extensions",
       "bangs",
       "hairext_xlong_wavyl"
     ],
@@ -48357,6 +45668,7 @@ window.itemMetadata = {
   },
   "hairext_xlong_wavyr": {
     "name": "Right XLong Wavy",
+    "priority": null,
     "type_name": "hairextr",
     "required": [
       "male",
@@ -48388,9 +45700,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "hair extensions",
+      "extensions",
       "bangs",
       "hairext_xlong_wavyr"
     ],
@@ -48485,6 +45796,7 @@ window.itemMetadata = {
   },
   "hairext_topknot_long": {
     "name": "Long Topknot",
+    "priority": null,
     "type_name": "ponytail",
     "required": [
       "male",
@@ -48517,9 +45829,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "hair extensions",
+      "extensions",
       "ponytails",
       "hairext_topknot_long"
     ],
@@ -48636,6 +45947,7 @@ window.itemMetadata = {
   },
   "hairext_topknot_relm": {
     "name": "Relm Topknot",
+    "priority": null,
     "type_name": "ponytail",
     "required": [
       "male",
@@ -48667,9 +45979,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "hair extensions",
+      "extensions",
       "ponytails",
       "hairext_topknot_relm"
     ],
@@ -48773,6 +46084,7 @@ window.itemMetadata = {
   },
   "hairext_topknot_short": {
     "name": "Short Topknot",
+    "priority": null,
     "type_name": "ponytail",
     "required": [
       "male",
@@ -48805,9 +46117,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "hair extensions",
+      "extensions",
       "ponytails",
       "hairext_topknot_short"
     ],
@@ -48915,6 +46226,7 @@ window.itemMetadata = {
   },
   "hairext_high_bun": {
     "name": "High Bun",
+    "priority": null,
     "type_name": "updo",
     "required": [
       "male",
@@ -48946,10 +46258,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
       "hair",
-      "hair extensions",
-      "knot / ties",
+      "extensions",
+      "ties",
       "hairext_high_bun"
     ],
     "replace_in_path": {},
@@ -49029,8 +46340,1410 @@ window.itemMetadata = {
       ]
     }
   },
+  "head_ears_avyon": {
+    "name": "Feather Ears",
+    "priority": null,
+    "type_name": "ears",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "side",
+      "head_ears_avyon"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 126,
+        "male": "head/ears/avyon/adult/",
+        "muscular": "head/ears/avyon/adult/",
+        "female": "head/ears/avyon/adult/",
+        "teen": "head/ears/avyon/adult/",
+        "pregnant": "head/ears/avyon/adult/",
+        "child": "head/ears/avyon/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/avyon",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_ears_avyon_skin": {
+    "name": "Feather Ears Skintone",
+    "priority": null,
+    "type_name": "ears_inner",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "side",
+      "head_ears_avyon_skin"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 127,
+        "male": "head/ears/avyon/skin/adult/",
+        "muscular": "head/ears/avyon/skin/adult/",
+        "female": "head/ears/avyon/skin/adult/",
+        "teen": "head/ears/avyon/skin/adult/",
+        "pregnant": "head/ears/avyon/skin/adult/",
+        "child": "head/ears/avyon/skin/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/avyon",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_ears_lykon": {
+    "name": "Side Wolf Ears",
+    "priority": null,
+    "type_name": "ears",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "side",
+      "head_ears_lykon"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 126,
+        "male": "head/ears/lykon/adult/",
+        "muscular": "head/ears/lykon/adult/",
+        "female": "head/ears/lykon/adult/",
+        "teen": "head/ears/lykon/adult/",
+        "pregnant": "head/ears/lykon/adult/",
+        "child": "head/ears/lykon/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/lykon",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_ears_lykon_skin": {
+    "name": "Side Wolf Ears Skintone",
+    "priority": null,
+    "type_name": "ears_inner",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "side",
+      "head_ears_lykon_skin"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 127,
+        "male": "head/ears/lykon/skin/adult/",
+        "muscular": "head/ears/lykon/skin/adult/",
+        "female": "head/ears/lykon/skin/adult/",
+        "teen": "head/ears/lykon/skin/adult/",
+        "pregnant": "head/ears/lykon/skin/adult/",
+        "child": "head/ears/lykon/skin/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/lykon",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_ears_zabos": {
+    "name": "Side Cat Ears",
+    "priority": null,
+    "type_name": "ears",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "side",
+      "head_ears_zabos"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 126,
+        "male": "head/ears/zabos/adult/",
+        "muscular": "head/ears/zabos/adult/",
+        "female": "head/ears/zabos/adult/",
+        "teen": "head/ears/zabos/adult/",
+        "pregnant": "head/ears/zabos/adult/",
+        "child": "head/ears/zabos/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/zabos",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_ears_zabos_skin": {
+    "name": "Side Cat Ears Skintone",
+    "priority": null,
+    "type_name": "ears_inner",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "side",
+      "head_ears_zabos_skin"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 127,
+        "male": "head/ears/zabos/skin/adult/",
+        "muscular": "head/ears/zabos/skin/adult/",
+        "female": "head/ears/zabos/skin/adult/",
+        "teen": "head/ears/zabos/skin/adult/",
+        "pregnant": "head/ears/zabos/skin/adult/",
+        "child": "head/ears/zabos/skin/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/zabos",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_ears_cat": {
+    "name": "Cat Ears",
+    "priority": null,
+    "type_name": "furry_ears",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "top",
+      "head_ears_cat"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 130,
+        "male": "head/ears/cat/adult_front/",
+        "muscular": "head/ears/cat/adult_front/",
+        "female": "head/ears/cat/adult_front/",
+        "teen": "head/ears/cat/adult_front/",
+        "pregnant": "head/ears/cat/adult_front/",
+        "child": "head/ears/cat/child_front/"
+      },
+      "layer_2": {
+        "zPos": 8,
+        "male": "head/ears/cat/adult_back/",
+        "muscular": "head/ears/cat/adult_back/",
+        "female": "head/ears/cat/adult_back/",
+        "pregnant": "head/ears/cat/adult_back/",
+        "teen": "head/ears/cat/adult_back/",
+        "child": "head/ears/cat/child_back/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/cat",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_ears_cat_skin": {
+    "name": "Cat Ears Skintone",
+    "priority": null,
+    "type_name": "furry_ears_skin",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "top",
+      "head_ears_cat_skin"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 131,
+        "male": "head/ears/cat/skin/adult_front/",
+        "muscular": "head/ears/cat/skin/adult_front/",
+        "female": "head/ears/cat/skin/adult_front/",
+        "teen": "head/ears/cat/skin/adult_front/",
+        "pregnant": "head/ears/cat/skin/adult_front/",
+        "child": "head/ears/cat/skin/child_front/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "head/ears/cat/skin/adult_back/",
+        "muscular": "head/ears/cat/skin/adult_back/",
+        "female": "head/ears/cat/skin/adult_back/",
+        "pregnant": "head/ears/cat/skin/adult_back/",
+        "teen": "head/ears/cat/skin/adult_back/",
+        "child": "head/ears/cat/skin/child_back/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/cat",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_ears_wolf": {
+    "name": "Wolf Ears",
+    "priority": null,
+    "type_name": "furry_ears",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "top",
+      "head_ears_wolf"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 130,
+        "male": "head/ears/wolf/adult_front/",
+        "muscular": "head/ears/wolf/adult_front/",
+        "female": "head/ears/wolf/adult_front/",
+        "teen": "head/ears/wolf/adult_front/",
+        "pregnant": "head/ears/wolf/adult_front/",
+        "child": "head/ears/wolf/child_front/"
+      },
+      "layer_2": {
+        "zPos": 8,
+        "male": "head/ears/wolf/adult_back/",
+        "muscular": "head/ears/wolf/adult_back/",
+        "female": "head/ears/wolf/adult_back/",
+        "pregnant": "head/ears/wolf/adult_back/",
+        "teen": "head/ears/wolf/adult_back/",
+        "child": "head/ears/wolf/child_back/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/wolf",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_ears_wolf_skin": {
+    "name": "Wolf Ears Skintone",
+    "priority": null,
+    "type_name": "furry_ears_skin",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "top",
+      "head_ears_wolf_skin"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 131,
+        "male": "head/ears/wolf/skin/adult_front/",
+        "muscular": "head/ears/wolf/skin/adult_front/",
+        "female": "head/ears/wolf/skin/adult_front/",
+        "teen": "head/ears/wolf/skin/adult_front/",
+        "pregnant": "head/ears/wolf/skin/adult_front/",
+        "child": "head/ears/wolf/skin/child_front/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "head/ears/wolf/skin/adult_back/",
+        "muscular": "head/ears/wolf/skin/adult_back/",
+        "female": "head/ears/wolf/skin/adult_back/",
+        "pregnant": "head/ears/wolf/skin/adult_back/",
+        "teen": "head/ears/wolf/skin/adult_back/",
+        "child": "head/ears/wolf/skin/child_back/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/wolf",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
   "neck_amulet_cross": {
     "name": "Cross amulet",
+    "priority": null,
     "type_name": "charm",
     "required": [
       "male",
@@ -49054,7 +47767,7 @@ window.itemMetadata = {
     "path": [
       "head",
       "neck",
-      "necklace charms",
+      "charms",
       "neck_amulet_cross"
     ],
     "replace_in_path": {},
@@ -49158,6 +47871,7 @@ window.itemMetadata = {
   },
   "neck_amulet_dangle": {
     "name": "Dangling amulet",
+    "priority": null,
     "type_name": "charm",
     "required": [
       "male",
@@ -49181,7 +47895,7 @@ window.itemMetadata = {
     "path": [
       "head",
       "neck",
-      "necklace charms",
+      "charms",
       "neck_amulet_dangle"
     ],
     "replace_in_path": {},
@@ -49288,6 +48002,7 @@ window.itemMetadata = {
   },
   "neck_amulet_spider": {
     "name": "Spider amulet",
+    "priority": null,
     "type_name": "charm",
     "required": [
       "male",
@@ -49311,7 +48026,7 @@ window.itemMetadata = {
     "path": [
       "head",
       "neck",
-      "necklace charms",
+      "charms",
       "neck_amulet_spider"
     ],
     "replace_in_path": {},
@@ -49415,6 +48130,7 @@ window.itemMetadata = {
   },
   "neck_amulet_star": {
     "name": "Star amulet",
+    "priority": null,
     "type_name": "charm",
     "required": [
       "male",
@@ -49438,7 +48154,7 @@ window.itemMetadata = {
     "path": [
       "head",
       "neck",
-      "necklace charms",
+      "charms",
       "neck_amulet_star"
     ],
     "replace_in_path": {},
@@ -49546,6 +48262,7 @@ window.itemMetadata = {
   },
   "neck_charm_box": {
     "name": "Box Charm",
+    "priority": null,
     "type_name": "charm",
     "required": [
       "male",
@@ -49569,7 +48286,7 @@ window.itemMetadata = {
     "path": [
       "head",
       "neck",
-      "necklace charms",
+      "charms",
       "neck_charm_box"
     ],
     "replace_in_path": {},
@@ -49633,6 +48350,7 @@ window.itemMetadata = {
   },
   "neck_charm_oval": {
     "name": "Oval Charm",
+    "priority": null,
     "type_name": "charm",
     "required": [
       "male",
@@ -49656,7 +48374,7 @@ window.itemMetadata = {
     "path": [
       "head",
       "neck",
-      "necklace charms",
+      "charms",
       "neck_charm_oval"
     ],
     "replace_in_path": {},
@@ -49720,6 +48438,7 @@ window.itemMetadata = {
   },
   "neck_charm_ring": {
     "name": "Ring Charm",
+    "priority": null,
     "type_name": "charm",
     "required": [
       "male",
@@ -49743,7 +48462,7 @@ window.itemMetadata = {
     "path": [
       "head",
       "neck",
-      "necklace charms",
+      "charms",
       "neck_charm_ring"
     ],
     "replace_in_path": {},
@@ -49807,6 +48526,7 @@ window.itemMetadata = {
   },
   "neck_charm_star": {
     "name": "Star Charm",
+    "priority": null,
     "type_name": "charm",
     "required": [
       "male",
@@ -49830,7 +48550,7 @@ window.itemMetadata = {
     "path": [
       "head",
       "neck",
-      "necklace charms",
+      "charms",
       "neck_charm_star"
     ],
     "replace_in_path": {},
@@ -49894,6 +48614,7 @@ window.itemMetadata = {
   },
   "neck_gem_emerald": {
     "name": "Emerald cut Gem",
+    "priority": null,
     "type_name": "charm",
     "required": [
       "male",
@@ -49917,7 +48638,7 @@ window.itemMetadata = {
     "path": [
       "head",
       "neck",
-      "necklace charms",
+      "charms",
       "neck_gem_emerald"
     ],
     "replace_in_path": {},
@@ -49979,6 +48700,7 @@ window.itemMetadata = {
   },
   "neck_gem_marquise": {
     "name": "Marquise cut Gem",
+    "priority": null,
     "type_name": "charm",
     "required": [
       "male",
@@ -50002,7 +48724,7 @@ window.itemMetadata = {
     "path": [
       "head",
       "neck",
-      "necklace charms",
+      "charms",
       "neck_gem_marquise"
     ],
     "replace_in_path": {},
@@ -50064,6 +48786,7 @@ window.itemMetadata = {
   },
   "neck_gem_natural": {
     "name": "Natural cut Gem",
+    "priority": null,
     "type_name": "charm",
     "required": [
       "male",
@@ -50087,7 +48810,7 @@ window.itemMetadata = {
     "path": [
       "head",
       "neck",
-      "necklace charms",
+      "charms",
       "neck_gem_natural"
     ],
     "replace_in_path": {},
@@ -50149,6 +48872,7 @@ window.itemMetadata = {
   },
   "neck_gem_pear": {
     "name": "Pear cut Gem",
+    "priority": null,
     "type_name": "charm",
     "required": [
       "male",
@@ -50172,7 +48896,7 @@ window.itemMetadata = {
     "path": [
       "head",
       "neck",
-      "necklace charms",
+      "charms",
       "neck_gem_pear"
     ],
     "replace_in_path": {},
@@ -50234,6 +48958,7 @@ window.itemMetadata = {
   },
   "neck_gem_pearl": {
     "name": "Pearl Gem",
+    "priority": null,
     "type_name": "charm",
     "required": [
       "male",
@@ -50257,7 +48982,7 @@ window.itemMetadata = {
     "path": [
       "head",
       "neck",
-      "necklace charms",
+      "charms",
       "neck_gem_pearl"
     ],
     "replace_in_path": {},
@@ -50319,6 +49044,7 @@ window.itemMetadata = {
   },
   "neck_gem_princess": {
     "name": "Princess cut Gem",
+    "priority": null,
     "type_name": "charm",
     "required": [
       "male",
@@ -50342,7 +49068,7 @@ window.itemMetadata = {
     "path": [
       "head",
       "neck",
-      "necklace charms",
+      "charms",
       "neck_gem_princess"
     ],
     "replace_in_path": {},
@@ -50404,6 +49130,7 @@ window.itemMetadata = {
   },
   "neck_gem_round": {
     "name": "Round cut Gem",
+    "priority": null,
     "type_name": "charm",
     "required": [
       "male",
@@ -50427,7 +49154,7 @@ window.itemMetadata = {
     "path": [
       "head",
       "neck",
-      "necklace charms",
+      "charms",
       "neck_gem_round"
     ],
     "replace_in_path": {},
@@ -50489,6 +49216,7 @@ window.itemMetadata = {
   },
   "neck_gem_trilliant": {
     "name": "Trilliant cut Gem",
+    "priority": null,
     "type_name": "charm",
     "required": [
       "male",
@@ -50512,7 +49240,7 @@ window.itemMetadata = {
     "path": [
       "head",
       "neck",
-      "necklace charms",
+      "charms",
       "neck_gem_trilliant"
     ],
     "replace_in_path": {},
@@ -50574,6 +49302,7 @@ window.itemMetadata = {
   },
   "facial_earrings_emerald": {
     "name": "Emerald earrings",
+    "priority": null,
     "type_name": "earrings",
     "required": [
       "male",
@@ -50595,7 +49324,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
       "earrings",
       "facial_earrings_emerald"
@@ -50659,6 +49388,7 @@ window.itemMetadata = {
   },
   "facial_earrings_moon": {
     "name": "Moon earrings",
+    "priority": null,
     "type_name": "earrings",
     "required": [
       "male",
@@ -50680,7 +49410,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
       "earrings",
       "facial_earrings_moon"
@@ -50746,6 +49476,7 @@ window.itemMetadata = {
   },
   "facial_earrings_pear": {
     "name": "Pear earrings",
+    "priority": null,
     "type_name": "earrings",
     "required": [
       "male",
@@ -50767,7 +49498,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
       "earrings",
       "facial_earrings_pear"
@@ -50831,6 +49562,7 @@ window.itemMetadata = {
   },
   "facial_earrings_princess": {
     "name": "Princess earrings",
+    "priority": null,
     "type_name": "earrings",
     "required": [
       "male",
@@ -50852,7 +49584,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
       "earrings",
       "facial_earrings_princess"
@@ -50916,6 +49648,7 @@ window.itemMetadata = {
   },
   "facial_earrings_stud": {
     "name": "Stud earrings",
+    "priority": null,
     "type_name": "earrings",
     "required": [
       "male",
@@ -50937,7 +49670,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
       "earrings",
       "facial_earrings_stud"
@@ -51003,6 +49736,7 @@ window.itemMetadata = {
   },
   "facial_earring_left": {
     "name": "Simple Earring Left",
+    "priority": null,
     "type_name": "earring_left",
     "required": [
       "male",
@@ -51035,7 +49769,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
       "earrings",
       "facial_earring_left"
@@ -51130,6 +49864,7 @@ window.itemMetadata = {
   },
   "facial_earring_right": {
     "name": "Simple Earring Right",
+    "priority": null,
     "type_name": "earring_right",
     "required": [
       "male",
@@ -51162,7 +49897,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
       "earrings",
       "facial_earring_right"
@@ -51257,6 +49992,7 @@ window.itemMetadata = {
   },
   "facial_eyepatch2_left": {
     "name": "Eyepatch 2 Left",
+    "priority": null,
     "type_name": "facial_eyes",
     "required": [
       "male",
@@ -51289,9 +50025,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
-      "eyepatches",
+      "eyepatch",
       "facial_eyepatch2_left"
     ],
     "replace_in_path": {},
@@ -51376,6 +50112,7 @@ window.itemMetadata = {
   },
   "facial_eyepatch2_right": {
     "name": "Eyepatch 2 Right",
+    "priority": null,
     "type_name": "facial_eyes",
     "required": [
       "male",
@@ -51408,9 +50145,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
-      "eyepatches",
+      "eyepatch",
       "facial_eyepatch2_right"
     ],
     "replace_in_path": {},
@@ -51495,6 +50232,7 @@ window.itemMetadata = {
   },
   "facial_eyepatch_ambi": {
     "name": "Eyepatch Ambidextrous",
+    "priority": null,
     "type_name": "facial_eyes",
     "required": [
       "male",
@@ -51527,9 +50265,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
-      "eyepatches",
+      "eyepatch",
       "facial_eyepatch_ambi"
     ],
     "replace_in_path": {},
@@ -51622,6 +50360,7 @@ window.itemMetadata = {
   },
   "facial_eyepatch_left": {
     "name": "Eyepatch Left",
+    "priority": null,
     "type_name": "facial_eyes",
     "required": [
       "male",
@@ -51654,9 +50393,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
-      "eyepatches",
+      "eyepatch",
       "facial_eyepatch_left"
     ],
     "replace_in_path": {},
@@ -51749,6 +50488,7 @@ window.itemMetadata = {
   },
   "facial_eyepatch_right": {
     "name": "Eyepatch Right",
+    "priority": null,
     "type_name": "facial_eyes",
     "required": [
       "male",
@@ -51781,9 +50521,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
-      "eyepatches",
+      "eyepatch",
       "facial_eyepatch_right"
     ],
     "replace_in_path": {},
@@ -51876,6 +50616,7 @@ window.itemMetadata = {
   },
   "facial_eyepatch_small_left": {
     "name": "Small Eyepatch Left",
+    "priority": null,
     "type_name": "facial_eyes",
     "required": [
       "male",
@@ -51908,9 +50649,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
-      "eyepatches",
+      "eyepatch",
       "facial_eyepatch_small_left"
     ],
     "replace_in_path": {},
@@ -52004,6 +50745,7 @@ window.itemMetadata = {
   },
   "facial_eyepatch_small_right": {
     "name": "Small Eyepatch Right",
+    "priority": null,
     "type_name": "facial_eyes",
     "required": [
       "male",
@@ -52036,9 +50778,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
-      "eyepatches",
+      "eyepatch",
       "facial_eyepatch_small_right"
     ],
     "replace_in_path": {},
@@ -52132,6 +50874,7 @@ window.itemMetadata = {
   },
   "facial_glasses": {
     "name": "Glasses",
+    "priority": null,
     "type_name": "facial_eyes",
     "required": [
       "male",
@@ -52164,7 +50907,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
       "glasses",
       "facial_glasses"
@@ -52259,6 +51002,7 @@ window.itemMetadata = {
   },
   "facial_glasses_halfmoon": {
     "name": "Halfmoon Glasses",
+    "priority": null,
     "type_name": "facial_eyes",
     "required": [
       "male",
@@ -52291,7 +51035,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
       "glasses",
       "facial_glasses_halfmoon"
@@ -52386,6 +51130,7 @@ window.itemMetadata = {
   },
   "facial_glasses_nerd": {
     "name": "Nerd Glasses",
+    "priority": null,
     "type_name": "facial_eyes",
     "required": [
       "male",
@@ -52418,7 +51163,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
       "glasses",
       "facial_glasses_nerd"
@@ -52521,6 +51266,7 @@ window.itemMetadata = {
   },
   "facial_glasses_round": {
     "name": "Round Glasses",
+    "priority": null,
     "type_name": "facial_eyes",
     "required": [
       "male",
@@ -52553,7 +51299,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
       "glasses",
       "facial_glasses_round"
@@ -52659,6 +51405,7 @@ window.itemMetadata = {
   },
   "facial_glasses_secretary": {
     "name": "Secretary Glasses",
+    "priority": null,
     "type_name": "facial_eyes",
     "required": [
       "male",
@@ -52691,7 +51438,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
       "glasses",
       "facial_glasses_secretary"
@@ -52794,6 +51541,7 @@ window.itemMetadata = {
   },
   "facial_glasses_shades": {
     "name": "Shades",
+    "priority": null,
     "type_name": "facial_eyes",
     "required": [
       "male",
@@ -52826,7 +51574,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
       "glasses",
       "facial_glasses_shades"
@@ -52930,6 +51678,7 @@ window.itemMetadata = {
   },
   "facial_glasses_sunglasses": {
     "name": "Sunglasses",
+    "priority": null,
     "type_name": "facial_eyes",
     "required": [
       "male",
@@ -52962,7 +51711,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
       "glasses",
       "facial_glasses_sunglasses"
@@ -53068,6 +51817,7 @@ window.itemMetadata = {
   },
   "facial_monocle_left": {
     "name": "Left Monocle",
+    "priority": null,
     "type_name": "facial_left",
     "required": [
       "male",
@@ -53104,7 +51854,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
       "monocle",
       "facial_monocle_left"
@@ -53185,6 +51935,7 @@ window.itemMetadata = {
   },
   "facial_monocle_left_frame": {
     "name": "Left Monocle Frame Color",
+    "priority": null,
     "type_name": "facial_left_trim",
     "required": [
       "male",
@@ -53223,7 +51974,7 @@ window.itemMetadata = {
     ],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
       "monocle",
       "facial_monocle_left_frame"
@@ -53328,6 +52079,7 @@ window.itemMetadata = {
   },
   "facial_monocle_right": {
     "name": "Right Monocle",
+    "priority": null,
     "type_name": "facial_right",
     "required": [
       "male",
@@ -53364,7 +52116,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
       "monocle",
       "facial_monocle_right"
@@ -53445,6 +52197,7 @@ window.itemMetadata = {
   },
   "facial_monocle_right_frame": {
     "name": "Right Monocle Frame Color",
+    "priority": null,
     "type_name": "facial_right_trim",
     "required": [
       "male",
@@ -53483,7 +52236,7 @@ window.itemMetadata = {
     ],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "accessories",
       "monocle",
       "facial_monocle_right_frame"
@@ -53588,6 +52341,7 @@ window.itemMetadata = {
   },
   "hat_bandana": {
     "name": "Bandana",
+    "priority": null,
     "type_name": "bandana",
     "required": [
       "male",
@@ -53619,9 +52373,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
-      "head coverings",
-      "bandanas",
+      "headwear",
+      "coverings",
+      "bandana",
       "hat_bandana"
     ],
     "replace_in_path": {},
@@ -53715,6 +52469,7 @@ window.itemMetadata = {
   },
   "hat_bandana2": {
     "name": "Bordered Bandana",
+    "priority": null,
     "type_name": "bandana",
     "required": [
       "male",
@@ -53746,9 +52501,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
-      "head coverings",
-      "bandanas",
+      "headwear",
+      "coverings",
+      "bandana",
       "hat_bandana2"
     ],
     "replace_in_path": {},
@@ -53840,6 +52595,7 @@ window.itemMetadata = {
   },
   "hat_bandana_pirate": {
     "name": "Pirate Bandana",
+    "priority": null,
     "type_name": "bandana",
     "required": [
       "male",
@@ -53871,9 +52627,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
-      "head coverings",
-      "bandanas",
+      "headwear",
+      "coverings",
+      "bandana",
       "hat_bandana_pirate"
     ],
     "replace_in_path": {},
@@ -53956,6 +52712,7 @@ window.itemMetadata = {
   },
   "hat_bandana_pirate_skull": {
     "name": "Skull Bandana Overlay",
+    "priority": null,
     "type_name": "bandana_overlay",
     "required": [
       "male",
@@ -53987,9 +52744,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
-      "head coverings",
-      "bandanas",
+      "headwear",
+      "coverings",
+      "bandana",
       "hat_bandana_pirate_skull"
     ],
     "replace_in_path": {},
@@ -54072,6 +52829,7 @@ window.itemMetadata = {
   },
   "hat_headband_hairtie": {
     "name": "Hair Tie",
+    "priority": null,
     "type_name": "hairtie",
     "required": [
       "male",
@@ -54104,8 +52862,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
-      "head coverings",
+      "headwear",
+      "coverings",
       "headbands",
       "hat_headband_hairtie"
     ],
@@ -54205,6 +52963,7 @@ window.itemMetadata = {
   },
   "hat_headband_hairtie_rune": {
     "name": "Hair Tie Rune",
+    "priority": null,
     "type_name": "hairtie_rune",
     "required": [
       "male",
@@ -54237,8 +52996,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
-      "head coverings",
+      "headwear",
+      "coverings",
       "headbands",
       "hat_headband_hairtie_rune"
     ],
@@ -54338,6 +53097,7 @@ window.itemMetadata = {
   },
   "hat_headband_kerchief": {
     "name": "Kerchief",
+    "priority": null,
     "type_name": "headcover",
     "required": [
       "male",
@@ -54369,8 +53129,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
-      "head coverings",
+      "headwear",
+      "coverings",
       "headbands",
       "hat_headband_kerchief"
     ],
@@ -54473,6 +53233,7 @@ window.itemMetadata = {
   },
   "hat_headband_thick": {
     "name": "Thick Headband",
+    "priority": null,
     "type_name": "headcover",
     "required": [
       "male",
@@ -54505,8 +53266,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
-      "head coverings",
+      "headwear",
+      "coverings",
       "headbands",
       "hat_headband_thick"
     ],
@@ -54606,6 +53367,7 @@ window.itemMetadata = {
   },
   "hat_headband_thick_rune": {
     "name": "Thick Headband Rune",
+    "priority": null,
     "type_name": "headcover_rune",
     "required": [
       "male",
@@ -54638,8 +53400,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
-      "head coverings",
+      "headwear",
+      "coverings",
       "headbands",
       "hat_headband_thick_rune"
     ],
@@ -54739,6 +53501,7 @@ window.itemMetadata = {
   },
   "hat_headband_tied": {
     "name": "Tied Headband",
+    "priority": null,
     "type_name": "headcover",
     "required": [
       "male",
@@ -54770,8 +53533,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
-      "head coverings",
+      "headwear",
+      "coverings",
       "headbands",
       "hat_headband_tied"
     ],
@@ -54865,6 +53628,7 @@ window.itemMetadata = {
   },
   "hat_helmet_mail": {
     "name": "Mail",
+    "priority": null,
     "type_name": "bandana",
     "required": [
       "male",
@@ -54896,8 +53660,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
-      "head coverings",
+      "headwear",
+      "coverings",
       "hoods",
       "hat_helmet_mail"
     ],
@@ -54977,6 +53741,7 @@ window.itemMetadata = {
   },
   "hat_hood_cloth": {
     "name": "Hood",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -55008,8 +53773,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
-      "head coverings",
+      "headwear",
+      "coverings",
       "hoods",
       "hat_hood_cloth"
     ],
@@ -55107,6 +53872,7 @@ window.itemMetadata = {
   },
   "hat_hood_hijab": {
     "name": "Hijab",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -55138,8 +53904,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
-      "head coverings",
+      "headwear",
+      "coverings",
       "hoods",
       "hat_hood_hijab"
     ],
@@ -55222,6 +53988,7 @@ window.itemMetadata = {
   },
   "hat_hood_sack_cloth": {
     "name": "Sack Cloth Hood",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -55253,8 +54020,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
-      "head coverings",
+      "headwear",
+      "coverings",
       "hoods",
       "hat_hood_sack_cloth"
     ],
@@ -55350,6 +54117,7 @@ window.itemMetadata = {
   },
   "hat_bicorne_athwart_admiral": {
     "name": "Bicorne Athwart Admiral",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -55385,10 +54153,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
-      "bicorne athwart",
-      "admiral",
+      "athwart",
       "hat_bicorne_athwart_admiral"
     ],
     "replace_in_path": {},
@@ -55470,6 +54237,7 @@ window.itemMetadata = {
   },
   "hat_bicorne_athwart_admiral_cockade": {
     "name": "Bicorne Athwart Admiral Cockade",
+    "priority": null,
     "type_name": "hat_accessory",
     "required": [
       "male",
@@ -55501,10 +54269,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
-      "bicorne athwart",
-      "admiral",
+      "athwart",
       "hat_bicorne_athwart_admiral_cockade"
     ],
     "replace_in_path": {},
@@ -55586,6 +54353,7 @@ window.itemMetadata = {
   },
   "hat_bicorne_athwart_admiral_trim": {
     "name": "Bicorne Athwart Admiral Trim",
+    "priority": null,
     "type_name": "hat_trim",
     "required": [
       "male",
@@ -55623,10 +54391,9 @@ window.itemMetadata = {
     ],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
-      "bicorne athwart",
-      "admiral",
+      "athwart",
       "hat_bicorne_athwart_admiral_trim"
     ],
     "replace_in_path": {},
@@ -55717,6 +54484,7 @@ window.itemMetadata = {
   },
   "hat_bicorne_athwart_basic": {
     "name": "Bicorne Athwart",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -55748,10 +54516,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
-      "bicorne athwart",
-      "basic",
+      "athwart",
       "hat_bicorne_athwart_basic"
     ],
     "replace_in_path": {},
@@ -55832,6 +54599,7 @@ window.itemMetadata = {
   },
   "hat_bicorne_athwart_basic_skull": {
     "name": "Bicorne Athwart Skull",
+    "priority": null,
     "type_name": "hat_overlay",
     "required": [
       "male",
@@ -55863,10 +54631,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
-      "bicorne athwart",
-      "basic",
+      "athwart",
       "hat_bicorne_athwart_basic_skull"
     ],
     "replace_in_path": {},
@@ -55948,6 +54715,7 @@ window.itemMetadata = {
   },
   "hat_bicorne_athwart_captain": {
     "name": "Bicorne Athwart Captain",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -55979,10 +54747,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
-      "bicorne athwart",
-      "captain",
+      "athwart",
       "hat_bicorne_athwart_captain"
     ],
     "replace_in_path": {},
@@ -56064,6 +54831,7 @@ window.itemMetadata = {
   },
   "hat_bicorne_athwart_captain_skull": {
     "name": "Bicorne Athwart Captain Skull",
+    "priority": null,
     "type_name": "hat_overlay",
     "required": [
       "male",
@@ -56095,10 +54863,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
-      "bicorne athwart",
-      "captain",
+      "athwart",
       "hat_bicorne_athwart_captain_skull"
     ],
     "replace_in_path": {},
@@ -56180,6 +54947,7 @@ window.itemMetadata = {
   },
   "hat_bicorne_athwart_commodore": {
     "name": "Bicorne Athwart Commodore",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -56211,10 +54979,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
-      "bicorne athwart",
-      "commodore",
+      "athwart",
       "hat_bicorne_athwart_commodore"
     ],
     "replace_in_path": {},
@@ -56296,6 +55063,7 @@ window.itemMetadata = {
   },
   "hat_bicorne_athwart_commodore_trim": {
     "name": "Bicorne Athwart Commodore Trim",
+    "priority": null,
     "type_name": "hat_trim",
     "required": [
       "male",
@@ -56327,10 +55095,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
-      "bicorne athwart",
-      "commodore",
+      "athwart",
       "hat_bicorne_athwart_commodore_trim"
     ],
     "replace_in_path": {},
@@ -56421,6 +55188,7 @@ window.itemMetadata = {
   },
   "hat_cap_bonnie": {
     "name": "Bonnie",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -56452,7 +55220,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "caps",
       "hat_cap_bonnie"
@@ -56536,6 +55304,7 @@ window.itemMetadata = {
   },
   "hat_cap_bonnie_feather": {
     "name": "Bonnie feather",
+    "priority": null,
     "type_name": "hat_accessory",
     "required": [
       "male",
@@ -56567,7 +55336,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "caps",
       "hat_cap_bonnie_feather"
@@ -56651,6 +55420,7 @@ window.itemMetadata = {
   },
   "hat_cap_bonnie_tilt": {
     "name": "Bonnie Alt Tilt",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -56682,7 +55452,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "caps",
       "hat_cap_bonnie_tilt"
@@ -56766,6 +55536,7 @@ window.itemMetadata = {
   },
   "hat_cap_bonnie_trim": {
     "name": "Bonnie Center Trim",
+    "priority": null,
     "type_name": "hat_trim",
     "required": [
       "male",
@@ -56797,7 +55568,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "caps",
       "hat_cap_bonnie_trim"
@@ -56881,6 +55652,7 @@ window.itemMetadata = {
   },
   "hat_cap_cavalier": {
     "name": "Cavalier",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -56912,7 +55684,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "caps",
       "hat_cap_cavalier"
@@ -56996,6 +55768,7 @@ window.itemMetadata = {
   },
   "hat_cap_cavalier_feather": {
     "name": "Cavalier feather",
+    "priority": null,
     "type_name": "hat_accessory",
     "required": [
       "male",
@@ -57027,7 +55800,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "caps",
       "hat_cap_cavalier_feather"
@@ -57111,6 +55884,7 @@ window.itemMetadata = {
   },
   "hat_cap_leather": {
     "name": "Leather Cap",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -57142,7 +55916,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "caps",
       "hat_cap_leather"
@@ -57240,6 +56014,7 @@ window.itemMetadata = {
   },
   "hat_cap_leather_feather": {
     "name": "Leather Cap Feather",
+    "priority": null,
     "type_name": "hat_accessory",
     "required": [
       "male",
@@ -57271,7 +56046,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "caps",
       "hat_cap_leather_feather"
@@ -57368,6 +56143,7 @@ window.itemMetadata = {
   },
   "hat_bicorne_foreaft": {
     "name": "Bicorne foreaft",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -57399,9 +56175,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
-      "bicorne foreaft",
+      "foreaft",
       "hat_bicorne_foreaft"
     ],
     "replace_in_path": {},
@@ -57483,6 +56259,7 @@ window.itemMetadata = {
   },
   "hat_bicorne_foreaft_commodore": {
     "name": "Bicorne Foreaft Commodore",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -57518,9 +56295,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
-      "bicorne foreaft",
+      "foreaft",
       "hat_bicorne_foreaft_commodore"
     ],
     "replace_in_path": {},
@@ -57602,6 +56379,7 @@ window.itemMetadata = {
   },
   "hat_bicorne_foreaft_commodore_trim": {
     "name": "Bicorne Foreaft Commodore Trim",
+    "priority": null,
     "type_name": "hat_trim",
     "required": [
       "male",
@@ -57639,9 +56417,9 @@ window.itemMetadata = {
     ],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
-      "bicorne foreaft",
+      "foreaft",
       "hat_bicorne_foreaft_commodore_trim"
     ],
     "replace_in_path": {},
@@ -57732,6 +56510,7 @@ window.itemMetadata = {
   },
   "hat_formal_bowler": {
     "name": "Formal Bowler Hat",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -57763,7 +56542,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "formal",
       "hat_formal_bowler"
@@ -57854,6 +56633,7 @@ window.itemMetadata = {
   },
   "hat_formal_crown": {
     "name": "Crown",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -57885,7 +56665,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "formal",
       "hat_formal_crown"
@@ -57988,6 +56768,7 @@ window.itemMetadata = {
   },
   "hat_formal_tiara": {
     "name": "Tiara",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -58019,7 +56800,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "formal",
       "hat_formal_tiara"
@@ -58121,6 +56902,7 @@ window.itemMetadata = {
   },
   "hat_formal_tophat": {
     "name": "Formal Tophat",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -58152,7 +56934,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "formal",
       "hat_formal_tophat"
@@ -58243,6 +57025,7 @@ window.itemMetadata = {
   },
   "hat_holiday_christmas": {
     "name": "Christmas Hat",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -58277,7 +57060,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "holiday",
       "hat_holiday_christmas"
@@ -58367,6 +57150,7 @@ window.itemMetadata = {
   },
   "hat_holiday_elf": {
     "name": "Elf Trim",
+    "priority": null,
     "type_name": "hat_trim",
     "required": [
       "male",
@@ -58403,7 +57187,7 @@ window.itemMetadata = {
     ],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "holiday",
       "hat_holiday_elf"
@@ -58493,6 +57277,7 @@ window.itemMetadata = {
   },
   "hat_holiday_santa": {
     "name": "Santa Trim",
+    "priority": null,
     "type_name": "hat_trim",
     "required": [
       "male",
@@ -58529,7 +57314,7 @@ window.itemMetadata = {
     ],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "holiday",
       "hat_holiday_santa"
@@ -58619,6 +57404,7 @@ window.itemMetadata = {
   },
   "hat_magic_celestial": {
     "name": "Celestial Wizard Hat",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -58653,10 +57439,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "magic",
-      "celestial",
       "hat_magic_celestial"
     ],
     "replace_in_path": {},
@@ -58739,6 +57524,7 @@ window.itemMetadata = {
   },
   "hat_magic_celestial_moon": {
     "name": "Celestial Wizard Moon Hat",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -58773,10 +57559,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "magic",
-      "celestial",
       "hat_magic_celestial_moon"
     ],
     "replace_in_path": {},
@@ -58859,6 +57644,7 @@ window.itemMetadata = {
   },
   "hat_magic_celestial_moon_trim": {
     "name": "Celestial Wizard Moon Hat Second Color",
+    "priority": null,
     "type_name": "hat_trim",
     "required": [
       "male",
@@ -58895,10 +57681,9 @@ window.itemMetadata = {
     ],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "magic",
-      "celestial",
       "hat_magic_celestial_moon_trim"
     ],
     "replace_in_path": {},
@@ -58989,6 +57774,7 @@ window.itemMetadata = {
   },
   "hat_magic_celestial_trim": {
     "name": "Celestial Wizard Hat Second Color",
+    "priority": null,
     "type_name": "hat_trim",
     "required": [
       "male",
@@ -59025,10 +57811,9 @@ window.itemMetadata = {
     ],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "magic",
-      "celestial",
       "hat_magic_celestial_trim"
     ],
     "replace_in_path": {},
@@ -59120,6 +57905,7 @@ window.itemMetadata = {
   },
   "hat_magic_large": {
     "name": "Large Hat",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -59151,7 +57937,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "magic",
       "hat_magic_large"
@@ -59214,6 +58000,7 @@ window.itemMetadata = {
   },
   "hat_magic_wizard": {
     "name": "Wizard Hat Base",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -59248,10 +58035,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "magic",
-      "wizard",
       "hat_magic_wizard"
     ],
     "replace_in_path": {},
@@ -59353,6 +58139,7 @@ window.itemMetadata = {
   },
   "hat_magic_wizard_belt": {
     "name": "Wizard Hat Belt",
+    "priority": null,
     "type_name": "hat_trim",
     "required": [
       "male",
@@ -59389,10 +58176,9 @@ window.itemMetadata = {
     ],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "magic",
-      "wizard",
       "hat_magic_wizard_belt"
     ],
     "replace_in_path": {},
@@ -59494,6 +58280,7 @@ window.itemMetadata = {
   },
   "hat_magic_wizard_buckle": {
     "name": "Wizard Hat Buckle",
+    "priority": null,
     "type_name": "hat_buckle",
     "required": [
       "male",
@@ -59530,10 +58317,9 @@ window.itemMetadata = {
     ],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "magic",
-      "wizard",
       "hat_magic_wizard_buckle"
     ],
     "replace_in_path": {},
@@ -59613,6 +58399,7 @@ window.itemMetadata = {
   },
   "hat_tricorne": {
     "name": "Tricorne",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -59647,10 +58434,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "tricorne",
-      "basic",
       "hat_tricorne"
     ],
     "replace_in_path": {},
@@ -59731,6 +58517,7 @@ window.itemMetadata = {
   },
   "hat_tricorne_captain": {
     "name": "Tricorne Captain",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -59765,10 +58552,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "tricorne",
-      "captain",
       "hat_tricorne_captain"
     ],
     "replace_in_path": {},
@@ -59849,6 +58635,7 @@ window.itemMetadata = {
   },
   "hat_tricorne_captain_skull": {
     "name": "Tricorne Captain Skull",
+    "priority": null,
     "type_name": "hat_overlay",
     "required": [
       "male",
@@ -59880,10 +58667,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "tricorne",
-      "captain",
       "hat_tricorne_captain_skull"
     ],
     "replace_in_path": {},
@@ -59964,6 +58750,7 @@ window.itemMetadata = {
   },
   "hat_tricorne_captain_trim": {
     "name": "Tricorne Captain Trim",
+    "priority": null,
     "type_name": "hat_trim",
     "required": [
       "male",
@@ -60000,10 +58787,9 @@ window.itemMetadata = {
     ],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "tricorne",
-      "captain",
       "hat_tricorne_captain_trim"
     ],
     "replace_in_path": {},
@@ -60093,6 +58879,7 @@ window.itemMetadata = {
   },
   "hat_tricorne_lieutenant": {
     "name": "Tricorne Lieutenant",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -60127,10 +58914,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "tricorne",
-      "lieutenant",
       "hat_tricorne_lieutenant"
     ],
     "replace_in_path": {},
@@ -60211,6 +58997,7 @@ window.itemMetadata = {
   },
   "hat_tricorne_lieutenant_trim": {
     "name": "Tricorne Lieutenant Trim",
+    "priority": null,
     "type_name": "hat_trim",
     "required": [
       "male",
@@ -60247,10 +59034,9 @@ window.itemMetadata = {
     ],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "tricorne",
-      "lieutenant",
       "hat_tricorne_lieutenant_trim"
     ],
     "replace_in_path": {},
@@ -60340,6 +59126,7 @@ window.itemMetadata = {
   },
   "hat_tricorne_stitched": {
     "name": "Tricorne Stitching",
+    "priority": null,
     "type_name": "hat_trim",
     "required": [
       "male",
@@ -60377,10 +59164,9 @@ window.itemMetadata = {
     ],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "tricorne",
-      "basic",
       "hat_tricorne_stitched"
     ],
     "replace_in_path": {},
@@ -60461,6 +59247,7 @@ window.itemMetadata = {
   },
   "hat_tricorne_thatch": {
     "name": "Tricorne Thatching",
+    "priority": null,
     "type_name": "hat_trim",
     "required": [
       "male",
@@ -60498,10 +59285,9 @@ window.itemMetadata = {
     ],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "hats",
       "tricorne",
-      "basic",
       "hat_tricorne_thatch"
     ],
     "replace_in_path": {},
@@ -60582,6 +59368,7 @@ window.itemMetadata = {
   },
   "hat_accessory_crest": {
     "name": "Crest",
+    "priority": null,
     "type_name": "accessory",
     "required": [
       "male",
@@ -60613,9 +59400,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
-      "helmet accessories",
+      "accessories",
       "hat_accessory_crest"
     ],
     "replace_in_path": {},
@@ -60680,6 +59467,7 @@ window.itemMetadata = {
   },
   "hat_accessory_crest_centurion": {
     "name": "Centurion Crest",
+    "priority": null,
     "type_name": "accessory",
     "required": [
       "male",
@@ -60711,9 +59499,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
-      "helmet accessories",
+      "accessories",
       "hat_accessory_crest_centurion"
     ],
     "replace_in_path": {},
@@ -60781,6 +59569,7 @@ window.itemMetadata = {
   },
   "hat_accessory_horns_downward": {
     "name": "Downward Horns",
+    "priority": null,
     "type_name": "accessory",
     "required": [
       "male",
@@ -60811,9 +59600,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
-      "helmet accessories",
+      "accessories",
       "hat_accessory_horns_downward"
     ],
     "replace_in_path": {},
@@ -60905,6 +59694,7 @@ window.itemMetadata = {
   },
   "hat_accessory_horns_short": {
     "name": "Short Horns",
+    "priority": null,
     "type_name": "accessory",
     "required": [
       "male",
@@ -60935,9 +59725,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
-      "helmet accessories",
+      "accessories",
       "hat_accessory_horns_short"
     ],
     "replace_in_path": {},
@@ -61029,6 +59819,7 @@ window.itemMetadata = {
   },
   "hat_accessory_horns_upward": {
     "name": "Upward Horns",
+    "priority": null,
     "type_name": "accessory",
     "required": [
       "male",
@@ -61059,9 +59850,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
-      "helmet accessories",
+      "accessories",
       "hat_accessory_horns_upward"
     ],
     "replace_in_path": {},
@@ -61153,6 +59944,7 @@ window.itemMetadata = {
   },
   "hat_accessory_plumage": {
     "name": "Plumage",
+    "priority": null,
     "type_name": "accessory",
     "required": [
       "male",
@@ -61184,9 +59976,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
-      "helmet accessories",
+      "accessories",
       "hat_accessory_plumage"
     ],
     "replace_in_path": {},
@@ -61285,6 +60077,7 @@ window.itemMetadata = {
   },
   "hat_accessory_plumage_centurion": {
     "name": "Centurion Plumage",
+    "priority": null,
     "type_name": "accessory",
     "required": [
       "male",
@@ -61316,9 +60109,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
-      "helmet accessories",
+      "accessories",
       "hat_accessory_plumage_centurion"
     ],
     "replace_in_path": {},
@@ -61402,6 +60195,7 @@ window.itemMetadata = {
   },
   "hat_accessory_plumage_legion": {
     "name": "Legion Plumage",
+    "priority": null,
     "type_name": "accessory",
     "required": [
       "male",
@@ -61433,9 +60227,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
-      "helmet accessories",
+      "accessories",
       "hat_accessory_plumage_legion"
     ],
     "replace_in_path": {},
@@ -61539,6 +60333,7 @@ window.itemMetadata = {
   },
   "hat_accessory_wings": {
     "name": "Helmet wings",
+    "priority": null,
     "type_name": "accessory",
     "required": [
       "male",
@@ -61569,9 +60364,9 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
-      "helmet accessories",
+      "accessories",
       "hat_accessory_wings"
     ],
     "replace_in_path": {},
@@ -61666,6 +60461,7 @@ window.itemMetadata = {
   },
   "hat_helmet_armet": {
     "name": "Armet",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -61697,7 +60493,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_armet"
@@ -61777,6 +60573,7 @@ window.itemMetadata = {
   },
   "hat_helmet_armet_simple": {
     "name": "Simple Armet",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -61808,7 +60605,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_armet_simple"
@@ -61888,6 +60685,7 @@ window.itemMetadata = {
   },
   "hat_helmet_barbarian": {
     "name": "Barbarian",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -61919,7 +60717,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_barbarian"
@@ -62010,6 +60808,7 @@ window.itemMetadata = {
   },
   "hat_helmet_barbarian_nasal": {
     "name": "Barbarian nasal",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -62041,7 +60840,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_barbarian_nasal"
@@ -62132,6 +60931,7 @@ window.itemMetadata = {
   },
   "hat_helmet_barbarian_viking": {
     "name": "Barbarian Viking",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -62163,7 +60963,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_barbarian_viking"
@@ -62254,6 +61054,7 @@ window.itemMetadata = {
   },
   "hat_helmet_barbuta": {
     "name": "Barbuta",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -62285,7 +61086,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_barbuta"
@@ -62376,6 +61177,7 @@ window.itemMetadata = {
   },
   "hat_helmet_barbuta_simple": {
     "name": "Simple barbuta",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -62407,7 +61209,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_barbuta_simple"
@@ -62498,6 +61300,7 @@ window.itemMetadata = {
   },
   "hat_helmet_bascinet": {
     "name": "Bascinet",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -62529,7 +61332,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_bascinet"
@@ -62617,6 +61420,7 @@ window.itemMetadata = {
   },
   "hat_helmet_bascinet_pigface": {
     "name": "Pigface bascinet",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -62648,7 +61452,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_bascinet_pigface"
@@ -62736,6 +61540,7 @@ window.itemMetadata = {
   },
   "hat_helmet_bascinet_pigface_raised": {
     "name": "Pigface bascinet raised",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -62767,7 +61572,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_bascinet_pigface_raised"
@@ -62855,6 +61660,7 @@ window.itemMetadata = {
   },
   "hat_helmet_bascinet_round": {
     "name": "Round bascinet",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -62886,7 +61692,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_bascinet_round"
@@ -62975,6 +61781,7 @@ window.itemMetadata = {
   },
   "hat_helmet_close": {
     "name": "Close helm",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -63006,7 +61813,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_close"
@@ -63097,6 +61904,7 @@ window.itemMetadata = {
   },
   "hat_helmet_flattop": {
     "name": "Flattop",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -63128,7 +61936,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_flattop"
@@ -63219,6 +62027,7 @@ window.itemMetadata = {
   },
   "hat_helmet_greathelm": {
     "name": "Greathelm",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -63250,7 +62059,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_greathelm"
@@ -63341,6 +62150,7 @@ window.itemMetadata = {
   },
   "hat_helmet_horned": {
     "name": "Horned helmet",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -63372,7 +62182,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_horned"
@@ -63452,6 +62262,7 @@ window.itemMetadata = {
   },
   "hat_helmet_kettle": {
     "name": "Kettle helm",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -63483,7 +62294,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_kettle"
@@ -63555,6 +62366,7 @@ window.itemMetadata = {
   },
   "hat_helmet_legion": {
     "name": "Legion",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -63586,7 +62398,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_legion"
@@ -63675,6 +62487,7 @@ window.itemMetadata = {
   },
   "hat_helmet_maximus": {
     "name": "Maximus",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -63706,7 +62519,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_maximus"
@@ -63797,6 +62610,7 @@ window.itemMetadata = {
   },
   "hat_helmet_morion": {
     "name": "Morion",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -63828,7 +62642,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_morion"
@@ -63914,6 +62728,7 @@ window.itemMetadata = {
   },
   "hat_helmet_nasal": {
     "name": "Nasal helm",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -63945,7 +62760,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_nasal"
@@ -64036,6 +62851,7 @@ window.itemMetadata = {
   },
   "hat_helmet_norman": {
     "name": "Norman helm",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -64067,7 +62883,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_norman"
@@ -64153,6 +62969,7 @@ window.itemMetadata = {
   },
   "hat_helmet_pointed": {
     "name": "Pointed helm",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -64184,7 +63001,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_pointed"
@@ -64275,6 +63092,7 @@ window.itemMetadata = {
   },
   "hat_helmet_spangenhelm": {
     "name": "Spangenhelm",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -64306,7 +63124,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_spangenhelm"
@@ -64397,6 +63215,7 @@ window.itemMetadata = {
   },
   "hat_helmet_spangenhelm_viking": {
     "name": "Viking spangenhelm",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -64428,7 +63247,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_spangenhelm_viking"
@@ -64519,6 +63338,7 @@ window.itemMetadata = {
   },
   "hat_helmet_sugarloaf": {
     "name": "Sugarloaf greathelm",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -64550,7 +63370,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_sugarloaf"
@@ -64641,6 +63461,7 @@ window.itemMetadata = {
   },
   "hat_helmet_sugarloaf_simple": {
     "name": "Simple sugarloaf helm",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -64672,7 +63493,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_sugarloaf_simple"
@@ -64763,6 +63584,7 @@ window.itemMetadata = {
   },
   "hat_helmet_xeon": {
     "name": "Xeon helmet",
+    "priority": null,
     "type_name": "hat",
     "required": [
       "male",
@@ -64794,7 +63616,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "helmets",
       "hat_helmet_xeon"
@@ -64861,6 +63683,7 @@ window.itemMetadata = {
   },
   "hat_visor_grated": {
     "name": "Grated visor",
+    "priority": null,
     "type_name": "visor",
     "required": [
       "male",
@@ -64892,7 +63715,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "visors",
       "hat_visor_grated"
@@ -64983,6 +63806,7 @@ window.itemMetadata = {
   },
   "hat_visor_grated_narrow": {
     "name": "Narrow grated visor",
+    "priority": null,
     "type_name": "visor",
     "required": [
       "male",
@@ -65014,7 +63838,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "visors",
       "hat_visor_grated_narrow"
@@ -65105,6 +63929,7 @@ window.itemMetadata = {
   },
   "hat_visor_horned": {
     "name": "Horned visor",
+    "priority": null,
     "type_name": "visor",
     "required": [
       "male",
@@ -65136,7 +63961,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "visors",
       "hat_visor_horned"
@@ -65216,6 +64041,7 @@ window.itemMetadata = {
   },
   "hat_visor_pigface": {
     "name": "Pigface visor",
+    "priority": null,
     "type_name": "visor",
     "required": [
       "male",
@@ -65247,7 +64073,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "visors",
       "hat_visor_pigface"
@@ -65335,6 +64161,7 @@ window.itemMetadata = {
   },
   "hat_visor_pigface_raised": {
     "name": "Pigface visor raised",
+    "priority": null,
     "type_name": "visor",
     "required": [
       "male",
@@ -65366,7 +64193,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "visors",
       "hat_visor_pigface_raised"
@@ -65454,6 +64281,7 @@ window.itemMetadata = {
   },
   "hat_visor_round": {
     "name": "Round visor",
+    "priority": null,
     "type_name": "visor",
     "required": [
       "male",
@@ -65485,7 +64313,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "visors",
       "hat_visor_round"
@@ -65573,6 +64401,7 @@ window.itemMetadata = {
   },
   "hat_visor_round_raised": {
     "name": "Round visor raised",
+    "priority": null,
     "type_name": "visor",
     "required": [
       "male",
@@ -65604,7 +64433,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "visors",
       "hat_visor_round_raised"
@@ -65692,6 +64521,7 @@ window.itemMetadata = {
   },
   "hat_visor_slit": {
     "name": "Slit visor",
+    "priority": null,
     "type_name": "visor",
     "required": [
       "male",
@@ -65723,7 +64553,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "visors",
       "hat_visor_slit"
@@ -65803,6 +64633,7 @@ window.itemMetadata = {
   },
   "hat_visor_slit_narrow": {
     "name": "Narrow slit visor",
+    "priority": null,
     "type_name": "visor",
     "required": [
       "male",
@@ -65834,7 +64665,7 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "head",
+      "headwear",
       "helmets",
       "visors",
       "hat_visor_slit_narrow"
@@ -65914,6 +64745,7 @@ window.itemMetadata = {
   },
   "backpack_contents_ore": {
     "name": "Ore",
+    "priority": null,
     "type_name": "cargo",
     "required": [
       "male",
@@ -65941,7 +64773,7 @@ window.itemMetadata = {
     "path": [
       "torso",
       "backpack",
-      "backpack cargo",
+      "cargo",
       "backpack_contents_ore"
     ],
     "replace_in_path": {},
@@ -66008,6 +64840,7 @@ window.itemMetadata = {
   },
   "backpack_contents_wood": {
     "name": "Wood",
+    "priority": null,
     "type_name": "cargo",
     "required": [
       "male",
@@ -66035,7 +64868,7 @@ window.itemMetadata = {
     "path": [
       "torso",
       "backpack",
-      "backpack cargo",
+      "cargo",
       "backpack_contents_wood"
     ],
     "replace_in_path": {},
@@ -66103,6 +64936,7 @@ window.itemMetadata = {
   },
   "dress_kimono": {
     "name": "Kimono",
+    "priority": 10,
     "type_name": "dress",
     "required": [
       "female",
@@ -66203,6 +65037,7 @@ window.itemMetadata = {
   },
   "dress_kimono_longsleeve": {
     "name": "Kimono Sleeves",
+    "priority": 50,
     "type_name": "dress_sleeves",
     "required": [
       "female",
@@ -66308,6 +65143,7 @@ window.itemMetadata = {
   },
   "dress_kimono_longsleeve_trim": {
     "name": "Kimono Sleeves Trim",
+    "priority": 60,
     "type_name": "dress_sleeves_trim",
     "required": [
       "female",
@@ -66414,6 +65250,7 @@ window.itemMetadata = {
   },
   "dress_kimono_oversize": {
     "name": "Kimono Oversized Sleeves",
+    "priority": 70,
     "type_name": "dress_sleeves",
     "required": [
       "female",
@@ -66519,6 +65356,7 @@ window.itemMetadata = {
   },
   "dress_kimono_oversize_trim": {
     "name": "Kimono Oversized Sleeves Trim",
+    "priority": 80,
     "type_name": "dress_sleeves_trim",
     "required": [
       "female",
@@ -66625,6 +65463,7 @@ window.itemMetadata = {
   },
   "dress_kimono_split": {
     "name": "Split Kimono",
+    "priority": 30,
     "type_name": "dress",
     "required": [
       "female",
@@ -66725,6 +65564,7 @@ window.itemMetadata = {
   },
   "dress_kimono_split_trim": {
     "name": "Split Kimono Trim",
+    "priority": 40,
     "type_name": "dress_trim",
     "required": [
       "female",
@@ -66826,6 +65666,7 @@ window.itemMetadata = {
   },
   "dress_kimono_trim": {
     "name": "Kimono Trim",
+    "priority": 20,
     "type_name": "dress_trim",
     "required": [
       "female",
@@ -66927,6 +65768,7 @@ window.itemMetadata = {
   },
   "torso_jacket_frock_buttons": {
     "name": "Frock coat buttons",
+    "priority": null,
     "type_name": "jacket_trim",
     "required": [
       "male"
@@ -66946,7 +65788,7 @@ window.itemMetadata = {
     "path": [
       "torso",
       "jacket",
-      "jacket trim",
+      "accessory",
       "torso_jacket_frock_buttons"
     ],
     "replace_in_path": {},
@@ -66993,6 +65835,7 @@ window.itemMetadata = {
   },
   "torso_jacket_frock_collar": {
     "name": "Frock collar",
+    "priority": null,
     "type_name": "jacket_collar",
     "required": [
       "male"
@@ -67012,7 +65855,7 @@ window.itemMetadata = {
     "path": [
       "torso",
       "jacket",
-      "jacket trim",
+      "accessory",
       "torso_jacket_frock_collar"
     ],
     "replace_in_path": {},
@@ -67059,6 +65902,7 @@ window.itemMetadata = {
   },
   "torso_jacket_frock_lace": {
     "name": "Frock coat lace",
+    "priority": null,
     "type_name": "jacket_trim",
     "required": [
       "male"
@@ -67078,7 +65922,7 @@ window.itemMetadata = {
     "path": [
       "torso",
       "jacket",
-      "jacket trim",
+      "accessory",
       "torso_jacket_frock_lace"
     ],
     "replace_in_path": {},
@@ -67125,6 +65969,7 @@ window.itemMetadata = {
   },
   "torso_jacket_frock_lapel": {
     "name": "Frock coat lapel",
+    "priority": null,
     "type_name": "jacket_trim",
     "required": [
       "male"
@@ -67144,7 +65989,7 @@ window.itemMetadata = {
     "path": [
       "torso",
       "jacket",
-      "jacket trim",
+      "accessory",
       "torso_jacket_frock_lapel"
     ],
     "replace_in_path": {},
@@ -67191,6 +66036,7 @@ window.itemMetadata = {
   },
   "torso_jacket_pockets": {
     "name": "Jacket pockets",
+    "priority": null,
     "type_name": "jacket_pockets",
     "required": [
       "male"
@@ -67210,7 +66056,7 @@ window.itemMetadata = {
     "path": [
       "torso",
       "jacket",
-      "jacket trim",
+      "accessory",
       "torso_jacket_pockets"
     ],
     "replace_in_path": {},
@@ -67274,6 +66120,7 @@ window.itemMetadata = {
   },
   "torso_clothes_longsleeve": {
     "name": "Longsleeve",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -67468,6 +66315,7 @@ window.itemMetadata = {
   },
   "torso_clothes_longsleeve2": {
     "name": "Longsleeve 2",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -67577,6 +66425,7 @@ window.itemMetadata = {
   },
   "torso_clothes_longsleeve2_buttoned": {
     "name": "Longsleeve 2 Buttoned",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -67686,6 +66535,7 @@ window.itemMetadata = {
   },
   "torso_clothes_longsleeve2_cardigan": {
     "name": "Cardigan",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -67795,6 +66645,7 @@ window.itemMetadata = {
   },
   "torso_clothes_longsleeve2_polo": {
     "name": "Longsleeve Polo",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -67904,6 +66755,7 @@ window.itemMetadata = {
   },
   "torso_clothes_longsleeve2_scoop": {
     "name": "Longsleeve 2 Scoop",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -68013,6 +66865,7 @@ window.itemMetadata = {
   },
   "torso_clothes_longsleeve2_vneck": {
     "name": "Longsleeve 2 VNeck",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -68122,6 +66975,7 @@ window.itemMetadata = {
   },
   "torso_clothes_longsleeves_cuffed": {
     "name": "Cuffed Longsleeves Overlay",
+    "priority": null,
     "type_name": "sleeves",
     "required": [
       "male",
@@ -68153,7 +67007,7 @@ window.itemMetadata = {
     "path": [
       "torso",
       "shirts",
-      "sleeves",
+      "longsleeve",
       "torso_clothes_longsleeves_cuffed"
     ],
     "replace_in_path": {},
@@ -68231,6 +67085,7 @@ window.itemMetadata = {
   },
   "torso_clothes_longsleeve_formal": {
     "name": "Collared/Formal Longsleeve",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male"
@@ -68299,6 +67154,7 @@ window.itemMetadata = {
   },
   "torso_clothes_longsleeve_formal_striped": {
     "name": "Striped Collared/Formal Longsleeve",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male"
@@ -68366,6 +67222,7 @@ window.itemMetadata = {
   },
   "torso_clothes_longsleeve_laced": {
     "name": "Longsleeve laced",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male"
@@ -68455,6 +67312,7 @@ window.itemMetadata = {
   },
   "torso_clothes_longsleeve_scoop": {
     "name": "Scoop",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -68646,6 +67504,7 @@ window.itemMetadata = {
   },
   "torso_clothes_shortsleeve": {
     "name": "Shortsleeve",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -68842,6 +67701,7 @@ window.itemMetadata = {
   },
   "torso_clothes_shortsleeve_cardigan": {
     "name": "Shortsleeve Cardigan",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -68950,6 +67810,7 @@ window.itemMetadata = {
   },
   "torso_clothes_shortsleeve_polo": {
     "name": "Shortsleeve Polo",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -69059,6 +67920,7 @@ window.itemMetadata = {
   },
   "torso_clothes_tshirt": {
     "name": "TShirt",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -69168,6 +68030,7 @@ window.itemMetadata = {
   },
   "torso_clothes_tshirt_buttoned": {
     "name": "TShirt Buttoned",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -69277,6 +68140,7 @@ window.itemMetadata = {
   },
   "torso_clothes_tshirt_scoop": {
     "name": "TShirt Scoop",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -69386,6 +68250,7 @@ window.itemMetadata = {
   },
   "torso_clothes_tshirt_vneck": {
     "name": "TShirt VNeck",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -69495,6 +68360,7 @@ window.itemMetadata = {
   },
   "torso_clothes_sleeveless": {
     "name": "Sleeveless",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -69621,6 +68487,7 @@ window.itemMetadata = {
   },
   "torso_clothes_sleeveless1": {
     "name": "Original Sleeveless",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -69790,6 +68657,7 @@ window.itemMetadata = {
   },
   "torso_clothes_sleeveless2": {
     "name": "Sleeveless 2",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -69899,6 +68767,7 @@ window.itemMetadata = {
   },
   "torso_clothes_sleeveless2_buttoned": {
     "name": "Sleeveless 2 Buttoned",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -70008,6 +68877,7 @@ window.itemMetadata = {
   },
   "torso_clothes_sleeveless2_cardigan": {
     "name": "Sleeveless 2 Cardigan",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -70117,6 +68987,7 @@ window.itemMetadata = {
   },
   "torso_clothes_sleeveless2_polo": {
     "name": "Sleeveless 2 Polo",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -70226,6 +69097,7 @@ window.itemMetadata = {
   },
   "torso_clothes_sleeveless2_scoop": {
     "name": "Sleeveless 2 Scoop",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -70335,6 +69207,7 @@ window.itemMetadata = {
   },
   "torso_clothes_sleeveless2_vneck": {
     "name": "Sleeveless 2 VNeck",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male",
@@ -70444,6 +69317,7 @@ window.itemMetadata = {
   },
   "torso_clothes_sleeveless_laced": {
     "name": "Sleeveless laced",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male"
@@ -70540,6 +69414,7 @@ window.itemMetadata = {
   },
   "torso_clothes_sleeveless_striped": {
     "name": "Sleeveless striped",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "male"
@@ -70636,6 +69511,7 @@ window.itemMetadata = {
   },
   "torso_clothes_sleeveless_tanktop": {
     "name": "Tanktop",
+    "priority": null,
     "type_name": "clothes",
     "required": [
       "female",
@@ -70760,6 +69636,7 @@ window.itemMetadata = {
   },
   "torso_clothes_longsleeves": {
     "name": "Original Longsleeves Overlay",
+    "priority": null,
     "type_name": "sleeves",
     "required": [
       "male",
@@ -70925,6 +69802,7 @@ window.itemMetadata = {
   },
   "torso_clothes_longsleeves2": {
     "name": "Longsleeves 2 Overlay",
+    "priority": null,
     "type_name": "sleeves",
     "required": [
       "male",
@@ -71034,6 +69912,7 @@ window.itemMetadata = {
   },
   "torso_clothes_shortsleeves": {
     "name": "Original Shortsleeves Overlay",
+    "priority": null,
     "type_name": "sleeves",
     "required": [
       "male",
@@ -71199,6 +70078,7 @@ window.itemMetadata = {
   },
   "torso_clothes_shortsleeves2": {
     "name": "Shortsleeves 2 Overlay",
+    "priority": null,
     "type_name": "sleeves",
     "required": [
       "male",
@@ -71306,8 +70186,387 @@ window.itemMetadata = {
       ]
     }
   },
+  "belt_obi": {
+    "name": "Obi",
+    "priority": null,
+    "type_name": "sash",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "waist",
+      "obi",
+      "belt_obi"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 65,
+        "male": "torso/waist/obi/male/",
+        "muscular": "torso/waist/obi/male/",
+        "female": "torso/waist/obi/thin/",
+        "pregnant": "torso/waist/obi/thin/",
+        "teen": "torso/waist/obi/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/waist/obi",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-kimono-relm"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "belt_obi_knot_left": {
+    "name": "Obi Knot Left",
+    "priority": null,
+    "type_name": "sash_tie",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "waist",
+      "obi",
+      "belt_obi_knot_left"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 66,
+        "male": "torso/waist/obi/knot/left/male/",
+        "muscular": "torso/waist/obi/knot/left/male/",
+        "female": "torso/waist/obi/knot/left/thin/",
+        "pregnant": "torso/waist/obi/knot/left/thin/",
+        "teen": "torso/waist/obi/knot/left/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/waist/obi/knot",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-kimono-relm"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "belt_obi_knot_right": {
+    "name": "Obi Knot Right",
+    "priority": null,
+    "type_name": "sash_tie",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "waist",
+      "obi",
+      "belt_obi_knot_right"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 66,
+        "male": "torso/waist/obi/knot/right/male/",
+        "muscular": "torso/waist/obi/knot/right/male/",
+        "female": "torso/waist/obi/knot/right/thin/",
+        "pregnant": "torso/waist/obi/knot/right/thin/",
+        "teen": "torso/waist/obi/knot/right/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/waist/obi/knot",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-kimono-relm"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
   "weapon_ranged_bow_arrow": {
     "name": "Ammo",
+    "priority": null,
     "type_name": "ammo",
     "required": [
       "male",
@@ -71394,6 +70653,7 @@ window.itemMetadata = {
   },
   "weapon_ranged_bow_great": {
     "name": "Great",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -71512,6 +70772,7 @@ window.itemMetadata = {
   },
   "weapon_ranged_bow_normal": {
     "name": "Normal",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -71640,6 +70901,7 @@ window.itemMetadata = {
   },
   "weapon_ranged_bow_recurve": {
     "name": "Recurve",
+    "priority": null,
     "type_name": "weapon",
     "required": [
       "male",
@@ -71758,6 +71020,7 @@ window.itemMetadata = {
   },
   "shield_crusader": {
     "name": "Crusader shield",
+    "priority": null,
     "type_name": "shield",
     "required": [
       "male",
@@ -71779,8 +71042,8 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "two-engrailed shield",
+      "shields",
+      "engrailed",
       "shield_crusader"
     ],
     "replace_in_path": {},
@@ -71841,6 +71104,7 @@ window.itemMetadata = {
   },
   "shield_plus": {
     "name": "Plus shield",
+    "priority": null,
     "type_name": "shield",
     "required": [
       "male",
@@ -71862,8 +71126,8 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "two-engrailed shield",
+      "shields",
+      "engrailed",
       "shield_plus"
     ],
     "replace_in_path": {},
@@ -71924,6 +71188,7 @@ window.itemMetadata = {
   },
   "shield_two_engrailed": {
     "name": "Two engrailed shield",
+    "priority": null,
     "type_name": "shield",
     "required": [
       "male",
@@ -71945,8 +71210,8 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "two-engrailed shield",
+      "shields",
+      "engrailed",
       "shield_two_engrailed"
     ],
     "replace_in_path": {},
@@ -72007,6 +71272,7 @@ window.itemMetadata = {
   },
   "shield_two_engrailed_trim": {
     "name": "Two engrailed shield trim",
+    "priority": null,
     "type_name": "shield_trim",
     "required": [
       "male",
@@ -72028,8 +71294,8 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "two-engrailed shield",
+      "shields",
+      "engrailed",
       "shield_two_engrailed_trim"
     ],
     "replace_in_path": {},
@@ -72090,6 +71356,7 @@ window.itemMetadata = {
   },
   "shield_heater_paint": {
     "name": "Heater Shield Paint",
+    "priority": 20,
     "type_name": "shield_paint",
     "required": [
       "male",
@@ -72122,8 +71389,8 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
+      "shields",
+      "heater",
       "shield_heater_paint"
     ],
     "replace_in_path": {},
@@ -72265,6 +71532,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_paint": {
     "name": "Revised Heater Shield Paint",
+    "priority": 60,
     "type_name": "shield_paint",
     "required": [
       "male",
@@ -72297,8 +71565,8 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
+      "shields",
+      "heater",
       "shield_heater_revised_paint"
     ],
     "replace_in_path": {},
@@ -72440,6 +71708,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_trim": {
     "name": "Revised Heater Shield Trim",
+    "priority": 70,
     "type_name": "shield_trim",
     "required": [
       "male",
@@ -72474,8 +71743,8 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
+      "shields",
+      "heater",
       "shield_heater_revised_trim"
     ],
     "replace_in_path": {},
@@ -72549,6 +71818,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_wood": {
     "name": "Revised Heater Shield Base",
+    "priority": 50,
     "type_name": "shield",
     "required": [
       "male",
@@ -72583,8 +71853,8 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
+      "shields",
+      "heater",
       "shield_heater_revised_wood"
     ],
     "replace_in_path": {},
@@ -72656,6 +71926,7 @@ window.itemMetadata = {
   },
   "shield_heater_trim": {
     "name": "Heater Shield Trim",
+    "priority": 30,
     "type_name": "shield_trim",
     "required": [
       "male",
@@ -72690,8 +71961,8 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
+      "shields",
+      "heater",
       "shield_heater_trim"
     ],
     "replace_in_path": {},
@@ -72764,6 +72035,7 @@ window.itemMetadata = {
   },
   "shield_heater_wood": {
     "name": "Heater Shield Base",
+    "priority": 10,
     "type_name": "shield",
     "required": [
       "male",
@@ -72798,8 +72070,8 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
+      "shields",
+      "heater",
       "shield_heater_wood"
     ],
     "replace_in_path": {},
@@ -72870,6 +72142,7 @@ window.itemMetadata = {
   },
   "shield_scutum": {
     "name": "Scutum shield",
+    "priority": null,
     "type_name": "shield",
     "required": [
       "male",
@@ -72891,8 +72164,8 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "scutum shield",
+      "shields",
+      "scutum",
       "shield_scutum"
     ],
     "replace_in_path": {},
@@ -72953,6 +72226,7 @@ window.itemMetadata = {
   },
   "shield_scutum_trim": {
     "name": "Scutum shield trim",
+    "priority": null,
     "type_name": "shield_trim",
     "required": [
       "male",
@@ -72974,8 +72248,8 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "scutum shield",
+      "shields",
+      "scutum",
       "shield_scutum_trim"
     ],
     "replace_in_path": {},
@@ -73036,6 +72310,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern": {
     "name": "Heater shield pattern",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -73057,8 +72332,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern"
     ],
     "replace_in_path": {},
@@ -73136,6 +72412,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_barry": {
     "name": "barry",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -73168,9 +72445,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_barry"
     ],
     "replace_in_path": {},
@@ -73260,6 +72537,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_bend": {
     "name": "bend",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -73292,9 +72570,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_bend"
     ],
     "replace_in_path": {},
@@ -73384,6 +72662,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_bendy": {
     "name": "bendy",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -73416,9 +72695,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_bendy"
     ],
     "replace_in_path": {},
@@ -73509,6 +72788,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_bendy_sinister": {
     "name": "bendy_sinister",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -73541,9 +72821,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_bendy_sinister"
     ],
     "replace_in_path": {},
@@ -73634,6 +72914,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_bend_sinister": {
     "name": "bend_sinister",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -73666,9 +72947,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_bend_sinister"
     ],
     "replace_in_path": {},
@@ -73758,6 +73039,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_bordure": {
     "name": "bordure",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -73790,9 +73072,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_bordure"
     ],
     "replace_in_path": {},
@@ -73882,6 +73164,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_chevron": {
     "name": "chevron",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -73914,9 +73197,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_chevron"
     ],
     "replace_in_path": {},
@@ -74006,6 +73289,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_chevron_inverted": {
     "name": "chevron_inverted",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -74038,9 +73322,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_chevron_inverted"
     ],
     "replace_in_path": {},
@@ -74130,6 +73414,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_chief": {
     "name": "chief",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -74162,9 +73447,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_chief"
     ],
     "replace_in_path": {},
@@ -74254,6 +73539,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_cross": {
     "name": "cross",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -74286,9 +73572,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_cross"
     ],
     "replace_in_path": {},
@@ -74378,6 +73664,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_fess": {
     "name": "fess",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -74410,9 +73697,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_fess"
     ],
     "replace_in_path": {},
@@ -74502,6 +73789,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_lozengy": {
     "name": "lozengy",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -74534,9 +73822,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_lozengy"
     ],
     "replace_in_path": {},
@@ -74627,6 +73915,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_pale": {
     "name": "pale",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -74659,9 +73948,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_pale"
     ],
     "replace_in_path": {},
@@ -74751,6 +74040,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_pall": {
     "name": "pall",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -74783,9 +74073,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_pall"
     ],
     "replace_in_path": {},
@@ -74875,6 +74165,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_paly": {
     "name": "paly",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -74907,9 +74198,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_paly"
     ],
     "replace_in_path": {},
@@ -75000,6 +74291,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_per_bend": {
     "name": "per_bend",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -75032,9 +74324,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_per_bend"
     ],
     "replace_in_path": {},
@@ -75124,6 +74416,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_per_bend_sinister": {
     "name": "per_bend_sinister",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -75156,9 +74449,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_per_bend_sinister"
     ],
     "replace_in_path": {},
@@ -75248,6 +74541,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_per_chevron": {
     "name": "per_chevron",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -75280,9 +74574,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_per_chevron"
     ],
     "replace_in_path": {},
@@ -75372,6 +74666,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_per_chevron_inverted": {
     "name": "per_chevron_inverted",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -75404,9 +74699,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_per_chevron_inverted"
     ],
     "replace_in_path": {},
@@ -75496,6 +74791,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_per_fess": {
     "name": "per_fess",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -75528,9 +74824,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_per_fess"
     ],
     "replace_in_path": {},
@@ -75620,6 +74916,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_per_pale": {
     "name": "per_pale",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -75652,9 +74949,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_per_pale"
     ],
     "replace_in_path": {},
@@ -75744,6 +75041,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_per_saltire": {
     "name": "per_saltire",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -75776,9 +75074,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_per_saltire"
     ],
     "replace_in_path": {},
@@ -75868,6 +75166,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_quarterly": {
     "name": "quarterly",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -75900,9 +75199,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_quarterly"
     ],
     "replace_in_path": {},
@@ -75992,6 +75291,7 @@ window.itemMetadata = {
   },
   "shield_heater_pattern_saltire": {
     "name": "saltire",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -76024,9 +75324,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "heater shield pattern",
+      "shields",
+      "heater",
+      "pattern",
       "shield_heater_pattern_saltire"
     ],
     "replace_in_path": {},
@@ -76116,6 +75416,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_barry": {
     "name": "revised_barry",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -76148,9 +75449,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_barry"
     ],
     "replace_in_path": {},
@@ -76241,6 +75542,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_bend": {
     "name": "revised_bend",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -76273,9 +75575,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_bend"
     ],
     "replace_in_path": {},
@@ -76366,6 +75668,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_bendy": {
     "name": "revised_bendy",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -76398,9 +75701,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_bendy"
     ],
     "replace_in_path": {},
@@ -76491,6 +75794,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_bendy_sinister": {
     "name": "revised_bendy_sinister",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -76523,9 +75827,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_bendy_sinister"
     ],
     "replace_in_path": {},
@@ -76616,6 +75920,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_bend_sinister": {
     "name": "revised_bend_sinister",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -76648,9 +75953,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_bend_sinister"
     ],
     "replace_in_path": {},
@@ -76741,6 +76046,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_bordure": {
     "name": "revised_bordure",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -76773,9 +76079,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_bordure"
     ],
     "replace_in_path": {},
@@ -76866,6 +76172,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_chevron": {
     "name": "revised_chevron",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -76898,9 +76205,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_chevron"
     ],
     "replace_in_path": {},
@@ -76991,6 +76298,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_chevron_inverted": {
     "name": "revised_chevron_inverted",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -77023,9 +76331,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_chevron_inverted"
     ],
     "replace_in_path": {},
@@ -77116,6 +76424,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_chief": {
     "name": "revised_chief",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -77148,9 +76457,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_chief"
     ],
     "replace_in_path": {},
@@ -77241,6 +76550,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_cross": {
     "name": "revised_cross",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -77273,9 +76583,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_cross"
     ],
     "replace_in_path": {},
@@ -77366,6 +76676,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_fess": {
     "name": "revised_fess",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -77398,9 +76709,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_fess"
     ],
     "replace_in_path": {},
@@ -77491,6 +76802,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_lozengy": {
     "name": "revised_lozengy",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -77523,9 +76835,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_lozengy"
     ],
     "replace_in_path": {},
@@ -77616,6 +76928,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_pale": {
     "name": "revised_pale",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -77648,9 +76961,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_pale"
     ],
     "replace_in_path": {},
@@ -77741,6 +77054,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_pall": {
     "name": "revised_pall",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -77773,9 +77087,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_pall"
     ],
     "replace_in_path": {},
@@ -77866,6 +77180,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_paly": {
     "name": "revised_paly",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -77898,9 +77213,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_paly"
     ],
     "replace_in_path": {},
@@ -77991,6 +77306,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_per_bend": {
     "name": "revised_per_bend",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -78023,9 +77339,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_per_bend"
     ],
     "replace_in_path": {},
@@ -78116,6 +77432,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_per_bend_sinister": {
     "name": "revised_per_bend_sinister",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -78148,9 +77465,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_per_bend_sinister"
     ],
     "replace_in_path": {},
@@ -78241,6 +77558,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_per_chevron": {
     "name": "revised_per_chevron",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -78273,9 +77591,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_per_chevron"
     ],
     "replace_in_path": {},
@@ -78366,6 +77684,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_per_chevron_inverted": {
     "name": "revised_per_chevron_inverted",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -78398,9 +77717,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_per_chevron_inverted"
     ],
     "replace_in_path": {},
@@ -78491,6 +77810,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_per_fess": {
     "name": "revised_per_fess",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -78523,9 +77843,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_per_fess"
     ],
     "replace_in_path": {},
@@ -78616,6 +77936,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_per_pale": {
     "name": "revised_per_pale",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -78648,9 +77969,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_per_pale"
     ],
     "replace_in_path": {},
@@ -78741,6 +78062,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_per_saltire": {
     "name": "revised_per_saltire",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -78773,9 +78095,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_per_saltire"
     ],
     "replace_in_path": {},
@@ -78866,6 +78188,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_quarterly": {
     "name": "revised_quarterly",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -78898,9 +78221,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_quarterly"
     ],
     "replace_in_path": {},
@@ -78991,6 +78314,7 @@ window.itemMetadata = {
   },
   "shield_heater_revised_pattern_saltire": {
     "name": "revised_saltire",
+    "priority": null,
     "type_name": "shield_pattern",
     "required": [
       "male",
@@ -79023,9 +78347,9 @@ window.itemMetadata = {
     "excluded_tags": [],
     "path": [
       "weapons",
-      "shield",
-      "heater shield",
-      "revised heater shield pattern",
+      "shields",
+      "heater",
+      "revised_pattern",
       "shield_heater_revised_pattern_saltire"
     ],
     "replace_in_path": {},
@@ -79121,479 +78445,125 @@ window.categoryTree = {
   "children": {
     "body": {
       "items": [
-        "body",
-        "shadow"
+        "body_color",
+        "shadow",
+        "wheelchair"
       ],
       "children": {
+        "special": {
+          "items": [
+            "body_skeleton",
+            "body_zombie"
+          ],
+          "children": {},
+          "priority": 30,
+          "required": [],
+          "animations": [
+            "spellcast",
+            "thrust",
+            "walk",
+            "slash",
+            "shoot",
+            "hurt",
+            "watering"
+          ]
+        },
         "wounds": {
           "items": [
             "wound_arm",
             "wound_brain",
             "wound_eye_left",
-            "wound_eye_right",
             "wound_mouth",
-            "wound_ribs"
+            "wound_ribs",
+            "wound_eye_right"
           ],
-          "children": {}
-        },
-        "wheelchair": {
-          "items": [
-            "wheelchair"
+          "children": {},
+          "priority": 40,
+          "required": [
+            "male",
+            "female",
+            "muscular",
+            "pregnant",
+            "teen"
           ],
-          "children": {}
+          "animations": []
         },
         "prostheses": {
           "items": [
             "prosthesis_hook",
             "prosthesis_peg_leg"
           ],
-          "children": {}
-        },
-        "special": {
-          "items": [
-            "body_skeleton",
-            "body_zombie"
+          "children": {},
+          "priority": 50,
+          "required": [
+            "male",
+            "female",
+            "muscular",
+            "pregnant",
+            "teen"
           ],
-          "children": {}
-        },
-        "tails": {
-          "items": [
-            "tail_cat",
-            "tail_dragon",
-            "tail_feather",
-            "tail_fin",
-            "tail_lizard_alt",
-            "tail_wolf",
-            "tail_wolf_fluffy"
-          ],
-          "children": {}
-        },
-        "lizard": {
-          "items": [
-            "tail_lizard",
-            "wings_lizard",
-            "wings_lizard_bat"
-          ],
-          "children": {}
+          "animations": [
+            "spellcast",
+            "thrust",
+            "walk",
+            "slash",
+            "shoot",
+            "hurt",
+            "watering"
+          ]
         },
         "wings": {
           "items": [
             "wings_bat",
+            "wings_lizard_bat",
+            "wings_dragonfly",
             "wings_feathered",
+            "wings_lizard",
             "wings_lizard_alt",
-            "wings_lunar"
+            "wings_lunar",
+            "wings_monarch",
+            "wings_monarch_dots",
+            "wings_monarch_edge",
+            "wings_pixie",
+            "wings_dragonfly_transparent",
+            "wings_pixie_transparent"
           ],
-          "children": {
-            "dragonfly wings": {
-              "items": [
-                "wings_dragonfly",
-                "wings_dragonfly_transparent"
-              ],
-              "children": {}
-            },
-            "monarch wings": {
-              "items": [
-                "wings_monarch",
-                "wings_monarch_dots",
-                "wings_monarch_edge"
-              ],
-              "children": {}
-            },
-            "pixie wings": {
-              "items": [
-                "wings_pixie",
-                "wings_pixie_transparent"
-              ],
-              "children": {}
-            }
-          }
+          "children": {},
+          "priority": 70,
+          "required": [],
+          "animations": []
+        },
+        "tails": {
+          "items": [
+            "tail_cat",
+            "tail_wolf_fluffy",
+            "tail_lizard",
+            "tail_lizard_alt",
+            "tail_wolf"
+          ],
+          "children": {},
+          "priority": 80,
+          "required": [],
+          "animations": []
+        },
+        "lizard": {
+          "items": [],
+          "children": {},
+          "priority": 90,
+          "required": [],
+          "animations": []
         }
-      }
-    },
-    "arms": {
-      "items": [
-        "arms_armour",
-        "arms_gloves",
-        "arms_hands_ring_stud",
-        "bauldron"
-      ],
-      "children": {
-        "wrists": {
-          "items": [
-            "arms_bracers",
-            "wrists_cuffs",
-            "wrists_cuffs_lace"
-          ],
-          "children": {}
-        },
-        "shoulders": {
-          "items": [
-            "shoulders_epaulets",
-            "shoulders_leather",
-            "shoulders_legion",
-            "shoulders_mantal",
-            "shoulders_plate"
-          ],
-          "children": {}
-        }
-      }
-    },
-    "feet": {
-      "items": [
-        "feet_hoofs",
-        "feet_sandals",
-        "feet_slippers",
-        "feet_armour"
-      ],
-      "children": {
-        "boots": {
-          "items": [
-            "feet_boots_basic",
-            "feet_boots_fold",
-            "feet_boots_revised",
-            "feet_boots_rim"
-          ],
-          "children": {}
-        },
-        "socks": {
-          "items": [
-            "feet_socks_ankle",
-            "feet_socks_high",
-            "feet_socks_tabi"
-          ],
-          "children": {}
-        },
-        "shoe accessory": {
-          "items": [
-            "feet_plate_toe",
-            "feet_plate_toe_thick"
-          ],
-          "children": {}
-        },
-        "shoes": {
-          "items": [
-            "feet_shoes_basic",
-            "feet_shoes_ghillies",
-            "feet_shoes_revised",
-            "feet_shoes_sara"
-          ],
-          "children": {}
-        }
-      }
+      },
+      "priority": 10,
+      "required": [],
+      "animations": []
     },
     "head": {
       "items": [
-        "eye_color",
-        "head_wrinkles"
+        "head_wrinkles",
+        "eyes_child"
       ],
       "children": {
-        "hair": {
-          "items": [],
-          "children": {
-            "afro": {
-              "items": [
-                "hair_afro",
-                "hair_cornrows",
-                "hair_dreadlocks_long",
-                "hair_dreadlocks_short",
-                "hair_flat_top_fade",
-                "hair_flat_top_straight",
-                "hair_natural",
-                "hair_twists_fade",
-                "hair_twists_straight"
-              ],
-              "children": {}
-            },
-            "bald/shaved": {
-              "items": [
-                "hair_balding",
-                "hair_buzzcut",
-                "hair_high_and_tight",
-                "hair_longhawk",
-                "hair_shorthawk"
-              ],
-              "children": {}
-            },
-            "bob": {
-              "items": [
-                "hair_bob",
-                "hair_bob_side_part",
-                "hair_lob",
-                "hair_relm_short"
-              ],
-              "children": {}
-            },
-            "braids, ponytails, updos": {
-              "items": [
-                "hair_bangs_bun",
-                "hair_braid",
-                "hair_braid2",
-                "hair_half_up",
-                "hair_high_ponytail",
-                "hair_long_tied",
-                "hair_ponytail",
-                "hair_ponytail2",
-                "hair_relm_ponytail",
-                "hair_shoulderl",
-                "hair_shoulderr",
-                "hair_topknot_long",
-                "hair_topknot_long2",
-                "hair_topknot_short",
-                "hair_topknot_short2"
-              ],
-              "children": {}
-            },
-            "very long": {
-              "items": [
-                "hair_relm_xlong",
-                "hair_long_band",
-                "hair_princess",
-                "hair_sara",
-                "hair_xlong",
-                "hair_xlong_wavy"
-              ],
-              "children": {}
-            },
-            "curly": {
-              "items": [
-                "hair_curls_large",
-                "hair_curls_large_xlong",
-                "hair_curly_long",
-                "hair_curly_short",
-                "hair_curly_short2",
-                "hair_jewfro"
-              ],
-              "children": {}
-            },
-            "long": {
-              "items": [
-                "hair_bangslong",
-                "hair_bangslong2",
-                "hair_curtains_long",
-                "hair_long",
-                "hair_long_center_part",
-                "hair_long_messy",
-                "hair_long_messy2",
-                "hair_long_straight",
-                "hair_loose",
-                "hair_wavy",
-                "hair_wavy_child"
-              ],
-              "children": {}
-            },
-            "pigtails": {
-              "items": [
-                "hair_bunches",
-                "hair_pigtails",
-                "hair_pigtails_bangs"
-              ],
-              "children": {}
-            },
-            "short": {
-              "items": [
-                "hair_bangs",
-                "hair_bangsshort",
-                "hair_bedhead",
-                "hair_cowlick",
-                "hair_cowlick_tall",
-                "hair_curtains",
-                "hair_idol",
-                "hair_messy",
-                "hair_messy1",
-                "hair_messy2",
-                "hair_messy3",
-                "hair_mop",
-                "hair_page",
-                "hair_page2",
-                "hair_parted",
-                "hair_parted2",
-                "hair_parted3",
-                "hair_parted_side_bangs",
-                "hair_parted_side_bangs2",
-                "hair_pixie",
-                "hair_plain",
-                "hair_single",
-                "hair_swoop",
-                "hair_swoop_side",
-                "hair_unkempt"
-              ],
-              "children": {}
-            },
-            "spiky": {
-              "items": [
-                "hair_halfmessy",
-                "hair_spiked",
-                "hair_spiked2",
-                "hair_spiked_beehive",
-                "hair_spiked_liberty",
-                "hair_spiked_liberty2",
-                "hair_spiked_porcupine"
-              ],
-              "children": {}
-            },
-            "hair extensions": {
-              "items": [],
-              "children": {
-                "bangs": {
-                  "items": [
-                    "hairext_braidl",
-                    "hairext_braidr",
-                    "hairext_long_straightl",
-                    "hairext_long_straightr",
-                    "hairext_long_wavyl",
-                    "hairext_long_wavyr",
-                    "hairext_xlong_bangl",
-                    "hairext_xlong_bangr",
-                    "hairext_xlong_braidl",
-                    "hairext_xlong_braidr",
-                    "hairext_xlong_curlyl",
-                    "hairext_xlong_curlyr",
-                    "hairext_xlong_wavyl",
-                    "hairext_xlong_wavyr"
-                  ],
-                  "children": {}
-                },
-                "ponytails": {
-                  "items": [
-                    "hairext_topknot_long",
-                    "hairext_topknot_relm",
-                    "hairext_topknot_short"
-                  ],
-                  "children": {}
-                },
-                "knot / ties": {
-                  "items": [
-                    "hairext_high_bun"
-                  ],
-                  "children": {}
-                }
-              }
-            }
-          }
-        },
-        "beards": {
-          "items": [
-            "beards_5oclock_shadow",
-            "beards_beard",
-            "beards_medium",
-            "beards_trimmed",
-            "beards_winter"
-          ],
-          "children": {}
-        },
-        "mustaches": {
-          "items": [
-            "beards_bigstache",
-            "beards_chevron",
-            "beards_french",
-            "beards_handlebar",
-            "beards_horseshoe",
-            "beards_lampshade",
-            "beards_mustache",
-            "beards_walrus"
-          ],
-          "children": {}
-        },
-        "appendages": {
-          "items": [
-            "head_fins_fin",
-            "head_fins_fin_short",
-            "head_horns_backwards",
-            "head_horns_curled"
-          ],
-          "children": {}
-        },
-        "furry ears": {
-          "items": [],
-          "children": {
-            "side ears": {
-              "items": [
-                "head_ears_avyon",
-                "head_ears_avyon_skin",
-                "head_ears_lykon",
-                "head_ears_lykon_skin",
-                "head_ears_zabos",
-                "head_ears_zabos_skin"
-              ],
-              "children": {}
-            },
-            "top ears": {
-              "items": [
-                "head_ears_cat",
-                "head_ears_cat_skin",
-                "head_ears_wolf",
-                "head_ears_wolf_skin"
-              ],
-              "children": {}
-            }
-          }
-        },
-        "ears": {
-          "items": [
-            "head_ears_big",
-            "head_ears_down",
-            "head_ears_dragon",
-            "head_ears_elven",
-            "head_ears_hang",
-            "head_ears_long",
-            "head_ears_medium"
-          ],
-          "children": {}
-        },
-        "eyebrows": {
-          "items": [
-            "eyebrows_thick",
-            "eyebrows_thin"
-          ],
-          "children": {}
-        },
-        "other eyes": {
-          "items": [
-            "eyes_child",
-            "eyes_cyclops"
-          ],
-          "children": {}
-        },
-        "eye_color": {
-          "items": [],
-          "children": {
-            "elderly": {
-              "items": [
-                "eyes_elderly_anger",
-                "eyes_elderly_closing",
-                "eyes_elderly_default",
-                "eyes_elderly_eyeroll",
-                "eyes_elderly_look_l",
-                "eyes_elderly_look_r",
-                "eyes_elderly_sad",
-                "eyes_elderly_shame",
-                "eyes_elderly_shock"
-              ],
-              "children": {}
-            }
-          }
-        },
-        "face": {
-          "items": [
-            "face_angry",
-            "face_angry2",
-            "face_blush",
-            "face_closed",
-            "face_closing",
-            "face_eyeroll",
-            "face_happy",
-            "face_happy2",
-            "face_look_l",
-            "face_look_r",
-            "face_neutral",
-            "face_sad",
-            "face_sad2",
-            "face_shame",
-            "face_shock",
-            "face_tears"
-          ],
-          "children": {}
-        },
         "heads": {
           "items": [
             "heads_alien",
@@ -79642,47 +78612,112 @@ window.categoryTree = {
             "heads_wolf_male",
             "heads_zombie"
           ],
-          "children": {}
+          "children": {},
+          "priority": 10,
+          "required": [],
+          "animations": []
         },
-        "neck": {
+        "eyes": {
           "items": [
-            "neck_bowtie",
-            "neck_bowtie2",
-            "neck_capeclip",
-            "neck_capetie",
-            "neck_cravat",
-            "neck_jabot",
-            "neck_necklace",
-            "neck_necklace_beaded_large",
-            "neck_necklace_beaded_small",
-            "neck_necklace_chain",
-            "neck_necklace_simple",
-            "neck_necktie",
-            "neck_scarf"
+            "eye_color",
+            "eyes_cyclops"
           ],
+          "children": {},
+          "priority": 30,
+          "required": [],
+          "animations": []
+        },
+        "eyebrows": {
+          "items": [
+            "eyebrows_thick",
+            "eyebrows_thin"
+          ],
+          "children": {},
+          "priority": 40,
+          "required": [],
+          "animations": []
+        },
+        "faces": {
+          "items": [
+            "face_angry",
+            "face_angry2",
+            "face_blush",
+            "face_closed",
+            "face_closing",
+            "face_happy",
+            "face_happy2",
+            "face_look_l",
+            "face_look_r",
+            "face_neutral",
+            "face_eyeroll",
+            "face_sad",
+            "face_sad2",
+            "face_shame",
+            "face_shock",
+            "face_tears"
+          ],
+          "children": {},
+          "priority": 40,
+          "required": [
+            "male",
+            "female",
+            "muscular",
+            "pregnant",
+            "teen"
+          ],
+          "animations": []
+        },
+        "ears": {
+          "items": [
+            "head_ears_big",
+            "head_ears_down",
+            "head_ears_dragon",
+            "head_ears_elven",
+            "head_ears_hang",
+            "head_ears_long",
+            "head_ears_medium"
+          ],
+          "children": {},
+          "priority": 50,
+          "required": [],
+          "animations": []
+        },
+        "furry_ears": {
+          "items": [],
           "children": {
-            "necklace charms": {
+            "top": {
               "items": [
-                "neck_amulet_cross",
-                "neck_amulet_dangle",
-                "neck_amulet_spider",
-                "neck_amulet_star",
-                "neck_charm_box",
-                "neck_charm_oval",
-                "neck_charm_ring",
-                "neck_charm_star",
-                "neck_gem_emerald",
-                "neck_gem_marquise",
-                "neck_gem_natural",
-                "neck_gem_pear",
-                "neck_gem_pearl",
-                "neck_gem_princess",
-                "neck_gem_round",
-                "neck_gem_trilliant"
+                "head_ears_cat",
+                "head_ears_cat_skin",
+                "head_ears_wolf",
+                "head_ears_wolf_skin"
               ],
-              "children": {}
+              "children": {},
+              "label": "Top of Head",
+              "priority": 10,
+              "required": [],
+              "animations": []
+            },
+            "side": {
+              "items": [
+                "head_ears_avyon",
+                "head_ears_avyon_skin",
+                "head_ears_zabos",
+                "head_ears_zabos_skin",
+                "head_ears_lykon",
+                "head_ears_lykon_skin"
+              ],
+              "children": {},
+              "label": "Side of Head",
+              "priority": 20,
+              "required": [],
+              "animations": []
             }
-          }
+          },
+          "label": "Furry Ears",
+          "priority": 60,
+          "required": [],
+          "animations": []
         },
         "nose": {
           "items": [
@@ -79692,71 +78727,486 @@ window.categoryTree = {
             "head_nose_large",
             "head_nose_straight"
           ],
-          "children": {}
+          "children": {},
+          "priority": 70,
+          "required": [],
+          "animations": []
         },
-        "accessories": {
+        "appendages": {
           "items": [
-            "facial_mask_plain"
+            "head_horns_backwards",
+            "head_horns_curled",
+            "head_fins_fin",
+            "head_fins_fin_short"
+          ],
+          "children": {},
+          "priority": 90,
+          "required": [],
+          "animations": []
+        },
+        "neck": {
+          "items": [
+            "neck_bowtie",
+            "neck_bowtie2",
+            "neck_necktie",
+            "neck_scarf",
+            "neck_capeclip",
+            "neck_capetie",
+            "neck_jabot",
+            "neck_cravat",
+            "neck_necklace",
+            "neck_necklace_simple",
+            "neck_necklace_chain",
+            "neck_necklace_beaded_small",
+            "neck_necklace_beaded_large"
           ],
           "children": {
-            "earrings": {
+            "charms": {
               "items": [
-                "facial_earrings_emerald",
-                "facial_earrings_moon",
-                "facial_earrings_pear",
-                "facial_earrings_princess",
-                "facial_earrings_stud",
-                "facial_earring_left",
-                "facial_earring_right"
+                "neck_charm_box",
+                "neck_amulet_cross",
+                "neck_amulet_dangle",
+                "neck_gem_emerald",
+                "neck_gem_marquise",
+                "neck_gem_natural",
+                "neck_charm_oval",
+                "neck_gem_pear",
+                "neck_gem_pearl",
+                "neck_gem_princess",
+                "neck_charm_ring",
+                "neck_gem_round",
+                "neck_amulet_spider",
+                "neck_amulet_star",
+                "neck_charm_star",
+                "neck_gem_trilliant"
+              ],
+              "children": {},
+              "label": "Necklace Charms",
+              "priority": 10,
+              "required": [],
+              "animations": []
+            }
+          },
+          "priority": 100,
+          "required": [
+            "male",
+            "female",
+            "muscular",
+            "pregnant",
+            "teen"
+          ],
+          "animations": []
+        }
+      },
+      "priority": 20,
+      "required": [],
+      "animations": []
+    },
+    "hair": {
+      "items": [],
+      "children": {
+        "beards": {
+          "items": [
+            "beards_5oclock_shadow",
+            "beards_beard",
+            "beards_medium",
+            "beards_trimmed",
+            "beards_winter"
+          ],
+          "children": {},
+          "priority": 10,
+          "required": [
+            "male",
+            "female",
+            "muscular",
+            "pregnant",
+            "teen"
+          ],
+          "animations": []
+        },
+        "mustaches": {
+          "items": [
+            "beards_bigstache",
+            "beards_chevron",
+            "beards_french",
+            "beards_handlebar",
+            "beards_horseshoe",
+            "beards_lampshade",
+            "beards_mustache",
+            "beards_walrus"
+          ],
+          "children": {},
+          "priority": 20,
+          "required": [
+            "male",
+            "female",
+            "muscular",
+            "pregnant",
+            "teen"
+          ],
+          "animations": []
+        },
+        "extensions": {
+          "items": [],
+          "children": {
+            "bangs": {
+              "items": [
+                "hairext_braidl",
+                "hairext_long_straightl",
+                "hairext_long_wavyl",
+                "hairext_xlong_bangl",
+                "hairext_xlong_braidl",
+                "hairext_xlong_curlyl",
+                "hairext_xlong_wavyl",
+                "hairext_braidr",
+                "hairext_long_straightr",
+                "hairext_long_wavyr",
+                "hairext_xlong_bangr",
+                "hairext_xlong_braidr",
+                "hairext_xlong_curlyr",
+                "hairext_xlong_wavyr"
               ],
               "children": {}
             },
-            "eyepatches": {
+            "ties": {
               "items": [
-                "facial_eyepatch2_left",
-                "facial_eyepatch2_right",
-                "facial_eyepatch_ambi",
-                "facial_eyepatch_left",
-                "facial_eyepatch_right",
-                "facial_eyepatch_small_left",
-                "facial_eyepatch_small_right"
+                "hairext_high_bun"
               ],
-              "children": {}
+              "children": {},
+              "label": "Knots / Ties",
+              "priority": null,
+              "required": [],
+              "animations": []
             },
-            "glasses": {
+            "ponytails": {
               "items": [
-                "facial_glasses",
-                "facial_glasses_halfmoon",
-                "facial_glasses_nerd",
-                "facial_glasses_round",
-                "facial_glasses_secretary",
-                "facial_glasses_shades",
-                "facial_glasses_sunglasses"
-              ],
-              "children": {}
-            },
-            "monocle": {
-              "items": [
-                "facial_monocle_left",
-                "facial_monocle_left_frame",
-                "facial_monocle_right",
-                "facial_monocle_right_frame"
+                "hairext_topknot_long",
+                "hairext_topknot_relm",
+                "hairext_topknot_short"
               ],
               "children": {}
             }
-          }
+          },
+          "priority": 30,
+          "required": [],
+          "animations": []
         },
-        "head coverings": {
+        "afro": {
+          "items": [
+            "hair_afro",
+            "hair_cornrows",
+            "hair_dreadlocks_long",
+            "hair_dreadlocks_short",
+            "hair_flat_top_fade",
+            "hair_flat_top_straight",
+            "hair_natural",
+            "hair_twists_fade",
+            "hair_twists_straight"
+          ],
+          "children": {},
+          "priority": 40,
+          "required": [],
+          "animations": []
+        },
+        "curly": {
+          "items": [
+            "hair_curly_long",
+            "hair_curly_short",
+            "hair_curly_short2",
+            "hair_jewfro",
+            "hair_curls_large",
+            "hair_curls_large_xlong"
+          ],
+          "children": {},
+          "priority": 50,
+          "required": [],
+          "animations": []
+        },
+        "bald": {
+          "items": [
+            "hair_balding",
+            "hair_buzzcut",
+            "hair_high_and_tight",
+            "hair_longhawk",
+            "hair_shorthawk"
+          ],
+          "children": {},
+          "label": "Bald / Shaved",
+          "priority": 60,
+          "required": [],
+          "animations": []
+        },
+        "short": {
+          "items": [
+            "hair_bangs",
+            "hair_bangsshort",
+            "hair_bedhead",
+            "hair_cowlick",
+            "hair_cowlick_tall",
+            "hair_curtains",
+            "hair_idol",
+            "hair_messy",
+            "hair_messy1",
+            "hair_messy2",
+            "hair_messy3",
+            "hair_mop",
+            "hair_page",
+            "hair_page2",
+            "hair_parted",
+            "hair_parted2",
+            "hair_parted3",
+            "hair_pixie",
+            "hair_plain",
+            "hair_parted_side_bangs",
+            "hair_parted_side_bangs2",
+            "hair_swoop_side",
+            "hair_single",
+            "hair_swoop",
+            "hair_unkempt"
+          ],
+          "children": {},
+          "priority": 70,
+          "required": [],
+          "animations": []
+        },
+        "spiky": {
+          "items": [
+            "hair_halfmessy",
+            "hair_spiked",
+            "hair_spiked_beehive",
+            "hair_spiked_liberty",
+            "hair_spiked_liberty2",
+            "hair_spiked_porcupine",
+            "hair_spiked2"
+          ],
+          "children": {},
+          "priority": 80,
+          "required": [],
+          "animations": []
+        },
+        "pigtails": {
+          "items": [
+            "hair_bunches",
+            "hair_pigtails",
+            "hair_pigtails_bangs"
+          ],
+          "children": {},
+          "priority": 90,
+          "required": [],
+          "animations": []
+        },
+        "bob": {
+          "items": [
+            "hair_bob",
+            "hair_bob_side_part",
+            "hair_lob",
+            "hair_relm_short"
+          ],
+          "children": {},
+          "priority": 100,
+          "required": [],
+          "animations": []
+        },
+        "braids": {
+          "items": [
+            "hair_bangs_bun",
+            "hair_braid",
+            "hair_braid2",
+            "hair_half_up",
+            "hair_high_ponytail",
+            "hair_long_tied",
+            "hair_topknot_long",
+            "hair_topknot_long2",
+            "hair_ponytail",
+            "hair_ponytail2",
+            "hair_relm_ponytail",
+            "hair_relm_xlong",
+            "hair_topknot_short",
+            "hair_topknot_short2",
+            "hair_shoulderl",
+            "hair_shoulderr"
+          ],
+          "children": {},
+          "label": "Braids, Ponytails, Updos",
+          "priority": 110,
+          "required": [],
+          "animations": []
+        },
+        "long": {
+          "items": [
+            "hair_bangslong",
+            "hair_bangslong2",
+            "hair_wavy_child",
+            "hair_curtains_long",
+            "hair_long",
+            "hair_long_center_part",
+            "hair_long_messy",
+            "hair_long_messy2",
+            "hair_long_straight",
+            "hair_loose",
+            "hair_wavy"
+          ],
+          "children": {},
+          "priority": 120,
+          "required": [],
+          "animations": []
+        },
+        "xlong": {
+          "items": [
+            "hair_long_band",
+            "hair_princess",
+            "hair_sara",
+            "hair_xlong",
+            "hair_xlong_wavy"
+          ],
+          "children": {},
+          "priority": 130,
+          "required": [],
+          "animations": []
+        }
+      },
+      "priority": 30,
+      "required": [],
+      "animations": []
+    },
+    "headwear": {
+      "items": [],
+      "children": {
+        "hats": {
           "items": [],
           "children": {
-            "bandanas": {
+            "caps": {
+              "items": [
+                "hat_cap_bonnie",
+                "hat_cap_bonnie_tilt",
+                "hat_cap_bonnie_trim",
+                "hat_cap_bonnie_feather",
+                "hat_cap_cavalier",
+                "hat_cap_cavalier_feather",
+                "hat_cap_leather",
+                "hat_cap_leather_feather"
+              ],
+              "children": {},
+              "priority": 10,
+              "required": [],
+              "animations": []
+            },
+            "tricorne": {
+              "items": [
+                "hat_tricorne",
+                "hat_tricorne_captain",
+                "hat_tricorne_captain_skull",
+                "hat_tricorne_captain_trim",
+                "hat_tricorne_lieutenant",
+                "hat_tricorne_lieutenant_trim",
+                "hat_tricorne_stitched",
+                "hat_tricorne_thatch"
+              ],
+              "children": {},
+              "priority": 20,
+              "required": [],
+              "animations": []
+            },
+            "athwart": {
+              "items": [
+                "hat_bicorne_athwart_basic",
+                "hat_bicorne_athwart_admiral",
+                "hat_bicorne_athwart_admiral_cockade",
+                "hat_bicorne_athwart_admiral_trim",
+                "hat_bicorne_athwart_captain",
+                "hat_bicorne_athwart_captain_skull",
+                "hat_bicorne_athwart_commodore",
+                "hat_bicorne_athwart_commodore_trim",
+                "hat_bicorne_athwart_basic_skull"
+              ],
+              "children": {},
+              "label": "Bicorne Athwart",
+              "priority": 30,
+              "required": [],
+              "animations": []
+            },
+            "foreaft": {
+              "items": [
+                "hat_bicorne_foreaft",
+                "hat_bicorne_foreaft_commodore",
+                "hat_bicorne_foreaft_commodore_trim"
+              ],
+              "children": {},
+              "label": "Bicorne Foreaft",
+              "priority": 40,
+              "required": [],
+              "animations": []
+            },
+            "magic": {
+              "items": [
+                "hat_magic_celestial",
+                "hat_magic_celestial_trim",
+                "hat_magic_celestial_moon",
+                "hat_magic_celestial_moon_trim",
+                "hat_magic_large",
+                "hat_magic_wizard",
+                "hat_magic_wizard_belt",
+                "hat_magic_wizard_buckle"
+              ],
+              "children": {},
+              "priority": 50,
+              "required": [],
+              "animations": []
+            },
+            "formal": {
+              "items": [
+                "hat_formal_crown",
+                "hat_formal_bowler",
+                "hat_formal_tophat",
+                "hat_formal_tiara"
+              ],
+              "children": {},
+              "priority": 60,
+              "required": [],
+              "animations": []
+            },
+            "holiday": {
+              "items": [
+                "hat_holiday_christmas",
+                "hat_holiday_elf",
+                "hat_holiday_santa"
+              ],
+              "children": {},
+              "priority": 70,
+              "required": [],
+              "animations": []
+            }
+          },
+          "priority": 10,
+          "required": [],
+          "animations": []
+        },
+        "coverings": {
+          "items": [],
+          "children": {
+            "hoods": {
+              "items": [
+                "hat_hood_hijab",
+                "hat_hood_cloth",
+                "hat_helmet_mail",
+                "hat_hood_sack_cloth"
+              ],
+              "children": {},
+              "priority": 10,
+              "required": [],
+              "animations": []
+            },
+            "bandana": {
               "items": [
                 "hat_bandana",
                 "hat_bandana2",
                 "hat_bandana_pirate",
                 "hat_bandana_pirate_skull"
               ],
-              "children": {}
+              "children": {},
+              "priority": 20,
+              "required": [],
+              "animations": []
             },
             "headbands": {
               "items": [
@@ -79767,178 +79217,28 @@ window.categoryTree = {
                 "hat_headband_thick_rune",
                 "hat_headband_tied"
               ],
-              "children": {}
-            },
-            "hoods": {
-              "items": [
-                "hat_helmet_mail",
-                "hat_hood_cloth",
-                "hat_hood_hijab",
-                "hat_hood_sack_cloth"
-              ],
-              "children": {}
+              "children": {},
+              "priority": 30,
+              "required": [],
+              "animations": []
             }
-          }
-        },
-        "hats": {
-          "items": [],
-          "children": {
-            "bicorne athwart": {
-              "items": [],
-              "children": {
-                "admiral": {
-                  "items": [
-                    "hat_bicorne_athwart_admiral",
-                    "hat_bicorne_athwart_admiral_cockade",
-                    "hat_bicorne_athwart_admiral_trim"
-                  ],
-                  "children": {}
-                },
-                "basic": {
-                  "items": [
-                    "hat_bicorne_athwart_basic",
-                    "hat_bicorne_athwart_basic_skull"
-                  ],
-                  "children": {}
-                },
-                "captain": {
-                  "items": [
-                    "hat_bicorne_athwart_captain",
-                    "hat_bicorne_athwart_captain_skull"
-                  ],
-                  "children": {}
-                },
-                "commodore": {
-                  "items": [
-                    "hat_bicorne_athwart_commodore",
-                    "hat_bicorne_athwart_commodore_trim"
-                  ],
-                  "children": {}
-                }
-              }
-            },
-            "caps": {
-              "items": [
-                "hat_cap_bonnie",
-                "hat_cap_bonnie_feather",
-                "hat_cap_bonnie_tilt",
-                "hat_cap_bonnie_trim",
-                "hat_cap_cavalier",
-                "hat_cap_cavalier_feather",
-                "hat_cap_leather",
-                "hat_cap_leather_feather"
-              ],
-              "children": {}
-            },
-            "bicorne foreaft": {
-              "items": [
-                "hat_bicorne_foreaft",
-                "hat_bicorne_foreaft_commodore",
-                "hat_bicorne_foreaft_commodore_trim"
-              ],
-              "children": {}
-            },
-            "formal": {
-              "items": [
-                "hat_formal_bowler",
-                "hat_formal_crown",
-                "hat_formal_tiara",
-                "hat_formal_tophat"
-              ],
-              "children": {}
-            },
-            "holiday": {
-              "items": [
-                "hat_holiday_christmas",
-                "hat_holiday_elf",
-                "hat_holiday_santa"
-              ],
-              "children": {}
-            },
-            "magic": {
-              "items": [
-                "hat_magic_large"
-              ],
-              "children": {
-                "celestial": {
-                  "items": [
-                    "hat_magic_celestial",
-                    "hat_magic_celestial_moon",
-                    "hat_magic_celestial_moon_trim",
-                    "hat_magic_celestial_trim"
-                  ],
-                  "children": {}
-                },
-                "wizard": {
-                  "items": [
-                    "hat_magic_wizard",
-                    "hat_magic_wizard_belt",
-                    "hat_magic_wizard_buckle"
-                  ],
-                  "children": {}
-                }
-              }
-            },
-            "tricorne": {
-              "items": [],
-              "children": {
-                "basic": {
-                  "items": [
-                    "hat_tricorne",
-                    "hat_tricorne_stitched",
-                    "hat_tricorne_thatch"
-                  ],
-                  "children": {}
-                },
-                "captain": {
-                  "items": [
-                    "hat_tricorne_captain",
-                    "hat_tricorne_captain_skull",
-                    "hat_tricorne_captain_trim"
-                  ],
-                  "children": {}
-                },
-                "lieutenant": {
-                  "items": [
-                    "hat_tricorne_lieutenant",
-                    "hat_tricorne_lieutenant_trim"
-                  ],
-                  "children": {}
-                }
-              }
-            }
-          }
+          },
+          "label": "Head Coverings",
+          "priority": 10,
+          "required": [],
+          "animations": []
         },
         "helmets": {
           "items": [],
           "children": {
-            "helmet accessories": {
-              "items": [
-                "hat_accessory_crest",
-                "hat_accessory_crest_centurion",
-                "hat_accessory_horns_downward",
-                "hat_accessory_horns_short",
-                "hat_accessory_horns_upward",
-                "hat_accessory_plumage",
-                "hat_accessory_plumage_centurion",
-                "hat_accessory_plumage_legion",
-                "hat_accessory_wings"
-              ],
-              "children": {}
-            },
             "helmets": {
               "items": [
                 "hat_helmet_armet",
-                "hat_helmet_armet_simple",
                 "hat_helmet_barbarian",
                 "hat_helmet_barbarian_nasal",
                 "hat_helmet_barbarian_viking",
                 "hat_helmet_barbuta",
-                "hat_helmet_barbuta_simple",
                 "hat_helmet_bascinet",
-                "hat_helmet_bascinet_pigface",
-                "hat_helmet_bascinet_pigface_raised",
-                "hat_helmet_bascinet_round",
                 "hat_helmet_close",
                 "hat_helmet_flattop",
                 "hat_helmet_greathelm",
@@ -79949,223 +79249,311 @@ window.categoryTree = {
                 "hat_helmet_morion",
                 "hat_helmet_nasal",
                 "hat_helmet_norman",
+                "hat_helmet_bascinet_pigface",
+                "hat_helmet_bascinet_pigface_raised",
                 "hat_helmet_pointed",
-                "hat_helmet_spangenhelm",
-                "hat_helmet_spangenhelm_viking",
-                "hat_helmet_sugarloaf",
+                "hat_helmet_bascinet_round",
+                "hat_helmet_armet_simple",
+                "hat_helmet_barbuta_simple",
                 "hat_helmet_sugarloaf_simple",
+                "hat_helmet_spangenhelm",
+                "hat_helmet_sugarloaf",
+                "hat_helmet_spangenhelm_viking",
                 "hat_helmet_xeon"
               ],
-              "children": {}
+              "children": {},
+              "priority": 10,
+              "required": [],
+              "animations": []
             },
             "visors": {
               "items": [
                 "hat_visor_grated",
-                "hat_visor_grated_narrow",
                 "hat_visor_horned",
+                "hat_visor_grated_narrow",
+                "hat_visor_slit_narrow",
                 "hat_visor_pigface",
                 "hat_visor_pigface_raised",
                 "hat_visor_round",
                 "hat_visor_round_raised",
-                "hat_visor_slit",
-                "hat_visor_slit_narrow"
+                "hat_visor_slit"
               ],
-              "children": {}
+              "children": {},
+              "priority": 20,
+              "required": [],
+              "animations": []
+            },
+            "accessories": {
+              "items": [
+                "hat_accessory_crest_centurion",
+                "hat_accessory_plumage_centurion",
+                "hat_accessory_crest",
+                "hat_accessory_horns_downward",
+                "hat_accessory_wings",
+                "hat_accessory_plumage_legion",
+                "hat_accessory_plumage",
+                "hat_accessory_horns_short",
+                "hat_accessory_horns_upward"
+              ],
+              "children": {},
+              "priority": 30,
+              "required": [],
+              "animations": []
             }
-          }
+          },
+          "priority": 10,
+          "required": [],
+          "animations": []
+        },
+        "neck": {
+          "items": [],
+          "children": {},
+          "priority": 10,
+          "required": [],
+          "animations": []
+        },
+        "accessories": {
+          "items": [
+            "facial_mask_plain"
+          ],
+          "children": {
+            "glasses": {
+              "items": [
+                "facial_glasses",
+                "facial_glasses_halfmoon",
+                "facial_glasses_nerd",
+                "facial_glasses_round",
+                "facial_glasses_secretary",
+                "facial_glasses_shades",
+                "facial_glasses_sunglasses"
+              ],
+              "children": {},
+              "label": "Glasses",
+              "priority": 10,
+              "required": [],
+              "animations": []
+            },
+            "monocle": {
+              "items": [
+                "facial_monocle_left",
+                "facial_monocle_left_frame",
+                "facial_monocle_right",
+                "facial_monocle_right_frame"
+              ],
+              "children": {},
+              "label": "Monocle",
+              "priority": 20,
+              "required": [],
+              "animations": []
+            },
+            "eyepatch": {
+              "items": [
+                "facial_eyepatch2_left",
+                "facial_eyepatch2_right",
+                "facial_eyepatch_ambi",
+                "facial_eyepatch_left",
+                "facial_eyepatch_right",
+                "facial_eyepatch_small_left",
+                "facial_eyepatch_small_right"
+              ],
+              "children": {},
+              "label": "Eyepatches",
+              "priority": 30,
+              "required": [],
+              "animations": []
+            },
+            "earrings": {
+              "items": [
+                "facial_earrings_emerald",
+                "facial_earrings_moon",
+                "facial_earrings_pear",
+                "facial_earrings_princess",
+                "facial_earring_left",
+                "facial_earring_right",
+                "facial_earrings_stud"
+              ],
+              "children": {},
+              "label": "Earrings",
+              "priority": 40,
+              "required": [],
+              "animations": []
+            }
+          },
+          "label": "Facial Accessories",
+          "priority": 40,
+          "required": [],
+          "animations": []
         }
-      }
+      },
+      "priority": 40,
+      "required": [],
+      "animations": []
     },
-    "legs": {
+    "arms": {
       "items": [
-        "legs_armour"
+        "arms_armour",
+        "bauldron",
+        "arms_gloves",
+        "arms_hands_ring_stud"
       ],
       "children": {
-        "leggings": {
+        "wrists": {
           "items": [
-            "legs_hose",
-            "legs_leggings",
-            "legs_leggings2"
+            "arms_bracers",
+            "wrists_cuffs",
+            "wrists_cuffs_lace"
           ],
-          "children": {}
+          "children": {},
+          "priority": 10,
+          "required": [
+            "male",
+            "female",
+            "muscular",
+            "pregnant",
+            "teen"
+          ],
+          "animations": [
+            "spellcast",
+            "thrust",
+            "walk",
+            "slash",
+            "shoot",
+            "hurt",
+            "watering",
+            "idle"
+          ]
         },
-        "pants": {
+        "shoulders": {
           "items": [
-            "legs_childpants",
-            "legs_cuffed",
-            "legs_formal",
-            "legs_formal_striped",
-            "legs_fur",
-            "legs_pantaloons",
-            "legs_pants",
-            "legs_pants2",
-            "legs_pregnantpants",
-            "legs_widepants"
+            "shoulders_epaulets",
+            "shoulders_leather",
+            "shoulders_legion",
+            "shoulders_mantal",
+            "shoulders_plate"
           ],
-          "children": {}
-        },
-        "shorts": {
-          "items": [
-            "legs_shorts",
-            "legs_shorts_short"
+          "children": {},
+          "priority": 30,
+          "required": [
+            "male",
+            "female",
+            "muscular",
+            "pregnant",
+            "teen"
           ],
-          "children": {}
-        },
-        "skirts": {
-          "items": [
-            "legs_childskirts",
-            "legs_skirts_legion",
-            "legs_skirts_plain",
-            "legs_skirts_slit",
-            "legs_skirt_belle",
-            "legs_skirt_overskirt",
-            "legs_skirt_straight"
-          ],
-          "children": {}
+          "animations": [
+            "spellcast",
+            "thrust",
+            "walk",
+            "slash",
+            "shoot",
+            "hurt",
+            "watering",
+            "idle"
+          ]
         }
-      }
-    },
-    "tools": {
-      "items": [
-        "tool_rod",
-        "tool_smash",
-        "tool_thrust",
-        "tool_whip"
-      ],
-      "children": {}
+      },
+      "priority": 50,
+      "required": [],
+      "animations": []
     },
     "torso": {
       "items": [
-        "torso_bandages",
-        "torso_chainmail"
+        "torso_chainmail",
+        "torso_bandages"
       ],
       "children": {
-        "aprons": {
-          "items": [
-            "torso_aprons_apron",
-            "torso_aprons_apron_full",
-            "torso_aprons_apron_half",
-            "torso_aprons_overalls",
-            "torso_aprons_suspenders"
-          ],
-          "children": {}
-        },
-        "armour": {
-          "items": [
-            "torso_armour_leather",
-            "torso_armour_legion",
-            "torso_armour_plate"
-          ],
-          "children": {}
-        },
-        "backpack": {
-          "items": [
-            "backpack",
-            "backpack_basket",
-            "backpack_jetpack",
-            "backpack_jetpack_fins",
-            "backpack_squarepack",
-            "backpack_straps",
-            "quiver"
-          ],
-          "children": {
-            "backpack cargo": {
-              "items": [
-                "backpack_contents_ore",
-                "backpack_contents_wood"
-              ],
-              "children": {}
-            }
-          }
-        },
-        "cape": {
-          "items": [
-            "cape_solid",
-            "cape_tattered",
-            "cape_trim"
-          ],
-          "children": {}
-        },
         "dresses": {
           "items": [
             "dress_bodice",
-            "dress_sash",
-            "dress_slit"
+            "dress_slit",
+            "dress_sash"
           ],
           "children": {
             "kimono": {
               "items": [
                 "dress_kimono",
+                "dress_kimono_trim",
+                "dress_kimono_split",
+                "dress_kimono_split_trim",
                 "dress_kimono_longsleeve",
                 "dress_kimono_longsleeve_trim",
                 "dress_kimono_oversize",
-                "dress_kimono_oversize_trim",
-                "dress_kimono_split",
-                "dress_kimono_split_trim",
-                "dress_kimono_trim"
+                "dress_kimono_oversize_trim"
               ],
-              "children": {}
+              "children": {},
+              "priority": 40,
+              "required": [],
+              "animations": []
             }
-          }
-        },
-        "jacket": {
-          "items": [
-            "torso_jacket_collared",
-            "torso_jacket_frock",
-            "torso_jacket_iverness",
-            "torso_jacket_santa",
-            "torso_jacket_tabard",
-            "torso_jacket_trench"
+          },
+          "priority": 10,
+          "required": [
+            "female",
+            "teen"
           ],
-          "children": {
-            "jacket trim": {
-              "items": [
-                "torso_jacket_frock_buttons",
-                "torso_jacket_frock_collar",
-                "torso_jacket_frock_lace",
-                "torso_jacket_frock_lapel",
-                "torso_jacket_pockets"
-              ],
-              "children": {}
-            }
-          }
+          "animations": [
+            "spellcast",
+            "thrust",
+            "walk",
+            "slash",
+            "shoot",
+            "hurt",
+            "watering",
+            "idle"
+          ]
         },
         "shirts": {
           "items": [
             "torso_clothes_blouse",
-            "torso_clothes_blouse_longsleeve",
             "torso_clothes_child_shirt",
             "torso_clothes_corset",
+            "torso_clothes_blouse_longsleeve",
             "torso_clothes_robe",
-            "torso_clothes_tunic",
-            "torso_clothes_tunic_sara"
+            "torso_clothes_tunic_sara",
+            "torso_clothes_tunic"
           ],
           "children": {
-            "longsleeve": {
-              "items": [
-                "torso_clothes_longsleeve",
-                "torso_clothes_longsleeve2",
-                "torso_clothes_longsleeve2_buttoned",
-                "torso_clothes_longsleeve2_cardigan",
-                "torso_clothes_longsleeve2_polo",
-                "torso_clothes_longsleeve2_scoop",
-                "torso_clothes_longsleeve2_vneck",
-                "torso_clothes_longsleeve_formal",
-                "torso_clothes_longsleeve_formal_striped",
-                "torso_clothes_longsleeve_laced",
-                "torso_clothes_longsleeve_scoop"
-              ],
-              "children": {}
-            },
             "sleeves": {
               "items": [
-                "torso_clothes_longsleeves_cuffed",
-                "torso_clothes_longsleeves",
                 "torso_clothes_longsleeves2",
+                "torso_clothes_longsleeves",
                 "torso_clothes_shortsleeves",
                 "torso_clothes_shortsleeves2"
               ],
-              "children": {}
+              "children": {},
+              "priority": 10,
+              "required": [
+                "male",
+                "female",
+                "teen",
+                "pregnant"
+              ],
+              "animations": []
+            },
+            "longsleeve": {
+              "items": [
+                "torso_clothes_longsleeve2_cardigan",
+                "torso_clothes_longsleeve_formal",
+                "torso_clothes_longsleeves_cuffed",
+                "torso_clothes_longsleeve",
+                "torso_clothes_longsleeve2",
+                "torso_clothes_longsleeve2_buttoned",
+                "torso_clothes_longsleeve2_scoop",
+                "torso_clothes_longsleeve2_vneck",
+                "torso_clothes_longsleeve_laced",
+                "torso_clothes_longsleeve2_polo",
+                "torso_clothes_longsleeve_scoop",
+                "torso_clothes_longsleeve_formal_striped"
+              ],
+              "children": {},
+              "priority": 20,
+              "required": [
+                "male",
+                "female",
+                "teen",
+                "pregnant"
+              ],
+              "animations": []
             },
             "shortsleeve": {
               "items": [
@@ -80177,12 +79565,20 @@ window.categoryTree = {
                 "torso_clothes_tshirt_scoop",
                 "torso_clothes_tshirt_vneck"
               ],
-              "children": {}
+              "children": {},
+              "priority": 30,
+              "required": [
+                "male",
+                "female",
+                "teen",
+                "pregnant"
+              ],
+              "animations": []
             },
             "sleeveless": {
               "items": [
-                "torso_clothes_sleeveless",
                 "torso_clothes_sleeveless1",
+                "torso_clothes_sleeveless",
                 "torso_clothes_sleeveless2",
                 "torso_clothes_sleeveless2_buttoned",
                 "torso_clothes_sleeveless2_cardigan",
@@ -80193,23 +79589,121 @@ window.categoryTree = {
                 "torso_clothes_sleeveless_striped",
                 "torso_clothes_sleeveless_tanktop"
               ],
-              "children": {}
+              "children": {},
+              "priority": 40,
+              "required": [
+                "male",
+                "female",
+                "teen",
+                "pregnant"
+              ],
+              "animations": []
             }
-          }
+          },
+          "priority": 20,
+          "required": [],
+          "animations": []
+        },
+        "aprons": {
+          "items": [
+            "torso_aprons_apron",
+            "torso_aprons_apron_full",
+            "torso_aprons_apron_half",
+            "torso_aprons_overalls",
+            "torso_aprons_suspenders"
+          ],
+          "children": {},
+          "priority": 30,
+          "required": [
+            "male",
+            "female",
+            "teen"
+          ],
+          "animations": []
+        },
+        "jacket": {
+          "items": [
+            "torso_jacket_collared",
+            "torso_jacket_frock",
+            "torso_jacket_iverness",
+            "torso_jacket_santa",
+            "torso_jacket_tabard",
+            "torso_jacket_trench"
+          ],
+          "children": {
+            "accessory": {
+              "items": [
+                "torso_jacket_frock_buttons",
+                "torso_jacket_frock_lace",
+                "torso_jacket_frock_lapel",
+                "torso_jacket_frock_collar",
+                "torso_jacket_pockets"
+              ],
+              "children": {},
+              "label": "Jacket Trim / Accessories",
+              "priority": 70,
+              "required": [],
+              "animations": []
+            }
+          },
+          "priority": 40,
+          "required": [
+            "male",
+            "female",
+            "teen"
+          ],
+          "animations": [
+            "spellcast",
+            "thrust",
+            "walk",
+            "slash",
+            "shoot",
+            "hurt",
+            "watering",
+            "idle"
+          ]
         },
         "vest": {
           "items": [
             "torso_clothes_vest",
             "torso_clothes_vest_open"
           ],
-          "children": {}
+          "children": {},
+          "priority": 50,
+          "required": [
+            "male"
+          ],
+          "animations": [
+            "spellcast",
+            "thrust",
+            "walk",
+            "slash",
+            "shoot",
+            "hurt",
+            "watering"
+          ]
+        },
+        "armour": {
+          "items": [
+            "torso_armour_leather",
+            "torso_armour_legion",
+            "torso_armour_plate"
+          ],
+          "children": {},
+          "priority": 60,
+          "required": [
+            "male",
+            "female",
+            "teen"
+          ],
+          "animations": []
         },
         "waist": {
           "items": [
-            "belt_belly",
-            "belt_double",
             "belt_leather",
+            "belt_double",
             "belt_loose",
+            "belt_belly",
             "belt_other_female",
             "belt_other_male",
             "belt_sash",
@@ -80224,106 +79718,333 @@ window.categoryTree = {
                 "belt_obi_knot_left",
                 "belt_obi_knot_right"
               ],
-              "children": {}
+              "children": {},
+              "priority": 80,
+              "required": [
+                "male",
+                "female",
+                "teen",
+                "muscular"
+              ],
+              "animations": []
             }
-          }
+          },
+          "priority": 90,
+          "required": [
+            "male",
+            "female",
+            "teen",
+            "muscular",
+            "pregnant"
+          ],
+          "animations": []
+        },
+        "cape": {
+          "items": [
+            "cape_trim",
+            "cape_solid",
+            "cape_tattered"
+          ],
+          "children": {},
+          "label": "Cape",
+          "priority": 100,
+          "required": [
+            "male",
+            "female",
+            "teen",
+            "muscular",
+            "pregnant"
+          ],
+          "animations": [
+            "spellcast",
+            "thrust",
+            "walk",
+            "slash",
+            "shoot",
+            "hurt",
+            "watering",
+            "idle"
+          ]
+        },
+        "backpack": {
+          "items": [
+            "backpack",
+            "backpack_basket",
+            "backpack_jetpack",
+            "backpack_jetpack_fins",
+            "quiver",
+            "backpack_squarepack",
+            "backpack_straps"
+          ],
+          "children": {
+            "cargo": {
+              "items": [
+                "backpack_contents_ore",
+                "backpack_contents_wood"
+              ],
+              "children": {},
+              "label": "Backpack Cargo",
+              "priority": null,
+              "required": [],
+              "animations": []
+            }
+          },
+          "priority": 110,
+          "required": [
+            "male",
+            "female",
+            "teen",
+            "muscular",
+            "pregnant"
+          ],
+          "animations": [
+            "spellcast",
+            "thrust",
+            "walk",
+            "slash",
+            "shoot",
+            "hurt",
+            "watering",
+            "idle"
+          ]
         }
-      }
+      },
+      "priority": 60,
+      "required": [],
+      "animations": []
+    },
+    "legs": {
+      "items": [
+        "legs_armour"
+      ],
+      "children": {
+        "pants": {
+          "items": [
+            "legs_childpants",
+            "legs_cuffed",
+            "legs_formal",
+            "legs_fur",
+            "legs_pants2",
+            "legs_pantaloons",
+            "legs_pants",
+            "legs_pregnantpants",
+            "legs_formal_striped",
+            "legs_widepants"
+          ],
+          "children": {},
+          "priority": 10,
+          "required": [],
+          "animations": []
+        },
+        "leggings": {
+          "items": [
+            "legs_hose",
+            "legs_leggings",
+            "legs_leggings2"
+          ],
+          "children": {},
+          "priority": 20,
+          "required": [
+            "male",
+            "female",
+            "teen"
+          ],
+          "animations": []
+        },
+        "shorts": {
+          "items": [
+            "legs_shorts_short",
+            "legs_shorts"
+          ],
+          "children": {},
+          "priority": 30,
+          "required": [
+            "male",
+            "female",
+            "teen"
+          ],
+          "animations": []
+        },
+        "skirts": {
+          "items": [
+            "legs_skirt_belle",
+            "legs_childskirts",
+            "legs_skirts_legion",
+            "legs_skirt_overskirt",
+            "legs_skirts_plain",
+            "legs_skirts_slit",
+            "legs_skirt_straight"
+          ],
+          "children": {},
+          "priority": 40,
+          "required": [],
+          "animations": []
+        }
+      },
+      "priority": 70,
+      "required": [],
+      "animations": []
+    },
+    "feet": {
+      "items": [
+        "feet_armour",
+        "feet_slippers",
+        "feet_sandals",
+        "feet_hoofs"
+      ],
+      "children": {
+        "shoes": {
+          "items": [
+            "feet_shoes_basic",
+            "feet_shoes_revised",
+            "feet_shoes_sara",
+            "feet_shoes_ghillies"
+          ],
+          "children": {},
+          "priority": 10,
+          "required": [
+            "male",
+            "female",
+            "teen",
+            "muscular",
+            "pregnant"
+          ],
+          "animations": []
+        },
+        "boots": {
+          "items": [
+            "feet_boots_basic",
+            "feet_boots_revised",
+            "feet_boots_fold",
+            "feet_boots_rim"
+          ],
+          "children": {},
+          "priority": 20,
+          "required": [
+            "male",
+            "female",
+            "teen",
+            "muscular",
+            "pregnant"
+          ],
+          "animations": []
+        },
+        "accessory": {
+          "items": [
+            "feet_plate_toe",
+            "feet_plate_toe_thick"
+          ],
+          "children": {},
+          "label": "Shoe / Boots Accessory",
+          "priority": 30,
+          "required": [
+            "male",
+            "female",
+            "teen",
+            "muscular",
+            "pregnant"
+          ],
+          "animations": []
+        },
+        "socks": {
+          "items": [
+            "feet_socks_ankle",
+            "feet_socks_high",
+            "feet_socks_tabi"
+          ],
+          "children": {},
+          "priority": 40,
+          "required": [
+            "male",
+            "female",
+            "teen",
+            "muscular",
+            "pregnant"
+          ],
+          "animations": []
+        }
+      },
+      "label": "Feet",
+      "priority": 80,
+      "required": [],
+      "animations": []
+    },
+    "tools": {
+      "items": [
+        "tool_rod",
+        "tool_smash",
+        "tool_thrust",
+        "tool_whip"
+      ],
+      "children": {},
+      "priority": 90,
+      "required": [
+        "male",
+        "female",
+        "teen",
+        "muscular",
+        "pregnant"
+      ],
+      "animations": []
     },
     "weapons": {
       "items": [],
       "children": {
-        "blunt": {
-          "items": [
-            "weapon_blunt_club",
-            "weapon_blunt_flail",
-            "weapon_blunt_mace",
-            "weapon_blunt_waraxe"
-          ],
-          "children": {}
-        },
-        "magic": {
-          "items": [
-            "weapon_magic_crystal",
-            "weapon_magic_diamond",
-            "weapon_magic_gnarled",
-            "weapon_magic_loop",
-            "weapon_magic_s",
-            "weapon_magic_simple",
-            "weapon_magic_wand"
-          ],
-          "children": {}
-        },
-        "polearm": {
-          "items": [
-            "weapon_polearm_cane",
-            "weapon_polearm_dragonspear",
-            "weapon_polearm_halberd",
-            "weapon_polearm_longspear",
-            "weapon_polearm_scythe",
-            "weapon_polearm_spear",
-            "weapon_polearm_trident"
-          ],
-          "children": {}
-        },
-        "ranged": {
-          "items": [
-            "weapon_ranged_boomerang",
-            "weapon_ranged_crossbow",
-            "weapon_ranged_slingshot"
-          ],
-          "children": {
-            "bow": {
-              "items": [
-                "weapon_ranged_bow_arrow",
-                "weapon_ranged_bow_great",
-                "weapon_ranged_bow_normal",
-                "weapon_ranged_bow_recurve"
-              ],
-              "children": {}
-            }
-          }
-        },
-        "shield": {
+        "shields": {
           "items": [
             "shield",
             "shield_kite",
             "shield_spartan"
           ],
           "children": {
-            "two-engrailed shield": {
+            "engrailed": {
               "items": [
                 "shield_crusader",
                 "shield_plus",
                 "shield_two_engrailed",
                 "shield_two_engrailed_trim"
               ],
-              "children": {}
+              "children": {},
+              "label": "Two-Engrailed Shield",
+              "priority": 30,
+              "required": [],
+              "animations": []
             },
-            "heater shield": {
+            "scutum": {
               "items": [
-                "shield_heater_paint",
-                "shield_heater_revised_paint",
-                "shield_heater_revised_trim",
-                "shield_heater_revised_wood",
-                "shield_heater_trim",
+                "shield_scutum",
+                "shield_scutum_trim"
+              ],
+              "children": {},
+              "label": "Scutum Shield",
+              "priority": 40,
+              "required": [],
+              "animations": []
+            },
+            "heater": {
+              "items": [
                 "shield_heater_wood",
-                "shield_heater_pattern"
+                "shield_heater_paint",
+                "shield_heater_trim",
+                "shield_heater_revised_wood",
+                "shield_heater_revised_paint",
+                "shield_heater_revised_trim"
               ],
               "children": {
-                "heater shield pattern": {
+                "pattern": {
                   "items": [
                     "shield_heater_pattern_barry",
                     "shield_heater_pattern_bend",
+                    "shield_heater_pattern_bend_sinister",
                     "shield_heater_pattern_bendy",
                     "shield_heater_pattern_bendy_sinister",
-                    "shield_heater_pattern_bend_sinister",
                     "shield_heater_pattern_bordure",
                     "shield_heater_pattern_chevron",
                     "shield_heater_pattern_chevron_inverted",
                     "shield_heater_pattern_chief",
                     "shield_heater_pattern_cross",
                     "shield_heater_pattern_fess",
+                    "shield_heater_pattern",
                     "shield_heater_pattern_lozengy",
                     "shield_heater_pattern_pale",
                     "shield_heater_pattern_pall",
@@ -80338,15 +80059,19 @@ window.categoryTree = {
                     "shield_heater_pattern_quarterly",
                     "shield_heater_pattern_saltire"
                   ],
-                  "children": {}
+                  "children": {},
+                  "label": "Heater Shield Pattern",
+                  "priority": 40,
+                  "required": [],
+                  "animations": []
                 },
-                "revised heater shield pattern": {
+                "revised_pattern": {
                   "items": [
                     "shield_heater_revised_pattern_barry",
                     "shield_heater_revised_pattern_bend",
+                    "shield_heater_revised_pattern_bend_sinister",
                     "shield_heater_revised_pattern_bendy",
                     "shield_heater_revised_pattern_bendy_sinister",
-                    "shield_heater_revised_pattern_bend_sinister",
                     "shield_heater_revised_pattern_bordure",
                     "shield_heater_revised_pattern_chevron",
                     "shield_heater_revised_pattern_chevron_inverted",
@@ -80367,18 +80092,46 @@ window.categoryTree = {
                     "shield_heater_revised_pattern_quarterly",
                     "shield_heater_revised_pattern_saltire"
                   ],
-                  "children": {}
+                  "children": {},
+                  "label": "Revised Heater Shield Pattern",
+                  "priority": 80,
+                  "required": [],
+                  "animations": []
                 }
-              }
-            },
-            "scutum shield": {
-              "items": [
-                "shield_scutum",
-                "shield_scutum_trim"
-              ],
-              "children": {}
+              },
+              "label": "Heater Shield",
+              "priority": 60,
+              "required": [],
+              "animations": []
             }
-          }
+          },
+          "priority": 10,
+          "required": [],
+          "animations": []
+        },
+        "ranged": {
+          "items": [
+            "weapon_ranged_boomerang",
+            "weapon_ranged_crossbow",
+            "weapon_ranged_slingshot"
+          ],
+          "children": {
+            "bow": {
+              "items": [
+                "weapon_ranged_bow_arrow",
+                "weapon_ranged_bow_great",
+                "weapon_ranged_bow_normal",
+                "weapon_ranged_bow_recurve"
+              ],
+              "children": {},
+              "priority": 10,
+              "required": [],
+              "animations": []
+            }
+          },
+          "priority": 20,
+          "required": [],
+          "animations": []
         },
         "sword": {
           "items": [
@@ -80392,9 +80145,64 @@ window.categoryTree = {
             "weapon_sword_saber",
             "weapon_sword_scimitar"
           ],
-          "children": {}
+          "children": {},
+          "priority": 30,
+          "required": [],
+          "animations": []
+        },
+        "blunt": {
+          "items": [
+            "weapon_blunt_club",
+            "weapon_blunt_flail",
+            "weapon_blunt_mace",
+            "weapon_blunt_waraxe"
+          ],
+          "children": {},
+          "priority": 40,
+          "required": [],
+          "animations": []
+        },
+        "polearm": {
+          "items": [
+            "weapon_polearm_cane",
+            "weapon_polearm_dragonspear",
+            "weapon_polearm_halberd",
+            "weapon_polearm_longspear",
+            "weapon_polearm_scythe",
+            "weapon_polearm_spear",
+            "weapon_polearm_trident"
+          ],
+          "children": {},
+          "priority": 50,
+          "required": [],
+          "animations": []
+        },
+        "magic": {
+          "items": [
+            "weapon_magic_crystal",
+            "weapon_magic_diamond",
+            "weapon_magic_gnarled",
+            "weapon_magic_loop",
+            "weapon_magic_s",
+            "weapon_magic_simple",
+            "weapon_magic_wand"
+          ],
+          "children": {},
+          "priority": 60,
+          "required": [],
+          "animations": []
         }
-      }
+      },
+      "label": "Weapons",
+      "priority": 100,
+      "required": [
+        "male",
+        "female",
+        "teen",
+        "muscular",
+        "pregnant"
+      ],
+      "animations": []
     }
   }
 };

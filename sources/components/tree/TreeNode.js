@@ -5,10 +5,13 @@ import { ItemWithVariants } from './ItemWithVariants.js';
 
 export const TreeNode = {
 	view: function(vnode) {
-		const { name, node, pathPrefix = "" } = vnode.attrs;
+		const { name, node, pathPrefix = "", label } = vnode.attrs;
 		const nodePath = pathPrefix ? `${pathPrefix}-${name}` : name;
 		const searchQuery = state.searchQuery;
 		const hasSearchMatches = nodeHasMatches(node, searchQuery);
+
+		// Filter: Only show items compatible with current body type
+		if (node.required.length > 0 && !node.required.includes(state.bodyType)) return false;
 
 		// Hide this node if search is active and there are no matches
 		if (searchQuery && searchQuery.length >= 2 && !hasSearchMatches) {
@@ -17,7 +20,7 @@ export const TreeNode = {
 
 		// Auto-expand if search is active and has matches
 		const isExpanded = (searchQuery && searchQuery.length >= 2 && hasSearchMatches) || state.expandedNodes[nodePath] || false;
-		const displayName = capitalize(name);
+		const displayName = node.label ?? capitalize(name);
 
 		return m("div",
 			m("div.tree-label", {
