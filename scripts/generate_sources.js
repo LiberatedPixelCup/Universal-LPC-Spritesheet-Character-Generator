@@ -1,5 +1,7 @@
+const os = require("os");
 const fs = require("fs");
 const readline = require("readline");
+const path = require("path");
 
 const DEBUG = false; // change this to print debug log
 const onlyIfTemplate = false; // print debugging log only if there is a template
@@ -49,13 +51,40 @@ function searchCredit(fileName, credits, origFileName) {
   }
 }
 
-function parseJson(json) {
-  const templateIndex = json.lastIndexOf("%");
-  let searchFileName = json;
+// Parse Category Tree From Meta Files and Folder Paths
+function parseTree(filePath, fileName) {
+  // Get Full Path
+  const fullPath = path.join(filePath, fileName);
+  if (DEBUG && !onlyIfTemplate)
+    console.log(`Parsing tree ${fullPath}`);
+
+  let meta = null;
+  try {
+    meta = JSON.parse(fs.readFileSync(fullPath));
+  } catch (e) {
+    console.error("error in", fullPath);
+    throw e;
+  }
+
+  const { label, priority, path: itemPath } = meta;
+
+  const treeId = filePath.split(path.sep).pop();
+  categoryTree.children[treeId] = {
+    items: [],
+    children: {},
+    label: label || treeId,
+    priority: priority || 100
+  };
+} // fn parseTree
+
+// Parse Asset JSON File
+function parseJson(filePath, fileName) {
+  /*const templateIndex = fileName.lastIndexOf("%");
+  let searchFileName = fileName;
   let queryObj = null;
   if (templateIndex > -1) {
     searchFileName = searchFileName.substring(0, templateIndex);
-    const query = json.substring(templateIndex + 1);
+    const query = fileName.substring(templateIndex + 1);
     queryObj = Object.fromEntries(new URLSearchParams(query));
     const replObj = Object.fromEntries(
       Object.keys(queryObj).map(key => [key, ""])
@@ -64,15 +93,16 @@ function parseJson(json) {
       /_+/,
       "_"
     );
-  }
-  const filePath = `sheet_definitions/${searchFileName}.json`;
+  }*/
+  const fullPath = path.join(filePath, fileName);
+  const searchFileName = fileName.replace(".json", "");
   if (DEBUG && (!onlyIfTemplate || queryObj))
-    console.log(`Parsing ${filePath}`);
+    console.log(`Parsing ${fullPath}`);
   let definition = null;
   try {
-    definition = JSON.parse(fs.readFileSync(filePath));
+    definition = JSON.parse(fs.readFileSync(fullPath));
   } catch (e) {
-    console.error("error in", filePath);
+    console.error("error in", fullPath);
     throw e;
   }
   const {
@@ -80,7 +110,7 @@ function parseJson(json) {
     name,
     credits,
     replace_in_path,
-    path
+    path: itemPath
   } = definition;
   const { tags = [], required_tags = [], excluded_tags = [] } = definition;
   const typeName = definition.type_name;
@@ -113,12 +143,12 @@ function parseJson(json) {
   // This ensures each item has a unique ID even if they share the same type_name
   let itemId = searchFileName;
   // Append query parameters if present
-  if (queryObj) {
+  /*if (queryObj) {
     const vals = Object.values(queryObj)
       .map(val => val.replaceAll(" ", "_"))
       .join("_");
     itemId = `${itemId}_${vals}`;
-  }
+  }*/
 
   // Collect layer information (file paths and zPos)
   const layers = {};
@@ -140,7 +170,7 @@ function parseJson(json) {
     tags: tags,
     required_tags: required_tags,
     excluded_tags: excluded_tags,
-    path: path || ["other"],
+    path: itemPath || ["other"],
     replace_in_path: replace_in_path || {},
     variants: variants || [],
     layers: layers,
@@ -170,13 +200,13 @@ function parseJson(json) {
         if (file !== null && file !== "") {
           let imageFileName = '"' + file + snakeItemName + '.png" ';
           let fileNameForCreditSearch = file + snakeItemName;
-          if (queryObj) {
+          /*if (queryObj) {
             fileNameForCreditSearch = es6DynamicTemplate(
               fileNameForCreditSearch,
               queryObj
             );
             imageFileName = es6DynamicTemplate(imageFileName, queryObj);
-          }
+          }*/
           if (DEBUG && (!onlyIfTemplate || queryObj))
             console.log(
               `Searching for credits to use for ${imageFileName} in ${fileNameForCreditSearch} for layer ${jdx}`
@@ -211,11 +241,11 @@ function parseJson(json) {
             const notes = '"' + creditToUse.notes.replaceAll('"', "**") + '" ';
             if (!addedCreditsFor.includes(imageFileName)) {
               const quotedShortName = '"' + file + variant + '.png"';
-              listItemsCSV += `${quotedShortName},${notes},${authors},${licenses},${urls}\n`;
+              listItemsCSV += `${quotedShortName},${notes},${authors},${licenses},${urls}${os.EOL}`;
               addedCreditsFor.push(imageFileName);
             }
           } else {
-            throw Error(`missing credit inside ${json}`);
+            throw Error(`missing credit inside ${fileName}`);
           } // if creditToUse
         } // if file
       } // for jdx
@@ -237,61 +267,66 @@ function parseJson(json) {
   return parsed;
 } // fn parseJson
 
-// TODO: remove the need for the file sources/source_index.html
-// we could replace with a json
-// or walk sheet_definitions tree?
-const lineReader = readline.createInterface({
-  input: fs.createReadStream("sources/source_index.html")
-});
-let csvGenerated = "filename,notes,authors,licenses,urls\n";
 
-lineReader.on("line", function(line) {
-  if (line.includes("div_sheet_")) {
-    const definition = line.replace("div_sheet_", "");
+// Read sheet_definitions/*.json line by line
+const files = fs.readdirSync("./sheet_definitions", { 
+  recursive: true,
+  withFileTypes: true 
+});
+let csvGenerated = "filename,notes,authors,licenses,urls" + os.EOL;
+
+files.forEach(file => {
+  if (file.isDirectory()) {
+    return;
+  } else if (file.name.startsWith("meta_")) {
+    // Handle Category Tree
+    //parseTree(file.path, file.name);
+    return;
+  } else {
     let parsedResult = null;
     try {
-      parsedResult = parseJson(definition.replaceAll("\t", ""));
+      parsedResult = parseJson(file.path, file.name);
     } catch (e) {
+      console.log(e);
       return;
     }
     csvGenerated += parsedResult.csv;
   }
 });
 
-lineReader.on("close", function() {
-  fs.writeFile("CREDITS.csv", csvGenerated, function(err) {
-    if (err) {
-      return console.error(err);
-    } else {
-      console.log("CSV Updated!");
-      printArray(licensesFound, "Found licenses");
+fs.writeFile("CREDITS.csv", csvGenerated, function(err) {
+  if (err) {
+    return console.error(err);
+  } else {
+    console.log("CSV Updated!");
+    printArray(licensesFound, "Found licenses");
+  }
+});
+
+// Generate item-metadata.js for runtime use
+// Build category tree from paths
+const categoryTree = { items: [], children: {} };
+
+for (const [itemId, meta] of Object.entries(itemMetadata)) {
+  const itemPath = meta.path || ["Other"];
+
+  // Navigate/create tree structure (skip the last element which is the filename)
+  let current = categoryTree;
+  // Only use path elements except the last one (which is the filename)
+  const categoryPath = itemPath.slice(0, -1);
+
+  for (const segment of categoryPath) {
+    if (!current.children[segment]) {
+      current.children[segment] = { items: [], children: {} };
     }
-  });
+    current = current.children[segment];
+  }
 
-  // Generate item-metadata.js for runtime use
-  // Build category tree from paths
-  const categoryTree = { items: [], children: {} };
+  // Add item to the category (not as a child)
+  current.items.push(itemId);
+} // for itemMetadata
 
-  for (const [itemId, meta] of Object.entries(itemMetadata)) {
-    const itemPath = meta.path || ["Other"];
-
-    // Navigate/create tree structure (skip the last element which is the filename)
-    let current = categoryTree;
-    // Only use path elements except the last one (which is the filename)
-    const categoryPath = itemPath.slice(0, -1);
-
-    for (const segment of categoryPath) {
-      if (!current.children[segment]) {
-        current.children[segment] = { items: [], children: {} };
-      }
-      current = current.children[segment];
-    }
-
-    // Add item to the category (not as a child)
-    current.items.push(itemId);
-  } // for itemMetadata
-
-  const metadataJS = `// THIS FILE IS AUTO-GENERATED. PLEASE DON'T ALTER IT MANUALLY
+const metadataJS = `// THIS FILE IS AUTO-GENERATED. PLEASE DON'T ALTER IT MANUALLY
 // Generated from sheet_definitions/*.json by scripts/generate_sources.js
 // Contains metadata for all customization items to avoid DOM queries at runtime
 
@@ -300,14 +335,13 @@ window.itemMetadata = ${JSON.stringify(itemMetadata, null, 2)};
 window.categoryTree = ${JSON.stringify(categoryTree, null, 2)};
 `;
 
-  fs.writeFile("item-metadata.js", metadataJS, function(err) {
-    if (err) {
-      return console.error(err);
-    } else {
-      console.log("Item Metadata JS Updated!");
-    }
-  });
-}); // lineReader.on('close')
+fs.writeFile("item-metadata.js", metadataJS, function(err) {
+  if (err) {
+    return console.error(err);
+  } else {
+    console.log("Item Metadata JS Updated!");
+  }
+});
 
 function printArray(array, label) {
   const colors = {
