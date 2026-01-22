@@ -1,4 +1,3 @@
-const os = require("os");
 const fs = require("fs");
 const readline = require("readline");
 const path = require("path");
@@ -274,7 +273,7 @@ function parseJson(filePath, fileName) {
             const notes = '"' + creditToUse.notes.replaceAll('"', "**") + '" ';
             if (!addedCreditsFor.includes(imageFileName)) {
               const quotedShortName = '"' + file + variant + '.png"';
-              listItemsCSV += `${quotedShortName},${notes},${authors},${licenses},${urls}${os.EOL}`;
+              listItemsCSV += `${quotedShortName},${notes},${authors},${licenses},${urls}\n`;
               addedCreditsFor.push(imageFileName);
             }
           } else {
@@ -315,7 +314,7 @@ const files = fs.readdirSync("./sheet_definitions", {
 
   return pa.localeCompare(pb);
 });
-let csvGenerated = "filename,notes,authors,licenses,urls" + os.EOL;
+let csvGenerated = "filename,notes,authors,licenses,urls\n";
 
 files.forEach(file => {
   if (file.isDirectory()) {
