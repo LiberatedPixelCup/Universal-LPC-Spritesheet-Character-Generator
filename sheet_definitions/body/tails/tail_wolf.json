@@ -1,5 +1,6 @@
 {
   "name": "Wolf Tail",
+  "priority": 20,
   "layer_1": {
     "zPos": 125,
     "male": "body/tail/wolf/adult/fg/",

@@ -1,5 +1,6 @@
 {
   "name": "Lizard Tail (Alt Colors)",
+  "priority": 40,
   "layer_1": {
     "zPos": 85,
     "male": "body/tail/lizard/alt/adult/fg/",

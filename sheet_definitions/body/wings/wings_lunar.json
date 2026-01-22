@@ -1,5 +1,6 @@
 {
   "name": "Lunar Wings",
+  "priority": 70,
   "tags": [
     "wings"
   ],

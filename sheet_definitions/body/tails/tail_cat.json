@@ -1,5 +1,6 @@
 {
   "name": "Cat Tail",
+  "priority": 10,
   "layer_1": {
     "zPos": 125,
     "male": "body/tail/cat/adult/fg/",

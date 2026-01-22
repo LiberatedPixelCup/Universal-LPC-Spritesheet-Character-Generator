@@ -1,5 +1,6 @@
 {
   "name": "Fluffy Wolf Tail",
+  "priority": 30,
   "layer_1": {
     "zPos": 125,
     "male": "body/tail/fluffy/adult/fg/",

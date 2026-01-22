@@ -1,5 +1,6 @@
 {
   "name": "Feathered Wings",
+  "priority": 10,
   "tags": [
     "wings"
   ],

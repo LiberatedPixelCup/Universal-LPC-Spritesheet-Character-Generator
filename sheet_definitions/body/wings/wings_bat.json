@@ -1,5 +1,6 @@
 {
   "name": "Bat Wings",
+  "priority": 20,
   "tags": [
     "wings"
   ],
