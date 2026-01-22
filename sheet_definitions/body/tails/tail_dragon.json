@@ -1,5 +1,6 @@
 {
   "name": "Dragon Tail (PLACEHOLDER; assets coming soon!)",
+  "ignore": true,
   "layer_1": {
     "zPos": 85,
     "male": "body/tail/dragon/adult/fg/",

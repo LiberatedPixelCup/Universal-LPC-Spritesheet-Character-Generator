@@ -1,5 +1,6 @@
 {
   "name": "Narrow sash",
+  "priority": 70,
   "layer_1": {
     "zPos": 65,
     "male": "torso/waist/sash_narrow/male/",

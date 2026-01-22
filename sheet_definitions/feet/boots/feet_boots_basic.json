@@ -1,12 +1,13 @@
 {
-  "name": "Revised Boots",
+  "name": "Basic Boots",
+  "priority": 10,
   "layer_1": {
     "zPos": 25,
-    "male": "feet/boots/revised/male/",
-    "muscular": "feet/boots/revised/male/",
-    "female": "feet/boots/revised/thin/",
-    "teen": "feet/boots/revised/thin/",
-    "pregnant": "feet/boots/revised/thin/"
+    "male": "feet/boots/basic/male/",
+    "muscular": "feet/boots/basic/male/",
+    "female": "feet/boots/basic/thin/",
+    "teen": "feet/boots/basic/thin/",
+    "pregnant": "feet/boots/basic/thin/"
   },
   "variants": [
     "black",
@@ -63,39 +64,40 @@
   ],
   "credits": [
     {
-      "file": "feet/boots/revised/male",
-      "notes": "original overalls and boots by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, boots by JaidynReiman",
+      "file": "feet/boots/basic",
+      "notes": "original by Nila122, edited for male and v3 bases by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
       "authors": [
         "JaidynReiman",
-        "ElizaWy",
-        "Bluecarrot16",
-        "Stephen Challener (Redshrike)",
-        "Johannes Sjölund (wulax)"
+        "bluecarrot16",
+        "Nila122"
       ],
       "licenses": [
         "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
         "GPL 3.0"
       ],
       "urls": [
-        "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+        "https://opengameart.org/content/lpc-clothes-and-hair",
         "https://opengameart.org/content/lpc-expanded-socks-shoes"
       ]
     },
     {
-      "file": "feet/boots/revised",
-      "notes": "original by ElizaWy, remaining frames by JaidynReiman",
+      "file": "feet/boots/basic/thin",
+      "notes": "original by Nila122, edited for v3 bases by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
       "authors": [
-        "ElizaWy",
         "JaidynReiman",
-        "Stephen Challener (Redshrike)",
-        "Johannes Sjölund (wulax)"
+        "bluecarrot16",
+        "Nila122"
       ],
       "licenses": [
-        "OGA-BY 3.0"
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
       ],
       "urls": [
-        "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+        "https://opengameart.org/content/lpc-clothes-and-hair",
         "https://opengameart.org/content/lpc-expanded-socks-shoes"
       ]
     }
@@ -103,7 +105,7 @@
   "path": [
     "feet",
     "boots",
-    "feet_boots_revised"
+    "feet_boots_basic"
   ],
   "type_name": "shoes"
 }

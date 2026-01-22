@@ -1,5 +1,6 @@
 {
   "name": "Ghillies",
+  "priority": 40,
   "layer_1": {
     "zPos": 15,
     "female": "feet/shoes/ghillies/thin/",

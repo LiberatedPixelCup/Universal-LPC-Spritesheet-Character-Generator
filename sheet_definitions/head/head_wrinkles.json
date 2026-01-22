@@ -1,5 +1,6 @@
 {
   "name": "Wrinkles",
+  "priority": 80,
   "layer_1": {
     "zPos": 102,
     "male": "head/wrinkles/",

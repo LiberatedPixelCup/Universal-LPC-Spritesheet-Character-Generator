@@ -1,5 +1,6 @@
 {
   "name": "Elderly Eyes Looking Left",
+  "ignore": true,
   "layer_1": {
     "zPos": 105,
     "male": "eyes/human/elderly/look_l/",

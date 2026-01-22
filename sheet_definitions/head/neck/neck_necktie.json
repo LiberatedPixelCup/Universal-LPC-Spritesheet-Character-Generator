@@ -1,5 +1,6 @@
 {
   "name": "Necktie",
+  "priority": 40,
   "layer_1": {
     "zPos": 90,
     "male": "neck/tie/necktie/male/",

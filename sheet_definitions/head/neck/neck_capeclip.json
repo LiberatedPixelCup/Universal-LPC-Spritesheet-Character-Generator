@@ -1,5 +1,6 @@
 {
   "name": "Capeclip",
+  "priority": 60,
   "layer_1": {
     "zPos": 90,
     "male": "neck/capeclip/male/",

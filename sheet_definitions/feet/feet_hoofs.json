@@ -1,5 +1,6 @@
 {
   "name": "Hoofs",
+  "priority": 80,
   "layer_1": {
     "zPos": 15,
     "male": "feet/hoofs/male/",

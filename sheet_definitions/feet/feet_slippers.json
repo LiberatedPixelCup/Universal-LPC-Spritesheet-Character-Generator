@@ -1,5 +1,6 @@
 {
   "name": "Slippers",
+  "priority": 60,
   "layer_1": {
     "zPos": 15,
     "male": "feet/slippers/male/",

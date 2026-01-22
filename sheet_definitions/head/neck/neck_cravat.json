@@ -1,5 +1,6 @@
 {
   "name": "Cravat",
+  "priority": 90,
   "layer_1": {
     "zPos": 90,
     "male": "neck/cravat/male/",

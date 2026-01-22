@@ -1,5 +1,6 @@
 {
   "name": "Shame Elderly Eyes",
+  "ignore": true,
   "layer_1": {
     "zPos": 105,
     "male": "eyes/human/elderly/shame/",

@@ -1,5 +1,6 @@
 {
   "name": "Split Kimono Trim",
+  "priority": 40,
   "tags": [
     "dress",
     "kimono_trim"

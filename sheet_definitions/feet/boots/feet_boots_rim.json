@@ -1,5 +1,6 @@
 {
   "name": "Rimmed Boots",
+  "priority": 40,
   "layer_1": {
     "zPos": 25,
     "male": "feet/boots/rimmed/male/",

@@ -1,5 +1,6 @@
 {
   "name": "Loose Belt",
+  "priority": 30,
   "layer_1": {
     "zPos": 70,
     "male": "torso/waist/belt_loose/male/",

@@ -1,5 +1,6 @@
 {
   "name": "Kimono",
+  "priority": 10,
   "tags": [
     "dress",
     "kimono",

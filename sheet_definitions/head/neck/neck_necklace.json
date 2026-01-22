@@ -1,5 +1,6 @@
 {
   "name": "Necklace",
+  "priority": 100,
   "layer_1": {
     "zPos": 80,
     "male": "neck/necklace/female/",

@@ -1,5 +1,6 @@
 {
   "name": "Capetie",
+  "priority": 70,
   "layer_1": {
     "zPos": 90,
     "male": "neck/capetie/male/",

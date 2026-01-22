@@ -1,5 +1,6 @@
 {
   "name": "Sash dress",
+  "priority": 30,
   "layer_1": {
     "zPos": 30,
     "female": "dress/sash/female/"

@@ -1,5 +1,6 @@
 {
   "name": "Bodice",
+  "priority": 10,
   "layer_1": {
     "zPos": 45,
     "female": "dress/bodice/female/"

@@ -1,5 +1,6 @@
 {
   "name": "Large Beaded Necklace",
+  "priority": 140,
   "layer_1": {
     "zPos": 80,
     "male": "neck/necklace/beaded_large/male/",

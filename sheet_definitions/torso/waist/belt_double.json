@@ -1,5 +1,6 @@
 {
   "name": "Double Belt",
+  "priority": 20,
   "layer_1": {
     "zPos": 70,
     "male": "torso/waist/belt_double/male/",

@@ -1,5 +1,6 @@
 {
   "name": "Buckles",
+  "priority": 100,
   "layer_1": {
     "zPos": 75,
     "female": "torso/waist/buckles/female/"

@@ -1,5 +1,6 @@
 {
   "name": "Waistband",
+  "priority": 90,
   "layer_1": {
     "zPos": 65,
     "female": "torso/waist/waistband/female/",

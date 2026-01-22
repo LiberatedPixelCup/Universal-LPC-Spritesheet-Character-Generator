@@ -1,3 +1,5 @@
 {
-    "priority": 110
+    "priority": 110,
+    "required": ["male", "female", "teen", "muscular", "pregnant"],
+    "animations": ["spellcast", "thrust", "walk", "slash", "shoot", "hurt", "watering", "idle"]
 }

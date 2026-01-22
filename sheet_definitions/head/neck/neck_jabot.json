@@ -1,5 +1,6 @@
 {
   "name": "Jabot",
+  "priority": 80,
   "layer_1": {
     "zPos": 90,
     "male": "neck/jabot/male/",

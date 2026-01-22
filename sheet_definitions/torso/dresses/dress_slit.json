@@ -1,5 +1,6 @@
 {
   "name": "Slit dress",
+  "priority": 20,
   "layer_1": {
     "zPos": 30,
     "female": "dress/slit/female/"

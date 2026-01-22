@@ -1,5 +1,6 @@
 {
   "name": "Folded Rim Boots",
+  "priority": 30,
   "layer_1": {
     "zPos": 25,
     "male": "feet/boots/fold/male/",

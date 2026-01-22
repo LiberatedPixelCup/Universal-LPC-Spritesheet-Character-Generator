@@ -1,5 +1,6 @@
 {
   "name": "Sash",
+  "priority": 60,
   "layer_1": {
     "zPos": 65,
     "male": "torso/waist/sash/male/",

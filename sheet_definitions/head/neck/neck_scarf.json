@@ -1,5 +1,6 @@
 {
   "name": "Scarf",
+  "priority": 50,
   "layer_1": {
     "zPos": 90,
     "male": "neck/scarf/",

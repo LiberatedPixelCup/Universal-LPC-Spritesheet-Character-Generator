@@ -1,5 +1,6 @@
 {
   "name": "Tail Feathers (PLACEHOLDER; assets coming soon!)",
+  "ignore": true,
   "layer_1": {
     "zPos": 85,
     "male": "body/tail/feather/adult/fg/",
