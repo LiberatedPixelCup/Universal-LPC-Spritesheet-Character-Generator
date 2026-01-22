@@ -95,6 +95,8 @@ function parseTree(filePath, fileName) {
 
 // Parse Asset JSON File
 function parseJson(filePath, fileName) {
+  let queryObj = null;
+  let treePath = null;
   /*const templateIndex = fileName.lastIndexOf("%");
   let searchFileName = fileName;
   let queryObj = null;
