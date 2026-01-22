@@ -1,0 +1,102 @@
+{
+  "name": "Relm w/Ponytail",
+  "layer_1": {
+    "zPos": 120,
+    "male": "hair/relm_ponytail/adult/mg/",
+    "muscular": "hair/relm_ponytail/adult/mg/",
+    "female": "hair/relm_ponytail/adult/mg/",
+    "pregnant": "hair/relm_ponytail/adult/mg/",
+    "teen": "hair/relm_ponytail/adult/mg/",
+    "child": "hair/relm_ponytail/child/mg/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "hair/relm_ponytail/adult/bg/",
+    "muscular": "hair/relm_ponytail/adult/bg/",
+    "female": "hair/relm_ponytail/adult/bg/",
+    "pregnant": "hair/relm_ponytail/adult/bg/",
+    "teen": "hair/relm_ponytail/adult/bg/",
+    "child": "hair/relm_ponytail/child/bg/"
+  },
+  "layer_3": {
+    "zPos": 145,
+    "male": "hair/relm_ponytail/adult/fg/",
+    "muscular": "hair/relm_ponytail/adult/fg/",
+    "female": "hair/relm_ponytail/adult/fg/",
+    "pregnant": "hair/relm_ponytail/adult/fg/",
+    "teen": "hair/relm_ponytail/adult/fg/",
+    "child": "hair/relm_ponytail/child/fg/"
+  },
+  "variants": [
+    "blonde",
+    "ash",
+    "sandy",
+    "platinum",
+    "strawberry",
+    "redhead",
+    "ginger",
+    "carrot",
+    "chestnut",
+    "light brown",
+    "dark brown",
+    "black",
+    "raven",
+    "dark gray",
+    "gray",
+    "white",
+    "red",
+    "orange",
+    "gold",
+    "green",
+    "blue",
+    "navy",
+    "violet",
+    "purple",
+    "pink",
+    "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hair/relm_ponytail",
+      "notes": "",
+      "authors": [
+        "JaidynReiman"
+      ],
+      "licenses": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-relm-hair-xlong-ponytail",
+        "https://opengameart.org/content/lpc-expanded-xlong-hair"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "braids, ponytails, updos",
+    "hair_relm_ponytail"
+  ],
+  "type_name": "hair"
+}

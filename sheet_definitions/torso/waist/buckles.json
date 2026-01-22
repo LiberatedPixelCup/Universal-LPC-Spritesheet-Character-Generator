@@ -1,0 +1,35 @@
+{
+  "name": "Buckles",
+  "layer_1": {
+    "zPos": 75,
+    "female": "torso/waist/buckles/female/"
+  },
+  "variants": [
+    "bronze",
+    "gold",
+    "iron",
+    "silver"
+  ],
+  "credits": [
+    {
+      "file": "torso/waist/buckles",
+      "notes": "",
+      "authors": [
+        "Luke Mehl"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/female-mage-clothing-set"
+      ]
+    }
+  ],
+  "path": [
+    "torso",
+    "waist",
+    "buckles"
+  ],
+  "type_name": "buckles"
+}

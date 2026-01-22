@@ -1,0 +1,80 @@
+{
+  "name": "Twists fade",
+  "layer_1": {
+    "zPos": 120,
+    "male": "hair/twists_fade/adult/",
+    "muscular": "hair/twists_fade/adult/",
+    "female": "hair/twists_fade/adult/",
+    "pregnant": "hair/twists_fade/adult/",
+    "teen": "hair/twists_fade/adult/"
+  },
+  "variants": [
+    "blonde",
+    "ash",
+    "sandy",
+    "platinum",
+    "strawberry",
+    "redhead",
+    "ginger",
+    "carrot",
+    "chestnut",
+    "light brown",
+    "dark brown",
+    "black",
+    "raven",
+    "dark gray",
+    "gray",
+    "white",
+    "red",
+    "orange",
+    "gold",
+    "green",
+    "blue",
+    "navy",
+    "violet",
+    "purple",
+    "pink",
+    "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hair/twists_fade",
+      "notes": "",
+      "authors": [
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "CC0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-hair"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "afro",
+    "hair_twists_fade"
+  ],
+  "type_name": "hair"
+}

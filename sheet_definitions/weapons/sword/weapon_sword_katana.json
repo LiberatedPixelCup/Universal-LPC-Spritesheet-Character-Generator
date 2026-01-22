@@ -1,0 +1,69 @@
+{
+  "name": "Katana",
+  "preview_row": 5,
+  "preview_column": 0,
+  "preview_x_offset": 28,
+  "preview_y_offset": -16,
+  "layer_1": {
+    "custom_animation": "walk_128",
+    "zPos": 140,
+    "male": "weapon/sword/katana/walk/",
+    "muscular": "weapon/sword/katana/walk/",
+    "female": "weapon/sword/katana/walk/",
+    "pregnant": "weapon/sword/katana/walk/"
+  },
+  "layer_2": {
+    "custom_animation": "walk_128",
+    "zPos": 9,
+    "male": "weapon/sword/katana/walk/behind/",
+    "muscular": "weapon/sword/katana/walk/behind/",
+    "female": "weapon/sword/katana/walk/behind/",
+    "pregnant": "weapon/sword/katana/walk/behind/"
+  },
+  "layer_3": {
+    "custom_animation": "slash_128",
+    "zPos": 140,
+    "male": "weapon/sword/katana/slash/",
+    "muscular": "weapon/sword/katana/slash/",
+    "female": "weapon/sword/katana/slash/",
+    "pregnant": "weapon/sword/katana/slash/"
+  },
+  "layer_4": {
+    "custom_animation": "slash_128",
+    "zPos": 9,
+    "male": "weapon/sword/katana/slash/behind/",
+    "muscular": "weapon/sword/katana/slash/behind/",
+    "female": "weapon/sword/katana/slash/behind/",
+    "pregnant": "weapon/sword/katana/slash/behind/"
+  },
+  "variants": [
+    "katana"
+  ],
+  "animations": [
+    "walk",
+    "hurt",
+    "walk_128",
+    "slash_128"
+  ],
+  "credits": [
+    {
+      "file": "weapon/sword/katana",
+      "notes": "",
+      "authors": [
+        "Pierre Vigier and DCSS artists (see https://github.com/crawl/tiles/blob/master/ARTISTS.md)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-dcss-swords"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "sword",
+    "weapon_sword_katana"
+  ],
+  "type_name": "weapon"
+}

@@ -1,0 +1,89 @@
+{
+  "name": "Lizard tail",
+  "layer_1": {
+    "zPos": 85,
+    "male": "body/tail/lizard/adult/fg/",
+    "muscular": "body/tail/lizard/adult/fg/",
+    "female": "body/tail/lizard/adult/fg/",
+    "pregnant": "body/tail/lizard/adult/fg/",
+    "teen": "body/tail/lizard/adult/fg/",
+    "child": "body/tail/lizard/child/fg/"
+  },
+  "layer_2": {
+    "zPos": 5,
+    "male": "body/tail/lizard/adult/bg/",
+    "muscular": "body/tail/lizard/adult/bg/",
+    "female": "body/tail/lizard/adult/bg/",
+    "pregnant": "body/tail/lizard/adult/bg/",
+    "teen": "body/tail/lizard/adult/bg/",
+    "child": "body/tail/lizard/child/bg/"
+  },
+  "variants": [
+    "light",
+    "amber",
+    "olive",
+    "taupe",
+    "bronze",
+    "brown",
+    "black",
+    "lavender",
+    "blue",
+    "zombie_green",
+    "green",
+    "pale_green",
+    "bright_green",
+    "dark_green",
+    "fur_black",
+    "fur_brown",
+    "fur_tan",
+    "fur_copper",
+    "fur_gold",
+    "fur_grey",
+    "fur_white"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "match_body_color": true,
+  "credits": [
+    {
+      "file": "body/tail/lizard",
+      "notes": "edited for v3 bases and recolored by bluecarrot16, additional animations added by JaidynReiman",
+      "authors": [
+        "Nila122",
+        "bluecarrot16",
+        "JaidynReiman"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/drakes-and-lizardfolk"
+      ]
+    }
+  ],
+  "path": [
+    "body",
+    "lizard",
+    "tail_lizard"
+  ],
+  "type_name": "tail"
+}

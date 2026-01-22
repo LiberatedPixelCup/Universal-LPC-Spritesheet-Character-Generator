@@ -1,0 +1,61 @@
+{
+  "name": "Messy",
+  "layer_1": {
+    "zPos": 120,
+    "child": "hair/messy/child/"
+  },
+  "variants": [
+    "black",
+    "blonde",
+    "blonde 2",
+    "blue",
+    "blue 2",
+    "brown",
+    "brown 2",
+    "brunette",
+    "brunette 2",
+    "darkblonde",
+    "darkgrey",
+    "darkred",
+    "gold",
+    "grey",
+    "green",
+    "green 2",
+    "lightblonde",
+    "lightblonde 2",
+    "pink",
+    "purple",
+    "raven",
+    "raven 2",
+    "red",
+    "red 2",
+    "ruby",
+    "whiteblonde",
+    "whiteblonde 2",
+    "whitecyan"
+  ],
+  "credits": [
+    {
+      "file": "hair/messy",
+      "notes": "",
+      "authors": [
+        "Nila122"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-clothes-for-children"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "short",
+    "hair_messy"
+  ],
+  "type_name": "hair"
+}

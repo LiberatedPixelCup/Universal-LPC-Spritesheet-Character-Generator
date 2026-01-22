@@ -1,0 +1,52 @@
+{
+  "name": "Thrust",
+  "layer_1": {
+    "zPos": 9,
+    "male": "tools/thrust/background/",
+    "muscular": "tools/thrust/background/",
+    "female": "tools/thrust/background/",
+    "pregnant": "tools/thrust/background/",
+    "teen": "tools/thrust/background/"
+  },
+  "layer_2": {
+    "zPos": 150,
+    "male": "tools/thrust/foreground/",
+    "muscular": "tools/thrust/foreground/",
+    "female": "tools/thrust/foreground/",
+    "pregnant": "tools/thrust/foreground/",
+    "teen": "tools/thrust/foreground/"
+  },
+  "variants": [
+    "hoe",
+    "shovel",
+    "watering"
+  ],
+  "animations": [
+    "walk",
+    "hurt"
+  ],
+  "credits": [
+    {
+      "file": "tools/thrust",
+      "notes": "",
+      "authors": [
+        "bluecarrot16",
+        "Pierre Vigier (pvigier)",
+        "Tuomo Untinen (reemax)",
+        "Johannes Sjölund (wulax)",
+        "and Inboxninja"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-hand-tools"
+      ]
+    }
+  ],
+  "path": [
+    "tools",
+    "tool_thrust"
+  ],
+  "type_name": "weapon"
+}

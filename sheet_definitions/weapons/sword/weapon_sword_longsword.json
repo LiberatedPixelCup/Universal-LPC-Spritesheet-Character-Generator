@@ -1,0 +1,99 @@
+{
+  "name": "Longsword",
+  "layer_1": {
+    "zPos": 140,
+    "male": "weapon/sword/longsword/",
+    "muscular": "weapon/sword/longsword/",
+    "female": "weapon/sword/longsword/",
+    "pregnant": "weapon/sword/longsword/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "weapon/sword/longsword/universal_behind/",
+    "muscular": "weapon/sword/longsword/universal_behind/",
+    "female": "weapon/sword/longsword/universal_behind/",
+    "pregnant": "weapon/sword/longsword/universal_behind/"
+  },
+  "layer_3": {
+    "zPos": -1,
+    "custom_animation": "slash_oversize",
+    "male": "weapon/sword/longsword/attack_slash/behind/",
+    "muscular": "weapon/sword/longsword/attack_slash/behind/",
+    "female": "weapon/sword/longsword/attack_slash/behind/",
+    "pregnant": "weapon/sword/longsword/attack_slash/behind/"
+  },
+  "layer_4": {
+    "zPos": 150,
+    "custom_animation": "slash_oversize",
+    "male": "weapon/sword/longsword/attack_slash/",
+    "muscular": "weapon/sword/longsword/attack_slash/",
+    "female": "weapon/sword/longsword/attack_slash/",
+    "pregnant": "weapon/sword/longsword/attack_slash/"
+  },
+  "layer_5": {
+    "zPos": -1,
+    "custom_animation": "slash_reverse_oversize",
+    "male": "weapon/sword/longsword/attack_slash_reverse/behind/",
+    "muscular": "weapon/sword/longsword/attack_slash_reverse/behind/",
+    "female": "weapon/sword/longsword/attack_slash_reverse/behind/",
+    "pregnant": "weapon/sword/longsword/attack_slash_reverse/behind/"
+  },
+  "layer_6": {
+    "zPos": 150,
+    "custom_animation": "slash_reverse_oversize",
+    "male": "weapon/sword/longsword/attack_slash_reverse/",
+    "muscular": "weapon/sword/longsword/attack_slash_reverse/",
+    "female": "weapon/sword/longsword/attack_slash_reverse/",
+    "pregnant": "weapon/sword/longsword/attack_slash_reverse/"
+  },
+  "layer_7": {
+    "zPos": -1,
+    "custom_animation": "thrust_oversize",
+    "male": "weapon/sword/longsword/attack_thrust/behind/",
+    "muscular": "weapon/sword/longsword/attack_thrust/behind/",
+    "female": "weapon/sword/longsword/attack_thrust/behind/",
+    "pregnant": "weapon/sword/longsword/attack_thrust/behind/"
+  },
+  "layer_8": {
+    "zPos": 150,
+    "custom_animation": "thrust_oversize",
+    "male": "weapon/sword/longsword/attack_thrust/",
+    "muscular": "weapon/sword/longsword/attack_thrust/",
+    "female": "weapon/sword/longsword/attack_thrust/",
+    "pregnant": "weapon/sword/longsword/attack_thrust/"
+  },
+  "variants": [
+    "longsword"
+  ],
+  "animations": [
+    "walk",
+    "hurt",
+    "slash_oversize",
+    "slash_reverse_oversize",
+    "thrust_oversize"
+  ],
+  "credits": [
+    {
+      "file": "weapon/sword/longsword",
+      "notes": "",
+      "authors": [
+        "Johannes Sjölund (wulax)",
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+        "https://opengameart.org/content/lpc-extended-weapon-animations"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "sword",
+    "weapon_sword_longsword"
+  ],
+  "type_name": "weapon"
+}

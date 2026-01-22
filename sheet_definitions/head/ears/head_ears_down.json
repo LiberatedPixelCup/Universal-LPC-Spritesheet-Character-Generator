@@ -1,0 +1,79 @@
+{
+  "name": "Downward Elven Ears",
+  "layer_1": {
+    "zPos": 126,
+    "male": "head/ears/down/adult/",
+    "muscular": "head/ears/down/adult/",
+    "female": "head/ears/down/adult/",
+    "teen": "head/ears/down/adult/",
+    "pregnant": "head/ears/down/adult/",
+    "child": "head/ears/down/child/"
+  },
+  "variants": [
+    "light",
+    "amber",
+    "olive",
+    "taupe",
+    "bronze",
+    "brown",
+    "black",
+    "lavender",
+    "blue",
+    "zombie_green",
+    "green",
+    "pale_green",
+    "bright_green",
+    "dark_green",
+    "fur_black",
+    "fur_brown",
+    "fur_tan",
+    "fur_copper",
+    "fur_gold",
+    "fur_grey",
+    "fur_white",
+    "zombie"
+  ],
+  "match_body_color": true,
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "head/ears/down",
+      "notes": "",
+      "authors": [
+        "JaidynReiman"
+      ],
+      "licenses": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-new-elven-ear-variants"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "ears",
+    "head_ears_down"
+  ],
+  "type_name": "ears"
+}

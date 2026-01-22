@@ -1,0 +1,45 @@
+{
+  "name": "Child skirts",
+  "layer_1": {
+    "zPos": 20,
+    "child": "legs/skirts/child/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "darkblue",
+    "green",
+    "lavender",
+    "lightblue",
+    "maroon",
+    "pink",
+    "red",
+    "white"
+  ],
+  "animations": [
+    "walk"
+  ],
+  "credits": [
+    {
+      "file": "legs/skirts/child",
+      "notes": "",
+      "authors": [
+        "Nila122"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-clothes-for-children"
+      ]
+    }
+  ],
+  "path": [
+    "legs",
+    "skirts",
+    "legs_childskirts"
+  ],
+  "type_name": "legs"
+}

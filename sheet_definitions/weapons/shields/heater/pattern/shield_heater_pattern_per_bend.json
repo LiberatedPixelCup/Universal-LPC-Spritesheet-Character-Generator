@@ -1,0 +1,89 @@
+{
+  "name": "per_bend",
+  "layer_1": {
+    "zPos": 4,
+    "male": "shield/heater/original/pattern/per_bend/bg/",
+    "muscular": "shield/heater/original/pattern/per_bend/bg/",
+    "female": "shield/heater/original/pattern/per_bend/bg/",
+    "pregnant": "shield/heater/original/pattern/per_bend/bg/",
+    "teen": "shield/heater/original/pattern/per_bend/bg/"
+  },
+  "layer_2": {
+    "zPos": 112,
+    "male": "shield/heater/original/pattern/per_bend/fg/",
+    "muscular": "shield/heater/original/pattern/per_bend/fg/",
+    "female": "shield/heater/original/pattern/per_bend/fg/",
+    "pregnant": "shield/heater/original/pattern/per_bend/fg/",
+    "teen": "shield/heater/original/pattern/per_bend/fg/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "shield/heater/original/pattern",
+      "notes": "",
+      "authors": [
+        "bluecarrot16",
+        "Sander Frenken (castelonia)",
+        "ElizaWy"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-shields"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "shield",
+    "heater shield",
+    "heater shield pattern",
+    "shield_heater_pattern_per_bend"
+  ],
+  "type_name": "shield_pattern"
+}

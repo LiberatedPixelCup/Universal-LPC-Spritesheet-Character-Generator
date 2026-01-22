@@ -1,0 +1,87 @@
+{
+  "name": "Batlike Lizard Wings",
+  "tags": [
+    "wings"
+  ],
+  "layer_1": {
+    "zPos": 105,
+    "male": "body/wings/bat/lizard/adult/fg/",
+    "muscular": "body/wings/bat/lizard/adult/fg/",
+    "female": "body/wings/bat/lizard/adult/fg/",
+    "pregnant": "body/wings/bat/lizard/adult/fg/",
+    "teen": "body/wings/bat/lizard/adult/fg/"
+  },
+  "layer_2": {
+    "zPos": 5,
+    "male": "body/wings/bat/lizard/adult/bg/",
+    "muscular": "body/wings/bat/lizard/adult/bg/",
+    "female": "body/wings/bat/lizard/adult/bg/",
+    "pregnant": "body/wings/bat/lizard/adult/bg/",
+    "teen": "body/wings/bat/lizard/adult/bg/"
+  },
+  "variants": [
+    "light",
+    "amber",
+    "olive",
+    "taupe",
+    "bronze",
+    "brown",
+    "black",
+    "lavender",
+    "blue",
+    "zombie_green",
+    "green",
+    "pale_green",
+    "bright_green",
+    "dark_green",
+    "fur_black",
+    "fur_brown",
+    "fur_tan",
+    "fur_copper",
+    "fur_gold",
+    "fur_grey",
+    "fur_white"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "match_body_color": true,
+  "credits": [
+    {
+      "file": "body/wings/bat",
+      "notes": "Original by ElizaWy, added to most remaining frames by JaidynReiman",
+      "authors": [
+        "ElizaWy",
+        "JaidynReiman"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-wings-new-animations"
+      ]
+    }
+  ],
+  "path": [
+    "body",
+    "lizard",
+    "wings_lizard_bat"
+  ],
+  "type_name": "wings"
+}

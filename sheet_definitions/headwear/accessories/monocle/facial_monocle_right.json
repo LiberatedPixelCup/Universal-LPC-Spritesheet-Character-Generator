@@ -1,0 +1,73 @@
+{
+  "name": "Right Monocle",
+  "tags": [
+    "facial",
+    "monocle",
+    "monocle_right"
+  ],
+  "layer_1": {
+    "zPos": 115,
+    "male": "facial/monocle/right/adult/",
+    "muscular": "facial/monocle/right/adult/",
+    "female": "facial/monocle/right/adult/",
+    "pregnant": "facial/monocle/right/adult/",
+    "teen": "facial/monocle/right/adult/",
+    "child": "facial/monocle/right/child/"
+  },
+  "variants": [
+    "steel",
+    "iron",
+    "ceramic",
+    "brass",
+    "copper",
+    "bronze",
+    "silver",
+    "gold"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "facial/monocle",
+      "notes": "",
+      "authors": [
+        "bluecarrot16",
+        "Thane Brimhall (pennomi)",
+        "laetissima"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/clothing-facial-features-and-ui-elements",
+        "https://opengameart.org/content/lpc-gentleman",
+        "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "accessories",
+    "monocle",
+    "facial_monocle_right"
+  ],
+  "type_name": "facial_right"
+}

@@ -1,0 +1,58 @@
+{
+  "name": "Straight skirt",
+  "layer_1": {
+    "zPos": 20,
+    "female": "legs/skirts/straight/female/",
+    "pregnant": "legs/skirts/straight/female/",
+    "teen": "legs/skirts/straight/female/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "credits": [
+    {
+      "file": "legs/skirts/straight",
+      "notes": "original skirt by ElizaWy, extended to all animation frames and edited for v3 bases by bluecarrot16",
+      "authors": [
+        "bluecarrot16",
+        "ElizaWy"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "http://opengameart.org/content/lpc-clothing-updates"
+      ]
+    }
+  ],
+  "path": [
+    "legs",
+    "skirts",
+    "legs_skirt_straight"
+  ],
+  "type_name": "legs"
+}

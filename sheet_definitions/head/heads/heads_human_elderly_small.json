@@ -1,0 +1,81 @@
+{
+  "name": "Human elderly small",
+  "tags": [
+    "human",
+    "elderly",
+    "small"
+  ],
+  "layer_1": {
+    "zPos": 100,
+    "male": "head/heads/human/elderly_small/",
+    "muscular": "head/heads/human/elderly_small/",
+    "female": "head/heads/human/elderly_small/",
+    "pregnant": "head/heads/human/elderly_small/",
+    "teen": "head/heads/human/elderly_small/"
+  },
+  "variants": [
+    "light",
+    "amber",
+    "olive",
+    "taupe",
+    "bronze",
+    "brown",
+    "black",
+    "lavender",
+    "blue",
+    "zombie_green",
+    "green",
+    "pale_green",
+    "bright_green",
+    "dark_green",
+    "zombie",
+    "fur_black",
+    "fur_brown",
+    "fur_tan",
+    "fur_copper",
+    "fur_gold",
+    "fur_grey",
+    "fur_white"
+  ],
+  "match_body_color": true,
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "head/heads/human/elderly_small",
+      "notes": "original head by Redshrike, elderly & reduced size head by ElizaWy",
+      "authors": [
+        "ElizaWy",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY"
+      ],
+      "urls": []
+    }
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_human_elderly_small"
+  ],
+  "type_name": "head"
+}

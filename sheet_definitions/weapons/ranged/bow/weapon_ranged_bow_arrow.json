@@ -1,0 +1,45 @@
+{
+  "name": "Ammo",
+  "preview_row": 3,
+  "preview_column": 2,
+  "preview_x_offset": 0,
+  "preview_y_offset": 0,
+  "layer_1": {
+    "zPos": 150,
+    "male": "weapon/ranged/bow/arrow/",
+    "muscular": "weapon/ranged/bow/arrow/",
+    "female": "weapon/ranged/bow/arrow/",
+    "pregnant": "weapon/ranged/bow/arrow/",
+    "teen": "weapon/ranged/bow/arrow/"
+  },
+  "variants": [
+    "arrow"
+  ],
+  "animations": [
+    "shoot"
+  ],
+  "credits": [
+    {
+      "file": "weapon/ranged/bow/arrow",
+      "notes": "",
+      "authors": [
+        "Johannes Sjölund (wulax)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "ranged",
+    "bow",
+    "weapon_ranged_bow_arrow"
+  ],
+  "type_name": "ammo"
+}

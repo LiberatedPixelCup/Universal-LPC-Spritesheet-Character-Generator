@@ -1,0 +1,38 @@
+{
+  "name": "Frock coat lace",
+  "layer_1": {
+    "zPos": 58,
+    "male": "torso/jacket/trim/frock_lace/"
+  },
+  "variants": [
+    "bronze",
+    "gold",
+    "silver",
+    "red",
+    "blue",
+    "teal",
+    "yellow"
+  ],
+  "credits": [
+    {
+      "file": "torso/jacket/trim",
+      "notes": "",
+      "authors": [
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-pirates"
+      ]
+    }
+  ],
+  "path": [
+    "torso",
+    "jacket",
+    "jacket trim",
+    "torso_jacket_frock_lace"
+  ],
+  "type_name": "jacket_trim"
+}

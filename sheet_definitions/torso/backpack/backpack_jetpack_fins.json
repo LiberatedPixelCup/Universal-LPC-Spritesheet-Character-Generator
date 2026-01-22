@@ -1,0 +1,44 @@
+{
+  "name": "Jetpack fins",
+  "tags": [
+    "back",
+    "backpack",
+    "jetpack"
+  ],
+  "preview_row": 0,
+  "layer_1": {
+    "zPos": 112,
+    "male": "backpack/jetpack_fins/male/",
+    "muscular": "backpack/jetpack_fins/male/",
+    "female": "backpack/jetpack_fins/female/",
+    "pregnant": "backpack/jetpack_fins/female/"
+  },
+  "variants": [
+    "bronze",
+    "gold",
+    "steel"
+  ],
+  "credits": [
+    {
+      "file": "backpack/jetpack_fins",
+      "notes": "trivial adjustments by bluecarrot16 to be compatible with v3 bases",
+      "authors": [
+        "Benjamin K. Smith (BenCreating)",
+        "macmanmatty"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-backpacks"
+      ]
+    }
+  ],
+  "path": [
+    "torso",
+    "backpack",
+    "backpack_jetpack_fins"
+  ],
+  "type_name": "cargo"
+}

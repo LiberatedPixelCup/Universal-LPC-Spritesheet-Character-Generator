@@ -1,0 +1,51 @@
+{
+  "name": "Crossbow",
+  "preview_row": 1,
+  "preview_column": 0,
+  "preview_x_offset": 0,
+  "preview_y_offset": 18,
+  "layer_1": {
+    "zPos": -1,
+    "male": "weapon/ranged/crossbow/background/",
+    "muscular": "weapon/ranged/crossbow/background/",
+    "female": "weapon/ranged/crossbow/background/",
+    "pregnant": "weapon/ranged/crossbow/background/"
+  },
+  "layer_2": {
+    "zPos": 140,
+    "male": "weapon/ranged/crossbow/foreground/",
+    "muscular": "weapon/ranged/crossbow/foreground/",
+    "female": "weapon/ranged/crossbow/foreground/",
+    "pregnant": "weapon/ranged/crossbow/foreground/"
+  },
+  "variants": [
+    "crossbow"
+  ],
+  "animations": [
+    "thrust",
+    "walk",
+    "hurt"
+  ],
+  "credits": [
+    {
+      "file": "weapon/ranged/crossbow",
+      "notes": "original by drjamgo, modified for v3 character bases and split into layers by bluecarrot16",
+      "authors": [
+        "bluecarrot16",
+        "drjamgo@hotmail.com"
+      ],
+      "licenses": [
+        "CC0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-crossbow-final"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "ranged",
+    "weapon_ranged_crossbow"
+  ],
+  "type_name": "weapon"
+}

@@ -1,0 +1,54 @@
+{
+  "name": "Longsleeve blouse",
+  "layer_1": {
+    "zPos": 35,
+    "female": "torso/clothes/blouse_longsleeve/female/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "sky",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "credits": [
+    {
+      "file": "torso/clothes/blouse_longsleeve",
+      "notes": "original princess.xcf by Sharm, edited to blouse by ElizaWy; blouse + longsleeve adapted to v3 bases by bluecarrot16",
+      "authors": [
+        "bluecarrot16",
+        "ElizaWy",
+        "Lanea Zimmerman (Sharm)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+        "https://opengameart.org/content/lpc-7-womens-shirts"
+      ]
+    }
+  ],
+  "path": [
+    "torso",
+    "shirts",
+    "torso_clothes_blouse_longsleeve"
+  ],
+  "type_name": "clothes"
+}

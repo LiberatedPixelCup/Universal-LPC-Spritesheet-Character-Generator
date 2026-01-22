@@ -1,0 +1,56 @@
+{
+  "name": "Brain",
+  "layer_1": {
+    "zPos": 115,
+    "male": "body/wound/",
+    "muscular": "body/wound/",
+    "female": "body/wound/",
+    "pregnant": "body/wound/",
+    "teen": "body/wound/"
+  },
+  "variants": [
+    "brain"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "body/wound/brain.png",
+      "notes": "",
+      "authors": [
+        "Benjamin K. Smith (BenCreating)",
+        "Sander Frenken (castelonia)"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-zombie"
+      ]
+    }
+  ],
+  "path": [
+    "body",
+    "wounds",
+    "wound_brain"
+  ],
+  "type_name": "wound_brain"
+}

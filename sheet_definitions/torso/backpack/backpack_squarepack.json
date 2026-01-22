@@ -1,0 +1,59 @@
+{
+  "name": "Square pack",
+  "tags": [
+    "backpack"
+  ],
+  "preview_row": 0,
+  "layer_1": {
+    "zPos": 110,
+    "male": "backpack/squarepack/male/",
+    "muscular": "backpack/squarepack/male/",
+    "female": "backpack/squarepack/female/",
+    "pregnant": "backpack/squarepack/female/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "bluegray",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "sky",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "credits": [
+    {
+      "file": "backpack/squarepack",
+      "notes": "trivial adjustments by bluecarrot16 to be compatible with v3 bases",
+      "authors": [
+        "Benjamin K. Smith (BenCreating)",
+        "macmanmatty"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-backpacks"
+      ]
+    }
+  ],
+  "path": [
+    "torso",
+    "backpack",
+    "backpack_squarepack"
+  ],
+  "type_name": "backpack"
+}

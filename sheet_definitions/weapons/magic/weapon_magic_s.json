@@ -1,0 +1,80 @@
+{
+  "name": "S staff",
+  "layer_1": {
+    "zPos": 140,
+    "male": "weapon/magic/s/universal/foreground/",
+    "muscular": "weapon/magic/s/universal/foreground/",
+    "female": "weapon/magic/s/universal/foreground/",
+    "teen": "weapon/magic/s/universal/foreground/",
+    "pregnant": "weapon/magic/s/universal/foreground/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "weapon/magic/s/universal/background/",
+    "muscular": "weapon/magic/s/universal/background/",
+    "female": "weapon/magic/s/universal/background/",
+    "teen": "weapon/magic/s/universal/background/",
+    "pregnant": "weapon/magic/s/universal/background/"
+  },
+  "layer_3": {
+    "custom_animation": "thrust_oversize",
+    "zPos": 150,
+    "male": "weapon/magic/s/thrust/foreground/",
+    "muscular": "weapon/magic/s/thrust/foreground/",
+    "female": "weapon/magic/s/thrust/foreground/",
+    "teen": "weapon/magic/s/thrust/foreground/",
+    "pregnant": "weapon/magic/s/thrust/foreground/"
+  },
+  "layer_4": {
+    "custom_animation": "thrust_oversize",
+    "zPos": -1,
+    "male": "weapon/magic/s/thrust/background/",
+    "muscular": "weapon/magic/s/thrust/background/",
+    "female": "weapon/magic/s/thrust/background/",
+    "teen": "weapon/magic/s/thrust/background/",
+    "pregnant": "weapon/magic/s/thrust/background/"
+  },
+  "variants": [
+    "medium",
+    "light",
+    "red",
+    "dark",
+    "brass",
+    "bronze",
+    "ceramic",
+    "copper",
+    "gold",
+    "iron",
+    "silver",
+    "steel"
+  ],
+  "animations": [
+    "walk",
+    "hurt",
+    "thrust_oversize"
+  ],
+  "credits": [
+    {
+      "file": "weapon/magic/s",
+      "notes": "Wooden staff by LordNeo, first adapted to LPC by bigbeargames; re-drawn and walk animations added by bluecarrot16",
+      "authors": [
+        "LordNeo",
+        "Michael Whitlock (bigbeargames)",
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "CC0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/staff-64-x64",
+        "https://opengameart.org/content/lpc-magic-staff"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "magic",
+    "weapon_magic_s"
+  ],
+  "type_name": "weapon"
+}

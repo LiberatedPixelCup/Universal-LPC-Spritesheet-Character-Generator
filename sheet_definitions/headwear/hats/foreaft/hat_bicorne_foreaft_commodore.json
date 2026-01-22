@@ -1,0 +1,85 @@
+{
+  "name": "Bicorne Foreaft Commodore",
+  "tags": [
+    "bicorne",
+    "foreaft",
+    "foreaft_commodore"
+  ],
+  "layer_1": {
+    "zPos": 130,
+    "male": "hat/pirate/bicorne/foreaft/commodore/adult/",
+    "muscular": "hat/pirate/bicorne/foreaft/commodore/adult/",
+    "female": "hat/pirate/bicorne/foreaft/commodore/adult/",
+    "teen": "hat/pirate/bicorne/foreaft/commodore/adult/",
+    "pregnant": "hat/pirate/bicorne/foreaft/commodore/adult/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hat/pirate/bicorne/foreaft/commodore",
+      "notes": "Pirate Hat by Bluecarrot16, layers and added animations by JaidynReiman",
+      "authors": [
+        "bluecarrot16",
+        "JaidynReiman"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-pirates",
+        "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "hats",
+    "bicorne foreaft",
+    "hat_bicorne_foreaft_commodore"
+  ],
+  "type_name": "hat"
+}

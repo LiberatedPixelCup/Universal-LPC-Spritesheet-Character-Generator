@@ -1,0 +1,43 @@
+{
+  "name": "Scutum shield trim",
+  "layer_1": {
+    "zPos": 3,
+    "male": "shield/scutum_trim/bg/",
+    "muscular": "shield/scutum_trim/bg/",
+    "female": "shield/scutum_trim/bg/",
+    "pregnant": "shield/scutum_trim/bg/"
+  },
+  "layer_2": {
+    "zPos": 115,
+    "male": "shield/scutum_trim/fg/male/",
+    "muscular": "shield/scutum_trim/fg/male/",
+    "female": "shield/scutum_trim/fg/female/",
+    "pregnant": "shield/scutum_trim/fg/female/"
+  },
+  "variants": [
+    "scutum_trim"
+  ],
+  "credits": [
+    {
+      "file": "shield",
+      "notes": "",
+      "authors": [
+        "bluecarrot16",
+        "Sander Frenken (castelonia)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-shields"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "shield",
+    "scutum shield",
+    "shield_scutum_trim"
+  ],
+  "type_name": "shield_trim"
+}

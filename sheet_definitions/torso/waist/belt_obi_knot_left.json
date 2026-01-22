@@ -1,0 +1,80 @@
+{
+  "name": "Obi Knot Left",
+  "layer_1": {
+    "zPos": 66,
+    "male": "torso/waist/obi/knot/left/male/",
+    "muscular": "torso/waist/obi/knot/left/male/",
+    "female": "torso/waist/obi/knot/left/thin/",
+    "pregnant": "torso/waist/obi/knot/left/thin/",
+    "teen": "torso/waist/obi/knot/left/thin/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "torso/waist/obi/knot",
+      "notes": "",
+      "authors": [
+        "JaidynReiman"
+      ],
+      "licenses": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-kimono-relm"
+      ]
+    }
+  ],
+  "path": [
+    "torso",
+    "waist",
+    "obi",
+    "belt_obi_knot_left"
+  ],
+  "type_name": "sash_tie"
+}

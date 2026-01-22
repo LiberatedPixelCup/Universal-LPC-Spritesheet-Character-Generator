@@ -1,0 +1,55 @@
+{
+  "name": "Jacket pockets",
+  "layer_1": {
+    "zPos": 59,
+    "male": "torso/jacket/trim/jacket_pockets/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "credits": [
+    {
+      "file": "torso/jacket/trim",
+      "notes": "",
+      "authors": [
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-pirates"
+      ]
+    }
+  ],
+  "path": [
+    "torso",
+    "jacket",
+    "jacket trim",
+    "torso_jacket_pockets"
+  ],
+  "type_name": "jacket_pockets"
+}

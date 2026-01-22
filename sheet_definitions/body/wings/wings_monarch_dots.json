@@ -1,0 +1,80 @@
+{
+  "name": "Monarch Wings Dots",
+  "tags": [
+    "wings"
+  ],
+  "required_tags": [
+    "monarch"
+  ],
+  "layer_1": {
+    "zPos": 106,
+    "male": "body/wings/monarch/dots/fg/",
+    "muscular": "body/wings/monarch/dots/fg/",
+    "female": "body/wings/monarch/dots/fg/",
+    "pregnant": "body/wings/monarch/dots/fg/",
+    "teen": "body/wings/monarch/dots/fg/",
+    "child": "body/wings/monarch/dots/fg/"
+  },
+  "layer_2": {
+    "zPos": 6,
+    "male": "body/wings/monarch/dots/bg/",
+    "muscular": "body/wings/monarch/dots/bg/",
+    "female": "body/wings/monarch/dots/bg/",
+    "pregnant": "body/wings/monarch/dots/bg/",
+    "teen": "body/wings/monarch/dots/bg/",
+    "child": "body/wings/monarch/dots/bg/"
+  },
+  "variants": [
+    "amber",
+    "black",
+    "blue",
+    "bluegray",
+    "bright_green",
+    "bronze",
+    "brown",
+    "ceramic",
+    "forest",
+    "gold",
+    "green",
+    "iron",
+    "lavender",
+    "light",
+    "maroon",
+    "navy",
+    "orange",
+    "pale_green",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "silver",
+    "sky",
+    "teal",
+    "white",
+    "yellow",
+    "zombie_green"
+  ],
+  "credits": [
+    {
+      "file": "body/wings/monarch",
+      "notes": "In dedication to my grandmother, Sharon Rowe",
+      "authors": [
+        "The Foreman"
+      ],
+      "licenses": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-fairy-wings"
+      ]
+    }
+  ],
+  "path": [
+    "body",
+    "wings",
+    "monarch wings",
+    "wings_monarch_dots"
+  ],
+  "type_name": "wings_dots"
+}

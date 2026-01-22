@@ -1,0 +1,36 @@
+{
+  "name": "Peg leg",
+  "layer_1": {
+    "zPos": 100,
+    "is_mask": true,
+    "male": "body/prosthesis/peg_leg/male/mask/"
+  },
+  "layer_2": {
+    "zPos": 100,
+    "male": "body/prosthesis/peg_leg/male/"
+  },
+  "variants": [
+    "peg_leg"
+  ],
+  "credits": [
+    {
+      "file": "body/prosthesis/peg_leg",
+      "notes": "",
+      "authors": [
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-pirates"
+      ]
+    }
+  ],
+  "path": [
+    "body",
+    "prostheses",
+    "prosthesis_peg_leg"
+  ],
+  "type_name": "prosthesis_leg"
+}

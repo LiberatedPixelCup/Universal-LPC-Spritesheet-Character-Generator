@@ -1,0 +1,83 @@
+{
+  "name": "Relm Short",
+  "layer_1": {
+    "zPos": 120,
+    "male": "hair/relm_short/adult/",
+    "muscular": "hair/relm_short/adult/",
+    "female": "hair/relm_short/adult/",
+    "pregnant": "hair/relm_short/adult/",
+    "teen": "hair/relm_short/adult/",
+    "child": "hair/relm_short/child/"
+  },
+  "variants": [
+    "blonde",
+    "ash",
+    "sandy",
+    "platinum",
+    "strawberry",
+    "redhead",
+    "ginger",
+    "carrot",
+    "chestnut",
+    "light brown",
+    "dark brown",
+    "black",
+    "raven",
+    "dark gray",
+    "gray",
+    "white",
+    "red",
+    "orange",
+    "gold",
+    "green",
+    "blue",
+    "navy",
+    "violet",
+    "purple",
+    "pink",
+    "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hair/relm_short",
+      "notes": "",
+      "authors": [
+        "JaidynReiman"
+      ],
+      "licenses": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-relm-hair-xlong-ponytail"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "bob",
+    "hair_relm_short"
+  ],
+  "type_name": "hair"
+}

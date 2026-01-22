@@ -1,0 +1,66 @@
+{
+  "name": "Narrow slit visor",
+  "layer_1": {
+    "zPos": 132,
+    "female": "hat/visor/slit/adult/",
+    "pregnant": "hat/visor/slit/adult/",
+    "male": "hat/visor/slit/adult/",
+    "muscular": "hat/visor/slit/adult/",
+    "teen": "hat/visor/slit/adult/"
+  },
+  "variants": [
+    "steel",
+    "iron",
+    "ceramic",
+    "brass",
+    "copper",
+    "bronze",
+    "silver",
+    "gold"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hat/visor/slit",
+      "notes": "",
+      "authors": [
+        "bluecarrot16",
+        "Johannes Sjölund (wulax)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+        "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "helmets",
+    "visors",
+    "hat_visor_slit_narrow"
+  ],
+  "type_name": "visor"
+}

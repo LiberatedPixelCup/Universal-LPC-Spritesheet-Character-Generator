@@ -1,0 +1,100 @@
+{
+  "name": "Lizard Tail (Alt Colors)",
+  "layer_1": {
+    "zPos": 85,
+    "male": "body/tail/lizard/alt/adult/fg/",
+    "muscular": "body/tail/lizard/alt/adult/fg/",
+    "female": "body/tail/lizard/alt/adult/fg/",
+    "pregnant": "body/tail/lizard/alt/adult/fg/",
+    "teen": "body/tail/lizard/alt/adult/fg/",
+    "child": "body/tail/lizard/alt/child/fg/"
+  },
+  "layer_2": {
+    "zPos": 5,
+    "male": "body/tail/lizard/alt/adult/bg/",
+    "muscular": "body/tail/lizard/alt/adult/bg/",
+    "female": "body/tail/lizard/alt/adult/bg/",
+    "pregnant": "body/tail/lizard/alt/adult/bg/",
+    "teen": "body/tail/lizard/alt/adult/bg/",
+    "child": "body/tail/lizard/alt/child/bg/"
+  },
+  "variants": [
+    "blonde",
+    "ash",
+    "sandy",
+    "platinum",
+    "strawberry",
+    "redhead",
+    "ginger",
+    "carrot",
+    "chestnut",
+    "light brown",
+    "dark brown",
+    "black",
+    "raven",
+    "dark gray",
+    "gray",
+    "white",
+    "red",
+    "orange",
+    "gold",
+    "green",
+    "blue",
+    "navy",
+    "violet",
+    "purple",
+    "pink",
+    "rose",
+    "fur_black",
+    "fur_brown",
+    "fur_tan",
+    "fur_copper",
+    "fur_gold",
+    "fur_grey",
+    "fur_white"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "body/tail/lizard",
+      "notes": "edited for v3 bases and recolored by bluecarrot16, additional animations added by JaidynReiman",
+      "authors": [
+        "Nila122",
+        "bluecarrot16",
+        "JaidynReiman"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/drakes-and-lizardfolk"
+      ]
+    }
+  ],
+  "path": [
+    "body",
+    "tails",
+    "tail_lizard_alt"
+  ],
+  "type_name": "tail"
+}

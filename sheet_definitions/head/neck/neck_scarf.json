@@ -1,0 +1,54 @@
+{
+  "name": "Scarf",
+  "layer_1": {
+    "zPos": 90,
+    "male": "neck/scarf/",
+    "female": "neck/scarf/",
+    "pregnant": "neck/scarf/",
+    "muscular": "neck/scarf/",
+    "teen": "neck/scarf/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "brown",
+    "gray",
+    "red",
+    "white"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "idle"
+  ],
+  "credits": [
+    {
+      "file": "neck/scarf",
+      "notes": "",
+      "authors": [
+        "Nila122",
+        "Johannes Sjölund (wulax)",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "OGA-SA 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/more-lpc-clothes-and-hair"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "neck",
+    "neck_scarf"
+  ],
+  "type_name": "neck"
+}

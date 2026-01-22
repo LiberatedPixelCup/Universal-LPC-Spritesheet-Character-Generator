@@ -1,0 +1,44 @@
+{
+  "name": "Leather Belt",
+  "layer_1": {
+    "zPos": 70,
+    "male": "torso/waist/belt_leather/male/",
+    "female": "torso/waist/belt_leather/female/",
+    "teen": "torso/waist/belt_leather/male/"
+  },
+  "variants": [
+    "brown",
+    "charcoal",
+    "leather",
+    "slate",
+    "tan",
+    "walnut",
+    "white"
+  ],
+  "credits": [
+    {
+      "file": "torso/waist/belt_leather",
+      "notes": "",
+      "authors": [
+        "bluecarrot16",
+        "Johannes Sjölund (wulax)",
+        "Matthew Krohn (makrohn)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-combat-armor-for-women",
+        "https://opengameart.org/content/lpc-pirates"
+      ]
+    }
+  ],
+  "path": [
+    "torso",
+    "waist",
+    "belt_leather"
+  ],
+  "type_name": "belt"
+}

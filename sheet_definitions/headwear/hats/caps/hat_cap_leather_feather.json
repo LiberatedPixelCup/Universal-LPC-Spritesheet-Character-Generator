@@ -1,0 +1,83 @@
+{
+  "name": "Leather Cap Feather",
+  "layer_1": {
+    "zPos": 131,
+    "male": "hat/cloth/leather_cap/feather/adult/",
+    "female": "hat/cloth/leather_cap/feather/adult/",
+    "muscular": "hat/cloth/leather_cap/feather/adult/",
+    "pregnant": "hat/cloth/leather_cap/feather/adult/",
+    "teen": "hat/cloth/leather_cap/feather/adult/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hat/cloth/leather_cap",
+      "notes": "original by Johannes Sjölund (wulax), female by Matthew Krohn, mapped to all frames w/recolors by JaidynReiman",
+      "authors": [
+        "Johannes Sjölund (wulax)",
+        "Matthew Krohn (Makrohn)",
+        "JaidynReiman"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+        "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "hats",
+    "caps",
+    "hat_cap_leather_feather"
+  ],
+  "type_name": "hat_accessory"
+}

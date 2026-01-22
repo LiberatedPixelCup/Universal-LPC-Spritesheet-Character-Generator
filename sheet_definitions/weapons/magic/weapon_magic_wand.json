@@ -1,0 +1,41 @@
+{
+  "name": "Wand",
+  "preview_row": 1,
+  "preview_column": 0,
+  "layer_1": {
+    "zPos": 140,
+    "male": "weapon/magic/wand/male/",
+    "muscular": "weapon/magic/wand/male/",
+    "female": "weapon/magic/wand/female/",
+    "pregnant": "weapon/magic/wand//female/"
+  },
+  "variants": [
+    "wand"
+  ],
+  "animations": [
+    "slash"
+  ],
+  "credits": [
+    {
+      "file": "weapon/magic/wand",
+      "notes": "",
+      "authors": [
+        "Matthew Krohn (makrohn)"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0",
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-wands"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "magic",
+    "weapon_magic_wand"
+  ],
+  "type_name": "weapon"
+}

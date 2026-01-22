@@ -1,0 +1,94 @@
+{
+  "name": "Ponytail2",
+  "layer_1": {
+    "zPos": 120,
+    "male": "hair/ponytail2/adult/fg/",
+    "muscular": "hair/ponytail2/adult/fg/",
+    "female": "hair/ponytail2/adult/fg/",
+    "pregnant": "hair/ponytail2/adult/fg/",
+    "teen": "hair/ponytail2/adult/fg/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "hair/ponytail2/adult/bg/",
+    "muscular": "hair/ponytail2/adult/bg/",
+    "female": "hair/ponytail2/adult/bg/",
+    "pregnant": "hair/ponytail2/adult/bg/",
+    "teen": "hair/ponytail2/adult/bg/"
+  },
+  "variants": [
+    "blonde",
+    "ash",
+    "sandy",
+    "platinum",
+    "strawberry",
+    "redhead",
+    "ginger",
+    "carrot",
+    "chestnut",
+    "light brown",
+    "dark brown",
+    "black",
+    "raven",
+    "dark gray",
+    "gray",
+    "white",
+    "red",
+    "orange",
+    "gold",
+    "green",
+    "blue",
+    "navy",
+    "violet",
+    "purple",
+    "pink",
+    "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hair/ponytail2",
+      "notes": "",
+      "authors": [
+        "JaidynReiman",
+        "Manuel Riecke (MrBeast)",
+        "Joe White"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+        "https://opengameart.org/content/ponytail-and-plain-hairstyles",
+        "https://opengameart.org/content/lpc-expanded-hair"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "braids, ponytails, updos",
+    "hair_ponytail2"
+  ],
+  "type_name": "hair"
+}

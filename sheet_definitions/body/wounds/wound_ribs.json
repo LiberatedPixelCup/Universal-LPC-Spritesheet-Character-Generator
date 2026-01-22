@@ -1,0 +1,37 @@
+{
+  "name": "Ribs",
+  "layer_1": {
+    "zPos": 15,
+    "male": "body/wound/",
+    "muscular": "body/wound/",
+    "female": "body/wound/",
+    "pregnant": "body/wound/",
+    "teen": "body/wound/"
+  },
+  "variants": [
+    "ribs"
+  ],
+  "credits": [
+    {
+      "file": "body/wound/ribs.png",
+      "notes": "",
+      "authors": [
+        "Benjamin K. Smith (BenCreating)",
+        "Sander Frenken (castelonia)"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-zombie"
+      ]
+    }
+  ],
+  "path": [
+    "body",
+    "wounds",
+    "wound_ribs"
+  ],
+  "type_name": "wound_ribs"
+}

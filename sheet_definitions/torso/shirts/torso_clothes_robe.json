@@ -1,0 +1,41 @@
+{
+  "name": "Robe",
+  "layer_1": {
+    "zPos": 35,
+    "female": "torso/clothes/robe/female/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "brown",
+    "dark brown",
+    "dark gray",
+    "forest green",
+    "light gray",
+    "purple",
+    "red",
+    "white"
+  ],
+  "credits": [
+    {
+      "file": "torso/clothes/robe",
+      "notes": "",
+      "authors": [
+        "Luke Mehl"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/female-mage-clothing-set"
+      ]
+    }
+  ],
+  "path": [
+    "torso",
+    "shirts",
+    "torso_clothes_robe"
+  ],
+  "type_name": "clothes"
+}

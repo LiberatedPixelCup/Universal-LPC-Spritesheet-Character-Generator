@@ -1,0 +1,82 @@
+{
+  "name": "Thick Headband Rune",
+  "layer_1": {
+    "zPos": 126,
+    "female": "hat/headband/thick/rune/adult/",
+    "male": "hat/headband/thick/rune/adult/",
+    "muscular": "hat/headband/thick/rune/adult/",
+    "pregnant": "hat/headband/thick/rune/adult/",
+    "teen": "hat/headband/thick/rune/adult/",
+    "child": "hat/headband/thick/rune/child/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hat/headband/thick",
+      "notes": "",
+      "authors": [
+        "JaidynReiman"
+      ],
+      "licenses": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-relm-hair-xlong-ponytail",
+        "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "head coverings",
+    "headbands",
+    "hat_headband_thick_rune"
+  ],
+  "type_name": "headcover_rune"
+}

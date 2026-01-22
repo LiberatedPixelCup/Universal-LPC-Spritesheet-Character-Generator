@@ -1,0 +1,82 @@
+{
+  "name": "Big Mustache",
+  "layer_1": {
+    "zPos": 111,
+    "male": "beards/mustache/bigstache/",
+    "female": "beards/mustache/bigstache/",
+    "muscular": "beards/mustache/bigstache/",
+    "teen": "beards/mustache/bigstache/",
+    "pregnant": "beards/mustache/bigstache/"
+  },
+  "variants": [
+    "blonde",
+    "ash",
+    "sandy",
+    "platinum",
+    "strawberry",
+    "redhead",
+    "ginger",
+    "carrot",
+    "chestnut",
+    "light brown",
+    "dark brown",
+    "black",
+    "raven",
+    "dark gray",
+    "gray",
+    "white",
+    "red",
+    "orange",
+    "gold",
+    "green",
+    "blue",
+    "navy",
+    "violet",
+    "purple",
+    "pink",
+    "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "beards/mustache/bigstache",
+      "notes": "Original by Pennomi, repositioning by JaidynReiman.",
+      "authors": [
+        "JaidynReiman",
+        "Thane Brimhall (pennomi)",
+        "laetissima"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-base-character-expressions"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "mustaches",
+    "beards_bigstache"
+  ],
+  "type_name": "mustache"
+}
