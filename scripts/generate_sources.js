@@ -303,6 +303,10 @@ function parseJson(filePath, fileName) {
 const files = fs.readdirSync("./sheet_definitions", { 
   recursive: true,
   withFileTypes: true 
+}).sort((a, b) => {
+  const pa = path.join(a.path, a.name);
+  const pb = path.join(b.path, b.name);
+  return pa.localeCompare(pb);
 });
 let csvGenerated = "filename,notes,authors,licenses,urls" + os.EOL;
 
