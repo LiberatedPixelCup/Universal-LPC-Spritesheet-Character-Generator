@@ -3519,6 +3519,402 @@ window.itemMetadata = {
       ]
     }
   },
+  "tail_lizard": {
+    "name": "Lizard tail",
+    "priority": null,
+    "type_name": "tail",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "lizard",
+      "tail_lizard"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 85,
+        "male": "body/tail/lizard/adult/fg/",
+        "muscular": "body/tail/lizard/adult/fg/",
+        "female": "body/tail/lizard/adult/fg/",
+        "pregnant": "body/tail/lizard/adult/fg/",
+        "teen": "body/tail/lizard/adult/fg/",
+        "child": "body/tail/lizard/child/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/tail/lizard/adult/bg/",
+        "muscular": "body/tail/lizard/adult/bg/",
+        "female": "body/tail/lizard/adult/bg/",
+        "pregnant": "body/tail/lizard/adult/bg/",
+        "teen": "body/tail/lizard/adult/bg/",
+        "child": "body/tail/lizard/child/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/tail/lizard",
+        "notes": "edited for v3 bases and recolored by bluecarrot16, additional animations added by JaidynReiman",
+        "authors": [
+          "Nila122",
+          "bluecarrot16",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/drakes-and-lizardfolk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "wings_lizard": {
+    "name": "Lizard Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "lizard",
+      "wings_lizard"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 105,
+        "male": "body/wings/lizard/adult/fg/",
+        "muscular": "body/wings/lizard/adult/fg/",
+        "female": "body/wings/lizard/adult/fg/",
+        "pregnant": "body/wings/lizard/adult/fg/",
+        "teen": "body/wings/lizard/adult/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/lizard/adult/bg/",
+        "muscular": "body/wings/lizard/adult/bg/",
+        "female": "body/wings/lizard/adult/bg/",
+        "pregnant": "body/wings/lizard/adult/bg/",
+        "teen": "body/wings/lizard/adult/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/lizard",
+        "notes": "edited for v3 bases and recolored by bluecarrot16, sit/jump/run/emote/revised combat by JaidynReiman",
+        "authors": [
+          "JaidynReiman",
+          "Nila122",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/drakes-and-lizardfolk",
+          "https://opengameart.org/content/lpc-wings-new-animations"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "wings_lizard_bat": {
+    "name": "Batlike Lizard Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "lizard",
+      "wings_lizard_bat"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 105,
+        "male": "body/wings/bat/lizard/adult/fg/",
+        "muscular": "body/wings/bat/lizard/adult/fg/",
+        "female": "body/wings/bat/lizard/adult/fg/",
+        "pregnant": "body/wings/bat/lizard/adult/fg/",
+        "teen": "body/wings/bat/lizard/adult/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/bat/lizard/adult/bg/",
+        "muscular": "body/wings/bat/lizard/adult/bg/",
+        "female": "body/wings/bat/lizard/adult/bg/",
+        "pregnant": "body/wings/bat/lizard/adult/bg/",
+        "teen": "body/wings/bat/lizard/adult/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/bat",
+        "notes": "Original by ElizaWy, added to most remaining frames by JaidynReiman",
+        "authors": [
+          "ElizaWy",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-wings-new-animations"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
   "prosthesis_hook": {
     "name": "Hook hand",
     "priority": null,
@@ -3819,7 +4215,7 @@ window.itemMetadata = {
   },
   "tail_cat": {
     "name": "Cat Tail",
-    "priority": null,
+    "priority": 10,
     "type_name": "tail",
     "required": [
       "male",
@@ -3967,149 +4363,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "tail_lizard": {
-    "name": "Lizard tail",
-    "priority": null,
-    "type_name": "tail",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "tails",
-      "tail_lizard"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 85,
-        "male": "body/tail/lizard/adult/fg/",
-        "muscular": "body/tail/lizard/adult/fg/",
-        "female": "body/tail/lizard/adult/fg/",
-        "pregnant": "body/tail/lizard/adult/fg/",
-        "teen": "body/tail/lizard/adult/fg/",
-        "child": "body/tail/lizard/child/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/tail/lizard/adult/bg/",
-        "muscular": "body/tail/lizard/adult/bg/",
-        "female": "body/tail/lizard/adult/bg/",
-        "pregnant": "body/tail/lizard/adult/bg/",
-        "teen": "body/tail/lizard/adult/bg/",
-        "child": "body/tail/lizard/child/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/tail/lizard",
-        "notes": "edited for v3 bases and recolored by bluecarrot16, additional animations added by JaidynReiman",
-        "authors": [
-          "Nila122",
-          "bluecarrot16",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/drakes-and-lizardfolk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
   "tail_lizard_alt": {
     "name": "Lizard Tail (Alt Colors)",
-    "priority": null,
+    "priority": 40,
     "type_name": "tail",
     "required": [
       "male",
@@ -4261,7 +4517,7 @@ window.itemMetadata = {
   },
   "tail_wolf": {
     "name": "Wolf Tail",
-    "priority": null,
+    "priority": 20,
     "type_name": "tail",
     "required": [
       "male",
@@ -4411,7 +4667,7 @@ window.itemMetadata = {
   },
   "tail_wolf_fluffy": {
     "name": "Fluffy Wolf Tail",
-    "priority": null,
+    "priority": 30,
     "type_name": "tail",
     "required": [
       "male",
@@ -4561,7 +4817,7 @@ window.itemMetadata = {
   },
   "wings_bat": {
     "name": "Bat Wings",
-    "priority": null,
+    "priority": 20,
     "type_name": "wings",
     "required": [
       "male",
@@ -4703,271 +4959,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "wings_dragonfly": {
-    "name": "Dragonfly Wings",
-    "priority": null,
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "wings_dragonfly"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "dragonfly",
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "body/wings/dragonfly/solid/fg/",
-        "muscular": "body/wings/dragonfly/solid/fg/",
-        "female": "body/wings/dragonfly/solid/fg/",
-        "pregnant": "body/wings/dragonfly/solid/fg/",
-        "teen": "body/wings/dragonfly/solid/fg/",
-        "child": "body/wings/dragonfly/solid/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/dragonfly/solid/bg/",
-        "muscular": "body/wings/dragonfly/solid/bg/",
-        "female": "body/wings/dragonfly/solid/bg/",
-        "pregnant": "body/wings/dragonfly/solid/bg/",
-        "teen": "body/wings/dragonfly/solid/bg/",
-        "child": "body/wings/dragonfly/solid/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/dragonfly",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings-pack-2"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "wings_dragonfly_transparent": {
-    "name": "Transparent Dragonfly Wings",
-    "priority": null,
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "wings_dragonfly_transparent"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "dragonfly",
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "body/wings/dragonfly/transparent/fg/",
-        "muscular": "body/wings/dragonfly/transparent/fg/",
-        "female": "body/wings/dragonfly/transparent/fg/",
-        "pregnant": "body/wings/dragonfly/transparent/fg/",
-        "teen": "body/wings/dragonfly/transparent/fg/",
-        "child": "body/wings/dragonfly/transparent/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/dragonfly/transparent/bg/",
-        "muscular": "body/wings/dragonfly/transparent/bg/",
-        "female": "body/wings/dragonfly/transparent/bg/",
-        "pregnant": "body/wings/dragonfly/transparent/bg/",
-        "teen": "body/wings/dragonfly/transparent/bg/",
-        "child": "body/wings/dragonfly/transparent/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/dragonfly",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings-pack-2"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
   "wings_feathered": {
     "name": "Feathered Wings",
-    "priority": null,
+    "priority": 10,
     "type_name": "wings",
     "required": [
       "male",
@@ -5099,144 +5093,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "wings_lizard": {
-    "name": "Lizard Wings",
-    "priority": null,
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "wings_lizard"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "body/wings/lizard/adult/fg/",
-        "muscular": "body/wings/lizard/adult/fg/",
-        "female": "body/wings/lizard/adult/fg/",
-        "pregnant": "body/wings/lizard/adult/fg/",
-        "teen": "body/wings/lizard/adult/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/lizard/adult/bg/",
-        "muscular": "body/wings/lizard/adult/bg/",
-        "female": "body/wings/lizard/adult/bg/",
-        "pregnant": "body/wings/lizard/adult/bg/",
-        "teen": "body/wings/lizard/adult/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/lizard",
-        "notes": "edited for v3 bases and recolored by bluecarrot16, sit/jump/run/emote/revised combat by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "Nila122",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/drakes-and-lizardfolk",
-          "https://opengameart.org/content/lpc-wings-new-animations"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
   "wings_lizard_alt": {
     "name": "Lizard Wings (Alt Colors)",
-    "priority": null,
+    "priority": 30,
     "type_name": "wings",
     "required": [
       "male",
@@ -5381,130 +5240,9 @@ window.itemMetadata = {
       ]
     }
   },
-  "wings_lizard_bat": {
-    "name": "Batlike Lizard Wings",
-    "priority": null,
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "wings_lizard_bat"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "body/wings/bat/lizard/adult/fg/",
-        "muscular": "body/wings/bat/lizard/adult/fg/",
-        "female": "body/wings/bat/lizard/adult/fg/",
-        "pregnant": "body/wings/bat/lizard/adult/fg/",
-        "teen": "body/wings/bat/lizard/adult/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/bat/lizard/adult/bg/",
-        "muscular": "body/wings/bat/lizard/adult/bg/",
-        "female": "body/wings/bat/lizard/adult/bg/",
-        "pregnant": "body/wings/bat/lizard/adult/bg/",
-        "teen": "body/wings/bat/lizard/adult/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/bat",
-        "notes": "Original by ElizaWy, added to most remaining frames by JaidynReiman",
-        "authors": [
-          "ElizaWy",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-wings-new-animations"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
   "wings_lunar": {
     "name": "Lunar Wings",
-    "priority": null,
+    "priority": 70,
     "type_name": "wings",
     "required": [
       "male",
@@ -5598,664 +5336,6 @@ window.itemMetadata = {
         ],
         "urls": [
           "https://opengameart.org/content/lpc-fairy-wings-pack-2"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "wings_monarch": {
-    "name": "Monarch Wings",
-    "priority": null,
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings",
-      "monarch"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "wings_monarch"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "monarch",
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "body/wings/monarch/base/fg/",
-        "muscular": "body/wings/monarch/base/fg/",
-        "female": "body/wings/monarch/base/fg/",
-        "pregnant": "body/wings/monarch/base/fg/",
-        "teen": "body/wings/monarch/base/fg/",
-        "child": "body/wings/monarch/base/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/monarch/base/bg/",
-        "muscular": "body/wings/monarch/base/bg/",
-        "female": "body/wings/monarch/base/bg/",
-        "pregnant": "body/wings/monarch/base/bg/",
-        "teen": "body/wings/monarch/base/bg/",
-        "child": "body/wings/monarch/base/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/monarch",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "wings_monarch_dots": {
-    "name": "Monarch Wings Dots",
-    "priority": null,
-    "type_name": "wings_dots",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [
-      "monarch"
-    ],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "wings_monarch_dots"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 106,
-        "male": "body/wings/monarch/dots/fg/",
-        "muscular": "body/wings/monarch/dots/fg/",
-        "female": "body/wings/monarch/dots/fg/",
-        "pregnant": "body/wings/monarch/dots/fg/",
-        "teen": "body/wings/monarch/dots/fg/",
-        "child": "body/wings/monarch/dots/fg/"
-      },
-      "layer_2": {
-        "zPos": 6,
-        "male": "body/wings/monarch/dots/bg/",
-        "muscular": "body/wings/monarch/dots/bg/",
-        "female": "body/wings/monarch/dots/bg/",
-        "pregnant": "body/wings/monarch/dots/bg/",
-        "teen": "body/wings/monarch/dots/bg/",
-        "child": "body/wings/monarch/dots/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/monarch",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "wings_monarch_edge": {
-    "name": "Monarch Wings Edge",
-    "priority": null,
-    "type_name": "wings_edge",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [
-      "monarch"
-    ],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "wings_monarch_edge"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 106,
-        "male": "body/wings/monarch/edge/fg/",
-        "muscular": "body/wings/monarch/edge/fg/",
-        "female": "body/wings/monarch/edge/fg/",
-        "pregnant": "body/wings/monarch/edge/fg/",
-        "teen": "body/wings/monarch/edge/fg/",
-        "child": "body/wings/monarch/edge/fg/"
-      },
-      "layer_2": {
-        "zPos": 6,
-        "male": "body/wings/monarch/edge/bg/",
-        "muscular": "body/wings/monarch/edge/bg/",
-        "female": "body/wings/monarch/edge/bg/",
-        "pregnant": "body/wings/monarch/edge/bg/",
-        "teen": "body/wings/monarch/edge/bg/",
-        "child": "body/wings/monarch/edge/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/monarch",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "wings_pixie": {
-    "name": "Pixie Wings",
-    "priority": null,
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "wings_pixie"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "pixie",
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "body/wings/pixie/solid/fg/",
-        "muscular": "body/wings/pixie/solid/fg/",
-        "female": "body/wings/pixie/solid/fg/",
-        "pregnant": "body/wings/pixie/solid/fg/",
-        "teen": "body/wings/pixie/solid/fg/",
-        "child": "body/wings/pixie/solid/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/pixie/solid/bg/",
-        "muscular": "body/wings/pixie/solid/bg/",
-        "female": "body/wings/pixie/solid/bg/",
-        "pregnant": "body/wings/pixie/solid/bg/",
-        "teen": "body/wings/pixie/solid/bg/",
-        "child": "body/wings/pixie/solid/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/pixie",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "wings_pixie_transparent": {
-    "name": "Transparent Pixie Wings",
-    "priority": null,
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "wings_pixie_transparent"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "pixie",
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "body/wings/pixie/transparent/fg/",
-        "muscular": "body/wings/pixie/transparent/fg/",
-        "female": "body/wings/pixie/transparent/fg/",
-        "pregnant": "body/wings/pixie/transparent/fg/",
-        "teen": "body/wings/pixie/transparent/fg/",
-        "child": "body/wings/pixie/transparent/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/pixie/transparent/bg/",
-        "muscular": "body/wings/pixie/transparent/bg/",
-        "female": "body/wings/pixie/transparent/bg/",
-        "pregnant": "body/wings/pixie/transparent/bg/",
-        "teen": "body/wings/pixie/transparent/bg/",
-        "child": "body/wings/pixie/transparent/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/pixie",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings"
         ]
       }
     ],
@@ -43924,6 +43004,933 @@ window.itemMetadata = {
       ]
     }
   },
+  "wings_dragonfly": {
+    "name": "Dragonfly Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "dragonfly",
+      "wings_dragonfly"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "dragonfly",
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 105,
+        "male": "body/wings/dragonfly/solid/fg/",
+        "muscular": "body/wings/dragonfly/solid/fg/",
+        "female": "body/wings/dragonfly/solid/fg/",
+        "pregnant": "body/wings/dragonfly/solid/fg/",
+        "teen": "body/wings/dragonfly/solid/fg/",
+        "child": "body/wings/dragonfly/solid/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/dragonfly/solid/bg/",
+        "muscular": "body/wings/dragonfly/solid/bg/",
+        "female": "body/wings/dragonfly/solid/bg/",
+        "pregnant": "body/wings/dragonfly/solid/bg/",
+        "teen": "body/wings/dragonfly/solid/bg/",
+        "child": "body/wings/dragonfly/solid/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/dragonfly",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings-pack-2"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "wings_dragonfly_transparent": {
+    "name": "Transparent Dragonfly Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "dragonfly",
+      "wings_dragonfly_transparent"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "dragonfly",
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 105,
+        "male": "body/wings/dragonfly/transparent/fg/",
+        "muscular": "body/wings/dragonfly/transparent/fg/",
+        "female": "body/wings/dragonfly/transparent/fg/",
+        "pregnant": "body/wings/dragonfly/transparent/fg/",
+        "teen": "body/wings/dragonfly/transparent/fg/",
+        "child": "body/wings/dragonfly/transparent/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/dragonfly/transparent/bg/",
+        "muscular": "body/wings/dragonfly/transparent/bg/",
+        "female": "body/wings/dragonfly/transparent/bg/",
+        "pregnant": "body/wings/dragonfly/transparent/bg/",
+        "teen": "body/wings/dragonfly/transparent/bg/",
+        "child": "body/wings/dragonfly/transparent/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/dragonfly",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings-pack-2"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "wings_monarch": {
+    "name": "Monarch Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings",
+      "monarch"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "monarch",
+      "wings_monarch"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "monarch",
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 105,
+        "male": "body/wings/monarch/base/fg/",
+        "muscular": "body/wings/monarch/base/fg/",
+        "female": "body/wings/monarch/base/fg/",
+        "pregnant": "body/wings/monarch/base/fg/",
+        "teen": "body/wings/monarch/base/fg/",
+        "child": "body/wings/monarch/base/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/monarch/base/bg/",
+        "muscular": "body/wings/monarch/base/bg/",
+        "female": "body/wings/monarch/base/bg/",
+        "pregnant": "body/wings/monarch/base/bg/",
+        "teen": "body/wings/monarch/base/bg/",
+        "child": "body/wings/monarch/base/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/monarch",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "wings_monarch_dots": {
+    "name": "Monarch Wings Dots",
+    "priority": null,
+    "type_name": "wings_dots",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [
+      "monarch"
+    ],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "monarch",
+      "wings_monarch_dots"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 106,
+        "male": "body/wings/monarch/dots/fg/",
+        "muscular": "body/wings/monarch/dots/fg/",
+        "female": "body/wings/monarch/dots/fg/",
+        "pregnant": "body/wings/monarch/dots/fg/",
+        "teen": "body/wings/monarch/dots/fg/",
+        "child": "body/wings/monarch/dots/fg/"
+      },
+      "layer_2": {
+        "zPos": 6,
+        "male": "body/wings/monarch/dots/bg/",
+        "muscular": "body/wings/monarch/dots/bg/",
+        "female": "body/wings/monarch/dots/bg/",
+        "pregnant": "body/wings/monarch/dots/bg/",
+        "teen": "body/wings/monarch/dots/bg/",
+        "child": "body/wings/monarch/dots/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/monarch",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "wings_monarch_edge": {
+    "name": "Monarch Wings Edge",
+    "priority": null,
+    "type_name": "wings_edge",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [
+      "monarch"
+    ],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "monarch",
+      "wings_monarch_edge"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 106,
+        "male": "body/wings/monarch/edge/fg/",
+        "muscular": "body/wings/monarch/edge/fg/",
+        "female": "body/wings/monarch/edge/fg/",
+        "pregnant": "body/wings/monarch/edge/fg/",
+        "teen": "body/wings/monarch/edge/fg/",
+        "child": "body/wings/monarch/edge/fg/"
+      },
+      "layer_2": {
+        "zPos": 6,
+        "male": "body/wings/monarch/edge/bg/",
+        "muscular": "body/wings/monarch/edge/bg/",
+        "female": "body/wings/monarch/edge/bg/",
+        "pregnant": "body/wings/monarch/edge/bg/",
+        "teen": "body/wings/monarch/edge/bg/",
+        "child": "body/wings/monarch/edge/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/monarch",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "wings_pixie": {
+    "name": "Pixie Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "pixie",
+      "wings_pixie"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "pixie",
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "body/wings/pixie/solid/fg/",
+        "muscular": "body/wings/pixie/solid/fg/",
+        "female": "body/wings/pixie/solid/fg/",
+        "pregnant": "body/wings/pixie/solid/fg/",
+        "teen": "body/wings/pixie/solid/fg/",
+        "child": "body/wings/pixie/solid/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/pixie/solid/bg/",
+        "muscular": "body/wings/pixie/solid/bg/",
+        "female": "body/wings/pixie/solid/bg/",
+        "pregnant": "body/wings/pixie/solid/bg/",
+        "teen": "body/wings/pixie/solid/bg/",
+        "child": "body/wings/pixie/solid/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/pixie",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "wings_pixie_transparent": {
+    "name": "Transparent Pixie Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "pixie",
+      "wings_pixie_transparent"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "pixie",
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "body/wings/pixie/transparent/fg/",
+        "muscular": "body/wings/pixie/transparent/fg/",
+        "female": "body/wings/pixie/transparent/fg/",
+        "pregnant": "body/wings/pixie/transparent/fg/",
+        "teen": "body/wings/pixie/transparent/fg/",
+        "child": "body/wings/pixie/transparent/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/pixie/transparent/bg/",
+        "muscular": "body/wings/pixie/transparent/bg/",
+        "female": "body/wings/pixie/transparent/bg/",
+        "pregnant": "body/wings/pixie/transparent/bg/",
+        "teen": "body/wings/pixie/transparent/bg/",
+        "child": "body/wings/pixie/transparent/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/pixie",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
   "hairext_braidl": {
     "name": "Left Braid",
     "priority": null,
@@ -78514,21 +78521,44 @@ window.categoryTree = {
         },
         "wings": {
           "items": [
-            "wings_bat",
-            "wings_lizard_bat",
-            "wings_dragonfly",
             "wings_feathered",
-            "wings_lizard",
+            "wings_bat",
             "wings_lizard_alt",
-            "wings_lunar",
-            "wings_monarch",
-            "wings_monarch_dots",
-            "wings_monarch_edge",
-            "wings_pixie",
-            "wings_dragonfly_transparent",
-            "wings_pixie_transparent"
+            "wings_lunar"
           ],
-          "children": {},
+          "children": {
+            "monarch": {
+              "items": [
+                "wings_monarch",
+                "wings_monarch_dots",
+                "wings_monarch_edge"
+              ],
+              "children": {},
+              "priority": 40,
+              "required": [],
+              "animations": []
+            },
+            "pixie": {
+              "items": [
+                "wings_pixie",
+                "wings_pixie_transparent"
+              ],
+              "children": {},
+              "priority": 50,
+              "required": [],
+              "animations": []
+            },
+            "dragonfly": {
+              "items": [
+                "wings_dragonfly",
+                "wings_dragonfly_transparent"
+              ],
+              "children": {},
+              "priority": 60,
+              "required": [],
+              "animations": []
+            }
+          },
           "priority": 70,
           "required": [],
           "animations": []
@@ -78536,10 +78566,9 @@ window.categoryTree = {
         "tails": {
           "items": [
             "tail_cat",
+            "tail_wolf",
             "tail_wolf_fluffy",
-            "tail_lizard",
-            "tail_lizard_alt",
-            "tail_wolf"
+            "tail_lizard_alt"
           ],
           "children": {},
           "priority": 80,
@@ -78547,7 +78576,11 @@ window.categoryTree = {
           "animations": []
         },
         "lizard": {
-          "items": [],
+          "items": [
+            "wings_lizard_bat",
+            "tail_lizard",
+            "wings_lizard"
+          ],
           "children": {},
           "priority": 90,
           "required": [],
