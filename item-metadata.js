@@ -466,6 +466,1790 @@ window.itemMetadata = {
       ]
     }
   },
+  "body_color": {
+    "name": "Body Color",
+    "priority": 10,
+    "type_name": "body",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "body_color"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "male": "body/bodies/male/",
+        "muscular": "body/bodies/muscular/",
+        "female": "body/bodies/female/",
+        "pregnant": "body/bodies/pregnant/",
+        "teen": "body/bodies/teen/",
+        "child": "body/bodies/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/bodies/male",
+        "notes": "see details at https://opengameart.org/content/lpc-character-bases; 'Thick' Male Revised Run/Climb by JaidynReiman (based on ElizaWy's LPC Revised)",
+        "authors": [
+          "bluecarrot16",
+          "JaidynReiman",
+          "Benjamin K. Smith (BenCreating)",
+          "Evert",
+          "Eliza Wyatt (ElizaWy)",
+          "TheraHedwig",
+          "MuffinElZangano",
+          "Durrani",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
+          "https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle",
+          "https://opengameart.org/content/lpc-revised-character-basics",
+          "https://opengameart.org/content/lpc-be-seated",
+          "https://opengameart.org/content/lpc-runcycle-for-male-muscular-and-pregnant-character-bases-with-modular-heads",
+          "https://opengameart.org/content/lpc-jump-expanded",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      },
+      {
+        "file": "body/bodies/female",
+        "notes": "see details at https://opengameart.org/content/lpc-character-bases",
+        "authors": [
+          "Benjamin K. Smith (BenCreating)",
+          "bluecarrot16",
+          "TheraHedwig",
+          "Evert",
+          "MuffinElZangano",
+          "Durrani",
+          "Pierre Vigier (pvigier)",
+          "ElizaWy",
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-ladies",
+          "https://opengameart.org/content/lpc-7-womens-shirts",
+          "https://opengameart.org/content/lpc-jump-expanded",
+          "https://opengameart.org/content/lpc-be-seated",
+          "https://opengameart.org/content/lpc-revised-character-basics",
+          "https://gitlab.com/vagabondgame/lpc-characters",
+          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
+          "https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle"
+        ]
+      },
+      {
+        "file": "body/bodies/muscular",
+        "notes": "see details at https://opengameart.org/content/lpc-character-bases",
+        "authors": [
+          "bluecarrot16",
+          "JaidynReiman",
+          "Evert",
+          "TheraHedwig",
+          "MuffinElZangano",
+          "Durrani",
+          "Sander Frenken (castelonia)",
+          "Benjamin K. Smith (BenCreating)",
+          "Eliza Wyatt (ElizaWy)",
+          "dalonedrau",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-barbarian-sprite-base",
+          "https://opengameart.org/content/lpc-muscular-swing-animation",
+          "https://opengameart.org/content/lpc-muscular-hurt-animation",
+          "https://opengameart.org/content/lpc-jump-expanded",
+          "https://opengameart.org/content/lpc-revised-character-basics",
+          "https://opengameart.org/content/lpc-be-seated",
+          "https://opengameart.org/content/lpc-jump-expanded",
+          "https://opengameart.org/content/lpc-character-bases",
+          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani"
+        ]
+      },
+      {
+        "file": "body/bodies/teen",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Evert",
+          "TheraHedwig",
+          "Benjamin K. Smith (BenCreating)",
+          "MuffinElZangano",
+          "Durrani",
+          "Pierre Vigier (pvigier)",
+          "Eliza Wyatt (ElizaWy)",
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-ladies",
+          "https://opengameart.org/content/lpc-teen-unisex-base-clothes",
+          "https://opengameart.org/content/lpc-jump-expanded",
+          "https://opengameart.org/content/lpc-revised-character-basics",
+          "https://opengameart.org/content/lpc-be-seated",
+          "https://gitlab.com/vagabondgame/lpc-characters",
+          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
+          "https://opengameart.org/content/lpc-jump-expanded"
+        ]
+      },
+      {
+        "file": "body/bodies/pregnant",
+        "notes": "see details at https://opengameart.org/content/lpc-character-bases; Pregnant Revised Run/Combat Idle/Emotes by JaidynReiman (based on ElizaWy's LPC Revised)",
+        "authors": [
+          "bluecarrot16",
+          "JaidynReiman",
+          "Evert",
+          "TheraHedwig",
+          "MuffinElZangano",
+          "Durrani",
+          "Benjamin K. Smith (BenCreating)",
+          "Pierre Vigier (pvigier)",
+          "Eliza Wyatt (ElizaWy)",
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-ladies",
+          "https://opengameart.org/content/lpc-pregnancy-bases-maternity-wear",
+          "https://opengameart.org/content/lpc-7-womens-shirts",
+          "https://opengameart.org/content/lpc-jump-expanded",
+          "https://gitlab.com/vagabondgame/lpc-characters",
+          "https://opengameart.org/content/lpc-jump-expanded",
+          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
+          "https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle"
+        ]
+      },
+      {
+        "file": "body/bodies/child",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Benjamin K. Smith (BenCreating)",
+          "ElizaWy",
+          "MuffinElZangano",
+          "Durrani",
+          "Nila122",
+          "kheftel",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-child-standing-template",
+          "https://opengameart.org/content/lpc-children-walk-animation",
+          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
+          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
+          "https://opengameart.org/content/lpc-jump-expanded",
+          "https://opengameart.org/content/lpc-jump-expanded"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "shadow": {
+    "name": "Shadow",
+    "priority": 20,
+    "type_name": "shadow",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "shadow"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "shadow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 0,
+        "male": "shadow/adult/",
+        "muscular": "shadow/adult/",
+        "female": "shadow/adult/",
+        "pregnant": "shadow/adult/",
+        "child": "shadow/child/",
+        "teen": "shadow/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shadow",
+        "notes": "",
+        "authors": [
+          "drjamgo@hotmail.com"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/shadow-for-lpc-sprite"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "child": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "wheelchair": {
+    "name": "Wheelchair",
+    "priority": 40,
+    "type_name": "wheelchair",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "wheelchair"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wheelchair"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "pink",
+      "tan",
+      "white"
+    ],
+    "layers": {
+      "layer_1": {
+        "custom_animation": "wheelchair",
+        "zPos": -2,
+        "male": "body/wheelchair/adult/background/",
+        "muscular": "body/wheelchair/adult/background/",
+        "female": "body/wheelchair/adult/background/",
+        "pregnant": "body/wheelchair/adult/background/",
+        "teen": "body/wheelchair/adult/background/"
+      },
+      "layer_2": {
+        "custom_animation": "wheelchair",
+        "zPos": 140,
+        "male": "body/wheelchair/adult/foreground/",
+        "muscular": "body/wheelchair/adult/foreground/",
+        "female": "body/wheelchair/adult/foreground/",
+        "pregnant": "body/wheelchair/adult/foreground/",
+        "teen": "body/wheelchair/adult/foreground/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wheelchair",
+        "notes": "",
+        "authors": [
+          "Eliza Wyatt"
+        ],
+        "licenses": [
+          "CC-BY 3.0",
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-revised-elders"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY 3.0",
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "CC-BY 3.0",
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "CC-BY 3.0",
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "CC-BY 3.0",
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "CC-BY 3.0",
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "feet_armour": {
+    "name": "Armour",
+    "priority": 50,
+    "type_name": "shoes",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "feet",
+      "feet_armour"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "steel",
+      "iron",
+      "ceramic",
+      "brass",
+      "copper",
+      "bronze",
+      "silver",
+      "gold"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 15,
+        "male": "feet/armour/plate/male/",
+        "muscular": "feet/armour/plate/male/",
+        "female": "feet/armour/plate/female/",
+        "pregnant": "feet/armour/plate/female/",
+        "teen": "feet/armour/plate/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "feet/armour/plate",
+        "notes": "original by wulax, recolors by bigbeargames, edits for v3 base and recolors by bluecarrot16",
+        "authors": [
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      },
+      {
+        "file": "feet/armour/plate/female",
+        "notes": "original by wulax, edited for female base by makrohn, recolors by bigbeargames, edits for v3 base and recolors by bluecarrot16",
+        "authors": [
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "feet_hoofs": {
+    "name": "Hoofs",
+    "priority": 80,
+    "type_name": "shoes",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "feet",
+      "feet_hoofs"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 15,
+        "male": "feet/hoofs/male/",
+        "muscular": "feet/hoofs/male/",
+        "female": "feet/hoofs/female/",
+        "teen": "feet/hoofs/female/",
+        "pregnant": "feet/hoofs/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "feet/hoofs",
+        "notes": "",
+        "authors": [
+          "Evert"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-faun-and-minotaur"
+        ]
+      },
+      {
+        "file": "feet/hoofs/female",
+        "notes": "edited for v3 female bases by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Evert"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-faun-and-minotaur",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "feet_sandals": {
+    "name": "Sandals",
+    "priority": 70,
+    "type_name": "shoes",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "feet",
+      "feet_sandals"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow",
+      "steel",
+      "iron",
+      "ceramic",
+      "brass",
+      "copper",
+      "bronze",
+      "silver",
+      "gold"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 15,
+        "female": "feet/sandals/thin/",
+        "teen": "feet/sandals/thin/",
+        "pregnant": "feet/sandals/thin/",
+        "male": "feet/sandals/male/",
+        "muscular": "feet/sandals/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "feet/sandals",
+        "notes": "edited for v3 bases by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
+        "authors": [
+          "Nila122",
+          "JaidynReiman",
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 2.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-roman-armor",
+          "http://opengameart.org/content/lpc-clothing-updates",
+          "https://opengameart.org/content/lpc-expanded-socks-shoes"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "feet_slippers": {
+    "name": "Slippers",
+    "priority": 60,
+    "type_name": "shoes",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "feet",
+      "feet_slippers"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 15,
+        "male": "feet/slippers/male/",
+        "muscular": "feet/slippers/male/",
+        "female": "feet/slippers/thin/",
+        "teen": "feet/slippers/thin/",
+        "pregnant": "feet/slippers/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "feet/slippers",
+        "notes": "original by Luke Mehl, Joe White did thrust/shoot animations, edited for v3 bases and male sprites by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
+        "authors": [
+          "bluecarrot16",
+          "JaidynReiman",
+          "Joe White",
+          "Luke Mehl"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/thin-mage-clothing-set",
+          "http://opengameart.org/content/lpc-clothing-updates",
+          "https://opengameart.org/content/lpc-expanded-socks-shoes"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "eyes_child": {
+    "name": "Child Eyes",
+    "priority": null,
+    "type_name": "eyes",
+    "required": [
+      "child"
+    ],
+    "animations": [
+      "walk",
+      "slash",
+      "hurt",
+      "idle",
+      "jump",
+      "sit"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "eyes_child"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blue",
+      "brown",
+      "gray",
+      "green",
+      "orange",
+      "purple",
+      "red",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 105,
+        "child": "eyes/human/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "eyes/human/child",
+        "notes": "original by Redshrike, mapped to all frames by Matthew Krohn & JaidynReiman",
+        "authors": [
+          "JaidynReiman",
+          "Matthew Krohn (makrohn)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "child": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_wrinkles": {
+    "name": "Wrinkles",
+    "priority": 80,
+    "type_name": "wrinkes",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "head_wrinkles"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 102,
+        "male": "head/wrinkles/",
+        "muscular": "head/wrinkles/",
+        "female": "head/wrinkles/",
+        "teen": "head/wrinkles/",
+        "pregnant": "head/wrinkles/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/wrinkles",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": []
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "legs_armour": {
+    "name": "Armour",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "climb",
+      "idle",
+      "jump",
+      "sit",
+      "emotes"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "legs_armour"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "steel",
+      "iron",
+      "ceramic",
+      "brass",
+      "copper",
+      "bronze",
+      "silver",
+      "gold"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "male": "legs/armour/plate/male/",
+        "female": "legs/armour/plate/thin/",
+        "teen": "legs/armour/plate/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/armour/plate",
+        "notes": "reduced to 7 colors an adapted to v3 bases by bluecarrot16, climb/jump/sit/emotes by JaidynReiman",
+        "authors": [
+          "bluecarrot16",
+          "JaidynReiman",
+          "Michael Whitlock (bigbeargames)",
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "tool_rod": {
+    "name": "Rod",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "tool_rod"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "tools",
+      "tool_rod"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "rod"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 9,
+        "custom_animation": "tool_rod",
+        "male": "tools/rod/background/",
+        "muscular": "tools/rod/background/",
+        "female": "tools/rod/background/",
+        "pregnant": "tools/rod/background/",
+        "teen": "tools/rod/background/"
+      },
+      "layer_2": {
+        "zPos": 150,
+        "custom_animation": "tool_rod",
+        "male": "tools/rod/foreground/",
+        "muscular": "tools/rod/foreground/",
+        "female": "tools/rod/foreground/",
+        "pregnant": "tools/rod/foreground/",
+        "teen": "tools/rod/foreground/"
+      }
+    },
+    "credits": [
+      {
+        "file": "tools/rod",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Pierre Vigier (pvigier)",
+          "Tuomo Untinen (reemax)",
+          "Johannes Sjölund (wulax)",
+          "and Inboxninja"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-hand-tools"
+        ]
+      }
+    ],
+    "preview_row": 0,
+    "preview_column": 0,
+    "preview_x_offset": 304,
+    "preview_y_offset": 24,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "tool_smash": {
+    "name": "Smash",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "slash_128"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "tools",
+      "tool_smash"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "axe",
+      "hammer",
+      "pickaxe"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "tools/smash/universal/male/",
+        "muscular": "tools/smash/universal/male/",
+        "female": "tools/smash/universal/female/",
+        "pregnant": "tools/smash/universal/female/",
+        "teen": "tools/smash/universal/female/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "custom_animation": "slash_128",
+        "male": "tools/smash/background/",
+        "muscular": "tools/smash/background/",
+        "female": "tools/smash/background/",
+        "pregnant": "tools/smash/background/",
+        "teen": "tools/smash/background/"
+      },
+      "layer_3": {
+        "zPos": 150,
+        "custom_animation": "slash_128",
+        "male": "tools/smash/foreground/",
+        "muscular": "tools/smash/foreground/",
+        "female": "tools/smash/foreground/",
+        "pregnant": "tools/smash/foreground/",
+        "teen": "tools/smash/foreground/"
+      }
+    },
+    "credits": [
+      {
+        "file": "tools/smash",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Pierre Vigier (pvigier)",
+          "Tuomo Untinen (reemax)",
+          "Johannes Sjölund (wulax)",
+          "and Inboxninja"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-hand-tools"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "tool_thrust": {
+    "name": "Thrust",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "hurt"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "tools",
+      "tool_thrust"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "hoe",
+      "shovel",
+      "watering"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 9,
+        "male": "tools/thrust/background/",
+        "muscular": "tools/thrust/background/",
+        "female": "tools/thrust/background/",
+        "pregnant": "tools/thrust/background/",
+        "teen": "tools/thrust/background/"
+      },
+      "layer_2": {
+        "zPos": 150,
+        "male": "tools/thrust/foreground/",
+        "muscular": "tools/thrust/foreground/",
+        "female": "tools/thrust/foreground/",
+        "pregnant": "tools/thrust/foreground/",
+        "teen": "tools/thrust/foreground/"
+      }
+    },
+    "credits": [
+      {
+        "file": "tools/thrust",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Pierre Vigier (pvigier)",
+          "Tuomo Untinen (reemax)",
+          "Johannes Sjölund (wulax)",
+          "and Inboxninja"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-hand-tools"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "tool_whip": {
+    "name": "Whip",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "tool_whip"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "tools",
+      "tool_whip"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "whip"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 9,
+        "custom_animation": "tool_whip",
+        "male": "tools/whip/background/",
+        "muscular": "tools/whip/background/",
+        "female": "tools/whip/background/",
+        "pregnant": "tools/whip/background/",
+        "teen": "tools/whip/background/"
+      },
+      "layer_2": {
+        "zPos": 150,
+        "custom_animation": "tool_whip",
+        "male": "tools/whip/",
+        "muscular": "tools/whip/",
+        "female": "tools/whip/",
+        "pregnant": "tools/whip/",
+        "teen": "tools/whip/"
+      }
+    },
+    "credits": [
+      {
+        "file": "tools/whip",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "GPL 3.0",
+          "CC-BY 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-more-weapons"
+        ]
+      }
+    ],
+    "preview_row": 3,
+    "preview_column": 12,
+    "preview_x_offset": 24,
+    "preview_y_offset": 48,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ]
+    }
+  },
+  "torso_bandages": {
+    "name": "Bandages",
+    "priority": 80,
+    "type_name": "bandages",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "torso_bandages"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 110,
+        "male": "torso/bandage/male/",
+        "female": "torso/bandage/female/",
+        "teen": "torso/bandage/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/bandage",
+        "notes": "",
+        "authors": [
+          "Nila122"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 2.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-bandages"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_chainmail": {
+    "name": "Chainmail",
+    "priority": 70,
+    "type_name": "chainmail",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "torso_chainmail"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "gray"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 50,
+        "male": "torso/chainmail/male/",
+        "female": "torso/chainmail/female/",
+        "teen": "torso/chainmail/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/chainmail",
+        "notes": "minor edits by bluecarrot16",
+        "authors": [
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
   "shoulders_epaulets": {
     "name": "Epaulets",
     "priority": null,
@@ -1172,314 +2956,6 @@ window.itemMetadata = {
       ]
     }
   },
-  "body_color": {
-    "name": "Body Color",
-    "priority": 10,
-    "type_name": "body",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "body_color"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "male": "body/bodies/male/",
-        "muscular": "body/bodies/muscular/",
-        "female": "body/bodies/female/",
-        "pregnant": "body/bodies/pregnant/",
-        "teen": "body/bodies/teen/",
-        "child": "body/bodies/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/bodies/male",
-        "notes": "see details at https://opengameart.org/content/lpc-character-bases; 'Thick' Male Revised Run/Climb by JaidynReiman (based on ElizaWy's LPC Revised)",
-        "authors": [
-          "bluecarrot16",
-          "JaidynReiman",
-          "Benjamin K. Smith (BenCreating)",
-          "Evert",
-          "Eliza Wyatt (ElizaWy)",
-          "TheraHedwig",
-          "MuffinElZangano",
-          "Durrani",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
-          "https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle",
-          "https://opengameart.org/content/lpc-revised-character-basics",
-          "https://opengameart.org/content/lpc-be-seated",
-          "https://opengameart.org/content/lpc-runcycle-for-male-muscular-and-pregnant-character-bases-with-modular-heads",
-          "https://opengameart.org/content/lpc-jump-expanded",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      },
-      {
-        "file": "body/bodies/female",
-        "notes": "see details at https://opengameart.org/content/lpc-character-bases",
-        "authors": [
-          "Benjamin K. Smith (BenCreating)",
-          "bluecarrot16",
-          "TheraHedwig",
-          "Evert",
-          "MuffinElZangano",
-          "Durrani",
-          "Pierre Vigier (pvigier)",
-          "ElizaWy",
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-ladies",
-          "https://opengameart.org/content/lpc-7-womens-shirts",
-          "https://opengameart.org/content/lpc-jump-expanded",
-          "https://opengameart.org/content/lpc-be-seated",
-          "https://opengameart.org/content/lpc-revised-character-basics",
-          "https://gitlab.com/vagabondgame/lpc-characters",
-          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
-          "https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle"
-        ]
-      },
-      {
-        "file": "body/bodies/muscular",
-        "notes": "see details at https://opengameart.org/content/lpc-character-bases",
-        "authors": [
-          "bluecarrot16",
-          "JaidynReiman",
-          "Evert",
-          "TheraHedwig",
-          "MuffinElZangano",
-          "Durrani",
-          "Sander Frenken (castelonia)",
-          "Benjamin K. Smith (BenCreating)",
-          "Eliza Wyatt (ElizaWy)",
-          "dalonedrau",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-barbarian-sprite-base",
-          "https://opengameart.org/content/lpc-muscular-swing-animation",
-          "https://opengameart.org/content/lpc-muscular-hurt-animation",
-          "https://opengameart.org/content/lpc-jump-expanded",
-          "https://opengameart.org/content/lpc-revised-character-basics",
-          "https://opengameart.org/content/lpc-be-seated",
-          "https://opengameart.org/content/lpc-jump-expanded",
-          "https://opengameart.org/content/lpc-character-bases",
-          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani"
-        ]
-      },
-      {
-        "file": "body/bodies/teen",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Evert",
-          "TheraHedwig",
-          "Benjamin K. Smith (BenCreating)",
-          "MuffinElZangano",
-          "Durrani",
-          "Pierre Vigier (pvigier)",
-          "Eliza Wyatt (ElizaWy)",
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-ladies",
-          "https://opengameart.org/content/lpc-teen-unisex-base-clothes",
-          "https://opengameart.org/content/lpc-jump-expanded",
-          "https://opengameart.org/content/lpc-revised-character-basics",
-          "https://opengameart.org/content/lpc-be-seated",
-          "https://gitlab.com/vagabondgame/lpc-characters",
-          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
-          "https://opengameart.org/content/lpc-jump-expanded"
-        ]
-      },
-      {
-        "file": "body/bodies/pregnant",
-        "notes": "see details at https://opengameart.org/content/lpc-character-bases; Pregnant Revised Run/Combat Idle/Emotes by JaidynReiman (based on ElizaWy's LPC Revised)",
-        "authors": [
-          "bluecarrot16",
-          "JaidynReiman",
-          "Evert",
-          "TheraHedwig",
-          "MuffinElZangano",
-          "Durrani",
-          "Benjamin K. Smith (BenCreating)",
-          "Pierre Vigier (pvigier)",
-          "Eliza Wyatt (ElizaWy)",
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-ladies",
-          "https://opengameart.org/content/lpc-pregnancy-bases-maternity-wear",
-          "https://opengameart.org/content/lpc-7-womens-shirts",
-          "https://opengameart.org/content/lpc-jump-expanded",
-          "https://gitlab.com/vagabondgame/lpc-characters",
-          "https://opengameart.org/content/lpc-jump-expanded",
-          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
-          "https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle"
-        ]
-      },
-      {
-        "file": "body/bodies/child",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Benjamin K. Smith (BenCreating)",
-          "ElizaWy",
-          "MuffinElZangano",
-          "Durrani",
-          "Nila122",
-          "kheftel",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-child-standing-template",
-          "https://opengameart.org/content/lpc-children-walk-animation",
-          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
-          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
-          "https://opengameart.org/content/lpc-jump-expanded",
-          "https://opengameart.org/content/lpc-jump-expanded"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
   "tail_lizard": {
     "name": "Lizard tail",
     "priority": null,
@@ -2003,90 +3479,6 @@ window.itemMetadata = {
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "shadow": {
-    "name": "Shadow",
-    "priority": 20,
-    "type_name": "shadow",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "shadow"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "shadow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 0,
-        "male": "shadow/adult/",
-        "muscular": "shadow/adult/",
-        "female": "shadow/adult/",
-        "pregnant": "shadow/adult/",
-        "child": "shadow/child/",
-        "teen": "shadow/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shadow",
-        "notes": "",
-        "authors": [
-          "drjamgo@hotmail.com"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/shadow-for-lpc-sprite"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "child": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
       ]
     }
   },
@@ -2860,1026 +4252,6 @@ window.itemMetadata = {
       ]
     }
   },
-  "wheelchair": {
-    "name": "Wheelchair",
-    "priority": 40,
-    "type_name": "wheelchair",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "wheelchair"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wheelchair"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "pink",
-      "tan",
-      "white"
-    ],
-    "layers": {
-      "layer_1": {
-        "custom_animation": "wheelchair",
-        "zPos": -2,
-        "male": "body/wheelchair/adult/background/",
-        "muscular": "body/wheelchair/adult/background/",
-        "female": "body/wheelchair/adult/background/",
-        "pregnant": "body/wheelchair/adult/background/",
-        "teen": "body/wheelchair/adult/background/"
-      },
-      "layer_2": {
-        "custom_animation": "wheelchair",
-        "zPos": 140,
-        "male": "body/wheelchair/adult/foreground/",
-        "muscular": "body/wheelchair/adult/foreground/",
-        "female": "body/wheelchair/adult/foreground/",
-        "pregnant": "body/wheelchair/adult/foreground/",
-        "teen": "body/wheelchair/adult/foreground/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wheelchair",
-        "notes": "",
-        "authors": [
-          "Eliza Wyatt"
-        ],
-        "licenses": [
-          "CC-BY 3.0",
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-revised-elders"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY 3.0",
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "CC-BY 3.0",
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "CC-BY 3.0",
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "CC-BY 3.0",
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "CC-BY 3.0",
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "wings_dragonfly_transparent": {
-    "name": "Transparent Dragonfly Wings",
-    "priority": null,
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "dragonfly",
-      "wings_dragonfly_transparent"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "dragonfly",
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "body/wings/dragonfly/transparent/fg/",
-        "muscular": "body/wings/dragonfly/transparent/fg/",
-        "female": "body/wings/dragonfly/transparent/fg/",
-        "pregnant": "body/wings/dragonfly/transparent/fg/",
-        "teen": "body/wings/dragonfly/transparent/fg/",
-        "child": "body/wings/dragonfly/transparent/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/dragonfly/transparent/bg/",
-        "muscular": "body/wings/dragonfly/transparent/bg/",
-        "female": "body/wings/dragonfly/transparent/bg/",
-        "pregnant": "body/wings/dragonfly/transparent/bg/",
-        "teen": "body/wings/dragonfly/transparent/bg/",
-        "child": "body/wings/dragonfly/transparent/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/dragonfly",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings-pack-2"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "wings_dragonfly": {
-    "name": "Dragonfly Wings",
-    "priority": null,
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "dragonfly",
-      "wings_dragonfly"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "dragonfly",
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "body/wings/dragonfly/solid/fg/",
-        "muscular": "body/wings/dragonfly/solid/fg/",
-        "female": "body/wings/dragonfly/solid/fg/",
-        "pregnant": "body/wings/dragonfly/solid/fg/",
-        "teen": "body/wings/dragonfly/solid/fg/",
-        "child": "body/wings/dragonfly/solid/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/dragonfly/solid/bg/",
-        "muscular": "body/wings/dragonfly/solid/bg/",
-        "female": "body/wings/dragonfly/solid/bg/",
-        "pregnant": "body/wings/dragonfly/solid/bg/",
-        "teen": "body/wings/dragonfly/solid/bg/",
-        "child": "body/wings/dragonfly/solid/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/dragonfly",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings-pack-2"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "wings_monarch_dots": {
-    "name": "Monarch Wings Dots",
-    "priority": null,
-    "type_name": "wings_dots",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [
-      "monarch"
-    ],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "monarch",
-      "wings_monarch_dots"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 106,
-        "male": "body/wings/monarch/dots/fg/",
-        "muscular": "body/wings/monarch/dots/fg/",
-        "female": "body/wings/monarch/dots/fg/",
-        "pregnant": "body/wings/monarch/dots/fg/",
-        "teen": "body/wings/monarch/dots/fg/",
-        "child": "body/wings/monarch/dots/fg/"
-      },
-      "layer_2": {
-        "zPos": 6,
-        "male": "body/wings/monarch/dots/bg/",
-        "muscular": "body/wings/monarch/dots/bg/",
-        "female": "body/wings/monarch/dots/bg/",
-        "pregnant": "body/wings/monarch/dots/bg/",
-        "teen": "body/wings/monarch/dots/bg/",
-        "child": "body/wings/monarch/dots/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/monarch",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "wings_monarch_edge": {
-    "name": "Monarch Wings Edge",
-    "priority": null,
-    "type_name": "wings_edge",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [
-      "monarch"
-    ],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "monarch",
-      "wings_monarch_edge"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 106,
-        "male": "body/wings/monarch/edge/fg/",
-        "muscular": "body/wings/monarch/edge/fg/",
-        "female": "body/wings/monarch/edge/fg/",
-        "pregnant": "body/wings/monarch/edge/fg/",
-        "teen": "body/wings/monarch/edge/fg/",
-        "child": "body/wings/monarch/edge/fg/"
-      },
-      "layer_2": {
-        "zPos": 6,
-        "male": "body/wings/monarch/edge/bg/",
-        "muscular": "body/wings/monarch/edge/bg/",
-        "female": "body/wings/monarch/edge/bg/",
-        "pregnant": "body/wings/monarch/edge/bg/",
-        "teen": "body/wings/monarch/edge/bg/",
-        "child": "body/wings/monarch/edge/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/monarch",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "wings_monarch": {
-    "name": "Monarch Wings",
-    "priority": null,
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings",
-      "monarch"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "monarch",
-      "wings_monarch"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "monarch",
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "male": "body/wings/monarch/base/fg/",
-        "muscular": "body/wings/monarch/base/fg/",
-        "female": "body/wings/monarch/base/fg/",
-        "pregnant": "body/wings/monarch/base/fg/",
-        "teen": "body/wings/monarch/base/fg/",
-        "child": "body/wings/monarch/base/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/monarch/base/bg/",
-        "muscular": "body/wings/monarch/base/bg/",
-        "female": "body/wings/monarch/base/bg/",
-        "pregnant": "body/wings/monarch/base/bg/",
-        "teen": "body/wings/monarch/base/bg/",
-        "child": "body/wings/monarch/base/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/monarch",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "wings_pixie_transparent": {
-    "name": "Transparent Pixie Wings",
-    "priority": null,
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "pixie",
-      "wings_pixie_transparent"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "pixie",
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "body/wings/pixie/transparent/fg/",
-        "muscular": "body/wings/pixie/transparent/fg/",
-        "female": "body/wings/pixie/transparent/fg/",
-        "pregnant": "body/wings/pixie/transparent/fg/",
-        "teen": "body/wings/pixie/transparent/fg/",
-        "child": "body/wings/pixie/transparent/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/pixie/transparent/bg/",
-        "muscular": "body/wings/pixie/transparent/bg/",
-        "female": "body/wings/pixie/transparent/bg/",
-        "pregnant": "body/wings/pixie/transparent/bg/",
-        "teen": "body/wings/pixie/transparent/bg/",
-        "child": "body/wings/pixie/transparent/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/pixie",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
-  "wings_pixie": {
-    "name": "Pixie Wings",
-    "priority": null,
-    "type_name": "wings",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "wings"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "wings",
-      "pixie",
-      "wings_pixie"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "pixie",
-      "amber",
-      "black",
-      "blue",
-      "bluegray",
-      "bright_green",
-      "bronze",
-      "brown",
-      "ceramic",
-      "forest",
-      "gold",
-      "green",
-      "iron",
-      "lavender",
-      "light",
-      "maroon",
-      "navy",
-      "orange",
-      "pale_green",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "silver",
-      "sky",
-      "teal",
-      "white",
-      "yellow",
-      "zombie_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "body/wings/pixie/solid/fg/",
-        "muscular": "body/wings/pixie/solid/fg/",
-        "female": "body/wings/pixie/solid/fg/",
-        "pregnant": "body/wings/pixie/solid/fg/",
-        "teen": "body/wings/pixie/solid/fg/",
-        "child": "body/wings/pixie/solid/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "body/wings/pixie/solid/bg/",
-        "muscular": "body/wings/pixie/solid/bg/",
-        "female": "body/wings/pixie/solid/bg/",
-        "pregnant": "body/wings/pixie/solid/bg/",
-        "teen": "body/wings/pixie/solid/bg/",
-        "child": "body/wings/pixie/solid/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/wings/pixie",
-        "notes": "In dedication to my grandmother, Sharon Rowe",
-        "authors": [
-          "The Foreman"
-        ],
-        "licenses": [
-          "OGA-BY 4.0",
-          "CC-BY-SA 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-fairy-wings"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "female": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "teen": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "child": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 4.0",
-        "CC-BY-SA 4.0"
-      ]
-    }
-  },
   "wings_bat": {
     "name": "Bat Wings",
     "priority": 20,
@@ -4460,7 +4832,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "./sheet_definitions",
+      "body",
+      "wounds",
       "wound_arm"
     ],
     "replace_in_path": {},
@@ -4556,7 +4929,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "./sheet_definitions",
+      "body",
+      "wounds",
       "wound_brain"
     ],
     "replace_in_path": {},
@@ -4652,7 +5026,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "./sheet_definitions",
+      "body",
+      "wounds",
       "wound_eye_left"
     ],
     "replace_in_path": {},
@@ -4749,7 +5124,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "./sheet_definitions",
+      "body",
+      "wounds",
       "wound_eye_right"
     ],
     "replace_in_path": {},
@@ -4845,7 +5221,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "./sheet_definitions",
+      "body",
+      "wounds",
       "wound_mouth"
     ],
     "replace_in_path": {},
@@ -4931,7 +5308,8 @@ window.itemMetadata = {
     "required_tags": [],
     "excluded_tags": [],
     "path": [
-      "./sheet_definitions",
+      "body",
+      "wounds",
       "wound_ribs"
     ],
     "replace_in_path": {},
@@ -5788,508 +6166,6 @@ window.itemMetadata = {
       "pregnant": [
         "OGA-BY 3.0+",
         "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "feet_armour": {
-    "name": "Armour",
-    "priority": 50,
-    "type_name": "shoes",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "feet",
-      "feet_armour"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "steel",
-      "iron",
-      "ceramic",
-      "brass",
-      "copper",
-      "bronze",
-      "silver",
-      "gold"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 15,
-        "male": "feet/armour/plate/male/",
-        "muscular": "feet/armour/plate/male/",
-        "female": "feet/armour/plate/female/",
-        "pregnant": "feet/armour/plate/female/",
-        "teen": "feet/armour/plate/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "feet/armour/plate",
-        "notes": "original by wulax, recolors by bigbeargames, edits for v3 base and recolors by bluecarrot16",
-        "authors": [
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      },
-      {
-        "file": "feet/armour/plate/female",
-        "notes": "original by wulax, edited for female base by makrohn, recolors by bigbeargames, edits for v3 base and recolors by bluecarrot16",
-        "authors": [
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "feet_hoofs": {
-    "name": "Hoofs",
-    "priority": 80,
-    "type_name": "shoes",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "feet",
-      "feet_hoofs"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 15,
-        "male": "feet/hoofs/male/",
-        "muscular": "feet/hoofs/male/",
-        "female": "feet/hoofs/female/",
-        "teen": "feet/hoofs/female/",
-        "pregnant": "feet/hoofs/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "feet/hoofs",
-        "notes": "",
-        "authors": [
-          "Evert"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-faun-and-minotaur"
-        ]
-      },
-      {
-        "file": "feet/hoofs/female",
-        "notes": "edited for v3 female bases by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Evert"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-faun-and-minotaur",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "feet_sandals": {
-    "name": "Sandals",
-    "priority": 70,
-    "type_name": "shoes",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "feet",
-      "feet_sandals"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow",
-      "steel",
-      "iron",
-      "ceramic",
-      "brass",
-      "copper",
-      "bronze",
-      "silver",
-      "gold"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 15,
-        "female": "feet/sandals/thin/",
-        "teen": "feet/sandals/thin/",
-        "pregnant": "feet/sandals/thin/",
-        "male": "feet/sandals/male/",
-        "muscular": "feet/sandals/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "feet/sandals",
-        "notes": "edited for v3 bases by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
-        "authors": [
-          "Nila122",
-          "JaidynReiman",
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 2.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-roman-armor",
-          "http://opengameart.org/content/lpc-clothing-updates",
-          "https://opengameart.org/content/lpc-expanded-socks-shoes"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "feet_slippers": {
-    "name": "Slippers",
-    "priority": 60,
-    "type_name": "shoes",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "feet",
-      "feet_slippers"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 15,
-        "male": "feet/slippers/male/",
-        "muscular": "feet/slippers/male/",
-        "female": "feet/slippers/thin/",
-        "teen": "feet/slippers/thin/",
-        "pregnant": "feet/slippers/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "feet/slippers",
-        "notes": "original by Luke Mehl, Joe White did thrust/shoot animations, edited for v3 bases and male sprites by bluecarrot16, Jump/Sit/Emote/Run/Revised Combat by JaidynReiman",
-        "authors": [
-          "bluecarrot16",
-          "JaidynReiman",
-          "Joe White",
-          "Luke Mehl"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/thin-mage-clothing-set",
-          "http://opengameart.org/content/lpc-clothing-updates",
-          "https://opengameart.org/content/lpc-expanded-socks-shoes"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
         "GPL 3.0"
       ]
     }
@@ -13061,2422 +12937,6 @@ window.itemMetadata = {
         "CC-BY 3.0+",
         "CC-BY-SA 3.0",
         "GPL 3.0"
-      ]
-    }
-  },
-  "hairext_braidl": {
-    "name": "Left Braid",
-    "priority": null,
-    "type_name": "hairextl",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "hair",
-      "extensions",
-      "bangs",
-      "hairext_braidl"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 128,
-        "male": "hair/extensions/bangs/braidl/adult/",
-        "muscular": "hair/extensions/bangs/braidl/adult/",
-        "female": "hair/extensions/bangs/braidl/adult/",
-        "pregnant": "hair/extensions/bangs/braidl/adult/",
-        "teen": "hair/extensions/bangs/braidl/adult/",
-        "child": "hair/extensions/bangs/braidl/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "hair/extensions/bangs/braidl",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-1-hairstyle-2-hair-extensions-3-previously-unofficially-released-hairstyles"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "hairext_braidr": {
-    "name": "Right Braid",
-    "priority": null,
-    "type_name": "hairextr",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "hair",
-      "extensions",
-      "bangs",
-      "hairext_braidr"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 128,
-        "male": "hair/extensions/bangs/braidr/adult/",
-        "muscular": "hair/extensions/bangs/braidr/adult/",
-        "female": "hair/extensions/bangs/braidr/adult/",
-        "pregnant": "hair/extensions/bangs/braidr/adult/",
-        "teen": "hair/extensions/bangs/braidr/adult/",
-        "child": "hair/extensions/bangs/braidr/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "hair/extensions/bangs/braidr",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-1-hairstyle-2-hair-extensions-3-previously-unofficially-released-hairstyles"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "hairext_long_straightl": {
-    "name": "Left Long Straight",
-    "priority": null,
-    "type_name": "hairextl",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "hair",
-      "extensions",
-      "bangs",
-      "hairext_long_straightl"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 128,
-        "male": "hair/extensions/bangs/long_straightl/adult/",
-        "muscular": "hair/extensions/bangs/long_straightl/adult/",
-        "female": "hair/extensions/bangs/long_straightl/adult/",
-        "pregnant": "hair/extensions/bangs/long_straightl/adult/",
-        "teen": "hair/extensions/bangs/long_straightl/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "hair/extensions/bangs/long_straightl",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-expanded-long-hair"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "hairext_long_straightr": {
-    "name": "Right Long Straight",
-    "priority": null,
-    "type_name": "hairextr",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "hair",
-      "extensions",
-      "bangs",
-      "hairext_long_straightr"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 128,
-        "male": "hair/extensions/bangs/long_straightr/adult/",
-        "muscular": "hair/extensions/bangs/long_straightr/adult/",
-        "female": "hair/extensions/bangs/long_straightr/adult/",
-        "pregnant": "hair/extensions/bangs/long_straightr/adult/",
-        "teen": "hair/extensions/bangs/long_straightr/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "hair/extensions/bangs/long_straightr",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-expanded-long-hair"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "hairext_long_wavyl": {
-    "name": "Left Long Wavy",
-    "priority": null,
-    "type_name": "hairextl",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "hair",
-      "extensions",
-      "bangs",
-      "hairext_long_wavyl"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 128,
-        "male": "hair/extensions/bangs/long_wavyl/adult/",
-        "muscular": "hair/extensions/bangs/long_wavyl/adult/",
-        "female": "hair/extensions/bangs/long_wavyl/adult/",
-        "pregnant": "hair/extensions/bangs/long_wavyl/adult/",
-        "teen": "hair/extensions/bangs/long_wavyl/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "hair/extensions/bangs/long_wavyl",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-expanded-long-hair"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "hairext_long_wavyr": {
-    "name": "Right Long Wavy",
-    "priority": null,
-    "type_name": "hairextr",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "hair",
-      "extensions",
-      "bangs",
-      "hairext_long_wavyr"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 128,
-        "male": "hair/extensions/bangs/long_wavyr/adult/",
-        "muscular": "hair/extensions/bangs/long_wavyr/adult/",
-        "female": "hair/extensions/bangs/long_wavyr/adult/",
-        "pregnant": "hair/extensions/bangs/long_wavyr/adult/",
-        "teen": "hair/extensions/bangs/long_wavyr/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "hair/extensions/bangs/long_wavyr",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-expanded-long-hair"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "hairext_xlong_bangl": {
-    "name": "Left XLong Bang",
-    "priority": null,
-    "type_name": "hairextl",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "hair",
-      "extensions",
-      "bangs",
-      "hairext_xlong_bangl"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 128,
-        "male": "hair/extensions/bangs/xlong_bangl/adult/",
-        "muscular": "hair/extensions/bangs/xlong_bangl/adult/",
-        "female": "hair/extensions/bangs/xlong_bangl/adult/",
-        "pregnant": "hair/extensions/bangs/xlong_bangl/adult/",
-        "teen": "hair/extensions/bangs/xlong_bangl/adult/",
-        "child": "hair/extensions/bangs/xlong_bangl/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "hair/extensions/bangs/xlong_bangl",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-relm-hair-xlong-ponytail",
-          "https://opengameart.org/content/lpc-expanded-xlong-hair"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "hairext_xlong_bangr": {
-    "name": "Right XLong Bang",
-    "priority": null,
-    "type_name": "hairextr",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "hair",
-      "extensions",
-      "bangs",
-      "hairext_xlong_bangr"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 128,
-        "male": "hair/extensions/bangs/xlong_bangr/adult/",
-        "muscular": "hair/extensions/bangs/xlong_bangr/adult/",
-        "female": "hair/extensions/bangs/xlong_bangr/adult/",
-        "pregnant": "hair/extensions/bangs/xlong_bangr/adult/",
-        "teen": "hair/extensions/bangs/xlong_bangr/adult/",
-        "child": "hair/extensions/bangs/xlong_bangr/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "hair/extensions/bangs/xlong_bangr",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-relm-hair-xlong-ponytail",
-          "https://opengameart.org/content/lpc-expanded-xlong-hair"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "hairext_xlong_braidl": {
-    "name": "Left XLong Braid",
-    "priority": null,
-    "type_name": "hairextl",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h/backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "hair",
-      "extensions",
-      "bangs",
-      "hairext_xlong_braidl"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 128,
-        "male": "hair/extensions/bangs/xlong_braidl/adult/fg/",
-        "muscular": "hair/extensions/bangs/xlong_braidl/adult/fg/",
-        "female": "hair/extensions/bangs/xlong_braidl/adult/fg/",
-        "pregnant": "hair/extensions/bangs/xlong_braidl/adult/fg/",
-        "teen": "hair/extensions/bangs/xlong_braidl/adult/fg/",
-        "child": "hair/extensions/bangs/xlong_braidl/child/fg/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "hair/extensions/bangs/xlong_braidl/adult/bg/",
-        "muscular": "hair/extensions/bangs/xlong_braidl/adult/bg/",
-        "female": "hair/extensions/bangs/xlong_braidl/adult/bg/",
-        "pregnant": "hair/extensions/bangs/xlong_braidl/adult/bg/",
-        "teen": "hair/extensions/bangs/xlong_braidl/adult/bg/",
-        "child": "hair/extensions/bangs/xlong_braidl/child/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "hair/extensions/bangs/xlong_braidl",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-relm-hair-xlong-ponytail",
-          "https://opengameart.org/content/lpc-expanded-xlong-hair"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "hairext_xlong_braidr": {
-    "name": "Right XLong Braid",
-    "priority": null,
-    "type_name": "hairextr",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h/backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "hair",
-      "extensions",
-      "bangs",
-      "hairext_xlong_braidr"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 128,
-        "male": "hair/extensions/bangs/xlong_braidr/adult/fg/",
-        "muscular": "hair/extensions/bangs/xlong_braidr/adult/fg/",
-        "female": "hair/extensions/bangs/xlong_braidr/adult/fg/",
-        "pregnant": "hair/extensions/bangs/xlong_braidr/adult/fg/",
-        "teen": "hair/extensions/bangs/xlong_braidr/adult/fg/",
-        "child": "hair/extensions/bangs/xlong_braidr/child/fg/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "hair/extensions/bangs/xlong_braidr/adult/bg/",
-        "muscular": "hair/extensions/bangs/xlong_braidr/adult/bg/",
-        "female": "hair/extensions/bangs/xlong_braidr/adult/bg/",
-        "pregnant": "hair/extensions/bangs/xlong_braidr/adult/bg/",
-        "teen": "hair/extensions/bangs/xlong_braidr/adult/bg/",
-        "child": "hair/extensions/bangs/xlong_braidr/child/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "hair/extensions/bangs/xlong_braidr",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-relm-hair-xlong-ponytail",
-          "https://opengameart.org/content/lpc-expanded-xlong-hair"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "hairext_xlong_curlyl": {
-    "name": "Left XLong Curly",
-    "priority": null,
-    "type_name": "hairextl",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "hair",
-      "extensions",
-      "bangs",
-      "hairext_xlong_curlyl"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 128,
-        "male": "hair/extensions/bangs/xlong_curlyl/adult/",
-        "muscular": "hair/extensions/bangs/xlong_curlyl/adult/",
-        "female": "hair/extensions/bangs/xlong_curlyl/adult/",
-        "pregnant": "hair/extensions/bangs/xlong_curlyl/adult/",
-        "teen": "hair/extensions/bangs/xlong_curlyl/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "hair/extensions/bangs/xlong_curlyl",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-expanded-xlong-hair"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "hairext_xlong_curlyr": {
-    "name": "Right XLong Curly",
-    "priority": null,
-    "type_name": "hairextr",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "hair",
-      "extensions",
-      "bangs",
-      "hairext_xlong_curlyr"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 128,
-        "male": "hair/extensions/bangs/xlong_curlyr/adult/",
-        "muscular": "hair/extensions/bangs/xlong_curlyr/adult/",
-        "female": "hair/extensions/bangs/xlong_curlyr/adult/",
-        "pregnant": "hair/extensions/bangs/xlong_curlyr/adult/",
-        "teen": "hair/extensions/bangs/xlong_curlyr/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "hair/extensions/bangs/xlong_curlyr",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-expanded-xlong-hair"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "hairext_xlong_wavyl": {
-    "name": "Left XLong Wavy",
-    "priority": null,
-    "type_name": "hairextl",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "hair",
-      "extensions",
-      "bangs",
-      "hairext_xlong_wavyl"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 128,
-        "male": "hair/extensions/bangs/xlong_wavyl/adult/",
-        "muscular": "hair/extensions/bangs/xlong_wavyl/adult/",
-        "female": "hair/extensions/bangs/xlong_wavyl/adult/",
-        "pregnant": "hair/extensions/bangs/xlong_wavyl/adult/",
-        "teen": "hair/extensions/bangs/xlong_wavyl/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "hair/extensions/bangs/xlong_wavyl",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-expanded-xlong-hair"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "hairext_xlong_wavyr": {
-    "name": "Right XLong Wavy",
-    "priority": null,
-    "type_name": "hairextr",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "hair",
-      "extensions",
-      "bangs",
-      "hairext_xlong_wavyr"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 128,
-        "male": "hair/extensions/bangs/xlong_wavyr/adult/",
-        "muscular": "hair/extensions/bangs/xlong_wavyr/adult/",
-        "female": "hair/extensions/bangs/xlong_wavyr/adult/",
-        "pregnant": "hair/extensions/bangs/xlong_wavyr/adult/",
-        "teen": "hair/extensions/bangs/xlong_wavyr/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "hair/extensions/bangs/xlong_wavyr",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-expanded-xlong-hair"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "hairext_topknot_long": {
-    "name": "Long Topknot",
-    "priority": null,
-    "type_name": "ponytail",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h/backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "hair",
-      "extensions",
-      "ponytails",
-      "hairext_topknot_long"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 128,
-        "male": "hair/extensions/ponytails/topknot_long/adult/fg/",
-        "muscular": "hair/extensions/ponytails/topknot_long/adult/fg/",
-        "female": "hair/extensions/ponytails/topknot_long/adult/fg/",
-        "pregnant": "hair/extensions/ponytails/topknot_long/adult/fg/",
-        "teen": "hair/extensions/ponytails/topknot_long/adult/fg/",
-        "child": "hair/extensions/ponytails/topknot_long/child/fg/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "hair/extensions/ponytails/topknot_long/adult/bg/",
-        "muscular": "hair/extensions/ponytails/topknot_long/adult/bg/",
-        "female": "hair/extensions/ponytails/topknot_long/adult/bg/",
-        "pregnant": "hair/extensions/ponytails/topknot_long/adult/bg/",
-        "teen": "hair/extensions/ponytails/topknot_long/adult/bg/",
-        "child": "hair/extensions/ponytails/topknot_long/child/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "hair/extensions/ponytails/topknot_long",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-1-hairstyle-2-hair-extensions-3-previously-unofficially-released-hairstyles"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "hairext_topknot_relm": {
-    "name": "Relm Topknot",
-    "priority": null,
-    "type_name": "ponytail",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "hair",
-      "extensions",
-      "ponytails",
-      "hairext_topknot_relm"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 128,
-        "male": "hair/extensions/ponytails/relm_ponytail/adult/fg/",
-        "muscular": "hair/extensions/ponytails/relm_ponytail/adult/fg/",
-        "female": "hair/extensions/ponytails/relm_ponytail/adult/fg/",
-        "pregnant": "hair/extensions/ponytails/relm_ponytail/adult/fg/",
-        "teen": "hair/extensions/ponytails/relm_ponytail/adult/fg/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "hair/extensions/ponytails/relm_ponytail/adult/bg/",
-        "muscular": "hair/extensions/ponytails/relm_ponytail/adult/bg/",
-        "female": "hair/extensions/ponytails/relm_ponytail/adult/bg/",
-        "pregnant": "hair/extensions/ponytails/relm_ponytail/adult/bg/",
-        "teen": "hair/extensions/ponytails/relm_ponytail/adult/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "hair/extensions/ponytails/relm_ponytail",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-relm-hair-xlong-ponytail",
-          "https://opengameart.org/content/lpc-expanded-xlong-hair"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "hairext_topknot_short": {
-    "name": "Short Topknot",
-    "priority": null,
-    "type_name": "ponytail",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h/backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "hair",
-      "extensions",
-      "ponytails",
-      "hairext_topknot_short"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 128,
-        "male": "hair/extensions/ponytails/topknot_short/adult/",
-        "muscular": "hair/extensions/ponytails/topknot_short/adult/",
-        "female": "hair/extensions/ponytails/topknot_short/adult/",
-        "pregnant": "hair/extensions/ponytails/topknot_short/adult/",
-        "teen": "hair/extensions/ponytails/topknot_short/adult/",
-        "child": "hair/extensions/ponytails/topknot_short/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "hair/extensions/ponytails/topknot_short",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-1-hairstyle-2-hair-extensions-3-previously-unofficially-released-hairstyles"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "hairext_high_bun": {
-    "name": "High Bun",
-    "priority": null,
-    "type_name": "updo",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h/backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "hair",
-      "extensions",
-      "ties",
-      "hairext_high_bun"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 128,
-        "male": "hair/extensions/ties/high_bun/adult/",
-        "muscular": "hair/extensions/ties/high_bun/adult/",
-        "female": "hair/extensions/ties/high_bun/adult/",
-        "pregnant": "hair/extensions/ties/high_bun/adult/",
-        "teen": "hair/extensions/ties/high_bun/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "hair/extensions/ties/high_bun",
-        "notes": "Custom by JaidynReiman",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-expanded-xlong-hair"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
       ]
     }
   },
@@ -24542,77 +22002,6 @@ window.itemMetadata = {
       ]
     }
   },
-  "eyes_child": {
-    "name": "Child Eyes",
-    "priority": null,
-    "type_name": "eyes",
-    "required": [
-      "child"
-    ],
-    "animations": [
-      "walk",
-      "slash",
-      "hurt",
-      "idle",
-      "jump",
-      "sit"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "eyes_child"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "brown",
-      "gray",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 105,
-        "child": "eyes/human/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "eyes/human/child",
-        "notes": "original by Redshrike, mapped to all frames by Matthew Krohn & JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "Matthew Krohn (makrohn)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
   "eye_color": {
     "name": "Eye Color",
     "priority": 20,
@@ -27512,1515 +24901,6 @@ window.itemMetadata = {
       "pregnant": [
         "CC-BY-SA 3.0",
         "GPL 3.0"
-      ]
-    }
-  },
-  "head_ears_avyon_skin": {
-    "name": "Feather Ears Skintone",
-    "priority": null,
-    "type_name": "ears_inner",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry_ears",
-      "side",
-      "head_ears_avyon_skin"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 127,
-        "male": "head/ears/avyon/skin/adult/",
-        "muscular": "head/ears/avyon/skin/adult/",
-        "female": "head/ears/avyon/skin/adult/",
-        "teen": "head/ears/avyon/skin/adult/",
-        "pregnant": "head/ears/avyon/skin/adult/",
-        "child": "head/ears/avyon/skin/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/avyon",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "head_ears_avyon": {
-    "name": "Feather Ears",
-    "priority": null,
-    "type_name": "ears",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry_ears",
-      "side",
-      "head_ears_avyon"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 126,
-        "male": "head/ears/avyon/adult/",
-        "muscular": "head/ears/avyon/adult/",
-        "female": "head/ears/avyon/adult/",
-        "teen": "head/ears/avyon/adult/",
-        "pregnant": "head/ears/avyon/adult/",
-        "child": "head/ears/avyon/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/avyon",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "head_ears_lykon_skin": {
-    "name": "Side Wolf Ears Skintone",
-    "priority": null,
-    "type_name": "ears_inner",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry_ears",
-      "side",
-      "head_ears_lykon_skin"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 127,
-        "male": "head/ears/lykon/skin/adult/",
-        "muscular": "head/ears/lykon/skin/adult/",
-        "female": "head/ears/lykon/skin/adult/",
-        "teen": "head/ears/lykon/skin/adult/",
-        "pregnant": "head/ears/lykon/skin/adult/",
-        "child": "head/ears/lykon/skin/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/lykon",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "head_ears_lykon": {
-    "name": "Side Wolf Ears",
-    "priority": null,
-    "type_name": "ears",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry_ears",
-      "side",
-      "head_ears_lykon"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 126,
-        "male": "head/ears/lykon/adult/",
-        "muscular": "head/ears/lykon/adult/",
-        "female": "head/ears/lykon/adult/",
-        "teen": "head/ears/lykon/adult/",
-        "pregnant": "head/ears/lykon/adult/",
-        "child": "head/ears/lykon/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/lykon",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "head_ears_zabos_skin": {
-    "name": "Side Cat Ears Skintone",
-    "priority": null,
-    "type_name": "ears_inner",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry_ears",
-      "side",
-      "head_ears_zabos_skin"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 127,
-        "male": "head/ears/zabos/skin/adult/",
-        "muscular": "head/ears/zabos/skin/adult/",
-        "female": "head/ears/zabos/skin/adult/",
-        "teen": "head/ears/zabos/skin/adult/",
-        "pregnant": "head/ears/zabos/skin/adult/",
-        "child": "head/ears/zabos/skin/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/zabos",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "head_ears_zabos": {
-    "name": "Side Cat Ears",
-    "priority": null,
-    "type_name": "ears",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry_ears",
-      "side",
-      "head_ears_zabos"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 126,
-        "male": "head/ears/zabos/adult/",
-        "muscular": "head/ears/zabos/adult/",
-        "female": "head/ears/zabos/adult/",
-        "teen": "head/ears/zabos/adult/",
-        "pregnant": "head/ears/zabos/adult/",
-        "child": "head/ears/zabos/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/zabos",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "head_ears_cat_skin": {
-    "name": "Cat Ears Skintone",
-    "priority": null,
-    "type_name": "furry_ears_skin",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry_ears",
-      "top",
-      "head_ears_cat_skin"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 131,
-        "male": "head/ears/cat/skin/adult_front/",
-        "muscular": "head/ears/cat/skin/adult_front/",
-        "female": "head/ears/cat/skin/adult_front/",
-        "teen": "head/ears/cat/skin/adult_front/",
-        "pregnant": "head/ears/cat/skin/adult_front/",
-        "child": "head/ears/cat/skin/child_front/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "head/ears/cat/skin/adult_back/",
-        "muscular": "head/ears/cat/skin/adult_back/",
-        "female": "head/ears/cat/skin/adult_back/",
-        "pregnant": "head/ears/cat/skin/adult_back/",
-        "teen": "head/ears/cat/skin/adult_back/",
-        "child": "head/ears/cat/skin/child_back/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/cat",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "head_ears_cat": {
-    "name": "Cat Ears",
-    "priority": null,
-    "type_name": "furry_ears",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry_ears",
-      "top",
-      "head_ears_cat"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 130,
-        "male": "head/ears/cat/adult_front/",
-        "muscular": "head/ears/cat/adult_front/",
-        "female": "head/ears/cat/adult_front/",
-        "teen": "head/ears/cat/adult_front/",
-        "pregnant": "head/ears/cat/adult_front/",
-        "child": "head/ears/cat/child_front/"
-      },
-      "layer_2": {
-        "zPos": 8,
-        "male": "head/ears/cat/adult_back/",
-        "muscular": "head/ears/cat/adult_back/",
-        "female": "head/ears/cat/adult_back/",
-        "pregnant": "head/ears/cat/adult_back/",
-        "teen": "head/ears/cat/adult_back/",
-        "child": "head/ears/cat/child_back/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/cat",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "head_ears_wolf_skin": {
-    "name": "Wolf Ears Skintone",
-    "priority": null,
-    "type_name": "furry_ears_skin",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry_ears",
-      "top",
-      "head_ears_wolf_skin"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 131,
-        "male": "head/ears/wolf/skin/adult_front/",
-        "muscular": "head/ears/wolf/skin/adult_front/",
-        "female": "head/ears/wolf/skin/adult_front/",
-        "teen": "head/ears/wolf/skin/adult_front/",
-        "pregnant": "head/ears/wolf/skin/adult_front/",
-        "child": "head/ears/wolf/skin/child_front/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "head/ears/wolf/skin/adult_back/",
-        "muscular": "head/ears/wolf/skin/adult_back/",
-        "female": "head/ears/wolf/skin/adult_back/",
-        "pregnant": "head/ears/wolf/skin/adult_back/",
-        "teen": "head/ears/wolf/skin/adult_back/",
-        "child": "head/ears/wolf/skin/child_back/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/wolf",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "head_ears_wolf": {
-    "name": "Wolf Ears",
-    "priority": null,
-    "type_name": "furry_ears",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "furry_ears",
-      "top",
-      "head_ears_wolf"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blonde",
-      "ash",
-      "sandy",
-      "platinum",
-      "strawberry",
-      "redhead",
-      "ginger",
-      "carrot",
-      "chestnut",
-      "light brown",
-      "dark brown",
-      "black",
-      "raven",
-      "dark gray",
-      "gray",
-      "white",
-      "red",
-      "orange",
-      "gold",
-      "green",
-      "blue",
-      "navy",
-      "violet",
-      "purple",
-      "pink",
-      "rose",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 130,
-        "male": "head/ears/wolf/adult_front/",
-        "muscular": "head/ears/wolf/adult_front/",
-        "female": "head/ears/wolf/adult_front/",
-        "teen": "head/ears/wolf/adult_front/",
-        "pregnant": "head/ears/wolf/adult_front/",
-        "child": "head/ears/wolf/child_front/"
-      },
-      "layer_2": {
-        "zPos": 8,
-        "male": "head/ears/wolf/adult_back/",
-        "muscular": "head/ears/wolf/adult_back/",
-        "female": "head/ears/wolf/adult_back/",
-        "pregnant": "head/ears/wolf/adult_back/",
-        "teen": "head/ears/wolf/adult_back/",
-        "child": "head/ears/wolf/child_back/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/ears/wolf",
-        "notes": "",
-        "authors": [
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "CC-BY 3.0+",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "CC-BY 3.0+",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "head_wrinkles": {
-    "name": "Wrinkles",
-    "priority": 80,
-    "type_name": "wrinkes",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "head_wrinkles"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 102,
-        "male": "head/wrinkles/",
-        "muscular": "head/wrinkles/",
-        "female": "head/wrinkles/",
-        "teen": "head/wrinkles/",
-        "pregnant": "head/wrinkles/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/wrinkles",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": []
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
       ]
     }
   },
@@ -34288,1565 +30168,6 @@ window.itemMetadata = {
       ]
     }
   },
-  "neck_amulet_cross": {
-    "name": "Cross amulet",
-    "priority": null,
-    "type_name": "charm",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "neck",
-      "charms",
-      "neck_amulet_cross"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "brass_blue",
-      "brass_green",
-      "brass_orange",
-      "brass_purple",
-      "brass_red",
-      "brass_yellow",
-      "bronze_blue",
-      "bronze_green",
-      "bronze_orange",
-      "bronze_purple",
-      "bronze_red",
-      "bronze_yellow",
-      "ceramic_blue",
-      "ceramic_green",
-      "ceramic_orange",
-      "ceramic_purple",
-      "ceramic_red",
-      "ceramic_yellow",
-      "copper_blue",
-      "copper_green",
-      "copper_orange",
-      "copper_purple",
-      "copper_red",
-      "copper_yellow",
-      "gold_blue",
-      "gold_green",
-      "gold_orange",
-      "gold_purple",
-      "gold_red",
-      "gold_yellow",
-      "iron_blue",
-      "iron_green",
-      "iron_orange",
-      "iron_purple",
-      "iron_red",
-      "iron_yellow",
-      "silver_blue",
-      "silver_green",
-      "silver_orange",
-      "silver_purple",
-      "silver_red",
-      "silver_yellow",
-      "steel_blue",
-      "steel_green",
-      "steel_orange",
-      "steel_purple",
-      "steel_red",
-      "steel_yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 81,
-        "male": "neck/amulet/cross/male/",
-        "muscular": "neck/amulet/cross/male/",
-        "female": "neck/amulet/cross/female/",
-        "teen": "neck/amulet/cross/female/",
-        "pregnant": "neck/amulet/cross/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "neck/amulet/cross",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-jewelry"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "neck_amulet_dangle": {
-    "name": "Dangling amulet",
-    "priority": null,
-    "type_name": "charm",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "neck",
-      "charms",
-      "neck_amulet_dangle"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "brass_blue",
-      "brass_green",
-      "brass_orange",
-      "brass_purple",
-      "brass_red",
-      "brass_yellow",
-      "bronze_blue",
-      "bronze_green",
-      "bronze_orange",
-      "bronze_purple",
-      "bronze_red",
-      "bronze_yellow",
-      "ceramic_blue",
-      "ceramic_green",
-      "ceramic_orange",
-      "ceramic_purple",
-      "ceramic_red",
-      "ceramic_yellow",
-      "copper_blue",
-      "copper_green",
-      "copper_orange",
-      "copper_purple",
-      "copper_red",
-      "copper_yellow",
-      "gold_blue",
-      "gold_green",
-      "gold_orange",
-      "gold_purple",
-      "gold_red",
-      "gold_yellow",
-      "iron_blue",
-      "iron_green",
-      "iron_orange",
-      "iron_purple",
-      "iron_red",
-      "iron_yellow",
-      "silver_blue",
-      "silver_green",
-      "silver_orange",
-      "silver_purple",
-      "silver_red",
-      "silver_yellow",
-      "steel_blue",
-      "steel_green",
-      "steel_orange",
-      "steel_purple",
-      "steel_red",
-      "steel_yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 81,
-        "male": "neck/amulet/dangle/male/",
-        "muscular": "neck/amulet/dangle/male/",
-        "female": "neck/amulet/dangle/female/",
-        "teen": "neck/amulet/dangle/female/",
-        "pregnant": "neck/amulet/dangle/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "neck/amulet/dangle",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "AntumDeluge"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/dungeon-crawl-32x32-tiles",
-          "https://opengameart.org/content/cc0-jewelry-icons",
-          "https://opengameart.org/content/lpc-jewelry"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "neck_amulet_spider": {
-    "name": "Spider amulet",
-    "priority": null,
-    "type_name": "charm",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "neck",
-      "charms",
-      "neck_amulet_spider"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "brass_blue",
-      "brass_green",
-      "brass_orange",
-      "brass_purple",
-      "brass_red",
-      "brass_yellow",
-      "bronze_blue",
-      "bronze_green",
-      "bronze_orange",
-      "bronze_purple",
-      "bronze_red",
-      "bronze_yellow",
-      "ceramic_blue",
-      "ceramic_green",
-      "ceramic_orange",
-      "ceramic_purple",
-      "ceramic_red",
-      "ceramic_yellow",
-      "copper_blue",
-      "copper_green",
-      "copper_orange",
-      "copper_purple",
-      "copper_red",
-      "copper_yellow",
-      "gold_blue",
-      "gold_green",
-      "gold_orange",
-      "gold_purple",
-      "gold_red",
-      "gold_yellow",
-      "iron_blue",
-      "iron_green",
-      "iron_orange",
-      "iron_purple",
-      "iron_red",
-      "iron_yellow",
-      "silver_blue",
-      "silver_green",
-      "silver_orange",
-      "silver_purple",
-      "silver_red",
-      "silver_yellow",
-      "steel_blue",
-      "steel_green",
-      "steel_orange",
-      "steel_purple",
-      "steel_red",
-      "steel_yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 81,
-        "male": "neck/amulet/spider/male/",
-        "muscular": "neck/amulet/spider/male/",
-        "female": "neck/amulet/spider/female/",
-        "teen": "neck/amulet/spider/female/",
-        "pregnant": "neck/amulet/spider/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "neck/amulet/spider",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-jewelry"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "neck_amulet_star": {
-    "name": "Star amulet",
-    "priority": null,
-    "type_name": "charm",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "neck",
-      "charms",
-      "neck_amulet_star"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "brass_blue",
-      "brass_green",
-      "brass_orange",
-      "brass_purple",
-      "brass_red",
-      "brass_yellow",
-      "bronze_blue",
-      "bronze_green",
-      "bronze_orange",
-      "bronze_purple",
-      "bronze_red",
-      "bronze_yellow",
-      "ceramic_blue",
-      "ceramic_green",
-      "ceramic_orange",
-      "ceramic_purple",
-      "ceramic_red",
-      "ceramic_yellow",
-      "copper_blue",
-      "copper_green",
-      "copper_orange",
-      "copper_purple",
-      "copper_red",
-      "copper_yellow",
-      "gold_blue",
-      "gold_green",
-      "gold_orange",
-      "gold_purple",
-      "gold_red",
-      "gold_yellow",
-      "iron_blue",
-      "iron_green",
-      "iron_orange",
-      "iron_purple",
-      "iron_red",
-      "iron_yellow",
-      "silver_blue",
-      "silver_green",
-      "silver_orange",
-      "silver_purple",
-      "silver_red",
-      "silver_yellow",
-      "steel_blue",
-      "steel_green",
-      "steel_orange",
-      "steel_purple",
-      "steel_red",
-      "steel_yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 81,
-        "male": "neck/amulet/star/male/",
-        "muscular": "neck/amulet/star/male/",
-        "female": "neck/amulet/star/female/",
-        "teen": "neck/amulet/star/female/",
-        "pregnant": "neck/amulet/star/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "neck/amulet/star",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "AntumDeluge",
-          "7Soul"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://www.deviantart.com/7soul1/art/129892453",
-          "https://opengameart.org/content/cc0-jewelry-icons",
-          "https://opengameart.org/content/lpc-jewelry"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "neck_charm_box": {
-    "name": "Box Charm",
-    "priority": null,
-    "type_name": "charm",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "neck",
-      "charms",
-      "neck_charm_box"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "steel",
-      "iron",
-      "ceramic",
-      "brass",
-      "copper",
-      "bronze",
-      "silver",
-      "gold"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 81,
-        "male": "neck/charm/box/male/",
-        "muscular": "neck/charm/box/male/",
-        "female": "neck/charm/box/female/",
-        "teen": "neck/charm/box/female/",
-        "pregnant": "neck/charm/box/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "neck/charm",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-jewelry"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "neck_charm_oval": {
-    "name": "Oval Charm",
-    "priority": null,
-    "type_name": "charm",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "neck",
-      "charms",
-      "neck_charm_oval"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "steel",
-      "iron",
-      "ceramic",
-      "brass",
-      "copper",
-      "bronze",
-      "silver",
-      "gold"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 81,
-        "male": "neck/charm/oval/male/",
-        "muscular": "neck/charm/oval/male/",
-        "female": "neck/charm/oval/female/",
-        "teen": "neck/charm/oval/female/",
-        "pregnant": "neck/charm/oval/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "neck/charm",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-jewelry"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "neck_charm_ring": {
-    "name": "Ring Charm",
-    "priority": null,
-    "type_name": "charm",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "neck",
-      "charms",
-      "neck_charm_ring"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "steel",
-      "iron",
-      "ceramic",
-      "brass",
-      "copper",
-      "bronze",
-      "silver",
-      "gold"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 81,
-        "male": "neck/charm/ring/male/",
-        "muscular": "neck/charm/ring/male/",
-        "female": "neck/charm/ring/female/",
-        "teen": "neck/charm/ring/female/",
-        "pregnant": "neck/charm/ring/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "neck/charm",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-jewelry"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "neck_charm_star": {
-    "name": "Star Charm",
-    "priority": null,
-    "type_name": "charm",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "neck",
-      "charms",
-      "neck_charm_star"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "steel",
-      "iron",
-      "ceramic",
-      "brass",
-      "copper",
-      "bronze",
-      "silver",
-      "gold"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 81,
-        "male": "neck/charm/star/male/",
-        "muscular": "neck/charm/star/male/",
-        "female": "neck/charm/star/female/",
-        "teen": "neck/charm/star/female/",
-        "pregnant": "neck/charm/star/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "neck/charm",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-jewelry"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "neck_gem_emerald": {
-    "name": "Emerald cut Gem",
-    "priority": null,
-    "type_name": "charm",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "neck",
-      "charms",
-      "neck_gem_emerald"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 81,
-        "male": "neck/gem/emerald/male/",
-        "muscular": "neck/gem/emerald/male/",
-        "female": "neck/gem/emerald/female/",
-        "teen": "neck/gem/emerald/female/",
-        "pregnant": "neck/gem/emerald/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "neck/gem",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-jewelry"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "neck_gem_marquise": {
-    "name": "Marquise cut Gem",
-    "priority": null,
-    "type_name": "charm",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "neck",
-      "charms",
-      "neck_gem_marquise"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 81,
-        "male": "neck/gem/marquise/male/",
-        "muscular": "neck/gem/marquise/male/",
-        "female": "neck/gem/marquise/female/",
-        "teen": "neck/gem/marquise/female/",
-        "pregnant": "neck/gem/marquise/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "neck/gem",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-jewelry"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "neck_gem_natural": {
-    "name": "Natural cut Gem",
-    "priority": null,
-    "type_name": "charm",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "neck",
-      "charms",
-      "neck_gem_natural"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 81,
-        "male": "neck/gem/natural/male/",
-        "muscular": "neck/gem/natural/male/",
-        "female": "neck/gem/natural/female/",
-        "teen": "neck/gem/natural/female/",
-        "pregnant": "neck/gem/natural/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "neck/gem",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-jewelry"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "neck_gem_pear": {
-    "name": "Pear cut Gem",
-    "priority": null,
-    "type_name": "charm",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "neck",
-      "charms",
-      "neck_gem_pear"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 81,
-        "male": "neck/gem/pear/male/",
-        "muscular": "neck/gem/pear/male/",
-        "female": "neck/gem/pear/female/",
-        "teen": "neck/gem/pear/female/",
-        "pregnant": "neck/gem/pear/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "neck/gem",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-jewelry"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "neck_gem_pearl": {
-    "name": "Pearl Gem",
-    "priority": null,
-    "type_name": "charm",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "neck",
-      "charms",
-      "neck_gem_pearl"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 81,
-        "male": "neck/gem/pearl/male/",
-        "muscular": "neck/gem/pearl/male/",
-        "female": "neck/gem/pearl/female/",
-        "teen": "neck/gem/pearl/female/",
-        "pregnant": "neck/gem/pearl/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "neck/gem",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-jewelry"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "neck_gem_princess": {
-    "name": "Princess cut Gem",
-    "priority": null,
-    "type_name": "charm",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "neck",
-      "charms",
-      "neck_gem_princess"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 81,
-        "male": "neck/gem/princess/male/",
-        "muscular": "neck/gem/princess/male/",
-        "female": "neck/gem/princess/female/",
-        "teen": "neck/gem/princess/female/",
-        "pregnant": "neck/gem/princess/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "neck/gem",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-jewelry"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "neck_gem_round": {
-    "name": "Round cut Gem",
-    "priority": null,
-    "type_name": "charm",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "neck",
-      "charms",
-      "neck_gem_round"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 81,
-        "male": "neck/gem/round/male/",
-        "muscular": "neck/gem/round/male/",
-        "female": "neck/gem/round/female/",
-        "teen": "neck/gem/round/female/",
-        "pregnant": "neck/gem/round/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "neck/gem",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-jewelry"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "neck_gem_trilliant": {
-    "name": "Trilliant cut Gem",
-    "priority": null,
-    "type_name": "charm",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "neck",
-      "charms",
-      "neck_gem_trilliant"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "green",
-      "orange",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 81,
-        "male": "neck/gem/trilliant/male/",
-        "muscular": "neck/gem/trilliant/male/",
-        "female": "neck/gem/trilliant/female/",
-        "teen": "neck/gem/trilliant/female/",
-        "pregnant": "neck/gem/trilliant/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "neck/gem",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-jewelry"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
   "neck_bowtie": {
     "name": "Bowtie",
     "priority": 20,
@@ -37768,6 +32089,17224 @@ window.itemMetadata = {
       ]
     }
   },
+  "facial_mask_plain": {
+    "name": "Plain Mask",
+    "priority": 50,
+    "type_name": "facial_mask",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "headwear",
+      "accessories",
+      "facial_mask_plain"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "dark",
+      "white",
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow",
+      "steel",
+      "iron",
+      "ceramic",
+      "brass",
+      "copper",
+      "bronze",
+      "silver",
+      "gold"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 114,
+        "male": "facial/masks/plain/adult/",
+        "muscular": "facial/masks/plain/adult/",
+        "female": "facial/masks/plain/adult/",
+        "pregnant": "facial/masks/plain/adult/",
+        "teen": "facial/masks/plain/adult/",
+        "child": "facial/masks/plain/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "facial/masks/plain",
+        "notes": "",
+        "authors": [
+          "Nila122"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 2.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-masks",
+          "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_hose": {
+    "name": "Hose",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "leggings",
+      "legs_hose"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "leather",
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "male": "legs/hose/male/",
+        "female": "legs/hose/thin/",
+        "teen": "legs/hose/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/hose/male",
+        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original overalls and hose by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, male hose by JaidynReiman",
+        "authors": [
+          "JaidynReiman",
+          "ElizaWy",
+          "bluecarrot16",
+          "JaidynReiman",
+          "ElizaWy",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      },
+      {
+        "file": "legs/hose",
+        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original by ElizaWy, remaining frames by JaidynReiman",
+        "authors": [
+          "ElizaWy",
+          "JaidynReiman",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_leggings": {
+    "name": "Leggings",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "leggings",
+      "legs_leggings"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "male": "legs/leggings/male/",
+        "female": "legs/leggings/thin/",
+        "teen": "legs/leggings/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/leggings/male",
+        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original overalls by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, leggings by JaidynReiman",
+        "authors": [
+          "bluecarrot16",
+          "ElizaWy",
+          "JaidynReiman",
+          "Mandi Paugh",
+          "William.Thompsonj",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      },
+      {
+        "file": "legs/leggings",
+        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, adapted from sara's leggings to v3 bases by bluecarrot16, jump/run/sit by JaidynReiman based on ElizaWy's and modified to match",
+        "authors": [
+          "bluecarrot16",
+          "ElizaWy",
+          "JaidynReiman",
+          "Mandi Paugh",
+          "William.Thompsonj",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "http://opengameart.org/content/sara-wizard",
+          "https://opengameart.org/content/lpc-sara",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_leggings2": {
+    "name": "Leggings 2",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "leggings",
+      "legs_leggings2"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "leather",
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "male": "legs/leggings2/male/",
+        "female": "legs/leggings2/thin/",
+        "teen": "legs/leggings2/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/leggings2/male",
+        "notes": "original overalls by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, leggings by JaidynReiman",
+        "authors": [
+          "bluecarrot16",
+          "ElizaWy",
+          "JaidynReiman",
+          "Mandi Paugh",
+          "William.Thompsonj",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      },
+      {
+        "file": "legs/leggings2",
+        "notes": "original by ElizaWy, remaining frames",
+        "authors": [
+          "ElizaWy",
+          "JaidynReiman",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_childpants": {
+    "name": "Child pants",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "child"
+    ],
+    "animations": [
+      "walk"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "pants",
+      "legs_childpants"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "brown",
+      "darkblue",
+      "green",
+      "lightblue",
+      "maroon",
+      "red",
+      "white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "child": "legs/pants/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/pants/child",
+        "notes": "",
+        "authors": [
+          "Nila122"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-clothes-for-children"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "child": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_cuffed": {
+    "name": "Cuffed Pants",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "pants",
+      "legs_cuffed"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "leather",
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "male": "legs/cuffed/male/",
+        "female": "legs/cuffed/thin/",
+        "teen": "legs/cuffed/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/cuffed/male",
+        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original overalls by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, pants by JaidynReiman",
+        "authors": [
+          "JaidynReiman",
+          "ElizaWy",
+          "Bluecarrot16",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      },
+      {
+        "file": "legs/cuffed",
+        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original cuffed pants by ElizaWy, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
+        "authors": [
+          "ElizaWy",
+          "JaidynReiman",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_formal_striped": {
+    "name": "Striped Formal Pants",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "pants",
+      "legs_formal_striped"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "base",
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "male": "legs/formal_striped/male/",
+        "muscular": "legs/formal_striped/male/",
+        "female": "legs/formal_striped/thin/",
+        "teen": "legs/formal_striped/thin/",
+        "pregnant": "legs/formal_striped/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/formal_striped",
+        "notes": "Original pants by Stephen Challener (Redshrike), thrust/shoot bases by Wulax, Striped Formal Pants by Bluecarrot16, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
+        "authors": [
+          "bluecarrot16",
+          "JaidynReiman",
+          "ElizaWy",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-2-characters",
+          "https://opengameart.org/content/lpc-gentleman",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      },
+      {
+        "file": "legs/formal_striped/thin",
+        "notes": "Original pants by Stephen Challener (Redshrike), thrust/shoot bases by Wulax, Striped Formal Pants by Bluecarrot16, Female/Thin version by JaidynReiman",
+        "authors": [
+          "bluecarrot16",
+          "JaidynReiman",
+          "ElizaWy",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-2-characters",
+          "https://opengameart.org/content/lpc-gentleman",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_formal": {
+    "name": "Formal Pants",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "pants",
+      "legs_formal"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "base",
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "male": "legs/formal/male/",
+        "muscular": "legs/formal/male/",
+        "female": "legs/formal/thin/",
+        "teen": "legs/formal/thin/",
+        "pregnant": "legs/formal/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/formal",
+        "notes": "Original pants by Stephen Challener (Redshrike), thrust/shoot bases by Wulax, Formal Pants by Bluecarrot16, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
+        "authors": [
+          "bluecarrot16",
+          "JaidynReiman",
+          "ElizaWy",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-2-characters",
+          "https://opengameart.org/content/lpc-gentleman",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      },
+      {
+        "file": "legs/formal/thin",
+        "notes": "Original pants by Stephen Challener (Redshrike), thrust/shoot bases by Wulax, Formal Pants by Bluecarrot16, Female/Thin version by JaidynReiman",
+        "authors": [
+          "bluecarrot16",
+          "JaidynReiman",
+          "ElizaWy",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-2-characters",
+          "https://opengameart.org/content/lpc-gentleman",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_fur": {
+    "name": "Fur Pants",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "pants",
+      "legs_fur"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "base",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "male": "legs/fur/male/",
+        "muscular": "legs/fur/male/",
+        "female": "legs/fur/thin/",
+        "teen": "legs/fur/thin/",
+        "pregnant": "legs/fur/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/fur",
+        "notes": "Original pants by Stephen Challener (Redshrike), thrust/shoot bases by Wulax, Fur Pants Color by Evert, Edited to V3 Bases by Bluecarrot16, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
+        "authors": [
+          "Bluecarrot16",
+          "JaidynReiman",
+          "Evert",
+          "ElizaWy",
+          "Nila122",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-faun-and-minotaur",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      },
+      {
+        "file": "legs/fur/thin",
+        "notes": "Original pants by Stephen Challener (Redshrike), thrust/shoot bases by Wulax, Fur Pants Color by Evert, Edited to V3 Bases by Bluecarrot16, Female/Thin version by JaidynReiman",
+        "authors": [
+          "Bluecarrot16",
+          "JaidynReiman",
+          "Evert",
+          "ElizaWy",
+          "Nila122",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-faun-and-minotaur",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_pantaloons": {
+    "name": "Pantaloons",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "pants",
+      "legs_pantaloons"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "male": "legs/pantaloons/male/",
+        "muscular": "legs/pantaloons/muscular/",
+        "female": "legs/pantaloons/thin/",
+        "pregnant": "legs/pantaloons/thin/",
+        "teen": "legs/pantaloons/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/pantaloons",
+        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, Original Pantaloons by Nila122, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
+        "authors": [
+          "Nila122",
+          "JaidynReiman",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 2.0",
+          "GPL 3.0",
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-pirates",
+          "https://opengameart.org/content/more-lpc-clothes-and-hair",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      },
+      {
+        "file": "legs/pantaloons/thin",
+        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, Original Pantaloons by Nila122, Female/Teen version by JaidynReiman",
+        "authors": [
+          "Nila122",
+          "JaidynReiman",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 2.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-pirates",
+          "https://opengameart.org/content/more-lpc-clothes-and-hair",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      },
+      {
+        "file": "legs/pantaloons/muscular",
+        "notes": "",
+        "authors": [
+          "Nila122",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 2.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/more-lpc-clothes-and-hair"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "GPL 2.0",
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "GPL 2.0",
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "GPL 2.0",
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "GPL 2.0",
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "GPL 2.0",
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "legs_pants": {
+    "name": "Pants",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "pants",
+      "legs_pants"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "male": "legs/pants/male/",
+        "muscular": "legs/pants/male/",
+        "female": "legs/pants/thin/",
+        "teen": "legs/pants/thin/",
+        "pregnant": "legs/pants/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/pants/male",
+        "notes": "original male pants by wulax, recolors and edits to v3 base by bluecarrot16, climb/jump/run/sit/emotes/revised combat by JaidynReiman based on ElizaWy's LPC Revised",
+        "authors": [
+          "bluecarrot16",
+          "JaidynReiman",
+          "ElizaWy",
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 3.0",
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      },
+      {
+        "file": "legs/pants/thin",
+        "notes": "original male pants by wulax, edited for female by Joe White, recolors and edits to v3 base by bluecarrot16, teen legs by ElizaWy derived from base, climb/jump/run/sit/emotes/revised combat by JaidynReiman based on ElizaWy's LPC Revised",
+        "authors": [
+          "bluecarrot16",
+          "JaidynReiman",
+          "ElizaWy",
+          "Joe White",
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 3.0",
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "http://opengameart.org/content/lpc-clothing-updates",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "legs_pants2": {
+    "name": "Long Pants",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "pants",
+      "legs_pants2"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "leather",
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "male": "legs/pants2/male/",
+        "female": "legs/pants2/thin/",
+        "teen": "legs/pants2/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/pants2/male",
+        "notes": "original overalls by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, pants by JaidynReiman",
+        "authors": [
+          "JaidynReiman",
+          "ElizaWy",
+          "Bluecarrot16",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      },
+      {
+        "file": "legs/pants2",
+        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original pants by ElizaWy, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
+        "authors": [
+          "ElizaWy",
+          "JaidynReiman",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_pregnantpants": {
+    "name": "Pregnancy pants",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "pants",
+      "legs_pregnantpants"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "sky",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "pregnant": "legs/pants/pregnant/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/pants/pregnant",
+        "notes": "original male pants by wulax; edited for female by Joe White; recolors by JaidynReiman; walkcycle adapted to pregnant base by ElizaWy; remaining animations, recolors and edits to v3 base by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "ElizaWy",
+          "JaidynReiman",
+          "Joe White",
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-pregnancy-bases-maternity-wear",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_widepants": {
+    "name": "Wide pants",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "muscular"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "pants",
+      "legs_widepants"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "muscular": "legs/pants/muscular/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/pants/muscular",
+        "notes": "original muscular pants by ElizaWy, muscular by dalonedrau, cast and thrust frames by JaidynReiman",
+        "authors": [
+          "ElizaWy",
+          "JaidynReiman",
+          "dalonedrau",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-muscular-pants",
+          "https://opengameart.org/content/lpc-muscular-swing-animation",
+          "https://opengameart.org/content/lpc-muscular-hurt-animation"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_shorts_short": {
+    "name": "Short Shorts",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "shorts",
+      "legs_shorts_short"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "leather",
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "male": "legs/shorts/short_shorts/male/",
+        "female": "legs/shorts/short_shorts/thin/",
+        "teen": "legs/shorts/short_shorts/thin/",
+        "pregnant": "legs/shorts/short_shorts/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/shorts/short_shorts/male",
+        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original overalls and shorts by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, shorts by JaidynReiman",
+        "authors": [
+          "JaidynReiman",
+          "ElizaWy",
+          "Bluecarrot16",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      },
+      {
+        "file": "legs/shorts/short_shorts",
+        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original shorts by ElizaWy, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
+        "authors": [
+          "ElizaWy",
+          "JaidynReiman",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_shorts": {
+    "name": "Shorts",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "shorts",
+      "legs_shorts"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "leather",
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "male": "legs/shorts/shorts/male/",
+        "female": "legs/shorts/shorts/thin/",
+        "teen": "legs/shorts/shorts/thin/",
+        "pregnant": "legs/shorts/shorts/thin/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/shorts/shorts/male",
+        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original overalls and shorts by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, shorts by JaidynReiman",
+        "authors": [
+          "JaidynReiman",
+          "ElizaWy",
+          "Bluecarrot16",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      },
+      {
+        "file": "legs/shorts/shorts",
+        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original shorts by ElizaWy, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
+        "authors": [
+          "ElizaWy",
+          "JaidynReiman",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
+          "https://opengameart.org/content/lpc-expanded-pants"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_childskirts": {
+    "name": "Child skirts",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "child"
+    ],
+    "animations": [
+      "walk"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "skirts",
+      "legs_childskirts"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "darkblue",
+      "green",
+      "lavender",
+      "lightblue",
+      "maroon",
+      "pink",
+      "red",
+      "white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "child": "legs/skirts/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/skirts/child",
+        "notes": "",
+        "authors": [
+          "Nila122"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-clothes-for-children"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "child": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_skirt_belle": {
+    "name": "Belle skirt",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "female",
+      "teen",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "skirts",
+      "legs_skirt_belle"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "female": "legs/skirts/belle/female/",
+        "pregnant": "legs/skirts/belle/female/",
+        "teen": "legs/skirts/belle/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/skirts/belle",
+        "notes": "extended to all poses by makrohn, edited to v3 bases and animation cleanup by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Matthew Krohn (makrohn)",
+          "Lanea Zimmerman (Sharm)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-dress-in-combat-poses",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_skirt_overskirt": {
+    "name": "Overskirt",
+    "priority": null,
+    "type_name": "apron",
+    "required": [
+      "female",
+      "teen",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "skirts",
+      "legs_skirt_overskirt"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 35,
+        "female": "legs/skirts/overskirt/female/",
+        "pregnant": "legs/skirts/overskirt/female/",
+        "teen": "legs/skirts/overskirt/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/skirts/overskirt",
+        "notes": "original princess.xcf by Sharm, extended to all poses by makrohn, edited to v3 bases and animation cleanup by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Matthew Krohn (makrohn)",
+          "Lanea Zimmerman (Sharm)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-dress-in-combat-poses",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_skirt_straight": {
+    "name": "Straight skirt",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "female",
+      "teen",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "skirts",
+      "legs_skirt_straight"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "female": "legs/skirts/straight/female/",
+        "pregnant": "legs/skirts/straight/female/",
+        "teen": "legs/skirts/straight/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/skirts/straight",
+        "notes": "original skirt by ElizaWy, extended to all animation frames and edited for v3 bases by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "ElizaWy"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "female": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_skirts_legion": {
+    "name": "Legion skirt",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "skirts",
+      "legs_skirts_legion"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "male": "legs/skirts/legion/male/",
+        "muscular": "legs/skirts/legion/male/",
+        "female": "legs/skirts/legion/female/",
+        "pregnant": "legs/skirts/legion/female/",
+        "teen": "legs/skirts/legion/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/skirts/legion",
+        "notes": "original by Nila122 to legion, adapted to v3 bases by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Nila122"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 2.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-roman-armor",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_skirts_plain": {
+    "name": "Plain skirt",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "skirts",
+      "legs_skirts_plain"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "male": "legs/skirts/plain/male/",
+        "female": "legs/skirts/plain/female/",
+        "teen": "legs/skirts/plain/female/",
+        "pregnant": "legs/skirts/plain/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/skirts/plain",
+        "notes": "original by wulax, edited for female base by pvigier, edited for v3 base by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Pierre Vigier (pvigier)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "legs_skirts_slit": {
+    "name": "Slit skirt",
+    "priority": null,
+    "type_name": "legs",
+    "required": [
+      "male",
+      "female"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "legs",
+      "skirts",
+      "legs_skirts_slit"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "male": "legs/skirts/slit/female/",
+        "female": "legs/skirts/slit/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "legs/skirts/slit",
+        "notes": "original \"TightDress\" by Nila122, edited to skirt by ElizaWy, extended to all animation frames and edited for v3 bases by bluecarrot16",
+        "authors": [
+          "Nila122",
+          "ElizaWy",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 2.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-clothes-and-hair",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_aprons_apron_full": {
+    "name": "Apron full",
+    "priority": null,
+    "type_name": "apron",
+    "required": [
+      "female"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "aprons",
+      "torso_aprons_apron_full"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 40,
+        "female": "torso/aprons/apron_full/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/aprons/apron_full",
+        "notes": "original apron by ElizaWy, extended to all animation frames and edited for v3 bases by bluecarrot16",
+        "authors": [
+          "ElizaWy",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "female": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_aprons_apron_half": {
+    "name": "Apron half",
+    "priority": null,
+    "type_name": "apron",
+    "required": [
+      "female"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "aprons",
+      "torso_aprons_apron_half"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 40,
+        "female": "torso/aprons/apron_half/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/aprons/apron_half",
+        "notes": "original apron by ElizaWy, extended to all animation frames and edited for v3 bases by bluecarrot16",
+        "authors": [
+          "ElizaWy",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "female": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_aprons_apron": {
+    "name": "Apron",
+    "priority": null,
+    "type_name": "apron",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "aprons",
+      "torso_aprons_apron"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "leather",
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 40,
+        "male": "torso/aprons/apron/male/",
+        "female": "torso/aprons/apron/female/",
+        "teen": "torso/aprons/apron/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/aprons/apron",
+        "notes": "",
+        "authors": [
+          "Nila122"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 2.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-aprons"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_aprons_overalls": {
+    "name": "Overalls",
+    "priority": null,
+    "type_name": "overalls",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "aprons",
+      "torso_aprons_overalls"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "leather",
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 38,
+        "male": "torso/aprons/overalls/male/",
+        "female": "torso/aprons/overalls/female/",
+        "teen": "torso/aprons/overalls/teen/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/aprons/overalls",
+        "notes": "original overalls by ElizaWy, extended to all animation frames, adapted from teen to male base, and edited for v3 bases by bluecarrot16; extended to combat animations by JaidynReiman",
+        "authors": [
+          "ElizaWy",
+          "bluecarrot16",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-revised-character-basics",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_aprons_suspenders": {
+    "name": "Suspenders",
+    "priority": null,
+    "type_name": "overalls",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "aprons",
+      "torso_aprons_suspenders"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 38,
+        "male": "torso/aprons/suspenders/male/",
+        "muscular": "torso/aprons/suspenders/male/",
+        "female": "torso/aprons/suspenders/female/",
+        "pregnant": "torso/aprons/suspenders/female/",
+        "teen": "torso/aprons/suspenders/teen/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/aprons/suspenders",
+        "notes": "original by ElizaWy; spellcast/thrust/shoot/hurt/combat adapted from original by JaidynReiman",
+        "authors": [
+          "ElizaWy",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
+          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "torso_armour_leather": {
+    "name": "Leather",
+    "priority": null,
+    "type_name": "armour",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "armour",
+      "torso_armour_leather"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "leather",
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 60,
+        "male": "torso/armour/leather/male/",
+        "female": "torso/armour/leather/female/",
+        "teen": "torso/armour/leather/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/armour/leather",
+        "notes": "adapted to v3 bases by bluecarrot16",
+        "authors": [
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      },
+      {
+        "file": "torso/armour/leather/female",
+        "notes": "recolor of torso/armour/leather/female/brown.png, adapted to v3 bases by bluecarrot16",
+        "authors": [
+          "Michael Whitlock (bigbeargames)",
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-combat-armor-for-women",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_armour_legion": {
+    "name": "Legion",
+    "priority": null,
+    "type_name": "armour",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h/backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "armour",
+      "torso_armour_legion"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "steel",
+      "iron",
+      "ceramic",
+      "brass",
+      "copper",
+      "bronze",
+      "silver",
+      "gold"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 60,
+        "male": "torso/armour/legion/male/",
+        "female": "torso/armour/legion/female/",
+        "teen": "torso/armour/legion/teen/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/armour/legion",
+        "notes": "adapted to v3 bases by bluecarrot16, jump/run/sit/combat and teen by Jaidynreiman",
+        "authors": [
+          "JaidynReiman",
+          "bluecarrot16",
+          "Nila122"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 2.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-roman-armor"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_armour_plate": {
+    "name": "Plate",
+    "priority": null,
+    "type_name": "armour",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "armour",
+      "torso_armour_plate"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "steel",
+      "iron",
+      "ceramic",
+      "brass",
+      "copper",
+      "bronze",
+      "silver",
+      "gold"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 60,
+        "male": "torso/armour/plate/male/",
+        "female": "torso/armour/plate/female/",
+        "teen": "torso/armour/plate/teen/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/armour/plate/male",
+        "notes": "original by wulax, recolor by bigbeargames, color reduced to 7 colors and adapted to v3 bases by bluecarrot16, run/jump/sit/climb/revised combat by JaidynReiman",
+        "authors": [
+          "JaidynReiman, bluecarrot16, Michael Whitlock (bigbeargames), Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-combat-armor-for-women"
+        ]
+      },
+      {
+        "file": "torso/armour/plate/female",
+        "notes": "original by wulax, adapted to female base by makrohn, recolor by bigbeargames, color reduced to 7 colors and adapted to v3 bases by bluecarrot16, run/jump/sit/climb/revised combat by JaidynReiman",
+        "authors": [
+          "JaidynReiman",
+          "bluecarrot16",
+          "Michael Whitlock (bigbeargames)",
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-combat-armor-for-women",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      },
+      {
+        "file": "torso/armour/plate/teen",
+        "notes": "original by wulax, color reduced to 7 colors and adapted to v3 bases by bluecarrot16, adapted to teen base from male/female by JaidynReiman",
+        "authors": [
+          "JaidynReiman",
+          "bluecarrot16",
+          "Michael Whitlock (bigbeargames)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-combat-armor-for-women"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "backpack_basket": {
+    "name": "Basket",
+    "priority": null,
+    "type_name": "backpack",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "back",
+      "backpack",
+      "basket"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "backpack",
+      "backpack_basket"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "round",
+      "square"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 130,
+        "male": "backpack/basket/fg/",
+        "muscular": "backpack/basket/fg/",
+        "female": "backpack/basket/fg/",
+        "pregnant": "backpack/basket/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "backpack/basket/bg/",
+        "muscular": "backpack/basket/bg/",
+        "female": "backpack/basket/bg/",
+        "pregnant": "backpack/basket/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "backpack/basket",
+        "notes": "full submission is CC-BY-SA 3.0/GPL 3.0, but this item is CC0",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-more-backpacks"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "backpack_jetpack_fins": {
+    "name": "Jetpack fins",
+    "priority": null,
+    "type_name": "cargo",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "back",
+      "backpack",
+      "jetpack"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "backpack",
+      "backpack_jetpack_fins"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "bronze",
+      "gold",
+      "steel"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 112,
+        "male": "backpack/jetpack_fins/male/",
+        "muscular": "backpack/jetpack_fins/male/",
+        "female": "backpack/jetpack_fins/female/",
+        "pregnant": "backpack/jetpack_fins/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "backpack/jetpack_fins",
+        "notes": "trivial adjustments by bluecarrot16 to be compatible with v3 bases",
+        "authors": [
+          "Benjamin K. Smith (BenCreating)",
+          "macmanmatty"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-backpacks"
+        ]
+      }
+    ],
+    "preview_row": 0,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "backpack_jetpack": {
+    "name": "Jetpack",
+    "priority": null,
+    "type_name": "backpack",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "back",
+      "backpack",
+      "jetpack"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "backpack",
+      "backpack_jetpack"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "bronze",
+      "gold",
+      "steel"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 110,
+        "male": "backpack/jetpack/male/",
+        "muscular": "backpack/jetpack/male/",
+        "female": "backpack/jetpack/female/",
+        "pregnant": "backpack/jetpack/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "backpack/jetpack",
+        "notes": "trivial adjustments by bluecarrot16 to be compatible with v3 bases",
+        "authors": [
+          "Benjamin K. Smith (BenCreating)",
+          "macmanmatty"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-backpacks"
+        ]
+      }
+    ],
+    "preview_row": 0,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "backpack_squarepack": {
+    "name": "Square pack",
+    "priority": null,
+    "type_name": "backpack",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "backpack"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "backpack",
+      "backpack_squarepack"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "sky",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 110,
+        "male": "backpack/squarepack/male/",
+        "muscular": "backpack/squarepack/male/",
+        "female": "backpack/squarepack/female/",
+        "pregnant": "backpack/squarepack/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "backpack/squarepack",
+        "notes": "trivial adjustments by bluecarrot16 to be compatible with v3 bases",
+        "authors": [
+          "Benjamin K. Smith (BenCreating)",
+          "macmanmatty"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-backpacks"
+        ]
+      }
+    ],
+    "preview_row": 0,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "backpack_straps": {
+    "name": "Straps",
+    "priority": null,
+    "type_name": "backpack_straps",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "back",
+      "backpack_straps"
+    ],
+    "required_tags": [
+      "backpack"
+    ],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "backpack",
+      "backpack_straps"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "sky",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 110,
+        "male": "backpack/straps/male/",
+        "muscular": "backpack/straps/male/",
+        "female": "backpack/straps/female/",
+        "pregnant": "backpack/straps/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "backpack/straps",
+        "notes": "trivial adjustments by bluecarrot16 to be compatible with v3 bases",
+        "authors": [
+          "Benjamin K. Smith (BenCreating)",
+          "macmanmatty"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-backpacks"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "backpack": {
+    "name": "Backpack",
+    "priority": null,
+    "type_name": "backpack",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "back",
+      "backpack"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "backpack",
+      "backpack"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "sky",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 110,
+        "male": "backpack/backpack/male/",
+        "muscular": "backpack/backpack/male/",
+        "female": "backpack/backpack/female/",
+        "pregnant": "backpack/backpack/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "backpack/backpack",
+        "notes": "trivial adjustments by bluecarrot16 to be compatible with v3 bases",
+        "authors": [
+          "Benjamin K. Smith (BenCreating)",
+          "macmanmatty"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-backpacks"
+        ]
+      }
+    ],
+    "preview_row": 0,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "quiver": {
+    "name": "Quiver",
+    "priority": null,
+    "type_name": "quiver",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "backpack",
+      "quiver"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "quiver"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 8,
+        "male": "quiver/",
+        "muscular": "quiver/",
+        "female": "quiver/",
+        "pregnant": "quiver/",
+        "teen": "quiver/"
+      }
+    },
+    "credits": [
+      {
+        "file": "quiver",
+        "notes": "",
+        "authors": [
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "cape_solid": {
+    "name": "Solid",
+    "priority": null,
+    "type_name": "cape",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "back",
+      "cape"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "cape",
+      "cape_solid"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 85,
+        "male": "cape/solid/female/",
+        "muscular": "cape/solid/female/",
+        "teen": "cape/solid/female/",
+        "female": "cape/solid/female/",
+        "pregnant": "cape/solid/female/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "cape/solid_behind/",
+        "muscular": "cape/solid_behind/",
+        "teen": "cape/solid_behind/",
+        "female": "cape/solid_behind/",
+        "pregnant": "cape/solid_behind/"
+      }
+    },
+    "credits": [
+      {
+        "file": "cape/solid/female",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-curly-hair-elven-ears-white-cape-with-blue-trim-and-more",
+          "https://opengameart.org/content/lpc-roman-armor",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      },
+      {
+        "file": "cape/solid_behind",
+        "notes": "",
+        "authors": [
+          "Nila122",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-curly-hair-elven-ears-white-cape-with-blue-trim-and-more",
+          "https://opengameart.org/content/lpc-roman-armor"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "cape_tattered": {
+    "name": "Tattered",
+    "priority": null,
+    "type_name": "cape",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "back",
+      "cape"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "cape",
+      "cape_tattered"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 85,
+        "male": "cape/tattered/female/",
+        "muscular": "cape/tattered/female/",
+        "teen": "cape/tattered/female/",
+        "female": "cape/tattered/female/",
+        "pregnant": "cape/tattered/female/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "cape/tattered_behind/",
+        "muscular": "cape/tattered_behind/",
+        "teen": "cape/tattered_behind/",
+        "female": "cape/tattered_behind/",
+        "pregnant": "cape/tattered_behind/"
+      }
+    },
+    "credits": [
+      {
+        "file": "cape/tattered",
+        "notes": "",
+        "authors": [
+          "Nila122",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-curly-hair-elven-ears-white-cape-with-blue-trim-and-more",
+          "https://opengameart.org/content/lpc-roman-armor"
+        ]
+      },
+      {
+        "file": "cape/tattered_behind",
+        "notes": "",
+        "authors": [
+          "Nila122",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-curly-hair-elven-ears-white-cape-with-blue-trim-and-more",
+          "https://opengameart.org/content/lpc-roman-armor"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "cape_trim": {
+    "name": "Cape Trim",
+    "priority": null,
+    "type_name": "cape_trim",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "back",
+      "cape_trim"
+    ],
+    "required_tags": [
+      "cape"
+    ],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "cape",
+      "cape_trim"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 90,
+        "male": "cape/trim/female/",
+        "muscular": "cape/trim/female/",
+        "teen": "cape/trim/female/",
+        "female": "cape/trim/female/",
+        "pregnant": "cape/trim/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "cape/trim",
+        "notes": "isolated stripe from cape_trimmed, adapted to v3 bases by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-curly-hair-elven-ears-white-cape-with-blue-trim-and-more",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "dress_bodice": {
+    "name": "Bodice",
+    "priority": 10,
+    "type_name": "vest",
+    "required": [
+      "female"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "dresses",
+      "dress_bodice"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 45,
+        "female": "dress/bodice/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "dress/bodice",
+        "notes": "original princess.xcf by Sharm, extended to all poses by makrohn, edited to v3 bases and animation cleanup by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Matthew Krohn (makrohn)",
+          "Lanea Zimmerman (Sharm)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-dress-in-combat-poses",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "dress_sash": {
+    "name": "Sash dress",
+    "priority": 30,
+    "type_name": "dress",
+    "required": [
+      "female"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "dresses",
+      "dress_sash"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 30,
+        "female": "dress/sash/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "dress/sash",
+        "notes": "adapted to v3 bases and recolored by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Thane Brimhall (pennomi)",
+          "laetissima",
+          "Matthew Krohn (makrohn)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-2-characters"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "dress_slit": {
+    "name": "Slit dress",
+    "priority": 20,
+    "type_name": "dress",
+    "required": [
+      "female"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "dresses",
+      "dress_slit"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 30,
+        "female": "dress/slit/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "dress/slit",
+        "notes": "original \"TightDress\" by Nila122, by ElizaWy, extended to all animation frames and edited for v3 bases by bluecarrot16",
+        "authors": [
+          "Nila122",
+          "ElizaWy",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 2.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-clothes-and-hair",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_jacket_collared": {
+    "name": "Collared coat",
+    "priority": null,
+    "type_name": "jacket",
+    "required": [
+      "male"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "jacket",
+      "torso_jacket_collared"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "brown striped",
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 55,
+        "male": "torso/jacket/collared/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/jacket/collared",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-gentleman",
+          "https://opengameart.org/content/lpc-pirates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_jacket_frock": {
+    "name": "Frock coat",
+    "priority": null,
+    "type_name": "jacket",
+    "required": [
+      "male"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "jacket",
+      "torso_jacket_frock"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 55,
+        "male": "torso/jacket/frock/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/jacket/frock",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-pirates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "torso_jacket_iverness": {
+    "name": "Iverness cloak",
+    "priority": null,
+    "type_name": "jacket",
+    "required": [
+      "male"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "jacket",
+      "torso_jacket_iverness"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 55,
+        "male": "torso/jacket/iverness/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/jacket/iverness",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-gentleman"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_jacket_santa": {
+    "name": "Santa coat",
+    "priority": null,
+    "type_name": "jacket",
+    "required": [
+      "male"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "jacket",
+      "torso_jacket_santa"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 55,
+        "male": "torso/jacket/santa/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/jacket/santa",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-gentleman",
+          "https://opengameart.org/content/lpc-santa"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_jacket_tabard": {
+    "name": "Tabard",
+    "priority": null,
+    "type_name": "jacket",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "jacket",
+      "torso_jacket_tabard"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "sky",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 55,
+        "female": "torso/jacket/tabard/female/",
+        "teen": "torso/jacket/tabard/female/",
+        "male": "torso/jacket/tabard/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/jacket/tabard",
+        "notes": "original by wulax, edited to v3 base by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      },
+      {
+        "file": "torso/jacket/tabard/female",
+        "notes": "original by wulax, edited to female base by makrohn and JaidynReiman, edited to v3 base by bluecarrot16",
+        "authors": [
+          "JaidynReiman",
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-combat-armor-for-women",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_jacket_trench": {
+    "name": "Trench coat",
+    "priority": null,
+    "type_name": "jacket",
+    "required": [
+      "male"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "jacket",
+      "torso_jacket_trench"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "dark gray",
+      "gray"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 55,
+        "male": "torso/jacket/trench/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/jacket/trench",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-gentleman"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_clothes_blouse_longsleeve": {
+    "name": "Longsleeve blouse",
+    "priority": null,
+    "type_name": "clothes",
+    "required": [
+      "female"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "shirts",
+      "torso_clothes_blouse_longsleeve"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "sky",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 35,
+        "female": "torso/clothes/blouse_longsleeve/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/clothes/blouse_longsleeve",
+        "notes": "original princess.xcf by Sharm, edited to blouse by ElizaWy; blouse + longsleeve adapted to v3 bases by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "ElizaWy",
+          "Lanea Zimmerman (Sharm)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-7-womens-shirts"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_clothes_blouse": {
+    "name": "Blouse",
+    "priority": null,
+    "type_name": "clothes",
+    "required": [
+      "female"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "shirts",
+      "torso_clothes_blouse"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "sky",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 35,
+        "female": "torso/clothes/blouse/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/clothes/blouse",
+        "notes": "original princess.xcf by Sharm, edited to blouse by ElizaWy; adapted to v3 bases by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "ElizaWy",
+          "Lanea Zimmerman (Sharm)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-7-womens-shirts"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_clothes_child_shirt": {
+    "name": "Child shirts",
+    "priority": null,
+    "type_name": "clothes",
+    "required": [
+      "child"
+    ],
+    "animations": [
+      "walk"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "shirts",
+      "torso_clothes_child_shirt"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "brown",
+      "gray",
+      "green",
+      "lavender",
+      "lightblue",
+      "pink",
+      "red",
+      "white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 35,
+        "child": "torso/clothes/shirt/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/clothes/shirt/child",
+        "notes": "",
+        "authors": [
+          "Nila122"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-clothes-for-children"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "child": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_clothes_corset": {
+    "name": "Corset",
+    "priority": null,
+    "type_name": "vest",
+    "required": [
+      "female"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "shirts",
+      "torso_clothes_corset"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "sky",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 45,
+        "female": "torso/clothes/corset/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/clothes/corset",
+        "notes": "original by Nila122, recolored by ElizaWy",
+        "authors": [
+          "ElizaWy",
+          "Nila122"
+        ],
+        "licenses": [
+          "OGA-SA 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-clothes-and-hair",
+          "https://opengameart.org/content/lpc-7-womens-shirts"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "female": [
+        "OGA-SA 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_clothes_robe": {
+    "name": "Robe",
+    "priority": null,
+    "type_name": "clothes",
+    "required": [
+      "female"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "shirts",
+      "torso_clothes_robe"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "brown",
+      "dark brown",
+      "dark gray",
+      "forest green",
+      "light gray",
+      "purple",
+      "red",
+      "white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 35,
+        "female": "torso/clothes/robe/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/clothes/robe",
+        "notes": "",
+        "authors": [
+          "Luke Mehl"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/female-mage-clothing-set"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_clothes_tunic_sara": {
+    "name": "Sara Tunic",
+    "priority": null,
+    "type_name": "clothes",
+    "required": [
+      "female"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "shirts",
+      "torso_clothes_tunic_sara"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 35,
+        "female": "torso/clothes/tunic_sara/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/clothes/tunic_sara",
+        "notes": "",
+        "authors": [
+          "Mandi Paugh",
+          "William.Thompsonj",
+          "Stephen Challener (Redshrike)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "http://opengameart.org/content/sara-wizard",
+          "https://opengameart.org/content/lpc-sara"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "female": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "torso_clothes_tunic": {
+    "name": "Tunic",
+    "priority": null,
+    "type_name": "clothes",
+    "required": [
+      "female"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "shirts",
+      "torso_clothes_tunic"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 35,
+        "female": "torso/clothes/tunic/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/clothes/tunic",
+        "notes": "\"pirate shirt\" by MadMarcel, edited to all poses by makrohn, edited from tube-top/tanktop to sleeveless then to tunic by JaidynReiman, edits for v3 bases and further cleanup by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "JaidynReiman",
+          "Matthew Krohn (makrohn)",
+          "Marcel van de Steeg (MadMarcel)",
+          "Stephen Challener (Redshrike)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-female-orcogregoblintroll-base-walkcycle",
+          "https://opengameart.org/content/lpc-curly-hair-elven-ears-white-cape-with-blue-trim-and-more",
+          "http://opengameart.org/content/lpc-clothing-updates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_clothes_vest_open": {
+    "name": "Vest open",
+    "priority": null,
+    "type_name": "vest",
+    "required": [
+      "male"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "vest",
+      "torso_clothes_vest_open"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 45,
+        "male": "torso/clothes/vest_open/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/clothes/vest_open",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Thane Brimhall (pennomi)",
+          "laetissima"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-2-characters",
+          "https://opengameart.org/content/lpc-gentleman",
+          "https://opengameart.org/content/lpc-pirates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "torso_clothes_vest": {
+    "name": "Vest",
+    "priority": null,
+    "type_name": "vest",
+    "required": [
+      "male"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "vest",
+      "torso_clothes_vest"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "gray striped",
+      "green striped",
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 45,
+        "male": "torso/clothes/vest/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/clothes/vest",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Thane Brimhall (pennomi)",
+          "laetissima",
+          "Stephen Challener (Redshrike)",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-2-characters",
+          "https://opengameart.org/content/lpc-gentleman",
+          "https://opengameart.org/content/lpc-pirates"
+        ]
+      },
+      {
+        "file": "torso/clothes/vest/male/gray_striped.png",
+        "notes": "",
+        "authors": [
+          "Michael Whitlock (bigbeargames)",
+          "bluecarrot16",
+          "Thane Brimhall (pennomi)",
+          "laetissima"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-2-characters"
+        ]
+      },
+      {
+        "file": "torso/clothes/vest/male/gray.png",
+        "notes": "",
+        "authors": [
+          "Michael Whitlock (bigbeargames)",
+          "bluecarrot16",
+          "Thane Brimhall (pennomi)",
+          "laetissima"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-2-characters"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "belt_belly": {
+    "name": "Belly belt",
+    "priority": 40,
+    "type_name": "belt",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "waist",
+      "belt_belly"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "brown",
+      "charcoal",
+      "leather",
+      "slate",
+      "tan",
+      "walnut",
+      "white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 70,
+        "male": "torso/waist/belt_belly/male/",
+        "female": "torso/waist/belt_belly/female/",
+        "teen": "torso/waist/belt_belly/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/waist/belt_belly",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Johannes Sjölund (wulax)",
+          "Matthew Krohn (makrohn)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-combat-armor-for-women",
+          "https://opengameart.org/content/lpc-pirates",
+          "https://opengameart.org/content/lpc-santa"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "belt_double": {
+    "name": "Double Belt",
+    "priority": 20,
+    "type_name": "belt",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "waist",
+      "belt_double"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "brown",
+      "charcoal",
+      "leather",
+      "slate",
+      "tan",
+      "walnut",
+      "white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 70,
+        "male": "torso/waist/belt_double/male/",
+        "female": "torso/waist/belt_double/female/",
+        "teen": "torso/waist/belt_double/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/waist/belt_double",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Johannes Sjölund (wulax)",
+          "Matthew Krohn (makrohn)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-combat-armor-for-women",
+          "https://opengameart.org/content/lpc-pirates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "belt_leather": {
+    "name": "Leather Belt",
+    "priority": 10,
+    "type_name": "belt",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "waist",
+      "belt_leather"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "brown",
+      "charcoal",
+      "leather",
+      "slate",
+      "tan",
+      "walnut",
+      "white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 70,
+        "male": "torso/waist/belt_leather/male/",
+        "female": "torso/waist/belt_leather/female/",
+        "teen": "torso/waist/belt_leather/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/waist/belt_leather",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Johannes Sjölund (wulax)",
+          "Matthew Krohn (makrohn)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-combat-armor-for-women",
+          "https://opengameart.org/content/lpc-pirates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "belt_loose": {
+    "name": "Loose Belt",
+    "priority": 30,
+    "type_name": "belt",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "waist",
+      "belt_loose"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "brown",
+      "charcoal",
+      "leather",
+      "slate",
+      "tan",
+      "walnut",
+      "white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 70,
+        "male": "torso/waist/belt_loose/male/",
+        "female": "torso/waist/belt_loose/female/",
+        "teen": "torso/waist/belt_loose/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/waist/belt_loose",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Johannes Sjölund (wulax)",
+          "Matthew Krohn (makrohn)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-combat-armor-for-women",
+          "https://opengameart.org/content/lpc-pirates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "belt_other_female": {
+    "name": "Other belts",
+    "priority": 50,
+    "type_name": "belt",
+    "required": [
+      "female"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "waist",
+      "belt_other_female"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "bronze",
+      "brown",
+      "gold",
+      "iron",
+      "leather",
+      "silver",
+      "teal",
+      "white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 70,
+        "female": "torso/waist/belt_other/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/waist/belt_other/female",
+        "notes": "",
+        "authors": [
+          "Luke Mehl"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/female-mage-clothing-set"
+        ]
+      },
+      {
+        "file": "torso/waist/belt_other/female/leather.png",
+        "notes": "",
+        "authors": [
+          "Johannes Sjölund (wulax)",
+          "Matthew Krohn (makrohn)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-combat-armor-for-women"
+        ]
+      },
+      {
+        "file": "torso/waist/belt_other/female/teal.png",
+        "notes": "",
+        "authors": [
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      },
+      {
+        "file": "torso/waist/belt_other/female/white.png",
+        "notes": "",
+        "authors": [
+          "Johannes Sjölund (wulax)",
+          "Matthew Krohn (makrohn)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "belt_other_male": {
+    "name": "Other belts",
+    "priority": 50,
+    "type_name": "belt",
+    "required": [
+      "male"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "waist",
+      "belt_other_male"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "formal",
+      "leather",
+      "white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 70,
+        "male": "torso/waist/belt_other/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/waist/belt_other/male/formal.png",
+        "notes": "",
+        "authors": [
+          "Thane Brimhall (pennomi)",
+          "laetissima",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-2-characters",
+          "https://opengameart.org/content/lpc-gentleman"
+        ]
+      },
+      {
+        "file": "torso/waist/belt_other/male/leather.png",
+        "notes": "",
+        "authors": [
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      },
+      {
+        "file": "torso/waist/belt_other/male/white.png",
+        "notes": "",
+        "authors": [
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "belt_sash_narrow": {
+    "name": "Narrow sash",
+    "priority": 70,
+    "type_name": "sash",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "waist",
+      "belt_sash_narrow"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 65,
+        "male": "torso/waist/sash_narrow/male/",
+        "female": "torso/waist/sash_narrow/female/",
+        "teen": "torso/waist/sash_narrow/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/waist/sash_narrow",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Nila122"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 2.0",
+          "GPL 3.0",
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/more-lpc-clothes-and-hair",
+          "https://opengameart.org/content/lpc-pirates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "GPL 2.0",
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "GPL 2.0",
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "GPL 2.0",
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "belt_sash": {
+    "name": "Sash",
+    "priority": 60,
+    "type_name": "sash",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "waist",
+      "belt_sash"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 65,
+        "male": "torso/waist/sash/male/",
+        "female": "torso/waist/sash/female/",
+        "teen": "torso/waist/sash/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/waist/sash",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Nila122"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 2.0",
+          "GPL 3.0",
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/more-lpc-clothes-and-hair",
+          "https://opengameart.org/content/lpc-pirates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "GPL 2.0",
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "GPL 2.0",
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "GPL 2.0",
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "belt_waistband": {
+    "name": "Waistband",
+    "priority": 90,
+    "type_name": "sash",
+    "required": [
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "waist",
+      "belt_waistband"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "black",
+      "blue",
+      "bluegray",
+      "brown",
+      "charcoal",
+      "forest",
+      "gray",
+      "green",
+      "lavender",
+      "leather",
+      "maroon",
+      "navy",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "sky",
+      "slate",
+      "tan",
+      "teal",
+      "walnut",
+      "white",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 65,
+        "female": "torso/waist/waistband/female/",
+        "teen": "torso/waist/sash/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/waist/waistband",
+        "notes": "LPC Sara by Redshrike, contributed by William Thompsonj, Waistband Separated by Bluecarrot16",
+        "authors": [
+          "Bluecarrot16",
+          "Mandi Paugh",
+          "Stephen Challener (Redshrike)",
+          "William.Thompsonj"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "http://opengameart.org/content/sara-wizard",
+          "https://opengameart.org/content/lpc-sara"
+        ]
+      },
+      {
+        "file": "torso/waist/sash",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Nila122"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "GPL 2.0",
+          "GPL 3.0",
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/more-lpc-clothes-and-hair",
+          "https://opengameart.org/content/lpc-pirates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "buckles": {
+    "name": "Buckles",
+    "priority": 100,
+    "type_name": "buckles",
+    "required": [
+      "female"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "waist",
+      "buckles"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "bronze",
+      "gold",
+      "iron",
+      "silver"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 75,
+        "female": "torso/waist/buckles/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/waist/buckles",
+        "notes": "",
+        "authors": [
+          "Luke Mehl"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/female-mage-clothing-set"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "weapon_blunt_club": {
+    "name": "Club",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "slash_reverse_oversize"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "blunt",
+      "weapon_blunt_club"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "club"
+    ],
+    "layers": {
+      "layer_1": {
+        "custom_animation": "slash_reverse_oversize",
+        "zPos": 140,
+        "male": "weapon/blunt/club/",
+        "muscular": "weapon/blunt/club/",
+        "female": "weapon/blunt/club/",
+        "pregnant": "weapon/blunt/club/"
+      },
+      "layer_2": {
+        "custom_animation": "slash_reverse_oversize",
+        "zPos": 9,
+        "male": "weapon/blunt/club/background/",
+        "muscular": "weapon/blunt/club/background/",
+        "female": "weapon/blunt/club/background/",
+        "pregnant": "weapon/blunt/club/background/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/blunt/club",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "GPL 3.0",
+          "CC-BY 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-more-weapons"
+        ]
+      }
+    ],
+    "preview_row": 1,
+    "preview_column": 1,
+    "preview_x_offset": 16,
+    "preview_y_offset": -16,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ]
+    }
+  },
+  "weapon_blunt_flail": {
+    "name": "Flail",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "hurt",
+      "slash_oversize"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "blunt",
+      "weapon_blunt_flail"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "flail"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 9,
+        "male": "weapon/blunt/flail/behind/",
+        "muscular": "weapon/blunt/flail/behind/",
+        "female": "weapon/blunt/flail/behind/",
+        "pregnant": "weapon/blunt/flail/behind/"
+      },
+      "layer_2": {
+        "zPos": 140,
+        "male": "weapon/blunt/flail/",
+        "muscular": "weapon/blunt/flail/",
+        "female": "weapon/blunt/flail/",
+        "pregnant": "weapon/blunt/flail/"
+      },
+      "layer_3": {
+        "custom_animation": "slash_oversize",
+        "zPos": 8,
+        "male": "weapon/blunt/flail/attack_slash/behind/",
+        "muscular": "weapon/blunt/flail/attack_slash/behind/",
+        "female": "weapon/blunt/flail/attack_slash/behind/",
+        "pregnant": "weapon/blunt/flail/attack_slash/behind/"
+      },
+      "layer_4": {
+        "custom_animation": "slash_oversize",
+        "zPos": 150,
+        "male": "weapon/blunt/flail/attack_slash/",
+        "muscular": "weapon/blunt/flail/attack_slash/",
+        "female": "weapon/blunt/flail/attack_slash/",
+        "pregnant": "weapon/blunt/flail/attack_slash/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/blunt/flail",
+        "notes": "",
+        "authors": [
+          "Benjamin K. Smith (BenCreating)",
+          "bluecarrot16",
+          "Sander Frenken (castelonia)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-weapons"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "weapon_blunt_mace": {
+    "name": "Mace",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "hurt",
+      "slash_oversize"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "blunt",
+      "weapon_blunt_mace"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "mace"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "weapon/blunt/mace/",
+        "muscular": "weapon/blunt/mace/",
+        "female": "weapon/blunt/mace/",
+        "pregnant": "weapon/blunt/mace/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "weapon/blunt/mace/universal_behind/",
+        "muscular": "weapon/blunt/mace/universal_behind/",
+        "female": "weapon/blunt/mace/universal_behind/",
+        "pregnant": "weapon/blunt/mace/universal_behind/"
+      },
+      "layer_3": {
+        "zPos": 9,
+        "custom_animation": "slash_oversize",
+        "male": "weapon/blunt/mace/attack_slash/behind/",
+        "muscular": "weapon/blunt/mace/attack_slash/behind/",
+        "female": "weapon/blunt/mace/attack_slash/behind/",
+        "pregnant": "weapon/blunt/mace/attack_slash/behind/"
+      },
+      "layer_4": {
+        "zPos": 150,
+        "custom_animation": "slash_oversize",
+        "male": "weapon/blunt/mace/attack_slash/",
+        "muscular": "weapon/blunt/mace/attack_slash/",
+        "female": "weapon/blunt/mace/attack_slash/",
+        "pregnant": "weapon/blunt/mace/attack_slash/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/blunt/mace",
+        "notes": "",
+        "authors": [
+          "Johannes Sjölund (wulax)",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-extended-weapon-animations"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "weapon_blunt_waraxe": {
+    "name": "Waraxe",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "hurt",
+      "slash_oversize"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "blunt",
+      "weapon_blunt_waraxe"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "waraxe"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 9,
+        "male": "weapon/blunt/waraxe/behind/",
+        "muscular": "weapon/blunt/waraxe/behind/",
+        "female": "weapon/blunt/waraxe/behind/",
+        "pregnant": "weapon/blunt/waraxe/behind/"
+      },
+      "layer_2": {
+        "zPos": 140,
+        "male": "weapon/blunt/waraxe/",
+        "muscular": "weapon/blunt/waraxe/",
+        "female": "weapon/blunt/waraxe/",
+        "pregnant": "weapon/blunt/waraxe/"
+      },
+      "layer_3": {
+        "custom_animation": "slash_oversize",
+        "zPos": 8,
+        "male": "weapon/blunt/waraxe/attack_slash/behind/",
+        "muscular": "weapon/blunt/waraxe/attack_slash/behind/",
+        "female": "weapon/blunt/waraxe/attack_slash/behind/",
+        "pregnant": "weapon/blunt/waraxe/attack_slash/behind/"
+      },
+      "layer_4": {
+        "custom_animation": "slash_oversize",
+        "zPos": 150,
+        "male": "weapon/blunt/waraxe/attack_slash/",
+        "muscular": "weapon/blunt/waraxe/attack_slash/",
+        "female": "weapon/blunt/waraxe/attack_slash/",
+        "pregnant": "weapon/blunt/waraxe/attack_slash/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/blunt/waraxe",
+        "notes": "",
+        "authors": [
+          "Benjamin K. Smith (BenCreating)",
+          "bluecarrot16",
+          "Sander Frenken (castelonia)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-weapons"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "weapon_magic_crystal": {
+    "name": "Crystal",
+    "priority": null,
+    "type_name": "weapon_magic_crystal",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "hurt",
+      "thrust_oversize"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "magic",
+      "weapon_magic_crystal"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blue",
+      "orange",
+      "green",
+      "purple",
+      "red",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "weapon/magic/crystal/universal/foreground/",
+        "muscular": "weapon/magic/crystal/universal/foreground/",
+        "female": "weapon/magic/crystal/universal/foreground/",
+        "teen": "weapon/magic/crystal/universal/foreground/",
+        "pregnant": "weapon/magic/crystal/universal/foreground/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "weapon/magic/crystal/universal/background/",
+        "muscular": "weapon/magic/crystal/universal/background/",
+        "female": "weapon/magic/crystal/universal/background/",
+        "teen": "weapon/magic/crystal/universal/background/",
+        "pregnant": "weapon/magic/crystal/universal/background/"
+      },
+      "layer_3": {
+        "custom_animation": "thrust_oversize",
+        "zPos": 150,
+        "male": "weapon/magic/crystal/thrust/foreground/",
+        "muscular": "weapon/magic/crystal/thrust/foreground/",
+        "female": "weapon/magic/crystal/thrust/foreground/",
+        "teen": "weapon/magic/crystal/thrust/foreground/",
+        "pregnant": "weapon/magic/crystal/thrust/foreground/"
+      },
+      "layer_4": {
+        "custom_animation": "thrust_oversize",
+        "zPos": -1,
+        "male": "weapon/magic/crystal/thrust/background/",
+        "muscular": "weapon/magic/crystal/thrust/background/",
+        "female": "weapon/magic/crystal/thrust/background/",
+        "teen": "weapon/magic/crystal/thrust/background/",
+        "pregnant": "weapon/magic/crystal/thrust/background/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/magic/crystal",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "GPL 3.0",
+          "CC-BY 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-more-weapons"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ]
+    }
+  },
+  "weapon_magic_diamond": {
+    "name": "Diamond staff",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "hurt",
+      "thrust_oversize"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "magic",
+      "weapon_magic_diamond"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "medium",
+      "light",
+      "red",
+      "dark",
+      "brass",
+      "bronze",
+      "ceramic",
+      "copper",
+      "gold",
+      "iron",
+      "silver",
+      "steel"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "weapon/magic/diamond/universal/foreground/",
+        "muscular": "weapon/magic/diamond/universal/foreground/",
+        "female": "weapon/magic/diamond/universal/foreground/",
+        "teen": "weapon/magic/diamond/universal/foreground/",
+        "pregnant": "weapon/magic/diamond/universal/foreground/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "weapon/magic/diamond/universal/background/",
+        "muscular": "weapon/magic/diamond/universal/background/",
+        "female": "weapon/magic/diamond/universal/background/",
+        "teen": "weapon/magic/diamond/universal/background/",
+        "pregnant": "weapon/magic/diamond/universal/background/"
+      },
+      "layer_3": {
+        "custom_animation": "thrust_oversize",
+        "zPos": 150,
+        "male": "weapon/magic/diamond/thrust/foreground/",
+        "muscular": "weapon/magic/diamond/thrust/foreground/",
+        "female": "weapon/magic/diamond/thrust/foreground/",
+        "teen": "weapon/magic/diamond/thrust/foreground/",
+        "pregnant": "weapon/magic/diamond/thrust/foreground/"
+      },
+      "layer_4": {
+        "custom_animation": "thrust_oversize",
+        "zPos": -1,
+        "male": "weapon/magic/diamond/thrust/background/",
+        "muscular": "weapon/magic/diamond/thrust/background/",
+        "female": "weapon/magic/diamond/thrust/background/",
+        "teen": "weapon/magic/diamond/thrust/background/",
+        "pregnant": "weapon/magic/diamond/thrust/background/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/magic/diamond",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "GPL 3.0",
+          "CC-BY 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-more-weapons"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ]
+    }
+  },
+  "weapon_magic_gnarled": {
+    "name": "Gnarled staff",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "hurt",
+      "thrust_oversize"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "magic",
+      "weapon_magic_gnarled"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "medium",
+      "light",
+      "red",
+      "dark",
+      "brass",
+      "bronze",
+      "ceramic",
+      "copper",
+      "gold",
+      "iron",
+      "silver",
+      "steel"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "weapon/magic/gnarled/universal/foreground/",
+        "muscular": "weapon/magic/gnarled/universal/foreground/",
+        "female": "weapon/magic/gnarled/universal/foreground/",
+        "teen": "weapon/magic/gnarled/universal/foreground/",
+        "pregnant": "weapon/magic/gnarled/universal/foreground/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "weapon/magic/gnarled/universal/background/",
+        "muscular": "weapon/magic/gnarled/universal/background/",
+        "female": "weapon/magic/gnarled/universal/background/",
+        "teen": "weapon/magic/gnarled/universal/background/",
+        "pregnant": "weapon/magic/gnarled/universal/background/"
+      },
+      "layer_3": {
+        "custom_animation": "thrust_oversize",
+        "zPos": 150,
+        "male": "weapon/magic/gnarled/thrust/foreground/",
+        "muscular": "weapon/magic/gnarled/thrust/foreground/",
+        "female": "weapon/magic/gnarled/thrust/foreground/",
+        "teen": "weapon/magic/gnarled/thrust/foreground/",
+        "pregnant": "weapon/magic/gnarled/thrust/foreground/"
+      },
+      "layer_4": {
+        "custom_animation": "thrust_oversize",
+        "zPos": -1,
+        "male": "weapon/magic/gnarled/thrust/background/",
+        "muscular": "weapon/magic/gnarled/thrust/background/",
+        "female": "weapon/magic/gnarled/thrust/background/",
+        "teen": "weapon/magic/gnarled/thrust/background/",
+        "pregnant": "weapon/magic/gnarled/thrust/background/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/magic/gnarled",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "GPL 3.0",
+          "CC-BY 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-more-weapons"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ]
+    }
+  },
+  "weapon_magic_loop": {
+    "name": "Loop staff",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "hurt",
+      "thrust_oversize"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "magic",
+      "weapon_magic_loop"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "medium",
+      "light",
+      "red",
+      "dark",
+      "brass",
+      "bronze",
+      "ceramic",
+      "copper",
+      "gold",
+      "iron",
+      "silver",
+      "steel"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "weapon/magic/loop/universal/foreground/",
+        "muscular": "weapon/magic/loop/universal/foreground/",
+        "female": "weapon/magic/loop/universal/foreground/",
+        "teen": "weapon/magic/loop/universal/foreground/",
+        "pregnant": "weapon/magic/loop/universal/foreground/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "weapon/magic/loop/universal/background/",
+        "muscular": "weapon/magic/loop/universal/background/",
+        "female": "weapon/magic/loop/universal/background/",
+        "teen": "weapon/magic/loop/universal/background/",
+        "pregnant": "weapon/magic/loop/universal/background/"
+      },
+      "layer_3": {
+        "custom_animation": "thrust_oversize",
+        "zPos": 150,
+        "male": "weapon/magic/loop/thrust/foreground/",
+        "muscular": "weapon/magic/loop/thrust/foreground/",
+        "female": "weapon/magic/loop/thrust/foreground/",
+        "teen": "weapon/magic/loop/thrust/foreground/",
+        "pregnant": "weapon/magic/loop/thrust/foreground/"
+      },
+      "layer_4": {
+        "custom_animation": "thrust_oversize",
+        "zPos": -1,
+        "male": "weapon/magic/loop/thrust/background/",
+        "muscular": "weapon/magic/loop/thrust/background/",
+        "female": "weapon/magic/loop/thrust/background/",
+        "teen": "weapon/magic/loop/thrust/background/",
+        "pregnant": "weapon/magic/loop/thrust/background/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/magic/loop",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "GPL 3.0",
+          "CC-BY 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-more-weapons"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ]
+    }
+  },
+  "weapon_magic_s": {
+    "name": "S staff",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "hurt",
+      "thrust_oversize"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "magic",
+      "weapon_magic_s"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "medium",
+      "light",
+      "red",
+      "dark",
+      "brass",
+      "bronze",
+      "ceramic",
+      "copper",
+      "gold",
+      "iron",
+      "silver",
+      "steel"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "weapon/magic/s/universal/foreground/",
+        "muscular": "weapon/magic/s/universal/foreground/",
+        "female": "weapon/magic/s/universal/foreground/",
+        "teen": "weapon/magic/s/universal/foreground/",
+        "pregnant": "weapon/magic/s/universal/foreground/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "weapon/magic/s/universal/background/",
+        "muscular": "weapon/magic/s/universal/background/",
+        "female": "weapon/magic/s/universal/background/",
+        "teen": "weapon/magic/s/universal/background/",
+        "pregnant": "weapon/magic/s/universal/background/"
+      },
+      "layer_3": {
+        "custom_animation": "thrust_oversize",
+        "zPos": 150,
+        "male": "weapon/magic/s/thrust/foreground/",
+        "muscular": "weapon/magic/s/thrust/foreground/",
+        "female": "weapon/magic/s/thrust/foreground/",
+        "teen": "weapon/magic/s/thrust/foreground/",
+        "pregnant": "weapon/magic/s/thrust/foreground/"
+      },
+      "layer_4": {
+        "custom_animation": "thrust_oversize",
+        "zPos": -1,
+        "male": "weapon/magic/s/thrust/background/",
+        "muscular": "weapon/magic/s/thrust/background/",
+        "female": "weapon/magic/s/thrust/background/",
+        "teen": "weapon/magic/s/thrust/background/",
+        "pregnant": "weapon/magic/s/thrust/background/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/magic/s",
+        "notes": "Wooden staff by LordNeo, first adapted to LPC by bigbeargames; re-drawn and walk animations added by bluecarrot16",
+        "authors": [
+          "LordNeo",
+          "Michael Whitlock (bigbeargames)",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/staff-64-x64",
+          "https://opengameart.org/content/lpc-magic-staff"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "weapon_magic_simple": {
+    "name": "Simple staff",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "hurt"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "magic",
+      "weapon_magic_simple"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "simple"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "weapon/magic/simple/foreground/",
+        "muscular": "weapon/magic/simple/foreground/",
+        "female": "weapon/magic/simple/foreground/",
+        "teen": "weapon/magic/simple/foreground/",
+        "pregnant": "weapon/magic/simple/foreground/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "weapon/magic/simple/background/",
+        "muscular": "weapon/magic/simple/background/",
+        "female": "weapon/magic/simple/background/",
+        "teen": "weapon/magic/simple/background/",
+        "pregnant": "weapon/magic/simple/background/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/magic/simple",
+        "notes": "original by DrJamgo, hands switched and split into to layers by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Dr. Jamgo"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-simple-staff"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "weapon_magic_wand": {
+    "name": "Wand",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "slash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "magic",
+      "weapon_magic_wand"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "wand"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "weapon/magic/wand/male/",
+        "muscular": "weapon/magic/wand/male/",
+        "female": "weapon/magic/wand/female/",
+        "pregnant": "weapon/magic/wand//female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/magic/wand",
+        "notes": "",
+        "authors": [
+          "Matthew Krohn (makrohn)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0",
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-wands"
+        ]
+      }
+    ],
+    "preview_row": 1,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0",
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0",
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0",
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0",
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "weapon_polearm_cane": {
+    "name": "Cane",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "thrust"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "polearm",
+      "weapon_polearm_cane"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "cane"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "weapon/polearm/cane/male/",
+        "muscular": "weapon/polearm/cane/male/",
+        "female": "weapon/polearm/cane/female/",
+        "pregnant": "weapon/polearm/cane/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/polearm/cane",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-gentleman"
+        ]
+      }
+    ],
+    "preview_row": 1,
+    "preview_column": 8,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "weapon_polearm_dragonspear": {
+    "name": "Dragon spear",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk_128",
+      "thrust_oversize"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "polearm",
+      "weapon_polearm_dragonspear"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "medium",
+      "light",
+      "red",
+      "dark",
+      "brass",
+      "bronze",
+      "ceramic",
+      "copper",
+      "gold",
+      "iron",
+      "silver",
+      "steel"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "custom_animation": "walk_128",
+        "male": "weapon/polearm/dragonspear/foreground/walk/",
+        "muscular": "weapon/polearm/dragonspear/foreground/walk/",
+        "female": "weapon/polearm/dragonspear/foreground/walk/",
+        "teen": "weapon/polearm/dragonspear/foreground/walk/",
+        "pregnant": "weapon/polearm/dragonspear/foreground/walk/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "custom_animation": "walk_128",
+        "male": "weapon/polearm/dragonspear/background/walk/",
+        "muscular": "weapon/polearm/dragonspear/background/walk/",
+        "female": "weapon/polearm/dragonspear/background/walk/",
+        "teen": "weapon/polearm/dragonspear/background/walk/",
+        "pregnant": "weapon/polearm/dragonspear/background/walk/"
+      },
+      "layer_3": {
+        "custom_animation": "thrust_oversize",
+        "zPos": 150,
+        "male": "weapon/polearm/dragonspear/foreground/thrust/",
+        "muscular": "weapon/polearm/dragonspear/foreground/thrust/",
+        "female": "weapon/polearm/dragonspear/foreground/thrust/",
+        "teen": "weapon/polearm/dragonspear/foreground/thrust/",
+        "pregnant": "weapon/polearm/dragonspear/foreground/thrust/"
+      },
+      "layer_4": {
+        "custom_animation": "thrust_oversize",
+        "zPos": -1,
+        "male": "weapon/polearm/dragonspear/background/thrust/",
+        "muscular": "weapon/polearm/dragonspear/background/thrust/",
+        "female": "weapon/polearm/dragonspear/background/thrust/",
+        "teen": "weapon/polearm/dragonspear/background/thrust/",
+        "pregnant": "weapon/polearm/dragonspear/background/thrust/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/polearm/dragonspear",
+        "notes": "original \"dragon spear\" by daneeklu and gr3yh47; adapted to opposite hand and split into layers by bluecarrot16",
+        "authors": [
+          "Daniel Eddeland (daneeklu)",
+          "gr3yh47",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-weapons-two-bows-a-spear-and-a-trident",
+          "https://opengameart.org/content/lpc-extended-weapon-animations"
+        ]
+      }
+    ],
+    "preview_row": 0,
+    "preview_column": 0,
+    "preview_x_offset": 9,
+    "preview_y_offset": 48,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "weapon_polearm_halberd": {
+    "name": "Halberd",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "hurt",
+      "thrust_oversize",
+      "slash_oversize"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "polearm",
+      "weapon_polearm_halberd"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "halberd"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 8,
+        "male": "weapon/polearm/halberd/behind/",
+        "muscular": "weapon/polearm/halberd/behind/",
+        "female": "weapon/polearm/halberd/behind/",
+        "pregnant": "weapon/polearm/halberd/behind/"
+      },
+      "layer_2": {
+        "zPos": 140,
+        "male": "weapon/polearm/halberd/",
+        "muscular": "weapon/polearm/halberd/",
+        "female": "weapon/polearm/halberd/",
+        "pregnant": "weapon/polearm/halberd/"
+      },
+      "layer_3": {
+        "custom_animation": "thrust_oversize",
+        "zPos": 9,
+        "male": "weapon/polearm/halberd/attack_thrust/behind/",
+        "muscular": "weapon/polearm/halberd/attack_thrust/behind/",
+        "female": "weapon/polearm/halberd/attack_thrust/behind/",
+        "pregnant": "weapon/polearm/halberd/attack_thrust/behind/"
+      },
+      "layer_4": {
+        "custom_animation": "thrust_oversize",
+        "zPos": 150,
+        "male": "weapon/polearm/halberd/attack_thrust/",
+        "muscular": "weapon/polearm/halberd/attack_thrust/",
+        "female": "weapon/polearm/halberd/attack_thrust/",
+        "pregnant": "weapon/polearm/halberd/attack_thrust/"
+      },
+      "layer_5": {
+        "custom_animation": "slash_oversize",
+        "zPos": 8,
+        "male": "weapon/polearm/halberd/attack_slash/behind/",
+        "muscular": "weapon/polearm/halberd/attack_slash/behind/",
+        "female": "weapon/polearm/halberd/attack_slash/behind/",
+        "pregnant": "weapon/polearm/halberd/attack_slash/behind/"
+      },
+      "layer_6": {
+        "custom_animation": "slash_oversize",
+        "zPos": 150,
+        "male": "weapon/polearm/halberd/attack_slash/",
+        "muscular": "weapon/polearm/halberd/attack_slash/",
+        "female": "weapon/polearm/halberd/attack_slash/",
+        "pregnant": "weapon/polearm/halberd/attack_slash/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/polearm/halberd",
+        "notes": "",
+        "authors": [
+          "Benjamin K. Smith (BenCreating)",
+          "bluecarrot16",
+          "Sander Frenken (castelonia)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-weapons"
+        ]
+      }
+    ],
+    "preview_row": 0,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "weapon_polearm_longspear": {
+    "name": "Long spear",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk_128",
+      "thrust_oversize"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "polearm",
+      "weapon_polearm_longspear"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "medium",
+      "light",
+      "red",
+      "dark",
+      "brass",
+      "bronze",
+      "ceramic",
+      "copper",
+      "gold",
+      "iron",
+      "silver",
+      "steel"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "custom_animation": "walk_128",
+        "male": "weapon/polearm/longspear/foreground/walk/",
+        "muscular": "weapon/polearm/longspear/foreground/walk/",
+        "female": "weapon/polearm/longspear/foreground/walk/",
+        "teen": "weapon/polearm/longspear/foreground/walk/",
+        "pregnant": "weapon/polearm/longspear/foreground/walk/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "custom_animation": "walk_128",
+        "male": "weapon/polearm/longspear/background/walk/",
+        "muscular": "weapon/polearm/longspear/background/walk/",
+        "female": "weapon/polearm/longspear/background/walk/",
+        "teen": "weapon/polearm/longspear/background/walk/",
+        "pregnant": "weapon/polearm/longspear/background/walk/"
+      },
+      "layer_3": {
+        "custom_animation": "thrust_oversize",
+        "zPos": 150,
+        "male": "weapon/polearm/longspear/foreground/thrust/",
+        "muscular": "weapon/polearm/longspear/foreground/thrust/",
+        "female": "weapon/polearm/longspear/foreground/thrust/",
+        "teen": "weapon/polearm/longspear/foreground/thrust/",
+        "pregnant": "weapon/polearm/longspear/foreground/thrust/"
+      },
+      "layer_4": {
+        "custom_animation": "thrust_oversize",
+        "zPos": -1,
+        "male": "weapon/polearm/longspear/background/thrust/",
+        "muscular": "weapon/polearm/longspear/background/thrust/",
+        "female": "weapon/polearm/longspear/background/thrust/",
+        "teen": "weapon/polearm/longspear/background/thrust/",
+        "pregnant": "weapon/polearm/longspear/background/thrust/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/polearm/longspear",
+        "notes": "original by wulax from expansion_pack-0.04 walk animations adapted from those by pvigier, split into layers and tweaked for v3 character bases by bluecarrot16",
+        "authors": [
+          "Pierre Vigier (pvigier)",
+          "Johannes Sjölund (wulax)",
+          "Inboxninja"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      }
+    ],
+    "preview_row": 0,
+    "preview_column": 0,
+    "preview_x_offset": 13,
+    "preview_y_offset": 170,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "weapon_polearm_scythe": {
+    "name": "Scythe",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "hurt",
+      "slash_oversize"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "polearm",
+      "weapon_polearm_scythe"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "scythe"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "weapon/polearm/scythe/",
+        "muscular": "weapon/polearm/scythe/",
+        "female": "weapon/polearm/scythe/",
+        "pregnant": "weapon/polearm/scythe/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "weapon/polearm/scythe/universal_behind/",
+        "muscular": "weapon/polearm/scythe/universal_behind/",
+        "female": "weapon/polearm/scythe/universal_behind/",
+        "pregnant": "weapon/polearm/scythe/universal_behind/"
+      },
+      "layer_3": {
+        "zPos": 8,
+        "custom_animation": "slash_oversize",
+        "male": "weapon/polearm/scythe/attack_slash/behind/",
+        "muscular": "weapon/polearm/scythe/attack_slash/behind/",
+        "female": "weapon/polearm/scythe/attack_slash/behind/",
+        "pregnant": "weapon/polearm/scythe/attack_slash/behind/"
+      },
+      "layer_4": {
+        "zPos": 150,
+        "custom_animation": "slash_oversize",
+        "male": "weapon/polearm/scythe/attack_slash/",
+        "muscular": "weapon/polearm/scythe/attack_slash/",
+        "female": "weapon/polearm/scythe/attack_slash/",
+        "pregnant": "weapon/polearm/scythe/attack_slash/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/polearm/scythe",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-extended-weapon-animations"
+        ]
+      }
+    ],
+    "preview_row": 0,
+    "preview_column": 0,
+    "preview_x_offset": 11,
+    "preview_y_offset": 204,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "weapon_polearm_spear": {
+    "name": "Spear",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "thrust",
+      "hurt"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "polearm",
+      "weapon_polearm_spear"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "medium",
+      "light",
+      "red",
+      "dark",
+      "brass",
+      "bronze",
+      "ceramic",
+      "copper",
+      "gold",
+      "iron",
+      "silver",
+      "steel"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "weapon/polearm/spear/foreground/",
+        "muscular": "weapon/polearm/spear/foreground/",
+        "female": "weapon/polearm/spear/foreground/",
+        "teen": "weapon/polearm/spear/foreground/",
+        "pregnant": "weapon/polearm/spear/foreground/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "weapon/polearm/spear/background/",
+        "muscular": "weapon/polearm/spear/background/",
+        "female": "weapon/polearm/spear/background/",
+        "teen": "weapon/polearm/spear/background/",
+        "pregnant": "weapon/polearm/spear/background/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/polearm/spear",
+        "notes": "original by wulax, walk animations redone by pvigier, split into layers and tweaked for v3 character bases by bluecarrot16",
+        "authors": [
+          "Pierre Vigier (pvigier)",
+          "Johannes Sjölund (wulax)",
+          "Inboxninja"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-spear-and-shovel-reworked"
+        ]
+      }
+    ],
+    "preview_row": 3,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "weapon_polearm_trident": {
+    "name": "Trident",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk_128",
+      "thrust_oversize"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "polearm",
+      "weapon_polearm_trident"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "medium",
+      "light",
+      "red",
+      "dark",
+      "brass",
+      "bronze",
+      "ceramic",
+      "copper",
+      "gold",
+      "iron",
+      "silver",
+      "steel"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "custom_animation": "walk_128",
+        "male": "weapon/polearm/trident/foreground/walk/",
+        "muscular": "weapon/polearm/trident/foreground/walk/",
+        "female": "weapon/polearm/trident/foreground/walk/",
+        "teen": "weapon/polearm/trident/foreground/walk/",
+        "pregnant": "weapon/polearm/trident/foreground/walk/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "custom_animation": "walk_128",
+        "male": "weapon/polearm/trident/background/walk/",
+        "muscular": "weapon/polearm/trident/background/walk/",
+        "female": "weapon/polearm/trident/background/walk/",
+        "teen": "weapon/polearm/trident/background/walk/",
+        "pregnant": "weapon/polearm/trident/background/walk/"
+      },
+      "layer_3": {
+        "custom_animation": "thrust_oversize",
+        "zPos": 150,
+        "male": "weapon/polearm/trident/foreground/thrust/",
+        "muscular": "weapon/polearm/trident/foreground/thrust/",
+        "female": "weapon/polearm/trident/foreground/thrust/",
+        "teen": "weapon/polearm/trident/foreground/thrust/",
+        "pregnant": "weapon/polearm/trident/foreground/thrust/"
+      },
+      "layer_4": {
+        "custom_animation": "thrust_oversize",
+        "zPos": -1,
+        "male": "weapon/polearm/trident/background/thrust/",
+        "muscular": "weapon/polearm/trident/background/thrust/",
+        "female": "weapon/polearm/trident/background/thrust/",
+        "teen": "weapon/polearm/trident/background/thrust/",
+        "pregnant": "weapon/polearm/trident/background/thrust/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/polearm/trident",
+        "notes": "original \"trident\" by daneeklu and gr3yh47; adapted to opposite hand and split into layers by bluecarrot16",
+        "authors": [
+          "Daniel Eddeland (daneeklu)",
+          "gr3yh47",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-weapons-two-bows-a-spear-and-a-trident",
+          "https://opengameart.org/content/lpc-extended-weapon-animations"
+        ]
+      }
+    ],
+    "preview_row": 0,
+    "preview_column": 0,
+    "preview_x_offset": 9,
+    "preview_y_offset": 38,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "weapon_ranged_boomerang": {
+    "name": "Boomerang",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "slash_reverse_oversize"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "ranged",
+      "weapon_ranged_boomerang"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "boomerang"
+    ],
+    "layers": {
+      "layer_1": {
+        "custom_animation": "slash_reverse_oversize",
+        "zPos": 140,
+        "male": "weapon/ranged/boomerang/",
+        "muscular": "weapon/ranged/boomerang/",
+        "female": "weapon/ranged/boomerang/",
+        "pregnant": "weapon/ranged/boomerang/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/ranged/boomerang",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "GPL 3.0",
+          "CC-BY 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-more-weapons"
+        ]
+      }
+    ],
+    "preview_row": 1,
+    "preview_column": 4,
+    "preview_x_offset": 16,
+    "preview_y_offset": -12,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ]
+    }
+  },
+  "weapon_ranged_crossbow": {
+    "name": "Crossbow",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "thrust",
+      "walk",
+      "hurt"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "ranged",
+      "weapon_ranged_crossbow"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "crossbow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": -1,
+        "male": "weapon/ranged/crossbow/background/",
+        "muscular": "weapon/ranged/crossbow/background/",
+        "female": "weapon/ranged/crossbow/background/",
+        "pregnant": "weapon/ranged/crossbow/background/"
+      },
+      "layer_2": {
+        "zPos": 140,
+        "male": "weapon/ranged/crossbow/foreground/",
+        "muscular": "weapon/ranged/crossbow/foreground/",
+        "female": "weapon/ranged/crossbow/foreground/",
+        "pregnant": "weapon/ranged/crossbow/foreground/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/ranged/crossbow",
+        "notes": "original by drjamgo, modified for v3 character bases and split into layers by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "drjamgo@hotmail.com"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-crossbow-final"
+        ]
+      }
+    ],
+    "preview_row": 1,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 18,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "weapon_ranged_slingshot": {
+    "name": "Slingshot",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "shoot",
+      "hurt"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "ranged",
+      "weapon_ranged_slingshot"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "slingshot"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "weapon/ranged/slingshot/foreground/",
+        "muscular": "weapon/ranged/slingshot/foreground/",
+        "female": "weapon/ranged/slingshot/foreground/",
+        "pregnant": "weapon/ranged/slingshot/foreground/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "weapon/ranged/slingshot/background/",
+        "muscular": "weapon/ranged/slingshot/background/",
+        "female": "weapon/ranged/slingshot/background/",
+        "pregnant": "weapon/ranged/slingshot/background/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/ranged/slingshot",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "GPL 3.0",
+          "CC-BY 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-more-weapons"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ]
+    }
+  },
+  "shield_kite": {
+    "name": "Kite",
+    "priority": 20,
+    "type_name": "shield",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "shields",
+      "shield_kite"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "kite blue blue",
+      "kite blue gray",
+      "kite gray blue",
+      "kite gray gray",
+      "kite gray green",
+      "kite gray orange",
+      "kite gray",
+      "kite green gray",
+      "kite orange",
+      "kite red gray"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 110,
+        "male": "shield/kite/male/",
+        "muscular": "shield/kite/male/",
+        "female": "shield/kite/female/",
+        "pregnant": "shield/kite/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shield/kite",
+        "notes": "",
+        "authors": [
+          "DarkwallLKE",
+          "Tuomo Untinen (reemax)",
+          "Michael Whitlock (bigbeargames)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 2.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-kite-shield",
+          "https://opengameart.org/content/lpc-shields-pack"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "shield_spartan": {
+    "name": "Spartan shield",
+    "priority": 50,
+    "type_name": "shield",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "shields",
+      "shield_spartan"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "spartan"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 2,
+        "male": "shield/spartan/bg/",
+        "muscular": "shield/spartan/bg/",
+        "female": "shield/spartan/bg/",
+        "pregnant": "shield/spartan/bg/"
+      },
+      "layer_2": {
+        "zPos": 110,
+        "male": "shield/spartan/fg/male/",
+        "muscular": "shield/spartan/fg/male/",
+        "female": "shield/spartan/fg/female/",
+        "pregnant": "shield/spartan/fg/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shield/spartan",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Sander Frenken (castelonia)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-shields"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "shield": {
+    "name": "Shield",
+    "priority": 10,
+    "type_name": "shield",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "shields",
+      "shield"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "crusader",
+      "spartan",
+      "round black",
+      "round brown",
+      "round gold",
+      "round green",
+      "round silver",
+      "round yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 110,
+        "male": "shield/male/",
+        "muscular": "shield/male/",
+        "female": "shield/female/",
+        "pregnant": "shield/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shield/male/crusader.png",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Sander Frenken (castelonia)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-shields"
+        ]
+      },
+      {
+        "file": "shield/female/crusader.png",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Sander Frenken (castelonia)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-shields"
+        ]
+      },
+      {
+        "file": "shield/male/spartan.png",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Sander Frenken (castelonia)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-shields"
+        ]
+      },
+      {
+        "file": "shield/female/spartan.png",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Sander Frenken (castelonia)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-shields"
+        ]
+      },
+      {
+        "file": "shield/male/round_black.png",
+        "notes": "?",
+        "authors": [
+          "Johannes Sjölund (wulax)",
+          "Michael Whitlock (bigbeargames)",
+          "DarkwallLKE",
+          "Tuomo Untinen (reemax)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-shields-pack"
+        ]
+      },
+      {
+        "file": "shield/female/round_black.png",
+        "notes": "?",
+        "authors": [
+          "Johannes Sjölund (wulax)",
+          "Michael Whitlock (bigbeargames)",
+          "DarkwallLKE",
+          "Tuomo Untinen (reemax)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-shields-pack"
+        ]
+      },
+      {
+        "file": "shield/male/round_brown.png",
+        "notes": "",
+        "authors": [
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      },
+      {
+        "file": "shield/female/round_brown.png",
+        "notes": "",
+        "authors": [
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      },
+      {
+        "file": "shield/male/round_gold.png",
+        "notes": "?",
+        "authors": [
+          "Johannes Sjölund (wulax)",
+          "Michael Whitlock (bigbeargames)",
+          "DarkwallLKE",
+          "Tuomo Untinen (reemax)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-shields-pack"
+        ]
+      },
+      {
+        "file": "shield/female/round_gold.png",
+        "notes": "?",
+        "authors": [
+          "Johannes Sjölund (wulax)",
+          "Michael Whitlock (bigbeargames)",
+          "DarkwallLKE",
+          "Tuomo Untinen (reemax)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-shields-pack"
+        ]
+      },
+      {
+        "file": "shield/male/round_green.png",
+        "notes": "?",
+        "authors": [
+          "Johannes Sjölund (wulax)",
+          "Michael Whitlock (bigbeargames)",
+          "DarkwallLKE",
+          "Tuomo Untinen (reemax)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-shields-pack"
+        ]
+      },
+      {
+        "file": "shield/female/round_green.png",
+        "notes": "?",
+        "authors": [
+          "Johannes Sjölund (wulax)",
+          "Michael Whitlock (bigbeargames)",
+          "DarkwallLKE",
+          "Tuomo Untinen (reemax)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-shields-pack"
+        ]
+      },
+      {
+        "file": "shield/male/round_silver.png",
+        "notes": "?",
+        "authors": [
+          "Johannes Sjölund (wulax)",
+          "Michael Whitlock (bigbeargames)",
+          "DarkwallLKE",
+          "Tuomo Untinen (reemax)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-shields-pack"
+        ]
+      },
+      {
+        "file": "shield/female/round_silver.png",
+        "notes": "?",
+        "authors": [
+          "Johannes Sjölund (wulax)",
+          "Michael Whitlock (bigbeargames)",
+          "DarkwallLKE",
+          "Tuomo Untinen (reemax)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-shields-pack"
+        ]
+      },
+      {
+        "file": "shield/male/round_yellow.png",
+        "notes": "?",
+        "authors": [
+          "Johannes Sjölund (wulax)",
+          "Michael Whitlock (bigbeargames)",
+          "DarkwallLKE",
+          "Tuomo Untinen (reemax)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-shields-pack"
+        ]
+      },
+      {
+        "file": "shield/female/round_yellow.png",
+        "notes": "?",
+        "authors": [
+          "Johannes Sjölund (wulax)",
+          "Michael Whitlock (bigbeargames)",
+          "DarkwallLKE",
+          "Tuomo Untinen (reemax)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-shields-pack"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "weapon_sword_arming": {
+    "name": "Arming Sword",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "hurt",
+      "idle",
+      "combat",
+      "slash_128",
+      "backslash_128",
+      "halfslash_128"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "sword",
+      "weapon_sword_arming"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "brass",
+      "bronze",
+      "ceramic",
+      "copper",
+      "gold",
+      "iron",
+      "silver",
+      "steel"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "weapon/sword/arming/universal/fg/",
+        "muscular": "weapon/sword/arming/universal/fg/",
+        "female": "weapon/sword/arming/universal/fg/",
+        "pregnant": "weapon/sword/arming/universal/fg/",
+        "teen": "weapon/sword/arming/universal/fg/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "weapon/sword/arming/universal/bg/",
+        "muscular": "weapon/sword/arming/universal/bg/",
+        "female": "weapon/sword/arming/universal/bg/",
+        "pregnant": "weapon/sword/arming/universal/bg/",
+        "teen": "weapon/sword/arming/universal/bg/"
+      },
+      "layer_3": {
+        "zPos": 8,
+        "custom_animation": "slash_128",
+        "male": "weapon/sword/arming/attack_slash/bg/",
+        "muscular": "weapon/sword/arming/attack_slash/bg/",
+        "female": "weapon/sword/arming/attack_slash/bg/",
+        "pregnant": "weapon/sword/arming/attack_slash/bg/",
+        "teen": "weapon/sword/arming/attack_slash/bg/"
+      },
+      "layer_4": {
+        "zPos": 150,
+        "custom_animation": "slash_128",
+        "male": "weapon/sword/arming/attack_slash/fg/",
+        "muscular": "weapon/sword/arming/attack_slash/fg/",
+        "female": "weapon/sword/arming/attack_slash/fg/",
+        "pregnant": "weapon/sword/arming/attack_slash/fg/",
+        "teen": "weapon/sword/arming/attack_slash/fg/"
+      },
+      "layer_5": {
+        "zPos": 8,
+        "custom_animation": "backslash_128",
+        "male": "weapon/sword/arming/attack_backslash/bg/",
+        "muscular": "weapon/sword/arming/attack_backslash/bg/",
+        "female": "weapon/sword/arming/attack_backslash/bg/",
+        "pregnant": "weapon/sword/arming/attack_backslash/bg/",
+        "teen": "weapon/sword/arming/attack_backslash/bg/"
+      },
+      "layer_6": {
+        "zPos": 150,
+        "custom_animation": "backslash_128",
+        "male": "weapon/sword/arming/attack_backslash/fg/",
+        "muscular": "weapon/sword/arming/attack_backslash/fg/",
+        "female": "weapon/sword/arming/attack_backslash/fg/",
+        "pregnant": "weapon/sword/arming/attack_backslash/fg/",
+        "teen": "weapon/sword/arming/attack_backslash/fg/"
+      },
+      "layer_7": {
+        "zPos": 8,
+        "custom_animation": "halfslash_128",
+        "male": "weapon/sword/arming/attack_halfslash/bg/",
+        "muscular": "weapon/sword/arming/attack_halfslash/bg/",
+        "female": "weapon/sword/arming/attack_halfslash/bg/",
+        "pregnant": "weapon/sword/arming/attack_halfslash/bg/",
+        "teen": "weapon/sword/arming/attack_halfslash/bg/"
+      },
+      "layer_8": {
+        "zPos": 150,
+        "custom_animation": "halfslash_128",
+        "male": "weapon/sword/arming/attack_halfslash/fg/",
+        "muscular": "weapon/sword/arming/attack_halfslash/fg/",
+        "female": "weapon/sword/arming/attack_halfslash/fg/",
+        "pregnant": "weapon/sword/arming/attack_halfslash/fg/",
+        "teen": "weapon/sword/arming/attack_halfslash/fg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/sword/arming",
+        "notes": "",
+        "authors": [
+          "ElizaWy; walk and down by JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Props/Sword%2001%20-%20Arming%20Sword",
+          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "weapon_sword_dagger": {
+    "name": "Dagger",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "thrust",
+      "walk",
+      "slash",
+      "hurt"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "sword",
+      "weapon_sword_dagger"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "dagger"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "weapon/sword/dagger/",
+        "muscular": "weapon/sword/dagger/",
+        "female": "weapon/sword/dagger/",
+        "pregnant": "weapon/sword/dagger/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "weapon/sword/dagger/behind/",
+        "muscular": "weapon/sword/dagger/behind/",
+        "female": "weapon/sword/dagger/behind/",
+        "pregnant": "weapon/sword/dagger/behind/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/sword/dagger",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Johannes Sjölund (wulax)",
+          "Matthew Krohn (makrohn)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-extended-weapon-animations"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "weapon_sword_glowsword": {
+    "name": "Glowsword",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "hurt",
+      "slash_oversize"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "sword",
+      "weapon_sword_glowsword"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blue",
+      "red"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "weapon/sword/glowsword/",
+        "muscular": "weapon/sword/glowsword/",
+        "female": "weapon/sword/glowsword/",
+        "pregnant": "weapon/sword/glowsword/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "weapon/sword/glowsword/universal_behind/",
+        "muscular": "weapon/sword/glowsword/universal_behind/",
+        "female": "weapon/sword/glowsword/universal_behind/",
+        "pregnant": "weapon/sword/glowsword/universal_behind/"
+      },
+      "layer_3": {
+        "zPos": 8,
+        "custom_animation": "slash_oversize",
+        "male": "weapon/sword/glowsword/attack_slash/behind/",
+        "muscular": "weapon/sword/glowsword/attack_slash/behind/",
+        "female": "weapon/sword/glowsword/attack_slash/behind/",
+        "pregnant": "weapon/sword/glowsword/attack_slash/behind/"
+      },
+      "layer_4": {
+        "zPos": 150,
+        "custom_animation": "slash_oversize",
+        "male": "weapon/sword/glowsword/attack_slash/",
+        "muscular": "weapon/sword/glowsword/attack_slash/",
+        "female": "weapon/sword/glowsword/attack_slash/",
+        "pregnant": "weapon/sword/glowsword/attack_slash/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/sword/glowsword",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "tskaufma",
+          "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-glow-sword",
+          "https://opengameart.org/content/lpc-extended-weapon-animations"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "weapon_sword_katana": {
+    "name": "Katana",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "hurt",
+      "walk_128",
+      "slash_128"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "sword",
+      "weapon_sword_katana"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "katana"
+    ],
+    "layers": {
+      "layer_1": {
+        "custom_animation": "walk_128",
+        "zPos": 140,
+        "male": "weapon/sword/katana/walk/",
+        "muscular": "weapon/sword/katana/walk/",
+        "female": "weapon/sword/katana/walk/",
+        "pregnant": "weapon/sword/katana/walk/"
+      },
+      "layer_2": {
+        "custom_animation": "walk_128",
+        "zPos": 9,
+        "male": "weapon/sword/katana/walk/behind/",
+        "muscular": "weapon/sword/katana/walk/behind/",
+        "female": "weapon/sword/katana/walk/behind/",
+        "pregnant": "weapon/sword/katana/walk/behind/"
+      },
+      "layer_3": {
+        "custom_animation": "slash_128",
+        "zPos": 140,
+        "male": "weapon/sword/katana/slash/",
+        "muscular": "weapon/sword/katana/slash/",
+        "female": "weapon/sword/katana/slash/",
+        "pregnant": "weapon/sword/katana/slash/"
+      },
+      "layer_4": {
+        "custom_animation": "slash_128",
+        "zPos": 9,
+        "male": "weapon/sword/katana/slash/behind/",
+        "muscular": "weapon/sword/katana/slash/behind/",
+        "female": "weapon/sword/katana/slash/behind/",
+        "pregnant": "weapon/sword/katana/slash/behind/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/sword/katana",
+        "notes": "",
+        "authors": [
+          "Pierre Vigier and DCSS artists (see https://github.com/crawl/tiles/blob/master/ARTISTS.md)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-dcss-swords"
+        ]
+      }
+    ],
+    "preview_row": 5,
+    "preview_column": 0,
+    "preview_x_offset": 28,
+    "preview_y_offset": -16,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "weapon_sword_longsword_alt": {
+    "name": "Longsword alt",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk_128",
+      "slash_128"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "sword",
+      "weapon_sword_longsword_alt"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "longsword_alt"
+    ],
+    "layers": {
+      "layer_1": {
+        "custom_animation": "walk_128",
+        "zPos": 140,
+        "male": "weapon/sword/longsword_alt/walk/",
+        "muscular": "weapon/sword/longsword_alt/walk/",
+        "female": "weapon/sword/longsword_alt/walk/",
+        "pregnant": "weapon/sword/longsword_alt/walk/"
+      },
+      "layer_2": {
+        "custom_animation": "walk_128",
+        "zPos": 9,
+        "male": "weapon/sword/longsword_alt/walk/behind/",
+        "muscular": "weapon/sword/longsword_alt/walk/behind/",
+        "female": "weapon/sword/longsword_alt/walk/behind/",
+        "pregnant": "weapon/sword/longsword_alt/walk/behind/"
+      },
+      "layer_3": {
+        "custom_animation": "slash_128",
+        "zPos": 140,
+        "male": "weapon/sword/longsword_alt/slash/",
+        "muscular": "weapon/sword/longsword_alt/slash/",
+        "female": "weapon/sword/longsword_alt/slash/",
+        "pregnant": "weapon/sword/longsword_alt/slash/"
+      },
+      "layer_4": {
+        "custom_animation": "slash_128",
+        "zPos": 9,
+        "male": "weapon/sword/longsword_alt/slash/behind/",
+        "muscular": "weapon/sword/longsword_alt/slash/behind/",
+        "female": "weapon/sword/longsword_alt/slash/behind/",
+        "pregnant": "weapon/sword/longsword_alt/slash/behind/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/sword/longsword_alt",
+        "notes": "",
+        "authors": [
+          "Pierre Vigier and DCSS artists (see https://github.com/crawl/tiles/blob/master/ARTISTS.md)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-dcss-swords"
+        ]
+      }
+    ],
+    "preview_row": 5,
+    "preview_column": 0,
+    "preview_x_offset": 28,
+    "preview_y_offset": -16,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "weapon_sword_longsword": {
+    "name": "Longsword",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "hurt",
+      "slash_oversize",
+      "slash_reverse_oversize",
+      "thrust_oversize"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "sword",
+      "weapon_sword_longsword"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "longsword"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "weapon/sword/longsword/",
+        "muscular": "weapon/sword/longsword/",
+        "female": "weapon/sword/longsword/",
+        "pregnant": "weapon/sword/longsword/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "weapon/sword/longsword/universal_behind/",
+        "muscular": "weapon/sword/longsword/universal_behind/",
+        "female": "weapon/sword/longsword/universal_behind/",
+        "pregnant": "weapon/sword/longsword/universal_behind/"
+      },
+      "layer_3": {
+        "zPos": -1,
+        "custom_animation": "slash_oversize",
+        "male": "weapon/sword/longsword/attack_slash/behind/",
+        "muscular": "weapon/sword/longsword/attack_slash/behind/",
+        "female": "weapon/sword/longsword/attack_slash/behind/",
+        "pregnant": "weapon/sword/longsword/attack_slash/behind/"
+      },
+      "layer_4": {
+        "zPos": 150,
+        "custom_animation": "slash_oversize",
+        "male": "weapon/sword/longsword/attack_slash/",
+        "muscular": "weapon/sword/longsword/attack_slash/",
+        "female": "weapon/sword/longsword/attack_slash/",
+        "pregnant": "weapon/sword/longsword/attack_slash/"
+      },
+      "layer_5": {
+        "zPos": -1,
+        "custom_animation": "slash_reverse_oversize",
+        "male": "weapon/sword/longsword/attack_slash_reverse/behind/",
+        "muscular": "weapon/sword/longsword/attack_slash_reverse/behind/",
+        "female": "weapon/sword/longsword/attack_slash_reverse/behind/",
+        "pregnant": "weapon/sword/longsword/attack_slash_reverse/behind/"
+      },
+      "layer_6": {
+        "zPos": 150,
+        "custom_animation": "slash_reverse_oversize",
+        "male": "weapon/sword/longsword/attack_slash_reverse/",
+        "muscular": "weapon/sword/longsword/attack_slash_reverse/",
+        "female": "weapon/sword/longsword/attack_slash_reverse/",
+        "pregnant": "weapon/sword/longsword/attack_slash_reverse/"
+      },
+      "layer_7": {
+        "zPos": -1,
+        "custom_animation": "thrust_oversize",
+        "male": "weapon/sword/longsword/attack_thrust/behind/",
+        "muscular": "weapon/sword/longsword/attack_thrust/behind/",
+        "female": "weapon/sword/longsword/attack_thrust/behind/",
+        "pregnant": "weapon/sword/longsword/attack_thrust/behind/"
+      },
+      "layer_8": {
+        "zPos": 150,
+        "custom_animation": "thrust_oversize",
+        "male": "weapon/sword/longsword/attack_thrust/",
+        "muscular": "weapon/sword/longsword/attack_thrust/",
+        "female": "weapon/sword/longsword/attack_thrust/",
+        "pregnant": "weapon/sword/longsword/attack_thrust/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/sword/longsword",
+        "notes": "",
+        "authors": [
+          "Johannes Sjölund (wulax)",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-extended-weapon-animations"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "weapon_sword_rapier": {
+    "name": "Rapier",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "hurt",
+      "slash_oversize"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "sword",
+      "weapon_sword_rapier"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "rapier"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "weapon/sword/rapier/",
+        "muscular": "weapon/sword/rapier/",
+        "female": "weapon/sword/rapier/",
+        "pregnant": "weapon/sword/rapier/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "weapon/sword/rapier/universal_behind/",
+        "muscular": "weapon/sword/rapier/universal_behind/",
+        "female": "weapon/sword/rapier/universal_behind/",
+        "pregnant": "weapon/sword/rapier/universal_behind/"
+      },
+      "layer_3": {
+        "zPos": 8,
+        "custom_animation": "slash_oversize",
+        "male": "weapon/sword/rapier/attack_slash/behind/",
+        "muscular": "weapon/sword/rapier/attack_slash/behind/",
+        "female": "weapon/sword/rapier/attack_slash/behind/",
+        "pregnant": "weapon/sword/rapier/attack_slash/behind/"
+      },
+      "layer_4": {
+        "zPos": 150,
+        "custom_animation": "slash_oversize",
+        "male": "weapon/sword/rapier/attack_slash/",
+        "muscular": "weapon/sword/rapier/attack_slash/",
+        "female": "weapon/sword/rapier/attack_slash/",
+        "pregnant": "weapon/sword/rapier/attack_slash/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/sword/rapier",
+        "notes": "",
+        "authors": [
+          "Johannes Sjölund (wulax)",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-extended-weapon-animations"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "weapon_sword_saber": {
+    "name": "Saber",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "hurt",
+      "slash_oversize"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "sword",
+      "weapon_sword_saber"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "saber"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "weapon/sword/saber/",
+        "muscular": "weapon/sword/saber/",
+        "female": "weapon/sword/saber/",
+        "pregnant": "weapon/sword/saber/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "weapon/sword/saber/universal_behind/",
+        "muscular": "weapon/sword/saber/universal_behind/",
+        "female": "weapon/sword/saber/universal_behind/",
+        "pregnant": "weapon/sword/saber/universal_behind/"
+      },
+      "layer_3": {
+        "zPos": 8,
+        "custom_animation": "slash_oversize",
+        "male": "weapon/sword/saber/attack_slash/behind/",
+        "muscular": "weapon/sword/saber/attack_slash/behind/",
+        "female": "weapon/sword/saber/attack_slash/behind/",
+        "pregnant": "weapon/sword/saber/attack_slash/behind/"
+      },
+      "layer_4": {
+        "zPos": 150,
+        "custom_animation": "slash_oversize",
+        "male": "weapon/sword/saber/attack_slash/",
+        "muscular": "weapon/sword/saber/attack_slash/",
+        "female": "weapon/sword/saber/attack_slash/",
+        "pregnant": "weapon/sword/saber/attack_slash/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/sword/saber",
+        "notes": "",
+        "authors": [
+          "Daniel Eddeland (daneeklu)",
+          "Johannes Sjölund (wulax)",
+          "gr3yh47",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-extended-weapon-animations"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "weapon_sword_scimitar": {
+    "name": "Scimitar",
+    "priority": null,
+    "type_name": "weapon",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "walk",
+      "walk_128",
+      "slash_128"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "sword",
+      "weapon_sword_scimitar"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "scimitar"
+    ],
+    "layers": {
+      "layer_1": {
+        "custom_animation": "walk_128",
+        "zPos": 140,
+        "male": "weapon/sword/scimitar/walk/",
+        "muscular": "weapon/sword/scimitar/walk/",
+        "female": "weapon/sword/scimitar/walk/",
+        "pregnant": "weapon/sword/scimitar/walk/"
+      },
+      "layer_2": {
+        "custom_animation": "walk_128",
+        "zPos": 9,
+        "male": "weapon/sword/scimitar/walk/behind/",
+        "muscular": "weapon/sword/scimitar/walk/behind/",
+        "female": "weapon/sword/scimitar/walk/behind/",
+        "pregnant": "weapon/sword/scimitar/walk/behind/"
+      },
+      "layer_3": {
+        "custom_animation": "slash_128",
+        "zPos": 140,
+        "male": "weapon/sword/scimitar/slash/",
+        "muscular": "weapon/sword/scimitar/slash/",
+        "female": "weapon/sword/scimitar/slash/",
+        "pregnant": "weapon/sword/scimitar/slash/"
+      },
+      "layer_4": {
+        "custom_animation": "slash_128",
+        "zPos": 9,
+        "male": "weapon/sword/scimitar/slash/behind/",
+        "muscular": "weapon/sword/scimitar/slash/behind/",
+        "female": "weapon/sword/scimitar/slash/behind/",
+        "pregnant": "weapon/sword/scimitar/slash/behind/"
+      }
+    },
+    "credits": [
+      {
+        "file": "weapon/sword/scimitar",
+        "notes": "",
+        "authors": [
+          "Pierre Vigier and DCSS artists (see https://github.com/crawl/tiles/blob/master/ARTISTS.md)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-dcss-swords"
+        ]
+      }
+    ],
+    "preview_row": 5,
+    "preview_column": 0,
+    "preview_x_offset": 28,
+    "preview_y_offset": -16,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "wings_dragonfly_transparent": {
+    "name": "Transparent Dragonfly Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "dragonfly",
+      "wings_dragonfly_transparent"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "dragonfly",
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 105,
+        "male": "body/wings/dragonfly/transparent/fg/",
+        "muscular": "body/wings/dragonfly/transparent/fg/",
+        "female": "body/wings/dragonfly/transparent/fg/",
+        "pregnant": "body/wings/dragonfly/transparent/fg/",
+        "teen": "body/wings/dragonfly/transparent/fg/",
+        "child": "body/wings/dragonfly/transparent/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/dragonfly/transparent/bg/",
+        "muscular": "body/wings/dragonfly/transparent/bg/",
+        "female": "body/wings/dragonfly/transparent/bg/",
+        "pregnant": "body/wings/dragonfly/transparent/bg/",
+        "teen": "body/wings/dragonfly/transparent/bg/",
+        "child": "body/wings/dragonfly/transparent/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/dragonfly",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings-pack-2"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "wings_dragonfly": {
+    "name": "Dragonfly Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "dragonfly",
+      "wings_dragonfly"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "dragonfly",
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 105,
+        "male": "body/wings/dragonfly/solid/fg/",
+        "muscular": "body/wings/dragonfly/solid/fg/",
+        "female": "body/wings/dragonfly/solid/fg/",
+        "pregnant": "body/wings/dragonfly/solid/fg/",
+        "teen": "body/wings/dragonfly/solid/fg/",
+        "child": "body/wings/dragonfly/solid/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/dragonfly/solid/bg/",
+        "muscular": "body/wings/dragonfly/solid/bg/",
+        "female": "body/wings/dragonfly/solid/bg/",
+        "pregnant": "body/wings/dragonfly/solid/bg/",
+        "teen": "body/wings/dragonfly/solid/bg/",
+        "child": "body/wings/dragonfly/solid/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/dragonfly",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings-pack-2"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "wings_monarch_dots": {
+    "name": "Monarch Wings Dots",
+    "priority": null,
+    "type_name": "wings_dots",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [
+      "monarch"
+    ],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "monarch",
+      "wings_monarch_dots"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 106,
+        "male": "body/wings/monarch/dots/fg/",
+        "muscular": "body/wings/monarch/dots/fg/",
+        "female": "body/wings/monarch/dots/fg/",
+        "pregnant": "body/wings/monarch/dots/fg/",
+        "teen": "body/wings/monarch/dots/fg/",
+        "child": "body/wings/monarch/dots/fg/"
+      },
+      "layer_2": {
+        "zPos": 6,
+        "male": "body/wings/monarch/dots/bg/",
+        "muscular": "body/wings/monarch/dots/bg/",
+        "female": "body/wings/monarch/dots/bg/",
+        "pregnant": "body/wings/monarch/dots/bg/",
+        "teen": "body/wings/monarch/dots/bg/",
+        "child": "body/wings/monarch/dots/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/monarch",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "wings_monarch_edge": {
+    "name": "Monarch Wings Edge",
+    "priority": null,
+    "type_name": "wings_edge",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [
+      "monarch"
+    ],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "monarch",
+      "wings_monarch_edge"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 106,
+        "male": "body/wings/monarch/edge/fg/",
+        "muscular": "body/wings/monarch/edge/fg/",
+        "female": "body/wings/monarch/edge/fg/",
+        "pregnant": "body/wings/monarch/edge/fg/",
+        "teen": "body/wings/monarch/edge/fg/",
+        "child": "body/wings/monarch/edge/fg/"
+      },
+      "layer_2": {
+        "zPos": 6,
+        "male": "body/wings/monarch/edge/bg/",
+        "muscular": "body/wings/monarch/edge/bg/",
+        "female": "body/wings/monarch/edge/bg/",
+        "pregnant": "body/wings/monarch/edge/bg/",
+        "teen": "body/wings/monarch/edge/bg/",
+        "child": "body/wings/monarch/edge/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/monarch",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "wings_monarch": {
+    "name": "Monarch Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings",
+      "monarch"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "monarch",
+      "wings_monarch"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "monarch",
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 105,
+        "male": "body/wings/monarch/base/fg/",
+        "muscular": "body/wings/monarch/base/fg/",
+        "female": "body/wings/monarch/base/fg/",
+        "pregnant": "body/wings/monarch/base/fg/",
+        "teen": "body/wings/monarch/base/fg/",
+        "child": "body/wings/monarch/base/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/monarch/base/bg/",
+        "muscular": "body/wings/monarch/base/bg/",
+        "female": "body/wings/monarch/base/bg/",
+        "pregnant": "body/wings/monarch/base/bg/",
+        "teen": "body/wings/monarch/base/bg/",
+        "child": "body/wings/monarch/base/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/monarch",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "wings_pixie_transparent": {
+    "name": "Transparent Pixie Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "pixie",
+      "wings_pixie_transparent"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "pixie",
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "body/wings/pixie/transparent/fg/",
+        "muscular": "body/wings/pixie/transparent/fg/",
+        "female": "body/wings/pixie/transparent/fg/",
+        "pregnant": "body/wings/pixie/transparent/fg/",
+        "teen": "body/wings/pixie/transparent/fg/",
+        "child": "body/wings/pixie/transparent/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/pixie/transparent/bg/",
+        "muscular": "body/wings/pixie/transparent/bg/",
+        "female": "body/wings/pixie/transparent/bg/",
+        "pregnant": "body/wings/pixie/transparent/bg/",
+        "teen": "body/wings/pixie/transparent/bg/",
+        "child": "body/wings/pixie/transparent/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/pixie",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "wings_pixie": {
+    "name": "Pixie Wings",
+    "priority": null,
+    "type_name": "wings",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [
+      "wings"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "wings",
+      "pixie",
+      "wings_pixie"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "pixie",
+      "amber",
+      "black",
+      "blue",
+      "bluegray",
+      "bright_green",
+      "bronze",
+      "brown",
+      "ceramic",
+      "forest",
+      "gold",
+      "green",
+      "iron",
+      "lavender",
+      "light",
+      "maroon",
+      "navy",
+      "orange",
+      "pale_green",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "silver",
+      "sky",
+      "teal",
+      "white",
+      "yellow",
+      "zombie_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 140,
+        "male": "body/wings/pixie/solid/fg/",
+        "muscular": "body/wings/pixie/solid/fg/",
+        "female": "body/wings/pixie/solid/fg/",
+        "pregnant": "body/wings/pixie/solid/fg/",
+        "teen": "body/wings/pixie/solid/fg/",
+        "child": "body/wings/pixie/solid/fg/"
+      },
+      "layer_2": {
+        "zPos": 5,
+        "male": "body/wings/pixie/solid/bg/",
+        "muscular": "body/wings/pixie/solid/bg/",
+        "female": "body/wings/pixie/solid/bg/",
+        "pregnant": "body/wings/pixie/solid/bg/",
+        "teen": "body/wings/pixie/solid/bg/",
+        "child": "body/wings/pixie/solid/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/wings/pixie",
+        "notes": "In dedication to my grandmother, Sharon Rowe",
+        "authors": [
+          "The Foreman"
+        ],
+        "licenses": [
+          "OGA-BY 4.0",
+          "CC-BY-SA 4.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-fairy-wings"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "female": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "teen": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "child": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "muscular": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "pregnant": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ]
+    }
+  },
+  "hairext_braidl": {
+    "name": "Left Braid",
+    "priority": null,
+    "type_name": "hairextl",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "extensions",
+      "bangs",
+      "hairext_braidl"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 128,
+        "male": "hair/extensions/bangs/braidl/adult/",
+        "muscular": "hair/extensions/bangs/braidl/adult/",
+        "female": "hair/extensions/bangs/braidl/adult/",
+        "pregnant": "hair/extensions/bangs/braidl/adult/",
+        "teen": "hair/extensions/bangs/braidl/adult/",
+        "child": "hair/extensions/bangs/braidl/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "hair/extensions/bangs/braidl",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-1-hairstyle-2-hair-extensions-3-previously-unofficially-released-hairstyles"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "hairext_braidr": {
+    "name": "Right Braid",
+    "priority": null,
+    "type_name": "hairextr",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "extensions",
+      "bangs",
+      "hairext_braidr"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 128,
+        "male": "hair/extensions/bangs/braidr/adult/",
+        "muscular": "hair/extensions/bangs/braidr/adult/",
+        "female": "hair/extensions/bangs/braidr/adult/",
+        "pregnant": "hair/extensions/bangs/braidr/adult/",
+        "teen": "hair/extensions/bangs/braidr/adult/",
+        "child": "hair/extensions/bangs/braidr/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "hair/extensions/bangs/braidr",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-1-hairstyle-2-hair-extensions-3-previously-unofficially-released-hairstyles"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "hairext_long_straightl": {
+    "name": "Left Long Straight",
+    "priority": null,
+    "type_name": "hairextl",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "extensions",
+      "bangs",
+      "hairext_long_straightl"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 128,
+        "male": "hair/extensions/bangs/long_straightl/adult/",
+        "muscular": "hair/extensions/bangs/long_straightl/adult/",
+        "female": "hair/extensions/bangs/long_straightl/adult/",
+        "pregnant": "hair/extensions/bangs/long_straightl/adult/",
+        "teen": "hair/extensions/bangs/long_straightl/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "hair/extensions/bangs/long_straightl",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-expanded-long-hair"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "hairext_long_straightr": {
+    "name": "Right Long Straight",
+    "priority": null,
+    "type_name": "hairextr",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "extensions",
+      "bangs",
+      "hairext_long_straightr"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 128,
+        "male": "hair/extensions/bangs/long_straightr/adult/",
+        "muscular": "hair/extensions/bangs/long_straightr/adult/",
+        "female": "hair/extensions/bangs/long_straightr/adult/",
+        "pregnant": "hair/extensions/bangs/long_straightr/adult/",
+        "teen": "hair/extensions/bangs/long_straightr/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "hair/extensions/bangs/long_straightr",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-expanded-long-hair"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "hairext_long_wavyl": {
+    "name": "Left Long Wavy",
+    "priority": null,
+    "type_name": "hairextl",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "extensions",
+      "bangs",
+      "hairext_long_wavyl"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 128,
+        "male": "hair/extensions/bangs/long_wavyl/adult/",
+        "muscular": "hair/extensions/bangs/long_wavyl/adult/",
+        "female": "hair/extensions/bangs/long_wavyl/adult/",
+        "pregnant": "hair/extensions/bangs/long_wavyl/adult/",
+        "teen": "hair/extensions/bangs/long_wavyl/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "hair/extensions/bangs/long_wavyl",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-expanded-long-hair"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "hairext_long_wavyr": {
+    "name": "Right Long Wavy",
+    "priority": null,
+    "type_name": "hairextr",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "extensions",
+      "bangs",
+      "hairext_long_wavyr"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 128,
+        "male": "hair/extensions/bangs/long_wavyr/adult/",
+        "muscular": "hair/extensions/bangs/long_wavyr/adult/",
+        "female": "hair/extensions/bangs/long_wavyr/adult/",
+        "pregnant": "hair/extensions/bangs/long_wavyr/adult/",
+        "teen": "hair/extensions/bangs/long_wavyr/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "hair/extensions/bangs/long_wavyr",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-expanded-long-hair"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "hairext_xlong_bangl": {
+    "name": "Left XLong Bang",
+    "priority": null,
+    "type_name": "hairextl",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "extensions",
+      "bangs",
+      "hairext_xlong_bangl"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 128,
+        "male": "hair/extensions/bangs/xlong_bangl/adult/",
+        "muscular": "hair/extensions/bangs/xlong_bangl/adult/",
+        "female": "hair/extensions/bangs/xlong_bangl/adult/",
+        "pregnant": "hair/extensions/bangs/xlong_bangl/adult/",
+        "teen": "hair/extensions/bangs/xlong_bangl/adult/",
+        "child": "hair/extensions/bangs/xlong_bangl/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "hair/extensions/bangs/xlong_bangl",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-relm-hair-xlong-ponytail",
+          "https://opengameart.org/content/lpc-expanded-xlong-hair"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "hairext_xlong_bangr": {
+    "name": "Right XLong Bang",
+    "priority": null,
+    "type_name": "hairextr",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "extensions",
+      "bangs",
+      "hairext_xlong_bangr"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 128,
+        "male": "hair/extensions/bangs/xlong_bangr/adult/",
+        "muscular": "hair/extensions/bangs/xlong_bangr/adult/",
+        "female": "hair/extensions/bangs/xlong_bangr/adult/",
+        "pregnant": "hair/extensions/bangs/xlong_bangr/adult/",
+        "teen": "hair/extensions/bangs/xlong_bangr/adult/",
+        "child": "hair/extensions/bangs/xlong_bangr/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "hair/extensions/bangs/xlong_bangr",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-relm-hair-xlong-ponytail",
+          "https://opengameart.org/content/lpc-expanded-xlong-hair"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "hairext_xlong_braidl": {
+    "name": "Left XLong Braid",
+    "priority": null,
+    "type_name": "hairextl",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h/backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "extensions",
+      "bangs",
+      "hairext_xlong_braidl"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 128,
+        "male": "hair/extensions/bangs/xlong_braidl/adult/fg/",
+        "muscular": "hair/extensions/bangs/xlong_braidl/adult/fg/",
+        "female": "hair/extensions/bangs/xlong_braidl/adult/fg/",
+        "pregnant": "hair/extensions/bangs/xlong_braidl/adult/fg/",
+        "teen": "hair/extensions/bangs/xlong_braidl/adult/fg/",
+        "child": "hair/extensions/bangs/xlong_braidl/child/fg/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "hair/extensions/bangs/xlong_braidl/adult/bg/",
+        "muscular": "hair/extensions/bangs/xlong_braidl/adult/bg/",
+        "female": "hair/extensions/bangs/xlong_braidl/adult/bg/",
+        "pregnant": "hair/extensions/bangs/xlong_braidl/adult/bg/",
+        "teen": "hair/extensions/bangs/xlong_braidl/adult/bg/",
+        "child": "hair/extensions/bangs/xlong_braidl/child/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "hair/extensions/bangs/xlong_braidl",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-relm-hair-xlong-ponytail",
+          "https://opengameart.org/content/lpc-expanded-xlong-hair"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "hairext_xlong_braidr": {
+    "name": "Right XLong Braid",
+    "priority": null,
+    "type_name": "hairextr",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h/backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "extensions",
+      "bangs",
+      "hairext_xlong_braidr"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 128,
+        "male": "hair/extensions/bangs/xlong_braidr/adult/fg/",
+        "muscular": "hair/extensions/bangs/xlong_braidr/adult/fg/",
+        "female": "hair/extensions/bangs/xlong_braidr/adult/fg/",
+        "pregnant": "hair/extensions/bangs/xlong_braidr/adult/fg/",
+        "teen": "hair/extensions/bangs/xlong_braidr/adult/fg/",
+        "child": "hair/extensions/bangs/xlong_braidr/child/fg/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "hair/extensions/bangs/xlong_braidr/adult/bg/",
+        "muscular": "hair/extensions/bangs/xlong_braidr/adult/bg/",
+        "female": "hair/extensions/bangs/xlong_braidr/adult/bg/",
+        "pregnant": "hair/extensions/bangs/xlong_braidr/adult/bg/",
+        "teen": "hair/extensions/bangs/xlong_braidr/adult/bg/",
+        "child": "hair/extensions/bangs/xlong_braidr/child/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "hair/extensions/bangs/xlong_braidr",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-relm-hair-xlong-ponytail",
+          "https://opengameart.org/content/lpc-expanded-xlong-hair"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "hairext_xlong_curlyl": {
+    "name": "Left XLong Curly",
+    "priority": null,
+    "type_name": "hairextl",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "extensions",
+      "bangs",
+      "hairext_xlong_curlyl"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 128,
+        "male": "hair/extensions/bangs/xlong_curlyl/adult/",
+        "muscular": "hair/extensions/bangs/xlong_curlyl/adult/",
+        "female": "hair/extensions/bangs/xlong_curlyl/adult/",
+        "pregnant": "hair/extensions/bangs/xlong_curlyl/adult/",
+        "teen": "hair/extensions/bangs/xlong_curlyl/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "hair/extensions/bangs/xlong_curlyl",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-expanded-xlong-hair"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "hairext_xlong_curlyr": {
+    "name": "Right XLong Curly",
+    "priority": null,
+    "type_name": "hairextr",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "extensions",
+      "bangs",
+      "hairext_xlong_curlyr"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 128,
+        "male": "hair/extensions/bangs/xlong_curlyr/adult/",
+        "muscular": "hair/extensions/bangs/xlong_curlyr/adult/",
+        "female": "hair/extensions/bangs/xlong_curlyr/adult/",
+        "pregnant": "hair/extensions/bangs/xlong_curlyr/adult/",
+        "teen": "hair/extensions/bangs/xlong_curlyr/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "hair/extensions/bangs/xlong_curlyr",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-expanded-xlong-hair"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "hairext_xlong_wavyl": {
+    "name": "Left XLong Wavy",
+    "priority": null,
+    "type_name": "hairextl",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "extensions",
+      "bangs",
+      "hairext_xlong_wavyl"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 128,
+        "male": "hair/extensions/bangs/xlong_wavyl/adult/",
+        "muscular": "hair/extensions/bangs/xlong_wavyl/adult/",
+        "female": "hair/extensions/bangs/xlong_wavyl/adult/",
+        "pregnant": "hair/extensions/bangs/xlong_wavyl/adult/",
+        "teen": "hair/extensions/bangs/xlong_wavyl/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "hair/extensions/bangs/xlong_wavyl",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-expanded-xlong-hair"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "hairext_xlong_wavyr": {
+    "name": "Right XLong Wavy",
+    "priority": null,
+    "type_name": "hairextr",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "extensions",
+      "bangs",
+      "hairext_xlong_wavyr"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 128,
+        "male": "hair/extensions/bangs/xlong_wavyr/adult/",
+        "muscular": "hair/extensions/bangs/xlong_wavyr/adult/",
+        "female": "hair/extensions/bangs/xlong_wavyr/adult/",
+        "pregnant": "hair/extensions/bangs/xlong_wavyr/adult/",
+        "teen": "hair/extensions/bangs/xlong_wavyr/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "hair/extensions/bangs/xlong_wavyr",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-expanded-xlong-hair"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "hairext_topknot_long": {
+    "name": "Long Topknot",
+    "priority": null,
+    "type_name": "ponytail",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h/backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "extensions",
+      "ponytails",
+      "hairext_topknot_long"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 128,
+        "male": "hair/extensions/ponytails/topknot_long/adult/fg/",
+        "muscular": "hair/extensions/ponytails/topknot_long/adult/fg/",
+        "female": "hair/extensions/ponytails/topknot_long/adult/fg/",
+        "pregnant": "hair/extensions/ponytails/topknot_long/adult/fg/",
+        "teen": "hair/extensions/ponytails/topknot_long/adult/fg/",
+        "child": "hair/extensions/ponytails/topknot_long/child/fg/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "hair/extensions/ponytails/topknot_long/adult/bg/",
+        "muscular": "hair/extensions/ponytails/topknot_long/adult/bg/",
+        "female": "hair/extensions/ponytails/topknot_long/adult/bg/",
+        "pregnant": "hair/extensions/ponytails/topknot_long/adult/bg/",
+        "teen": "hair/extensions/ponytails/topknot_long/adult/bg/",
+        "child": "hair/extensions/ponytails/topknot_long/child/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "hair/extensions/ponytails/topknot_long",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-1-hairstyle-2-hair-extensions-3-previously-unofficially-released-hairstyles"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "hairext_topknot_relm": {
+    "name": "Relm Topknot",
+    "priority": null,
+    "type_name": "ponytail",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "extensions",
+      "ponytails",
+      "hairext_topknot_relm"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 128,
+        "male": "hair/extensions/ponytails/relm_ponytail/adult/fg/",
+        "muscular": "hair/extensions/ponytails/relm_ponytail/adult/fg/",
+        "female": "hair/extensions/ponytails/relm_ponytail/adult/fg/",
+        "pregnant": "hair/extensions/ponytails/relm_ponytail/adult/fg/",
+        "teen": "hair/extensions/ponytails/relm_ponytail/adult/fg/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "hair/extensions/ponytails/relm_ponytail/adult/bg/",
+        "muscular": "hair/extensions/ponytails/relm_ponytail/adult/bg/",
+        "female": "hair/extensions/ponytails/relm_ponytail/adult/bg/",
+        "pregnant": "hair/extensions/ponytails/relm_ponytail/adult/bg/",
+        "teen": "hair/extensions/ponytails/relm_ponytail/adult/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "hair/extensions/ponytails/relm_ponytail",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-relm-hair-xlong-ponytail",
+          "https://opengameart.org/content/lpc-expanded-xlong-hair"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "hairext_topknot_short": {
+    "name": "Short Topknot",
+    "priority": null,
+    "type_name": "ponytail",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h/backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "extensions",
+      "ponytails",
+      "hairext_topknot_short"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 128,
+        "male": "hair/extensions/ponytails/topknot_short/adult/",
+        "muscular": "hair/extensions/ponytails/topknot_short/adult/",
+        "female": "hair/extensions/ponytails/topknot_short/adult/",
+        "pregnant": "hair/extensions/ponytails/topknot_short/adult/",
+        "teen": "hair/extensions/ponytails/topknot_short/adult/",
+        "child": "hair/extensions/ponytails/topknot_short/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "hair/extensions/ponytails/topknot_short",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-1-hairstyle-2-hair-extensions-3-previously-unofficially-released-hairstyles"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "hairext_high_bun": {
+    "name": "High Bun",
+    "priority": null,
+    "type_name": "updo",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h/backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "hair",
+      "extensions",
+      "ties",
+      "hairext_high_bun"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 128,
+        "male": "hair/extensions/ties/high_bun/adult/",
+        "muscular": "hair/extensions/ties/high_bun/adult/",
+        "female": "hair/extensions/ties/high_bun/adult/",
+        "pregnant": "hair/extensions/ties/high_bun/adult/",
+        "teen": "hair/extensions/ties/high_bun/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "hair/extensions/ties/high_bun",
+        "notes": "Custom by JaidynReiman",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-expanded-xlong-hair"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "head_ears_avyon_skin": {
+    "name": "Feather Ears Skintone",
+    "priority": null,
+    "type_name": "ears_inner",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "side",
+      "head_ears_avyon_skin"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 127,
+        "male": "head/ears/avyon/skin/adult/",
+        "muscular": "head/ears/avyon/skin/adult/",
+        "female": "head/ears/avyon/skin/adult/",
+        "teen": "head/ears/avyon/skin/adult/",
+        "pregnant": "head/ears/avyon/skin/adult/",
+        "child": "head/ears/avyon/skin/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/avyon",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_ears_avyon": {
+    "name": "Feather Ears",
+    "priority": null,
+    "type_name": "ears",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "side",
+      "head_ears_avyon"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 126,
+        "male": "head/ears/avyon/adult/",
+        "muscular": "head/ears/avyon/adult/",
+        "female": "head/ears/avyon/adult/",
+        "teen": "head/ears/avyon/adult/",
+        "pregnant": "head/ears/avyon/adult/",
+        "child": "head/ears/avyon/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/avyon",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_ears_lykon_skin": {
+    "name": "Side Wolf Ears Skintone",
+    "priority": null,
+    "type_name": "ears_inner",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "side",
+      "head_ears_lykon_skin"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 127,
+        "male": "head/ears/lykon/skin/adult/",
+        "muscular": "head/ears/lykon/skin/adult/",
+        "female": "head/ears/lykon/skin/adult/",
+        "teen": "head/ears/lykon/skin/adult/",
+        "pregnant": "head/ears/lykon/skin/adult/",
+        "child": "head/ears/lykon/skin/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/lykon",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_ears_lykon": {
+    "name": "Side Wolf Ears",
+    "priority": null,
+    "type_name": "ears",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "side",
+      "head_ears_lykon"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 126,
+        "male": "head/ears/lykon/adult/",
+        "muscular": "head/ears/lykon/adult/",
+        "female": "head/ears/lykon/adult/",
+        "teen": "head/ears/lykon/adult/",
+        "pregnant": "head/ears/lykon/adult/",
+        "child": "head/ears/lykon/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/lykon",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_ears_zabos_skin": {
+    "name": "Side Cat Ears Skintone",
+    "priority": null,
+    "type_name": "ears_inner",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "side",
+      "head_ears_zabos_skin"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 127,
+        "male": "head/ears/zabos/skin/adult/",
+        "muscular": "head/ears/zabos/skin/adult/",
+        "female": "head/ears/zabos/skin/adult/",
+        "teen": "head/ears/zabos/skin/adult/",
+        "pregnant": "head/ears/zabos/skin/adult/",
+        "child": "head/ears/zabos/skin/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/zabos",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_ears_zabos": {
+    "name": "Side Cat Ears",
+    "priority": null,
+    "type_name": "ears",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "side",
+      "head_ears_zabos"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 126,
+        "male": "head/ears/zabos/adult/",
+        "muscular": "head/ears/zabos/adult/",
+        "female": "head/ears/zabos/adult/",
+        "teen": "head/ears/zabos/adult/",
+        "pregnant": "head/ears/zabos/adult/",
+        "child": "head/ears/zabos/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/zabos",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_ears_cat_skin": {
+    "name": "Cat Ears Skintone",
+    "priority": null,
+    "type_name": "furry_ears_skin",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "top",
+      "head_ears_cat_skin"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 131,
+        "male": "head/ears/cat/skin/adult_front/",
+        "muscular": "head/ears/cat/skin/adult_front/",
+        "female": "head/ears/cat/skin/adult_front/",
+        "teen": "head/ears/cat/skin/adult_front/",
+        "pregnant": "head/ears/cat/skin/adult_front/",
+        "child": "head/ears/cat/skin/child_front/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "head/ears/cat/skin/adult_back/",
+        "muscular": "head/ears/cat/skin/adult_back/",
+        "female": "head/ears/cat/skin/adult_back/",
+        "pregnant": "head/ears/cat/skin/adult_back/",
+        "teen": "head/ears/cat/skin/adult_back/",
+        "child": "head/ears/cat/skin/child_back/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/cat",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_ears_cat": {
+    "name": "Cat Ears",
+    "priority": null,
+    "type_name": "furry_ears",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "top",
+      "head_ears_cat"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 130,
+        "male": "head/ears/cat/adult_front/",
+        "muscular": "head/ears/cat/adult_front/",
+        "female": "head/ears/cat/adult_front/",
+        "teen": "head/ears/cat/adult_front/",
+        "pregnant": "head/ears/cat/adult_front/",
+        "child": "head/ears/cat/child_front/"
+      },
+      "layer_2": {
+        "zPos": 8,
+        "male": "head/ears/cat/adult_back/",
+        "muscular": "head/ears/cat/adult_back/",
+        "female": "head/ears/cat/adult_back/",
+        "pregnant": "head/ears/cat/adult_back/",
+        "teen": "head/ears/cat/adult_back/",
+        "child": "head/ears/cat/child_back/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/cat",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_ears_wolf_skin": {
+    "name": "Wolf Ears Skintone",
+    "priority": null,
+    "type_name": "furry_ears_skin",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "top",
+      "head_ears_wolf_skin"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 131,
+        "male": "head/ears/wolf/skin/adult_front/",
+        "muscular": "head/ears/wolf/skin/adult_front/",
+        "female": "head/ears/wolf/skin/adult_front/",
+        "teen": "head/ears/wolf/skin/adult_front/",
+        "pregnant": "head/ears/wolf/skin/adult_front/",
+        "child": "head/ears/wolf/skin/child_front/"
+      },
+      "layer_2": {
+        "zPos": 9,
+        "male": "head/ears/wolf/skin/adult_back/",
+        "muscular": "head/ears/wolf/skin/adult_back/",
+        "female": "head/ears/wolf/skin/adult_back/",
+        "pregnant": "head/ears/wolf/skin/adult_back/",
+        "teen": "head/ears/wolf/skin/adult_back/",
+        "child": "head/ears/wolf/skin/child_back/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/wolf",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "head_ears_wolf": {
+    "name": "Wolf Ears",
+    "priority": null,
+    "type_name": "furry_ears",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "furry_ears",
+      "top",
+      "head_ears_wolf"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blonde",
+      "ash",
+      "sandy",
+      "platinum",
+      "strawberry",
+      "redhead",
+      "ginger",
+      "carrot",
+      "chestnut",
+      "light brown",
+      "dark brown",
+      "black",
+      "raven",
+      "dark gray",
+      "gray",
+      "white",
+      "red",
+      "orange",
+      "gold",
+      "green",
+      "blue",
+      "navy",
+      "violet",
+      "purple",
+      "pink",
+      "rose",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 130,
+        "male": "head/ears/wolf/adult_front/",
+        "muscular": "head/ears/wolf/adult_front/",
+        "female": "head/ears/wolf/adult_front/",
+        "teen": "head/ears/wolf/adult_front/",
+        "pregnant": "head/ears/wolf/adult_front/",
+        "child": "head/ears/wolf/child_front/"
+      },
+      "layer_2": {
+        "zPos": 8,
+        "male": "head/ears/wolf/adult_back/",
+        "muscular": "head/ears/wolf/adult_back/",
+        "female": "head/ears/wolf/adult_back/",
+        "pregnant": "head/ears/wolf/adult_back/",
+        "teen": "head/ears/wolf/adult_back/",
+        "child": "head/ears/wolf/child_back/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/ears/wolf",
+        "notes": "",
+        "authors": [
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0+",
+          "CC-BY 3.0+",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "neck_amulet_cross": {
+    "name": "Cross amulet",
+    "priority": null,
+    "type_name": "charm",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "neck",
+      "charms",
+      "neck_amulet_cross"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "brass_blue",
+      "brass_green",
+      "brass_orange",
+      "brass_purple",
+      "brass_red",
+      "brass_yellow",
+      "bronze_blue",
+      "bronze_green",
+      "bronze_orange",
+      "bronze_purple",
+      "bronze_red",
+      "bronze_yellow",
+      "ceramic_blue",
+      "ceramic_green",
+      "ceramic_orange",
+      "ceramic_purple",
+      "ceramic_red",
+      "ceramic_yellow",
+      "copper_blue",
+      "copper_green",
+      "copper_orange",
+      "copper_purple",
+      "copper_red",
+      "copper_yellow",
+      "gold_blue",
+      "gold_green",
+      "gold_orange",
+      "gold_purple",
+      "gold_red",
+      "gold_yellow",
+      "iron_blue",
+      "iron_green",
+      "iron_orange",
+      "iron_purple",
+      "iron_red",
+      "iron_yellow",
+      "silver_blue",
+      "silver_green",
+      "silver_orange",
+      "silver_purple",
+      "silver_red",
+      "silver_yellow",
+      "steel_blue",
+      "steel_green",
+      "steel_orange",
+      "steel_purple",
+      "steel_red",
+      "steel_yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 81,
+        "male": "neck/amulet/cross/male/",
+        "muscular": "neck/amulet/cross/male/",
+        "female": "neck/amulet/cross/female/",
+        "teen": "neck/amulet/cross/female/",
+        "pregnant": "neck/amulet/cross/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "neck/amulet/cross",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-jewelry"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "neck_amulet_dangle": {
+    "name": "Dangling amulet",
+    "priority": null,
+    "type_name": "charm",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "neck",
+      "charms",
+      "neck_amulet_dangle"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "brass_blue",
+      "brass_green",
+      "brass_orange",
+      "brass_purple",
+      "brass_red",
+      "brass_yellow",
+      "bronze_blue",
+      "bronze_green",
+      "bronze_orange",
+      "bronze_purple",
+      "bronze_red",
+      "bronze_yellow",
+      "ceramic_blue",
+      "ceramic_green",
+      "ceramic_orange",
+      "ceramic_purple",
+      "ceramic_red",
+      "ceramic_yellow",
+      "copper_blue",
+      "copper_green",
+      "copper_orange",
+      "copper_purple",
+      "copper_red",
+      "copper_yellow",
+      "gold_blue",
+      "gold_green",
+      "gold_orange",
+      "gold_purple",
+      "gold_red",
+      "gold_yellow",
+      "iron_blue",
+      "iron_green",
+      "iron_orange",
+      "iron_purple",
+      "iron_red",
+      "iron_yellow",
+      "silver_blue",
+      "silver_green",
+      "silver_orange",
+      "silver_purple",
+      "silver_red",
+      "silver_yellow",
+      "steel_blue",
+      "steel_green",
+      "steel_orange",
+      "steel_purple",
+      "steel_red",
+      "steel_yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 81,
+        "male": "neck/amulet/dangle/male/",
+        "muscular": "neck/amulet/dangle/male/",
+        "female": "neck/amulet/dangle/female/",
+        "teen": "neck/amulet/dangle/female/",
+        "pregnant": "neck/amulet/dangle/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "neck/amulet/dangle",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "AntumDeluge"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/dungeon-crawl-32x32-tiles",
+          "https://opengameart.org/content/cc0-jewelry-icons",
+          "https://opengameart.org/content/lpc-jewelry"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "neck_amulet_spider": {
+    "name": "Spider amulet",
+    "priority": null,
+    "type_name": "charm",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "neck",
+      "charms",
+      "neck_amulet_spider"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "brass_blue",
+      "brass_green",
+      "brass_orange",
+      "brass_purple",
+      "brass_red",
+      "brass_yellow",
+      "bronze_blue",
+      "bronze_green",
+      "bronze_orange",
+      "bronze_purple",
+      "bronze_red",
+      "bronze_yellow",
+      "ceramic_blue",
+      "ceramic_green",
+      "ceramic_orange",
+      "ceramic_purple",
+      "ceramic_red",
+      "ceramic_yellow",
+      "copper_blue",
+      "copper_green",
+      "copper_orange",
+      "copper_purple",
+      "copper_red",
+      "copper_yellow",
+      "gold_blue",
+      "gold_green",
+      "gold_orange",
+      "gold_purple",
+      "gold_red",
+      "gold_yellow",
+      "iron_blue",
+      "iron_green",
+      "iron_orange",
+      "iron_purple",
+      "iron_red",
+      "iron_yellow",
+      "silver_blue",
+      "silver_green",
+      "silver_orange",
+      "silver_purple",
+      "silver_red",
+      "silver_yellow",
+      "steel_blue",
+      "steel_green",
+      "steel_orange",
+      "steel_purple",
+      "steel_red",
+      "steel_yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 81,
+        "male": "neck/amulet/spider/male/",
+        "muscular": "neck/amulet/spider/male/",
+        "female": "neck/amulet/spider/female/",
+        "teen": "neck/amulet/spider/female/",
+        "pregnant": "neck/amulet/spider/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "neck/amulet/spider",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-jewelry"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "neck_amulet_star": {
+    "name": "Star amulet",
+    "priority": null,
+    "type_name": "charm",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "neck",
+      "charms",
+      "neck_amulet_star"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "brass_blue",
+      "brass_green",
+      "brass_orange",
+      "brass_purple",
+      "brass_red",
+      "brass_yellow",
+      "bronze_blue",
+      "bronze_green",
+      "bronze_orange",
+      "bronze_purple",
+      "bronze_red",
+      "bronze_yellow",
+      "ceramic_blue",
+      "ceramic_green",
+      "ceramic_orange",
+      "ceramic_purple",
+      "ceramic_red",
+      "ceramic_yellow",
+      "copper_blue",
+      "copper_green",
+      "copper_orange",
+      "copper_purple",
+      "copper_red",
+      "copper_yellow",
+      "gold_blue",
+      "gold_green",
+      "gold_orange",
+      "gold_purple",
+      "gold_red",
+      "gold_yellow",
+      "iron_blue",
+      "iron_green",
+      "iron_orange",
+      "iron_purple",
+      "iron_red",
+      "iron_yellow",
+      "silver_blue",
+      "silver_green",
+      "silver_orange",
+      "silver_purple",
+      "silver_red",
+      "silver_yellow",
+      "steel_blue",
+      "steel_green",
+      "steel_orange",
+      "steel_purple",
+      "steel_red",
+      "steel_yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 81,
+        "male": "neck/amulet/star/male/",
+        "muscular": "neck/amulet/star/male/",
+        "female": "neck/amulet/star/female/",
+        "teen": "neck/amulet/star/female/",
+        "pregnant": "neck/amulet/star/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "neck/amulet/star",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "AntumDeluge",
+          "7Soul"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://www.deviantart.com/7soul1/art/129892453",
+          "https://opengameart.org/content/cc0-jewelry-icons",
+          "https://opengameart.org/content/lpc-jewelry"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "neck_charm_box": {
+    "name": "Box Charm",
+    "priority": null,
+    "type_name": "charm",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "neck",
+      "charms",
+      "neck_charm_box"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "steel",
+      "iron",
+      "ceramic",
+      "brass",
+      "copper",
+      "bronze",
+      "silver",
+      "gold"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 81,
+        "male": "neck/charm/box/male/",
+        "muscular": "neck/charm/box/male/",
+        "female": "neck/charm/box/female/",
+        "teen": "neck/charm/box/female/",
+        "pregnant": "neck/charm/box/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "neck/charm",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-jewelry"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "neck_charm_oval": {
+    "name": "Oval Charm",
+    "priority": null,
+    "type_name": "charm",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "neck",
+      "charms",
+      "neck_charm_oval"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "steel",
+      "iron",
+      "ceramic",
+      "brass",
+      "copper",
+      "bronze",
+      "silver",
+      "gold"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 81,
+        "male": "neck/charm/oval/male/",
+        "muscular": "neck/charm/oval/male/",
+        "female": "neck/charm/oval/female/",
+        "teen": "neck/charm/oval/female/",
+        "pregnant": "neck/charm/oval/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "neck/charm",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-jewelry"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "neck_charm_ring": {
+    "name": "Ring Charm",
+    "priority": null,
+    "type_name": "charm",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "neck",
+      "charms",
+      "neck_charm_ring"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "steel",
+      "iron",
+      "ceramic",
+      "brass",
+      "copper",
+      "bronze",
+      "silver",
+      "gold"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 81,
+        "male": "neck/charm/ring/male/",
+        "muscular": "neck/charm/ring/male/",
+        "female": "neck/charm/ring/female/",
+        "teen": "neck/charm/ring/female/",
+        "pregnant": "neck/charm/ring/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "neck/charm",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-jewelry"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "neck_charm_star": {
+    "name": "Star Charm",
+    "priority": null,
+    "type_name": "charm",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "neck",
+      "charms",
+      "neck_charm_star"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "steel",
+      "iron",
+      "ceramic",
+      "brass",
+      "copper",
+      "bronze",
+      "silver",
+      "gold"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 81,
+        "male": "neck/charm/star/male/",
+        "muscular": "neck/charm/star/male/",
+        "female": "neck/charm/star/female/",
+        "teen": "neck/charm/star/female/",
+        "pregnant": "neck/charm/star/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "neck/charm",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-jewelry"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "neck_gem_emerald": {
+    "name": "Emerald cut Gem",
+    "priority": null,
+    "type_name": "charm",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "neck",
+      "charms",
+      "neck_gem_emerald"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blue",
+      "green",
+      "orange",
+      "purple",
+      "red",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 81,
+        "male": "neck/gem/emerald/male/",
+        "muscular": "neck/gem/emerald/male/",
+        "female": "neck/gem/emerald/female/",
+        "teen": "neck/gem/emerald/female/",
+        "pregnant": "neck/gem/emerald/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "neck/gem",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-jewelry"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "neck_gem_marquise": {
+    "name": "Marquise cut Gem",
+    "priority": null,
+    "type_name": "charm",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "neck",
+      "charms",
+      "neck_gem_marquise"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blue",
+      "green",
+      "orange",
+      "purple",
+      "red",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 81,
+        "male": "neck/gem/marquise/male/",
+        "muscular": "neck/gem/marquise/male/",
+        "female": "neck/gem/marquise/female/",
+        "teen": "neck/gem/marquise/female/",
+        "pregnant": "neck/gem/marquise/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "neck/gem",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-jewelry"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "neck_gem_natural": {
+    "name": "Natural cut Gem",
+    "priority": null,
+    "type_name": "charm",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "neck",
+      "charms",
+      "neck_gem_natural"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blue",
+      "green",
+      "orange",
+      "purple",
+      "red",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 81,
+        "male": "neck/gem/natural/male/",
+        "muscular": "neck/gem/natural/male/",
+        "female": "neck/gem/natural/female/",
+        "teen": "neck/gem/natural/female/",
+        "pregnant": "neck/gem/natural/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "neck/gem",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-jewelry"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "neck_gem_pear": {
+    "name": "Pear cut Gem",
+    "priority": null,
+    "type_name": "charm",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "neck",
+      "charms",
+      "neck_gem_pear"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blue",
+      "green",
+      "orange",
+      "purple",
+      "red",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 81,
+        "male": "neck/gem/pear/male/",
+        "muscular": "neck/gem/pear/male/",
+        "female": "neck/gem/pear/female/",
+        "teen": "neck/gem/pear/female/",
+        "pregnant": "neck/gem/pear/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "neck/gem",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-jewelry"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "neck_gem_pearl": {
+    "name": "Pearl Gem",
+    "priority": null,
+    "type_name": "charm",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "neck",
+      "charms",
+      "neck_gem_pearl"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blue",
+      "green",
+      "orange",
+      "purple",
+      "red",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 81,
+        "male": "neck/gem/pearl/male/",
+        "muscular": "neck/gem/pearl/male/",
+        "female": "neck/gem/pearl/female/",
+        "teen": "neck/gem/pearl/female/",
+        "pregnant": "neck/gem/pearl/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "neck/gem",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-jewelry"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "neck_gem_princess": {
+    "name": "Princess cut Gem",
+    "priority": null,
+    "type_name": "charm",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "neck",
+      "charms",
+      "neck_gem_princess"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blue",
+      "green",
+      "orange",
+      "purple",
+      "red",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 81,
+        "male": "neck/gem/princess/male/",
+        "muscular": "neck/gem/princess/male/",
+        "female": "neck/gem/princess/female/",
+        "teen": "neck/gem/princess/female/",
+        "pregnant": "neck/gem/princess/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "neck/gem",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-jewelry"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "neck_gem_round": {
+    "name": "Round cut Gem",
+    "priority": null,
+    "type_name": "charm",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "neck",
+      "charms",
+      "neck_gem_round"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blue",
+      "green",
+      "orange",
+      "purple",
+      "red",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 81,
+        "male": "neck/gem/round/male/",
+        "muscular": "neck/gem/round/male/",
+        "female": "neck/gem/round/female/",
+        "teen": "neck/gem/round/female/",
+        "pregnant": "neck/gem/round/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "neck/gem",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-jewelry"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
+  "neck_gem_trilliant": {
+    "name": "Trilliant cut Gem",
+    "priority": null,
+    "type_name": "charm",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "idle"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "neck",
+      "charms",
+      "neck_gem_trilliant"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "blue",
+      "green",
+      "orange",
+      "purple",
+      "red",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 81,
+        "male": "neck/gem/trilliant/male/",
+        "muscular": "neck/gem/trilliant/male/",
+        "female": "neck/gem/trilliant/female/",
+        "teen": "neck/gem/trilliant/female/",
+        "pregnant": "neck/gem/trilliant/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "neck/gem",
+        "notes": "",
+        "authors": [
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-jewelry"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC0"
+      ],
+      "female": [
+        "CC0"
+      ],
+      "teen": [
+        "CC0"
+      ],
+      "muscular": [
+        "CC0"
+      ],
+      "pregnant": [
+        "CC0"
+      ]
+    }
+  },
   "facial_earring_left": {
     "name": "Simple Earring Left",
     "priority": null,
@@ -39337,156 +50876,6 @@ window.itemMetadata = {
       ],
       "pregnant": [
         "OGA-BY 3.0"
-      ]
-    }
-  },
-  "facial_mask_plain": {
-    "name": "Plain Mask",
-    "priority": 50,
-    "type_name": "facial_mask",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "headwear",
-      "accessories",
-      "facial_mask_plain"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "dark",
-      "white",
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow",
-      "steel",
-      "iron",
-      "ceramic",
-      "brass",
-      "copper",
-      "bronze",
-      "silver",
-      "gold"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 114,
-        "male": "facial/masks/plain/adult/",
-        "muscular": "facial/masks/plain/adult/",
-        "female": "facial/masks/plain/adult/",
-        "pregnant": "facial/masks/plain/adult/",
-        "teen": "facial/masks/plain/adult/",
-        "child": "facial/masks/plain/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "facial/masks/plain",
-        "notes": "",
-        "authors": [
-          "Nila122"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 2.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-masks",
-          "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
       ]
     }
   },
@@ -53361,4585 +64750,6 @@ window.itemMetadata = {
       ]
     }
   },
-  "legs_hose": {
-    "name": "Hose",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "leggings",
-      "legs_hose"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "leather",
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "male": "legs/hose/male/",
-        "female": "legs/hose/thin/",
-        "teen": "legs/hose/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/hose/male",
-        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original overalls and hose by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, male hose by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "ElizaWy",
-          "bluecarrot16",
-          "JaidynReiman",
-          "ElizaWy",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      },
-      {
-        "file": "legs/hose",
-        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original by ElizaWy, remaining frames by JaidynReiman",
-        "authors": [
-          "ElizaWy",
-          "JaidynReiman",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_leggings": {
-    "name": "Leggings",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "leggings",
-      "legs_leggings"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "male": "legs/leggings/male/",
-        "female": "legs/leggings/thin/",
-        "teen": "legs/leggings/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/leggings/male",
-        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original overalls by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, leggings by JaidynReiman",
-        "authors": [
-          "bluecarrot16",
-          "ElizaWy",
-          "JaidynReiman",
-          "Mandi Paugh",
-          "William.Thompsonj",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      },
-      {
-        "file": "legs/leggings",
-        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, adapted from sara's leggings to v3 bases by bluecarrot16, jump/run/sit by JaidynReiman based on ElizaWy's and modified to match",
-        "authors": [
-          "bluecarrot16",
-          "ElizaWy",
-          "JaidynReiman",
-          "Mandi Paugh",
-          "William.Thompsonj",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "http://opengameart.org/content/sara-wizard",
-          "https://opengameart.org/content/lpc-sara",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_leggings2": {
-    "name": "Leggings 2",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "leggings",
-      "legs_leggings2"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "leather",
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "male": "legs/leggings2/male/",
-        "female": "legs/leggings2/thin/",
-        "teen": "legs/leggings2/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/leggings2/male",
-        "notes": "original overalls by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, leggings by JaidynReiman",
-        "authors": [
-          "bluecarrot16",
-          "ElizaWy",
-          "JaidynReiman",
-          "Mandi Paugh",
-          "William.Thompsonj",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      },
-      {
-        "file": "legs/leggings2",
-        "notes": "original by ElizaWy, remaining frames",
-        "authors": [
-          "ElizaWy",
-          "JaidynReiman",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_armour": {
-    "name": "Armour",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "climb",
-      "idle",
-      "jump",
-      "sit",
-      "emotes"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "legs_armour"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "steel",
-      "iron",
-      "ceramic",
-      "brass",
-      "copper",
-      "bronze",
-      "silver",
-      "gold"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "male": "legs/armour/plate/male/",
-        "female": "legs/armour/plate/thin/",
-        "teen": "legs/armour/plate/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/armour/plate",
-        "notes": "reduced to 7 colors an adapted to v3 bases by bluecarrot16, climb/jump/sit/emotes by JaidynReiman",
-        "authors": [
-          "bluecarrot16",
-          "JaidynReiman",
-          "Michael Whitlock (bigbeargames)",
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_childpants": {
-    "name": "Child pants",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "child"
-    ],
-    "animations": [
-      "walk"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "pants",
-      "legs_childpants"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "brown",
-      "darkblue",
-      "green",
-      "lightblue",
-      "maroon",
-      "red",
-      "white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "child": "legs/pants/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/pants/child",
-        "notes": "",
-        "authors": [
-          "Nila122"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-clothes-for-children"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_cuffed": {
-    "name": "Cuffed Pants",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "pants",
-      "legs_cuffed"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "leather",
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "male": "legs/cuffed/male/",
-        "female": "legs/cuffed/thin/",
-        "teen": "legs/cuffed/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/cuffed/male",
-        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original overalls by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, pants by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "ElizaWy",
-          "Bluecarrot16",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      },
-      {
-        "file": "legs/cuffed",
-        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original cuffed pants by ElizaWy, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
-        "authors": [
-          "ElizaWy",
-          "JaidynReiman",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_formal_striped": {
-    "name": "Striped Formal Pants",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "pants",
-      "legs_formal_striped"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "base",
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "male": "legs/formal_striped/male/",
-        "muscular": "legs/formal_striped/male/",
-        "female": "legs/formal_striped/thin/",
-        "teen": "legs/formal_striped/thin/",
-        "pregnant": "legs/formal_striped/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/formal_striped",
-        "notes": "Original pants by Stephen Challener (Redshrike), thrust/shoot bases by Wulax, Striped Formal Pants by Bluecarrot16, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
-        "authors": [
-          "bluecarrot16",
-          "JaidynReiman",
-          "ElizaWy",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-2-characters",
-          "https://opengameart.org/content/lpc-gentleman",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      },
-      {
-        "file": "legs/formal_striped/thin",
-        "notes": "Original pants by Stephen Challener (Redshrike), thrust/shoot bases by Wulax, Striped Formal Pants by Bluecarrot16, Female/Thin version by JaidynReiman",
-        "authors": [
-          "bluecarrot16",
-          "JaidynReiman",
-          "ElizaWy",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-2-characters",
-          "https://opengameart.org/content/lpc-gentleman",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_formal": {
-    "name": "Formal Pants",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "pants",
-      "legs_formal"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "base",
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "male": "legs/formal/male/",
-        "muscular": "legs/formal/male/",
-        "female": "legs/formal/thin/",
-        "teen": "legs/formal/thin/",
-        "pregnant": "legs/formal/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/formal",
-        "notes": "Original pants by Stephen Challener (Redshrike), thrust/shoot bases by Wulax, Formal Pants by Bluecarrot16, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
-        "authors": [
-          "bluecarrot16",
-          "JaidynReiman",
-          "ElizaWy",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-2-characters",
-          "https://opengameart.org/content/lpc-gentleman",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      },
-      {
-        "file": "legs/formal/thin",
-        "notes": "Original pants by Stephen Challener (Redshrike), thrust/shoot bases by Wulax, Formal Pants by Bluecarrot16, Female/Thin version by JaidynReiman",
-        "authors": [
-          "bluecarrot16",
-          "JaidynReiman",
-          "ElizaWy",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-2-characters",
-          "https://opengameart.org/content/lpc-gentleman",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_fur": {
-    "name": "Fur Pants",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "pants",
-      "legs_fur"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "base",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "male": "legs/fur/male/",
-        "muscular": "legs/fur/male/",
-        "female": "legs/fur/thin/",
-        "teen": "legs/fur/thin/",
-        "pregnant": "legs/fur/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/fur",
-        "notes": "Original pants by Stephen Challener (Redshrike), thrust/shoot bases by Wulax, Fur Pants Color by Evert, Edited to V3 Bases by Bluecarrot16, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
-        "authors": [
-          "Bluecarrot16",
-          "JaidynReiman",
-          "Evert",
-          "ElizaWy",
-          "Nila122",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-faun-and-minotaur",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      },
-      {
-        "file": "legs/fur/thin",
-        "notes": "Original pants by Stephen Challener (Redshrike), thrust/shoot bases by Wulax, Fur Pants Color by Evert, Edited to V3 Bases by Bluecarrot16, Female/Thin version by JaidynReiman",
-        "authors": [
-          "Bluecarrot16",
-          "JaidynReiman",
-          "Evert",
-          "ElizaWy",
-          "Nila122",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-faun-and-minotaur",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_pantaloons": {
-    "name": "Pantaloons",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "pants",
-      "legs_pantaloons"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "male": "legs/pantaloons/male/",
-        "muscular": "legs/pantaloons/muscular/",
-        "female": "legs/pantaloons/thin/",
-        "pregnant": "legs/pantaloons/thin/",
-        "teen": "legs/pantaloons/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/pantaloons",
-        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, Original Pantaloons by Nila122, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
-        "authors": [
-          "Nila122",
-          "JaidynReiman",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 2.0",
-          "GPL 3.0",
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-pirates",
-          "https://opengameart.org/content/more-lpc-clothes-and-hair",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      },
-      {
-        "file": "legs/pantaloons/thin",
-        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, Original Pantaloons by Nila122, Female/Teen version by JaidynReiman",
-        "authors": [
-          "Nila122",
-          "JaidynReiman",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 2.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-pirates",
-          "https://opengameart.org/content/more-lpc-clothes-and-hair",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      },
-      {
-        "file": "legs/pantaloons/muscular",
-        "notes": "",
-        "authors": [
-          "Nila122",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 2.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/more-lpc-clothes-and-hair"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "GPL 2.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 2.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "GPL 2.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "GPL 2.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "GPL 2.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "legs_pants": {
-    "name": "Pants",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "pants",
-      "legs_pants"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "male": "legs/pants/male/",
-        "muscular": "legs/pants/male/",
-        "female": "legs/pants/thin/",
-        "teen": "legs/pants/thin/",
-        "pregnant": "legs/pants/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/pants/male",
-        "notes": "original male pants by wulax, recolors and edits to v3 base by bluecarrot16, climb/jump/run/sit/emotes/revised combat by JaidynReiman based on ElizaWy's LPC Revised",
-        "authors": [
-          "bluecarrot16",
-          "JaidynReiman",
-          "ElizaWy",
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 3.0",
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      },
-      {
-        "file": "legs/pants/thin",
-        "notes": "original male pants by wulax, edited for female by Joe White, recolors and edits to v3 base by bluecarrot16, teen legs by ElizaWy derived from base, climb/jump/run/sit/emotes/revised combat by JaidynReiman based on ElizaWy's LPC Revised",
-        "authors": [
-          "bluecarrot16",
-          "JaidynReiman",
-          "ElizaWy",
-          "Joe White",
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 3.0",
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "http://opengameart.org/content/lpc-clothing-updates",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "legs_pants2": {
-    "name": "Long Pants",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "pants",
-      "legs_pants2"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "leather",
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "male": "legs/pants2/male/",
-        "female": "legs/pants2/thin/",
-        "teen": "legs/pants2/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/pants2/male",
-        "notes": "original overalls by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, pants by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "ElizaWy",
-          "Bluecarrot16",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      },
-      {
-        "file": "legs/pants2",
-        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original pants by ElizaWy, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
-        "authors": [
-          "ElizaWy",
-          "JaidynReiman",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_pregnantpants": {
-    "name": "Pregnancy pants",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "pants",
-      "legs_pregnantpants"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "sky",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "pregnant": "legs/pants/pregnant/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/pants/pregnant",
-        "notes": "original male pants by wulax; edited for female by Joe White; recolors by JaidynReiman; walkcycle adapted to pregnant base by ElizaWy; remaining animations, recolors and edits to v3 base by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "ElizaWy",
-          "JaidynReiman",
-          "Joe White",
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-pregnancy-bases-maternity-wear",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_widepants": {
-    "name": "Wide pants",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "muscular"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "pants",
-      "legs_widepants"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "muscular": "legs/pants/muscular/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/pants/muscular",
-        "notes": "original muscular pants by ElizaWy, muscular by dalonedrau, cast and thrust frames by JaidynReiman",
-        "authors": [
-          "ElizaWy",
-          "JaidynReiman",
-          "dalonedrau",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-muscular-pants",
-          "https://opengameart.org/content/lpc-muscular-swing-animation",
-          "https://opengameart.org/content/lpc-muscular-hurt-animation"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_shorts_short": {
-    "name": "Short Shorts",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "shorts",
-      "legs_shorts_short"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "leather",
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "male": "legs/shorts/short_shorts/male/",
-        "female": "legs/shorts/short_shorts/thin/",
-        "teen": "legs/shorts/short_shorts/thin/",
-        "pregnant": "legs/shorts/short_shorts/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/shorts/short_shorts/male",
-        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original overalls and shorts by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, shorts by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "ElizaWy",
-          "Bluecarrot16",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      },
-      {
-        "file": "legs/shorts/short_shorts",
-        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original shorts by ElizaWy, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
-        "authors": [
-          "ElizaWy",
-          "JaidynReiman",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_shorts": {
-    "name": "Shorts",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "shorts",
-      "legs_shorts"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "leather",
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "male": "legs/shorts/shorts/male/",
-        "female": "legs/shorts/shorts/thin/",
-        "teen": "legs/shorts/shorts/thin/",
-        "pregnant": "legs/shorts/shorts/thin/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/shorts/shorts/male",
-        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original overalls and shorts by ElizaWy, base animations adapted from v3 overalls by bluecarrot16, shorts by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "ElizaWy",
-          "Bluecarrot16",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      },
-      {
-        "file": "legs/shorts/shorts",
-        "notes": "Original bases by Redshrike, thrust/shoot bases by Wulax, original shorts by ElizaWy, climb/jump/run/sit/emotes/revised combat by JaidynReiman",
-        "authors": [
-          "ElizaWy",
-          "JaidynReiman",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more",
-          "https://opengameart.org/content/lpc-expanded-pants"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_childskirts": {
-    "name": "Child skirts",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "child"
-    ],
-    "animations": [
-      "walk"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "skirts",
-      "legs_childskirts"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "darkblue",
-      "green",
-      "lavender",
-      "lightblue",
-      "maroon",
-      "pink",
-      "red",
-      "white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "child": "legs/skirts/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/skirts/child",
-        "notes": "",
-        "authors": [
-          "Nila122"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-clothes-for-children"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_skirt_belle": {
-    "name": "Belle skirt",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "female",
-      "teen",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "skirts",
-      "legs_skirt_belle"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "female": "legs/skirts/belle/female/",
-        "pregnant": "legs/skirts/belle/female/",
-        "teen": "legs/skirts/belle/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/skirts/belle",
-        "notes": "extended to all poses by makrohn, edited to v3 bases and animation cleanup by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Matthew Krohn (makrohn)",
-          "Lanea Zimmerman (Sharm)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-dress-in-combat-poses",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_skirt_overskirt": {
-    "name": "Overskirt",
-    "priority": null,
-    "type_name": "apron",
-    "required": [
-      "female",
-      "teen",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "skirts",
-      "legs_skirt_overskirt"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 35,
-        "female": "legs/skirts/overskirt/female/",
-        "pregnant": "legs/skirts/overskirt/female/",
-        "teen": "legs/skirts/overskirt/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/skirts/overskirt",
-        "notes": "original princess.xcf by Sharm, extended to all poses by makrohn, edited to v3 bases and animation cleanup by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Matthew Krohn (makrohn)",
-          "Lanea Zimmerman (Sharm)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-dress-in-combat-poses",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_skirt_straight": {
-    "name": "Straight skirt",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "female",
-      "teen",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "skirts",
-      "legs_skirt_straight"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "female": "legs/skirts/straight/female/",
-        "pregnant": "legs/skirts/straight/female/",
-        "teen": "legs/skirts/straight/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/skirts/straight",
-        "notes": "original skirt by ElizaWy, extended to all animation frames and edited for v3 bases by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "ElizaWy"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_skirts_legion": {
-    "name": "Legion skirt",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "skirts",
-      "legs_skirts_legion"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "male": "legs/skirts/legion/male/",
-        "muscular": "legs/skirts/legion/male/",
-        "female": "legs/skirts/legion/female/",
-        "pregnant": "legs/skirts/legion/female/",
-        "teen": "legs/skirts/legion/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/skirts/legion",
-        "notes": "original by Nila122 to legion, adapted to v3 bases by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Nila122"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 2.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-roman-armor",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_skirts_plain": {
-    "name": "Plain skirt",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "skirts",
-      "legs_skirts_plain"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "male": "legs/skirts/plain/male/",
-        "female": "legs/skirts/plain/female/",
-        "teen": "legs/skirts/plain/female/",
-        "pregnant": "legs/skirts/plain/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/skirts/plain",
-        "notes": "original by wulax, edited for female base by pvigier, edited for v3 base by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Pierre Vigier (pvigier)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "legs_skirts_slit": {
-    "name": "Slit skirt",
-    "priority": null,
-    "type_name": "legs",
-    "required": [
-      "male",
-      "female"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "legs",
-      "skirts",
-      "legs_skirts_slit"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "male": "legs/skirts/slit/female/",
-        "female": "legs/skirts/slit/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "legs/skirts/slit",
-        "notes": "original \"TightDress\" by Nila122, edited to skirt by ElizaWy, extended to all animation frames and edited for v3 bases by bluecarrot16",
-        "authors": [
-          "Nila122",
-          "ElizaWy",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 2.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-clothes-and-hair",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "tool_rod": {
-    "name": "Rod",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "tool_rod"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "tools",
-      "tool_rod"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "rod"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 9,
-        "custom_animation": "tool_rod",
-        "male": "tools/rod/background/",
-        "muscular": "tools/rod/background/",
-        "female": "tools/rod/background/",
-        "pregnant": "tools/rod/background/",
-        "teen": "tools/rod/background/"
-      },
-      "layer_2": {
-        "zPos": 150,
-        "custom_animation": "tool_rod",
-        "male": "tools/rod/foreground/",
-        "muscular": "tools/rod/foreground/",
-        "female": "tools/rod/foreground/",
-        "pregnant": "tools/rod/foreground/",
-        "teen": "tools/rod/foreground/"
-      }
-    },
-    "credits": [
-      {
-        "file": "tools/rod",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Pierre Vigier (pvigier)",
-          "Tuomo Untinen (reemax)",
-          "Johannes Sjölund (wulax)",
-          "and Inboxninja"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-hand-tools"
-        ]
-      }
-    ],
-    "preview_row": 0,
-    "preview_column": 0,
-    "preview_x_offset": 304,
-    "preview_y_offset": 24,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "tool_smash": {
-    "name": "Smash",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "slash_128"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "tools",
-      "tool_smash"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "axe",
-      "hammer",
-      "pickaxe"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "tools/smash/universal/male/",
-        "muscular": "tools/smash/universal/male/",
-        "female": "tools/smash/universal/female/",
-        "pregnant": "tools/smash/universal/female/",
-        "teen": "tools/smash/universal/female/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "custom_animation": "slash_128",
-        "male": "tools/smash/background/",
-        "muscular": "tools/smash/background/",
-        "female": "tools/smash/background/",
-        "pregnant": "tools/smash/background/",
-        "teen": "tools/smash/background/"
-      },
-      "layer_3": {
-        "zPos": 150,
-        "custom_animation": "slash_128",
-        "male": "tools/smash/foreground/",
-        "muscular": "tools/smash/foreground/",
-        "female": "tools/smash/foreground/",
-        "pregnant": "tools/smash/foreground/",
-        "teen": "tools/smash/foreground/"
-      }
-    },
-    "credits": [
-      {
-        "file": "tools/smash",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Pierre Vigier (pvigier)",
-          "Tuomo Untinen (reemax)",
-          "Johannes Sjölund (wulax)",
-          "and Inboxninja"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-hand-tools"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "tool_thrust": {
-    "name": "Thrust",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "hurt"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "tools",
-      "tool_thrust"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "hoe",
-      "shovel",
-      "watering"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 9,
-        "male": "tools/thrust/background/",
-        "muscular": "tools/thrust/background/",
-        "female": "tools/thrust/background/",
-        "pregnant": "tools/thrust/background/",
-        "teen": "tools/thrust/background/"
-      },
-      "layer_2": {
-        "zPos": 150,
-        "male": "tools/thrust/foreground/",
-        "muscular": "tools/thrust/foreground/",
-        "female": "tools/thrust/foreground/",
-        "pregnant": "tools/thrust/foreground/",
-        "teen": "tools/thrust/foreground/"
-      }
-    },
-    "credits": [
-      {
-        "file": "tools/thrust",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Pierre Vigier (pvigier)",
-          "Tuomo Untinen (reemax)",
-          "Johannes Sjölund (wulax)",
-          "and Inboxninja"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-hand-tools"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "tool_whip": {
-    "name": "Whip",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "tool_whip"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "tools",
-      "tool_whip"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "whip"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 9,
-        "custom_animation": "tool_whip",
-        "male": "tools/whip/background/",
-        "muscular": "tools/whip/background/",
-        "female": "tools/whip/background/",
-        "pregnant": "tools/whip/background/",
-        "teen": "tools/whip/background/"
-      },
-      "layer_2": {
-        "zPos": 150,
-        "custom_animation": "tool_whip",
-        "male": "tools/whip/",
-        "muscular": "tools/whip/",
-        "female": "tools/whip/",
-        "pregnant": "tools/whip/",
-        "teen": "tools/whip/"
-      }
-    },
-    "credits": [
-      {
-        "file": "tools/whip",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "GPL 3.0",
-          "CC-BY 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-more-weapons"
-        ]
-      }
-    ],
-    "preview_row": 3,
-    "preview_column": 12,
-    "preview_x_offset": 24,
-    "preview_y_offset": 48,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ]
-    }
-  },
-  "torso_aprons_apron_full": {
-    "name": "Apron full",
-    "priority": null,
-    "type_name": "apron",
-    "required": [
-      "female"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "aprons",
-      "torso_aprons_apron_full"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 40,
-        "female": "torso/aprons/apron_full/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/aprons/apron_full",
-        "notes": "original apron by ElizaWy, extended to all animation frames and edited for v3 bases by bluecarrot16",
-        "authors": [
-          "ElizaWy",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_aprons_apron_half": {
-    "name": "Apron half",
-    "priority": null,
-    "type_name": "apron",
-    "required": [
-      "female"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "aprons",
-      "torso_aprons_apron_half"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 40,
-        "female": "torso/aprons/apron_half/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/aprons/apron_half",
-        "notes": "original apron by ElizaWy, extended to all animation frames and edited for v3 bases by bluecarrot16",
-        "authors": [
-          "ElizaWy",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_aprons_apron": {
-    "name": "Apron",
-    "priority": null,
-    "type_name": "apron",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "aprons",
-      "torso_aprons_apron"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "leather",
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 40,
-        "male": "torso/aprons/apron/male/",
-        "female": "torso/aprons/apron/female/",
-        "teen": "torso/aprons/apron/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/aprons/apron",
-        "notes": "",
-        "authors": [
-          "Nila122"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 2.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-aprons"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_aprons_overalls": {
-    "name": "Overalls",
-    "priority": null,
-    "type_name": "overalls",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "aprons",
-      "torso_aprons_overalls"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "leather",
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 38,
-        "male": "torso/aprons/overalls/male/",
-        "female": "torso/aprons/overalls/female/",
-        "teen": "torso/aprons/overalls/teen/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/aprons/overalls",
-        "notes": "original overalls by ElizaWy, extended to all animation frames, adapted from teen to male base, and edited for v3 bases by bluecarrot16; extended to combat animations by JaidynReiman",
-        "authors": [
-          "ElizaWy",
-          "bluecarrot16",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-revised-character-basics",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_aprons_suspenders": {
-    "name": "Suspenders",
-    "priority": null,
-    "type_name": "overalls",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "aprons",
-      "torso_aprons_suspenders"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 38,
-        "male": "torso/aprons/suspenders/male/",
-        "muscular": "torso/aprons/suspenders/male/",
-        "female": "torso/aprons/suspenders/female/",
-        "pregnant": "torso/aprons/suspenders/female/",
-        "teen": "torso/aprons/suspenders/teen/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/aprons/suspenders",
-        "notes": "original by ElizaWy; spellcast/thrust/shoot/hurt/combat adapted from original by JaidynReiman",
-        "authors": [
-          "ElizaWy",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing",
-          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "torso_armour_leather": {
-    "name": "Leather",
-    "priority": null,
-    "type_name": "armour",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "armour",
-      "torso_armour_leather"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "leather",
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 60,
-        "male": "torso/armour/leather/male/",
-        "female": "torso/armour/leather/female/",
-        "teen": "torso/armour/leather/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/armour/leather",
-        "notes": "adapted to v3 bases by bluecarrot16",
-        "authors": [
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      },
-      {
-        "file": "torso/armour/leather/female",
-        "notes": "recolor of torso/armour/leather/female/brown.png, adapted to v3 bases by bluecarrot16",
-        "authors": [
-          "Michael Whitlock (bigbeargames)",
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-combat-armor-for-women",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_armour_legion": {
-    "name": "Legion",
-    "priority": null,
-    "type_name": "armour",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h/backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "armour",
-      "torso_armour_legion"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "steel",
-      "iron",
-      "ceramic",
-      "brass",
-      "copper",
-      "bronze",
-      "silver",
-      "gold"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 60,
-        "male": "torso/armour/legion/male/",
-        "female": "torso/armour/legion/female/",
-        "teen": "torso/armour/legion/teen/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/armour/legion",
-        "notes": "adapted to v3 bases by bluecarrot16, jump/run/sit/combat and teen by Jaidynreiman",
-        "authors": [
-          "JaidynReiman",
-          "bluecarrot16",
-          "Nila122"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 2.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-roman-armor"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_armour_plate": {
-    "name": "Plate",
-    "priority": null,
-    "type_name": "armour",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "armour",
-      "torso_armour_plate"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "steel",
-      "iron",
-      "ceramic",
-      "brass",
-      "copper",
-      "bronze",
-      "silver",
-      "gold"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 60,
-        "male": "torso/armour/plate/male/",
-        "female": "torso/armour/plate/female/",
-        "teen": "torso/armour/plate/teen/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/armour/plate/male",
-        "notes": "original by wulax, recolor by bigbeargames, color reduced to 7 colors and adapted to v3 bases by bluecarrot16, run/jump/sit/climb/revised combat by JaidynReiman",
-        "authors": [
-          "JaidynReiman, bluecarrot16, Michael Whitlock (bigbeargames), Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-combat-armor-for-women"
-        ]
-      },
-      {
-        "file": "torso/armour/plate/female",
-        "notes": "original by wulax, adapted to female base by makrohn, recolor by bigbeargames, color reduced to 7 colors and adapted to v3 bases by bluecarrot16, run/jump/sit/climb/revised combat by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "bluecarrot16",
-          "Michael Whitlock (bigbeargames)",
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-combat-armor-for-women",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      },
-      {
-        "file": "torso/armour/plate/teen",
-        "notes": "original by wulax, color reduced to 7 colors and adapted to v3 bases by bluecarrot16, adapted to teen base from male/female by JaidynReiman",
-        "authors": [
-          "JaidynReiman",
-          "bluecarrot16",
-          "Michael Whitlock (bigbeargames)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-combat-armor-for-women"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "backpack_basket": {
-    "name": "Basket",
-    "priority": null,
-    "type_name": "backpack",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "back",
-      "backpack",
-      "basket"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "backpack",
-      "backpack_basket"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "round",
-      "square"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 130,
-        "male": "backpack/basket/fg/",
-        "muscular": "backpack/basket/fg/",
-        "female": "backpack/basket/fg/",
-        "pregnant": "backpack/basket/fg/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "backpack/basket/bg/",
-        "muscular": "backpack/basket/bg/",
-        "female": "backpack/basket/bg/",
-        "pregnant": "backpack/basket/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "backpack/basket",
-        "notes": "full submission is CC-BY-SA 3.0/GPL 3.0, but this item is CC0",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-more-backpacks"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "backpack_jetpack_fins": {
-    "name": "Jetpack fins",
-    "priority": null,
-    "type_name": "cargo",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "back",
-      "backpack",
-      "jetpack"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "backpack",
-      "backpack_jetpack_fins"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "bronze",
-      "gold",
-      "steel"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 112,
-        "male": "backpack/jetpack_fins/male/",
-        "muscular": "backpack/jetpack_fins/male/",
-        "female": "backpack/jetpack_fins/female/",
-        "pregnant": "backpack/jetpack_fins/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "backpack/jetpack_fins",
-        "notes": "trivial adjustments by bluecarrot16 to be compatible with v3 bases",
-        "authors": [
-          "Benjamin K. Smith (BenCreating)",
-          "macmanmatty"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-backpacks"
-        ]
-      }
-    ],
-    "preview_row": 0,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "backpack_jetpack": {
-    "name": "Jetpack",
-    "priority": null,
-    "type_name": "backpack",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "back",
-      "backpack",
-      "jetpack"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "backpack",
-      "backpack_jetpack"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "bronze",
-      "gold",
-      "steel"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 110,
-        "male": "backpack/jetpack/male/",
-        "muscular": "backpack/jetpack/male/",
-        "female": "backpack/jetpack/female/",
-        "pregnant": "backpack/jetpack/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "backpack/jetpack",
-        "notes": "trivial adjustments by bluecarrot16 to be compatible with v3 bases",
-        "authors": [
-          "Benjamin K. Smith (BenCreating)",
-          "macmanmatty"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-backpacks"
-        ]
-      }
-    ],
-    "preview_row": 0,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "backpack_squarepack": {
-    "name": "Square pack",
-    "priority": null,
-    "type_name": "backpack",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "backpack"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "backpack",
-      "backpack_squarepack"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "sky",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 110,
-        "male": "backpack/squarepack/male/",
-        "muscular": "backpack/squarepack/male/",
-        "female": "backpack/squarepack/female/",
-        "pregnant": "backpack/squarepack/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "backpack/squarepack",
-        "notes": "trivial adjustments by bluecarrot16 to be compatible with v3 bases",
-        "authors": [
-          "Benjamin K. Smith (BenCreating)",
-          "macmanmatty"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-backpacks"
-        ]
-      }
-    ],
-    "preview_row": 0,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "backpack_straps": {
-    "name": "Straps",
-    "priority": null,
-    "type_name": "backpack_straps",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "back",
-      "backpack_straps"
-    ],
-    "required_tags": [
-      "backpack"
-    ],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "backpack",
-      "backpack_straps"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "sky",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 110,
-        "male": "backpack/straps/male/",
-        "muscular": "backpack/straps/male/",
-        "female": "backpack/straps/female/",
-        "pregnant": "backpack/straps/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "backpack/straps",
-        "notes": "trivial adjustments by bluecarrot16 to be compatible with v3 bases",
-        "authors": [
-          "Benjamin K. Smith (BenCreating)",
-          "macmanmatty"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-backpacks"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "backpack": {
-    "name": "Backpack",
-    "priority": null,
-    "type_name": "backpack",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "back",
-      "backpack"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "backpack",
-      "backpack"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "sky",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 110,
-        "male": "backpack/backpack/male/",
-        "muscular": "backpack/backpack/male/",
-        "female": "backpack/backpack/female/",
-        "pregnant": "backpack/backpack/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "backpack/backpack",
-        "notes": "trivial adjustments by bluecarrot16 to be compatible with v3 bases",
-        "authors": [
-          "Benjamin K. Smith (BenCreating)",
-          "macmanmatty"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-backpacks"
-        ]
-      }
-    ],
-    "preview_row": 0,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
   "backpack_contents_ore": {
     "name": "Ore",
     "priority": null,
@@ -58127,782 +64937,6 @@ window.itemMetadata = {
       ],
       "pregnant": [
         "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "quiver": {
-    "name": "Quiver",
-    "priority": null,
-    "type_name": "quiver",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "backpack",
-      "quiver"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "quiver"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 8,
-        "male": "quiver/",
-        "muscular": "quiver/",
-        "female": "quiver/",
-        "pregnant": "quiver/",
-        "teen": "quiver/"
-      }
-    },
-    "credits": [
-      {
-        "file": "quiver",
-        "notes": "",
-        "authors": [
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "cape_solid": {
-    "name": "Solid",
-    "priority": null,
-    "type_name": "cape",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "back",
-      "cape"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "cape",
-      "cape_solid"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 85,
-        "male": "cape/solid/female/",
-        "muscular": "cape/solid/female/",
-        "teen": "cape/solid/female/",
-        "female": "cape/solid/female/",
-        "pregnant": "cape/solid/female/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "cape/solid_behind/",
-        "muscular": "cape/solid_behind/",
-        "teen": "cape/solid_behind/",
-        "female": "cape/solid_behind/",
-        "pregnant": "cape/solid_behind/"
-      }
-    },
-    "credits": [
-      {
-        "file": "cape/solid/female",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-curly-hair-elven-ears-white-cape-with-blue-trim-and-more",
-          "https://opengameart.org/content/lpc-roman-armor",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      },
-      {
-        "file": "cape/solid_behind",
-        "notes": "",
-        "authors": [
-          "Nila122",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-curly-hair-elven-ears-white-cape-with-blue-trim-and-more",
-          "https://opengameart.org/content/lpc-roman-armor"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "cape_tattered": {
-    "name": "Tattered",
-    "priority": null,
-    "type_name": "cape",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "back",
-      "cape"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "cape",
-      "cape_tattered"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 85,
-        "male": "cape/tattered/female/",
-        "muscular": "cape/tattered/female/",
-        "teen": "cape/tattered/female/",
-        "female": "cape/tattered/female/",
-        "pregnant": "cape/tattered/female/"
-      },
-      "layer_2": {
-        "zPos": 5,
-        "male": "cape/tattered_behind/",
-        "muscular": "cape/tattered_behind/",
-        "teen": "cape/tattered_behind/",
-        "female": "cape/tattered_behind/",
-        "pregnant": "cape/tattered_behind/"
-      }
-    },
-    "credits": [
-      {
-        "file": "cape/tattered",
-        "notes": "",
-        "authors": [
-          "Nila122",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-curly-hair-elven-ears-white-cape-with-blue-trim-and-more",
-          "https://opengameart.org/content/lpc-roman-armor"
-        ]
-      },
-      {
-        "file": "cape/tattered_behind",
-        "notes": "",
-        "authors": [
-          "Nila122",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-curly-hair-elven-ears-white-cape-with-blue-trim-and-more",
-          "https://opengameart.org/content/lpc-roman-armor"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "cape_trim": {
-    "name": "Cape Trim",
-    "priority": null,
-    "type_name": "cape_trim",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [
-      "back",
-      "cape_trim"
-    ],
-    "required_tags": [
-      "cape"
-    ],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "cape",
-      "cape_trim"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 90,
-        "male": "cape/trim/female/",
-        "muscular": "cape/trim/female/",
-        "teen": "cape/trim/female/",
-        "female": "cape/trim/female/",
-        "pregnant": "cape/trim/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "cape/trim",
-        "notes": "isolated stripe from cape_trimmed, adapted to v3 bases by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-curly-hair-elven-ears-white-cape-with-blue-trim-and-more",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "dress_bodice": {
-    "name": "Bodice",
-    "priority": 10,
-    "type_name": "vest",
-    "required": [
-      "female"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "dresses",
-      "dress_bodice"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 45,
-        "female": "dress/bodice/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "dress/bodice",
-        "notes": "original princess.xcf by Sharm, extended to all poses by makrohn, edited to v3 bases and animation cleanup by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Matthew Krohn (makrohn)",
-          "Lanea Zimmerman (Sharm)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-dress-in-combat-poses",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "dress_sash": {
-    "name": "Sash dress",
-    "priority": 30,
-    "type_name": "dress",
-    "required": [
-      "female"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "dresses",
-      "dress_sash"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 30,
-        "female": "dress/sash/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "dress/sash",
-        "notes": "adapted to v3 bases and recolored by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Thane Brimhall (pennomi)",
-          "laetissima",
-          "Matthew Krohn (makrohn)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-2-characters"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "dress_slit": {
-    "name": "Slit dress",
-    "priority": 20,
-    "type_name": "dress",
-    "required": [
-      "female"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "dresses",
-      "dress_slit"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 30,
-        "female": "dress/slit/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "dress/slit",
-        "notes": "original \"TightDress\" by Nila122, by ElizaWy, extended to all animation frames and edited for v3 bases by bluecarrot16",
-        "authors": [
-          "Nila122",
-          "ElizaWy",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 2.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-clothes-and-hair",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
         "GPL 3.0"
       ]
     }
@@ -60088,504 +66122,6 @@ window.itemMetadata = {
     "licenses": {
       "male": [
         "OGA-BY 3.0"
-      ]
-    }
-  },
-  "torso_jacket_collared": {
-    "name": "Collared coat",
-    "priority": null,
-    "type_name": "jacket",
-    "required": [
-      "male"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "jacket",
-      "torso_jacket_collared"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "brown striped",
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 55,
-        "male": "torso/jacket/collared/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/jacket/collared",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-gentleman",
-          "https://opengameart.org/content/lpc-pirates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_jacket_frock": {
-    "name": "Frock coat",
-    "priority": null,
-    "type_name": "jacket",
-    "required": [
-      "male"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "jacket",
-      "torso_jacket_frock"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 55,
-        "male": "torso/jacket/frock/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/jacket/frock",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-pirates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "torso_jacket_iverness": {
-    "name": "Iverness cloak",
-    "priority": null,
-    "type_name": "jacket",
-    "required": [
-      "male"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "jacket",
-      "torso_jacket_iverness"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 55,
-        "male": "torso/jacket/iverness/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/jacket/iverness",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-gentleman"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_jacket_santa": {
-    "name": "Santa coat",
-    "priority": null,
-    "type_name": "jacket",
-    "required": [
-      "male"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "jacket",
-      "torso_jacket_santa"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 55,
-        "male": "torso/jacket/santa/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/jacket/santa",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-gentleman",
-          "https://opengameart.org/content/lpc-santa"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_jacket_tabard": {
-    "name": "Tabard",
-    "priority": null,
-    "type_name": "jacket",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "jacket",
-      "torso_jacket_tabard"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "sky",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 55,
-        "female": "torso/jacket/tabard/female/",
-        "teen": "torso/jacket/tabard/female/",
-        "male": "torso/jacket/tabard/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/jacket/tabard",
-        "notes": "original by wulax, edited to v3 base by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      },
-      {
-        "file": "torso/jacket/tabard/female",
-        "notes": "original by wulax, edited to female base by makrohn and JaidynReiman, edited to v3 base by bluecarrot16",
-        "authors": [
-          "JaidynReiman",
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-combat-armor-for-women",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_jacket_trench": {
-    "name": "Trench coat",
-    "priority": null,
-    "type_name": "jacket",
-    "required": [
-      "male"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "jacket",
-      "torso_jacket_trench"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "dark gray",
-      "gray"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 55,
-        "male": "torso/jacket/trench/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/jacket/trench",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-gentleman"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
       ]
     }
   },
@@ -64657,1905 +70193,6 @@ window.itemMetadata = {
       ]
     }
   },
-  "torso_clothes_blouse_longsleeve": {
-    "name": "Longsleeve blouse",
-    "priority": null,
-    "type_name": "clothes",
-    "required": [
-      "female"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "shirts",
-      "torso_clothes_blouse_longsleeve"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "sky",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 35,
-        "female": "torso/clothes/blouse_longsleeve/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/clothes/blouse_longsleeve",
-        "notes": "original princess.xcf by Sharm, edited to blouse by ElizaWy; blouse + longsleeve adapted to v3 bases by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "ElizaWy",
-          "Lanea Zimmerman (Sharm)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-7-womens-shirts"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_clothes_blouse": {
-    "name": "Blouse",
-    "priority": null,
-    "type_name": "clothes",
-    "required": [
-      "female"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "shirts",
-      "torso_clothes_blouse"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "sky",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 35,
-        "female": "torso/clothes/blouse/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/clothes/blouse",
-        "notes": "original princess.xcf by Sharm, edited to blouse by ElizaWy; adapted to v3 bases by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "ElizaWy",
-          "Lanea Zimmerman (Sharm)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-7-womens-shirts"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_clothes_child_shirt": {
-    "name": "Child shirts",
-    "priority": null,
-    "type_name": "clothes",
-    "required": [
-      "child"
-    ],
-    "animations": [
-      "walk"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "shirts",
-      "torso_clothes_child_shirt"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "brown",
-      "gray",
-      "green",
-      "lavender",
-      "lightblue",
-      "pink",
-      "red",
-      "white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 35,
-        "child": "torso/clothes/shirt/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/clothes/shirt/child",
-        "notes": "",
-        "authors": [
-          "Nila122"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-clothes-for-children"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_clothes_corset": {
-    "name": "Corset",
-    "priority": null,
-    "type_name": "vest",
-    "required": [
-      "female"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "shirts",
-      "torso_clothes_corset"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "sky",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 45,
-        "female": "torso/clothes/corset/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/clothes/corset",
-        "notes": "original by Nila122, recolored by ElizaWy",
-        "authors": [
-          "ElizaWy",
-          "Nila122"
-        ],
-        "licenses": [
-          "OGA-SA 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-clothes-and-hair",
-          "https://opengameart.org/content/lpc-7-womens-shirts"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "female": [
-        "OGA-SA 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_clothes_robe": {
-    "name": "Robe",
-    "priority": null,
-    "type_name": "clothes",
-    "required": [
-      "female"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "shirts",
-      "torso_clothes_robe"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "brown",
-      "dark brown",
-      "dark gray",
-      "forest green",
-      "light gray",
-      "purple",
-      "red",
-      "white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 35,
-        "female": "torso/clothes/robe/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/clothes/robe",
-        "notes": "",
-        "authors": [
-          "Luke Mehl"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/female-mage-clothing-set"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_clothes_tunic_sara": {
-    "name": "Sara Tunic",
-    "priority": null,
-    "type_name": "clothes",
-    "required": [
-      "female"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "shirts",
-      "torso_clothes_tunic_sara"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 35,
-        "female": "torso/clothes/tunic_sara/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/clothes/tunic_sara",
-        "notes": "",
-        "authors": [
-          "Mandi Paugh",
-          "William.Thompsonj",
-          "Stephen Challener (Redshrike)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "http://opengameart.org/content/sara-wizard",
-          "https://opengameart.org/content/lpc-sara"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "female": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "torso_clothes_tunic": {
-    "name": "Tunic",
-    "priority": null,
-    "type_name": "clothes",
-    "required": [
-      "female"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "shirts",
-      "torso_clothes_tunic"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 35,
-        "female": "torso/clothes/tunic/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/clothes/tunic",
-        "notes": "\"pirate shirt\" by MadMarcel, edited to all poses by makrohn, edited from tube-top/tanktop to sleeveless then to tunic by JaidynReiman, edits for v3 bases and further cleanup by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "JaidynReiman",
-          "Matthew Krohn (makrohn)",
-          "Marcel van de Steeg (MadMarcel)",
-          "Stephen Challener (Redshrike)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-female-orcogregoblintroll-base-walkcycle",
-          "https://opengameart.org/content/lpc-curly-hair-elven-ears-white-cape-with-blue-trim-and-more",
-          "http://opengameart.org/content/lpc-clothing-updates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_bandages": {
-    "name": "Bandages",
-    "priority": 80,
-    "type_name": "bandages",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "torso_bandages"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 110,
-        "male": "torso/bandage/male/",
-        "female": "torso/bandage/female/",
-        "teen": "torso/bandage/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/bandage",
-        "notes": "",
-        "authors": [
-          "Nila122"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 2.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-bandages"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_chainmail": {
-    "name": "Chainmail",
-    "priority": 70,
-    "type_name": "chainmail",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "torso_chainmail"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "gray"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 50,
-        "male": "torso/chainmail/male/",
-        "female": "torso/chainmail/female/",
-        "teen": "torso/chainmail/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/chainmail",
-        "notes": "minor edits by bluecarrot16",
-        "authors": [
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_clothes_vest_open": {
-    "name": "Vest open",
-    "priority": null,
-    "type_name": "vest",
-    "required": [
-      "male"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "vest",
-      "torso_clothes_vest_open"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 45,
-        "male": "torso/clothes/vest_open/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/clothes/vest_open",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Thane Brimhall (pennomi)",
-          "laetissima"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-2-characters",
-          "https://opengameart.org/content/lpc-gentleman",
-          "https://opengameart.org/content/lpc-pirates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "torso_clothes_vest": {
-    "name": "Vest",
-    "priority": null,
-    "type_name": "vest",
-    "required": [
-      "male"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "idle"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "vest",
-      "torso_clothes_vest"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "gray striped",
-      "green striped",
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 45,
-        "male": "torso/clothes/vest/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/clothes/vest",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Thane Brimhall (pennomi)",
-          "laetissima",
-          "Stephen Challener (Redshrike)",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-2-characters",
-          "https://opengameart.org/content/lpc-gentleman",
-          "https://opengameart.org/content/lpc-pirates"
-        ]
-      },
-      {
-        "file": "torso/clothes/vest/male/gray_striped.png",
-        "notes": "",
-        "authors": [
-          "Michael Whitlock (bigbeargames)",
-          "bluecarrot16",
-          "Thane Brimhall (pennomi)",
-          "laetissima"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-2-characters"
-        ]
-      },
-      {
-        "file": "torso/clothes/vest/male/gray.png",
-        "notes": "",
-        "authors": [
-          "Michael Whitlock (bigbeargames)",
-          "bluecarrot16",
-          "Thane Brimhall (pennomi)",
-          "laetissima"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-2-characters"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "belt_belly": {
-    "name": "Belly belt",
-    "priority": 40,
-    "type_name": "belt",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "waist",
-      "belt_belly"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "brown",
-      "charcoal",
-      "leather",
-      "slate",
-      "tan",
-      "walnut",
-      "white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 70,
-        "male": "torso/waist/belt_belly/male/",
-        "female": "torso/waist/belt_belly/female/",
-        "teen": "torso/waist/belt_belly/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/waist/belt_belly",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Johannes Sjölund (wulax)",
-          "Matthew Krohn (makrohn)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-combat-armor-for-women",
-          "https://opengameart.org/content/lpc-pirates",
-          "https://opengameart.org/content/lpc-santa"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "belt_double": {
-    "name": "Double Belt",
-    "priority": 20,
-    "type_name": "belt",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "waist",
-      "belt_double"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "brown",
-      "charcoal",
-      "leather",
-      "slate",
-      "tan",
-      "walnut",
-      "white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 70,
-        "male": "torso/waist/belt_double/male/",
-        "female": "torso/waist/belt_double/female/",
-        "teen": "torso/waist/belt_double/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/waist/belt_double",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Johannes Sjölund (wulax)",
-          "Matthew Krohn (makrohn)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-combat-armor-for-women",
-          "https://opengameart.org/content/lpc-pirates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "belt_leather": {
-    "name": "Leather Belt",
-    "priority": 10,
-    "type_name": "belt",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "waist",
-      "belt_leather"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "brown",
-      "charcoal",
-      "leather",
-      "slate",
-      "tan",
-      "walnut",
-      "white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 70,
-        "male": "torso/waist/belt_leather/male/",
-        "female": "torso/waist/belt_leather/female/",
-        "teen": "torso/waist/belt_leather/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/waist/belt_leather",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Johannes Sjölund (wulax)",
-          "Matthew Krohn (makrohn)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-combat-armor-for-women",
-          "https://opengameart.org/content/lpc-pirates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "belt_loose": {
-    "name": "Loose Belt",
-    "priority": 30,
-    "type_name": "belt",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "waist",
-      "belt_loose"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "brown",
-      "charcoal",
-      "leather",
-      "slate",
-      "tan",
-      "walnut",
-      "white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 70,
-        "male": "torso/waist/belt_loose/male/",
-        "female": "torso/waist/belt_loose/female/",
-        "teen": "torso/waist/belt_loose/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/waist/belt_loose",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Johannes Sjölund (wulax)",
-          "Matthew Krohn (makrohn)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-combat-armor-for-women",
-          "https://opengameart.org/content/lpc-pirates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "belt_other_female": {
-    "name": "Other belts",
-    "priority": 50,
-    "type_name": "belt",
-    "required": [
-      "female"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "waist",
-      "belt_other_female"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "bronze",
-      "brown",
-      "gold",
-      "iron",
-      "leather",
-      "silver",
-      "teal",
-      "white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 70,
-        "female": "torso/waist/belt_other/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/waist/belt_other/female",
-        "notes": "",
-        "authors": [
-          "Luke Mehl"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/female-mage-clothing-set"
-        ]
-      },
-      {
-        "file": "torso/waist/belt_other/female/leather.png",
-        "notes": "",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Matthew Krohn (makrohn)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-combat-armor-for-women"
-        ]
-      },
-      {
-        "file": "torso/waist/belt_other/female/teal.png",
-        "notes": "",
-        "authors": [
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      },
-      {
-        "file": "torso/waist/belt_other/female/white.png",
-        "notes": "",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Matthew Krohn (makrohn)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "belt_other_male": {
-    "name": "Other belts",
-    "priority": 50,
-    "type_name": "belt",
-    "required": [
-      "male"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "waist",
-      "belt_other_male"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "formal",
-      "leather",
-      "white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 70,
-        "male": "torso/waist/belt_other/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/waist/belt_other/male/formal.png",
-        "notes": "",
-        "authors": [
-          "Thane Brimhall (pennomi)",
-          "laetissima",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-2-characters",
-          "https://opengameart.org/content/lpc-gentleman"
-        ]
-      },
-      {
-        "file": "torso/waist/belt_other/male/leather.png",
-        "notes": "",
-        "authors": [
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      },
-      {
-        "file": "torso/waist/belt_other/male/white.png",
-        "notes": "",
-        "authors": [
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "belt_sash_narrow": {
-    "name": "Narrow sash",
-    "priority": 70,
-    "type_name": "sash",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "waist",
-      "belt_sash_narrow"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 65,
-        "male": "torso/waist/sash_narrow/male/",
-        "female": "torso/waist/sash_narrow/female/",
-        "teen": "torso/waist/sash_narrow/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/waist/sash_narrow",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Nila122"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 2.0",
-          "GPL 3.0",
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/more-lpc-clothes-and-hair",
-          "https://opengameart.org/content/lpc-pirates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "GPL 2.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 2.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "GPL 2.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "belt_sash": {
-    "name": "Sash",
-    "priority": 60,
-    "type_name": "sash",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "waist",
-      "belt_sash"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 65,
-        "male": "torso/waist/sash/male/",
-        "female": "torso/waist/sash/female/",
-        "teen": "torso/waist/sash/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/waist/sash",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Nila122"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 2.0",
-          "GPL 3.0",
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/more-lpc-clothes-and-hair",
-          "https://opengameart.org/content/lpc-pirates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "GPL 2.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "GPL 2.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "GPL 2.0",
-        "GPL 3.0",
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "belt_waistband": {
-    "name": "Waistband",
-    "priority": 90,
-    "type_name": "sash",
-    "required": [
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "waist",
-      "belt_waistband"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "black",
-      "blue",
-      "bluegray",
-      "brown",
-      "charcoal",
-      "forest",
-      "gray",
-      "green",
-      "lavender",
-      "leather",
-      "maroon",
-      "navy",
-      "orange",
-      "pink",
-      "purple",
-      "red",
-      "rose",
-      "sky",
-      "slate",
-      "tan",
-      "teal",
-      "walnut",
-      "white",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 65,
-        "female": "torso/waist/waistband/female/",
-        "teen": "torso/waist/sash/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/waist/waistband",
-        "notes": "LPC Sara by Redshrike, contributed by William Thompsonj, Waistband Separated by Bluecarrot16",
-        "authors": [
-          "Bluecarrot16",
-          "Mandi Paugh",
-          "Stephen Challener (Redshrike)",
-          "William.Thompsonj"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "http://opengameart.org/content/sara-wizard",
-          "https://opengameart.org/content/lpc-sara"
-        ]
-      },
-      {
-        "file": "torso/waist/sash",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Nila122"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "GPL 2.0",
-          "GPL 3.0",
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/more-lpc-clothes-and-hair",
-          "https://opengameart.org/content/lpc-pirates"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "buckles": {
-    "name": "Buckles",
-    "priority": 100,
-    "type_name": "buckles",
-    "required": [
-      "female"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "torso",
-      "waist",
-      "buckles"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "bronze",
-      "gold",
-      "iron",
-      "silver"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 75,
-        "female": "torso/waist/buckles/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "torso/waist/buckles",
-        "notes": "",
-        "authors": [
-          "Luke Mehl"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/female-mage-clothing-set"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
   "belt_obi_knot_left": {
     "name": "Obi Knot Left",
     "priority": null,
@@ -66931,1907 +70568,6 @@ window.itemMetadata = {
         "OGA-BY 3.0+",
         "CC-BY 3.0+",
         "GPL 3.0"
-      ]
-    }
-  },
-  "weapon_blunt_club": {
-    "name": "Club",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "slash_reverse_oversize"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "blunt",
-      "weapon_blunt_club"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "club"
-    ],
-    "layers": {
-      "layer_1": {
-        "custom_animation": "slash_reverse_oversize",
-        "zPos": 140,
-        "male": "weapon/blunt/club/",
-        "muscular": "weapon/blunt/club/",
-        "female": "weapon/blunt/club/",
-        "pregnant": "weapon/blunt/club/"
-      },
-      "layer_2": {
-        "custom_animation": "slash_reverse_oversize",
-        "zPos": 9,
-        "male": "weapon/blunt/club/background/",
-        "muscular": "weapon/blunt/club/background/",
-        "female": "weapon/blunt/club/background/",
-        "pregnant": "weapon/blunt/club/background/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/blunt/club",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "GPL 3.0",
-          "CC-BY 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-more-weapons"
-        ]
-      }
-    ],
-    "preview_row": 1,
-    "preview_column": 1,
-    "preview_x_offset": 16,
-    "preview_y_offset": -16,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ]
-    }
-  },
-  "weapon_blunt_flail": {
-    "name": "Flail",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "hurt",
-      "slash_oversize"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "blunt",
-      "weapon_blunt_flail"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "flail"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 9,
-        "male": "weapon/blunt/flail/behind/",
-        "muscular": "weapon/blunt/flail/behind/",
-        "female": "weapon/blunt/flail/behind/",
-        "pregnant": "weapon/blunt/flail/behind/"
-      },
-      "layer_2": {
-        "zPos": 140,
-        "male": "weapon/blunt/flail/",
-        "muscular": "weapon/blunt/flail/",
-        "female": "weapon/blunt/flail/",
-        "pregnant": "weapon/blunt/flail/"
-      },
-      "layer_3": {
-        "custom_animation": "slash_oversize",
-        "zPos": 8,
-        "male": "weapon/blunt/flail/attack_slash/behind/",
-        "muscular": "weapon/blunt/flail/attack_slash/behind/",
-        "female": "weapon/blunt/flail/attack_slash/behind/",
-        "pregnant": "weapon/blunt/flail/attack_slash/behind/"
-      },
-      "layer_4": {
-        "custom_animation": "slash_oversize",
-        "zPos": 150,
-        "male": "weapon/blunt/flail/attack_slash/",
-        "muscular": "weapon/blunt/flail/attack_slash/",
-        "female": "weapon/blunt/flail/attack_slash/",
-        "pregnant": "weapon/blunt/flail/attack_slash/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/blunt/flail",
-        "notes": "",
-        "authors": [
-          "Benjamin K. Smith (BenCreating)",
-          "bluecarrot16",
-          "Sander Frenken (castelonia)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-weapons"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "weapon_blunt_mace": {
-    "name": "Mace",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "hurt",
-      "slash_oversize"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "blunt",
-      "weapon_blunt_mace"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "mace"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "weapon/blunt/mace/",
-        "muscular": "weapon/blunt/mace/",
-        "female": "weapon/blunt/mace/",
-        "pregnant": "weapon/blunt/mace/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "weapon/blunt/mace/universal_behind/",
-        "muscular": "weapon/blunt/mace/universal_behind/",
-        "female": "weapon/blunt/mace/universal_behind/",
-        "pregnant": "weapon/blunt/mace/universal_behind/"
-      },
-      "layer_3": {
-        "zPos": 9,
-        "custom_animation": "slash_oversize",
-        "male": "weapon/blunt/mace/attack_slash/behind/",
-        "muscular": "weapon/blunt/mace/attack_slash/behind/",
-        "female": "weapon/blunt/mace/attack_slash/behind/",
-        "pregnant": "weapon/blunt/mace/attack_slash/behind/"
-      },
-      "layer_4": {
-        "zPos": 150,
-        "custom_animation": "slash_oversize",
-        "male": "weapon/blunt/mace/attack_slash/",
-        "muscular": "weapon/blunt/mace/attack_slash/",
-        "female": "weapon/blunt/mace/attack_slash/",
-        "pregnant": "weapon/blunt/mace/attack_slash/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/blunt/mace",
-        "notes": "",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-extended-weapon-animations"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "weapon_blunt_waraxe": {
-    "name": "Waraxe",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "hurt",
-      "slash_oversize"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "blunt",
-      "weapon_blunt_waraxe"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "waraxe"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 9,
-        "male": "weapon/blunt/waraxe/behind/",
-        "muscular": "weapon/blunt/waraxe/behind/",
-        "female": "weapon/blunt/waraxe/behind/",
-        "pregnant": "weapon/blunt/waraxe/behind/"
-      },
-      "layer_2": {
-        "zPos": 140,
-        "male": "weapon/blunt/waraxe/",
-        "muscular": "weapon/blunt/waraxe/",
-        "female": "weapon/blunt/waraxe/",
-        "pregnant": "weapon/blunt/waraxe/"
-      },
-      "layer_3": {
-        "custom_animation": "slash_oversize",
-        "zPos": 8,
-        "male": "weapon/blunt/waraxe/attack_slash/behind/",
-        "muscular": "weapon/blunt/waraxe/attack_slash/behind/",
-        "female": "weapon/blunt/waraxe/attack_slash/behind/",
-        "pregnant": "weapon/blunt/waraxe/attack_slash/behind/"
-      },
-      "layer_4": {
-        "custom_animation": "slash_oversize",
-        "zPos": 150,
-        "male": "weapon/blunt/waraxe/attack_slash/",
-        "muscular": "weapon/blunt/waraxe/attack_slash/",
-        "female": "weapon/blunt/waraxe/attack_slash/",
-        "pregnant": "weapon/blunt/waraxe/attack_slash/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/blunt/waraxe",
-        "notes": "",
-        "authors": [
-          "Benjamin K. Smith (BenCreating)",
-          "bluecarrot16",
-          "Sander Frenken (castelonia)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-weapons"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "weapon_magic_crystal": {
-    "name": "Crystal",
-    "priority": null,
-    "type_name": "weapon_magic_crystal",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "hurt",
-      "thrust_oversize"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "magic",
-      "weapon_magic_crystal"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "orange",
-      "green",
-      "purple",
-      "red",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "weapon/magic/crystal/universal/foreground/",
-        "muscular": "weapon/magic/crystal/universal/foreground/",
-        "female": "weapon/magic/crystal/universal/foreground/",
-        "teen": "weapon/magic/crystal/universal/foreground/",
-        "pregnant": "weapon/magic/crystal/universal/foreground/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "weapon/magic/crystal/universal/background/",
-        "muscular": "weapon/magic/crystal/universal/background/",
-        "female": "weapon/magic/crystal/universal/background/",
-        "teen": "weapon/magic/crystal/universal/background/",
-        "pregnant": "weapon/magic/crystal/universal/background/"
-      },
-      "layer_3": {
-        "custom_animation": "thrust_oversize",
-        "zPos": 150,
-        "male": "weapon/magic/crystal/thrust/foreground/",
-        "muscular": "weapon/magic/crystal/thrust/foreground/",
-        "female": "weapon/magic/crystal/thrust/foreground/",
-        "teen": "weapon/magic/crystal/thrust/foreground/",
-        "pregnant": "weapon/magic/crystal/thrust/foreground/"
-      },
-      "layer_4": {
-        "custom_animation": "thrust_oversize",
-        "zPos": -1,
-        "male": "weapon/magic/crystal/thrust/background/",
-        "muscular": "weapon/magic/crystal/thrust/background/",
-        "female": "weapon/magic/crystal/thrust/background/",
-        "teen": "weapon/magic/crystal/thrust/background/",
-        "pregnant": "weapon/magic/crystal/thrust/background/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/magic/crystal",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "GPL 3.0",
-          "CC-BY 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-more-weapons"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ]
-    }
-  },
-  "weapon_magic_diamond": {
-    "name": "Diamond staff",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "hurt",
-      "thrust_oversize"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "magic",
-      "weapon_magic_diamond"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "medium",
-      "light",
-      "red",
-      "dark",
-      "brass",
-      "bronze",
-      "ceramic",
-      "copper",
-      "gold",
-      "iron",
-      "silver",
-      "steel"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "weapon/magic/diamond/universal/foreground/",
-        "muscular": "weapon/magic/diamond/universal/foreground/",
-        "female": "weapon/magic/diamond/universal/foreground/",
-        "teen": "weapon/magic/diamond/universal/foreground/",
-        "pregnant": "weapon/magic/diamond/universal/foreground/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "weapon/magic/diamond/universal/background/",
-        "muscular": "weapon/magic/diamond/universal/background/",
-        "female": "weapon/magic/diamond/universal/background/",
-        "teen": "weapon/magic/diamond/universal/background/",
-        "pregnant": "weapon/magic/diamond/universal/background/"
-      },
-      "layer_3": {
-        "custom_animation": "thrust_oversize",
-        "zPos": 150,
-        "male": "weapon/magic/diamond/thrust/foreground/",
-        "muscular": "weapon/magic/diamond/thrust/foreground/",
-        "female": "weapon/magic/diamond/thrust/foreground/",
-        "teen": "weapon/magic/diamond/thrust/foreground/",
-        "pregnant": "weapon/magic/diamond/thrust/foreground/"
-      },
-      "layer_4": {
-        "custom_animation": "thrust_oversize",
-        "zPos": -1,
-        "male": "weapon/magic/diamond/thrust/background/",
-        "muscular": "weapon/magic/diamond/thrust/background/",
-        "female": "weapon/magic/diamond/thrust/background/",
-        "teen": "weapon/magic/diamond/thrust/background/",
-        "pregnant": "weapon/magic/diamond/thrust/background/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/magic/diamond",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "GPL 3.0",
-          "CC-BY 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-more-weapons"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ]
-    }
-  },
-  "weapon_magic_gnarled": {
-    "name": "Gnarled staff",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "hurt",
-      "thrust_oversize"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "magic",
-      "weapon_magic_gnarled"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "medium",
-      "light",
-      "red",
-      "dark",
-      "brass",
-      "bronze",
-      "ceramic",
-      "copper",
-      "gold",
-      "iron",
-      "silver",
-      "steel"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "weapon/magic/gnarled/universal/foreground/",
-        "muscular": "weapon/magic/gnarled/universal/foreground/",
-        "female": "weapon/magic/gnarled/universal/foreground/",
-        "teen": "weapon/magic/gnarled/universal/foreground/",
-        "pregnant": "weapon/magic/gnarled/universal/foreground/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "weapon/magic/gnarled/universal/background/",
-        "muscular": "weapon/magic/gnarled/universal/background/",
-        "female": "weapon/magic/gnarled/universal/background/",
-        "teen": "weapon/magic/gnarled/universal/background/",
-        "pregnant": "weapon/magic/gnarled/universal/background/"
-      },
-      "layer_3": {
-        "custom_animation": "thrust_oversize",
-        "zPos": 150,
-        "male": "weapon/magic/gnarled/thrust/foreground/",
-        "muscular": "weapon/magic/gnarled/thrust/foreground/",
-        "female": "weapon/magic/gnarled/thrust/foreground/",
-        "teen": "weapon/magic/gnarled/thrust/foreground/",
-        "pregnant": "weapon/magic/gnarled/thrust/foreground/"
-      },
-      "layer_4": {
-        "custom_animation": "thrust_oversize",
-        "zPos": -1,
-        "male": "weapon/magic/gnarled/thrust/background/",
-        "muscular": "weapon/magic/gnarled/thrust/background/",
-        "female": "weapon/magic/gnarled/thrust/background/",
-        "teen": "weapon/magic/gnarled/thrust/background/",
-        "pregnant": "weapon/magic/gnarled/thrust/background/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/magic/gnarled",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "GPL 3.0",
-          "CC-BY 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-more-weapons"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ]
-    }
-  },
-  "weapon_magic_loop": {
-    "name": "Loop staff",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "hurt",
-      "thrust_oversize"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "magic",
-      "weapon_magic_loop"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "medium",
-      "light",
-      "red",
-      "dark",
-      "brass",
-      "bronze",
-      "ceramic",
-      "copper",
-      "gold",
-      "iron",
-      "silver",
-      "steel"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "weapon/magic/loop/universal/foreground/",
-        "muscular": "weapon/magic/loop/universal/foreground/",
-        "female": "weapon/magic/loop/universal/foreground/",
-        "teen": "weapon/magic/loop/universal/foreground/",
-        "pregnant": "weapon/magic/loop/universal/foreground/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "weapon/magic/loop/universal/background/",
-        "muscular": "weapon/magic/loop/universal/background/",
-        "female": "weapon/magic/loop/universal/background/",
-        "teen": "weapon/magic/loop/universal/background/",
-        "pregnant": "weapon/magic/loop/universal/background/"
-      },
-      "layer_3": {
-        "custom_animation": "thrust_oversize",
-        "zPos": 150,
-        "male": "weapon/magic/loop/thrust/foreground/",
-        "muscular": "weapon/magic/loop/thrust/foreground/",
-        "female": "weapon/magic/loop/thrust/foreground/",
-        "teen": "weapon/magic/loop/thrust/foreground/",
-        "pregnant": "weapon/magic/loop/thrust/foreground/"
-      },
-      "layer_4": {
-        "custom_animation": "thrust_oversize",
-        "zPos": -1,
-        "male": "weapon/magic/loop/thrust/background/",
-        "muscular": "weapon/magic/loop/thrust/background/",
-        "female": "weapon/magic/loop/thrust/background/",
-        "teen": "weapon/magic/loop/thrust/background/",
-        "pregnant": "weapon/magic/loop/thrust/background/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/magic/loop",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "GPL 3.0",
-          "CC-BY 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-more-weapons"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ]
-    }
-  },
-  "weapon_magic_s": {
-    "name": "S staff",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "hurt",
-      "thrust_oversize"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "magic",
-      "weapon_magic_s"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "medium",
-      "light",
-      "red",
-      "dark",
-      "brass",
-      "bronze",
-      "ceramic",
-      "copper",
-      "gold",
-      "iron",
-      "silver",
-      "steel"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "weapon/magic/s/universal/foreground/",
-        "muscular": "weapon/magic/s/universal/foreground/",
-        "female": "weapon/magic/s/universal/foreground/",
-        "teen": "weapon/magic/s/universal/foreground/",
-        "pregnant": "weapon/magic/s/universal/foreground/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "weapon/magic/s/universal/background/",
-        "muscular": "weapon/magic/s/universal/background/",
-        "female": "weapon/magic/s/universal/background/",
-        "teen": "weapon/magic/s/universal/background/",
-        "pregnant": "weapon/magic/s/universal/background/"
-      },
-      "layer_3": {
-        "custom_animation": "thrust_oversize",
-        "zPos": 150,
-        "male": "weapon/magic/s/thrust/foreground/",
-        "muscular": "weapon/magic/s/thrust/foreground/",
-        "female": "weapon/magic/s/thrust/foreground/",
-        "teen": "weapon/magic/s/thrust/foreground/",
-        "pregnant": "weapon/magic/s/thrust/foreground/"
-      },
-      "layer_4": {
-        "custom_animation": "thrust_oversize",
-        "zPos": -1,
-        "male": "weapon/magic/s/thrust/background/",
-        "muscular": "weapon/magic/s/thrust/background/",
-        "female": "weapon/magic/s/thrust/background/",
-        "teen": "weapon/magic/s/thrust/background/",
-        "pregnant": "weapon/magic/s/thrust/background/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/magic/s",
-        "notes": "Wooden staff by LordNeo, first adapted to LPC by bigbeargames; re-drawn and walk animations added by bluecarrot16",
-        "authors": [
-          "LordNeo",
-          "Michael Whitlock (bigbeargames)",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/staff-64-x64",
-          "https://opengameart.org/content/lpc-magic-staff"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "weapon_magic_simple": {
-    "name": "Simple staff",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "hurt"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "magic",
-      "weapon_magic_simple"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "simple"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "weapon/magic/simple/foreground/",
-        "muscular": "weapon/magic/simple/foreground/",
-        "female": "weapon/magic/simple/foreground/",
-        "teen": "weapon/magic/simple/foreground/",
-        "pregnant": "weapon/magic/simple/foreground/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "weapon/magic/simple/background/",
-        "muscular": "weapon/magic/simple/background/",
-        "female": "weapon/magic/simple/background/",
-        "teen": "weapon/magic/simple/background/",
-        "pregnant": "weapon/magic/simple/background/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/magic/simple",
-        "notes": "original by DrJamgo, hands switched and split into to layers by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Dr. Jamgo"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-simple-staff"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "teen": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "weapon_magic_wand": {
-    "name": "Wand",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "slash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "magic",
-      "weapon_magic_wand"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "wand"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "weapon/magic/wand/male/",
-        "muscular": "weapon/magic/wand/male/",
-        "female": "weapon/magic/wand/female/",
-        "pregnant": "weapon/magic/wand//female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/magic/wand",
-        "notes": "",
-        "authors": [
-          "Matthew Krohn (makrohn)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0",
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-wands"
-        ]
-      }
-    ],
-    "preview_row": 1,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0",
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0",
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0",
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0",
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "weapon_polearm_cane": {
-    "name": "Cane",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "thrust"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "polearm",
-      "weapon_polearm_cane"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "cane"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "weapon/polearm/cane/male/",
-        "muscular": "weapon/polearm/cane/male/",
-        "female": "weapon/polearm/cane/female/",
-        "pregnant": "weapon/polearm/cane/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/polearm/cane",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-gentleman"
-        ]
-      }
-    ],
-    "preview_row": 1,
-    "preview_column": 8,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "weapon_polearm_dragonspear": {
-    "name": "Dragon spear",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk_128",
-      "thrust_oversize"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "polearm",
-      "weapon_polearm_dragonspear"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "medium",
-      "light",
-      "red",
-      "dark",
-      "brass",
-      "bronze",
-      "ceramic",
-      "copper",
-      "gold",
-      "iron",
-      "silver",
-      "steel"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "custom_animation": "walk_128",
-        "male": "weapon/polearm/dragonspear/foreground/walk/",
-        "muscular": "weapon/polearm/dragonspear/foreground/walk/",
-        "female": "weapon/polearm/dragonspear/foreground/walk/",
-        "teen": "weapon/polearm/dragonspear/foreground/walk/",
-        "pregnant": "weapon/polearm/dragonspear/foreground/walk/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "custom_animation": "walk_128",
-        "male": "weapon/polearm/dragonspear/background/walk/",
-        "muscular": "weapon/polearm/dragonspear/background/walk/",
-        "female": "weapon/polearm/dragonspear/background/walk/",
-        "teen": "weapon/polearm/dragonspear/background/walk/",
-        "pregnant": "weapon/polearm/dragonspear/background/walk/"
-      },
-      "layer_3": {
-        "custom_animation": "thrust_oversize",
-        "zPos": 150,
-        "male": "weapon/polearm/dragonspear/foreground/thrust/",
-        "muscular": "weapon/polearm/dragonspear/foreground/thrust/",
-        "female": "weapon/polearm/dragonspear/foreground/thrust/",
-        "teen": "weapon/polearm/dragonspear/foreground/thrust/",
-        "pregnant": "weapon/polearm/dragonspear/foreground/thrust/"
-      },
-      "layer_4": {
-        "custom_animation": "thrust_oversize",
-        "zPos": -1,
-        "male": "weapon/polearm/dragonspear/background/thrust/",
-        "muscular": "weapon/polearm/dragonspear/background/thrust/",
-        "female": "weapon/polearm/dragonspear/background/thrust/",
-        "teen": "weapon/polearm/dragonspear/background/thrust/",
-        "pregnant": "weapon/polearm/dragonspear/background/thrust/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/polearm/dragonspear",
-        "notes": "original \"dragon spear\" by daneeklu and gr3yh47; adapted to opposite hand and split into layers by bluecarrot16",
-        "authors": [
-          "Daniel Eddeland (daneeklu)",
-          "gr3yh47",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-weapons-two-bows-a-spear-and-a-trident",
-          "https://opengameart.org/content/lpc-extended-weapon-animations"
-        ]
-      }
-    ],
-    "preview_row": 0,
-    "preview_column": 0,
-    "preview_x_offset": 9,
-    "preview_y_offset": 48,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "weapon_polearm_halberd": {
-    "name": "Halberd",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "hurt",
-      "thrust_oversize",
-      "slash_oversize"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "polearm",
-      "weapon_polearm_halberd"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "halberd"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 8,
-        "male": "weapon/polearm/halberd/behind/",
-        "muscular": "weapon/polearm/halberd/behind/",
-        "female": "weapon/polearm/halberd/behind/",
-        "pregnant": "weapon/polearm/halberd/behind/"
-      },
-      "layer_2": {
-        "zPos": 140,
-        "male": "weapon/polearm/halberd/",
-        "muscular": "weapon/polearm/halberd/",
-        "female": "weapon/polearm/halberd/",
-        "pregnant": "weapon/polearm/halberd/"
-      },
-      "layer_3": {
-        "custom_animation": "thrust_oversize",
-        "zPos": 9,
-        "male": "weapon/polearm/halberd/attack_thrust/behind/",
-        "muscular": "weapon/polearm/halberd/attack_thrust/behind/",
-        "female": "weapon/polearm/halberd/attack_thrust/behind/",
-        "pregnant": "weapon/polearm/halberd/attack_thrust/behind/"
-      },
-      "layer_4": {
-        "custom_animation": "thrust_oversize",
-        "zPos": 150,
-        "male": "weapon/polearm/halberd/attack_thrust/",
-        "muscular": "weapon/polearm/halberd/attack_thrust/",
-        "female": "weapon/polearm/halberd/attack_thrust/",
-        "pregnant": "weapon/polearm/halberd/attack_thrust/"
-      },
-      "layer_5": {
-        "custom_animation": "slash_oversize",
-        "zPos": 8,
-        "male": "weapon/polearm/halberd/attack_slash/behind/",
-        "muscular": "weapon/polearm/halberd/attack_slash/behind/",
-        "female": "weapon/polearm/halberd/attack_slash/behind/",
-        "pregnant": "weapon/polearm/halberd/attack_slash/behind/"
-      },
-      "layer_6": {
-        "custom_animation": "slash_oversize",
-        "zPos": 150,
-        "male": "weapon/polearm/halberd/attack_slash/",
-        "muscular": "weapon/polearm/halberd/attack_slash/",
-        "female": "weapon/polearm/halberd/attack_slash/",
-        "pregnant": "weapon/polearm/halberd/attack_slash/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/polearm/halberd",
-        "notes": "",
-        "authors": [
-          "Benjamin K. Smith (BenCreating)",
-          "bluecarrot16",
-          "Sander Frenken (castelonia)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-weapons"
-        ]
-      }
-    ],
-    "preview_row": 0,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "weapon_polearm_longspear": {
-    "name": "Long spear",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk_128",
-      "thrust_oversize"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "polearm",
-      "weapon_polearm_longspear"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "medium",
-      "light",
-      "red",
-      "dark",
-      "brass",
-      "bronze",
-      "ceramic",
-      "copper",
-      "gold",
-      "iron",
-      "silver",
-      "steel"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "custom_animation": "walk_128",
-        "male": "weapon/polearm/longspear/foreground/walk/",
-        "muscular": "weapon/polearm/longspear/foreground/walk/",
-        "female": "weapon/polearm/longspear/foreground/walk/",
-        "teen": "weapon/polearm/longspear/foreground/walk/",
-        "pregnant": "weapon/polearm/longspear/foreground/walk/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "custom_animation": "walk_128",
-        "male": "weapon/polearm/longspear/background/walk/",
-        "muscular": "weapon/polearm/longspear/background/walk/",
-        "female": "weapon/polearm/longspear/background/walk/",
-        "teen": "weapon/polearm/longspear/background/walk/",
-        "pregnant": "weapon/polearm/longspear/background/walk/"
-      },
-      "layer_3": {
-        "custom_animation": "thrust_oversize",
-        "zPos": 150,
-        "male": "weapon/polearm/longspear/foreground/thrust/",
-        "muscular": "weapon/polearm/longspear/foreground/thrust/",
-        "female": "weapon/polearm/longspear/foreground/thrust/",
-        "teen": "weapon/polearm/longspear/foreground/thrust/",
-        "pregnant": "weapon/polearm/longspear/foreground/thrust/"
-      },
-      "layer_4": {
-        "custom_animation": "thrust_oversize",
-        "zPos": -1,
-        "male": "weapon/polearm/longspear/background/thrust/",
-        "muscular": "weapon/polearm/longspear/background/thrust/",
-        "female": "weapon/polearm/longspear/background/thrust/",
-        "teen": "weapon/polearm/longspear/background/thrust/",
-        "pregnant": "weapon/polearm/longspear/background/thrust/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/polearm/longspear",
-        "notes": "original by wulax from expansion_pack-0.04 walk animations adapted from those by pvigier, split into layers and tweaked for v3 character bases by bluecarrot16",
-        "authors": [
-          "Pierre Vigier (pvigier)",
-          "Johannes Sjölund (wulax)",
-          "Inboxninja"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      }
-    ],
-    "preview_row": 0,
-    "preview_column": 0,
-    "preview_x_offset": 13,
-    "preview_y_offset": 170,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "weapon_polearm_scythe": {
-    "name": "Scythe",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "hurt",
-      "slash_oversize"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "polearm",
-      "weapon_polearm_scythe"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "scythe"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "weapon/polearm/scythe/",
-        "muscular": "weapon/polearm/scythe/",
-        "female": "weapon/polearm/scythe/",
-        "pregnant": "weapon/polearm/scythe/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "weapon/polearm/scythe/universal_behind/",
-        "muscular": "weapon/polearm/scythe/universal_behind/",
-        "female": "weapon/polearm/scythe/universal_behind/",
-        "pregnant": "weapon/polearm/scythe/universal_behind/"
-      },
-      "layer_3": {
-        "zPos": 8,
-        "custom_animation": "slash_oversize",
-        "male": "weapon/polearm/scythe/attack_slash/behind/",
-        "muscular": "weapon/polearm/scythe/attack_slash/behind/",
-        "female": "weapon/polearm/scythe/attack_slash/behind/",
-        "pregnant": "weapon/polearm/scythe/attack_slash/behind/"
-      },
-      "layer_4": {
-        "zPos": 150,
-        "custom_animation": "slash_oversize",
-        "male": "weapon/polearm/scythe/attack_slash/",
-        "muscular": "weapon/polearm/scythe/attack_slash/",
-        "female": "weapon/polearm/scythe/attack_slash/",
-        "pregnant": "weapon/polearm/scythe/attack_slash/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/polearm/scythe",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-extended-weapon-animations"
-        ]
-      }
-    ],
-    "preview_row": 0,
-    "preview_column": 0,
-    "preview_x_offset": 11,
-    "preview_y_offset": 204,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "weapon_polearm_spear": {
-    "name": "Spear",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "thrust",
-      "hurt"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "polearm",
-      "weapon_polearm_spear"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "medium",
-      "light",
-      "red",
-      "dark",
-      "brass",
-      "bronze",
-      "ceramic",
-      "copper",
-      "gold",
-      "iron",
-      "silver",
-      "steel"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "weapon/polearm/spear/foreground/",
-        "muscular": "weapon/polearm/spear/foreground/",
-        "female": "weapon/polearm/spear/foreground/",
-        "teen": "weapon/polearm/spear/foreground/",
-        "pregnant": "weapon/polearm/spear/foreground/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "weapon/polearm/spear/background/",
-        "muscular": "weapon/polearm/spear/background/",
-        "female": "weapon/polearm/spear/background/",
-        "teen": "weapon/polearm/spear/background/",
-        "pregnant": "weapon/polearm/spear/background/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/polearm/spear",
-        "notes": "original by wulax, walk animations redone by pvigier, split into layers and tweaked for v3 character bases by bluecarrot16",
-        "authors": [
-          "Pierre Vigier (pvigier)",
-          "Johannes Sjölund (wulax)",
-          "Inboxninja"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-spear-and-shovel-reworked"
-        ]
-      }
-    ],
-    "preview_row": 3,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "weapon_polearm_trident": {
-    "name": "Trident",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk_128",
-      "thrust_oversize"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "polearm",
-      "weapon_polearm_trident"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "medium",
-      "light",
-      "red",
-      "dark",
-      "brass",
-      "bronze",
-      "ceramic",
-      "copper",
-      "gold",
-      "iron",
-      "silver",
-      "steel"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "custom_animation": "walk_128",
-        "male": "weapon/polearm/trident/foreground/walk/",
-        "muscular": "weapon/polearm/trident/foreground/walk/",
-        "female": "weapon/polearm/trident/foreground/walk/",
-        "teen": "weapon/polearm/trident/foreground/walk/",
-        "pregnant": "weapon/polearm/trident/foreground/walk/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "custom_animation": "walk_128",
-        "male": "weapon/polearm/trident/background/walk/",
-        "muscular": "weapon/polearm/trident/background/walk/",
-        "female": "weapon/polearm/trident/background/walk/",
-        "teen": "weapon/polearm/trident/background/walk/",
-        "pregnant": "weapon/polearm/trident/background/walk/"
-      },
-      "layer_3": {
-        "custom_animation": "thrust_oversize",
-        "zPos": 150,
-        "male": "weapon/polearm/trident/foreground/thrust/",
-        "muscular": "weapon/polearm/trident/foreground/thrust/",
-        "female": "weapon/polearm/trident/foreground/thrust/",
-        "teen": "weapon/polearm/trident/foreground/thrust/",
-        "pregnant": "weapon/polearm/trident/foreground/thrust/"
-      },
-      "layer_4": {
-        "custom_animation": "thrust_oversize",
-        "zPos": -1,
-        "male": "weapon/polearm/trident/background/thrust/",
-        "muscular": "weapon/polearm/trident/background/thrust/",
-        "female": "weapon/polearm/trident/background/thrust/",
-        "teen": "weapon/polearm/trident/background/thrust/",
-        "pregnant": "weapon/polearm/trident/background/thrust/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/polearm/trident",
-        "notes": "original \"trident\" by daneeklu and gr3yh47; adapted to opposite hand and split into layers by bluecarrot16",
-        "authors": [
-          "Daniel Eddeland (daneeklu)",
-          "gr3yh47",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-weapons-two-bows-a-spear-and-a-trident",
-          "https://opengameart.org/content/lpc-extended-weapon-animations"
-        ]
-      }
-    ],
-    "preview_row": 0,
-    "preview_column": 0,
-    "preview_x_offset": 9,
-    "preview_y_offset": 38,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0"
       ]
     }
   },
@@ -69289,253 +71025,6 @@ window.itemMetadata = {
       ]
     }
   },
-  "weapon_ranged_boomerang": {
-    "name": "Boomerang",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "slash_reverse_oversize"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "ranged",
-      "weapon_ranged_boomerang"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "boomerang"
-    ],
-    "layers": {
-      "layer_1": {
-        "custom_animation": "slash_reverse_oversize",
-        "zPos": 140,
-        "male": "weapon/ranged/boomerang/",
-        "muscular": "weapon/ranged/boomerang/",
-        "female": "weapon/ranged/boomerang/",
-        "pregnant": "weapon/ranged/boomerang/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/ranged/boomerang",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "GPL 3.0",
-          "CC-BY 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-more-weapons"
-        ]
-      }
-    ],
-    "preview_row": 1,
-    "preview_column": 4,
-    "preview_x_offset": 16,
-    "preview_y_offset": -12,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ]
-    }
-  },
-  "weapon_ranged_crossbow": {
-    "name": "Crossbow",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "thrust",
-      "walk",
-      "hurt"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "ranged",
-      "weapon_ranged_crossbow"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "crossbow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": -1,
-        "male": "weapon/ranged/crossbow/background/",
-        "muscular": "weapon/ranged/crossbow/background/",
-        "female": "weapon/ranged/crossbow/background/",
-        "pregnant": "weapon/ranged/crossbow/background/"
-      },
-      "layer_2": {
-        "zPos": 140,
-        "male": "weapon/ranged/crossbow/foreground/",
-        "muscular": "weapon/ranged/crossbow/foreground/",
-        "female": "weapon/ranged/crossbow/foreground/",
-        "pregnant": "weapon/ranged/crossbow/foreground/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/ranged/crossbow",
-        "notes": "original by drjamgo, modified for v3 character bases and split into layers by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "drjamgo@hotmail.com"
-        ],
-        "licenses": [
-          "CC0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-crossbow-final"
-        ]
-      }
-    ],
-    "preview_row": 1,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 18,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC0"
-      ],
-      "female": [
-        "CC0"
-      ],
-      "muscular": [
-        "CC0"
-      ],
-      "pregnant": [
-        "CC0"
-      ]
-    }
-  },
-  "weapon_ranged_slingshot": {
-    "name": "Slingshot",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "shoot",
-      "hurt"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "ranged",
-      "weapon_ranged_slingshot"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "slingshot"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "weapon/ranged/slingshot/foreground/",
-        "muscular": "weapon/ranged/slingshot/foreground/",
-        "female": "weapon/ranged/slingshot/foreground/",
-        "pregnant": "weapon/ranged/slingshot/foreground/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "weapon/ranged/slingshot/background/",
-        "muscular": "weapon/ranged/slingshot/background/",
-        "female": "weapon/ranged/slingshot/background/",
-        "pregnant": "weapon/ranged/slingshot/background/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/ranged/slingshot",
-        "notes": "",
-        "authors": [
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0+",
-          "GPL 3.0",
-          "CC-BY 4.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-more-weapons"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "female": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0+",
-        "GPL 3.0",
-        "CC-BY 4.0"
-      ]
-    }
-  },
   "shield_crusader": {
     "name": "Crusader shield",
     "priority": null,
@@ -69839,6 +71328,960 @@ window.itemMetadata = {
     "credits": [
       {
         "file": "shield/two_engrailed",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Sander Frenken (castelonia)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-shields"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "shield_heater_paint": {
+    "name": "Heater Shield Paint",
+    "priority": 20,
+    "type_name": "shield_paint",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "shields",
+      "heater",
+      "shield_heater_paint"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "aegean",
+      "amber",
+      "amethyst",
+      "apple",
+      "apricot",
+      "azure",
+      "beige",
+      "black",
+      "blue",
+      "blue_violet",
+      "bronze",
+      "brown",
+      "cerise",
+      "cerulean",
+      "charcoal",
+      "chocolate",
+      "coffee",
+      "coral",
+      "cornflower",
+      "cyan",
+      "denim",
+      "dove",
+      "emerald",
+      "fern",
+      "forest",
+      "garnet",
+      "gray",
+      "green",
+      "heather",
+      "honey",
+      "ice",
+      "indigo",
+      "ivory",
+      "lavender",
+      "leather",
+      "lemon",
+      "linen",
+      "mauve",
+      "midnight",
+      "mint",
+      "mustard",
+      "navy",
+      "neptune",
+      "oak",
+      "ochre",
+      "olivine",
+      "orange",
+      "peach",
+      "pearl",
+      "periwinkle",
+      "pink",
+      "plum",
+      "porcelain",
+      "powder",
+      "purple",
+      "red",
+      "red_orange",
+      "royal",
+      "salmon",
+      "sepia",
+      "shadow",
+      "silver",
+      "sky",
+      "smoke",
+      "soot",
+      "spring",
+      "swamp",
+      "tan",
+      "tawny",
+      "teal",
+      "tumeric",
+      "umber",
+      "white",
+      "wine",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 3,
+        "male": "shield/heater/original/paint/bg/",
+        "muscular": "shield/heater/original/paint/bg/",
+        "female": "shield/heater/original/paint/bg/",
+        "pregnant": "shield/heater/original/paint/bg/",
+        "teen": "shield/heater/original/paint/bg/"
+      },
+      "layer_2": {
+        "zPos": 111,
+        "male": "shield/heater/original/paint/fg/",
+        "muscular": "shield/heater/original/paint/fg/",
+        "female": "shield/heater/original/paint/fg/",
+        "pregnant": "shield/heater/original/paint/fg/",
+        "teen": "shield/heater/original/paint/fg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shield/heater/original/paint",
+        "notes": "original by ElizaWy, extended to all animation frames and v3 character base by bluecarrot16, expanded by JaidynReiman",
+        "authors": [
+          "bluecarrot16",
+          "ElizaWy",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Props/Shield%2001%20-%20Heater%20Shield",
+          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "shield_heater_revised_paint": {
+    "name": "Revised Heater Shield Paint",
+    "priority": 60,
+    "type_name": "shield_paint",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "shields",
+      "heater",
+      "shield_heater_revised_paint"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "aegean",
+      "amber",
+      "amethyst",
+      "apple",
+      "apricot",
+      "azure",
+      "beige",
+      "black",
+      "blue",
+      "blue_violet",
+      "bronze",
+      "brown",
+      "cerise",
+      "cerulean",
+      "charcoal",
+      "chocolate",
+      "coffee",
+      "coral",
+      "cornflower",
+      "cyan",
+      "denim",
+      "dove",
+      "emerald",
+      "fern",
+      "forest",
+      "garnet",
+      "gray",
+      "green",
+      "heather",
+      "honey",
+      "ice",
+      "indigo",
+      "ivory",
+      "lavender",
+      "leather",
+      "lemon",
+      "linen",
+      "mauve",
+      "midnight",
+      "mint",
+      "mustard",
+      "navy",
+      "neptune",
+      "oak",
+      "ochre",
+      "olivine",
+      "orange",
+      "peach",
+      "pearl",
+      "periwinkle",
+      "pink",
+      "plum",
+      "porcelain",
+      "powder",
+      "purple",
+      "red",
+      "red_orange",
+      "royal",
+      "salmon",
+      "sepia",
+      "shadow",
+      "silver",
+      "sky",
+      "smoke",
+      "soot",
+      "spring",
+      "swamp",
+      "tan",
+      "tawny",
+      "teal",
+      "tumeric",
+      "umber",
+      "white",
+      "wine",
+      "yellow"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 3,
+        "male": "shield/heater/revised/paint/bg/",
+        "muscular": "shield/heater/revised/paint/bg/",
+        "female": "shield/heater/revised/paint/bg/",
+        "pregnant": "shield/heater/revised/paint/bg/",
+        "teen": "shield/heater/revised/paint/bg/"
+      },
+      "layer_2": {
+        "zPos": 111,
+        "male": "shield/heater/revised/paint/fg/",
+        "muscular": "shield/heater/revised/paint/fg/",
+        "female": "shield/heater/revised/paint/fg/",
+        "pregnant": "shield/heater/revised/paint/fg/",
+        "teen": "shield/heater/revised/paint/fg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shield/heater/revised/paint",
+        "notes": "original by ElizaWy, extended to all animation frames and v3 character base by bluecarrot16, adjusted postioning by JaidynReiman",
+        "authors": [
+          "bluecarrot16",
+          "ElizaWy",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://github.com/ElizaWy/LPC/tree/main/Characters/Props/Shield%2001%20-%20Heater%20Shield",
+          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "shield_heater_revised_trim": {
+    "name": "Revised Heater Shield Trim",
+    "priority": 70,
+    "type_name": "shield_trim",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [
+      "heater"
+    ],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "shields",
+      "heater",
+      "shield_heater_revised_trim"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "brass",
+      "bronze",
+      "copper",
+      "gold",
+      "iron",
+      "silver",
+      "steel"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 6,
+        "male": "shield/heater/revised/trim/bg/",
+        "muscular": "shield/heater/revised/trim/bg/",
+        "female": "shield/heater/revised/trim/bg/",
+        "pregnant": "shield/heater/revised/trim/bg/",
+        "teen": "shield/heater/revised/trim/bg/"
+      },
+      "layer_2": {
+        "zPos": 115,
+        "male": "shield/heater/revised/trim/fg/",
+        "muscular": "shield/heater/revised/trim/fg/",
+        "female": "shield/heater/revised/trim/fg/",
+        "pregnant": "shield/heater/revised/trim/fg/",
+        "teen": "shield/heater/revised/trim/fg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shield/heater/revised/trim",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Sander Frenken (castelonia)",
+          "ElizaWy",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-shields"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "shield_heater_revised_wood": {
+    "name": "Revised Heater Shield Base",
+    "priority": 50,
+    "type_name": "shield",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "heater"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "shields",
+      "heater",
+      "shield_heater_revised_wood"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "brown",
+      "coffee",
+      "oak",
+      "tan",
+      "umber"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 2,
+        "male": "shield/heater/revised/wood/bg/",
+        "muscular": "shield/heater/revised/wood/bg/",
+        "female": "shield/heater/revised/wood/bg/",
+        "pregnant": "shield/heater/revised/wood/bg/",
+        "teen": "shield/heater/revised/wood/bg/"
+      },
+      "layer_2": {
+        "zPos": 110,
+        "male": "shield/heater/revised/wood/fg/",
+        "muscular": "shield/heater/revised/wood/fg/",
+        "female": "shield/heater/revised/wood/fg/",
+        "pregnant": "shield/heater/revised/wood/fg/",
+        "teen": "shield/heater/revised/wood/fg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shield/heater/revised/wood",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Sander Frenken (castelonia)",
+          "ElizaWy",
+          "JaidynReiman"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-shields"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "shield_heater_trim": {
+    "name": "Heater Shield Trim",
+    "priority": 30,
+    "type_name": "shield_trim",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [
+      "heater"
+    ],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "shields",
+      "heater",
+      "shield_heater_trim"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "brass",
+      "bronze",
+      "copper",
+      "gold",
+      "iron",
+      "silver",
+      "steel"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 115,
+        "male": "shield/heater/original/trim/fg/",
+        "muscular": "shield/heater/original/trim/fg/",
+        "female": "shield/heater/original/trim/fg/",
+        "pregnant": "shield/heater/original/trim/fg/",
+        "teen": "shield/heater/original/trim/fg/"
+      },
+      "layer_2": {
+        "zPos": 6,
+        "male": "shield/heater/original/trim/bg/",
+        "muscular": "shield/heater/original/trim/bg/",
+        "female": "shield/heater/original/trim/bg/",
+        "pregnant": "shield/heater/original/trim/bg/",
+        "teen": "shield/heater/original/trim/bg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shield/heater/original/trim",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Sander Frenken (castelonia)",
+          "ElizaWy"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-shields"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "shield_heater_wood": {
+    "name": "Heater Shield Base",
+    "priority": 10,
+    "type_name": "shield",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "heater"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "shields",
+      "heater",
+      "shield_heater_wood"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "brown",
+      "coffee",
+      "oak",
+      "tan",
+      "umber"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 2,
+        "male": "shield/heater/original/wood/bg/",
+        "muscular": "shield/heater/original/wood/bg/",
+        "female": "shield/heater/original/wood/bg/",
+        "pregnant": "shield/heater/original/wood/bg/",
+        "teen": "shield/heater/original/wood/bg/"
+      },
+      "layer_2": {
+        "zPos": 110,
+        "male": "shield/heater/original/wood/fg/",
+        "muscular": "shield/heater/original/wood/fg/",
+        "female": "shield/heater/original/wood/fg/",
+        "pregnant": "shield/heater/original/wood/fg/",
+        "teen": "shield/heater/original/wood/fg/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shield/heater/original/wood",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Sander Frenken (castelonia)",
+          "ElizaWy"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-shields"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "shield_scutum_trim": {
+    "name": "Scutum shield trim",
+    "priority": null,
+    "type_name": "shield_trim",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "shields",
+      "scutum",
+      "shield_scutum_trim"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "scutum_trim"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 3,
+        "male": "shield/scutum_trim/bg/",
+        "muscular": "shield/scutum_trim/bg/",
+        "female": "shield/scutum_trim/bg/",
+        "pregnant": "shield/scutum_trim/bg/"
+      },
+      "layer_2": {
+        "zPos": 115,
+        "male": "shield/scutum_trim/fg/male/",
+        "muscular": "shield/scutum_trim/fg/male/",
+        "female": "shield/scutum_trim/fg/female/",
+        "pregnant": "shield/scutum_trim/fg/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shield",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Sander Frenken (castelonia)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-shields"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "shield_scutum": {
+    "name": "Scutum shield",
+    "priority": null,
+    "type_name": "shield",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "shields",
+      "scutum",
+      "shield_scutum"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "scutum"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 2,
+        "male": "shield/scutum/paint/bg/",
+        "muscular": "shield/scutum/paint/bg/",
+        "female": "shield/scutum/paint/bg/",
+        "pregnant": "shield/scutum/paint/bg/"
+      },
+      "layer_2": {
+        "zPos": 110,
+        "male": "shield/scutum/paint/fg/male/",
+        "muscular": "shield/scutum/paint/fg/male/",
+        "female": "shield/scutum/paint/fg/female/",
+        "pregnant": "shield/scutum/paint/fg/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shield/scutum",
         "notes": "",
         "authors": [
           "bluecarrot16",
@@ -76001,2545 +78444,12 @@ window.itemMetadata = {
         "OGA-BY 3.0"
       ]
     }
-  },
-  "shield_heater_paint": {
-    "name": "Heater Shield Paint",
-    "priority": 20,
-    "type_name": "shield_paint",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "shields",
-      "heater",
-      "shield_heater_paint"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "aegean",
-      "amber",
-      "amethyst",
-      "apple",
-      "apricot",
-      "azure",
-      "beige",
-      "black",
-      "blue",
-      "blue_violet",
-      "bronze",
-      "brown",
-      "cerise",
-      "cerulean",
-      "charcoal",
-      "chocolate",
-      "coffee",
-      "coral",
-      "cornflower",
-      "cyan",
-      "denim",
-      "dove",
-      "emerald",
-      "fern",
-      "forest",
-      "garnet",
-      "gray",
-      "green",
-      "heather",
-      "honey",
-      "ice",
-      "indigo",
-      "ivory",
-      "lavender",
-      "leather",
-      "lemon",
-      "linen",
-      "mauve",
-      "midnight",
-      "mint",
-      "mustard",
-      "navy",
-      "neptune",
-      "oak",
-      "ochre",
-      "olivine",
-      "orange",
-      "peach",
-      "pearl",
-      "periwinkle",
-      "pink",
-      "plum",
-      "porcelain",
-      "powder",
-      "purple",
-      "red",
-      "red_orange",
-      "royal",
-      "salmon",
-      "sepia",
-      "shadow",
-      "silver",
-      "sky",
-      "smoke",
-      "soot",
-      "spring",
-      "swamp",
-      "tan",
-      "tawny",
-      "teal",
-      "tumeric",
-      "umber",
-      "white",
-      "wine",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 3,
-        "male": "shield/heater/original/paint/bg/",
-        "muscular": "shield/heater/original/paint/bg/",
-        "female": "shield/heater/original/paint/bg/",
-        "pregnant": "shield/heater/original/paint/bg/",
-        "teen": "shield/heater/original/paint/bg/"
-      },
-      "layer_2": {
-        "zPos": 111,
-        "male": "shield/heater/original/paint/fg/",
-        "muscular": "shield/heater/original/paint/fg/",
-        "female": "shield/heater/original/paint/fg/",
-        "pregnant": "shield/heater/original/paint/fg/",
-        "teen": "shield/heater/original/paint/fg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shield/heater/original/paint",
-        "notes": "original by ElizaWy, extended to all animation frames and v3 character base by bluecarrot16, expanded by JaidynReiman",
-        "authors": [
-          "bluecarrot16",
-          "ElizaWy",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Props/Shield%2001%20-%20Heater%20Shield",
-          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "shield_heater_revised_paint": {
-    "name": "Revised Heater Shield Paint",
-    "priority": 60,
-    "type_name": "shield_paint",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "shields",
-      "heater",
-      "shield_heater_revised_paint"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "aegean",
-      "amber",
-      "amethyst",
-      "apple",
-      "apricot",
-      "azure",
-      "beige",
-      "black",
-      "blue",
-      "blue_violet",
-      "bronze",
-      "brown",
-      "cerise",
-      "cerulean",
-      "charcoal",
-      "chocolate",
-      "coffee",
-      "coral",
-      "cornflower",
-      "cyan",
-      "denim",
-      "dove",
-      "emerald",
-      "fern",
-      "forest",
-      "garnet",
-      "gray",
-      "green",
-      "heather",
-      "honey",
-      "ice",
-      "indigo",
-      "ivory",
-      "lavender",
-      "leather",
-      "lemon",
-      "linen",
-      "mauve",
-      "midnight",
-      "mint",
-      "mustard",
-      "navy",
-      "neptune",
-      "oak",
-      "ochre",
-      "olivine",
-      "orange",
-      "peach",
-      "pearl",
-      "periwinkle",
-      "pink",
-      "plum",
-      "porcelain",
-      "powder",
-      "purple",
-      "red",
-      "red_orange",
-      "royal",
-      "salmon",
-      "sepia",
-      "shadow",
-      "silver",
-      "sky",
-      "smoke",
-      "soot",
-      "spring",
-      "swamp",
-      "tan",
-      "tawny",
-      "teal",
-      "tumeric",
-      "umber",
-      "white",
-      "wine",
-      "yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 3,
-        "male": "shield/heater/revised/paint/bg/",
-        "muscular": "shield/heater/revised/paint/bg/",
-        "female": "shield/heater/revised/paint/bg/",
-        "pregnant": "shield/heater/revised/paint/bg/",
-        "teen": "shield/heater/revised/paint/bg/"
-      },
-      "layer_2": {
-        "zPos": 111,
-        "male": "shield/heater/revised/paint/fg/",
-        "muscular": "shield/heater/revised/paint/fg/",
-        "female": "shield/heater/revised/paint/fg/",
-        "pregnant": "shield/heater/revised/paint/fg/",
-        "teen": "shield/heater/revised/paint/fg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shield/heater/revised/paint",
-        "notes": "original by ElizaWy, extended to all animation frames and v3 character base by bluecarrot16, adjusted postioning by JaidynReiman",
-        "authors": [
-          "bluecarrot16",
-          "ElizaWy",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Props/Shield%2001%20-%20Heater%20Shield",
-          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "shield_heater_revised_trim": {
-    "name": "Revised Heater Shield Trim",
-    "priority": 70,
-    "type_name": "shield_trim",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [
-      "heater"
-    ],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "shields",
-      "heater",
-      "shield_heater_revised_trim"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "brass",
-      "bronze",
-      "copper",
-      "gold",
-      "iron",
-      "silver",
-      "steel"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 6,
-        "male": "shield/heater/revised/trim/bg/",
-        "muscular": "shield/heater/revised/trim/bg/",
-        "female": "shield/heater/revised/trim/bg/",
-        "pregnant": "shield/heater/revised/trim/bg/",
-        "teen": "shield/heater/revised/trim/bg/"
-      },
-      "layer_2": {
-        "zPos": 115,
-        "male": "shield/heater/revised/trim/fg/",
-        "muscular": "shield/heater/revised/trim/fg/",
-        "female": "shield/heater/revised/trim/fg/",
-        "pregnant": "shield/heater/revised/trim/fg/",
-        "teen": "shield/heater/revised/trim/fg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shield/heater/revised/trim",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)",
-          "ElizaWy",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-shields"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "shield_heater_revised_wood": {
-    "name": "Revised Heater Shield Base",
-    "priority": 50,
-    "type_name": "shield",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "heater"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "shields",
-      "heater",
-      "shield_heater_revised_wood"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "brown",
-      "coffee",
-      "oak",
-      "tan",
-      "umber"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 2,
-        "male": "shield/heater/revised/wood/bg/",
-        "muscular": "shield/heater/revised/wood/bg/",
-        "female": "shield/heater/revised/wood/bg/",
-        "pregnant": "shield/heater/revised/wood/bg/",
-        "teen": "shield/heater/revised/wood/bg/"
-      },
-      "layer_2": {
-        "zPos": 110,
-        "male": "shield/heater/revised/wood/fg/",
-        "muscular": "shield/heater/revised/wood/fg/",
-        "female": "shield/heater/revised/wood/fg/",
-        "pregnant": "shield/heater/revised/wood/fg/",
-        "teen": "shield/heater/revised/wood/fg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shield/heater/revised/wood",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)",
-          "ElizaWy",
-          "JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-shields"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "shield_heater_trim": {
-    "name": "Heater Shield Trim",
-    "priority": 30,
-    "type_name": "shield_trim",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [
-      "heater"
-    ],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "shields",
-      "heater",
-      "shield_heater_trim"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "brass",
-      "bronze",
-      "copper",
-      "gold",
-      "iron",
-      "silver",
-      "steel"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 115,
-        "male": "shield/heater/original/trim/fg/",
-        "muscular": "shield/heater/original/trim/fg/",
-        "female": "shield/heater/original/trim/fg/",
-        "pregnant": "shield/heater/original/trim/fg/",
-        "teen": "shield/heater/original/trim/fg/"
-      },
-      "layer_2": {
-        "zPos": 6,
-        "male": "shield/heater/original/trim/bg/",
-        "muscular": "shield/heater/original/trim/bg/",
-        "female": "shield/heater/original/trim/bg/",
-        "pregnant": "shield/heater/original/trim/bg/",
-        "teen": "shield/heater/original/trim/bg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shield/heater/original/trim",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)",
-          "ElizaWy"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-shields"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "shield_heater_wood": {
-    "name": "Heater Shield Base",
-    "priority": 10,
-    "type_name": "shield",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "heater"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "shields",
-      "heater",
-      "shield_heater_wood"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "brown",
-      "coffee",
-      "oak",
-      "tan",
-      "umber"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 2,
-        "male": "shield/heater/original/wood/bg/",
-        "muscular": "shield/heater/original/wood/bg/",
-        "female": "shield/heater/original/wood/bg/",
-        "pregnant": "shield/heater/original/wood/bg/",
-        "teen": "shield/heater/original/wood/bg/"
-      },
-      "layer_2": {
-        "zPos": 110,
-        "male": "shield/heater/original/wood/fg/",
-        "muscular": "shield/heater/original/wood/fg/",
-        "female": "shield/heater/original/wood/fg/",
-        "pregnant": "shield/heater/original/wood/fg/",
-        "teen": "shield/heater/original/wood/fg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shield/heater/original/wood",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)",
-          "ElizaWy"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-shields"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "shield_scutum_trim": {
-    "name": "Scutum shield trim",
-    "priority": null,
-    "type_name": "shield_trim",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "shields",
-      "scutum",
-      "shield_scutum_trim"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "scutum_trim"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 3,
-        "male": "shield/scutum_trim/bg/",
-        "muscular": "shield/scutum_trim/bg/",
-        "female": "shield/scutum_trim/bg/",
-        "pregnant": "shield/scutum_trim/bg/"
-      },
-      "layer_2": {
-        "zPos": 115,
-        "male": "shield/scutum_trim/fg/male/",
-        "muscular": "shield/scutum_trim/fg/male/",
-        "female": "shield/scutum_trim/fg/female/",
-        "pregnant": "shield/scutum_trim/fg/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shield",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-shields"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "shield_scutum": {
-    "name": "Scutum shield",
-    "priority": null,
-    "type_name": "shield",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "shields",
-      "scutum",
-      "shield_scutum"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "scutum"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 2,
-        "male": "shield/scutum/paint/bg/",
-        "muscular": "shield/scutum/paint/bg/",
-        "female": "shield/scutum/paint/bg/",
-        "pregnant": "shield/scutum/paint/bg/"
-      },
-      "layer_2": {
-        "zPos": 110,
-        "male": "shield/scutum/paint/fg/male/",
-        "muscular": "shield/scutum/paint/fg/male/",
-        "female": "shield/scutum/paint/fg/female/",
-        "pregnant": "shield/scutum/paint/fg/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shield/scutum",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-shields"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "shield_kite": {
-    "name": "Kite",
-    "priority": 20,
-    "type_name": "shield",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "shields",
-      "shield_kite"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "kite blue blue",
-      "kite blue gray",
-      "kite gray blue",
-      "kite gray gray",
-      "kite gray green",
-      "kite gray orange",
-      "kite gray",
-      "kite green gray",
-      "kite orange",
-      "kite red gray"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 110,
-        "male": "shield/kite/male/",
-        "muscular": "shield/kite/male/",
-        "female": "shield/kite/female/",
-        "pregnant": "shield/kite/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shield/kite",
-        "notes": "",
-        "authors": [
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)",
-          "Michael Whitlock (bigbeargames)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 2.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-kite-shield",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "shield_spartan": {
-    "name": "Spartan shield",
-    "priority": 50,
-    "type_name": "shield",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "shields",
-      "shield_spartan"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "spartan"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 2,
-        "male": "shield/spartan/bg/",
-        "muscular": "shield/spartan/bg/",
-        "female": "shield/spartan/bg/",
-        "pregnant": "shield/spartan/bg/"
-      },
-      "layer_2": {
-        "zPos": 110,
-        "male": "shield/spartan/fg/male/",
-        "muscular": "shield/spartan/fg/male/",
-        "female": "shield/spartan/fg/female/",
-        "pregnant": "shield/spartan/fg/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shield/spartan",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-shields"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "shield": {
-    "name": "Shield",
-    "priority": 10,
-    "type_name": "shield",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "shields",
-      "shield"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "crusader",
-      "spartan",
-      "round black",
-      "round brown",
-      "round gold",
-      "round green",
-      "round silver",
-      "round yellow"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 110,
-        "male": "shield/male/",
-        "muscular": "shield/male/",
-        "female": "shield/female/",
-        "pregnant": "shield/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shield/male/crusader.png",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-shields"
-        ]
-      },
-      {
-        "file": "shield/female/crusader.png",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-shields"
-        ]
-      },
-      {
-        "file": "shield/male/spartan.png",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-shields"
-        ]
-      },
-      {
-        "file": "shield/female/spartan.png",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-shields"
-        ]
-      },
-      {
-        "file": "shield/male/round_black.png",
-        "notes": "?",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Michael Whitlock (bigbeargames)",
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      },
-      {
-        "file": "shield/female/round_black.png",
-        "notes": "?",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Michael Whitlock (bigbeargames)",
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      },
-      {
-        "file": "shield/male/round_brown.png",
-        "notes": "",
-        "authors": [
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      },
-      {
-        "file": "shield/female/round_brown.png",
-        "notes": "",
-        "authors": [
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      },
-      {
-        "file": "shield/male/round_gold.png",
-        "notes": "?",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Michael Whitlock (bigbeargames)",
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      },
-      {
-        "file": "shield/female/round_gold.png",
-        "notes": "?",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Michael Whitlock (bigbeargames)",
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      },
-      {
-        "file": "shield/male/round_green.png",
-        "notes": "?",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Michael Whitlock (bigbeargames)",
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      },
-      {
-        "file": "shield/female/round_green.png",
-        "notes": "?",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Michael Whitlock (bigbeargames)",
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      },
-      {
-        "file": "shield/male/round_silver.png",
-        "notes": "?",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Michael Whitlock (bigbeargames)",
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      },
-      {
-        "file": "shield/female/round_silver.png",
-        "notes": "?",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Michael Whitlock (bigbeargames)",
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      },
-      {
-        "file": "shield/male/round_yellow.png",
-        "notes": "?",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Michael Whitlock (bigbeargames)",
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      },
-      {
-        "file": "shield/female/round_yellow.png",
-        "notes": "?",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Michael Whitlock (bigbeargames)",
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "weapon_sword_arming": {
-    "name": "Arming Sword",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "hurt",
-      "idle",
-      "combat",
-      "slash_128",
-      "backslash_128",
-      "halfslash_128"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "sword",
-      "weapon_sword_arming"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "brass",
-      "bronze",
-      "ceramic",
-      "copper",
-      "gold",
-      "iron",
-      "silver",
-      "steel"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "weapon/sword/arming/universal/fg/",
-        "muscular": "weapon/sword/arming/universal/fg/",
-        "female": "weapon/sword/arming/universal/fg/",
-        "pregnant": "weapon/sword/arming/universal/fg/",
-        "teen": "weapon/sword/arming/universal/fg/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "weapon/sword/arming/universal/bg/",
-        "muscular": "weapon/sword/arming/universal/bg/",
-        "female": "weapon/sword/arming/universal/bg/",
-        "pregnant": "weapon/sword/arming/universal/bg/",
-        "teen": "weapon/sword/arming/universal/bg/"
-      },
-      "layer_3": {
-        "zPos": 8,
-        "custom_animation": "slash_128",
-        "male": "weapon/sword/arming/attack_slash/bg/",
-        "muscular": "weapon/sword/arming/attack_slash/bg/",
-        "female": "weapon/sword/arming/attack_slash/bg/",
-        "pregnant": "weapon/sword/arming/attack_slash/bg/",
-        "teen": "weapon/sword/arming/attack_slash/bg/"
-      },
-      "layer_4": {
-        "zPos": 150,
-        "custom_animation": "slash_128",
-        "male": "weapon/sword/arming/attack_slash/fg/",
-        "muscular": "weapon/sword/arming/attack_slash/fg/",
-        "female": "weapon/sword/arming/attack_slash/fg/",
-        "pregnant": "weapon/sword/arming/attack_slash/fg/",
-        "teen": "weapon/sword/arming/attack_slash/fg/"
-      },
-      "layer_5": {
-        "zPos": 8,
-        "custom_animation": "backslash_128",
-        "male": "weapon/sword/arming/attack_backslash/bg/",
-        "muscular": "weapon/sword/arming/attack_backslash/bg/",
-        "female": "weapon/sword/arming/attack_backslash/bg/",
-        "pregnant": "weapon/sword/arming/attack_backslash/bg/",
-        "teen": "weapon/sword/arming/attack_backslash/bg/"
-      },
-      "layer_6": {
-        "zPos": 150,
-        "custom_animation": "backslash_128",
-        "male": "weapon/sword/arming/attack_backslash/fg/",
-        "muscular": "weapon/sword/arming/attack_backslash/fg/",
-        "female": "weapon/sword/arming/attack_backslash/fg/",
-        "pregnant": "weapon/sword/arming/attack_backslash/fg/",
-        "teen": "weapon/sword/arming/attack_backslash/fg/"
-      },
-      "layer_7": {
-        "zPos": 8,
-        "custom_animation": "halfslash_128",
-        "male": "weapon/sword/arming/attack_halfslash/bg/",
-        "muscular": "weapon/sword/arming/attack_halfslash/bg/",
-        "female": "weapon/sword/arming/attack_halfslash/bg/",
-        "pregnant": "weapon/sword/arming/attack_halfslash/bg/",
-        "teen": "weapon/sword/arming/attack_halfslash/bg/"
-      },
-      "layer_8": {
-        "zPos": 150,
-        "custom_animation": "halfslash_128",
-        "male": "weapon/sword/arming/attack_halfslash/fg/",
-        "muscular": "weapon/sword/arming/attack_halfslash/fg/",
-        "female": "weapon/sword/arming/attack_halfslash/fg/",
-        "pregnant": "weapon/sword/arming/attack_halfslash/fg/",
-        "teen": "weapon/sword/arming/attack_halfslash/fg/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/sword/arming",
-        "notes": "",
-        "authors": [
-          "ElizaWy; walk and down by JaidynReiman"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://github.com/ElizaWy/LPC/tree/main/Characters/Props/Sword%2001%20-%20Arming%20Sword",
-          "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "weapon_sword_dagger": {
-    "name": "Dagger",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "thrust",
-      "walk",
-      "slash",
-      "hurt"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "sword",
-      "weapon_sword_dagger"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "dagger"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "weapon/sword/dagger/",
-        "muscular": "weapon/sword/dagger/",
-        "female": "weapon/sword/dagger/",
-        "pregnant": "weapon/sword/dagger/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "weapon/sword/dagger/behind/",
-        "muscular": "weapon/sword/dagger/behind/",
-        "female": "weapon/sword/dagger/behind/",
-        "pregnant": "weapon/sword/dagger/behind/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/sword/dagger",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Johannes Sjölund (wulax)",
-          "Matthew Krohn (makrohn)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-extended-weapon-animations"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "weapon_sword_glowsword": {
-    "name": "Glowsword",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "hurt",
-      "slash_oversize"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "sword",
-      "weapon_sword_glowsword"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "blue",
-      "red"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "weapon/sword/glowsword/",
-        "muscular": "weapon/sword/glowsword/",
-        "female": "weapon/sword/glowsword/",
-        "pregnant": "weapon/sword/glowsword/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "weapon/sword/glowsword/universal_behind/",
-        "muscular": "weapon/sword/glowsword/universal_behind/",
-        "female": "weapon/sword/glowsword/universal_behind/",
-        "pregnant": "weapon/sword/glowsword/universal_behind/"
-      },
-      "layer_3": {
-        "zPos": 8,
-        "custom_animation": "slash_oversize",
-        "male": "weapon/sword/glowsword/attack_slash/behind/",
-        "muscular": "weapon/sword/glowsword/attack_slash/behind/",
-        "female": "weapon/sword/glowsword/attack_slash/behind/",
-        "pregnant": "weapon/sword/glowsword/attack_slash/behind/"
-      },
-      "layer_4": {
-        "zPos": 150,
-        "custom_animation": "slash_oversize",
-        "male": "weapon/sword/glowsword/attack_slash/",
-        "muscular": "weapon/sword/glowsword/attack_slash/",
-        "female": "weapon/sword/glowsword/attack_slash/",
-        "pregnant": "weapon/sword/glowsword/attack_slash/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/sword/glowsword",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "tskaufma",
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-glow-sword",
-          "https://opengameart.org/content/lpc-extended-weapon-animations"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "weapon_sword_katana": {
-    "name": "Katana",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "hurt",
-      "walk_128",
-      "slash_128"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "sword",
-      "weapon_sword_katana"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "katana"
-    ],
-    "layers": {
-      "layer_1": {
-        "custom_animation": "walk_128",
-        "zPos": 140,
-        "male": "weapon/sword/katana/walk/",
-        "muscular": "weapon/sword/katana/walk/",
-        "female": "weapon/sword/katana/walk/",
-        "pregnant": "weapon/sword/katana/walk/"
-      },
-      "layer_2": {
-        "custom_animation": "walk_128",
-        "zPos": 9,
-        "male": "weapon/sword/katana/walk/behind/",
-        "muscular": "weapon/sword/katana/walk/behind/",
-        "female": "weapon/sword/katana/walk/behind/",
-        "pregnant": "weapon/sword/katana/walk/behind/"
-      },
-      "layer_3": {
-        "custom_animation": "slash_128",
-        "zPos": 140,
-        "male": "weapon/sword/katana/slash/",
-        "muscular": "weapon/sword/katana/slash/",
-        "female": "weapon/sword/katana/slash/",
-        "pregnant": "weapon/sword/katana/slash/"
-      },
-      "layer_4": {
-        "custom_animation": "slash_128",
-        "zPos": 9,
-        "male": "weapon/sword/katana/slash/behind/",
-        "muscular": "weapon/sword/katana/slash/behind/",
-        "female": "weapon/sword/katana/slash/behind/",
-        "pregnant": "weapon/sword/katana/slash/behind/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/sword/katana",
-        "notes": "",
-        "authors": [
-          "Pierre Vigier and DCSS artists (see https://github.com/crawl/tiles/blob/master/ARTISTS.md)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-dcss-swords"
-        ]
-      }
-    ],
-    "preview_row": 5,
-    "preview_column": 0,
-    "preview_x_offset": 28,
-    "preview_y_offset": -16,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "weapon_sword_longsword_alt": {
-    "name": "Longsword alt",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk_128",
-      "slash_128"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "sword",
-      "weapon_sword_longsword_alt"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "longsword_alt"
-    ],
-    "layers": {
-      "layer_1": {
-        "custom_animation": "walk_128",
-        "zPos": 140,
-        "male": "weapon/sword/longsword_alt/walk/",
-        "muscular": "weapon/sword/longsword_alt/walk/",
-        "female": "weapon/sword/longsword_alt/walk/",
-        "pregnant": "weapon/sword/longsword_alt/walk/"
-      },
-      "layer_2": {
-        "custom_animation": "walk_128",
-        "zPos": 9,
-        "male": "weapon/sword/longsword_alt/walk/behind/",
-        "muscular": "weapon/sword/longsword_alt/walk/behind/",
-        "female": "weapon/sword/longsword_alt/walk/behind/",
-        "pregnant": "weapon/sword/longsword_alt/walk/behind/"
-      },
-      "layer_3": {
-        "custom_animation": "slash_128",
-        "zPos": 140,
-        "male": "weapon/sword/longsword_alt/slash/",
-        "muscular": "weapon/sword/longsword_alt/slash/",
-        "female": "weapon/sword/longsword_alt/slash/",
-        "pregnant": "weapon/sword/longsword_alt/slash/"
-      },
-      "layer_4": {
-        "custom_animation": "slash_128",
-        "zPos": 9,
-        "male": "weapon/sword/longsword_alt/slash/behind/",
-        "muscular": "weapon/sword/longsword_alt/slash/behind/",
-        "female": "weapon/sword/longsword_alt/slash/behind/",
-        "pregnant": "weapon/sword/longsword_alt/slash/behind/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/sword/longsword_alt",
-        "notes": "",
-        "authors": [
-          "Pierre Vigier and DCSS artists (see https://github.com/crawl/tiles/blob/master/ARTISTS.md)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-dcss-swords"
-        ]
-      }
-    ],
-    "preview_row": 5,
-    "preview_column": 0,
-    "preview_x_offset": 28,
-    "preview_y_offset": -16,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "weapon_sword_longsword": {
-    "name": "Longsword",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "hurt",
-      "slash_oversize",
-      "slash_reverse_oversize",
-      "thrust_oversize"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "sword",
-      "weapon_sword_longsword"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "longsword"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "weapon/sword/longsword/",
-        "muscular": "weapon/sword/longsword/",
-        "female": "weapon/sword/longsword/",
-        "pregnant": "weapon/sword/longsword/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "weapon/sword/longsword/universal_behind/",
-        "muscular": "weapon/sword/longsword/universal_behind/",
-        "female": "weapon/sword/longsword/universal_behind/",
-        "pregnant": "weapon/sword/longsword/universal_behind/"
-      },
-      "layer_3": {
-        "zPos": -1,
-        "custom_animation": "slash_oversize",
-        "male": "weapon/sword/longsword/attack_slash/behind/",
-        "muscular": "weapon/sword/longsword/attack_slash/behind/",
-        "female": "weapon/sword/longsword/attack_slash/behind/",
-        "pregnant": "weapon/sword/longsword/attack_slash/behind/"
-      },
-      "layer_4": {
-        "zPos": 150,
-        "custom_animation": "slash_oversize",
-        "male": "weapon/sword/longsword/attack_slash/",
-        "muscular": "weapon/sword/longsword/attack_slash/",
-        "female": "weapon/sword/longsword/attack_slash/",
-        "pregnant": "weapon/sword/longsword/attack_slash/"
-      },
-      "layer_5": {
-        "zPos": -1,
-        "custom_animation": "slash_reverse_oversize",
-        "male": "weapon/sword/longsword/attack_slash_reverse/behind/",
-        "muscular": "weapon/sword/longsword/attack_slash_reverse/behind/",
-        "female": "weapon/sword/longsword/attack_slash_reverse/behind/",
-        "pregnant": "weapon/sword/longsword/attack_slash_reverse/behind/"
-      },
-      "layer_6": {
-        "zPos": 150,
-        "custom_animation": "slash_reverse_oversize",
-        "male": "weapon/sword/longsword/attack_slash_reverse/",
-        "muscular": "weapon/sword/longsword/attack_slash_reverse/",
-        "female": "weapon/sword/longsword/attack_slash_reverse/",
-        "pregnant": "weapon/sword/longsword/attack_slash_reverse/"
-      },
-      "layer_7": {
-        "zPos": -1,
-        "custom_animation": "thrust_oversize",
-        "male": "weapon/sword/longsword/attack_thrust/behind/",
-        "muscular": "weapon/sword/longsword/attack_thrust/behind/",
-        "female": "weapon/sword/longsword/attack_thrust/behind/",
-        "pregnant": "weapon/sword/longsword/attack_thrust/behind/"
-      },
-      "layer_8": {
-        "zPos": 150,
-        "custom_animation": "thrust_oversize",
-        "male": "weapon/sword/longsword/attack_thrust/",
-        "muscular": "weapon/sword/longsword/attack_thrust/",
-        "female": "weapon/sword/longsword/attack_thrust/",
-        "pregnant": "weapon/sword/longsword/attack_thrust/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/sword/longsword",
-        "notes": "",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-extended-weapon-animations"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "weapon_sword_rapier": {
-    "name": "Rapier",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "hurt",
-      "slash_oversize"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "sword",
-      "weapon_sword_rapier"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "rapier"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "weapon/sword/rapier/",
-        "muscular": "weapon/sword/rapier/",
-        "female": "weapon/sword/rapier/",
-        "pregnant": "weapon/sword/rapier/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "weapon/sword/rapier/universal_behind/",
-        "muscular": "weapon/sword/rapier/universal_behind/",
-        "female": "weapon/sword/rapier/universal_behind/",
-        "pregnant": "weapon/sword/rapier/universal_behind/"
-      },
-      "layer_3": {
-        "zPos": 8,
-        "custom_animation": "slash_oversize",
-        "male": "weapon/sword/rapier/attack_slash/behind/",
-        "muscular": "weapon/sword/rapier/attack_slash/behind/",
-        "female": "weapon/sword/rapier/attack_slash/behind/",
-        "pregnant": "weapon/sword/rapier/attack_slash/behind/"
-      },
-      "layer_4": {
-        "zPos": 150,
-        "custom_animation": "slash_oversize",
-        "male": "weapon/sword/rapier/attack_slash/",
-        "muscular": "weapon/sword/rapier/attack_slash/",
-        "female": "weapon/sword/rapier/attack_slash/",
-        "pregnant": "weapon/sword/rapier/attack_slash/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/sword/rapier",
-        "notes": "",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-extended-weapon-animations"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "weapon_sword_saber": {
-    "name": "Saber",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "hurt",
-      "slash_oversize"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "sword",
-      "weapon_sword_saber"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "saber"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 140,
-        "male": "weapon/sword/saber/",
-        "muscular": "weapon/sword/saber/",
-        "female": "weapon/sword/saber/",
-        "pregnant": "weapon/sword/saber/"
-      },
-      "layer_2": {
-        "zPos": 9,
-        "male": "weapon/sword/saber/universal_behind/",
-        "muscular": "weapon/sword/saber/universal_behind/",
-        "female": "weapon/sword/saber/universal_behind/",
-        "pregnant": "weapon/sword/saber/universal_behind/"
-      },
-      "layer_3": {
-        "zPos": 8,
-        "custom_animation": "slash_oversize",
-        "male": "weapon/sword/saber/attack_slash/behind/",
-        "muscular": "weapon/sword/saber/attack_slash/behind/",
-        "female": "weapon/sword/saber/attack_slash/behind/",
-        "pregnant": "weapon/sword/saber/attack_slash/behind/"
-      },
-      "layer_4": {
-        "zPos": 150,
-        "custom_animation": "slash_oversize",
-        "male": "weapon/sword/saber/attack_slash/",
-        "muscular": "weapon/sword/saber/attack_slash/",
-        "female": "weapon/sword/saber/attack_slash/",
-        "pregnant": "weapon/sword/saber/attack_slash/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/sword/saber",
-        "notes": "",
-        "authors": [
-          "Daniel Eddeland (daneeklu)",
-          "Johannes Sjölund (wulax)",
-          "gr3yh47",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-extended-weapon-animations"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "weapon_sword_scimitar": {
-    "name": "Scimitar",
-    "priority": null,
-    "type_name": "weapon",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "walk",
-      "walk_128",
-      "slash_128"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "sword",
-      "weapon_sword_scimitar"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "scimitar"
-    ],
-    "layers": {
-      "layer_1": {
-        "custom_animation": "walk_128",
-        "zPos": 140,
-        "male": "weapon/sword/scimitar/walk/",
-        "muscular": "weapon/sword/scimitar/walk/",
-        "female": "weapon/sword/scimitar/walk/",
-        "pregnant": "weapon/sword/scimitar/walk/"
-      },
-      "layer_2": {
-        "custom_animation": "walk_128",
-        "zPos": 9,
-        "male": "weapon/sword/scimitar/walk/behind/",
-        "muscular": "weapon/sword/scimitar/walk/behind/",
-        "female": "weapon/sword/scimitar/walk/behind/",
-        "pregnant": "weapon/sword/scimitar/walk/behind/"
-      },
-      "layer_3": {
-        "custom_animation": "slash_128",
-        "zPos": 140,
-        "male": "weapon/sword/scimitar/slash/",
-        "muscular": "weapon/sword/scimitar/slash/",
-        "female": "weapon/sword/scimitar/slash/",
-        "pregnant": "weapon/sword/scimitar/slash/"
-      },
-      "layer_4": {
-        "custom_animation": "slash_128",
-        "zPos": 9,
-        "male": "weapon/sword/scimitar/slash/behind/",
-        "muscular": "weapon/sword/scimitar/slash/behind/",
-        "female": "weapon/sword/scimitar/slash/behind/",
-        "pregnant": "weapon/sword/scimitar/slash/behind/"
-      }
-    },
-    "credits": [
-      {
-        "file": "weapon/sword/scimitar",
-        "notes": "",
-        "authors": [
-          "Pierre Vigier and DCSS artists (see https://github.com/crawl/tiles/blob/master/ARTISTS.md)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-dcss-swords"
-        ]
-      }
-    ],
-    "preview_row": 5,
-    "preview_column": 0,
-    "preview_x_offset": 28,
-    "preview_y_offset": -16,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
   }
 };
 
 window.categoryTree = {
   "items": [],
   "children": {
-    "arms": {
-      "items": [
-        "arms_armour",
-        "bauldron",
-        "arms_gloves",
-        "arms_hands_ring_stud"
-      ],
-      "children": {
-        "wrists": {
-          "items": [
-            "arms_bracers",
-            "wrists_cuffs",
-            "wrists_cuffs_lace"
-          ],
-          "children": {},
-          "priority": 10,
-          "required": [
-            "male",
-            "female",
-            "muscular",
-            "pregnant",
-            "teen"
-          ],
-          "animations": [
-            "spellcast",
-            "thrust",
-            "walk",
-            "slash",
-            "shoot",
-            "hurt",
-            "watering",
-            "idle"
-          ]
-        },
-        "shoulders": {
-          "items": [
-            "shoulders_epaulets",
-            "shoulders_leather",
-            "shoulders_legion",
-            "shoulders_mantal",
-            "shoulders_plate"
-          ],
-          "children": {},
-          "priority": 30,
-          "required": [
-            "male",
-            "female",
-            "muscular",
-            "pregnant",
-            "teen"
-          ],
-          "animations": [
-            "spellcast",
-            "thrust",
-            "walk",
-            "slash",
-            "shoot",
-            "hurt",
-            "watering",
-            "idle"
-          ]
-        }
-      },
-      "priority": 50,
-      "required": [],
-      "animations": []
-    },
-    "tools": {
-      "items": [
-        "tool_rod",
-        "tool_smash",
-        "tool_thrust",
-        "tool_whip"
-      ],
-      "children": {},
-      "priority": 90,
-      "required": [
-        "male",
-        "female",
-        "teen",
-        "muscular",
-        "pregnant"
-      ],
-      "animations": []
-    },
-    "./sheet_definitions": {
-      "items": [
-        "wound_arm",
-        "wound_brain",
-        "wound_eye_left",
-        "wound_mouth",
-        "wound_ribs",
-        "wound_eye_right"
-      ],
-      "children": {}
-    },
     "body": {
       "items": [
         "body_color",
@@ -78566,7 +78476,14 @@ window.categoryTree = {
           ]
         },
         "wounds": {
-          "items": [],
+          "items": [
+            "wound_arm",
+            "wound_brain",
+            "wound_eye_left",
+            "wound_mouth",
+            "wound_ribs",
+            "wound_eye_right"
+          ],
           "children": {},
           "priority": 40,
           "required": [
@@ -78601,29 +78518,6 @@ window.categoryTree = {
             "hurt",
             "watering"
           ]
-        },
-        "tails": {
-          "items": [
-            "tail_cat",
-            "tail_wolf",
-            "tail_wolf_fluffy",
-            "tail_lizard_alt"
-          ],
-          "children": {},
-          "priority": 80,
-          "required": [],
-          "animations": []
-        },
-        "lizard": {
-          "items": [
-            "wings_lizard_bat",
-            "tail_lizard",
-            "wings_lizard"
-          ],
-          "children": {},
-          "priority": 90,
-          "required": [],
-          "animations": []
         },
         "wings": {
           "items": [
@@ -78664,89 +78558,282 @@ window.categoryTree = {
               "required": [],
               "animations": []
             }
-          }
+          },
+          "priority": 70,
+          "required": [],
+          "animations": []
+        },
+        "tails": {
+          "items": [
+            "tail_cat",
+            "tail_wolf",
+            "tail_wolf_fluffy",
+            "tail_lizard_alt"
+          ],
+          "children": {},
+          "priority": 80,
+          "required": [],
+          "animations": []
+        },
+        "lizard": {
+          "items": [
+            "wings_lizard_bat",
+            "tail_lizard",
+            "wings_lizard"
+          ],
+          "children": {},
+          "priority": 90,
+          "required": [],
+          "animations": []
         }
-      }
+      },
+      "priority": 10,
+      "required": [],
+      "animations": []
     },
-    "feet": {
+    "head": {
       "items": [
-        "feet_armour",
-        "feet_slippers",
-        "feet_sandals",
-        "feet_hoofs"
+        "head_wrinkles",
+        "eyes_child"
       ],
       "children": {
-        "shoes": {
+        "heads": {
           "items": [
-            "feet_shoes_basic",
-            "feet_shoes_revised",
-            "feet_shoes_sara",
-            "feet_shoes_ghillies"
+            "heads_alien",
+            "heads_boarman",
+            "heads_boarman_child",
+            "heads_frankenstein",
+            "heads_goblin",
+            "heads_goblin_child",
+            "heads_human_child",
+            "heads_human_elderly_small",
+            "heads_human_female",
+            "heads_human_female_elderly",
+            "heads_human_female_small",
+            "heads_human_male",
+            "heads_human_male_elderly",
+            "heads_human_male_gaunt",
+            "heads_human_male_plump",
+            "heads_human_male_small",
+            "heads_jack",
+            "heads_lizard_child",
+            "heads_lizard_female",
+            "heads_lizard_male",
+            "heads_minotaur",
+            "heads_minotaur_child",
+            "heads_minotaur_female",
+            "heads_mouse",
+            "heads_mouse_child",
+            "heads_orc_child",
+            "heads_orc_female",
+            "heads_orc_male",
+            "heads_pig",
+            "heads_pig_child",
+            "heads_rabbit",
+            "heads_rabbit_child",
+            "heads_rat",
+            "heads_rat_child",
+            "heads_sheep",
+            "heads_sheep_child",
+            "heads_skeleton",
+            "heads_troll",
+            "heads_troll_child",
+            "heads_vampire",
+            "heads_wartotaur",
+            "heads_wolf_child",
+            "heads_wolf_female",
+            "heads_wolf_male",
+            "heads_zombie"
           ],
           "children": {},
           "priority": 10,
-          "required": [
-            "male",
-            "female",
-            "teen",
-            "muscular",
-            "pregnant"
-          ],
+          "required": [],
           "animations": []
         },
-        "boots": {
+        "eyes": {
           "items": [
-            "feet_boots_basic",
-            "feet_boots_revised",
-            "feet_boots_fold",
-            "feet_boots_rim"
+            "eye_color",
+            "eyes_cyclops"
           ],
           "children": {},
-          "priority": 20,
-          "required": [
-            "male",
-            "female",
-            "teen",
-            "muscular",
-            "pregnant"
-          ],
-          "animations": []
-        },
-        "accessory": {
-          "items": [
-            "feet_plate_toe",
-            "feet_plate_toe_thick"
-          ],
-          "children": {},
-          "label": "Shoe / Boots Accessory",
           "priority": 30,
-          "required": [
-            "male",
-            "female",
-            "teen",
-            "muscular",
-            "pregnant"
-          ],
+          "required": [],
           "animations": []
         },
-        "socks": {
+        "eyebrows": {
           "items": [
-            "feet_socks_ankle",
-            "feet_socks_high",
-            "feet_socks_tabi"
+            "eyebrows_thick",
+            "eyebrows_thin"
+          ],
+          "children": {},
+          "priority": 40,
+          "required": [],
+          "animations": []
+        },
+        "faces": {
+          "items": [
+            "face_angry",
+            "face_angry2",
+            "face_blush",
+            "face_closed",
+            "face_closing",
+            "face_happy",
+            "face_happy2",
+            "face_look_l",
+            "face_look_r",
+            "face_neutral",
+            "face_eyeroll",
+            "face_sad",
+            "face_sad2",
+            "face_shame",
+            "face_shock",
+            "face_tears"
           ],
           "children": {},
           "priority": 40,
           "required": [
             "male",
             "female",
-            "teen",
             "muscular",
-            "pregnant"
+            "pregnant",
+            "teen"
+          ],
+          "animations": []
+        },
+        "ears": {
+          "items": [
+            "head_ears_big",
+            "head_ears_down",
+            "head_ears_dragon",
+            "head_ears_elven",
+            "head_ears_hang",
+            "head_ears_long",
+            "head_ears_medium"
+          ],
+          "children": {},
+          "priority": 50,
+          "required": [],
+          "animations": []
+        },
+        "furry_ears": {
+          "items": [],
+          "children": {
+            "top": {
+              "items": [
+                "head_ears_cat",
+                "head_ears_cat_skin",
+                "head_ears_wolf",
+                "head_ears_wolf_skin"
+              ],
+              "children": {},
+              "label": "Top of Head",
+              "priority": 10,
+              "required": [],
+              "animations": []
+            },
+            "side": {
+              "items": [
+                "head_ears_avyon",
+                "head_ears_avyon_skin",
+                "head_ears_zabos",
+                "head_ears_zabos_skin",
+                "head_ears_lykon",
+                "head_ears_lykon_skin"
+              ],
+              "children": {},
+              "label": "Side of Head",
+              "priority": 20,
+              "required": [],
+              "animations": []
+            }
+          },
+          "label": "Furry Ears",
+          "priority": 60,
+          "required": [],
+          "animations": []
+        },
+        "nose": {
+          "items": [
+            "head_nose_big",
+            "head_nose_button",
+            "head_nose_elderly",
+            "head_nose_large",
+            "head_nose_straight"
+          ],
+          "children": {},
+          "priority": 70,
+          "required": [],
+          "animations": []
+        },
+        "appendages": {
+          "items": [
+            "head_horns_backwards",
+            "head_horns_curled",
+            "head_fins_fin",
+            "head_fins_fin_short"
+          ],
+          "children": {},
+          "priority": 90,
+          "required": [],
+          "animations": []
+        },
+        "neck": {
+          "items": [
+            "neck_bowtie",
+            "neck_bowtie2",
+            "neck_necktie",
+            "neck_scarf",
+            "neck_capeclip",
+            "neck_capetie",
+            "neck_jabot",
+            "neck_cravat",
+            "neck_necklace",
+            "neck_necklace_simple",
+            "neck_necklace_chain",
+            "neck_necklace_beaded_small",
+            "neck_necklace_beaded_large"
+          ],
+          "children": {
+            "charms": {
+              "items": [
+                "neck_charm_box",
+                "neck_amulet_cross",
+                "neck_amulet_dangle",
+                "neck_gem_emerald",
+                "neck_gem_marquise",
+                "neck_gem_natural",
+                "neck_charm_oval",
+                "neck_gem_pear",
+                "neck_gem_pearl",
+                "neck_gem_princess",
+                "neck_charm_ring",
+                "neck_gem_round",
+                "neck_amulet_spider",
+                "neck_amulet_star",
+                "neck_charm_star",
+                "neck_gem_trilliant"
+              ],
+              "children": {},
+              "label": "Necklace Charms",
+              "priority": 10,
+              "required": [],
+              "animations": []
+            }
+          },
+          "priority": 100,
+          "required": [
+            "male",
+            "female",
+            "muscular",
+            "pregnant",
+            "teen"
           ],
           "animations": []
         }
-      }
+      },
+      "priority": 20,
+      "required": [],
+      "animations": []
     },
     "hair": {
       "items": [],
@@ -79010,361 +79097,14 @@ window.categoryTree = {
           "required": [],
           "animations": []
         }
-      }
-    },
-    "head": {
-      "items": [
-        "head_wrinkles",
-        "eyes_child"
-      ],
-      "children": {
-        "heads": {
-          "items": [
-            "heads_alien",
-            "heads_boarman",
-            "heads_boarman_child",
-            "heads_frankenstein",
-            "heads_goblin",
-            "heads_goblin_child",
-            "heads_human_child",
-            "heads_human_elderly_small",
-            "heads_human_female",
-            "heads_human_female_elderly",
-            "heads_human_female_small",
-            "heads_human_male",
-            "heads_human_male_elderly",
-            "heads_human_male_gaunt",
-            "heads_human_male_plump",
-            "heads_human_male_small",
-            "heads_jack",
-            "heads_lizard_child",
-            "heads_lizard_female",
-            "heads_lizard_male",
-            "heads_minotaur",
-            "heads_minotaur_child",
-            "heads_minotaur_female",
-            "heads_mouse",
-            "heads_mouse_child",
-            "heads_orc_child",
-            "heads_orc_female",
-            "heads_orc_male",
-            "heads_pig",
-            "heads_pig_child",
-            "heads_rabbit",
-            "heads_rabbit_child",
-            "heads_rat",
-            "heads_rat_child",
-            "heads_sheep",
-            "heads_sheep_child",
-            "heads_skeleton",
-            "heads_troll",
-            "heads_troll_child",
-            "heads_vampire",
-            "heads_wartotaur",
-            "heads_wolf_child",
-            "heads_wolf_female",
-            "heads_wolf_male",
-            "heads_zombie"
-          ],
-          "children": {},
-          "priority": 10,
-          "required": [],
-          "animations": []
-        },
-        "eyes": {
-          "items": [
-            "eye_color",
-            "eyes_cyclops"
-          ],
-          "children": {},
-          "priority": 30,
-          "required": [],
-          "animations": []
-        },
-        "eyebrows": {
-          "items": [
-            "eyebrows_thick",
-            "eyebrows_thin"
-          ],
-          "children": {},
-          "priority": 40,
-          "required": [],
-          "animations": []
-        },
-        "faces": {
-          "items": [
-            "face_angry",
-            "face_angry2",
-            "face_blush",
-            "face_closed",
-            "face_closing",
-            "face_happy",
-            "face_happy2",
-            "face_look_l",
-            "face_look_r",
-            "face_neutral",
-            "face_eyeroll",
-            "face_sad",
-            "face_sad2",
-            "face_shame",
-            "face_shock",
-            "face_tears"
-          ],
-          "children": {},
-          "priority": 40,
-          "required": [
-            "male",
-            "female",
-            "muscular",
-            "pregnant",
-            "teen"
-          ],
-          "animations": []
-        },
-        "ears": {
-          "items": [
-            "head_ears_big",
-            "head_ears_down",
-            "head_ears_dragon",
-            "head_ears_elven",
-            "head_ears_hang",
-            "head_ears_long",
-            "head_ears_medium"
-          ],
-          "children": {},
-          "priority": 50,
-          "required": [],
-          "animations": []
-        },
-        "furry_ears": {
-          "items": [],
-          "children": {
-            "top": {
-              "items": [
-                "head_ears_cat",
-                "head_ears_cat_skin",
-                "head_ears_wolf",
-                "head_ears_wolf_skin"
-              ],
-              "children": {},
-              "label": "Top of Head",
-              "priority": 10,
-              "required": [],
-              "animations": []
-            },
-            "side": {
-              "items": [
-                "head_ears_avyon",
-                "head_ears_avyon_skin",
-                "head_ears_zabos",
-                "head_ears_zabos_skin",
-                "head_ears_lykon",
-                "head_ears_lykon_skin"
-              ],
-              "children": {},
-              "label": "Side of Head",
-              "priority": 20,
-              "required": [],
-              "animations": []
-            }
-          },
-          "label": "Furry Ears",
-          "priority": 60,
-          "required": [],
-          "animations": []
-        },
-        "nose": {
-          "items": [
-            "head_nose_big",
-            "head_nose_button",
-            "head_nose_elderly",
-            "head_nose_large",
-            "head_nose_straight"
-          ],
-          "children": {},
-          "priority": 70,
-          "required": [],
-          "animations": []
-        },
-        "appendages": {
-          "items": [
-            "head_horns_backwards",
-            "head_horns_curled",
-            "head_fins_fin",
-            "head_fins_fin_short"
-          ],
-          "children": {},
-          "priority": 90,
-          "required": [],
-          "animations": []
-        },
-        "neck": {
-          "items": [
-            "neck_bowtie",
-            "neck_bowtie2",
-            "neck_necktie",
-            "neck_scarf",
-            "neck_capeclip",
-            "neck_capetie",
-            "neck_jabot",
-            "neck_cravat",
-            "neck_necklace",
-            "neck_necklace_simple",
-            "neck_necklace_chain",
-            "neck_necklace_beaded_small",
-            "neck_necklace_beaded_large"
-          ],
-          "children": {
-            "charms": {
-              "items": [
-                "neck_charm_box",
-                "neck_amulet_cross",
-                "neck_amulet_dangle",
-                "neck_gem_emerald",
-                "neck_gem_marquise",
-                "neck_gem_natural",
-                "neck_charm_oval",
-                "neck_gem_pear",
-                "neck_gem_pearl",
-                "neck_gem_princess",
-                "neck_charm_ring",
-                "neck_gem_round",
-                "neck_amulet_spider",
-                "neck_amulet_star",
-                "neck_charm_star",
-                "neck_gem_trilliant"
-              ],
-              "children": {},
-              "label": "Necklace Charms",
-              "priority": 10,
-              "required": [],
-              "animations": []
-            }
-          }
-        }
-      }
+      },
+      "priority": 30,
+      "required": [],
+      "animations": []
     },
     "headwear": {
       "items": [],
       "children": {
-        "neck": {
-          "items": [],
-          "children": {},
-          "priority": 10,
-          "required": [],
-          "animations": []
-        },
-        "accessories": {
-          "items": [
-            "facial_mask_plain"
-          ],
-          "children": {
-            "glasses": {
-              "items": [
-                "facial_glasses",
-                "facial_glasses_halfmoon",
-                "facial_glasses_nerd",
-                "facial_glasses_round",
-                "facial_glasses_secretary",
-                "facial_glasses_shades",
-                "facial_glasses_sunglasses"
-              ],
-              "children": {},
-              "label": "Glasses",
-              "priority": 10,
-              "required": [],
-              "animations": []
-            },
-            "monocle": {
-              "items": [
-                "facial_monocle_left",
-                "facial_monocle_left_frame",
-                "facial_monocle_right",
-                "facial_monocle_right_frame"
-              ],
-              "children": {},
-              "label": "Monocle",
-              "priority": 20,
-              "required": [],
-              "animations": []
-            },
-            "eyepatch": {
-              "items": [
-                "facial_eyepatch2_left",
-                "facial_eyepatch2_right",
-                "facial_eyepatch_ambi",
-                "facial_eyepatch_left",
-                "facial_eyepatch_right",
-                "facial_eyepatch_small_left",
-                "facial_eyepatch_small_right"
-              ],
-              "children": {},
-              "label": "Eyepatches",
-              "priority": 30,
-              "required": [],
-              "animations": []
-            },
-            "earrings": {
-              "items": [
-                "facial_earrings_emerald",
-                "facial_earrings_moon",
-                "facial_earrings_pear",
-                "facial_earrings_princess",
-                "facial_earring_left",
-                "facial_earring_right",
-                "facial_earrings_stud"
-              ],
-              "children": {},
-              "label": "Earrings",
-              "priority": 40,
-              "required": [],
-              "animations": []
-            }
-          }
-        },
-        "coverings": {
-          "items": [],
-          "children": {
-            "hoods": {
-              "items": [
-                "hat_hood_hijab",
-                "hat_hood_cloth",
-                "hat_helmet_mail",
-                "hat_hood_sack_cloth"
-              ],
-              "children": {},
-              "priority": 10,
-              "required": [],
-              "animations": []
-            },
-            "bandana": {
-              "items": [
-                "hat_bandana",
-                "hat_bandana2",
-                "hat_bandana_pirate",
-                "hat_bandana_pirate_skull"
-              ],
-              "children": {},
-              "priority": 20,
-              "required": [],
-              "animations": []
-            },
-            "headbands": {
-              "items": [
-                "hat_headband_hairtie",
-                "hat_headband_hairtie_rune",
-                "hat_headband_kerchief",
-                "hat_headband_thick",
-                "hat_headband_thick_rune",
-                "hat_headband_tied"
-              ],
-              "children": {},
-              "priority": 30,
-              "required": [],
-              "animations": []
-            }
-          }
-        },
         "hats": {
           "items": [],
           "children": {
@@ -79469,7 +79209,57 @@ window.categoryTree = {
               "required": [],
               "animations": []
             }
-          }
+          },
+          "priority": 10,
+          "required": [],
+          "animations": []
+        },
+        "coverings": {
+          "items": [],
+          "children": {
+            "hoods": {
+              "items": [
+                "hat_hood_hijab",
+                "hat_hood_cloth",
+                "hat_helmet_mail",
+                "hat_hood_sack_cloth"
+              ],
+              "children": {},
+              "priority": 10,
+              "required": [],
+              "animations": []
+            },
+            "bandana": {
+              "items": [
+                "hat_bandana",
+                "hat_bandana2",
+                "hat_bandana_pirate",
+                "hat_bandana_pirate_skull"
+              ],
+              "children": {},
+              "priority": 20,
+              "required": [],
+              "animations": []
+            },
+            "headbands": {
+              "items": [
+                "hat_headband_hairtie",
+                "hat_headband_hairtie_rune",
+                "hat_headband_kerchief",
+                "hat_headband_thick",
+                "hat_headband_thick_rune",
+                "hat_headband_tied"
+              ],
+              "children": {},
+              "priority": 30,
+              "required": [],
+              "animations": []
+            }
+          },
+          "label": "Head Coverings",
+          "priority": 10,
+          "required": [],
+          "animations": []
         },
         "helmets": {
           "items": [],
@@ -79543,78 +79333,161 @@ window.categoryTree = {
               "required": [],
               "animations": []
             }
-          }
-        }
-      }
-    },
-    "legs": {
-      "items": [
-        "legs_armour"
-      ],
-      "children": {
-        "pants": {
-          "items": [
-            "legs_childpants",
-            "legs_cuffed",
-            "legs_formal",
-            "legs_fur",
-            "legs_pants2",
-            "legs_pantaloons",
-            "legs_pants",
-            "legs_pregnantpants",
-            "legs_formal_striped",
-            "legs_widepants"
-          ],
+          },
+          "priority": 10,
+          "required": [],
+          "animations": []
+        },
+        "neck": {
+          "items": [],
           "children": {},
           "priority": 10,
           "required": [],
           "animations": []
         },
-        "leggings": {
+        "accessories": {
           "items": [
-            "legs_hose",
-            "legs_leggings",
-            "legs_leggings2"
+            "facial_mask_plain"
+          ],
+          "children": {
+            "glasses": {
+              "items": [
+                "facial_glasses",
+                "facial_glasses_halfmoon",
+                "facial_glasses_nerd",
+                "facial_glasses_round",
+                "facial_glasses_secretary",
+                "facial_glasses_shades",
+                "facial_glasses_sunglasses"
+              ],
+              "children": {},
+              "label": "Glasses",
+              "priority": 10,
+              "required": [],
+              "animations": []
+            },
+            "monocle": {
+              "items": [
+                "facial_monocle_left",
+                "facial_monocle_left_frame",
+                "facial_monocle_right",
+                "facial_monocle_right_frame"
+              ],
+              "children": {},
+              "label": "Monocle",
+              "priority": 20,
+              "required": [],
+              "animations": []
+            },
+            "eyepatch": {
+              "items": [
+                "facial_eyepatch2_left",
+                "facial_eyepatch2_right",
+                "facial_eyepatch_ambi",
+                "facial_eyepatch_left",
+                "facial_eyepatch_right",
+                "facial_eyepatch_small_left",
+                "facial_eyepatch_small_right"
+              ],
+              "children": {},
+              "label": "Eyepatches",
+              "priority": 30,
+              "required": [],
+              "animations": []
+            },
+            "earrings": {
+              "items": [
+                "facial_earrings_emerald",
+                "facial_earrings_moon",
+                "facial_earrings_pear",
+                "facial_earrings_princess",
+                "facial_earring_left",
+                "facial_earring_right",
+                "facial_earrings_stud"
+              ],
+              "children": {},
+              "label": "Earrings",
+              "priority": 40,
+              "required": [],
+              "animations": []
+            }
+          },
+          "label": "Facial Accessories",
+          "priority": 40,
+          "required": [],
+          "animations": []
+        }
+      },
+      "priority": 40,
+      "required": [],
+      "animations": []
+    },
+    "arms": {
+      "items": [
+        "arms_armour",
+        "bauldron",
+        "arms_gloves",
+        "arms_hands_ring_stud"
+      ],
+      "children": {
+        "wrists": {
+          "items": [
+            "arms_bracers",
+            "wrists_cuffs",
+            "wrists_cuffs_lace"
           ],
           "children": {},
-          "priority": 20,
+          "priority": 10,
           "required": [
             "male",
             "female",
+            "muscular",
+            "pregnant",
             "teen"
           ],
-          "animations": []
+          "animations": [
+            "spellcast",
+            "thrust",
+            "walk",
+            "slash",
+            "shoot",
+            "hurt",
+            "watering",
+            "idle"
+          ]
         },
-        "shorts": {
+        "shoulders": {
           "items": [
-            "legs_shorts_short",
-            "legs_shorts"
+            "shoulders_epaulets",
+            "shoulders_leather",
+            "shoulders_legion",
+            "shoulders_mantal",
+            "shoulders_plate"
           ],
           "children": {},
           "priority": 30,
           "required": [
             "male",
             "female",
+            "muscular",
+            "pregnant",
             "teen"
           ],
-          "animations": []
-        },
-        "skirts": {
-          "items": [
-            "legs_skirt_belle",
-            "legs_childskirts",
-            "legs_skirts_legion",
-            "legs_skirt_overskirt",
-            "legs_skirts_plain",
-            "legs_skirts_slit",
-            "legs_skirt_straight"
-          ],
-          "children": {},
-          "priority": 40,
-          "required": [],
-          "animations": []
+          "animations": [
+            "spellcast",
+            "thrust",
+            "walk",
+            "slash",
+            "shoot",
+            "hurt",
+            "watering",
+            "idle"
+          ]
         }
-      }
+      },
+      "priority": 50,
+      "required": [],
+      "animations": []
     },
     "torso": {
       "items": [
@@ -79622,6 +79495,148 @@ window.categoryTree = {
         "torso_bandages"
       ],
       "children": {
+        "dresses": {
+          "items": [
+            "dress_bodice",
+            "dress_slit",
+            "dress_sash"
+          ],
+          "children": {
+            "kimono": {
+              "items": [
+                "dress_kimono",
+                "dress_kimono_trim",
+                "dress_kimono_split",
+                "dress_kimono_split_trim",
+                "dress_kimono_longsleeve",
+                "dress_kimono_longsleeve_trim",
+                "dress_kimono_oversize",
+                "dress_kimono_oversize_trim"
+              ],
+              "children": {},
+              "priority": 40,
+              "required": [],
+              "animations": []
+            }
+          },
+          "priority": 10,
+          "required": [
+            "female",
+            "teen"
+          ],
+          "animations": [
+            "spellcast",
+            "thrust",
+            "walk",
+            "slash",
+            "shoot",
+            "hurt",
+            "watering",
+            "idle"
+          ]
+        },
+        "shirts": {
+          "items": [
+            "torso_clothes_blouse",
+            "torso_clothes_child_shirt",
+            "torso_clothes_corset",
+            "torso_clothes_blouse_longsleeve",
+            "torso_clothes_robe",
+            "torso_clothes_tunic_sara",
+            "torso_clothes_tunic"
+          ],
+          "children": {
+            "sleeves": {
+              "items": [
+                "torso_clothes_longsleeves2",
+                "torso_clothes_longsleeves",
+                "torso_clothes_shortsleeves",
+                "torso_clothes_shortsleeves2"
+              ],
+              "children": {},
+              "priority": 10,
+              "required": [
+                "male",
+                "female",
+                "teen",
+                "pregnant"
+              ],
+              "animations": []
+            },
+            "longsleeve": {
+              "items": [
+                "torso_clothes_longsleeve2_cardigan",
+                "torso_clothes_longsleeve_formal",
+                "torso_clothes_longsleeves_cuffed",
+                "torso_clothes_longsleeve",
+                "torso_clothes_longsleeve2",
+                "torso_clothes_longsleeve2_buttoned",
+                "torso_clothes_longsleeve2_scoop",
+                "torso_clothes_longsleeve2_vneck",
+                "torso_clothes_longsleeve_laced",
+                "torso_clothes_longsleeve2_polo",
+                "torso_clothes_longsleeve_scoop",
+                "torso_clothes_longsleeve_formal_striped"
+              ],
+              "children": {},
+              "priority": 20,
+              "required": [
+                "male",
+                "female",
+                "teen",
+                "pregnant"
+              ],
+              "animations": []
+            },
+            "shortsleeve": {
+              "items": [
+                "torso_clothes_shortsleeve",
+                "torso_clothes_shortsleeve_cardigan",
+                "torso_clothes_shortsleeve_polo",
+                "torso_clothes_tshirt",
+                "torso_clothes_tshirt_buttoned",
+                "torso_clothes_tshirt_scoop",
+                "torso_clothes_tshirt_vneck"
+              ],
+              "children": {},
+              "priority": 30,
+              "required": [
+                "male",
+                "female",
+                "teen",
+                "pregnant"
+              ],
+              "animations": []
+            },
+            "sleeveless": {
+              "items": [
+                "torso_clothes_sleeveless1",
+                "torso_clothes_sleeveless",
+                "torso_clothes_sleeveless2",
+                "torso_clothes_sleeveless2_buttoned",
+                "torso_clothes_sleeveless2_cardigan",
+                "torso_clothes_sleeveless2_polo",
+                "torso_clothes_sleeveless2_scoop",
+                "torso_clothes_sleeveless2_vneck",
+                "torso_clothes_sleeveless_laced",
+                "torso_clothes_sleeveless_striped",
+                "torso_clothes_sleeveless_tanktop"
+              ],
+              "children": {},
+              "priority": 40,
+              "required": [
+                "male",
+                "female",
+                "teen",
+                "pregnant"
+              ],
+              "animations": []
+            }
+          },
+          "priority": 20,
+          "required": [],
+          "animations": []
+        },
         "aprons": {
           "items": [
             "torso_aprons_apron",
@@ -79638,6 +79653,48 @@ window.categoryTree = {
             "teen"
           ],
           "animations": []
+        },
+        "jacket": {
+          "items": [
+            "torso_jacket_collared",
+            "torso_jacket_frock",
+            "torso_jacket_iverness",
+            "torso_jacket_santa",
+            "torso_jacket_tabard",
+            "torso_jacket_trench"
+          ],
+          "children": {
+            "accessory": {
+              "items": [
+                "torso_jacket_frock_buttons",
+                "torso_jacket_frock_lace",
+                "torso_jacket_frock_lapel",
+                "torso_jacket_frock_collar",
+                "torso_jacket_pockets"
+              ],
+              "children": {},
+              "label": "Jacket Trim / Accessories",
+              "priority": 70,
+              "required": [],
+              "animations": []
+            }
+          },
+          "priority": 40,
+          "required": [
+            "male",
+            "female",
+            "teen"
+          ],
+          "animations": [
+            "spellcast",
+            "thrust",
+            "walk",
+            "slash",
+            "shoot",
+            "hurt",
+            "watering",
+            "idle"
+          ]
         },
         "vest": {
           "items": [
@@ -79764,243 +79821,208 @@ window.categoryTree = {
               "required": [],
               "animations": []
             }
-          }
-        },
-        "dresses": {
-          "items": [
-            "dress_bodice",
-            "dress_slit",
-            "dress_sash"
+          },
+          "priority": 110,
+          "required": [
+            "male",
+            "female",
+            "teen",
+            "muscular",
+            "pregnant"
           ],
-          "children": {
-            "kimono": {
-              "items": [
-                "dress_kimono",
-                "dress_kimono_trim",
-                "dress_kimono_split",
-                "dress_kimono_split_trim",
-                "dress_kimono_longsleeve",
-                "dress_kimono_longsleeve_trim",
-                "dress_kimono_oversize",
-                "dress_kimono_oversize_trim"
-              ],
-              "children": {},
-              "priority": 40,
-              "required": [],
-              "animations": []
-            }
-          }
-        },
-        "jacket": {
-          "items": [
-            "torso_jacket_collared",
-            "torso_jacket_frock",
-            "torso_jacket_iverness",
-            "torso_jacket_santa",
-            "torso_jacket_tabard",
-            "torso_jacket_trench"
-          ],
-          "children": {
-            "accessory": {
-              "items": [
-                "torso_jacket_frock_buttons",
-                "torso_jacket_frock_lace",
-                "torso_jacket_frock_lapel",
-                "torso_jacket_frock_collar",
-                "torso_jacket_pockets"
-              ],
-              "children": {},
-              "label": "Jacket Trim / Accessories",
-              "priority": 70,
-              "required": [],
-              "animations": []
-            }
-          }
-        },
-        "shirts": {
-          "items": [
-            "torso_clothes_blouse",
-            "torso_clothes_child_shirt",
-            "torso_clothes_corset",
-            "torso_clothes_blouse_longsleeve",
-            "torso_clothes_robe",
-            "torso_clothes_tunic_sara",
-            "torso_clothes_tunic"
-          ],
-          "children": {
-            "sleeves": {
-              "items": [
-                "torso_clothes_longsleeves2",
-                "torso_clothes_longsleeves",
-                "torso_clothes_shortsleeves",
-                "torso_clothes_shortsleeves2"
-              ],
-              "children": {},
-              "priority": 10,
-              "required": [
-                "male",
-                "female",
-                "teen",
-                "pregnant"
-              ],
-              "animations": []
-            },
-            "longsleeve": {
-              "items": [
-                "torso_clothes_longsleeve2_cardigan",
-                "torso_clothes_longsleeve_formal",
-                "torso_clothes_longsleeves_cuffed",
-                "torso_clothes_longsleeve",
-                "torso_clothes_longsleeve2",
-                "torso_clothes_longsleeve2_buttoned",
-                "torso_clothes_longsleeve2_scoop",
-                "torso_clothes_longsleeve2_vneck",
-                "torso_clothes_longsleeve_laced",
-                "torso_clothes_longsleeve2_polo",
-                "torso_clothes_longsleeve_scoop",
-                "torso_clothes_longsleeve_formal_striped"
-              ],
-              "children": {},
-              "priority": 20,
-              "required": [
-                "male",
-                "female",
-                "teen",
-                "pregnant"
-              ],
-              "animations": []
-            },
-            "shortsleeve": {
-              "items": [
-                "torso_clothes_shortsleeve",
-                "torso_clothes_shortsleeve_cardigan",
-                "torso_clothes_shortsleeve_polo",
-                "torso_clothes_tshirt",
-                "torso_clothes_tshirt_buttoned",
-                "torso_clothes_tshirt_scoop",
-                "torso_clothes_tshirt_vneck"
-              ],
-              "children": {},
-              "priority": 30,
-              "required": [
-                "male",
-                "female",
-                "teen",
-                "pregnant"
-              ],
-              "animations": []
-            },
-            "sleeveless": {
-              "items": [
-                "torso_clothes_sleeveless1",
-                "torso_clothes_sleeveless",
-                "torso_clothes_sleeveless2",
-                "torso_clothes_sleeveless2_buttoned",
-                "torso_clothes_sleeveless2_cardigan",
-                "torso_clothes_sleeveless2_polo",
-                "torso_clothes_sleeveless2_scoop",
-                "torso_clothes_sleeveless2_vneck",
-                "torso_clothes_sleeveless_laced",
-                "torso_clothes_sleeveless_striped",
-                "torso_clothes_sleeveless_tanktop"
-              ],
-              "children": {},
-              "priority": 40,
-              "required": [
-                "male",
-                "female",
-                "teen",
-                "pregnant"
-              ],
-              "animations": []
-            }
-          }
+          "animations": [
+            "spellcast",
+            "thrust",
+            "walk",
+            "slash",
+            "shoot",
+            "hurt",
+            "watering",
+            "idle"
+          ]
         }
-      }
+      },
+      "priority": 60,
+      "required": [],
+      "animations": []
     },
-    "weapons": {
-      "items": [],
+    "legs": {
+      "items": [
+        "legs_armour"
+      ],
       "children": {
-        "sword": {
+        "pants": {
           "items": [
-            "weapon_sword_arming",
-            "weapon_sword_dagger",
-            "weapon_sword_glowsword",
-            "weapon_sword_katana",
-            "weapon_sword_longsword",
-            "weapon_sword_longsword_alt",
-            "weapon_sword_rapier",
-            "weapon_sword_saber",
-            "weapon_sword_scimitar"
+            "legs_childpants",
+            "legs_cuffed",
+            "legs_formal",
+            "legs_fur",
+            "legs_pants2",
+            "legs_pantaloons",
+            "legs_pants",
+            "legs_pregnantpants",
+            "legs_formal_striped",
+            "legs_widepants"
           ],
           "children": {},
-          "priority": 30,
+          "priority": 10,
           "required": [],
           "animations": []
         },
-        "blunt": {
+        "leggings": {
           "items": [
-            "weapon_blunt_club",
-            "weapon_blunt_flail",
-            "weapon_blunt_mace",
-            "weapon_blunt_waraxe"
+            "legs_hose",
+            "legs_leggings",
+            "legs_leggings2"
+          ],
+          "children": {},
+          "priority": 20,
+          "required": [
+            "male",
+            "female",
+            "teen"
+          ],
+          "animations": []
+        },
+        "shorts": {
+          "items": [
+            "legs_shorts_short",
+            "legs_shorts"
+          ],
+          "children": {},
+          "priority": 30,
+          "required": [
+            "male",
+            "female",
+            "teen"
+          ],
+          "animations": []
+        },
+        "skirts": {
+          "items": [
+            "legs_skirt_belle",
+            "legs_childskirts",
+            "legs_skirts_legion",
+            "legs_skirt_overskirt",
+            "legs_skirts_plain",
+            "legs_skirts_slit",
+            "legs_skirt_straight"
           ],
           "children": {},
           "priority": 40,
           "required": [],
           "animations": []
-        },
-        "polearm": {
+        }
+      },
+      "priority": 70,
+      "required": [],
+      "animations": []
+    },
+    "feet": {
+      "items": [
+        "feet_armour",
+        "feet_slippers",
+        "feet_sandals",
+        "feet_hoofs"
+      ],
+      "children": {
+        "shoes": {
           "items": [
-            "weapon_polearm_cane",
-            "weapon_polearm_dragonspear",
-            "weapon_polearm_halberd",
-            "weapon_polearm_longspear",
-            "weapon_polearm_scythe",
-            "weapon_polearm_spear",
-            "weapon_polearm_trident"
+            "feet_shoes_basic",
+            "feet_shoes_revised",
+            "feet_shoes_sara",
+            "feet_shoes_ghillies"
           ],
           "children": {},
-          "priority": 50,
-          "required": [],
+          "priority": 10,
+          "required": [
+            "male",
+            "female",
+            "teen",
+            "muscular",
+            "pregnant"
+          ],
           "animations": []
         },
-        "magic": {
+        "boots": {
           "items": [
-            "weapon_magic_crystal",
-            "weapon_magic_diamond",
-            "weapon_magic_gnarled",
-            "weapon_magic_loop",
-            "weapon_magic_s",
-            "weapon_magic_simple",
-            "weapon_magic_wand"
+            "feet_boots_basic",
+            "feet_boots_revised",
+            "feet_boots_fold",
+            "feet_boots_rim"
           ],
           "children": {},
-          "priority": 60,
-          "required": [],
+          "priority": 20,
+          "required": [
+            "male",
+            "female",
+            "teen",
+            "muscular",
+            "pregnant"
+          ],
           "animations": []
         },
-        "ranged": {
+        "accessory": {
           "items": [
-            "weapon_ranged_boomerang",
-            "weapon_ranged_crossbow",
-            "weapon_ranged_slingshot"
+            "feet_plate_toe",
+            "feet_plate_toe_thick"
           ],
-          "children": {
-            "bow": {
-              "items": [
-                "weapon_ranged_bow_arrow",
-                "weapon_ranged_bow_great",
-                "weapon_ranged_bow_normal",
-                "weapon_ranged_bow_recurve"
-              ],
-              "children": {},
-              "priority": 10,
-              "required": [],
-              "animations": []
-            }
-          }
+          "children": {},
+          "label": "Shoe / Boots Accessory",
+          "priority": 30,
+          "required": [
+            "male",
+            "female",
+            "teen",
+            "muscular",
+            "pregnant"
+          ],
+          "animations": []
         },
+        "socks": {
+          "items": [
+            "feet_socks_ankle",
+            "feet_socks_high",
+            "feet_socks_tabi"
+          ],
+          "children": {},
+          "priority": 40,
+          "required": [
+            "male",
+            "female",
+            "teen",
+            "muscular",
+            "pregnant"
+          ],
+          "animations": []
+        }
+      },
+      "label": "Feet",
+      "priority": 80,
+      "required": [],
+      "animations": []
+    },
+    "tools": {
+      "items": [
+        "tool_rod",
+        "tool_smash",
+        "tool_thrust",
+        "tool_whip"
+      ],
+      "children": {},
+      "priority": 90,
+      "required": [
+        "male",
+        "female",
+        "teen",
+        "muscular",
+        "pregnant"
+      ],
+      "animations": []
+    },
+    "weapons": {
+      "items": [],
+      "children": {
         "shields": {
           "items": [
             "shield",
@@ -80115,9 +80137,105 @@ window.categoryTree = {
               "required": [],
               "animations": []
             }
-          }
+          },
+          "priority": 10,
+          "required": [],
+          "animations": []
+        },
+        "ranged": {
+          "items": [
+            "weapon_ranged_boomerang",
+            "weapon_ranged_crossbow",
+            "weapon_ranged_slingshot"
+          ],
+          "children": {
+            "bow": {
+              "items": [
+                "weapon_ranged_bow_arrow",
+                "weapon_ranged_bow_great",
+                "weapon_ranged_bow_normal",
+                "weapon_ranged_bow_recurve"
+              ],
+              "children": {},
+              "priority": 10,
+              "required": [],
+              "animations": []
+            }
+          },
+          "priority": 20,
+          "required": [],
+          "animations": []
+        },
+        "sword": {
+          "items": [
+            "weapon_sword_arming",
+            "weapon_sword_dagger",
+            "weapon_sword_glowsword",
+            "weapon_sword_katana",
+            "weapon_sword_longsword",
+            "weapon_sword_longsword_alt",
+            "weapon_sword_rapier",
+            "weapon_sword_saber",
+            "weapon_sword_scimitar"
+          ],
+          "children": {},
+          "priority": 30,
+          "required": [],
+          "animations": []
+        },
+        "blunt": {
+          "items": [
+            "weapon_blunt_club",
+            "weapon_blunt_flail",
+            "weapon_blunt_mace",
+            "weapon_blunt_waraxe"
+          ],
+          "children": {},
+          "priority": 40,
+          "required": [],
+          "animations": []
+        },
+        "polearm": {
+          "items": [
+            "weapon_polearm_cane",
+            "weapon_polearm_dragonspear",
+            "weapon_polearm_halberd",
+            "weapon_polearm_longspear",
+            "weapon_polearm_scythe",
+            "weapon_polearm_spear",
+            "weapon_polearm_trident"
+          ],
+          "children": {},
+          "priority": 50,
+          "required": [],
+          "animations": []
+        },
+        "magic": {
+          "items": [
+            "weapon_magic_crystal",
+            "weapon_magic_diamond",
+            "weapon_magic_gnarled",
+            "weapon_magic_loop",
+            "weapon_magic_s",
+            "weapon_magic_simple",
+            "weapon_magic_wand"
+          ],
+          "children": {},
+          "priority": 60,
+          "required": [],
+          "animations": []
         }
-      }
+      },
+      "label": "Weapons",
+      "priority": 100,
+      "required": [
+        "male",
+        "female",
+        "teen",
+        "muscular",
+        "pregnant"
+      ],
+      "animations": []
     }
   }
 };

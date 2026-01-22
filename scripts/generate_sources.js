@@ -306,6 +306,11 @@ const files = fs.readdirSync("./sheet_definitions", {
 }).sort((a, b) => {
   const pa = path.join(a.path, a.name);
   const pb = path.join(b.path, b.name);
+
+  const depthA = pa.split(path.sep).length;
+  const depthB = pb.split(path.sep).length;
+  if (depthA !== depthB) return depthA - depthB;
+
   return pa.localeCompare(pb);
 });
 let csvGenerated = "filename,notes,authors,licenses,urls" + os.EOL;

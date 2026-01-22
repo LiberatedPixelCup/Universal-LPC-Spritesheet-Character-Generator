@@ -1,7 +1,1 @@
 json,layer,zPos,images
-wound_arm.json,layer_1,15,body/wound/ body/wound/ body/wound/ body/wound/
-wound_brain.json,layer_1,115,body/wound/ body/wound/ body/wound/ body/wound/
-wound_eye_left.json,layer_1,115,body/wound/ body/wound/ body/wound/ body/wound/
-wound_eye_right.json,layer_1,115,body/wound/ body/wound/ body/wound/ body/wound/
-wound_mouth.json,layer_1,115,body/wound/ body/wound/ body/wound/ body/wound/
-wound_ribs.json,layer_1,15,body/wound/ body/wound/ body/wound/ body/wound/
