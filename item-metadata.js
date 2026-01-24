@@ -24904,5270 +24904,6 @@ window.itemMetadata = {
       ]
     }
   },
-  "heads_alien": {
-    "name": "Alien",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "alien"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_alien"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "lavender",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/alien/adult/",
-        "muscular": "head/heads/alien/adult/",
-        "female": "head/heads/alien/adult/",
-        "pregnant": "head/heads/alien/adult/",
-        "teen": "head/heads/alien/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/alien",
-        "notes": "based on lizard originally by Nila122, modified by BenCreating, further edited by bluecarrot16. Nila122 gave blanket permission to MedicineStorm to use Nila122's LPC assets under OGA-BY 3.0 (where original or derived only from other works under OGA-BY).",
-        "authors": [
-          "bluecarrot16",
-          "Benjamin K. Smith (BenCreating)",
-          "Nila122"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/drakes-and-lizardfolk",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_boarman_child": {
-    "name": "Boarman child",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "child"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "animal",
-      "boarman",
-      "child"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_boarman_child"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "child": "head/heads/boarman/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/boarman/child",
-        "notes": "pig by daneeklu adapted to boarman by BenCreating, adapted to child version by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Benjamin K. Smith (BenCreating)",
-          "Daniel Eddeland (daneeklu)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-style-farm-animals",
-          "https://opengameart.org/content/lpc-wild-boar",
-          "https://opengameart.org/content/lpc-boarman",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "child": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_boarman": {
-    "name": "Boarman",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "animal",
-      "boarman",
-      "adult"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_boarman"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/boarman/adult/",
-        "muscular": "head/heads/boarman/adult/",
-        "female": "head/heads/boarman/adult/",
-        "pregnant": "head/heads/boarman/adult/",
-        "teen": "head/heads/boarman/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/boarman",
-        "notes": "pig by daneeklu adapted to boarman by BenCreating, placed to v3 bases by bluecarrot16",
-        "authors": [
-          "Benjamin K. Smith (BenCreating)",
-          "Daniel Eddeland (daneeklu)"
-        ],
-        "licenses": [
-          "CC-BY 3.0",
-          "GPL 2.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-style-farm-animals",
-          "https://opengameart.org/content/lpc-wild-boar",
-          "https://opengameart.org/content/lpc-boarman"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "CC-BY 3.0",
-        "GPL 2.0"
-      ],
-      "female": [
-        "CC-BY 3.0",
-        "GPL 2.0"
-      ],
-      "teen": [
-        "CC-BY 3.0",
-        "GPL 2.0"
-      ],
-      "muscular": [
-        "CC-BY 3.0",
-        "GPL 2.0"
-      ],
-      "pregnant": [
-        "CC-BY 3.0",
-        "GPL 2.0"
-      ]
-    }
-  },
-  "heads_frankenstein": {
-    "name": "Frankenstein",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "monster",
-      "frankenstein"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_frankenstein"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/frankenstein/adult/",
-        "muscular": "head/heads/frankenstein/adult/",
-        "female": "head/heads/frankenstein/adult/",
-        "pregnant": "head/heads/frankenstein/adult/",
-        "teen": "head/heads/frankenstein/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/frankenstein",
-        "notes": "original head by Redshrike, frankenstein's monster version by bluecarrot16",
-        "authors": [
-          "Stephen Challener (Redshrike)",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_goblin_child": {
-    "name": "Goblin child",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "child"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "goblin",
-      "child"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_goblin_child"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "child": "head/heads/goblin/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/goblin/child",
-        "notes": "original goblin by Redshrike, commisioned by William.Thomsponj; modular head extracted and slightly modified by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Stephen Challener (Redshrike)",
-          "William.Thomsponj"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY 4.0",
-          "GPL 2.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-goblin",
-          "https://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY 4.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_goblin": {
-    "name": "Goblin",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "goblin",
-      "adult"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_goblin"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/goblin/adult/",
-        "muscular": "head/heads/goblin/adult/",
-        "female": "head/heads/goblin/adult/",
-        "pregnant": "head/heads/goblin/adult/",
-        "teen": "head/heads/goblin/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/goblin",
-        "notes": "original goblin by Redshrike, commisioned by William.Thomsponj; modular head extracted and enlarged by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Stephen Challener (Redshrike)",
-          "William.Thomsponj"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY 4.0",
-          "GPL 2.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-goblin",
-          "https://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY 4.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY 4.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY 4.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY 4.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY 4.0",
-        "GPL 2.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_human_child": {
-    "name": "Human child",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "child"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "human",
-      "child"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_human_child"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "child": "head/heads/human/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/human/child",
-        "notes": "",
-        "authors": [
-          "Stephen Challener (Redshrike)",
-          "kheftel",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/",
-          "https://opengameart.org/content/lpc-child-standing-template",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_human_elderly_small": {
-    "name": "Human elderly small",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "human",
-      "elderly",
-      "small"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_human_elderly_small"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/human/elderly_small/",
-        "muscular": "head/heads/human/elderly_small/",
-        "female": "head/heads/human/elderly_small/",
-        "pregnant": "head/heads/human/elderly_small/",
-        "teen": "head/heads/human/elderly_small/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/human/elderly_small",
-        "notes": "original head by Redshrike, elderly & reduced size head by ElizaWy",
-        "authors": [
-          "ElizaWy",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY"
-        ],
-        "urls": []
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ]
-    }
-  },
-  "heads_human_female_elderly": {
-    "name": "Human female elderly",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "human",
-      "elderly"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_human_female_elderly"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/human/female_elderly/",
-        "muscular": "head/heads/human/female_elderly/",
-        "female": "head/heads/human/female_elderly/",
-        "pregnant": "head/heads/human/female_elderly/",
-        "teen": "head/heads/human/female_elderly/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/human/female_elderly",
-        "notes": "",
-        "authors": [
-          "Benjamin K. Smith (BenCreating)",
-          "Eliza Wyatt (ElizaWy)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-revised-elders",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ]
-    }
-  },
-  "heads_human_female_small": {
-    "name": "Human female small",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "human",
-      "adult",
-      "small"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_human_female_small"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/human/female_small/",
-        "muscular": "head/heads/human/female_small/",
-        "female": "head/heads/human/female_small/",
-        "pregnant": "head/heads/human/female_small/",
-        "teen": "head/heads/human/female_small/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/human/female_small",
-        "notes": "original head by Redshrike, reduced size head by ElizaWy",
-        "authors": [
-          "ElizaWy",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY"
-        ],
-        "urls": []
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ]
-    }
-  },
-  "heads_human_female": {
-    "name": "Human female",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "human",
-      "adult",
-      "small"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_human_female"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/human/female/",
-        "muscular": "head/heads/human/female/",
-        "female": "head/heads/human/female/",
-        "pregnant": "head/heads/human/female/",
-        "teen": "head/heads/human/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/human/female",
-        "notes": "original head by Redshrike, tweaks by BenCreating, modular version by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Benjamin K. Smith (BenCreating)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_human_male_elderly": {
-    "name": "Human male elderly",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "human",
-      "elderly"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_human_male_elderly"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/human/male_elderly/",
-        "muscular": "head/heads/human/male_elderly/",
-        "female": "head/heads/human/male_elderly/",
-        "pregnant": "head/heads/human/male_elderly/",
-        "teen": "head/heads/human/male_elderly/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/human/male_elderly",
-        "notes": "",
-        "authors": [
-          "Benjamin K. Smith (BenCreating)",
-          "Eliza Wyatt (ElizaWy)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-revised-elders",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ]
-    }
-  },
-  "heads_human_male_gaunt": {
-    "name": "Human male gaunt",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "human",
-      "adult"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_human_male_gaunt"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/human/male_gaunt/",
-        "muscular": "head/heads/human/male_gaunt/",
-        "female": "head/heads/human/male_gaunt/",
-        "pregnant": "head/heads/human/male_gaunt/",
-        "teen": "head/heads/human/male_gaunt/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/human/male_gaunt",
-        "notes": "original head by Redshrike, gaunt version by bluecarrot16",
-        "authors": [
-          "Stephen Challener (Redshrike)",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_human_male_plump": {
-    "name": "Human male plump",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "human",
-      "adult"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_human_male_plump"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/human/male_plump/",
-        "muscular": "head/heads/human/male_plump/",
-        "female": "head/heads/human/male_plump/",
-        "pregnant": "head/heads/human/male_plump/",
-        "teen": "head/heads/human/male_plump/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/human/male_plump",
-        "notes": "original head by Redshrike, plump version by ??",
-        "authors": [
-          "Stephen Challener (Redshrike)",
-          "??"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_human_male_small": {
-    "name": "Human male small",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "human",
-      "adult",
-      "small"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_human_male_small"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/human/male_small/",
-        "muscular": "head/heads/human/male_small/",
-        "female": "head/heads/human/male_small/",
-        "pregnant": "head/heads/human/male_small/",
-        "teen": "head/heads/human/male_small/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/human/male_small",
-        "notes": "original head by Redshrike, reduced size head by ElizaWy",
-        "authors": [
-          "ElizaWy",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY"
-        ],
-        "urls": []
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY"
-      ]
-    }
-  },
-  "heads_human_male": {
-    "name": "Human male",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "human",
-      "adult"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_human_male"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/human/male/",
-        "muscular": "head/heads/human/male/",
-        "female": "head/heads/human/male/",
-        "pregnant": "head/heads/human/male/",
-        "teen": "head/heads/human/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/human/male",
-        "notes": "original head by Redshrike, tweaks by BenCreating, modular version by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Benjamin K. Smith (BenCreating)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_jack": {
-    "name": "Jack O Lantern",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "monster"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_jack"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "jack"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/jack/adult/",
-        "muscular": "head/heads/jack/adult/",
-        "female": "head/heads/jack/adult/",
-        "pregnant": "head/heads/jack/adult/",
-        "teen": "head/heads/jack/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/jack",
-        "notes": "original pumpkin by Joshua Taylor, modified to head by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Joshua Taylor"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/fruit-and-veggie-inventory",
-          "https://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_lizard_child": {
-    "name": "Lizard child",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "child"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "lizard",
-      "child"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_lizard_child"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "child": "head/heads/lizard/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/lizard/child",
-        "notes": "original lizard/drake by Nila122, reworked by BenCreating, modular head and further revisions by bluecarrot16, child version by bluecarrot16. Nila122 gave blanket permission to MedicineStorm to use Nila122's LPC assets under OGA-BY 3.0 (where original or derived only from other works under OGA-BY).",
-        "authors": [
-          "bluecarrot16",
-          "Benjamin K. Smith (BenCreating)",
-          "Nila122"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/drakes-and-lizardfolk",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_lizard_female": {
-    "name": "Lizard female",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "lizard",
-      "adult"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_lizard_female"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/lizard/female/",
-        "muscular": "head/heads/lizard/female/",
-        "female": "head/heads/lizard/female/",
-        "pregnant": "head/heads/lizard/female/",
-        "teen": "head/heads/lizard/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/lizard/female",
-        "notes": "original lizard/drake by Nila122, reworked by BenCreating, modular head and further revisions by bluecarrot16. Nila122 gave blanket permission to MedicineStorm to use Nila122's LPC assets under OGA-BY 3.0 (where original or derived only from other works under OGA-BY).",
-        "authors": [
-          "bluecarrot16",
-          "Benjamin K. Smith (BenCreating)",
-          "Nila122"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/drakes-and-lizardfolk",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_lizard_male": {
-    "name": "Lizard male",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "lizard",
-      "adult"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_lizard_male"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/lizard/male/",
-        "muscular": "head/heads/lizard/male/",
-        "female": "head/heads/lizard/male/",
-        "pregnant": "head/heads/lizard/male/",
-        "teen": "head/heads/lizard/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/lizard/male",
-        "notes": "original lizard/drake by Nila122, reworked by BenCreating, modular head and further revisions by bluecarrot16. Nila122 gave blanket permission to MedicineStorm to use Nila122's LPC assets under OGA-BY 3.0 (where original or derived only from other works under OGA-BY).",
-        "authors": [
-          "bluecarrot16",
-          "Benjamin K. Smith (BenCreating)",
-          "Nila122"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/drakes-and-lizardfolk",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_minotaur_child": {
-    "name": "Minotaur child",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "child"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "minotaur",
-      "child"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_minotaur_child"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "child": "head/heads/minotaur/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/minotaur/child",
-        "notes": "original cow by daneeklu, combined with horns by Nila122 and adapted to minotaur by Evert; child version by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Evert",
-          "Nila122",
-          "Daniel Eddeland (daneeklu)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-style-farm-animals",
-          "https://opengameart.org/content/lpc-lizard-headgear",
-          "https://opengameart.org/content/lpc-faun-and-minotaur",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "child": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_minotaur_female": {
-    "name": "Minotaur female",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "minotaur",
-      "adult"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_minotaur_female"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/minotaur/female/",
-        "muscular": "head/heads/minotaur/female/",
-        "female": "head/heads/minotaur/female/",
-        "pregnant": "head/heads/minotaur/female/",
-        "teen": "head/heads/minotaur/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/minotaur/female",
-        "notes": "original cow by daneeklu, adapted to minotaur by Evert, female version modified by bluecarrot16 to remove horns",
-        "authors": [
-          "bluecarrot16",
-          "Evert",
-          "Daniel Eddeland (daneeklu)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-style-farm-animals",
-          "https://opengameart.org/content/lpc-faun-and-minotaur",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_minotaur": {
-    "name": "Minotaur",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "minotaur",
-      "adult"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_minotaur"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/minotaur/male/",
-        "muscular": "head/heads/minotaur/male/",
-        "female": "head/heads/minotaur/male/",
-        "pregnant": "head/heads/minotaur/male/",
-        "teen": "head/heads/minotaur/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/minotaur",
-        "notes": "original cow by daneeklu, combined with horns by Nila122 and adapted to minotaur by Evert",
-        "authors": [
-          "Evert",
-          "Nila122",
-          "Daniel Eddeland (daneeklu)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-style-farm-animals",
-          "https://opengameart.org/content/lpc-lizard-headgear",
-          "https://opengameart.org/content/lpc-faun-and-minotaur"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_mouse_child": {
-    "name": "Mouse child",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "child"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "animal",
-      "child"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_mouse_child"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "child": "head/heads/mouse/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/mouse/child",
-        "notes": "original rabbit by Redshrike, adapted to modular head by bluecarrot16, modified to mouse head by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY 3.0",
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/bunny-rabbit-lpc-style-for-pixelfarm",
-          "http://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "heads_mouse": {
-    "name": "Mouse",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "animal",
-      "adult"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_mouse"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/mouse/adult/",
-        "muscular": "head/heads/mouse/adult/",
-        "female": "head/heads/mouse/adult/",
-        "pregnant": "head/heads/mouse/adult/",
-        "teen": "head/heads/mouse/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/mouse",
-        "notes": "original rabbit by Redshrike, adapted to modular head by bluecarrot16, modified to mouse head by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY 3.0",
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/bunny-rabbit-lpc-style-for-pixelfarm",
-          "http://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "heads_orc_child": {
-    "name": "Orc child",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "child"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "orc",
-      "child"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_orc_child"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "child": "head/heads/orc/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/orc/child",
-        "notes": "child base by kheftel, orc version created by Nila122, head extracted by bluecarrot16",
-        "authors": [
-          "Nila122",
-          "kheftel",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-child-standing-template",
-          "https://opengameart.org/content/lpc-children-walk-animation"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_orc_female": {
-    "name": "Orc female",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "orc",
-      "adult"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_orc_female"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/orc/female/",
-        "muscular": "head/heads/orc/female/",
-        "female": "head/heads/orc/female/",
-        "pregnant": "head/heads/orc/female/",
-        "teen": "head/heads/orc/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/orc/female",
-        "notes": "human head adapted to orc by madmarcel, hurt/cast animations made by makrohn, headless version and tweaks by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Matthew Krohn (makrohn)",
-          "Marcel van de Steeg (MadMarcel)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-female-orcogregoblintroll-base-walkcycle",
-          "https://opengameart.org/content/lpc-ladies",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_orc_male": {
-    "name": "Orc male",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "orc",
-      "adult"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_orc_male"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/orc/male/",
-        "muscular": "head/heads/orc/male/",
-        "female": "head/heads/orc/male/",
-        "pregnant": "head/heads/orc/male/",
-        "teen": "head/heads/orc/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/orc/male",
-        "notes": "Sinbad the ogre design by Zi Ye, original 4-direction sprite by Redshrike, additional hurt/cast animations by makrohn, headless version by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Matthew Krohn (makrohn)",
-          "Stephen Challener (Redshrike)",
-          "Zi Ye"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/four-characters-my-lpc-entries",
-          "https://opengameart.org/content/sinbad-the-ogre",
-          "https://opengameart.org/content/lpc-male-sheets",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_pig_child": {
-    "name": "Pig child",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "child"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "animal",
-      "child"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_pig_child"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "child": "head/heads/pig/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/pig/child",
-        "notes": "original pig by daneeklu, adapted to modular head by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Daniel Eddeland (daneeklu)"
-        ],
-        "licenses": [
-          "CC-BY 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-style-farm-animals",
-          "http://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "child": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_pig": {
-    "name": "Pig",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "animal",
-      "adult"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_pig"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/pig/adult/",
-        "muscular": "head/heads/pig/adult/",
-        "female": "head/heads/pig/adult/",
-        "pregnant": "head/heads/pig/adult/",
-        "teen": "head/heads/pig/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/pig",
-        "notes": "original pig by daneeklu, adapted to modular head by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Daniel Eddeland (daneeklu)"
-        ],
-        "licenses": [
-          "CC-BY 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-style-farm-animals",
-          "http://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_rabbit_child": {
-    "name": "Rabbit child",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "child"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "animal",
-      "child"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_rabbit_child"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "child": "head/heads/rabbit/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/rabbit/child",
-        "notes": "original rabbit by Redshrike, adapted to modular head by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY 3.0",
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/bunny-rabbit-lpc-style-for-pixelfarm",
-          "http://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "heads_rabbit": {
-    "name": "Rabbit",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "animal",
-      "adult"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_rabbit"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/rabbit/adult/",
-        "muscular": "head/heads/rabbit/adult/",
-        "female": "head/heads/rabbit/adult/",
-        "pregnant": "head/heads/rabbit/adult/",
-        "teen": "head/heads/rabbit/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/rabbit",
-        "notes": "original rabbit by Redshrike, adapted to modular head by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY 3.0",
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/bunny-rabbit-lpc-style-for-pixelfarm",
-          "http://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "heads_rat_child": {
-    "name": "Rat child",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "child"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "animal",
-      "child"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_rat_child"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "child": "head/heads/rat/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/rat/child",
-        "notes": "original rabbit by Redshrike, adapted to modular head by bluecarrot16, modified to rat by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY 3.0",
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/bunny-rabbit-lpc-style-for-pixelfarm",
-          "http://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "heads_rat": {
-    "name": "Rat",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "animal",
-      "adult"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_rat"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/rat/adult/",
-        "muscular": "head/heads/rat/adult/",
-        "female": "head/heads/rat/adult/",
-        "pregnant": "head/heads/rat/adult/",
-        "teen": "head/heads/rat/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/rat",
-        "notes": "original rabbit by Redshrike, adapted to modular head by bluecarrot16, modified to rat by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY 3.0",
-          "CC-BY-SA 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/bunny-rabbit-lpc-style-for-pixelfarm",
-          "http://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0",
-        "CC-BY-SA 3.0"
-      ]
-    }
-  },
-  "heads_sheep_child": {
-    "name": "Sheep child",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "child"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "animal",
-      "child"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_sheep_child"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "child": "head/heads/sheep/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/sheep/child",
-        "notes": "original sheep by daneeklu, adapted to modular head by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Daniel Eddeland (daneeklu)"
-        ],
-        "licenses": [
-          "CC-BY 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-style-farm-animals",
-          "http://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "child": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_sheep": {
-    "name": "Sheep",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "animal",
-      "adult"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_sheep"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/sheep/adult/",
-        "muscular": "head/heads/sheep/adult/",
-        "female": "head/heads/sheep/adult/",
-        "pregnant": "head/heads/sheep/adult/",
-        "teen": "head/heads/sheep/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/sheep",
-        "notes": "original sheep by daneeklu, adapted to modular head by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Daniel Eddeland (daneeklu)"
-        ],
-        "licenses": [
-          "CC-BY 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-style-farm-animals",
-          "http://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_skeleton": {
-    "name": "Skeleton",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "monster",
-      "skeleton"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_skeleton"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "skeleton"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/skeleton/adult/",
-        "muscular": "head/heads/skeleton/adult/",
-        "female": "head/heads/skeleton/adult/",
-        "pregnant": "head/heads/skeleton/adult/",
-        "teen": "head/heads/skeleton/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/skeleton",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-skeleton",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_troll_child": {
-    "name": "Troll child",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "child"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "troll",
-      "child"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_troll_child"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "child": "head/heads/troll/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/troll/child",
-        "notes": "original \"Muscleman/Ogre/Minotaur\" by Reemax, modified to \"Troll\" by AntumDeluge, edited to LPC style and converted to modular head by bluecarrot16; child version by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "AntumDeluge",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/musclemanogreminotaur",
-          "https://opengameart.org/content/trolls-0",
-          "https://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "child": [
-        "CC-BY 3.0"
-      ]
-    }
-  },
-  "heads_troll": {
-    "name": "Troll",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "troll",
-      "adult"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_troll"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/troll/adult/",
-        "muscular": "head/heads/troll/adult/",
-        "female": "head/heads/troll/adult/",
-        "pregnant": "head/heads/troll/adult/",
-        "teen": "head/heads/troll/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/troll",
-        "notes": "original \"Muscleman/Ogre/Minotaur\" by Reemax, modified to \"Troll\" by AntumDeluge, edited to LPC style and converted to modular head by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "AntumDeluge",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/musclemanogreminotaur",
-          "https://opengameart.org/content/trolls-0",
-          "https://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "CC-BY 3.0"
-      ],
-      "female": [
-        "CC-BY 3.0"
-      ],
-      "teen": [
-        "CC-BY 3.0"
-      ],
-      "muscular": [
-        "CC-BY 3.0"
-      ],
-      "pregnant": [
-        "CC-BY 3.0"
-      ]
-    }
-  },
-  "heads_vampire": {
-    "name": "Vampire",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "monster",
-      "vampire"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_vampire"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/vampire/adult/",
-        "muscular": "head/heads/vampire/adult/",
-        "female": "head/heads/vampire/adult/",
-        "pregnant": "head/heads/vampire/adult/",
-        "teen": "head/heads/vampire/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/vampire",
-        "notes": "original head by Redshrike, gaunt version by bluecarrot16, vampire fangs by bluecarrot16",
-        "authors": [
-          "Stephen Challener (Redshrike)",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_wartotaur": {
-    "name": "Wartotaur",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "animal",
-      "wartotaur"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_wartotaur"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/wartotaur/adult/",
-        "muscular": "head/heads/wartotaur/adult/",
-        "female": "head/heads/wartotaur/adult/",
-        "pregnant": "head/heads/wartotaur/adult/",
-        "teen": "head/heads/wartotaur/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/wartotaur",
-        "notes": "original \"wart-o-taur\" concept and sprite by Redshrike, extended to 4 directions and head extracted by Evert, cleanup and hurt/cast animations by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Evert",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/tower-defense-prototyping-assets-4-monsters-some-tiles-a-background-image",
-          "https://opengameart.org/content/wartotaur-4-directions",
-          "https://opengameart.org/content/lpc-folk"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY 3.0"
-      ]
-    }
-  },
-  "heads_wolf_child": {
-    "name": "Wolf child",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "child"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "animal",
-      "child"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_wolf_child"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "child": "head/heads/wolf/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/wolf/child",
-        "notes": "original wolf animation by Redshrike, commissioned by William.Thompsonj; wolfman sprite by BenCreating, commissioned by castelonia; child version by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)",
-          "Benjamin K. Smith (BenCreating)",
-          "William.Thompsonj",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-wolf-animation",
-          "https://opengameart.org/content/lpc-wolfman",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "child": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_wolf_female": {
-    "name": "Wolf female",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "animal",
-      "adult"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_wolf_female"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/wolf/female/",
-        "muscular": "head/heads/wolf/female/",
-        "female": "head/heads/wolf/female/",
-        "pregnant": "head/heads/wolf/female/",
-        "teen": "head/heads/wolf/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/wolf/female",
-        "notes": "original wolf animation by Redshrike, commissioned by William.Thompsonj; wolfman sprite by BenCreating, commissioned by castelonia; tweaks and headless version by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)",
-          "Benjamin K. Smith (BenCreating)",
-          "William.Thompsonj",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-wolf-animation",
-          "https://opengameart.org/content/lpc-wolfman",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_wolf_male": {
-    "name": "Wolf male",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "animal",
-      "adult"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_wolf_male"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/wolf/male/",
-        "muscular": "head/heads/wolf/male/",
-        "female": "head/heads/wolf/male/",
-        "pregnant": "head/heads/wolf/male/",
-        "teen": "head/heads/wolf/male/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/wolf/male",
-        "notes": "original wolf animation by Redshrike, commissioned by William.Thompsonj; wolfman sprite by BenCreating, commissioned by castelonia; tweaks and headless version by bluecarrot16",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)",
-          "Benjamin K. Smith (BenCreating)",
-          "William.Thompsonj",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-wolf-animation",
-          "https://opengameart.org/content/lpc-wolfman",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "heads_zombie": {
-    "name": "Zombie",
-    "priority": null,
-    "type_name": "head",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [
-      "monster",
-      "zombie"
-    ],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "head",
-      "heads",
-      "heads_zombie"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "zombie",
-      "zombie_green",
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 100,
-        "male": "head/heads/zombie/adult/",
-        "muscular": "head/heads/zombie/adult/",
-        "female": "head/heads/zombie/adult/",
-        "pregnant": "head/heads/zombie/adult/",
-        "teen": "head/heads/zombie/adult/"
-      }
-    },
-    "credits": [
-      {
-        "file": "head/heads/zombie",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Benjamin K. Smith (BenCreating)",
-          "Sander Frenken (castelonia)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-zombie",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
   "neck_bowtie": {
     "name": "Bowtie",
     "priority": 20,
@@ -47744,6 +42480,5315 @@ window.itemMetadata = {
       "pregnant": [
         "OGA-BY 3.0+",
         "CC-BY 3.0+",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_boarman_child": {
+    "name": "Boarman child",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "child"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "animal",
+      "boarman",
+      "child"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "beast",
+      "heads_boarman_child"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "child": "head/heads/boarman/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/boarman/child",
+        "notes": "pig by daneeklu adapted to boarman by BenCreating, adapted to child version by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Benjamin K. Smith (BenCreating)",
+          "Daniel Eddeland (daneeklu)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-style-farm-animals",
+          "https://opengameart.org/content/lpc-wild-boar",
+          "https://opengameart.org/content/lpc-boarman",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "child": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_boarman": {
+    "name": "Boarman",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "animal",
+      "boarman",
+      "adult"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "beast",
+      "heads_boarman"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/boarman/adult/",
+        "muscular": "head/heads/boarman/adult/",
+        "female": "head/heads/boarman/adult/",
+        "pregnant": "head/heads/boarman/adult/",
+        "teen": "head/heads/boarman/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/boarman",
+        "notes": "pig by daneeklu adapted to boarman by BenCreating, placed to v3 bases by bluecarrot16",
+        "authors": [
+          "Benjamin K. Smith (BenCreating)",
+          "Daniel Eddeland (daneeklu)"
+        ],
+        "licenses": [
+          "CC-BY 3.0",
+          "GPL 2.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-style-farm-animals",
+          "https://opengameart.org/content/lpc-wild-boar",
+          "https://opengameart.org/content/lpc-boarman"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "CC-BY 3.0",
+        "GPL 2.0"
+      ],
+      "female": [
+        "CC-BY 3.0",
+        "GPL 2.0"
+      ],
+      "teen": [
+        "CC-BY 3.0",
+        "GPL 2.0"
+      ],
+      "muscular": [
+        "CC-BY 3.0",
+        "GPL 2.0"
+      ],
+      "pregnant": [
+        "CC-BY 3.0",
+        "GPL 2.0"
+      ]
+    }
+  },
+  "heads_minotaur_child": {
+    "name": "Minotaur child",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "child"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "minotaur",
+      "child"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "beast",
+      "heads_minotaur_child"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "child": "head/heads/minotaur/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/minotaur/child",
+        "notes": "original cow by daneeklu, combined with horns by Nila122 and adapted to minotaur by Evert; child version by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Evert",
+          "Nila122",
+          "Daniel Eddeland (daneeklu)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-style-farm-animals",
+          "https://opengameart.org/content/lpc-lizard-headgear",
+          "https://opengameart.org/content/lpc-faun-and-minotaur",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "child": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_minotaur_female": {
+    "name": "Minotaur female",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "minotaur",
+      "adult"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "beast",
+      "heads_minotaur_female"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/minotaur/female/",
+        "muscular": "head/heads/minotaur/female/",
+        "female": "head/heads/minotaur/female/",
+        "pregnant": "head/heads/minotaur/female/",
+        "teen": "head/heads/minotaur/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/minotaur/female",
+        "notes": "original cow by daneeklu, adapted to minotaur by Evert, female version modified by bluecarrot16 to remove horns",
+        "authors": [
+          "bluecarrot16",
+          "Evert",
+          "Daniel Eddeland (daneeklu)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-style-farm-animals",
+          "https://opengameart.org/content/lpc-faun-and-minotaur",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_minotaur": {
+    "name": "Minotaur",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "minotaur",
+      "adult"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "beast",
+      "heads_minotaur"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/minotaur/male/",
+        "muscular": "head/heads/minotaur/male/",
+        "female": "head/heads/minotaur/male/",
+        "pregnant": "head/heads/minotaur/male/",
+        "teen": "head/heads/minotaur/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/minotaur",
+        "notes": "original cow by daneeklu, combined with horns by Nila122 and adapted to minotaur by Evert",
+        "authors": [
+          "Evert",
+          "Nila122",
+          "Daniel Eddeland (daneeklu)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-style-farm-animals",
+          "https://opengameart.org/content/lpc-lizard-headgear",
+          "https://opengameart.org/content/lpc-faun-and-minotaur"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_wartotaur": {
+    "name": "Wartotaur",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "animal",
+      "wartotaur"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "beast",
+      "heads_wartotaur"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/wartotaur/adult/",
+        "muscular": "head/heads/wartotaur/adult/",
+        "female": "head/heads/wartotaur/adult/",
+        "pregnant": "head/heads/wartotaur/adult/",
+        "teen": "head/heads/wartotaur/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/wartotaur",
+        "notes": "original \"wart-o-taur\" concept and sprite by Redshrike, extended to 4 directions and head extracted by Evert, cleanup and hurt/cast animations by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Evert",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/tower-defense-prototyping-assets-4-monsters-some-tiles-a-background-image",
+          "https://opengameart.org/content/wartotaur-4-directions",
+          "https://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0"
+      ]
+    }
+  },
+  "heads_wolf_child": {
+    "name": "Wolf child",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "child"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "animal",
+      "child"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "beast",
+      "heads_wolf_child"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "child": "head/heads/wolf/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/wolf/child",
+        "notes": "original wolf animation by Redshrike, commissioned by William.Thompsonj; wolfman sprite by BenCreating, commissioned by castelonia; child version by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Sander Frenken (castelonia)",
+          "Benjamin K. Smith (BenCreating)",
+          "William.Thompsonj",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-wolf-animation",
+          "https://opengameart.org/content/lpc-wolfman",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "child": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_wolf_female": {
+    "name": "Wolf female",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "animal",
+      "adult"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "beast",
+      "heads_wolf_female"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/wolf/female/",
+        "muscular": "head/heads/wolf/female/",
+        "female": "head/heads/wolf/female/",
+        "pregnant": "head/heads/wolf/female/",
+        "teen": "head/heads/wolf/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/wolf/female",
+        "notes": "original wolf animation by Redshrike, commissioned by William.Thompsonj; wolfman sprite by BenCreating, commissioned by castelonia; tweaks and headless version by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Sander Frenken (castelonia)",
+          "Benjamin K. Smith (BenCreating)",
+          "William.Thompsonj",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-wolf-animation",
+          "https://opengameart.org/content/lpc-wolfman",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_wolf_male": {
+    "name": "Wolf male",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "animal",
+      "adult"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "beast",
+      "heads_wolf_male"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/wolf/male/",
+        "muscular": "head/heads/wolf/male/",
+        "female": "head/heads/wolf/male/",
+        "pregnant": "head/heads/wolf/male/",
+        "teen": "head/heads/wolf/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/wolf/male",
+        "notes": "original wolf animation by Redshrike, commissioned by William.Thompsonj; wolfman sprite by BenCreating, commissioned by castelonia; tweaks and headless version by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Sander Frenken (castelonia)",
+          "Benjamin K. Smith (BenCreating)",
+          "William.Thompsonj",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-wolf-animation",
+          "https://opengameart.org/content/lpc-wolfman",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_goblin_child": {
+    "name": "Goblin child",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "child"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "goblin",
+      "child"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "fantasy",
+      "heads_goblin_child"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "child": "head/heads/goblin/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/goblin/child",
+        "notes": "original goblin by Redshrike, commisioned by William.Thomsponj; modular head extracted and slightly modified by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Stephen Challener (Redshrike)",
+          "William.Thomsponj"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY 4.0",
+          "GPL 2.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-goblin",
+          "https://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "child": [
+        "OGA-BY 3.0",
+        "CC-BY 4.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_goblin": {
+    "name": "Goblin",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "goblin",
+      "adult"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "fantasy",
+      "heads_goblin"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/goblin/adult/",
+        "muscular": "head/heads/goblin/adult/",
+        "female": "head/heads/goblin/adult/",
+        "pregnant": "head/heads/goblin/adult/",
+        "teen": "head/heads/goblin/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/goblin",
+        "notes": "original goblin by Redshrike, commisioned by William.Thomsponj; modular head extracted and enlarged by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Stephen Challener (Redshrike)",
+          "William.Thomsponj"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY 4.0",
+          "GPL 2.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-goblin",
+          "https://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY 4.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY 4.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY 4.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY 4.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY 4.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_orc_child": {
+    "name": "Orc child",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "child"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "orc",
+      "child"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "fantasy",
+      "heads_orc_child"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "child": "head/heads/orc/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/orc/child",
+        "notes": "child base by kheftel, orc version created by Nila122, head extracted by bluecarrot16",
+        "authors": [
+          "Nila122",
+          "kheftel",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-child-standing-template",
+          "https://opengameart.org/content/lpc-children-walk-animation"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "child": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_orc_female": {
+    "name": "Orc female",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "orc",
+      "adult"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "fantasy",
+      "heads_orc_female"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/orc/female/",
+        "muscular": "head/heads/orc/female/",
+        "female": "head/heads/orc/female/",
+        "pregnant": "head/heads/orc/female/",
+        "teen": "head/heads/orc/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/orc/female",
+        "notes": "human head adapted to orc by madmarcel, hurt/cast animations made by makrohn, headless version and tweaks by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Matthew Krohn (makrohn)",
+          "Marcel van de Steeg (MadMarcel)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-female-orcogregoblintroll-base-walkcycle",
+          "https://opengameart.org/content/lpc-ladies",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_orc_male": {
+    "name": "Orc male",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "orc",
+      "adult"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "fantasy",
+      "heads_orc_male"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/orc/male/",
+        "muscular": "head/heads/orc/male/",
+        "female": "head/heads/orc/male/",
+        "pregnant": "head/heads/orc/male/",
+        "teen": "head/heads/orc/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/orc/male",
+        "notes": "Sinbad the ogre design by Zi Ye, original 4-direction sprite by Redshrike, additional hurt/cast animations by makrohn, headless version by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Matthew Krohn (makrohn)",
+          "Stephen Challener (Redshrike)",
+          "Zi Ye"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/four-characters-my-lpc-entries",
+          "https://opengameart.org/content/sinbad-the-ogre",
+          "https://opengameart.org/content/lpc-male-sheets",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_troll_child": {
+    "name": "Troll child",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "child"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "troll",
+      "child"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "fantasy",
+      "heads_troll_child"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "child": "head/heads/troll/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/troll/child",
+        "notes": "original \"Muscleman/Ogre/Minotaur\" by Reemax, modified to \"Troll\" by AntumDeluge, edited to LPC style and converted to modular head by bluecarrot16; child version by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "AntumDeluge",
+          "Tuomo Untinen (reemax)"
+        ],
+        "licenses": [
+          "CC-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/musclemanogreminotaur",
+          "https://opengameart.org/content/trolls-0",
+          "https://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "child": [
+        "CC-BY 3.0"
+      ]
+    }
+  },
+  "heads_troll": {
+    "name": "Troll",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "troll",
+      "adult"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "fantasy",
+      "heads_troll"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/troll/adult/",
+        "muscular": "head/heads/troll/adult/",
+        "female": "head/heads/troll/adult/",
+        "pregnant": "head/heads/troll/adult/",
+        "teen": "head/heads/troll/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/troll",
+        "notes": "original \"Muscleman/Ogre/Minotaur\" by Reemax, modified to \"Troll\" by AntumDeluge, edited to LPC style and converted to modular head by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "AntumDeluge",
+          "Tuomo Untinen (reemax)"
+        ],
+        "licenses": [
+          "CC-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/musclemanogreminotaur",
+          "https://opengameart.org/content/trolls-0",
+          "https://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "CC-BY 3.0"
+      ],
+      "female": [
+        "CC-BY 3.0"
+      ],
+      "teen": [
+        "CC-BY 3.0"
+      ],
+      "muscular": [
+        "CC-BY 3.0"
+      ],
+      "pregnant": [
+        "CC-BY 3.0"
+      ]
+    }
+  },
+  "heads_mouse_child": {
+    "name": "Mouse child",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "child"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "animal",
+      "child"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "farm",
+      "heads_mouse_child"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "child": "head/heads/mouse/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/mouse/child",
+        "notes": "original rabbit by Redshrike, adapted to modular head by bluecarrot16, modified to mouse head by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY 3.0",
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/bunny-rabbit-lpc-style-for-pixelfarm",
+          "http://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "child": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "heads_mouse": {
+    "name": "Mouse",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "animal",
+      "adult"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "farm",
+      "heads_mouse"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/mouse/adult/",
+        "muscular": "head/heads/mouse/adult/",
+        "female": "head/heads/mouse/adult/",
+        "pregnant": "head/heads/mouse/adult/",
+        "teen": "head/heads/mouse/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/mouse",
+        "notes": "original rabbit by Redshrike, adapted to modular head by bluecarrot16, modified to mouse head by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY 3.0",
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/bunny-rabbit-lpc-style-for-pixelfarm",
+          "http://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "heads_pig_child": {
+    "name": "Pig child",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "child"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "animal",
+      "child"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "farm",
+      "heads_pig_child"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "child": "head/heads/pig/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/pig/child",
+        "notes": "original pig by daneeklu, adapted to modular head by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Daniel Eddeland (daneeklu)"
+        ],
+        "licenses": [
+          "CC-BY 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-style-farm-animals",
+          "http://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "child": [
+        "CC-BY 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_pig": {
+    "name": "Pig",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "animal",
+      "adult"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "farm",
+      "heads_pig"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/pig/adult/",
+        "muscular": "head/heads/pig/adult/",
+        "female": "head/heads/pig/adult/",
+        "pregnant": "head/heads/pig/adult/",
+        "teen": "head/heads/pig/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/pig",
+        "notes": "original pig by daneeklu, adapted to modular head by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Daniel Eddeland (daneeklu)"
+        ],
+        "licenses": [
+          "CC-BY 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-style-farm-animals",
+          "http://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "CC-BY 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "CC-BY 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_rabbit_child": {
+    "name": "Rabbit child",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "child"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "animal",
+      "child"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "farm",
+      "heads_rabbit_child"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "child": "head/heads/rabbit/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/rabbit/child",
+        "notes": "original rabbit by Redshrike, adapted to modular head by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY 3.0",
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/bunny-rabbit-lpc-style-for-pixelfarm",
+          "http://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "child": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "heads_rabbit": {
+    "name": "Rabbit",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "animal",
+      "adult"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "farm",
+      "heads_rabbit"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/rabbit/adult/",
+        "muscular": "head/heads/rabbit/adult/",
+        "female": "head/heads/rabbit/adult/",
+        "pregnant": "head/heads/rabbit/adult/",
+        "teen": "head/heads/rabbit/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/rabbit",
+        "notes": "original rabbit by Redshrike, adapted to modular head by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY 3.0",
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/bunny-rabbit-lpc-style-for-pixelfarm",
+          "http://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "heads_rat_child": {
+    "name": "Rat child",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "child"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "animal",
+      "child"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "farm",
+      "heads_rat_child"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "child": "head/heads/rat/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/rat/child",
+        "notes": "original rabbit by Redshrike, adapted to modular head by bluecarrot16, modified to rat by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY 3.0",
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/bunny-rabbit-lpc-style-for-pixelfarm",
+          "http://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "child": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "heads_rat": {
+    "name": "Rat",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "animal",
+      "adult"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "farm",
+      "heads_rat"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/rat/adult/",
+        "muscular": "head/heads/rat/adult/",
+        "female": "head/heads/rat/adult/",
+        "pregnant": "head/heads/rat/adult/",
+        "teen": "head/heads/rat/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/rat",
+        "notes": "original rabbit by Redshrike, adapted to modular head by bluecarrot16, modified to rat by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY 3.0",
+          "CC-BY-SA 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/bunny-rabbit-lpc-style-for-pixelfarm",
+          "http://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "heads_sheep_child": {
+    "name": "Sheep child",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "child"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "animal",
+      "child"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "farm",
+      "heads_sheep_child"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "child": "head/heads/sheep/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/sheep/child",
+        "notes": "original sheep by daneeklu, adapted to modular head by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Daniel Eddeland (daneeklu)"
+        ],
+        "licenses": [
+          "CC-BY 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-style-farm-animals",
+          "http://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "child": [
+        "CC-BY 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_sheep": {
+    "name": "Sheep",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "animal",
+      "adult"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "farm",
+      "heads_sheep"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/sheep/adult/",
+        "muscular": "head/heads/sheep/adult/",
+        "female": "head/heads/sheep/adult/",
+        "pregnant": "head/heads/sheep/adult/",
+        "teen": "head/heads/sheep/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/sheep",
+        "notes": "original sheep by daneeklu, adapted to modular head by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Daniel Eddeland (daneeklu)"
+        ],
+        "licenses": [
+          "CC-BY 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-style-farm-animals",
+          "http://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "CC-BY 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "CC-BY 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_human_child": {
+    "name": "Human Child",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "child"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "human",
+      "child"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "human",
+      "heads_human_child"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "child": "head/heads/human/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/human/child",
+        "notes": "",
+        "authors": [
+          "Stephen Challener (Redshrike)",
+          "kheftel",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/",
+          "https://opengameart.org/content/lpc-child-standing-template",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "child": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_human_elderly_small": {
+    "name": "Human Elderly Small",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "human",
+      "elderly",
+      "small"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "human",
+      "heads_human_elderly_small"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/human/elderly_small/",
+        "muscular": "head/heads/human/elderly_small/",
+        "female": "head/heads/human/elderly_small/",
+        "pregnant": "head/heads/human/elderly_small/",
+        "teen": "head/heads/human/elderly_small/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/human/elderly_small",
+        "notes": "original head by Redshrike, elderly & reduced size head by ElizaWy",
+        "authors": [
+          "ElizaWy",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY"
+        ],
+        "urls": []
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY"
+      ]
+    }
+  },
+  "heads_human_female_elderly": {
+    "name": "Human Female Elderly",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "human",
+      "elderly"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "human",
+      "heads_human_female_elderly"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/human/female_elderly/",
+        "muscular": "head/heads/human/female_elderly/",
+        "female": "head/heads/human/female_elderly/",
+        "pregnant": "head/heads/human/female_elderly/",
+        "teen": "head/heads/human/female_elderly/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/human/female_elderly",
+        "notes": "",
+        "authors": [
+          "Benjamin K. Smith (BenCreating)",
+          "Eliza Wyatt (ElizaWy)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-revised-elders",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0"
+      ]
+    }
+  },
+  "heads_human_female_small": {
+    "name": "Human Female Small",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "human",
+      "adult",
+      "small"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "human",
+      "heads_human_female_small"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/human/female_small/",
+        "muscular": "head/heads/human/female_small/",
+        "female": "head/heads/human/female_small/",
+        "pregnant": "head/heads/human/female_small/",
+        "teen": "head/heads/human/female_small/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/human/female_small",
+        "notes": "original head by Redshrike, reduced size head by ElizaWy",
+        "authors": [
+          "ElizaWy",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY"
+        ],
+        "urls": []
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY"
+      ]
+    }
+  },
+  "heads_human_female": {
+    "name": "Human Female",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "human",
+      "adult",
+      "small"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "human",
+      "heads_human_female"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/human/female/",
+        "muscular": "head/heads/human/female/",
+        "female": "head/heads/human/female/",
+        "pregnant": "head/heads/human/female/",
+        "teen": "head/heads/human/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/human/female",
+        "notes": "original head by Redshrike, tweaks by BenCreating, modular version by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Benjamin K. Smith (BenCreating)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_human_male_elderly": {
+    "name": "Human Male Elderly",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "human",
+      "elderly"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "human",
+      "heads_human_male_elderly"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/human/male_elderly/",
+        "muscular": "head/heads/human/male_elderly/",
+        "female": "head/heads/human/male_elderly/",
+        "pregnant": "head/heads/human/male_elderly/",
+        "teen": "head/heads/human/male_elderly/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/human/male_elderly",
+        "notes": "",
+        "authors": [
+          "Benjamin K. Smith (BenCreating)",
+          "Eliza Wyatt (ElizaWy)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-revised-elders",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0"
+      ]
+    }
+  },
+  "heads_human_male_gaunt": {
+    "name": "Human Male Gaunt",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "human",
+      "adult"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "human",
+      "heads_human_male_gaunt"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/human/male_gaunt/",
+        "muscular": "head/heads/human/male_gaunt/",
+        "female": "head/heads/human/male_gaunt/",
+        "pregnant": "head/heads/human/male_gaunt/",
+        "teen": "head/heads/human/male_gaunt/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/human/male_gaunt",
+        "notes": "original head by Redshrike, gaunt version by bluecarrot16",
+        "authors": [
+          "Stephen Challener (Redshrike)",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_human_male_plump": {
+    "name": "Human Male Plump",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "human",
+      "adult"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "human",
+      "heads_human_male_plump"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/human/male_plump/",
+        "muscular": "head/heads/human/male_plump/",
+        "female": "head/heads/human/male_plump/",
+        "pregnant": "head/heads/human/male_plump/",
+        "teen": "head/heads/human/male_plump/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/human/male_plump",
+        "notes": "original head by Redshrike, plump version by ??",
+        "authors": [
+          "Stephen Challener (Redshrike)",
+          "??"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_human_male_small": {
+    "name": "Human Male Small",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "human",
+      "adult",
+      "small"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "human",
+      "heads_human_male_small"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/human/male_small/",
+        "muscular": "head/heads/human/male_small/",
+        "female": "head/heads/human/male_small/",
+        "pregnant": "head/heads/human/male_small/",
+        "teen": "head/heads/human/male_small/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/human/male_small",
+        "notes": "original head by Redshrike, reduced size head by ElizaWy",
+        "authors": [
+          "ElizaWy",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY"
+        ],
+        "urls": []
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY"
+      ]
+    }
+  },
+  "heads_human_male": {
+    "name": "Human Male",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "human",
+      "adult"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "human",
+      "heads_human_male"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/human/male/",
+        "muscular": "head/heads/human/male/",
+        "female": "head/heads/human/male/",
+        "pregnant": "head/heads/human/male/",
+        "teen": "head/heads/human/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/human/male",
+        "notes": "original head by Redshrike, tweaks by BenCreating, modular version by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Benjamin K. Smith (BenCreating)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_alien": {
+    "name": "Alien",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "alien"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "reptile",
+      "heads_alien"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "lavender",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/alien/adult/",
+        "muscular": "head/heads/alien/adult/",
+        "female": "head/heads/alien/adult/",
+        "pregnant": "head/heads/alien/adult/",
+        "teen": "head/heads/alien/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/alien",
+        "notes": "based on lizard originally by Nila122, modified by BenCreating, further edited by bluecarrot16. Nila122 gave blanket permission to MedicineStorm to use Nila122's LPC assets under OGA-BY 3.0 (where original or derived only from other works under OGA-BY).",
+        "authors": [
+          "bluecarrot16",
+          "Benjamin K. Smith (BenCreating)",
+          "Nila122"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/drakes-and-lizardfolk",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_lizard_child": {
+    "name": "Lizard child",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "child"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "lizard",
+      "child"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "reptile",
+      "heads_lizard_child"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "child": "head/heads/lizard/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/lizard/child",
+        "notes": "original lizard/drake by Nila122, reworked by BenCreating, modular head and further revisions by bluecarrot16, child version by bluecarrot16. Nila122 gave blanket permission to MedicineStorm to use Nila122's LPC assets under OGA-BY 3.0 (where original or derived only from other works under OGA-BY).",
+        "authors": [
+          "bluecarrot16",
+          "Benjamin K. Smith (BenCreating)",
+          "Nila122"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/drakes-and-lizardfolk",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "child": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_lizard_female": {
+    "name": "Lizard female",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "lizard",
+      "adult"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "reptile",
+      "heads_lizard_female"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/lizard/female/",
+        "muscular": "head/heads/lizard/female/",
+        "female": "head/heads/lizard/female/",
+        "pregnant": "head/heads/lizard/female/",
+        "teen": "head/heads/lizard/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/lizard/female",
+        "notes": "original lizard/drake by Nila122, reworked by BenCreating, modular head and further revisions by bluecarrot16. Nila122 gave blanket permission to MedicineStorm to use Nila122's LPC assets under OGA-BY 3.0 (where original or derived only from other works under OGA-BY).",
+        "authors": [
+          "bluecarrot16",
+          "Benjamin K. Smith (BenCreating)",
+          "Nila122"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/drakes-and-lizardfolk",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_lizard_male": {
+    "name": "Lizard male",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "lizard",
+      "adult"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "reptile",
+      "heads_lizard_male"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/lizard/male/",
+        "muscular": "head/heads/lizard/male/",
+        "female": "head/heads/lizard/male/",
+        "pregnant": "head/heads/lizard/male/",
+        "teen": "head/heads/lizard/male/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/lizard/male",
+        "notes": "original lizard/drake by Nila122, reworked by BenCreating, modular head and further revisions by bluecarrot16. Nila122 gave blanket permission to MedicineStorm to use Nila122's LPC assets under OGA-BY 3.0 (where original or derived only from other works under OGA-BY).",
+        "authors": [
+          "bluecarrot16",
+          "Benjamin K. Smith (BenCreating)",
+          "Nila122"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/drakes-and-lizardfolk",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_frankenstein": {
+    "name": "Frankenstein",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "monster",
+      "frankenstein"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "undead",
+      "heads_frankenstein"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/frankenstein/adult/",
+        "muscular": "head/heads/frankenstein/adult/",
+        "female": "head/heads/frankenstein/adult/",
+        "pregnant": "head/heads/frankenstein/adult/",
+        "teen": "head/heads/frankenstein/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/frankenstein",
+        "notes": "original head by Redshrike, frankenstein's monster version by bluecarrot16",
+        "authors": [
+          "Stephen Challener (Redshrike)",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_jack": {
+    "name": "Jack O Lantern",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "monster"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "undead",
+      "heads_jack"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "jack"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/jack/adult/",
+        "muscular": "head/heads/jack/adult/",
+        "female": "head/heads/jack/adult/",
+        "pregnant": "head/heads/jack/adult/",
+        "teen": "head/heads/jack/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/jack",
+        "notes": "original pumpkin by Joshua Taylor, modified to head by bluecarrot16",
+        "authors": [
+          "bluecarrot16",
+          "Joshua Taylor"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/fruit-and-veggie-inventory",
+          "https://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_skeleton": {
+    "name": "Skeleton",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "monster",
+      "skeleton"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "undead",
+      "heads_skeleton"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "skeleton"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/skeleton/adult/",
+        "muscular": "head/heads/skeleton/adult/",
+        "female": "head/heads/skeleton/adult/",
+        "pregnant": "head/heads/skeleton/adult/",
+        "teen": "head/heads/skeleton/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/skeleton",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-skeleton",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_vampire": {
+    "name": "Vampire",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "monster",
+      "vampire"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "undead",
+      "heads_vampire"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "zombie",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/vampire/adult/",
+        "muscular": "head/heads/vampire/adult/",
+        "female": "head/heads/vampire/adult/",
+        "pregnant": "head/heads/vampire/adult/",
+        "teen": "head/heads/vampire/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/vampire",
+        "notes": "original head by Redshrike, gaunt version by bluecarrot16, vampire fangs by bluecarrot16",
+        "authors": [
+          "Stephen Challener (Redshrike)",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-folk"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "heads_zombie": {
+    "name": "Zombie",
+    "priority": null,
+    "type_name": "head",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [
+      "monster",
+      "zombie"
+    ],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "head",
+      "heads",
+      "undead",
+      "heads_zombie"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "zombie",
+      "zombie_green",
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 100,
+        "male": "head/heads/zombie/adult/",
+        "muscular": "head/heads/zombie/adult/",
+        "female": "head/heads/zombie/adult/",
+        "pregnant": "head/heads/zombie/adult/",
+        "teen": "head/heads/zombie/adult/"
+      }
+    },
+    "credits": [
+      {
+        "file": "head/heads/zombie",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Benjamin K. Smith (BenCreating)",
+          "Sander Frenken (castelonia)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-zombie",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "CC-BY-SA 3.0",
         "GPL 3.0"
       ]
     }
@@ -78598,54 +78643,114 @@ window.categoryTree = {
       ],
       "children": {
         "heads": {
-          "items": [
-            "heads_alien",
-            "heads_boarman",
-            "heads_boarman_child",
-            "heads_frankenstein",
-            "heads_goblin",
-            "heads_goblin_child",
-            "heads_human_child",
-            "heads_human_elderly_small",
-            "heads_human_female",
-            "heads_human_female_elderly",
-            "heads_human_female_small",
-            "heads_human_male",
-            "heads_human_male_elderly",
-            "heads_human_male_gaunt",
-            "heads_human_male_plump",
-            "heads_human_male_small",
-            "heads_jack",
-            "heads_lizard_child",
-            "heads_lizard_female",
-            "heads_lizard_male",
-            "heads_minotaur",
-            "heads_minotaur_child",
-            "heads_minotaur_female",
-            "heads_mouse",
-            "heads_mouse_child",
-            "heads_orc_child",
-            "heads_orc_female",
-            "heads_orc_male",
-            "heads_pig",
-            "heads_pig_child",
-            "heads_rabbit",
-            "heads_rabbit_child",
-            "heads_rat",
-            "heads_rat_child",
-            "heads_sheep",
-            "heads_sheep_child",
-            "heads_skeleton",
-            "heads_troll",
-            "heads_troll_child",
-            "heads_vampire",
-            "heads_wartotaur",
-            "heads_wolf_child",
-            "heads_wolf_female",
-            "heads_wolf_male",
-            "heads_zombie"
-          ],
-          "children": {},
+          "items": [],
+          "children": {
+            "human": {
+              "items": [
+                "heads_human_child",
+                "heads_human_elderly_small",
+                "heads_human_female",
+                "heads_human_female_elderly",
+                "heads_human_female_small",
+                "heads_human_male",
+                "heads_human_male_elderly",
+                "heads_human_male_gaunt",
+                "heads_human_male_plump",
+                "heads_human_male_small"
+              ],
+              "children": {},
+              "label": "Human Heads",
+              "priority": 10,
+              "required": [],
+              "animations": []
+            },
+            "undead": {
+              "items": [
+                "heads_frankenstein",
+                "heads_jack",
+                "heads_skeleton",
+                "heads_vampire",
+                "heads_zombie"
+              ],
+              "children": {},
+              "label": "Undead Heads",
+              "priority": 20,
+              "required": [
+                "male",
+                "female",
+                "teen",
+                "pregnant",
+                "muscular"
+              ],
+              "animations": []
+            },
+            "fantasy": {
+              "items": [
+                "heads_goblin",
+                "heads_goblin_child",
+                "heads_orc_child",
+                "heads_orc_female",
+                "heads_orc_male",
+                "heads_troll",
+                "heads_troll_child"
+              ],
+              "children": {},
+              "label": "Fantasy Heads",
+              "priority": 30,
+              "required": [],
+              "animations": []
+            },
+            "reptile": {
+              "items": [
+                "heads_alien",
+                "heads_lizard_child",
+                "heads_lizard_female",
+                "heads_lizard_male"
+              ],
+              "children": {},
+              "label": "Reptilean Heads",
+              "priority": 30,
+              "required": [],
+              "animations": []
+            },
+            "beast": {
+              "items": [
+                "heads_boarman",
+                "heads_boarman_child",
+                "heads_minotaur",
+                "heads_minotaur_child",
+                "heads_minotaur_female",
+                "heads_wartotaur",
+                "heads_wolf_child",
+                "heads_wolf_female",
+                "heads_wolf_male"
+              ],
+              "children": {},
+              "label": "Beastman Heads",
+              "priority": 50,
+              "required": [],
+              "animations": []
+            },
+            "farm": {
+              "items": [
+                "heads_mouse",
+                "heads_mouse_child",
+                "heads_pig",
+                "heads_pig_child",
+                "heads_rabbit",
+                "heads_rabbit_child",
+                "heads_rat",
+                "heads_rat_child",
+                "heads_sheep",
+                "heads_sheep_child"
+              ],
+              "children": {},
+              "label": "Farm Animal",
+              "priority": 60,
+              "required": [],
+              "animations": []
+            }
+          },
           "priority": 10,
           "required": [],
           "animations": []
