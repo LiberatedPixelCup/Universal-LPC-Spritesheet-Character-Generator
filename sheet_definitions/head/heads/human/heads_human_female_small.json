@@ -1,0 +1,81 @@
+{
+  "name": "Human Female Small",
+  "tags": [
+    "human",
+    "adult",
+    "small"
+  ],
+  "layer_1": {
+    "zPos": 100,
+    "male": "head/heads/human/female_small/",
+    "muscular": "head/heads/human/female_small/",
+    "female": "head/heads/human/female_small/",
+    "pregnant": "head/heads/human/female_small/",
+    "teen": "head/heads/human/female_small/"
+  },
+  "variants": [
+    "light",
+    "amber",
+    "olive",
+    "taupe",
+    "bronze",
+    "brown",
+    "black",
+    "lavender",
+    "blue",
+    "zombie_green",
+    "green",
+    "pale_green",
+    "bright_green",
+    "dark_green",
+    "zombie",
+    "fur_black",
+    "fur_brown",
+    "fur_tan",
+    "fur_copper",
+    "fur_gold",
+    "fur_grey",
+    "fur_white"
+  ],
+  "match_body_color": true,
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "head/heads/human/female_small",
+      "notes": "original head by Redshrike, reduced size head by ElizaWy",
+      "authors": [
+        "ElizaWy",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY"
+      ],
+      "urls": []
+    }
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_human_female_small"
+  ],
+  "type_name": "head"
+}

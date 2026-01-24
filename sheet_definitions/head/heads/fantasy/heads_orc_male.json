@@ -1,0 +1,88 @@
+{
+  "name": "Orc male",
+  "tags": [
+    "orc",
+    "adult"
+  ],
+  "layer_1": {
+    "zPos": 100,
+    "male": "head/heads/orc/male/",
+    "muscular": "head/heads/orc/male/",
+    "female": "head/heads/orc/male/",
+    "pregnant": "head/heads/orc/male/",
+    "teen": "head/heads/orc/male/"
+  },
+  "variants": [
+    "light",
+    "amber",
+    "olive",
+    "taupe",
+    "bronze",
+    "brown",
+    "black",
+    "lavender",
+    "blue",
+    "zombie_green",
+    "green",
+    "pale_green",
+    "bright_green",
+    "dark_green",
+    "zombie",
+    "fur_black",
+    "fur_brown",
+    "fur_tan",
+    "fur_copper",
+    "fur_gold",
+    "fur_grey",
+    "fur_white"
+  ],
+  "match_body_color": true,
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "head/heads/orc/male",
+      "notes": "Sinbad the ogre design by Zi Ye, original 4-direction sprite by Redshrike, additional hurt/cast animations by makrohn, headless version by bluecarrot16",
+      "authors": [
+        "bluecarrot16",
+        "Matthew Krohn (makrohn)",
+        "Stephen Challener (Redshrike)",
+        "Zi Ye"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/four-characters-my-lpc-entries",
+        "https://opengameart.org/content/sinbad-the-ogre",
+        "https://opengameart.org/content/lpc-male-sheets",
+        "https://opengameart.org/content/lpc-character-bases"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_orc_male"
+  ],
+  "type_name": "head"
+}

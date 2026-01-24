@@ -1,0 +1,60 @@
+{
+  "name": "Jack O Lantern",
+  "tags": [
+    "monster"
+  ],
+  "layer_1": {
+    "zPos": 100,
+    "male": "head/heads/jack/adult/",
+    "muscular": "head/heads/jack/adult/",
+    "female": "head/heads/jack/adult/",
+    "pregnant": "head/heads/jack/adult/",
+    "teen": "head/heads/jack/adult/"
+  },
+  "variants": [
+    "jack"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "head/heads/jack",
+      "notes": "original pumpkin by Joshua Taylor, modified to head by bluecarrot16",
+      "authors": [
+        "bluecarrot16",
+        "Joshua Taylor"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/fruit-and-veggie-inventory",
+        "https://opengameart.org/content/lpc-folk"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_jack"
+  ],
+  "type_name": "head"
+}

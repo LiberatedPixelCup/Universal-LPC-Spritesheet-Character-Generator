@@ -1,0 +1,85 @@
+{
+  "name": "Minotaur female",
+  "tags": [
+    "minotaur",
+    "adult"
+  ],
+  "layer_1": {
+    "zPos": 100,
+    "male": "head/heads/minotaur/female/",
+    "muscular": "head/heads/minotaur/female/",
+    "female": "head/heads/minotaur/female/",
+    "pregnant": "head/heads/minotaur/female/",
+    "teen": "head/heads/minotaur/female/"
+  },
+  "variants": [
+    "fur_black",
+    "fur_brown",
+    "fur_tan",
+    "fur_copper",
+    "fur_gold",
+    "fur_grey",
+    "fur_white",
+    "light",
+    "amber",
+    "olive",
+    "taupe",
+    "bronze",
+    "brown",
+    "black",
+    "lavender",
+    "blue",
+    "zombie_green",
+    "green",
+    "pale_green",
+    "bright_green",
+    "dark_green",
+    "zombie"
+  ],
+  "match_body_color": true,
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "head/heads/minotaur/female",
+      "notes": "original cow by daneeklu, adapted to minotaur by Evert, female version modified by bluecarrot16 to remove horns",
+      "authors": [
+        "bluecarrot16",
+        "Evert",
+        "Daniel Eddeland (daneeklu)"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-style-farm-animals",
+        "https://opengameart.org/content/lpc-faun-and-minotaur",
+        "https://opengameart.org/content/lpc-character-bases"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_minotaur_female"
+  ],
+  "type_name": "head"
+}
