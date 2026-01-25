@@ -1,17 +1,11 @@
 const fs = require("fs");
-const readline = require("readline");
 const path = require("path");
 const SHEETS_DIR = "sheet_definitions" + path.sep;
 
 const DEBUG = false; // change this to print debug log
 const onlyIfTemplate = false; // print debugging log only if there is a template
-// const onlyIfReplace = true; // print debugging log only if there is replace key
 
 require("child_process").fork("scripts/zPositioning/parse_zpos.js");
-
-// copied from https://github.com/mikemaccana/dynamic-template/blob/046fee36aecc1f48cf3dc454d9d36bb0e96e0784/index.js
-const es6DynamicTemplate = (templateString, templateVariables) =>
-  templateString.replace(/\${(.*?)}/g, (_, g) => templateVariables[g]);
 
 // Collect metadata for runtime use
 const licensesFound = [];
@@ -68,7 +62,7 @@ function parseTree(filePath, fileName) {
     throw e;
   }
 
-  const { label, priority, required, animations, path: itemPath } = meta;
+  const { label, priority, required, animations } = meta;
 
   let current = categoryTree;
   const categoryPath = filePath.replace("sheet_definitions" + path.sep, "").split(path.sep);
@@ -97,21 +91,6 @@ function parseTree(filePath, fileName) {
 function parseJson(filePath, fileName) {
   let queryObj = null;
   let treePath = null;
-  /*const templateIndex = fileName.lastIndexOf("%");
-  let searchFileName = fileName;
-  let queryObj = null;
-  if (templateIndex > -1) {
-    searchFileName = searchFileName.substring(0, templateIndex);
-    const query = fileName.substring(templateIndex + 1);
-    queryObj = Object.fromEntries(new URLSearchParams(query));
-    const replObj = Object.fromEntries(
-      Object.keys(queryObj).map(key => [key, ""])
-    );
-    searchFileName = es6DynamicTemplate(searchFileName, replObj).replace(
-      /_+/,
-      "_"
-    );
-  }*/
   const fullPath = path.join(filePath, fileName);
   const searchFileName = fileName.replace(".json", "");
   if (DEBUG && (!onlyIfTemplate || queryObj))
@@ -131,7 +110,6 @@ function parseJson(filePath, fileName) {
     name,
     credits,
     replace_in_path,
-    //path: itemPath,
     priority,
     ignore
   } = definition;
@@ -172,13 +150,6 @@ function parseJson(filePath, fileName) {
   // Build unique itemId from filename (not from path or type_name)
   // This ensures each item has a unique ID even if they share the same type_name
   let itemId = searchFileName;
-  // Append query parameters if present
-  /*if (queryObj) {
-    const vals = Object.values(queryObj)
-      .map(val => val.replaceAll(" ", "_"))
-      .join("_");
-    itemId = `${itemId}_${vals}`;
-  }*/
   const itemPath = filePath.replace("sheet_definitions" + path.sep, "").split(path.sep);
   itemPath.push(itemId);
 
@@ -233,13 +204,6 @@ function parseJson(filePath, fileName) {
         if (file !== null && file !== "") {
           let imageFileName = '"' + file + snakeItemName + '.png" ';
           let fileNameForCreditSearch = file + snakeItemName;
-          /*if (queryObj) {
-            fileNameForCreditSearch = es6DynamicTemplate(
-              fileNameForCreditSearch,
-              queryObj
-            );
-            imageFileName = es6DynamicTemplate(imageFileName, queryObj);
-          }*/
           if (DEBUG && (!onlyIfTemplate || queryObj))
             console.log(
               `Searching for credits to use for ${imageFileName} in ${fileNameForCreditSearch} for layer ${jdx}`
