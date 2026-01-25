@@ -320,7 +320,7 @@ const files = fs.readdirSync(SHEETS_DIR, {
 });
 
 // Initialize CSV
-csvList = [];
+const csvList = [];
 files.forEach(file => {
   if (file.isDirectory()) {
     return;
