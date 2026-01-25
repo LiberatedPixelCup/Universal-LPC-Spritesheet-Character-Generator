@@ -1,6 +1,7 @@
 const fs = require("fs");
 const readline = require("readline");
 const path = require("path");
+const SHEETS_DIR = "sheet_definitions" + path.sep;
 
 const DEBUG = false; // change this to print debug log
 const onlyIfTemplate = false; // print debugging log only if there is a template
@@ -215,7 +216,7 @@ function parseJson(filePath, fileName) {
   };
 
   let listCreditToUse = null;
-  let listItemsCSV = "";
+  let listItemsCSV = [];
 
   // Use type_name for radio button grouping (ensures only one item per type can be selected)
   const addedCreditsFor = [];
@@ -273,7 +274,10 @@ function parseJson(filePath, fileName) {
             const notes = '"' + creditToUse.notes.replaceAll('"', "**") + '" ';
             if (!addedCreditsFor.includes(imageFileName)) {
               const quotedShortName = '"' + file + variant + '.png"';
-              listItemsCSV += `${quotedShortName},${notes},${authors},${licenses},${urls}\n`;
+              listItemsCSV.push({
+                priority,
+                lineText: `${quotedShortName},${notes},${authors},${licenses},${urls}\n`
+              });
               addedCreditsFor.push(imageFileName);
             }
           } else {
@@ -301,7 +305,7 @@ function parseJson(filePath, fileName) {
 
 
 // Read sheet_definitions/*.json line by line
-const files = fs.readdirSync("./sheet_definitions", { 
+const files = fs.readdirSync(SHEETS_DIR, { 
   recursive: true,
   withFileTypes: true 
 }).sort((a, b) => {
@@ -314,8 +318,9 @@ const files = fs.readdirSync("./sheet_definitions", {
 
   return pa.localeCompare(pb);
 });
-let csvGenerated = "filename,notes,authors,licenses,urls\n";
 
+// Initialize CSV
+csvList = [];
 files.forEach(file => {
   if (file.isDirectory()) {
     return;
@@ -332,16 +337,7 @@ files.forEach(file => {
         console.log(e);
       return;
     }
-    csvGenerated += parsedResult.csv;
-  }
-});
-
-fs.writeFile("CREDITS.csv", csvGenerated, function(err) {
-  if (err) {
-    return console.error(err);
-  } else {
-    console.log("CSV Updated!");
-    printArray(licensesFound, "Found licenses");
+    csvList.push({path: file.path.replace(SHEETS_DIR, ''), csv: parsedResult.csv});
   }
 });
 
@@ -365,6 +361,7 @@ for (const [itemId, meta] of Object.entries(itemMetadata)) {
   current.items.push(itemId);
 } // for itemMetadata
 
+// Sort Category Tree and Subitems
 function sortCategoryTree(node) {
   const sortedChildren = Object.entries(node.children || {}).sort(
     ([keyA, valA], [keyB, valB]) => {
@@ -401,6 +398,60 @@ function sortCategoryTree(node) {
 }
 
 sortCategoryTree(categoryTree);
+
+// Sort csvList by category tree priorities
+csvList.sort((a, b) => {
+  const pathA = a.path.split(path.sep).filter(Boolean);
+  const pathB = b.path.split(path.sep).filter(Boolean);
+
+  // Compare each path segment
+  const maxLen = Math.max(pathA.length, pathB.length);
+  for (let i = 0; i < maxLen; i++) {
+    if (i >= pathA.length) return -1; // a is shorter, comes first
+    if (i >= pathB.length) return 1;  // b is shorter, comes first
+
+    const segA = pathA[i];
+    const segB = pathB[i];
+
+    if (segA === segB) continue;
+
+    // Navigate to parent node to get priorities
+    let nodeA = categoryTree;
+    let nodeB = categoryTree;
+    for (let j = 0; j <= i; j++) {
+      nodeA = nodeA.children?.[pathA[j]];
+      nodeB = nodeB.children?.[pathB[j]];
+      if (!nodeA || !nodeB) break;
+    }
+
+    const prioA = nodeA?.priority ?? Number.POSITIVE_INFINITY;
+    const prioB = nodeB?.priority ?? Number.POSITIVE_INFINITY;
+
+    if (prioA !== prioB) return prioA - prioB;
+
+    const labelA = nodeA?.label ?? segA;
+    const labelB = nodeB?.label ?? segB;
+    return labelA.localeCompare(labelB);
+  }
+
+  return 0;
+});
+
+// Generate CREDITS.csv After Sorting Everything
+let csvGenerated = "filename,notes,authors,licenses,urls\n";
+for (const result of csvList) {
+  for (const item of result.csv) {
+    csvGenerated += item.lineText;
+  }
+}
+fs.writeFile("CREDITS.csv", csvGenerated, function(err) {
+  if (err) {
+    return console.error(err);
+  } else {
+    console.log("CSV Updated!");
+    printArray(licensesFound, "Found licenses");
+  }
+});
 
 const metadataJS = `// THIS FILE IS AUTO-GENERATED. PLEASE DON'T ALTER IT MANUALLY
 // Generated from sheet_definitions/*.json by scripts/generate_sources.js

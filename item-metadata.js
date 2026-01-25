@@ -466,6 +466,314 @@ window.itemMetadata = {
       ]
     }
   },
+  "body": {
+    "name": "Body Color",
+    "priority": 10,
+    "type_name": "body",
+    "required": [
+      "male",
+      "female",
+      "teen",
+      "child",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering",
+      "idle",
+      "jump",
+      "run",
+      "sit",
+      "emote",
+      "climb",
+      "combat",
+      "1h_slash",
+      "1h_backslash",
+      "1h_halfslash"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "body"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "light",
+      "amber",
+      "olive",
+      "taupe",
+      "bronze",
+      "brown",
+      "black",
+      "lavender",
+      "blue",
+      "zombie_green",
+      "green",
+      "pale_green",
+      "bright_green",
+      "dark_green",
+      "fur_black",
+      "fur_brown",
+      "fur_tan",
+      "fur_copper",
+      "fur_gold",
+      "fur_grey",
+      "fur_white"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 20,
+        "male": "body/bodies/male/",
+        "muscular": "body/bodies/muscular/",
+        "female": "body/bodies/female/",
+        "pregnant": "body/bodies/pregnant/",
+        "teen": "body/bodies/teen/",
+        "child": "body/bodies/child/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/bodies/male",
+        "notes": "see details at https://opengameart.org/content/lpc-character-bases; 'Thick' Male Revised Run/Climb by JaidynReiman (based on ElizaWy's LPC Revised)",
+        "authors": [
+          "bluecarrot16",
+          "JaidynReiman",
+          "Benjamin K. Smith (BenCreating)",
+          "Evert",
+          "Eliza Wyatt (ElizaWy)",
+          "TheraHedwig",
+          "MuffinElZangano",
+          "Durrani",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
+          "https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle",
+          "https://opengameart.org/content/lpc-revised-character-basics",
+          "https://opengameart.org/content/lpc-be-seated",
+          "https://opengameart.org/content/lpc-runcycle-for-male-muscular-and-pregnant-character-bases-with-modular-heads",
+          "https://opengameart.org/content/lpc-jump-expanded",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      },
+      {
+        "file": "body/bodies/female",
+        "notes": "see details at https://opengameart.org/content/lpc-character-bases",
+        "authors": [
+          "Benjamin K. Smith (BenCreating)",
+          "bluecarrot16",
+          "TheraHedwig",
+          "Evert",
+          "MuffinElZangano",
+          "Durrani",
+          "Pierre Vigier (pvigier)",
+          "ElizaWy",
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-ladies",
+          "https://opengameart.org/content/lpc-7-womens-shirts",
+          "https://opengameart.org/content/lpc-jump-expanded",
+          "https://opengameart.org/content/lpc-be-seated",
+          "https://opengameart.org/content/lpc-revised-character-basics",
+          "https://gitlab.com/vagabondgame/lpc-characters",
+          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
+          "https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle"
+        ]
+      },
+      {
+        "file": "body/bodies/muscular",
+        "notes": "see details at https://opengameart.org/content/lpc-character-bases",
+        "authors": [
+          "bluecarrot16",
+          "JaidynReiman",
+          "Evert",
+          "TheraHedwig",
+          "MuffinElZangano",
+          "Durrani",
+          "Sander Frenken (castelonia)",
+          "Benjamin K. Smith (BenCreating)",
+          "Eliza Wyatt (ElizaWy)",
+          "dalonedrau",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-barbarian-sprite-base",
+          "https://opengameart.org/content/lpc-muscular-swing-animation",
+          "https://opengameart.org/content/lpc-muscular-hurt-animation",
+          "https://opengameart.org/content/lpc-jump-expanded",
+          "https://opengameart.org/content/lpc-revised-character-basics",
+          "https://opengameart.org/content/lpc-be-seated",
+          "https://opengameart.org/content/lpc-jump-expanded",
+          "https://opengameart.org/content/lpc-character-bases",
+          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani"
+        ]
+      },
+      {
+        "file": "body/bodies/teen",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Evert",
+          "TheraHedwig",
+          "Benjamin K. Smith (BenCreating)",
+          "MuffinElZangano",
+          "Durrani",
+          "Pierre Vigier (pvigier)",
+          "Eliza Wyatt (ElizaWy)",
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-ladies",
+          "https://opengameart.org/content/lpc-teen-unisex-base-clothes",
+          "https://opengameart.org/content/lpc-jump-expanded",
+          "https://opengameart.org/content/lpc-revised-character-basics",
+          "https://opengameart.org/content/lpc-be-seated",
+          "https://gitlab.com/vagabondgame/lpc-characters",
+          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
+          "https://opengameart.org/content/lpc-jump-expanded"
+        ]
+      },
+      {
+        "file": "body/bodies/pregnant",
+        "notes": "see details at https://opengameart.org/content/lpc-character-bases; Pregnant Revised Run/Combat Idle/Emotes by JaidynReiman (based on ElizaWy's LPC Revised)",
+        "authors": [
+          "bluecarrot16",
+          "JaidynReiman",
+          "Evert",
+          "TheraHedwig",
+          "MuffinElZangano",
+          "Durrani",
+          "Benjamin K. Smith (BenCreating)",
+          "Pierre Vigier (pvigier)",
+          "Eliza Wyatt (ElizaWy)",
+          "Matthew Krohn (makrohn)",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-ladies",
+          "https://opengameart.org/content/lpc-pregnancy-bases-maternity-wear",
+          "https://opengameart.org/content/lpc-7-womens-shirts",
+          "https://opengameart.org/content/lpc-jump-expanded",
+          "https://gitlab.com/vagabondgame/lpc-characters",
+          "https://opengameart.org/content/lpc-jump-expanded",
+          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
+          "https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle"
+        ]
+      },
+      {
+        "file": "body/bodies/child",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Benjamin K. Smith (BenCreating)",
+          "ElizaWy",
+          "MuffinElZangano",
+          "Durrani",
+          "Nila122",
+          "kheftel",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-child-standing-template",
+          "https://opengameart.org/content/lpc-children-walk-animation",
+          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
+          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
+          "https://opengameart.org/content/lpc-jump-expanded",
+          "https://opengameart.org/content/lpc-jump-expanded"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": true,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "child": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
   "shadow": {
     "name": "Shadow",
     "priority": 20,
@@ -2648,483 +2956,6 @@ window.itemMetadata = {
       ]
     }
   },
-  "body_skeleton": {
-    "name": "Skeleton",
-    "priority": null,
-    "type_name": "body",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "bodies",
-      "body_skeleton"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "skeleton"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 10,
-        "male": "body/bodies/skeleton/",
-        "female": "body/bodies/skeleton/",
-        "teen": "body/bodies/skeleton/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/bodies/skeleton",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-skeleton",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "body_zombie": {
-    "name": "Zombie",
-    "priority": null,
-    "type_name": "body",
-    "required": [
-      "male",
-      "female",
-      "teen"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "bodies",
-      "body_zombie"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "zombie"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 10,
-        "male": "body/bodies/zombie/",
-        "female": "body/bodies/zombie/",
-        "teen": "body/bodies/zombie/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/bodies/zombie",
-        "notes": "",
-        "authors": [
-          "Stephen Challener (Redshrike)",
-          "Johannes Sjölund (wulax)",
-          "Sander Frenken (castelonia)",
-          "Benjamin K. Smith (BenCreating)",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-zombie",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
-  "body": {
-    "name": "Body Color",
-    "priority": 10,
-    "type_name": "body",
-    "required": [
-      "male",
-      "female",
-      "teen",
-      "child",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering",
-      "idle",
-      "jump",
-      "run",
-      "sit",
-      "emote",
-      "climb",
-      "combat",
-      "1h_slash",
-      "1h_backslash",
-      "1h_halfslash"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "body",
-      "bodies",
-      "body"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "light",
-      "amber",
-      "olive",
-      "taupe",
-      "bronze",
-      "brown",
-      "black",
-      "lavender",
-      "blue",
-      "zombie_green",
-      "green",
-      "pale_green",
-      "bright_green",
-      "dark_green",
-      "fur_black",
-      "fur_brown",
-      "fur_tan",
-      "fur_copper",
-      "fur_gold",
-      "fur_grey",
-      "fur_white"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 20,
-        "male": "body/bodies/male/",
-        "muscular": "body/bodies/muscular/",
-        "female": "body/bodies/female/",
-        "pregnant": "body/bodies/pregnant/",
-        "teen": "body/bodies/teen/",
-        "child": "body/bodies/child/"
-      }
-    },
-    "credits": [
-      {
-        "file": "body/bodies/male",
-        "notes": "see details at https://opengameart.org/content/lpc-character-bases; 'Thick' Male Revised Run/Climb by JaidynReiman (based on ElizaWy's LPC Revised)",
-        "authors": [
-          "bluecarrot16",
-          "JaidynReiman",
-          "Benjamin K. Smith (BenCreating)",
-          "Evert",
-          "Eliza Wyatt (ElizaWy)",
-          "TheraHedwig",
-          "MuffinElZangano",
-          "Durrani",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
-          "https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle",
-          "https://opengameart.org/content/lpc-revised-character-basics",
-          "https://opengameart.org/content/lpc-be-seated",
-          "https://opengameart.org/content/lpc-runcycle-for-male-muscular-and-pregnant-character-bases-with-modular-heads",
-          "https://opengameart.org/content/lpc-jump-expanded",
-          "https://opengameart.org/content/lpc-character-bases"
-        ]
-      },
-      {
-        "file": "body/bodies/female",
-        "notes": "see details at https://opengameart.org/content/lpc-character-bases",
-        "authors": [
-          "Benjamin K. Smith (BenCreating)",
-          "bluecarrot16",
-          "TheraHedwig",
-          "Evert",
-          "MuffinElZangano",
-          "Durrani",
-          "Pierre Vigier (pvigier)",
-          "ElizaWy",
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-ladies",
-          "https://opengameart.org/content/lpc-7-womens-shirts",
-          "https://opengameart.org/content/lpc-jump-expanded",
-          "https://opengameart.org/content/lpc-be-seated",
-          "https://opengameart.org/content/lpc-revised-character-basics",
-          "https://gitlab.com/vagabondgame/lpc-characters",
-          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
-          "https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle"
-        ]
-      },
-      {
-        "file": "body/bodies/muscular",
-        "notes": "see details at https://opengameart.org/content/lpc-character-bases",
-        "authors": [
-          "bluecarrot16",
-          "JaidynReiman",
-          "Evert",
-          "TheraHedwig",
-          "MuffinElZangano",
-          "Durrani",
-          "Sander Frenken (castelonia)",
-          "Benjamin K. Smith (BenCreating)",
-          "Eliza Wyatt (ElizaWy)",
-          "dalonedrau",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-barbarian-sprite-base",
-          "https://opengameart.org/content/lpc-muscular-swing-animation",
-          "https://opengameart.org/content/lpc-muscular-hurt-animation",
-          "https://opengameart.org/content/lpc-jump-expanded",
-          "https://opengameart.org/content/lpc-revised-character-basics",
-          "https://opengameart.org/content/lpc-be-seated",
-          "https://opengameart.org/content/lpc-jump-expanded",
-          "https://opengameart.org/content/lpc-character-bases",
-          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani"
-        ]
-      },
-      {
-        "file": "body/bodies/teen",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Evert",
-          "TheraHedwig",
-          "Benjamin K. Smith (BenCreating)",
-          "MuffinElZangano",
-          "Durrani",
-          "Pierre Vigier (pvigier)",
-          "Eliza Wyatt (ElizaWy)",
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-ladies",
-          "https://opengameart.org/content/lpc-teen-unisex-base-clothes",
-          "https://opengameart.org/content/lpc-jump-expanded",
-          "https://opengameart.org/content/lpc-revised-character-basics",
-          "https://opengameart.org/content/lpc-be-seated",
-          "https://gitlab.com/vagabondgame/lpc-characters",
-          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
-          "https://opengameart.org/content/lpc-jump-expanded"
-        ]
-      },
-      {
-        "file": "body/bodies/pregnant",
-        "notes": "see details at https://opengameart.org/content/lpc-character-bases; Pregnant Revised Run/Combat Idle/Emotes by JaidynReiman (based on ElizaWy's LPC Revised)",
-        "authors": [
-          "bluecarrot16",
-          "JaidynReiman",
-          "Evert",
-          "TheraHedwig",
-          "MuffinElZangano",
-          "Durrani",
-          "Benjamin K. Smith (BenCreating)",
-          "Pierre Vigier (pvigier)",
-          "Eliza Wyatt (ElizaWy)",
-          "Matthew Krohn (makrohn)",
-          "Johannes Sjölund (wulax)",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-ladies",
-          "https://opengameart.org/content/lpc-pregnancy-bases-maternity-wear",
-          "https://opengameart.org/content/lpc-7-womens-shirts",
-          "https://opengameart.org/content/lpc-jump-expanded",
-          "https://gitlab.com/vagabondgame/lpc-characters",
-          "https://opengameart.org/content/lpc-jump-expanded",
-          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
-          "https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle"
-        ]
-      },
-      {
-        "file": "body/bodies/child",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Benjamin K. Smith (BenCreating)",
-          "ElizaWy",
-          "MuffinElZangano",
-          "Durrani",
-          "Nila122",
-          "kheftel",
-          "Stephen Challener (Redshrike)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
-          "https://opengameart.org/content/lpc-child-standing-template",
-          "https://opengameart.org/content/lpc-children-walk-animation",
-          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
-          "https://opengameart.org/content/lpc-male-jumping-animation-by-durrani",
-          "https://opengameart.org/content/lpc-jump-expanded",
-          "https://opengameart.org/content/lpc-jump-expanded"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": true,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "teen": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "child": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0",
-        "CC-BY-SA 3.0",
-        "GPL 3.0"
-      ]
-    }
-  },
   "tail_lizard": {
     "name": "Lizard tail",
     "priority": null,
@@ -3648,6 +3479,174 @@ window.itemMetadata = {
     "licenses": {
       "male": [
         "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "body_skeleton": {
+    "name": "Skeleton",
+    "priority": null,
+    "type_name": "body",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "special",
+      "body_skeleton"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "skeleton"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 10,
+        "male": "body/bodies/skeleton/",
+        "female": "body/bodies/skeleton/",
+        "teen": "body/bodies/skeleton/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/bodies/skeleton",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Johannes Sjölund (wulax)",
+          "Stephen Challener (Redshrike)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-skeleton",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "body_zombie": {
+    "name": "Zombie",
+    "priority": null,
+    "type_name": "body",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "body",
+      "special",
+      "body_zombie"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "zombie"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 10,
+        "male": "body/bodies/zombie/",
+        "female": "body/bodies/zombie/",
+        "teen": "body/bodies/zombie/"
+      }
+    },
+    "credits": [
+      {
+        "file": "body/bodies/zombie",
+        "notes": "",
+        "authors": [
+          "Stephen Challener (Redshrike)",
+          "Johannes Sjölund (wulax)",
+          "Sander Frenken (castelonia)",
+          "Benjamin K. Smith (BenCreating)",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+          "https://opengameart.org/content/lpc-zombie",
+          "https://opengameart.org/content/lpc-character-bases"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
       ]
     }
   },
@@ -78498,13 +78497,13 @@ window.categoryTree = {
   "children": {
     "body": {
       "items": [
+        "body",
         "shadow",
         "wheelchair"
       ],
       "children": {
-        "bodies": {
+        "special": {
           "items": [
-            "body",
             "body_skeleton",
             "body_zombie"
           ],
