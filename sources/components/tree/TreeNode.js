@@ -1,5 +1,10 @@
 // Recursive tree node component
-import { state, getSelectionGroup, isItemLicenseCompatible, isItemAnimationCompatible, isNodeAnimationCompatible } from '../../state/state.js';
+import { state, getSelectionGroup } from '../../state/state.js';
+import {
+  isItemLicenseCompatible,
+  isItemAnimationCompatible,
+  isNodeAnimationCompatible
+} from '../../state/filters.js';
 import { capitalize, matchesSearch, nodeHasMatches } from '../../utils/helpers.js';
 import { ItemWithVariants } from './ItemWithVariants.js';
 
