@@ -89,11 +89,9 @@ function parseTree(filePath, fileName) {
 
 // Parse Asset JSON File
 function parseJson(filePath, fileName) {
-  let queryObj = null;
-  let treePath = null;
   const fullPath = path.join(filePath, fileName);
   const searchFileName = fileName.replace(".json", "");
-  if (DEBUG && (!onlyIfTemplate || queryObj))
+  if (DEBUG && !onlyIfTemplate)
     console.log(`Parsing ${fullPath}`);
 
   // Read JSON Definition
@@ -111,7 +109,8 @@ function parseJson(filePath, fileName) {
     credits,
     replace_in_path,
     priority,
-    ignore
+    ignore,
+    path: itemPath
   } = definition;
 
   // Skip Ignored Items
@@ -150,8 +149,8 @@ function parseJson(filePath, fileName) {
   // Build unique itemId from filename (not from path or type_name)
   // This ensures each item has a unique ID even if they share the same type_name
   let itemId = searchFileName;
-  const itemPath = filePath.replace("sheet_definitions" + path.sep, "").split(path.sep);
-  itemPath.push(itemId);
+  const treePath = filePath.replace("sheet_definitions" + path.sep, "").split(path.sep);
+  treePath.push(itemId);
 
   // Collect layer information (file paths and zPos)
   const layers = {};
@@ -174,7 +173,8 @@ function parseJson(filePath, fileName) {
     tags: tags,
     required_tags: required_tags,
     excluded_tags: excluded_tags,
-    path: itemPath || treePath || ["other"],
+    //path: itemPath || treePath || ["other"], TO DO: clean up item paths in json files and allow itemPath to be an override of the treePath
+    path: treePath || ["other"],
     replace_in_path: replace_in_path || {},
     variants: variants || [],
     layers: layers,
@@ -204,7 +204,7 @@ function parseJson(filePath, fileName) {
         if (file !== null && file !== "") {
           let imageFileName = '"' + file + snakeItemName + '.png" ';
           let fileNameForCreditSearch = file + snakeItemName;
-          if (DEBUG && (!onlyIfTemplate || queryObj))
+          if (DEBUG && !onlyIfTemplate)
             console.log(
               `Searching for credits to use for ${imageFileName} in ${fileNameForCreditSearch} for layer ${jdx}`
             );
@@ -213,7 +213,7 @@ function parseJson(filePath, fileName) {
             credits,
             fileNameForCreditSearch
           );
-          if (DEBUG && (!onlyIfTemplate || queryObj))
+          if (DEBUG && !onlyIfTemplate)
             console.log(
               `file name set for ${sex} is ${imageFileName} for layer ${jdx}`
             );
