@@ -193,6 +193,34 @@ export function isItemAnimationCompatible(itemId) {
 	return false;
 }
 
+// Helper function to check if a node path is compatible with selected animations
+export function isNodeAnimationCompatible(node) {
+	// Get list of enabled animations
+	const enabledAnims = ANIMATIONS.filter(
+		(anim) => state.enabledAnimations[anim.value],
+	).map((anim) => anim.value);
+
+	// If no animations are selected, filter is disabled - show all items
+	if (enabledAnims.length === 0) return true;
+
+	const meta = node;
+	if (!meta || !meta.animations || meta.animations.length === 0) return true; // No animation info = assume compatible
+
+	console.log("Checking node animations:", meta.animations);
+	// Check if item supports at least one enabled animation
+	for (const itemAnim of meta.animations) {
+		if (enabledAnims.includes(itemAnim)) return true;
+
+    // check if enabledAnims includes base version of itemAnim
+    const customAnim = customAnimations[itemAnim];
+    if (!customAnim) continue;
+    const baseItemAnim = customAnimationBase(customAnim);
+    if (baseItemAnim && enabledAnims.includes(baseItemAnim)) return true;
+	}
+
+	return false;
+}
+
 // Initialize state with defaults or from URL
 export async function initState() {
 	// First, try to load from URL hash

@@ -1,5 +1,5 @@
 // Recursive tree node component
-import { state, getSelectionGroup, isItemLicenseCompatible, isItemAnimationCompatible } from '../../state/state.js';
+import { state, getSelectionGroup, isItemLicenseCompatible, isItemAnimationCompatible, isNodeAnimationCompatible } from '../../state/state.js';
 import { capitalize, matchesSearch, nodeHasMatches } from '../../utils/helpers.js';
 import { ItemWithVariants } from './ItemWithVariants.js';
 
@@ -9,6 +9,7 @@ export const TreeNode = {
 		const nodePath = pathPrefix ? `${pathPrefix}-${name}` : name;
 		const searchQuery = state.searchQuery;
 		const hasSearchMatches = nodeHasMatches(node, searchQuery);
+		const isNodeAnimCompatible = isNodeAnimationCompatible(node);
 
 		// Filter: Only show items compatible with current body type
 		if (node.required && node.required.length > 0 && !node.required.includes(state.bodyType)) return false;
@@ -18,18 +19,35 @@ export const TreeNode = {
 			return null;
 		}
 
+		// Get supported animations for this item
+		const supportedAnims = node.animations || [];
+		const animsText = supportedAnims.length > 0 ?
+			`Animations: ${supportedAnims.join(', ')}` :
+			null;
+
+		// Build tooltip text
+		let tooltipText = '';
+		if (!isNodeAnimCompatible) {
+			tooltipText = `⚠️ Incompatible with selected animations\n`;
+		}
+		tooltipText += `${animsText}`;
+
 		// Auto-expand if search is active and has matches
 		const isExpanded = (searchQuery && searchQuery.length >= 2 && hasSearchMatches) || state.expandedNodes[nodePath] || false;
 		const displayName = node.label ?? capitalize(name);
 
 		return m("div",
 			m("div.tree-label", {
+				class: `${!isNodeAnimCompatible ? "has-text-grey" : ""}`,
+				title: tooltipText,
 				onclick: () => {
+					if (!isNodeAnimCompatible) return; // Prevent selecting incompatible
 					state.expandedNodes[nodePath] = !isExpanded;
 				}
 			}, [
 				m("span.tree-arrow", { class: isExpanded ? 'expanded' : 'collapsed' }),
-				m("span", displayName)
+				m("span", displayName),
+				!isNodeAnimCompatible ? m("span.ml-1", "⚠️") : null
 			]),
 			isExpanded ? m("div.ml-4", [
 				// Render child categories
@@ -42,6 +60,7 @@ export const TreeNode = {
 						const meta = window.itemMetadata[itemId];
 						// Filter: Only show items compatible with current body type
 						if (!meta || !meta.required.includes(state.bodyType)) return false;
+						if (!isItemAnimationCompatible(itemId) || !isNodeAnimCompatible) return false;
 
 						// Filter: Only show items matching search query
 						if (searchQuery && searchQuery.length >= 2 && !matchesSearch(meta.name, searchQuery)) {
@@ -57,7 +76,7 @@ export const TreeNode = {
 						const isSearchMatch = searchQuery && searchQuery.length >= 2 && matchesSearch(meta.name, searchQuery);
 
 						const isLicenseCompatibleFlag = isItemLicenseCompatible(itemId);
-						const isAnimCompatibleFlag = isItemAnimationCompatible(itemId);
+						const isAnimCompatibleFlag = isItemAnimationCompatible(itemId) && isNodeAnimCompatible;
 						const isCompatible = isLicenseCompatibleFlag && isAnimCompatibleFlag;
 
 						// Build tooltip text
