@@ -73,5 +73,9 @@
     "heads",
     "heads_lizard_female"
   ],
+  "recolors": {
+    "base": "light",
+    "palette": "body"
+  },
   "type_name": "head"
 }

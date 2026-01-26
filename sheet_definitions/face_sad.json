@@ -142,5 +142,9 @@
     "face",
     "face_sad"
   ],
+  "recolors": {
+    "base": "light",
+    "palette": "body"
+  },
   "type_name": "expression"
 }

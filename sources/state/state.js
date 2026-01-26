@@ -22,6 +22,7 @@ export const state = {
 	customImageZPos: 0, // z-position for custom uploaded image
 	previewCanvasZoomLevel: 1, // zoom level for animation preview canvas
 	fullSpritesheetCanvasZoomLevel: 1, // zoom level for full spritesheet preview canvas
+	isRenderingCharacter: false, // true if a character render is in progress
 	// License filters - all enabled by default (derived from LICENSE_CONFIG)
 	enabledLicenses: Object.fromEntries(
 		LICENSE_CONFIG.map((lic) => [lic.key, true]),

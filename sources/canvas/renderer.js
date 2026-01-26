@@ -3,6 +3,7 @@
 
 import { loadImage, loadImagesInParallel } from "./load-image.js";
 import { getSpritePath } from "../state/path.js";
+import { getImageToDraw } from './palette-recolor.js';
 import { get2DContext, getZPos } from "./canvas-utils.js";
 import { variantToFilename } from "../utils/helpers.js";
 import { drawFramesToCustomAnimation } from "./draw-frames.js";
@@ -79,7 +80,9 @@ export async function renderCharacter(
   addedCustomAnimations = new Set(); // Track which custom animations we've added
 
   // Import state to access custom uploaded image
-  const appState = await import("../state/state.js").then((m) => m.state);
+  const appState = await import('../state/state.js').then(m => m.state);
+  appState.isRenderingCharacter = true;
+  m.redraw();
 
   try {
     // Use provided canvas or default to main canvas
@@ -90,6 +93,11 @@ export async function renderCharacter(
       console.error("Canvas not initialized");
       return;
     }
+
+    // Build list of items to draw
+    const itemsToDraw = [];
+    const customAnimationItems = []; // Track items with custom animations
+    const addedCustomAnimations = new Set(); // Track which custom animations we've added
 
     for (const [categoryPath, selection] of Object.entries(selections)) {
       const { itemId, variant } = selection;
@@ -187,6 +195,7 @@ export async function renderCharacter(
             animation: animName,
             yPos,
             isCustom: false,
+            needsRecolor: itemId === 'body-body' && variant !== 'light' // Flag body variants for recoloring
           });
         }
       }
@@ -308,7 +317,8 @@ export async function renderCharacter(
     // Draw all items in sorted z-order
     for (const { item, img, success } of loadedItems) {
       if (success && img) {
-        renderCtx.drawImage(img, 0, item.yPos);
+        const imageToDraw = await getImageToDraw(img, item.itemId, item.variant);
+        renderCtx.drawImage(imageToDraw, 0, item.yPos);
       }
     }
 
@@ -351,6 +361,8 @@ export async function renderCharacter(
                 spritePath: item.spritePath,
                 itemId: item.itemId,
                 animation: item.animation,
+                needsRecolor: item.needsRecolor,
+                variant: item.variant
               });
             }
           }
@@ -367,10 +379,12 @@ export async function renderCharacter(
         // Draw in zPos order
         for (const { item: areaItem, img, success } of loadedCustomImages) {
           if (success && img) {
-            if (areaItem.type === "custom_sprite") {
+            const imageToUse = await getImageToDraw(img, areaItem.itemId, areaItem.variant);
+
+            if (areaItem.type === 'custom_sprite') {
               // Draw custom sprite directly (wheelchair background or foreground)
-              renderCtx.drawImage(img, 0, offsetY);
-            } else if (areaItem.type === "extracted_frames") {
+              renderCtx.drawImage(imageToUse, 0, offsetY);
+            } else if (areaItem.type === 'extracted_frames') {
               // Extract and draw frames from standard sprite
               drawFramesToCustomAnimation(
                 renderCtx,
@@ -384,6 +398,9 @@ export async function renderCharacter(
       }
     }
   } finally {
+    appState.isRenderingCharacter = false;
+    m.redraw();
+
     // Mark end and measure
     if (profiler) {
       profiler.mark("renderCharacter:end");
@@ -536,7 +553,8 @@ export async function renderSingleItem(
     // Draw layers in order
     for (const { item: sprite, img, success } of loadedSprites) {
       if (success && img) {
-        itemCtx.drawImage(img, 0, sprite.yPos);
+        const imageToDraw = await getImageToDraw(img, itemId, variant);
+        itemCtx.drawImage(imageToDraw, 0, sprite.yPos);
       }
     }
   } else {
@@ -608,7 +626,8 @@ export async function renderSingleItem(
     // Draw images in order
     for (const { item: sprite, img, success } of loadedImages) {
       if (success && img) {
-        itemCtx.drawImage(img, 0, sprite.yPos);
+        const imageToDraw = await getImageToDraw(img, itemId, variant);
+        itemCtx.drawImage(imageToDraw, 0, sprite.yPos);
       }
     }
   }
@@ -715,6 +734,7 @@ export async function renderSingleItemAnimation(
   // Draw images in order
   for (const { item: sprite, img, success } of loadedImages) {
     if (success && img) {
+      const imageToDraw = await getImageToDraw(img, itemId, variant);
       // Draw at y=0 since this canvas is only for this animation
       animCtx.drawImage(
         img,

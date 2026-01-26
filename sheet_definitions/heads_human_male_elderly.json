@@ -81,5 +81,9 @@
     "heads",
     "heads_human_male_elderly"
   ],
+  "recolors": {
+    "base": "light",
+    "palette": "body"
+  },
   "type_name": "head"
 }

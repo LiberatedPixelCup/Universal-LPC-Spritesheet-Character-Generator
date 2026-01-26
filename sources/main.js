@@ -3,6 +3,29 @@
 // Import canvas renderer
 import * as canvasRenderer from './canvas/renderer.js';
 
+// Import palette recoloring
+import {
+	getRecolorStats,
+	resetRecolorStats,
+	setPaletteRecolorMode,
+	getPaletteRecolorConfig
+} from './canvas/palette-recolor.js';
+
+// Expose palette recolor stats globally
+window.getPaletteRecolorStats = () => {
+	const stats = getRecolorStats();
+	const total = stats.webgl + stats.cpu + stats.fallback;
+	console.log('📊 Palette Recolor Statistics:');
+	console.log(`  WebGL (GPU): ${stats.webgl} (${total ? (stats.webgl/total*100).toFixed(1) : 0}%)`);
+	console.log(`  CPU: ${stats.cpu} (${total ? (stats.cpu/total*100).toFixed(1) : 0}%)`);
+	console.log(`  Fallback: ${stats.fallback} (${total ? (stats.fallback/total*100).toFixed(1) : 0}%)`);
+	console.log(`  Total: ${total}`);
+	return stats;
+};
+window.resetPaletteRecolorStats = resetRecolorStats;
+window.setPaletteRecolorMode = setPaletteRecolorMode;
+window.getPaletteRecolorConfig = getPaletteRecolorConfig;
+
 // Import state management
 import { initState } from './state/state.js';
 import { initHashChangeListener } from './state/hash.js';
@@ -17,24 +40,30 @@ import { PerformanceProfiler } from './performance-profiler.js';
 
 // DEBUG mode will be turned on if on localhost and off in production
 // but this can be overridden by adding debug=(true|false) to the querystring.
-const boolMap = {
-	true: true,
-	false: false,
-};
-const bool = (s) => boolMap[s] ?? null;
-const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+function boolMap() {
+	return {
+		true: true,
+		false: false,
+	}
+}
+function bool(s) {
+	return boolMap()[s] ?? null;
+}
+function isLocalhost() {
+	return window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+}
 
 // Get debug parameter from URL query string
-const getDebugParam = () => {
+export function getDebugParam() {
 	const urlParams = new URLSearchParams(window.location.search);
 	const debugParam = urlParams.get('debug');
-	return bool(debugParam);
-};
+	return bool(debugParam) ?? isLocalhost();
+}
 
-const DEBUG = getDebugParam() ?? isLocalhost;
+export const DEBUG = getDebugParam();
 
 // Initialize performance profiler (uses same DEBUG flag as console logging)
-const profiler = new PerformanceProfiler({
+export const profiler = new PerformanceProfiler({
 	enabled: DEBUG,
 	verbose: false,
 	logSlowOperations: true
@@ -63,6 +92,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 	// Initialize offscreen canvas
 	canvasRenderer.initCanvas();
+
 
 	// Set defaults after canvas is ready
 	if (window.setDefaultSelections) {

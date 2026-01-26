@@ -69,5 +69,9 @@
     "head",
     "head_wrinkles"
   ],
+  "recolors": {
+    "base": "light",
+    "palette": "body"
+  },
   "type_name": "wrinkes"
 }

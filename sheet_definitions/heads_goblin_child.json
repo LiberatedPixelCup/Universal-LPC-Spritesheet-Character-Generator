@@ -78,5 +78,9 @@
     "heads",
     "heads_goblin_child"
   ],
+  "recolors": {
+    "base": "light",
+    "palette": "body"
+  },
   "type_name": "head"
 }

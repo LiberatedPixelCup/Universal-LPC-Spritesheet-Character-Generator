@@ -149,7 +149,8 @@ function parseJson(json) {
     preview_column: previewColumn,
     preview_x_offset: previewXOffset,
     preview_y_offset: previewYOffset,
-    matchBodyColor: definition.match_body_color || false
+    matchBodyColor: definition.match_body_color || false,
+    recolors: definition.recolors || null
   };
 
   let listCreditToUse = null;

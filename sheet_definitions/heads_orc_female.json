@@ -76,5 +76,9 @@
     "heads",
     "heads_orc_female"
   ],
+  "recolors": {
+    "base": "light",
+    "palette": "body"
+  },
   "type_name": "head"
 }

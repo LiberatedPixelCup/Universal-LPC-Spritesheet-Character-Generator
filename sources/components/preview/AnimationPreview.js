@@ -174,6 +174,7 @@ export const AnimationPreview = {
 				])
 			]),
 			m("div.mt-3", [
+				m("div", { class: state.isRenderingCharacter ? "loading" : "" }),
 				// Render preview canvas with drag-to-scroll
 				m(ScrollableContainer, [
 					m(PreviewCanvas, {

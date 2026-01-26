@@ -1,5 +1,6 @@
 // Item with variants component
 import { state, getSelectionGroup, applyMatchBodyColor } from '../../state/state.js';
+import { getImageToDraw, getPaletteForItem } from '../../canvas/palette-recolor.js';
 import { replaceInPath } from '../../state/path.js';
 import { variantToFilename, capitalize } from '../../utils/helpers.js';
 
@@ -10,6 +11,7 @@ export const ItemWithVariants = {
 		const { itemId, meta, isSearchMatch, isCompatible, tooltipText } = vnode.attrs;
 		const compactDisplay = state.compactDisplay;
 		const displayName = meta.name;
+		const rootViewNode = vnode;
 		let nodePath = itemId;
 		if (displayName === 'Body color') {
 			nodePath = 'body-body';
@@ -26,6 +28,18 @@ export const ItemWithVariants = {
 				title: tooltipText,
 				onclick: () => {
 					state.expandedNodes[nodePath] = !isExpanded;
+				},
+				oninit: () => {
+					rootViewNode.state.isLoading = meta.variants.length > 0;
+					rootViewNode.state.imagesToLoad = meta.variants.length;
+					rootViewNode.state.imagesLoaded = 0;
+				},
+				onupdate: () => {
+					if (isExpanded && rootViewNode.state.isLoading) {
+						if (rootViewNode.state.imagesLoaded >= rootViewNode.state.imagesToLoad) {
+							rootViewNode.state.isLoading = false;
+						}
+					}
 				}
 			}, [
 				m("span.tree-arrow", { class: isExpanded ? 'expanded' : 'collapsed' }),
@@ -33,6 +47,7 @@ export const ItemWithVariants = {
 				!isCompatible ? m("span.ml-1", "⚠️") : null
 			]),
 			isExpanded ? m("div", [
+				m("div", { class: rootViewNode.state.isLoading ? "loading" : "" }),
 				m("div.variants-container.ml-5.is-flex.is-flex-wrap-wrap",
 					meta.variants.map(variant => {
 					const selectionGroup = getSelectionGroup(itemId);
@@ -114,8 +129,8 @@ export const ItemWithVariants = {
 						m("span.variant-display-name.has-text-centered.is-size-7",
 							capitalize(variantDisplayName)),
 						m("canvas.variant-canvas.box.p-0", {
-							width: compactDisplay ? 32 : 64,
-							height: compactDisplay ? 32 : 64,
+							width: 64,
+							height: 64,
 							class: (compactDisplay ? " compact-display" : ""),
 							style: (isSelected ? " hsl(217, 71%, 53%)" : " hsl(0, 0%, 86%)"),
 							oncreate: (canvasVnode) => {
@@ -125,6 +140,11 @@ export const ItemWithVariants = {
 								// Collect all layers for this item
 								// Only include layers that match layer_1's custom animation (if any)
 								const layersToLoad = [];
+
+								// Check if item uses a palette - if so, load the source variant
+								const paletteConfig = getPaletteForItem(itemId, meta);
+								const loadVariant = paletteConfig ? paletteConfig.sourceVariant : variant;
+
 								for (let layerNum = 1; layerNum < 10; layerNum++) {
 									const layer = meta.layers?.[`layer_${layerNum}`];
 									if (!layer) break;
@@ -147,10 +167,10 @@ export const ItemWithVariants = {
 									const hasCustomAnim = layer.custom_animation;
 									let imagePath;
 									if (hasCustomAnim) {
-										imagePath = `spritesheets/${layerPath}${variantToFilename(variant)}.png`;
+										imagePath = `spritesheets/${layerPath}${variantToFilename(loadVariant)}.png`;
 									} else {
 										const defaultAnim = meta.animations.includes('walk') ? 'walk' : meta.animations[0];
-										imagePath = `spritesheets/${layerPath}${defaultAnim}/${variantToFilename(variant)}.png`;
+										imagePath = `spritesheets/${layerPath}${defaultAnim}/${variantToFilename(loadVariant)}.png`;
 									}
 
 									layersToLoad.push({
@@ -170,24 +190,27 @@ export const ItemWithVariants = {
 										img.onerror = () => resolve({ img: null, layer });
 										img.src = layer.path;
 									});
-								})).then(loadedLayers => {
+								})).then(async loadedLayers => {
 									canvas.loadedLayers = loadedLayers;
 									// Draw each layer in zPos order
 									// Use universalFrameSize (64) for all calculations, matching master branch
 									const universalFrameSize = 64;
 									for (const { img, layer } of loadedLayers) {
 										if (img) {
+											const imageToDraw = await getImageToDraw(img, itemId, variant);
 											const size = compactDisplay ? 32 : 64;
 											// Master branch uses: previewColumn * universalFrameSize + previewXOffset
 											const srcX = previewCol * universalFrameSize + previewXOffset;
 											const srcY = previewRow * universalFrameSize + previewYOffset;
 											ctx.drawImage(
-												img,
+												imageToDraw,
 												srcX, srcY, universalFrameSize, universalFrameSize,
 												0, 0, size, size
 											);
 										}
 									}
+									rootViewNode.state.imagesLoaded++;
+									m.redraw();
 								});
 							},
 							onupdate: (canvasVnode) => {
@@ -214,8 +237,7 @@ export const ItemWithVariants = {
 							}
 						})
 					]);
-				})
-				)
+				}))
 			]) : null
 		]);
 	}
