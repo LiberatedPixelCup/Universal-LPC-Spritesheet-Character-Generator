@@ -8,15 +8,15 @@
   ],
   "replace_in_path": {
     "head": {
-      "Human_male": "male",
-      "Human_male_small": "male",
-      "Human_male_plump": "male",
-      "Human_male_gaunt": "male",
-      "Human_female": "female",
-      "Human_female_small": "female",
-      "Human_male_elderly": "elderly",
-      "Human_female_elderly": "elderly",
-      "Human_elderly_small": "elderly"
+      "Human_Male": "male",
+      "Human_Male_Small": "male",
+      "Human_Male_Plump": "male",
+      "Human_Male_Gaunt": "male",
+      "Human_Female": "female",
+      "Human_Female_Small": "female",
+      "Human_Male_Elderly": "elderly",
+      "Human_Female_Elderly": "elderly",
+      "Human_Elderly_Small": "elderly"
     }
   },
   "layer_1": {
@@ -58,14 +58,12 @@
     "walk",
     "slash",
     "shoot",
-    "hurt",
     "watering",
     "idle",
     "jump",
     "run",
     "sit",
     "emote",
-    "climb",
     "combat",
     "1h_slash",
     "1h_backslash",
