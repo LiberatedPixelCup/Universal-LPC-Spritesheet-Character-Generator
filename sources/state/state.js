@@ -206,7 +206,6 @@ export function isNodeAnimationCompatible(node) {
 	const meta = node;
 	if (!meta || !meta.animations || meta.animations.length === 0) return true; // No animation info = assume compatible
 
-	console.log("Checking node animations:", meta.animations);
 	// Check if item supports at least one enabled animation
 	for (const itemAnim of meta.animations) {
 		if (enabledAnims.includes(itemAnim)) return true;
