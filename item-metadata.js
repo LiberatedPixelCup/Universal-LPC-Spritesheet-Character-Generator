@@ -24834,19 +24834,7 @@ window.itemMetadata = {
       "faces",
       "face_tears"
     ],
-    "replace_in_path": {
-      "head": {
-        "Human_Male": "male",
-        "Human_Male_Small": "male",
-        "Human_Male_Plump": "male",
-        "Human_Male_Gaunt": "male",
-        "Human_Female": "female",
-        "Human_Female_Small": "female",
-        "Human_Male_Elderly": "elderly",
-        "Human_Female_Elderly": "elderly",
-        "Human_Elderly_Small": "elderly"
-      }
-    },
+    "replace_in_path": {},
     "variants": [
       "blue"
     ],
