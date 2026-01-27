@@ -1,0 +1,4 @@
+{
+    "priority": 20,
+    "required": ["male", "female", "teen"]
+}

@@ -1,0 +1,76 @@
+{
+  "name": "Tears",
+  "tags": [
+    "expression"
+  ],
+  "required_tags": [
+    "human"
+  ],
+  "replace_in_path": {
+    "head": {
+      "Human_Male": "male",
+      "Human_Male_Small": "male",
+      "Human_Male_Plump": "male",
+      "Human_Male_Gaunt": "male",
+      "Human_Female": "female",
+      "Human_Female_Small": "female",
+      "Human_Male_Elderly": "elderly",
+      "Human_Female_Elderly": "elderly",
+      "Human_Elderly_Small": "elderly"
+    }
+  },
+  "layer_1": {
+    "zPos": 107,
+    "male": "head/faces/global/tears/",
+    "muscular": "head/faces/global/tears/",
+    "female": "head/faces/global/tears/",
+    "teen": "head/faces/global/tears/",
+    "pregnant": "head/faces/global/tears/"
+  },
+  "variants": [
+    "blue"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "head/faces/global/tears",
+      "notes": "Original Bases by Redshrike, Tears Expression by Laetissima and Pennomi, mapped to all frames by JaidynReiman",
+      "authors": [
+        "JaidynReiman",
+        "Thane Brimhall (pennomi)",
+        "laetissima",
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-base-character-expressions",
+        "https://opengameart.org/content/ulpc-expanded-expressions"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "face",
+    "face_tears"
+  ],
+  "type_name": "expression_crying"
+}

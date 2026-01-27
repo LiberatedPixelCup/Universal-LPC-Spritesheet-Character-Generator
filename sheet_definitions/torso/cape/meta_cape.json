@@ -1,0 +1,6 @@
+{
+    "label": "Cape",
+    "priority": 100,
+    "required": ["male", "female", "teen", "muscular", "pregnant"],
+    "animations": ["spellcast", "thrust", "walk", "slash", "shoot", "hurt", "watering", "idle"]
+}

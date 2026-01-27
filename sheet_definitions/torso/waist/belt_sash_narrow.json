@@ -1,0 +1,62 @@
+{
+  "name": "Narrow sash",
+  "priority": 70,
+  "layer_1": {
+    "zPos": 65,
+    "male": "torso/waist/sash_narrow/male/",
+    "female": "torso/waist/sash_narrow/female/",
+    "teen": "torso/waist/sash_narrow/male/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "credits": [
+    {
+      "file": "torso/waist/sash_narrow",
+      "notes": "",
+      "authors": [
+        "bluecarrot16",
+        "Nila122"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "GPL 2.0",
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/more-lpc-clothes-and-hair",
+        "https://opengameart.org/content/lpc-pirates"
+      ]
+    }
+  ],
+  "path": [
+    "torso",
+    "waist",
+    "belt_sash_narrow"
+  ],
+  "type_name": "sash"
+}

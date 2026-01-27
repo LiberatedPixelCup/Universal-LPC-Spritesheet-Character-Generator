@@ -1,5 +1,6 @@
 // Current selections component
-import { state, isItemLicenseCompatible, isItemAnimationCompatible } from '../../state/state.js';
+import { state } from '../../state/state.js';
+import { isItemLicenseCompatible, isItemAnimationCompatible } from '../../state/filters.js';
 
 export const CurrentSelections = {
 	view: function() {
