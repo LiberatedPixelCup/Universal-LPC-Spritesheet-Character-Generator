@@ -1,5 +1,6 @@
 // License Filters component
-import { state, isItemLicenseCompatible } from '../../state/state.js';
+import { state } from '../../state/state.js';
+import { isItemLicenseCompatible } from '../../state/filters.js';
 import { LICENSE_CONFIG } from '../../state/constants.js';
 
 export const LicenseFilters = {

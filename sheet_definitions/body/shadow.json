@@ -1,0 +1,36 @@
+{
+  "name": "Shadow",
+  "priority": 20,
+  "layer_1": {
+    "zPos": 0,
+    "male": "shadow/adult/",
+    "muscular": "shadow/adult/",
+    "female": "shadow/adult/",
+    "pregnant": "shadow/adult/",
+    "child": "shadow/child/",
+    "teen": "shadow/adult/"
+  },
+  "variants": [
+    "shadow"
+  ],
+  "credits": [
+    {
+      "file": "shadow",
+      "notes": "",
+      "authors": [
+        "drjamgo@hotmail.com"
+      ],
+      "licenses": [
+        "CC0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/shadow-for-lpc-sprite"
+      ]
+    }
+  ],
+  "path": [
+    "body",
+    "shadow"
+  ],
+  "type_name": "shadow"
+}

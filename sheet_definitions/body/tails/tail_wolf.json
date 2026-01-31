@@ -1,0 +1,99 @@
+{
+  "name": "Wolf Tail",
+  "priority": 20,
+  "layer_1": {
+    "zPos": 125,
+    "male": "body/tail/wolf/adult/fg/",
+    "muscular": "body/tail/wolf/adult/fg/",
+    "female": "body/tail/wolf/adult/fg/",
+    "pregnant": "body/tail/wolf/adult/fg/",
+    "teen": "body/tail/wolf/adult/fg/",
+    "child": "body/tail/wolf/child/fg/"
+  },
+  "layer_2": {
+    "zPos": 5,
+    "male": "body/tail/wolf/adult/bg/",
+    "muscular": "body/tail/wolf/adult/bg/",
+    "female": "body/tail/wolf/adult/bg/",
+    "pregnant": "body/tail/wolf/adult/bg/",
+    "teen": "body/tail/wolf/adult/bg/",
+    "child": "body/tail/wolf/child/bg/"
+  },
+  "variants": [
+    "blonde",
+    "ash",
+    "sandy",
+    "platinum",
+    "strawberry",
+    "redhead",
+    "ginger",
+    "carrot",
+    "chestnut",
+    "light brown",
+    "dark brown",
+    "black",
+    "raven",
+    "dark gray",
+    "gray",
+    "white",
+    "red",
+    "orange",
+    "gold",
+    "green",
+    "blue",
+    "navy",
+    "violet",
+    "purple",
+    "pink",
+    "rose",
+    "fur_black",
+    "fur_brown",
+    "fur_tan",
+    "fur_copper",
+    "fur_gold",
+    "fur_grey",
+    "fur_white"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "body/tail/wolf",
+      "notes": "",
+      "authors": [
+        "JaidynReiman"
+      ],
+      "licenses": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-furry-ears-tails-for-rpg-sprites"
+      ]
+    }
+  ],
+  "path": [
+    "body",
+    "tails",
+    "tail_wolf"
+  ],
+  "type_name": "tail"
+}

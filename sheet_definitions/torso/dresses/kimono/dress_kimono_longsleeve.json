@@ -1,0 +1,80 @@
+{
+  "name": "Kimono Sleeves",
+  "priority": 50,
+  "tags": [
+    "arms",
+    "sleeves",
+    "kimono_long_sleeves"
+  ],
+  "layer_1": {
+    "zPos": 31,
+    "female": "dress/kimono/sleeves/universal/female/",
+    "teen": "dress/kimono/sleeves/universal/female/"
+  },
+  "layer_2": {
+    "zPos": 145,
+    "female": "dress/kimono/sleeves/universal/female_front/",
+    "teen": "dress/kimono/sleeves/universal/female_front/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "idle"
+  ],
+  "credits": [
+    {
+      "file": "dress/kimono/sleeves",
+      "notes": "",
+      "authors": [
+        "JaidynReiman",
+        "Stephen Challener (Redshrike)",
+        "Johannes Sjölund (wulax)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0+",
+        "CC-BY 3.0+",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-kimono-relm"
+      ]
+    }
+  ],
+  "path": [
+    "torso",
+    "dresses",
+    "kimono",
+    "dress_kimono_longsleeve"
+  ],
+  "type_name": "dress_sleeves"
+}

@@ -1,5 +1,6 @@
 // Animation Filters component
-import { state, isItemAnimationCompatible } from '../../state/state.js';
+import { state } from '../../state/state.js';
+import { isItemAnimationCompatible } from '../../state/filters.js';
 import { ANIMATIONS } from '../../state/constants.js';
 
 export const AnimationFilters = {

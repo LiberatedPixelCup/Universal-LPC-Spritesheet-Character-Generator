@@ -1,0 +1,73 @@
+{
+  "name": "Heater Shield Base",
+  "priority": 10,
+  "tags": [
+    "heater"
+  ],
+  "layer_1": {
+    "zPos": 2,
+    "male": "shield/heater/original/wood/bg/",
+    "muscular": "shield/heater/original/wood/bg/",
+    "female": "shield/heater/original/wood/bg/",
+    "pregnant": "shield/heater/original/wood/bg/",
+    "teen": "shield/heater/original/wood/bg/"
+  },
+  "layer_2": {
+    "zPos": 110,
+    "male": "shield/heater/original/wood/fg/",
+    "muscular": "shield/heater/original/wood/fg/",
+    "female": "shield/heater/original/wood/fg/",
+    "pregnant": "shield/heater/original/wood/fg/",
+    "teen": "shield/heater/original/wood/fg/"
+  },
+  "variants": [
+    "brown",
+    "coffee",
+    "oak",
+    "tan",
+    "umber"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "shield/heater/original/wood",
+      "notes": "",
+      "authors": [
+        "bluecarrot16",
+        "Sander Frenken (castelonia)",
+        "ElizaWy"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-shields"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "shield",
+    "heater shield",
+    "shield_heater_wood"
+  ],
+  "type_name": "shield"
+}
