@@ -1,0 +1,67 @@
+{
+  "name": "Jabot",
+  "priority": 80,
+  "layer_1": {
+    "zPos": 90,
+    "male": "neck/jabot/male/",
+    "female": "neck/jabot/male/",
+    "teen": "neck/jabot/male/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "idle"
+  ],
+  "credits": [
+    {
+      "file": "neck/jabot",
+      "notes": "",
+      "authors": [
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-pirates"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "neck",
+    "neck_jabot"
+  ],
+  "type_name": "neck"
+}

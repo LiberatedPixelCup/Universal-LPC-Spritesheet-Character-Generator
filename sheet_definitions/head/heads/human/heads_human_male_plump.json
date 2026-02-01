@@ -1,0 +1,83 @@
+{
+  "name": "Human Male Plump",
+  "tags": [
+    "human",
+    "adult"
+  ],
+  "layer_1": {
+    "zPos": 100,
+    "male": "head/heads/human/male_plump/",
+    "muscular": "head/heads/human/male_plump/",
+    "female": "head/heads/human/male_plump/",
+    "pregnant": "head/heads/human/male_plump/",
+    "teen": "head/heads/human/male_plump/"
+  },
+  "variants": [
+    "light",
+    "amber",
+    "olive",
+    "taupe",
+    "bronze",
+    "brown",
+    "black",
+    "lavender",
+    "blue",
+    "zombie_green",
+    "green",
+    "pale_green",
+    "bright_green",
+    "dark_green",
+    "zombie",
+    "fur_black",
+    "fur_brown",
+    "fur_tan",
+    "fur_copper",
+    "fur_gold",
+    "fur_grey",
+    "fur_white"
+  ],
+  "match_body_color": true,
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "head/heads/human/male_plump",
+      "notes": "original head by Redshrike, plump version by ??",
+      "authors": [
+        "Stephen Challener (Redshrike)",
+        "??"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+        "https://opengameart.org/content/lpc-folk"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "heads",
+    "heads_human_male_plump"
+  ],
+  "type_name": "head"
+}

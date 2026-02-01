@@ -1,0 +1,103 @@
+{
+  "name": "Lizard Wings (Alt Colors)",
+  "priority": 30,
+  "tags": [
+    "wings"
+  ],
+  "layer_1": {
+    "zPos": 105,
+    "male": "body/wings/lizard/alt/adult/fg/",
+    "muscular": "body/wings/lizard/alt/adult/fg/",
+    "female": "body/wings/lizard/alt/adult/fg/",
+    "pregnant": "body/wings/lizard/alt/adult/fg/",
+    "teen": "body/wings/lizard/alt/adult/fg/"
+  },
+  "layer_2": {
+    "zPos": 5,
+    "male": "body/wings/lizard/alt/adult/bg/",
+    "muscular": "body/wings/lizard/alt/adult/bg/",
+    "female": "body/wings/lizard/alt/adult/bg/",
+    "pregnant": "body/wings/lizard/alt/adult/bg/",
+    "teen": "body/wings/lizard/alt/adult/bg/"
+  },
+  "variants": [
+    "blonde",
+    "ash",
+    "sandy",
+    "platinum",
+    "strawberry",
+    "redhead",
+    "ginger",
+    "carrot",
+    "chestnut",
+    "light brown",
+    "dark brown",
+    "black",
+    "raven",
+    "dark gray",
+    "gray",
+    "white",
+    "red",
+    "orange",
+    "gold",
+    "green",
+    "blue",
+    "navy",
+    "violet",
+    "purple",
+    "pink",
+    "rose",
+    "fur_black",
+    "fur_brown",
+    "fur_tan",
+    "fur_copper",
+    "fur_gold",
+    "fur_grey",
+    "fur_white"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "body/wings/lizard",
+      "notes": "edited for v3 bases and recolored by bluecarrot16, sit/jump/run/emote/revised combat by JaidynReiman",
+      "authors": [
+        "JaidynReiman",
+        "Nila122",
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/drakes-and-lizardfolk",
+        "https://opengameart.org/content/lpc-wings-new-animations"
+      ]
+    }
+  ],
+  "path": [
+    "body",
+    "wings",
+    "wings_lizard_alt"
+  ],
+  "type_name": "wings"
+}

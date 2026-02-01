@@ -1,18 +1,16 @@
 const fs = require("fs");
-const readline = require("readline");
+const path = require("path");
+const SHEETS_DIR = "sheet_definitions" + path.sep;
 
 const DEBUG = false; // change this to print debug log
 const onlyIfTemplate = false; // print debugging log only if there is a template
-// const onlyIfReplace = true; // print debugging log only if there is replace key
 
 require("child_process").fork("scripts/zPositioning/parse_zpos.js");
 
-// copied from https://github.com/mikemaccana/dynamic-template/blob/046fee36aecc1f48cf3dc454d9d36bb0e96e0784/index.js
-const es6DynamicTemplate = (templateString, templateVariables) =>
-  templateString.replace(/\${(.*?)}/g, (_, g) => templateVariables[g]);
-
+// Collect metadata for runtime use
 const licensesFound = [];
-const itemMetadata = {}; // Collect metadata for runtime use
+const itemMetadata = {};
+const categoryTree = { items: [], children: {} };
 
 function searchCredit(fileName, credits, origFileName) {
   if (credits.count <= 0) {
@@ -49,39 +47,78 @@ function searchCredit(fileName, credits, origFileName) {
   }
 }
 
-function parseJson(json) {
-  const templateIndex = json.lastIndexOf("%");
-  let searchFileName = json;
-  let queryObj = null;
-  if (templateIndex > -1) {
-    searchFileName = searchFileName.substring(0, templateIndex);
-    const query = json.substring(templateIndex + 1);
-    queryObj = Object.fromEntries(new URLSearchParams(query));
-    const replObj = Object.fromEntries(
-      Object.keys(queryObj).map(key => [key, ""])
-    );
-    searchFileName = es6DynamicTemplate(searchFileName, replObj).replace(
-      /_+/,
-      "_"
-    );
-  }
-  const filePath = `sheet_definitions/${searchFileName}.json`;
-  if (DEBUG && (!onlyIfTemplate || queryObj))
-    console.log(`Parsing ${filePath}`);
-  let definition = null;
+// Parse Category Tree From Meta Files and Folder Paths
+function parseTree(filePath, fileName) {
+  // Get Full Path
+  const fullPath = path.join(filePath, fileName);
+  if (DEBUG && !onlyIfTemplate)
+    console.log(`Parsing tree ${fullPath}`);
+
+  let meta = null;
   try {
-    definition = JSON.parse(fs.readFileSync(filePath));
+    meta = JSON.parse(fs.readFileSync(fullPath));
   } catch (e) {
-    console.error("error in", filePath);
+    console.error("error in", fullPath);
     throw e;
   }
+
+  const { label, priority, required, animations } = meta;
+
+  let current = categoryTree;
+  const categoryPath = filePath.replace("sheet_definitions" + path.sep, "").split(path.sep);
+  const treeId = filePath.split(path.sep).pop();
+
+  for (let segment of categoryPath) {
+    if (!current.children[segment]) {
+      current.children[segment] = {
+        items: [],
+        children: {}
+      };
+
+      // Only Set Metadata on Current Tree ID
+      if (segment === treeId) {
+        current.children[segment].label = label;
+        current.children[segment].priority = priority || null;
+        current.children[segment].required = required || [];
+        current.children[segment].animations = animations || [];
+      }
+    }
+    current = current.children[segment];
+  }
+} // fn parseTree
+
+// Parse Asset JSON File
+function parseJson(filePath, fileName) {
+  const fullPath = path.join(filePath, fileName);
+  const searchFileName = fileName.replace(".json", "");
+  if (DEBUG && !onlyIfTemplate)
+    console.log(`Parsing ${fullPath}`);
+
+  // Read JSON Definition
+  let definition = null;
+  try {
+    definition = JSON.parse(fs.readFileSync(fullPath));
+  } catch (e) {
+    console.error("error in", fullPath);
+    throw e;
+  }
+
   const {
     variants,
     name,
     credits,
     replace_in_path,
-    path
+    priority,
+    ignore,
+    path: itemPath
   } = definition;
+
+  // Skip Ignored Items
+  if (ignore === true) {
+    throw Error(`Skipping ignored item: ${searchFileName}`);
+  }
+
+
   const { tags = [], required_tags = [], excluded_tags = [] } = definition;
   const typeName = definition.type_name;
   const defaultAnimations = [
@@ -112,13 +149,8 @@ function parseJson(json) {
   // Build unique itemId from filename (not from path or type_name)
   // This ensures each item has a unique ID even if they share the same type_name
   let itemId = searchFileName;
-  // Append query parameters if present
-  if (queryObj) {
-    const vals = Object.values(queryObj)
-      .map(val => val.replaceAll(" ", "_"))
-      .join("_");
-    itemId = `${itemId}_${vals}`;
-  }
+  const treePath = filePath.replace("sheet_definitions" + path.sep, "").split(path.sep);
+  treePath.push(itemId);
 
   // Collect layer information (file paths and zPos)
   const layers = {};
@@ -134,13 +166,15 @@ function parseJson(json) {
   // Collect metadata for this item
   itemMetadata[itemId] = {
     name: name,
+    priority: priority || null,
     type_name: typeName,
     required: requiredSexes,
     animations: animations,
     tags: tags,
     required_tags: required_tags,
     excluded_tags: excluded_tags,
-    path: path || ["other"],
+    //path: itemPath || treePath || ["other"], TO DO: clean up item paths in json files and allow itemPath to be an override of the treePath
+    path: treePath || ["other"],
     replace_in_path: replace_in_path || {},
     variants: variants || [],
     layers: layers,
@@ -153,7 +187,7 @@ function parseJson(json) {
   };
 
   let listCreditToUse = null;
-  let listItemsCSV = "";
+  let listItemsCSV = [];
 
   // Use type_name for radio button grouping (ensures only one item per type can be selected)
   const addedCreditsFor = [];
@@ -170,14 +204,7 @@ function parseJson(json) {
         if (file !== null && file !== "") {
           let imageFileName = '"' + file + snakeItemName + '.png" ';
           let fileNameForCreditSearch = file + snakeItemName;
-          if (queryObj) {
-            fileNameForCreditSearch = es6DynamicTemplate(
-              fileNameForCreditSearch,
-              queryObj
-            );
-            imageFileName = es6DynamicTemplate(imageFileName, queryObj);
-          }
-          if (DEBUG && (!onlyIfTemplate || queryObj))
+          if (DEBUG && !onlyIfTemplate)
             console.log(
               `Searching for credits to use for ${imageFileName} in ${fileNameForCreditSearch} for layer ${jdx}`
             );
@@ -186,7 +213,7 @@ function parseJson(json) {
             credits,
             fileNameForCreditSearch
           );
-          if (DEBUG && (!onlyIfTemplate || queryObj))
+          if (DEBUG && !onlyIfTemplate)
             console.log(
               `file name set for ${sex} is ${imageFileName} for layer ${jdx}`
             );
@@ -211,11 +238,14 @@ function parseJson(json) {
             const notes = '"' + creditToUse.notes.replaceAll('"', "**") + '" ';
             if (!addedCreditsFor.includes(imageFileName)) {
               const quotedShortName = '"' + file + variant + '.png"';
-              listItemsCSV += `${quotedShortName},${notes},${authors},${licenses},${urls}\n`;
+              listItemsCSV.push({
+                priority,
+                lineText: `${quotedShortName},${notes},${authors},${licenses},${urls}\n`
+              });
               addedCreditsFor.push(imageFileName);
             }
           } else {
-            throw Error(`missing credit inside ${json}`);
+            throw Error(`missing credit inside ${fileName}`);
           } // if creditToUse
         } // if file
       } // for jdx
@@ -237,61 +267,157 @@ function parseJson(json) {
   return parsed;
 } // fn parseJson
 
-// TODO: remove the need for the file sources/source_index.html
-// we could replace with a json
-// or walk sheet_definitions tree?
-const lineReader = readline.createInterface({
-  input: fs.createReadStream("sources/source_index.html")
-});
-let csvGenerated = "filename,notes,authors,licenses,urls\n";
 
-lineReader.on("line", function(line) {
-  if (line.includes("div_sheet_")) {
-    const definition = line.replace("div_sheet_", "");
+// Read sheet_definitions/*.json line by line
+const files = fs.readdirSync(SHEETS_DIR, { 
+  recursive: true,
+  withFileTypes: true 
+}).sort((a, b) => {
+  const pa = path.join(a.path, a.name);
+  const pb = path.join(b.path, b.name);
+
+  const depthA = pa.split(path.sep).length;
+  const depthB = pb.split(path.sep).length;
+  if (depthA !== depthB) return depthA - depthB;
+
+  return pa.localeCompare(pb);
+});
+
+// Initialize CSV
+const csvList = [];
+files.forEach(file => {
+  if (file.isDirectory()) {
+    return;
+  } else if (file.name.startsWith("meta_")) {
+    // Handle Category Tree
+    parseTree(file.path, file.name);
+    return;
+  } else {
     let parsedResult = null;
     try {
-      parsedResult = parseJson(definition.replaceAll("\t", ""));
+      parsedResult = parseJson(file.path, file.name);
     } catch (e) {
+      if (DEBUG && !onlyIfTemplate)
+        console.log(e);
       return;
     }
-    csvGenerated += parsedResult.csv;
+    csvList.push({path: file.path.replace(SHEETS_DIR, ''), csv: parsedResult.csv});
   }
 });
 
-lineReader.on("close", function() {
-  fs.writeFile("CREDITS.csv", csvGenerated, function(err) {
-    if (err) {
-      return console.error(err);
-    } else {
-      console.log("CSV Updated!");
-      printArray(licensesFound, "Found licenses");
+// Generate item-metadata.js for runtime use
+for (const [itemId, meta] of Object.entries(itemMetadata)) {
+  const itemPath = meta.path || ["Other"];
+
+  // Navigate/create tree structure (skip the last element which is the filename)
+  let current = categoryTree;
+  // Only use path elements except the last one (which is the filename)
+  const categoryPath = itemPath.slice(0, -1);
+
+  for (const segment of categoryPath) {
+    if (!current.children[segment]) {
+      current.children[segment] = { items: [], children: {} };
     }
-  });
+    current = current.children[segment];
+  }
 
-  // Generate item-metadata.js for runtime use
-  // Build category tree from paths
-  const categoryTree = { items: [], children: {} };
+  // Add item to the category (not as a child)
+  current.items.push(itemId);
+} // for itemMetadata
 
-  for (const [itemId, meta] of Object.entries(itemMetadata)) {
-    const itemPath = meta.path || ["Other"];
+// Sort Category Tree and Subitems
+function sortCategoryTree(node) {
+  const sortedChildren = Object.entries(node.children || {}).sort(
+    ([keyA, valA], [keyB, valB]) => {
+      const a = valA.priority ?? Number.POSITIVE_INFINITY;
+      const b = valB.priority ?? Number.POSITIVE_INFINITY;
+      if (a !== b) return a - b;
+      const labelA = valA.label ?? keyA;
+      const labelB = valB.label ?? keyB;
+      return labelA.localeCompare(labelB);
+    }
+  );
 
-    // Navigate/create tree structure (skip the last element which is the filename)
-    let current = categoryTree;
-    // Only use path elements except the last one (which is the filename)
-    const categoryPath = itemPath.slice(0, -1);
+  const reordered = {};
+  for (const [key, child] of sortedChildren) {
+    sortCategoryTree(child);
+    reordered[key] = child;
+  }
+  node.children = reordered;
 
-    for (const segment of categoryPath) {
-      if (!current.children[segment]) {
-        current.children[segment] = { items: [], children: {} };
-      }
-      current = current.children[segment];
+  if (node.items) {
+    node.items.sort((idA, idB) => {
+      const metaA = itemMetadata[idA] || {};
+      const metaB = itemMetadata[idB] || {};
+      const a = metaA.priority ?? Number.POSITIVE_INFINITY;
+      const b = metaB.priority ?? Number.POSITIVE_INFINITY;
+      if (a !== b) return a - b;
+      const nameA = metaA.name ?? idA;
+      const nameB = metaB.name ?? idB;
+      return nameA.localeCompare(nameB);
+    });
+  }
+
+  return node;
+}
+
+sortCategoryTree(categoryTree);
+
+// Sort csvList by category tree priorities
+csvList.sort((a, b) => {
+  const pathA = a.path.split(path.sep).filter(Boolean);
+  const pathB = b.path.split(path.sep).filter(Boolean);
+
+  // Compare each path segment
+  const maxLen = Math.max(pathA.length, pathB.length);
+  for (let i = 0; i < maxLen; i++) {
+    if (i >= pathA.length) return -1; // a is shorter, comes first
+    if (i >= pathB.length) return 1;  // b is shorter, comes first
+
+    const segA = pathA[i];
+    const segB = pathB[i];
+
+    if (segA === segB) continue;
+
+    // Navigate to parent node to get priorities
+    let nodeA = categoryTree;
+    let nodeB = categoryTree;
+    for (let j = 0; j <= i; j++) {
+      nodeA = nodeA.children?.[pathA[j]];
+      nodeB = nodeB.children?.[pathB[j]];
+      if (!nodeA || !nodeB) break;
     }
 
-    // Add item to the category (not as a child)
-    current.items.push(itemId);
-  } // for itemMetadata
+    const prioA = nodeA?.priority ?? Number.POSITIVE_INFINITY;
+    const prioB = nodeB?.priority ?? Number.POSITIVE_INFINITY;
 
-  const metadataJS = `// THIS FILE IS AUTO-GENERATED. PLEASE DON'T ALTER IT MANUALLY
+    if (prioA !== prioB) return prioA - prioB;
+
+    const labelA = nodeA?.label ?? segA;
+    const labelB = nodeB?.label ?? segB;
+    return labelA.localeCompare(labelB);
+  }
+
+  return 0;
+});
+
+// Generate CREDITS.csv After Sorting Everything
+let csvGenerated = "filename,notes,authors,licenses,urls\n";
+for (const result of csvList) {
+  for (const item of result.csv) {
+    csvGenerated += item.lineText;
+  }
+}
+fs.writeFile("CREDITS.csv", csvGenerated, function(err) {
+  if (err) {
+    return console.error(err);
+  } else {
+    console.log("CSV Updated!");
+    printArray(licensesFound, "Found licenses");
+  }
+});
+
+const metadataJS = `// THIS FILE IS AUTO-GENERATED. PLEASE DON'T ALTER IT MANUALLY
 // Generated from sheet_definitions/*.json by scripts/generate_sources.js
 // Contains metadata for all customization items to avoid DOM queries at runtime
 
@@ -300,14 +426,13 @@ window.itemMetadata = ${JSON.stringify(itemMetadata, null, 2)};
 window.categoryTree = ${JSON.stringify(categoryTree, null, 2)};
 `;
 
-  fs.writeFile("item-metadata.js", metadataJS, function(err) {
-    if (err) {
-      return console.error(err);
-    } else {
-      console.log("Item Metadata JS Updated!");
-    }
-  });
-}); // lineReader.on('close')
+fs.writeFile("item-metadata.js", metadataJS, function(err) {
+  if (err) {
+    return console.error(err);
+  } else {
+    console.log("Item Metadata JS Updated!");
+  }
+});
 
 function printArray(array, label) {
   const colors = {

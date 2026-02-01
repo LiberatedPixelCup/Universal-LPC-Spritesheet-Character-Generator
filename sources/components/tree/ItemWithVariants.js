@@ -11,7 +11,7 @@ export const ItemWithVariants = {
 		const compactDisplay = state.compactDisplay;
 		const displayName = meta.name;
 		let nodePath = itemId;
-		if (displayName === 'Body color') {
+		if (displayName === 'Body Color') {
 			nodePath = 'body-body';
 		}
 		const isExpanded = state.expandedNodes[nodePath] || false;

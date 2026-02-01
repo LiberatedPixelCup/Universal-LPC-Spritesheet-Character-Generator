@@ -1,0 +1,100 @@
+{
+  "name": "Feathered Wings",
+  "priority": 10,
+  "tags": [
+    "wings"
+  ],
+  "layer_1": {
+    "zPos": 105,
+    "male": "body/wings/feathered/adult/fg/",
+    "muscular": "body/wings/feathered/adult/fg/",
+    "female": "body/wings/feathered/adult/fg/",
+    "pregnant": "body/wings/feathered/adult/fg/",
+    "teen": "body/wings/feathered/adult/fg/"
+  },
+  "layer_2": {
+    "zPos": 5,
+    "male": "body/wings/feathered/adult/bg/",
+    "muscular": "body/wings/feathered/adult/bg/",
+    "female": "body/wings/feathered/adult/bg/",
+    "pregnant": "body/wings/feathered/adult/bg/",
+    "teen": "body/wings/feathered/adult/bg/"
+  },
+  "variants": [
+    "blonde",
+    "ash",
+    "sandy",
+    "platinum",
+    "strawberry",
+    "redhead",
+    "ginger",
+    "carrot",
+    "chestnut",
+    "light brown",
+    "dark brown",
+    "black",
+    "raven",
+    "dark gray",
+    "gray",
+    "white",
+    "red",
+    "orange",
+    "gold",
+    "green",
+    "blue",
+    "navy",
+    "violet",
+    "purple",
+    "pink",
+    "rose",
+    "fur_black",
+    "fur_brown",
+    "fur_tan",
+    "fur_copper",
+    "fur_gold",
+    "fur_grey",
+    "fur_white"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "body/wings/feathered",
+      "notes": "Original by ElizaWy, added to most remaining frames by JaidynReiman",
+      "authors": [
+        "ElizaWy",
+        "Stephen Challener (Redshrike)",
+        "JaidynReiman"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-wings-new-animations"
+      ]
+    }
+  ],
+  "path": [
+    "body",
+    "wings",
+    "wings_feathered"
+  ],
+  "type_name": "wings"
+}
