@@ -3,17 +3,41 @@ import { state } from '../../state/state.js';
 import { isItemLicenseCompatible } from '../../state/filters.js';
 import { LICENSE_CONFIG } from '../../state/constants.js';
 
+// Dependency injection for testability
+let deps = {
+  isItemLicenseCompatible,
+  licenseConfig: LICENSE_CONFIG,
+};
+
+export function setLicenseCompatible({ isItemLicenseCompatible }) {
+  deps.isItemLicenseCompatible = isItemLicenseCompatible;
+}
+export function isLicenseCompatible() {
+  return deps.isItemLicenseCompatible(...arguments);
+}
+
+export function setLicenseConfig(config) {
+  deps.licenseConfig = config;
+}
+export function getLicenseConfig() {
+  return deps.licenseConfig;
+}
+
 export const LicenseFilters = {
+  isLicenseCompatible() { return deps.isItemLicenseCompatible(...arguments); },
+  licenseConfig() { return deps.licenseConfig; },
+
 	oninit: function(vnode) {
 		vnode.state.isExpanded = false; // Start collapsed by default
 	},
 	view: function(vnode) {
 
 		// Function to remove incompatible items from selections
+    const self = this;
 		const removeIncompatibleItems = () => {
 			const toRemove = [];
 			for (const [selectionGroup, selection] of Object.entries(state.selections)) {
-				if (!isItemLicenseCompatible(selection.itemId)) {
+				if (!self.isLicenseCompatible(selection.itemId)) {
 					toRemove.push(selectionGroup);
 				}
 			}
@@ -28,13 +52,13 @@ export const LicenseFilters = {
 
 		// Check if there are any incompatible selected items
 		const incompatibleSelections = Object.values(state.selections).filter(
-			selection => !isItemLicenseCompatible(selection.itemId)
+			selection => !self.isLicenseCompatible(selection.itemId)
 		);
 		const hasIncompatibleItems = incompatibleSelections.length > 0;
 
 		// Count how many licenses are enabled
 		const enabledCount = Object.values(state.enabledLicenses).filter(Boolean).length;
-		const totalCount = LICENSE_CONFIG.length;
+		const totalCount = self.licenseConfig().length;
 
 		return m("div.box.mb-4.has-background-light", [
 			m("div.tree-label", {
@@ -48,7 +72,7 @@ export const LicenseFilters = {
 			]),
 			vnode.state.isExpanded ? m("div.content.mt-3", [
 				m("ul.tree-list",
-					LICENSE_CONFIG.map(license =>
+					self.licenseConfig().map(license =>
 						m("li", { key: license.key, class: "mb-2" }, [
 							m("label.checkbox", [
 								m("input[type=checkbox]", {
