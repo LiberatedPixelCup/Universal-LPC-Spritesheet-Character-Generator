@@ -1,6 +1,18 @@
 {
   "devDependencies": {
     "@babel/eslint-parser": "^7.28.5",
-    "eslint": "^8.57.1"
+    "eslint": "^8.57.1",
+    "testem": "^3.17.0",
+    "mocha": "^11.7.5",
+    "chai": "^6.2.2",
+    "mithril": "^2.3.8"
+  },
+  "overrides": {
+    "testem": {
+      "tmp": "^0.2.5"
+    },
+    "mocha": {
+      "diff": "^8.0.3"
+    }
   }
 }

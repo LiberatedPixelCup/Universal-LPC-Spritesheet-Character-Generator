@@ -3,100 +3,34 @@
   <head>
     <meta charset="utf-8" />
     <title>Test Runner - Universal LPC Sprite Sheet</title>
-    <style>
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          "Helvetica Neue", Arial, sans-serif;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-        background: #f5f5f5;
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/11.7.2/mocha.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="sources/loading.css">
+    <link rel="stylesheet" href="sources/main.css">
+    <script src="https://unpkg.com/mithril@2.2.2/mithril.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/11.7.2/mocha.min.js"></script>
+    <script src="https://unpkg.com/classnames@^2.5.1"></script>
+    <script type="text/javascript" src="sources/jszip.min.js"></script>
+    <script type="text/javascript" src="item-metadata.js?v=1.00.0001"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "chai": "https://cdn.jsdelivr.net/npm/chai@6.2.2+esm"
+        }
       }
-      h1 {
-        color: #333;
-        border-bottom: 2px solid #4caf50;
-        padding-bottom: 10px;
-      }
-      #results {
-        background: white;
-        padding: 20px;
-        border-radius: 4px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        margin-top: 20px;
-      }
-      .pass {
-        color: #4caf50;
-      }
-      .fail {
-        color: #f44336;
-      }
-      .spec {
-        font-weight: bold;
-        margin-top: 15px;
-        color: #333;
-      }
-      .test {
-        margin-left: 20px;
-        padding: 5px 0;
-      }
-      .summary {
-        margin-top: 20px;
-        padding: 15px;
-        background: #e3f2fd;
-        border-left: 4px solid #2196f3;
-        font-weight: bold;
-      }
-      .summary.all-pass {
-        background: #e8f5e9;
-        border-left-color: #4caf50;
-      }
-      .summary.has-fail {
-        background: #ffebee;
-        border-left-color: #f44336;
-      }
-      .error-details {
-        color: #d32f2f;
-        font-family: monospace;
-        font-size: 12px;
-        margin-left: 40px;
-        white-space: pre-wrap;
-      }
-      .loading {
-        color: #666;
-        font-style: italic;
-      }
-    </style>
+    </script>
   </head>
   <body>
     <h1>Universal LPC Sprite Sheet - Test Runner</h1>
-    <p class="loading">Loading tests...</p>
-    <div id="results"></div>
 
-    <!-- Hidden div for CI to grep -->
-    <div id="test-status" style="display: none;">LOADING</div>
+    <div id="mocha"></div>
 
-    <!-- Load Mithril from CDN (same version as main app) -->
-    <script src="https://unpkg.com/mithril@2.2.2/mithril.min.js"></script>
-
-    <!-- Load ospec for browser -->
-    <script src="https://unpkg.com/ospec@4.2.1/ospec.js"></script>
-
-    <script>
-      // Make m and o available globally for test files
-      window.m = m;
-      window.o = o;
+    <script type="module">
+      mocha.setup('bdd');
     </script>
-
-    <!-- Load the test runner which sets up reporter and discovers tests -->
-    <script src="tests/test-runner.js"></script>
-
-    <!-- Load Testem script to manage test running -->
     <script src="/testem.js"></script>
-    <script src="tests/ospec-adapter.js"></script>
-
-    <script>
-      // Start the discovery process
-      discoverAndRunTests();
+    <script type="module" src="tests/tests.js"></script>
+    <script type="module">
+      mocha.run();
     </script>
-  </body>
 </html>

@@ -1,11 +1,10 @@
 "use strict";
 
 let testemConfig = {
-  adapter: "custom",
-  src_files: ["tests/ospec-adapter.js"],
+  framework: "mocha+chai",
+  test_page: "tests_run.html",
   parallel: 2,
   debug: true,
-  test_page: "tests_run.html",
   disable_watching: true,
   launch_in_ci: ["Chrome", "Firefox"],
   launch_in_dev: ["Chrome", "Firefox", "Safari"],
@@ -51,9 +50,5 @@ let testemConfig = {
     },
   },
 };
-
-if (!process.env.CI) {
-  testemConfig.launch_in_ci.push("Safari"); // Run Safari tests when not on Travis
-}
 
 module.exports = testemConfig;

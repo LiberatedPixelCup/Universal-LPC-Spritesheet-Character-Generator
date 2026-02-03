@@ -53,10 +53,10 @@ module.exports = {
 				node: false, // Disables Node.js global variables and Node.js scoping
 				browser: true, // Enables browser global variables (window, document, etc.)
 				es6: true, // Enables ES6 global variables and syntax
+        mocha: true, // Enables Mocha testing global variables (describe, it, etc.)
 			},
       globals: {
-        discoverAndRunTests: "writeable",
-        Testem: "readonly",
+        m: "readonly",
       }
 		}
 	],

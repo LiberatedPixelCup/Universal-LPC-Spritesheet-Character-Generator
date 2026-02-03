@@ -1,15 +1,12 @@
 // SearchControl component tests - Browser compatible
-import { state } from "../sources/state/state.js";
-import { SearchControl } from "../sources/components/filters/SearchControl.js";
+import { state } from "../../sources/state/state.js";
+import { SearchControl } from "../../sources/components/filters/SearchControl.js";
+import { assert } from "chai";
 
-// Use global o and m (loaded from CDN in index.html)
-const o = window.o;
-const m = window.m;
-
-o.spec("SearchControl", function() {
+describe("SearchControl", function() {
   let container;
 
-  o.beforeEach(function() {
+  beforeEach(function() {
     // Reset state before each test
     state.searchQuery = "";
 
@@ -18,37 +15,37 @@ o.spec("SearchControl", function() {
     document.body.appendChild(container);
   });
 
-  o.afterEach(function() {
+  afterEach(function() {
     // Cleanup after each test
     if (container && container.parentNode) {
       container.parentNode.removeChild(container);
     }
   });
 
-  o("renders a search input field", function() {
+  it("renders a search input field", function() {
     m.render(container, m(SearchControl));
 
     // Should render an input with type=search and placeholder attribute
     const input = container.querySelector(
       "input[type=search][placeholder=Search]"
     );
-    o(input).notEquals(null);
+    assert.notEqual(input, null);
   });
 
-  o("displays the label 'Search:'", function() {
+  it("displays the label 'Search:'", function() {
     m.render(container, m(SearchControl));
 
     // Should have a label with text "Search:"
-    o(container.textContent.includes("Search:")).equals(true);
+    assert.include(container.textContent, "Search:");
   });
 
-  o("input reflects current state value", function() {
+  it("input reflects current state value", function() {
     const test_query = "test query";
     state.searchQuery = test_query;
     m.render(container, m(SearchControl));
 
     // Input value should match state
     const input = container.querySelector("input");
-    o(input.value).equals(test_query);
+    assert.strictEqual(input.value, test_query);
   });
 });
