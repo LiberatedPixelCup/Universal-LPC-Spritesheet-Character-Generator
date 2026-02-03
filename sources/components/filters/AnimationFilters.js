@@ -3,16 +3,40 @@ import { state } from '../../state/state.js';
 import { isItemAnimationCompatible } from '../../state/filters.js';
 import { ANIMATIONS } from '../../state/constants.js';
 
+// Dependency injection for testability
+let deps = {
+  isItemAnimationCompatible,
+  animations: ANIMATIONS,
+};
+
+export function setAnimationCompatible({ isItemAnimationCompatible }) {
+  deps.isItemAnimationCompatible = isItemAnimationCompatible;
+}
+export function isAnimationCompatible() {
+  return deps.isItemAnimationCompatible(...arguments);
+}
+
+export function setAnimations(anims) {
+  deps.animations = anims;
+}
+export function getAnimations() {
+  return deps.animations;
+}
+
 export const AnimationFilters = {
+  isAnimationCompatible() { return deps.isItemAnimationCompatible(...arguments); },
+  animations() { return deps.animations; },
 	oninit: function(vnode) {
 		vnode.state.isExpanded = false; // Start collapsed by default
 	},
 	view: function(vnode) {
+    const self = this;
+
 		// Function to remove incompatible items from selections
 		const removeIncompatibleItems = () => {
 			const toRemove = [];
 			for (const [selectionGroup, selection] of Object.entries(state.selections)) {
-				if (!isItemAnimationCompatible(selection.itemId)) {
+				if (!self.isAnimationCompatible(selection.itemId)) {
 					toRemove.push(selectionGroup);
 				}
 			}
@@ -27,13 +51,13 @@ export const AnimationFilters = {
 
 		// Check if there are any incompatible selected items
 		const incompatibleSelections = Object.values(state.selections).filter(
-			selection => !isItemAnimationCompatible(selection.itemId)
+			selection => !self.isAnimationCompatible(selection.itemId)
 		);
 		const hasIncompatibleItems = incompatibleSelections.length > 0;
 
 		// Count how many animations are enabled
 		const enabledCount = Object.values(state.enabledAnimations).filter(Boolean).length;
-		const totalCount = ANIMATIONS.length;
+		const totalCount = self.animations().length;
 		const isFilterActive = enabledCount > 0;
 
 		return m("div.box.mb-4.has-background-light", [
@@ -52,7 +76,7 @@ export const AnimationFilters = {
 			]),
 			vnode.state.isExpanded ? m("div.content.mt-3", [
 				m("ul.tree-list",
-					ANIMATIONS.map(anim =>
+					self.animations().map(anim =>
 						m("li", { key: anim.value, class: "mb-2" }, [
 							m("label.checkbox", [
 								m("input[type=checkbox]", {
