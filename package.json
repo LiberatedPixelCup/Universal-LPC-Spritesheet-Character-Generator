@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "@babel/eslint-parser": "^7.28.5",
-    "eslint": "^8.57.1",
+    "eslint": "^9.39.2",
     "testem": "^3.17.0",
     "mocha": "^11.7.5",
     "chai": "^6.2.2",
