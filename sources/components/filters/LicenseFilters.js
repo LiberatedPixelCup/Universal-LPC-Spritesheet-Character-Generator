@@ -24,25 +24,18 @@ export function getLicenseConfig() {
 }
 
 export const LicenseFilters = {
-  isLicenseCompatible() {
-    return deps.isItemLicenseCompatible(...arguments);
-  },
-  licenseConfig() {
-    return deps.licenseConfig;
-  },
 
   oninit: function (vnode) {
     vnode.state.isExpanded = false; // Start collapsed by default
   },
   view: function (vnode) {
     // Function to remove incompatible items from selections
-    const self = this;
     const removeIncompatibleItems = () => {
       const toRemove = [];
       for (const [selectionGroup, selection] of Object.entries(
         state.selections,
       )) {
-        if (!self.isLicenseCompatible(selection.itemId)) {
+        if (!isLicenseCompatible(selection.itemId)) {
           toRemove.push(selectionGroup);
         }
       }
@@ -57,7 +50,7 @@ export const LicenseFilters = {
 
     // Check if there are any incompatible selected items
     const incompatibleSelections = Object.values(state.selections).filter(
-      (selection) => !self.isLicenseCompatible(selection.itemId),
+      (selection) => !isLicenseCompatible(selection.itemId),
     );
     const hasIncompatibleItems = incompatibleSelections.length > 0;
 
@@ -65,7 +58,7 @@ export const LicenseFilters = {
     const enabledCount = Object.values(state.enabledLicenses).filter(
       Boolean,
     ).length;
-    const totalCount = self.licenseConfig().length;
+    const totalCount = getLicenseConfig().length;
 
     return m("div.box.mb-4.has-background-light", [
       m(
@@ -90,7 +83,7 @@ export const LicenseFilters = {
         ? m("div.content.mt-3", [
             m(
               "ul.tree-list",
-              self.licenseConfig().map((license) =>
+              getLicenseConfig().map((license) =>
                 m("li", { key: license.key, class: "mb-2" }, [
                   m("label.checkbox", [
                     m("input[type=checkbox]", {

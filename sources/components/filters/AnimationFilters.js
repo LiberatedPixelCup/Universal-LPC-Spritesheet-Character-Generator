@@ -24,25 +24,17 @@ export function getAnimations() {
 }
 
 export const AnimationFilters = {
-  isAnimationCompatible() {
-    return deps.isItemAnimationCompatible(...arguments);
-  },
-  animations() {
-    return deps.animations;
-  },
   oninit: function (vnode) {
     vnode.state.isExpanded = false; // Start collapsed by default
   },
   view: function (vnode) {
-    const self = this;
-
     // Function to remove incompatible items from selections
     const removeIncompatibleItems = () => {
       const toRemove = [];
       for (const [selectionGroup, selection] of Object.entries(
         state.selections,
       )) {
-        if (!self.isAnimationCompatible(selection.itemId)) {
+        if (!isAnimationCompatible(selection.itemId)) {
           toRemove.push(selectionGroup);
         }
       }
@@ -57,7 +49,7 @@ export const AnimationFilters = {
 
     // Check if there are any incompatible selected items
     const incompatibleSelections = Object.values(state.selections).filter(
-      (selection) => !self.isAnimationCompatible(selection.itemId),
+      (selection) => !isAnimationCompatible(selection.itemId),
     );
     const hasIncompatibleItems = incompatibleSelections.length > 0;
 
@@ -65,7 +57,7 @@ export const AnimationFilters = {
     const enabledCount = Object.values(state.enabledAnimations).filter(
       Boolean,
     ).length;
-    const totalCount = self.animations().length;
+    const totalCount = getAnimations().length;
     const isFilterActive = enabledCount > 0;
 
     return m("div.box.mb-4.has-background-light", [
@@ -91,7 +83,7 @@ export const AnimationFilters = {
         ? m("div.content.mt-3", [
             m(
               "ul.tree-list",
-              self.animations().map((anim) =>
+              getAnimations().map((anim) =>
                 m("li", { key: anim.value, class: "mb-2" }, [
                   m("label.checkbox", [
                     m("input[type=checkbox]", {
