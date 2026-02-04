@@ -18,7 +18,8 @@ export function getCanvasBlob() {
 /**
  * Download canvas as PNG (exports the offscreen canvas directly)
  */
-export async function downloadAsPNG(filename = "character-spritesheet.png") {
+// allow injection of getCanvasBlob for testing
+export async function downloadAsPNG(filename = "character-spritesheet.png", getCanvasBlob = getCanvasBlob) {
   try {
     const blob = await getCanvasBlob();
     const url = URL.createObjectURL(blob);
