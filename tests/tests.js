@@ -6,6 +6,7 @@ config.truncateThreshold = 0; // Disable truncation of assertion errors
 // Import all test files
 import "./canvas/canvas-utils_spec.js";
 import "./canvas/draw-frames_spec.js";
+import "./canvas/download_spec.js";
 import "./components/CollapsibleSection_spec.js";
 import "./components/FiltersPanel_spec.js";
 import "./components/filters/AnimationFilters_spec.js";
