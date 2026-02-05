@@ -8,6 +8,7 @@ import "./canvas/canvas-utils_spec.js";
 import "./canvas/draw-frames_spec.js";
 import "./canvas/download_spec.js";
 import "./canvas/load-images_spec.js";
+import "./canvas/mask_spec.js";
 import "./components/CollapsibleSection_spec.js";
 import "./components/FiltersPanel_spec.js";
 import "./components/filters/AnimationFilters_spec.js";
