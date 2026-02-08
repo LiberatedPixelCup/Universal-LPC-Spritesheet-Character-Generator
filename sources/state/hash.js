@@ -19,13 +19,13 @@ let _hash = "";
 let _setHashCalledTimes = 0;
 
 export function getHash() {
-  if (window.isTesting) return _hash;
+  if (window.isTesting) return "#" + _hash;
   return window.location.hash;
 }
 
 export function setHash(hash) {
   if (window.isTesting) {
-    _hash = hash;
+    _hash = hash[0] === "#" ? hash.substring(1) : hash;
     _setHashCalledTimes++;
     return;
   }
@@ -89,7 +89,7 @@ export function getHashParamsforSelections(selections) {
 
   // Add selections - use old format: type_name=Name_variant
   // Format: "body=Body_color_light", "shoes=Sara_sara"
-  for (const [selectionGroup, selection] of Object.entries(selections)) {
+  for (const selection of Object.values(selections)) {
     const meta = window.itemMetadata?.[selection.itemId];
     if (!meta || !meta.type_name) continue;
 
@@ -166,9 +166,10 @@ export function loadSelectionsFromHash(hashString = null) {
                 break;
               }
             }
-          } else {
+          } else if (variantToMatch === "") {
             // No variants for this item, so we can match just on name
             foundItemId = itemId;
+            matchedVariant = "";
             break;
           }
         }
@@ -227,7 +228,6 @@ export function initHashChangeListener(listener) {
     // Check if this is an external change (browser navigation) vs our own update
     // Our afterStateChange() will update the hash, but we don't want to reload from it
     // We can detect external changes by checking if the hash is different from what we expect
-    const params = getHashParams();
     const expectedHash =
       "#" +
       Object.entries({

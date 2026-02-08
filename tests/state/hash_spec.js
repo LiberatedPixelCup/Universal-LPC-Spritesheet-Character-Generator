@@ -96,7 +96,7 @@ describe("state/hash.js", () => {
     it("should set the window location hash", () => {
       const params = { key1: "value1", key2: "value2" };
       setHashParams(params);
-      expect(getHash()).to.equal("key1=value1&key2=value2");
+      expect(getHash()).to.equal("#key1=value1&key2=value2");
     });
   });
 
