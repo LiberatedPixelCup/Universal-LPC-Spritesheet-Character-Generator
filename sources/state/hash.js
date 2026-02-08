@@ -1,8 +1,49 @@
 import { state, selectDefaults } from './state.js';
 
+// Dependency injection for testability
+export function getState() {
+  return state;
+}
+
+export function updateState(updates) {
+  Object.assign(state, updates);
+}
+
+export function resetState() {
+  state.bodyType = "male";
+  state.selections = {};
+}
+
+// window.location.hash is immutable in tests, this is so we can use a stub to manage it
+let _hash = "";
+let _setHashCalledTimes = 0;
+
+export function getHash() {
+  if (window.isTesting)
+    return _hash;
+  return window.location.hash;
+}
+
+export function setHash(hash) {
+  if (window.isTesting) {
+    _hash = hash;
+    _setHashCalledTimes++;
+    return;
+  } 
+  window.location.hash = hash;
+}
+
+export function resetHashCalledTimes() {
+  _setHashCalledTimes = 0;
+}
+
+export function getSetHashCalledTimes() {
+  return _setHashCalledTimes;
+}
+
 // URL hash parameter management
 export function getHashParams() {
-	let hash = window.location.hash.substring(1); // Remove '#'
+	let hash = getHash().substring(1); // Remove '#'
 
 	// Handle case where hash starts with '?' (some old URLs might have this)
 	if (hash.startsWith("?")) {
@@ -38,7 +79,7 @@ export function createHashStringFromParams(params) {
 
 export function setHashParams(params) {
 	const hash = createHashStringFromParams(params);
-	window.location.hash = hash;
+	setHash(hash);
 }
 
 export function getHashParamsforSelections(selections) {
@@ -166,17 +207,24 @@ export function loadSelectionsFromHash(hashString = null) {
 	if (params.bodyType) {
 		state.bodyType = params.bodyType;
 	}
+
+  syncSelectionsToHash(); // Ensure hash is in sync with loaded selections (handles any normalization)
 }
 
 
 // Initialize hash change listener
-export function initHashChangeListener() {
+export function initHashChangeListener(listener) {
 	// Store the current hash to detect external changes
-	let lastKnownHash = window.location.hash;
+	let lastKnownHash = getHash();
+
+  if (listener) {
+    window.addEventListener("hashchange", listener);
+    return;
+  }
 
 	// Listen for browser back/forward navigation
 	window.addEventListener("hashchange", async function () {
-		const currentHash = window.location.hash;
+		const currentHash = getHash();
 
 		// Check if this is an external change (browser navigation) vs our own update
 		// Our afterStateChange() will update the hash, but we don't want to reload from it
