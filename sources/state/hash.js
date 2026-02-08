@@ -117,15 +117,23 @@ export function loadSelectionsFromHash(hashString = null) {
 				const metaNameNormalized = meta.name.replaceAll(" ", "_");
 
 				// Check if name matches and variant exists (or no variant required)
-				if (
-					metaNameNormalized === nameToMatch &&
-					(variantToMatch === "" ||
-						meta.variants?.includes(variantToMatch))
-				) {
-					foundItemId = itemId;
-					matchedVariant = variantToMatch;
-					break;
-				}
+				if (metaNameNormalized.toLowerCase() === nameToMatch.toLowerCase()) {
+          if (meta.variants?.length > 0) {
+            for (const variant of meta.variants) {
+              if (variant.toLowerCase() === variantToMatch.toLowerCase()) {
+                foundItemId = itemId;
+                matchedVariant = variant;
+                break;
+              }
+            }
+          } else {
+            // No variants for this item, so we can match just on name
+            foundItemId = itemId;
+            break;
+          }
+        }
+
+        if (foundItemId) break;
 			}
 
 			if (foundItemId) break;
