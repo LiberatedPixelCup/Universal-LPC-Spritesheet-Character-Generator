@@ -530,7 +530,7 @@ window.itemMetadata = {
     ],
     "layers": {
       "layer_1": {
-        "zPos": 20,
+        "zPos": 10,
         "male": "body/bodies/male/",
         "muscular": "body/bodies/muscular/",
         "female": "body/bodies/female/",

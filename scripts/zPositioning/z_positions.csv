@@ -40,7 +40,7 @@ belt_other_male,layer_1,70,torso/waist/belt_other/male/
 belt_sash,layer_1,65,torso/waist/sash/male/ torso/waist/sash/female/
 belt_sash_narrow,layer_1,65,torso/waist/sash_narrow/male/ torso/waist/sash_narrow/female/
 belt_waistband,layer_1,65,torso/waist/waistband/female/
-body,layer_1,20,body/bodies/male/ body/bodies/female/ body/bodies/muscular/ body/bodies/pregnant/ body/bodies/child/
+body,layer_1,10,body/bodies/male/ body/bodies/female/ body/bodies/muscular/ body/bodies/pregnant/ body/bodies/child/
 body_skeleton,layer_1,10,body/bodies/skeleton/ body/bodies/skeleton/
 body_zombie,layer_1,10,body/bodies/zombie/ body/bodies/zombie/
 buckles,layer_1,75,torso/waist/buckles/female/
