@@ -1,15 +1,21 @@
-const testFolder = 'sheet_definitions';
 const fs = require('fs');
+const path = require("path");
+const SHEETS_DIR = "sheet_definitions" + path.sep;
 
 var csvEntries = [];
 const possibleBodies = ["male", "female", "muscular", "pregnant","child"];
 
-fs.readdirSync(testFolder).forEach(file => {
-  if (!file.includes('.json')) {
+// Read sheet_definitions/* recursively line by line recursively and extract zPos and image references to write to csv
+fs.readdirSync(SHEETS_DIR, { 
+  recursive: true,
+  withFileTypes: true 
+}).forEach(file => {
+  if (!file.name.includes('.json') || file.isDirectory()) {
     return
   }
-  const json = file;
-  const definition = JSON.parse(fs.readFileSync(`sheet_definitions/${file}`));
+  const fullPath = path.join(file.path, file.name);
+  const json = file.name.replace('.json', '');
+  const definition = JSON.parse(fs.readFileSync(fullPath));
   for (let jdx =1; jdx < 10; jdx++) {
     const layerDefinition = definition[`layer_${jdx}`];
     if (layerDefinition !== undefined) {
