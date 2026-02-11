@@ -431,6 +431,7 @@ export const exportSplitItemAnimations = async () => {
 
         // Render each layer of the item separately
         const layers = getSortedLayers(itemId, true);
+        console.log(layers);
         for (const layer of layers) {
           const fileName = getItemFileName(
             itemId,
@@ -594,7 +595,7 @@ export const exportSplitItemAnimations = async () => {
     const a = document.createElement("a");
     a.href = url;
     a.download = `lpc_${bodyType}_item_animations_${timestamp}.zip`;
-    a.click();
+    //a.click();
     URL.revokeObjectURL(url);
 
     // Report failures if any
