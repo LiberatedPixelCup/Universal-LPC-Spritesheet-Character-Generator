@@ -1,1 +1,899 @@
 json,layer,zPos,images
+arms_armour,layer_1,60,arms/armour/plate/male/ arms/armour/plate/female/ arms/armour/plate/male/ arms/armour/plate/female/
+arms_bracers,layer_1,70,arms/bracers/male/ arms/bracers/female/ arms/bracers/male/ arms/bracers/female/
+arms_gloves,layer_1,70,arms/gloves/male/ arms/gloves/female/ arms/gloves/male/ arms/gloves/female/
+arms_hands_ring_stud,layer_1,75,arms/hands/ring/stud/male/ arms/hands/ring/stud/female/ arms/hands/ring/stud/male/ arms/hands/ring/stud/female/
+backpack,layer_1,110,backpack/backpack/male/ backpack/backpack/female/ backpack/backpack/male/ backpack/backpack/female/
+backpack_basket,layer_1,130,backpack/basket/fg/ backpack/basket/fg/ backpack/basket/fg/ backpack/basket/fg/
+backpack_basket,layer_2,5,backpack/basket/bg/ backpack/basket/bg/ backpack/basket/bg/ backpack/basket/bg/
+backpack_contents_ore,layer_1,140,backpack/basket_contents/ore/fg/ backpack/basket_contents/ore/fg/ backpack/basket_contents/ore/fg/ backpack/basket_contents/ore/fg/
+backpack_contents_ore,layer_2,5,backpack/basket_contents/ore/bg/ backpack/basket_contents/ore/bg/ backpack/basket_contents/ore/bg/ backpack/basket_contents/ore/bg/
+backpack_contents_wood,layer_1,140,backpack/basket_contents/wood/fg/ backpack/basket_contents/wood/fg/ backpack/basket_contents/wood/fg/ backpack/basket_contents/wood/fg/
+backpack_contents_wood,layer_2,5,backpack/basket_contents/wood/bg/ backpack/basket_contents/wood/bg/ backpack/basket_contents/wood/bg/ backpack/basket_contents/wood/bg/
+backpack_jetpack,layer_1,110,backpack/jetpack/male/ backpack/jetpack/female/ backpack/jetpack/male/ backpack/jetpack/female/
+backpack_jetpack_fins,layer_1,112,backpack/jetpack_fins/male/ backpack/jetpack_fins/female/ backpack/jetpack_fins/male/ backpack/jetpack_fins/female/
+backpack_squarepack,layer_1,110,backpack/squarepack/male/ backpack/squarepack/female/ backpack/squarepack/male/ backpack/squarepack/female/
+backpack_straps,layer_1,110,backpack/straps/male/ backpack/straps/female/ backpack/straps/male/ backpack/straps/female/
+bauldron,layer_1,65,bauldron/male/ bauldron/female/ bauldron/male/ bauldron/female/
+beards_5oclock_shadow,layer_1,111,beards/beard/5oclock_shadow/ beards/beard/5oclock_shadow/ beards/beard/5oclock_shadow/ beards/beard/5oclock_shadow/
+beards_beard,layer_1,110,beards/beard/basic/ beards/beard/basic/ beards/beard/basic/ beards/beard/basic/
+beards_bigstache,layer_1,111,beards/mustache/bigstache/ beards/mustache/bigstache/ beards/mustache/bigstache/ beards/mustache/bigstache/
+beards_chevron,layer_1,111,beards/mustache/chevron/ beards/mustache/chevron/ beards/mustache/chevron/ beards/mustache/chevron/
+beards_french,layer_1,111,beards/mustache/french/ beards/mustache/french/ beards/mustache/french/ beards/mustache/french/
+beards_handlebar,layer_1,111,beards/mustache/handlebar/ beards/mustache/handlebar/ beards/mustache/handlebar/ beards/mustache/handlebar/
+beards_horseshoe,layer_1,111,beards/mustache/horseshoe/ beards/mustache/horseshoe/ beards/mustache/horseshoe/ beards/mustache/horseshoe/
+beards_lampshade,layer_1,111,beards/mustache/lampshade/ beards/mustache/lampshade/ beards/mustache/lampshade/ beards/mustache/lampshade/
+beards_medium,layer_1,110,beards/beard/medium/ beards/beard/medium/ beards/beard/medium/ beards/beard/medium/
+beards_mustache,layer_1,111,beards/mustache/basic/ beards/mustache/basic/ beards/mustache/basic/ beards/mustache/basic/
+beards_trimmed,layer_1,110,beards/beard/trimmed/ beards/beard/trimmed/ beards/beard/trimmed/ beards/beard/trimmed/
+beards_walrus,layer_1,111,beards/mustache/walrus/ beards/mustache/walrus/ beards/mustache/walrus/ beards/mustache/walrus/
+beards_winter,layer_1,110,beards/beard/winter/male/ beards/beard/winter/female/ beards/beard/winter/male/ beards/beard/winter/female/
+belt_belly,layer_1,70,torso/waist/belt_belly/male/ torso/waist/belt_belly/female/
+belt_double,layer_1,70,torso/waist/belt_double/male/ torso/waist/belt_double/female/
+belt_leather,layer_1,70,torso/waist/belt_leather/male/ torso/waist/belt_leather/female/
+belt_loose,layer_1,70,torso/waist/belt_loose/male/ torso/waist/belt_loose/female/
+belt_obi,layer_1,65,torso/waist/obi/male/ torso/waist/obi/thin/ torso/waist/obi/male/ torso/waist/obi/thin/
+belt_obi_knot_left,layer_1,66,torso/waist/obi/knot/left/male/ torso/waist/obi/knot/left/thin/ torso/waist/obi/knot/left/male/ torso/waist/obi/knot/left/thin/
+belt_obi_knot_right,layer_1,66,torso/waist/obi/knot/right/male/ torso/waist/obi/knot/right/thin/ torso/waist/obi/knot/right/male/ torso/waist/obi/knot/right/thin/
+belt_other_female,layer_1,70,torso/waist/belt_other/female/
+belt_other_male,layer_1,70,torso/waist/belt_other/male/
+belt_sash,layer_1,65,torso/waist/sash/male/ torso/waist/sash/female/
+belt_sash_narrow,layer_1,65,torso/waist/sash_narrow/male/ torso/waist/sash_narrow/female/
+belt_waistband,layer_1,65,torso/waist/waistband/female/
+body,layer_1,10,body/bodies/male/ body/bodies/female/ body/bodies/muscular/ body/bodies/pregnant/ body/bodies/child/
+body_skeleton,layer_1,10,body/bodies/skeleton/ body/bodies/skeleton/
+body_zombie,layer_1,10,body/bodies/zombie/ body/bodies/zombie/
+buckles,layer_1,75,torso/waist/buckles/female/
+cape_solid,layer_1,85,cape/solid/female/ cape/solid/female/ cape/solid/female/ cape/solid/female/
+cape_solid,layer_2,5,cape/solid_behind/ cape/solid_behind/ cape/solid_behind/ cape/solid_behind/
+cape_tattered,layer_1,85,cape/tattered/female/ cape/tattered/female/ cape/tattered/female/ cape/tattered/female/
+cape_tattered,layer_2,5,cape/tattered_behind/ cape/tattered_behind/ cape/tattered_behind/ cape/tattered_behind/
+cape_trim,layer_1,90,cape/trim/female/ cape/trim/female/ cape/trim/female/ cape/trim/female/
+dress_bodice,layer_1,45,dress/bodice/female/
+dress_kimono,layer_1,30,dress/kimono/normal/universal/female/
+dress_kimono_longsleeve,layer_1,31,dress/kimono/sleeves/universal/female/
+dress_kimono_longsleeve,layer_2,145,dress/kimono/sleeves/universal/female_front/
+dress_kimono_longsleeve_trim,layer_1,32,dress/kimono/sleeves/trim/universal/female/
+dress_kimono_longsleeve_trim,layer_2,146,dress/kimono/sleeves/trim/universal/female_front/
+dress_kimono_oversize,layer_1,31,dress/kimono/sleeves_oversize/universal/female/
+dress_kimono_oversize,layer_2,145,dress/kimono/sleeves_oversize/universal/female_front/
+dress_kimono_oversize_trim,layer_1,32,dress/kimono/sleeves_oversize/trim/universal/female/
+dress_kimono_oversize_trim,layer_2,146,dress/kimono/sleeves_oversize/trim/universal/female_front/
+dress_kimono_split,layer_1,30,dress/kimono/split/universal/female/
+dress_kimono_split_trim,layer_1,31,dress/kimono/split/trim/universal/female/
+dress_kimono_trim,layer_1,31,dress/kimono/normal/trim/universal/female/
+dress_sash,layer_1,30,dress/sash/female/
+dress_slit,layer_1,30,dress/slit/female/
+eye_color,layer_1,105,eyes/human/${head}/${expression}/ eyes/human/${head}/${expression}/ eyes/human/${head}/${expression}/ eyes/human/${head}/${expression}/ eyes/human/child/${expression}/
+eyebrows_thick,layer_1,106,eyes/eyebrows/thick/adult/ eyes/eyebrows/thick/adult/ eyes/eyebrows/thick/adult/ eyes/eyebrows/thick/adult/ eyes/eyebrows/thick/child/
+eyebrows_thin,layer_1,106,eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/child/
+eyes_child,layer_1,105,eyes/human/child/
+eyes_cyclops,layer_1,105,eyes/cyclops/adult/ eyes/cyclops/adult/ eyes/cyclops/adult/ eyes/cyclops/adult/ eyes/cyclops/child/
+eyes_elderly_anger,layer_1,105,eyes/human/elderly/anger/ eyes/human/elderly/anger/ eyes/human/elderly/anger/ eyes/human/elderly/anger/
+eyes_elderly_closing,layer_1,105,eyes/human/elderly/closing/ eyes/human/elderly/closing/ eyes/human/elderly/closing/ eyes/human/elderly/closing/
+eyes_elderly_default,layer_1,105,eyes/human/elderly/default/ eyes/human/elderly/default/ eyes/human/elderly/default/ eyes/human/elderly/default/
+eyes_elderly_eyeroll,layer_1,105,eyes/human/elderly/eyeroll/ eyes/human/elderly/eyeroll/ eyes/human/elderly/eyeroll/ eyes/human/elderly/eyeroll/
+eyes_elderly_look_l,layer_1,105,eyes/human/elderly/look_l/ eyes/human/elderly/look_l/ eyes/human/elderly/look_l/ eyes/human/elderly/look_l/
+eyes_elderly_look_r,layer_1,105,eyes/human/elderly/look_r/ eyes/human/elderly/look_r/ eyes/human/elderly/look_r/ eyes/human/elderly/look_r/
+eyes_elderly_sad,layer_1,105,eyes/human/elderly/sad/ eyes/human/elderly/sad/ eyes/human/elderly/sad/ eyes/human/elderly/sad/
+eyes_elderly_shame,layer_1,105,eyes/human/elderly/shame/ eyes/human/elderly/shame/ eyes/human/elderly/shame/ eyes/human/elderly/shame/
+eyes_elderly_shock,layer_1,105,eyes/human/elderly/shock/ eyes/human/elderly/shock/ eyes/human/elderly/shock/ eyes/human/elderly/shock/
+face_angry,layer_1,101,head/faces/${head}/anger/ head/faces/${head}/anger/ head/faces/${head}/anger/ head/faces/${head}/anger/
+face_angry2,layer_1,106,head/faces/global/angry2/ head/faces/global/angry2/ head/faces/global/angry2/ head/faces/global/angry2/
+face_blush,layer_1,101,head/faces/${head}/blush/ head/faces/${head}/blush/ head/faces/${head}/blush/ head/faces/${head}/blush/
+face_closed,layer_1,101,head/faces/${head}/closed/ head/faces/${head}/closed/ head/faces/${head}/closed/ head/faces/${head}/closed/
+face_closing,layer_1,101,head/faces/${head}/closing/ head/faces/${head}/closing/ head/faces/${head}/closing/ head/faces/${head}/closing/
+face_eyeroll,layer_1,101,head/faces/${head}/eyeroll/ head/faces/${head}/eyeroll/ head/faces/${head}/eyeroll/ head/faces/${head}/eyeroll/
+face_happy,layer_1,101,head/faces/${head}/happy/ head/faces/${head}/happy/ head/faces/${head}/happy/ head/faces/${head}/happy/
+face_happy2,layer_1,106,head/faces/global/happy2/ head/faces/global/happy2/ head/faces/global/happy2/ head/faces/global/happy2/
+face_look_l,layer_1,101,head/faces/${head}/look_l/ head/faces/${head}/look_l/ head/faces/${head}/look_l/ head/faces/${head}/look_l/
+face_look_r,layer_1,101,head/faces/${head}/look_r/ head/faces/${head}/look_r/ head/faces/${head}/look_r/ head/faces/${head}/look_r/
+face_neutral,layer_1,101,head/faces/${head}/neutral/ head/faces/${head}/neutral/ head/faces/${head}/neutral/ head/faces/${head}/neutral/
+face_sad,layer_1,101,head/faces/${head}/sad/ head/faces/${head}/sad/ head/faces/${head}/sad/ head/faces/${head}/sad/
+face_sad2,layer_1,101,head/faces/global/sad2/ head/faces/global/sad2/ head/faces/global/sad2/ head/faces/global/sad2/
+face_shame,layer_1,101,head/faces/${head}/shame/ head/faces/${head}/shame/ head/faces/${head}/shame/ head/faces/${head}/shame/
+face_shock,layer_1,101,head/faces/${head}/shock/ head/faces/${head}/shock/ head/faces/${head}/shock/ head/faces/${head}/shock/
+face_tears,layer_1,107,head/faces/global/tears/ head/faces/global/tears/ head/faces/global/tears/ head/faces/global/tears/
+facial_earring_left,layer_1,115,facial/earrings/simple/left/adult/ facial/earrings/simple/left/adult/ facial/earrings/simple/left/adult/ facial/earrings/simple/left/adult/ facial/earrings/simple/left/child/
+facial_earring_right,layer_1,115,facial/earrings/simple/right/adult/ facial/earrings/simple/right/adult/ facial/earrings/simple/right/adult/ facial/earrings/simple/right/adult/ facial/earrings/simple/right/child/
+facial_earrings_emerald,layer_1,115,facial/earrings/emerald/male/ facial/earrings/emerald/female/ facial/earrings/emerald/male/ facial/earrings/emerald/female/
+facial_earrings_moon,layer_1,115,facial/earrings/moon/male/ facial/earrings/moon/female/ facial/earrings/moon/male/ facial/earrings/moon/female/
+facial_earrings_pear,layer_1,115,facial/earrings/pear/male/ facial/earrings/pear/female/ facial/earrings/pear/male/ facial/earrings/pear/female/
+facial_earrings_princess,layer_1,115,facial/earrings/princess/male/ facial/earrings/princess/female/ facial/earrings/princess/male/ facial/earrings/princess/female/
+facial_earrings_stud,layer_1,115,facial/earrings/stud/male/ facial/earrings/stud/female/ facial/earrings/stud/male/ facial/earrings/stud/female/
+facial_eyepatch2_left,layer_1,115,facial/patches/eyepatch2/left/adult/ facial/patches/eyepatch2/left/adult/ facial/patches/eyepatch2/left/adult/ facial/patches/eyepatch2/left/adult/ facial/patches/eyepatch2/left/child/
+facial_eyepatch2_right,layer_1,115,facial/patches/eyepatch2/right/adult/ facial/patches/eyepatch2/right/adult/ facial/patches/eyepatch2/right/adult/ facial/patches/eyepatch2/right/adult/ facial/patches/eyepatch2/right/child/
+facial_eyepatch_ambi,layer_1,115,facial/patches/eyepatch/ambi/adult/ facial/patches/eyepatch/ambi/adult/ facial/patches/eyepatch/ambi/adult/ facial/patches/eyepatch/ambi/adult/ facial/patches/eyepatch/ambi/child/
+facial_eyepatch_left,layer_1,115,facial/patches/eyepatch/left/adult/ facial/patches/eyepatch/left/adult/ facial/patches/eyepatch/left/adult/ facial/patches/eyepatch/left/adult/ facial/patches/eyepatch/left/child/
+facial_eyepatch_right,layer_1,115,facial/patches/eyepatch/right/adult/ facial/patches/eyepatch/right/adult/ facial/patches/eyepatch/right/adult/ facial/patches/eyepatch/right/adult/ facial/patches/eyepatch/right/child/
+facial_eyepatch_small_left,layer_1,115,facial/patches/small/left/adult/ facial/patches/small/left/adult/ facial/patches/small/left/adult/ facial/patches/small/left/adult/ facial/patches/small/left/child/
+facial_eyepatch_small_right,layer_1,115,facial/patches/small/right/adult/ facial/patches/small/right/adult/ facial/patches/small/right/adult/ facial/patches/small/right/adult/ facial/patches/small/right/child/
+facial_glasses,layer_1,115,facial/glasses/glasses/adult/ facial/glasses/glasses/adult/ facial/glasses/glasses/adult/ facial/glasses/glasses/adult/ facial/glasses/glasses/child/
+facial_glasses_halfmoon,layer_1,115,facial/glasses/halfmoon/adult/ facial/glasses/halfmoon/adult/ facial/glasses/halfmoon/adult/ facial/glasses/halfmoon/adult/ facial/glasses/halfmoon/child/
+facial_glasses_nerd,layer_1,115,facial/glasses/nerd/adult/ facial/glasses/nerd/adult/ facial/glasses/nerd/adult/ facial/glasses/nerd/adult/ facial/glasses/nerd/child/
+facial_glasses_round,layer_1,115,facial/glasses/round/adult/ facial/glasses/round/adult/ facial/glasses/round/adult/ facial/glasses/round/adult/ facial/glasses/round/child/
+facial_glasses_secretary,layer_1,115,facial/glasses/secretary/adult/ facial/glasses/secretary/adult/ facial/glasses/secretary/adult/ facial/glasses/secretary/adult/ facial/glasses/secretary/child/
+facial_glasses_shades,layer_1,115,facial/glasses/shades/adult/ facial/glasses/shades/adult/ facial/glasses/shades/adult/ facial/glasses/shades/adult/ facial/glasses/shades/child/
+facial_glasses_sunglasses,layer_1,115,facial/glasses/sunglasses/adult/ facial/glasses/sunglasses/adult/ facial/glasses/sunglasses/adult/ facial/glasses/sunglasses/adult/ facial/glasses/sunglasses/child/
+facial_mask_plain,layer_1,114,facial/masks/plain/adult/ facial/masks/plain/adult/ facial/masks/plain/adult/ facial/masks/plain/adult/ facial/masks/plain/child/
+facial_monocle_left,layer_1,115,facial/monocle/left/adult/ facial/monocle/left/adult/ facial/monocle/left/adult/ facial/monocle/left/adult/ facial/monocle/left/child/
+facial_monocle_left_frame,layer_1,115,facial/monocle/left/frame/adult/ facial/monocle/left/frame/adult/ facial/monocle/left/frame/adult/ facial/monocle/left/frame/adult/ facial/monocle/left/frame/child/
+facial_monocle_right,layer_1,115,facial/monocle/right/adult/ facial/monocle/right/adult/ facial/monocle/right/adult/ facial/monocle/right/adult/ facial/monocle/right/child/
+facial_monocle_right_frame,layer_1,115,facial/monocle/right/frame/adult/ facial/monocle/right/frame/adult/ facial/monocle/right/frame/adult/ facial/monocle/right/frame/adult/ facial/monocle/right/frame/child/
+feet_armour,layer_1,15,feet/armour/plate/male/ feet/armour/plate/female/ feet/armour/plate/male/ feet/armour/plate/female/
+feet_boots_basic,layer_1,25,feet/boots/basic/male/ feet/boots/basic/thin/ feet/boots/basic/male/ feet/boots/basic/thin/
+feet_boots_fold,layer_1,25,feet/boots/fold/male/ feet/boots/fold/thin/ feet/boots/fold/male/ feet/boots/fold/thin/
+feet_boots_revised,layer_1,25,feet/boots/revised/male/ feet/boots/revised/thin/ feet/boots/revised/male/ feet/boots/revised/thin/
+feet_boots_rim,layer_1,25,feet/boots/rimmed/male/ feet/boots/rimmed/thin/ feet/boots/rimmed/male/ feet/boots/rimmed/thin/
+feet_hoofs,layer_1,15,feet/hoofs/male/ feet/hoofs/female/ feet/hoofs/male/ feet/hoofs/female/
+feet_plate_toe,layer_1,27,feet/accessory/plate_toe/male/ feet/accessory/plate_toe/thin/ feet/accessory/plate_toe/male/ feet/accessory/plate_toe/thin/
+feet_plate_toe_thick,layer_1,27,feet/accessory/plate_toe_thick/male/ feet/accessory/plate_toe_thick/thin/ feet/accessory/plate_toe_thick/male/ feet/accessory/plate_toe_thick/thin/
+feet_sandals,layer_1,15,feet/sandals/male/ feet/sandals/thin/ feet/sandals/male/ feet/sandals/thin/
+feet_shoes_basic,layer_1,15,feet/shoes/basic/male/ feet/shoes/basic/thin/ feet/shoes/basic/male/ feet/shoes/basic/thin/
+feet_shoes_ghillies,layer_1,15,feet/shoes/ghillies/male/ feet/shoes/ghillies/thin/ feet/shoes/ghillies/male/ feet/shoes/ghillies/thin/
+feet_shoes_revised,layer_1,15,feet/shoes/revised/male/ feet/shoes/revised/thin/ feet/shoes/revised/male/ feet/shoes/revised/thin/
+feet_shoes_sara,layer_1,15,feet/shoes/sara/male/ feet/shoes/sara/thin/ feet/shoes/sara/male/ feet/shoes/sara/thin/
+feet_slippers,layer_1,15,feet/slippers/male/ feet/slippers/thin/ feet/slippers/male/ feet/slippers/thin/
+feet_socks_ankle,layer_1,14,feet/socks/ankle/male/ feet/socks/ankle/thin/ feet/socks/ankle/thin/
+feet_socks_high,layer_1,14,feet/socks/high/male/ feet/socks/high/thin/ feet/socks/high/thin/
+feet_socks_tabi,layer_1,14,feet/socks/tabi/male/ feet/socks/tabi/thin/ feet/socks/tabi/male/ feet/socks/tabi/thin/
+hair_afro,layer_1,120,hair/afro/adult/ hair/afro/adult/ hair/afro/adult/ hair/afro/adult/
+hair_balding,layer_1,120,hair/balding/adult/ hair/balding/adult/ hair/balding/adult/ hair/balding/adult/
+hair_bangs,layer_1,120,hair/bangs/adult/ hair/bangs/adult/ hair/bangs/adult/ hair/bangs/adult/
+hair_bangs_bun,layer_1,120,hair/bangs_bun/adult/ hair/bangs_bun/adult/ hair/bangs_bun/adult/ hair/bangs_bun/adult/
+hair_bangslong,layer_1,120,hair/bangslong/adult/ hair/bangslong/adult/ hair/bangslong/adult/ hair/bangslong/adult/
+hair_bangslong2,layer_1,120,hair/bangslong2/adult/fg/ hair/bangslong2/adult/fg/ hair/bangslong2/adult/fg/ hair/bangslong2/adult/fg/
+hair_bangslong2,layer_2,9,hair/bangslong2/adult/bg/ hair/bangslong2/adult/bg/ hair/bangslong2/adult/bg/ hair/bangslong2/adult/bg/
+hair_bangsshort,layer_1,120,hair/bangsshort/adult/ hair/bangsshort/adult/ hair/bangsshort/adult/ hair/bangsshort/adult/
+hair_bedhead,layer_1,120,hair/bedhead/adult/ hair/bedhead/adult/ hair/bedhead/adult/ hair/bedhead/adult/
+hair_bob,layer_1,120,hair/bob/adult/ hair/bob/adult/ hair/bob/adult/ hair/bob/adult/
+hair_bob_side_part,layer_1,120,hair/bob_side_part/adult/ hair/bob_side_part/adult/ hair/bob_side_part/adult/ hair/bob_side_part/adult/
+hair_braid,layer_1,120,hair/braid/adult/fg/ hair/braid/adult/fg/ hair/braid/adult/fg/ hair/braid/adult/fg/
+hair_braid,layer_2,9,hair/braid/adult/bg/ hair/braid/adult/bg/ hair/braid/adult/bg/ hair/braid/adult/bg/
+hair_braid2,layer_1,120,hair/braid2/adult/fg/ hair/braid2/adult/fg/ hair/braid2/adult/fg/ hair/braid2/adult/fg/
+hair_braid2,layer_2,9,hair/braid2/adult/bg/ hair/braid2/adult/bg/ hair/braid2/adult/bg/ hair/braid2/adult/bg/
+hair_bunches,layer_1,120,hair/bunches/adult/fg/ hair/bunches/adult/fg/ hair/bunches/adult/fg/ hair/bunches/adult/fg/
+hair_bunches,layer_2,9,hair/bunches/adult/bg/ hair/bunches/adult/bg/ hair/bunches/adult/bg/ hair/bunches/adult/bg/
+hair_buzzcut,layer_1,120,hair/buzzcut/adult/ hair/buzzcut/adult/ hair/buzzcut/adult/ hair/buzzcut/adult/
+hair_cornrows,layer_1,120,hair/cornrows/adult/ hair/cornrows/adult/ hair/cornrows/adult/ hair/cornrows/adult/
+hair_cowlick,layer_1,120,hair/cowlick/adult/ hair/cowlick/adult/ hair/cowlick/adult/ hair/cowlick/adult/
+hair_cowlick_tall,layer_1,120,hair/cowlick_tall/adult/ hair/cowlick_tall/adult/ hair/cowlick_tall/adult/ hair/cowlick_tall/adult/
+hair_curls_large,layer_1,120,hair/curls_large/adult/fg/ hair/curls_large/adult/fg/ hair/curls_large/adult/fg/ hair/curls_large/adult/fg/
+hair_curls_large,layer_2,9,hair/curls_large/adult/bg/ hair/curls_large/adult/bg/ hair/curls_large/adult/bg/ hair/curls_large/adult/bg/
+hair_curls_large_xlong,layer_1,120,hair/curls_large_xlong/adult/fg/ hair/curls_large_xlong/adult/fg/ hair/curls_large_xlong/adult/fg/ hair/curls_large_xlong/adult/fg/
+hair_curls_large_xlong,layer_2,9,hair/curls_large_xlong/adult/bg/ hair/curls_large_xlong/adult/bg/ hair/curls_large_xlong/adult/bg/ hair/curls_large_xlong/adult/bg/
+hair_curly_long,layer_1,120,hair/curly_long/adult/ hair/curly_long/adult/ hair/curly_long/adult/ hair/curly_long/adult/
+hair_curly_short,layer_1,120,hair/curly_short/adult/ hair/curly_short/adult/ hair/curly_short/adult/ hair/curly_short/adult/
+hair_curly_short2,layer_1,120,hair/curly_short2/adult/ hair/curly_short2/adult/ hair/curly_short2/adult/ hair/curly_short2/adult/
+hair_curtains,layer_1,120,hair/curtains/adult/ hair/curtains/adult/ hair/curtains/adult/ hair/curtains/adult/
+hair_curtains_long,layer_1,120,hair/curtains_long/adult/ hair/curtains_long/adult/ hair/curtains_long/adult/ hair/curtains_long/adult/
+hair_dreadlocks_long,layer_1,120,hair/dreadlocks_long/adult/ hair/dreadlocks_long/adult/ hair/dreadlocks_long/adult/ hair/dreadlocks_long/adult/
+hair_dreadlocks_short,layer_1,120,hair/dreadlocks_short/adult/ hair/dreadlocks_short/adult/ hair/dreadlocks_short/adult/ hair/dreadlocks_short/adult/
+hair_flat_top_fade,layer_1,120,hair/flat_top_fade/adult/ hair/flat_top_fade/adult/ hair/flat_top_fade/adult/ hair/flat_top_fade/adult/
+hair_flat_top_straight,layer_1,120,hair/flat_top_straight/adult/ hair/flat_top_straight/adult/ hair/flat_top_straight/adult/ hair/flat_top_straight/adult/
+hair_half_up,layer_1,120,hair/half_up/adult/ hair/half_up/adult/ hair/half_up/adult/ hair/half_up/adult/
+hair_halfmessy,layer_1,120,hair/halfmessy/adult/ hair/halfmessy/adult/ hair/halfmessy/adult/ hair/halfmessy/adult/
+hair_high_and_tight,layer_1,120,hair/high_and_tight/adult/ hair/high_and_tight/adult/ hair/high_and_tight/adult/ hair/high_and_tight/adult/
+hair_high_ponytail,layer_1,120,hair/high_ponytail/adult/fg/ hair/high_ponytail/adult/fg/ hair/high_ponytail/adult/fg/ hair/high_ponytail/adult/fg/
+hair_high_ponytail,layer_2,9,hair/high_ponytail/adult/bg/ hair/high_ponytail/adult/bg/ hair/high_ponytail/adult/bg/ hair/high_ponytail/adult/bg/
+hair_idol,layer_1,120,hair/idol/adult/ hair/idol/adult/ hair/idol/adult/ hair/idol/adult/
+hair_jewfro,layer_1,120,hair/jewfro/adult/ hair/jewfro/adult/ hair/jewfro/adult/ hair/jewfro/adult/ hair/jewfro/child/
+hair_lob,layer_1,120,hair/lob/adult/ hair/lob/adult/ hair/lob/adult/ hair/lob/adult/
+hair_long,layer_1,120,hair/long/adult/ hair/long/adult/ hair/long/adult/ hair/long/adult/
+hair_long_band,layer_1,120,hair/long_band/adult/fg/ hair/long_band/adult/fg/ hair/long_band/adult/fg/ hair/long_band/adult/fg/
+hair_long_band,layer_2,9,hair/long_band/adult/bg/ hair/long_band/adult/bg/ hair/long_band/adult/bg/ hair/long_band/adult/bg/
+hair_long_center_part,layer_1,120,hair/long_center_part/adult/fg/ hair/long_center_part/adult/fg/ hair/long_center_part/adult/fg/ hair/long_center_part/adult/fg/
+hair_long_center_part,layer_2,9,hair/long_center_part/adult/bg/ hair/long_center_part/adult/bg/ hair/long_center_part/adult/bg/ hair/long_center_part/adult/bg/
+hair_long_messy,layer_1,120,hair/long_messy/adult/ hair/long_messy/adult/ hair/long_messy/adult/ hair/long_messy/adult/
+hair_long_messy2,layer_1,120,hair/long_messy2/adult/ hair/long_messy2/adult/ hair/long_messy2/adult/ hair/long_messy2/adult/
+hair_long_straight,layer_1,120,hair/long_straight/adult/ hair/long_straight/adult/ hair/long_straight/adult/ hair/long_straight/adult/
+hair_long_tied,layer_1,120,hair/long_tied/adult/fg/ hair/long_tied/adult/fg/ hair/long_tied/adult/fg/ hair/long_tied/adult/fg/
+hair_long_tied,layer_2,9,hair/long_tied/adult/bg/ hair/long_tied/adult/bg/ hair/long_tied/adult/bg/ hair/long_tied/adult/bg/
+hair_longhawk,layer_1,120,hair/longhawk/adult/ hair/longhawk/adult/ hair/longhawk/adult/ hair/longhawk/adult/
+hair_loose,layer_1,120,hair/loose/adult/ hair/loose/adult/ hair/loose/adult/ hair/loose/adult/
+hair_messy,layer_1,120,hair/messy/child/
+hair_messy1,layer_1,120,hair/messy1/adult/ hair/messy1/adult/ hair/messy1/adult/ hair/messy1/adult/
+hair_messy2,layer_1,120,hair/messy2/adult/ hair/messy2/adult/ hair/messy2/adult/ hair/messy2/adult/
+hair_messy3,layer_1,120,hair/messy3/adult/ hair/messy3/adult/ hair/messy3/adult/ hair/messy3/adult/
+hair_mop,layer_1,120,hair/mop/adult/ hair/mop/adult/ hair/mop/adult/ hair/mop/adult/
+hair_natural,layer_1,120,hair/natural/adult/ hair/natural/adult/ hair/natural/adult/ hair/natural/adult/
+hair_page,layer_1,120,hair/page/adult/ hair/page/adult/ hair/page/adult/ hair/page/adult/
+hair_page2,layer_1,120,hair/page2/adult/ hair/page2/adult/ hair/page2/adult/ hair/page2/adult/
+hair_parted,layer_1,120,hair/parted/adult/ hair/parted/adult/ hair/parted/adult/ hair/parted/adult/
+hair_parted2,layer_1,120,hair/parted2/adult/ hair/parted2/adult/ hair/parted2/adult/ hair/parted2/adult/
+hair_parted3,layer_1,120,hair/parted3/adult/ hair/parted3/adult/ hair/parted3/adult/ hair/parted3/adult/
+hair_parted_side_bangs,layer_1,120,hair/parted_side_bangs/adult/ hair/parted_side_bangs/adult/ hair/parted_side_bangs/adult/ hair/parted_side_bangs/adult hair/parted_side_bangs/child/
+hair_parted_side_bangs2,layer_1,120,hair/parted_side_bangs2/adult/ hair/parted_side_bangs2/adult/ hair/parted_side_bangs2/adult/ hair/parted_side_bangs2/adult hair/parted_side_bangs2/child/
+hair_pigtails,layer_1,120,hair/pigtails/adult/ hair/pigtails/adult/ hair/pigtails/adult/ hair/pigtails/adult/
+hair_pigtails_bangs,layer_1,120,hair/pigtails_bangs/adult/ hair/pigtails_bangs/adult/ hair/pigtails_bangs/adult/ hair/pigtails_bangs/adult/
+hair_pixie,layer_1,120,hair/pixie/adult/ hair/pixie/adult/ hair/pixie/adult/ hair/pixie/adult/
+hair_plain,layer_1,120,hair/plain/adult/ hair/plain/adult/ hair/plain/adult/ hair/plain/adult/
+hair_ponytail,layer_1,120,hair/ponytail/adult/fg/ hair/ponytail/adult/fg/ hair/ponytail/adult/fg/ hair/ponytail/adult/fg/
+hair_ponytail,layer_2,9,hair/ponytail/adult/bg/ hair/ponytail/adult/bg/ hair/ponytail/adult/bg/ hair/ponytail/adult/bg/
+hair_ponytail2,layer_1,120,hair/ponytail2/adult/fg/ hair/ponytail2/adult/fg/ hair/ponytail2/adult/fg/ hair/ponytail2/adult/fg/
+hair_ponytail2,layer_2,9,hair/ponytail2/adult/bg/ hair/ponytail2/adult/bg/ hair/ponytail2/adult/bg/ hair/ponytail2/adult/bg/
+hair_princess,layer_1,120,hair/princess/adult/fg/ hair/princess/adult/fg/ hair/princess/adult/fg/ hair/princess/adult/fg/
+hair_princess,layer_2,9,hair/princess/adult/bg/ hair/princess/adult/bg/ hair/princess/adult/bg/ hair/princess/adult/bg/
+hair_relm_ponytail,layer_1,120,hair/relm_ponytail/adult/mg/ hair/relm_ponytail/adult/mg/ hair/relm_ponytail/adult/mg/ hair/relm_ponytail/adult/mg/ hair/relm_ponytail/child/mg/
+hair_relm_ponytail,layer_2,9,hair/relm_ponytail/adult/bg/ hair/relm_ponytail/adult/bg/ hair/relm_ponytail/adult/bg/ hair/relm_ponytail/adult/bg/ hair/relm_ponytail/child/bg/
+hair_relm_ponytail,layer_3,145,hair/relm_ponytail/adult/fg/ hair/relm_ponytail/adult/fg/ hair/relm_ponytail/adult/fg/ hair/relm_ponytail/adult/fg/ hair/relm_ponytail/child/fg/
+hair_relm_short,layer_1,120,hair/relm_short/adult/ hair/relm_short/adult/ hair/relm_short/adult/ hair/relm_short/adult/ hair/relm_short/child/
+hair_relm_xlong,layer_1,120,hair/relm_xlong/adult/fg/ hair/relm_xlong/adult/fg/ hair/relm_xlong/adult/fg/ hair/relm_xlong/adult/fg/
+hair_relm_xlong,layer_2,9,hair/relm_xlong/adult/bg/ hair/relm_xlong/adult/bg/ hair/relm_xlong/adult/bg/ hair/relm_xlong/adult/bg/
+hair_sara,layer_1,120,hair/sara/adult/fg/ hair/sara/adult/fg/ hair/sara/adult/fg/ hair/sara/adult/fg/
+hair_sara,layer_2,9,hair/sara/adult/bg/ hair/sara/adult/bg/ hair/sara/adult/bg/ hair/sara/adult/bg/
+hair_shorthawk,layer_1,120,hair/shorthawk/adult/ hair/shorthawk/adult/ hair/shorthawk/adult/ hair/shorthawk/adult/
+hair_shoulderl,layer_1,120,hair/shoulderl/adult/fg/ hair/shoulderl/adult/fg/ hair/shoulderl/adult/fg/ hair/shoulderl/adult/fg/
+hair_shoulderl,layer_2,9,hair/shoulderl/adult/bg/ hair/shoulderl/adult/bg/ hair/shoulderl/adult/bg/ hair/shoulderl/adult/bg/
+hair_shoulderr,layer_1,120,hair/shoulderr/adult/fg/ hair/shoulderr/adult/fg/ hair/shoulderr/adult/fg/ hair/shoulderr/adult/fg/
+hair_shoulderr,layer_2,9,hair/shoulderr/adult/bg/ hair/shoulderr/adult/bg/ hair/shoulderr/adult/bg/ hair/shoulderr/adult/bg/
+hair_single,layer_1,120,hair/single/adult/fg/ hair/single/adult/fg/ hair/single/adult/fg/ hair/single/adult/fg/
+hair_single,layer_2,9,hair/single/adult/bg/ hair/single/adult/bg/ hair/single/adult/bg/ hair/single/adult/bg/
+hair_spiked,layer_1,120,hair/spiked/adult/ hair/spiked/adult/ hair/spiked/adult/ hair/spiked/adult/
+hair_spiked2,layer_1,120,hair/spiked2/adult/ hair/spiked2/adult/ hair/spiked2/adult/ hair/spiked2/adult/
+hair_spiked_beehive,layer_1,120,hair/spiked_beehive/adult/ hair/spiked_beehive/adult/ hair/spiked_beehive/adult/ hair/spiked_beehive/adult/
+hair_spiked_liberty,layer_1,120,hair/spiked_liberty/adult/ hair/spiked_liberty/adult/ hair/spiked_liberty/adult/ hair/spiked_liberty/adult/
+hair_spiked_liberty2,layer_1,120,hair/spiked_liberty2/adult/ hair/spiked_liberty2/adult/ hair/spiked_liberty2/adult/ hair/spiked_liberty2/adult/
+hair_spiked_porcupine,layer_1,120,hair/spiked_porcupine/adult/ hair/spiked_porcupine/adult/ hair/spiked_porcupine/adult/ hair/spiked_porcupine/adult/
+hair_swoop,layer_1,120,hair/swoop/adult/ hair/swoop/adult/ hair/swoop/adult/ hair/swoop/adult/
+hair_swoop_side,layer_1,120,hair/swoop_side/adult/ hair/swoop_side/adult/ hair/swoop_side/adult/ hair/swoop_side/adult/ hair/swoop_side/child/
+hair_topknot_long,layer_1,120,hair/parted_side_bangs/adult/ hair/parted_side_bangs/adult/ hair/parted_side_bangs/adult/ hair/parted_side_bangs/adult/ hair/parted_side_bangs/child/
+hair_topknot_long,layer_2,9,hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/child/bg/
+hair_topknot_long,layer_3,145,hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/child/fg/
+hair_topknot_long2,layer_1,120,hair/parted_side_bangs2/adult/ hair/parted_side_bangs2/adult/ hair/parted_side_bangs2/adult/ hair/parted_side_bangs2/adult/ hair/parted_side_bangs2/child/
+hair_topknot_long2,layer_2,9,hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/child/bg/
+hair_topknot_long2,layer_3,145,hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/child/fg/
+hair_topknot_short,layer_1,120,hair/parted_side_bangs/adult/ hair/parted_side_bangs/adult/ hair/parted_side_bangs/adult/ hair/parted_side_bangs/adult/ hair/parted_side_bangs/child/
+hair_topknot_short,layer_2,145,hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/child/
+hair_topknot_short2,layer_1,120,hair/parted_side_bangs2/adult/ hair/parted_side_bangs2/adult/ hair/parted_side_bangs2/adult/ hair/parted_side_bangs2/adult/ hair/parted_side_bangs2/child/
+hair_topknot_short2,layer_2,145,hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/child/
+hair_twists_fade,layer_1,120,hair/twists_fade/adult/ hair/twists_fade/adult/ hair/twists_fade/adult/ hair/twists_fade/adult/
+hair_twists_straight,layer_1,120,hair/twists_straight/adult/ hair/twists_straight/adult/ hair/twists_straight/adult/ hair/twists_straight/adult/
+hair_unkempt,layer_1,120,hair/unkempt/adult/ hair/unkempt/adult/ hair/unkempt/adult/ hair/unkempt/adult/
+hair_wavy,layer_1,120,hair/wavy/adult/fg/ hair/wavy/adult/fg/ hair/wavy/adult/fg/ hair/wavy/adult/fg/
+hair_wavy,layer_2,9,hair/wavy/adult/bg/ hair/wavy/adult/bg/ hair/wavy/adult/bg/ hair/wavy/adult/bg/
+hair_wavy_child,layer_1,120,hair/wavy/child/
+hair_xlong,layer_1,120,hair/xlong/adult/fg/ hair/xlong/adult/fg/ hair/xlong/adult/fg/ hair/xlong/adult/fg/
+hair_xlong,layer_2,9,hair/xlong/adult/bg/ hair/xlong/adult/bg/ hair/xlong/adult/bg/ hair/xlong/adult/bg/
+hair_xlong_wavy,layer_1,120,hair/xlong_wavy/adult/fg/ hair/xlong_wavy/adult/fg/ hair/xlong_wavy/adult/fg/ hair/xlong_wavy/adult/fg/
+hair_xlong_wavy,layer_2,9,hair/xlong_wavy/adult/bg/ hair/xlong_wavy/adult/bg/ hair/xlong_wavy/adult/bg/ hair/xlong_wavy/adult/bg/
+hairext_braidl,layer_1,128,hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/adult/ hair/extensions/bangs/braidl/child/
+hairext_braidr,layer_1,128,hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/adult/ hair/extensions/bangs/braidr/child/
+hairext_high_bun,layer_1,128,hair/extensions/ties/high_bun/adult/ hair/extensions/ties/high_bun/adult/ hair/extensions/ties/high_bun/adult/ hair/extensions/ties/high_bun/adult/
+hairext_long_straightl,layer_1,128,hair/extensions/bangs/long_straightl/adult/ hair/extensions/bangs/long_straightl/adult/ hair/extensions/bangs/long_straightl/adult/ hair/extensions/bangs/long_straightl/adult/
+hairext_long_straightr,layer_1,128,hair/extensions/bangs/long_straightr/adult/ hair/extensions/bangs/long_straightr/adult/ hair/extensions/bangs/long_straightr/adult/ hair/extensions/bangs/long_straightr/adult/
+hairext_long_wavyl,layer_1,128,hair/extensions/bangs/long_wavyl/adult/ hair/extensions/bangs/long_wavyl/adult/ hair/extensions/bangs/long_wavyl/adult/ hair/extensions/bangs/long_wavyl/adult/
+hairext_long_wavyr,layer_1,128,hair/extensions/bangs/long_wavyr/adult/ hair/extensions/bangs/long_wavyr/adult/ hair/extensions/bangs/long_wavyr/adult/ hair/extensions/bangs/long_wavyr/adult/
+hairext_topknot_long,layer_1,128,hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/adult/fg/ hair/extensions/ponytails/topknot_long/child/fg/
+hairext_topknot_long,layer_2,9,hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/adult/bg/ hair/extensions/ponytails/topknot_long/child/bg/
+hairext_topknot_relm,layer_1,128,hair/extensions/ponytails/relm_ponytail/adult/fg/ hair/extensions/ponytails/relm_ponytail/adult/fg/ hair/extensions/ponytails/relm_ponytail/adult/fg/ hair/extensions/ponytails/relm_ponytail/adult/fg/
+hairext_topknot_relm,layer_2,9,hair/extensions/ponytails/relm_ponytail/adult/bg/ hair/extensions/ponytails/relm_ponytail/adult/bg/ hair/extensions/ponytails/relm_ponytail/adult/bg/ hair/extensions/ponytails/relm_ponytail/adult/bg/
+hairext_topknot_short,layer_1,128,hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/adult/ hair/extensions/ponytails/topknot_short/child/
+hairext_xlong_bangl,layer_1,128,hair/extensions/bangs/xlong_bangl/adult/ hair/extensions/bangs/xlong_bangl/adult/ hair/extensions/bangs/xlong_bangl/adult/ hair/extensions/bangs/xlong_bangl/adult/ hair/extensions/bangs/xlong_bangl/child/
+hairext_xlong_bangr,layer_1,128,hair/extensions/bangs/xlong_bangr/adult/ hair/extensions/bangs/xlong_bangr/adult/ hair/extensions/bangs/xlong_bangr/adult/ hair/extensions/bangs/xlong_bangr/adult/ hair/extensions/bangs/xlong_bangr/child/
+hairext_xlong_braidl,layer_1,128,hair/extensions/bangs/xlong_braidl/adult/fg/ hair/extensions/bangs/xlong_braidl/adult/fg/ hair/extensions/bangs/xlong_braidl/adult/fg/ hair/extensions/bangs/xlong_braidl/adult/fg/ hair/extensions/bangs/xlong_braidl/child/fg/
+hairext_xlong_braidl,layer_2,9,hair/extensions/bangs/xlong_braidl/adult/bg/ hair/extensions/bangs/xlong_braidl/adult/bg/ hair/extensions/bangs/xlong_braidl/adult/bg/ hair/extensions/bangs/xlong_braidl/adult/bg/ hair/extensions/bangs/xlong_braidl/child/bg/
+hairext_xlong_braidr,layer_1,128,hair/extensions/bangs/xlong_braidr/adult/fg/ hair/extensions/bangs/xlong_braidr/adult/fg/ hair/extensions/bangs/xlong_braidr/adult/fg/ hair/extensions/bangs/xlong_braidr/adult/fg/ hair/extensions/bangs/xlong_braidr/child/fg/
+hairext_xlong_braidr,layer_2,9,hair/extensions/bangs/xlong_braidr/adult/bg/ hair/extensions/bangs/xlong_braidr/adult/bg/ hair/extensions/bangs/xlong_braidr/adult/bg/ hair/extensions/bangs/xlong_braidr/adult/bg/ hair/extensions/bangs/xlong_braidr/child/bg/
+hairext_xlong_curlyl,layer_1,128,hair/extensions/bangs/xlong_curlyl/adult/ hair/extensions/bangs/xlong_curlyl/adult/ hair/extensions/bangs/xlong_curlyl/adult/ hair/extensions/bangs/xlong_curlyl/adult/
+hairext_xlong_curlyr,layer_1,128,hair/extensions/bangs/xlong_curlyr/adult/ hair/extensions/bangs/xlong_curlyr/adult/ hair/extensions/bangs/xlong_curlyr/adult/ hair/extensions/bangs/xlong_curlyr/adult/
+hairext_xlong_wavyl,layer_1,128,hair/extensions/bangs/xlong_wavyl/adult/ hair/extensions/bangs/xlong_wavyl/adult/ hair/extensions/bangs/xlong_wavyl/adult/ hair/extensions/bangs/xlong_wavyl/adult/
+hairext_xlong_wavyr,layer_1,128,hair/extensions/bangs/xlong_wavyr/adult/ hair/extensions/bangs/xlong_wavyr/adult/ hair/extensions/bangs/xlong_wavyr/adult/ hair/extensions/bangs/xlong_wavyr/adult/
+hat_accessory_crest,layer_1,139,hat/accessory/crest/adult/ hat/accessory/crest/adult/ hat/accessory/crest/adult/ hat/accessory/crest/adult/
+hat_accessory_crest_centurion,layer_1,139,hat/accessory/crest_centurion/adult/ hat/accessory/crest_centurion/adult/ hat/accessory/crest_centurion/adult/ hat/accessory/crest_centurion/adult/
+hat_accessory_horns_downward,layer_1,139,hat/accessory/horns_downward/fg/adult/ hat/accessory/horns_downward/fg/adult/ hat/accessory/horns_downward/fg/adult/ hat/accessory/horns_downward/fg/adult/
+hat_accessory_horns_downward,layer_2,125,hat/accessory/horns_downward/bg/adult/ hat/accessory/horns_downward/bg/adult/ hat/accessory/horns_downward/bg/adult/ hat/accessory/horns_downward/bg/adult/
+hat_accessory_horns_short,layer_1,139,hat/accessory/horns_short/fg/adult/ hat/accessory/horns_short/fg/adult/ hat/accessory/horns_short/fg/adult/ hat/accessory/horns_short/fg/adult/
+hat_accessory_horns_short,layer_2,125,hat/accessory/horns_short/bg/adult/ hat/accessory/horns_short/bg/adult/ hat/accessory/horns_short/bg/adult/ hat/accessory/horns_short/bg/adult/
+hat_accessory_horns_upward,layer_1,139,hat/accessory/horns_upward/fg/adult/ hat/accessory/horns_upward/fg/adult/ hat/accessory/horns_upward/fg/adult/ hat/accessory/horns_upward/fg/adult/
+hat_accessory_horns_upward,layer_2,125,hat/accessory/horns_upward/bg/adult/ hat/accessory/horns_upward/bg/adult/ hat/accessory/horns_upward/bg/adult/ hat/accessory/horns_upward/bg/adult/
+hat_accessory_plumage,layer_1,139,hat/accessory/plumage/adult/ hat/accessory/plumage/adult/ hat/accessory/plumage/adult/ hat/accessory/plumage/adult/
+hat_accessory_plumage_centurion,layer_1,139,hat/accessory/plumage_centurion/adult/ hat/accessory/plumage_centurion/adult/ hat/accessory/plumage_centurion/adult/ hat/accessory/plumage_centurion/adult/
+hat_accessory_plumage_legion,layer_1,139,hat/accessory/plumage_legion/adult/ hat/accessory/plumage_legion/adult/ hat/accessory/plumage_legion/adult/ hat/accessory/plumage_legion/adult/
+hat_accessory_wings,layer_1,139,hat/accessory/wings/fg/adult/ hat/accessory/wings/fg/adult/ hat/accessory/wings/fg/adult/ hat/accessory/wings/fg/adult/
+hat_accessory_wings,layer_2,125,hat/accessory/wings/bg/adult/ hat/accessory/wings/bg/adult/ hat/accessory/wings/bg/adult/ hat/accessory/wings/bg/adult/
+hat_bandana,layer_1,120,hat/cloth/bandana/adult/ hat/cloth/bandana/adult/ hat/cloth/bandana/adult/ hat/cloth/bandana/adult/
+hat_bandana2,layer_1,120,hat/cloth/bandana2/adult/ hat/cloth/bandana2/adult/ hat/cloth/bandana2/adult/ hat/cloth/bandana2/adult/
+hat_bandana_pirate,layer_1,120,hat/pirate/bandana/adult/ hat/pirate/bandana/adult/ hat/pirate/bandana/adult/ hat/pirate/bandana/adult/
+hat_bandana_pirate_skull,layer_1,121,hat/pirate/bandana/skull/adult/ hat/pirate/bandana/skull/adult/ hat/pirate/bandana/skull/adult/ hat/pirate/bandana/skull/adult/
+hat_bicorne_athwart_admiral,layer_1,130,hat/pirate/bicorne/athwart/admiral/adult/ hat/pirate/bicorne/athwart/admiral/adult/ hat/pirate/bicorne/athwart/admiral/adult/ hat/pirate/bicorne/athwart/admiral/adult/
+hat_bicorne_athwart_admiral_cockade,layer_1,132,hat/pirate/bicorne/athwart/admiral/cockade/adult/ hat/pirate/bicorne/athwart/admiral/cockade/adult/ hat/pirate/bicorne/athwart/admiral/cockade/adult/ hat/pirate/bicorne/athwart/admiral/cockade/adult/
+hat_bicorne_athwart_admiral_trim,layer_1,131,hat/pirate/bicorne/athwart/admiral/trim/adult/ hat/pirate/bicorne/athwart/admiral/trim/adult/ hat/pirate/bicorne/athwart/admiral/trim/adult/ hat/pirate/bicorne/athwart/admiral/trim/adult/
+hat_bicorne_athwart_basic,layer_1,130,hat/pirate/bicorne/athwart/basic/adult/ hat/pirate/bicorne/athwart/basic/adult/ hat/pirate/bicorne/athwart/basic/adult/ hat/pirate/bicorne/athwart/basic/adult/
+hat_bicorne_athwart_basic_skull,layer_1,131,hat/pirate/bicorne/athwart/basic/skull/adult/ hat/pirate/bicorne/athwart/basic/skull/adult/ hat/pirate/bicorne/athwart/basic/skull/adult/ hat/pirate/bicorne/athwart/basic/skull/adult/
+hat_bicorne_athwart_captain,layer_1,130,hat/pirate/bicorne/athwart/captain/adult/ hat/pirate/bicorne/athwart/captain/adult/ hat/pirate/bicorne/athwart/captain/adult/ hat/pirate/bicorne/athwart/captain/adult/
+hat_bicorne_athwart_captain_skull,layer_1,131,hat/pirate/bicorne/athwart/captain/skull/adult/ hat/pirate/bicorne/athwart/captain/skull/adult/ hat/pirate/bicorne/athwart/captain/skull/adult/ hat/pirate/bicorne/athwart/captain/skull/adult/
+hat_bicorne_athwart_commodore,layer_1,130,hat/pirate/bicorne/athwart/commodore/adult/ hat/pirate/bicorne/athwart/commodore/adult/ hat/pirate/bicorne/athwart/commodore/adult/ hat/pirate/bicorne/athwart/commodore/adult/
+hat_bicorne_athwart_commodore_trim,layer_1,131,hat/pirate/bicorne/athwart/commodore/trim/adult/ hat/pirate/bicorne/athwart/commodore/trim/adult/ hat/pirate/bicorne/athwart/commodore/trim/adult/ hat/pirate/bicorne/athwart/commodore/trim/adult/
+hat_bicorne_foreaft,layer_1,130,hat/pirate/bicorne/foreaft/adult/ hat/pirate/bicorne/foreaft/adult/ hat/pirate/bicorne/foreaft/adult/ hat/pirate/bicorne/foreaft/adult/
+hat_bicorne_foreaft_commodore,layer_1,130,hat/pirate/bicorne/foreaft/commodore/adult/ hat/pirate/bicorne/foreaft/commodore/adult/ hat/pirate/bicorne/foreaft/commodore/adult/ hat/pirate/bicorne/foreaft/commodore/adult/
+hat_bicorne_foreaft_commodore_trim,layer_1,131,hat/pirate/bicorne/foreaft/commodore/trim/adult/ hat/pirate/bicorne/foreaft/commodore/trim/adult/ hat/pirate/bicorne/foreaft/commodore/trim/adult/ hat/pirate/bicorne/foreaft/commodore/trim/adult/
+hat_cap_bonnie,layer_1,130,hat/pirate/bonnie/adult/ hat/pirate/bonnie/adult/ hat/pirate/bonnie/adult/ hat/pirate/bonnie/adult/
+hat_cap_bonnie_feather,layer_1,131,hat/pirate/bonnie/feather/adult/ hat/pirate/bonnie/feather/adult/ hat/pirate/bonnie/feather/adult/ hat/pirate/bonnie/feather/adult/
+hat_cap_bonnie_tilt,layer_1,130,hat/pirate/bonnie/tilt/adult/ hat/pirate/bonnie/tilt/adult/ hat/pirate/bonnie/tilt/adult/ hat/pirate/bonnie/tilt/adult/
+hat_cap_bonnie_trim,layer_1,131,hat/pirate/bonnie/trim/adult/ hat/pirate/bonnie/trim/adult/ hat/pirate/bonnie/trim/adult/ hat/pirate/bonnie/trim/adult/
+hat_cap_cavalier,layer_1,130,hat/pirate/cavalier/adult/ hat/pirate/cavalier/adult/ hat/pirate/cavalier/adult/ hat/pirate/cavalier/adult/
+hat_cap_cavalier_feather,layer_1,131,hat/pirate/cavalier/feather/adult/ hat/pirate/cavalier/feather/adult/ hat/pirate/cavalier/feather/adult/ hat/pirate/cavalier/feather/adult/
+hat_cap_leather,layer_1,130,hat/cloth/leather_cap/adult/ hat/cloth/leather_cap/adult/ hat/cloth/leather_cap/adult/ hat/cloth/leather_cap/adult/
+hat_cap_leather_feather,layer_1,131,hat/cloth/leather_cap/feather/adult/ hat/cloth/leather_cap/feather/adult/ hat/cloth/leather_cap/feather/adult/ hat/cloth/leather_cap/feather/adult/
+hat_formal_bowler,layer_1,130,hat/formal/bowler/adult/ hat/formal/bowler/adult/ hat/formal/bowler/adult/ hat/formal/bowler/adult/
+hat_formal_crown,layer_1,130,hat/formal/crown/adult/ hat/formal/crown/adult/ hat/formal/crown/adult/ hat/formal/crown/adult/
+hat_formal_tiara,layer_1,130,hat/formal/tiara/adult/ hat/formal/tiara/adult/ hat/formal/tiara/adult/ hat/formal/tiara/adult/
+hat_formal_tophat,layer_1,130,hat/formal/tophat/adult/ hat/formal/tophat/adult/ hat/formal/tophat/adult/ hat/formal/tophat/adult/
+hat_headband_hairtie,layer_1,125,hat/headband/hairtie/adult/ hat/headband/hairtie/adult/ hat/headband/hairtie/adult/ hat/headband/hairtie/adult/ hat/headband/hairtie/child/
+hat_headband_hairtie_rune,layer_1,126,hat/headband/hairtie/rune/adult/ hat/headband/hairtie/rune/adult/ hat/headband/hairtie/rune/adult/ hat/headband/hairtie/rune/adult/ hat/headband/hairtie/rune/child/
+hat_headband_kerchief,layer_1,125,hat/pirate/kerchief/adult/ hat/pirate/kerchief/adult/ hat/pirate/kerchief/adult/ hat/pirate/kerchief/adult/
+hat_headband_thick,layer_1,125,hat/headband/thick/adult/ hat/headband/thick/adult/ hat/headband/thick/adult/ hat/headband/thick/adult/ hat/headband/thick/child/
+hat_headband_thick_rune,layer_1,126,hat/headband/thick/rune/adult/ hat/headband/thick/rune/adult/ hat/headband/thick/rune/adult/ hat/headband/thick/rune/adult/ hat/headband/thick/rune/child/
+hat_headband_tied,layer_1,125,hat/headband/tied/adult/ hat/headband/tied/adult/ hat/headband/tied/adult/ hat/headband/tied/adult/
+hat_helmet_armet,layer_1,130,hat/helmet/armet/adult/ hat/helmet/armet/adult/ hat/helmet/armet/adult/ hat/helmet/armet/adult/
+hat_helmet_armet_simple,layer_1,130,hat/helmet/armet_simple/adult/ hat/helmet/armet_simple/adult/ hat/helmet/armet_simple/adult/ hat/helmet/armet_simple/adult/
+hat_helmet_barbarian,layer_1,130,hat/helmet/barbarian/adult/ hat/helmet/barbarian/adult/ hat/helmet/barbarian/adult/ hat/helmet/barbarian/adult/
+hat_helmet_barbarian_nasal,layer_1,130,hat/helmet/barbarian_nasal/adult/ hat/helmet/barbarian_nasal/adult/ hat/helmet/barbarian_nasal/adult/ hat/helmet/barbarian_nasal/adult/
+hat_helmet_barbarian_viking,layer_1,130,hat/helmet/barbarian_viking/adult/ hat/helmet/barbarian_viking/adult/ hat/helmet/barbarian_viking/adult/ hat/helmet/barbarian_viking/adult/
+hat_helmet_barbuta,layer_1,130,hat/helmet/barbuta/male/ hat/helmet/barbuta/female/ hat/helmet/barbuta/male/ hat/helmet/barbuta/female/
+hat_helmet_barbuta_simple,layer_1,130,hat/helmet/barbuta_simple/adult/ hat/helmet/barbuta_simple/adult/ hat/helmet/barbuta_simple/adult/ hat/helmet/barbuta_simple/adult/
+hat_helmet_bascinet,layer_1,130,hat/helmet/bascinet/adult/ hat/helmet/bascinet/adult/ hat/helmet/bascinet/adult/ hat/helmet/bascinet/adult/
+hat_helmet_bascinet_pigface,layer_1,130,hat/helmet/bascinet_pigface/adult/ hat/helmet/bascinet_pigface/adult/ hat/helmet/bascinet_pigface/adult/ hat/helmet/bascinet_pigface/adult/
+hat_helmet_bascinet_pigface_raised,layer_1,130,hat/helmet/bascinet_pigface_raised/adult/ hat/helmet/bascinet_pigface_raised/adult/ hat/helmet/bascinet_pigface_raised/adult/ hat/helmet/bascinet_pigface_raised/adult/
+hat_helmet_bascinet_round,layer_1,130,hat/helmet/bascinet_round/adult/ hat/helmet/bascinet_round/adult/ hat/helmet/bascinet_round/adult/ hat/helmet/bascinet_round/adult/
+hat_helmet_close,layer_1,130,hat/helmet/close/male/ hat/helmet/close/female/ hat/helmet/close/male/ hat/helmet/close/female/
+hat_helmet_flattop,layer_1,130,hat/helmet/flattop/male/ hat/helmet/flattop/female/ hat/helmet/flattop/male/ hat/helmet/flattop/female/
+hat_helmet_greathelm,layer_1,130,hat/helmet/greathelm/male/ hat/helmet/greathelm/female/ hat/helmet/greathelm/male/ hat/helmet/greathelm/female/
+hat_helmet_horned,layer_1,130,hat/helmet/horned/adult/ hat/helmet/horned/adult/ hat/helmet/horned/adult/ hat/helmet/horned/adult/
+hat_helmet_kettle,layer_1,135,hat/helmet/kettle/adult/ hat/helmet/kettle/adult/ hat/helmet/kettle/adult/ hat/helmet/kettle/adult/
+hat_helmet_legion,layer_1,130,hat/helmet/legion/adult/ hat/helmet/legion/adult/ hat/helmet/legion/adult/ hat/helmet/legion/adult/
+hat_helmet_mail,layer_1,125,hat/helmet/mail/adult/ hat/helmet/mail/adult/ hat/helmet/mail/adult/ hat/helmet/mail/adult/
+hat_helmet_maximus,layer_1,130,hat/helmet/maximus/adult/ hat/helmet/maximus/adult/ hat/helmet/maximus/adult/ hat/helmet/maximus/adult/
+hat_helmet_morion,layer_1,135,hat/helmet/morion/adult/ hat/helmet/morion/adult/ hat/helmet/morion/adult/ hat/helmet/morion/adult/
+hat_helmet_nasal,layer_1,130,hat/helmet/nasal/adult/ hat/helmet/nasal/adult/ hat/helmet/nasal/adult/ hat/helmet/nasal/adult/
+hat_helmet_norman,layer_1,135,hat/helmet/norman/adult/ hat/helmet/norman/adult/ hat/helmet/norman/adult/ hat/helmet/norman/adult/
+hat_helmet_pointed,layer_1,135,hat/helmet/pointed/adult/ hat/helmet/pointed/adult/ hat/helmet/pointed/adult/ hat/helmet/pointed/adult/
+hat_helmet_spangenhelm,layer_1,130,hat/helmet/spangenhelm/adult/ hat/helmet/spangenhelm/adult/ hat/helmet/spangenhelm/adult/ hat/helmet/spangenhelm/adult/
+hat_helmet_spangenhelm_viking,layer_1,130,hat/helmet/spangenhelm_viking/adult/ hat/helmet/spangenhelm_viking/adult/ hat/helmet/spangenhelm_viking/adult/ hat/helmet/spangenhelm_viking/adult/
+hat_helmet_sugarloaf,layer_1,130,hat/helmet/sugarloaf/male/ hat/helmet/sugarloaf/female/ hat/helmet/sugarloaf/male/ hat/helmet/sugarloaf/female/
+hat_helmet_sugarloaf_simple,layer_1,130,hat/helmet/sugarloaf_simple/male/ hat/helmet/sugarloaf_simple/female/ hat/helmet/sugarloaf_simple/male/ hat/helmet/sugarloaf_simple/female/
+hat_helmet_xeon,layer_1,130,hat/helmet/xeon/adult/ hat/helmet/xeon/adult/ hat/helmet/xeon/adult/ hat/helmet/xeon/adult/
+hat_holiday_christmas,layer_1,130,hat/holiday/christmas/adult/ hat/holiday/christmas/adult/ hat/holiday/christmas/adult/ hat/holiday/christmas/adult/
+hat_holiday_elf,layer_1,130,hat/holiday/elf/adult/ hat/holiday/elf/adult/ hat/holiday/elf/adult/ hat/holiday/elf/adult/
+hat_holiday_santa,layer_1,131,hat/holiday/santa/adult/ hat/holiday/santa/adult/ hat/holiday/santa/adult/ hat/holiday/santa/adult/
+hat_hood_cloth,layer_1,130,hat/cloth/hood/adult/ hat/cloth/hood/adult/ hat/cloth/hood/adult/ hat/cloth/hood/adult/
+hat_hood_hijab,layer_1,130,hat/cloth/hijab/male/ hat/cloth/hijab/thin/ hat/cloth/hijab/male/ hat/cloth/hijab/thin/
+hat_hood_sack_cloth,layer_1,130,hat/cloth/hood_sack/adult/ hat/cloth/hood_sack/adult/ hat/cloth/hood_sack/adult/ hat/cloth/hood_sack/adult/
+hat_magic_celestial,layer_1,130,hat/magic/celestial/adult/ hat/magic/celestial/adult/ hat/magic/celestial/adult/ hat/magic/celestial/adult/
+hat_magic_celestial_moon,layer_1,130,hat/magic/celestial_moon/adult/ hat/magic/celestial_moon/adult/ hat/magic/celestial_moon/adult/ hat/magic/celestial_moon/adult/
+hat_magic_celestial_moon_trim,layer_1,131,hat/magic/celestial_moon/trim/adult/ hat/magic/celestial_moon/trim/adult/ hat/magic/celestial_moon/trim/adult/ hat/magic/celestial_moon/trim/adult/
+hat_magic_celestial_trim,layer_1,131,hat/magic/celestial/trim/adult/ hat/magic/celestial/trim/adult/ hat/magic/celestial/trim/adult/ hat/magic/celestial/trim/adult/
+hat_magic_large,layer_1,130,hat/magic/large/adult/ hat/magic/large/adult/ hat/magic/large/adult/ hat/magic/large/adult/
+hat_magic_wizard,layer_1,130,hat/magic/wizard/base/adult/ hat/magic/wizard/base/adult/ hat/magic/wizard/base/adult/ hat/magic/wizard/base/adult/
+hat_magic_wizard_belt,layer_1,131,hat/magic/wizard/belt/adult/ hat/magic/wizard/belt/adult/ hat/magic/wizard/belt/adult/ hat/magic/wizard/belt/adult/
+hat_magic_wizard_buckle,layer_1,132,hat/magic/wizard/buckle/adult/ hat/magic/wizard/buckle/adult/ hat/magic/wizard/buckle/adult/ hat/magic/wizard/buckle/adult/
+hat_tricorne,layer_1,130,hat/pirate/tricorne/basic/adult/ hat/pirate/tricorne/basic/adult/ hat/pirate/tricorne/basic/adult/ hat/pirate/tricorne/basic/adult/
+hat_tricorne_captain,layer_1,130,hat/pirate/tricorne/captain/adult/ hat/pirate/tricorne/captain/adult/ hat/pirate/tricorne/captain/adult/ hat/pirate/tricorne/captain/adult/
+hat_tricorne_captain_skull,layer_1,131,hat/pirate/tricorne/captain/skull/adult/ hat/pirate/tricorne/captain/skull/adult/ hat/pirate/tricorne/captain/skull/adult/ hat/pirate/tricorne/captain/skull/adult/
+hat_tricorne_captain_trim,layer_1,131,hat/pirate/tricorne/captain/trim/adult/ hat/pirate/tricorne/captain/trim/adult/ hat/pirate/tricorne/captain/trim/adult/ hat/pirate/tricorne/captain/trim/adult/
+hat_tricorne_lieutenant,layer_1,130,hat/pirate/tricorne/lieutenant/adult/ hat/pirate/tricorne/lieutenant/adult/ hat/pirate/tricorne/lieutenant/adult/ hat/pirate/tricorne/lieutenant/adult/
+hat_tricorne_lieutenant_trim,layer_1,131,hat/pirate/tricorne/lieutenant/trim/adult/ hat/pirate/tricorne/lieutenant/trim/adult/ hat/pirate/tricorne/lieutenant/trim/adult/ hat/pirate/tricorne/lieutenant/trim/adult/
+hat_tricorne_stitched,layer_1,131,hat/pirate/tricorne/basic/stitching/adult/ hat/pirate/tricorne/basic/stitching/adult/ hat/pirate/tricorne/basic/stitching/adult/ hat/pirate/tricorne/basic/stitching/adult/
+hat_tricorne_thatch,layer_1,131,hat/pirate/tricorne/basic/thatching/adult/ hat/pirate/tricorne/basic/thatching/adult/ hat/pirate/tricorne/basic/thatching/adult/ hat/pirate/tricorne/basic/thatching/adult/
+hat_visor_grated,layer_1,132,hat/visor/grated/adult/ hat/visor/grated/adult/ hat/visor/grated/adult/ hat/visor/grated/adult/
+hat_visor_grated_narrow,layer_1,132,hat/visor/grated_narrow/adult/ hat/visor/grated_narrow/adult/ hat/visor/grated_narrow/adult/ hat/visor/grated_narrow/adult/
+hat_visor_horned,layer_1,132,hat/visor/horned/adult/ hat/visor/horned/adult/ hat/visor/horned/adult/ hat/visor/horned/adult/
+hat_visor_pigface,layer_1,132,hat/visor/pigface/adult/ hat/visor/pigface/adult/ hat/visor/pigface/adult/ hat/visor/pigface/adult/
+hat_visor_pigface_raised,layer_1,132,hat/visor/pigface_raised/adult/ hat/visor/pigface_raised/adult/ hat/visor/pigface_raised/adult/ hat/visor/pigface_raised/adult/
+hat_visor_round,layer_1,132,hat/visor/round/adult/ hat/visor/round/adult/ hat/visor/round/adult/ hat/visor/round/adult/
+hat_visor_round_raised,layer_1,132,hat/visor/round_raised/adult/ hat/visor/round_raised/adult/ hat/visor/round_raised/adult/ hat/visor/round_raised/adult/
+hat_visor_slit,layer_1,132,hat/visor/slit/adult/ hat/visor/slit/adult/ hat/visor/slit/adult/ hat/visor/slit/adult/
+hat_visor_slit_narrow,layer_1,132,hat/visor/slit/adult/ hat/visor/slit/adult/ hat/visor/slit/adult/ hat/visor/slit/adult/
+head_ears_avyon,layer_1,126,head/ears/avyon/adult/ head/ears/avyon/adult/ head/ears/avyon/adult/ head/ears/avyon/adult/ head/ears/avyon/child/
+head_ears_avyon_skin,layer_1,127,head/ears/avyon/skin/adult/ head/ears/avyon/skin/adult/ head/ears/avyon/skin/adult/ head/ears/avyon/skin/adult/ head/ears/avyon/skin/child/
+head_ears_big,layer_1,105,head/ears/big/adult/ head/ears/big/adult/ head/ears/big/adult/ head/ears/big/adult/ head/ears/big/child/
+head_ears_cat,layer_1,130,head/ears/cat/adult_front/ head/ears/cat/adult_front/ head/ears/cat/adult_front/ head/ears/cat/adult_front/ head/ears/cat/child_front/
+head_ears_cat,layer_2,8,head/ears/cat/adult_back/ head/ears/cat/adult_back/ head/ears/cat/adult_back/ head/ears/cat/adult_back/ head/ears/cat/child_back/
+head_ears_cat_skin,layer_1,131,head/ears/cat/skin/adult_front/ head/ears/cat/skin/adult_front/ head/ears/cat/skin/adult_front/ head/ears/cat/skin/adult_front/ head/ears/cat/skin/child_front/
+head_ears_cat_skin,layer_2,9,head/ears/cat/skin/adult_back/ head/ears/cat/skin/adult_back/ head/ears/cat/skin/adult_back/ head/ears/cat/skin/adult_back/ head/ears/cat/skin/child_back/
+head_ears_down,layer_1,126,head/ears/down/adult/ head/ears/down/adult/ head/ears/down/adult/ head/ears/down/adult/ head/ears/down/child/
+head_ears_dragon,layer_1,126,head/ears/dragon/adult/ head/ears/dragon/adult/ head/ears/dragon/adult/ head/ears/dragon/adult/ head/ears/dragon/child/
+head_ears_elven,layer_1,126,head/ears/elven/adult/ head/ears/elven/adult/ head/ears/elven/adult/ head/ears/elven/adult/ head/ears/elven/child/
+head_ears_hang,layer_1,126,head/ears/hang/adult/ head/ears/hang/adult/ head/ears/hang/adult/ head/ears/hang/adult/ head/ears/hang/child/
+head_ears_long,layer_1,126,head/ears/long/adult/ head/ears/long/adult/ head/ears/long/adult/ head/ears/long/adult/ head/ears/long/child/
+head_ears_lykon,layer_1,126,head/ears/lykon/adult/ head/ears/lykon/adult/ head/ears/lykon/adult/ head/ears/lykon/adult/ head/ears/lykon/child/
+head_ears_lykon_skin,layer_1,127,head/ears/lykon/skin/adult/ head/ears/lykon/skin/adult/ head/ears/lykon/skin/adult/ head/ears/lykon/skin/adult/ head/ears/lykon/skin/child/
+head_ears_medium,layer_1,126,head/ears/medium/adult/ head/ears/medium/adult/ head/ears/medium/adult/ head/ears/medium/adult/ head/ears/medium/child/
+head_ears_wolf,layer_1,130,head/ears/wolf/adult_front/ head/ears/wolf/adult_front/ head/ears/wolf/adult_front/ head/ears/wolf/adult_front/ head/ears/wolf/child_front/
+head_ears_wolf,layer_2,8,head/ears/wolf/adult_back/ head/ears/wolf/adult_back/ head/ears/wolf/adult_back/ head/ears/wolf/adult_back/ head/ears/wolf/child_back/
+head_ears_wolf_skin,layer_1,131,head/ears/wolf/skin/adult_front/ head/ears/wolf/skin/adult_front/ head/ears/wolf/skin/adult_front/ head/ears/wolf/skin/adult_front/ head/ears/wolf/skin/child_front/
+head_ears_wolf_skin,layer_2,9,head/ears/wolf/skin/adult_back/ head/ears/wolf/skin/adult_back/ head/ears/wolf/skin/adult_back/ head/ears/wolf/skin/adult_back/ head/ears/wolf/skin/child_back/
+head_ears_zabos,layer_1,126,head/ears/zabos/adult/ head/ears/zabos/adult/ head/ears/zabos/adult/ head/ears/zabos/adult/ head/ears/zabos/child/
+head_ears_zabos_skin,layer_1,127,head/ears/zabos/skin/adult/ head/ears/zabos/skin/adult/ head/ears/zabos/skin/adult/ head/ears/zabos/skin/adult/ head/ears/zabos/skin/child/
+head_fins_fin,layer_1,125,head/fins/fin/adult/ head/fins/fin/adult/ head/fins/fin/adult/ head/fins/fin/adult/ head/fins/fin/child/
+head_fins_fin_short,layer_1,125,head/fins/fin_short/adult/ head/fins/fin_short/adult/ head/fins/fin_short/adult/ head/fins/fin_short/adult/ head/fins/fin_short/child/
+head_horns_backwards,layer_1,126,head/horns/backwards/adult/fg/ head/horns/backwards/adult/fg/ head/horns/backwards/adult/fg/ head/horns/backwards/adult/fg/ head/horns/backwards/child/fg/
+head_horns_backwards,layer_2,7,head/horns/backwards/adult/bg/ head/horns/backwards/adult/bg/ head/horns/backwards/adult/bg/ head/horns/backwards/adult/bg/ head/horns/backwards/child/bg/
+head_horns_curled,layer_1,126,head/horns/curled/adult/ head/horns/curled/adult/ head/horns/curled/adult/ head/horns/curled/adult/ head/horns/curled/child/
+head_nose_big,layer_1,105,head/nose/big/adult/ head/nose/big/adult/ head/nose/big/adult/ head/nose/big/adult/
+head_nose_button,layer_1,105,head/nose/button/adult/ head/nose/button/adult/ head/nose/button/adult/ head/nose/button/adult/
+head_nose_elderly,layer_1,105,head/nose/elderly/adult/ head/nose/elderly/adult/ head/nose/elderly/adult/ head/nose/elderly/adult/
+head_nose_large,layer_1,105,head/nose/large/adult/ head/nose/large/adult/ head/nose/large/adult/ head/nose/large/adult/
+head_nose_straight,layer_1,105,head/nose/straight/adult/ head/nose/straight/adult/ head/nose/straight/adult/ head/nose/straight/adult/
+head_wrinkles,layer_1,102,head/wrinkles/ head/wrinkles/ head/wrinkles/ head/wrinkles/
+heads_alien,layer_1,100,head/heads/alien/adult/ head/heads/alien/adult/ head/heads/alien/adult/ head/heads/alien/adult/
+heads_boarman,layer_1,100,head/heads/boarman/adult/ head/heads/boarman/adult/ head/heads/boarman/adult/ head/heads/boarman/adult/
+heads_boarman_child,layer_1,100,head/heads/boarman/child/
+heads_frankenstein,layer_1,100,head/heads/frankenstein/adult/ head/heads/frankenstein/adult/ head/heads/frankenstein/adult/ head/heads/frankenstein/adult/
+heads_goblin,layer_1,100,head/heads/goblin/adult/ head/heads/goblin/adult/ head/heads/goblin/adult/ head/heads/goblin/adult/
+heads_goblin_child,layer_1,100,head/heads/goblin/child/
+heads_human_child,layer_1,100,head/heads/human/child/
+heads_human_elderly_small,layer_1,100,head/heads/human/elderly_small/ head/heads/human/elderly_small/ head/heads/human/elderly_small/ head/heads/human/elderly_small/
+heads_human_female,layer_1,100,head/heads/human/female/ head/heads/human/female/ head/heads/human/female/ head/heads/human/female/
+heads_human_female_elderly,layer_1,100,head/heads/human/female_elderly/ head/heads/human/female_elderly/ head/heads/human/female_elderly/ head/heads/human/female_elderly/
+heads_human_female_small,layer_1,100,head/heads/human/female_small/ head/heads/human/female_small/ head/heads/human/female_small/ head/heads/human/female_small/
+heads_human_male,layer_1,100,head/heads/human/male/ head/heads/human/male/ head/heads/human/male/ head/heads/human/male/
+heads_human_male_elderly,layer_1,100,head/heads/human/male_elderly/ head/heads/human/male_elderly/ head/heads/human/male_elderly/ head/heads/human/male_elderly/
+heads_human_male_gaunt,layer_1,100,head/heads/human/male_gaunt/ head/heads/human/male_gaunt/ head/heads/human/male_gaunt/ head/heads/human/male_gaunt/
+heads_human_male_plump,layer_1,100,head/heads/human/male_plump/ head/heads/human/male_plump/ head/heads/human/male_plump/ head/heads/human/male_plump/
+heads_human_male_small,layer_1,100,head/heads/human/male_small/ head/heads/human/male_small/ head/heads/human/male_small/ head/heads/human/male_small/
+heads_jack,layer_1,100,head/heads/jack/adult/ head/heads/jack/adult/ head/heads/jack/adult/ head/heads/jack/adult/
+heads_lizard_child,layer_1,100,head/heads/lizard/child/
+heads_lizard_female,layer_1,100,head/heads/lizard/female/ head/heads/lizard/female/ head/heads/lizard/female/ head/heads/lizard/female/
+heads_lizard_male,layer_1,100,head/heads/lizard/male/ head/heads/lizard/male/ head/heads/lizard/male/ head/heads/lizard/male/
+heads_minotaur,layer_1,100,head/heads/minotaur/male/ head/heads/minotaur/male/ head/heads/minotaur/male/ head/heads/minotaur/male/
+heads_minotaur_child,layer_1,100,head/heads/minotaur/child/
+heads_minotaur_female,layer_1,100,head/heads/minotaur/female/ head/heads/minotaur/female/ head/heads/minotaur/female/ head/heads/minotaur/female/
+heads_mouse,layer_1,100,head/heads/mouse/adult/ head/heads/mouse/adult/ head/heads/mouse/adult/ head/heads/mouse/adult/
+heads_mouse_child,layer_1,100,head/heads/mouse/child/
+heads_orc_child,layer_1,100,head/heads/orc/child/
+heads_orc_female,layer_1,100,head/heads/orc/female/ head/heads/orc/female/ head/heads/orc/female/ head/heads/orc/female/
+heads_orc_male,layer_1,100,head/heads/orc/male/ head/heads/orc/male/ head/heads/orc/male/ head/heads/orc/male/
+heads_pig,layer_1,100,head/heads/pig/adult/ head/heads/pig/adult/ head/heads/pig/adult/ head/heads/pig/adult/
+heads_pig_child,layer_1,100,head/heads/pig/child/
+heads_rabbit,layer_1,100,head/heads/rabbit/adult/ head/heads/rabbit/adult/ head/heads/rabbit/adult/ head/heads/rabbit/adult/
+heads_rabbit_child,layer_1,100,head/heads/rabbit/child/
+heads_rat,layer_1,100,head/heads/rat/adult/ head/heads/rat/adult/ head/heads/rat/adult/ head/heads/rat/adult/
+heads_rat_child,layer_1,100,head/heads/rat/child/
+heads_sheep,layer_1,100,head/heads/sheep/adult/ head/heads/sheep/adult/ head/heads/sheep/adult/ head/heads/sheep/adult/
+heads_sheep_child,layer_1,100,head/heads/sheep/child/
+heads_skeleton,layer_1,100,head/heads/skeleton/adult/ head/heads/skeleton/adult/ head/heads/skeleton/adult/ head/heads/skeleton/adult/
+heads_troll,layer_1,100,head/heads/troll/adult/ head/heads/troll/adult/ head/heads/troll/adult/ head/heads/troll/adult/
+heads_troll_child,layer_1,100,head/heads/troll/child/
+heads_vampire,layer_1,100,head/heads/vampire/adult/ head/heads/vampire/adult/ head/heads/vampire/adult/ head/heads/vampire/adult/
+heads_wartotaur,layer_1,100,head/heads/wartotaur/adult/ head/heads/wartotaur/adult/ head/heads/wartotaur/adult/ head/heads/wartotaur/adult/
+heads_wolf_child,layer_1,100,head/heads/wolf/child/
+heads_wolf_female,layer_1,100,head/heads/wolf/female/ head/heads/wolf/female/ head/heads/wolf/female/ head/heads/wolf/female/
+heads_wolf_male,layer_1,100,head/heads/wolf/male/ head/heads/wolf/male/ head/heads/wolf/male/ head/heads/wolf/male/
+heads_zombie,layer_1,100,head/heads/zombie/adult/ head/heads/zombie/adult/ head/heads/zombie/adult/ head/heads/zombie/adult/
+legs_armour,layer_1,20,legs/armour/plate/male/ legs/armour/plate/thin/
+legs_childpants,layer_1,20,legs/pants/child/
+legs_childskirts,layer_1,20,legs/skirts/child/
+legs_cuffed,layer_1,20,legs/cuffed/male/ legs/cuffed/thin/
+legs_formal,layer_1,20,legs/formal/male/ legs/formal/thin/ legs/formal/male/ legs/formal/thin/
+legs_formal_striped,layer_1,20,legs/formal_striped/male/ legs/formal_striped/thin/ legs/formal_striped/male/ legs/formal_striped/thin/
+legs_fur,layer_1,20,legs/fur/male/ legs/fur/thin/ legs/fur/male/ legs/fur/thin/
+legs_hose,layer_1,20,legs/hose/male/ legs/hose/thin/
+legs_leggings,layer_1,20,legs/leggings/male/ legs/leggings/thin/
+legs_leggings2,layer_1,20,legs/leggings2/male/ legs/leggings2/thin/
+legs_pantaloons,layer_1,20,legs/pantaloons/male/ legs/pantaloons/thin/ legs/pantaloons/muscular/ legs/pantaloons/thin/
+legs_pants,layer_1,20,legs/pants/male/ legs/pants/thin/ legs/pants/male/ legs/pants/thin/
+legs_pants2,layer_1,20,legs/pants2/male/ legs/pants2/thin/
+legs_pregnantpants,layer_1,20,legs/pants/pregnant/
+legs_shorts,layer_1,20,legs/shorts/shorts/male/ legs/shorts/shorts/thin/ legs/shorts/shorts/thin/
+legs_shorts_short,layer_1,20,legs/shorts/short_shorts/male/ legs/shorts/short_shorts/thin/ legs/shorts/short_shorts/thin/
+legs_skirt_belle,layer_1,20,legs/skirts/belle/female/ legs/skirts/belle/female/
+legs_skirt_overskirt,layer_1,35,legs/skirts/overskirt/female/ legs/skirts/overskirt/female/
+legs_skirt_straight,layer_1,20,legs/skirts/straight/female/ legs/skirts/straight/female/
+legs_skirts_legion,layer_1,20,legs/skirts/legion/male/ legs/skirts/legion/female/ legs/skirts/legion/male/ legs/skirts/legion/female/
+legs_skirts_plain,layer_1,20,legs/skirts/plain/male/ legs/skirts/plain/female/ legs/skirts/plain/female/
+legs_skirts_slit,layer_1,20,legs/skirts/slit/female/ legs/skirts/slit/female/
+legs_widepants,layer_1,20,legs/pants/muscular/
+neck_amulet_cross,layer_1,81,neck/amulet/cross/male/ neck/amulet/cross/female/ neck/amulet/cross/male/ neck/amulet/cross/female/
+neck_amulet_dangle,layer_1,81,neck/amulet/dangle/male/ neck/amulet/dangle/female/ neck/amulet/dangle/male/ neck/amulet/dangle/female/
+neck_amulet_spider,layer_1,81,neck/amulet/spider/male/ neck/amulet/spider/female/ neck/amulet/spider/male/ neck/amulet/spider/female/
+neck_amulet_star,layer_1,81,neck/amulet/star/male/ neck/amulet/star/female/ neck/amulet/star/male/ neck/amulet/star/female/
+neck_bowtie,layer_1,90,neck/tie/bowtie/adult/ neck/tie/bowtie/adult/ neck/tie/bowtie/adult/ neck/tie/bowtie/adult/
+neck_bowtie2,layer_1,90,neck/tie/bowtie2/adult/ neck/tie/bowtie2/adult/ neck/tie/bowtie2/adult/ neck/tie/bowtie2/adult/
+neck_capeclip,layer_1,90,neck/capeclip/male/ neck/capeclip/female/ neck/capeclip/male/ neck/capeclip/female/
+neck_capetie,layer_1,90,neck/capetie/male/ neck/capetie/female/ neck/capetie/male/ neck/capetie/female/
+neck_charm_box,layer_1,81,neck/charm/box/male/ neck/charm/box/female/ neck/charm/box/male/ neck/charm/box/female/
+neck_charm_oval,layer_1,81,neck/charm/oval/male/ neck/charm/oval/female/ neck/charm/oval/male/ neck/charm/oval/female/
+neck_charm_ring,layer_1,81,neck/charm/ring/male/ neck/charm/ring/female/ neck/charm/ring/male/ neck/charm/ring/female/
+neck_charm_star,layer_1,81,neck/charm/star/male/ neck/charm/star/female/ neck/charm/star/male/ neck/charm/star/female/
+neck_cravat,layer_1,90,neck/cravat/male/ neck/cravat/male/
+neck_gem_emerald,layer_1,81,neck/gem/emerald/male/ neck/gem/emerald/female/ neck/gem/emerald/male/ neck/gem/emerald/female/
+neck_gem_marquise,layer_1,81,neck/gem/marquise/male/ neck/gem/marquise/female/ neck/gem/marquise/male/ neck/gem/marquise/female/
+neck_gem_natural,layer_1,81,neck/gem/natural/male/ neck/gem/natural/female/ neck/gem/natural/male/ neck/gem/natural/female/
+neck_gem_pear,layer_1,81,neck/gem/pear/male/ neck/gem/pear/female/ neck/gem/pear/male/ neck/gem/pear/female/
+neck_gem_pearl,layer_1,81,neck/gem/pearl/male/ neck/gem/pearl/female/ neck/gem/pearl/male/ neck/gem/pearl/female/
+neck_gem_princess,layer_1,81,neck/gem/princess/male/ neck/gem/princess/female/ neck/gem/princess/male/ neck/gem/princess/female/
+neck_gem_round,layer_1,81,neck/gem/round/male/ neck/gem/round/female/ neck/gem/round/male/ neck/gem/round/female/
+neck_gem_trilliant,layer_1,81,neck/gem/trilliant/male/ neck/gem/trilliant/female/ neck/gem/trilliant/male/ neck/gem/trilliant/female/
+neck_jabot,layer_1,90,neck/jabot/male/ neck/jabot/male/
+neck_necklace,layer_1,80,neck/necklace/female/ neck/necklace/female/ neck/necklace/female/ neck/necklace/female/
+neck_necklace_beaded_large,layer_1,80,neck/necklace/beaded_large/male/ neck/necklace/beaded_large/female/ neck/necklace/beaded_large/male/ neck/necklace/beaded_large/female/
+neck_necklace_beaded_small,layer_1,80,neck/necklace/beaded_small/male/ neck/necklace/beaded_small/female/ neck/necklace/beaded_small/male/ neck/necklace/beaded_small/female/
+neck_necklace_chain,layer_1,80,neck/necklace/chain/male/ neck/necklace/chain/female/ neck/necklace/chain/male/ neck/necklace/chain/female/
+neck_necklace_simple,layer_1,80,neck/necklace/simple/male/ neck/necklace/simple/female/ neck/necklace/simple/male/ neck/necklace/simple/female/
+neck_necktie,layer_1,90,neck/tie/necktie/male/ neck/tie/necktie/female/ neck/tie/necktie/male/ neck/tie/necktie/female/
+neck_scarf,layer_1,90,neck/scarf/ neck/scarf/ neck/scarf/ neck/scarf/
+prosthesis_hook,layer_1,100,body/prosthesis/hook/male/mask/
+prosthesis_hook,layer_2,100,body/prosthesis/hook/male/
+prosthesis_peg_leg,layer_1,100,body/prosthesis/peg_leg/male/mask/
+prosthesis_peg_leg,layer_2,100,body/prosthesis/peg_leg/male/
+quiver,layer_1,8,quiver/ quiver/ quiver/ quiver/
+shadow,layer_1,0,shadow/adult/ shadow/adult/ shadow/adult/ shadow/adult/ shadow/child/
+shield,layer_1,110,shield/male/ shield/female/ shield/male/ shield/female/
+shield_crusader,layer_1,2,shield/crusader/bg/ shield/crusader/bg/ shield/crusader/bg/ shield/crusader/bg/
+shield_crusader,layer_2,110,shield/crusader/fg/male/ shield/crusader/fg/female/ shield/crusader/fg/male/ shield/crusader/fg/female/
+shield_heater_paint,layer_1,3,shield/heater/original/paint/bg/ shield/heater/original/paint/bg/ shield/heater/original/paint/bg/ shield/heater/original/paint/bg/
+shield_heater_paint,layer_2,111,shield/heater/original/paint/fg/ shield/heater/original/paint/fg/ shield/heater/original/paint/fg/ shield/heater/original/paint/fg/
+shield_heater_pattern,layer_1,112,shield/heater/pattern/universal/ shield/heater/pattern/universal/ shield/heater/pattern/universal/ shield/heater/pattern/universal/
+shield_heater_pattern_barry,layer_1,4,shield/heater/original/pattern/barry/bg/ shield/heater/original/pattern/barry/bg/ shield/heater/original/pattern/barry/bg/ shield/heater/original/pattern/barry/bg/
+shield_heater_pattern_barry,layer_2,112,shield/heater/original/pattern/barry/fg/ shield/heater/original/pattern/barry/fg/ shield/heater/original/pattern/barry/fg/ shield/heater/original/pattern/barry/fg/
+shield_heater_pattern_bend,layer_1,4,shield/heater/original/pattern/bend/bg/ shield/heater/original/pattern/bend/bg/ shield/heater/original/pattern/bend/bg/ shield/heater/original/pattern/bend/bg/
+shield_heater_pattern_bend,layer_2,112,shield/heater/original/pattern/bend/fg/ shield/heater/original/pattern/bend/fg/ shield/heater/original/pattern/bend/fg/ shield/heater/original/pattern/bend/fg/
+shield_heater_pattern_bend_sinister,layer_1,4,shield/heater/original/pattern/bend_sinister/bg/ shield/heater/original/pattern/bend_sinister/bg/ shield/heater/original/pattern/bend_sinister/bg/ shield/heater/original/pattern/bend_sinister/bg/
+shield_heater_pattern_bend_sinister,layer_2,112,shield/heater/original/pattern/bend_sinister/fg/ shield/heater/original/pattern/bend_sinister/fg/ shield/heater/original/pattern/bend_sinister/fg/ shield/heater/original/pattern/bend_sinister/fg/
+shield_heater_pattern_bendy,layer_1,4,shield/heater/original/pattern/bendy/bg/ shield/heater/original/pattern/bendy/bg/ shield/heater/original/pattern/bendy/bg/ shield/heater/original/pattern/bendy/bg/
+shield_heater_pattern_bendy,layer_2,112,shield/heater/original/pattern/bendy/fg/ shield/heater/original/pattern/bendy/fg/ shield/heater/original/pattern/bendy/fg/ shield/heater/original/pattern/bendy/fg/
+shield_heater_pattern_bendy_sinister,layer_1,4,shield/heater/original/pattern/bendy_sinister/bg/ shield/heater/original/pattern/bendy_sinister/bg/ shield/heater/original/pattern/bendy_sinister/bg/ shield/heater/original/pattern/bendy_sinister/bg/
+shield_heater_pattern_bendy_sinister,layer_2,112,shield/heater/original/pattern/bendy_sinister/fg/ shield/heater/original/pattern/bendy_sinister/fg/ shield/heater/original/pattern/bendy_sinister/fg/ shield/heater/original/pattern/bendy_sinister/fg/
+shield_heater_pattern_bordure,layer_1,4,shield/heater/original/pattern/bordure/bg/ shield/heater/original/pattern/bordure/bg/ shield/heater/original/pattern/bordure/bg/ shield/heater/original/pattern/bordure/bg/
+shield_heater_pattern_bordure,layer_2,112,shield/heater/original/pattern/bordure/fg/ shield/heater/original/pattern/bordure/fg/ shield/heater/original/pattern/bordure/fg/ shield/heater/original/pattern/bordure/fg/
+shield_heater_pattern_chevron,layer_1,4,shield/heater/original/pattern/chevron/bg/ shield/heater/original/pattern/chevron/bg/ shield/heater/original/pattern/chevron/bg/ shield/heater/original/pattern/chevron/bg/
+shield_heater_pattern_chevron,layer_2,112,shield/heater/original/pattern/chevron/fg/ shield/heater/original/pattern/chevron/fg/ shield/heater/original/pattern/chevron/fg/ shield/heater/original/pattern/chevron/fg/
+shield_heater_pattern_chevron_inverted,layer_1,4,shield/heater/original/pattern/chevron_inverted/bg/ shield/heater/original/pattern/chevron_inverted/bg/ shield/heater/original/pattern/chevron_inverted/bg/ shield/heater/original/pattern/chevron_inverted/bg/
+shield_heater_pattern_chevron_inverted,layer_2,112,shield/heater/original/pattern/chevron_inverted/fg/ shield/heater/original/pattern/chevron_inverted/fg/ shield/heater/original/pattern/chevron_inverted/fg/ shield/heater/original/pattern/chevron_inverted/fg/
+shield_heater_pattern_chief,layer_1,4,shield/heater/original/pattern/chief/bg/ shield/heater/original/pattern/chief/bg/ shield/heater/original/pattern/chief/bg/ shield/heater/original/pattern/chief/bg/
+shield_heater_pattern_chief,layer_2,112,shield/heater/original/pattern/chief/fg/ shield/heater/original/pattern/chief/fg/ shield/heater/original/pattern/chief/fg/ shield/heater/original/pattern/chief/fg/
+shield_heater_pattern_cross,layer_1,4,shield/heater/original/pattern/cross/bg/ shield/heater/original/pattern/cross/bg/ shield/heater/original/pattern/cross/bg/ shield/heater/original/pattern/cross/bg/
+shield_heater_pattern_cross,layer_2,112,shield/heater/original/pattern/cross/fg/ shield/heater/original/pattern/cross/fg/ shield/heater/original/pattern/cross/fg/ shield/heater/original/pattern/cross/fg/
+shield_heater_pattern_fess,layer_1,4,shield/heater/original/pattern/fess/bg/ shield/heater/original/pattern/fess/bg/ shield/heater/original/pattern/fess/bg/ shield/heater/original/pattern/fess/bg/
+shield_heater_pattern_fess,layer_2,112,shield/heater/original/pattern/fess/fg/ shield/heater/original/pattern/fess/fg/ shield/heater/original/pattern/fess/fg/ shield/heater/original/pattern/fess/fg/
+shield_heater_pattern_lozengy,layer_1,4,shield/heater/original/pattern/lozengy/bg/ shield/heater/original/pattern/lozengy/bg/ shield/heater/original/pattern/lozengy/bg/ shield/heater/original/pattern/lozengy/bg/
+shield_heater_pattern_lozengy,layer_2,112,shield/heater/original/pattern/lozengy/fg/ shield/heater/original/pattern/lozengy/fg/ shield/heater/original/pattern/lozengy/fg/ shield/heater/original/pattern/lozengy/fg/
+shield_heater_pattern_pale,layer_1,4,shield/heater/original/pattern/pale/bg/ shield/heater/original/pattern/pale/bg/ shield/heater/original/pattern/pale/bg/ shield/heater/original/pattern/pale/bg/
+shield_heater_pattern_pale,layer_2,112,shield/heater/original/pattern/pale/fg/ shield/heater/original/pattern/pale/fg/ shield/heater/original/pattern/pale/fg/ shield/heater/original/pattern/pale/fg/
+shield_heater_pattern_pall,layer_1,4,shield/heater/original/pattern/pall/bg/ shield/heater/original/pattern/pall/bg/ shield/heater/original/pattern/pall/bg/ shield/heater/original/pattern/pall/bg/
+shield_heater_pattern_pall,layer_2,112,shield/heater/original/pattern/pall/fg/ shield/heater/original/pattern/pall/fg/ shield/heater/original/pattern/pall/fg/ shield/heater/original/pattern/pall/fg/
+shield_heater_pattern_paly,layer_1,4,shield/heater/original/pattern/paly/bg/ shield/heater/original/pattern/paly/bg/ shield/heater/original/pattern/paly/bg/ shield/heater/original/pattern/paly/bg/
+shield_heater_pattern_paly,layer_2,112,shield/heater/original/pattern/paly/fg/ shield/heater/original/pattern/paly/fg/ shield/heater/original/pattern/paly/fg/ shield/heater/original/pattern/paly/fg/
+shield_heater_pattern_per_bend,layer_1,4,shield/heater/original/pattern/per_bend/bg/ shield/heater/original/pattern/per_bend/bg/ shield/heater/original/pattern/per_bend/bg/ shield/heater/original/pattern/per_bend/bg/
+shield_heater_pattern_per_bend,layer_2,112,shield/heater/original/pattern/per_bend/fg/ shield/heater/original/pattern/per_bend/fg/ shield/heater/original/pattern/per_bend/fg/ shield/heater/original/pattern/per_bend/fg/
+shield_heater_pattern_per_bend_sinister,layer_1,4,shield/heater/original/pattern/per_bend_sinister/bg/ shield/heater/original/pattern/per_bend_sinister/bg/ shield/heater/original/pattern/per_bend_sinister/bg/ shield/heater/original/pattern/per_bend_sinister/bg/
+shield_heater_pattern_per_bend_sinister,layer_2,112,shield/heater/original/pattern/per_bend_sinister/fg/ shield/heater/original/pattern/per_bend_sinister/fg/ shield/heater/original/pattern/per_bend_sinister/fg/ shield/heater/original/pattern/per_bend_sinister/fg/
+shield_heater_pattern_per_chevron,layer_1,4,shield/heater/original/pattern/per_chevron/bg/ shield/heater/original/pattern/per_chevron/bg/ shield/heater/original/pattern/per_chevron/bg/ shield/heater/original/pattern/per_chevron/bg/
+shield_heater_pattern_per_chevron,layer_2,112,shield/heater/original/pattern/per_chevron/fg/ shield/heater/original/pattern/per_chevron/fg/ shield/heater/original/pattern/per_chevron/fg/ shield/heater/original/pattern/per_chevron/fg/
+shield_heater_pattern_per_chevron_inverted,layer_1,4,shield/heater/original/pattern/per_chevron_inverted/bg/ shield/heater/original/pattern/per_chevron_inverted/bg/ shield/heater/original/pattern/per_chevron_inverted/bg/ shield/heater/original/pattern/per_chevron_inverted/bg/
+shield_heater_pattern_per_chevron_inverted,layer_2,112,shield/heater/original/pattern/per_chevron_inverted/fg/ shield/heater/original/pattern/per_chevron_inverted/fg/ shield/heater/original/pattern/per_chevron_inverted/fg/ shield/heater/original/pattern/per_chevron_inverted/fg/
+shield_heater_pattern_per_fess,layer_1,4,shield/heater/original/pattern/per_fess/bg/ shield/heater/original/pattern/per_fess/bg/ shield/heater/original/pattern/per_fess/bg/ shield/heater/original/pattern/per_fess/bg/
+shield_heater_pattern_per_fess,layer_2,112,shield/heater/original/pattern/per_fess/fg/ shield/heater/original/pattern/per_fess/fg/ shield/heater/original/pattern/per_fess/fg/ shield/heater/original/pattern/per_fess/fg/
+shield_heater_pattern_per_pale,layer_1,4,shield/heater/original/pattern/per_pale/bg/ shield/heater/original/pattern/per_pale/bg/ shield/heater/original/pattern/per_pale/bg/ shield/heater/original/pattern/per_pale/bg/
+shield_heater_pattern_per_pale,layer_2,112,shield/heater/original/pattern/per_pale/fg/ shield/heater/original/pattern/per_pale/fg/ shield/heater/original/pattern/per_pale/fg/ shield/heater/original/pattern/per_pale/fg/
+shield_heater_pattern_per_saltire,layer_1,4,shield/heater/original/pattern/per_saltire/bg/ shield/heater/original/pattern/per_saltire/bg/ shield/heater/original/pattern/per_saltire/bg/ shield/heater/original/pattern/per_saltire/bg/
+shield_heater_pattern_per_saltire,layer_2,112,shield/heater/original/pattern/per_saltire/fg/ shield/heater/original/pattern/per_saltire/fg/ shield/heater/original/pattern/per_saltire/fg/ shield/heater/original/pattern/per_saltire/fg/
+shield_heater_pattern_quarterly,layer_1,4,shield/heater/original/pattern/quarterly/bg/ shield/heater/original/pattern/quarterly/bg/ shield/heater/original/pattern/quarterly/bg/ shield/heater/original/pattern/quarterly/bg/
+shield_heater_pattern_quarterly,layer_2,112,shield/heater/original/pattern/quarterly/fg/ shield/heater/original/pattern/quarterly/fg/ shield/heater/original/pattern/quarterly/fg/ shield/heater/original/pattern/quarterly/fg/
+shield_heater_pattern_saltire,layer_1,4,shield/heater/original/pattern/saltire/bg/ shield/heater/original/pattern/saltire/bg/ shield/heater/original/pattern/saltire/bg/ shield/heater/original/pattern/saltire/bg/
+shield_heater_pattern_saltire,layer_2,112,shield/heater/original/pattern/saltire/fg/ shield/heater/original/pattern/saltire/fg/ shield/heater/original/pattern/saltire/fg/ shield/heater/original/pattern/saltire/fg/
+shield_heater_revised_paint,layer_1,3,shield/heater/revised/paint/bg/ shield/heater/revised/paint/bg/ shield/heater/revised/paint/bg/ shield/heater/revised/paint/bg/
+shield_heater_revised_paint,layer_2,111,shield/heater/revised/paint/fg/ shield/heater/revised/paint/fg/ shield/heater/revised/paint/fg/ shield/heater/revised/paint/fg/
+shield_heater_revised_pattern_barry,layer_1,4,shield/heater/revised/pattern/barry/bg/ shield/heater/revised/pattern/barry/bg/ shield/heater/revised/pattern/barry/bg/ shield/heater/revised/pattern/barry/bg/
+shield_heater_revised_pattern_barry,layer_2,112,shield/heater/revised/pattern/barry/fg/ shield/heater/revised/pattern/barry/fg/ shield/heater/revised/pattern/barry/fg/ shield/heater/revised/pattern/barry/fg/
+shield_heater_revised_pattern_bend,layer_1,4,shield/heater/revised/pattern/bend/bg/ shield/heater/revised/pattern/bend/bg/ shield/heater/revised/pattern/bend/bg/ shield/heater/revised/pattern/bend/bg/
+shield_heater_revised_pattern_bend,layer_2,112,shield/heater/revised/pattern/bend/fg/ shield/heater/revised/pattern/bend/fg/ shield/heater/revised/pattern/bend/fg/ shield/heater/revised/pattern/bend/fg/
+shield_heater_revised_pattern_bend_sinister,layer_1,4,shield/heater/revised/pattern/bend_sinister/bg/ shield/heater/revised/pattern/bend_sinister/bg/ shield/heater/revised/pattern/bend_sinister/bg/ shield/heater/revised/pattern/bend_sinister/bg/
+shield_heater_revised_pattern_bend_sinister,layer_2,112,shield/heater/revised/pattern/bend_sinister/fg/ shield/heater/revised/pattern/bend_sinister/fg/ shield/heater/revised/pattern/bend_sinister/fg/ shield/heater/revised/pattern/bend_sinister/fg/
+shield_heater_revised_pattern_bendy,layer_1,4,shield/heater/revised/pattern/bendy/bg/ shield/heater/revised/pattern/bendy/bg/ shield/heater/revised/pattern/bendy/bg/ shield/heater/revised/pattern/bendy/bg/
+shield_heater_revised_pattern_bendy,layer_2,112,shield/heater/revised/pattern/bendy/fg/ shield/heater/revised/pattern/bendy/fg/ shield/heater/revised/pattern/bendy/fg/ shield/heater/revised/pattern/bendy/fg/
+shield_heater_revised_pattern_bendy_sinister,layer_1,4,shield/heater/revised/pattern/bendy_sinister/bg/ shield/heater/revised/pattern/bendy_sinister/bg/ shield/heater/revised/pattern/bendy_sinister/bg/ shield/heater/revised/pattern/bendy_sinister/bg/
+shield_heater_revised_pattern_bendy_sinister,layer_2,112,shield/heater/revised/pattern/bendy_sinister/fg/ shield/heater/revised/pattern/bendy_sinister/fg/ shield/heater/revised/pattern/bendy_sinister/fg/ shield/heater/revised/pattern/bendy_sinister/fg/
+shield_heater_revised_pattern_bordure,layer_1,4,shield/heater/revised/pattern/bordure/bg/ shield/heater/revised/pattern/bordure/bg/ shield/heater/revised/pattern/bordure/bg/ shield/heater/revised/pattern/bordure/bg/
+shield_heater_revised_pattern_bordure,layer_2,112,shield/heater/revised/pattern/bordure/fg/ shield/heater/revised/pattern/bordure/fg/ shield/heater/revised/pattern/bordure/fg/ shield/heater/revised/pattern/bordure/fg/
+shield_heater_revised_pattern_chevron,layer_1,4,shield/heater/revised/pattern/chevron/bg/ shield/heater/revised/pattern/chevron/bg/ shield/heater/revised/pattern/chevron/bg/ shield/heater/revised/pattern/chevron/bg/
+shield_heater_revised_pattern_chevron,layer_2,112,shield/heater/revised/pattern/chevron/fg/ shield/heater/revised/pattern/chevron/fg/ shield/heater/revised/pattern/chevron/fg/ shield/heater/revised/pattern/chevron/fg/
+shield_heater_revised_pattern_chevron_inverted,layer_1,4,shield/heater/revised/pattern/chevron_inverted/bg/ shield/heater/revised/pattern/chevron_inverted/bg/ shield/heater/revised/pattern/chevron_inverted/bg/ shield/heater/revised/pattern/chevron_inverted/bg/
+shield_heater_revised_pattern_chevron_inverted,layer_2,112,shield/heater/revised/pattern/chevron_inverted/fg/ shield/heater/revised/pattern/chevron_inverted/fg/ shield/heater/revised/pattern/chevron_inverted/fg/ shield/heater/revised/pattern/chevron_inverted/fg/
+shield_heater_revised_pattern_chief,layer_1,4,shield/heater/revised/pattern/chief/bg/ shield/heater/revised/pattern/chief/bg/ shield/heater/revised/pattern/chief/bg/ shield/heater/revised/pattern/chief/bg/
+shield_heater_revised_pattern_chief,layer_2,112,shield/heater/revised/pattern/chief/fg/ shield/heater/revised/pattern/chief/fg/ shield/heater/revised/pattern/chief/fg/ shield/heater/revised/pattern/chief/fg/
+shield_heater_revised_pattern_cross,layer_1,4,shield/heater/revised/pattern/cross/bg/ shield/heater/revised/pattern/cross/bg/ shield/heater/revised/pattern/cross/bg/ shield/heater/revised/pattern/cross/bg/
+shield_heater_revised_pattern_cross,layer_2,112,shield/heater/revised/pattern/cross/fg/ shield/heater/revised/pattern/cross/fg/ shield/heater/revised/pattern/cross/fg/ shield/heater/revised/pattern/cross/fg/
+shield_heater_revised_pattern_fess,layer_1,4,shield/heater/revised/pattern/fess/bg/ shield/heater/revised/pattern/fess/bg/ shield/heater/revised/pattern/fess/bg/ shield/heater/revised/pattern/fess/bg/
+shield_heater_revised_pattern_fess,layer_2,112,shield/heater/revised/pattern/fess/fg/ shield/heater/revised/pattern/fess/fg/ shield/heater/revised/pattern/fess/fg/ shield/heater/revised/pattern/fess/fg/
+shield_heater_revised_pattern_lozengy,layer_1,4,shield/heater/revised/pattern/lozengy/bg/ shield/heater/revised/pattern/lozengy/bg/ shield/heater/revised/pattern/lozengy/bg/ shield/heater/revised/pattern/lozengy/bg/
+shield_heater_revised_pattern_lozengy,layer_2,112,shield/heater/revised/pattern/lozengy/fg/ shield/heater/revised/pattern/lozengy/fg/ shield/heater/revised/pattern/lozengy/fg/ shield/heater/revised/pattern/lozengy/fg/
+shield_heater_revised_pattern_pale,layer_1,4,shield/heater/revised/pattern/pale/bg/ shield/heater/revised/pattern/pale/bg/ shield/heater/revised/pattern/pale/bg/ shield/heater/revised/pattern/pale/bg/
+shield_heater_revised_pattern_pale,layer_2,112,shield/heater/revised/pattern/pale/fg/ shield/heater/revised/pattern/pale/fg/ shield/heater/revised/pattern/pale/fg/ shield/heater/revised/pattern/pale/fg/
+shield_heater_revised_pattern_pall,layer_1,4,shield/heater/revised/pattern/pall/bg/ shield/heater/revised/pattern/pall/bg/ shield/heater/revised/pattern/pall/bg/ shield/heater/revised/pattern/pall/bg/
+shield_heater_revised_pattern_pall,layer_2,112,shield/heater/revised/pattern/pall/fg/ shield/heater/revised/pattern/pall/fg/ shield/heater/revised/pattern/pall/fg/ shield/heater/revised/pattern/pall/fg/
+shield_heater_revised_pattern_paly,layer_1,4,shield/heater/revised/pattern/paly/bg/ shield/heater/revised/pattern/paly/bg/ shield/heater/revised/pattern/paly/bg/ shield/heater/revised/pattern/paly/bg/
+shield_heater_revised_pattern_paly,layer_2,112,shield/heater/revised/pattern/paly/fg/ shield/heater/revised/pattern/paly/fg/ shield/heater/revised/pattern/paly/fg/ shield/heater/revised/pattern/paly/fg/
+shield_heater_revised_pattern_per_bend,layer_1,4,shield/heater/revised/pattern/per_bend/bg/ shield/heater/revised/pattern/per_bend/bg/ shield/heater/revised/pattern/per_bend/bg/ shield/heater/revised/pattern/per_bend/bg/
+shield_heater_revised_pattern_per_bend,layer_2,112,shield/heater/revised/pattern/per_bend/fg/ shield/heater/revised/pattern/per_bend/fg/ shield/heater/revised/pattern/per_bend/fg/ shield/heater/revised/pattern/per_bend/fg/
+shield_heater_revised_pattern_per_bend_sinister,layer_1,4,shield/heater/revised/pattern/per_bend_sinister/bg/ shield/heater/revised/pattern/per_bend_sinister/bg/ shield/heater/revised/pattern/per_bend_sinister/bg/ shield/heater/revised/pattern/per_bend_sinister/bg/
+shield_heater_revised_pattern_per_bend_sinister,layer_2,112,shield/heater/revised/pattern/per_bend_sinister/fg/ shield/heater/revised/pattern/per_bend_sinister/fg/ shield/heater/revised/pattern/per_bend_sinister/fg/ shield/heater/revised/pattern/per_bend_sinister/fg/
+shield_heater_revised_pattern_per_chevron,layer_1,4,shield/heater/revised/pattern/per_chevron/bg/ shield/heater/revised/pattern/per_chevron/bg/ shield/heater/revised/pattern/per_chevron/bg/ shield/heater/revised/pattern/per_chevron/bg/
+shield_heater_revised_pattern_per_chevron,layer_2,112,shield/heater/revised/pattern/per_chevron/fg/ shield/heater/revised/pattern/per_chevron/fg/ shield/heater/revised/pattern/per_chevron/fg/ shield/heater/revised/pattern/per_chevron/fg/
+shield_heater_revised_pattern_per_chevron_inverted,layer_1,4,shield/heater/revised/pattern/per_chevron_inverted/bg/ shield/heater/revised/pattern/per_chevron_inverted/bg/ shield/heater/revised/pattern/per_chevron_inverted/bg/ shield/heater/revised/pattern/per_chevron_inverted/bg/
+shield_heater_revised_pattern_per_chevron_inverted,layer_2,112,shield/heater/revised/pattern/per_chevron_inverted/fg/ shield/heater/revised/pattern/per_chevron_inverted/fg/ shield/heater/revised/pattern/per_chevron_inverted/fg/ shield/heater/revised/pattern/per_chevron_inverted/fg/
+shield_heater_revised_pattern_per_fess,layer_1,4,shield/heater/revised/pattern/per_fess/bg/ shield/heater/revised/pattern/per_fess/bg/ shield/heater/revised/pattern/per_fess/bg/ shield/heater/revised/pattern/per_fess/bg/
+shield_heater_revised_pattern_per_fess,layer_2,112,shield/heater/revised/pattern/per_fess/fg/ shield/heater/revised/pattern/per_fess/fg/ shield/heater/revised/pattern/per_fess/fg/ shield/heater/revised/pattern/per_fess/fg/
+shield_heater_revised_pattern_per_pale,layer_1,4,shield/heater/revised/pattern/per_pale/bg/ shield/heater/revised/pattern/per_pale/bg/ shield/heater/revised/pattern/per_pale/bg/ shield/heater/revised/pattern/per_pale/bg/
+shield_heater_revised_pattern_per_pale,layer_2,112,shield/heater/revised/pattern/per_pale/fg/ shield/heater/revised/pattern/per_pale/fg/ shield/heater/revised/pattern/per_pale/fg/ shield/heater/revised/pattern/per_pale/fg/
+shield_heater_revised_pattern_per_saltire,layer_1,4,shield/heater/revised/pattern/per_saltire/bg/ shield/heater/revised/pattern/per_saltire/bg/ shield/heater/revised/pattern/per_saltire/bg/ shield/heater/revised/pattern/per_saltire/bg/
+shield_heater_revised_pattern_per_saltire,layer_2,112,shield/heater/revised/pattern/per_saltire/fg/ shield/heater/revised/pattern/per_saltire/fg/ shield/heater/revised/pattern/per_saltire/fg/ shield/heater/revised/pattern/per_saltire/fg/
+shield_heater_revised_pattern_quarterly,layer_1,4,shield/heater/revised/pattern/quarterly/bg/ shield/heater/revised/pattern/quarterly/bg/ shield/heater/revised/pattern/quarterly/bg/ shield/heater/revised/pattern/quarterly/bg/
+shield_heater_revised_pattern_quarterly,layer_2,112,shield/heater/revised/pattern/quarterly/fg/ shield/heater/revised/pattern/quarterly/fg/ shield/heater/revised/pattern/quarterly/fg/ shield/heater/revised/pattern/quarterly/fg/
+shield_heater_revised_pattern_saltire,layer_1,4,shield/heater/revised/pattern/saltire/bg/ shield/heater/revised/pattern/saltire/bg/ shield/heater/revised/pattern/saltire/bg/ shield/heater/revised/pattern/saltire/bg/
+shield_heater_revised_pattern_saltire,layer_2,112,shield/heater/revised/pattern/saltire/fg/ shield/heater/revised/pattern/saltire/fg/ shield/heater/revised/pattern/saltire/fg/ shield/heater/revised/pattern/saltire/fg/
+shield_heater_revised_trim,layer_1,6,shield/heater/revised/trim/bg/ shield/heater/revised/trim/bg/ shield/heater/revised/trim/bg/ shield/heater/revised/trim/bg/
+shield_heater_revised_trim,layer_2,115,shield/heater/revised/trim/fg/ shield/heater/revised/trim/fg/ shield/heater/revised/trim/fg/ shield/heater/revised/trim/fg/
+shield_heater_revised_wood,layer_1,2,shield/heater/revised/wood/bg/ shield/heater/revised/wood/bg/ shield/heater/revised/wood/bg/ shield/heater/revised/wood/bg/
+shield_heater_revised_wood,layer_2,110,shield/heater/revised/wood/fg/ shield/heater/revised/wood/fg/ shield/heater/revised/wood/fg/ shield/heater/revised/wood/fg/
+shield_heater_trim,layer_1,115,shield/heater/original/trim/fg/ shield/heater/original/trim/fg/ shield/heater/original/trim/fg/ shield/heater/original/trim/fg/
+shield_heater_trim,layer_2,6,shield/heater/original/trim/bg/ shield/heater/original/trim/bg/ shield/heater/original/trim/bg/ shield/heater/original/trim/bg/
+shield_heater_wood,layer_1,2,shield/heater/original/wood/bg/ shield/heater/original/wood/bg/ shield/heater/original/wood/bg/ shield/heater/original/wood/bg/
+shield_heater_wood,layer_2,110,shield/heater/original/wood/fg/ shield/heater/original/wood/fg/ shield/heater/original/wood/fg/ shield/heater/original/wood/fg/
+shield_kite,layer_1,110,shield/kite/male/ shield/kite/female/ shield/kite/male/ shield/kite/female/
+shield_plus,layer_1,2,shield/plus/bg/ shield/plus/bg/ shield/plus/bg/ shield/plus/bg/
+shield_plus,layer_2,110,shield/plus/fg/male/ shield/plus/fg/female/ shield/plus/fg/male/ shield/plus/fg/female/
+shield_scutum,layer_1,2,shield/scutum/paint/bg/ shield/scutum/paint/bg/ shield/scutum/paint/bg/ shield/scutum/paint/bg/
+shield_scutum,layer_2,110,shield/scutum/paint/fg/male/ shield/scutum/paint/fg/female/ shield/scutum/paint/fg/male/ shield/scutum/paint/fg/female/
+shield_scutum_trim,layer_1,3,shield/scutum_trim/bg/ shield/scutum_trim/bg/ shield/scutum_trim/bg/ shield/scutum_trim/bg/
+shield_scutum_trim,layer_2,115,shield/scutum_trim/fg/male/ shield/scutum_trim/fg/female/ shield/scutum_trim/fg/male/ shield/scutum_trim/fg/female/
+shield_spartan,layer_1,2,shield/spartan/bg/ shield/spartan/bg/ shield/spartan/bg/ shield/spartan/bg/
+shield_spartan,layer_2,110,shield/spartan/fg/male/ shield/spartan/fg/female/ shield/spartan/fg/male/ shield/spartan/fg/female/
+shield_two_engrailed,layer_1,2,shield/two_engrailed/paint/bg/ shield/two_engrailed/paint/bg/ shield/two_engrailed/paint/bg/ shield/two_engrailed/paint/bg/
+shield_two_engrailed,layer_2,110,shield/two_engrailed/paint/fg/male/ shield/two_engrailed/paint/fg/female/ shield/two_engrailed/paint/fg/male/ shield/two_engrailed/paint/fg/female/
+shield_two_engrailed_trim,layer_1,3,shield/two_engrailed/trim/bg/ shield/two_engrailed/trim/bg/ shield/two_engrailed/trim/bg/ shield/two_engrailed/trim/bg/
+shield_two_engrailed_trim,layer_2,115,shield/two_engrailed/trim/fg/male/ shield/two_engrailed/trim/fg/female/ shield/two_engrailed/trim/fg/male/ shield/two_engrailed/trim/fg/female/
+shoulders_epaulets,layer_1,60,shoulders/epaulets/male/
+shoulders_leather,layer_1,60,shoulders/leather/male/ shoulders/leather/female/ shoulders/leather/male/ shoulders/leather/female/
+shoulders_legion,layer_1,60,shoulders/legion/male/ shoulders/legion/female/ shoulders/legion/male/ shoulders/legion/female/
+shoulders_mantal,layer_1,75,shoulders/mantal/male/
+shoulders_plate,layer_1,65,shoulders/plate/male/ shoulders/plate/female/ shoulders/plate/male/ shoulders/plate/female/
+tail_cat,layer_1,125,body/tail/cat/adult/fg/ body/tail/cat/adult/fg/ body/tail/cat/adult/fg/ body/tail/cat/adult/fg/ body/tail/cat/child/fg/
+tail_cat,layer_2,5,body/tail/cat/adult/bg/ body/tail/cat/adult/bg/ body/tail/cat/adult/bg/ body/tail/cat/adult/bg/ body/tail/cat/child/bg/
+tail_dragon,layer_1,85,body/tail/dragon/adult/fg/ body/tail/dragon/adult/fg/ body/tail/dragon/adult/fg/ body/tail/dragon/adult/fg/ body/tail/dragon/child/fg/
+tail_dragon,layer_2,5,body/tail/dragon/adult/bg/ body/tail/dragon/adult/bg/ body/tail/dragon/adult/bg/ body/tail/dragon/adult/bg/ body/tail/dragon/child/bg/
+tail_feather,layer_1,85,body/tail/feather/adult/fg/ body/tail/feather/adult/fg/ body/tail/feather/adult/fg/ body/tail/feather/adult/fg/ body/tail/feather/child/fg/
+tail_feather,layer_2,5,body/tail/feather/adult/bg/ body/tail/feather/adult/bg/ body/tail/feather/adult/bg/ body/tail/feather/adult/bg/ body/tail/feather/child/bg/
+tail_fin,layer_1,85,body/tail/fin/adult/fg/ body/tail/fin/adult/fg/ body/tail/fin/adult/fg/ body/tail/fin/adult/fg/ body/tail/fin/child/fg/
+tail_fin,layer_2,5,body/tail/fin/adult/bg/ body/tail/fin/adult/bg/ body/tail/fin/adult/bg/ body/tail/fin/adult/bg/ body/tail/fin/child/bg/
+tail_lizard,layer_1,85,body/tail/lizard/adult/fg/ body/tail/lizard/adult/fg/ body/tail/lizard/adult/fg/ body/tail/lizard/adult/fg/ body/tail/lizard/child/fg/
+tail_lizard,layer_2,5,body/tail/lizard/adult/bg/ body/tail/lizard/adult/bg/ body/tail/lizard/adult/bg/ body/tail/lizard/adult/bg/ body/tail/lizard/child/bg/
+tail_lizard_alt,layer_1,85,body/tail/lizard/alt/adult/fg/ body/tail/lizard/alt/adult/fg/ body/tail/lizard/alt/adult/fg/ body/tail/lizard/alt/adult/fg/ body/tail/lizard/alt/child/fg/
+tail_lizard_alt,layer_2,5,body/tail/lizard/alt/adult/bg/ body/tail/lizard/alt/adult/bg/ body/tail/lizard/alt/adult/bg/ body/tail/lizard/alt/adult/bg/ body/tail/lizard/alt/child/bg/
+tail_wolf,layer_1,125,body/tail/wolf/adult/fg/ body/tail/wolf/adult/fg/ body/tail/wolf/adult/fg/ body/tail/wolf/adult/fg/ body/tail/wolf/child/fg/
+tail_wolf,layer_2,5,body/tail/wolf/adult/bg/ body/tail/wolf/adult/bg/ body/tail/wolf/adult/bg/ body/tail/wolf/adult/bg/ body/tail/wolf/child/bg/
+tail_wolf_fluffy,layer_1,125,body/tail/fluffy/adult/fg/ body/tail/fluffy/adult/fg/ body/tail/fluffy/adult/fg/ body/tail/fluffy/adult/fg/ body/tail/fluffy/child/fg/
+tail_wolf_fluffy,layer_2,5,body/tail/fluffy/adult/bg/ body/tail/fluffy/adult/bg/ body/tail/fluffy/adult/bg/ body/tail/fluffy/adult/bg/ body/tail/fluffy/child/bg/
+tool_rod,layer_1,9,tools/rod/background/ tools/rod/background/ tools/rod/background/ tools/rod/background/
+tool_rod,layer_2,150,tools/rod/foreground/ tools/rod/foreground/ tools/rod/foreground/ tools/rod/foreground/
+tool_smash,layer_1,140,tools/smash/universal/male/ tools/smash/universal/female/ tools/smash/universal/male/ tools/smash/universal/female/
+tool_smash,layer_2,9,tools/smash/background/ tools/smash/background/ tools/smash/background/ tools/smash/background/
+tool_smash,layer_3,150,tools/smash/foreground/ tools/smash/foreground/ tools/smash/foreground/ tools/smash/foreground/
+tool_thrust,layer_1,9,tools/thrust/background/ tools/thrust/background/ tools/thrust/background/ tools/thrust/background/
+tool_thrust,layer_2,150,tools/thrust/foreground/ tools/thrust/foreground/ tools/thrust/foreground/ tools/thrust/foreground/
+tool_whip,layer_1,9,tools/whip/background/ tools/whip/background/ tools/whip/background/ tools/whip/background/
+tool_whip,layer_2,150,tools/whip/ tools/whip/ tools/whip/ tools/whip/
+torso_aprons_apron,layer_1,40,torso/aprons/apron/male/ torso/aprons/apron/female/
+torso_aprons_apron_full,layer_1,40,torso/aprons/apron_full/female/
+torso_aprons_apron_half,layer_1,40,torso/aprons/apron_half/female/
+torso_aprons_overalls,layer_1,38,torso/aprons/overalls/male/ torso/aprons/overalls/female/
+torso_aprons_suspenders,layer_1,38,torso/aprons/suspenders/male/ torso/aprons/suspenders/female/ torso/aprons/suspenders/male/ torso/aprons/suspenders/female/
+torso_armour_leather,layer_1,60,torso/armour/leather/male/ torso/armour/leather/female/
+torso_armour_legion,layer_1,60,torso/armour/legion/male/ torso/armour/legion/female/
+torso_armour_plate,layer_1,60,torso/armour/plate/male/ torso/armour/plate/female/
+torso_bandages,layer_1,110,torso/bandage/male/ torso/bandage/female/
+torso_chainmail,layer_1,50,torso/chainmail/male/ torso/chainmail/female/
+torso_clothes_blouse,layer_1,35,torso/clothes/blouse/female/
+torso_clothes_blouse_longsleeve,layer_1,35,torso/clothes/blouse_longsleeve/female/
+torso_clothes_child_shirt,layer_1,35,torso/clothes/shirt/child/
+torso_clothes_corset,layer_1,45,torso/clothes/corset/female/
+torso_clothes_longsleeve,layer_1,35,torso/clothes/longsleeve/longsleeve/male/ torso/clothes/longsleeve/longsleeve/female/ torso/clothes/longsleeve/longsleeve/pregnant/
+torso_clothes_longsleeve2,layer_1,35,torso/clothes/longsleeve/longsleeve2/male/ torso/clothes/longsleeve/longsleeve2/female/
+torso_clothes_longsleeve2_buttoned,layer_1,35,torso/clothes/longsleeve/longsleeve2_buttoned/male/ torso/clothes/longsleeve/longsleeve2_buttoned/female/
+torso_clothes_longsleeve2_cardigan,layer_1,35,torso/clothes/longsleeve/longsleeve2_cardigan/male/ torso/clothes/longsleeve/longsleeve2_cardigan/female/
+torso_clothes_longsleeve2_polo,layer_1,35,torso/clothes/longsleeve/longsleeve2_polo/male/ torso/clothes/longsleeve/longsleeve2_polo/female/
+torso_clothes_longsleeve2_scoop,layer_1,35,torso/clothes/longsleeve/longsleeve2_scoop/male/ torso/clothes/longsleeve/longsleeve2_scoop/female/
+torso_clothes_longsleeve2_vneck,layer_1,35,torso/clothes/longsleeve/longsleeve2_vneck/male/ torso/clothes/longsleeve/longsleeve2_vneck/female/
+torso_clothes_longsleeve_formal,layer_1,35,torso/clothes/longsleeve/formal/male/
+torso_clothes_longsleeve_formal_striped,layer_1,35,torso/clothes/longsleeve/formal_striped/male/
+torso_clothes_longsleeve_laced,layer_1,35,torso/clothes/longsleeve/laced/male/
+torso_clothes_longsleeve_scoop,layer_1,35,torso/clothes/longsleeve/scoop/male/ torso/clothes/longsleeve/scoop/female/ torso/clothes/longsleeve/scoop/pregnant/
+torso_clothes_longsleeves,layer_1,35,torso/clothes/longsleeve/longsleeves/male/ torso/clothes/longsleeve/longsleeves/female/
+torso_clothes_longsleeves2,layer_1,36,torso/clothes/longsleeve/longsleeves2/male/ torso/clothes/longsleeve/longsleeves2/female/
+torso_clothes_longsleeves_cuffed,layer_1,36,torso/clothes/longsleeve/longsleeves_cuffed/male/ torso/clothes/longsleeve/longsleeves_cuffed/female/
+torso_clothes_robe,layer_1,35,torso/clothes/robe/female/
+torso_clothes_shortsleeve,layer_1,35,torso/clothes/shortsleeve/shortsleeve/male/ torso/clothes/shortsleeve/shortsleeve/female/ torso/clothes/shortsleeve/shortsleeve/pregnant/
+torso_clothes_shortsleeve_cardigan,layer_1,35,torso/clothes/shortsleeve/shortsleeve_cardigan/male/ torso/clothes/shortsleeve/shortsleeve_cardigan/female/
+torso_clothes_shortsleeve_polo,layer_1,35,torso/clothes/shortsleeve/shortsleeve_polo/male/ torso/clothes/shortsleeve/shortsleeve_polo/female/
+torso_clothes_shortsleeves,layer_1,36,torso/clothes/shortsleeve/shortsleeves/male/ torso/clothes/shortsleeve/shortsleeves/female/
+torso_clothes_shortsleeves2,layer_1,36,torso/clothes/shortsleeve/shortsleeves2/male/ torso/clothes/shortsleeve/shortsleeves2/female/
+torso_clothes_sleeveless,layer_1,35,torso/clothes/sleeveless/sleeveless/male/ torso/clothes/sleeveless/sleeveless/female/
+torso_clothes_sleeveless1,layer_1,35,torso/clothes/sleeveless/sleeveless1/male/ torso/clothes/sleeveless/sleeveless1/female/
+torso_clothes_sleeveless2,layer_1,35,torso/clothes/sleeveless/sleeveless2/male/ torso/clothes/sleeveless/sleeveless2/female/
+torso_clothes_sleeveless2_buttoned,layer_1,35,torso/clothes/sleeveless/sleeveless2_buttoned/male/ torso/clothes/sleeveless/sleeveless2_buttoned/female/
+torso_clothes_sleeveless2_cardigan,layer_1,35,torso/clothes/sleeveless/sleeveless2_cardigan/male/ torso/clothes/sleeveless/sleeveless2_cardigan/female/
+torso_clothes_sleeveless2_polo,layer_1,35,torso/clothes/sleeveless/sleeveless2_polo/male/ torso/clothes/sleeveless/sleeveless2_polo/female/
+torso_clothes_sleeveless2_scoop,layer_1,35,torso/clothes/sleeveless/sleeveless2_scoop/male/ torso/clothes/sleeveless/sleeveless2_scoop/female/
+torso_clothes_sleeveless2_vneck,layer_1,35,torso/clothes/sleeveless/sleeveless2_vneck/male/ torso/clothes/sleeveless/sleeveless2_vneck/female/
+torso_clothes_sleeveless_laced,layer_1,35,torso/clothes/sleeveless/laced/male/
+torso_clothes_sleeveless_striped,layer_1,35,torso/clothes/sleeveless/striped/male/
+torso_clothes_sleeveless_tanktop,layer_1,35,torso/clothes/sleeveless/tanktop/female/ torso/clothes/sleeveless/tanktop/pregnant/
+torso_clothes_tshirt,layer_1,35,torso/clothes/shortsleeve/tshirt/male/ torso/clothes/shortsleeve/tshirt/female/
+torso_clothes_tshirt_buttoned,layer_1,35,torso/clothes/shortsleeve/tshirt_buttoned/male/ torso/clothes/shortsleeve/tshirt_buttoned/female/
+torso_clothes_tshirt_scoop,layer_1,35,torso/clothes/shortsleeve/tshirt_scoop/male/ torso/clothes/shortsleeve/tshirt_scoop/female/
+torso_clothes_tshirt_vneck,layer_1,35,torso/clothes/shortsleeve/tshirt_vneck/male/ torso/clothes/shortsleeve/tshirt_vneck/female/
+torso_clothes_tunic,layer_1,35,torso/clothes/tunic/female/
+torso_clothes_tunic_sara,layer_1,35,torso/clothes/tunic_sara/female/
+torso_clothes_vest,layer_1,45,torso/clothes/vest/male/
+torso_clothes_vest_open,layer_1,45,torso/clothes/vest_open/male/
+torso_jacket_collared,layer_1,55,torso/jacket/collared/male/
+torso_jacket_frock,layer_1,55,torso/jacket/frock/male/
+torso_jacket_frock_buttons,layer_1,58,torso/jacket/trim/frock_buttons/
+torso_jacket_frock_collar,layer_1,57,torso/jacket/trim/frock_collar/
+torso_jacket_frock_lace,layer_1,58,torso/jacket/trim/frock_lace/
+torso_jacket_frock_lapel,layer_1,58,torso/jacket/trim/frock_lapel/
+torso_jacket_iverness,layer_1,55,torso/jacket/iverness/male/
+torso_jacket_pockets,layer_1,59,torso/jacket/trim/jacket_pockets/
+torso_jacket_santa,layer_1,55,torso/jacket/santa/male/
+torso_jacket_tabard,layer_1,55,torso/jacket/tabard/male/ torso/jacket/tabard/female/
+torso_jacket_trench,layer_1,55,torso/jacket/trench/male/
+weapon_blunt_club,layer_1,140,weapon/blunt/club/ weapon/blunt/club/ weapon/blunt/club/ weapon/blunt/club/
+weapon_blunt_club,layer_2,9,weapon/blunt/club/background/ weapon/blunt/club/background/ weapon/blunt/club/background/ weapon/blunt/club/background/
+weapon_blunt_flail,layer_1,9,weapon/blunt/flail/behind/ weapon/blunt/flail/behind/ weapon/blunt/flail/behind/ weapon/blunt/flail/behind/
+weapon_blunt_flail,layer_2,140,weapon/blunt/flail/ weapon/blunt/flail/ weapon/blunt/flail/ weapon/blunt/flail/
+weapon_blunt_flail,layer_3,8,weapon/blunt/flail/attack_slash/behind/ weapon/blunt/flail/attack_slash/behind/ weapon/blunt/flail/attack_slash/behind/ weapon/blunt/flail/attack_slash/behind/
+weapon_blunt_flail,layer_4,150,weapon/blunt/flail/attack_slash/ weapon/blunt/flail/attack_slash/ weapon/blunt/flail/attack_slash/ weapon/blunt/flail/attack_slash/
+weapon_blunt_mace,layer_1,140,weapon/blunt/mace/ weapon/blunt/mace/ weapon/blunt/mace/ weapon/blunt/mace/
+weapon_blunt_mace,layer_2,9,weapon/blunt/mace/universal_behind/ weapon/blunt/mace/universal_behind/ weapon/blunt/mace/universal_behind/ weapon/blunt/mace/universal_behind/
+weapon_blunt_mace,layer_3,9,weapon/blunt/mace/attack_slash/behind/ weapon/blunt/mace/attack_slash/behind/ weapon/blunt/mace/attack_slash/behind/ weapon/blunt/mace/attack_slash/behind/
+weapon_blunt_mace,layer_4,150,weapon/blunt/mace/attack_slash/ weapon/blunt/mace/attack_slash/ weapon/blunt/mace/attack_slash/ weapon/blunt/mace/attack_slash/
+weapon_blunt_waraxe,layer_1,9,weapon/blunt/waraxe/behind/ weapon/blunt/waraxe/behind/ weapon/blunt/waraxe/behind/ weapon/blunt/waraxe/behind/
+weapon_blunt_waraxe,layer_2,140,weapon/blunt/waraxe/ weapon/blunt/waraxe/ weapon/blunt/waraxe/ weapon/blunt/waraxe/
+weapon_blunt_waraxe,layer_3,8,weapon/blunt/waraxe/attack_slash/behind/ weapon/blunt/waraxe/attack_slash/behind/ weapon/blunt/waraxe/attack_slash/behind/ weapon/blunt/waraxe/attack_slash/behind/
+weapon_blunt_waraxe,layer_4,150,weapon/blunt/waraxe/attack_slash/ weapon/blunt/waraxe/attack_slash/ weapon/blunt/waraxe/attack_slash/ weapon/blunt/waraxe/attack_slash/
+weapon_magic_crystal,layer_1,140,weapon/magic/crystal/universal/foreground/ weapon/magic/crystal/universal/foreground/ weapon/magic/crystal/universal/foreground/ weapon/magic/crystal/universal/foreground/
+weapon_magic_crystal,layer_2,9,weapon/magic/crystal/universal/background/ weapon/magic/crystal/universal/background/ weapon/magic/crystal/universal/background/ weapon/magic/crystal/universal/background/
+weapon_magic_crystal,layer_3,150,weapon/magic/crystal/thrust/foreground/ weapon/magic/crystal/thrust/foreground/ weapon/magic/crystal/thrust/foreground/ weapon/magic/crystal/thrust/foreground/
+weapon_magic_crystal,layer_4,-1,weapon/magic/crystal/thrust/background/ weapon/magic/crystal/thrust/background/ weapon/magic/crystal/thrust/background/ weapon/magic/crystal/thrust/background/
+weapon_magic_diamond,layer_1,140,weapon/magic/diamond/universal/foreground/ weapon/magic/diamond/universal/foreground/ weapon/magic/diamond/universal/foreground/ weapon/magic/diamond/universal/foreground/
+weapon_magic_diamond,layer_2,9,weapon/magic/diamond/universal/background/ weapon/magic/diamond/universal/background/ weapon/magic/diamond/universal/background/ weapon/magic/diamond/universal/background/
+weapon_magic_diamond,layer_3,150,weapon/magic/diamond/thrust/foreground/ weapon/magic/diamond/thrust/foreground/ weapon/magic/diamond/thrust/foreground/ weapon/magic/diamond/thrust/foreground/
+weapon_magic_diamond,layer_4,-1,weapon/magic/diamond/thrust/background/ weapon/magic/diamond/thrust/background/ weapon/magic/diamond/thrust/background/ weapon/magic/diamond/thrust/background/
+weapon_magic_gnarled,layer_1,140,weapon/magic/gnarled/universal/foreground/ weapon/magic/gnarled/universal/foreground/ weapon/magic/gnarled/universal/foreground/ weapon/magic/gnarled/universal/foreground/
+weapon_magic_gnarled,layer_2,9,weapon/magic/gnarled/universal/background/ weapon/magic/gnarled/universal/background/ weapon/magic/gnarled/universal/background/ weapon/magic/gnarled/universal/background/
+weapon_magic_gnarled,layer_3,150,weapon/magic/gnarled/thrust/foreground/ weapon/magic/gnarled/thrust/foreground/ weapon/magic/gnarled/thrust/foreground/ weapon/magic/gnarled/thrust/foreground/
+weapon_magic_gnarled,layer_4,-1,weapon/magic/gnarled/thrust/background/ weapon/magic/gnarled/thrust/background/ weapon/magic/gnarled/thrust/background/ weapon/magic/gnarled/thrust/background/
+weapon_magic_loop,layer_1,140,weapon/magic/loop/universal/foreground/ weapon/magic/loop/universal/foreground/ weapon/magic/loop/universal/foreground/ weapon/magic/loop/universal/foreground/
+weapon_magic_loop,layer_2,9,weapon/magic/loop/universal/background/ weapon/magic/loop/universal/background/ weapon/magic/loop/universal/background/ weapon/magic/loop/universal/background/
+weapon_magic_loop,layer_3,150,weapon/magic/loop/thrust/foreground/ weapon/magic/loop/thrust/foreground/ weapon/magic/loop/thrust/foreground/ weapon/magic/loop/thrust/foreground/
+weapon_magic_loop,layer_4,-1,weapon/magic/loop/thrust/background/ weapon/magic/loop/thrust/background/ weapon/magic/loop/thrust/background/ weapon/magic/loop/thrust/background/
+weapon_magic_s,layer_1,140,weapon/magic/s/universal/foreground/ weapon/magic/s/universal/foreground/ weapon/magic/s/universal/foreground/ weapon/magic/s/universal/foreground/
+weapon_magic_s,layer_2,9,weapon/magic/s/universal/background/ weapon/magic/s/universal/background/ weapon/magic/s/universal/background/ weapon/magic/s/universal/background/
+weapon_magic_s,layer_3,150,weapon/magic/s/thrust/foreground/ weapon/magic/s/thrust/foreground/ weapon/magic/s/thrust/foreground/ weapon/magic/s/thrust/foreground/
+weapon_magic_s,layer_4,-1,weapon/magic/s/thrust/background/ weapon/magic/s/thrust/background/ weapon/magic/s/thrust/background/ weapon/magic/s/thrust/background/
+weapon_magic_simple,layer_1,140,weapon/magic/simple/foreground/ weapon/magic/simple/foreground/ weapon/magic/simple/foreground/ weapon/magic/simple/foreground/
+weapon_magic_simple,layer_2,9,weapon/magic/simple/background/ weapon/magic/simple/background/ weapon/magic/simple/background/ weapon/magic/simple/background/
+weapon_magic_wand,layer_1,140,weapon/magic/wand/male/ weapon/magic/wand/female/ weapon/magic/wand/male/ weapon/magic/wand//female/
+weapon_polearm_cane,layer_1,140,weapon/polearm/cane/male/ weapon/polearm/cane/female/ weapon/polearm/cane/male/ weapon/polearm/cane/female/
+weapon_polearm_dragonspear,layer_1,140,weapon/polearm/dragonspear/foreground/walk/ weapon/polearm/dragonspear/foreground/walk/ weapon/polearm/dragonspear/foreground/walk/ weapon/polearm/dragonspear/foreground/walk/
+weapon_polearm_dragonspear,layer_2,9,weapon/polearm/dragonspear/background/walk/ weapon/polearm/dragonspear/background/walk/ weapon/polearm/dragonspear/background/walk/ weapon/polearm/dragonspear/background/walk/
+weapon_polearm_dragonspear,layer_3,150,weapon/polearm/dragonspear/foreground/thrust/ weapon/polearm/dragonspear/foreground/thrust/ weapon/polearm/dragonspear/foreground/thrust/ weapon/polearm/dragonspear/foreground/thrust/
+weapon_polearm_dragonspear,layer_4,-1,weapon/polearm/dragonspear/background/thrust/ weapon/polearm/dragonspear/background/thrust/ weapon/polearm/dragonspear/background/thrust/ weapon/polearm/dragonspear/background/thrust/
+weapon_polearm_halberd,layer_1,8,weapon/polearm/halberd/behind/ weapon/polearm/halberd/behind/ weapon/polearm/halberd/behind/ weapon/polearm/halberd/behind/
+weapon_polearm_halberd,layer_2,140,weapon/polearm/halberd/ weapon/polearm/halberd/ weapon/polearm/halberd/ weapon/polearm/halberd/
+weapon_polearm_halberd,layer_3,9,weapon/polearm/halberd/attack_thrust/behind/ weapon/polearm/halberd/attack_thrust/behind/ weapon/polearm/halberd/attack_thrust/behind/ weapon/polearm/halberd/attack_thrust/behind/
+weapon_polearm_halberd,layer_4,150,weapon/polearm/halberd/attack_thrust/ weapon/polearm/halberd/attack_thrust/ weapon/polearm/halberd/attack_thrust/ weapon/polearm/halberd/attack_thrust/
+weapon_polearm_halberd,layer_5,8,weapon/polearm/halberd/attack_slash/behind/ weapon/polearm/halberd/attack_slash/behind/ weapon/polearm/halberd/attack_slash/behind/ weapon/polearm/halberd/attack_slash/behind/
+weapon_polearm_halberd,layer_6,150,weapon/polearm/halberd/attack_slash/ weapon/polearm/halberd/attack_slash/ weapon/polearm/halberd/attack_slash/ weapon/polearm/halberd/attack_slash/
+weapon_polearm_longspear,layer_1,140,weapon/polearm/longspear/foreground/walk/ weapon/polearm/longspear/foreground/walk/ weapon/polearm/longspear/foreground/walk/ weapon/polearm/longspear/foreground/walk/
+weapon_polearm_longspear,layer_2,9,weapon/polearm/longspear/background/walk/ weapon/polearm/longspear/background/walk/ weapon/polearm/longspear/background/walk/ weapon/polearm/longspear/background/walk/
+weapon_polearm_longspear,layer_3,150,weapon/polearm/longspear/foreground/thrust/ weapon/polearm/longspear/foreground/thrust/ weapon/polearm/longspear/foreground/thrust/ weapon/polearm/longspear/foreground/thrust/
+weapon_polearm_longspear,layer_4,-1,weapon/polearm/longspear/background/thrust/ weapon/polearm/longspear/background/thrust/ weapon/polearm/longspear/background/thrust/ weapon/polearm/longspear/background/thrust/
+weapon_polearm_scythe,layer_1,140,weapon/polearm/scythe/ weapon/polearm/scythe/ weapon/polearm/scythe/ weapon/polearm/scythe/
+weapon_polearm_scythe,layer_2,9,weapon/polearm/scythe/universal_behind/ weapon/polearm/scythe/universal_behind/ weapon/polearm/scythe/universal_behind/ weapon/polearm/scythe/universal_behind/
+weapon_polearm_scythe,layer_3,8,weapon/polearm/scythe/attack_slash/behind/ weapon/polearm/scythe/attack_slash/behind/ weapon/polearm/scythe/attack_slash/behind/ weapon/polearm/scythe/attack_slash/behind/
+weapon_polearm_scythe,layer_4,150,weapon/polearm/scythe/attack_slash/ weapon/polearm/scythe/attack_slash/ weapon/polearm/scythe/attack_slash/ weapon/polearm/scythe/attack_slash/
+weapon_polearm_spear,layer_1,140,weapon/polearm/spear/foreground/ weapon/polearm/spear/foreground/ weapon/polearm/spear/foreground/ weapon/polearm/spear/foreground/
+weapon_polearm_spear,layer_2,9,weapon/polearm/spear/background/ weapon/polearm/spear/background/ weapon/polearm/spear/background/ weapon/polearm/spear/background/
+weapon_polearm_trident,layer_1,140,weapon/polearm/trident/foreground/walk/ weapon/polearm/trident/foreground/walk/ weapon/polearm/trident/foreground/walk/ weapon/polearm/trident/foreground/walk/
+weapon_polearm_trident,layer_2,9,weapon/polearm/trident/background/walk/ weapon/polearm/trident/background/walk/ weapon/polearm/trident/background/walk/ weapon/polearm/trident/background/walk/
+weapon_polearm_trident,layer_3,150,weapon/polearm/trident/foreground/thrust/ weapon/polearm/trident/foreground/thrust/ weapon/polearm/trident/foreground/thrust/ weapon/polearm/trident/foreground/thrust/
+weapon_polearm_trident,layer_4,-1,weapon/polearm/trident/background/thrust/ weapon/polearm/trident/background/thrust/ weapon/polearm/trident/background/thrust/ weapon/polearm/trident/background/thrust/
+weapon_ranged_boomerang,layer_1,140,weapon/ranged/boomerang/ weapon/ranged/boomerang/ weapon/ranged/boomerang/ weapon/ranged/boomerang/
+weapon_ranged_bow_arrow,layer_1,150,weapon/ranged/bow/arrow/ weapon/ranged/bow/arrow/ weapon/ranged/bow/arrow/ weapon/ranged/bow/arrow/
+weapon_ranged_bow_great,layer_1,-1,weapon/ranged/bow/great/universal/background/ weapon/ranged/bow/great/universal/background/ weapon/ranged/bow/great/universal/background/ weapon/ranged/bow/great/universal/background/
+weapon_ranged_bow_great,layer_2,140,weapon/ranged/bow/great/universal/foreground/ weapon/ranged/bow/great/universal/foreground/ weapon/ranged/bow/great/universal/foreground/ weapon/ranged/bow/great/universal/foreground/
+weapon_ranged_bow_great,layer_3,-1,weapon/ranged/bow/great/walk/background/ weapon/ranged/bow/great/walk/background/ weapon/ranged/bow/great/walk/background/ weapon/ranged/bow/great/walk/background/
+weapon_ranged_bow_great,layer_4,141,weapon/ranged/bow/great/walk/foreground/ weapon/ranged/bow/great/walk/foreground/ weapon/ranged/bow/great/walk/foreground/ weapon/ranged/bow/great/walk/foreground/
+weapon_ranged_bow_normal,layer_1,-1,weapon/ranged/bow/normal/universal/background/ weapon/ranged/bow/normal/universal/background/ weapon/ranged/bow/normal/universal/background/ weapon/ranged/bow/normal/universal/background/
+weapon_ranged_bow_normal,layer_2,140,weapon/ranged/bow/normal/universal/foreground/ weapon/ranged/bow/normal/universal/foreground/ weapon/ranged/bow/normal/universal/foreground/ weapon/ranged/bow/normal/universal/foreground/
+weapon_ranged_bow_normal,layer_3,-1,weapon/ranged/bow/normal/walk/background/ weapon/ranged/bow/normal/walk/background/ weapon/ranged/bow/normal/walk/background/ weapon/ranged/bow/normal/walk/background/
+weapon_ranged_bow_normal,layer_4,141,weapon/ranged/bow/normal/walk/foreground/ weapon/ranged/bow/normal/walk/foreground/ weapon/ranged/bow/normal/walk/foreground/ weapon/ranged/bow/normal/walk/foreground/
+weapon_ranged_bow_recurve,layer_1,-1,weapon/ranged/bow/recurve/universal/background/ weapon/ranged/bow/recurve/universal/background/ weapon/ranged/bow/recurve/universal/background/ weapon/ranged/bow/recurve/universal/background/
+weapon_ranged_bow_recurve,layer_2,140,weapon/ranged/bow/recurve/universal/foreground/ weapon/ranged/bow/recurve/universal/foreground/ weapon/ranged/bow/recurve/universal/foreground/ weapon/ranged/bow/recurve/universal/foreground/
+weapon_ranged_bow_recurve,layer_3,-1,weapon/ranged/bow/recurve/walk/background/ weapon/ranged/bow/recurve/walk/background/ weapon/ranged/bow/recurve/walk/background/ weapon/ranged/bow/recurve/walk/background/
+weapon_ranged_bow_recurve,layer_4,141,weapon/ranged/bow/recurve/walk/foreground/ weapon/ranged/bow/recurve/walk/foreground/ weapon/ranged/bow/recurve/walk/foreground/ weapon/ranged/bow/recurve/walk/foreground/
+weapon_ranged_crossbow,layer_1,-1,weapon/ranged/crossbow/background/ weapon/ranged/crossbow/background/ weapon/ranged/crossbow/background/ weapon/ranged/crossbow/background/
+weapon_ranged_crossbow,layer_2,140,weapon/ranged/crossbow/foreground/ weapon/ranged/crossbow/foreground/ weapon/ranged/crossbow/foreground/ weapon/ranged/crossbow/foreground/
+weapon_ranged_slingshot,layer_1,140,weapon/ranged/slingshot/foreground/ weapon/ranged/slingshot/foreground/ weapon/ranged/slingshot/foreground/ weapon/ranged/slingshot/foreground/
+weapon_ranged_slingshot,layer_2,9,weapon/ranged/slingshot/background/ weapon/ranged/slingshot/background/ weapon/ranged/slingshot/background/ weapon/ranged/slingshot/background/
+weapon_sword_arming,layer_1,140,weapon/sword/arming/universal/fg/ weapon/sword/arming/universal/fg/ weapon/sword/arming/universal/fg/ weapon/sword/arming/universal/fg/
+weapon_sword_arming,layer_2,9,weapon/sword/arming/universal/bg/ weapon/sword/arming/universal/bg/ weapon/sword/arming/universal/bg/ weapon/sword/arming/universal/bg/
+weapon_sword_arming,layer_3,8,weapon/sword/arming/attack_slash/bg/ weapon/sword/arming/attack_slash/bg/ weapon/sword/arming/attack_slash/bg/ weapon/sword/arming/attack_slash/bg/
+weapon_sword_arming,layer_4,150,weapon/sword/arming/attack_slash/fg/ weapon/sword/arming/attack_slash/fg/ weapon/sword/arming/attack_slash/fg/ weapon/sword/arming/attack_slash/fg/
+weapon_sword_arming,layer_5,8,weapon/sword/arming/attack_backslash/bg/ weapon/sword/arming/attack_backslash/bg/ weapon/sword/arming/attack_backslash/bg/ weapon/sword/arming/attack_backslash/bg/
+weapon_sword_arming,layer_6,150,weapon/sword/arming/attack_backslash/fg/ weapon/sword/arming/attack_backslash/fg/ weapon/sword/arming/attack_backslash/fg/ weapon/sword/arming/attack_backslash/fg/
+weapon_sword_arming,layer_7,8,weapon/sword/arming/attack_halfslash/bg/ weapon/sword/arming/attack_halfslash/bg/ weapon/sword/arming/attack_halfslash/bg/ weapon/sword/arming/attack_halfslash/bg/
+weapon_sword_arming,layer_8,150,weapon/sword/arming/attack_halfslash/fg/ weapon/sword/arming/attack_halfslash/fg/ weapon/sword/arming/attack_halfslash/fg/ weapon/sword/arming/attack_halfslash/fg/
+weapon_sword_dagger,layer_1,140,weapon/sword/dagger/ weapon/sword/dagger/ weapon/sword/dagger/ weapon/sword/dagger/
+weapon_sword_dagger,layer_2,9,weapon/sword/dagger/behind/ weapon/sword/dagger/behind/ weapon/sword/dagger/behind/ weapon/sword/dagger/behind/
+weapon_sword_glowsword,layer_1,140,weapon/sword/glowsword/ weapon/sword/glowsword/ weapon/sword/glowsword/ weapon/sword/glowsword/
+weapon_sword_glowsword,layer_2,9,weapon/sword/glowsword/universal_behind/ weapon/sword/glowsword/universal_behind/ weapon/sword/glowsword/universal_behind/ weapon/sword/glowsword/universal_behind/
+weapon_sword_glowsword,layer_3,8,weapon/sword/glowsword/attack_slash/behind/ weapon/sword/glowsword/attack_slash/behind/ weapon/sword/glowsword/attack_slash/behind/ weapon/sword/glowsword/attack_slash/behind/
+weapon_sword_glowsword,layer_4,150,weapon/sword/glowsword/attack_slash/ weapon/sword/glowsword/attack_slash/ weapon/sword/glowsword/attack_slash/ weapon/sword/glowsword/attack_slash/
+weapon_sword_katana,layer_1,140,weapon/sword/katana/walk/ weapon/sword/katana/walk/ weapon/sword/katana/walk/ weapon/sword/katana/walk/
+weapon_sword_katana,layer_2,9,weapon/sword/katana/walk/behind/ weapon/sword/katana/walk/behind/ weapon/sword/katana/walk/behind/ weapon/sword/katana/walk/behind/
+weapon_sword_katana,layer_3,140,weapon/sword/katana/slash/ weapon/sword/katana/slash/ weapon/sword/katana/slash/ weapon/sword/katana/slash/
+weapon_sword_katana,layer_4,9,weapon/sword/katana/slash/behind/ weapon/sword/katana/slash/behind/ weapon/sword/katana/slash/behind/ weapon/sword/katana/slash/behind/
+weapon_sword_longsword,layer_1,140,weapon/sword/longsword/ weapon/sword/longsword/ weapon/sword/longsword/ weapon/sword/longsword/
+weapon_sword_longsword,layer_2,9,weapon/sword/longsword/universal_behind/ weapon/sword/longsword/universal_behind/ weapon/sword/longsword/universal_behind/ weapon/sword/longsword/universal_behind/
+weapon_sword_longsword,layer_3,-1,weapon/sword/longsword/attack_slash/behind/ weapon/sword/longsword/attack_slash/behind/ weapon/sword/longsword/attack_slash/behind/ weapon/sword/longsword/attack_slash/behind/
+weapon_sword_longsword,layer_4,150,weapon/sword/longsword/attack_slash/ weapon/sword/longsword/attack_slash/ weapon/sword/longsword/attack_slash/ weapon/sword/longsword/attack_slash/
+weapon_sword_longsword,layer_5,-1,weapon/sword/longsword/attack_slash_reverse/behind/ weapon/sword/longsword/attack_slash_reverse/behind/ weapon/sword/longsword/attack_slash_reverse/behind/ weapon/sword/longsword/attack_slash_reverse/behind/
+weapon_sword_longsword,layer_6,150,weapon/sword/longsword/attack_slash_reverse/ weapon/sword/longsword/attack_slash_reverse/ weapon/sword/longsword/attack_slash_reverse/ weapon/sword/longsword/attack_slash_reverse/
+weapon_sword_longsword,layer_7,-1,weapon/sword/longsword/attack_thrust/behind/ weapon/sword/longsword/attack_thrust/behind/ weapon/sword/longsword/attack_thrust/behind/ weapon/sword/longsword/attack_thrust/behind/
+weapon_sword_longsword,layer_8,150,weapon/sword/longsword/attack_thrust/ weapon/sword/longsword/attack_thrust/ weapon/sword/longsword/attack_thrust/ weapon/sword/longsword/attack_thrust/
+weapon_sword_longsword_alt,layer_1,140,weapon/sword/longsword_alt/walk/ weapon/sword/longsword_alt/walk/ weapon/sword/longsword_alt/walk/ weapon/sword/longsword_alt/walk/
+weapon_sword_longsword_alt,layer_2,9,weapon/sword/longsword_alt/walk/behind/ weapon/sword/longsword_alt/walk/behind/ weapon/sword/longsword_alt/walk/behind/ weapon/sword/longsword_alt/walk/behind/
+weapon_sword_longsword_alt,layer_3,140,weapon/sword/longsword_alt/slash/ weapon/sword/longsword_alt/slash/ weapon/sword/longsword_alt/slash/ weapon/sword/longsword_alt/slash/
+weapon_sword_longsword_alt,layer_4,9,weapon/sword/longsword_alt/slash/behind/ weapon/sword/longsword_alt/slash/behind/ weapon/sword/longsword_alt/slash/behind/ weapon/sword/longsword_alt/slash/behind/
+weapon_sword_rapier,layer_1,140,weapon/sword/rapier/ weapon/sword/rapier/ weapon/sword/rapier/ weapon/sword/rapier/
+weapon_sword_rapier,layer_2,9,weapon/sword/rapier/universal_behind/ weapon/sword/rapier/universal_behind/ weapon/sword/rapier/universal_behind/ weapon/sword/rapier/universal_behind/
+weapon_sword_rapier,layer_3,8,weapon/sword/rapier/attack_slash/behind/ weapon/sword/rapier/attack_slash/behind/ weapon/sword/rapier/attack_slash/behind/ weapon/sword/rapier/attack_slash/behind/
+weapon_sword_rapier,layer_4,150,weapon/sword/rapier/attack_slash/ weapon/sword/rapier/attack_slash/ weapon/sword/rapier/attack_slash/ weapon/sword/rapier/attack_slash/
+weapon_sword_saber,layer_1,140,weapon/sword/saber/ weapon/sword/saber/ weapon/sword/saber/ weapon/sword/saber/
+weapon_sword_saber,layer_2,9,weapon/sword/saber/universal_behind/ weapon/sword/saber/universal_behind/ weapon/sword/saber/universal_behind/ weapon/sword/saber/universal_behind/
+weapon_sword_saber,layer_3,8,weapon/sword/saber/attack_slash/behind/ weapon/sword/saber/attack_slash/behind/ weapon/sword/saber/attack_slash/behind/ weapon/sword/saber/attack_slash/behind/
+weapon_sword_saber,layer_4,150,weapon/sword/saber/attack_slash/ weapon/sword/saber/attack_slash/ weapon/sword/saber/attack_slash/ weapon/sword/saber/attack_slash/
+weapon_sword_scimitar,layer_1,140,weapon/sword/scimitar/walk/ weapon/sword/scimitar/walk/ weapon/sword/scimitar/walk/ weapon/sword/scimitar/walk/
+weapon_sword_scimitar,layer_2,9,weapon/sword/scimitar/walk/behind/ weapon/sword/scimitar/walk/behind/ weapon/sword/scimitar/walk/behind/ weapon/sword/scimitar/walk/behind/
+weapon_sword_scimitar,layer_3,140,weapon/sword/scimitar/slash/ weapon/sword/scimitar/slash/ weapon/sword/scimitar/slash/ weapon/sword/scimitar/slash/
+weapon_sword_scimitar,layer_4,9,weapon/sword/scimitar/slash/behind/ weapon/sword/scimitar/slash/behind/ weapon/sword/scimitar/slash/behind/ weapon/sword/scimitar/slash/behind/
+wheelchair,layer_1,-2,body/wheelchair/adult/background/ body/wheelchair/adult/background/ body/wheelchair/adult/background/ body/wheelchair/adult/background/
+wheelchair,layer_2,140,body/wheelchair/adult/foreground/ body/wheelchair/adult/foreground/ body/wheelchair/adult/foreground/ body/wheelchair/adult/foreground/
+wings_bat,layer_1,105,body/wings/bat/adult/fg/ body/wings/bat/adult/fg/ body/wings/bat/adult/fg/ body/wings/bat/adult/fg/
+wings_bat,layer_2,5,body/wings/bat/adult/bg/ body/wings/bat/adult/bg/ body/wings/bat/adult/bg/ body/wings/bat/adult/bg/
+wings_dragonfly,layer_1,105,body/wings/dragonfly/solid/fg/ body/wings/dragonfly/solid/fg/ body/wings/dragonfly/solid/fg/ body/wings/dragonfly/solid/fg/ body/wings/dragonfly/solid/fg/
+wings_dragonfly,layer_2,5,body/wings/dragonfly/solid/bg/ body/wings/dragonfly/solid/bg/ body/wings/dragonfly/solid/bg/ body/wings/dragonfly/solid/bg/ body/wings/dragonfly/solid/bg/
+wings_dragonfly_transparent,layer_1,105,body/wings/dragonfly/transparent/fg/ body/wings/dragonfly/transparent/fg/ body/wings/dragonfly/transparent/fg/ body/wings/dragonfly/transparent/fg/ body/wings/dragonfly/transparent/fg/
+wings_dragonfly_transparent,layer_2,5,body/wings/dragonfly/transparent/bg/ body/wings/dragonfly/transparent/bg/ body/wings/dragonfly/transparent/bg/ body/wings/dragonfly/transparent/bg/ body/wings/dragonfly/transparent/bg/
+wings_feathered,layer_1,105,body/wings/feathered/adult/fg/ body/wings/feathered/adult/fg/ body/wings/feathered/adult/fg/ body/wings/feathered/adult/fg/
+wings_feathered,layer_2,5,body/wings/feathered/adult/bg/ body/wings/feathered/adult/bg/ body/wings/feathered/adult/bg/ body/wings/feathered/adult/bg/
+wings_lizard,layer_1,105,body/wings/lizard/adult/fg/ body/wings/lizard/adult/fg/ body/wings/lizard/adult/fg/ body/wings/lizard/adult/fg/
+wings_lizard,layer_2,5,body/wings/lizard/adult/bg/ body/wings/lizard/adult/bg/ body/wings/lizard/adult/bg/ body/wings/lizard/adult/bg/
+wings_lizard_alt,layer_1,105,body/wings/lizard/alt/adult/fg/ body/wings/lizard/alt/adult/fg/ body/wings/lizard/alt/adult/fg/ body/wings/lizard/alt/adult/fg/
+wings_lizard_alt,layer_2,5,body/wings/lizard/alt/adult/bg/ body/wings/lizard/alt/adult/bg/ body/wings/lizard/alt/adult/bg/ body/wings/lizard/alt/adult/bg/
+wings_lizard_bat,layer_1,105,body/wings/bat/lizard/adult/fg/ body/wings/bat/lizard/adult/fg/ body/wings/bat/lizard/adult/fg/ body/wings/bat/lizard/adult/fg/
+wings_lizard_bat,layer_2,5,body/wings/bat/lizard/adult/bg/ body/wings/bat/lizard/adult/bg/ body/wings/bat/lizard/adult/bg/ body/wings/bat/lizard/adult/bg/
+wings_lunar,layer_1,105,body/wings/lunar/fg/ body/wings/lunar/fg/ body/wings/lunar/fg/ body/wings/lunar/fg/ body/wings/lunar/fg/
+wings_lunar,layer_2,5,body/wings/lunar/bg/ body/wings/lunar/bg/ body/wings/lunar/bg/ body/wings/lunar/bg/ body/wings/lunar/bg/
+wings_monarch,layer_1,105,body/wings/monarch/base/fg/ body/wings/monarch/base/fg/ body/wings/monarch/base/fg/ body/wings/monarch/base/fg/ body/wings/monarch/base/fg/
+wings_monarch,layer_2,5,body/wings/monarch/base/bg/ body/wings/monarch/base/bg/ body/wings/monarch/base/bg/ body/wings/monarch/base/bg/ body/wings/monarch/base/bg/
+wings_monarch_dots,layer_1,106,body/wings/monarch/dots/fg/ body/wings/monarch/dots/fg/ body/wings/monarch/dots/fg/ body/wings/monarch/dots/fg/ body/wings/monarch/dots/fg/
+wings_monarch_dots,layer_2,6,body/wings/monarch/dots/bg/ body/wings/monarch/dots/bg/ body/wings/monarch/dots/bg/ body/wings/monarch/dots/bg/ body/wings/monarch/dots/bg/
+wings_monarch_edge,layer_1,106,body/wings/monarch/edge/fg/ body/wings/monarch/edge/fg/ body/wings/monarch/edge/fg/ body/wings/monarch/edge/fg/ body/wings/monarch/edge/fg/
+wings_monarch_edge,layer_2,6,body/wings/monarch/edge/bg/ body/wings/monarch/edge/bg/ body/wings/monarch/edge/bg/ body/wings/monarch/edge/bg/ body/wings/monarch/edge/bg/
+wings_pixie,layer_1,140,body/wings/pixie/solid/fg/ body/wings/pixie/solid/fg/ body/wings/pixie/solid/fg/ body/wings/pixie/solid/fg/ body/wings/pixie/solid/fg/
+wings_pixie,layer_2,5,body/wings/pixie/solid/bg/ body/wings/pixie/solid/bg/ body/wings/pixie/solid/bg/ body/wings/pixie/solid/bg/ body/wings/pixie/solid/bg/
+wings_pixie_transparent,layer_1,140,body/wings/pixie/transparent/fg/ body/wings/pixie/transparent/fg/ body/wings/pixie/transparent/fg/ body/wings/pixie/transparent/fg/ body/wings/pixie/transparent/fg/
+wings_pixie_transparent,layer_2,5,body/wings/pixie/transparent/bg/ body/wings/pixie/transparent/bg/ body/wings/pixie/transparent/bg/ body/wings/pixie/transparent/bg/ body/wings/pixie/transparent/bg/
+wound_arm,layer_1,15,body/wound/ body/wound/ body/wound/ body/wound/
+wound_brain,layer_1,115,body/wound/ body/wound/ body/wound/ body/wound/
+wound_eye_left,layer_1,115,body/wound/ body/wound/ body/wound/ body/wound/
+wound_eye_right,layer_1,115,body/wound/ body/wound/ body/wound/ body/wound/
+wound_mouth,layer_1,115,body/wound/ body/wound/ body/wound/ body/wound/
+wound_ribs,layer_1,15,body/wound/ body/wound/ body/wound/ body/wound/
+wrists_cuffs,layer_1,70,wrists/cuffs/male/
+wrists_cuffs_lace,layer_1,70,wrists/lace/male/
