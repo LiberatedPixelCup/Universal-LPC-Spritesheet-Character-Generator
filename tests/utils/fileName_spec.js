@@ -67,4 +67,14 @@ describe('getItemFileName', () => {
     const result = getItemFileName(1, 'variant1', 'body_male_light.png');
     expect(result).to.equal('050 body_male_light.png');
   });
+
+  it('should replace the zPos prefix if a zOverride is provided', () => {
+    const result = getItemFileName(1, 'variant1', 'body_male_light.png', 1, '009');
+    expect(result).to.equal('009 body_male_light.png');
+  });
+
+  it('should use a different layer number if provided', () => {
+    const result = getItemFileName(1, 'variant1', 'body_male_light.png', 2);
+    expect(result).to.equal('075 body_male_light.png');
+  });
 });
