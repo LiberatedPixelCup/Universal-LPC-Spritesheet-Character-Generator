@@ -1,5 +1,10 @@
 body {
+  height: 100dvh;
   font-family: monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 h1 {
@@ -19,9 +24,8 @@ p {
 }
 
 .sticky {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 15px;
   opacity: 1;
   background-color: white;
   z-index: 100;
@@ -30,16 +34,15 @@ p {
 #header-left {
   width: calc(100% - 30px);
   padding: 10px;
+  box-sizing: border-box;
   min-height: 75px;
-  anchor-name: --header-left;
 }
 
 #columns-container {
   width: 100%;
-  height: calc(100vh - 100px);
-  position: absolute;
-  position-anchor: --header-left;
-  top: anchor(bottom);
+  flex: 1;
+  margin-top: 0;
+  overflow-y: auto;
 }
 
 #chooser-column {
