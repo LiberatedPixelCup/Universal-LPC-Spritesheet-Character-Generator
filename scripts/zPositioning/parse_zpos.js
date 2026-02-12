@@ -17,7 +17,7 @@ const files = fs.readdirSync(SHEETS_DIR, {
   const depthB = pb.split(path.sep).length;
   if (depthA !== depthB) return depthA - depthB;
 
-  return pa < pb ? -1 : pa > pb ? 1 : 0;
+  return pa.localeCompare(pb, ["en"]);
 });
 
 files.forEach(file => {
