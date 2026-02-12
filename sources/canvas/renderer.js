@@ -645,7 +645,7 @@ export async function renderSingleItemAnimation(
 
   if (hasCustomAnimation && customAnimations) {
     // Custom animation item - just return the full item canvas (custom animations are not split by standard animation)
-    return await renderSingleItem(itemId, variant, bodyType, selections);
+    return await renderSingleItem(itemId, variant, bodyType, selections, singleLayer);
   }
 
   const config = ANIMATION_CONFIGS[animationName];
