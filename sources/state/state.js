@@ -112,7 +112,7 @@ export function applyMatchBodyColor(variantToMatch) {
 	if (!variantToMatch) return;
 
 	// Update all selected items that have matchBodyColor: true
-	for (const [selectionGroup, selection] of Object.entries(
+	for (const selection of Object.values(
 		state.selections,
 	)) {
 		const itemId = selection.itemId;

@@ -569,7 +569,7 @@ const customAnimationBase = (custAnim) =>
 const isCustomAnimationBasedOnStandardAnimation = (custAnim, stdAnimName) =>
 	customAnimationBase(custAnim) === stdAnimName;
 
-// Expose to window for use in other scripts
+// Expose for use in other scripts
 export {
 	animationRowsLayout,
 	customAnimations,

@@ -280,7 +280,7 @@ const files = fs.readdirSync(SHEETS_DIR, {
   const depthB = pb.split(path.sep).length;
   if (depthA !== depthB) return depthA - depthB;
 
-  return pa.localeCompare(pb);
+  return pa.localeCompare(pb, ["en"]);
 });
 
 // Initialize CSV
@@ -334,7 +334,7 @@ function sortCategoryTree(node) {
       if (a !== b) return a - b;
       const labelA = valA.label ?? keyA;
       const labelB = valB.label ?? keyB;
-      return labelA.localeCompare(labelB);
+      return labelA.localeCompare(labelB, ["en"]);
     }
   );
 
@@ -354,7 +354,7 @@ function sortCategoryTree(node) {
       if (a !== b) return a - b;
       const nameA = metaA.name ?? idA;
       const nameB = metaB.name ?? idB;
-      return nameA.localeCompare(nameB);
+      return nameA.localeCompare(nameB, ["en"]);
     });
   }
 
@@ -395,7 +395,7 @@ csvList.sort((a, b) => {
 
     const labelA = nodeA?.label ?? segA;
     const labelB = nodeB?.label ?? segB;
-    return labelA.localeCompare(labelB);
+    return labelA.localeCompare(labelB, ["en"]);
   }
 
   return 0;
