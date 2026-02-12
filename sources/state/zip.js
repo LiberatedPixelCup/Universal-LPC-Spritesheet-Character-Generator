@@ -519,7 +519,9 @@ export const exportSplitItemAnimations = async () => {
         const itemFileName = getItemFileName(
           layer.itemId,
           layer.variant,
-          layer.name
+          layer.name,
+          1,
+          layer.zPos
         );
         const custExportedItems = exportedCustom[custName] ?? [];
         exportedCustom[custName] = custExportedItems;
