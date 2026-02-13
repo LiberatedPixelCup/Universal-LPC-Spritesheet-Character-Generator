@@ -1,5 +1,6 @@
 {
   "name": "Left Eye",
+  "priority": 30,
   "layer_1": {
     "zPos": 115,
     "male": "body/wound/eye_left/",

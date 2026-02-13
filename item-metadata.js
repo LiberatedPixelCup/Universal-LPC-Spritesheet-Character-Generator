@@ -4810,7 +4810,7 @@ window.itemMetadata = {
   },
   "wound_arm": {
     "name": "Arm",
-    "priority": null,
+    "priority": 50,
     "type_name": "wound_arm",
     "required": [
       "male",
@@ -4838,21 +4838,21 @@ window.itemMetadata = {
     ],
     "replace_in_path": {},
     "variants": [
-      "arm"
+      "red"
     ],
     "layers": {
       "layer_1": {
         "zPos": 15,
-        "male": "body/wound/",
-        "muscular": "body/wound/",
-        "female": "body/wound/",
-        "pregnant": "body/wound/",
-        "teen": "body/wound/"
+        "male": "body/wound/arm/",
+        "muscular": "body/wound/arm/",
+        "female": "body/wound/arm/",
+        "pregnant": "body/wound/arm/",
+        "teen": "body/wound/arm/"
       }
     },
     "credits": [
       {
-        "file": "body/wound/arm.png",
+        "file": "body/wound/arm",
         "notes": "",
         "authors": [
           "Benjamin K. Smith (BenCreating)",
@@ -4897,7 +4897,7 @@ window.itemMetadata = {
   },
   "wound_brain": {
     "name": "Brain",
-    "priority": null,
+    "priority": 10,
     "type_name": "wound_brain",
     "required": [
       "male",
@@ -4935,21 +4935,21 @@ window.itemMetadata = {
     ],
     "replace_in_path": {},
     "variants": [
-      "brain"
+      "red"
     ],
     "layers": {
       "layer_1": {
         "zPos": 115,
-        "male": "body/wound/",
-        "muscular": "body/wound/",
-        "female": "body/wound/",
-        "pregnant": "body/wound/",
-        "teen": "body/wound/"
+        "male": "body/wound/brain/",
+        "muscular": "body/wound/brain/",
+        "female": "body/wound/brain/",
+        "pregnant": "body/wound/brain/",
+        "teen": "body/wound/brain/"
       }
     },
     "credits": [
       {
-        "file": "body/wound/brain.png",
+        "file": "body/wound/brain",
         "notes": "",
         "authors": [
           "Benjamin K. Smith (BenCreating)",
@@ -4994,7 +4994,7 @@ window.itemMetadata = {
   },
   "wound_eye_left": {
     "name": "Left Eye",
-    "priority": null,
+    "priority": 30,
     "type_name": "wound_eye_left",
     "required": [
       "male",
@@ -5032,21 +5032,21 @@ window.itemMetadata = {
     ],
     "replace_in_path": {},
     "variants": [
-      "eye_left"
+      "red"
     ],
     "layers": {
       "layer_1": {
         "zPos": 115,
-        "male": "body/wound/",
-        "muscular": "body/wound/",
-        "female": "body/wound/",
-        "pregnant": "body/wound/",
-        "teen": "body/wound/"
+        "male": "body/wound/eye_left/",
+        "muscular": "body/wound/eye_left/",
+        "female": "body/wound/eye_left/",
+        "pregnant": "body/wound/eye_left/",
+        "teen": "body/wound/eye_left/"
       }
     },
     "credits": [
       {
-        "file": "body/wound/eye_left.png",
+        "file": "body/wound/eye_left",
         "notes": "Zombie by BenCreating, commissioned by castelonia; flipped (left eye) variant by JaidynReiman",
         "authors": [
           "JaidynReiman",
@@ -5092,7 +5092,7 @@ window.itemMetadata = {
   },
   "wound_eye_right": {
     "name": "Right Eye",
-    "priority": null,
+    "priority": 40,
     "type_name": "wound_eye_right",
     "required": [
       "male",
@@ -5130,21 +5130,21 @@ window.itemMetadata = {
     ],
     "replace_in_path": {},
     "variants": [
-      "eye_right"
+      "red"
     ],
     "layers": {
       "layer_1": {
         "zPos": 115,
-        "male": "body/wound/",
-        "muscular": "body/wound/",
-        "female": "body/wound/",
-        "pregnant": "body/wound/",
-        "teen": "body/wound/"
+        "male": "body/wound/eye_right/",
+        "muscular": "body/wound/eye_right/",
+        "female": "body/wound/eye_right/",
+        "pregnant": "body/wound/eye_right/",
+        "teen": "body/wound/eye_right/"
       }
     },
     "credits": [
       {
-        "file": "body/wound/eye_right.png",
+        "file": "body/wound/eye_right",
         "notes": "",
         "authors": [
           "Benjamin K. Smith (BenCreating)",
@@ -5189,7 +5189,7 @@ window.itemMetadata = {
   },
   "wound_mouth": {
     "name": "Mouth",
-    "priority": null,
+    "priority": 20,
     "type_name": "wound_mouth",
     "required": [
       "male",
@@ -5227,21 +5227,21 @@ window.itemMetadata = {
     ],
     "replace_in_path": {},
     "variants": [
-      "mouth"
+      "red"
     ],
     "layers": {
       "layer_1": {
         "zPos": 115,
-        "male": "body/wound/",
-        "muscular": "body/wound/",
-        "female": "body/wound/",
-        "pregnant": "body/wound/",
-        "teen": "body/wound/"
+        "male": "body/wound/mouth/",
+        "muscular": "body/wound/mouth/",
+        "female": "body/wound/mouth/",
+        "pregnant": "body/wound/mouth/",
+        "teen": "body/wound/mouth/"
       }
     },
     "credits": [
       {
-        "file": "body/wound/mouth.png",
+        "file": "body/wound/mouth",
         "notes": "",
         "authors": [
           "Benjamin K. Smith (BenCreating)",
@@ -5286,7 +5286,7 @@ window.itemMetadata = {
   },
   "wound_ribs": {
     "name": "Ribs",
-    "priority": null,
+    "priority": 60,
     "type_name": "wound_ribs",
     "required": [
       "male",
@@ -5314,21 +5314,21 @@ window.itemMetadata = {
     ],
     "replace_in_path": {},
     "variants": [
-      "ribs"
+      "red"
     ],
     "layers": {
       "layer_1": {
         "zPos": 15,
-        "male": "body/wound/",
-        "muscular": "body/wound/",
-        "female": "body/wound/",
-        "pregnant": "body/wound/",
-        "teen": "body/wound/"
+        "male": "body/wound/ribs/",
+        "muscular": "body/wound/ribs/",
+        "female": "body/wound/ribs/",
+        "pregnant": "body/wound/ribs/",
+        "teen": "body/wound/ribs/"
       }
     },
     "credits": [
       {
-        "file": "body/wound/ribs.png",
+        "file": "body/wound/ribs",
         "notes": "",
         "authors": [
           "Benjamin K. Smith (BenCreating)",
@@ -36249,6 +36249,90 @@ window.itemMetadata = {
       ]
     }
   },
+  "shield_crusader": {
+    "name": "Crusader shield",
+    "priority": null,
+    "type_name": "shield",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "shields",
+      "engrailed",
+      "shield_crusader"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "crusader"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 2,
+        "male": "shield/crusader/bg/",
+        "muscular": "shield/crusader/bg/",
+        "female": "shield/crusader/bg/",
+        "pregnant": "shield/crusader/bg/"
+      },
+      "layer_2": {
+        "zPos": 110,
+        "male": "shield/crusader/fg/male/",
+        "muscular": "shield/crusader/fg/male/",
+        "female": "shield/crusader/fg/female/",
+        "pregnant": "shield/crusader/fg/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shield/crusader",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Sander Frenken (castelonia)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-shields"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
   "shield_kite": {
     "name": "Kite",
     "priority": 20,
@@ -36346,90 +36430,7 @@ window.itemMetadata = {
       ]
     }
   },
-  "shield_spartan": {
-    "name": "Spartan shield",
-    "priority": 50,
-    "type_name": "shield",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "shields",
-      "shield_spartan"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "spartan"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 2,
-        "male": "shield/spartan/bg/",
-        "muscular": "shield/spartan/bg/",
-        "female": "shield/spartan/bg/",
-        "pregnant": "shield/spartan/bg/"
-      },
-      "layer_2": {
-        "zPos": 110,
-        "male": "shield/spartan/fg/male/",
-        "muscular": "shield/spartan/fg/male/",
-        "female": "shield/spartan/fg/female/",
-        "pregnant": "shield/spartan/fg/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shield/spartan",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-shields"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
-  "shield": {
+  "shield_round": {
     "name": "Shield",
     "priority": 10,
     "type_name": "shield",
@@ -36454,7 +36455,7 @@ window.itemMetadata = {
     "path": [
       "weapons",
       "shields",
-      "shield"
+      "shield_round"
     ],
     "replace_in_path": {},
     "variants": [
@@ -36741,6 +36742,89 @@ window.itemMetadata = {
         "urls": [
           "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
           "https://opengameart.org/content/lpc-shields-pack"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
+      ]
+    }
+  },
+  "shield_spartan": {
+    "name": "Spartan shield",
+    "priority": 50,
+    "type_name": "shield",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "shields",
+      "shield_spartan"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "spartan"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 2,
+        "male": "shield/spartan/bg/",
+        "muscular": "shield/spartan/bg/",
+        "female": "shield/spartan/bg/",
+        "pregnant": "shield/spartan/bg/"
+      },
+      "layer_2": {
+        "zPos": 110,
+        "male": "shield/spartan/fg/male/",
+        "muscular": "shield/spartan/fg/male/",
+        "female": "shield/spartan/fg/female/",
+        "pregnant": "shield/spartan/fg/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shield/spartan",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Sander Frenken (castelonia)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-shields"
         ]
       }
     ],
@@ -71062,90 +71146,6 @@ window.itemMetadata = {
       ]
     }
   },
-  "shield_crusader": {
-    "name": "Crusader shield",
-    "priority": null,
-    "type_name": "shield",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "shields",
-      "engrailed",
-      "shield_crusader"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "crusader"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 2,
-        "male": "shield/crusader/bg/",
-        "muscular": "shield/crusader/bg/",
-        "female": "shield/crusader/bg/",
-        "pregnant": "shield/crusader/bg/"
-      },
-      "layer_2": {
-        "zPos": 110,
-        "male": "shield/crusader/fg/male/",
-        "muscular": "shield/crusader/fg/male/",
-        "female": "shield/crusader/fg/female/",
-        "pregnant": "shield/crusader/fg/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shield/crusader",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-shields"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
   "shield_plus": {
     "name": "Plus shield",
     "priority": null,
@@ -78514,12 +78514,12 @@ window.categoryTree = {
         },
         "wounds": {
           "items": [
-            "wound_arm",
             "wound_brain",
-            "wound_eye_left",
             "wound_mouth",
-            "wound_ribs",
-            "wound_eye_right"
+            "wound_eye_left",
+            "wound_eye_right",
+            "wound_arm",
+            "wound_ribs"
           ],
           "children": {},
           "priority": 40,
@@ -80122,7 +80122,7 @@ window.categoryTree = {
       "children": {
         "shields": {
           "items": [
-            "shield",
+            "shield_round",
             "shield_kite",
             "shield_spartan"
           ],

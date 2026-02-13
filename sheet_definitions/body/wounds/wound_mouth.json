@@ -1,5 +1,6 @@
 {
   "name": "Mouth",
+  "priority": 20,
   "layer_1": {
     "zPos": 115,
     "male": "body/wound/mouth/",
