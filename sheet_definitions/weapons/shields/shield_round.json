@@ -1,0 +1,46 @@
+{
+  "name": "Round Shield",
+  "priority": 10,
+  "layer_1": {
+    "zPos": 110,
+    "male": "shield/round/",
+    "muscular": "shield/round/",
+    "female": "shield/round/",
+    "pregnant": "shield/round/"
+  },
+  "variants": [
+    "brown",
+    "black",
+    "gold",
+    "green",
+    "silver",
+    "yellow"
+  ],
+  "credits": [
+    {
+      "file": "shield/round",
+      "notes": "",
+      "authors": [
+        "Johannes Sjölund (wulax)",
+        "Michael Whitlock (bigbeargames)",
+        "DarkwallLKE",
+        "Tuomo Untinen (reemax)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+        "https://opengameart.org/content/lpc-shields-pack"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "shield",
+    "shield_round"
+  ],
+  "type_name": "shield"
+}

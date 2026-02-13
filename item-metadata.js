@@ -36249,90 +36249,6 @@ window.itemMetadata = {
       ]
     }
   },
-  "shield_crusader": {
-    "name": "Crusader shield",
-    "priority": null,
-    "type_name": "shield",
-    "required": [
-      "male",
-      "female",
-      "muscular",
-      "pregnant"
-    ],
-    "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
-      "hurt",
-      "watering"
-    ],
-    "tags": [],
-    "required_tags": [],
-    "excluded_tags": [],
-    "path": [
-      "weapons",
-      "shields",
-      "engrailed",
-      "shield_crusader"
-    ],
-    "replace_in_path": {},
-    "variants": [
-      "crusader"
-    ],
-    "layers": {
-      "layer_1": {
-        "zPos": 2,
-        "male": "shield/crusader/bg/",
-        "muscular": "shield/crusader/bg/",
-        "female": "shield/crusader/bg/",
-        "pregnant": "shield/crusader/bg/"
-      },
-      "layer_2": {
-        "zPos": 110,
-        "male": "shield/crusader/fg/male/",
-        "muscular": "shield/crusader/fg/male/",
-        "female": "shield/crusader/fg/female/",
-        "pregnant": "shield/crusader/fg/female/"
-      }
-    },
-    "credits": [
-      {
-        "file": "shield/crusader",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-shields"
-        ]
-      }
-    ],
-    "preview_row": 2,
-    "preview_column": 0,
-    "preview_x_offset": 0,
-    "preview_y_offset": 0,
-    "matchBodyColor": false,
-    "licenses": {
-      "male": [
-        "OGA-BY 3.0"
-      ],
-      "female": [
-        "OGA-BY 3.0"
-      ],
-      "muscular": [
-        "OGA-BY 3.0"
-      ],
-      "pregnant": [
-        "OGA-BY 3.0"
-      ]
-    }
-  },
   "shield_kite": {
     "name": "Kite",
     "priority": 20,
@@ -36431,7 +36347,7 @@ window.itemMetadata = {
     }
   },
   "shield_round": {
-    "name": "Shield",
+    "name": "Round Shield",
     "priority": 10,
     "type_name": "shield",
     "required": [
@@ -36459,283 +36375,34 @@ window.itemMetadata = {
     ],
     "replace_in_path": {},
     "variants": [
-      "crusader",
-      "spartan",
-      "round black",
-      "round brown",
-      "round gold",
-      "round green",
-      "round silver",
-      "round yellow"
+      "brown",
+      "black",
+      "gold",
+      "green",
+      "silver",
+      "yellow"
     ],
     "layers": {
       "layer_1": {
         "zPos": 110,
-        "male": "shield/male/",
-        "muscular": "shield/male/",
-        "female": "shield/female/",
-        "pregnant": "shield/female/"
+        "male": "shield/round/",
+        "muscular": "shield/round/",
+        "female": "shield/round/",
+        "pregnant": "shield/round/"
       }
     },
     "credits": [
       {
-        "file": "shield/male/crusader.png",
+        "file": "shield/round",
         "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-shields"
-        ]
-      },
-      {
-        "file": "shield/female/crusader.png",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-shields"
-        ]
-      },
-      {
-        "file": "shield/male/spartan.png",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-shields"
-        ]
-      },
-      {
-        "file": "shield/female/spartan.png",
-        "notes": "",
-        "authors": [
-          "bluecarrot16",
-          "Sander Frenken (castelonia)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-shields"
-        ]
-      },
-      {
-        "file": "shield/male/round_black.png",
-        "notes": "?",
         "authors": [
           "Johannes Sjölund (wulax)",
           "Michael Whitlock (bigbeargames)",
           "DarkwallLKE",
           "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      },
-      {
-        "file": "shield/female/round_black.png",
-        "notes": "?",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Michael Whitlock (bigbeargames)",
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      },
-      {
-        "file": "shield/male/round_brown.png",
-        "notes": "",
-        "authors": [
-          "Johannes Sjölund (wulax)"
         ],
         "licenses": [
           "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      },
-      {
-        "file": "shield/female/round_brown.png",
-        "notes": "",
-        "authors": [
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      },
-      {
-        "file": "shield/male/round_gold.png",
-        "notes": "?",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Michael Whitlock (bigbeargames)",
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      },
-      {
-        "file": "shield/female/round_gold.png",
-        "notes": "?",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Michael Whitlock (bigbeargames)",
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      },
-      {
-        "file": "shield/male/round_green.png",
-        "notes": "?",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Michael Whitlock (bigbeargames)",
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      },
-      {
-        "file": "shield/female/round_green.png",
-        "notes": "?",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Michael Whitlock (bigbeargames)",
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      },
-      {
-        "file": "shield/male/round_silver.png",
-        "notes": "?",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Michael Whitlock (bigbeargames)",
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      },
-      {
-        "file": "shield/female/round_silver.png",
-        "notes": "?",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Michael Whitlock (bigbeargames)",
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      },
-      {
-        "file": "shield/male/round_yellow.png",
-        "notes": "?",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Michael Whitlock (bigbeargames)",
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "https://opengameart.org/content/lpc-shields-pack"
-        ]
-      },
-      {
-        "file": "shield/female/round_yellow.png",
-        "notes": "?",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Michael Whitlock (bigbeargames)",
-          "DarkwallLKE",
-          "Tuomo Untinen (reemax)"
-        ],
-        "licenses": [
           "CC-BY-SA 3.0",
           "GPL 3.0"
         ],
@@ -36752,26 +36419,35 @@ window.itemMetadata = {
     "matchBodyColor": false,
     "licenses": {
       "male": [
-        "OGA-BY 3.0"
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
       ],
       "female": [
-        "OGA-BY 3.0"
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
       ],
       "muscular": [
-        "OGA-BY 3.0"
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
       ],
       "pregnant": [
-        "OGA-BY 3.0"
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
       ]
     }
   },
   "shield_spartan": {
-    "name": "Spartan shield",
+    "name": "Spartan Shield",
     "priority": 50,
     "type_name": "shield",
     "required": [
       "male",
       "female",
+      "teen",
       "muscular",
       "pregnant"
     ],
@@ -36801,15 +36477,17 @@ window.itemMetadata = {
         "zPos": 2,
         "male": "shield/spartan/bg/",
         "muscular": "shield/spartan/bg/",
+        "teen": "shield/spartan/bg/",
         "female": "shield/spartan/bg/",
         "pregnant": "shield/spartan/bg/"
       },
       "layer_2": {
         "zPos": 110,
-        "male": "shield/spartan/fg/male/",
-        "muscular": "shield/spartan/fg/male/",
-        "female": "shield/spartan/fg/female/",
-        "pregnant": "shield/spartan/fg/female/"
+        "male": "shield/spartan/fg/",
+        "muscular": "shield/spartan/fg/",
+        "teen": "shield/spartan/fg/",
+        "female": "shield/spartan/fg/",
+        "pregnant": "shield/spartan/fg/"
       }
     },
     "credits": [
@@ -36838,6 +36516,9 @@ window.itemMetadata = {
         "OGA-BY 3.0"
       ],
       "female": [
+        "OGA-BY 3.0"
+      ],
+      "teen": [
         "OGA-BY 3.0"
       ],
       "muscular": [
@@ -71143,6 +70824,90 @@ window.itemMetadata = {
       ],
       "pregnant": [
         "CC-BY-SA 3.0"
+      ]
+    }
+  },
+  "shield_crusader": {
+    "name": "Crusader shield",
+    "priority": null,
+    "type_name": "shield",
+    "required": [
+      "male",
+      "female",
+      "muscular",
+      "pregnant"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "weapons",
+      "shields",
+      "engrailed",
+      "shield_crusader"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "crusader"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 2,
+        "male": "shield/crusader/bg/",
+        "muscular": "shield/crusader/bg/",
+        "female": "shield/crusader/bg/",
+        "pregnant": "shield/crusader/bg/"
+      },
+      "layer_2": {
+        "zPos": 110,
+        "male": "shield/crusader/fg/male/",
+        "muscular": "shield/crusader/fg/male/",
+        "female": "shield/crusader/fg/female/",
+        "pregnant": "shield/crusader/fg/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "shield/crusader",
+        "notes": "",
+        "authors": [
+          "bluecarrot16",
+          "Sander Frenken (castelonia)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-shields"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0"
+      ],
+      "muscular": [
+        "OGA-BY 3.0"
+      ],
+      "pregnant": [
+        "OGA-BY 3.0"
       ]
     }
   },

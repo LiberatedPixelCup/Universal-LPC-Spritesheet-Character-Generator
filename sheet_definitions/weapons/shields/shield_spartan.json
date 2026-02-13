@@ -1,19 +1,21 @@
 {
-  "name": "Spartan shield",
+  "name": "Spartan Shield",
   "priority": 50,
   "layer_1": {
     "zPos": 2,
     "male": "shield/spartan/bg/",
     "muscular": "shield/spartan/bg/",
+    "teen": "shield/spartan/bg/",
     "female": "shield/spartan/bg/",
     "pregnant": "shield/spartan/bg/"
   },
   "layer_2": {
     "zPos": 110,
-    "male": "shield/spartan/fg/male/",
-    "muscular": "shield/spartan/fg/male/",
-    "female": "shield/spartan/fg/female/",
-    "pregnant": "shield/spartan/fg/female/"
+    "male": "shield/spartan/fg/",
+    "muscular": "shield/spartan/fg/",
+    "teen": "shield/spartan/fg/",
+    "female": "shield/spartan/fg/",
+    "pregnant": "shield/spartan/fg/"
   },
   "variants": [
     "spartan"

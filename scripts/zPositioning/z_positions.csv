@@ -520,7 +520,6 @@ prosthesis_peg_leg,layer_1,100,body/prosthesis/peg_leg/male/mask/
 prosthesis_peg_leg,layer_2,100,body/prosthesis/peg_leg/male/
 quiver,layer_1,8,quiver/ quiver/ quiver/ quiver/
 shadow,layer_1,0,shadow/adult/ shadow/adult/ shadow/adult/ shadow/adult/ shadow/child/
-shield_crusader,layer_1,110,shield/male/ shield/female/ shield/male/ shield/female/
 shield_crusader,layer_1,2,shield/crusader/bg/ shield/crusader/bg/ shield/crusader/bg/ shield/crusader/bg/
 shield_crusader,layer_2,110,shield/crusader/fg/male/ shield/crusader/fg/female/ shield/crusader/fg/male/ shield/crusader/fg/female/
 shield_heater_paint,layer_1,3,shield/heater/original/paint/bg/ shield/heater/original/paint/bg/ shield/heater/original/paint/bg/ shield/heater/original/paint/bg/
@@ -635,13 +634,13 @@ shield_heater_wood,layer_2,110,shield/heater/original/wood/fg/ shield/heater/ori
 shield_kite,layer_1,110,shield/kite/male/ shield/kite/female/ shield/kite/male/ shield/kite/female/
 shield_plus,layer_1,2,shield/plus/bg/ shield/plus/bg/ shield/plus/bg/ shield/plus/bg/
 shield_plus,layer_2,110,shield/plus/fg/male/ shield/plus/fg/female/ shield/plus/fg/male/ shield/plus/fg/female/
-shield_round,layer_1,110,shield/male/ shield/female/ shield/male/ shield/female/
+shield_round,layer_1,110,shield/round/ shield/round/ shield/round/ shield/round/
 shield_scutum,layer_1,2,shield/scutum/paint/bg/ shield/scutum/paint/bg/ shield/scutum/paint/bg/ shield/scutum/paint/bg/
 shield_scutum,layer_2,110,shield/scutum/paint/fg/male/ shield/scutum/paint/fg/female/ shield/scutum/paint/fg/male/ shield/scutum/paint/fg/female/
 shield_scutum_trim,layer_1,3,shield/scutum_trim/bg/ shield/scutum_trim/bg/ shield/scutum_trim/bg/ shield/scutum_trim/bg/
 shield_scutum_trim,layer_2,115,shield/scutum_trim/fg/male/ shield/scutum_trim/fg/female/ shield/scutum_trim/fg/male/ shield/scutum_trim/fg/female/
 shield_spartan,layer_1,2,shield/spartan/bg/ shield/spartan/bg/ shield/spartan/bg/ shield/spartan/bg/
-shield_spartan,layer_2,110,shield/spartan/fg/male/ shield/spartan/fg/female/ shield/spartan/fg/male/ shield/spartan/fg/female/
+shield_spartan,layer_2,110,shield/spartan/fg/ shield/spartan/fg/ shield/spartan/fg/ shield/spartan/fg/
 shield_two_engrailed,layer_1,2,shield/two_engrailed/paint/bg/ shield/two_engrailed/paint/bg/ shield/two_engrailed/paint/bg/ shield/two_engrailed/paint/bg/
 shield_two_engrailed,layer_2,110,shield/two_engrailed/paint/fg/male/ shield/two_engrailed/paint/fg/female/ shield/two_engrailed/paint/fg/male/ shield/two_engrailed/paint/fg/female/
 shield_two_engrailed_trim,layer_1,3,shield/two_engrailed/trim/bg/ shield/two_engrailed/trim/bg/ shield/two_engrailed/trim/bg/ shield/two_engrailed/trim/bg/
