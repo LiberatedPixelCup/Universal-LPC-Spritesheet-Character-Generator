@@ -1,0 +1,45 @@
+{
+  "name": "Mage Belt",
+  "priority": 50,
+  "layer_1": {
+    "zPos": 90,
+    "female": "torso/waist/belt_mage/",
+    "teen": "torso/waist/belt_mage/"
+  },
+  "variants": [
+    "black",
+    "bronze",
+    "brown",
+    "gold",
+    "iron",
+    "silver"
+  ],
+  "animations": [
+    "hurt",
+    "slash",
+    "spellcast",
+    "walk"
+  ],
+  "credits": [
+    {
+      "file": "torso/waist/belt_mage",
+      "notes": "",
+      "authors": [
+        "Luke Mehl"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/female-mage-clothing-set"
+      ]
+    }
+  ],
+  "path": [
+    "torso",
+    "waist",
+    "belt_mage"
+  ],
+  "type_name": "belt"
+}

@@ -33324,6 +33324,71 @@ window.itemMetadata = {
       ]
     }
   },
+  "belt_formal": {
+    "name": "Formal Belt",
+    "priority": 50,
+    "type_name": "belt",
+    "required": [
+      "male"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "waist",
+      "belt_formal"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "brown"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 80,
+        "male": "torso/waist/belt_formal/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/waist/belt_formal",
+        "notes": "",
+        "authors": [
+          "Thane Brimhall (pennomi)",
+          "laetissima",
+          "bluecarrot16"
+        ],
+        "licenses": [
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-2-characters",
+          "https://opengameart.org/content/lpc-gentleman"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
   "belt_leather": {
     "name": "Leather Belt",
     "priority": 10,
@@ -33365,7 +33430,7 @@ window.itemMetadata = {
         "zPos": 70,
         "male": "torso/waist/belt_leather/male/",
         "female": "torso/waist/belt_leather/female/",
-        "teen": "torso/waist/belt_leather/male/"
+        "teen": "torso/waist/belt_leather/female/"
       }
     },
     "credits": [
@@ -33385,6 +33450,85 @@ window.itemMetadata = {
         "urls": [
           "https://opengameart.org/content/lpc-combat-armor-for-women",
           "https://opengameart.org/content/lpc-pirates"
+        ]
+      }
+    ],
+    "preview_row": 2,
+    "preview_column": 0,
+    "preview_x_offset": 0,
+    "preview_y_offset": 0,
+    "matchBodyColor": false,
+    "licenses": {
+      "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ]
+    }
+  },
+  "belt_leather2": {
+    "name": "Leather Belt Alt",
+    "priority": 10,
+    "type_name": "belt",
+    "required": [
+      "male",
+      "female",
+      "teen"
+    ],
+    "animations": [
+      "spellcast",
+      "thrust",
+      "walk",
+      "slash",
+      "shoot",
+      "hurt",
+      "watering"
+    ],
+    "tags": [],
+    "required_tags": [],
+    "excluded_tags": [],
+    "path": [
+      "torso",
+      "waist",
+      "belt_leather2"
+    ],
+    "replace_in_path": {},
+    "variants": [
+      "leather"
+    ],
+    "layers": {
+      "layer_1": {
+        "zPos": 70,
+        "male": "torso/waist/belt_leather2/male/",
+        "female": "torso/waist/belt_leather2/female/",
+        "teen": "torso/waist/belt_leather2/female/"
+      }
+    },
+    "credits": [
+      {
+        "file": "torso/waist/belt_leather2",
+        "notes": "",
+        "authors": [
+          "Johannes Sjölund (wulax)",
+          "Matthew Krohn (makrohn)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-combat-armor-for-women"
         ]
       }
     ],
@@ -33452,7 +33596,7 @@ window.itemMetadata = {
         "zPos": 70,
         "male": "torso/waist/belt_loose/male/",
         "female": "torso/waist/belt_loose/female/",
-        "teen": "torso/waist/belt_loose/male/"
+        "teen": "torso/waist/belt_loose/female/"
       }
     },
     "credits": [
@@ -33498,21 +33642,19 @@ window.itemMetadata = {
       ]
     }
   },
-  "belt_other_female": {
-    "name": "Other belts",
+  "belt_mage": {
+    "name": "Mage Belt",
     "priority": 50,
     "type_name": "belt",
     "required": [
-      "female"
+      "female",
+      "teen"
     ],
     "animations": [
-      "spellcast",
-      "thrust",
-      "walk",
-      "slash",
-      "shoot",
       "hurt",
-      "watering"
+      "slash",
+      "spellcast",
+      "walk"
     ],
     "tags": [],
     "required_tags": [],
@@ -33520,7 +33662,7 @@ window.itemMetadata = {
     "path": [
       "torso",
       "waist",
-      "belt_other_female"
+      "belt_mage"
     ],
     "replace_in_path": {},
     "variants": [
@@ -33529,20 +33671,18 @@ window.itemMetadata = {
       "brown",
       "gold",
       "iron",
-      "leather",
-      "silver",
-      "teal",
-      "white"
+      "silver"
     ],
     "layers": {
       "layer_1": {
-        "zPos": 70,
-        "female": "torso/waist/belt_other/female/"
+        "zPos": 90,
+        "female": "torso/waist/belt_mage/",
+        "teen": "torso/waist/belt_mage/"
       }
     },
     "credits": [
       {
-        "file": "torso/waist/belt_other/female",
+        "file": "torso/waist/belt_mage",
         "notes": "",
         "authors": [
           "Luke Mehl"
@@ -33553,53 +33693,6 @@ window.itemMetadata = {
         ],
         "urls": [
           "https://opengameart.org/content/female-mage-clothing-set"
-        ]
-      },
-      {
-        "file": "torso/waist/belt_other/female/leather.png",
-        "notes": "",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Matthew Krohn (makrohn)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-combat-armor-for-women"
-        ]
-      },
-      {
-        "file": "torso/waist/belt_other/female/teal.png",
-        "notes": "",
-        "authors": [
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      },
-      {
-        "file": "torso/waist/belt_other/female/white.png",
-        "notes": "",
-        "authors": [
-          "Johannes Sjölund (wulax)",
-          "Matthew Krohn (makrohn)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
         ]
       }
     ],
@@ -33612,15 +33705,21 @@ window.itemMetadata = {
       "female": [
         "CC-BY-SA 3.0",
         "GPL 3.0"
+      ],
+      "teen": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
       ]
     }
   },
-  "belt_other_male": {
-    "name": "Other belts",
+  "belt_robe": {
+    "name": "Robe Belt",
     "priority": 50,
     "type_name": "belt",
     "required": [
-      "male"
+      "male",
+      "female",
+      "teen"
     ],
     "animations": [
       "spellcast",
@@ -33637,58 +33736,28 @@ window.itemMetadata = {
     "path": [
       "torso",
       "waist",
-      "belt_other_male"
+      "belt_robe"
     ],
     "replace_in_path": {},
     "variants": [
-      "formal",
-      "leather",
+      "teal",
       "white"
     ],
     "layers": {
       "layer_1": {
         "zPos": 70,
-        "male": "torso/waist/belt_other/male/"
+        "male": "torso/waist/belt_robe/male/",
+        "teen": "torso/waist/belt_robe/female/",
+        "female": "torso/waist/belt_robe/female/"
       }
     },
     "credits": [
       {
-        "file": "torso/waist/belt_other/male/formal.png",
+        "file": "torso/waist/belt_robe",
         "notes": "",
         "authors": [
-          "Thane Brimhall (pennomi)",
-          "laetissima",
-          "bluecarrot16"
-        ],
-        "licenses": [
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-2-characters",
-          "https://opengameart.org/content/lpc-gentleman"
-        ]
-      },
-      {
-        "file": "torso/waist/belt_other/male/leather.png",
-        "notes": "",
-        "authors": [
-          "Johannes Sjölund (wulax)"
-        ],
-        "licenses": [
-          "OGA-BY 3.0",
-          "CC-BY-SA 3.0",
-          "GPL 3.0"
-        ],
-        "urls": [
-          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
-        ]
-      },
-      {
-        "file": "torso/waist/belt_other/male/white.png",
-        "notes": "",
-        "authors": [
-          "Johannes Sjölund (wulax)"
+          "Johannes Sjölund (wulax)",
+          "Matthew Krohn (makrohn)"
         ],
         "licenses": [
           "OGA-BY 3.0",
@@ -33707,6 +33776,17 @@ window.itemMetadata = {
     "matchBodyColor": false,
     "licenses": {
       "male": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "female": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "teen": [
+        "OGA-BY 3.0",
         "CC-BY-SA 3.0",
         "GPL 3.0"
       ]
@@ -79596,11 +79676,13 @@ window.categoryTree = {
         "waist": {
           "items": [
             "belt_leather",
+            "belt_leather2",
             "belt_double",
             "belt_loose",
             "belt_belly",
-            "belt_other_female",
-            "belt_other_male",
+            "belt_formal",
+            "belt_mage",
+            "belt_robe",
             "belt_sash",
             "belt_sash_narrow",
             "belt_waistband",

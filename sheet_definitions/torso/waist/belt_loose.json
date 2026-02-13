@@ -5,7 +5,7 @@
     "zPos": 70,
     "male": "torso/waist/belt_loose/male/",
     "female": "torso/waist/belt_loose/female/",
-    "teen": "torso/waist/belt_loose/male/"
+    "teen": "torso/waist/belt_loose/female/"
   },
   "variants": [
     "brown",

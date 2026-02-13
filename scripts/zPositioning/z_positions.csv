@@ -30,13 +30,15 @@ beards_walrus,layer_1,111,beards/mustache/walrus/ beards/mustache/walrus/ beards
 beards_winter,layer_1,110,beards/beard/winter/male/ beards/beard/winter/female/ beards/beard/winter/male/ beards/beard/winter/female/
 belt_belly,layer_1,70,torso/waist/belt_belly/male/ torso/waist/belt_belly/female/
 belt_double,layer_1,70,torso/waist/belt_double/male/ torso/waist/belt_double/female/
+belt_formal,layer_1,80,torso/waist/belt_formal/
 belt_leather,layer_1,70,torso/waist/belt_leather/male/ torso/waist/belt_leather/female/
+belt_leather2,layer_1,70,torso/waist/belt_leather2/male/ torso/waist/belt_leather2/female/
 belt_loose,layer_1,70,torso/waist/belt_loose/male/ torso/waist/belt_loose/female/
+belt_mage,layer_1,90,torso/waist/belt_mage/
 belt_obi,layer_1,65,torso/waist/obi/male/ torso/waist/obi/thin/ torso/waist/obi/male/ torso/waist/obi/thin/
 belt_obi_knot_left,layer_1,66,torso/waist/obi/knot/left/male/ torso/waist/obi/knot/left/thin/ torso/waist/obi/knot/left/male/ torso/waist/obi/knot/left/thin/
 belt_obi_knot_right,layer_1,66,torso/waist/obi/knot/right/male/ torso/waist/obi/knot/right/thin/ torso/waist/obi/knot/right/male/ torso/waist/obi/knot/right/thin/
-belt_other_female,layer_1,70,torso/waist/belt_other/female/
-belt_other_male,layer_1,70,torso/waist/belt_other/male/
+belt_robe,layer_1,70,torso/waist/belt_robe/male/ torso/waist/belt_robe/female/
 belt_sash,layer_1,65,torso/waist/sash/male/ torso/waist/sash/female/
 belt_sash_narrow,layer_1,65,torso/waist/sash_narrow/male/ torso/waist/sash_narrow/female/
 belt_waistband,layer_1,65,torso/waist/waistband/female/
