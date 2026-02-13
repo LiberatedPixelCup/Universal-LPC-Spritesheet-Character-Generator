@@ -2,14 +2,14 @@
   "name": "Left Eye",
   "layer_1": {
     "zPos": 115,
-    "male": "body/wound/",
-    "muscular": "body/wound/",
-    "female": "body/wound/",
-    "pregnant": "body/wound/",
-    "teen": "body/wound/"
+    "male": "body/wound/eye_left/",
+    "muscular": "body/wound/eye_left/",
+    "female": "body/wound/eye_left/",
+    "pregnant": "body/wound/eye_left/",
+    "teen": "body/wound/eye_left/"
   },
   "variants": [
-    "eye_left"
+    "red"
   ],
   "animations": [
     "spellcast",
@@ -32,7 +32,7 @@
   ],
   "credits": [
     {
-      "file": "body/wound/eye_left.png",
+      "file": "body/wound/eye_left",
       "notes": "Zombie by BenCreating, commissioned by castelonia; flipped (left eye) variant by JaidynReiman",
       "authors": [
         "JaidynReiman",

@@ -1,19 +1,20 @@
 {
   "name": "Ribs",
+  "priority": 60,
   "layer_1": {
     "zPos": 15,
-    "male": "body/wound/",
-    "muscular": "body/wound/",
-    "female": "body/wound/",
-    "pregnant": "body/wound/",
-    "teen": "body/wound/"
+    "male": "body/wound/ribs/",
+    "muscular": "body/wound/ribs/",
+    "female": "body/wound/ribs/",
+    "pregnant": "body/wound/ribs/",
+    "teen": "body/wound/ribs/"
   },
   "variants": [
-    "ribs"
+    "red"
   ],
   "credits": [
     {
-      "file": "body/wound/ribs.png",
+      "file": "body/wound/ribs",
       "notes": "",
       "authors": [
         "Benjamin K. Smith (BenCreating)",

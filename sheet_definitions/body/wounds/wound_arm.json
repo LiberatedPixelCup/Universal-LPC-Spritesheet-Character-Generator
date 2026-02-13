@@ -1,19 +1,20 @@
 {
   "name": "Arm",
+  "priority": 50,
   "layer_1": {
     "zPos": 15,
-    "male": "body/wound/",
-    "muscular": "body/wound/",
-    "female": "body/wound/",
-    "pregnant": "body/wound/",
-    "teen": "body/wound/"
+    "male": "body/wound/arm/",
+    "muscular": "body/wound/arm/",
+    "female": "body/wound/arm/",
+    "pregnant": "body/wound/arm/",
+    "teen": "body/wound/arm/"
   },
   "variants": [
-    "arm"
+    "red"
   ],
   "credits": [
     {
-      "file": "body/wound/arm.png",
+      "file": "body/wound/arm",
       "notes": "",
       "authors": [
         "Benjamin K. Smith (BenCreating)",

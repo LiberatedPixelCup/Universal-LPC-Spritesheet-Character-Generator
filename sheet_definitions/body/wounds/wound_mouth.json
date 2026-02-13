@@ -2,14 +2,14 @@
   "name": "Mouth",
   "layer_1": {
     "zPos": 115,
-    "male": "body/wound/",
-    "muscular": "body/wound/",
-    "female": "body/wound/",
-    "pregnant": "body/wound/",
-    "teen": "body/wound/"
+    "male": "body/wound/mouth/",
+    "muscular": "body/wound/mouth/",
+    "female": "body/wound/mouth/",
+    "pregnant": "body/wound/mouth/",
+    "teen": "body/wound/mouth/"
   },
   "variants": [
-    "mouth"
+    "red"
   ],
   "animations": [
     "spellcast",
@@ -32,7 +32,7 @@
   ],
   "credits": [
     {
-      "file": "body/wound/mouth.png",
+      "file": "body/wound/mouth",
       "notes": "",
       "authors": [
         "Benjamin K. Smith (BenCreating)",

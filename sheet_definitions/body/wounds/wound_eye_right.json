@@ -2,14 +2,14 @@
   "name": "Right Eye",
   "layer_1": {
     "zPos": 115,
-    "male": "body/wound/",
-    "muscular": "body/wound/",
-    "female": "body/wound/",
-    "pregnant": "body/wound/",
-    "teen": "body/wound/"
+    "male": "body/wound/eye_right/",
+    "muscular": "body/wound/eye_right/",
+    "female": "body/wound/eye_right/",
+    "pregnant": "body/wound/eye_right/",
+    "teen": "body/wound/eye_right/"
   },
   "variants": [
-    "eye_right"
+    "red"
   ],
   "animations": [
     "spellcast",
@@ -32,7 +32,7 @@
   ],
   "credits": [
     {
-      "file": "body/wound/eye_right.png",
+      "file": "body/wound/eye_right",
       "notes": "",
       "authors": [
         "Benjamin K. Smith (BenCreating)",
