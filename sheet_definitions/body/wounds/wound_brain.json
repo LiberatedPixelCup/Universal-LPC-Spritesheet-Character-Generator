@@ -1,15 +1,16 @@
 {
   "name": "Brain",
+  "priority": 10,
   "layer_1": {
     "zPos": 115,
-    "male": "body/wound/",
-    "muscular": "body/wound/",
-    "female": "body/wound/",
-    "pregnant": "body/wound/",
-    "teen": "body/wound/"
+    "male": "body/wound/brain/",
+    "muscular": "body/wound/brain/",
+    "female": "body/wound/brain/",
+    "pregnant": "body/wound/brain/",
+    "teen": "body/wound/brain/"
   },
   "variants": [
-    "brain"
+    "red"
   ],
   "animations": [
     "spellcast",
@@ -32,7 +33,7 @@
   ],
   "credits": [
     {
-      "file": "body/wound/brain.png",
+      "file": "body/wound/brain",
       "notes": "",
       "authors": [
         "Benjamin K. Smith (BenCreating)",

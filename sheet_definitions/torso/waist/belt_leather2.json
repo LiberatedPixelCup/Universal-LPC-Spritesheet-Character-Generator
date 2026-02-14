@@ -1,0 +1,37 @@
+{
+  "name": "Leather Belt Alt",
+  "priority": 10,
+  "layer_1": {
+    "zPos": 70,
+    "male": "torso/waist/belt_leather2/male/",
+    "female": "torso/waist/belt_leather2/female/",
+    "teen": "torso/waist/belt_leather2/female/"
+  },
+  "variants": [
+    "leather"
+  ],
+  "credits": [
+    {
+      "file": "torso/waist/belt_leather2",
+      "notes": "",
+      "authors": [
+        "Johannes Sjölund (wulax)",
+        "Matthew Krohn (makrohn)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-combat-armor-for-women"
+      ]
+    }
+  ],
+  "path": [
+    "torso",
+    "waist",
+    "belt_leather2"
+  ],
+  "type_name": "belt"
+}

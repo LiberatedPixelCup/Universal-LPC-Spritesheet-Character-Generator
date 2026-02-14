@@ -1,0 +1,36 @@
+{
+  "name": "Formal Belt",
+  "priority": 50,
+  "layer_1": {
+    "zPos": 80,
+    "male": "torso/waist/belt_formal/"
+  },
+  "variants": [
+    "brown"
+  ],
+  "credits": [
+    {
+      "file": "torso/waist/belt_formal",
+      "notes": "",
+      "authors": [
+        "Thane Brimhall (pennomi)",
+        "laetissima",
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-2-characters",
+        "https://opengameart.org/content/lpc-gentleman"
+      ]
+    }
+  ],
+  "path": [
+    "torso",
+    "waist",
+    "belt_formal"
+  ],
+  "type_name": "belt"
+}

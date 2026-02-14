@@ -30,13 +30,15 @@ beards_walrus,layer_1,111,beards/mustache/walrus/ beards/mustache/walrus/ beards
 beards_winter,layer_1,110,beards/beard/winter/male/ beards/beard/winter/female/ beards/beard/winter/male/ beards/beard/winter/female/
 belt_belly,layer_1,70,torso/waist/belt_belly/male/ torso/waist/belt_belly/female/
 belt_double,layer_1,70,torso/waist/belt_double/male/ torso/waist/belt_double/female/
+belt_formal,layer_1,80,torso/waist/belt_formal/
 belt_leather,layer_1,70,torso/waist/belt_leather/male/ torso/waist/belt_leather/female/
+belt_leather2,layer_1,70,torso/waist/belt_leather2/male/ torso/waist/belt_leather2/female/
 belt_loose,layer_1,70,torso/waist/belt_loose/male/ torso/waist/belt_loose/female/
+belt_mage,layer_1,90,torso/waist/belt_mage/
 belt_obi,layer_1,65,torso/waist/obi/male/ torso/waist/obi/thin/ torso/waist/obi/male/ torso/waist/obi/thin/
 belt_obi_knot_left,layer_1,66,torso/waist/obi/knot/left/male/ torso/waist/obi/knot/left/thin/ torso/waist/obi/knot/left/male/ torso/waist/obi/knot/left/thin/
 belt_obi_knot_right,layer_1,66,torso/waist/obi/knot/right/male/ torso/waist/obi/knot/right/thin/ torso/waist/obi/knot/right/male/ torso/waist/obi/knot/right/thin/
-belt_other_female,layer_1,70,torso/waist/belt_other/female/
-belt_other_male,layer_1,70,torso/waist/belt_other/male/
+belt_robe,layer_1,70,torso/waist/belt_robe/male/ torso/waist/belt_robe/female/
 belt_sash,layer_1,65,torso/waist/sash/male/ torso/waist/sash/female/
 belt_sash_narrow,layer_1,65,torso/waist/sash_narrow/male/ torso/waist/sash_narrow/female/
 belt_waistband,layer_1,65,torso/waist/waistband/female/
@@ -520,7 +522,6 @@ prosthesis_peg_leg,layer_1,100,body/prosthesis/peg_leg/male/mask/
 prosthesis_peg_leg,layer_2,100,body/prosthesis/peg_leg/male/
 quiver,layer_1,8,quiver/ quiver/ quiver/ quiver/
 shadow,layer_1,0,shadow/adult/ shadow/adult/ shadow/adult/ shadow/adult/ shadow/child/
-shield,layer_1,110,shield/male/ shield/female/ shield/male/ shield/female/
 shield_crusader,layer_1,2,shield/crusader/bg/ shield/crusader/bg/ shield/crusader/bg/ shield/crusader/bg/
 shield_crusader,layer_2,110,shield/crusader/fg/male/ shield/crusader/fg/female/ shield/crusader/fg/male/ shield/crusader/fg/female/
 shield_heater_paint,layer_1,3,shield/heater/original/paint/bg/ shield/heater/original/paint/bg/ shield/heater/original/paint/bg/ shield/heater/original/paint/bg/
@@ -635,12 +636,13 @@ shield_heater_wood,layer_2,110,shield/heater/original/wood/fg/ shield/heater/ori
 shield_kite,layer_1,110,shield/kite/male/ shield/kite/female/ shield/kite/male/ shield/kite/female/
 shield_plus,layer_1,2,shield/plus/bg/ shield/plus/bg/ shield/plus/bg/ shield/plus/bg/
 shield_plus,layer_2,110,shield/plus/fg/male/ shield/plus/fg/female/ shield/plus/fg/male/ shield/plus/fg/female/
+shield_round,layer_1,110,shield/round/ shield/round/ shield/round/ shield/round/
 shield_scutum,layer_1,2,shield/scutum/paint/bg/ shield/scutum/paint/bg/ shield/scutum/paint/bg/ shield/scutum/paint/bg/
 shield_scutum,layer_2,110,shield/scutum/paint/fg/male/ shield/scutum/paint/fg/female/ shield/scutum/paint/fg/male/ shield/scutum/paint/fg/female/
 shield_scutum_trim,layer_1,3,shield/scutum_trim/bg/ shield/scutum_trim/bg/ shield/scutum_trim/bg/ shield/scutum_trim/bg/
 shield_scutum_trim,layer_2,115,shield/scutum_trim/fg/male/ shield/scutum_trim/fg/female/ shield/scutum_trim/fg/male/ shield/scutum_trim/fg/female/
 shield_spartan,layer_1,2,shield/spartan/bg/ shield/spartan/bg/ shield/spartan/bg/ shield/spartan/bg/
-shield_spartan,layer_2,110,shield/spartan/fg/male/ shield/spartan/fg/female/ shield/spartan/fg/male/ shield/spartan/fg/female/
+shield_spartan,layer_2,110,shield/spartan/fg/ shield/spartan/fg/ shield/spartan/fg/ shield/spartan/fg/
 shield_two_engrailed,layer_1,2,shield/two_engrailed/paint/bg/ shield/two_engrailed/paint/bg/ shield/two_engrailed/paint/bg/ shield/two_engrailed/paint/bg/
 shield_two_engrailed,layer_2,110,shield/two_engrailed/paint/fg/male/ shield/two_engrailed/paint/fg/female/ shield/two_engrailed/paint/fg/male/ shield/two_engrailed/paint/fg/female/
 shield_two_engrailed_trim,layer_1,3,shield/two_engrailed/trim/bg/ shield/two_engrailed/trim/bg/ shield/two_engrailed/trim/bg/ shield/two_engrailed/trim/bg/
@@ -889,11 +891,11 @@ wings_pixie,layer_1,140,body/wings/pixie/solid/fg/ body/wings/pixie/solid/fg/ bo
 wings_pixie,layer_2,5,body/wings/pixie/solid/bg/ body/wings/pixie/solid/bg/ body/wings/pixie/solid/bg/ body/wings/pixie/solid/bg/ body/wings/pixie/solid/bg/
 wings_pixie_transparent,layer_1,140,body/wings/pixie/transparent/fg/ body/wings/pixie/transparent/fg/ body/wings/pixie/transparent/fg/ body/wings/pixie/transparent/fg/ body/wings/pixie/transparent/fg/
 wings_pixie_transparent,layer_2,5,body/wings/pixie/transparent/bg/ body/wings/pixie/transparent/bg/ body/wings/pixie/transparent/bg/ body/wings/pixie/transparent/bg/ body/wings/pixie/transparent/bg/
-wound_arm,layer_1,15,body/wound/ body/wound/ body/wound/ body/wound/
-wound_brain,layer_1,115,body/wound/ body/wound/ body/wound/ body/wound/
-wound_eye_left,layer_1,115,body/wound/ body/wound/ body/wound/ body/wound/
-wound_eye_right,layer_1,115,body/wound/ body/wound/ body/wound/ body/wound/
-wound_mouth,layer_1,115,body/wound/ body/wound/ body/wound/ body/wound/
-wound_ribs,layer_1,15,body/wound/ body/wound/ body/wound/ body/wound/
+wound_arm,layer_1,15,body/wound/arm/ body/wound/arm/ body/wound/arm/ body/wound/arm/
+wound_brain,layer_1,115,body/wound/brain/ body/wound/brain/ body/wound/brain/ body/wound/brain/
+wound_eye_left,layer_1,115,body/wound/eye_left/ body/wound/eye_left/ body/wound/eye_left/ body/wound/eye_left/
+wound_eye_right,layer_1,115,body/wound/eye_right/ body/wound/eye_right/ body/wound/eye_right/ body/wound/eye_right/
+wound_mouth,layer_1,115,body/wound/mouth/ body/wound/mouth/ body/wound/mouth/ body/wound/mouth/
+wound_ribs,layer_1,15,body/wound/ribs/ body/wound/ribs/ body/wound/ribs/ body/wound/ribs/
 wrists_cuffs,layer_1,70,wrists/cuffs/male/
 wrists_cuffs_lace,layer_1,70,wrists/lace/male/
