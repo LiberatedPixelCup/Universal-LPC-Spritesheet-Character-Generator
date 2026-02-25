@@ -185,7 +185,7 @@ describe("state/hash.js", () => {
             "variant": "white"
           }
         }
-      }
+      };
 
       loadSelectionsFromHash();
       expect(getState().selections).to.deep.equal({
@@ -218,7 +218,7 @@ describe("state/hash.js", () => {
             variant: "white"
           }
         }
-      }
+      };
 
       loadSelectionsFromHash();
       expect(getState().selections).to.deep.equal({

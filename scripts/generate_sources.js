@@ -116,7 +116,7 @@ function writeAliases(aliases, meta) {
       continue;
     }
 
-    // Return Forwarding Data
+    // Build Forwarding Data
     const forward = {
       typeName: aliasType ?? meta.type_name,
       name: targetName,

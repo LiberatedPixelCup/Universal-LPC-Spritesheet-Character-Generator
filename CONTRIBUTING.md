@@ -99,7 +99,7 @@ Other Belts was removed in favor of shifting these belts to separate categories.
 
 Aliases is an object which may be added to sheet definitions (represented by curly brackets `{` and `}`).
 
-As an example, here's how aliases look in action::
+As an example, here's how aliases look in action:
 ```
   "aliases": {
     "Other_belts_white": "white",
@@ -115,7 +115,7 @@ The key is the exact name of the old asset and its variant, in this case:
 
 `Other Belts` was the old asset name, and white was the variant.
 
-Thet value tells it which variant on the current sheet definition to use. However, this value can take a full key-value pair, like so:
+The value tells it which variant on the current sheet definition to use. However, this value can take a full key-value pair, like so:
 `"Other_belts_white": "Robe_Belt_white",`
 
 If you include the asset name before the variant, it will manually choose which asset to implement instead of assuming the current asset is the one that is being forwarded to.
