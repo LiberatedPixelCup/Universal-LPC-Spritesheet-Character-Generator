@@ -228,7 +228,7 @@ function parseJson(filePath, fileName) {
   let listCreditToUse = null;
   let listItemsCSV = [];
 
-  // Implement Forwards
+  // Process alias definitions for this item (for backward compatibility)
   if (aliases) {
     writeAliases(aliases, itemMetadata[itemId]);
   }
