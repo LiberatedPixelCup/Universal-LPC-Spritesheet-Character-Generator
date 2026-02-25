@@ -77,7 +77,7 @@ Aliases are a way to forward one asset path into another. This comes in the form
 #sex=male&body=Body_Color_light&head=Human_Male_light&expression=Neutral_light
 ```
 
-The hash tag is everything after `#` in the address bar. This shows the currently selection assets. The keys are before the equals sign and the values are after.
+The hash tag is everything after `#` in the address bar. This shows the currently selected assets. The keys are before the equals sign and the values are after.
 
 For example, `expression=Neutral_light` shows the type_name of `expression`, the selected item as `Neutral` and the variant as `light`.
 
