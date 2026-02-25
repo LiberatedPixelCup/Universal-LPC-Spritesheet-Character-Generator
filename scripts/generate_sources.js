@@ -88,7 +88,7 @@ function parseTree(filePath, fileName) {
   }
 } // fn parseTree
 
-// Write Alias
+// Parse alias definitions and populate the aliasMetadata mapping for backward compatibility with old bookmark URLs.
 function writeAliases(aliases, meta) {
   // Loop Aliases
   for (const [original, alias] of Object.entries(aliases)) {
