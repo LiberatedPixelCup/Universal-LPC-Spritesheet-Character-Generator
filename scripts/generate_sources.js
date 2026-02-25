@@ -94,25 +94,33 @@ function writeAliases(aliases, meta) {
   for (const [original, alias] of Object.entries(aliases)) {
     // Get Alias Details
     const [aliasVariant, aliasType] = alias.split("=").reverse();
-    let name = '';
-    let variant = '';
+    let targetName = '';
+    let targetVariant = '';
     if (meta.variants.indexOf(aliasVariant) !== -1) {
-      name = meta.name.replaceAll(" ", "_");
-      variant = aliasVariant;
+      targetName = meta.name.replaceAll(" ", "_");
+      targetVariant = aliasVariant;
     } else {
       const parts = aliasVariant.split("_");
       while (parts.length > 1) {
-        name += (name !== '' ? '_' : '') + parts.shift();
-        variant = parts.join("_");
-        if (meta.variants.indexOf(aliasVariant) !== -1) {
+        targetName += (targetName !== '' ? '_' : '') + parts.shift();
+        targetVariant = parts.join("_");
+        if (meta.variants.indexOf(targetVariant) !== -1) {
           break;
         }
       }
     }
+
+    // Target Must Exist!
+    if (!targetName || !targetVariant) {
+      console.error("Alias target does not exist for", alias);
+      continue;
+    }
+
+    // Return Forwarding Data
     const forward = {
       typeName: aliasType ?? meta.type_name,
-      name,
-      variant
+      name: targetName,
+      variant: targetVariant
     };
 
     // Insert Alias Metadata
