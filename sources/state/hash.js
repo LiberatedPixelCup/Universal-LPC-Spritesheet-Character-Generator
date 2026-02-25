@@ -131,7 +131,7 @@ export function loadSelectionsFromHash(hashString = null) {
       continue;
     }
 
-    // Replace NameAndVariant if Provided!
+    // Check if this is an aliased selection and resolve it to the canonical type, name, and variant
     const aliasMeta = window.aliasMetadata?.[typeName]?.[nameAndVariant];
     if (aliasMeta) {
       typeName = aliasMeta.typeName;
