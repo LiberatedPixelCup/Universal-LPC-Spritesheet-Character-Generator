@@ -10,6 +10,7 @@ require("child_process").fork("scripts/zPositioning/parse_zpos.js");
 // Collect metadata for runtime use
 const licensesFound = [];
 const itemMetadata = {};
+const aliasMetadata = {};
 const categoryTree = { items: [], children: {} };
 
 function searchCredit(fileName, credits, origFileName) {
@@ -87,6 +88,43 @@ function parseTree(filePath, fileName) {
   }
 } // fn parseTree
 
+// Write Alias
+function writeAliases(aliases, meta) {
+  // Loop Aliases
+  for (const [original, alias] of Object.entries(aliases)) {
+    // Get Alias Details
+    const [aliasVariant, aliasType] = alias.split("=").reverse();
+    let name = '';
+    let variant = '';
+    if (meta.variants.indexOf(aliasVariant) !== -1) {
+      name = meta.name.replaceAll(" ", "_");
+      variant = aliasVariant;
+    } else {
+      const parts = aliasVariant.split("_");
+      while(parts.length > 1) {
+        name += (name !== '' ? '_' : '') + parts.shift();
+        variant = parts.join("_");
+        if (meta.variants.indexOf(aliasVariant) !== -1) {
+          break;
+        }
+      }
+    }
+    const forward = {
+      typeName: aliasType ?? meta.type_name,
+      name,
+      variant
+    };
+
+    // Insert Alias Metadata
+    const [originVariant, originType] = original.split("=").reverse();
+    const typeName = originType ?? meta.type_name;
+    if (!aliasMetadata[typeName]) {
+      aliasMetadata[typeName] = {};
+    }
+    aliasMetadata[typeName][originVariant] = forward;
+  }
+}
+
 // Parse Asset JSON File
 function parseJson(filePath, fileName) {
   const fullPath = path.join(filePath, fileName);
@@ -110,7 +148,8 @@ function parseJson(filePath, fileName) {
     replace_in_path,
     priority,
     ignore,
-    path: itemPath
+    path: itemPath,
+    aliases
   } = definition;
 
   // Skip Ignored Items
@@ -188,6 +227,11 @@ function parseJson(filePath, fileName) {
 
   let listCreditToUse = null;
   let listItemsCSV = [];
+
+  // Implement Forwards
+  if (aliases) {
+    writeAliases(aliases, itemMetadata[itemId]);
+  }
 
   // Use type_name for radio button grouping (ensures only one item per type can be selected)
   const addedCreditsFor = [];
@@ -422,6 +466,8 @@ const metadataJS = `// THIS FILE IS AUTO-GENERATED. PLEASE DON'T ALTER IT MANUAL
 // Contains metadata for all customization items to avoid DOM queries at runtime
 
 window.itemMetadata = ${JSON.stringify(itemMetadata, null, 2)};
+
+window.aliasMetadata = ${JSON.stringify(aliasMetadata, null, 2)};
 
 window.categoryTree = ${JSON.stringify(categoryTree, null, 2)};
 `;

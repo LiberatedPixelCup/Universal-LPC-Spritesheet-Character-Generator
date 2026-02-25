@@ -39,5 +39,8 @@
     "two-engrailed shield",
     "shield_crusader"
   ],
+  "aliases": {
+    "Shields_crusader": "crusader"
+  },
   "type_name": "shield"
 }

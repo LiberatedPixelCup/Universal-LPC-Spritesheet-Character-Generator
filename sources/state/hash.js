@@ -124,11 +124,18 @@ export function loadSelectionsFromHash(hashString = null) {
 
   // Load selections
   // Old format: type_name=Name_variant (e.g., "body=Body_color_light", "sash=Waistband_rose")
-  for (const [typeName, nameAndVariant] of Object.entries(params)) {
+  for (let [typeName, nameAndVariant] of Object.entries(params)) {
     // Handle special parameters
     if (typeName === "bodyType" || typeName === "sex") {
       state.bodyType = nameAndVariant;
       continue;
+    }
+
+    // Replace NameAndVariant if Provided!
+    const aliasMeta = window.aliasMetadata?.[typeName]?.[nameAndVariant];
+    if (aliasMeta) {
+      typeName = aliasMeta.typeName;
+      nameAndVariant = `${aliasMeta.name}_${aliasMeta.variant}`;
     }
 
     // Skip "none" selections

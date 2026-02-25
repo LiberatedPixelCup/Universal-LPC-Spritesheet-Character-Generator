@@ -41,5 +41,8 @@
     "shield",
     "shield_spartan"
   ],
+  "aliases": {
+    "Shields_spartan": "spartan"
+  },
   "type_name": "shield"
 }

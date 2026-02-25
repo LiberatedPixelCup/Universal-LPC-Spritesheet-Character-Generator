@@ -41,5 +41,13 @@
     "waist",
     "belt_mage"
   ],
+  "aliases": {
+    "Other_belts_black": "black",
+    "Other_belts_bronze": "bronze",
+    "Other_belts_brown": "brown",
+    "Other_belts_gold": "gold",
+    "Other_belts_iron": "iron",
+    "Other_belts_silver": "silver"
+  },
   "type_name": "belt"
 }

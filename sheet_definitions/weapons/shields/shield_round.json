@@ -42,5 +42,13 @@
     "shield",
     "shield_round"
   ],
+  "aliases": {
+    "Shields_brown": "brown",
+    "Shields_black": "black",
+    "Shields_gold": "gold",
+    "Shields_green": "green",
+    "Shields_silver": "silver",
+    "Shields_yellow": "yellow"
+  },
   "type_name": "shield"
 }
