@@ -101,7 +101,7 @@ function writeAliases(aliases, meta) {
       variant = aliasVariant;
     } else {
       const parts = aliasVariant.split("_");
-      while(parts.length > 1) {
+      while (parts.length > 1) {
         name += (name !== '' ? '_' : '') + parts.shift();
         variant = parts.join("_");
         if (meta.variants.indexOf(aliasVariant) !== -1) {
