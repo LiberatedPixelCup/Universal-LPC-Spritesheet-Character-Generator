@@ -72,7 +72,7 @@ As such, if you wish to include less than this list, such as only walk and slash
 
 While rare, sometimes it may be deemed that a specific asset should get renamed or moved. In such situations, the aliases key comes into play.
 
-Aliases are a way to forward one asset path into another. This comes in the form of key=value pairs in the current url hash:
+Aliases are a way to forward one asset path into another in order to maintain backward compatibility. This comes in the form of key=value pairs in the current url hash:
 ```
 #sex=male&body=Body_Color_light&head=Human_Male_light&expression=Neutral_light
 ```
