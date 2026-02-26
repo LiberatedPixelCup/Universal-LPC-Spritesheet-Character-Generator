@@ -93,7 +93,7 @@ For some examples, we have belts, which show off aliases in action:
   },
 ```
 
-Other Belts was removed in favor of shifting these belts to separate categories.
+The Other Belts category was removed in favor of shifting these belts to separate categories.
 
 ##### How to Forward Assets Using Aliases?
 
