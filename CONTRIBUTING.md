@@ -122,8 +122,8 @@ If you include the asset name before the variant, it will manually choose which 
 
 You can even include a custom type name, both in the original source asset and the forwarded asset:
 ```
-`"belt=Other_belts_white": "Robe_Belt_white",`
-`"Other_belts_white": "belt=Robe_Belt_white",`
+  "belt=Other_belts_white": "Robe_Belt_white",
+  "Other_belts_white": "belt=Robe_Belt_white",
 ```
 
 If the type_name is NOT included, the type_name from the current sheet definition is assumed for both the origin asset and target asset.
