@@ -59538,7 +59538,7 @@ window.itemMetadata = {
         "muscular": "hat/accessory/horns_downward/fg/adult/"
       },
       "layer_2": {
-        "zPos": 125,
+        "zPos": 95,
         "female": "hat/accessory/horns_downward/bg/adult/",
         "pregnant": "hat/accessory/horns_downward/bg/adult/",
         "male": "hat/accessory/horns_downward/bg/adult/",
@@ -59663,7 +59663,7 @@ window.itemMetadata = {
         "muscular": "hat/accessory/horns_short/fg/adult/"
       },
       "layer_2": {
-        "zPos": 125,
+        "zPos": 95,
         "female": "hat/accessory/horns_short/bg/adult/",
         "pregnant": "hat/accessory/horns_short/bg/adult/",
         "male": "hat/accessory/horns_short/bg/adult/",
@@ -59788,7 +59788,7 @@ window.itemMetadata = {
         "muscular": "hat/accessory/horns_upward/fg/adult/"
       },
       "layer_2": {
-        "zPos": 125,
+        "zPos": 95,
         "female": "hat/accessory/horns_upward/bg/adult/",
         "pregnant": "hat/accessory/horns_upward/bg/adult/",
         "male": "hat/accessory/horns_upward/bg/adult/",

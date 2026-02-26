@@ -8,7 +8,7 @@
     "muscular": "hat/accessory/horns_short/fg/adult/"
   },
   "layer_2": {
-    "zPos": 125,
+    "zPos": 95,
     "female": "hat/accessory/horns_short/bg/adult/",
     "pregnant": "hat/accessory/horns_short/bg/adult/",
     "male": "hat/accessory/horns_short/bg/adult/",
