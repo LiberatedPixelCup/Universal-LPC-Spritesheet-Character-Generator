@@ -96,18 +96,28 @@ function writeAliases(aliases, meta) {
     const [aliasVariant, aliasType] = alias.split("=").reverse();
     let targetName = '';
     let targetVariant = '';
+
+    // If Variant Exists, mark aliasVariant as the variant while grabbing the name from itemMetadata
     if (meta.variants.indexOf(aliasVariant) !== -1) {
       targetName = meta.name.replaceAll(" ", "_");
       targetVariant = aliasVariant;
     } else {
+      // AliasVariant doesn't match an exact variant, let's split it by underscores to test bit-by-bit
       const parts = aliasVariant.split("_");
+
+      // Start with the full aliasVariant as the targetName and test if it exists in variants.
+      // If not, keep shifting parts from the left of the name to the variant until we find a match or run out of parts.
       while (parts.length > 1) {
+        // Shift one part from the left of the array to build the targetName, and keep testing the remaining parts as the variant
         targetName += (targetName !== '' ? '_' : '') + parts.shift();
         targetVariant = parts.join("_");
         if (meta.variants.indexOf(targetVariant) !== -1) {
           break;
         }
       }
+      // The while loop ends once all parts have been shifted to targetName except the last one
+      // If we exit thte loop without finding a matching variant, we'll just use the last entry in the array as the variant
+      // e.g. Other_belts_formal -> targetName=Other_belts, targetVariant=formal
     }
 
     // Target Must Exist!
@@ -123,12 +133,12 @@ function writeAliases(aliases, meta) {
       variant: targetVariant
     };
 
-    // Insert Alias Metadata
+    // Get the origin variant from the original after the "=" sign
+    // We reverse the split so that we can make originType be optional
     const [originVariant, originType] = original.split("=").reverse();
+    // If it doesn't exist, it falls back to meta.type_name
     const typeName = originType ?? meta.type_name;
-    if (!aliasMetadata[typeName]) {
-      aliasMetadata[typeName] = {};
-    }
+    if (!aliasMetadata[typeName]) aliasMetadata[typeName] = {};
     aliasMetadata[typeName][originVariant] = forward;
   }
 }
