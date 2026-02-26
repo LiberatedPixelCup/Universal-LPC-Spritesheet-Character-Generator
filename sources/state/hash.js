@@ -89,21 +89,32 @@ export function getHashParamsforSelections(selections) {
 
   // Add selections - use old format: type_name=Name_variant
   // Format: "body=Body_color_light", "shoes=Sara_sara"
-  for (const selection of Object.values(selections)) {
+  for (const [typeName, selection] of Object.entries(selections)) {
     const meta = window.itemMetadata?.[selection.itemId];
-    if (!meta || !meta.type_name) continue;
+    if (!meta || !meta.type_name) {
+      // Check if an alias is overriding this entry (e.g., "sash=Waistband_rose" instead of "waistband=Waistband_rose")
+      const name = selection.name.split(" (")[0]; // Get base name without variant (e.g., "Waistband" from "Waistband (rose)")
+      const nameAndVariant = name.replaceAll(" ", "_") + (selection.variant ? `_${selection.variant}` : "");
+      const aliasMeta = window.aliasMetadata?.[typeName]?.[nameAndVariant];
+      if (!aliasMeta || !aliasMeta.typeName) {
+        delete selections[typeName]; // Remove invalid selection
+        continue;
+      }
 
-    // Use type_name as key (selection group)
-    const key = meta.type_name;
+      params[aliasMeta.typeName] = `${aliasMeta.name}_${aliasMeta.variant}`;
+    } else {
+      // Use type_name as key (selection group)
+      const key = meta.type_name;
 
-    // Build name part for URL: use full name with underscores
-    // "Body color" -> "Body_color", "Sara Shoes" -> "Sara_Shoes", "Waistband" -> "Waistband"
-    const namePart = meta.name.replaceAll(" ", "_");
+      // Build name part for URL: use full name with underscores
+      // "Body color" -> "Body_color", "Sara Shoes" -> "Sara_Shoes", "Waistband" -> "Waistband"
+      const namePart = meta.name.replaceAll(" ", "_");
 
-    const variantPart = selection.variant ? `_${selection.variant}` : "";
-    const value = namePart + variantPart;
+      const variantPart = selection.variant ? `_${selection.variant}` : "";
+      const value = namePart + variantPart;
 
-    params[key] = value;
+      params[key] = value;
+    }
   }
 
   return params;
