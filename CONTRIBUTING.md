@@ -83,7 +83,7 @@ For example, `expression=Neutral_light` shows the type_name of `expression`, the
 
 ##### When should an asset be renamed?
 
-Asset renames should happen rarely, only if it makes sense. Sometimes older assets have generic names. When new variations of an asset are added that are an alternate take on the same type of asset, it may make sense to rename the old asset.
+Asset renames should happen rarely, only if it makes sense. Sometimes older assets have generic names. Please discuss any renames in an issue with us before implementing in a PR, as renaming assets require us to carefully consider backward compatibility.
 
 For some examples, we have belts, which show off aliases in action:
 ```
