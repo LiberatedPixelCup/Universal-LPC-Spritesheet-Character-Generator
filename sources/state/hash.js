@@ -96,10 +96,7 @@ export function getHashParamsforSelections(selections) {
       const name = selection.name.split(" (")[0]; // Get base name without variant (e.g., "Waistband" from "Waistband (rose)")
       const nameAndVariant = name.replaceAll(" ", "_") + (selection.variant ? `_${selection.variant}` : "");
       const aliasMeta = window.aliasMetadata?.[typeName]?.[nameAndVariant];
-      if (!aliasMeta || !aliasMeta.typeName) {
-        delete selections[typeName]; // Remove invalid selection
-        continue;
-      }
+      if (!aliasMeta || !aliasMeta.typeName) continue;
 
       params[aliasMeta.typeName] = `${aliasMeta.name}_${aliasMeta.variant}`;
     } else {

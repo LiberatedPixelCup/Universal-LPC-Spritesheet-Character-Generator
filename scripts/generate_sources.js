@@ -116,7 +116,7 @@ function writeAliases(aliases, meta) {
         }
       }
       // The while loop ends once all parts have been shifted to targetName except the last one
-      // If we exit thte loop without finding a matching variant, we'll just use the last entry in the array as the variant
+      // If we exit the loop without finding a matching variant, we'll just use the last entry in the array as the variant
       // e.g. Other_belts_formal -> targetName=Other_belts, targetVariant=formal
     }
 
