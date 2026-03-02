@@ -111,8 +111,8 @@ export const ItemWithRecolors = {
                         })
                     }, [
                         m("canvas.variant-canvas.box.p-0", {
-                            width: 64,
-                            height: 64,
+							width: compactDisplay ? 32 : 64,
+							height: compactDisplay ? 32 : 64,
                             class: (compactDisplay ? " compact-display" : ""),
                             oncreate: async (canvasVnode) => {
                                 const imagesLoaded = drawRecolorPreview(itemId, meta, canvasVnode.dom, selectedColors);
