@@ -232,7 +232,6 @@ function parseJson(filePath, fileName) {
     replace_in_path,
     priority,
     ignore,
-    path: itemPath,
     aliases
   } = definition;
 
@@ -361,7 +360,6 @@ function parseJson(filePath, fileName) {
     tags: tags,
     required_tags: required_tags,
     excluded_tags: excluded_tags,
-    //path: itemPath || treePath || ["other"], TO DO: clean up item paths in json files and allow itemPath to be an override of the treePath
     path: treePath || ["other"],
     replace_in_path: replace_in_path || {},
     variants: variants || [],
