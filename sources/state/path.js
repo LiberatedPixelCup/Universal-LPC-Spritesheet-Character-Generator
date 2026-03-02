@@ -96,10 +96,8 @@ function getNameWithoutVariant(typeName, nameAndVariant) {
 	let v = 0;
 	while (--j > 0) {
 		const part = nameAndVariantPath.slice(j, l).join('_');
-		if (variants?.includes(part.toLowerCase())) {
-			variant = part;
-			v = j;
-		} else if (recolors?.includes(part.toLowerCase())) {
+		const hasPart = (flatMap, part) => flatMap?.includes(part.toLowerCase());
+		if (hasPart(variants, part) || hasPart(recolors, part)) {
 			variant = part;
 			v = j;
 		}

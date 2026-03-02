@@ -322,6 +322,8 @@ function parseJson(filePath, fileName) {
       recolor.label = recolor.label ?? materialMeta.label ?? ucwords(recolor.material);
       if (!recolor.base) {
         recolor.base = `${materialMeta.default}.${materialMeta.base}`;
+      } else if (!recolor.base.includes(".")) {
+        recolor.base = `${materialMeta.default}.${recolor.base}`;
       }
       for (const palette of recolor.palettes) {
         let [material, version] = palette.split(".");

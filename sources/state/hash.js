@@ -130,7 +130,7 @@ export function getHashParamsforSelections(selections) {
 
       params[aliasMeta.typeName] = `${aliasMeta.name}_${aliasMeta.variant}`;
     } else {
-      // Sub ID Exists?
+      // Get Subcolor Metadata if applicable
       const subMeta = meta.recolors?.[selection.subId];
 
       // Use type_name as key (selection group)
@@ -138,7 +138,7 @@ export function getHashParamsforSelections(selections) {
 
       // Build name part for URL: use full name with underscores
       // "Body color" -> "Body_color", "Sara Shoes" -> "Sara_Shoes", "Waistband" -> "Waistband"
-      const namePart = subMeta?.label.replaceAll(" ", "_") ?? meta.name.replaceAll(" ", "_");
+      const namePart = (subMeta?.label ?? meta.name).replaceAll(" ", "_");
 
       const variantPart = selection.variant ?? "";
       const recolorPart = selection.recolor ?? "";

@@ -81,7 +81,7 @@ export function getBasePalette(material, base = null, source = null) {
         return null;
     }
 
-    // Is "Base" An Array?!
+    // If source provided, used that directly for the color array
     if (source !== null) {
         return [material, base, source];
     }
