@@ -118,16 +118,16 @@ export const ItemWithRecolors = {
                                 const imagesLoaded = drawRecolorPreview(itemId, meta, canvasVnode.dom, selectedColors);
                                 if (imagesLoaded > 0) {
                                     rootViewNode.state.imagesLoaded += imagesLoaded;
-                                    rootViewNode.state.oldSelectedColors = selectedColors;
+                                    rootViewNode.state.oldSelectedColors = JSON.stringify(selectedColors);
                                 }
                             },
                             onupdate: async (canvasVnode) => {
-                                if (rootViewNode.state.oldSelectedColors === selectedColors) {
+                                if (rootViewNode.state.oldSelectedColors === JSON.stringify(selectedColors)) {
                                     return;
                                 }
                                 const imagesLoaded = drawRecolorPreview(itemId, meta, canvasVnode.dom, selectedColors);
                                 if (imagesLoaded > 0) {
-                                    rootViewNode.state.oldSelectedColors = selectedColors;
+                                    rootViewNode.state.oldSelectedColors = JSON.stringify(selectedColors);
                                 }
                             }
                         })

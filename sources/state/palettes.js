@@ -83,7 +83,7 @@ export function getBasePalette(material, base = null, source = null) {
 
     // If source provided, used that directly for the color array
     if (source !== null) {
-        return [material, base, source];
+        return [materialMeta.default, base, source];
     }
 
     // Determine Base Variant

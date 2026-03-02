@@ -14,7 +14,7 @@ export const PaletteSelectModal = {
         } = vnode.attrs;
 
         // Selection Group
-        const selectionGroup = getSelectionGroup(itemId);
+        const selectionGroup = opt.type_name ?? getSelectionGroup(itemId);
         const selection = state.selections[selectionGroup];
 
         // Overlay for outside click
