@@ -232,7 +232,7 @@ function parseJson(filePath, fileName) {
     replace_in_path,
     priority,
     ignore,
-    //path: itemPath,
+    path: itemPath,
     aliases
   } = definition;
 
