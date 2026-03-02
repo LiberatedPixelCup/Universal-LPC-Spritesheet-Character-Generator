@@ -36908,7 +36908,8 @@ window.itemMetadata = {
       "slash",
       "shoot",
       "hurt",
-      "watering"
+      "watering",
+      "idle"
     ],
     "tags": [],
     "required_tags": [],
@@ -36962,6 +36963,42 @@ window.itemMetadata = {
           "bluecarrot16",
           "Pierre Vigier (pvigier)",
           "Johannes Sjölund (wulax)"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      },
+      {
+        "file": "legs/skirts/plain/male/idle.png",
+        "notes": "original by wulax, edited for female base by pvigier, edited for v3 base by bluecarrot16, male idle by Ahmad3366",
+        "authors": [
+          "bluecarrot16",
+          "Pierre Vigier (pvigier)",
+          "Johannes Sjölund (wulax)",
+          "Ahmad3366"
+        ],
+        "licenses": [
+          "OGA-BY 3.0",
+          "CC-BY-SA 3.0",
+          "GPL 3.0"
+        ],
+        "urls": [
+          "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+        ]
+      },
+      {
+        "file": "legs/skirts/plain/female/idle.png",
+        "notes": "original by wulax, edited for female base by pvigier, edited for v3 base by bluecarrot16, female idle by JaidynReiman",
+        "authors": [
+          "bluecarrot16",
+          "Pierre Vigier (pvigier)",
+          "Johannes Sjölund (wulax)",
+          "JaidynReiman"
         ],
         "licenses": [
           "OGA-BY 3.0",
