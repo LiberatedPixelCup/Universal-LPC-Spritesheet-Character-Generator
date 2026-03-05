@@ -92,7 +92,7 @@ export function buildNewSelection(foundItemId, matchedVariant, matchedRecolor, s
     itemId: foundItemId,
     subId,
     variant: matchedVariant || (matchedRecolor != "" ? "" : meta.variants?.[0] || ""),
-    recolor: matchedRecolor || (meta.variants.length === 0 ? subMeta?.variants[0] || "" : ""),
+    recolor: matchedRecolor || ((meta.variants?.length ?? 0) === 0 ? subMeta?.variants[0] || "" : ""),
     name: subId ? subMeta?.label : meta.name
   };
 
@@ -234,7 +234,6 @@ export function loadSelectionsFromHash(hashString = null) {
                 break;
               }
             }
-            break;
           }
           if (variantToMatch === "") {
             // No variants for this item, so we can match just on name

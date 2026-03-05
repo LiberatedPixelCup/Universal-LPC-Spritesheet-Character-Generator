@@ -256,7 +256,7 @@ export async function getImageToDraw(img, itemId, recolors) {
       return await recolorWithPalette(img, recolors, paletteConfig);
     } catch (err) {
       console.error(
-        `Failed to recolor ${paletteConfig.material} color ${JSON.stringify(recolors)}:`,
+        `Failed to recolor ${paletteConfig[meta.type_name].material} color ${JSON.stringify(recolors)}:`,
         err
       );
       return img; // Fallback to original on error

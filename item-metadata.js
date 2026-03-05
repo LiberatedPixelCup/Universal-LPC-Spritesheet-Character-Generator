@@ -99946,7 +99946,7 @@ window.paletteMetadata = {
             "#2a8598",
             "#3aafc2"
           ],
-          "violent": [
+          "violet": [
             "#2a1722",
             "#481945",
             "#5e2043",

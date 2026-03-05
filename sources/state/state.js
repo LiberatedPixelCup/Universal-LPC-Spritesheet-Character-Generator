@@ -186,7 +186,7 @@ export function selectItem(itemId, variant, isSelected = false, subId = null) {
 	} else {
 		// Get Meta Data
 		const meta = window.itemMetadata[itemId];
-		const useVariants = (meta.variants?.length > 0) ?? false;
+		const useVariants = meta.variants?.length > 0;
 		const variantDisplayName = variant.replaceAll("_", " ");
 
 		// Get Sub Selection Items
