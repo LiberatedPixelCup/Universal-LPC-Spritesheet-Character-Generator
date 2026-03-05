@@ -266,26 +266,45 @@ export function loadSelectionsFromHash(hashString = null) {
   }
 
   // Check if Skipped Entries Are Sub-Items!
+  const subItemLookup = new Map();
+  for (const selection of Object.values(newSelections)) {
+    const recolors = window.itemMetadata?.[selection.itemId]?.recolors;
+    if (!Array.isArray(recolors)) continue;
+
+    for (let recolorIndex = 0; recolorIndex < recolors.length; recolorIndex++) {
+      const recolor = recolors[recolorIndex];
+      if (!recolor?.type_name || !Array.isArray(recolor.variants)) continue;
+
+      for (const recolorVariant of recolor.variants) {
+        const lookupKey = `${recolor.type_name}\u0000${recolorVariant}`;
+        if (!subItemLookup.has(lookupKey)) {
+          subItemLookup.set(lookupKey, {
+            itemId: selection.itemId,
+            subId: recolorIndex,
+          });
+        }
+      }
+    }
+  }
+
+  // Insert Selections for Skipped Entries That Might Be Sub-Items
   for (const [subType, nameAndVariant] of Object.entries(skippedEntries)) {
     // Handle sub-items logic here
     const parts = nameAndVariant.split("_");
     for (let i = 1; i <= parts.length; i++) {
       const variants = parts.slice(i).join("_");
       const recolorToMatch = variants.split("|")[1] ?? variants.split("|")[0];
-      let match = null;
-      let chosenItemId = null;
-      for (const [typeName, selection] of Object.entries(newSelections)) {
-        const recolors = window.itemMetadata[selection.itemId].recolors;
-        match = recolors?.findIndex(color => color.type_name === subType);
-        if (match !== -1 && match !== undefined && recolors[match].variants.indexOf(recolorToMatch) !== -1) {
-          chosenItemId = selection.itemId;
-          break;
-        }
-      }
+      const lookupKey = `${subType}\u0000${recolorToMatch}`;
+      const subItem = subItemLookup.get(lookupKey);
 
       // Build New Selection
-      if (match !== -1 && chosenItemId) {
-        newSelections[subType] = buildNewSelection(chosenItemId, null, recolorToMatch, match);
+      if (subItem) {
+        newSelections[subType] = buildNewSelection(
+          subItem.itemId,
+          null,
+          recolorToMatch,
+          subItem.subId,
+        );
       }
     }
   }
