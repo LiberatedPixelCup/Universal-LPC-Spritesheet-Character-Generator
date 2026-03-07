@@ -6,11 +6,13 @@ on:
       - master
       - full_rewrite
       - paint-in-place-for-real
+      - paint-in-place-master
   pull_request:
     branches:
       - master
       - full_rewrite
       - paint-in-place-for-real
+      - paint-in-place-master
 
 jobs:
   ci:

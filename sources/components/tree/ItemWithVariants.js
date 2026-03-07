@@ -1,7 +1,7 @@
 // Item with variants component
-import { state, getSelectionGroup, applyMatchBodyColor } from '../../state/state.js';
-import { getImageToDraw } from '../../canvas/palette-recolor.js';
+import { state, getSelectionGroup, selectItem } from '../../state/state.js';
 import { getLayersToLoad } from '../../state/meta.js';
+import { COMPACT_FRAME_SIZE, FRAME_SIZE } from '../../state/constants.js';
 import { variantToFilename, capitalize } from '../../utils/helpers.js';
 
 const classNames = window.classNames;
@@ -91,8 +91,8 @@ export const ItemWithVariants = {
 					// Negative position shifts the image left/up to show that part in the viewport
 					// Positive offset values shift the viewport right/down (to see more left/top of sprite)
 					// Negative offset values shift the viewport left/up (to see more right/bottom of sprite)
-					const objectPosX = -(previewCol * 64 - previewXOffset);
-					const objectPosY = -(previewRow * 64 - previewYOffset);
+					const objectPosX = -(previewCol * FRAME_SIZE - previewXOffset);
+					const objectPosY = -(previewRow * FRAME_SIZE - previewYOffset);
 
 					return m("div.variant-item.is-flex.is-flex-direction-column.is-align-items-center.is-clickable", {
 						key: variant,
@@ -114,29 +114,14 @@ export const ItemWithVariants = {
 						},
 						onclick: () => {
 							if (!isCompatible) return; // Prevent selecting incompatible
-							const selectionGroup = getSelectionGroup(itemId);
-
-							if (isSelected) {
-								delete state.selections[selectionGroup];
-							} else {
-								state.selections[selectionGroup] = {
-									itemId: itemId,
-									variant: variant,
-									name: `${displayName} (${variantDisplayName})`
-								};
-
-								// If this item has matchBodyColor enabled, apply to all other body-colored items
-								if (meta.matchBodyColor) {
-									applyMatchBodyColor(variant);
-								}
-							}
+							selectItem(itemId, variant, isSelected);
 						}
 					}, [
 						m("span.variant-display-name.has-text-centered.is-size-7",
 							capitalize(variantDisplayName)),
 						m("canvas.variant-canvas.box.p-0", {
-							width: 64,
-							height: 64,
+							width: compactDisplay ? COMPACT_FRAME_SIZE : FRAME_SIZE,
+							height: compactDisplay ? COMPACT_FRAME_SIZE : FRAME_SIZE,
 							class: (compactDisplay ? " compact-display" : ""),
 							style: (isSelected ? " hsl(217, 71%, 53%)" : " hsl(0, 0%, 86%)"),
 							oncreate: (canvasVnode) => {
@@ -154,21 +139,18 @@ export const ItemWithVariants = {
 										img.onerror = () => resolve({ img: null, layer });
 										img.src = layer.path;
 									});
-								})).then(async loadedLayers => {
+								})).then(loadedLayers => {
 									canvas.loadedLayers = loadedLayers;
 									// Draw each layer in zPos order
-									// Use universalFrameSize (64) for all calculations, matching master branch
-									const universalFrameSize = 64;
 									for (const { img, layer } of loadedLayers) {
 										if (img) {
-											const imageToDraw = await getImageToDraw(img, itemId, variant);
-											const size = compactDisplay ? 32 : 64;
-											// Master branch uses: previewColumn * universalFrameSize + previewXOffset
-											const srcX = previewCol * universalFrameSize + previewXOffset;
-											const srcY = previewRow * universalFrameSize + previewYOffset;
+											const size = compactDisplay ? COMPACT_FRAME_SIZE : FRAME_SIZE;
+											// Master branch uses: previewColumn * FRAME_SIZE + previewXOffset
+											const srcX = previewCol * FRAME_SIZE + previewXOffset;
+											const srcY = previewRow * FRAME_SIZE + previewYOffset;
 											ctx.drawImage(
-												imageToDraw,
-												srcX, srcY, universalFrameSize, universalFrameSize,
+												img,
+												srcX, srcY, FRAME_SIZE, FRAME_SIZE,
 												0, 0, size, size
 											);
 										}
@@ -184,17 +166,15 @@ export const ItemWithVariants = {
 								// Process Layers Loaded for Variant
 								if (canvas.loadedLayers) {
 									// Draw each layer in zPos order
-									// Use universalFrameSize (64) for all calculations, matching master branch
-									const universalFrameSize = 64;
 									for (const { img, layer } of canvas.loadedLayers) {
 										if (img) {
-											const size = compactDisplay ? 32 : 64;
-											// Master branch uses: previewColumn * universalFrameSize + previewXOffset
-											const srcX = previewCol * universalFrameSize + previewXOffset;
-											const srcY = previewRow * universalFrameSize + previewYOffset;
+											const size = compactDisplay ? COMPACT_FRAME_SIZE : FRAME_SIZE;
+											// Master branch uses: previewColumn * FRAME_SIZE + previewXOffset
+											const srcX = previewCol * FRAME_SIZE + previewXOffset;
+											const srcY = previewRow * FRAME_SIZE + previewYOffset;
 											ctx.drawImage(
 												img,
-												srcX, srcY, universalFrameSize, universalFrameSize,
+												srcX, srcY, FRAME_SIZE, FRAME_SIZE,
 												0, 0, size, size
 											);
 										}
@@ -203,7 +183,8 @@ export const ItemWithVariants = {
 							}
 						})
 					]);
-				}))
+				})
+				)
 			]) : null
 		]);
 	}

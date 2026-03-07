@@ -10,8 +10,8 @@ const files = fs.readdirSync(SHEETS_DIR, {
   recursive: true,
   withFileTypes: true 
 }).sort((a, b) => {
-  const pa = path.join(a.path, a.name);
-  const pb = path.join(b.path, b.name);
+  const pa = path.join(a.parentPath, a.name);
+  const pb = path.join(b.parentPath, b.name);
 
   const depthA = pa.split(path.sep).length;
   const depthB = pb.split(path.sep).length;
@@ -24,7 +24,7 @@ files.forEach(file => {
   if (!file.name.includes('.json') || file.isDirectory()) {
     return
   }
-  const fullPath = path.join(file.path, file.name);
+  const fullPath = path.join(file.parentPath, file.name);
   const json = file.name.replace('.json', '');
   const definition = JSON.parse(fs.readFileSync(fullPath));
   for (let jdx =1; jdx < 10; jdx++) {

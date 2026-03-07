@@ -43,7 +43,7 @@ import { PerformanceProfiler } from './performance-profiler.js';
 function boolMap() {
 	return {
 		true: true,
-		false: false,
+		false: false
 	}
 }
 function bool(s) {

@@ -29,6 +29,13 @@ export function capitalize(str) {
 }
 
 /**
+ * Helper function to capitalize all words in a string for display
+ */
+export function ucwords(str) {
+	return str.split(' ').map(word => capitalize(word)).join(' ');
+}
+
+/**
  * Helper function to check if item matches search query
  */
 export function matchesSearch(text, query) {

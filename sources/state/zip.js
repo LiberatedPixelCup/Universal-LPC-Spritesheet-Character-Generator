@@ -21,6 +21,7 @@ import {
 } from "../custom-animations.js";
 import { getSortedLayers } from "./meta.js";
 import { get2DContext } from "../canvas/canvas-utils.js";
+import { getMultiRecolors } from '../state/palettes.js';
 
 // Helper to convert canvas to blob
 const canvasToBlob = (canvas) => {
@@ -218,7 +219,7 @@ export const exportSplitAnimations = async () => {
         exported: exportedCustom,
         failed: failedCustom,
       },
-      frameSize: 64,
+      frameSize: FRAME_SIZE,
       frameCounts: {}, // Would need to map animation frame counts
     };
     creditsFolder.file("metadata.json", JSON.stringify(metadata, null, 2));
@@ -283,6 +284,9 @@ export const exportSplitItemSheets = async () => {
       const { itemId, variant, name } = selection;
       const layers = getSortedLayers(itemId, true);
 
+      // Get Multiple Recolors If Available
+      const recolors = getMultiRecolors(itemId, state.selections);
+
       // Render each layer of the item separately
       for (const layer of layers) {
         if (layer.custom_animation) continue;
@@ -292,6 +296,7 @@ export const exportSplitItemSheets = async () => {
           const itemCanvas = await renderSingleItem(
             itemId,
             variant,
+            recolors,
             bodyType,
             state.selections,
             layer.layerNum
@@ -429,6 +434,9 @@ export const exportSplitItemAnimations = async () => {
           continue;
         }
 
+        // Get Multiple Recolors If Available
+        const recolors = getMultiRecolors(itemId, state.selections);
+
         // Render each layer of the item separately
         const layers = getSortedLayers(itemId, true);
         for (const layer of layers) {
@@ -444,6 +452,7 @@ export const exportSplitItemAnimations = async () => {
             const animCanvas = await renderSingleItemAnimation(
               itemId,
               variant,
+              recolors,
               bodyType,
               anim.value,
               state.selections,
@@ -585,7 +594,7 @@ export const exportSplitItemAnimations = async () => {
         exported: exportedCustom,
         failed: failedCustom,
       },
-      frameSize: 64,
+      frameSize: FRAME_SIZE,
       frameCounts: {},
     };
     creditsFolder.file("metadata.json", JSON.stringify(metadata, null, 2));

@@ -12,30 +12,6 @@
     "pregnant": "head/heads/human/male/",
     "teen": "head/heads/human/male/"
   },
-  "variants": [
-    "light",
-    "amber",
-    "olive",
-    "taupe",
-    "bronze",
-    "brown",
-    "black",
-    "lavender",
-    "blue",
-    "zombie_green",
-    "green",
-    "pale_green",
-    "bright_green",
-    "dark_green",
-    "zombie",
-    "fur_black",
-    "fur_brown",
-    "fur_tan",
-    "fur_copper",
-    "fur_gold",
-    "fur_grey",
-    "fur_white"
-  ],
   "match_body_color": true,
   "animations": [
     "spellcast",
@@ -82,8 +58,23 @@
     "heads_human_male"
   ],
   "recolors": {
-    "base": "light",
-    "palette": "body"
+    "color_1": {
+      "material": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
+      ]
+    },
+    "color_2": {
+      "type_name": "eyes",
+      "label": "Eye Color",
+      "material": "eye",
+      "palettes": [
+        "ulpc",
+        "lpcr"
+      ]
+    }
   },
   "type_name": "head"
 }

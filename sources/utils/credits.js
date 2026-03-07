@@ -18,8 +18,6 @@ export function getAllCredits(selections, bodyType) {
 
     if (!meta || !meta.credits) continue;
 
-    const fileName = variantToFilename(selection.variant);
-
     // Build set of actual file paths being used for this item
     const usedPaths = new Set();
 
@@ -41,7 +39,11 @@ export function getAllCredits(selections, bodyType) {
         (meta.animations.includes("walk") ? "walk" : meta.animations[0]);
 
       // Build full sprite path for this layer and animation
-      const fullPath = `${basePath}${animation}/${fileName}.png`;
+      let fullPath = `${basePath}${animation}.png`;
+      if (selection.variant) {
+        const fileName = variantToFilename(selection.variant);
+        fullPath = `${basePath}${animation}/${fileName}.png`;
+      }
 
       usedPaths.add(fullPath);
     }

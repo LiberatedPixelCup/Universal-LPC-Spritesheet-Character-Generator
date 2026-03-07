@@ -66,20 +66,9 @@ dress_kimono_split_trim,layer_1,31,dress/kimono/split/trim/universal/female/
 dress_kimono_trim,layer_1,31,dress/kimono/normal/trim/universal/female/
 dress_sash,layer_1,30,dress/sash/female/
 dress_slit,layer_1,30,dress/slit/female/
-eye_color,layer_1,105,eyes/human/${head}/${expression}/ eyes/human/${head}/${expression}/ eyes/human/${head}/${expression}/ eyes/human/${head}/${expression}/ eyes/human/child/${expression}/
 eyebrows_thick,layer_1,106,eyes/eyebrows/thick/adult/ eyes/eyebrows/thick/adult/ eyes/eyebrows/thick/adult/ eyes/eyebrows/thick/adult/ eyes/eyebrows/thick/child/
 eyebrows_thin,layer_1,106,eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/child/
-eyes_child,layer_1,105,eyes/human/child/
 eyes_cyclops,layer_1,105,eyes/cyclops/adult/ eyes/cyclops/adult/ eyes/cyclops/adult/ eyes/cyclops/adult/ eyes/cyclops/child/
-eyes_elderly_anger,layer_1,105,eyes/human/elderly/anger/ eyes/human/elderly/anger/ eyes/human/elderly/anger/ eyes/human/elderly/anger/
-eyes_elderly_closing,layer_1,105,eyes/human/elderly/closing/ eyes/human/elderly/closing/ eyes/human/elderly/closing/ eyes/human/elderly/closing/
-eyes_elderly_default,layer_1,105,eyes/human/elderly/default/ eyes/human/elderly/default/ eyes/human/elderly/default/ eyes/human/elderly/default/
-eyes_elderly_eyeroll,layer_1,105,eyes/human/elderly/eyeroll/ eyes/human/elderly/eyeroll/ eyes/human/elderly/eyeroll/ eyes/human/elderly/eyeroll/
-eyes_elderly_look_l,layer_1,105,eyes/human/elderly/look_l/ eyes/human/elderly/look_l/ eyes/human/elderly/look_l/ eyes/human/elderly/look_l/
-eyes_elderly_look_r,layer_1,105,eyes/human/elderly/look_r/ eyes/human/elderly/look_r/ eyes/human/elderly/look_r/ eyes/human/elderly/look_r/
-eyes_elderly_sad,layer_1,105,eyes/human/elderly/sad/ eyes/human/elderly/sad/ eyes/human/elderly/sad/ eyes/human/elderly/sad/
-eyes_elderly_shame,layer_1,105,eyes/human/elderly/shame/ eyes/human/elderly/shame/ eyes/human/elderly/shame/ eyes/human/elderly/shame/
-eyes_elderly_shock,layer_1,105,eyes/human/elderly/shock/ eyes/human/elderly/shock/ eyes/human/elderly/shock/ eyes/human/elderly/shock/
 face_angry,layer_1,101,head/faces/${head}/anger/ head/faces/${head}/anger/ head/faces/${head}/anger/ head/faces/${head}/anger/
 face_angry2,layer_1,106,head/faces/global/angry2/ head/faces/global/angry2/ head/faces/global/angry2/ head/faces/global/angry2/
 face_blush,layer_1,101,head/faces/${head}/blush/ head/faces/${head}/blush/ head/faces/${head}/blush/ head/faces/${head}/blush/

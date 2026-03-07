@@ -7,6 +7,10 @@ import {
 } from "./webgl-palette-recolor.js";
 import { getDebugParam } from "../main.js";
 import { get2DContext } from "./canvas-utils.js";
+import { state } from '../state/state.js';
+import { getLayersToLoad } from '../state/meta.js';
+import { getPalettesForItem, getTargetPalette } from '../state/palettes.js';
+import { COMPACT_FRAME_SIZE, FRAME_SIZE } from '../state/constants.js';
 
 // Configuration flags
 let config = {
@@ -47,17 +51,6 @@ function hexToRgb(hex) {
         b: parseInt(result[3], 16),
       }
     : null;
-}
-
-/**
- * Pack RGB values into single integer for fast lookup
- * @param {number} r - Red (0-255)
- * @param {number} g - Green (0-255)
- * @param {number} b - Blue (0-255)
- * @returns {number} Packed integer
- */
-function packRgb(r, g, b) {
-  return (r << 16) | (g << 8) | b;
 }
 
 /**
@@ -242,40 +235,28 @@ export async function loadPalette(url) {
   return await response.json();
 }
 
-// Module state for loaded palettes
-// Palettes are loaded on-demand based on item metadata
-const loadedPalettes = {};
-
-// Map palette names to file paths
-const PALETTE_FILES = {
-  body: "tools/palettes/ulpc-body-palettes.json",
-  hair: "tools/palettes/ulpc-hair-palettes.json",
-  cloth: "tools/palettes/ulpc-cloth-palettes.json",
-  "cloth-metal": "tools/palettes/ulpc-cloth-metal-palettes.json",
-  metal: "tools/palettes/ulpc-metal-palettes.json",
-  eye: "tools/palettes/ulpc-eye-palettes.json",
-  fur: "tools/palettes/ulpc-fur-palettes.json",
-};
-
 /**
  * Get image to draw - applies recoloring if needed based on palette configuration
  * Async because palette loading is lazy (loads on first use)
  * @param {HTMLImageElement|HTMLCanvasElement} img - Source image
  * @param {string} itemId - Item identifier
- * @param {string} variant - Variant name
+ * @param {Object} recolors - Recolor names
  * @returns {Promise<HTMLImageElement|HTMLCanvasElement>} Image or recolored canvas to draw
  */
-export async function getImageToDraw(img, itemId, variant) {
+export async function getImageToDraw(img, itemId, recolors) {
+  if (!recolors) {
+    return img; // No recolor specified, return original image
+  }
   const meta = window.itemMetadata?.[itemId];
-  const paletteConfig = getPaletteForItem(itemId, meta);
+  const paletteConfig = getPalettesForItem(itemId, meta);
 
-  // Only recolor if item uses a palette and variant is not the source variant
-  if (paletteConfig && variant !== paletteConfig.sourceVariant) {
+  // Only recolor if item uses a palette and color is not the source color
+  if (paletteConfig && recolors) {
     try {
-      return await recolorWithPalette(img, variant, paletteConfig.type);
+      return await recolorWithPalette(img, recolors, paletteConfig);
     } catch (err) {
-      console.warn(
-        `Failed to recolor ${paletteConfig.type} variant ${variant}:`,
+      console.error(
+        `Failed to recolor ${paletteConfig[meta.type_name].material} color ${JSON.stringify(recolors)}:`,
         err
       );
       return img; // Fallback to original on error
@@ -285,78 +266,108 @@ export async function getImageToDraw(img, itemId, variant) {
 }
 
 /**
- * Get palette configuration for an item from its metadata
- * @param {string} itemId - Item identifier
- * @param {Object} meta - Item metadata
- * @returns {Object|null} Palette config object with {type, base, palette} or null if item doesn't use palette recoloring
- */
-export function getPaletteForItem(itemId, meta) {
-  if (!meta || !meta.recolors) return null;
-
-  // Return the recolors config from item metadata
-  // This includes: { base: 'light', palette: 'body' }
-  return {
-    type: meta.recolors.palette,
-    sourceVariant: meta.recolors.base,
-    file: PALETTE_FILES[meta.recolors.palette],
-  };
-}
-
-/**
- * Lazy-load a palette on first request
- * @param {string} paletteType - Palette type (e.g., 'body', 'hair')
- * @returns {Promise<Object>} Palette data
- */
-async function ensurePaletteLoaded(paletteType) {
-  if (!loadedPalettes[paletteType]) {
-    const paletteFile = PALETTE_FILES[paletteType];
-    if (!paletteFile) {
-      throw new Error(
-        `Unknown palette type: ${paletteType} (no file mapping found)`
-      );
-    }
-
-    try {
-      loadedPalettes[paletteType] = await loadPalette(paletteFile);
-      if (DEBUG) {
-        console.log(
-          `Loaded ${paletteType} palette with ${
-            Object.keys(loadedPalettes[paletteType]).length
-          } variants`
-        );
-      }
-    } catch (err) {
-      throw new Error(
-        `Failed to load ${paletteType} palette from ${paletteFile}: ${err.message}`
-      );
-    }
-  }
-
-  return loadedPalettes[paletteType];
-}
-
-/**
  * Recolor an image using a specified palette type
  * Automatically loads the palette on first use (lazy loading)
- * @param {HTMLImageElement|HTMLCanvasElement} sourceImage - Base source variant image
- * @param {string} targetVariant - Target variant name (e.g., "amber", "bronze", "fur_copper")
- * @param {string} paletteType - Palette type to use (e.g., "body", "hair", "cloth")
+ * @param {HTMLImageElement|HTMLCanvasElement} sourceImage - Base source image
+ * @param {Object} targetColors - Target color names (e.g., { primary: "amber", secondary: "bronze", accent: "fur_copper" })
+ * @param {Object} sourcePalettes - Original palettes to source data from
  * @returns {Promise<HTMLCanvasElement>} Recolored canvas
  */
 export async function recolorWithPalette(
   sourceImage,
-  targetVariant,
-  paletteType
+  targetColors,
+  sourcePalettes
 ) {
-  // Lazy-load palette on first use
-  const palette = await ensurePaletteLoaded(paletteType);
+  // Loop All Palettes to Recolor
+  for (const [typeName, palette] of Object.entries(sourcePalettes)) {
+    // Get Target Palette
+    const targetPalette = getTargetPalette(palette.material, targetColors[typeName]);
+    if (!targetPalette) {
+      throw new Error(`Unknown target palette color: ${JSON.stringify(targetColors)}`);
+    }
 
-  const sourcePalette = palette.source || palette.light;
-  const targetPalette = palette[targetVariant];
+    sourceImage = recolorImage(sourceImage, palette.colors, targetPalette);
+  }
+  return sourceImage;
+}
 
-  if (!targetPalette) {
-    throw new Error(`Unknown ${paletteType} variant: ${targetVariant}`);
+/**
+ * Draw Preview for Recolorable Asset
+ * @param {string} itemId - Item identifier
+ * @param {Object} meta - Metadata for the asset
+ * @param {Object} canvas - Canvas dom
+ * @param {Object} selectedColors - Selected colors for recoloring
+ * @param {number|null} [renderId] - Optional render identifier used to detect and skip stale renders
+ * @returns {number} Numeric status code (0 if no render was performed or the render is stale)
+ */
+export async function drawRecolorPreview(itemId, meta, canvas, selectedColors, renderId = null) {
+  if (!canvas || !canvas.isConnected) {
+    return 0;
   }
 
-  return recolorImage(sourceImage, sourcePalette, targetPalette);
+  const isStaleRender = () => {
+    if (!canvas.isConnected) {
+      return true;
+    }
+    if (typeof renderId === 'number' && canvas._recolorRenderId !== renderId) {
+      return true;
+    }
+    return false;
+  };
+
+  // Skip if canvas is not connected or renderId doesn't match (stale render)
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  if (!ctx || isStaleRender()) {
+    return 0;
+  }
+
+  // Only show the idle preview for the asset
+  const compactDisplay = state.compactDisplay;
+  const previewRow = meta.preview_row ?? 2;
+  const previewCol = meta.preview_column ?? 0;
+  const previewXOffset = meta.preview_x_offset ?? 0;
+  const previewYOffset = meta.preview_y_offset ?? 0;
+  const layersToLoad = getLayersToLoad(meta, state.bodyType, state.selections);
+
+  // Load and draw all layers
+  let imagesLoaded = 0;
+  const loadedLayers = await Promise.all(layersToLoad.map(layer => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => resolve({ img, layer });
+      img.onerror = () => {
+        if (DEBUG)
+          console.warn(`Failed to load image for layer ${layer.path}`);
+        resolve({ img: null, layer });
+      }
+      img.src = layer.path;
+    });
+  }));
+  if (isStaleRender()) {
+    return 0;
+  }
+
+  canvas.loadedLayers = loadedLayers;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // Draw each layer in zPos order
+  imagesLoaded = 0;
+  for (const { img, layer } of loadedLayers) {
+    if (isStaleRender()) {
+      return 0;
+    }
+
+    if (img) {
+      const imageToDraw = await getImageToDraw(img, itemId, selectedColors);
+      const size = compactDisplay ? COMPACT_FRAME_SIZE : FRAME_SIZE;
+      const srcX = previewCol * FRAME_SIZE + previewXOffset;
+      const srcY = previewRow * FRAME_SIZE + previewYOffset;
+      ctx.drawImage(
+          imageToDraw,
+          srcX, srcY, FRAME_SIZE, FRAME_SIZE,
+          0, 0, size, size
+      );
+      imagesLoaded++;
+    }
+  }
+  return imagesLoaded;
 }

@@ -7,6 +7,7 @@ import {
 } from '../../state/filters.js';
 import { capitalize, matchesSearch, nodeHasMatches } from '../../utils/helpers.js';
 import { ItemWithVariants } from './ItemWithVariants.js';
+import { ItemWithRecolors } from './ItemWithRecolors.js';
 
 export const TreeNode = {
 	view: function(vnode) {
@@ -78,6 +79,7 @@ export const TreeNode = {
 						const meta = window.itemMetadata[itemId];
 						const displayName = meta.name;
 						const hasVariants = meta.variants && meta.variants.length > 0;
+						const hasRecolors = !hasVariants && meta.recolors && meta.recolors.length > 0;
 						const isSearchMatch = searchQuery && searchQuery.length >= 2 && matchesSearch(meta.name, searchQuery);
 
 						const isLicenseCompatibleFlag = isItemLicenseCompatible(itemId);
@@ -111,8 +113,8 @@ export const TreeNode = {
 						}
 						tooltipText += `${licensesText}\n${animsText}`;
 
-						if (!hasVariants) {
-							// Simple item with no variants
+						if (!hasVariants && !hasRecolors) {
+							// Simple item with no variants or recolors
 							const selectionGroup = getSelectionGroup(itemId);
 							const isSelected = state.selections[selectionGroup]?.itemId === itemId;
 							return m("div.tree-node", {
@@ -134,7 +136,10 @@ export const TreeNode = {
 							]);
 						}
 
-						// Item with variants - create a sub-component
+						// Item with variants or recolors - create a sub-component
+						if (hasRecolors) {
+							return m(ItemWithRecolors, { key: itemId, itemId, meta, isSearchMatch, isCompatible, tooltipText });
+						}
 						return m(ItemWithVariants, { key: itemId, itemId, meta, isSearchMatch, isCompatible, tooltipText });
 					})
 			]) : null

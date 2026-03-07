@@ -5,7 +5,7 @@ import { variantToFilename, es6DynamicTemplate } from '../utils/helpers.js';
 /**
  * Build sprite path from item metadata for a specific animation
  */
-export function getSpritePath(itemId, variant, bodyType, animName, layerNum = 1, selections = {}, meta = null) {
+export function getSpritePath(itemId, variant, recolors, bodyType, animName, layerNum = 1, selections = {}, meta = null) {
   if (!meta) {
     meta = window.itemMetadata[itemId];
   }
@@ -25,7 +25,7 @@ export function getSpritePath(itemId, variant, bodyType, animName, layerNum = 1,
   }
 
   // If no variant specified, try to extract from itemId
-  if (!variant) {
+  if (!variant && !recolors) {
     const parts = itemId.split('_');
     variant = parts[parts.length - 1];
   }
@@ -37,7 +37,8 @@ export function getSpritePath(itemId, variant, bodyType, animName, layerNum = 1,
   }
 
   // Build full path: spritesheets/ + basePath + animation/ + variant.png
-  return `spritesheets/${basePath}${animName}/${variantToFilename(variant)}.png`;
+  const fileName = !recolors ? `/${variantToFilename(variant)}` : '';
+  return `spritesheets/${basePath}${animName}${fileName}.png`;
 }
 
 // Replace template variables like ${head} in a path using current selections
@@ -90,11 +91,13 @@ function getNameWithoutVariant(typeName, nameAndVariant) {
 	const l = nameAndVariantPath.length;
 	const names = indexedMetadataCache.get(typeName) || [];
 	const variants = names.flatMap(n => n.variants || []).map(v => v.toLowerCase());
+	const recolors = names.flatMap(n => n.recolors?.[0]?.variants || []).map(v => v.toLowerCase());
 	let j = l;
 	let v = 0;
 	while (--j > 0) {
 		const part = nameAndVariantPath.slice(j, l).join('_');
-		if (variants?.includes(part.toLowerCase())) {
+		const hasPart = (flatMap, part) => flatMap?.includes(part.toLowerCase());
+		if (hasPart(variants, part) || hasPart(recolors, part)) {
 			variant = part;
 			v = j;
 		}

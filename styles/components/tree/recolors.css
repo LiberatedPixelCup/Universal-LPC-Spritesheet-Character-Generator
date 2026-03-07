@@ -1,0 +1,156 @@
+/**
+ * Palette Recolor Node Styles
+ */
+.palette-swatch {
+    border: 1px solid #000;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    overflow-x: hidden;
+    line-height: 1.5;
+    background: #000;
+    cursor: pointer;
+}
+.palette-swatch span {
+    height: 1rem;
+    flex: 1;
+    padding: 0;
+    margin: 0;
+}
+
+.palette-recolor-list {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+}
+.palette-recolor-list .palette-recolor-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25em;
+    cursor: pointer;
+    width: auto;
+    gap: 0.5em;
+}
+.palette-recolor-list .palette-recolor-item label {
+    width: 90px;
+    min-width: 90px;
+    max-width: 90px;
+    display: inline-block;
+    text-align: right;
+    margin-right: 0.5em;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.palette-recolor-list .palette-recolor-item div.palette-swatch {
+    min-width: 140px;
+    max-width: 200px;
+    flex-shrink: 0;
+}
+
+/**
+ * Palette Recolor Modal Styles
+ */
+.palette-modal {
+    position: fixed;
+    top: 9vh;
+    left: 25vw;
+    right: 50vw;
+    margin: 0;
+    min-width: 280px;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 0;
+    z-index: 1000;
+    max-height: 85vh;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 16px #0002;
+}
+.palette-modal header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #eee;
+    background: #fafafa;
+    top: 0;
+    z-index: 2;
+}
+.palette-modal header h4 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.palette-modal header button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.palette-modal section {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 0 1em;
+}
+.palette-modal section .palette-version {
+    font-weight: bold;
+    margin: 0.5em 0 0.2em 0;
+}
+.palette-modal section .palette-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+    cursor: pointer;
+}
+.palette-modal .variants-container.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    row-gap: 0;
+    column-gap: 10px;
+}
+.palette-modal .grid > .cell {
+    justify-content: center;
+}
+.palette-modal .variant-canvas {
+    margin: 0;
+    margin-bottom: 0.5rem;
+    padding: 0;
+}
+.palette-modal .variant-display-name {
+    white-space: nowrap;
+}
+.palette-modal .palette-swatch {
+    width: 100%;
+    height: 1rem;
+    overflow: hidden;
+}
+.palette-modal footer {
+    flex: 1 1 auto;
+    min-height: 0.5rem;
+}
+
+.palette-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.05);
+    z-index: 999;
+}
+
+@media (max-width: 600px) {
+    .palette-modal {
+        max-width: 100vw;
+        width: 100vw;
+        left: 0;
+        right: 0;
+        border-radius: 0;
+    }
+}
