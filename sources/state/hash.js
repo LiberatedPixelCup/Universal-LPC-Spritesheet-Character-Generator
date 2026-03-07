@@ -159,6 +159,11 @@ export function syncSelectionsToHash() {
 }
 
 export function loadSelectionsFromHash(hashString = null) {
+  const profiler = window.profiler;
+  if (profiler) {
+    profiler.mark("hash-loadSelectionsFromHash:start");
+  }
+
   const params = hashString
     ? getHashParamsFromString(hashString)
     : getHashParams();
@@ -265,6 +270,11 @@ export function loadSelectionsFromHash(hashString = null) {
   }
 
   // Check if Skipped Entries Are Sub-Items!
+  if (profiler) {
+    profiler.mark("hash-loadSelectionsFromHash:subitems:start");
+  }
+
+  const subItemKeySeparator = "\u0000";
   const subItemLookup = new Map();
   for (const selection of Object.values(newSelections)) {
     const recolors = window.itemMetadata?.[selection.itemId]?.recolors;
@@ -275,7 +285,7 @@ export function loadSelectionsFromHash(hashString = null) {
       if (!recolor?.type_name || !Array.isArray(recolor.variants)) continue;
 
       for (const recolorVariant of recolor.variants) {
-        const lookupKey = `${recolor.type_name}\u0000${recolorVariant}`;
+        const lookupKey = `${recolor.type_name}${subItemKeySeparator}${recolorVariant}`;
         if (!subItemLookup.has(lookupKey)) {
           subItemLookup.set(lookupKey, {
             itemId: selection.itemId,
@@ -293,7 +303,7 @@ export function loadSelectionsFromHash(hashString = null) {
     for (let i = 1; i <= parts.length; i++) {
       const variants = parts.slice(i).join("_");
       const recolorToMatch = variants.split("|")[1] ?? variants.split("|")[0];
-      const lookupKey = `${subType}\u0000${recolorToMatch}`;
+      const lookupKey = `${subType}${subItemKeySeparator}${recolorToMatch}`;
       const subItem = subItemLookup.get(lookupKey);
 
       // Build New Selection
@@ -308,6 +318,15 @@ export function loadSelectionsFromHash(hashString = null) {
     }
   }
 
+  if (profiler) {
+    profiler.mark("hash-loadSelectionsFromHash:subitems:end");
+    profiler.measure(
+      "hash-loadSelectionsFromHash:subitems",
+      "hash-loadSelectionsFromHash:subitems:start",
+      "hash-loadSelectionsFromHash:subitems:end",
+    );
+  }
+
   // Now update state once with complete new selections
   state.selections = newSelections;
 
@@ -317,6 +336,15 @@ export function loadSelectionsFromHash(hashString = null) {
   }
 
   syncSelectionsToHash(); // Ensure hash is in sync with loaded selections (handles any normalization)
+
+  if (profiler) {
+    profiler.mark("hash-loadSelectionsFromHash:end");
+    profiler.measure(
+      "hash-loadSelectionsFromHash",
+      "hash-loadSelectionsFromHash:start",
+      "hash-loadSelectionsFromHash:end",
+    );
+  }
 }
 
 // Initialize hash change listener
