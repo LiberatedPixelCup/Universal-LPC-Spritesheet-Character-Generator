@@ -1,5 +1,6 @@
 // Constants used throughout the application
 export const FRAME_SIZE = 64; // Size of each frame in the spritesheet
+export const COMPACT_FRAME_SIZE = 32; // Size of compact frame preview
 
 // License configuration - single source of truth
 export const LICENSE_CONFIG = [

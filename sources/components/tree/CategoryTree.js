@@ -59,7 +59,7 @@ export const CategoryTree = {
 								const bodySelectionGroup = getSelectionGroup('body-body');
 								const bodySelection = state.selections[bodySelectionGroup];
 								if (bodySelection?.variant) {
-									applyMatchBodyColor(bodySelection.variant);
+									applyMatchBodyColor(bodySelection.variant, bodySelection.recolor ?? bodySelection.variant);
 								}
 							}
 						}

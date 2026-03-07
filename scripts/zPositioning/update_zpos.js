@@ -13,7 +13,7 @@ const sheets = fs.readdirSync(SHEETS_DIR, {
   if (!file.name.includes('.json') || file.isDirectory()) {
     return
   }
-  const fullPath = path.join(file.path, file.name);
+  const fullPath = path.join(file.parentPath, file.name);
   const definition = JSON.parse(fs.readFileSync(fullPath));
   for (let jdx=1; jdx < 10; jdx++) {
     const layerDefinition = definition[`layer_${jdx}`];
@@ -24,8 +24,12 @@ const sheets = fs.readdirSync(SHEETS_DIR, {
         if (item.includes(file.name) && item.includes(`layer_${jdx}`)) {
           const requiredZposition = parseInt(item.split(",")[2]);
           definition[`layer_${jdx}`].zPos = requiredZposition;
-          fs.writeFileSync(fullPath, JSON.stringify(definition, null, 2), function(err) { });
-          console.log('Updated:', file.name);
+          try {
+            fs.writeFileSync(fullPath, JSON.stringify(definition, null, 2));
+            console.log('Updated:', file.name);
+          } catch(e) {
+            return console.error(e);
+          }
         }
         entryIdx += 1;
       }

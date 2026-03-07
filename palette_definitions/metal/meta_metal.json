@@ -1,0 +1,7 @@
+{
+    "type": "material",
+    "label": "Metal",
+    "desc": "Palettes designed for metallic surfaces such as weapons and armor.",
+    "default": "ulpc",
+    "base": "steel"
+}

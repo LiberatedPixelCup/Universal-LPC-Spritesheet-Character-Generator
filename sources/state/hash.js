@@ -1,4 +1,5 @@
 import { state, selectDefaults } from "./state.js";
+import { parseRecolorKey } from "./palettes.js";
 
 // Dependency injection for testability
 export function getState() {
@@ -81,6 +82,35 @@ export function setHashParams(params) {
   setHash(hash);
 }
 
+export function buildNewSelection(foundItemId, matchedVariant, matchedRecolor, subId = null) {
+  // Get Meta Data for Item ID
+  const meta = window.itemMetadata[foundItemId];
+  const subMeta = meta.recolors?.[subId ?? 0];
+
+  // Build New Selection
+  let newSelection = {
+    itemId: foundItemId,
+    subId,
+    variant: matchedVariant || (matchedRecolor != "" ? "" : meta.variants?.[0] || ""),
+    recolor: matchedRecolor || ((meta.variants?.length ?? 0) === 0 ? subMeta?.variants[0] || "" : ""),
+    name: subId ? subMeta?.label : meta.name
+  };
+
+  if (newSelection.variant || newSelection.recolor) {
+    let recolorLabel = newSelection.recolor;
+    if (recolorLabel) {
+      const [mat, ver, recolor] = parseRecolorKey(newSelection.recolor, subMeta);
+      recolorLabel = (ver !== subMeta?.default ? `${ver} ${recolor}` : recolor);
+    }
+    newSelection.name += " (" +
+      (newSelection.variant ? `${newSelection.variant}` : "") +
+      (newSelection.variant && newSelection.recolor ? " | " : "") +
+      (newSelection.recolor ? `${recolorLabel}` : "") +
+    ")";
+  }
+  return newSelection;
+}
+
 export function getHashParamsforSelections(selections) {
   const params = {};
 
@@ -100,15 +130,21 @@ export function getHashParamsforSelections(selections) {
 
       params[aliasMeta.typeName] = `${aliasMeta.name}_${aliasMeta.variant}`;
     } else {
+      // Get Subcolor Metadata if applicable
+      const subMeta = meta.recolors?.[selection.subId];
+
       // Use type_name as key (selection group)
-      const key = meta.type_name;
+      const key = subMeta?.type_name ?? meta.type_name;
 
       // Build name part for URL: use full name with underscores
       // "Body color" -> "Body_color", "Sara Shoes" -> "Sara_Shoes", "Waistband" -> "Waistband"
-      const namePart = meta.name.replaceAll(" ", "_");
+      const namePart = (subMeta?.label ?? meta.name).replaceAll(" ", "_");
 
-      const variantPart = selection.variant ? `_${selection.variant}` : "";
-      const value = namePart + variantPart;
+      const variantPart = selection.variant ?? "";
+      const recolorPart = selection.recolor ?? "";
+      const uscorePart = (variantPart || recolorPart) ? "_" : "";
+      const splitPart = (variantPart && recolorPart) ? "|" : "";
+      const value = namePart + uscorePart + variantPart + splitPart + recolorPart;
 
       params[key] = value;
     }
@@ -123,12 +159,18 @@ export function syncSelectionsToHash() {
 }
 
 export function loadSelectionsFromHash(hashString = null) {
+  const profiler = window.profiler;
+  if (profiler) {
+    profiler.mark("hash-loadSelectionsFromHash:start");
+  }
+
   const params = hashString
     ? getHashParamsFromString(hashString)
     : getHashParams();
 
   // Build new selections object without mutating state yet
   const newSelections = {};
+  const skippedEntries = {};
 
   // Load selections
   // Old format: type_name=Name_variant (e.g., "body=Body_color_light", "sash=Waistband_rose")
@@ -153,17 +195,21 @@ export function loadSelectionsFromHash(hashString = null) {
     // Try from left to right to find a valid name+variant combination
     // e.g., "Tiara_tiara_silver" -> try "Tiara" + "tiara_silver" ✓
     // e.g., "Human_female_light" -> try "Human_female" + "light" ✓
+    // e.g., "Human_female_light|light" -> try "Human_female" + "light" + "light" ✓
 
     let foundItemId = null;
     let matchedVariant = "";
-
+    let matchedRecolor = "";
+  
     // Split on underscores and try different combinations
     const parts = nameAndVariant.split("_");
 
     // Try each possible split point (from left to right)
     for (let i = 1; i <= parts.length; i++) {
       const nameToMatch = parts.slice(0, i).join("_");
-      const variantToMatch = parts.slice(i).join("_");
+      const variants = parts.slice(i).join("_");
+      const variantToMatch = variants.split("|")[0];
+      const recolorToMatch = variants.split("|")[1] || "";
 
       // Search for item with this name and variant
       for (const [itemId, meta] of Object.entries(window.itemMetadata || {})) {
@@ -178,13 +224,27 @@ export function loadSelectionsFromHash(hashString = null) {
               if (variant.toLowerCase() === variantToMatch.toLowerCase()) {
                 foundItemId = itemId;
                 matchedVariant = variant;
+                matchedRecolor = "";
                 break;
               }
             }
-          } else if (variantToMatch === "") {
+          }
+          if (meta.recolors?.[0]?.variants.length > 0) {
+            for (const variant of meta.recolors[0].variants) {
+              if ((recolorToMatch !== "" && variant.toLowerCase() === recolorToMatch.toLowerCase()) ||
+                  (recolorToMatch === "" && variant.toLowerCase() === variantToMatch.toLowerCase())) {
+                foundItemId = itemId;
+                matchedVariant = "";
+                matchedRecolor = variant;
+                break;
+              }
+            }
+          }
+          if (variantToMatch === "") {
             // No variants for this item, so we can match just on name
             foundItemId = itemId;
             matchedVariant = "";
+            matchedRecolor = "";
             break;
           }
         }
@@ -196,6 +256,7 @@ export function loadSelectionsFromHash(hashString = null) {
     }
 
     if (!foundItemId) {
+      skippedEntries[typeName] = nameAndVariant;
       if (window.DEBUG) {
         console.warn(
           `No item found with type_name "${typeName}" and nameAndVariant "${nameAndVariant}"`,
@@ -204,15 +265,66 @@ export function loadSelectionsFromHash(hashString = null) {
       continue;
     }
 
-    const meta = window.itemMetadata[foundItemId];
-
     // Use type_name as selection group
-    const selectionGroup = typeName;
-    newSelections[selectionGroup] = {
-      itemId: foundItemId,
-      variant: matchedVariant || meta.variants?.[0] || "",
-      name: meta.name + (matchedVariant ? ` (${matchedVariant})` : ""),
-    };
+    newSelections[typeName] = buildNewSelection(foundItemId, matchedVariant, matchedRecolor);
+  }
+
+  // Check if Skipped Entries Are Sub-Items!
+  if (profiler) {
+    profiler.mark("hash-loadSelectionsFromHash:subitems:start");
+  }
+
+  const subItemKeySeparator = "\u0000";
+  const subItemLookup = new Map();
+  for (const selection of Object.values(newSelections)) {
+    const recolors = window.itemMetadata?.[selection.itemId]?.recolors;
+    if (!Array.isArray(recolors)) continue;
+
+    for (let recolorIndex = 0; recolorIndex < recolors.length; recolorIndex++) {
+      const recolor = recolors[recolorIndex];
+      if (!recolor?.type_name || !Array.isArray(recolor.variants)) continue;
+
+      for (const recolorVariant of recolor.variants) {
+        const lookupKey = `${recolor.type_name}${subItemKeySeparator}${recolorVariant}`;
+        if (!subItemLookup.has(lookupKey)) {
+          subItemLookup.set(lookupKey, {
+            itemId: selection.itemId,
+            subId: recolorIndex,
+          });
+        }
+      }
+    }
+  }
+
+  // Insert Selections for Skipped Entries That Might Be Sub-Items
+  for (const [subType, nameAndVariant] of Object.entries(skippedEntries)) {
+    // Handle sub-items logic here
+    const parts = nameAndVariant.split("_");
+    for (let i = 1; i <= parts.length; i++) {
+      const variants = parts.slice(i).join("_");
+      const recolorToMatch = variants.split("|")[1] ?? variants.split("|")[0];
+      const lookupKey = `${subType}${subItemKeySeparator}${recolorToMatch}`;
+      const subItem = subItemLookup.get(lookupKey);
+
+      // Build New Selection
+      if (subItem) {
+        newSelections[subType] = buildNewSelection(
+          subItem.itemId,
+          null,
+          recolorToMatch,
+          subItem.subId,
+        );
+      }
+    }
+  }
+
+  if (profiler) {
+    profiler.mark("hash-loadSelectionsFromHash:subitems:end");
+    profiler.measure(
+      "hash-loadSelectionsFromHash:subitems",
+      "hash-loadSelectionsFromHash:subitems:start",
+      "hash-loadSelectionsFromHash:subitems:end",
+    );
   }
 
   // Now update state once with complete new selections
@@ -224,6 +336,15 @@ export function loadSelectionsFromHash(hashString = null) {
   }
 
   syncSelectionsToHash(); // Ensure hash is in sync with loaded selections (handles any normalization)
+
+  if (profiler) {
+    profiler.mark("hash-loadSelectionsFromHash:end");
+    profiler.measure(
+      "hash-loadSelectionsFromHash",
+      "hash-loadSelectionsFromHash:start",
+      "hash-loadSelectionsFromHash:end",
+    );
+  }
 }
 
 // Initialize hash change listener
@@ -250,7 +371,9 @@ export function initHashChangeListener(listener) {
         ...Object.fromEntries(
           Object.values(state.selections).map((s) => [
             s.itemId,
+            s.subId,
             s.variant || "",
+            s.recolor || "",
           ]),
         ),
       })

@@ -1,0 +1,7 @@
+{
+    "type": "material",
+    "label": "Hair",
+    "desc": "Palettes designed to look good for hair colors, but also may include fantasy colors.",
+    "default": "ulpc",
+    "base": "orange"
+}

@@ -12,30 +12,6 @@
     "pregnant": "head/heads/wolf/female/",
     "teen": "head/heads/wolf/female/"
   },
-  "variants": [
-    "fur_black",
-    "fur_brown",
-    "fur_tan",
-    "fur_copper",
-    "fur_gold",
-    "fur_grey",
-    "fur_white",
-    "light",
-    "amber",
-    "olive",
-    "taupe",
-    "bronze",
-    "brown",
-    "black",
-    "lavender",
-    "blue",
-    "zombie_green",
-    "green",
-    "pale_green",
-    "bright_green",
-    "dark_green",
-    "zombie"
-  ],
   "match_body_color": true,
   "animations": [
     "spellcast",
@@ -84,5 +60,14 @@
     "heads",
     "heads_wolf_female"
   ],
+  "recolors": {
+    "material": "body",
+    "base": "ulpc.fur_brown",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "all.lpcr"
+    ]
+  },
   "type_name": "head"
 }

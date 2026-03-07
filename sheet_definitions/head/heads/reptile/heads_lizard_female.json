@@ -12,22 +12,6 @@
     "pregnant": "head/heads/lizard/female/",
     "teen": "head/heads/lizard/female/"
   },
-  "variants": [
-    "light",
-    "amber",
-    "olive",
-    "taupe",
-    "bronze",
-    "brown",
-    "black",
-    "lavender",
-    "blue",
-    "zombie_green",
-    "green",
-    "pale_green",
-    "bright_green",
-    "dark_green"
-  ],
   "match_body_color": true,
   "animations": [
     "spellcast",
@@ -73,5 +57,14 @@
     "heads",
     "heads_lizard_female"
   ],
+  "recolors": {
+    "material": "body",
+    "base": "ulpc.green",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "all.lpcr"
+    ]
+  },
   "type_name": "head"
 }

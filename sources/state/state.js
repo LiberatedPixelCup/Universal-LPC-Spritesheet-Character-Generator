@@ -21,6 +21,7 @@ export const state = {
 	customImageZPos: 0, // z-position for custom uploaded image
 	previewCanvasZoomLevel: 1, // zoom level for animation preview canvas
 	fullSpritesheetCanvasZoomLevel: 1, // zoom level for full spritesheet preview canvas
+	isRenderingCharacter: false, // true if a character render is in progress
 	// License filters - all enabled by default (derived from LICENSE_CONFIG)
 	enabledLicenses: Object.fromEntries(
 		LICENSE_CONFIG.map((lic) => [lic.key, true]),
@@ -57,6 +58,16 @@ export function getSelectionGroup(itemId) {
 	return meta.type_name;
 }
 
+// Helper function to get selection group from recolor option
+// Selection group = type_name (e.g., "body", "heads", "ears")
+// This ensures only one item per type can be selected (mimics old radio button behavior)
+export function getSubSelectionGroup(itemId, idx) {
+	const meta = window.itemMetadata?.[itemId];
+	const recolor = meta?.recolors?.[idx];
+	if (!meta || !meta.type_name) return itemId;
+	return recolor?.type_name ?? meta.type_name;
+}
+
 // Select default items (body color light + human male light head)
 export async function selectDefaults() {
 	// Set default body color (light)
@@ -65,7 +76,8 @@ export async function selectDefaults() {
 	const bodySelectionGroup = getSelectionGroup(bodyItemId);
 	state.selections[bodySelectionGroup] = {
 		itemId: bodyItemId,
-		variant: "light",
+		variant: "",
+		recolor: "light",
 		name: "Body color (light)",
 	};
 
@@ -75,8 +87,9 @@ export async function selectDefaults() {
 	const headSelectionGroup = getSelectionGroup(headItemId);
 	state.selections[headSelectionGroup] = {
 		itemId: headItemId,
-		variant: "light",
-		name: "Human male (light)",
+		variant: "",
+		recolor: "light",
+		name: "Human Male (light)",
 	};
 
 	// Set default expression (neutral light)
@@ -84,7 +97,8 @@ export async function selectDefaults() {
 	const expressionSelectionGroup = getSelectionGroup(expressionItemId);
 	state.selections[expressionSelectionGroup] = {
 		itemId: expressionItemId,
-		variant: "light",
+		variant: "",
+		recolor: "light",
 		name: "Neutral (light)",
 	};
 
@@ -107,12 +121,12 @@ export async function resetAll() {
 }
 
 // Apply match body color - when any body-colored part changes, update all items with matchBodyColor: true
-export function applyMatchBodyColor(variantToMatch) {
+export function applyMatchBodyColor(variantToMatch, recolorToMatch) {
 	// Only apply if feature is enabled
 	if (!state.matchBodyColorEnabled) return;
 
 	// If no variant specified, nothing to match
-	if (!variantToMatch) return;
+	if (!variantToMatch && !recolorToMatch) return;
 
 	// Update all selected items that have matchBodyColor: true
 	for (const selection of Object.values(
@@ -124,11 +138,21 @@ export function applyMatchBodyColor(variantToMatch) {
 		// Skip if no metadata or matchBodyColor is not enabled for this item
 		if (!meta || !meta.matchBodyColor) continue;
 
+		// Skip if subId is enabled and matchBodyColor is not enabled for this item
+		if (selection.subId !== null && selection.subId !== undefined && !meta.recolors[selection.subId]?.matchBodyColor) continue;
+
 		// Check if this item has the variant available
 		if (meta.variants && meta.variants.includes(variantToMatch)) {
 			// Update the variant to match
 			selection.variant = variantToMatch;
 			selection.name = meta.name + ` (${variantToMatch})`;
+		}
+
+		// Check if this item has the recolor available
+		if (meta.recolors && meta.recolors[0]?.variants.includes(recolorToMatch)) {
+			// Update the recolor to match
+			selection.recolor = recolorToMatch;
+			selection.name = meta.name + ` (${recolorToMatch})`;
 		}
 	}
 }
@@ -148,6 +172,39 @@ export async function initState() {
 
 			// Trigger redraw to update preview canvas after offscreen render completes
 			m.redraw();
+		}
+	}
+}
+
+// Select Item Asset
+export function selectItem(itemId, variant, isSelected = false, subId = null) {
+	const selectionGroup = getSelectionGroup(itemId);
+	const subSelect = subId !== null ? getSubSelectionGroup(itemId, subId) : selectionGroup;
+
+	if (isSelected) {
+		delete state.selections[subSelect];
+	} else {
+		// Get Meta Data
+		const meta = window.itemMetadata[itemId];
+		const useVariants = meta.variants?.length > 0;
+		const variantDisplayName = variant.replaceAll("_", " ");
+
+		// Get Sub Selection Items
+		const subMeta = !useVariants && subId !== null ? meta.recolors?.[subId] : null;
+		const displayName = subMeta?.type_name ? subMeta.label : meta.name;
+
+		// Select Item
+		state.selections[subSelect] = {
+			itemId: itemId,
+			subId: subMeta?.type_name ? subId : null,
+			variant: useVariants ? variant : null,
+			recolor: useVariants ? null : variant,
+			name: `${displayName} (${variantDisplayName})`
+		};
+
+		// If this item has matchBodyColor enabled, apply to all other body-colored items
+		if (subMeta?.matchBodyColor || (subSelect === selectionGroup && meta.matchBodyColor)) {
+			applyMatchBodyColor(variant, !useVariants ? variant : null);
 		}
 	}
 }
