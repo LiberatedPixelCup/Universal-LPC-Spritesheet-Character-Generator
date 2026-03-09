@@ -41,9 +41,8 @@ export const ItemWithRecolors = {
                 rootViewNode,
                 onClose: () => { rootViewNode.state.showPaletteModal = null; m.redraw(); },
                 onSelect: (recolor) => {
-                    const subSelectGroup = (opt.type_name !== meta.type_name) ? opt.type_name : selectionGroup;
-                    selectItem(itemId, recolor, isSelected && selectedColors[subSelectGroup] === recolor, opt.type_name ? idx : null);
-                    m.redraw();
+                    const subSelectGroup = (opt.type_name !== meta.type_name) ? opt.type_name : null;
+                    selectItem(itemId, recolor, isSelected && selectedColors[subSelectGroup ?? meta.type_name] === recolor, opt.type_name ? idx : null);
                 }
             });
         }
