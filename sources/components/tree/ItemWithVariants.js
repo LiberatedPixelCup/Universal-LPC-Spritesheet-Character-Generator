@@ -1,31 +1,58 @@
 // Item with variants component
 import { state, getSelectionGroup, applyMatchBodyColor } from '../../state/state.js';
-import { replaceInPath } from '../../state/path.js';
+import { getLayersToLoad } from '../../state/meta.js';
 import { variantToFilename, capitalize } from '../../utils/helpers.js';
+
+const classNames = window.classNames;
 
 export const ItemWithVariants = {
 	view: function(vnode) {
-		const { itemId, meta, isSearchMatch } = vnode.attrs;
+		const { itemId, meta, isSearchMatch, isCompatible, tooltipText } = vnode.attrs;
 		const compactDisplay = state.compactDisplay;
 		const displayName = meta.name;
+		const rootViewNode = vnode;
 		let nodePath = itemId;
-		if (displayName === 'Body color') {
+		if (displayName === 'Body Color') {
 			nodePath = 'body-body';
 		}
 		const isExpanded = state.expandedNodes[nodePath] || false;
+		const layers = getLayersToLoad(meta, state.bodyType, state.selections);
 
 		return m("div", {
-			class: isSearchMatch ? "search-result" : ""
+			class: classNames({
+				"search-result": isSearchMatch,
+				"has-text-grey": !isCompatible,
+			}),
+			oninit: () => {
+				rootViewNode.state.isLoading = meta.variants.length > 0;
+				rootViewNode.state.imagesToLoad = meta.variants.length * layers.length;
+				rootViewNode.state.imagesLoaded = 0;
+			},
+			onupdate: () => {
+				if (isExpanded && rootViewNode.state.isLoading) {
+					if (rootViewNode.state.imagesLoaded >= rootViewNode.state.imagesToLoad) {
+						rootViewNode.state.isLoading = false;
+					}
+				}
+			}
 		}, [
 			m("div.tree-label", {
+				title: tooltipText,
 				onclick: () => {
 					state.expandedNodes[nodePath] = !isExpanded;
+					if (state.expandedNodes[nodePath]) {
+						rootViewNode.state.isLoading = meta.variants.length > 0;
+						rootViewNode.state.imagesToLoad = meta.variants.length * layers.length;
+						rootViewNode.state.imagesLoaded = 0;
+					}
 				}
 			}, [
 				m("span.tree-arrow", { class: isExpanded ? 'expanded' : 'collapsed' }),
-				m("span", displayName)
+				m("span", displayName),
+				!isCompatible ? m("span.ml-1", "⚠️") : null
 			]),
 			isExpanded ? m("div", [
+				m("div", { class: rootViewNode.state.isLoading ? "loading" : "" }),
 				m("div.variants-container.ml-5.is-flex.is-flex-wrap-wrap",
 					meta.variants.map(variant => {
 					const selectionGroup = getSelectionGroup(itemId);
@@ -68,17 +95,24 @@ export const ItemWithVariants = {
 
 					return m("div.variant-item.is-flex.is-flex-direction-column.is-align-items-center.is-clickable", {
 						key: variant,
-						class: isSelected ? "has-background-link-light has-text-weight-bold has-text-link" : "",
+						class: classNames({
+							"has-background-link-light has-text-weight-bold has-text-link": isSelected,
+							"is-not-compatible": !isCompatible,
+						}),
+						title: tooltipText,
 						onmouseover: (e) => {
+							if (!isCompatible) return;
 							const div = e.currentTarget;
 							if (!isSelected) div.classList.add('has-background-white-ter');
 						},
 						onmouseout: (e) => {
+							if (!isCompatible) return;
 							const div = e.currentTarget;
 
 							if (!isSelected) div.classList.remove('has-background-white-ter');
 						},
 						onclick: () => {
+							if (!isCompatible) return; // Prevent selecting incompatible
 							const selectionGroup = getSelectionGroup(itemId);
 
 							if (isSelected) {
@@ -106,47 +140,10 @@ export const ItemWithVariants = {
 							style: (isSelected ? " hsl(217, 71%, 53%)" : " hsl(0, 0%, 86%)"),
 							oncreate: (canvasVnode) => {
 								const canvas = canvasVnode.dom;
-								const ctx = canvas.getContext('2d');
+								const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
-								// Collect all layers for this item
-								// Only include layers that match layer_1's custom animation (if any)
-								const layersToLoad = [];
-								for (let layerNum = 1; layerNum < 10; layerNum++) {
-									const layer = meta.layers?.[`layer_${layerNum}`];
-									if (!layer) break;
-
-									let layerPath = layer[state.bodyType];
-									if (!layerPath) continue;
-
-									// Filter: only include layers with matching custom animation
-									if (layer1CustomAnimation) {
-										if (layer.custom_animation !== layer1CustomAnimation) {
-											continue; // Skip layers with different custom animations
-										}
-									}
-
-									// Replace template variables like ${head}
-									if (layerPath.includes('${')) {
-										layerPath = replaceInPath(layerPath, state.selections, meta);
-									}
-
-									const hasCustomAnim = layer.custom_animation;
-									let imagePath;
-									if (hasCustomAnim) {
-										imagePath = `spritesheets/${layerPath}${variantToFilename(variant)}.png`;
-									} else {
-										const defaultAnim = meta.animations.includes('walk') ? 'walk' : meta.animations[0];
-										imagePath = `spritesheets/${layerPath}${defaultAnim}/${variantToFilename(variant)}.png`;
-									}
-
-									layersToLoad.push({
-										zPos: layer.zPos || 100,
-										path: imagePath
-									});
-								}
-
-								// Sort by zPos
-								layersToLoad.sort((a, b) => a.zPos - b.zPos);
+								// Get Layers to Load for Variant
+								const layersToLoad = getLayersToLoad(meta, state.bodyType, state.selections, variant);
 
 								// Load and draw all layers
 								Promise.all(layersToLoad.map(layer => {
@@ -174,11 +171,15 @@ export const ItemWithVariants = {
 											);
 										}
 									}
+									rootViewNode.state.imagesLoaded += loadedLayers.length;
+									m.redraw();
 								});
 							},
 							onupdate: (canvasVnode) => {
 								const canvas = canvasVnode.dom;
-								const ctx = canvas.getContext('2d');
+								const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+								// Process Layers Loaded for Variant
 								if (canvas.loadedLayers) {
 									// Draw each layer in zPos order
 									// Use universalFrameSize (64) for all calculations, matching master branch

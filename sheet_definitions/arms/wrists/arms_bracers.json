@@ -1,0 +1,53 @@
+{
+  "name": "Bracers",
+  "layer_1": {
+    "zPos": 70,
+    "male": "arms/bracers/male/",
+    "female": "arms/bracers/female/",
+    "pregnant": "arms/bracers/female/",
+    "muscular": "arms/bracers/male/"
+  },
+  "variants": [
+    "steel",
+    "iron",
+    "ceramic",
+    "brass",
+    "copper",
+    "bronze",
+    "silver",
+    "gold"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "idle"
+  ],
+  "credits": [
+    {
+      "file": "arms/bracers",
+      "notes": "",
+      "authors": [
+        "Matthew Krohn (makrohn)",
+        "Johannes Sjölund (wulax)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites"
+      ]
+    }
+  ],
+  "path": [
+    "arms",
+    "wrists",
+    "arms_bracers"
+  ],
+  "type_name": "bracers"
+}

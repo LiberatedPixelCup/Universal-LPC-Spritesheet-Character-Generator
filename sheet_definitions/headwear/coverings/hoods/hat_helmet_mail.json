@@ -1,0 +1,67 @@
+{
+  "name": "Mail",
+  "layer_1": {
+    "zPos": 125,
+    "female": "hat/helmet/mail/adult/",
+    "pregnant": "hat/helmet/mail/adult/",
+    "male": "hat/helmet/mail/adult/",
+    "muscular": "hat/helmet/mail/adult/",
+    "teen": "hat/helmet/mail/adult/"
+  },
+  "variants": [
+    "steel",
+    "iron",
+    "ceramic",
+    "brass",
+    "copper",
+    "bronze",
+    "silver",
+    "gold"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hat/helmet/mail",
+      "notes": "reduced palette version by Napsio",
+      "authors": [
+        "Napsio",
+        "Johannes Sjölund (wulax)",
+        "JaidynReiman"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+        "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "head coverings",
+    "hoods",
+    "hat_helmet_mail"
+  ],
+  "type_name": "bandana"
+}

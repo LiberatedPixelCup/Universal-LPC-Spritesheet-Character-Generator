@@ -1,0 +1,52 @@
+{
+  "name": "Dagger",
+  "layer_1": {
+    "zPos": 140,
+    "male": "weapon/sword/dagger/",
+    "muscular": "weapon/sword/dagger/",
+    "female": "weapon/sword/dagger/",
+    "pregnant": "weapon/sword/dagger/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "weapon/sword/dagger/behind/",
+    "muscular": "weapon/sword/dagger/behind/",
+    "female": "weapon/sword/dagger/behind/",
+    "pregnant": "weapon/sword/dagger/behind/"
+  },
+  "variants": [
+    "dagger"
+  ],
+  "animations": [
+    "thrust",
+    "walk",
+    "slash",
+    "hurt"
+  ],
+  "credits": [
+    {
+      "file": "weapon/sword/dagger",
+      "notes": "",
+      "authors": [
+        "bluecarrot16",
+        "Johannes Sjölund (wulax)",
+        "Matthew Krohn (makrohn)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+        "https://opengameart.org/content/lpc-extended-weapon-animations"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "sword",
+    "weapon_sword_dagger"
+  ],
+  "type_name": "weapon"
+}

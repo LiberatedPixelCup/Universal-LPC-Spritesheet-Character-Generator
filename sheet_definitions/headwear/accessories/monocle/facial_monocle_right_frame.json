@@ -1,0 +1,100 @@
+{
+  "name": "Right Monocle Frame Color",
+  "tags": [
+    "facial",
+    "monocle",
+    "monocle_trim"
+  ],
+  "required_tags": [
+    "monocle_right"
+  ],
+  "layer_1": {
+    "zPos": 115,
+    "male": "facial/monocle/right/frame/adult/",
+    "muscular": "facial/monocle/right/frame/adult/",
+    "female": "facial/monocle/right/frame/adult/",
+    "pregnant": "facial/monocle/right/frame/adult/",
+    "teen": "facial/monocle/right/frame/adult/",
+    "child": "facial/monocle/right/frame/child/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow",
+    "steel",
+    "iron",
+    "ceramic",
+    "brass",
+    "copper",
+    "bronze",
+    "silver",
+    "gold"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "facial/monocle",
+      "notes": "",
+      "authors": [
+        "bluecarrot16",
+        "Thane Brimhall (pennomi)",
+        "laetissima"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/clothing-facial-features-and-ui-elements",
+        "https://opengameart.org/content/lpc-gentleman",
+        "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "accessories",
+    "monocle",
+    "facial_monocle_right_frame"
+  ],
+  "type_name": "facial_right_trim"
+}

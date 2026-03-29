@@ -1,0 +1,106 @@
+{
+  "name": "Vest",
+  "layer_1": {
+    "zPos": 45,
+    "male": "torso/clothes/vest/male/"
+  },
+  "variants": [
+    "gray striped",
+    "green striped",
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "idle"
+  ],
+  "credits": [
+    {
+      "file": "torso/clothes/vest",
+      "notes": "",
+      "authors": [
+        "bluecarrot16",
+        "Thane Brimhall (pennomi)",
+        "laetissima",
+        "Stephen Challener (Redshrike)",
+        "Johannes Sjölund (wulax)"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-2-characters",
+        "https://opengameart.org/content/lpc-gentleman",
+        "https://opengameart.org/content/lpc-pirates"
+      ]
+    },
+    {
+      "file": "torso/clothes/vest/male/gray_striped.png",
+      "notes": "",
+      "authors": [
+        "Michael Whitlock (bigbeargames)",
+        "bluecarrot16",
+        "Thane Brimhall (pennomi)",
+        "laetissima"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-2-characters"
+      ]
+    },
+    {
+      "file": "torso/clothes/vest/male/gray.png",
+      "notes": "",
+      "authors": [
+        "Michael Whitlock (bigbeargames)",
+        "bluecarrot16",
+        "Thane Brimhall (pennomi)",
+        "laetissima"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-2-characters"
+      ]
+    }
+  ],
+  "path": [
+    "torso",
+    "vest",
+    "torso_clothes_vest"
+  ],
+  "type_name": "vest"
+}

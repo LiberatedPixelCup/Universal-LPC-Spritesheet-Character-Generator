@@ -1,0 +1,82 @@
+{
+  "name": "Spiked liberty2",
+  "layer_1": {
+    "zPos": 120,
+    "male": "hair/spiked_liberty2/adult/",
+    "muscular": "hair/spiked_liberty2/adult/",
+    "female": "hair/spiked_liberty2/adult/",
+    "pregnant": "hair/spiked_liberty2/adult/",
+    "teen": "hair/spiked_liberty2/adult/"
+  },
+  "variants": [
+    "blonde",
+    "ash",
+    "sandy",
+    "platinum",
+    "strawberry",
+    "redhead",
+    "ginger",
+    "carrot",
+    "chestnut",
+    "light brown",
+    "dark brown",
+    "black",
+    "raven",
+    "dark gray",
+    "gray",
+    "white",
+    "red",
+    "orange",
+    "gold",
+    "green",
+    "blue",
+    "navy",
+    "violet",
+    "purple",
+    "pink",
+    "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hair/spiked_liberty2",
+      "notes": "",
+      "authors": [
+        "Cobra Hubbard (BlueVortexGames)",
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "CC-BY 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/anime-lpc-hair",
+        "https://opengameart.org/content/lpc-hair"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "spiky",
+    "hair_spiked_liberty2"
+  ],
+  "type_name": "hair"
+}

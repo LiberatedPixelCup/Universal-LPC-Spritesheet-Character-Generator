@@ -1,0 +1,65 @@
+{
+  "name": "Flail",
+  "layer_1": {
+    "zPos": 9,
+    "male": "weapon/blunt/flail/behind/",
+    "muscular": "weapon/blunt/flail/behind/",
+    "female": "weapon/blunt/flail/behind/",
+    "pregnant": "weapon/blunt/flail/behind/"
+  },
+  "layer_2": {
+    "zPos": 140,
+    "male": "weapon/blunt/flail/",
+    "muscular": "weapon/blunt/flail/",
+    "female": "weapon/blunt/flail/",
+    "pregnant": "weapon/blunt/flail/"
+  },
+  "layer_3": {
+    "custom_animation": "slash_oversize",
+    "zPos": 8,
+    "male": "weapon/blunt/flail/attack_slash/behind/",
+    "muscular": "weapon/blunt/flail/attack_slash/behind/",
+    "female": "weapon/blunt/flail/attack_slash/behind/",
+    "pregnant": "weapon/blunt/flail/attack_slash/behind/"
+  },
+  "layer_4": {
+    "custom_animation": "slash_oversize",
+    "zPos": 150,
+    "male": "weapon/blunt/flail/attack_slash/",
+    "muscular": "weapon/blunt/flail/attack_slash/",
+    "female": "weapon/blunt/flail/attack_slash/",
+    "pregnant": "weapon/blunt/flail/attack_slash/"
+  },
+  "variants": [
+    "flail"
+  ],
+  "animations": [
+    "walk",
+    "hurt",
+    "slash_oversize"
+  ],
+  "credits": [
+    {
+      "file": "weapon/blunt/flail",
+      "notes": "",
+      "authors": [
+        "Benjamin K. Smith (BenCreating)",
+        "bluecarrot16",
+        "Sander Frenken (castelonia)"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-medieval-weapons"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "blunt",
+    "weapon_blunt_flail"
+  ],
+  "type_name": "weapon"
+}

@@ -1,0 +1,79 @@
+{
+  "name": "Gnarled staff",
+  "layer_1": {
+    "zPos": 140,
+    "male": "weapon/magic/gnarled/universal/foreground/",
+    "muscular": "weapon/magic/gnarled/universal/foreground/",
+    "female": "weapon/magic/gnarled/universal/foreground/",
+    "teen": "weapon/magic/gnarled/universal/foreground/",
+    "pregnant": "weapon/magic/gnarled/universal/foreground/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "weapon/magic/gnarled/universal/background/",
+    "muscular": "weapon/magic/gnarled/universal/background/",
+    "female": "weapon/magic/gnarled/universal/background/",
+    "teen": "weapon/magic/gnarled/universal/background/",
+    "pregnant": "weapon/magic/gnarled/universal/background/"
+  },
+  "layer_3": {
+    "custom_animation": "thrust_oversize",
+    "zPos": 150,
+    "male": "weapon/magic/gnarled/thrust/foreground/",
+    "muscular": "weapon/magic/gnarled/thrust/foreground/",
+    "female": "weapon/magic/gnarled/thrust/foreground/",
+    "teen": "weapon/magic/gnarled/thrust/foreground/",
+    "pregnant": "weapon/magic/gnarled/thrust/foreground/"
+  },
+  "layer_4": {
+    "custom_animation": "thrust_oversize",
+    "zPos": -1,
+    "male": "weapon/magic/gnarled/thrust/background/",
+    "muscular": "weapon/magic/gnarled/thrust/background/",
+    "female": "weapon/magic/gnarled/thrust/background/",
+    "teen": "weapon/magic/gnarled/thrust/background/",
+    "pregnant": "weapon/magic/gnarled/thrust/background/"
+  },
+  "variants": [
+    "medium",
+    "light",
+    "red",
+    "dark",
+    "brass",
+    "bronze",
+    "ceramic",
+    "copper",
+    "gold",
+    "iron",
+    "silver",
+    "steel"
+  ],
+  "animations": [
+    "walk",
+    "hurt",
+    "thrust_oversize"
+  ],
+  "credits": [
+    {
+      "file": "weapon/magic/gnarled",
+      "notes": "",
+      "authors": [
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-more-weapons"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "magic",
+    "weapon_magic_gnarled"
+  ],
+  "type_name": "weapon"
+}

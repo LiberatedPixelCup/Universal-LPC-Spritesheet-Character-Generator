@@ -1,0 +1,85 @@
+{
+  "name": "Hood",
+  "layer_1": {
+    "zPos": 130,
+    "male": "hat/cloth/hood/adult/",
+    "female": "hat/cloth/hood/adult/",
+    "muscular": "hat/cloth/hood/adult/",
+    "pregnant": "hat/cloth/hood/adult/",
+    "teen": "hat/cloth/hood/adult/"
+  },
+  "variants": [
+    "hood_black",
+    "hood_brown",
+    "hood_white",
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hat/cloth/hood",
+      "notes": "Brown hood by Wulax, original black/white recolors by ??, mapped to idle/run/jump/revised combat by JaidynReiman, along with additional recolors.",
+      "authors": [
+        "Johannes Sjölund (wulax)",
+        "JaidynReiman"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+        "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "head coverings",
+    "hoods",
+    "hat_hood_cloth"
+  ],
+  "type_name": "hat"
+}

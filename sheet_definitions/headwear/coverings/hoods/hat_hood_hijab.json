@@ -1,0 +1,80 @@
+{
+  "name": "Hijab",
+  "layer_1": {
+    "zPos": 130,
+    "male": "hat/cloth/hijab/male/",
+    "female": "hat/cloth/hijab/thin/",
+    "muscular": "hat/cloth/hijab/male/",
+    "pregnant": "hat/cloth/hijab/thin/",
+    "teen": "hat/cloth/hijab/thin/"
+  },
+  "variants": [
+    "base",
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hat/cloth/hijab",
+      "notes": "",
+      "authors": [
+        "thecilekli"
+      ],
+      "licenses": [
+        "CC0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-hijab",
+        "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "head coverings",
+    "hoods",
+    "hat_hood_hijab"
+  ],
+  "type_name": "hat"
+}

@@ -1,0 +1,79 @@
+{
+  "name": "Fin",
+  "layer_1": {
+    "zPos": 125,
+    "male": "head/fins/fin/adult/",
+    "muscular": "head/fins/fin/adult/",
+    "female": "head/fins/fin/adult/",
+    "pregnant": "head/fins/fin/adult/",
+    "teen": "head/fins/fin/adult/",
+    "child": "head/fins/fin/child/"
+  },
+  "variants": [
+    "light",
+    "amber",
+    "olive",
+    "taupe",
+    "bronze",
+    "brown",
+    "black",
+    "lavender",
+    "blue",
+    "zombie_green",
+    "green",
+    "pale_green",
+    "bright_green",
+    "dark_green",
+    "fur_black",
+    "fur_brown",
+    "fur_tan",
+    "fur_copper",
+    "fur_gold",
+    "fur_grey",
+    "fur_white"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "head/fins",
+      "notes": "adapted to v3 base by bluecarrot16",
+      "authors": [
+        "bluecarrot16",
+        "Nila122"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-lizard-headgear",
+        "http://opengameart.org/content/lpc-clothing-updates"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "appendages",
+    "head_fins_fin"
+  ],
+  "type_name": "fins"
+}

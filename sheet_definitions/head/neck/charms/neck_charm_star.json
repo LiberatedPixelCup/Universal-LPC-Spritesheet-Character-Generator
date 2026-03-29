@@ -1,0 +1,52 @@
+{
+  "name": "Star Charm",
+  "layer_1": {
+    "zPos": 81,
+    "male": "neck/charm/star/male/",
+    "muscular": "neck/charm/star/male/",
+    "female": "neck/charm/star/female/",
+    "teen": "neck/charm/star/female/",
+    "pregnant": "neck/charm/star/female/"
+  },
+  "variants": [
+    "steel",
+    "iron",
+    "ceramic",
+    "brass",
+    "copper",
+    "bronze",
+    "silver",
+    "gold"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "idle"
+  ],
+  "credits": [
+    {
+      "file": "neck/charm",
+      "notes": "",
+      "authors": [
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "CC0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-jewelry"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "neck",
+    "necklace charms",
+    "neck_charm_star"
+  ],
+  "type_name": "charm"
+}

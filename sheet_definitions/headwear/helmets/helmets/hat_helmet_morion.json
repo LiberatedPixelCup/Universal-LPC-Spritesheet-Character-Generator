@@ -1,0 +1,67 @@
+{
+  "name": "Morion",
+  "layer_1": {
+    "zPos": 135,
+    "female": "hat/helmet/morion/adult/",
+    "pregnant": "hat/helmet/morion/adult/",
+    "male": "hat/helmet/morion/adult/",
+    "muscular": "hat/helmet/morion/adult/",
+    "teen": "hat/helmet/morion/adult/"
+  },
+  "variants": [
+    "steel",
+    "iron",
+    "ceramic",
+    "brass",
+    "copper",
+    "bronze",
+    "silver",
+    "gold"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hat/helmet/morion",
+      "notes": "",
+      "authors": [
+        "ElizaWy",
+        "Sander Frenken (castelonia)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 4.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-realistic-helmet-pack",
+        "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "helmets",
+    "helmets",
+    "hat_helmet_morion"
+  ],
+  "type_name": "hat"
+}

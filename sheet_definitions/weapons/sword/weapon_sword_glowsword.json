@@ -1,0 +1,68 @@
+{
+  "name": "Glowsword",
+  "layer_1": {
+    "zPos": 140,
+    "male": "weapon/sword/glowsword/",
+    "muscular": "weapon/sword/glowsword/",
+    "female": "weapon/sword/glowsword/",
+    "pregnant": "weapon/sword/glowsword/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "weapon/sword/glowsword/universal_behind/",
+    "muscular": "weapon/sword/glowsword/universal_behind/",
+    "female": "weapon/sword/glowsword/universal_behind/",
+    "pregnant": "weapon/sword/glowsword/universal_behind/"
+  },
+  "layer_3": {
+    "zPos": 8,
+    "custom_animation": "slash_oversize",
+    "male": "weapon/sword/glowsword/attack_slash/behind/",
+    "muscular": "weapon/sword/glowsword/attack_slash/behind/",
+    "female": "weapon/sword/glowsword/attack_slash/behind/",
+    "pregnant": "weapon/sword/glowsword/attack_slash/behind/"
+  },
+  "layer_4": {
+    "zPos": 150,
+    "custom_animation": "slash_oversize",
+    "male": "weapon/sword/glowsword/attack_slash/",
+    "muscular": "weapon/sword/glowsword/attack_slash/",
+    "female": "weapon/sword/glowsword/attack_slash/",
+    "pregnant": "weapon/sword/glowsword/attack_slash/"
+  },
+  "variants": [
+    "blue",
+    "red"
+  ],
+  "animations": [
+    "walk",
+    "hurt",
+    "slash_oversize"
+  ],
+  "credits": [
+    {
+      "file": "weapon/sword/glowsword",
+      "notes": "",
+      "authors": [
+        "bluecarrot16",
+        "tskaufma",
+        "Johannes Sjölund (wulax)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
+        "https://opengameart.org/content/lpc-glow-sword",
+        "https://opengameart.org/content/lpc-extended-weapon-animations"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "sword",
+    "weapon_sword_glowsword"
+  ],
+  "type_name": "weapon"
+}

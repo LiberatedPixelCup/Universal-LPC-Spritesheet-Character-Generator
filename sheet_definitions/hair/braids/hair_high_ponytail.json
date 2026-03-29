@@ -1,0 +1,91 @@
+{
+  "name": "High ponytail",
+  "layer_1": {
+    "zPos": 120,
+    "male": "hair/high_ponytail/adult/fg/",
+    "muscular": "hair/high_ponytail/adult/fg/",
+    "female": "hair/high_ponytail/adult/fg/",
+    "pregnant": "hair/high_ponytail/adult/fg/",
+    "teen": "hair/high_ponytail/adult/fg/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "hair/high_ponytail/adult/bg/",
+    "muscular": "hair/high_ponytail/adult/bg/",
+    "female": "hair/high_ponytail/adult/bg/",
+    "pregnant": "hair/high_ponytail/adult/bg/",
+    "teen": "hair/high_ponytail/adult/bg/"
+  },
+  "variants": [
+    "blonde",
+    "ash",
+    "sandy",
+    "platinum",
+    "strawberry",
+    "redhead",
+    "ginger",
+    "carrot",
+    "chestnut",
+    "light brown",
+    "dark brown",
+    "black",
+    "raven",
+    "dark gray",
+    "gray",
+    "white",
+    "red",
+    "orange",
+    "gold",
+    "green",
+    "blue",
+    "navy",
+    "violet",
+    "purple",
+    "pink",
+    "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hair/high_ponytail",
+      "notes": "",
+      "authors": [
+        "JaidynReiman",
+        "ElizaWy",
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-hair",
+        "https://opengameart.org/content/lpc-expanded-hair"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "braids, ponytails, updos",
+    "hair_high_ponytail"
+  ],
+  "type_name": "hair"
+}

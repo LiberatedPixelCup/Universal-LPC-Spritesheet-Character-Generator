@@ -1,0 +1,67 @@
+{
+  "name": "Barbuta",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/helmet/barbuta/female/",
+    "pregnant": "hat/helmet/barbuta/female/",
+    "male": "hat/helmet/barbuta/male/",
+    "muscular": "hat/helmet/barbuta/male/",
+    "teen": "hat/helmet/barbuta/female/"
+  },
+  "variants": [
+    "steel",
+    "iron",
+    "ceramic",
+    "brass",
+    "copper",
+    "bronze",
+    "silver",
+    "gold"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hat/helmet/barbuta",
+      "notes": "",
+      "authors": [
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY 3.0",
+        "CC-BY 4.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-helmets",
+        "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "helmets",
+    "helmets",
+    "hat_helmet_barbuta"
+  ],
+  "type_name": "hat"
+}

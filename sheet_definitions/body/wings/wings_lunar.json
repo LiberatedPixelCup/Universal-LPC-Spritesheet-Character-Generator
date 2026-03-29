@@ -1,0 +1,78 @@
+{
+  "name": "Lunar Wings",
+  "priority": 70,
+  "tags": [
+    "wings"
+  ],
+  "layer_1": {
+    "zPos": 105,
+    "male": "body/wings/lunar/fg/",
+    "muscular": "body/wings/lunar/fg/",
+    "female": "body/wings/lunar/fg/",
+    "pregnant": "body/wings/lunar/fg/",
+    "teen": "body/wings/lunar/fg/",
+    "child": "body/wings/lunar/fg/"
+  },
+  "layer_2": {
+    "zPos": 5,
+    "male": "body/wings/lunar/bg/",
+    "muscular": "body/wings/lunar/bg/",
+    "female": "body/wings/lunar/bg/",
+    "pregnant": "body/wings/lunar/bg/",
+    "teen": "body/wings/lunar/bg/",
+    "child": "body/wings/lunar/bg/"
+  },
+  "variants": [
+    "lunar",
+    "amber",
+    "black",
+    "blue",
+    "bluegray",
+    "bright_green",
+    "bronze",
+    "brown",
+    "ceramic",
+    "forest",
+    "gold",
+    "green",
+    "iron",
+    "lavender",
+    "light",
+    "maroon",
+    "navy",
+    "orange",
+    "pale_green",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "silver",
+    "sky",
+    "teal",
+    "white",
+    "yellow",
+    "zombie_green"
+  ],
+  "credits": [
+    {
+      "file": "body/wings/lunar",
+      "notes": "In dedication to my grandmother, Sharon Rowe",
+      "authors": [
+        "The Foreman"
+      ],
+      "licenses": [
+        "OGA-BY 4.0",
+        "CC-BY-SA 4.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-fairy-wings-pack-2"
+      ]
+    }
+  ],
+  "path": [
+    "body",
+    "wings",
+    "wings_lunar"
+  ],
+  "type_name": "wings"
+}

@@ -42,6 +42,10 @@ export const ScrollableContainer = {
 		});
 	},
 	view: function(vnode) {
-		return m("div.scrollable-container.mt-3", vnode.children);
+		const {
+			classes = ""
+		} = vnode.attrs;
+
+		return m(`div.scrollable-container.mt-3`, { class: classes }, vnode.children);
 	}
 };

@@ -1,0 +1,67 @@
+{
+  "name": "Cravat",
+  "priority": 90,
+  "layer_1": {
+    "zPos": 90,
+    "male": "neck/cravat/male/",
+    "female": "neck/cravat/male/",
+    "teen": "neck/cravat/male/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "idle"
+  ],
+  "credits": [
+    {
+      "file": "neck/cravat",
+      "notes": "",
+      "authors": [
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-pirates"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "neck",
+    "neck_cravat"
+  ],
+  "type_name": "neck"
+}

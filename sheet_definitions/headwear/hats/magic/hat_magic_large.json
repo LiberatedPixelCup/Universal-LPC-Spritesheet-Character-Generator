@@ -1,0 +1,59 @@
+{
+  "name": "Large Hat",
+  "layer_1": {
+    "zPos": 130,
+    "male": "hat/magic/large/adult/",
+    "female": "hat/magic/large/adult/",
+    "muscular": "hat/magic/large/adult/",
+    "pregnant": "hat/magic/large/adult/",
+    "teen": "hat/magic/large/adult/"
+  },
+  "variants": [
+    "brown"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hat/magic/large",
+      "notes": "",
+      "authors": [
+        "Stafford McIntyre",
+        "PlatForge project",
+        "Evert"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/wizard-2",
+        "https://opengameart.org/content/wizard-hat",
+        "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "hats",
+    "magic",
+    "hat_magic_large"
+  ],
+  "type_name": "hat"
+}

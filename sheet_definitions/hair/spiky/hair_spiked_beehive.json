@@ -1,0 +1,82 @@
+{
+  "name": "Spiked beehive",
+  "layer_1": {
+    "zPos": 120,
+    "male": "hair/spiked_beehive/adult/",
+    "muscular": "hair/spiked_beehive/adult/",
+    "female": "hair/spiked_beehive/adult/",
+    "pregnant": "hair/spiked_beehive/adult/",
+    "teen": "hair/spiked_beehive/adult/"
+  },
+  "variants": [
+    "blonde",
+    "ash",
+    "sandy",
+    "platinum",
+    "strawberry",
+    "redhead",
+    "ginger",
+    "carrot",
+    "chestnut",
+    "light brown",
+    "dark brown",
+    "black",
+    "raven",
+    "dark gray",
+    "gray",
+    "white",
+    "red",
+    "orange",
+    "gold",
+    "green",
+    "blue",
+    "navy",
+    "violet",
+    "purple",
+    "pink",
+    "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hair/spiked_beehive",
+      "notes": "",
+      "authors": [
+        "Fabzy",
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/the-revolution-hair",
+        "https://opengameart.org/content/lpc-hair"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "spiky",
+    "hair_spiked_beehive"
+  ],
+  "type_name": "hair"
+}

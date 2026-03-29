@@ -1,0 +1,84 @@
+{
+  "name": "Idol",
+  "layer_1": {
+    "zPos": 120,
+    "male": "hair/idol/adult/",
+    "muscular": "hair/idol/adult/",
+    "female": "hair/idol/adult/",
+    "pregnant": "hair/idol/adult/",
+    "teen": "hair/idol/adult/"
+  },
+  "variants": [
+    "blonde",
+    "ash",
+    "sandy",
+    "platinum",
+    "strawberry",
+    "redhead",
+    "ginger",
+    "carrot",
+    "chestnut",
+    "light brown",
+    "dark brown",
+    "black",
+    "raven",
+    "dark gray",
+    "gray",
+    "white",
+    "red",
+    "orange",
+    "gold",
+    "green",
+    "blue",
+    "navy",
+    "violet",
+    "purple",
+    "pink",
+    "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hair/idol",
+      "notes": "Original CC0 by Thecilekli. Edited by bluecarrot16 and ElizaWy. Animated by ElizaWy.",
+      "authors": [
+        "thecilekli",
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "CC0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-korean-idol-hairstyle-male-with-12-colors",
+        "https://opengameart.org/content/lpc-hair",
+        "https://github.com/ElizaWy/LPC/tree/main/Characters/Hair",
+        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "short",
+    "hair_idol"
+  ],
+  "type_name": "hair"
+}

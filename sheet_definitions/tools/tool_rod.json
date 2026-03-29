@@ -1,0 +1,55 @@
+{
+  "name": "Rod",
+  "preview_row": 0,
+  "preview_column": 0,
+  "preview_x_offset": 304,
+  "preview_y_offset": 24,
+  "layer_1": {
+    "zPos": 9,
+    "custom_animation": "tool_rod",
+    "male": "tools/rod/background/",
+    "muscular": "tools/rod/background/",
+    "female": "tools/rod/background/",
+    "pregnant": "tools/rod/background/",
+    "teen": "tools/rod/background/"
+  },
+  "layer_2": {
+    "zPos": 150,
+    "custom_animation": "tool_rod",
+    "male": "tools/rod/foreground/",
+    "muscular": "tools/rod/foreground/",
+    "female": "tools/rod/foreground/",
+    "pregnant": "tools/rod/foreground/",
+    "teen": "tools/rod/foreground/"
+  },
+  "variants": [
+    "rod"
+  ],
+  "animations": [
+    "tool_rod"
+  ],
+  "credits": [
+    {
+      "file": "tools/rod",
+      "notes": "",
+      "authors": [
+        "bluecarrot16",
+        "Pierre Vigier (pvigier)",
+        "Tuomo Untinen (reemax)",
+        "Johannes Sjölund (wulax)",
+        "and Inboxninja"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-hand-tools"
+      ]
+    }
+  ],
+  "path": [
+    "tools",
+    "tool_rod"
+  ],
+  "type_name": "weapon"
+}

@@ -1,0 +1,80 @@
+{
+  "name": "Eyepatch 2 Right",
+  "layer_1": {
+    "zPos": 115,
+    "male": "facial/patches/eyepatch2/right/adult/",
+    "muscular": "facial/patches/eyepatch2/right/adult/",
+    "female": "facial/patches/eyepatch2/right/adult/",
+    "pregnant": "facial/patches/eyepatch2/right/adult/",
+    "teen": "facial/patches/eyepatch2/right/adult/",
+    "child": "facial/patches/eyepatch2/right/child/"
+  },
+  "variants": [
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "facial/patches/eyepatch2",
+      "notes": "",
+      "authors": [
+        "ElizaWy"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://github.com/ElizaWy/LPC/tree/main/Characters/Head%20Accessories",
+        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "accessories",
+    "eyepatches",
+    "facial_eyepatch2_right"
+  ],
+  "type_name": "facial_eyes"
+}

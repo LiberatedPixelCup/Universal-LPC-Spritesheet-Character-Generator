@@ -175,7 +175,8 @@ export const AnimationPreview = {
 			]),
 			m("div.mt-3", [
 				// Render preview canvas with drag-to-scroll
-				m(ScrollableContainer, [
+				m(ScrollableContainer, { classes: "spritesheet-preview" }, [
+					m("div", { class: state.renderCharacter.isRendering ? "loading" : "" }),
 					m(PreviewCanvas, {
 						selectedAnimation: vnode.state.selectedAnimation,
 						zoomLevel: vnode.state.zoomLevel,

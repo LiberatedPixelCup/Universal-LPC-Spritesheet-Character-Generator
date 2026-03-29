@@ -1,0 +1,92 @@
+{
+  "name": "Cross amulet",
+  "layer_1": {
+    "zPos": 81,
+    "male": "neck/amulet/cross/male/",
+    "muscular": "neck/amulet/cross/male/",
+    "female": "neck/amulet/cross/female/",
+    "teen": "neck/amulet/cross/female/",
+    "pregnant": "neck/amulet/cross/female/"
+  },
+  "variants": [
+    "brass_blue",
+    "brass_green",
+    "brass_orange",
+    "brass_purple",
+    "brass_red",
+    "brass_yellow",
+    "bronze_blue",
+    "bronze_green",
+    "bronze_orange",
+    "bronze_purple",
+    "bronze_red",
+    "bronze_yellow",
+    "ceramic_blue",
+    "ceramic_green",
+    "ceramic_orange",
+    "ceramic_purple",
+    "ceramic_red",
+    "ceramic_yellow",
+    "copper_blue",
+    "copper_green",
+    "copper_orange",
+    "copper_purple",
+    "copper_red",
+    "copper_yellow",
+    "gold_blue",
+    "gold_green",
+    "gold_orange",
+    "gold_purple",
+    "gold_red",
+    "gold_yellow",
+    "iron_blue",
+    "iron_green",
+    "iron_orange",
+    "iron_purple",
+    "iron_red",
+    "iron_yellow",
+    "silver_blue",
+    "silver_green",
+    "silver_orange",
+    "silver_purple",
+    "silver_red",
+    "silver_yellow",
+    "steel_blue",
+    "steel_green",
+    "steel_orange",
+    "steel_purple",
+    "steel_red",
+    "steel_yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "idle"
+  ],
+  "credits": [
+    {
+      "file": "neck/amulet/cross",
+      "notes": "",
+      "authors": [
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "CC0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-jewelry"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "neck",
+    "necklace charms",
+    "neck_amulet_cross"
+  ],
+  "type_name": "charm"
+}

@@ -10,7 +10,7 @@
  */
 // copied from https://github.com/mikemaccana/dynamic-template/blob/046fee36aecc1f48cf3dc454d9d36bb0e96e0784/index.js
 export const es6DynamicTemplate = (templateString, templateVariables) =>
-	templateString.replace(/\${(.*?)}/g, (_, g) => templateVariables[g]);
+	templateString.replace(/\${(.*?)}/g, (_, g) => templateVariables[g] ?? `\${${g}}`);
 
 /**
  * Convert variant name to filename format (spaces to underscores)

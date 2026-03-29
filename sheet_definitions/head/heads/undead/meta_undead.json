@@ -1,0 +1,5 @@
+{
+    "label": "Undead Heads",
+    "priority": 20,
+    "required": ["male", "female", "teen", "pregnant", "muscular"]
+}

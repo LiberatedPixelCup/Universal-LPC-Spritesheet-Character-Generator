@@ -1,0 +1,48 @@
+{
+  "name": "Spartan Shield",
+  "priority": 50,
+  "layer_1": {
+    "zPos": 2,
+    "male": "shield/spartan/bg/",
+    "muscular": "shield/spartan/bg/",
+    "teen": "shield/spartan/bg/",
+    "female": "shield/spartan/bg/",
+    "pregnant": "shield/spartan/bg/"
+  },
+  "layer_2": {
+    "zPos": 110,
+    "male": "shield/spartan/fg/",
+    "muscular": "shield/spartan/fg/",
+    "teen": "shield/spartan/fg/",
+    "female": "shield/spartan/fg/",
+    "pregnant": "shield/spartan/fg/"
+  },
+  "variants": [
+    "spartan"
+  ],
+  "credits": [
+    {
+      "file": "shield/spartan",
+      "notes": "",
+      "authors": [
+        "bluecarrot16",
+        "Sander Frenken (castelonia)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-shields"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "shield",
+    "shield_spartan"
+  ],
+  "aliases": {
+    "Shields_spartan": "spartan"
+  },
+  "type_name": "shield"
+}

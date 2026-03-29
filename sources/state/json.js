@@ -1,5 +1,6 @@
 import { createHashStringFromParams, getHashParamsforSelections, loadSelectionsFromHash } from "./hash.js";
 import { getAllCredits } from "../utils/credits.js";
+import { state } from "../state/state.js";
 
 /**
  * Export current state as JSON string

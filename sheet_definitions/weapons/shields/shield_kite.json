@@ -1,0 +1,49 @@
+{
+  "name": "Kite",
+  "priority": 20,
+  "layer_1": {
+    "zPos": 110,
+    "male": "shield/kite/male/",
+    "muscular": "shield/kite/male/",
+    "female": "shield/kite/female/",
+    "pregnant": "shield/kite/female/"
+  },
+  "variants": [
+    "kite blue blue",
+    "kite blue gray",
+    "kite gray blue",
+    "kite gray gray",
+    "kite gray green",
+    "kite gray orange",
+    "kite gray",
+    "kite green gray",
+    "kite orange",
+    "kite red gray"
+  ],
+  "credits": [
+    {
+      "file": "shield/kite",
+      "notes": "",
+      "authors": [
+        "DarkwallLKE",
+        "Tuomo Untinen (reemax)",
+        "Michael Whitlock (bigbeargames)"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-kite-shield",
+        "https://opengameart.org/content/lpc-shields-pack"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "shield",
+    "shield_kite"
+  ],
+  "type_name": "shield"
+}

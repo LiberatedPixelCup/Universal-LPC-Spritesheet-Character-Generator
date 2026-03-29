@@ -1,0 +1,82 @@
+{
+  "name": "Eyepatch Left",
+  "layer_1": {
+    "zPos": 115,
+    "male": "facial/patches/eyepatch/left/adult/",
+    "muscular": "facial/patches/eyepatch/left/adult/",
+    "female": "facial/patches/eyepatch/left/adult/",
+    "pregnant": "facial/patches/eyepatch/left/adult/",
+    "teen": "facial/patches/eyepatch/left/adult/",
+    "child": "facial/patches/eyepatch/left/child/"
+  },
+  "variants": [
+    "base",
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "facial/patches/eyepatch",
+      "notes": "",
+      "authors": [
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-pirates",
+        "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "accessories",
+    "eyepatches",
+    "facial_eyepatch_left"
+  ],
+  "type_name": "facial_eyes"
+}

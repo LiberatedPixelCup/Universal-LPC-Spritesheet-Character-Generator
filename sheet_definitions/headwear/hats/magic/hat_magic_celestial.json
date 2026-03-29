@@ -1,0 +1,86 @@
+{
+  "name": "Celestial Wizard Hat",
+  "tags": [
+    "wizard",
+    "celestial"
+  ],
+  "layer_1": {
+    "zPos": 130,
+    "male": "hat/magic/celestial/adult/",
+    "female": "hat/magic/celestial/adult/",
+    "muscular": "hat/magic/celestial/adult/",
+    "pregnant": "hat/magic/celestial/adult/",
+    "teen": "hat/magic/celestial/adult/"
+  },
+  "variants": [
+    "white",
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hat/magic/celestial",
+      "notes": "Original by Tracy, Adapted to ULPC by Big Bear Games, reduced colors by Napsio",
+      "authors": [
+        "Napsio",
+        "Michael Whitlock (bigbeargames)",
+        "Tracy"
+      ],
+      "licenses": [
+        "CC-BY 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-celestial-wizard-hats",
+        "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "hats",
+    "magic",
+    "celestial",
+    "hat_magic_celestial"
+  ],
+  "type_name": "hat"
+}

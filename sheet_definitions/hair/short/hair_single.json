@@ -1,0 +1,93 @@
+{
+  "name": "Single",
+  "layer_1": {
+    "zPos": 120,
+    "male": "hair/single/adult/fg/",
+    "muscular": "hair/single/adult/fg/",
+    "female": "hair/single/adult/fg/",
+    "pregnant": "hair/single/adult/fg/",
+    "teen": "hair/single/adult/fg/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "hair/single/adult/bg/",
+    "muscular": "hair/single/adult/bg/",
+    "female": "hair/single/adult/bg/",
+    "pregnant": "hair/single/adult/bg/",
+    "teen": "hair/single/adult/bg/"
+  },
+  "variants": [
+    "blonde",
+    "ash",
+    "sandy",
+    "platinum",
+    "strawberry",
+    "redhead",
+    "ginger",
+    "carrot",
+    "chestnut",
+    "light brown",
+    "dark brown",
+    "black",
+    "raven",
+    "dark gray",
+    "gray",
+    "white",
+    "red",
+    "orange",
+    "gold",
+    "green",
+    "blue",
+    "navy",
+    "violet",
+    "purple",
+    "pink",
+    "rose"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hair/single",
+      "notes": "",
+      "authors": [
+        "JaidynReiman",
+        "Nila122"
+      ],
+      "licenses": [
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/3-hairs-for-lpc",
+        "https://opengameart.org/content/lpc-expanded-hair"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "hair",
+    "short",
+    "hair_single"
+  ],
+  "type_name": "hair"
+}

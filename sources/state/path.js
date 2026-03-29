@@ -1,10 +1,11 @@
+import { ANIMATIONS } from './constants.js';
 import { getHashParamsforSelections } from './hash.js';
 import { variantToFilename, es6DynamicTemplate } from '../utils/helpers.js';
 
 /**
  * Build sprite path from item metadata for a specific animation
  */
-export function getSpritePath(itemId, variant, bodyType, animation, layerNum = 1, selections = {}, meta = null) {
+export function getSpritePath(itemId, variant, bodyType, animName, layerNum = 1, selections = {}, meta = null) {
   if (!meta) {
     meta = window.itemMetadata[itemId];
   }
@@ -29,8 +30,14 @@ export function getSpritePath(itemId, variant, bodyType, animation, layerNum = 1
     variant = parts[parts.length - 1];
   }
 
+  // Determine animation name to use in path
+  const animation = ANIMATIONS.find(a => a.value === animName);
+  if (animation?.folderName) {
+	animName = animation.folderName;
+  }
+
   // Build full path: spritesheets/ + basePath + animation/ + variant.png
-  return `spritesheets/${basePath}${animation}/${variantToFilename(variant)}.png`;
+  return `spritesheets/${basePath}${animName}/${variantToFilename(variant)}.png`;
 }
 
 // Replace template variables like ${head} in a path using current selections
@@ -79,7 +86,7 @@ for (const key of Object.keys(window.itemMetadata || {})) {
 // e.g. use double underscore to separate name and variant in item ids
 function getNameWithoutVariant(typeName, nameAndVariant) {
 	let variant = '';
-	const nameAndVariantPath = nameAndVariant.split('_');;
+	const nameAndVariantPath = nameAndVariant.split('_');
 	const l = nameAndVariantPath.length;
 	const names = indexedMetadataCache.get(typeName) || [];
 	const variants = names.flatMap(n => n.variants || []).map(v => v.toLowerCase());

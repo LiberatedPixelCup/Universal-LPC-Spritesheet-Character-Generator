@@ -68,6 +68,69 @@ If you add this animations list, users can filter the results based on the anima
 
 As such, if you wish to include less than this list, such as only walk and slash, you should still include the animations definition to restrict it to just those assets. Users will still be able to access your asset, but it won't appear if the animations filter is used and you did not include that animation in your sheet definition.
 
+#### Renaming an Asset
+
+While rare, sometimes it may be deemed that a specific asset should get renamed or moved. In such situations, the aliases key comes into play.
+
+Aliases are a way to forward one asset path into another in order to maintain backward compatibility. This comes in the form of key=value pairs in the current url hash:
+```
+#sex=male&body=Body_Color_light&head=Human_Male_light&expression=Neutral_light
+```
+
+The hash tag is everything after `#` in the address bar. This shows the currently selected assets. The keys are before the equals sign and the values are after.
+
+For example, `expression=Neutral_light` shows the type_name of `expression`, the selected item as `Neutral` and the variant as `light`.
+
+##### When should an asset be renamed?
+
+Asset renames should happen rarely, only if it makes sense. Sometimes older assets have generic names. Please discuss any renames in an issue with us before implementing in a PR, as renaming assets require us to carefully consider backward compatibility.
+
+For some examples, we have belts, which show off aliases in action:
+```
+  "aliases": {
+    "Other_belts_white": "white",
+    "Other_belts_teal": "teal"
+  },
+```
+
+The Other Belts category was removed in favor of shifting these belts to separate categories.
+
+##### How to Forward Assets Using Aliases?
+
+Aliases is an object which may be added to sheet definitions (represented by curly brackets `{` and `}`).
+
+As an example, here's how aliases look in action:
+```
+  "aliases": {
+    "Other_belts_white": "white",
+    "Other_belts_teal": "teal"
+  },
+```
+
+You can see the [full Robe Belt sheet definitions here.](./sheet_definitions/torso/waist/belt_robe.json)
+
+
+The key is the exact name of the old asset and its variant, in this case:
+`Other_belts_white`
+
+`Other Belts` was the old asset name, and white was the variant.
+
+The value tells it which variant on the current sheet definition to use. However, this value can take a full key-value pair, like so:
+`"Other_belts_white": "Robe_Belt_white",`
+
+If you include the asset name before the variant, it will manually choose which asset to implement instead of assuming the current asset is the one that is being forwarded to.
+
+You can even include a custom type name, both in the original source asset and the forwarded asset:
+```
+  "belt=Other_belts_white": "Robe_Belt_white",
+  "Other_belts_white": "belt=Robe_Belt_white",
+```
+
+If the type_name is NOT included, the type_name from the current sheet definition is assumed for both the origin asset and target asset.
+
+It is highly recommended to simply drop the aliases on the sheet definition that the alias was moved to, in which case you do not need to include the type name.
+
+
 #### File Generation
 
 Finally, to get your sheet to appear, in `source_index.html`, add your new category at the desired position by adding a `div_sheet_` like this:

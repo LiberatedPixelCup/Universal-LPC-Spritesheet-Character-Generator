@@ -1,0 +1,114 @@
+{
+  "name": "Arming Sword",
+  "layer_1": {
+    "zPos": 140,
+    "male": "weapon/sword/arming/universal/fg/",
+    "muscular": "weapon/sword/arming/universal/fg/",
+    "female": "weapon/sword/arming/universal/fg/",
+    "pregnant": "weapon/sword/arming/universal/fg/",
+    "teen": "weapon/sword/arming/universal/fg/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "weapon/sword/arming/universal/bg/",
+    "muscular": "weapon/sword/arming/universal/bg/",
+    "female": "weapon/sword/arming/universal/bg/",
+    "pregnant": "weapon/sword/arming/universal/bg/",
+    "teen": "weapon/sword/arming/universal/bg/"
+  },
+  "layer_3": {
+    "zPos": 8,
+    "custom_animation": "slash_128",
+    "male": "weapon/sword/arming/attack_slash/bg/",
+    "muscular": "weapon/sword/arming/attack_slash/bg/",
+    "female": "weapon/sword/arming/attack_slash/bg/",
+    "pregnant": "weapon/sword/arming/attack_slash/bg/",
+    "teen": "weapon/sword/arming/attack_slash/bg/"
+  },
+  "layer_4": {
+    "zPos": 150,
+    "custom_animation": "slash_128",
+    "male": "weapon/sword/arming/attack_slash/fg/",
+    "muscular": "weapon/sword/arming/attack_slash/fg/",
+    "female": "weapon/sword/arming/attack_slash/fg/",
+    "pregnant": "weapon/sword/arming/attack_slash/fg/",
+    "teen": "weapon/sword/arming/attack_slash/fg/"
+  },
+  "layer_5": {
+    "zPos": 8,
+    "custom_animation": "backslash_128",
+    "male": "weapon/sword/arming/attack_backslash/bg/",
+    "muscular": "weapon/sword/arming/attack_backslash/bg/",
+    "female": "weapon/sword/arming/attack_backslash/bg/",
+    "pregnant": "weapon/sword/arming/attack_backslash/bg/",
+    "teen": "weapon/sword/arming/attack_backslash/bg/"
+  },
+  "layer_6": {
+    "zPos": 150,
+    "custom_animation": "backslash_128",
+    "male": "weapon/sword/arming/attack_backslash/fg/",
+    "muscular": "weapon/sword/arming/attack_backslash/fg/",
+    "female": "weapon/sword/arming/attack_backslash/fg/",
+    "pregnant": "weapon/sword/arming/attack_backslash/fg/",
+    "teen": "weapon/sword/arming/attack_backslash/fg/"
+  },
+  "layer_7": {
+    "zPos": 8,
+    "custom_animation": "halfslash_128",
+    "male": "weapon/sword/arming/attack_halfslash/bg/",
+    "muscular": "weapon/sword/arming/attack_halfslash/bg/",
+    "female": "weapon/sword/arming/attack_halfslash/bg/",
+    "pregnant": "weapon/sword/arming/attack_halfslash/bg/",
+    "teen": "weapon/sword/arming/attack_halfslash/bg/"
+  },
+  "layer_8": {
+    "zPos": 150,
+    "custom_animation": "halfslash_128",
+    "male": "weapon/sword/arming/attack_halfslash/fg/",
+    "muscular": "weapon/sword/arming/attack_halfslash/fg/",
+    "female": "weapon/sword/arming/attack_halfslash/fg/",
+    "pregnant": "weapon/sword/arming/attack_halfslash/fg/",
+    "teen": "weapon/sword/arming/attack_halfslash/fg/"
+  },
+  "variants": [
+    "brass",
+    "bronze",
+    "ceramic",
+    "copper",
+    "gold",
+    "iron",
+    "silver",
+    "steel"
+  ],
+  "animations": [
+    "walk",
+    "hurt",
+    "idle",
+    "combat",
+    "slash_128",
+    "backslash_128",
+    "halfslash_128"
+  ],
+  "credits": [
+    {
+      "file": "weapon/sword/arming",
+      "notes": "",
+      "authors": [
+        "ElizaWy; walk and down by JaidynReiman"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://github.com/ElizaWy/LPC/tree/main/Characters/Props/Sword%2001%20-%20Arming%20Sword",
+        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "sword",
+    "weapon_sword_arming"
+  ],
+  "type_name": "weapon"
+}

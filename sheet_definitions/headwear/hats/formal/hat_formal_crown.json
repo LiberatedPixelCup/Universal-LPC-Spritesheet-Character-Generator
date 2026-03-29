@@ -1,0 +1,94 @@
+{
+  "name": "Crown",
+  "layer_1": {
+    "zPos": 130,
+    "male": "hat/formal/crown/adult/",
+    "female": "hat/formal/crown/adult/",
+    "muscular": "hat/formal/crown/adult/",
+    "pregnant": "hat/formal/crown/adult/",
+    "teen": "hat/formal/crown/adult/"
+  },
+  "variants": [
+    "crown_gold",
+    "crown_red",
+    "crown_blue",
+    "crown_gray",
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "white",
+    "yellow",
+    "steel",
+    "iron",
+    "ceramic",
+    "brass",
+    "copper",
+    "bronze",
+    "silver",
+    "gold"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hat/formal/crown",
+      "notes": "",
+      "authors": [
+        "DarkwallLKE",
+        "Charles Sanchez (CharlesGabriel)"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles",
+        "https://opengameart.org/content/lpc-crown",
+        "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "hats",
+    "formal",
+    "hat_formal_crown"
+  ],
+  "type_name": "hat"
+}

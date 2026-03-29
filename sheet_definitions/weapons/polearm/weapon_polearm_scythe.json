@@ -1,0 +1,66 @@
+{
+  "name": "Scythe",
+  "preview_row": 0,
+  "preview_column": 0,
+  "preview_x_offset": 11,
+  "preview_y_offset": 204,
+  "layer_1": {
+    "zPos": 140,
+    "male": "weapon/polearm/scythe/",
+    "muscular": "weapon/polearm/scythe/",
+    "female": "weapon/polearm/scythe/",
+    "pregnant": "weapon/polearm/scythe/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "weapon/polearm/scythe/universal_behind/",
+    "muscular": "weapon/polearm/scythe/universal_behind/",
+    "female": "weapon/polearm/scythe/universal_behind/",
+    "pregnant": "weapon/polearm/scythe/universal_behind/"
+  },
+  "layer_3": {
+    "zPos": 8,
+    "custom_animation": "slash_oversize",
+    "male": "weapon/polearm/scythe/attack_slash/behind/",
+    "muscular": "weapon/polearm/scythe/attack_slash/behind/",
+    "female": "weapon/polearm/scythe/attack_slash/behind/",
+    "pregnant": "weapon/polearm/scythe/attack_slash/behind/"
+  },
+  "layer_4": {
+    "zPos": 150,
+    "custom_animation": "slash_oversize",
+    "male": "weapon/polearm/scythe/attack_slash/",
+    "muscular": "weapon/polearm/scythe/attack_slash/",
+    "female": "weapon/polearm/scythe/attack_slash/",
+    "pregnant": "weapon/polearm/scythe/attack_slash/"
+  },
+  "variants": [
+    "scythe"
+  ],
+  "animations": [
+    "walk",
+    "hurt",
+    "slash_oversize"
+  ],
+  "credits": [
+    {
+      "file": "weapon/polearm/scythe",
+      "notes": "",
+      "authors": [
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-extended-weapon-animations"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "polearm",
+    "weapon_polearm_scythe"
+  ],
+  "type_name": "weapon"
+}

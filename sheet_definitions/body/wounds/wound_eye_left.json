@@ -1,0 +1,58 @@
+{
+  "name": "Left Eye",
+  "priority": 30,
+  "layer_1": {
+    "zPos": 115,
+    "male": "body/wound/eye_left/",
+    "muscular": "body/wound/eye_left/",
+    "female": "body/wound/eye_left/",
+    "pregnant": "body/wound/eye_left/",
+    "teen": "body/wound/eye_left/"
+  },
+  "variants": [
+    "red"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "body/wound/eye_left",
+      "notes": "Zombie by BenCreating, commissioned by castelonia; flipped (left eye) variant by JaidynReiman",
+      "authors": [
+        "JaidynReiman",
+        "Benjamin K. Smith (BenCreating)",
+        "Sander Frenken (castelonia)"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-zombie"
+      ]
+    }
+  ],
+  "path": [
+    "body",
+    "wounds",
+    "wound_eye_left"
+  ],
+  "type_name": "wound_eye_left"
+}

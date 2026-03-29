@@ -1,0 +1,84 @@
+{
+  "name": "Halberd",
+  "preview_row": 0,
+  "preview_column": 0,
+  "layer_1": {
+    "zPos": 8,
+    "male": "weapon/polearm/halberd/behind/",
+    "muscular": "weapon/polearm/halberd/behind/",
+    "female": "weapon/polearm/halberd/behind/",
+    "pregnant": "weapon/polearm/halberd/behind/"
+  },
+  "layer_2": {
+    "zPos": 140,
+    "male": "weapon/polearm/halberd/",
+    "muscular": "weapon/polearm/halberd/",
+    "female": "weapon/polearm/halberd/",
+    "pregnant": "weapon/polearm/halberd/"
+  },
+  "layer_3": {
+    "custom_animation": "thrust_oversize",
+    "zPos": 9,
+    "male": "weapon/polearm/halberd/attack_thrust/behind/",
+    "muscular": "weapon/polearm/halberd/attack_thrust/behind/",
+    "female": "weapon/polearm/halberd/attack_thrust/behind/",
+    "pregnant": "weapon/polearm/halberd/attack_thrust/behind/"
+  },
+  "layer_4": {
+    "custom_animation": "thrust_oversize",
+    "zPos": 150,
+    "male": "weapon/polearm/halberd/attack_thrust/",
+    "muscular": "weapon/polearm/halberd/attack_thrust/",
+    "female": "weapon/polearm/halberd/attack_thrust/",
+    "pregnant": "weapon/polearm/halberd/attack_thrust/"
+  },
+  "layer_5": {
+    "custom_animation": "slash_oversize",
+    "zPos": 8,
+    "male": "weapon/polearm/halberd/attack_slash/behind/",
+    "muscular": "weapon/polearm/halberd/attack_slash/behind/",
+    "female": "weapon/polearm/halberd/attack_slash/behind/",
+    "pregnant": "weapon/polearm/halberd/attack_slash/behind/"
+  },
+  "layer_6": {
+    "custom_animation": "slash_oversize",
+    "zPos": 150,
+    "male": "weapon/polearm/halberd/attack_slash/",
+    "muscular": "weapon/polearm/halberd/attack_slash/",
+    "female": "weapon/polearm/halberd/attack_slash/",
+    "pregnant": "weapon/polearm/halberd/attack_slash/"
+  },
+  "variants": [
+    "halberd"
+  ],
+  "animations": [
+    "walk",
+    "hurt",
+    "thrust_oversize",
+    "slash_oversize"
+  ],
+  "credits": [
+    {
+      "file": "weapon/polearm/halberd",
+      "notes": "",
+      "authors": [
+        "Benjamin K. Smith (BenCreating)",
+        "bluecarrot16",
+        "Sander Frenken (castelonia)"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-medieval-weapons"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "polearm",
+    "weapon_polearm_halberd"
+  ],
+  "type_name": "weapon"
+}

@@ -1,0 +1,98 @@
+{
+  "name": "Wizard Hat Belt",
+  "tags": [
+    "wizard",
+    "hat_trim"
+  ],
+  "required_tags": [
+    "pointed_wizard"
+  ],
+  "layer_1": {
+    "zPos": 131,
+    "male": "hat/magic/wizard/belt/adult/",
+    "female": "hat/magic/wizard/belt/adult/",
+    "muscular": "hat/magic/wizard/belt/adult/",
+    "pregnant": "hat/magic/wizard/belt/adult/",
+    "teen": "hat/magic/wizard/belt/adult/"
+  },
+  "variants": [
+    "base_black",
+    "base_brown",
+    "base_gray",
+    "base_maroon",
+    "base_teal",
+    "base_yellow",
+    "white",
+    "black",
+    "blue",
+    "bluegray",
+    "brown",
+    "charcoal",
+    "forest",
+    "gray",
+    "green",
+    "lavender",
+    "leather",
+    "maroon",
+    "navy",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "rose",
+    "sky",
+    "slate",
+    "tan",
+    "teal",
+    "walnut",
+    "yellow"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hat/magic/wizard",
+      "notes": "Original Wizard Hat and Recolors by bigbeargames and reemax; split into separate layers with new recolors by JaidynReiman",
+      "authors": [
+        "Michael Whitlock (bigbeargames)",
+        "Tuomo Untinen (reemax)",
+        "JaidynReiman"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0",
+        "GPL 2.0",
+        "GPL 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-items-and-game-effects",
+        "https://opengameart.org/content/lpc-pointed-hats",
+        "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "hats",
+    "magic",
+    "wizard",
+    "hat_magic_wizard_belt"
+  ],
+  "type_name": "hat_trim"
+}

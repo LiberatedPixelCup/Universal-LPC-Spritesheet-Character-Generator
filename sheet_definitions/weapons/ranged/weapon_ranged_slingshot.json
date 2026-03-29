@@ -1,0 +1,48 @@
+{
+  "name": "Slingshot",
+  "layer_1": {
+    "zPos": 140,
+    "male": "weapon/ranged/slingshot/foreground/",
+    "muscular": "weapon/ranged/slingshot/foreground/",
+    "female": "weapon/ranged/slingshot/foreground/",
+    "pregnant": "weapon/ranged/slingshot/foreground/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "male": "weapon/ranged/slingshot/background/",
+    "muscular": "weapon/ranged/slingshot/background/",
+    "female": "weapon/ranged/slingshot/background/",
+    "pregnant": "weapon/ranged/slingshot/background/"
+  },
+  "variants": [
+    "slingshot"
+  ],
+  "animations": [
+    "walk",
+    "shoot",
+    "hurt"
+  ],
+  "credits": [
+    {
+      "file": "weapon/ranged/slingshot",
+      "notes": "",
+      "authors": [
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "OGA-BY 3.0+",
+        "GPL 3.0",
+        "CC-BY 4.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-more-weapons"
+      ]
+    }
+  ],
+  "path": [
+    "weapons",
+    "ranged",
+    "weapon_ranged_slingshot"
+  ],
+  "type_name": "weapon"
+}

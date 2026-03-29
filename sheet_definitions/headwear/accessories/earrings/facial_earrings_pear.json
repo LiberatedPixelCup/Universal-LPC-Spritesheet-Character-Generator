@@ -1,0 +1,41 @@
+{
+  "name": "Pear earrings",
+  "layer_1": {
+    "zPos": 115,
+    "male": "facial/earrings/pear/male/",
+    "muscular": "facial/earrings/pear/male/",
+    "female": "facial/earrings/pear/female/",
+    "pregnant": "facial/earrings/pear/female/",
+    "teen": "facial/earrings/pear/female/"
+  },
+  "variants": [
+    "blue",
+    "green",
+    "orange",
+    "purple",
+    "red",
+    "yellow"
+  ],
+  "credits": [
+    {
+      "file": "facial/earrings/pear",
+      "notes": "",
+      "authors": [
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "CC0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-jewelry"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "accessories",
+    "earrings",
+    "facial_earrings_pear"
+  ],
+  "type_name": "earrings"
+}

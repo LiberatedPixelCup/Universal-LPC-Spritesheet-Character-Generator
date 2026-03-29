@@ -1,0 +1,63 @@
+{
+  "name": "Xeon helmet",
+  "layer_1": {
+    "zPos": 130,
+    "female": "hat/helmet/xeon/adult/",
+    "pregnant": "hat/helmet/xeon/adult/",
+    "male": "hat/helmet/xeon/adult/",
+    "muscular": "hat/helmet/xeon/adult/",
+    "teen": "hat/helmet/xeon/adult/"
+  },
+  "variants": [
+    "steel",
+    "iron",
+    "ceramic",
+    "brass",
+    "copper",
+    "bronze",
+    "silver",
+    "gold"
+  ],
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "hat/helmet/xeon",
+      "notes": "",
+      "authors": [
+        "Stephen Challener (Redshrike)"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/four-characters-my-lpc-entries",
+        "https://opengameart.org/content/lpc-expanded-hats-facial-helmets"
+      ]
+    }
+  ],
+  "path": [
+    "head",
+    "helmets",
+    "helmets",
+    "hat_helmet_xeon"
+  ],
+  "type_name": "hat"
+}
