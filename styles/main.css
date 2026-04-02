@@ -1,10 +1,20 @@
+@import "./bulma-overrides.css";
+
 body {
   height: 100dvh;
-  font-family: monospace;
+  font-family: var(--bulma-family-primary);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+}
+
+/* Pre-migration, body was monospace and these elements had no Bulma font rule — keep that look */
+.tree-node,
+.tree-label,
+.variant-display-name,
+#netlify-link {
+  font-family: monospace;
 }
 
 h1 {
@@ -65,7 +75,8 @@ p {
   overflow-y: auto;
 }
 
-#animations-preview, #spritesheet-preview {
+#animations-preview,
+#spritesheet-preview {
   touch-action: pan-x pan-y;
 }
 
@@ -76,7 +87,8 @@ canvas {
   image-rendering: crisp-edges;
 }
 
-#previewAnimations, #spritesheet-preview {
+#previewAnimations,
+#spritesheet-preview {
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
@@ -149,10 +161,6 @@ canvas {
   margin-top: 4px;
 }
 
-.title:not(.is-spaced) + .subtitle {
-  margin-top: -12px;
-}
-
 .collapsible-header {
   cursor: pointer;
   user-select: none;
@@ -177,6 +185,7 @@ canvas {
 .tree-node {
   padding: 0.25rem 0 0.25rem 1.5rem;
   cursor: pointer;
+  line-height: 1.25;
 }
 
 .tree-label {
@@ -184,6 +193,7 @@ canvas {
   user-select: none;
   padding: 0.25rem 0;
   display: block;
+  line-height: 1.25;
 }
 
 .tree-label:hover {

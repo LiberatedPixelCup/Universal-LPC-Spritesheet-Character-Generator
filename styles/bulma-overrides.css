@@ -1,0 +1,266 @@
+/*
+ * Bulma v1 → v0.9.4 visual parity (colors, spacing, typography).
+ * Bulma v1 uses many component-scoped CSS variables; :root alone is not always enough.
+ * https://bulma.io/documentation/features/css-variables/
+ */
+
+/* =============================================================================
+   Scheme, radius & font stacks
+   ============================================================================= */
+:root {
+  --bulma-scheme-h: 0deg;
+  --bulma-scheme-s: 0%;
+  --bulma-text-h: 0deg;
+  --bulma-text-s: 0%;
+  --bulma-light-h: 0deg;
+  --bulma-light-s: 0%;
+  --bulma-shadow-h: 0deg;
+  --bulma-shadow-s: 0%;
+  --bulma-radius: 4px;
+  --bulma-radius-large: 6px;
+
+  /* v0.9.4 used the system stack; v1 defaults to Inter. */
+  --bulma-family-primary:
+    BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
+  --bulma-family-secondary:
+    BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
+
+  /* Semantic palette (v0.9.4 hex-aligned HSL) */
+  --bulma-primary-h: 171deg;
+  --bulma-primary-s: 100%;
+  --bulma-primary-l: 41%;
+
+  --bulma-link-h: 229deg;
+  --bulma-link-s: 53%;
+  --bulma-link-l: 53%;
+
+  --bulma-info-h: 204deg;
+  --bulma-info-s: 59%;
+  --bulma-info-l: 53%;
+
+  --bulma-success-h: 153deg;
+  --bulma-success-s: 54%;
+  --bulma-success-l: 53%;
+
+  --bulma-warning-h: 48deg;
+  --bulma-warning-s: 100%;
+  --bulma-warning-l: 77%;
+
+  --bulma-danger-h: 348deg;
+  --bulma-danger-s: 86%;
+  --bulma-danger-l: 61%;
+}
+
+/* =============================================================================
+   Global spacing tokens (v0.9.4 block list & derived layout)
+   ============================================================================= */
+:root {
+  /*
+   * v0.9.4 block list: .title, .box, .field, … used margin-bottom: 1.5rem.
+   * v1 uses var(--bulma-block-spacing) for that list (default 1.5rem).
+   * Setting 1.5rem restores .columns:not(:last-child) math:
+   * calc(1.5rem - 0.75rem) = 0.75rem, matching v0.9.4.
+   */
+  --bulma-block-spacing: 1.5rem;
+  /* Form :root block in bulma.css (comes before this file); reinforce for clarity */
+  --bulma-field-block-spacing: 0.75rem;
+  --bulma-label-spacing: 0.5em;
+}
+
+/* =============================================================================
+   Component-scoped variables (Bulma sets these on selectors; :root is not enough)
+   ============================================================================= */
+.field {
+  --bulma-field-block-spacing: 0.75rem;
+}
+
+.box {
+  --bulma-box-padding: 1.25rem;
+  --bulma-box-radius: var(--bulma-radius-large);
+}
+
+/*
+ * v1 sets --bulma-title-weight to extrabold on .title via .title, .subtitle { }.
+ * v0.9.4 default .title used font-weight: 600.
+ */
+.title {
+  --bulma-title-weight: var(--bulma-weight-semibold);
+}
+
+/*
+ * v1 default buttons use --bulma-weight-medium; v0.9.4 inherited 400.
+ */
+.button {
+  --bulma-button-weight: var(--bulma-weight-normal);
+}
+
+/* =============================================================================
+   Typography (v0.9.4 weights — v1 uses semibold on .label via a literal rule)
+   ============================================================================= */
+.label {
+  font-weight: var(--bulma-weight-bold);
+}
+
+/* =============================================================================
+   Title + subtitle pairing (v0.9.4: .title:not(.is-spaced) + .subtitle { margin-top: -1.25rem })
+   v1 uses :has() on .title instead; keep the old pull-up for pixel parity.
+   ============================================================================= */
+.title:not(.is-spaced) + .subtitle {
+  margin-top: -1.25rem;
+}
+
+/* =============================================================================
+   Block list exceptions
+   v1 includes .buttons / .tags in the global block list (1.5rem);
+   v0.9.4 gave them margin-bottom: 1rem only.
+   ============================================================================= */
+.buttons:not(:last-child),
+.tags:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+/* Do not shrink .box bottom margin; it should follow --bulma-block-spacing (1.5rem in v0.9.4). */
+
+/* =============================================================================
+   Flex gaps (v1 defaults are looser than v0.9.4 in places)
+   ============================================================================= */
+.buttons {
+  gap: 0.5rem;
+}
+
+/*
+ * v1 uses gap: 0.75rem; v0.9.4 used margin-right: 0.75rem between controls — same rhythm.
+ * Optional tighten if needed: 0.5rem
+ */
+
+/* =============================================================================
+   Columns: gapless section spacing (v1 hardcodes 1.5rem; tie to block spacing)
+   ============================================================================= */
+.columns.is-gapless:not(:last-child) {
+  margin-bottom: var(--bulma-block-spacing);
+}
+
+/* =============================================================================
+   Grey helpers — v1 hardcodes slate greys; v0.9.4 used neutral hex values
+   ============================================================================= */
+.has-text-grey-darker {
+  color: #363636 !important;
+}
+
+.has-text-grey-dark {
+  color: #4a4a4a !important;
+}
+
+.has-text-grey {
+  color: #7a7a7a !important;
+}
+
+.has-text-grey-light {
+  color: #b5b5b5 !important;
+}
+
+.has-text-grey-lighter {
+  color: #dbdbdb !important;
+}
+
+/* =============================================================================
+   Literal v0.9.4 colors (defaults + hovers)
+   ============================================================================= */
+.button.is-primary {
+  background-color: #00d1b2;
+  border-color: transparent;
+  color: #fff;
+}
+
+.button.is-primary:hover,
+.button.is-primary.is-hovered {
+  background-color: #00c4a7;
+  border-color: transparent;
+  color: #fff;
+}
+
+.button.is-link {
+  background-color: #485fc7;
+  border-color: transparent;
+  color: #fff;
+}
+
+.button.is-link:hover,
+.button.is-link.is-hovered {
+  background-color: #3e56c4;
+  border-color: transparent;
+  color: #fff;
+}
+
+.button.is-danger {
+  background-color: #f14668;
+  border-color: transparent;
+  color: #fff;
+}
+
+.button.is-danger:hover,
+.button.is-danger.is-hovered {
+  background-color: #f03a5f;
+  border-color: transparent;
+  color: #fff;
+}
+
+.button.is-info {
+  background-color: #3e8ed0;
+  border-color: transparent;
+  color: #fff;
+}
+
+.button.is-info:hover,
+.button.is-info.is-hovered {
+  background-color: #3488ce;
+  border-color: transparent;
+  color: #fff;
+}
+
+.button.is-static.is-light {
+  background-color: whitesmoke;
+  border-color: #dbdbdb;
+  color: #7a7a7a;
+  box-shadow: none;
+}
+
+.tag:not(body).is-info {
+  background-color: #3e8ed0;
+  color: #fff;
+}
+
+.tag:not(body).is-warning {
+  background-color: #ffe08a;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.tag:not(body).is-success {
+  background-color: #48c78e;
+  color: #fff;
+}
+
+/* =============================================================================
+   Mithril panels — v0.9.4 label/input sizing
+   ============================================================================= */
+#mithril-filters .label,
+#mithril-preview .label,
+#mithril-filters .field-label .label,
+#mithril-preview .field-label .label,
+#mithril-filters .checkbox,
+#mithril-preview .checkbox {
+  font-size: 1rem;
+}
+
+#mithril-filters .input,
+#mithril-preview .input,
+#mithril-filters .select select,
+#mithril-preview .select select,
+#mithril-filters .textarea,
+#mithril-preview .textarea {
+  font-size: 1rem;
+}
