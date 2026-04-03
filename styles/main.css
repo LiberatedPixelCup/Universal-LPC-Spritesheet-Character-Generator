@@ -1,19 +1,28 @@
 @import "./bulma-overrides.css";
 
+html {
+  font-size: 16px;
+}
+
 body {
   height: 100dvh;
-  font-family: var(--bulma-family-primary);
+  font-family: monospace;
+  font-size: 16px;
+  line-height: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
 }
 
-/* Pre-migration, body was monospace and these elements had no Bulma font rule — keep that look */
-.tree-node,
-.tree-label,
 .variant-display-name,
 #netlify-link {
+  font-family: monospace;
+}
+
+.tree-label .title,
+.tree-label .is-size-7,
+.tree-label a {
   font-family: monospace;
 }
 
@@ -64,10 +73,6 @@ p {
 #preview-column {
   padding: 1rem;
   overflow-y: auto;
-}
-
-#download-buttons {
-  gap: 0.5rem;
 }
 
 #credits-section > .collapsible-content > .content {
@@ -191,9 +196,12 @@ canvas {
 .tree-label {
   cursor: pointer;
   user-select: none;
-  padding: 0.25rem 0;
+  box-sizing: border-box;
   display: block;
-  line-height: 1.25;
+  height: 32px;
+  padding: 0.25rem 0;
+  font-size: 1rem;
+  line-height: 24px;
 }
 
 .tree-label:hover {

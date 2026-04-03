@@ -16,6 +16,8 @@
   --bulma-light-s: 0%;
   --bulma-shadow-h: 0deg;
   --bulma-shadow-s: 0%;
+  /* v1 default ~13px; v0.9.4 / master use 16px */
+  --bulma-body-font-size: 16px;
   --bulma-radius: 4px;
   --bulma-radius-large: 6px;
 
@@ -81,12 +83,17 @@
 .box {
   --bulma-box-padding: 1.25rem;
   --bulma-box-radius: var(--bulma-radius-large);
+  font-family: monospace;
 }
 
-/*
- * v1 sets --bulma-title-weight to extrabold on .title via .title, .subtitle { }.
- * v0.9.4 default .title used font-weight: 600.
- */
+.box .title {
+  font-family: monospace;
+}
+
+#mithril-preview .box .collapsible-content {
+  margin-top: calc(1rem - 2px);
+}
+
 .title {
   --bulma-title-weight: var(--bulma-weight-semibold);
 }
@@ -96,6 +103,25 @@
  */
 .button {
   --bulma-button-weight: var(--bulma-weight-normal);
+  /* v0.9.4: 2px radius, 1px border, no shadow; v1 defaults to larger radius, 0 border, shadow */
+  --bulma-button-radius: 2px;
+  --bulma-button-border-width: 1px;
+  border-radius: 2px;
+  border-width: 1px;
+  border-style: solid;
+  box-shadow: none;
+  font-family: var(--bulma-family-primary);
+}
+
+.button.is-small {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.button:hover,
+.button:focus,
+.button.is-hovered {
+  box-shadow: none;
 }
 
 /* =============================================================================
@@ -106,11 +132,10 @@
 }
 
 /* =============================================================================
-   Title + subtitle pairing (v0.9.4: .title:not(.is-spaced) + .subtitle { margin-top: -1.25rem })
-   v1 uses :has() on .title instead; keep the old pull-up for pixel parity.
+   Title + subtitle pairing — master computed: margin-top -12px (not -1.25rem / -20px)
    ============================================================================= */
 .title:not(.is-spaced) + .subtitle {
-  margin-top: -1.25rem;
+  margin-top: -12px;
 }
 
 /* =============================================================================
@@ -123,19 +148,19 @@
   margin-bottom: 1rem;
 }
 
-/* Do not shrink .box bottom margin; it should follow --bulma-block-spacing (1.5rem in v0.9.4). */
-
 /* =============================================================================
-   Flex gaps (v1 defaults are looser than v0.9.4 in places)
+   Button groups — v0.9.4 used margin on each .button (~8px); v1 uses gap (computed margin 0)
    ============================================================================= */
 .buttons {
-  gap: 0.5rem;
+  gap: 0;
+  row-gap: 0;
+  column-gap: 0;
 }
 
-/*
- * v1 uses gap: 0.75rem; v0.9.4 used margin-right: 0.75rem between controls — same rhythm.
- * Optional tighten if needed: 0.5rem
- */
+.buttons .button {
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
 
 /* =============================================================================
    Columns: gapless section spacing (v1 hardcodes 1.5rem; tie to block spacing)
@@ -244,9 +269,28 @@
   color: #fff;
 }
 
+/* v0.9.4: space between tags via margins (~8px); v1 adds flex gap — reset + margins */
+#mithril-filters .tags:not(.has-addons),
+#mithril-preview .tags:not(.has-addons) {
+  gap: 0;
+  row-gap: 0;
+  column-gap: 0;
+}
+
+#mithril-filters .tags:not(.has-addons) .tag,
+#mithril-preview .tags:not(.has-addons) .tag {
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 /* =============================================================================
-   Mithril panels — v0.9.4 label/input sizing
+   Master monospace-heavy typography (plain text inherits body monospace)
    ============================================================================= */
+#header-left h1.title,
+#header-left span.subtitle {
+  font-family: monospace;
+}
+
 #mithril-filters .label,
 #mithril-preview .label,
 #mithril-filters .field-label .label,
@@ -254,8 +298,17 @@
 #mithril-filters .checkbox,
 #mithril-preview .checkbox {
   font-size: 1rem;
+  font-family: monospace;
 }
 
+#mithril-filters .tag:not(body),
+#mithril-preview .tag:not(body) {
+  font-family: monospace;
+}
+
+/* =============================================================================
+   Mithril panels — form controls stay sans (v0.9.4 Bulma inputs)
+   ============================================================================= */
 #mithril-filters .input,
 #mithril-preview .input,
 #mithril-filters .select select,
@@ -263,4 +316,5 @@
 #mithril-filters .textarea,
 #mithril-preview .textarea {
   font-size: 1rem;
+  font-family: var(--bulma-family-primary);
 }
