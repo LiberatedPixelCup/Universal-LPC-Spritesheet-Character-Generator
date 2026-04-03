@@ -58,7 +58,10 @@ p {
 }
 
 #columns-container {
+  align-self: auto;
   width: 100%;
+  max-width: none;
+  box-sizing: border-box;
   flex: 1;
   margin-top: 0;
   overflow-y: auto;

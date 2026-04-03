@@ -90,8 +90,26 @@
   font-family: monospace;
 }
 
+/* Default: match master subtitle/box rhythm at medium desktop width */
 #mithril-preview .box .collapsible-content {
   margin-top: calc(1rem - 2px);
+}
+
+/*
+ * Tablet + huge: animation .box is 2px shorter than master with calc() alone
+ * (branch 229.5px vs 231.5px). Medium desktop (1440×900) stays on calc() — do not
+ * widen this range or Argos mediumDesktop screenshots drift.
+ */
+@media screen and (min-width: 834px) and (max-width: 1439px) {
+  #mithril-preview .box .collapsible-content {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  #mithril-preview .box .collapsible-content {
+    margin-top: 1rem;
+  }
 }
 
 .title {
@@ -149,17 +167,41 @@
 }
 
 /* =============================================================================
-   Button groups — v0.9.4 used margin on each .button (~8px); v1 uses gap (computed margin 0)
+   Button groups — v0.9.4-style spacing via per-button margins + gap: 0 (all viewports).
+   Mobile master also shows margin 8px on .button; do not zero margins on small screens.
    ============================================================================= */
 .buttons {
   gap: 0;
   row-gap: 0;
   column-gap: 0;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: flex-start;
 }
 
 .buttons .button {
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
+  flex-grow: 0;
+  flex-shrink: 1;
+  /* v0.9.4 / master computed: auto + none (not v1 flex-shrink token defaults) */
+  min-width: auto;
+  max-width: none;
+  align-self: auto;
+}
+
+/*
+ * Download row: match master (Bulma gap + centered wrap + negative bottom margin) at all
+ * breakpoints. Global .buttons above uses gap:0 + flex-start for filter/tree button groups.
+ */
+#download-buttons.buttons {
+  gap: 0.5rem;
+  row-gap: 0.5rem;
+  column-gap: 0.5rem;
+  align-items: center;
+  align-content: flex-start;
+  justify-content: flex-start;
+  margin-bottom: -0.5rem;
 }
 
 /* =============================================================================
@@ -167,6 +209,148 @@
    ============================================================================= */
 .columns.is-gapless:not(:last-child) {
   margin-bottom: var(--bulma-block-spacing);
+}
+
+#columns-container.columns {
+  --bulma-column-gap: 0.75rem;
+}
+
+/*
+ * Spacing helpers: v1 values can differ from v0.9.4 and inflate stacked mobile/tablet
+ * chooser height. Do NOT use #chooser-column .mb-3 alone — Credits renders many
+ * per-file div.mb-3 rows; widening those margins made branch taller than master.
+ *
+ * CategoryTree is the only .box.has-background-light under #mithril-filters; Credits
+ * uses a plain .box, so .mb-3 here is only the tree header, match-body block, and
+ * Body Type wrapper (three nodes).
+ */
+#mithril-filters .box.has-background-light .mb-3 {
+  margin-bottom: 1rem !important;
+}
+
+/*
+ * Nested license/animation .box.mb-4: main.css `.box { margin-bottom: 1rem }` should
+ * win on master (16px computed). Do NOT add #mithril-filters .mb-4 { 1.5rem !important }
+ * — it overrides main and forces 24px on branch vs master 16px.
+ *
+ * Top-level chooser collapsibles: do NOT force #mithril-filters > div > .box to 1rem on
+ * mobile — master uses 24px (1.5rem block spacing) on those boxes; forcing 1rem
+ * diverged dumps.
+ */
+
+/*
+ * Filters panel (2nd collapsible): Search + CurrentSelections are div.mb-4 wrappers
+ * without .box — v1 spacing helpers can exceed v0.9.4. Only direct children of
+ * .collapsible-content (not nested license/animation .box.mb-4 inside columns).
+ */
+#mithril-filters > div > .box:nth-child(2) .collapsible-content > .mb-4 {
+  margin-bottom: 1rem !important;
+}
+
+/*
+ * License / animation row: main.css .filters-column { padding: 0 } loses to
+ * Bulma v1’s .columns .column (higher specificity), so branch gets vertical
+ * column padding and a taller row than v0.9.4 / master (see compute-style-diff).
+ */
+#mithril-filters .columns .column.filters-column {
+  --bulma-column-padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0.5rem;
+}
+
+/*
+ * Credits intro: v1 .is-size-7 line-height + mb-3 spacing differ from master.
+ * Per-file rows stay on 1rem bottom margin (scroll list).
+ */
+#credits-section p.is-size-7.mb-2 {
+  line-height: 18px !important;
+  margin-bottom: 0.5rem !important;
+}
+
+#credits-section p.is-size-7.mb-3 {
+  line-height: 18px !important;
+  margin-bottom: 0.75rem !important;
+}
+
+#credits-section .content.has-background-light .mb-3 {
+  margin-bottom: 1rem !important;
+}
+
+/*
+ * Credits download row: global .buttons uses gap:0 + flex-start (filter/tree parity).
+ * Use gap: initial so computed style matches v0.9.4 (flex gap "normal", not 8px px).
+ */
+#credits-section .buttons.mt-3 {
+  align-items: center;
+  align-content: flex-start;
+  justify-content: flex-start;
+  margin-bottom: -0.5rem;
+  gap: initial;
+  row-gap: initial;
+  column-gap: initial;
+}
+
+/*
+ * Category tree variant grid: main.css .variants-container { gap: 0.5rem } can lose to
+ * v1 flex utilities; pin so branch height matches master (see CategoryTree outer box).
+ */
+#mithril-filters .variants-container {
+  gap: 0.5rem;
+  row-gap: 0.5rem;
+  column-gap: 0.5rem;
+}
+
+/* Same for .variant-item padding/gap — v1 flex children can compute taller rows */
+#mithril-filters .variant-item {
+  gap: 0.25rem;
+  padding: 0.5rem 0.5rem 0.25rem 0.5rem;
+  min-width: 80px;
+  max-width: 120px;
+}
+
+#mithril-filters .variant-item:has(.compact-display) {
+  padding: 0.125rem;
+  gap: 0.125rem;
+}
+
+#mithril-filters .variant-display-name {
+  line-height: 1.2;
+}
+
+/*
+ * Body Type row uses div.buttons.ml-4 without .mb-0; v1 block-list margin on .buttons
+ * can add extra space vs v0.9.4. Header row buttons use .mb-0 — reinforce both.
+ */
+#mithril-filters .box.has-background-light .buttons.mb-0,
+#mithril-filters .box.has-background-light div.buttons.ml-4 {
+  margin-bottom: 0 !important;
+}
+
+/*
+ * Full spritesheet preview inner row: Bulma v1 .columns uses different
+ * block-spacing margins (computed: margin-top -4px, margin-bottom 20px) than
+ * v0.9.4 / master (-12px / 12px). Align so dumps match master.
+ */
+#mithril-spritesheet-preview .columns.is-mobile {
+  margin-top: -12px;
+  margin-bottom: 12px;
+}
+
+/*
+ * Inner row height: v1 may compute shorter .column padding than v0.9.4 for this
+ * multiline row. Pin classic column padding so dumps match master; tune after
+ * comparing first/second column entries in compute-style-diff output.
+ */
+#mithril-spritesheet-preview .columns.is-mobile > .column {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+/* is-1 → 0.25rem gap; ensure variable matches markup intent if v1 defaults differ */
+#mithril-spritesheet-preview .columns.is-mobile.is-variable {
+  --bulma-column-gap: 0.25rem;
 }
 
 /* =============================================================================
@@ -304,6 +488,9 @@
 #mithril-filters .tag:not(body),
 #mithril-preview .tag:not(body) {
   font-family: monospace;
+  /* v1 flex contexts set min-width:0 / max-width:100% on tags; v0.9.4 computed as auto/none */
+  min-width: auto;
+  max-width: none;
 }
 
 /* =============================================================================
