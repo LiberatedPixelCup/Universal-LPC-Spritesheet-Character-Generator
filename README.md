@@ -151,6 +151,7 @@ If an engine is not listed above, try Google. However, it is very likely that yo
 - [how to install lpctools](tools/LPCTOOLS.md)
 - [recompile full sheets using lpctools](tools/REBUILD.md)
 - [convert assets to vitruvian studios](tools/VITRUVIAN.md)
+- [Calculate minimal bounding box offsets for oversize animations](https://github.com/matheoheo/MatheoCrawler)
 
 ### Development
 
