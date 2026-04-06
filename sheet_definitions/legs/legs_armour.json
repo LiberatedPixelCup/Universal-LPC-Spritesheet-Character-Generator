@@ -6,16 +6,6 @@
     "female": "legs/armour/plate/thin/",
     "teen": "legs/armour/plate/thin/"
   },
-  "variants": [
-    "steel",
-    "iron",
-    "ceramic",
-    "brass",
-    "copper",
-    "bronze",
-    "silver",
-    "gold"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -23,11 +13,12 @@
     "slash",
     "shoot",
     "hurt",
-    "climb",
+    "watering",
     "idle",
     "jump",
     "sit",
-    "emotes"
+    "emote",
+    "climb"
   ],
   "credits": [
     {
@@ -50,9 +41,13 @@
       ]
     }
   ],
-  "path": [
-    "legs",
-    "legs_armour"
-  ],
+  "recolors": {
+    "material": "metal",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "all.lpcr"
+    ]
+  },
   "type_name": "legs"
 }
