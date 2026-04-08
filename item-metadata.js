@@ -40831,7 +40831,7 @@ window.itemMetadata = {
         "notes": "adapted to v3 bases by bluecarrot16, reduced colors and climb/emote/jump by JaidynReiman",
         "authors": [
           "Johannes Sjölund (wulax)",
-          "Bluecarrot16",
+          "bluecarrot16",
           "JaidynReiman"
         ],
         "licenses": [
@@ -40841,7 +40841,7 @@ window.itemMetadata = {
         ],
         "urls": [
           "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
-          "http://opengameart.org/content/lpc-clothing-updates",
+          "https://opengameart.org/content/lpc-clothing-updates",
           "https://opengameart.org/content/lpc-expanded-armor"
         ]
       },
@@ -40852,7 +40852,7 @@ window.itemMetadata = {
           "Michael Whitlock (bigbeargames)",
           "Matthew Krohn (makrohn)",
           "Johannes Sjölund (wulax)",
-          "Bluecarrot16",
+          "bluecarrot16",
           "JaidynReiman"
         ],
         "licenses": [
@@ -40863,7 +40863,7 @@ window.itemMetadata = {
         "urls": [
           "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites",
           "https://opengameart.org/content/lpc-combat-armor-for-women",
-          "http://opengameart.org/content/lpc-clothing-updates",
+          "https://opengameart.org/content/lpc-clothing-updates",
           "https://opengameart.org/content/lpc-expanded-armor"
         ]
       },
@@ -40874,7 +40874,7 @@ window.itemMetadata = {
           "Michael Whitlock (bigbeargames)",
           "Matthew Krohn (makrohn)",
           "Johannes Sjölund (wulax)",
-          "Bluecarrot16",
+          "bluecarrot16",
           "JaidynReiman"
         ],
         "licenses": [
