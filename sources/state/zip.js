@@ -12,6 +12,7 @@ import {
 import { getMultiRecolors } from "./palettes.js";
 import { getItemFileName } from "../utils/fileName.js";
 import { loadImage } from "../canvas/load-image.js";
+import { getImageToDraw } from "../canvas/palette-recolor.js";
 import { customAnimations, customAnimationSize } from "../custom-animations.js";
 import { getSortedLayersWithCustomFallback } from "./meta.js";
 import { canvasToBlob, image2canvas } from "../canvas/canvas-utils.js";
@@ -288,6 +289,7 @@ export const exportSplitItemSheets = async (deps = {}) => {
  * @param {typeof renderSingleItemAnimation} [deps.renderSingleItemAnimation]
  * @param {typeof loadImage} [deps.loadImage]
  * @param {typeof addStandardAnimationToZipCustomFolder} [deps.addStandardAnimationToZipCustomFolder]
+ * @param {typeof getImageToDraw} [deps.getImageToDraw]
  */
 export const exportSplitItemAnimations = async (deps = {}) => {
   const baseAddAnimationToZipFolder =
@@ -316,6 +318,7 @@ export const exportSplitItemAnimations = async (deps = {}) => {
   const renderSingleItemAnimationFn =
     deps.renderSingleItemAnimation ?? renderSingleItemAnimation;
   const loadImageFn = deps.loadImage ?? loadImage;
+  const getImageToDrawFn = deps.getImageToDraw ?? getImageToDraw;
 
   if (!guardZipExportEnvironment()) return;
 
@@ -431,6 +434,7 @@ export const exportSplitItemAnimations = async (deps = {}) => {
             `Exporting item ${itemFileName} for custom animation ${customAnimName}`,
           );
           let img;
+          let imageToDraw;
           let imgCanvas;
           await profiler.phase(
             "render_imageLoadDecode_customItemSprite",
@@ -442,7 +446,12 @@ export const exportSplitItemAnimations = async (deps = {}) => {
           await profiler.phase(
             "render_composite_customItemSprite",
             async () => {
-              imgCanvas = image2canvas(img);
+              imageToDraw = await getImageToDrawFn(
+                img,
+                layer.itemId,
+                layer.recolors,
+              );
+              imgCanvas = image2canvas(imageToDraw);
             },
           );
           if (!imgCanvas) continue;

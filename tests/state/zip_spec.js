@@ -561,6 +561,21 @@ describe("state/zip.js", () => {
       return c;
     }
 
+    function solidColorCanvas(r, g, b, width = 8, height = 8) {
+      const c = document.createElement("canvas");
+      c.width = width;
+      c.height = height;
+      const ctx = c.getContext("2d");
+      ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
+      ctx.fillRect(0, 0, width, height);
+      return c;
+    }
+
+    function readTopLeftRgb(canvas) {
+      const data = canvas.getContext("2d").getImageData(0, 0, 1, 1).data;
+      return [data[0], data[1], data[2]];
+    }
+
     beforeEach(() => {
       resetState();
       layers.length = 0;
@@ -915,6 +930,69 @@ describe("state/zip.js", () => {
       expect(swordFolder.root).to.equal("custom/walk_128/");
       expect(swordFile).to.equal(expectedFileNames["weapon"]);
       expect(swordCanvas).to.be.instanceOf(HTMLCanvasElement);
+    });
+
+    it("uses recolored images in custom animation exports instead of raw loaded images", async () => {
+      state.selections = {
+        body: {
+          itemId: "body",
+          variant: "light",
+          recolor: "light",
+          name: "Body color (light)",
+        },
+        head: {
+          itemId: "heads_human_male",
+          variant: "light",
+          recolor: "light",
+          name: "Human male (light)",
+        },
+        weapon: {
+          itemId: "longsword",
+          variant: "longsword",
+          name: "Longsword (longsword)",
+        },
+      };
+
+      const rawLoadedCanvas = solidColorCanvas(0, 0, 255);
+      const recoloredCanvas = solidColorCanvas(255, 0, 0);
+      const loadImageStub = sandbox.stub().resolves(rawLoadedCanvas);
+      const getImageToDrawStub = sandbox.stub().resolves(recoloredCanvas);
+      const addAnimationToZipFolderSpy = sinon.spy(addAnimationToZipFolder);
+      const addStandardAnimationToZipCustomFolderSpy = sinon.spy(
+        addStandardAnimationToZipCustomFolder,
+      );
+
+      await renderCharacter(state.selections, "male");
+      await exportSplitItemAnimations({
+        loadImage: loadImageStub,
+        getImageToDraw: getImageToDrawStub,
+        addAnimationToZipFolder: addAnimationToZipFolderSpy,
+        addStandardAnimationToZipCustomFolder:
+          addStandardAnimationToZipCustomFolderSpy,
+      });
+
+      const stdToCustCalls = addStandardAnimationToZipCustomFolderSpy
+        .getCalls()
+        .filter((c) => c.args[0]?.root === "custom/walk_128/");
+      const addCalls = addAnimationToZipFolderSpy
+        .getCalls()
+        .filter((c) => c.args[0]?.root === "custom/walk_128/");
+
+      expect(stdToCustCalls, "expected extracted_frames custom exports").to.not
+        .be.empty;
+      expect(addCalls, "expected custom_sprite exports").to.not.be.empty;
+
+      const extractedSourceCanvas = stdToCustCalls[0].args[2];
+      const customSpriteSourceCanvas = addCalls[0].args[2];
+      expect(readTopLeftRgb(extractedSourceCanvas)).to.deep.equal([255, 0, 0]);
+      expect(readTopLeftRgb(customSpriteSourceCanvas)).to.deep.equal([
+        255,
+        0,
+        0,
+      ]);
+
+      expect(getImageToDrawStub.called).to.be.true;
+      expect(loadImageStub.called).to.be.true;
     });
 
     describe("issue #364 (custom-animation-only items)", () => {
