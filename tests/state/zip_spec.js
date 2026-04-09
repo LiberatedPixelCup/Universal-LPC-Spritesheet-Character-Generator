@@ -598,6 +598,24 @@ describe("state/zip.js", () => {
         expect(readTopLeftRgb(c)).to.deep.equal([12, 34, 56]);
       });
 
+      it("readTopLeftRgb returns RGB values for a normal filled canvas", () => {
+        const c = solidColorCanvas(200, 150, 100, 3, 3);
+        expect(readTopLeftRgb(c)).to.deep.equal([200, 150, 100]);
+      });
+
+      it("readTopLeftRgb reads the top-left pixel specifically", () => {
+        const c = document.createElement("canvas");
+        c.width = 2;
+        c.height = 2;
+        const ctx = c.getContext("2d");
+        ctx.fillStyle = "rgb(5, 10, 15)";
+        ctx.fillRect(0, 0, 1, 1);
+        ctx.fillStyle = "rgb(250, 240, 230)";
+        ctx.fillRect(1, 1, 1, 1);
+
+        expect(readTopLeftRgb(c)).to.deep.equal([5, 10, 15]);
+      });
+
       it("readTopLeftRgb throws for null or undefined input", () => {
         expect(() => readTopLeftRgb(null)).to.throw(
           TypeError,
