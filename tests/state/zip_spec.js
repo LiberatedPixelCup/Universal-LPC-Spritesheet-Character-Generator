@@ -572,9 +572,57 @@ describe("state/zip.js", () => {
     }
 
     function readTopLeftRgb(canvas) {
-      const data = canvas.getContext("2d").getImageData(0, 0, 1, 1).data;
+      if (!(canvas instanceof HTMLCanvasElement)) {
+        throw new TypeError("readTopLeftRgb expects an HTMLCanvasElement");
+      }
+
+      const ctx = canvas.getContext("2d");
+      if (!ctx) {
+        throw new Error("Failed to get 2d context from canvas");
+      }
+
+      const data = ctx.getImageData(0, 0, 1, 1).data;
       return [data[0], data[1], data[2]];
     }
+
+    describe("helper functions", () => {
+      it("solidColorCanvas creates an 8x8 canvas by default", () => {
+        const c = solidColorCanvas(1, 2, 3);
+        expect(c).to.be.instanceOf(HTMLCanvasElement);
+        expect(c.width).to.equal(8);
+        expect(c.height).to.equal(8);
+      });
+
+      it("solidColorCanvas paints the requested RGB color", () => {
+        const c = solidColorCanvas(12, 34, 56, 4, 4);
+        expect(readTopLeftRgb(c)).to.deep.equal([12, 34, 56]);
+      });
+
+      it("readTopLeftRgb throws for null or undefined input", () => {
+        expect(() => readTopLeftRgb(null)).to.throw(
+          TypeError,
+          "readTopLeftRgb expects an HTMLCanvasElement",
+        );
+        expect(() => readTopLeftRgb(undefined)).to.throw(
+          TypeError,
+          "readTopLeftRgb expects an HTMLCanvasElement",
+        );
+      });
+
+      it("readTopLeftRgb throws for non-canvas input", () => {
+        expect(() => readTopLeftRgb({})).to.throw(
+          TypeError,
+          "readTopLeftRgb expects an HTMLCanvasElement",
+        );
+      });
+
+      it("readTopLeftRgb returns black for a blank transparent canvas", () => {
+        const c = document.createElement("canvas");
+        c.width = 2;
+        c.height = 2;
+        expect(readTopLeftRgb(c)).to.deep.equal([0, 0, 0]);
+      });
+    });
 
     beforeEach(() => {
       resetState();
