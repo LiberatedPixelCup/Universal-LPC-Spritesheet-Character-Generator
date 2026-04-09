@@ -40804,6 +40804,7 @@ window.itemMetadata = {
       "watering",
       "idle",
       "jump",
+      "sit",
       "emote",
       "climb"
     ],
