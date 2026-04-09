@@ -451,7 +451,10 @@ export const exportSplitItemAnimations = async (deps = {}) => {
                 layer.itemId,
                 layer.recolors,
               );
-              imgCanvas = image2canvas(imageToDraw);
+              imgCanvas =
+                imageToDraw instanceof HTMLCanvasElement
+                  ? imageToDraw
+                  : image2canvas(imageToDraw);
             },
           );
           if (!imgCanvas) continue;

@@ -986,9 +986,7 @@ describe("state/zip.js", () => {
       const customSpriteSourceCanvas = addCalls[0].args[2];
       expect(readTopLeftRgb(extractedSourceCanvas)).to.deep.equal([255, 0, 0]);
       expect(readTopLeftRgb(customSpriteSourceCanvas)).to.deep.equal([
-        255,
-        0,
-        0,
+        255, 0, 0,
       ]);
 
       expect(getImageToDrawStub.called).to.be.true;
