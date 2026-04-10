@@ -1,12 +1,14 @@
 /*
- * Bulma v1 → v0.9.4 visual parity (colors, spacing, typography).
- * Bulma v1 uses many component-scoped CSS variables; :root alone is not always enough.
+ * Bulma v1 → v0.9.4 visual parity (update_bulma branch only).
+ *
+ * Master does not import this file; it uses Bulma 0.9.x from index.html. This stylesheet
+ * is pulled in via styles/main.css on the branch so the site matches master when
+ * comparing e.g. http://127.0.0.1:4174 (master) vs …:4175 (update_bulma).
+ *
+ * v1 uses component-scoped CSS variables; :root alone is not always enough:
  * https://bulma.io/documentation/features/css-variables/
  */
 
-/* =============================================================================
-   Scheme, radius & font stacks
-   ============================================================================= */
 :root {
   --bulma-scheme-h: 0deg;
   --bulma-scheme-s: 0%;
@@ -16,66 +18,40 @@
   --bulma-light-s: 0%;
   --bulma-shadow-h: 0deg;
   --bulma-shadow-s: 0%;
-  /* v1 default ~13px; v0.9.4 / master use 16px */
   --bulma-body-font-size: 16px;
   --bulma-radius: 4px;
   --bulma-radius-large: 6px;
-
-  /* v0.9.4 used the system stack; v1 defaults to Inter. */
   --bulma-family-primary:
     BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica",
-    "Arial", sans-serif;
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial",
+    sans-serif;
   --bulma-family-secondary:
     BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica",
-    "Arial", sans-serif;
-
-  /* Semantic palette (v0.9.4 hex-aligned HSL) */
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial",
+    sans-serif;
   --bulma-primary-h: 171deg;
   --bulma-primary-s: 100%;
   --bulma-primary-l: 41%;
-
   --bulma-link-h: 229deg;
   --bulma-link-s: 53%;
   --bulma-link-l: 53%;
-
   --bulma-info-h: 204deg;
   --bulma-info-s: 59%;
   --bulma-info-l: 53%;
-
   --bulma-success-h: 153deg;
   --bulma-success-s: 54%;
   --bulma-success-l: 53%;
-
   --bulma-warning-h: 48deg;
   --bulma-warning-s: 100%;
   --bulma-warning-l: 77%;
-
   --bulma-danger-h: 348deg;
   --bulma-danger-s: 86%;
   --bulma-danger-l: 61%;
-}
-
-/* =============================================================================
-   Global spacing tokens (v0.9.4 block list & derived layout)
-   ============================================================================= */
-:root {
-  /*
-   * v0.9.4 block list: .title, .box, .field, … used margin-bottom: 1.5rem.
-   * v1 uses var(--bulma-block-spacing) for that list (default 1.5rem).
-   * Setting 1.5rem restores .columns:not(:last-child) math:
-   * calc(1.5rem - 0.75rem) = 0.75rem, matching v0.9.4.
-   */
   --bulma-block-spacing: 1.5rem;
-  /* Form :root block in bulma.css (comes before this file); reinforce for clarity */
   --bulma-field-block-spacing: 0.75rem;
   --bulma-label-spacing: 0.5em;
 }
 
-/* =============================================================================
-   Component-scoped variables (Bulma sets these on selectors; :root is not enough)
-   ============================================================================= */
 .field {
   --bulma-field-block-spacing: 0.75rem;
 }
@@ -90,16 +66,11 @@
   font-family: monospace;
 }
 
-/* Default: match master subtitle/box rhythm at medium desktop width */
+/* Argos: keep mediumDesktop on calc(); tablet/huge use 1rem to match 0.9.4 box height */
 #mithril-preview .box .collapsible-content {
   margin-top: calc(1rem - 2px);
 }
 
-/*
- * Tablet + huge: animation .box is 2px shorter than master with calc() alone
- * (branch 229.5px vs 231.5px). Medium desktop (1440×900) stays on calc() — do not
- * widen this range or Argos mediumDesktop screenshots drift.
- */
 @media screen and (min-width: 834px) and (max-width: 1439px) {
   #mithril-preview .box .collapsible-content {
     margin-top: 1rem;
@@ -116,12 +87,8 @@
   --bulma-title-weight: var(--bulma-weight-semibold);
 }
 
-/*
- * v1 default buttons use --bulma-weight-medium; v0.9.4 inherited 400.
- */
 .button {
   --bulma-button-weight: var(--bulma-weight-normal);
-  /* v0.9.4: 2px radius, 1px border, no shadow; v1 defaults to larger radius, 0 border, shadow */
   --bulma-button-radius: 2px;
   --bulma-button-border-width: 1px;
   border-radius: 2px;
@@ -142,34 +109,19 @@
   box-shadow: none;
 }
 
-/* =============================================================================
-   Typography (v0.9.4 weights — v1 uses semibold on .label via a literal rule)
-   ============================================================================= */
 .label {
   font-weight: var(--bulma-weight-bold);
 }
 
-/* =============================================================================
-   Title + subtitle pairing — master computed: margin-top -12px (not -1.25rem / -20px)
-   ============================================================================= */
 .title:not(.is-spaced) + .subtitle {
   margin-top: -12px;
 }
 
-/* =============================================================================
-   Block list exceptions
-   v1 includes .buttons / .tags in the global block list (1.5rem);
-   v0.9.4 gave them margin-bottom: 1rem only.
-   ============================================================================= */
 .buttons:not(:last-child),
 .tags:not(:last-child) {
   margin-bottom: 1rem;
 }
 
-/* =============================================================================
-   Button groups — v0.9.4-style spacing via per-button margins + gap: 0 (all viewports).
-   Mobile master also shows margin 8px on .button; do not zero margins on small screens.
-   ============================================================================= */
 .buttons {
   gap: 0;
   row-gap: 0;
@@ -184,16 +136,11 @@
   margin-bottom: 0.5rem;
   flex-grow: 0;
   flex-shrink: 1;
-  /* v0.9.4 / master computed: auto + none (not v1 flex-shrink token defaults) */
   min-width: auto;
   max-width: none;
   align-self: auto;
 }
 
-/*
- * Download row: match master (Bulma gap + centered wrap + negative bottom margin) at all
- * breakpoints. Global .buttons above uses gap:0 + flex-start for filter/tree button groups.
- */
 #download-buttons.buttons {
   gap: 0.5rem;
   row-gap: 0.5rem;
@@ -204,9 +151,6 @@
   margin-bottom: -0.5rem;
 }
 
-/* =============================================================================
-   Columns: gapless section spacing (v1 hardcodes 1.5rem; tie to block spacing)
-   ============================================================================= */
 .columns.is-gapless:not(:last-child) {
   margin-bottom: var(--bulma-block-spacing);
 }
@@ -215,43 +159,35 @@
   --bulma-column-gap: 0.75rem;
 }
 
-/*
- * Spacing helpers: v1 values can differ from v0.9.4 and inflate stacked mobile/tablet
- * chooser height. Do NOT use #chooser-column .mb-3 alone — Credits renders many
- * per-file div.mb-3 rows; widening those margins made branch taller than master.
- *
- * CategoryTree is the only .box.has-background-light under #mithril-filters; Credits
- * uses a plain .box, so .mb-3 here is only the tree header, match-body block, and
- * Body Type wrapper (three nodes).
- */
+/* Match Bulma 0.9.4 .mb-3 (0.75rem); v1 spacing helpers differ — two .mb-3 blocks in CategoryTree. */
 #mithril-filters .box.has-background-light .mb-3 {
-  margin-bottom: 1rem !important;
+  margin-bottom: 0.75rem !important;
 }
 
 /*
- * Nested license/animation .box.mb-4: main.css `.box { margin-bottom: 1rem }` should
- * win on master (16px computed). Do NOT add #mithril-filters .mb-4 { 1.5rem !important }
- * — it overrides main and forces 24px on branch vs master 16px.
- *
- * Top-level chooser collapsibles: do NOT force #mithril-filters > div > .box to 1rem on
- * mobile — master uses 24px (1.5rem block spacing) on those boxes; forcing 1rem
- * diverged dumps.
+ * Bulma 1 vs 0.9.4: margin-collapse gap vs master. CategoryTree .box: margin-top -8px.
+ * Huge desktop (Argos): translateY nudges paint up vs master without changing flow height
+ * (stronger inner margin-top here shrinks CategoryTree/filters column in computed dumps).
  */
+#mithril-filters .collapsible-content > .box.has-background-light:last-child {
+  margin-top: -8px;
+}
 
-/*
- * Filters panel (2nd collapsible): Search + CurrentSelections are div.mb-4 wrappers
- * without .box — v1 spacing helpers can exceed v0.9.4. Only direct children of
- * .collapsible-content (not nested license/animation .box.mb-4 inside columns).
- */
+/* Tighten tree list inside the box so outer .box height still matches master (677). */
+#mithril-filters .collapsible-content > .box.has-background-light:last-child > div:last-child {
+  margin-top: -8px;
+}
+
+@media screen and (min-width: 2560px) {
+  #mithril-filters .collapsible-content > .box.has-background-light:last-child {
+    transform: translateY(-8px);
+  }
+}
+
 #mithril-filters > div > .box:nth-child(2) .collapsible-content > .mb-4 {
   margin-bottom: 1rem !important;
 }
 
-/*
- * License / animation row: main.css .filters-column { padding: 0 } loses to
- * Bulma v1’s .columns .column (higher specificity), so branch gets vertical
- * column padding and a taller row than v0.9.4 / master (see compute-style-diff).
- */
 #mithril-filters .columns .column.filters-column {
   --bulma-column-padding: 0;
   padding-top: 0;
@@ -260,10 +196,6 @@
   padding-right: 0.5rem;
 }
 
-/*
- * Credits intro: v1 .is-size-7 line-height + mb-3 spacing differ from master.
- * Per-file rows stay on 1rem bottom margin (scroll list).
- */
 #credits-section p.is-size-7.mb-2 {
   line-height: 18px !important;
   margin-bottom: 0.5rem !important;
@@ -278,10 +210,6 @@
   margin-bottom: 1rem !important;
 }
 
-/*
- * Credits download row: global .buttons uses gap:0 + flex-start (filter/tree parity).
- * Use gap: initial so computed style matches v0.9.4 (flex gap "normal", not 8px px).
- */
 #credits-section .buttons.mt-3 {
   align-items: center;
   align-content: flex-start;
@@ -292,17 +220,12 @@
   column-gap: initial;
 }
 
-/*
- * Category tree variant grid: main.css .variants-container { gap: 0.5rem } can lose to
- * v1 flex utilities; pin so branch height matches master (see CategoryTree outer box).
- */
 #mithril-filters .variants-container {
   gap: 0.5rem;
   row-gap: 0.5rem;
   column-gap: 0.5rem;
 }
 
-/* Same for .variant-item padding/gap — v1 flex children can compute taller rows */
 #mithril-filters .variant-item {
   gap: 0.25rem;
   padding: 0.5rem 0.5rem 0.25rem 0.5rem;
@@ -319,43 +242,25 @@
   line-height: 1.2;
 }
 
-/*
- * Body Type row uses div.buttons.ml-4 without .mb-0; v1 block-list margin on .buttons
- * can add extra space vs v0.9.4. Header row buttons use .mb-0 — reinforce both.
- */
 #mithril-filters .box.has-background-light .buttons.mb-0,
 #mithril-filters .box.has-background-light div.buttons.ml-4 {
   margin-bottom: 0 !important;
 }
 
-/*
- * Full spritesheet preview inner row: Bulma v1 .columns uses different
- * block-spacing margins (computed: margin-top -4px, margin-bottom 20px) than
- * v0.9.4 / master (-12px / 12px). Align so dumps match master.
- */
 #mithril-spritesheet-preview .columns.is-mobile {
   margin-top: -12px;
   margin-bottom: 12px;
 }
 
-/*
- * Inner row height: v1 may compute shorter .column padding than v0.9.4 for this
- * multiline row. Pin classic column padding so dumps match master; tune after
- * comparing first/second column entries in compute-style-diff output.
- */
 #mithril-spritesheet-preview .columns.is-mobile > .column {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
 
-/* is-1 → 0.25rem gap; ensure variable matches markup intent if v1 defaults differ */
 #mithril-spritesheet-preview .columns.is-mobile.is-variable {
   --bulma-column-gap: 0.25rem;
 }
 
-/* =============================================================================
-   Grey helpers — v1 hardcodes slate greys; v0.9.4 used neutral hex values
-   ============================================================================= */
 .has-text-grey-darker {
   color: #363636 !important;
 }
@@ -376,9 +281,6 @@
   color: #dbdbdb !important;
 }
 
-/* =============================================================================
-   Literal v0.9.4 colors (defaults + hovers)
-   ============================================================================= */
 .button.is-primary {
   background-color: #00d1b2;
   border-color: transparent;
@@ -453,7 +355,6 @@
   color: #fff;
 }
 
-/* v0.9.4: space between tags via margins (~8px); v1 adds flex gap — reset + margins */
 #mithril-filters .tags:not(.has-addons),
 #mithril-preview .tags:not(.has-addons) {
   gap: 0;
@@ -467,9 +368,6 @@
   margin-bottom: 0.5rem;
 }
 
-/* =============================================================================
-   Master monospace-heavy typography (plain text inherits body monospace)
-   ============================================================================= */
 #header-left h1.title,
 #header-left span.subtitle {
   font-family: monospace;
@@ -488,14 +386,10 @@
 #mithril-filters .tag:not(body),
 #mithril-preview .tag:not(body) {
   font-family: monospace;
-  /* v1 flex contexts set min-width:0 / max-width:100% on tags; v0.9.4 computed as auto/none */
   min-width: auto;
   max-width: none;
 }
 
-/* =============================================================================
-   Mithril panels — form controls stay sans (v0.9.4 Bulma inputs)
-   ============================================================================= */
 #mithril-filters .input,
 #mithril-preview .input,
 #mithril-filters .select select,
