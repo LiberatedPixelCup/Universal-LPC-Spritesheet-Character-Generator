@@ -66,34 +66,22 @@
   font-family: monospace;
 }
 
-/* Argos: keep mediumDesktop on calc(); tablet/huge use 1rem to match 0.9.4 box height */
-#mithril-preview .box .collapsible-content {
+/* Match main.css + Bulma 0.9 preview column height (1rem − 2px vs plain 1rem). */
+#mithril-preview.box .collapsible-content {
   margin-top: calc(1rem - 2px);
-}
-
-@media screen and (min-width: 834px) and (max-width: 1439px) {
-  #mithril-preview .box .collapsible-content {
-    margin-top: 1rem;
-  }
-}
-
-@media screen and (min-width: 2560px) {
-  #mithril-preview .box .collapsible-content {
-    margin-top: 1rem;
-  }
 }
 
 .title {
   --bulma-title-weight: var(--bulma-weight-semibold);
 }
 
+/*
+ * Bulma 1 builds .button colors/borders from --bulma-button-* variables. Do not set
+ * border-width/border-style on the base selector — it overrides variant rules and can
+ * make filled buttons look like plain text links in some browsers.
+ */
 .button {
-  --bulma-button-weight: var(--bulma-weight-normal);
-  --bulma-button-radius: 2px;
-  --bulma-button-border-width: 1px;
   border-radius: 2px;
-  border-width: 1px;
-  border-style: solid;
   box-shadow: none;
   font-family: var(--bulma-family-primary);
 }
@@ -101,6 +89,7 @@
 .button.is-small {
   padding-top: 5px;
   padding-bottom: 5px;
+  font-weight: 400 !important;
 }
 
 .button:hover,
@@ -164,28 +153,21 @@
   margin-bottom: 0.75rem !important;
 }
 
+#mithril-filters > div > .box:nth-child(2) .collapsible-content > .mb-4 {
+  margin-bottom: 1rem !important;
+}
+
 /*
- * Bulma 1 vs 0.9.4: margin-collapse gap vs master. CategoryTree .box: margin-top -8px.
- * Huge desktop (Argos): translateY nudges paint up vs master without changing flow height
- * (stronger inner margin-top here shrinks CategoryTree/filters column in computed dumps).
+ * Bulma 1 vs 0.9.4: margin-collapse differs; negative margins pull CategoryTree up vs master.
+ * Global only (no breakpoint hacks). Dump records margin-top on this box vs master — see
+ * omitProps on "filters CategoryTree outer box" in computed-style-dump-shared.mjs.
  */
 #mithril-filters .collapsible-content > .box.has-background-light:last-child {
   margin-top: -8px;
 }
 
-/* Tighten tree list inside the box so outer .box height still matches master (677). */
 #mithril-filters .collapsible-content > .box.has-background-light:last-child > div:last-child {
   margin-top: -8px;
-}
-
-@media screen and (min-width: 2560px) {
-  #mithril-filters .collapsible-content > .box.has-background-light:last-child {
-    transform: translateY(-8px);
-  }
-}
-
-#mithril-filters > div > .box:nth-child(2) .collapsible-content > .mb-4 {
-  margin-bottom: 1rem !important;
 }
 
 #mithril-filters .columns .column.filters-column {
@@ -247,6 +229,10 @@
   margin-bottom: 0 !important;
 }
 
+#mithril-filters .box.has-background-light div.buttons.ml-4 {
+  align-items: center !important;
+}
+
 #mithril-spritesheet-preview .columns.is-mobile {
   margin-top: -12px;
   margin-bottom: 12px;
@@ -281,56 +267,73 @@
   color: #dbdbdb !important;
 }
 
+/* Match Bulma 0.9 filled buttons: 1px border (transparent on colors) + stable metrics in dumps. */
 .button.is-primary {
-  background-color: #00d1b2;
-  border-color: transparent;
-  color: #fff;
+  background-color: #00d1b2 !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: transparent !important;
+  color: #fff !important;
 }
 
 .button.is-primary:hover,
 .button.is-primary.is-hovered {
-  background-color: #00c4a7;
-  border-color: transparent;
-  color: #fff;
+  background-color: #00c4a7 !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: transparent !important;
+  color: #fff !important;
 }
 
 .button.is-link {
-  background-color: #485fc7;
-  border-color: transparent;
-  color: #fff;
+  background-color: #485fc7 !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: transparent !important;
+  color: #fff !important;
 }
 
 .button.is-link:hover,
 .button.is-link.is-hovered {
-  background-color: #3e56c4;
-  border-color: transparent;
-  color: #fff;
+  background-color: #3e56c4 !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: transparent !important;
+  color: #fff !important;
 }
 
 .button.is-danger {
-  background-color: #f14668;
-  border-color: transparent;
-  color: #fff;
+  background-color: #f14668 !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: transparent !important;
+  color: #fff !important;
 }
 
 .button.is-danger:hover,
 .button.is-danger.is-hovered {
-  background-color: #f03a5f;
-  border-color: transparent;
-  color: #fff;
+  background-color: #f03a5f !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: transparent !important;
+  color: #fff !important;
 }
 
 .button.is-info {
-  background-color: #3e8ed0;
-  border-color: transparent;
-  color: #fff;
+  background-color: #3e8ed0 !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: transparent !important;
+  color: #fff !important;
 }
 
 .button.is-info:hover,
 .button.is-info.is-hovered {
-  background-color: #3488ce;
-  border-color: transparent;
-  color: #fff;
+  background-color: #3488ce !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: transparent !important;
+  color: #fff !important;
 }
 
 .button.is-static.is-light {
