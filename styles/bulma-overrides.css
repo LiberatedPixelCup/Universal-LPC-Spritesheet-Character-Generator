@@ -50,6 +50,8 @@
   --bulma-block-spacing: 1.5rem;
   --bulma-field-block-spacing: 0.75rem;
   --bulma-label-spacing: 0.5em;
+  /* Bulma 1 defaults "bold" to 600; master (0.9) uses 700 for .label and related. */
+  --bulma-weight-bold: 700;
 }
 
 .field {
@@ -89,6 +91,9 @@
 .button.is-small {
   padding-top: 5px;
   padding-bottom: 5px;
+  /* Bulma 0.9 small buttons: 12px horizontal padding; v1 can compute 11px from em vars. */
+  padding-left: 12px;
+  padding-right: 12px;
   font-weight: 400 !important;
 }
 
@@ -120,14 +125,19 @@
   justify-content: flex-start;
 }
 
+/* Bulma 0.9: only non-last .button children get margin-right (last matches margin-right: 0). */
 .buttons .button {
-  margin-right: 0.5rem;
+  margin-right: 0;
   margin-bottom: 0.5rem;
   flex-grow: 0;
   flex-shrink: 1;
   min-width: auto;
   max-width: none;
   align-self: auto;
+}
+
+.buttons .button:not(:last-child):not(.is-fullwidth) {
+  margin-right: 0.5rem;
 }
 
 #download-buttons.buttons {
@@ -138,6 +148,14 @@
   align-content: flex-start;
   justify-content: flex-start;
   margin-bottom: -0.5rem;
+}
+
+/* CategoryTree "Available Items" header toolbar — global .buttons uses flex-start + gap 0; 0.9 centers this row. */
+#mithril-filters .box.has-background-light > div:nth-child(1) .buttons.mb-0 {
+  align-items: center !important;
+  gap: revert;
+  row-gap: revert;
+  column-gap: revert;
 }
 
 .columns.is-gapless:not(:last-child) {
@@ -157,19 +175,6 @@
   margin-bottom: 1rem !important;
 }
 
-/*
- * Bulma 1 vs 0.9.4: margin-collapse differs; negative margins pull CategoryTree up vs master.
- * Global only (no breakpoint hacks). Dump records margin-top on this box vs master — see
- * omitProps on "filters CategoryTree outer box" in computed-style-dump-shared.mjs.
- */
-#mithril-filters .collapsible-content > .box.has-background-light:last-child {
-  margin-top: -8px;
-}
-
-#mithril-filters .collapsible-content > .box.has-background-light:last-child > div:last-child {
-  margin-top: -8px;
-}
-
 #mithril-filters .columns .column.filters-column {
   --bulma-column-padding: 0;
   padding-top: 0;
@@ -186,6 +191,15 @@
 #credits-section p.is-size-7.mb-3 {
   line-height: 18px !important;
   margin-bottom: 0.75rem !important;
+}
+
+/* File list body copy: Bulma 1 .is-size-7 line-height is 24px; master uses 18px (12px × 1.5). */
+#credits-section .content p.is-size-7 {
+  line-height: 18px !important;
+}
+
+#credits-section .content strong.is-size-6 {
+  font-weight: 700 !important;
 }
 
 #credits-section .content.has-background-light .mb-3 {
@@ -365,10 +379,50 @@
   column-gap: 0;
 }
 
+/*
+ * CurrentSelections .tags + Body Type .buttons: escape global gap:0; match Bulma 0.9 computed
+ * margin-bottom -8px on both. (Do not combine with margin-top:-8px on the CategoryTree box — that
+ * stacked and caused Argos-wide vertical drift.)
+ */
+#mithril-filters > div > .box:nth-child(2) .collapsible-content > .mb-4:nth-child(3) .tags:not(.has-addons),
+#mithril-filters .box.has-background-light > div:nth-child(3) > div.mb-3 .buttons {
+  gap: revert;
+  row-gap: revert;
+  column-gap: revert;
+  margin-bottom: -8px !important;
+}
+
+/* Bulma 0.9: only non-last .tags children get margin-right (last tag matches master margin-right: 0). */
 #mithril-filters .tags:not(.has-addons) .tag,
 #mithril-preview .tags:not(.has-addons) .tag {
-  margin-right: 0.5rem;
+  margin-right: 0;
   margin-bottom: 0.5rem;
+}
+
+#mithril-filters .tags:not(.has-addons) .tag:not(:last-child),
+#mithril-preview .tags:not(.has-addons) .tag:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+/*
+ * Tag remove control: Bulma 1 restyles .delete (flex, white on dark, 16px); 0.9 uses a compact
+ * block glyph with rgba(10,10,10,0.2) on tags.
+ */
+#mithril-filters .tags button.delete,
+#mithril-preview .tags button.delete {
+  background-color: rgba(10, 10, 10, 0.2) !important;
+  border-color: rgb(0, 0, 0) !important;
+  color: rgb(0, 0, 0) !important;
+  display: block !important;
+  font-family:
+    "system-ui", -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans",
+    "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 0 !important;
+  font-weight: 400 !important;
+  line-height: normal !important;
+  outline-color: rgb(0, 0, 0) !important;
+  outline-width: 0 !important;
+  padding: 1px 6px !important;
 }
 
 #header-left h1.title,
@@ -401,4 +455,12 @@
 #mithril-preview .textarea {
   font-size: 1rem;
   font-family: var(--bulma-family-primary);
+}
+
+/*
+ * Animation preview: frame-cycle .button.is-static is narrower on v1; extra horizontal padding
+ * matches master offset sizes; computed width/__box can still differ by subpixels (see dump omits).
+ */
+#mithril-preview .field.has-addons .control:last-child .button.is-static {
+  --bulma-button-padding-horizontal: calc(1em + 9.335px);
 }
