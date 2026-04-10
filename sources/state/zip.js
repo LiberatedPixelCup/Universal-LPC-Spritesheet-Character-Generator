@@ -15,7 +15,7 @@ import { loadImage } from "../canvas/load-image.js";
 import { getImageToDraw } from "../canvas/palette-recolor.js";
 import { customAnimations, customAnimationSize } from "../custom-animations.js";
 import { getSortedLayersWithCustomFallback } from "./meta.js";
-import { canvasToBlob, image2canvas } from "../canvas/canvas-utils.js";
+import { canvasToBlob } from "../canvas/canvas-utils.js";
 import {
   addAnimationToZipFolder,
   addStandardAnimationToZipCustomFolder,
@@ -434,7 +434,6 @@ export const exportSplitItemAnimations = async (deps = {}) => {
             `Exporting item ${itemFileName} for custom animation ${customAnimName}`,
           );
           let img;
-          let imageToDraw;
           let imgCanvas;
           await profiler.phase(
             "render_imageLoadDecode_customItemSprite",
@@ -446,15 +445,11 @@ export const exportSplitItemAnimations = async (deps = {}) => {
           await profiler.phase(
             "render_composite_customItemSprite",
             async () => {
-              imageToDraw = await getImageToDrawFn(
+              imgCanvas = await getImageToDrawFn(
                 img,
                 layer.itemId,
                 layer.recolors,
               );
-              imgCanvas =
-                imageToDraw instanceof HTMLCanvasElement
-                  ? imageToDraw
-                  : image2canvas(imageToDraw);
             },
           );
           if (!imgCanvas) continue;
