@@ -668,17 +668,26 @@ function generateSources() {
   });
 
   const metadataJS = `// THIS FILE IS AUTO-GENERATED. PLEASE DON'T ALTER IT MANUALLY
-  // Generated from sheet_definitions/*.json by scripts/generate_sources.js
-  // Contains metadata for all customization items to avoid DOM queries at runtime
+// Generated from sheet_definitions/*.json by scripts/generate_sources.js
+// Contains metadata for all customization items to avoid DOM queries at runtime
 
-  window.itemMetadata = ${JSON.stringify(itemMetadata, null, 2)};
+export const itemMetadata = ${JSON.stringify(itemMetadata, null, 2)};
 
-  window.aliasMetadata = ${JSON.stringify(aliasMetadata, null, 2)};
+export const aliasMetadata = ${JSON.stringify(aliasMetadata, null, 2)};
 
-  window.categoryTree = ${JSON.stringify(categoryTree, null, 2)};
+export const categoryTree = ${JSON.stringify(categoryTree, null, 2)};
 
-  window.paletteMetadata = ${JSON.stringify(paletteMetadata, null, 2)};
-  `;
+export const paletteMetadata = ${JSON.stringify(paletteMetadata, null, 2)};
+
+if (typeof window !== "undefined") {
+  window.itemMetadata = itemMetadata;
+  window.aliasMetadata = aliasMetadata;
+  window.categoryTree = categoryTree;
+  window.paletteMetadata = paletteMetadata;
+}
+
+export default itemMetadata;
+`;
 
   fs.writeFile("item-metadata.js", metadataJS, function (err) {
     if (err) {
