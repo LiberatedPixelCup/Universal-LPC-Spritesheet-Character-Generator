@@ -68,9 +68,15 @@
   font-family: monospace;
 }
 
-/* Match main.css + Bulma 0.9 preview column height (1rem − 2px vs plain 1rem). */
-#mithril-preview.box .collapsible-content {
-  margin-top: calc(1rem - 2px);
+/*
+ * Preview mount roots are `#mithril-preview` / `#mithril-spritesheet-preview` with a child `.box`
+ * (not `#mithril-preview.box`). Force collapsible body spacing to match main.css (1rem): a bad
+ * `#mithril-preview.box` rule never applied; Bulma 1 can differ; `calc(1rem - 2px)` vs master’s 1rem
+ * showed up as Argos vertical drift (branch read as shifted up).
+ */
+#mithril-preview > .box > .collapsible-content,
+#mithril-spritesheet-preview > .box > .collapsible-content {
+  margin-top: 1rem;
 }
 
 .title {
@@ -459,7 +465,7 @@
 
 /*
  * Animation preview: frame-cycle .button.is-static is narrower on v1; extra horizontal padding
- * matches master offset sizes; computed width/__box can still differ by subpixels (see dump omits).
+ * matches master layout (see compute-style-diff if widths drift).
  */
 #mithril-preview .field.has-addons .control:last-child .button.is-static {
   --bulma-button-padding-horizontal: calc(1em + 9.335px);
