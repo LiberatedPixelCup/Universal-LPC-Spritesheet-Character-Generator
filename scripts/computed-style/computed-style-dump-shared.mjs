@@ -12,6 +12,10 @@ export const VIEWPORT_PRESETS = {
   tablet: { width: 834, height: 1112 },
   mediumDesktop: { width: 1440, height: 900 },
   hugeDesktop: { width: 2560, height: 1440 },
+  mobileLong: { width: 390, height: 844 * 16 },
+  tabletLong: { width: 834, height: 1112 * 8 },
+  mediumDesktopLong: { width: 1440, height: 900 * 4 },
+  hugeDesktopLong: { width: 2560, height: 1440 * 2 },
 };
 
 export const DEFAULT_VIEWPORT = { width: 1440, height: 900 };
@@ -264,6 +268,11 @@ export const COMPUTED_STYLE_TARGETS = [
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .mb-4:nth-child(3) .tags .tag.is-medium",
   },
   {
+    label: "filters CurrentSelections .tags delete button",
+    selector:
+      "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .mb-4:nth-child(3) .tags button.delete",
+  },
+  {
     label: "filters CategoryTree outer box",
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .box.has-background-light",
@@ -367,6 +376,14 @@ export const COMPUTED_STYLE_TARGETS = [
     selector: "#credits-section .content.has-background-light",
   },
   {
+    label: "credits file list .content filename",
+    selector: "#credits-section .content strong.is-size-6",
+  },
+  {
+    label: "credits file list .content detail",
+    selector: "#credits-section .content p.is-size-7",
+  },
+  {
     label: "chooser advanced tools box",
     selector: "#mithril-filters > div > .box:nth-child(4)",
   },
@@ -417,6 +434,16 @@ export const COMPUTED_STYLE_TARGETS = [
     selector: "#mithril-preview .columns.is-multiline",
     omitProps: ["height"],
     omitDumpLines: ["__box", "__offset"],
+  },
+  {
+    label: "animation preview controls",
+    selector: "#mithril-preview .control",
+    /*
+     * Bulma 1 vs 0.9: float width / __box can differ ~0.02px while offsetWidth/offsetHeight match.
+     * Not the same class of issue as preview collapsible margin (fixed in bulma-overrides).
+     */
+    omitProps: ["width"],
+    omitDumpLines: ["__box"],
   },
   {
     label: "animation preview zoom range input",

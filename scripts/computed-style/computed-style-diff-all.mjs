@@ -24,7 +24,7 @@ import {
   dumpComputedStylesForUrl,
 } from "./computed-style-dump-shared.mjs";
 
-const PRESET_ORDER = ["mobile", "tablet", "mediumDesktop", "hugeDesktop"];
+const PRESET_ORDER = ["mobile", "tablet", "mediumDesktop", "hugeDesktop", "mobileLong", "tabletLong", "mediumDesktopLong", "hugeDesktopLong"];
 
 function parseArgs(argv) {
   const out = {
