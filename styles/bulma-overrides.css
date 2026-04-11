@@ -464,9 +464,18 @@
 }
 
 /*
- * Animation preview: frame-cycle .button.is-static is narrower on v1; extra horizontal padding
- * matches master layout (see compute-style-diff if widths drift).
+ * Animation preview frame-cycle readout: Bulma 1 .button forces --bulma-family-primary; master
+ * inherits monospace from .box / body. Match 0.9 computed-style dump (radius join w/ select,
+ * is-light grey, weight 400) — see computed-style-dump-shared “frame-cycle readout” target.
  */
 #mithril-preview .field.has-addons .control:last-child .button.is-static {
-  --bulma-button-padding-horizontal: calc(1em + 9.335px);
+  /* ~1px/side extra padding: monospace + 1em lands ~178px control vs master. */
+  --bulma-button-padding-horizontal: calc(1em + 1px);
+  --bulma-button-border-width: 1px;
+  border-radius: 0 4px 4px 0;
+  font-family: monospace;
+  font-size: 1rem;
+  font-weight: 400 !important;
+  line-height: 1.5;
+  color: #7a7a7a;
 }
