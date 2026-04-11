@@ -1,5 +1,8 @@
 {
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "serve:open": "node scripts/serve-open.mjs",
     "lint": "eslint . --cache",
     "lint:fix": "eslint . --cache --fix",
@@ -28,17 +31,20 @@
     "@eslint/js": "^9.39.4",
     "@playwright/test": "^1.59.0",
     "chai": "^6.2.2",
+    "classnames": "^2.5.1",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
     "execa": "^9.6.1",
     "globals": "^16.5.0",
+    "jszip": "^3.10.1",
     "mithril": "^2.3.8",
     "mocha": "^11.7.5",
     "open": "^10.2.0",
     "prettier": "^3.8.1",
     "serve": "^14.2.6",
-    "testem": "^3.19.1"
+    "testem": "^3.19.1",
+    "vite": "^7.1.10"
   },
   "overrides": {
     "mocha": {

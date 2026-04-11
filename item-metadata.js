@@ -1,8 +1,8 @@
 // THIS FILE IS AUTO-GENERATED. PLEASE DON'T ALTER IT MANUALLY
-  // Generated from sheet_definitions/*.json by scripts/generate_sources.mjs
-  // Contains metadata for all customization items to avoid DOM queries at runtime
+// Generated from sheet_definitions/*.json by scripts/generate_sources.mjs
+// Contains metadata for all customization items to avoid DOM queries at runtime
 
-  window.itemMetadata = {
+export const itemMetadata = {
   "arms_armour": {
     "name": "Armour",
     "priority": 20,
@@ -135182,7 +135182,7 @@
   }
 };
 
-  window.aliasMetadata = {
+export const aliasMetadata = {
   "wrinkes": {
     "*": {
       "typeName": "wrinkles",
@@ -135303,7 +135303,7 @@
   }
 };
 
-  window.categoryTree = {
+export const categoryTree = {
   "items": [],
   "children": {
     "body": {
@@ -137156,7 +137156,7 @@
   }
 };
 
-  window.paletteMetadata = {
+export const paletteMetadata = {
   "versions": {
     "lpcr": {
       "type": "version",
@@ -138849,4 +138849,12 @@
     }
   }
 };
-  
+
+if (typeof window !== "undefined") {
+  window.itemMetadata = itemMetadata;
+  window.aliasMetadata = aliasMetadata;
+  window.categoryTree = categoryTree;
+  window.paletteMetadata = paletteMetadata;
+}
+
+export default itemMetadata;
