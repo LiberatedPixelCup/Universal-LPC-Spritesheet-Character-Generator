@@ -83,4 +83,6 @@ export async function openHumanMaleSkintonePalette(page) {
   await skintone.click();
 
   await page.locator(".palette-modal").waitFor({ state: "visible" });
+  /* Last click leaves the pointer over the tree; :hover adds white-ter on variant tiles and * differs by viewport. Move off so Argos + computed-style dumps match across breakpoints. */
+  await page.mouse.move(0, 0);
 }

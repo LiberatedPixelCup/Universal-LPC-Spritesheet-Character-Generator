@@ -4,7 +4,10 @@
  */
 
 import { chromium } from "playwright";
-import { gotoHomepageReady } from "../../tests/visual/home-helpers.js";
+import {
+  gotoHomepageReady,
+  openHumanMaleSkintonePalette,
+} from "../../tests/visual/home-helpers.js";
 
 /** Same dimensions as tests/visual/home.spec.js (Argos). */
 export const VIEWPORT_PRESETS = {
@@ -407,9 +410,80 @@ export const COMPUTED_STYLE_TARGETS = [
   { label: "tree label (first)", selector: ".tree-label" },
   { label: "variant display name (first)", selector: ".variant-display-name" },
   {
-    label: "CategoryTree first .variant-item",
+    label: "CategoryTree .variant-item (link-light / selected)",
     selector:
-      "#mithril-filters .box.has-background-light .variant-item",
+      "#mithril-filters .box.has-background-light .variant-item.has-background-link-light",
+  },
+  {
+    label: "CategoryTree .variant-item (not link-light)",
+    selector:
+      "#mithril-filters .box.has-background-light .variant-item:not(.has-background-link-light)",
+    /* Bulma 0.9 vs 1: white-ter / hover resolves to rgb vs rgba on different tiles; link-light is checked above. */
+    omitProps: ["background-color"],
+  },
+  /*
+   * Skintone palette modal (same navigation as tests/visual/home.spec.js + Argos
+   * *-human-male-skintone). Dumps run openHumanMaleSkintonePalette after gotoHomepageReady.
+   */
+  {
+    label: "palette modal overlay",
+    selector: ".palette-modal-overlay",
+  },
+  {
+    label: "palette modal root",
+    selector: ".palette-modal",
+    omitProps: ["height"],
+    omitDumpLines: ["__box", "__offset"],
+    includeRect: true,
+  },
+  {
+    label: "palette modal header",
+    selector: ".palette-modal header",
+  },
+  {
+    label: "palette modal title (h4)",
+    selector: ".palette-modal header h4",
+  },
+  {
+    label: "palette modal close button",
+    selector: ".palette-modal header button",
+    /* Chromium serializes font-family with/without quotes around system-ui depending on cascade source. */
+    omitProps: ["font", "font-family"],
+  },
+  {
+    label: "palette modal section (scroll body)",
+    selector: ".palette-modal section",
+    omitProps: ["height"],
+    omitDumpLines: ["__box", "__offset"],
+  },
+  {
+    label: "palette modal tree row (.tree-label)",
+    selector: ".palette-modal .tree-label",
+  },
+  {
+    label: "palette modal version label (.palette-version)",
+    selector: ".palette-modal .palette-version",
+  },
+  {
+    label: "palette modal variant display name",
+    selector: ".palette-modal .variant-display-name",
+  },
+  {
+    label: "palette modal variant item (link-light / selected)",
+    selector: ".palette-modal .variant-item.has-background-link-light",
+  },
+  {
+    label: "palette modal variant item (not link-light)",
+    selector: ".palette-modal .variant-item:not(.has-background-link-light)",
+    omitProps: ["background-color"],
+  },
+  {
+    label: "palette modal variant canvas",
+    selector: ".palette-modal canvas.variant-canvas",
+  },
+  {
+    label: "palette modal swatch (.palette-swatch)",
+    selector: ".palette-modal .palette-swatch",
   },
   { label: "collapsible header (first)", selector: ".collapsible-header" },
   {
@@ -739,6 +813,7 @@ export async function dumpComputedStylesForUrl(url, viewport, options = {}) {
     const page = await browser.newPage();
     await page.setViewportSize(viewport);
     await gotoHomepageReady(page, url);
+    await openHumanMaleSkintonePalette(page);
     const body = await collectComputedStyleDump(page, options);
     return makeDumpHeader(viewport, url) + body;
   } finally {

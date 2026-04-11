@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
  * Dump computed styles for both URLs at all Argos viewports (home.spec.js),
+ * after opening the Human Male → Skintone palette modal (same as *-human-male-skintone captures),
  * write raw dumps + unified diffs per preset, and a combined report.
  *
  * Typical workflow: master (Bulma 0.9.x, no bulma-overrides) vs update_bulma (Bulma 1.x +
