@@ -42,6 +42,7 @@ function parseArgs(argv) {
     outDir: null,
     label: null,
     viewport: { ...DEFAULT_VIEWPORT },
+    skipSkintoneModal: false,
     help: false,
   };
   for (let i = 2; i < argv.length; i++) {
@@ -69,6 +70,8 @@ function parseArgs(argv) {
         throw new Error("--viewport expects WxH e.g. 1440x900");
       }
       out.viewport = { width: Number(m[1]), height: Number(m[2]) };
+    } else if (a === "--no-skintone-modal") {
+      out.skipSkintoneModal = true;
     } else if (!a.startsWith("-")) {
       out.url = a;
     }
@@ -86,6 +89,7 @@ Options:
   --label <name>         Filename stem when using --out-dir
   --viewport WxH         Default ${DEFAULT_VIEWPORT.width}x${DEFAULT_VIEWPORT.height}
   --preset NAME          mobile | tablet | mediumDesktop | hugeDesktop (Argos / home.spec.js)
+  --no-skintone-modal    Match Argos first frame (homepage only; palette targets will be <no match>)
   --help, -h
 
 Examples:
@@ -109,7 +113,9 @@ async function main() {
     process.exit(1);
   }
 
-  const text = await dumpComputedStylesForUrl(args.url, args.viewport);
+  const text = await dumpComputedStylesForUrl(args.url, args.viewport, {
+    skipSkintoneModal: args.skipSkintoneModal,
+  });
 
   if (args.outDir) {
     fs.mkdirSync(args.outDir, { recursive: true });

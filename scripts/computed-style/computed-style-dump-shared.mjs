@@ -16,7 +16,7 @@ export const VIEWPORT_PRESETS = {
   mediumDesktop: { width: 1440, height: 900 },
   hugeDesktop: { width: 2560, height: 1440 },
   mobileLong: { width: 390, height: 844 * 16 },
-  tabletLong: { width: 834, height: 1112 * 8 },
+  tabletLong: { width: 834, height: 1120 * 8 },
   mediumDesktopLong: { width: 1440, height: 900 * 4 },
   hugeDesktopLong: { width: 2560, height: 1440 * 2 },
 };
@@ -122,9 +122,18 @@ export const COMPUTED_STYLE_PROPS = [
  * - `omitProps`: skip listed properties for noisy or deliberate parity cases only. Avoid omitting
  *   `gap` / `align-items` on `.buttons` / `.tags` — Argos will still show diffs when those differ.
  * - `omitDumpLines`: omit `__box` / `__offset` for subpixel noise.
- * - `includeRect`: append `__rect: left,top` (rounded px). Use on section anchors (download row,
- *   CurrentSelections, credits) to catch cumulative vertical shift that Argos highlights even when
- *   individual boxes match.
+ * - `includeRect`: append `__rect: left,top` (rounded px), or with `rectPrecision: "fine"` append
+ *   `left,top,bottom` (2 dp) so sub-pixel vertical shifts Argos sees are not lost to Math.round.
+ * - `includeClientRects`: append `__client_rects` from `getClientRects()` (line boxes; use on inline
+ *   count spans when wrap differs but parent has fixed height).
+ * - `includeContentBounds`: append `__content_rect` from `Range.selectNodeContents(el)` bounding rect —
+ *   painted text extent inside filter `.tree-label` even when `height:32px` makes `__box` lie.
+ * - `includeOverflowLayout`: append `__layout: clientH,scrollH,offsetH` (px). Use on block containers
+ *   (e.g. filter `.tree-label`): when scrollH > clientH, fixed height is clipping wrapped header text.
+ * - `includeWrapRowMetrics`: append `__wrap_row` (resolved height, min-height, clientH, scrollH, rectH).
+ *   License/Animation filter `.tree-label`: without `height:auto` + `min-height:32px` override, wrapped
+ *   count text yields scrollH>clientH and rectH~32px; with the fix, values match expanded flow (branch
+ *   vs master diffs until both ship the same CSS).
  * - Selectors use `querySelectorAll`: every matching node is dumped. When there are 2+ matches,
  *   each block is titled `=== label <selector> [i/N] ===`; a single match keeps the original
  *   `=== label <selector> ===` header (stable diffs for unique nodes).
@@ -133,6 +142,17 @@ export const COMPUTED_STYLE_PROPS = [
  * - `fontDiagnostics` (default true): append FontFace registry + canvas `measureText` probes using
  *   each element’s resolved `font` string — surfaces real width/clarity differences when CSS strings
  *   match but rasterization or loaded faces differ.
+ *
+ * Argos `home.spec.js` captures twice per viewport: homepage only, then Human Male → skintone modal.
+ * Default `dumpComputedStylesForUrl` matches the second capture. Use `skipSkintoneModal: true` (CLI
+ * `--no-skintone-modal`) to match the first capture when debugging chooser chrome (e.g. filter wrap).
+ *
+ * Each dump starts with `__viewport_context`: `innerWidth` / `#chooser-column` width. A manual
+ * screenshot with docked DevTools uses a **narrower** content width than headless 390×844, so wrap
+ * and vertical stack can differ from the dump even when both ports are “mobile”.
+ *
+ * Trailing `__filter_license_to_animation_gap` (before font diagnostics): License vs Animation nested
+ * card vertical spacing (`animation_top - license_bottom`).
  */
 export const COMPUTED_STYLE_TARGETS = [
   { label: "html", selector: "html" },
@@ -230,36 +250,47 @@ export const COMPUTED_STYLE_TARGETS = [
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline",
     includeRect: true,
+    rectPrecision: "fine",
   },
   {
     label: "filters license column (.filters-column first)",
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(1)",
     includeRect: true,
+    rectPrecision: "fine",
   },
   {
     label: "filters animation column (.filters-column second)",
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(2)",
     includeRect: true,
+    rectPrecision: "fine",
   },
   {
-    label: "filters LicenseFilters nested box",
+    label: "filters LicenseFilters nested box (.box.mb-4.has-background-light)",
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(1) > .box.mb-4.has-background-light",
     includeRect: true,
+    rectPrecision: "fine",
+    includeContentBounds: true,
   },
   {
     label: "filters AnimationFilters nested box",
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(2) > .box.mb-4.has-background-light",
     includeRect: true,
+    rectPrecision: "fine",
   },
   {
-    label: "filters LicenseFilters header .tree-label (direct child of box)",
+    label:
+      "filters LicenseFilters header .tree-label (wrap row; __wrap_row when count line wraps)",
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(1) > .box.mb-4.has-background-light > .tree-label",
     includeRect: true,
+    rectPrecision: "fine",
+    includeOverflowLayout: true,
+    includeContentBounds: true,
+    includeWrapRowMetrics: true,
   },
   {
     label: "filters LicenseFilters header .tree-arrow",
@@ -274,16 +305,24 @@ export const COMPUTED_STYLE_TARGETS = [
     includeRect: true,
   },
   {
-    label: "filters LicenseFilters header count (.is-size-7 enabled text)",
+    label:
+      "filters LicenseFilters header count span.is-size-7.has-text-grey.ml-2 (5/5 enabled wrap)",
     selector:
-      "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(1) > .box.mb-4.has-background-light > .tree-label > span.is-size-7.ml-2",
+      "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(1) > .box.mb-4.has-background-light > .tree-label > span.is-size-7.has-text-grey.ml-2",
     includeRect: true,
+    rectPrecision: "fine",
+    includeClientRects: true,
   },
   {
-    label: "filters AnimationFilters header .tree-label (direct child of box)",
+    label:
+      "filters AnimationFilters header .tree-label (wrap row; __wrap_row mirrors License card)",
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(2) > .box.mb-4.has-background-light > .tree-label",
     includeRect: true,
+    rectPrecision: "fine",
+    includeOverflowLayout: true,
+    includeContentBounds: true,
+    includeWrapRowMetrics: true,
   },
   {
     label: "filters AnimationFilters header .tree-arrow",
@@ -298,9 +337,9 @@ export const COMPUTED_STYLE_TARGETS = [
     includeRect: true,
   },
   {
-    label: "filters AnimationFilters header count (.is-size-7)",
+    label: "filters AnimationFilters header count (.is-size-7.has-text-grey)",
     selector:
-      "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(2) > .box.mb-4.has-background-light > .tree-label > span.is-size-7.ml-2",
+      "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(2) > .box.mb-4.has-background-light > .tree-label > span.is-size-7.has-text-grey.ml-2",
     includeRect: true,
   },
   {
@@ -308,18 +347,21 @@ export const COMPUTED_STYLE_TARGETS = [
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .mb-4:nth-child(3)",
     includeRect: true,
+    rectPrecision: "fine",
   },
   {
     label: "filters CurrentSelections h3 title",
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .mb-4:nth-child(3) h3.title.is-5",
     includeRect: true,
+    rectPrecision: "fine",
   },
   {
     label: "filters CurrentSelections .tags",
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .mb-4:nth-child(3) .tags",
     includeRect: true,
+    rectPrecision: "fine",
   },
   {
     label: "filters CurrentSelections first .tag.is-medium",
@@ -731,6 +773,32 @@ export async function collectComputedStyleDump(page, options = {}) {
       }
 
       const lines = [];
+      const de = document.documentElement;
+      lines.push(
+        "=== __viewport_context (layout — compare to manual browser, no DevTools dock) ===",
+      );
+      lines.push(`  window.innerWidth: ${window.innerWidth}`);
+      lines.push(`  window.innerHeight: ${window.innerHeight}`);
+      lines.push(`  documentElement.clientWidth: ${de.clientWidth}`);
+      lines.push(`  documentElement.clientHeight: ${de.clientHeight}`);
+      lines.push(`  devicePixelRatio: ${window.devicePixelRatio}`);
+      lines.push(`  scrollY: ${window.scrollY}`);
+      const chooser = document.querySelector("#chooser-column");
+      if (chooser) {
+        const rc = chooser.getBoundingClientRect();
+        lines.push(
+          `  #chooser-column: clientWidth=${chooser.clientWidth} rect.w=${rc.width.toFixed(2)}`,
+        );
+      }
+      const h1 = document.querySelector("#header-left h1.title");
+      if (h1) {
+        const rh = h1.getBoundingClientRect();
+        lines.push(
+          `  #header-left h1.title: rect ${rh.width.toFixed(2)}x${rh.height.toFixed(2)} (wrapped title affects flow below)`,
+        );
+      }
+      lines.push("");
+
       for (const t of targetList) {
         const { label, selector } = t;
         const omit = new Set(t.omitProps ?? []);
@@ -761,8 +829,45 @@ export async function collectComputedStyleDump(page, options = {}) {
             lines.push(`  __offset: ${el.offsetWidth}x${el.offsetHeight}`);
           }
           if (t.includeRect) {
+            if (t.rectPrecision === "fine") {
+              lines.push(
+                `  __rect: ${rect.left.toFixed(2)},${rect.top.toFixed(2)},${rect.bottom.toFixed(2)}`,
+              );
+            } else {
+              lines.push(
+                `  __rect: ${Math.round(rect.left)},${Math.round(rect.top)}`,
+              );
+            }
+          }
+          if (t.includeClientRects) {
+            const crs = el.getClientRects();
+            const segs = [];
+            for (let j = 0; j < crs.length; j++) {
+              const rj = crs[j];
+              segs.push(`${rj.top.toFixed(2)}-${rj.bottom.toFixed(2)}`);
+            }
+            lines.push(`  __client_rects: n=${crs.length} [${segs.join("; ")}]`);
+          }
+          if (t.includeContentBounds) {
+            try {
+              const range = document.createRange();
+              range.selectNodeContents(el);
+              const br = range.getBoundingClientRect();
+              lines.push(
+                `  __content_rect: ${br.width.toFixed(2)}x${br.height.toFixed(2)}, top=${br.top.toFixed(2)}, bottom=${br.bottom.toFixed(2)}`,
+              );
+            } catch {
+              lines.push("  __content_rect: (exception)");
+            }
+          }
+          if (t.includeOverflowLayout) {
             lines.push(
-              `  __rect: ${Math.round(rect.left)},${Math.round(rect.top)}`,
+              `  __layout: clientH=${el.clientHeight},scrollH=${el.scrollHeight},offsetH=${el.offsetHeight}`,
+            );
+          }
+          if (t.includeWrapRowMetrics) {
+            lines.push(
+              `  __wrap_row: height=${cs.height} min-height=${cs.minHeight} clientH=${el.clientHeight} scrollH=${el.scrollHeight} rectH=${rect.height.toFixed(2)}`,
             );
           }
           for (const p of propList) {
@@ -774,6 +879,22 @@ export async function collectComputedStyleDump(page, options = {}) {
           }
           lines.push("");
         }
+      }
+
+      const licBox = document.querySelector(
+        "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(1) > .box.mb-4.has-background-light",
+      );
+      const animBox = document.querySelector(
+        "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(2) > .box.mb-4.has-background-light",
+      );
+      if (licBox && animBox) {
+        const rL = licBox.getBoundingClientRect();
+        const rA = animBox.getBoundingClientRect();
+        lines.push("=== __filter_license_to_animation_gap (viewport px) ===");
+        lines.push(`  license_bottom: ${rL.bottom.toFixed(2)}`);
+        lines.push(`  animation_top: ${rA.top.toFixed(2)}`);
+        lines.push(`  gap: ${(rA.top - rL.bottom).toFixed(2)}`);
+        lines.push("");
       }
 
       if (doFont) {
@@ -873,18 +994,39 @@ export async function collectComputedStyleDump(page, options = {}) {
  * Full page load + dump (one browser session).
  * @param {string} url
  * @param {{ width: number, height: number }} viewport
- * @param {object} [options] passed to collectComputedStyleDump
+ * @param {object} [options] passed to collectComputedStyleDump, plus:
+ * @param {boolean} [options.skipSkintoneModal] If true, skip Human Male → skintone (Argos first frame).
  */
 export async function dumpComputedStylesForUrl(url, viewport, options = {}) {
+  const skipSkintoneModal = options.skipSkintoneModal === true;
+  const collectOptions = { ...options };
+  delete collectOptions.skipSkintoneModal;
+
+  const deviceScaleFactor =
+    Number(process.env.PLAYWRIGHT_DEVICE_SCALE_FACTOR ?? "1") || 1;
+
   const browser = await chromium.launch({ headless: true });
+  let context;
   try {
-    const page = await browser.newPage();
-    await page.setViewportSize(viewport);
+    context = await browser.newContext({
+      viewport: { width: viewport.width, height: viewport.height },
+      deviceScaleFactor,
+    });
+    const page = await context.newPage();
+    await page.addInitScript(() => {
+      // Same flag as tests/visual/home.spec.js (prevents preview animation layout churn).
+      globalThis.__DISABLE_PREVIEW_ANIMATION__ = true;
+    });
     await gotoHomepageReady(page, url);
-    await openHumanMaleSkintonePalette(page);
-    const body = await collectComputedStyleDump(page, options);
+    if (!skipSkintoneModal) {
+      await openHumanMaleSkintonePalette(page);
+    }
+    const body = await collectComputedStyleDump(page, collectOptions);
     return makeDumpHeader(viewport, url) + body;
   } finally {
+    if (context) {
+      await context.close();
+    }
     await browser.close();
   }
 }
