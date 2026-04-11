@@ -2,7 +2,10 @@ import { test } from "@playwright/test";
 import { argosScreenshot } from "@argos-ci/playwright";
 import {
   gotoHomepageReady,
+  scrollVisualCaptureToTop,
   openHumanMaleSkintonePalette,
+  closeSkintonePaletteModal,
+  openLicenseAnimationAdvancedAndSearchArm,
 } from "./home-helpers.js";
 
 /** Base URL for the static site (see `webServer` in playwright.config.js). */
@@ -48,16 +51,23 @@ async function argosDesktop(page, name) {
   if (!process.env.ARGOS_TOKEN?.trim()) {
     return;
   }
+  await scrollVisualCaptureToTop(page);
   await argosScreenshot(page, name, ARGOS_SCREENSHOT_OPTIONS);
 }
 
-/** Homepage full-page capture, then tree navigation to Human Male → Skintone modal. */
+/**
+ * Homepage capture → Human Male skintone modal → (close modal) expanded filters +
+ * Advanced Tools + search "arm". Order keeps skintone reachable before search narrows the tree.
+ */
 async function homepageAndSkintonePalette(page, viewport, shotName) {
   await page.setViewportSize(viewport);
   await gotoHomepageReady(page, BASE_URL);
   await argosDesktop(page, shotName);
   await openHumanMaleSkintonePalette(page);
   await argosDesktop(page, `${shotName}-human-male-skintone`);
+  await closeSkintonePaletteModal(page);
+  await openLicenseAnimationAdvancedAndSearchArm(page);
+  await argosDesktop(page, `${shotName}-filters-search-arm`);
 }
 
 test.describe("Homepage — full page", () => {

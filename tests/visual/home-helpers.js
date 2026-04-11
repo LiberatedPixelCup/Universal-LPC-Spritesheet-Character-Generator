@@ -1,4 +1,21 @@
 /**
+ * Reset window and internal scroll regions so full-page captures align across viewports.
+ *
+ * @param {import('@playwright/test').Page} page
+ */
+export async function scrollVisualCaptureToTop(page) {
+  await page.evaluate(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    document.querySelectorAll(".scrollable-container").forEach((el) => {
+      el.scrollTop = 0;
+      el.scrollLeft = 0;
+    });
+  });
+}
+
+/**
  * Shared homepage navigation + readiness wait for visual tests and tooling scripts.
  *
  * @param {import('@playwright/test').Page} page
@@ -42,17 +59,7 @@ export async function gotoHomepageReady(
         });
       }),
   );
-  /* Deterministic scroll: Bulma/layout changes can alter intrinsic heights; reset so
-   * canvas/scroll regions (e.g. spritesheet preview) align with baseline captures. */
-  await page.evaluate(() => {
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    document.querySelectorAll(".scrollable-container").forEach((el) => {
-      el.scrollTop = 0;
-      el.scrollLeft = 0;
-    });
-  });
+  await scrollVisualCaptureToTop(page);
 }
 
 /**
@@ -84,5 +91,49 @@ export async function openHumanMaleSkintonePalette(page) {
 
   await page.locator(".palette-modal").waitFor({ state: "visible" });
   /* Last click leaves the pointer over the tree; :hover adds white-ter on variant tiles and * differs by viewport. Move off so Argos + computed-style dumps match across breakpoints. */
+  await page.mouse.move(0, 0);
+}
+
+/**
+ * Closes the skintone / palette modal if it is open (overlay click).
+ *
+ * @param {import('@playwright/test').Page} page
+ */
+export async function closeSkintonePaletteModal(page) {
+  const overlay = page.locator(".palette-modal-overlay");
+  await overlay.click({ position: { x: 2, y: 2 } });
+  await page.locator(".palette-modal").waitFor({ state: "hidden" });
+}
+
+/**
+ * Expands License Filters, Animation Filters, and Advanced Tools, then sets the
+ * asset search query to "arm" (tree filters client-side; waits for a visible match).
+ *
+ * @param {import('@playwright/test').Page} page
+ */
+export async function openLicenseAnimationAdvancedAndSearchArm(page) {
+  const licenseCol = page.locator("div.filters-column").first();
+  await licenseCol.locator("div.tree-label").first().scrollIntoViewIfNeeded();
+  await licenseCol.locator("div.tree-label").first().click();
+
+  const animCol = page.locator("div.filters-column").nth(1);
+  await animCol.locator("div.tree-label").first().scrollIntoViewIfNeeded();
+  await animCol.locator("div.tree-label").first().click();
+
+  const advancedHeader = page.locator(".collapsible-header").filter({
+    has: page.getByRole("heading", { name: "Advanced Tools", exact: true }),
+  });
+  await advancedHeader.scrollIntoViewIfNeeded();
+  await advancedHeader.click();
+  await page.locator("#customFileInput").waitFor({ state: "visible" });
+
+  const search = page.locator("input[type=search][placeholder=Search]");
+  await search.scrollIntoViewIfNeeded();
+  await search.fill("arm");
+  await page
+    .locator("#chooser-column .search-result")
+    .first()
+    .waitFor({ state: "visible", timeout: 60_000 });
+
   await page.mouse.move(0, 0);
 }
