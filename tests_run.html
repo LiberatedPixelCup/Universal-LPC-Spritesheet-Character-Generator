@@ -11,7 +11,19 @@
     <script src="https://cdn.jsdelivr.net/npm/mocha@11.7.5/mocha.min.js" integrity="sha384-ubv8xN6X/ihM9F1H2WYuzSjGuSR9LM2RHHmhAk4qZN74nuE6GHjj9LsR1A9DmyLV" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/classnames@2.5.1/index.js" integrity="sha384-yZ5lBIhc/erbKN+W+yrRuYTNoM3dwd0Rg2eKYqVq2bf2sUrgZxtUaaBbSscxnjRp" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" integrity="sha384-+mbV2IY1Zk/X1p/nWllGySJSUN8uMs+gUAN10Or95UBH0fpj6GfKgPmgC5EXieXG" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="item-metadata.js?v=1.00.0001"></script>
+    <script type="module">
+      import {
+        itemMetadata,
+        aliasMetadata,
+        categoryTree,
+        paletteMetadata,
+      } from "./item-metadata.js";
+
+      window.itemMetadata = itemMetadata;
+      window.aliasMetadata = aliasMetadata;
+      window.categoryTree = categoryTree;
+      window.paletteMetadata = paletteMetadata;
+    </script>
     <script type="importmap">
       {
         "imports": {
