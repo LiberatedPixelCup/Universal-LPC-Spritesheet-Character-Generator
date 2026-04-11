@@ -12,7 +12,19 @@
       src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"
       crossorigin="anonymous"
     ></script>
-    <script type="text/javascript" src="/item-metadata.js"></script>
+    <script type="module">
+      import {
+        itemMetadata,
+        aliasMetadata,
+        categoryTree,
+        paletteMetadata,
+      } from "/item-metadata.js";
+
+      window.itemMetadata = itemMetadata;
+      window.aliasMetadata = aliasMetadata;
+      window.categoryTree = categoryTree;
+      window.paletteMetadata = paletteMetadata;
+    </script>
     <script type="importmap">
       {
         "imports": {
