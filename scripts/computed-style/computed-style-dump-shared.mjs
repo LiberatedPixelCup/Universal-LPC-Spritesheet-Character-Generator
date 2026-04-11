@@ -359,6 +359,18 @@ export const COMPUTED_STYLE_TARGETS = [
     includeRect: true,
   },
   {
+    label: "filters LicenseFilters header .tree-label (direct child of box)",
+    selector:
+      "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(1) > .box.mb-4.has-background-light > .tree-label",
+    includeRect: true,
+  },
+  {
+    label: "filters AnimationFilters header .tree-label (direct child of box)",
+    selector:
+      "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(2) > .box.mb-4.has-background-light > .tree-label",
+    includeRect: true,
+  },
+  {
     label: "filters CurrentSelections wrapper (.mb-4 after columns)",
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .mb-4:nth-child(3)",
