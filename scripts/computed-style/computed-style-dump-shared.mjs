@@ -7,7 +7,19 @@ import { chromium } from "playwright";
 import {
   gotoHomepageReady,
   openHumanMaleSkintonePalette,
+  closeSkintonePaletteModal,
+  openLicenseAnimationAdvancedAndSearchArm,
 } from "../../tests/visual/home-helpers.js";
+
+/**
+ * Computed-style dump “pages” — same sequence as tests/visual/home.spec.js / Argos:
+ * homepage → human-male-skintone → (close modal) filters-search-arm.
+ */
+export const COMPUTED_STYLE_DUMP_PAGES = [
+  "homepage",
+  "human-male-skintone",
+  "filters-search-arm",
+];
 
 /** Same dimensions as tests/visual/home.spec.js (Argos). */
 export const VIEWPORT_PRESETS = {
@@ -143,16 +155,20 @@ export const COMPUTED_STYLE_PROPS = [
  *   each element’s resolved `font` string — surfaces real width/clarity differences when CSS strings
  *   match but rasterization or loaded faces differ.
  *
- * Argos `home.spec.js` captures twice per viewport: homepage only, then Human Male → skintone modal.
- * Default `dumpComputedStylesForUrl` matches the second capture. Use `skipSkintoneModal: true` (CLI
- * `--no-skintone-modal`) to match the first capture when debugging chooser chrome (e.g. filter wrap).
+ * Argos `home.spec.js` captures three states per viewport: homepage, Human Male → skintone modal,
+ * then filters expanded + search "arm". `dumpComputedStylesForUrl` defaults to `page: human-male-skintone`;
+ * use `page: homepage` or CLI `--no-skintone-modal` for the first capture; `page: filters-search-arm`
+ * for the third (matches `openLicenseAnimationAdvancedAndSearchArm` in home-helpers.js).
  *
  * Each dump starts with `__viewport_context`: `innerWidth` / `#chooser-column` width. A manual
  * screenshot with docked DevTools uses a **narrower** content width than headless 390×844, so wrap
  * and vertical stack can differ from the dump even when both ports are “mobile”.
  *
- * Trailing `__filter_license_to_animation_gap` (before font diagnostics): License vs Animation nested
- * card vertical spacing (`animation_top - license_bottom`).
+ * Trailing metrics (before font diagnostics):
+ * - `__filter_license_to_animation_gap`: Animation nested card top minus License nested card bottom.
+ * - `__filter_license_header_to_checkbox_block_gap` / `__filter_animation_header_to_checkbox_block_gap`:
+ *   vertical gap from each card’s `.tree-label` to the expanded `.content` block (checkbox list);
+ *   sensitive to margin between filter headers and checkboxes (Bulma 1 vs 0.9 regressions).
  */
 export const COMPUTED_STYLE_TARGETS = [
   { label: "html", selector: "html" },
@@ -505,6 +521,18 @@ export const COMPUTED_STYLE_TARGETS = [
     selector: "#mithril-filters > div > .box:nth-child(4) .collapsible-content",
   },
   {
+    label: "advanced tools z-position field",
+    selector: "#mithril-filters > div > .box:nth-child(4) .collapsible-content .field",
+  },
+  {
+    label: "advanced tools z-position input",
+    selector: "#mithril-filters > div > .box:nth-child(4) .collapsible-content .control > input",
+  },
+  {
+    label: "advanced tools help text",
+    selector: "#mithril-filters > div > .box:nth-child(4) .collapsible-content .help",
+  },
+  {
     label: "filters panel inner box (first nested .box in filters)",
     selector: "#mithril-filters .filters-column .box",
   },
@@ -526,6 +554,18 @@ export const COMPUTED_STYLE_TARGETS = [
       "#mithril-filters .box.has-background-light .variant-item:not(.has-background-link-light)",
     /* Bulma 0.9 vs 1: white-ter / hover resolves to rgb vs rgba on different tiles; link-light is checked above. */
     omitProps: ["background-color"],
+  },
+  {
+    label: "CategoryTree .search-result row (first; filters-search-arm / search)",
+    selector: "#chooser-column .search-result",
+    includeRect: true,
+    rectPrecision: "fine",
+  },
+  {
+    label: "filters search input [type=search]",
+    selector: "#mithril-filters input[type=search]",
+    includeRect: true,
+    rectPrecision: "fine",
   },
   /*
    * Skintone palette modal (same navigation as tests/visual/home.spec.js + Argos
@@ -711,9 +751,26 @@ export function normalizeUrlForDumpHeader(url) {
   }
 }
 
-export function makeDumpHeader(viewport, url) {
+export function makeDumpHeader(viewport, url, page = "human-male-skintone") {
   const u = normalizeUrlForDumpHeader(url);
-  return `# computed-style-dump viewport=${viewport.width}x${viewport.height} url=${u}\n\n`;
+  return `# computed-style-dump viewport=${viewport.width}x${viewport.height} page=${page} url=${u}\n\n`;
+}
+
+/** Resolve dump page id from CLI/options (explicit `page` wins over legacy `skipSkintoneModal`). */
+export function resolveComputedStyleDumpPage(options = {}) {
+  if (options.page && typeof options.page === "string") {
+    const p = options.page.trim();
+    if (!COMPUTED_STYLE_DUMP_PAGES.includes(p)) {
+      throw new Error(
+        `Unknown dump page "${p}". Expected one of: ${COMPUTED_STYLE_DUMP_PAGES.join(", ")}`,
+      );
+    }
+    return p;
+  }
+  if (options.skipSkintoneModal === true) {
+    return "homepage";
+  }
+  return "human-male-skintone";
 }
 
 /** Snippets for canvas `measureText` (compare width between master/branch dumps). */
@@ -897,6 +954,28 @@ export async function collectComputedStyleDump(page, options = {}) {
         lines.push("");
       }
 
+      function headerToCheckboxBlockGap(box, title) {
+        if (!box) {
+          return;
+        }
+        const header = box.querySelector(":scope > .tree-label");
+        const content = box.querySelector(":scope > .content");
+        if (!header || !content) {
+          return;
+        }
+        const rH = header.getBoundingClientRect();
+        const rC = content.getBoundingClientRect();
+        lines.push(
+          `=== __filter_${title}_header_to_checkbox_block_gap (viewport px) ===`,
+        );
+        lines.push(`  header_bottom: ${rH.bottom.toFixed(2)}`);
+        lines.push(`  content_top: ${rC.top.toFixed(2)}`);
+        lines.push(`  gap: ${(rC.top - rH.bottom).toFixed(2)}`);
+        lines.push("");
+      }
+      headerToCheckboxBlockGap(licBox, "license");
+      headerToCheckboxBlockGap(animBox, "animation");
+
       if (doFont) {
         lines.push("=== font diagnostics (FontFace API + canvas measureText) ===");
         if (document.fonts && typeof document.fonts.ready?.then === "function") {
@@ -995,12 +1074,14 @@ export async function collectComputedStyleDump(page, options = {}) {
  * @param {string} url
  * @param {{ width: number, height: number }} viewport
  * @param {object} [options] passed to collectComputedStyleDump, plus:
- * @param {boolean} [options.skipSkintoneModal] If true, skip Human Male → skintone (Argos first frame).
+ * @param {string} [options.page] One of COMPUTED_STYLE_DUMP_PAGES (default human-male-skintone).
+ * @param {boolean} [options.skipSkintoneModal] Legacy: if true and `page` unset, same as page=homepage.
  */
 export async function dumpComputedStylesForUrl(url, viewport, options = {}) {
-  const skipSkintoneModal = options.skipSkintoneModal === true;
+  const dumpPage = resolveComputedStyleDumpPage(options);
   const collectOptions = { ...options };
   delete collectOptions.skipSkintoneModal;
+  delete collectOptions.page;
 
   const deviceScaleFactor =
     Number(process.env.PLAYWRIGHT_DEVICE_SCALE_FACTOR ?? "1") || 1;
@@ -1018,11 +1099,15 @@ export async function dumpComputedStylesForUrl(url, viewport, options = {}) {
       globalThis.__DISABLE_PREVIEW_ANIMATION__ = true;
     });
     await gotoHomepageReady(page, url);
-    if (!skipSkintoneModal) {
+    if (dumpPage === "human-male-skintone") {
       await openHumanMaleSkintonePalette(page);
+    } else if (dumpPage === "filters-search-arm") {
+      await openHumanMaleSkintonePalette(page);
+      await closeSkintonePaletteModal(page);
+      await openLicenseAnimationAdvancedAndSearchArm(page);
     }
     const body = await collectComputedStyleDump(page, collectOptions);
-    return makeDumpHeader(viewport, url) + body;
+    return makeDumpHeader(viewport, url, dumpPage) + body;
   } finally {
     if (context) {
       await context.close();

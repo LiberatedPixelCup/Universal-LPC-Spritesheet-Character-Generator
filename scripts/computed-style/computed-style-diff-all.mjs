@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 /**
- * Dump computed styles for both URLs at all Argos viewports (home.spec.js),
- * after opening the Human Male → Skintone palette modal (same as *-human-male-skintone captures),
- * write raw dumps + unified diffs per preset, and a combined report.
+ * Dump computed styles for both URLs at all Argos viewports (home.spec.js) and every Argos page
+ * state (homepage, human-male-skintone, filters-search-arm), write raw dumps + unified diffs, and
+ * a combined report.
  *
  * Typical workflow: master (Bulma 0.9.x, no bulma-overrides) vs update_bulma (Bulma 1.x +
  * styles/bulma-overrides.css). Defaults map to that: url-a http://127.0.0.1:4174 (master),
  * url-b http://127.0.0.1:4175 (branch). Unified diff lines are from a (baseline) vs b (branch);
  * goal is empty diff when overrides match master.
  *
- * Argos captures each viewport twice: full homepage, then with skintone modal. Default here matches
- * the modal frame. Use --no-skintone-modal (or COMPUTED_STYLE_SKIP_SKINTONE_MODAL=1) to match the
- * first frame when chooser/filter layout differs before the modal opens.
+ * For each viewport preset, dumps all three Argos-equivalent pages: homepage, human-male-skintone
+ * (palette open), filters-search-arm (License + Animation + Advanced expanded, search "arm").
+ * Output: 8 presets × 3 pages × 2 URLs = 48 .txt files; 8 × 3 unified .diff files + all.diff.
  *
  * Override with env COMPUTED_STYLE_URL_A / COMPUTED_STYLE_URL_B or --url-a / --url-b.
  *
@@ -26,21 +26,18 @@ import path from "node:path";
 import { execFileSync } from "node:child_process";
 import {
   VIEWPORT_PRESETS,
+  COMPUTED_STYLE_DUMP_PAGES,
   dumpComputedStylesForUrl,
 } from "./computed-style-dump-shared.mjs";
 
 const PRESET_ORDER = ["mobile", "tablet", "mediumDesktop", "hugeDesktop", "mobileLong", "tabletLong", "mediumDesktopLong", "hugeDesktopLong"];
 
 function parseArgs(argv) {
-  const envSkip =
-    process.env.COMPUTED_STYLE_SKIP_SKINTONE_MODAL === "1" ||
-    process.env.COMPUTED_STYLE_SKIP_SKINTONE_MODAL === "true";
   const out = {
     urlA: process.env.COMPUTED_STYLE_URL_A ?? "http://127.0.0.1:4174",
     urlB: process.env.COMPUTED_STYLE_URL_B ?? "http://127.0.0.1:4175",
     outDir: path.join(process.cwd(), "computed-style-diff-output"),
     failOnDiff: true,
-    skipSkintoneModal: envSkip,
     help: false,
   };
   for (let i = 2; i < argv.length; i++) {
@@ -55,8 +52,6 @@ function parseArgs(argv) {
       out.outDir = path.resolve(argv[++i]);
     } else if (a === "--no-fail-on-diff") {
       out.failOnDiff = false;
-    } else if (a === "--no-skintone-modal") {
-      out.skipSkintoneModal = true;
     }
   }
   return out;
@@ -70,12 +65,11 @@ Options:
   --url-a <url>     First site (default: $COMPUTED_STYLE_URL_A or http://127.0.0.1:4174)
   --url-b <url>     Second site (default: $COMPUTED_STYLE_URL_B or http://127.0.0.1:4175)
   --out-dir <dir>   Output directory (default: ./computed-style-diff-output)
-  --no-skintone-modal  Match Argos first homepage frame (see COMPUTED_STYLE_SKIP_SKINTONE_MODAL)
   --no-fail-on-diff Exit 0 even when unified diffs are non-empty
   --help, -h
 
-Writes per preset:
-  <preset>-a.txt, <preset>-b.txt, <preset>.diff
+Writes per preset and page (${COMPUTED_STYLE_DUMP_PAGES.join(", ")}):
+  <preset>-<page>-a.txt, <preset>-<page>-b.txt, <preset>-<page>.diff
   all.diff (concatenated), summary.txt
 `);
 }
@@ -112,30 +106,38 @@ async function main() {
       throw new Error(`Missing viewport preset: ${preset}`);
     }
 
-    process.stderr.write(`Dumping ${preset} (${vp.width}x${vp.height})…\n`);
-
-    const dumpOpts = { skipSkintoneModal: args.skipSkintoneModal };
-    const textA = await dumpComputedStylesForUrl(args.urlA, vp, dumpOpts);
-    const textB = await dumpComputedStylesForUrl(args.urlB, vp, dumpOpts);
-
-    const pathA = path.join(args.outDir, `${preset}-a.txt`);
-    const pathB = path.join(args.outDir, `${preset}-b.txt`);
-    fs.writeFileSync(pathA, textA, "utf8");
-    fs.writeFileSync(pathB, textB, "utf8");
-
-    const diffText = unifiedDiff(pathA, pathB);
-    const diffPath = path.join(args.outDir, `${preset}.diff`);
-    fs.writeFileSync(diffPath, diffText || "(no differences)\n", "utf8");
-
-    if (diffText) {
-      anyDiff = true;
-      combined.push(
-        `\n########## ${preset} (${vp.width}x${vp.height}) ##########\n\n`,
-        diffText,
-        diffText.endsWith("\n") ? "" : "\n",
+    for (const dumpPage of COMPUTED_STYLE_DUMP_PAGES) {
+      process.stderr.write(
+        `Dumping ${preset} (${vp.width}x${vp.height}) page=${dumpPage}…\n`,
       );
-    } else {
-      combined.push(`\n########## ${preset} (${vp.width}x${vp.height}) ##########\n(no differences)\n\n`);
+
+      const dumpOpts = { page: dumpPage };
+      const textA = await dumpComputedStylesForUrl(args.urlA, vp, dumpOpts);
+      const textB = await dumpComputedStylesForUrl(args.urlB, vp, dumpOpts);
+
+      const stem = `${preset}-${dumpPage}`;
+      const pathA = path.join(args.outDir, `${stem}-a.txt`);
+      const pathB = path.join(args.outDir, `${stem}-b.txt`);
+      fs.writeFileSync(pathA, textA, "utf8");
+      fs.writeFileSync(pathB, textB, "utf8");
+
+      const diffText = unifiedDiff(pathA, pathB);
+      const diffPath = path.join(args.outDir, `${stem}.diff`);
+      fs.writeFileSync(diffPath, diffText || "(no differences)\n", "utf8");
+
+      const sectionTitle = `${preset} (${vp.width}x${vp.height}) page=${dumpPage}`;
+      if (diffText) {
+        anyDiff = true;
+        combined.push(
+          `\n########## ${sectionTitle} ##########\n\n`,
+          diffText,
+          diffText.endsWith("\n") ? "" : "\n",
+        );
+      } else {
+        combined.push(
+          `\n########## ${sectionTitle} ##########\n(no differences)\n\n`,
+        );
+      }
     }
   }
 
@@ -145,7 +147,7 @@ async function main() {
   const summary = [
     `url-a: ${args.urlA}`,
     `url-b: ${args.urlB}`,
-    `skintone_modal: ${args.skipSkintoneModal ? "skipped (Argos first frame)" : "open (Argos *-human-male-skintone)"}`,
+    `pages: ${COMPUTED_STYLE_DUMP_PAGES.join(", ")}`,
     `presets: ${PRESET_ORDER.join(", ")}`,
     `any differences: ${anyDiff ? "yes" : "no"}`,
     `output: ${args.outDir}`,

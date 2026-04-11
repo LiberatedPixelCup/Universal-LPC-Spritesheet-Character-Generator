@@ -32,6 +32,7 @@ import path from "node:path";
 import {
   DEFAULT_VIEWPORT,
   VIEWPORT_PRESETS,
+  COMPUTED_STYLE_DUMP_PAGES,
   dumpComputedStylesForUrl,
 } from "./computed-style-dump-shared.mjs";
 
@@ -42,6 +43,7 @@ function parseArgs(argv) {
     outDir: null,
     label: null,
     viewport: { ...DEFAULT_VIEWPORT },
+    page: null,
     skipSkintoneModal: false,
     help: false,
   };
@@ -72,6 +74,8 @@ function parseArgs(argv) {
       out.viewport = { width: Number(m[1]), height: Number(m[2]) };
     } else if (a === "--no-skintone-modal") {
       out.skipSkintoneModal = true;
+    } else if (a === "--page" && argv[i + 1]) {
+      out.page = argv[++i];
     } else if (!a.startsWith("-")) {
       out.url = a;
     }
@@ -89,7 +93,8 @@ Options:
   --label <name>         Filename stem when using --out-dir
   --viewport WxH         Default ${DEFAULT_VIEWPORT.width}x${DEFAULT_VIEWPORT.height}
   --preset NAME          mobile | tablet | mediumDesktop | hugeDesktop (Argos / home.spec.js)
-  --no-skintone-modal    Match Argos first frame (homepage only; palette targets will be <no match>)
+  --page NAME            ${COMPUTED_STYLE_DUMP_PAGES.join(" | ")} (default: human-male-skintone)
+  --no-skintone-modal    Same as --page homepage (palette targets <no match> on other pages)
   --help, -h
 
 Examples:
@@ -114,6 +119,7 @@ async function main() {
   }
 
   const text = await dumpComputedStylesForUrl(args.url, args.viewport, {
+    page: args.page ?? undefined,
     skipSkintoneModal: args.skipSkintoneModal,
   });
 
