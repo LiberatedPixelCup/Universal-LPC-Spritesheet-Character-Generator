@@ -446,6 +446,12 @@ export const COMPUTED_STYLE_TARGETS = [
     omitDumpLines: ["__box"],
   },
   {
+    label:
+      "animation preview frame-cycle readout (.field.has-addons .button.is-static)",
+    selector:
+      "#mithril-preview .field.has-addons .control:last-child .button.is-static",
+  },
+  {
     label: "animation preview zoom range input",
     selector: "#mithril-preview input.is-fullwidth[type=range]",
   },
