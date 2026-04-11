@@ -679,13 +679,6 @@ export const categoryTree = ${JSON.stringify(categoryTree, null, 2)};
 
 export const paletteMetadata = ${JSON.stringify(paletteMetadata, null, 2)};
 
-if (typeof window !== "undefined") {
-  window.itemMetadata = itemMetadata;
-  window.aliasMetadata = aliasMetadata;
-  window.categoryTree = categoryTree;
-  window.paletteMetadata = paletteMetadata;
-}
-
 export default itemMetadata;
 `;
 

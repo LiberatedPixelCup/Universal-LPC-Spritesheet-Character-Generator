@@ -109297,11 +109297,4 @@ export const paletteMetadata = {
   }
 };
 
-if (typeof window !== "undefined") {
-  window.itemMetadata = itemMetadata;
-  window.aliasMetadata = aliasMetadata;
-  window.categoryTree = categoryTree;
-  window.paletteMetadata = paletteMetadata;
-}
-
 export default itemMetadata;
