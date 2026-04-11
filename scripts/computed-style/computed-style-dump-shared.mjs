@@ -114,8 +114,9 @@ export const COMPUTED_STYLE_PROPS = [
 ];
 
 /**
- * Label + selector (first match). Order: page shell → columns → mithril mount → download → filters →
- * category tree → credits → advanced → preview.
+ * Label + selector (first match). Order: page shell → columns → mithril mount → download → filters
+ * (License/Animation header rows, etc.) → category tree → credits (stacked file blocks) → advanced →
+ * preview → palette modal (after openHumanMaleSkintonePalette in dumpComputedStylesForUrl).
  *
  * Optional per target:
  * - `omitProps`: skip listed properties for noisy or deliberate parity cases only. Avoid omitting
@@ -228,26 +229,79 @@ export const COMPUTED_STYLE_TARGETS = [
     label: "filters license+animation columns row",
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline",
+    includeRect: true,
   },
   {
     label: "filters license column (.filters-column first)",
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(1)",
+    includeRect: true,
   },
   {
     label: "filters animation column (.filters-column second)",
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(2)",
+    includeRect: true,
   },
   {
     label: "filters LicenseFilters nested box",
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(1) > .box.mb-4.has-background-light",
+    includeRect: true,
   },
   {
     label: "filters AnimationFilters nested box",
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(2) > .box.mb-4.has-background-light",
+    includeRect: true,
+  },
+  {
+    label: "filters LicenseFilters header .tree-label (direct child of box)",
+    selector:
+      "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(1) > .box.mb-4.has-background-light > .tree-label",
+    includeRect: true,
+  },
+  {
+    label: "filters LicenseFilters header .tree-arrow",
+    selector:
+      "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(1) > .box.mb-4.has-background-light > .tree-label > .tree-arrow",
+    includeRect: true,
+  },
+  {
+    label: "filters LicenseFilters header title (.title.is-6.is-inline)",
+    selector:
+      "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(1) > .box.mb-4.has-background-light > .tree-label > .title.is-6.is-inline",
+    includeRect: true,
+  },
+  {
+    label: "filters LicenseFilters header count (.is-size-7 enabled text)",
+    selector:
+      "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(1) > .box.mb-4.has-background-light > .tree-label > span.is-size-7.ml-2",
+    includeRect: true,
+  },
+  {
+    label: "filters AnimationFilters header .tree-label (direct child of box)",
+    selector:
+      "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(2) > .box.mb-4.has-background-light > .tree-label",
+    includeRect: true,
+  },
+  {
+    label: "filters AnimationFilters header .tree-arrow",
+    selector:
+      "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(2) > .box.mb-4.has-background-light > .tree-label > .tree-arrow",
+    includeRect: true,
+  },
+  {
+    label: "filters AnimationFilters header title (.title.is-inline.is-6)",
+    selector:
+      "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(2) > .box.mb-4.has-background-light > .tree-label > .title.is-inline.is-6",
+    includeRect: true,
+  },
+  {
+    label: "filters AnimationFilters header count (.is-size-7)",
+    selector:
+      "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .columns.is-multiline > .column:nth-child(2) > .box.mb-4.has-background-light > .tree-label > span.is-size-7.ml-2",
+    includeRect: true,
   },
   {
     label: "filters CurrentSelections wrapper (.mb-4 after columns)",
@@ -259,16 +313,19 @@ export const COMPUTED_STYLE_TARGETS = [
     label: "filters CurrentSelections h3 title",
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .mb-4:nth-child(3) h3.title.is-5",
+    includeRect: true,
   },
   {
     label: "filters CurrentSelections .tags",
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .mb-4:nth-child(3) .tags",
+    includeRect: true,
   },
   {
     label: "filters CurrentSelections first .tag.is-medium",
     selector:
       "#mithril-filters > div > .box:nth-child(2) .collapsible-content > .mb-4:nth-child(3) .tags .tag.is-medium",
+    includeRect: true,
   },
   {
     label: "filters CurrentSelections .tags delete button",
@@ -377,6 +434,13 @@ export const COMPUTED_STYLE_TARGETS = [
   {
     label: "credits file list .content block",
     selector: "#credits-section .content.has-background-light",
+    includeRect: true,
+  },
+  {
+    label: "credits file list stacked file block (.mb-3 rows)",
+    selector:
+      "#credits-section .collapsible-content .content.has-background-light > .mb-3",
+    includeRect: true,
   },
   {
     label: "credits file list .content filename",
@@ -439,16 +503,19 @@ export const COMPUTED_STYLE_TARGETS = [
   {
     label: "palette modal header",
     selector: ".palette-modal header",
+    includeRect: true,
   },
   {
     label: "palette modal title (h4)",
     selector: ".palette-modal header h4",
+    includeRect: true,
   },
   {
     label: "palette modal close button",
     selector: ".palette-modal header button",
     /* Chromium serializes font-family with/without quotes around system-ui depending on cascade source. */
     omitProps: ["font", "font-family"],
+    includeRect: true,
   },
   {
     label: "palette modal section (scroll body)",
@@ -459,6 +526,7 @@ export const COMPUTED_STYLE_TARGETS = [
   {
     label: "palette modal tree row (.tree-label)",
     selector: ".palette-modal .tree-label",
+    includeRect: true,
   },
   {
     label: "palette modal version label (.palette-version)",
