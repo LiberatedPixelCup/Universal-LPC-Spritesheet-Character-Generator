@@ -24,6 +24,15 @@
       window.categoryTree = categoryTree;
       window.paletteMetadata = paletteMetadata;
     </script>
+  </head>
+  <body>
+    <h1>Universal LPC Sprite Sheet - Test Runner</h1>
+
+    <div id="mocha"></div>
+
+    <script type="module">
+      globalThis.mocha.setup("bdd");
+    </script>
     <script type="importmap">
       {
         "imports": {
@@ -36,15 +45,6 @@
           "https://cdn.jsdelivr.net/npm/sinon@21.0.3/+esm": "sha384-AoTHQuJPp8Nvy3Q9ks6RJfmIU13nPMk9nIxXSUJpOHN4AwlO/UQ93D8n1VxeQDKb"
         }
       }
-    </script>
-  </head>
-  <body>
-    <h1>Universal LPC Sprite Sheet - Test Runner</h1>
-
-    <div id="mocha"></div>
-
-    <script type="module">
-      globalThis.mocha.setup("bdd");
     </script>
     <script src="/testem.js"></script>
     <script type="module" src="tests/tests.js"></script>
