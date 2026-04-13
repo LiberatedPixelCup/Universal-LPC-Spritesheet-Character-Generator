@@ -6,7 +6,7 @@ import { AnimationFilters } from "../../sources/components/filters/AnimationFilt
 import { CurrentSelections } from "../../sources/components/selections/CurrentSelections.js";
 import { CategoryTree } from "../../sources/components/tree/CategoryTree.js";
 import { expect } from "chai";
-import { describe, it, beforeEach } from "mocha-globals";
+import { describe, it, beforeEach } from "vitest";
 
 describe("FiltersPanel", () => {
   let vnode;

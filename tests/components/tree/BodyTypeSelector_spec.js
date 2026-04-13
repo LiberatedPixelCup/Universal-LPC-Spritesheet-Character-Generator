@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { describe, it, beforeEach } from "mocha-globals";
+import { describe, it, beforeEach } from "vitest";
 import { BodyTypeSelector } from "../../../sources/components/tree/BodyTypeSelector.js";
 import { state } from "../../../sources/state/state.js";
 

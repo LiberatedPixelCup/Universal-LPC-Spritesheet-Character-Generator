@@ -4,7 +4,7 @@
     "prebuild": "rimraf \"dist/!(spritesheets)\"",
     "build": "vite build",
     "preview": "vite preview",
-    "serve:open": "node scripts/serve-open.mjs",
+    "serve:open": "vite --open",
     "lint": "eslint . --cache",
     "lint:fix": "eslint . --cache --fix",
     "format": "prettier --write .",
@@ -12,8 +12,8 @@
     "validate-site-sources": "node scripts/generate_sources.mjs",
     "z-positions": "node scripts/zPositioning/parse_zpos.js",
     "z-positions:update": "node scripts/zPositioning/update_zpos.js",
-    "test": "node ./node_modules/testem/testem.js ci",
-    "test:server": "node ./node_modules/testem/testem.js",
+    "test": "vitest run",
+    "test:server": "vitest",
     "test:visual": "playwright test",
     "test:visual:headed": "playwright test --headed",
     "fixture:issue382": "node scripts/fixture-builder.js",
@@ -31,6 +31,7 @@
     "@babel/eslint-parser": "^7.28.5",
     "@eslint/js": "^9.39.4",
     "@playwright/test": "^1.59.0",
+    "@vitest/browser-playwright": "^4.1.4",
     "chai": "^6.2.2",
     "classnames": "^2.5.1",
     "eslint": "^9.39.4",
@@ -45,11 +46,13 @@
     "prettier": "^3.8.1",
     "rimraf": "^6.1.3",
     "serve": "^14.2.6",
+    "sinon": "^21.1.2",
     "testem": "^3.19.1",
     "vite": "^8.0.8",
     "vite-multiple-assets": "^2.2.6",
     "vite-plugin-cp": "^6.0.3",
-    "vite-plugin-run": "^0.8.0"
+    "vite-plugin-run": "^0.8.0",
+    "vitest": "^4.1.4"
   },
   "overrides": {
     "mocha": {

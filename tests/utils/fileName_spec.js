@@ -1,11 +1,11 @@
 import { expect } from "chai";
-import { describe, it, before, after } from "mocha-globals";
+import { describe, it, beforeAll, afterAll } from "vitest";
 import { getItemFileName } from "../../sources/utils/fileName.js";
 
 describe("getItemFileName", () => {
   let previousItemMetadata;
 
-  before(() => {
+  beforeAll(() => {
     previousItemMetadata = window.itemMetadata;
     window.itemMetadata = {
       1: {
@@ -22,7 +22,7 @@ describe("getItemFileName", () => {
     };
   });
 
-  after(() => {
+  afterAll(() => {
     window.itemMetadata = previousItemMetadata;
   });
 

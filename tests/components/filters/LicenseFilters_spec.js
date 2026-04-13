@@ -3,11 +3,11 @@ import {
   setLicenseCompatible,
   getLicenseConfig,
   setLicenseConfig,
-} from "../../../../sources/components/filters/LicenseFilters.js";
-import { state } from "../../../../sources/state/state.js";
+} from "../../../sources/components/filters/LicenseFilters.js";
+import { state } from "../../../sources/state/state.js";
 import { expect } from "chai";
 import sinon from "sinon";
-import { describe, it, beforeEach, afterEach } from "mocha-globals";
+import { describe, it, beforeEach, afterEach } from "vitest";
 
 describe("LicenseFilters Component", () => {
   let container;

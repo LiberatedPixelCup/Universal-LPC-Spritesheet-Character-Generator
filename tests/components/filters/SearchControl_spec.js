@@ -2,7 +2,7 @@
 import { state } from "../../../sources/state/state.js";
 import { SearchControl } from "../../../sources/components/filters/SearchControl.js";
 import { assert } from "chai";
-import { describe, it, beforeEach, afterEach } from "mocha-globals";
+import { describe, it, beforeEach, afterEach } from "vitest";
 
 describe("SearchControl", function () {
   let container;

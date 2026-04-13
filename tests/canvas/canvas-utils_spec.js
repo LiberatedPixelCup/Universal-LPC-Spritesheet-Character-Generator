@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import sinon from "sinon";
-import { describe, it, beforeEach, afterEach } from "mocha-globals";
+import { describe, it, beforeEach, afterEach } from "vitest";
 import {
   canvasToBlob,
   drawTransparencyBackground,
@@ -8,7 +8,7 @@ import {
   getZPos,
   hasContentInRegion,
   image2canvas,
-} from "../../../sources/canvas/canvas-utils.js";
+} from "../../sources/canvas/canvas-utils.js";
 
 function createCanvas(width, height) {
   const canvas = document.createElement("canvas");

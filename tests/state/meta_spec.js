@@ -8,7 +8,7 @@ import {
 } from "../../sources/state/meta.js";
 import { expect } from "chai";
 import sinon from "sinon";
-import { describe, it, beforeEach, afterEach } from "mocha-globals";
+import { describe, it, beforeEach, afterEach } from "vitest";
 
 describe("state/meta.js", () => {
   beforeEach(() => {

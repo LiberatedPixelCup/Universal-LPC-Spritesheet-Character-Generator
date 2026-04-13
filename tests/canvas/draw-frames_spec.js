@@ -1,9 +1,9 @@
 import {
   drawFrameToFrame,
   drawFramesToCustomAnimation,
-} from "../../../sources/canvas/draw-frames.js";
+} from "../../sources/canvas/draw-frames.js";
 import { expect } from "chai";
-import { describe, it, beforeEach } from "mocha-globals";
+import { describe, it, beforeEach } from "vitest";
 import sinon from "sinon";
 
 describe("drawFrameToFrame", () => {

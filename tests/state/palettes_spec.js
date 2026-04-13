@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { describe, it, beforeEach, afterEach } from "mocha-globals";
+import { describe, it, beforeEach, afterEach } from "vitest";
 import { state } from "../../sources/state/state.js";
 import {
   getMultiRecolors,

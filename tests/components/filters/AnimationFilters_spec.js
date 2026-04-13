@@ -7,7 +7,7 @@ import {
 import { state } from "../../../sources/state/state.js";
 import { expect } from "chai";
 import sinon from "sinon";
-import { describe, it, beforeEach, afterEach } from "mocha-globals";
+import { describe, it, beforeEach, afterEach } from "vitest";
 
 describe("AnimationFilters Component", () => {
   let container;

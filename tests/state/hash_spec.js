@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import sinon from "sinon";
-import { describe, it, beforeEach, afterEach } from "mocha-globals";
+import { describe, it, beforeEach, afterEach } from "vitest";
 import {
   getHash,
   setHash,
@@ -17,7 +17,7 @@ import {
   initHashChangeListener,
   getSetHashCalledTimes,
   resetHashCalledTimes,
-} from "../../../sources/state/hash.js";
+} from "../../sources/state/hash.js";
 
 describe("state/hash.js", () => {
   let sandbox;
