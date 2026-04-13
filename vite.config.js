@@ -20,6 +20,15 @@ export default defineConfig(({ command }) => ({
             {
               name: "vendor",
               test: /node_modules/,
+              priority: 10,
+            },
+            {
+              name: "item-metadata",
+              test: /[/\\]item-metadata\.js$/,
+              priority: 100,
+              minSize: 0,
+              maxSize: 10_000_000,
+              maxModuleSize: 10_000_000,
             },
           ],
         },

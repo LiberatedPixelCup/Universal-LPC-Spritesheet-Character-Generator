@@ -1,17 +1,7 @@
 // Main entry point - initializes and mounts the Mithril application
 
 import "./vendor-globals.js";
-import {
-  itemMetadata,
-  aliasMetadata,
-  categoryTree,
-  paletteMetadata,
-} from "../item-metadata.js";
-
-window.itemMetadata = itemMetadata;
-window.aliasMetadata = aliasMetadata;
-window.categoryTree = categoryTree;
-window.paletteMetadata = paletteMetadata;
+import "./install-item-metadata.js";
 
 // Import debug first so `window.DEBUG` is set before other modules run.
 import { debugLog, getDebugParam } from "./utils/debug.js";
