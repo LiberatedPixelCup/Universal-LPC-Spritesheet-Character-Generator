@@ -41,44 +41,61 @@ const ISSUE_364_METADATA = {
   },
 };
 
-describe(
-  "canvas/renderer.js issue #364 (addedCustomAnimations export)",
-  () => {
-    let sandbox;
-    let previousItemMetadata;
+describe("canvas/renderer.js issue #364 (addedCustomAnimations export)", () => {
+  let sandbox;
+  let previousItemMetadata;
 
-    beforeEach(() => {
-      sandbox = sinon.createSandbox();
-      resetState();
-      initCanvas();
-      previousItemMetadata = window.itemMetadata;
-      window.itemMetadata = {
-        ...(window.itemMetadata || {}),
-        ...ISSUE_364_METADATA,
-      };
-      state.selections = {
-        slot: {
-          itemId: "issue364_wheel_item",
-          variant: "brass",
-          name: "Wheel",
-        },
-      };
-      if (typeof m !== "undefined" && m.redraw) {
-        sandbox.stub(m, "redraw");
-      }
-    });
-
-    function resetRendererModuleState() {
-      rendererLayers.length = 0;
-      itemsToDraw.length = 0;
-      for (const k of Object.keys(customAreaItems)) {
-        delete customAreaItems[k];
-      }
-      addedCustomAnimations.clear();
-      initCanvas();
+  beforeEach(() => {
+    sandbox = sinon.createSandbox();
+    resetState();
+    initCanvas();
+    previousItemMetadata = window.itemMetadata;
+    window.itemMetadata = {
+      ...(window.itemMetadata || {}),
+      ...ISSUE_364_METADATA,
+    };
+    state.selections = {
+      slot: {
+        itemId: "issue364_wheel_item",
+        variant: "brass",
+        name: "Wheel",
+      },
+    };
+    if (typeof m !== "undefined" && m.redraw) {
+      sandbox.stub(m, "redraw");
     }
+  });
 
-    afterEach(async () => {
+  function resetRendererModuleState() {
+    rendererLayers.length = 0;
+    itemsToDraw.length = 0;
+    for (const k of Object.keys(customAreaItems)) {
+      delete customAreaItems[k];
+    }
+    addedCustomAnimations.clear();
+    initCanvas();
+  }
+
+  afterEach(async () => {
+    window.itemMetadata = previousItemMetadata;
+    resetImageLoadCache();
+    resetRendererModuleState();
+    if (sandbox) {
+      sandbox.restore();
+      sandbox = null;
+    }
+  });
+
+  it("records custom animation names on the exported addedCustomAnimations set after renderCharacter", async () => {
+    try {
+      await renderCharacter(state.selections, "male");
+
+      expect(
+        addedCustomAnimations.size,
+        "module export addedCustomAnimations must list custom animations used during render (fixes shadowed local Set)",
+      ).to.be.at.least(1);
+      expect(addedCustomAnimations.has("wheelchair")).to.be.true;
+    } finally {
       window.itemMetadata = previousItemMetadata;
       resetImageLoadCache();
       resetRendererModuleState();
@@ -86,27 +103,6 @@ describe(
         sandbox.restore();
         sandbox = null;
       }
-    });
-
-    it("records custom animation names on the exported addedCustomAnimations set after renderCharacter", async () => {
-      try {
-        await renderCharacter(state.selections, "male");
-
-        expect(
-          addedCustomAnimations.size,
-          "module export addedCustomAnimations must list custom animations used during render (fixes shadowed local Set)",
-        ).to.be.at.least(1);
-        expect(addedCustomAnimations.has("wheelchair")).to.be.true;
-      } finally {
-        window.itemMetadata = previousItemMetadata;
-        resetImageLoadCache();
-        resetRendererModuleState();
-        if (sandbox) {
-          sandbox.restore();
-          sandbox = null;
-        }
-      }
-    });
-  },
-  15_000,
-);
+    }
+  });
+}, 15_000);
