@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import { DynamicPublicDirectory } from "vite-multiple-assets";
 
 export default defineConfig({
   publicDir: false,
@@ -9,4 +10,5 @@ export default defineConfig({
       },
     },
   },
+  plugins: [DynamicPublicDirectory(["public/**", "{\x01,spritesheets}/**"])],
 });
