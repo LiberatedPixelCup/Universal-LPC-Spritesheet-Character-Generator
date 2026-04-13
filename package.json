@@ -1,6 +1,7 @@
 {
   "scripts": {
     "dev": "vite",
+    "prebuild": "rimraf \"dist/!(spritesheets)\"",
     "build": "vite build",
     "preview": "vite preview",
     "serve:open": "node scripts/serve-open.mjs",
@@ -42,10 +43,13 @@
     "mocha": "^11.7.5",
     "open": "^10.2.0",
     "prettier": "^3.8.1",
+    "rimraf": "^6.1.3",
     "serve": "^14.2.6",
     "testem": "^3.19.1",
     "vite": "^8.0.8",
-    "vite-multiple-assets": "^2.2.6"
+    "vite-multiple-assets": "^2.2.6",
+    "vite-plugin-cp": "^6.0.3",
+    "vite-plugin-run": "^0.8.0"
   },
   "overrides": {
     "mocha": {

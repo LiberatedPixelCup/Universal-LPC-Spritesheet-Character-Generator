@@ -1,10 +1,12 @@
 import { defineConfig } from "vite";
 import { DynamicPublicDirectory } from "vite-multiple-assets";
+import { run } from "vite-plugin-run";
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   publicDir: false,
+  logLevel: "info",
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       input: {
         main: "index.html",
       },
@@ -14,21 +16,42 @@ export default defineConfig({
           maxSize: 200000,
           minModuleSize: 20000,
           maxModuleSize: 200000,
-          maxInitialChunkSize: 200000,
-          maxAsyncChunkSize: 200000,
+          groups: [
+            {
+              name: "vendor",
+              test: /node_modules/,
+            },
+          ],
         },
-        groups: [
-          {
-            name: "vendor",
-            test: /node_modules/,
-          },
-        ],
       },
     },
     target: "esnext",
+    emptyOutDir: false, // see npm run prebuild
   },
   css: {
     target: false,
   },
-  plugins: [DynamicPublicDirectory(["public/**", "{\x01,spritesheets}/**"])],
-});
+  plugins: [
+    command === "serve"
+      ? DynamicPublicDirectory(["public/**", "{\x01,spritesheets}/**"])
+      : run({
+          input: [
+            {
+              name: "copy spritesheets",
+              run: [
+                "rsync",
+                "-ah",
+                "--ignore-existing",
+                "--info=progress2",
+                "--no-inc-recursive",
+                "spritesheets",
+                "dist",
+              ],
+              condition: () => true,
+              onFileChanged: () => {},
+            },
+          ],
+          silent: false,
+        }),
+  ],
+}));
