@@ -1,11 +1,10 @@
 // Item with recolors component
+import classNames from "classnames";
 import { state, getSelectionGroup, selectItem } from "../../state/state.js";
 import { drawRecolorPreview } from "../../canvas/palette-recolor.js";
 import { getPaletteOptions } from "../../state/palettes.js";
 import { PaletteSelectModal } from "./PaletteSelectModal.js";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.js";
-
-const classNames = window.classNames;
 
 export const ItemWithRecolors = {
   view: function (vnode) {
