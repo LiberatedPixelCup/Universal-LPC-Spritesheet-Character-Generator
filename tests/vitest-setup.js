@@ -1,3 +1,4 @@
+import "chai";
 import m from "mithril";
 import {
   itemMetadata,

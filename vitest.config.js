@@ -17,6 +17,14 @@ export default mergeConfig(
     define: {
       "import.meta.env.VITEST_DEBUG": JSON.stringify(vitestDebug),
     },
+    // One Chai instance for both `import { expect } from "chai"` and @vitest/expect;
+    // duplicate graphs in browser mode can leave `config` undefined (import-time TypeError).
+    resolve: {
+      dedupe: ["chai"],
+    },
+    optimizeDeps: {
+      include: ["chai"],
+    },
     test: {
       browser: {
         enabled: true,
