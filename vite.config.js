@@ -17,7 +17,11 @@ function vitePluginBundledCssAfterBulma() {
         let m;
         while ((m = stylesheetLinkRe.exec(html)) !== null) {
           const tag = m[0];
-          if (/\/assets\/[^"'>\s]+\.css\b/.test(tag)) {
+          // With `base: "./"`, href is `./assets/...`; older builds used `/assets/...`.
+          if (
+            /assets\/[^"'>\s]+\.css\b/.test(tag) &&
+            !/https?:\/\//i.test(tag)
+          ) {
             bundled.push(tag);
           }
         }
@@ -46,6 +50,7 @@ function vitePluginBundledCssAfterBulma() {
 }
 
 export default defineConfig(({ command }) => ({
+  base: "./",
   publicDir: false,
   logLevel: "info",
   build: {
