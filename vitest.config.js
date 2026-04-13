@@ -42,7 +42,11 @@ export default mergeConfig(
             },
           },
         }),
-        instances: [{ browser: "chromium" }, { browser: "firefox" }],
+        instances: [
+          { browser: "chromium" },
+          { browser: "firefox" },
+          { browser: "webkit" },
+        ],
         headless: true,
       },
       setupFiles: ["tests/vitest-setup.js"],
