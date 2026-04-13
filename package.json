@@ -44,7 +44,7 @@
     "prettier": "^3.8.1",
     "serve": "^14.2.6",
     "testem": "^3.19.1",
-    "vite": "^7.1.10",
+    "vite": "^8.0.8",
     "vite-multiple-assets": "^2.2.6"
   },
   "overrides": {
