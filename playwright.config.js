@@ -4,8 +4,11 @@ import { createArgosReporterOptions } from "@argos-ci/playwright/reporter";
 export default defineConfig({
   testDir: "./tests/visual",
   webServer: {
-    command: "npx serve -l 4173 .",
-    url: "http://127.0.0.1:4173",
+    command: process.env.CI
+      ? "npm run build && npm run preview -- --port 5173 && sleep 3"
+      : "npm run dev && sleep 10",
+    timeout: 120000,
+    url: "http://localhost:5173",
     reuseExistingServer: !process.env.CI,
   },
   fullyParallel: true,
