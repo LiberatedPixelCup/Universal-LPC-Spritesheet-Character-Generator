@@ -8,3 +8,4 @@ blob-report/
 .eslintcache
 tmp/
 computed-style-diff-output/
+/dist/
