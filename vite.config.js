@@ -10,5 +10,8 @@ export default defineConfig({
       },
     },
   },
+  css: {
+    target: false,
+  },
   plugins: [DynamicPublicDirectory(["public/**", "{\x01,spritesheets}/**"])],
 });
