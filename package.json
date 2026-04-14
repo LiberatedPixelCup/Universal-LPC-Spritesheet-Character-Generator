@@ -16,7 +16,7 @@
     "test": "npm run test:node && npm run test:vitest",
     "test:node": "node ./tests/node/run-node-tests.js",
     "test:vitest": "vitest run",
-    "test:server": "vitest --browser --ui",
+    "test:server": "UI=true vitest --browser --ui",
     "test:visual": "playwright test",
     "test:visual:headed": "playwright test --headed",
     "fixture:issue382": "node scripts/fixture-builder.js",

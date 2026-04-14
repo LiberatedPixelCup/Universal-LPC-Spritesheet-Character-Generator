@@ -55,7 +55,11 @@ export default mergeConfig(
           { browser: "firefox" },
           { browser: "webkit" },
         ],
-        headless: true,
+        headless: process.env.UI === "true" ? false : true,
+        onConsoleLog: (log) => {
+          console.log(log); // eslint-disable-line no-console
+          return true;
+        },
       },
       setupFiles: ["tests/vitest-setup.js"],
       include: ["tests/**/*_spec.js"],
