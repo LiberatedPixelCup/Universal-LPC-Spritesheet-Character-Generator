@@ -2,7 +2,7 @@
 
 #### Submissions
 
-**Important: all art submitted to this project must be available under one of the supported licenses, see above section `Licensing and Attribution (Credits)`.**
+**Important: all art submitted to this project must be available under one of the supported licenses; see the `Licensing and Attribution (Credits)` section in [README.md](README.md).**
 
 - If you are submitting art that was made by (or derived from work made by) someone else, please be sure that you have the rights to distribute that art under the licenses you choose.
 
@@ -67,6 +67,8 @@ If you add this animations list, users can filter the results based on the anima
 ```
 
 As such, if you wish to include less than this list, such as only walk and slash, you should still include the animations definition to restrict it to just those assets. Users will still be able to access your asset, but it won't appear if the animations filter is used and you did not include that animation in your sheet definition.
+
+The category tree and items in the app come from generated metadata, not from HTML. After you add or change definitions, run **File Generation** (below) and commit the updated **`item-metadata.js`** and any other generated outputs that changed.
 
 #### Renaming an Asset
 
@@ -133,145 +135,138 @@ It is highly recommended to simply drop the aliases on the sheet definition that
 
 #### File Generation
 
-Finally, to get your sheet to appear, in `source_index.html`, add your new category at the desired position by adding a `div_sheet_` like this:
+The runtime UI loads **`item-metadata.js`**, which is **generated** from the sheet JSON under `sheet_definitions/` (and related inputs). When you add or change artwork definitions, credits, or tree metadata, regenerate the outputs and commit them.
 
-`div_sheet_body_robot`
+From the project root:
 
-Make sure the name starts with `div_sheet_`, and match the postfix with the name of your json, in this case `body_robot`.
+```bash
+node scripts/generate_sources.mjs
+```
 
-At this point, you will need to run a script that will generate the final `index.html`.
-In order to do that, run:
+or:
 
-`node scripts/generate_sources.mjs` 
+```bash
+npm run validate-site-sources
+```
 
-This will generate the `index.html` from the `source_index.html`.
+This updates **[CREDITS.csv](/CREDITS.csv)** and **[item-metadata.js](/item-metadata.js)**, and it runs **`scripts/zPositioning/parse_zpos.js`** in the background so **[scripts/zPositioning/z_positions.csv](/scripts/zPositioning/z_positions.csv)** stays aligned with z-positions in the JSON files.
 
-In case you want to push your changes, be sure to run this script and never change the `index.html` manually.
-The CI will reject any PR's that contain manual changes made on the `index.html`.
+**Do not edit `item-metadata.js` by hand.** Edit the sheet definitions (and related sources) and re-run the generator.
+
+**`index.html`** is the Vite entry shell (layout, stylesheets, `sources/main.js`). It is not emitted by this script. Change it only when you mean to adjust the page structure or global assets.
+
+The **Validate site sources** workflow (`.github/workflows/validate-site-sources.yml`) runs the same generation and fails if the working tree is dirty afterward. PRs that touch definitions must include regenerated **`item-metadata.js`**, **`CREDITS.csv`**, and **`scripts/zPositioning/z_positions.csv`** whenever those files change.
 
 #### Running Tests
 
-The project includes automated tests for the Mithril components that run directly in the browser.
+Browser specs use [Vitest](https://vitest.dev/) in **browser** mode with the [Playwright](https://playwright.dev/) provider (see [`vitest.config.js`](vitest.config.js)). **Chromium, Firefox, and WebKit** each run the suite headlessly by default. Node-based tests under [`tests/node/`](tests/node/) cover the `generate_sources` pipeline and related scripts.
 
-**Running Tests Locally**:
+**Run the full suite**
 
-From the project root, run:
+From the project root:
 
 ```bash
-npm run test
+npm test
 ```
 
-This uses [Testem](https://github.com/testem/testem) in CI mode (`testem ci`), launches **Chrome** and **Firefox** headlessly, and loads `tests_run.html`. Results are printed in the terminal.
+This runs **`npm run test:node`** then **`npm run test:vitest`**.
 
-**`DEBUG` environment variable (optional):** By default the test page is opened with `?debug=false` so application debug logging (`debugLog` / `debugWarn` in `sources/utils/debug.js`) stays **off** and the run stays quiet. To enable the same verbose debug output you would get when developing on localhost without that query flag, run:
+**`DEBUG` environment variable (optional):** When `DEBUG` is `1` or `true`, Vitest exposes `import.meta.env.VITEST_DEBUG === "true"` (see `vitest.config.js`), and [`tests/vitest-setup.js`](tests/vitest-setup.js) turns on test-friendly verbose behavior aligned with `sources/utils/debug.js`.
 
 ```bash
-DEBUG=1 npm run test
+DEBUG=1 npm test
 # or
-DEBUG=true npm run test
+DEBUG=true npm test
 ```
 
-**Interactive mode (`test:server`):** To use Testem’s dev UI (file watching, visible browsers, keyboard shortcuts), run:
+**Interactive browser UI**
 
 ```bash
 npm run test:server
 ```
 
-By default this follows `testem.js` and opens **Chrome**, **Firefox**, and **Safari** (where available) as configured for dev. The same **`DEBUG`** rules apply as for `npm run test` (`?debug=false` unless you set `DEBUG=1` or `DEBUG=true` when starting Testem).
+This runs **`vitest --browser --ui`** so you can drive tests from Vitest’s UI.
 
-To run **only one** browser in that mode, pass Testem’s **`--launch`** (`-l`) flag after `--` (arguments after `--` are forwarded to `testem`):
-
-```bash
-npm run test:server -- --launch Chrome
-npm run test:server -- --launch Firefox
-```
-
-You can also pass a comma-separated list if you want a subset, for example `--launch Chrome,Firefox`.
-
-**Manual static server:** Alternatively, start any HTTP server in the project root (for example `python -m http.server 8080`) and open `http://localhost:<port>/tests_run.html` in a browser. That path does not apply Testem’s `?debug=false` URL; on localhost, debug logging follows the normal URL rules in `getDebugParam()`.
-
-**CI Integration**: Tests run automatically in GitHub Actions on every push and pull request using Chrome headless and Firefox headless, matching the CI browser launch configuration in `testem.js`. All tests must pass before a PR can be merged.
+**CI:** [`.github/workflows/ci.yml`](.github/workflows/ci.yml) installs Playwright browsers (**Chromium, Firefox, WebKit**), starts **Xvfb**, and runs **`npm test`** on pushes and pull requests to **`master`**. That workflow uses `npm ci --ignore-scripts`; for local development, `npm ci` or `npm install` without `--ignore-scripts` is typical.
 
 #### Visual regression tests (Playwright + Argos)
 
-Full-page screenshots at several viewports live under `tests/visual/` and run with [Playwright](https://playwright.dev/). Captures are sent to [Argos](https://argos-ci.com/) only when `ARGOS_TOKEN` is set (CI uses a repository secret; locally you export the token from your Argos project if you want uploads).
+Full-page screenshots live under [`tests/visual/`](tests/visual/) and use [`playwright.config.js`](playwright.config.js) (separate from Vitest’s browser config). [Argos](https://argos-ci.com/) uploads run only when **`ARGOS_TOKEN`** is set (a repository secret in CI).
 
 **Run locally**
 
-1. Install dependencies and the Chromium browser for Playwright (once per machine or after upgrading Playwright):
+1. Install dependencies and all browsers for Playwright (once per machine or after upgrading Playwright):
 
    ```bash
    npm ci
-   npx playwright install chromium
+   npx playwright install --with-deps
    ```
 
-2. Run the visual suite (starts a static server on port **4173** automatically via `webServer` in `playwright.config.mjs`):
+2. Run the visual suite:
 
    ```bash
    npm run test:visual
    ```
 
-   By default Playwright uses **headless** Chromium: **no browser window opens**, so you only see results in the terminal—but the page is still loaded and **your site’s JavaScript runs** in that invisible browser (including the `type="module"` app in `index.html`). To **watch** the tests in a real window, run `npm run test:visual:headed` (same tests, `--headed`).
+   Playwright’s **`webServer`** in `playwright.config.js` starts the app for you: locally it runs **`npm run dev`** and waits for **http://localhost:5173**. In CI it runs **`npm run build`** then **`npm run preview -- --port 5173`**.
 
-   Visual tests wait for `networkidle` (best-effort), a visible preview `canvas`, preview panels to finish showing their `.loading` state, and a paint frame before Argos screenshots—so captures happen after the main async render, not immediately on `load`.
+   By default tests use **headless** Chromium. Use **`npm run test:visual:headed`** to watch the browser.
 
-   Without `ARGOS_TOKEN`, tests still load the homepage at each viewport but **do not** take Argos screenshots or upload builds. With `ARGOS_TOKEN` set to a non-empty value, `argosScreenshot` runs and the Argos reporter uploads to Argos.
+   [`tests/visual/home-helpers.js`](tests/visual/home-helpers.js) waits for the preview canvas, for `.loading` to disappear on the preview panels, and for paint frames before Argos screenshots (with a best-effort **`networkidle`** wait). Without **`ARGOS_TOKEN`**, navigation and layout still run but Argos capture/upload is skipped. Override the origin with **`PLAYWRIGHT_TEST_BASE_URL`** (see [`tests/visual/home.spec.js`](tests/visual/home.spec.js)).
 
-   To use a different base URL than `http://127.0.0.1:4173`, set `PLAYWRIGHT_TEST_BASE_URL` and change `webServer` in `playwright.config.mjs` (or use a local override) so you only run one static server.
+**Unit and component specs (Vitest + Chai)**
 
-**Test framework**: Browser tests use [Mocha](https://mochajs.org/) in BDD style with [Chai](https://www.chaijs.com/) assertions. Mocha’s BDD helpers (`describe`, `it`, `beforeEach`, and so on) are installed on `globalThis` by the runner, but **ES modules do not see them as free globals**, so each spec imports them from the `mocha-globals` alias (see `tests/bdd-globals.js` and `tests_run.html`):
+Vitest picks up **`tests/**/*_spec.js`**, excluding **`tests/visual/**`** and **`tests/node/**`**.
 
-```javascript
-import { describe, it, beforeEach, afterEach } from "mocha-globals";
-```
+[`tests/vitest-setup.js`](tests/vitest-setup.js) assigns **`globalThis.m`** (Mithril), sets test flags on `window`, and exposes exports from **`item-metadata.js`** on **`window`** so tests see the same catalog data as the app.
 
-**Registering test files**: The runner loads `tests/tests.js`, which **imports every spec file** in order. When you add a new spec, add a line such as `import "./path/to/MyComponent_spec.js";` there so Mocha picks it up.
+Typical patterns:
 
-**Adding new tests**: Put specs under `tests/` using a `*_spec.js` name (for example `tests/components/MyComponent_spec.js`). Typical patterns:
-
-- Import the component from `sources/…`, `assert` (or `expect`) from `chai`, and the Mocha hooks you need from `mocha-globals`.
-- Use `describe` / `it` for structure; use `beforeEach` / `afterEach` to create and remove DOM containers.
-- Render with `m.render(…)`; **`m` is provided globally** by the test page (same as the app).
-- Assert with Chai and query the DOM with `querySelector`, etc.
+- Import **`describe`**, **`it`**, **`beforeEach`**, **`afterEach`** from **`"vitest"`** and **`assert`** or **`expect`** from **`"chai"`** (Vitest’s **`expect`** is fine too if you prefer it).
+- Render with **`m.render(…)`** using the global **`m`**.
+- Use **`beforeEach` / `afterEach`** to create and remove DOM containers.
 
 Example:
+
 ```javascript
 import { MyComponent } from "../sources/components/MyComponent.js";
 import { assert } from "chai";
-import { describe, it, beforeEach, afterEach } from "mocha-globals";
+import { describe, it, beforeEach, afterEach } from "vitest";
 
-describe("MyComponent", function () {
+describe("MyComponent", () => {
   let container;
 
-  beforeEach(function () {
+  beforeEach(() => {
     container = document.createElement("div");
     document.body.appendChild(container);
   });
 
-  afterEach(function () {
-    if (container && container.parentNode) {
-      container.parentNode.removeChild(container);
-    }
+  afterEach(() => {
+    container?.remove();
   });
 
-  it("renders correctly", function () {
+  it("renders correctly", () => {
     m.render(container, m(MyComponent, { prop: "value" }));
     const element = container.querySelector(".expected-class");
-    assert.notEqual(element, null);
+    assert.isNotNull(element);
     assert.strictEqual(element.textContent, "expected content");
   });
 });
 ```
 
+Node specs are listed and run via [`tests/node/run-node-tests.js`](tests/node/run-node-tests.js); add new generator tests alongside the existing `tests/node/scripts/**` files.
+
 #### z-positions
 
 In order to facilitate easier management of the z-positions of the assets in this repo, there is a [script](/scripts/zPositioning/parse_zpos.js) that traverses all JSON files and write's the layer's z-position to a CSV.
 
-To run this script, use:
+To run this script directly:
 
 `node scripts/zPositioning/parse_zpos.js`
 
-This [CSV file](/scripts/zPositioning/z_positions.csv) will be regenerated each time one invokes:
+The same script is also available as **`npm run z-positions`**.
+
+This [CSV file](/scripts/zPositioning/z_positions.csv) is regenerated whenever you run:
 
 `node scripts/generate_sources.mjs`
 
@@ -282,6 +277,8 @@ Using this CSV, one can more clearly see the overview of all the z-position used
 Moreover, one can adjust the z-position from within the CSV, and then run:
 
 `node scripts/zPositioning/update_zpos.js`
+
+(equivalently **`npm run z-positions:update`**)
 
 In order to reflect the changes made back into the JSON files.
 
