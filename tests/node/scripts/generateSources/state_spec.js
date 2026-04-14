@@ -33,17 +33,19 @@ test("state exports mutable shared collections with expected defaults", () => {
   assert.deepEqual(paletteMetadata, { versions: {}, materials: {} });
 });
 
-test("buildMetadataJs contains all four window global assignments", () => {
+test("buildMetadataJs exports all four metadata objects and syncs window", () => {
   resetTestState();
   itemMetadata.test_item = { name: "Test" };
   categoryTree.children.body = { items: [], children: {} };
 
   const js = buildMetadataJs();
 
-  assert.match(js, /window\.itemMetadata\s*=/);
-  assert.match(js, /window\.aliasMetadata\s*=/);
-  assert.match(js, /window\.categoryTree\s*=/);
-  assert.match(js, /window\.paletteMetadata\s*=/);
+  assert.match(js, /const itemMetadata\s*=/);
+  assert.match(js, /const aliasMetadata\s*=/);
+  assert.match(js, /const categoryTree\s*=/);
+  assert.match(js, /const paletteMetadata\s*=/);
+  assert.match(js, /export\s*\{\s*itemMetadata/);
+  assert.match(js, /window\.itemMetadata\s*=\s*itemMetadata/);
   assert.match(js, /"test_item"/);
 });
 
@@ -53,8 +55,8 @@ test("buildMetadataJs returns valid output with empty state", () => {
   const js = buildMetadataJs();
 
   assert.match(js, /THIS FILE IS AUTO-GENERATED/);
-  assert.match(js, /window\.itemMetadata = \{\}/);
-  assert.match(js, /window\.aliasMetadata = \{\}/);
+  assert.match(js, /const itemMetadata = \{\}/);
+  assert.match(js, /const aliasMetadata = \{\}/);
 });
 
 test("sortDirTree sorts shallow paths before deep paths", () => {

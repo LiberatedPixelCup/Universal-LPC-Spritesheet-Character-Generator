@@ -49,37 +49,58 @@ export function resetTestState() {
   categoryTree.children = {};
 }
 
-function extractWindowAssignment(outputText, symbol, nextSymbol) {
-  const match = outputText.match(
-    new RegExp(
-      `window\\.${symbol} = ([\\s\\S]*?);\\s+window\\.${nextSymbol}`,
-      "s",
-    ),
+function extractTopLevelConstJson(outputText, constName) {
+  const marker = `const ${constName} = `;
+  const start = outputText.indexOf(marker);
+  assert.ok(start >= 0, `Expected const ${constName} in generated metadata`);
+  let i = start + marker.length;
+  while (/\s/.test(outputText[i])) i += 1;
+  assert.equal(
+    outputText[i],
+    "{",
+    `const ${constName} should be an object literal`,
   );
-  assert.ok(match, `Expected window.${symbol} assignment in output`);
-  return JSON.parse(match[1]);
+  let depth = 0;
+  let inString = false;
+  let escape = false;
+  for (let j = i; j < outputText.length; j++) {
+    const c = outputText[j];
+    if (inString) {
+      if (escape) {
+        escape = false;
+        continue;
+      }
+      if (c === "\\") {
+        escape = true;
+        continue;
+      }
+      if (c === '"') {
+        inString = false;
+        continue;
+      }
+      continue;
+    }
+    if (c === '"') {
+      inString = true;
+      continue;
+    }
+    if (c === "{") depth += 1;
+    else if (c === "}") {
+      depth -= 1;
+      if (depth === 0) {
+        return JSON.parse(outputText.slice(i, j + 1));
+      }
+    }
+  }
+  throw new Error(`Unclosed object for const ${constName}`);
 }
 
 export function extractGlobalObjects(metadataJS) {
   return {
-    itemMetadata: extractWindowAssignment(
-      metadataJS,
-      "itemMetadata",
-      "aliasMetadata",
-    ),
-    aliasMetadata: extractWindowAssignment(
-      metadataJS,
-      "aliasMetadata",
-      "categoryTree",
-    ),
-    categoryTree: extractWindowAssignment(
-      metadataJS,
-      "categoryTree",
-      "paletteMetadata",
-    ),
-    paletteMetadata: JSON.parse(
-      metadataJS.split("window.paletteMetadata = ")[1].split(";\n")[0],
-    ),
+    itemMetadata: extractTopLevelConstJson(metadataJS, "itemMetadata"),
+    aliasMetadata: extractTopLevelConstJson(metadataJS, "aliasMetadata"),
+    categoryTree: extractTopLevelConstJson(metadataJS, "categoryTree"),
+    paletteMetadata: extractTopLevelConstJson(metadataJS, "paletteMetadata"),
   };
 }
 

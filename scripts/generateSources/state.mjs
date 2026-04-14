@@ -64,19 +64,34 @@ export function parseJson(fullPath) {
 
 /**
  * Builds browser-side metadata bootstrap JS from shared generator state.
- * @return {string} JavaScript source that assigns metadata globals onto window.
+ * Emits an ES module (named exports) so Vite/Vitest can import it; also assigns
+ * onto `window` when running in a browser so plain script or VM-style eval still works.
+ * @return {string} JavaScript module source for item-metadata.js.
  */
 export function buildMetadataJs() {
-	return `// THIS FILE IS AUTO-GENERATED. PLEASE DON'T ALTER IT MANUALLY
+  const itemJson = JSON.stringify(itemMetadata, null, 2);
+  const aliasJson = JSON.stringify(aliasMetadata, null, 2);
+  const treeJson = JSON.stringify(categoryTree, null, 2);
+  const paletteJson = JSON.stringify(paletteMetadata, null, 2);
+  return `// THIS FILE IS AUTO-GENERATED. PLEASE DON'T ALTER IT MANUALLY
   // Generated from sheet_definitions/*.json by scripts/generate_sources.mjs
   // Contains metadata for all customization items to avoid DOM queries at runtime
 
-  window.itemMetadata = ${JSON.stringify(itemMetadata, null, 2)};
+const itemMetadata = ${itemJson};
 
-  window.aliasMetadata = ${JSON.stringify(aliasMetadata, null, 2)};
+const aliasMetadata = ${aliasJson};
 
-  window.categoryTree = ${JSON.stringify(categoryTree, null, 2)};
+const categoryTree = ${treeJson};
 
-  window.paletteMetadata = ${JSON.stringify(paletteMetadata, null, 2)};
-  `;
+const paletteMetadata = ${paletteJson};
+
+export { itemMetadata, aliasMetadata, categoryTree, paletteMetadata };
+
+if (typeof window !== "undefined") {
+  window.itemMetadata = itemMetadata;
+  window.aliasMetadata = aliasMetadata;
+  window.categoryTree = categoryTree;
+  window.paletteMetadata = paletteMetadata;
+}
+`;
 }

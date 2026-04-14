@@ -67,7 +67,6 @@
 
 const fs = require("fs");
 const path = require("path");
-const vm = require("vm");
 const { pathToFileURL } = require("url");
 const { debugLog } = require("./utils/debug.js");
 
@@ -98,15 +97,12 @@ function collectItemIdsFromExport(obj, out = new Set()) {
   return out;
 }
 
-function loadFullItemMetadata() {
-  const code = fs.readFileSync(ITEM_METADATA_PATH, "utf8");
-  const sandbox = { window: {} };
-  vm.createContext(sandbox);
-  vm.runInContext(code, sandbox);
-  const meta = sandbox.window.itemMetadata;
+async function loadFullItemMetadata() {
+  const mod = await import(pathToFileURL(ITEM_METADATA_PATH).href);
+  const meta = mod.itemMetadata;
   if (!meta || typeof meta !== "object") {
     throw new Error(
-      "item-metadata.js did not set window.itemMetadata to an object",
+      "item-metadata.js did not export itemMetadata as an object",
     );
   }
   return meta;
@@ -175,7 +171,7 @@ async function main() {
   const sortedWanted = Array.from(wanted).sort();
 
   debugLog(`Loading ${ITEM_METADATA_PATH} …`);
-  const full = loadFullItemMetadata();
+  const full = await loadFullItemMetadata();
 
   const filtered = {};
   const missing = [];
