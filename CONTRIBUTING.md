@@ -132,6 +132,78 @@ If the type_name is NOT included, the type_name from the current sheet definitio
 
 It is highly recommended to simply drop the aliases on the sheet definition that the alias was moved to, in which case you do not need to include the type name.
 
+#### Requirements
+
+Install these on your machine before you run builds or tests. Versions match what CI uses (see `.github/workflows/`).
+
+**Git**  
+Used for clone, branch, and PR workflow. [Download Git](https://git-scm.com/downloads) or use your OS package manager (`git` is often pre-installed on macOS and Linux).
+
+**Node.js 22 and npm**  
+The project targets **Node.js 22** (npm **10.x** ships with it). Install from [nodejs.org](https://nodejs.org/) or a version manager such as [fnm](https://github.com/Schniz/fnm) or [nvm](https://github.com/nvm-sh/nvm), then confirm:
+
+```bash
+node -v   # expect v22.x
+npm -v    # expect 10.x
+```
+
+After cloning, install JavaScript dependencies from the repo root:
+
+```bash
+npm ci
+# or, for everyday work: npm install
+```
+
+**rsync 3.x**  
+**`npm run build`** runs **`rsync`** to copy the large **`spritesheets/`** tree into **`dist/`** (see `vite.config.js`). You need **rsync 3.x** on your **`PATH`**.
+
+- **macOS:** The system **`/usr/bin/rsync`** is often **2.x** (Apple’s build). This project needs **3.x**. Check what runs by default:
+
+  ```bash
+  rsync --version
+  which rsync
+  ```
+
+  If the version line does not start with **`rsync  version 3.`**, install a current rsync (for example with [Homebrew](https://brew.sh/)):
+
+  ```bash
+  brew install rsync
+  ```
+
+  Homebrew puts the binary at **`/opt/homebrew/bin/rsync`** (Apple Silicon) or **`/usr/local/bin/rsync`** (Intel). Ensure that directory appears **before** **`/usr/bin`** in your **`PATH`** (the installer normally documents this; `which rsync` should not print **`/usr/bin/rsync`**). Run **`rsync --version`** again to confirm **3.x**.
+- **Linux:** Install via your package manager, for example:
+  - Debian / Ubuntu: `sudo apt update && sudo apt install rsync`
+  - Fedora: `sudo dnf install rsync`
+  - Arch: `sudo pacman -S rsync`
+- **Windows:** There is no **rsync** in a stock install. Use one of the following so **`rsync`** is on your **`PATH`** when you run **`npm run build`** (from PowerShell, cmd, or Git Bash).
+
+  **WSL (simplest if you already use it)**  
+  In your Linux distro (for example Ubuntu): `sudo apt update && sudo apt install rsync`, then run **`npm run build`** from that same environment.
+
+  **Git Bash (add rsync via MSYS2)**  
+  [Git for Windows](https://gitforwindows.org/) does not ship **rsync**. Install it from [MSYS2](https://www.msys2.org/) (a separate install), which provides **`rsync` 3.x** under **`usr\bin`**:
+
+  1. Install MSYS2 and open the **MSYS2 MSYS** terminal (from the Start Menu).
+  2. Update package databases and install rsync:
+
+     ```bash
+     pacman -Syu
+     pacman -S rsync
+     ```
+
+  3. Add MSYS2’s **`usr\bin`** directory to your **Windows user PATH** (default install: **`C:\msys64\usr\bin`**; adjust if you chose another root). Sign out or restart terminals so **Git Bash** and **Node** pick it up.
+  4. In **Git Bash**, run **`rsync --version`** and confirm **`rsync  version 3.`** and **`which rsync`** pointing at the MSYS2 path (not a missing command).
+
+  Then run **`npm run build`** from **Git Bash** (or any shell where **`where rsync`** / **`which rsync`** resolves to that binary).
+
+**Playwright browsers (for tests)**  
+**`npm test`** and **`npm run test:visual`** use Playwright. After `npm ci`, install the browser binaries at least once (or after upgrading `@playwright/test`):
+
+```bash
+npx playwright install --with-deps chromium firefox webkit
+```
+
+For visual tests only, **`npx playwright install chromium`** is enough. The main CI job installs **Chromium, Firefox, and WebKit** with **`npx playwright install --with-deps chromium firefox webkit`** on Ubuntu; elsewhere run **`npx playwright install chromium firefox webkit`** and add any system libraries Playwright’s installer or error output asks for if a browser fails to launch.
 
 #### File Generation
 
