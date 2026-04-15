@@ -2,8 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <!-- Root base URL: sprite paths are relative (spritesheets/...) and must resolve like tests_run.html. -->
+    <base href="/" />
     <title>Issue #382 golden ZIP path generator (fixture-builder only)</title>
-    <!-- Served at site root (like tests_run.html) so spritesheets/... URLs resolve correctly. -->
     <script
       src="https://unpkg.com/mithril@2.3.8/mithril.min.js"
       crossorigin="anonymous"
@@ -25,6 +26,9 @@
   </head>
   <body>
     <p id="status">Generating issue #382 golden zip paths…</p>
-    <script type="module" src="/issue382-golden-runner.mjs"></script>
+    <script
+      type="module"
+      src="/tests/fixtures/issue-382/issue382-golden-runner.mjs"
+    ></script>
   </body>
 </html>

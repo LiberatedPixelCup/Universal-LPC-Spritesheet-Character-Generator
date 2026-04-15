@@ -12,7 +12,7 @@
  * Snapshots vs bugs
  * -----------------
  * These files record **whatever paths the current code produces**. Regenerating after
- * a regression **bakes the regression into** `tests/fixtures/issue-382-zip-paths-*.js`;
+ * a regression **bakes the regression into** `tests/fixtures/issue-382/issue-382-zip-paths-*.js`;
  * tests will still pass. Use code review when golden files change; combine with
  * non-snapshot tests for critical invariants (see fixture-builder.js header).
  *
@@ -33,7 +33,7 @@ import { chromium } from "playwright";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.join(__dirname, "..");
-const FIXTURES_DIR = path.join(REPO_ROOT, "tests", "fixtures");
+const FIXTURES_DIR = path.join(REPO_ROOT, "tests", "fixtures", "issue-382");
 
 const SERVE_PORT = (() => {
   const raw = process.env.ISSUE382_GOLDEN_PORT;
@@ -86,13 +86,17 @@ export async function generateIssue382GoldenZipFixtures(inputRelativeToRepo) {
     const pageErrors = [];
     page.on("pageerror", (e) => pageErrors.push(String(e)));
 
-    await page.goto(`${BASE_URL}/issue382-golden-runner.html`, {
-      waitUntil: "networkidle",
-      timeout: 120000,
-    });
+    await page.goto(
+      `${BASE_URL}/tests/fixtures/issue-382/issue382-golden-runner.html`,
+      {
+        waitUntil: "networkidle",
+        timeout: 120000,
+      },
+    );
 
     await page.waitForFunction(
       () => window.__ISSUE382_GOLDEN_READY__ === true,
+      undefined,
       { timeout: 180000 },
     );
 

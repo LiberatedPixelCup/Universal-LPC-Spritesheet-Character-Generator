@@ -12,7 +12,7 @@
     "test:server": "node ./node_modules/testem/testem.js",
     "test:visual": "playwright test",
     "test:visual:headed": "playwright test --headed",
-    "fixture:issue382": "node scripts/fixture-builder.js",
+    "fixture:issue382": "node scripts/fixture-builder.js tests/fixtures/issue-382/issue-382-selections.json",
     "profile:zip": "node scripts/zip/zip-export-profile.mjs",
     "profile:zip:quick": "node scripts/zip/zip-export-profile.mjs --quick",
     "profile:zip:baseline": "node scripts/zip/zip-export-profile.mjs --out tmp/baseline-zip-export-profile.json",

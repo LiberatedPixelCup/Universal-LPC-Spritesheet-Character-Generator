@@ -32,12 +32,12 @@ import {
 import { resetState } from "../../sources/state/hash.js";
 import { state } from "../../sources/state/state.js";
 import { importStateFromJSON } from "../../sources/state/json.js";
-import issue382ItemMetadata from "../fixtures/issue-382-itemdata.js";
-import issue382Selections from "../fixtures/issue-382-selections.js";
-import { paths as issue382ZipPathsSplitAnimations } from "../fixtures/issue-382-zip-paths-split-animations.js";
-import { paths as issue382ZipPathsSplitItemSheets } from "../fixtures/issue-382-zip-paths-split-item-sheets.js";
-import { paths as issue382ZipPathsSplitItemAnimations } from "../fixtures/issue-382-zip-paths-split-item-animations.js";
-import { paths as issue382ZipPathsIndividualFrames } from "../fixtures/issue-382-zip-paths-individual-frames.js";
+import issue382ItemMetadata from "../fixtures/issue-382/issue-382-itemdata.js";
+import issue382Selections from "../fixtures/issue-382/issue-382-selections.js";
+import { paths as issue382ZipPathsSplitAnimations } from "../fixtures/issue-382/issue-382-zip-paths-split-animations.js";
+import { paths as issue382ZipPathsSplitItemSheets } from "../fixtures/issue-382/issue-382-zip-paths-split-item-sheets.js";
+import { paths as issue382ZipPathsSplitItemAnimations } from "../fixtures/issue-382/issue-382-zip-paths-split-item-animations.js";
+import { paths as issue382ZipPathsIndividualFrames } from "../fixtures/issue-382/issue-382-zip-paths-individual-frames.js";
 import { createFakeJSZip, sortedZipKeys } from "../helpers/fake-jszip.js";
 
 function applyImportedStateFromFixture() {

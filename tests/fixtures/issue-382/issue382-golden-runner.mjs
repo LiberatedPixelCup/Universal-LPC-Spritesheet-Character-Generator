@@ -1,7 +1,7 @@
 /**
  * Browser harness used only by scripts/issue382-golden-playwright.mjs (fixture-builder).
- * Served from the repo root (issue382-golden-runner.html) so `spritesheets/...` matches
- * tests_run.html and `npm test`.
+ * The HTML page sets `<base href="/">` so relative `spritesheets/...` URLs resolve like
+ * `tests_run.html` even though this file lives under `tests/fixtures/issue-382/`.
  *
  * @see scripts/fixture-builder.js
  * @see scripts/issue382-golden-playwright.mjs
@@ -15,19 +15,19 @@ import {
   SHEET_HEIGHT,
   SHEET_WIDTH,
   renderCharacter,
-} from "./sources/canvas/renderer.js";
+} from "../../../sources/canvas/renderer.js";
 import {
   exportIndividualFrames,
   exportSplitAnimations,
   exportSplitItemAnimations,
   exportSplitItemSheets,
-} from "./sources/state/zip.js";
-import { resetState } from "./sources/state/hash.js";
-import { state } from "./sources/state/state.js";
-import { importStateFromJSON } from "./sources/state/json.js";
-import issue382ItemMetadata from "./tests/fixtures/issue-382-itemdata.js";
-import issue382Selections from "./tests/fixtures/issue-382-selections.js";
-import { createFakeJSZip, sortedZipKeys } from "./tests/helpers/fake-jszip.js";
+} from "../../../sources/state/zip.js";
+import { resetState } from "../../../sources/state/hash.js";
+import { state } from "../../../sources/state/state.js";
+import { importStateFromJSON } from "../../../sources/state/json.js";
+import issue382ItemMetadata from "./issue-382-itemdata.js";
+import issue382Selections from "./issue-382-selections.js";
+import { createFakeJSZip, sortedZipKeys } from "../../helpers/fake-jszip.js";
 
 let fakeZip;
 
