@@ -85,7 +85,7 @@ export default mergeConfig(
       },
       setupFiles: ["tests/vitest-setup.js"],
       include: ["tests/**/*_spec.js"],
-      exclude: ["tests/visual/**/*_spec.js", "tests/node/**/*_spec.js"],
+      exclude: ["tests/visual/**", "tests/node/**"],
       testTimeout: 10_000,
     },
   }),
