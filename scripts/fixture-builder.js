@@ -13,7 +13,7 @@
  *    `issue382-golden-runner.html` at the repo root (same URL base as `tests_run.html`
  *    so `spritesheets/...` paths resolve). The runner mirrors `tests/state/zip-issue-382_spec.js`
  *    and records sorted zip entry paths for all
- *    four export functions. Writes these files under `tests/fixtures/`:
+ *    four export functions. Writes these files under `tests/fixtures/issue-382/`:
  *    - `issue-382-zip-paths-split-animations.js`
  *    - `issue-382-zip-paths-split-item-sheets.js`
  *    - `issue-382-zip-paths-split-item-animations.js`
@@ -42,7 +42,7 @@
  * - `<same-dir-as-input>/<stem>-output.js` — filtered item metadata (ES module).
  * - `tests/fixtures/issue-382-itemdata.js` — copy for tests (same content).
  * - `tests/fixtures/issue-382-selections.js` — selections snapshot.
- * - Four `issue-382-zip-paths-*.js` files — unless `--no-golden`.
+ * - Four `tests/fixtures/issue-382/issue-382-zip-paths-*.js` files — unless `--no-golden`.
  *
  * Golden zip paths — what they do and do not guarantee
  * -----------------------------------------------------
@@ -225,7 +225,9 @@ async function main() {
     debugLog("Generating golden zip path fixtures (Playwright)…");
     await generateIssue382GoldenZipFixtures(rel);
     // eslint-disable-next-line no-console
-    console.log("Wrote tests/fixtures/issue-382-zip-paths-*.js (four files)");
+    console.log(
+      "Wrote tests/fixtures/issue-382/issue-382-zip-paths-*.js (four files)",
+    );
   } else {
     debugLog("Skipped golden zip path generation (--no-golden).");
   }

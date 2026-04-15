@@ -1,7 +1,7 @@
 /**
  * Browser harness used only by scripts/issue382-golden-playwright.mjs (fixture-builder).
- * Served from the repo root (issue382-golden-runner.html) so `spritesheets/...` matches
- * tests_run.html and `npm test`.
+ * The HTML page sets `<base href="/">` so relative `spritesheets/...` URLs resolve like
+ * `tests_run.html` even though this file lives under `tests/fixtures/issue-382/`.
  *
  * @see scripts/fixture-builder.js
  * @see scripts/issue382-golden-playwright.mjs
