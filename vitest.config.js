@@ -11,8 +11,25 @@ const viteConfig =
 const vitestDebug =
   process.env.DEBUG === "true" || process.env.DEBUG === "1" ? "true" : "false";
 
+// @jrconway3: try this for windows?
+const win32config =
+  process.platform === "win32"
+    ? {
+        test: {
+          pool: "forks", // Try 'vmThreads' or 'forks'
+          poolOptions: {
+            forks: {
+              isolate: true,
+            },
+          },
+        },
+      }
+    : {};
+
+// Vite's mergeConfig only accepts two config objects; a third argument is `isRoot`, not
+// another merge layer — nesting merges is required so `test` (browser, include, etc.) applies.
 export default mergeConfig(
-  viteConfig,
+  mergeConfig(viteConfig, win32config),
   defineConfig({
     define: {
       "import.meta.env.VITEST_DEBUG": JSON.stringify(vitestDebug),
@@ -28,6 +45,11 @@ export default mergeConfig(
     test: {
       browser: {
         enabled: true,
+        api: {
+          host: "127.0.0.1",
+        },
+        teardownTimeout: 10_000,
+        hookTimeout: 10_000,
         provider: playwright({
           launchOptions: {
             firefoxUserPrefs: {
@@ -55,7 +77,7 @@ export default mergeConfig(
           { browser: "firefox" },
           { browser: "webkit" },
         ],
-        headless: process.env.UI === "true" ? false : true,
+        headless: !process.argv.includes("--ui"),
         onConsoleLog: (log) => {
           console.log(log); // eslint-disable-line no-console
           return true;
@@ -64,7 +86,7 @@ export default mergeConfig(
       setupFiles: ["tests/vitest-setup.js"],
       include: ["tests/**/*_spec.js"],
       exclude: ["tests/visual/**/*_spec.js", "tests/node/**/*_spec.js"],
-      testTimeout: 30_000,
+      testTimeout: 10_000,
     },
   }),
 );
