@@ -8,16 +8,6 @@
     "muscular": "hat/visor/horned/adult/",
     "teen": "hat/visor/horned/adult/"
   },
-  "variants": [
-    "steel",
-    "iron",
-    "ceramic",
-    "brass",
-    "copper",
-    "bronze",
-    "silver",
-    "gold"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -67,5 +57,13 @@
     "visors",
     "hat_visor_horned"
   ],
+  "recolors": {
+    "material": "metal",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "all.lpcr"
+    ]
+  },
   "type_name": "visor"
 }

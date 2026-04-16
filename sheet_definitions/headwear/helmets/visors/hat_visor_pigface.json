@@ -8,16 +8,6 @@
     "muscular": "hat/visor/pigface/adult/",
     "teen": "hat/visor/pigface/adult/"
   },
-  "variants": [
-    "steel",
-    "iron",
-    "ceramic",
-    "brass",
-    "copper",
-    "bronze",
-    "silver",
-    "gold"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -65,5 +55,13 @@
     "visors",
     "hat_visor_pigface"
   ],
+  "recolors": {
+    "material": "metal",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "all.lpcr"
+    ]
+  },
   "type_name": "visor"
 }
