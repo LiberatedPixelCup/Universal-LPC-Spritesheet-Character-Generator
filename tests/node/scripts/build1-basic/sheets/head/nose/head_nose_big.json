@@ -9,20 +9,33 @@
     "pregnant": "head/nose/big/adult/"
   },
   "match_body_color": true,
-  "animations": ["walk", "watering"],
+  "animations": [
+    "walk",
+    "watering"
+  ],
   "credits": [
     {
       "file": "head/nose/big",
       "notes": "",
-      "authors": ["Fixture Nose Author"],
-      "licenses": ["GPL 3.0", "CC-BY-SA 3.0"],
-      "urls": ["https://opengameart.org/content/lpc-base-character-expressions"]
+      "authors": [
+        "Fixture Nose Author"
+      ],
+      "licenses": [
+        "GPL 3.0",
+        "CC-BY-SA 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-base-character-expressions"
+      ]
     }
   ],
   "recolors": {
     "material": "body",
-    "palettes": ["ulpc", "lpcr", "all.lpcr"]
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "all.lpcr"
+    ]
   },
-  "path": ["head", "nose", "head_nose_big"],
   "type_name": "nose"
 }

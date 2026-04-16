@@ -60,10 +60,5 @@
       "all.lpcr"
     ]
   },
-  "path": [
-    "head",
-    "face",
-    "face_angry2"
-  ],
   "type_name": "expression"
 }

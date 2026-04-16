@@ -249,3 +249,63 @@ test("parseJson throws for a non-existent file", () => {
 
   assert.throws(() => parseJson(fullPath), /ENOENT|no such file/);
 });
+
+test("parseItem uses buildTreePath when definition.path is absent", () => {
+  resetTestState();
+
+  const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "gen-items-path-"));
+  const sheetsDir = path.join(tempRoot, "sheets");
+  const { dir } = writeTempJson(sheetsDir, "boots_basic.json", {
+    name: "Basic Boots",
+    layer_1: {
+      male: "feet/boots/basic/adult/",
+    },
+    type_name: "boots",
+  });
+
+  parseItem(dir, "boots_basic.json", { sheetsDir });
+
+  assert.deepEqual(itemMetadata.boots_basic.path, ["body", "boots_basic"]);
+});
+
+test("parseItem uses definition.path override when set", () => {
+  resetTestState();
+
+  const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "gen-items-path-"));
+  const sheetsDir = path.join(tempRoot, "sheets");
+  const customPath = ["feet", "boots", "boots_basic"];
+  const { dir } = writeTempJson(sheetsDir, "boots_basic.json", {
+    name: "Basic Boots",
+    layer_1: {
+      male: "feet/boots/basic/adult/",
+    },
+    path: customPath,
+    type_name: "boots",
+  });
+
+  parseItem(dir, "boots_basic.json", { sheetsDir });
+
+  assert.deepEqual(itemMetadata.boots_basic.path, customPath);
+});
+
+test("parseItem path override takes precedence over directory structure", () => {
+  resetTestState();
+
+  const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "gen-items-path-"));
+  const sheetsDir = path.join(tempRoot, "sheets");
+  const overridePath = ["custom", "nested", "location", "boots_basic"];
+  // Place item in body/ dir, but override path to something completely different
+  const { dir } = writeTempJson(sheetsDir, "boots_basic.json", {
+    name: "Basic Boots",
+    layer_1: {
+      male: "feet/boots/basic/adult/",
+    },
+    path: overridePath,
+    type_name: "boots",
+  });
+
+  parseItem(dir, "boots_basic.json", { sheetsDir });
+
+  assert.deepEqual(itemMetadata.boots_basic.path, overridePath);
+  assert.notDeepEqual(itemMetadata.boots_basic.path, ["body", "boots_basic"]);
+});

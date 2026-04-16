@@ -19,17 +19,31 @@
     "pregnant": "body/wheelchair/adult/foreground/",
     "teen": "body/wheelchair/adult/foreground/"
   },
-  "variants": ["black", "blue", "pink", "tan", "white"],
-  "animations": ["wheelchair"],
+  "variants": [
+    "black",
+    "blue",
+    "pink",
+    "tan",
+    "white"
+  ],
+  "animations": [
+    "wheelchair"
+  ],
   "credits": [
     {
       "file": "body/wheelchair",
       "notes": "",
-      "authors": ["Eliza Wyatt"],
-      "licenses": ["CC-BY 3.0", "OGA-BY 3.0"],
-      "urls": ["https://opengameart.org/content/lpc-revised-elders"]
+      "authors": [
+        "Eliza Wyatt"
+      ],
+      "licenses": [
+        "CC-BY 3.0",
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-revised-elders"
+      ]
     }
   ],
-  "path": ["body", "wheelchair", "wheelchair"],
   "type_name": "wheelchair"
 }

@@ -33,11 +33,5 @@
       ]
     }
   ],
-  "path": [
-    "weapons",
-    "shield",
-    "scutum shield",
-    "shield_scutum_trim"
-  ],
   "type_name": "shield_trim"
 }
