@@ -89,7 +89,7 @@ export function parseItem(filePath, fileName, options = {}) {
 
   // Build unique itemId from filename (not from path or type_name)
   // This ensures each item has a unique ID even if they share the same type_name
-  const treePath = buildTreePath(filePath, itemId, sheetsDir);
+  const treePath = definition.path ?? buildTreePath(filePath, itemId, sheetsDir);
 
   // Collect layer information (file paths and zPos)
   const layers = collectLayers(definition);
