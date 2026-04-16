@@ -8,16 +8,6 @@
     "muscular": "hat/helmet/legion/adult/",
     "teen": "hat/helmet/legion/adult/"
   },
-  "variants": [
-    "steel",
-    "iron",
-    "ceramic",
-    "brass",
-    "copper",
-    "bronze",
-    "silver",
-    "gold"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -66,5 +56,13 @@
     "helmets",
     "hat_helmet_legion"
   ],
+  "recolors": {
+    "material": "metal",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "all.lpcr"
+    ]
+  },
   "type_name": "hat"
 }

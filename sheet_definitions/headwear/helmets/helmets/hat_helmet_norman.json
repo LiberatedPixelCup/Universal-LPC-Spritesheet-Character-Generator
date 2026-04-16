@@ -8,16 +8,6 @@
     "muscular": "hat/helmet/norman/adult/",
     "teen": "hat/helmet/norman/adult/"
   },
-  "variants": [
-    "steel",
-    "iron",
-    "ceramic",
-    "brass",
-    "copper",
-    "bronze",
-    "silver",
-    "gold"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -63,5 +53,13 @@
     "helmets",
     "hat_helmet_norman"
   ],
+  "recolors": {
+    "material": "metal",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "all.lpcr"
+    ]
+  },
   "type_name": "hat"
 }

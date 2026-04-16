@@ -8,16 +8,6 @@
     "muscular": "hat/helmet/xeon/adult/",
     "teen": "hat/helmet/xeon/adult/"
   },
-  "variants": [
-    "steel",
-    "iron",
-    "ceramic",
-    "brass",
-    "copper",
-    "bronze",
-    "silver",
-    "gold"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -59,5 +49,13 @@
     "helmets",
     "hat_helmet_xeon"
   ],
+  "recolors": {
+    "material": "metal",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "all.lpcr"
+    ]
+  },
   "type_name": "hat"
 }
