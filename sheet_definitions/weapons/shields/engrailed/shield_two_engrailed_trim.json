@@ -33,11 +33,5 @@
       ]
     }
   ],
-  "path": [
-    "weapons",
-    "shield",
-    "two-engrailed shield",
-    "shield_two_engrailed_trim"
-  ],
   "type_name": "shield_trim"
 }

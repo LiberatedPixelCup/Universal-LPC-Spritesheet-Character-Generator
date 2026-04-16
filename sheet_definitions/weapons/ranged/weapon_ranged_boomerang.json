@@ -35,10 +35,5 @@
       ]
     }
   ],
-  "path": [
-    "weapons",
-    "ranged",
-    "weapon_ranged_boomerang"
-  ],
   "type_name": "weapon"
 }

@@ -44,9 +44,5 @@
       ]
     }
   ],
-  "path": [
-    "tools",
-    "tool_thrust"
-  ],
   "type_name": "weapon"
 }

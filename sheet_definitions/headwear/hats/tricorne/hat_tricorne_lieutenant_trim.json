@@ -85,12 +85,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "hats",
-    "tricorne",
-    "lieutenant",
-    "hat_tricorne_lieutenant_trim"
-  ],
   "type_name": "hat_trim"
 }

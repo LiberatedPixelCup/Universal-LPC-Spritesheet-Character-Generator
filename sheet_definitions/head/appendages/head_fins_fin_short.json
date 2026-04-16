@@ -47,11 +47,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "appendages",
-    "head_fins_fin_short"
-  ],
   "recolors": {
     "material": "body",
     "palettes": [

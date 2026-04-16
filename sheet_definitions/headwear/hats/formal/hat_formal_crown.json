@@ -84,11 +84,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "hats",
-    "formal",
-    "hat_formal_crown"
-  ],
   "type_name": "hat"
 }

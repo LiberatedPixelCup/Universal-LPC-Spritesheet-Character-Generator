@@ -53,10 +53,5 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "backpack",
-    "backpack_straps"
-  ],
   "type_name": "backpack_straps"
 }

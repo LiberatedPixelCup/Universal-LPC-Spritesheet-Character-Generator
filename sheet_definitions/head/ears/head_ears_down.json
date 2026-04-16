@@ -46,11 +46,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "ears",
-    "head_ears_down"
-  ],
   "recolors": {
     "material": "body",
     "palettes": [

@@ -31,10 +31,5 @@
       ]
     }
   ],
-  "path": [
-    "body",
-    "special",
-    "body_skeleton"
-  ],
   "type_name": "body"
 }

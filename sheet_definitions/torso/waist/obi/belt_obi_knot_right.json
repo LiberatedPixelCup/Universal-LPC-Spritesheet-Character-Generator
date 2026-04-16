@@ -70,11 +70,5 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "waist",
-    "obi",
-    "belt_obi_knot_right"
-  ],
   "type_name": "sash_tie"
 }

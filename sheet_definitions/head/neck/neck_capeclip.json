@@ -63,10 +63,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "neck",
-    "neck_capeclip"
-  ],
   "type_name": "neck"
 }

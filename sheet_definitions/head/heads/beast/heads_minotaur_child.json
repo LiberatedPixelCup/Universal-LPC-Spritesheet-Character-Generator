@@ -50,11 +50,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_minotaur_child"
-  ],
   "recolors": {
     "material": "body",
     "base": "ulpc.fur_tan",

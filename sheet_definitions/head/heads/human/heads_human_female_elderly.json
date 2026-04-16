@@ -52,11 +52,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_human_female_elderly"
-  ],
   "recolors": {
     "color_1": {
       "material": "body",

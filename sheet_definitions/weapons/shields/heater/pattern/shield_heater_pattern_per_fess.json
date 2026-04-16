@@ -78,12 +78,5 @@
       ]
     }
   ],
-  "path": [
-    "weapons",
-    "shield",
-    "heater shield",
-    "heater shield pattern",
-    "shield_heater_pattern_per_fess"
-  ],
   "type_name": "shield_pattern"
 }

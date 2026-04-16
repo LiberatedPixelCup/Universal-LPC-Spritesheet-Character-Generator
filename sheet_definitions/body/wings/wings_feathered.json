@@ -91,10 +91,5 @@
       ]
     }
   ],
-  "path": [
-    "body",
-    "wings",
-    "wings_feathered"
-  ],
   "type_name": "wings"
 }

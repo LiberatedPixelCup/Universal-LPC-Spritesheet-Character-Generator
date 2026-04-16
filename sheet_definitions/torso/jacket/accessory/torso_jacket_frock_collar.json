@@ -28,11 +28,5 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "jacket",
-    "jacket trim",
-    "torso_jacket_frock_collar"
-  ],
   "type_name": "jacket_collar"
 }

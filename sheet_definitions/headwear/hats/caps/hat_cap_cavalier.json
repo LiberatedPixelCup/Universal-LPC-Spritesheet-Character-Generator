@@ -70,11 +70,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "hats",
-    "caps",
-    "hat_cap_cavalier"
-  ],
   "type_name": "hat"
 }

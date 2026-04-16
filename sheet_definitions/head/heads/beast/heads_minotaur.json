@@ -52,11 +52,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_minotaur"
-  ],
   "recolors": {
     "material": "body",
     "base": "ulpc.fur_tan",

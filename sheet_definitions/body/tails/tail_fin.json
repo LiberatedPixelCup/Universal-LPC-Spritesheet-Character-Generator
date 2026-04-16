@@ -67,10 +67,5 @@
     "1h_halfslash"
   ],
   "credits": [],
-  "path": [
-    "body",
-    "tails",
-    "tail_fin"
-  ],
   "type_name": "tail"
 }

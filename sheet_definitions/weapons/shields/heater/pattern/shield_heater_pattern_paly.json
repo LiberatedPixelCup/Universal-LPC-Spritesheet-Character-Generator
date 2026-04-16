@@ -79,12 +79,5 @@
       ]
     }
   ],
-  "path": [
-    "weapons",
-    "shield",
-    "heater shield",
-    "heater shield pattern",
-    "shield_heater_pattern_paly"
-  ],
   "type_name": "shield_pattern"
 }

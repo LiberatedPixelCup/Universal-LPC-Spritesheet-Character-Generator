@@ -28,11 +28,5 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "shirts",
-    "longsleeve",
-    "torso_clothes_longsleeve_formal_striped"
-  ],
   "type_name": "clothes"
 }

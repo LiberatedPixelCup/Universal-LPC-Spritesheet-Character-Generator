@@ -36,11 +36,6 @@
       ]
     }
   ],
-  "path": [
-    "weapons",
-    "shield",
-    "shield_spartan"
-  ],
   "aliases": {
     "Shields_spartan": "spartan"
   },

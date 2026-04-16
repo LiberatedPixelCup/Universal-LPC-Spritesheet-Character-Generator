@@ -52,11 +52,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_lizard_female"
-  ],
   "recolors": {
     "material": "body",
     "base": "ulpc.green",

@@ -48,10 +48,5 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "jacket",
-    "torso_jacket_collared"
-  ],
   "type_name": "jacket"
 }

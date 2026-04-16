@@ -52,11 +52,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "face",
-    "face_happy2"
-  ],
   "recolors": {
     "material": "body",
     "palettes": [

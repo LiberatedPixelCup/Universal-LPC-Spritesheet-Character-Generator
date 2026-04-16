@@ -76,10 +76,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "neck",
-    "neck_bowtie"
-  ],
   "type_name": "neck"
 }

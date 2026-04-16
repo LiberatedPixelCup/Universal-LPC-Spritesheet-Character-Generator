@@ -79,12 +79,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "hats",
-    "bicorne athwart",
-    "commodore",
-    "hat_bicorne_athwart_commodore_trim"
-  ],
   "type_name": "hat_trim"
 }

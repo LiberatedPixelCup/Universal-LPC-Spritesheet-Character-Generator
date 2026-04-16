@@ -53,11 +53,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_rat"
-  ],
   "recolors": {
     "material": "body",
     "base": "lpcr.ivory",

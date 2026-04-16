@@ -72,11 +72,5 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "dresses",
-    "kimono",
-    "dress_kimono_oversize_trim"
-  ],
   "type_name": "dress_sleeves_trim"
 }

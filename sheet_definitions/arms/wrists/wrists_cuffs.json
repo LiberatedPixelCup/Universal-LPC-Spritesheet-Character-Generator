@@ -54,10 +54,5 @@
       ]
     }
   ],
-  "path": [
-    "arms",
-    "wrists",
-    "wrists_cuffs"
-  ],
   "type_name": "wrists"
 }

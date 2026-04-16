@@ -70,10 +70,5 @@
       ]
     }
   ],
-  "path": [
-    "weapons",
-    "magic",
-    "weapon_magic_gnarled"
-  ],
   "type_name": "weapon"
 }

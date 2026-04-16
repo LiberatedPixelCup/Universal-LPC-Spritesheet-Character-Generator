@@ -61,10 +61,5 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "dresses",
-    "dress_slit"
-  ],
   "type_name": "dress"
 }

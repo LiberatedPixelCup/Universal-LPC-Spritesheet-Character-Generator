@@ -79,12 +79,5 @@
       ]
     }
   ],
-  "path": [
-    "weapons",
-    "shield",
-    "heater shield",
-    "revised heater shield pattern",
-    "shield_heater_revised_pattern_bendy"
-  ],
   "type_name": "shield_pattern"
 }

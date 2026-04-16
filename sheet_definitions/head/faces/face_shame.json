@@ -130,10 +130,5 @@
       ]
     }
   },
-  "path": [
-    "head",
-    "face",
-    "face_shame"
-  ],
   "type_name": "expression"
 }

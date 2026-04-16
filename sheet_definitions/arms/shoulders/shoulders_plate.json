@@ -64,10 +64,5 @@
       ]
     }
   ],
-  "path": [
-    "arms",
-    "shoulders",
-    "shoulders_plate"
-  ],
   "type_name": "shoulders"
 }

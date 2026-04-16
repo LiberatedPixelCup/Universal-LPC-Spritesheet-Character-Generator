@@ -51,11 +51,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_human_male_gaunt"
-  ],
   "recolors": {
     "color_1": {
       "material": "body",

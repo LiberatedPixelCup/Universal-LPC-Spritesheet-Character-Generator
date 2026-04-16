@@ -38,10 +38,5 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "backpack",
-    "backpack_basket"
-  ],
   "type_name": "backpack"
 }

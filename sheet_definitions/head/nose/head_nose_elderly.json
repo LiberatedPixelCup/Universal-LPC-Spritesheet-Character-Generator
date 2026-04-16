@@ -51,10 +51,5 @@
       "all.lpcr"
     ]
   },
-  "path": [
-    "head",
-    "nose",
-    "head_nose_elderly"
-  ],
   "type_name": "nose"
 }

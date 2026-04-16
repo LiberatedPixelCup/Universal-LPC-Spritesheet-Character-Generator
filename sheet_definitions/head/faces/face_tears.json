@@ -54,10 +54,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "face",
-    "face_tears"
-  ],
   "type_name": "expression_crying"
 }

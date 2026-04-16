@@ -51,11 +51,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_troll"
-  ],
   "recolors": {
     "material": "body",
     "base": "ulpc.green",

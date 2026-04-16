@@ -50,11 +50,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_boarman_child"
-  ],
   "recolors": {
     "material": "body",
     "base": "fur_brown",

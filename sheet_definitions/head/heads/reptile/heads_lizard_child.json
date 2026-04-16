@@ -48,11 +48,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_lizard_child"
-  ],
   "recolors": {
     "material": "body",
     "base": "ulpc.green",

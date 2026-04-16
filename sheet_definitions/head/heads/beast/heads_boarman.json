@@ -52,11 +52,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_boarman"
-  ],
   "recolors": {
     "material": "body",
     "base": "ulpc.fur_brown",

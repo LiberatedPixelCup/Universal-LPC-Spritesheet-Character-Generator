@@ -49,11 +49,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_goblin_child"
-  ],
   "recolors": {
     "material": "body",
     "base": "ulpc.green",

@@ -71,10 +71,5 @@
       ]
     }
   ],
-  "path": [
-    "weapons",
-    "magic",
-    "weapon_magic_s"
-  ],
   "type_name": "weapon"
 }

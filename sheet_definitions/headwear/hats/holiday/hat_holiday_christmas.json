@@ -75,11 +75,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "hats",
-    "holiday",
-    "hat_holiday_christmas"
-  ],
   "type_name": "hat"
 }

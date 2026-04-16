@@ -49,10 +49,5 @@
       ]
     }
   ],
-  "path": [
-    "legs",
-    "skirts",
-    "legs_skirt_straight"
-  ],
   "type_name": "legs"
 }

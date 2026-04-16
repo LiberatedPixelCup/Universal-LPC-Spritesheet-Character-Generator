@@ -60,10 +60,5 @@
       ]
     }
   ],
-  "path": [
-    "weapons",
-    "sword",
-    "weapon_sword_katana"
-  ],
   "type_name": "weapon"
 }

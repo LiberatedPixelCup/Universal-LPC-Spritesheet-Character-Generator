@@ -50,11 +50,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_human_male_plump"
-  ],
   "recolors": {
     "color_1": {
       "material": "body",

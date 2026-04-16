@@ -51,11 +51,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_alien"
-  ],
   "recolors": {
     "material": "body",
     "palettes": [

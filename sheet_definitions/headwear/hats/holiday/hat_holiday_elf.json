@@ -78,11 +78,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "hats",
-    "holiday",
-    "hat_holiday_elf"
-  ],
   "type_name": "hat_trim"
 }

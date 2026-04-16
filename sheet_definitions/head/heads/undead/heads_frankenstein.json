@@ -51,11 +51,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_frankenstein"
-  ],
   "recolors": {
     "material": "body",
     "palettes": [

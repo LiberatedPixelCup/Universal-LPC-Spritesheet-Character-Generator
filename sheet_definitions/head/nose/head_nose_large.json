@@ -52,10 +52,5 @@
       "all.lpcr"
     ]
   },
-  "path": [
-    "head",
-    "nose",
-    "head_nose_large"
-  ],
   "type_name": "nose"
 }

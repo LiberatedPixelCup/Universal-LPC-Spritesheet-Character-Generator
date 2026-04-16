@@ -36,10 +36,5 @@
       ]
     }
   ],
-  "path": [
-    "legs",
-    "skirts",
-    "legs_childskirts"
-  ],
   "type_name": "legs"
 }

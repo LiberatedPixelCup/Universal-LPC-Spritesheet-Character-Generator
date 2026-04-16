@@ -55,11 +55,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_orc_male"
-  ],
   "recolors": {
     "material": "body",
     "base": "ulpc.green",

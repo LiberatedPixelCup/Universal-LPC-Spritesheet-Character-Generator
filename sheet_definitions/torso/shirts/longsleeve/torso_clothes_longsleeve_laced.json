@@ -50,11 +50,5 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "shirts",
-    "longsleeve",
-    "torso_clothes_longsleeve_laced"
-  ],
   "type_name": "clothes"
 }

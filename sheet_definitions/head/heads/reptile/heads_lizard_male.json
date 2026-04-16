@@ -52,11 +52,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_lizard_male"
-  ],
   "recolors": {
     "material": "body",
     "base": "ulpc.green",

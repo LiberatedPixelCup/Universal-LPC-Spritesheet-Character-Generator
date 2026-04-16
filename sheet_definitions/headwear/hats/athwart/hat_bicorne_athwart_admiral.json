@@ -75,12 +75,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "hats",
-    "bicorne athwart",
-    "admiral",
-    "hat_bicorne_athwart_admiral"
-  ],
   "type_name": "hat"
 }

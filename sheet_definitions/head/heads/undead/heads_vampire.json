@@ -51,11 +51,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_vampire"
-  ],
   "recolors": {
     "material": "body",
     "palettes": [

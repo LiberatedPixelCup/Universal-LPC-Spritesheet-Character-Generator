@@ -83,11 +83,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "hats",
-    "formal",
-    "hat_formal_tiara"
-  ],
   "type_name": "hat"
 }

@@ -37,11 +37,6 @@
       ]
     }
   ],
-  "path": [
-    "weapons",
-    "shield",
-    "shield_round"
-  ],
   "aliases": {
     "Shields_brown": "brown",
     "Shields_black": "black",

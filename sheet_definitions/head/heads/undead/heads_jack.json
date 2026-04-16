@@ -51,10 +51,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_jack"
-  ],
   "type_name": "head"
 }

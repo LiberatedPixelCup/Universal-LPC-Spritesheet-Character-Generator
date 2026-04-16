@@ -70,11 +70,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "hats",
-    "caps",
-    "hat_cap_cavalier_feather"
-  ],
   "type_name": "hat_accessory"
 }

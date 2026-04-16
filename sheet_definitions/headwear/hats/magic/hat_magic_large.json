@@ -49,11 +49,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "hats",
-    "magic",
-    "hat_magic_large"
-  ],
   "type_name": "hat"
 }

@@ -76,10 +76,5 @@
       ]
     }
   ],
-  "path": [
-    "weapons",
-    "polearm",
-    "weapon_polearm_trident"
-  ],
   "type_name": "weapon"
 }

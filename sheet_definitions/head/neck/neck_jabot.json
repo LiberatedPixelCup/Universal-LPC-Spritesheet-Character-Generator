@@ -58,10 +58,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "neck",
-    "neck_jabot"
-  ],
   "type_name": "neck"
 }

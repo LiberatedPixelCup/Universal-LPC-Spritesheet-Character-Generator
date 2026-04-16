@@ -66,11 +66,5 @@
       ]
     }
   ],
-  "path": [
-    "weapons",
-    "shield",
-    "heater shield",
-    "shield_heater_revised_trim"
-  ],
   "type_name": "shield_trim"
 }

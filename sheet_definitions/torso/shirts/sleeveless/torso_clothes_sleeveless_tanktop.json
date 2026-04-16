@@ -78,11 +78,5 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "shirts",
-    "sleeveless",
-    "torso_clothes_sleeveless_tanktop"
-  ],
   "type_name": "clothes"
 }

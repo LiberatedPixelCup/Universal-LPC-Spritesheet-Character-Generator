@@ -105,10 +105,5 @@
       ]
     }
   ],
-  "path": [
-    "weapons",
-    "sword",
-    "weapon_sword_arming"
-  ],
   "type_name": "weapon"
 }

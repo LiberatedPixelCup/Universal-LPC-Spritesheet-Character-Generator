@@ -53,10 +53,5 @@
       ]
     }
   ],
-  "path": [
-    "legs",
-    "skirts",
-    "legs_skirt_overskirt"
-  ],
   "type_name": "apron"
 }

@@ -37,10 +37,5 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "waist",
-    "belt_belly"
-  ],
   "type_name": "belt"
 }

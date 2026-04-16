@@ -55,11 +55,6 @@
       ]
     }
   ],
-  "path": [
-    "body",
-    "lizard",
-    "wings_lizard_bat"
-  ],
   "recolors": {
     "material": "body",
     "palettes": [

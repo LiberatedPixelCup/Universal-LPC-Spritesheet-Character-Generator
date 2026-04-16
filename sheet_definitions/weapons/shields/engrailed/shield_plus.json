@@ -33,11 +33,5 @@
       ]
     }
   ],
-  "path": [
-    "weapons",
-    "shield",
-    "two-engrailed shield",
-    "shield_plus"
-  ],
   "type_name": "shield"
 }

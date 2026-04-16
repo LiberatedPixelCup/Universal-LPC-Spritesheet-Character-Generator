@@ -50,11 +50,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_pig"
-  ],
   "recolors": {
     "material": "body",
     "palettes": [

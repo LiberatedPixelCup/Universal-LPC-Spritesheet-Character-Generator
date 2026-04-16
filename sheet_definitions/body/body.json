@@ -227,10 +227,6 @@
       ]
     }
   ],
-  "path": [
-    "body",
-    "body"
-  ],
   "recolors": {
     "material": "body",
     "palettes": [

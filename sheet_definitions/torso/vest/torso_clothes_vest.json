@@ -97,10 +97,5 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "vest",
-    "torso_clothes_vest"
-  ],
   "type_name": "vest"
 }

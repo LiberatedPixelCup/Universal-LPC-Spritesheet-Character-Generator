@@ -111,11 +111,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "face",
-    "face_closed"
-  ],
   "recolors": {
     "material": "body",
     "palettes": [

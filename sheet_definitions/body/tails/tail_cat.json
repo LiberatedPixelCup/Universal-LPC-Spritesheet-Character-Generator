@@ -90,10 +90,5 @@
       ]
     }
   ],
-  "path": [
-    "body",
-    "tails",
-    "tail_cat"
-  ],
   "type_name": "tail"
 }

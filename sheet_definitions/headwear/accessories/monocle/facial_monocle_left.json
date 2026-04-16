@@ -63,11 +63,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "accessories",
-    "monocle",
-    "facial_monocle_left"
-  ],
   "type_name": "facial_left"
 }

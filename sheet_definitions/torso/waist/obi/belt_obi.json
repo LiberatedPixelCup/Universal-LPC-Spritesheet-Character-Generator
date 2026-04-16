@@ -70,11 +70,5 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "waist",
-    "obi",
-    "belt_obi"
-  ],
   "type_name": "sash"
 }

@@ -69,12 +69,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "hats",
-    "tricorne",
-    "captain",
-    "hat_tricorne_captain_skull"
-  ],
   "type_name": "hat_overlay"
 }

@@ -56,10 +56,5 @@
       ]
     }
   ],
-  "path": [
-    "weapons",
-    "sword",
-    "weapon_sword_rapier"
-  ],
   "type_name": "weapon"
 }

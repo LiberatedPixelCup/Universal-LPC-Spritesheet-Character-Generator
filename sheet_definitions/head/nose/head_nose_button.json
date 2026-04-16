@@ -54,10 +54,5 @@
       "all.lpcr"
     ]
   },
-  "path": [
-    "head",
-    "nose",
-    "head_nose_button"
-  ],
   "type_name": "nose"
 }

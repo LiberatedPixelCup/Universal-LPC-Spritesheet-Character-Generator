@@ -56,10 +56,5 @@
       ]
     }
   ],
-  "path": [
-    "weapons",
-    "blunt",
-    "weapon_blunt_flail"
-  ],
   "type_name": "weapon"
 }

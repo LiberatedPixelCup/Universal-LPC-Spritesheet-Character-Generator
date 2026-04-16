@@ -48,10 +48,5 @@
       ]
     }
   ],
-  "path": [
-    "body",
-    "wounds",
-    "wound_eye_right"
-  ],
   "type_name": "wound_eye_right"
 }

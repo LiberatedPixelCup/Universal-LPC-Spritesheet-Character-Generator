@@ -59,10 +59,5 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "vest",
-    "torso_clothes_vest_open"
-  ],
   "type_name": "vest"
 }

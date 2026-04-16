@@ -78,11 +78,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "accessories",
-    "glasses",
-    "facial_glasses"
-  ],
   "type_name": "facial_eyes"
 }

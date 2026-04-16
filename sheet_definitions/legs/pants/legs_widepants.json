@@ -52,10 +52,5 @@
       ]
     }
   ],
-  "path": [
-    "legs",
-    "pants",
-    "legs_widepants"
-  ],
   "type_name": "legs"
 }

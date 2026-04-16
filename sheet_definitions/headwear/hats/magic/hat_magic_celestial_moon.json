@@ -75,12 +75,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "hats",
-    "magic",
-    "celestial",
-    "hat_magic_celestial_moon"
-  ],
   "type_name": "hat"
 }

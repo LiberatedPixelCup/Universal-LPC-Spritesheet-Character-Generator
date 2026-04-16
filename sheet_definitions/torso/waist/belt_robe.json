@@ -29,11 +29,6 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "waist",
-    "belt_robe"
-  ],
   "aliases": {
     "Other_belts_white": "white",
     "Other_belts_teal": "teal"

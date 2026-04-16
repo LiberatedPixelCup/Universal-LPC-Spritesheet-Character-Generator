@@ -55,11 +55,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_wolf_female"
-  ],
   "recolors": {
     "material": "body",
     "base": "ulpc.fur_brown",

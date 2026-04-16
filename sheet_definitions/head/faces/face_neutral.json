@@ -116,11 +116,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "face",
-    "face_neutral"
-  ],
   "recolors": {
     "color_1": {
       "material": "body",

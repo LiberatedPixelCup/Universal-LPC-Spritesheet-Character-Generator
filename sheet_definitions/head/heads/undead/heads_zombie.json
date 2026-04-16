@@ -52,11 +52,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_zombie"
-  ],
   "recolors": {
     "material": "body",
     "base": "ulpc.zombie",

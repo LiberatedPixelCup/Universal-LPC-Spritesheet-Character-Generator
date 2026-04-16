@@ -50,10 +50,5 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "aprons",
-    "torso_aprons_apron"
-  ],
   "type_name": "apron"
 }

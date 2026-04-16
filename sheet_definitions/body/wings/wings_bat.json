@@ -101,10 +101,5 @@
       ]
     }
   ],
-  "path": [
-    "body",
-    "wings",
-    "wings_bat"
-  ],
   "type_name": "wings"
 }

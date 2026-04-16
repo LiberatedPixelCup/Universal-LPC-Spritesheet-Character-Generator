@@ -46,11 +46,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "ears",
-    "head_ears_dragon"
-  ],
   "recolors": {
     "material": "body",
     "palettes": [

@@ -111,11 +111,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "face",
-    "face_look_l"
-  ],
   "recolors": {
     "color_1": {
       "material": "body",
@@ -130,7 +125,11 @@
       "label": "Eye Color",
       "material": "eye",
       "base": null,
-      "source": ["#293d4b", "#5187b3", "#50d4ec"],
+      "source": [
+        "#293d4b",
+        "#5187b3",
+        "#50d4ec"
+      ],
       "palettes": [
         "ulpc",
         "lpcr"

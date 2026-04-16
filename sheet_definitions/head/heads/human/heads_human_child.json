@@ -49,11 +49,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_human_child"
-  ],
   "recolors": {
     "color_1": {
       "material": "body",

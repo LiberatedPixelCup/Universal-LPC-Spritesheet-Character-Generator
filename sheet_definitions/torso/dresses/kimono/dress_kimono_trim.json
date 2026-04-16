@@ -67,11 +67,5 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "dresses",
-    "kimono",
-    "dress_kimono_trim"
-  ],
   "type_name": "dress_trim"
 }

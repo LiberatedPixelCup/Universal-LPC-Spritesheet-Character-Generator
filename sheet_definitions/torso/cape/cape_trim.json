@@ -60,10 +60,5 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "cape",
-    "cape_trim"
-  ],
   "type_name": "cape_trim"
 }

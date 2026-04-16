@@ -48,11 +48,6 @@
       "urls": []
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_human_female_small"
-  ],
   "recolors": {
     "color_1": {
       "material": "body",

@@ -75,11 +75,5 @@
       ]
     }
   ],
-  "path": [
-    "weapons",
-    "ranged",
-    "bow",
-    "weapon_ranged_bow_great"
-  ],
   "type_name": "weapon"
 }

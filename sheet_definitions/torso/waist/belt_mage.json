@@ -36,11 +36,6 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "waist",
-    "belt_mage"
-  ],
   "aliases": {
     "Other_belts_black": "black",
     "Other_belts_bronze": "bronze",

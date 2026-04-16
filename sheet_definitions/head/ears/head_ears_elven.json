@@ -51,11 +51,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "ears",
-    "head_ears_elven"
-  ],
   "recolors": {
     "material": "body",
     "palettes": [

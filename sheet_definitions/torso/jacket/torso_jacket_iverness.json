@@ -23,10 +23,5 @@
       ]
     }
   ],
-  "path": [
-    "torso",
-    "jacket",
-    "torso_jacket_iverness"
-  ],
   "type_name": "jacket"
 }

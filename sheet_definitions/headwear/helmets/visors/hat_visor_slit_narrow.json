@@ -56,11 +56,5 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "helmets",
-    "visors",
-    "hat_visor_slit_narrow"
-  ],
   "type_name": "visor"
 }

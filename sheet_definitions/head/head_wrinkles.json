@@ -42,10 +42,6 @@
       "urls": []
     }
   ],
-  "path": [
-    "head",
-    "head_wrinkles"
-  ],
   "recolors": {
     "material": "body",
     "palettes": [

@@ -43,10 +43,5 @@
       ]
     }
   ],
-  "path": [
-    "weapons",
-    "sword",
-    "weapon_sword_dagger"
-  ],
   "type_name": "weapon"
 }

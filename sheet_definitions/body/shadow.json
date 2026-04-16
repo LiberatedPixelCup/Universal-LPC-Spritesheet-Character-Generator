@@ -28,9 +28,5 @@
       ]
     }
   ],
-  "path": [
-    "body",
-    "shadow"
-  ],
   "type_name": "shadow"
 }

@@ -48,11 +48,6 @@
       ]
     }
   ],
-  "path": [
-    "head",
-    "heads",
-    "heads_sheep_child"
-  ],
   "recolors": {
     "material": "body",
     "base": "lpcr.ivory",
