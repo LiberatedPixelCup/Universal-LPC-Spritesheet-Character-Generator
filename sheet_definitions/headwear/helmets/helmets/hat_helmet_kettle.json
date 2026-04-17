@@ -8,9 +8,6 @@
     "muscular": "hat/helmet/kettle/adult/",
     "teen": "hat/helmet/kettle/adult/"
   },
-  "variants": [
-    "steel"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -33,9 +30,11 @@
   "credits": [
     {
       "file": "hat/helmet/kettle",
-      "notes": "previously referred to as chain-hat",
+      "notes": "previously referred to as chain-hat, color reduction by Napsio (Vitruvian Studio)",
       "authors": [
-        "Johannes Sjölund (wulax)"
+        "Johannes Sjölund (wulax)",
+        "JaidynReiman",
+        "Napsio (Vitruvian Studio)"
       ],
       "licenses": [
         "OGA-BY 3.0",
@@ -54,5 +53,25 @@
     "helmets",
     "hat_helmet_kettle"
   ],
+  "recolors": {
+    "color_1": {
+      "material": "metal",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
+      ]
+    },
+    "color_2": {
+      "type_name": "hat_secondary",
+      "label": "Kettle Inner",
+      "material": "cloth",
+      "base": "brown",
+      "palettes": [
+        "ulpc",
+        "all.lpcr"
+      ]
+    }
+  },
   "type_name": "hat"
 }

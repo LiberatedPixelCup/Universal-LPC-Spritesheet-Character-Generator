@@ -30,9 +30,10 @@
   "credits": [
     {
       "file": "hat/helmet/pointed",
-      "notes": "",
+      "notes": "original version by bluecarrot16, color reduction by JaidynReiman",
       "authors": [
-        "bluecarrot16"
+        "bluecarrot16",
+        "JaidynReiman"
       ],
       "licenses": [
         "CC-BY 3.0",

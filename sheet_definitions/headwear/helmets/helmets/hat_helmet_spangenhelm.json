@@ -8,16 +8,6 @@
     "muscular": "hat/helmet/spangenhelm/adult/",
     "teen": "hat/helmet/spangenhelm/adult/"
   },
-  "variants": [
-    "steel",
-    "iron",
-    "ceramic",
-    "brass",
-    "copper",
-    "bronze",
-    "silver",
-    "gold"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -63,5 +53,13 @@
     "helmets",
     "hat_helmet_spangenhelm"
   ],
+  "recolors": {
+    "material": "metal",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "all.lpcr"
+    ]
+  },
   "type_name": "hat"
 }

@@ -8,16 +8,6 @@
     "muscular": "hat/helmet/barbarian_nasal/adult/",
     "teen": "hat/helmet/barbarian_nasal/adult/"
   },
-  "variants": [
-    "steel",
-    "iron",
-    "ceramic",
-    "brass",
-    "copper",
-    "bronze",
-    "silver",
-    "gold"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -40,9 +30,11 @@
   "credits": [
     {
       "file": "hat/helmet/barbarian_nasal",
-      "notes": "",
+      "notes": "original version by bluecarrot16, color reduction by Napsio (Vitruvian Studio)",
       "authors": [
-        "bluecarrot16"
+        "bluecarrot16",
+        "JaidynReiman",
+        "Napsio (Vitruvian Studio)"
       ],
       "licenses": [
         "CC-BY 3.0",
@@ -63,5 +55,25 @@
     "helmets",
     "hat_helmet_barbarian_nasal"
   ],
+  "recolors": {
+    "color_1": {
+      "material": "metal",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
+      ]
+    },
+    "color_2": {
+      "type_name": "hat_secondary",
+      "label": "Helmet Strands",
+      "material": "cloth",
+      "base": "brown",
+      "palettes": [
+        "ulpc",
+        "all.lpcr"
+      ]
+    }
+  },
   "type_name": "hat"
 }

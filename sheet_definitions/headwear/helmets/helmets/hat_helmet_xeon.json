@@ -30,9 +30,10 @@
   "credits": [
     {
       "file": "hat/helmet/xeon",
-      "notes": "",
+      "notes": "original version by Stephen Challener (Redshrike), color reduction by JaidynReiman",
       "authors": [
-        "Stephen Challener (Redshrike)"
+        "Stephen Challener (Redshrike)",
+        "JaidynReiman"
       ],
       "licenses": [
         "OGA-BY 3.0"

@@ -8,16 +8,6 @@
     "muscular": "hat/helmet/armet_simple/adult/",
     "teen": "hat/helmet/armet_simple/adult/"
   },
-  "variants": [
-    "steel",
-    "iron",
-    "ceramic",
-    "brass",
-    "copper",
-    "bronze",
-    "silver",
-    "gold"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -40,10 +30,11 @@
   "credits": [
     {
       "file": "hat/helmet/armet_simple",
-      "notes": "",
+      "notes": "original version by Johannes Sjölund (wulax), adjustments by bluecarrot16, color reduction by JaidynReiman",
       "authors": [
         "bluecarrot16",
-        "Johannes Sjölund (wulax)"
+        "Johannes Sjölund (wulax)",
+        "JaidynReiman"
       ],
       "licenses": [
         "OGA-BY 3.0",
@@ -62,5 +53,13 @@
     "helmets",
     "hat_helmet_armet_simple"
   ],
+  "recolors": {
+    "material": "metal",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "all.lpcr"
+    ]
+  },
   "type_name": "hat"
 }
