@@ -53,12 +53,23 @@
     "hat_accessory_plumage_centurion"
   ],
   "recolors": {
-    "material": "cloth",
-    "base": "brown",
-    "palettes": [
-      "ulpc",
-      "all.lpcr"
-    ]
+    "color_1": {
+      "material": "cloth",
+      "base": "brown",
+      "palettes": [
+        "ulpc",
+        "all.lpcr"
+      ]
+    },
+    "color_2": {
+      "type_name": "hat_accessory_secondary",
+      "label": "Legion Pattern",
+      "material": "cloth",
+      "palettes": [
+        "ulpc",
+        "all.lpcr"
+      ]
+    }
   },
   "type_name": "accessory"
 }
