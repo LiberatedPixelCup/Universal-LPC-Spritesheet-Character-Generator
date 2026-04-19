@@ -49,7 +49,6 @@
     "material": "cloth",
     "palettes": [
       "ulpc",
-      "metal.ulpc",
       "all.lpcr"
     ]
   },
