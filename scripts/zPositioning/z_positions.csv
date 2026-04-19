@@ -467,12 +467,12 @@ legs_pants2,layer_1,20,legs/pants2/male/ legs/pants2/thin/
 legs_pregnantpants,layer_1,20,legs/pants/pregnant/
 legs_shorts,layer_1,20,legs/shorts/shorts/male/ legs/shorts/shorts/thin/ legs/shorts/shorts/thin/
 legs_shorts_short,layer_1,20,legs/shorts/short_shorts/male/ legs/shorts/short_shorts/thin/ legs/shorts/short_shorts/thin/
-legs_skirt_belle,layer_1,20,legs/skirts/belle/female/ legs/skirts/belle/female/
-legs_skirt_overskirt,layer_1,35,legs/skirts/overskirt/female/ legs/skirts/overskirt/female/
-legs_skirt_straight,layer_1,20,legs/skirts/straight/female/ legs/skirts/straight/female/
-legs_skirts_legion,layer_1,20,legs/skirts/legion/male/ legs/skirts/legion/female/ legs/skirts/legion/male/ legs/skirts/legion/female/
-legs_skirts_plain,layer_1,20,legs/skirts/plain/male/ legs/skirts/plain/female/ legs/skirts/plain/female/
-legs_skirts_slit,layer_1,20,legs/skirts/slit/female/ legs/skirts/slit/female/
+legs_skirt_belle,layer_1,20,legs/skirts/belle/thin/ legs/skirts/belle/thin/
+legs_skirt_overskirt,layer_1,35,legs/skirts/overskirt/thin/ legs/skirts/overskirt/thin/
+legs_skirt_straight,layer_1,20,legs/skirts/straight/thin/ legs/skirts/straight/thin/
+legs_skirts_legion,layer_1,20,legs/skirts/legion/male/ legs/skirts/legion/thin/ legs/skirts/legion/male/ legs/skirts/legion/thin/
+legs_skirts_plain,layer_1,20,legs/skirts/plain/male/ legs/skirts/plain/thin/ legs/skirts/plain/thin/
+legs_skirts_slit,layer_1,20,legs/skirts/slit/thin/ legs/skirts/slit/thin/ legs/skirts/slit/thin/
 legs_widepants,layer_1,20,legs/pants/muscular/
 neck_amulet_cross,layer_1,81,neck/amulet/cross/male/ neck/amulet/cross/female/ neck/amulet/cross/male/ neck/amulet/cross/female/
 neck_amulet_dangle,layer_1,81,neck/amulet/dangle/male/ neck/amulet/dangle/female/ neck/amulet/dangle/male/ neck/amulet/dangle/female/
