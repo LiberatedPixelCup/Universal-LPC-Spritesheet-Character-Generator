@@ -406,13 +406,13 @@ Edit each hair item JSON (e.g., `sheet_definitions/hair_afro.json`):
 
 ### Step 4: Rebuild Metadata
 
-Run the build script to update item metadata:
+Regenerate the catalog bundle with Vite so `dist/item-metadata.js` includes the new `recolors` field:
 
 ```bash
-node scripts/generate_sources.mjs
+npm run dev
 ```
 
-This regenerates `item-metadata.js` with the new `recolors` field.
+(or `npm run build` once). `node scripts/generate_sources.mjs` updates **CREDITS.csv** and z-positions but does not write `dist/item-metadata.js`.
 
 ### Step 5: Ensure Source Variant Exists
 

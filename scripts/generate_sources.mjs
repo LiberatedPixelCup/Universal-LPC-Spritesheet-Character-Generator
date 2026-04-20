@@ -17,6 +17,7 @@ import {
   buildMetadataJs,
   METADATA_OUTPUT,
   onlyIfTemplate,
+  resetGeneratorState,
   SHEETS_DIR,
   readDirTree,
 } from "./generateSources/state.mjs";
@@ -28,6 +29,10 @@ export function generateSources(deps = {}) {
   const processItemCreditsFn = deps.processItemCreditsFn ?? processItemCredits;
   const loadPaletteMetadataFn = deps.loadPaletteMetadataFn ?? loadPaletteMetadata;
   const readDirTreeFn = deps.readDirTreeFn ?? readDirTree;
+  const writeMetadata = deps.writeMetadata ?? false;
+  const metadataOutputPath = deps.metadataOutputPath ?? METADATA_OUTPUT;
+
+  resetGeneratorState();
 
   loadPaletteMetadataFn();
 
@@ -66,13 +71,15 @@ export function generateSources(deps = {}) {
     console.error(err);
   }
 
-  // Build and Write Item Metadata Output
-  const metadataJS = buildMetadataJs();
-  try {
-    writeFileSyncFn(METADATA_OUTPUT, metadataJS);
-    process.stdout.write("Item Metadata JS Updated!\n");
-  } catch (err) {
-    console.error(err);
+  // Build and write item-metadata.js (optional: CLI / tests skip; Vite plugin enables)
+  if (writeMetadata) {
+    const metadataJS = buildMetadataJs();
+    try {
+      writeFileSyncFn(metadataOutputPath, metadataJS);
+      process.stdout.write("Item Metadata JS Updated!\n");
+    } catch (err) {
+      console.error(err);
+    }
   }
 }
 
@@ -83,5 +90,5 @@ function isDirectExecution() {
 
 if (isDirectExecution()) {
   fork("scripts/zPositioning/parse_zpos.js");
-  generateSources();
+  generateSources({ writeMetadata: false });
 }

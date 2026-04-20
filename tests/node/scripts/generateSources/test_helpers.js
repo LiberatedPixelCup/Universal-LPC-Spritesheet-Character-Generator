@@ -2,13 +2,8 @@ import assert from "node:assert/strict";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import {
-  aliasMetadata,
-  categoryTree,
-  csvList,
-  itemMetadata,
-  licensesFound,
-  paletteMetadata,
   readDirTree,
+  resetGeneratorState,
 } from "../../../../scripts/generateSources/state.mjs";
 import { loadPaletteMetadata } from "../../../../scripts/generateSources/palettes.mjs";
 import { parseTree } from "../../../../scripts/generateSources/tree.mjs";
@@ -32,21 +27,8 @@ export function buildPath(buildName, kind) {
   return projectPath("tests", "node", "scripts", buildName, kind);
 }
 
-function clearObject(obj) {
-  for (const key of Object.keys(obj)) {
-    delete obj[key];
-  }
-}
-
 export function resetTestState() {
-  licensesFound.length = 0;
-  csvList.length = 0;
-  clearObject(itemMetadata);
-  paletteMetadata.versions = {};
-  paletteMetadata.materials = {};
-  clearObject(aliasMetadata);
-  categoryTree.items = [];
-  categoryTree.children = {};
+  resetGeneratorState();
 }
 
 function extractTopLevelConstJson(outputText, constName) {
@@ -115,6 +97,7 @@ export async function runBuild(buildName, palettesBuildName = buildName) {
   const writes = new Map();
 
   generateSources({
+    writeMetadata: true,
     readDirTreeFn: () => readDirTree(buildPath(buildName, "sheets")),
     parseTreeFn: (filePath, fileName) =>
       parseTree(filePath, fileName, {

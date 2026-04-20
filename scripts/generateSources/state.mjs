@@ -13,6 +13,27 @@ export const paletteMetadata = { versions: {}, materials: {} };
 export const aliasMetadata = {};
 export const categoryTree = { items: [], children: {} };
 
+function clearObject(obj) {
+  for (const key of Object.keys(obj)) {
+    delete obj[key];
+  }
+}
+
+/**
+ * Clears shared generator state so repeated full runs (e.g. Vite watch without a fresh module load)
+ * do not accumulate stale keys in itemMetadata and related structures.
+ */
+export function resetGeneratorState() {
+  licensesFound.length = 0;
+  csvList.length = 0;
+  clearObject(itemMetadata);
+  paletteMetadata.versions = {};
+  paletteMetadata.materials = {};
+  clearObject(aliasMetadata);
+  categoryTree.items = [];
+  categoryTree.children = {};
+}
+
 /**
  * Sorts recursive directory entries by depth first, then locale-aware path name.
  * @param {{parentPath: string, name: string}} a First directory entry.

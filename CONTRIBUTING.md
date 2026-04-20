@@ -68,7 +68,7 @@ If you add this animations list, users can filter the results based on the anima
 
 As such, if you wish to include less than this list, such as only walk and slash, you should still include the animations definition to restrict it to just those assets. Users will still be able to access your asset, but it won't appear if the animations filter is used and you did not include that animation in your sheet definition.
 
-The category tree and items in the app come from generated metadata, not from HTML. After you add or change definitions, run **File Generation** (below) and commit the updated **`item-metadata.js`** and any other generated outputs that changed.
+The category tree and items in the app come from generated metadata, not from HTML. After you add or change definitions, run **File Generation** (below) and commit the updated **`CREDITS.csv`**, **`scripts/zPositioning/z_positions.csv`**, and any other tracked outputs that changed. The app’s **`dist/item-metadata.js`** is built by **Vite** (`npm run dev` / `npm run build`); it is not committed (**`/dist/`** is gitignored).
 
 #### Renaming an Asset
 
@@ -199,9 +199,9 @@ For visual tests only, **`npx playwright install chromium`** is enough. The Argo
 
 #### File Generation
 
-The runtime UI loads **`item-metadata.js`**, which is **generated** from the sheet JSON under `sheet_definitions/` (and related inputs). When you add or change artwork definitions, credits, or tree metadata, regenerate the outputs and commit them.
+The runtime UI loads **`dist/item-metadata.js`**, which Vite generates from the sheet JSON under **`sheet_definitions/`** (and related inputs) when you run **`npm run dev`** or **`npm run build`**. Do not edit that file by hand.
 
-From the project root:
+**Credits and z-positions (committed files)** — From the project root:
 
 ```bash
 node scripts/generate_sources.mjs
@@ -213,13 +213,11 @@ or:
 npm run validate-site-sources
 ```
 
-This updates **[CREDITS.csv](/CREDITS.csv)** and **[item-metadata.js](/item-metadata.js)**, and it runs **`scripts/zPositioning/parse_zpos.js`** in the background so **[scripts/zPositioning/z_positions.csv](/scripts/zPositioning/z_positions.csv)** stays aligned with z-positions in the JSON files.
-
-**Do not edit `item-metadata.js` by hand.** Edit the sheet definitions (and related sources) and re-run the generator.
+This updates **[CREDITS.csv](/CREDITS.csv)** and runs **`scripts/zPositioning/parse_zpos.js`** in the background so **[scripts/zPositioning/z_positions.csv](/scripts/zPositioning/z_positions.csv)** stays aligned with z-positions in the JSON files. It does **not** write a root-level `item-metadata.js` (removed in favor of the Vite-built **`dist/`** output).
 
 **`index.html`** is the Vite entry shell (layout, stylesheets, `sources/main.js`). It is not emitted by this script. Change it only when you mean to adjust the page structure or global assets.
 
-The **Validate site sources** workflow (`.github/workflows/validate-site-sources.yml`) runs the same generation and fails if the working tree is dirty afterward. PRs that touch definitions must include regenerated **`item-metadata.js`**, **`CREDITS.csv`**, and **`scripts/zPositioning/z_positions.csv`** whenever those files change.
+The **Validate site sources** workflow (`.github/workflows/validate-site-sources.yml`) runs the same **`generate_sources`** command and fails if the working tree is dirty afterward. PRs that touch definitions must include regenerated **`CREDITS.csv`** and **`scripts/zPositioning/z_positions.csv`** whenever those files change.
 
 #### Running Tests
 
@@ -282,7 +280,7 @@ Full-page screenshots live under [`tests/visual/`](tests/visual/) and use [`play
 
 [`tests/tests.js`](tests/tests.js) imports every **`tests/**/*_spec.js`** file (except files only used from **`tests/node/`**). **`tests/node/`** is exercised by **`before_tests`** and by **`npm run test:node`** directly.
 
-[`tests/vitest-setup.js`](tests/vitest-setup.js) loads **`sources/vendor-globals.js`**, sets test flags on **`window`**, and exposes exports from **`item-metadata.js`** on **`window`** so tests see the same catalog data as the app.
+[`tests/vitest-setup.js`](tests/vitest-setup.js) loads **`sources/vendor-globals.js`**, sets test flags on **`window`**, and exposes exports from the generated metadata module (resolved to **`dist/item-metadata.js`** via Vite) on **`window`** so tests see the same catalog data as the app.
 
 Typical patterns:
 

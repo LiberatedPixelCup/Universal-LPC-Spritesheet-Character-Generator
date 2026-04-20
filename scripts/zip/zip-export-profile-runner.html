@@ -1,4 +1,6 @@
 <!doctype html>
+<!-- Run npm run dev or vite from the repo root first so dist/item-metadata.js exists (or
+     npm run build). Served at repo root so /dist/... resolves like tests_run.html. -->
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -18,7 +20,7 @@
         aliasMetadata,
         categoryTree,
         paletteMetadata,
-      } from "/item-metadata.js";
+      } from "/dist/item-metadata.js";
 
       window.itemMetadata = itemMetadata;
       window.aliasMetadata = aliasMetadata;

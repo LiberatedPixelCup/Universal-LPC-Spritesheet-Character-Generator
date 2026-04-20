@@ -3,7 +3,8 @@
  *
  * What it does
  * ------------
- * 1. **Item metadata** — Filters `item-metadata.js` to only `itemId` values referenced
+ * 1. **Item metadata** — Runs `generate_sources` (same pipeline as Vite) to write
+ *    **`dist/item-metadata.js`**, then filters it to only `itemId` values referenced
  *    in the JSON (walks all `"itemId"` keys). Writes a small ES module with
  *    `export default { ... }` so tests can import it.
  * 2. **Selections** — Writes `tests/fixtures/issue-382-selections.js` (`export default`
@@ -21,6 +22,10 @@
  *
  * Prerequisites for golden generation
  * -----------------------------------
+ * - **Metadata on disk:** This script regenerates **`dist/item-metadata.js`** before
+ *   reading it. For standalone HTML that imports `/dist/item-metadata.js` via a static
+ *   server, run **`npm run dev`** or **`vite`** first (or **`npm run build`**) so the
+ *   file exists if you are not using this script.
  * - `npx playwright install chromium` (or full `playwright install`) so headless
  *   Chromium is available.
  * - Network allowed for `npx serve` and the first-run browser download if needed.
@@ -71,8 +76,33 @@ const { pathToFileURL } = require("url");
 const { debugLog } = require("./utils/debug.js");
 
 const REPO_ROOT = path.join(__dirname, "..");
-const ITEM_METADATA_PATH = path.join(REPO_ROOT, "item-metadata.js");
+const ITEM_METADATA_PATH = path.join(REPO_ROOT, "dist", "item-metadata.js");
 const TESTS_FIXTURES = path.join(REPO_ROOT, "tests", "fixtures", "issue-382");
+
+/**
+ * Writes `dist/item-metadata.js` via the same generator pipeline as `vite` (no root file,
+ * no CREDITS.csv write from this path).
+ */
+async function ensureDistItemMetadata() {
+  const genUrl = pathToFileURL(
+    path.join(REPO_ROOT, "scripts", "generate_sources.mjs"),
+  ).href;
+  const { generateSources } = await import(genUrl);
+  const distDir = path.join(REPO_ROOT, "dist");
+  fs.mkdirSync(distDir, { recursive: true });
+  // eslint-disable-next-line no-console -- progress
+  console.log("Generating dist/item-metadata.js (generate sources)…");
+  generateSources({
+    writeMetadata: true,
+    metadataOutputPath: ITEM_METADATA_PATH,
+    writeFileSync: (filePath, contents) => {
+      if (path.basename(filePath) === "CREDITS.csv") {
+        return;
+      }
+      fs.writeFileSync(filePath, contents);
+    },
+  });
+}
 
 /**
  * Collect every string value for keys named "itemId" (selections, layers, nested).
@@ -102,7 +132,7 @@ async function loadFullItemMetadata() {
   const meta = mod.itemMetadata;
   if (!meta || typeof meta !== "object") {
     throw new Error(
-      "item-metadata.js did not export itemMetadata as an object",
+      "dist/item-metadata.js did not export itemMetadata as an object",
     );
   }
   return meta;
@@ -170,6 +200,8 @@ async function main() {
 
   const sortedWanted = Array.from(wanted).sort();
 
+  await ensureDistItemMetadata();
+
   debugLog(`Loading ${ITEM_METADATA_PATH} …`);
   const full = await loadFullItemMetadata();
 
@@ -186,7 +218,7 @@ async function main() {
   if (missing.length > 0) {
     // eslint-disable-next-line no-console -- missing itemIds should always be visible
     console.warn(
-      "itemId(s) not found in item-metadata.js (skipped):",
+      "itemId(s) not found in dist/item-metadata.js (skipped):",
       missing.join(", "),
     );
   }
