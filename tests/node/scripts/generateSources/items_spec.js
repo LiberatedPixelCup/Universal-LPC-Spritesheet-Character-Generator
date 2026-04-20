@@ -18,8 +18,8 @@ import {
 } from "../../../../scripts/generateSources/state.mjs";
 import { buildPath, resetTestState } from "./test_helpers.js";
 
-function writeTempJson(tempRoot, fileName, jsonContent) {
-  const dir = path.join(tempRoot, "body");
+function writeTempJson(tempRoot, fileName, jsonContent, subdir = "body") {
+  const dir = path.join(tempRoot, subdir);
   fs.mkdirSync(dir, { recursive: true });
   const fullPath = path.join(dir, fileName);
   fs.writeFileSync(fullPath, JSON.stringify(jsonContent, null, 2));
@@ -255,17 +255,26 @@ test("parseItem uses buildTreePath when definition.path is absent", () => {
 
   const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "gen-items-path-"));
   const sheetsDir = path.join(tempRoot, "sheets");
-  const { dir } = writeTempJson(sheetsDir, "boots_basic.json", {
-    name: "Basic Boots",
-    layer_1: {
-      male: "feet/boots/basic/adult/",
+  const { dir } = writeTempJson(
+    sheetsDir,
+    "boots_basic.json",
+    {
+      name: "Basic Boots",
+      layer_1: {
+        male: "feet/boots/basic/adult/",
+      },
+      type_name: "boots",
     },
-    type_name: "boots",
-  });
+    path.join("feet", "boots"),
+  );
 
   parseItem(dir, "boots_basic.json", { sheetsDir });
 
-  assert.deepEqual(itemMetadata.boots_basic.path, ["body", "boots_basic"]);
+  assert.deepEqual(itemMetadata.boots_basic.path, [
+    "feet",
+    "boots",
+    "boots_basic",
+  ]);
 });
 
 test("parseItem uses definition.path override when set", () => {
@@ -288,24 +297,37 @@ test("parseItem uses definition.path override when set", () => {
   assert.deepEqual(itemMetadata.boots_basic.path, customPath);
 });
 
-test("parseItem path override takes precedence over directory structure", () => {
+test("parseItem path override places item in different UI location than its file location", () => {
   resetTestState();
 
+  // Mirror the mail-helmet scenario: file lives under headwear/helmets/helmets/
+  // but should appear in the UI under headwear/coverings/hoods/.
   const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "gen-items-path-"));
   const sheetsDir = path.join(tempRoot, "sheets");
-  const overridePath = ["custom", "nested", "location", "boots_basic"];
-  // Place item in body/ dir, but override path to something completely different
-  const { dir } = writeTempJson(sheetsDir, "boots_basic.json", {
-    name: "Basic Boots",
-    layer_1: {
-      male: "feet/boots/basic/adult/",
+  const uiPath = ["headwear", "coverings", "hoods", "hat_helmet_mail"];
+  const { dir } = writeTempJson(
+    sheetsDir,
+    "hat_helmet_mail.json",
+    {
+      name: "Mail",
+      layer_1: {
+        male: "hat/helmet/mail/adult/",
+      },
+      path: uiPath,
+      type_name: "bandana",
     },
-    path: overridePath,
-    type_name: "boots",
-  });
+    path.join("headwear", "helmets", "helmets"),
+  );
 
-  parseItem(dir, "boots_basic.json", { sheetsDir });
+  parseItem(dir, "hat_helmet_mail.json", { sheetsDir });
 
-  assert.deepEqual(itemMetadata.boots_basic.path, overridePath);
-  assert.notDeepEqual(itemMetadata.boots_basic.path, ["body", "boots_basic"]);
+  // UI path comes from the override, not the file system location
+  assert.deepEqual(itemMetadata.hat_helmet_mail.path, uiPath);
+  // The directory-derived path would have been this without the override
+  assert.notDeepEqual(itemMetadata.hat_helmet_mail.path, [
+    "headwear",
+    "helmets",
+    "helmets",
+    "hat_helmet_mail",
+  ]);
 });
