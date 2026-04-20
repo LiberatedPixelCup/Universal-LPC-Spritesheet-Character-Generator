@@ -8,3 +8,6 @@ blob-report/
 .eslintcache
 tmp/
 computed-style-diff-output/
+/dist/
+**/__screenshots__/
+/.vitest-attachments/

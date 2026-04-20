@@ -4,35 +4,24 @@
     "zPos": 20,
     "male": "legs/skirts/legion/male/",
     "muscular": "legs/skirts/legion/male/",
-    "female": "legs/skirts/legion/female/",
-    "pregnant": "legs/skirts/legion/female/",
-    "teen": "legs/skirts/legion/female/"
+    "female": "legs/skirts/legion/thin/",
+    "pregnant": "legs/skirts/legion/thin/",
+    "teen": "legs/skirts/legion/thin/"
   },
-  "variants": [
-    "black",
-    "blue",
-    "bluegray",
-    "brown",
-    "charcoal",
-    "forest",
-    "gray",
-    "green",
-    "lavender",
-    "leather",
-    "maroon",
-    "navy",
-    "orange",
-    "pink",
-    "purple",
-    "red",
-    "rose",
-    "sky",
-    "slate",
-    "tan",
-    "teal",
-    "walnut",
-    "white",
-    "yellow"
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "climb",
+    "idle",
+    "jump",
+    "sit",
+    "emote",
+    "run"
   ],
   "credits": [
     {
@@ -54,5 +43,13 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "cloth",
+    "palettes": [
+      "ulpc",
+      "metal.ulpc",
+      "all.lpcr"
+    ]
+  },
   "type_name": "legs"
 }

@@ -32,7 +32,11 @@ export function getDebugParam() {
 }
 
 if (typeof window !== "undefined") {
-  window.DEBUG = getDebugParam();
+  if (window.__TEST_DEBUG_LOCKED__) {
+    // Browser test harness (tests/vitest-setup.js) sets window.DEBUG from import.meta.env.VITEST_DEBUG
+  } else {
+    window.DEBUG = getDebugParam();
+  }
 }
 
 export function debugLog(...args) {

@@ -8,32 +8,6 @@
     "muscular": "hat/accessory/plumage/adult/",
     "teen": "hat/accessory/plumage/adult/"
   },
-  "variants": [
-    "black",
-    "blue",
-    "bluegray",
-    "brown",
-    "charcoal",
-    "forest",
-    "gray",
-    "green",
-    "lavender",
-    "leather",
-    "maroon",
-    "navy",
-    "orange",
-    "pink",
-    "purple",
-    "red",
-    "rose",
-    "sky",
-    "slate",
-    "tan",
-    "teal",
-    "walnut",
-    "white",
-    "yellow"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -72,5 +46,13 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "cloth",
+    "base": "brown",
+    "palettes": [
+      "ulpc",
+      "all.lpcr"
+    ]
+  },
   "type_name": "accessory"
 }

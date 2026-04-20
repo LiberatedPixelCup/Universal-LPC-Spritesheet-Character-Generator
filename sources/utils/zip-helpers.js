@@ -289,9 +289,7 @@ export function extractFramesFromAnimation(
   const frameHeight = FRAME_SIZE;
   const framesPerRow = STANDARD_ANIMATION_FRAMES_PER_ROW;
 
-  const sourceCtx = animationCanvas.getContext("2d", {
-    willReadFrequently: true,
-  });
+  const sourceCtx = get2DContext(animationCanvas, true);
   if (!sourceCtx) {
     console.error("Failed to get animation canvas context");
     return frames;
@@ -402,9 +400,7 @@ export function extractFramesFromCustomAnimation(
     },
   });
 
-  const sourceCtx = animationCanvas.getContext("2d", {
-    willReadFrequently: true,
-  });
+  const sourceCtx = get2DContext(animationCanvas, true);
   if (!sourceCtx) {
     console.error("Failed to get custom animation canvas context");
     return frames;

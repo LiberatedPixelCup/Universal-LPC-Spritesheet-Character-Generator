@@ -1,5 +1,8 @@
 "use strict";
 
+const path = require("path");
+const { createTestemViteMiddleware } = require("vite-plugin-testem");
+
 // Suppress app debug logs during tests by default (?debug=false), so localhost does not
 // enable window.DEBUG via getDebugParam(). Set DEBUG=true or DEBUG=1 in the environment
 // when launching testem to keep verbose debug output (same as opening tests_run.html without
@@ -43,6 +46,11 @@ const firefoxQuietPrefs = [
   "toolkit.telemetry.unified=false",
 ];
 
+const vitestDebugEnv =
+  process.env.DEBUG === "true" || process.env.DEBUG === "1" ? "true" : "false";
+
+let viteClose;
+
 let testemConfig = {
   framework: "mocha+chai",
   test_page: testPageFromEnv,
@@ -57,6 +65,12 @@ let testemConfig = {
     ...(process.platform === "darwin" ? ["Safari"] : []),
   ],
   browser_start_timeout: 30,
+  src_files: [
+    "tests/**/*.js",
+    "sources/**/*.js",
+    "vite.config.js",
+    "tests_run.html",
+  ],
   browser_args: {
     Chrome: {
       dev: [
@@ -122,4 +136,25 @@ if (process.platform === "darwin") {
   };
 }
 
-module.exports = testemConfig;
+module.exports = async function testemConfigFactory() {
+  const { middleware, close } = await createTestemViteMiddleware({
+    root: path.join(__dirname),
+    define: {
+      "import.meta.env.VITEST_DEBUG": JSON.stringify(vitestDebugEnv),
+    },
+  });
+  viteClose = close;
+
+  return {
+    ...testemConfig,
+    middleware: [middleware],
+    on_exit(config, data, callback) {
+      if (!viteClose) {
+        return callback(null);
+      }
+      viteClose()
+        .then(() => callback(null))
+        .catch(callback);
+    },
+  };
+};

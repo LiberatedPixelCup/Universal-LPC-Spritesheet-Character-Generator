@@ -10,7 +10,7 @@ import {
 
 /** Base URL for the static site (see `webServer` in playwright.config.js). */
 const BASE_URL =
-  process.env.PLAYWRIGHT_TEST_BASE_URL ?? "http://127.0.0.1:4173";
+  process.env.PLAYWRIGHT_TEST_BASE_URL ?? "http://localhost:5173";
 
 /**
  * Viewports: mobile, tablet, medium desktop, huge desktop.

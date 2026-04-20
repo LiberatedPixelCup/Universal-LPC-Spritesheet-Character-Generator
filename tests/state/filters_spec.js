@@ -11,7 +11,7 @@ import {
   isNodeAnimationCompatible,
   setCustomAnimations,
   setCustomAnimationBase,
-} from "../../../sources/state/filters.js";
+} from "../../sources/state/filters.js";
 import { expect } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 

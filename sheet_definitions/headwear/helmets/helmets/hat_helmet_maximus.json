@@ -8,16 +8,6 @@
     "muscular": "hat/helmet/maximus/adult/",
     "teen": "hat/helmet/maximus/adult/"
   },
-  "variants": [
-    "steel",
-    "iron",
-    "ceramic",
-    "brass",
-    "copper",
-    "bronze",
-    "silver",
-    "gold"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -57,5 +47,13 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "metal",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "all.lpcr"
+    ]
+  },
   "type_name": "hat"
 }

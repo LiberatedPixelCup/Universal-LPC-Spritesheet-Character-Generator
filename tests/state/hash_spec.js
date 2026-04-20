@@ -17,7 +17,7 @@ import {
   initHashChangeListener,
   getSetHashCalledTimes,
   resetHashCalledTimes,
-} from "../../../sources/state/hash.js";
+} from "../../sources/state/hash.js";
 
 describe("state/hash.js", () => {
   let sandbox;

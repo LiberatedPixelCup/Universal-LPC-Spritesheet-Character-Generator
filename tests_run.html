@@ -1,29 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Test Runner - Universal LPC Sprite Sheet</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mocha@11.7.5/mocha.css" integrity="sha384-MIS4nQiXmpq495KU5RI77HGw5Jm12F00hdWw/RLQR+9bzN3Tr0FnPFljGBGt1O8i" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css" integrity="sha384-DCY3M8xLkMu6c9IKcKbe+jHKMjelnwC0p+SBaxfHxoBYZWdJF2X400UdBCgATtAB" crossorigin="anonymous">
-    <link rel="stylesheet" href="sources/loading.css">
-    <link rel="stylesheet" href="sources/main.css">
-    <script src="https://unpkg.com/mithril@2.3.8/mithril.min.js" integrity="sha384-nlmjDO01tRRK0qMLxgrQdR3687yMuLHdKdwTkxa7feXSksjRmsaqG6Pv1DmNzAjb" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mocha@11.7.5/mocha.min.js" integrity="sha384-ubv8xN6X/ihM9F1H2WYuzSjGuSR9LM2RHHmhAk4qZN74nuE6GHjj9LsR1A9DmyLV" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/classnames@2.5.1/index.js" integrity="sha384-yZ5lBIhc/erbKN+W+yrRuYTNoM3dwd0Rg2eKYqVq2bf2sUrgZxtUaaBbSscxnjRp" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" integrity="sha384-+mbV2IY1Zk/X1p/nWllGySJSUN8uMs+gUAN10Or95UBH0fpj6GfKgPmgC5EXieXG" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="item-metadata.js?v=1.00.0001"></script>
-    <script type="importmap">
-      {
-        "imports": {
-          "chai": "https://cdn.jsdelivr.net/npm/chai@6.2.2+esm",
-          "sinon": "https://cdn.jsdelivr.net/npm/sinon@21.0.3/+esm",
-          "mocha-globals": "./tests/bdd-globals.js"
-        },
-        "integrity": {
-          "https://cdn.jsdelivr.net/npm/chai@6.2.2+esm": "sha384-SWE7bILZhmiEGZEPMGrdVNNnO7SQtv32XlAQcpwNjVMXsPFsC2jPN7ccZg7LOuh1",
-          "https://cdn.jsdelivr.net/npm/sinon@21.0.3/+esm": "sha384-AoTHQuJPp8Nvy3Q9ks6RJfmIU13nPMk9nIxXSUJpOHN4AwlO/UQ93D8n1VxeQDKb"
-        }
-      }
+    <link rel="stylesheet" href="/node_modules/mocha/mocha.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+      integrity="sha384-DCY3M8xLkMu6c9IKcKbe+jHKMjelnwC0p+SBaxfHxoBYZWdJF2X400UdBCgATtAB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/sources/loading.css" />
+    <link rel="stylesheet" href="/sources/main.css" />
+    <!-- Prebuilt UMD bundle (not the package main); avoids Node `process` in Vite’s optimizer. -->
+    <script src="/node_modules/mocha/mocha.js"></script>
+    <script src="/testem.js"></script>
+    <script>
+      mocha.setup("bdd");
     </script>
   </head>
   <body>
@@ -31,12 +24,6 @@
 
     <div id="mocha"></div>
 
-    <script type="module">
-      globalThis.mocha.setup("bdd");
-    </script>
-    <script src="/testem.js"></script>
-    <script type="module" src="tests/tests.js"></script>
-    <script type="module">
-      globalThis.mocha.run();
-    </script>
+    <script type="module" src="/tests/tests.js"></script>
+  </body>
 </html>

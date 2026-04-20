@@ -2,34 +2,22 @@
   "name": "Slit skirt",
   "layer_1": {
     "zPos": 20,
-    "male": "legs/skirts/slit/female/",
-    "female": "legs/skirts/slit/female/"
+    "male": "legs/skirts/slit/thin/",
+    "female": "legs/skirts/slit/thin/",
+    "teen": "legs/skirts/slit/thin/",
+    "pregnant": "legs/skirts/slit/thin/"
   },
-  "variants": [
-    "black",
-    "blue",
-    "bluegray",
-    "brown",
-    "charcoal",
-    "forest",
-    "gray",
-    "green",
-    "lavender",
-    "leather",
-    "maroon",
-    "navy",
-    "orange",
-    "pink",
-    "purple",
-    "red",
-    "rose",
-    "sky",
-    "slate",
-    "tan",
-    "teal",
-    "walnut",
-    "white",
-    "yellow"
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "climb",
+    "idle",
+    "emote"
   ],
   "credits": [
     {
@@ -52,5 +40,12 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "cloth",
+    "palettes": [
+      "ulpc",
+      "all.lpcr"
+    ]
+  },
   "type_name": "legs"
 }

@@ -8,16 +8,6 @@
     "muscular": "hat/helmet/xeon/adult/",
     "teen": "hat/helmet/xeon/adult/"
   },
-  "variants": [
-    "steel",
-    "iron",
-    "ceramic",
-    "brass",
-    "copper",
-    "bronze",
-    "silver",
-    "gold"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -40,9 +30,10 @@
   "credits": [
     {
       "file": "hat/helmet/xeon",
-      "notes": "",
+      "notes": "original version by Stephen Challener (Redshrike), color reduction by JaidynReiman",
       "authors": [
-        "Stephen Challener (Redshrike)"
+        "Stephen Challener (Redshrike)",
+        "JaidynReiman"
       ],
       "licenses": [
         "OGA-BY 3.0"
@@ -53,5 +44,13 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "metal",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "all.lpcr"
+    ]
+  },
   "type_name": "hat"
 }

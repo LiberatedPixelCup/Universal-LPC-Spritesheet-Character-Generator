@@ -1,5 +1,8 @@
 // Main entry point - initializes and mounts the Mithril application
 
+import "./vendor-globals.js";
+import "./install-item-metadata.js";
+
 // Import debug first so `window.DEBUG` is set before other modules run.
 import { debugLog, getDebugParam } from "./utils/debug.js";
 

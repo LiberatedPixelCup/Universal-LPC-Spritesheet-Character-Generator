@@ -5,8 +5,7 @@ import {
   loadImagesInParallel,
 } from "../../sources/canvas/load-image.js";
 
-describe("canvas/load-image.js", function () {
-  this.timeout(10000); // Extend timeout for image loading
+describe("canvas/load-image.js", () => {
   describe("loadImage", () => {
     it("should load an image successfully", async () => {
       const src = "/spritesheets/arms/bracers/female/hurt/brass.png";
@@ -81,4 +80,4 @@ describe("canvas/load-image.js", function () {
       });
     });
   });
-});
+}, 10_000);

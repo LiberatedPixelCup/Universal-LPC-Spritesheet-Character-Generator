@@ -74,6 +74,7 @@ export async function openHumanMaleSkintonePalette(page) {
     const row = tree.locator("div.tree-label").filter({
       has: page.getByText(exact, { exact: true }),
     });
+    row.first().evaluate((el) => (el.style.scrollMarginTop = "-12px"));
     await row.first().scrollIntoViewIfNeeded();
     await row.first().click();
   };
@@ -86,6 +87,7 @@ export async function openHumanMaleSkintonePalette(page) {
   const skintone = tree
     .locator(".palette-recolor-item label")
     .filter({ hasText: /^Skintone$/ });
+  skintone.evaluate((el) => (el.style.scrollMarginTop = "-12px"));
   await skintone.scrollIntoViewIfNeeded();
   await skintone.click();
 
@@ -113,21 +115,27 @@ export async function closeSkintonePaletteModal(page) {
  */
 export async function openLicenseAnimationAdvancedAndSearchArm(page) {
   const licenseCol = page.locator("div.filters-column").first();
-  await licenseCol.locator("div.tree-label").first().scrollIntoViewIfNeeded();
-  await licenseCol.locator("div.tree-label").first().click();
+  const licenseTreeLabel = licenseCol.locator("div.tree-label").first();
+  licenseTreeLabel.evaluate((el) => (el.style.scrollMarginTop = "-12px"));
+  await licenseTreeLabel.scrollIntoViewIfNeeded();
+  await licenseTreeLabel.click();
 
   const animCol = page.locator("div.filters-column").nth(1);
-  await animCol.locator("div.tree-label").first().scrollIntoViewIfNeeded();
-  await animCol.locator("div.tree-label").first().click();
+  const animTreeLabel = animCol.locator("div.tree-label").first();
+  animTreeLabel.evaluate((el) => (el.style.scrollMarginTop = "-12px"));
+  await animTreeLabel.scrollIntoViewIfNeeded();
+  await animTreeLabel.click();
 
   const advancedHeader = page.locator(".collapsible-header").filter({
     has: page.getByRole("heading", { name: "Advanced Tools", exact: true }),
   });
+  advancedHeader.evaluate((el) => (el.style.scrollMarginTop = "-12px"));
   await advancedHeader.scrollIntoViewIfNeeded();
   await advancedHeader.click();
   await page.locator("#customFileInput").waitFor({ state: "visible" });
 
   const search = page.locator("input[type=search][placeholder=Search]");
+  search.evaluate((el) => (el.style.scrollMarginTop = "-12px"));
   await search.scrollIntoViewIfNeeded();
   await search.fill("arm");
   await page

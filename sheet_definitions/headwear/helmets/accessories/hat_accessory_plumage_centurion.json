@@ -8,32 +8,6 @@
     "muscular": "hat/accessory/plumage_centurion/adult/",
     "teen": "hat/accessory/plumage_centurion/adult/"
   },
-  "variants": [
-    "black",
-    "blue",
-    "bluegray",
-    "brown",
-    "charcoal",
-    "forest",
-    "gray",
-    "green",
-    "lavender",
-    "leather",
-    "maroon",
-    "navy",
-    "orange",
-    "pink",
-    "purple",
-    "red",
-    "rose",
-    "sky",
-    "slate",
-    "tan",
-    "teal",
-    "walnut",
-    "white",
-    "yellow"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -72,5 +46,24 @@
       ]
     }
   ],
+  "recolors": {
+    "color_1": {
+      "material": "cloth",
+      "base": "brown",
+      "palettes": [
+        "ulpc",
+        "all.lpcr"
+      ]
+    },
+    "color_2": {
+      "type_name": "hat_accessory_secondary",
+      "label": "Legion Pattern",
+      "material": "cloth",
+      "palettes": [
+        "ulpc",
+        "all.lpcr"
+      ]
+    }
+  },
   "type_name": "accessory"
 }

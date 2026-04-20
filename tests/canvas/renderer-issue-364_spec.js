@@ -41,9 +41,7 @@ const ISSUE_364_METADATA = {
   },
 };
 
-describe("canvas/renderer.js issue #364 (addedCustomAnimations export)", function () {
-  this.timeout(15000);
-
+describe("canvas/renderer.js issue #364 (addedCustomAnimations export)", () => {
   let sandbox;
   let previousItemMetadata;
 
@@ -107,4 +105,4 @@ describe("canvas/renderer.js issue #364 (addedCustomAnimations export)", functio
       }
     }
   });
-});
+}, 15_000);

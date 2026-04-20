@@ -2,35 +2,21 @@
   "name": "Overskirt",
   "layer_1": {
     "zPos": 35,
-    "female": "legs/skirts/overskirt/female/",
-    "pregnant": "legs/skirts/overskirt/female/",
-    "teen": "legs/skirts/overskirt/female/"
+    "female": "legs/skirts/overskirt/thin/",
+    "pregnant": "legs/skirts/overskirt/thin/",
+    "teen": "legs/skirts/overskirt/thin/"
   },
-  "variants": [
-    "black",
-    "blue",
-    "bluegray",
-    "brown",
-    "charcoal",
-    "forest",
-    "gray",
-    "green",
-    "lavender",
-    "leather",
-    "maroon",
-    "navy",
-    "orange",
-    "pink",
-    "purple",
-    "red",
-    "rose",
-    "sky",
-    "slate",
-    "tan",
-    "teal",
-    "walnut",
-    "white",
-    "yellow"
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "climb",
+    "idle",
+    "emote"
   ],
   "credits": [
     {
@@ -53,5 +39,12 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "cloth",
+    "palettes": [
+      "ulpc",
+      "all.lpcr"
+    ]
+  },
   "type_name": "apron"
 }

@@ -23,16 +23,15 @@ jobs:
         with:
           node-version: "22"
 
-
       - name: Install Chrome
         uses: browser-actions/setup-chrome@v2.1.1
         with:
-          chrome-version: 'latest'
+          chrome-version: "latest"
 
       - name: Install Firefox
         uses: browser-actions/setup-firefox@v1.7.1
         with:
-          firefox-version: 'latest'
+          firefox-version: "latest"
 
       - name: Install Xvfb
         run: sudo apt-get install -y xvfb

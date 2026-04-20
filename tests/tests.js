@@ -1,3 +1,4 @@
+import "./vitest-setup.js";
 import { config } from "chai";
 
 config.includeStack = true;
@@ -31,3 +32,5 @@ import "./utils/zip-export-ui-suspend_spec.js";
 import "./state/zip_spec.js";
 import "./state/zip-issue-382_spec.js";
 import "./performance-profiler_spec.js";
+
+mocha.run();

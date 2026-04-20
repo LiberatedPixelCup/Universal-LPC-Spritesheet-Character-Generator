@@ -1,10 +1,7 @@
 import { expect } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import sinon from "sinon";
-import {
-  downloadFile,
-  downloadAsPNG,
-} from "../../../sources/canvas/download.js";
+import { downloadFile, downloadAsPNG } from "../../sources/canvas/download.js";
 
 describe("canvas/download.js", () => {
   describe("downloadFile", () => {

@@ -2,35 +2,21 @@
   "name": "Belle skirt",
   "layer_1": {
     "zPos": 20,
-    "female": "legs/skirts/belle/female/",
-    "pregnant": "legs/skirts/belle/female/",
-    "teen": "legs/skirts/belle/female/"
+    "female": "legs/skirts/belle/thin/",
+    "pregnant": "legs/skirts/belle/thin/",
+    "teen": "legs/skirts/belle/thin/"
   },
-  "variants": [
-    "black",
-    "blue",
-    "bluegray",
-    "brown",
-    "charcoal",
-    "forest",
-    "gray",
-    "green",
-    "lavender",
-    "leather",
-    "maroon",
-    "navy",
-    "orange",
-    "pink",
-    "purple",
-    "red",
-    "rose",
-    "sky",
-    "slate",
-    "tan",
-    "teal",
-    "walnut",
-    "white",
-    "yellow"
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "climb",
+    "idle",
+    "emote"
   ],
   "credits": [
     {
@@ -53,5 +39,12 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "cloth",
+    "palettes": [
+      "ulpc",
+      "all.lpcr"
+    ]
+  },
   "type_name": "legs"
 }

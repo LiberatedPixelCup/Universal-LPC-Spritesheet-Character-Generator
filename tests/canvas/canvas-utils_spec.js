@@ -8,7 +8,7 @@ import {
   getZPos,
   hasContentInRegion,
   image2canvas,
-} from "../../../sources/canvas/canvas-utils.js";
+} from "../../sources/canvas/canvas-utils.js";
 
 function createCanvas(width, height) {
   const canvas = document.createElement("canvas");

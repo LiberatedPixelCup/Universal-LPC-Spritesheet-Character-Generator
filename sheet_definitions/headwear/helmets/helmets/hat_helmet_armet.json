@@ -8,16 +8,6 @@
     "muscular": "hat/helmet/armet/adult/",
     "teen": "hat/helmet/armet/adult/"
   },
-  "variants": [
-    "steel",
-    "iron",
-    "ceramic",
-    "brass",
-    "copper",
-    "bronze",
-    "silver",
-    "gold"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -40,10 +30,11 @@
   "credits": [
     {
       "file": "hat/helmet/armet",
-      "notes": "previously called helmet/armor",
+      "notes": "previously called helmet/armor, original version by Johannes Sjölund (wulax), adjustments by bluecarrot16, color reduction by JaidynReiman",
       "authors": [
         "bluecarrot16",
-        "Johannes Sjölund (wulax)"
+        "Johannes Sjölund (wulax)",
+        "JaidynReiman"
       ],
       "licenses": [
         "OGA-BY 3.0",
@@ -56,5 +47,13 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "metal",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "all.lpcr"
+    ]
+  },
   "type_name": "hat"
 }
