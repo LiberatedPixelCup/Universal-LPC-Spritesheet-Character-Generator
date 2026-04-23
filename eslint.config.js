@@ -1,5 +1,6 @@
 /* Run: npm i && npx eslint . (or enable ESLint in your IDE) */
 const js = require("@eslint/js");
+const tseslint = require("typescript-eslint");
 const babelParser = require("@babel/eslint-parser");
 const globals = require("globals");
 const eslintPluginPrettierRecommended = require("eslint-plugin-prettier/recommended");
@@ -11,6 +12,25 @@ const sharedParserOptions = {
 
 const commonRules = {
   "no-unused-vars": [
+    "error",
+    {
+      argsIgnorePattern: "^_",
+      varsIgnorePattern: "^_",
+      caughtErrorsIgnorePattern: "^_",
+    },
+  ],
+  "no-console": [
+    "error",
+    {
+      allow: ["error"],
+    },
+  ],
+};
+
+// Same intent as commonRules, but uses the typescript-eslint version of
+// no-unused-vars which understands type-only imports.
+const commonRulesTs = {
+  "@typescript-eslint/no-unused-vars": [
     "error",
     {
       argsIgnorePattern: "^_",
@@ -38,6 +58,13 @@ module.exports = [
     ],
   },
   js.configs.recommended,
+  // Scope typescript-eslint's recommended preset to .ts files only so it
+  // doesn't apply TS-only rules (e.g. no-unused-expressions stricter than
+  // the core one, which would reject chai's `expect(x).to.be.true`) to .js.
+  ...tseslint.configs.recommended.map((cfg) => ({
+    ...cfg,
+    files: ["**/*.ts"],
+  })),
   {
     files: ["**/*.js"],
     languageOptions: {
@@ -68,6 +95,17 @@ module.exports = [
     },
   },
   {
+    files: ["sources/**/*.ts"],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.es2021,
+        m: "readonly",
+      },
+    },
+    rules: commonRulesTs,
+  },
+  {
     files: ["tests/**/*.js"],
     ignores: ["tests/visual/**"],
     languageOptions: {
@@ -82,6 +120,19 @@ module.exports = [
         m: "readonly",
       },
     },
+  },
+  {
+    files: ["tests/**/*.ts"],
+    ignores: ["tests/visual/**"],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.es2021,
+        ...globals.mocha,
+        m: "readonly",
+      },
+    },
+    rules: commonRulesTs,
   },
   {
     files: ["tests/visual/**/*.js"],
@@ -144,6 +195,6 @@ module.exports = [
   },
   {
     ...eslintPluginPrettierRecommended,
-    files: ["**/*.js"],
+    files: ["**/*.{js,ts}"],
   },
 ];

@@ -1,4 +1,5 @@
 {
+  "extends": "@tsconfig/strictest/tsconfig.json",
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
@@ -6,16 +7,28 @@
     "lib": ["esnext", "dom", "dom.iterable"],
     "allowJs": true,
     "checkJs": false,
-    "strict": true,
     "noEmit": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": false,
-    "useDefineForClassFields": true
+
+    // Flags from @tsconfig/strictest we deliberately turn OFF:
+
+    // noUncheckedIndexedAccess — pixel-index loops (e.g. `pix[i+3]` in
+    // mask.ts) and layer/frame array access would need a guard or `!` at
+    // every site. Noise > signal for this codebase.
+    // TODO: revisit once we have migrated to ts completely
+    "noUncheckedIndexedAccess": false,
+
+    // exactOptionalPropertyTypes — interacts awkwardly with JSON and
+    // external data; the distinction between `x?: T` and `x: T | undefined`
+    // rarely matters in practice here.
+    "exactOptionalPropertyTypes": false,
+
+    // noPropertyAccessFromIndexSignature — noisy on config-bag patterns
+    // (state, metadata objects) that use dotted access extensively.
+    // TODO: Revisit when the migration is done
+    "noPropertyAccessFromIndexSignature": false,
   },
-  "include": ["sources", "scripts", "vite", "tests"]
+  "include": ["sources", "scripts", "vite", "tests"],
 }
