@@ -1,7 +1,7 @@
 // Animation Filters component
 import { state } from "../../state/state.js";
 import { isItemAnimationCompatible } from "../../state/filters.js";
-import { ANIMATIONS } from "../../state/constants.js";
+import { ANIMATIONS } from "../../state/constants.ts";
 
 // Dependency injection for testability
 let deps = {

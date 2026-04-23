@@ -1,6 +1,6 @@
 import path from "path";
 import debugUtils from "../utils/debug.js";
-import { ANIMATIONS } from "../../sources/state/constants.js";
+import { ANIMATIONS } from "../../sources/state/constants.ts";
 import {
   categoryTree,
   csvList,

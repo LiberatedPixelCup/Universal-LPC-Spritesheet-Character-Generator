@@ -1,4 +1,4 @@
-import { FRAME_SIZE } from "../state/constants.js";
+import { FRAME_SIZE } from "../state/constants.ts";
 import { animationRowsLayout } from "../custom-animations.js";
 
 /**

@@ -1,6 +1,6 @@
 // Body type selector component (styled as tree category)
 import { state } from "../../state/state.js";
-import { BODY_TYPES } from "../../state/constants.js";
+import { BODY_TYPES } from "../../state/constants.ts";
 import { capitalize } from "../../utils/helpers.js";
 
 export const BodyTypeSelector = {

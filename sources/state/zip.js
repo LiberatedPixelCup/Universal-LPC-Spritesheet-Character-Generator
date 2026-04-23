@@ -3,7 +3,7 @@ import {
   ANIMATION_CONFIGS,
   FRAME_SIZE,
   DIRECTIONS,
-} from "./constants.js";
+} from "./constants.ts";
 import {
   extractAnimationFromCanvas,
   renderSingleItem,

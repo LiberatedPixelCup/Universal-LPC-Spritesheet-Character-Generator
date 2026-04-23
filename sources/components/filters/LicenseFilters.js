@@ -1,7 +1,7 @@
 // License Filters component
 import { state } from "../../state/state.js";
 import { isItemLicenseCompatible } from "../../state/filters.js";
-import { LICENSE_CONFIG } from "../../state/constants.js";
+import { LICENSE_CONFIG } from "../../state/constants.ts";
 
 // Dependency injection for testability
 let deps = {

@@ -10,7 +10,7 @@ import { get2DContext } from "./canvas-utils.js";
 import { state } from "../state/state.js";
 import { getLayersToLoad } from "../state/meta.js";
 import { getPalettesForItem, getTargetPalette } from "../state/palettes.js";
-import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../state/constants.js";
+import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../state/constants.ts";
 
 // Configuration flags
 let config = {

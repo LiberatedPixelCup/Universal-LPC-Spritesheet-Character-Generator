@@ -12,7 +12,7 @@ import {
   FRAME_SIZE,
   ANIMATION_OFFSETS,
   ANIMATION_CONFIGS,
-} from "../state/constants.js";
+} from "../state/constants.ts";
 import { customAnimations, customAnimationBase } from "../custom-animations.js";
 import {
   setCurrentCustomAnimations,

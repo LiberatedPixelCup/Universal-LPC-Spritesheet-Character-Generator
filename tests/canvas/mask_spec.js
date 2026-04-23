@@ -1,7 +1,6 @@
 import { expect } from "chai";
 import { describe, it, beforeEach } from "mocha-globals";
-import sinon from "sinon";
-import { applyTransparencyMaskToCanvas } from "../../sources/canvas/mask.js";
+import { applyTransparencyMaskToCanvas } from "../../sources/canvas/mask.ts";
 
 function createCanvas(width, height) {
   const canvas = document.createElement("canvas");
@@ -16,14 +15,6 @@ describe("applyTransparencyMaskToCanvas", () => {
   beforeEach(() => {
     canvas = createCanvas(100, 100);
     ctx = canvas.getContext("2d", { willReadFrequently: true });
-  });
-
-  it("should log an error if canvas is not initialized", () => {
-    const consoleErrorStub = sinon.stub(console, "error");
-    applyTransparencyMaskToCanvas(null, ctx);
-    expect(consoleErrorStub.calledOnceWith("Canvas not initialized")).to.be
-      .true;
-    consoleErrorStub.restore();
   });
 
   it("should make pixels with RGB (255, 44, 230) fully transparent", () => {

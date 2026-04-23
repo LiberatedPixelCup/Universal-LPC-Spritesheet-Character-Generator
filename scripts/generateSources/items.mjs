@@ -3,7 +3,7 @@ import debugUtils from "../utils/debug.js";
 import {
   ANIMATION_DEFAULTS,
   BODY_TYPES,
-} from "../../sources/state/constants.js";
+} from "../../sources/state/constants.ts";
 import { writeAliases } from "./aliases.mjs";
 import { normalizeRecolors } from "./item-helper.mjs";
 import {

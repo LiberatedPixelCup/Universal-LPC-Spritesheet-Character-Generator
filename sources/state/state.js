@@ -1,5 +1,5 @@
 // Global state and state operations
-import { LICENSE_CONFIG, ANIMATIONS, BODY_TYPES } from "./constants.js";
+import { LICENSE_CONFIG, ANIMATIONS, BODY_TYPES } from "./constants.ts";
 import { syncSelectionsToHash, loadSelectionsFromHash } from "./hash.js";
 import { renderCharacter } from "../canvas/renderer.js";
 

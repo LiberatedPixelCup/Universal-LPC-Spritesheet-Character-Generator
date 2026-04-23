@@ -1,5 +1,5 @@
 import "../install-item-metadata.js";
-import { ANIMATIONS } from "./constants.js";
+import { ANIMATIONS } from "./constants.ts";
 import { getHashParamsforSelections } from "./hash.js";
 import { variantToFilename, es6DynamicTemplate } from "../utils/helpers.js";
 import { debugLog } from "../utils/debug.js";

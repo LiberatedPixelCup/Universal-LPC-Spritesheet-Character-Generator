@@ -1,8 +1,7 @@
-export function applyTransparencyMaskToCanvas(canvas, ctx) {
-  if (!canvas) {
-    console.error("Canvas not initialized");
-    return;
-  }
+export function applyTransparencyMaskToCanvas(
+  canvas: HTMLCanvasElement,
+  ctx: CanvasRenderingContext2D,
+): void {
   const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height),
     pix = imgData.data,
     n = pix.length;

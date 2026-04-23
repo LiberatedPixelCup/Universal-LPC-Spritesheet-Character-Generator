@@ -1,6 +1,6 @@
 // Animation Preview component
 import { state } from "../../state/state.js";
-import { ANIMATIONS } from "../../state/constants.js";
+import { ANIMATIONS } from "../../state/constants.ts";
 import { CollapsibleSection } from "../CollapsibleSection.js";
 import {
   setPreviewAnimation,

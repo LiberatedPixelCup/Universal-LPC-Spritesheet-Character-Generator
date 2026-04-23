@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { drawRecolorPreview } from "../../canvas/palette-recolor.js";
 import { state, getSelectionGroup } from "../../state/state.js";
 import { ucwords } from "../../utils/helpers.js";
-import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.js";
+import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
 
 export const PaletteSelectModal = {
   view: function (vnode) {

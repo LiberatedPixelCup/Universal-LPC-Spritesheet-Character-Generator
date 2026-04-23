@@ -1,5 +1,5 @@
 import { customAnimationBase, customAnimations } from "../custom-animations.js";
-import { LICENSE_CONFIG, ANIMATIONS } from "./constants.js";
+import { LICENSE_CONFIG, ANIMATIONS } from "./constants.ts";
 import { state } from "./state.js";
 
 // Dependency injection for testability

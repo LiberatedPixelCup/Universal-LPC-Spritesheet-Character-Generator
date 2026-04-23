@@ -1,7 +1,7 @@
 import { canvas } from "./renderer.js";
 import { drawTransparencyBackground, get2DContext } from "./canvas-utils.js";
-import { FRAME_SIZE } from "../state/constants.js";
-import { applyTransparencyMaskToCanvas } from "./mask.js";
+import { FRAME_SIZE } from "../state/constants.ts";
+import { applyTransparencyMaskToCanvas } from "./mask.ts";
 import {
   activeCustomAnimation,
   getCustomAnimations,

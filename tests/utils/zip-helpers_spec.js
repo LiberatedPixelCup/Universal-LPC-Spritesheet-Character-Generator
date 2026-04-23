@@ -20,7 +20,7 @@ import {
   zipExportTimestamp,
   zipGenerateBlobWithProfiler,
 } from "../../sources/utils/zip-helpers.js";
-import { DIRECTIONS } from "../../sources/state/constants.js";
+import { DIRECTIONS } from "../../sources/state/constants.ts";
 
 function createCanvas(width, height) {
   const canvas = document.createElement("canvas");

@@ -1,4 +1,7 @@
 {
+  "name": "universal-lpc-spritesheet-character-generator",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "prebuild": "rimraf \"dist/!(spritesheets)\"",
@@ -8,6 +11,7 @@
     "serve:open": "vite --open",
     "lint": "eslint . --cache",
     "lint:fix": "eslint . --cache --fix",
+    "type-check": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "validate-site-sources": "node scripts/generate_sources.mjs",
@@ -33,6 +37,7 @@
     "@babel/eslint-parser": "^7.28.5",
     "@eslint/js": "^9.39.4",
     "@playwright/test": "^1.59.0",
+    "@types/node": "^25.6.0",
     "chai": "^6.2.2",
     "classnames": "^2.5.1",
     "eslint": "^9.39.4",
@@ -49,11 +54,12 @@
     "serve": "^14.2.6",
     "sinon": "^21.1.2",
     "testem": "^3.20.0",
+    "typescript": "^6.0.3",
     "vite": "^8.0.8",
-    "vite-plugin-testem": "^1.0.1",
     "vite-multiple-assets": "^2.2.6",
     "vite-plugin-cp": "^6.0.3",
-    "vite-plugin-run": "^0.8.0"
+    "vite-plugin-run": "^0.8.0",
+    "vite-plugin-testem": "^1.0.1"
   },
   "overrides": {
     "mocha": {

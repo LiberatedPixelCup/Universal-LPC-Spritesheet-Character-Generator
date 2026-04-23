@@ -8,7 +8,7 @@ import {
   processItemCredits,
   sortCsvList,
 } from "../../../../scripts/generateSources/credits.mjs";
-import { ANIMATIONS } from "../../../../sources/state/constants.js";
+import { ANIMATIONS } from "../../../../sources/state/constants.ts";
 import {
   categoryTree,
   csvList,
