@@ -17,6 +17,8 @@ const stateSpecs = fs.existsSync(stateSpecDir)
   : [];
 
 const args = [
+  "--import",
+  "tsx",
   "--test",
   "tests/node/scripts/generate_sources_spec.js",
   ...moduleSpecs,
