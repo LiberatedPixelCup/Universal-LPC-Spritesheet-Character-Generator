@@ -61,6 +61,10 @@ export default defineConfig(({ command }) => ({
   },
   css: {
     target: false,
+    preprocessorOptions: {
+      scss: { quietDeps: true },
+      sass: { quietDeps: true },
+    },
   },
   plugins: [
     vitePluginPreviewServeDistSpritesheets(),
