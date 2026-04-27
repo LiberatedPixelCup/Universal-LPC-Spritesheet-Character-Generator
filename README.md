@@ -1,5 +1,4 @@
-LPC Spritesheet Character Generator
-=============================================
+# LPC Spritesheet Character Generator
 
 #### Translations
 
@@ -67,14 +66,14 @@ Make sure this credits file is accessible from within your game or app and can b
 
 If you don't want to _show_ the entire credits file directly, should include a statement like this on your credits screen:
 
-> - Sprites by: Johannes Sjölund (wulax), Michael Whitlock (bigbeargames), Matthew Krohn (makrohn), Nila122, David Conway Jr. (JaidynReiman), Carlo Enrico Victoria (Nemisys), Thane Brimhall (pennomi), laetissima, bluecarrot16, Luke Mehl, Benjamin K. Smith (BenCreating), MuffinElZangano, Durrani, kheftel, Stephen Challener (Redshrike), William.Thompsonj, Marcel van de Steeg (MadMarcel), TheraHedwig, Evert, Pierre Vigier (pvigier), Eliza Wyatt (ElizaWy), Johannes Sjölund (wulax), Sander Frenken (castelonia), dalonedrau, Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Barbara Riviera, Joe White, Mandi Paugh, Shaun Williams, Daniel Eddeland (daneeklu), Emilio J. Sanchez-Sierra, drjamgo, gr3yh47, tskaufma, Fabzy, Yamilian, Skorpio, kheftel, Tuomo Untinen (reemax), Tracy, thecilekli, LordNeo, Stafford McIntyre, PlatForge project, DCSS authors, DarkwallLKE, Charles Sanchez (CharlesGabriel), Radomir Dopieralski, macmanmatty, Cobra Hubbard (BlueVortexGames), Inboxninja, kcilds/Rocetti/Eredah, Napsio (Vitruvian Studio), The Foreman, AntumDeluge
+> - Sprites by: Johannes Sj枚lund (wulax), Michael Whitlock (bigbeargames), Matthew Krohn (makrohn), Nila122, David Conway Jr. (JaidynReiman), Carlo Enrico Victoria (Nemisys), Thane Brimhall (pennomi), laetissima, bluecarrot16, Luke Mehl, Benjamin K. Smith (BenCreating), MuffinElZangano, Durrani, kheftel, Stephen Challener (Redshrike), William.Thompsonj, Marcel van de Steeg (MadMarcel), TheraHedwig, Evert, Pierre Vigier (pvigier), Eliza Wyatt (ElizaWy), Johannes Sj枚lund (wulax), Sander Frenken (castelonia), dalonedrau, Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Barbara Riviera, Joe White, Mandi Paugh, Shaun Williams, Daniel Eddeland (daneeklu), Emilio J. Sanchez-Sierra, drjamgo, gr3yh47, tskaufma, Fabzy, Yamilian, Skorpio, kheftel, Tuomo Untinen (reemax), Tracy, thecilekli, LordNeo, Stafford McIntyre, PlatForge project, DCSS authors, DarkwallLKE, Charles Sanchez (CharlesGabriel), Radomir Dopieralski, macmanmatty, Cobra Hubbard (BlueVortexGames), Inboxninja, kcilds/Rocetti/Eredah, Napsio (Vitruvian Studio), The Foreman, AntumDeluge
 > - Sprites contributed as part of the Liberated Pixel Cup project from OpenGameArt.org: http://opengameart.org/content/lpc-collection
 > - License: Creative Commons Attribution-ShareAlike 3.0 (CC-BY-SA 3.0) <http://creativecommons.org/licenses/by-sa/3.0/>
 > - Detailed credits: [LINK TO CREDITS.CSV FILE]
 
 **For additional information on the licensing and attribution requirement, please refer here on [OpenGameArt.org](https://opengameart.org/content/faq#q-proprietary).**
 
-### [Contributing](CONTRIBUTING.md) ⤴
+### [Contributing](CONTRIBUTING.md) 猡?
 
 ### Animation Frame Guide
 
@@ -91,7 +90,7 @@ The UI is built with [Vite](https://vitejs.dev/). Use a dev server rather than o
 1. Run **`npm install`** once.
 2. Start the app with **`npm run dev`** (default **http://localhost:5173**) or **`npm run serve:open`** to open it in your default browser.
 
-For a **production-like** build locally, run **`npm run build`** then **`npm run preview`** (Vite’s default preview port is **4173**; the dev server uses **5173** by default). To use another port, pass Vite’s **`--port`** flag (for example `npm run dev -- --port 3000`).
+For a **production-like** build locally, run **`npm run build`** then **`npm run preview`** (Vite鈥檚 default preview port is **4173**; the dev server uses **5173** by default). To use another port, pass Vite鈥檚 **`--port`** flag (for example `npm run dev -- --port 3000`).
 
 Other local servers (Python `http.server`, `npx serve`, nginx, and so on) can serve the built tree for experimentation, but **`npm run dev`** is what this repository is set up for day to day.
 
@@ -158,7 +157,7 @@ If an engine is not listed above, try Google. However, it is very likely that yo
 - **Format:** `npm run format:check` (verify) or `npm run format` (apply)
 - **Tests:** `npm test` (Node checks plus browser tests). Visual regression: `npm run test:visual`. Details are in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-**Generated files:** [CREDITS.csv](CREDITS.csv) and the z-position CSV under **`scripts/zPositioning/`** are updated by **`npm run validate-site-sources`**. **Vite** runs the metadata plugin; when inputs or **`dist/`** output warrant it, it can refresh those CSVs and always writes the **five** modules under **`dist/`** (`index-`, `palette-`, `item-`, `credits-`, `layers-metadata.js`). The app registers them in **`sources/state/catalog.js`**. The **`dist/`** tree is gitignored—do not edit generated files by hand. **`npm run dev`** pretty-prints embedded JSON; **`npm run build`** writes compact (see [PR #432](https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator/pull/432)). See [CONTRIBUTING.md](CONTRIBUTING.md) for the full workflow, catalog API, and staged loading.
+**Generated files:** [CREDITS.csv](CREDITS.csv) and the z-position CSV under **`scripts/zPositioning/`** are updated by **`npm run validate-site-sources`**. **Vite** runs the metadata plugin; when inputs or **`dist/`** output warrant it, it can refresh those CSVs and always writes the **five** modules under **`dist/`** (`index-`, `palette-`, `item-`, `credits-`, `layers-metadata.js`). The app registers them in **`sources/state/catalog.js`**. The **`dist/`** tree is gitignored鈥攄o not edit generated files by hand. **`npm run dev`** pretty-prints embedded JSON; **`npm run build`** writes compact (see [PR #432](https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator/pull/432)). See [CONTRIBUTING.md](CONTRIBUTING.md) for the full workflow, catalog API, and staged loading.
 
 #### Performance Profiling
 
@@ -168,7 +167,7 @@ The generator includes built-in performance profiling tools to help identify ren
 
 - Profiler is automatically enabled when running on `localhost`
 - Override with `?debug=true` or `?debug=false` in the URL
-- View metrics in Chrome DevTools → Performance tab
+- View metrics in Chrome DevTools 鈫?Performance tab
 - Run `profiler.report()` in the console for a summary
 
 **What it tracks:**
