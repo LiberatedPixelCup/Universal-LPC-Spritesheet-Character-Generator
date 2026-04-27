@@ -20,7 +20,9 @@ import {
   registerFromIndexModule,
   registerFromItemModule,
   registerFromLayersModule,
+  registerFromPaletteModule,
   resetCatalogForTests,
+  stages,
 } from "../../sources/state/catalog.js";
 import { restoreAppCatalogAfterTest } from "../browser-catalog-fixture.js";
 
@@ -171,5 +173,46 @@ describe("state/catalog.js", () => {
     expect(getItemLayers("boots1")).to.deep.equal(
       fixtureGlobals.itemMetadata.boots1.layers,
     );
+  });
+
+  describe("stages.<chunk>.resolved", () => {
+    it("starts false for every stage", () => {
+      expect(stages.index.resolved).to.be.false;
+      expect(stages.lite.resolved).to.be.false;
+      expect(stages.credits.resolved).to.be.false;
+      expect(stages.palette.resolved).to.be.false;
+      expect(stages.layers.resolved).to.be.false;
+    });
+
+    it("flips true once the matching register* runs", () => {
+      registerFromIndexModule({
+        aliasMetadata: {},
+        categoryTree: { items: [], children: {} },
+        metadataIndexes: { byTypeName: {}, hashMatch: {} },
+      });
+      expect(stages.index.resolved).to.be.true;
+      expect(stages.lite.resolved).to.be.false;
+
+      registerFromItemModule({ itemMetadata: {} });
+      expect(stages.lite.resolved).to.be.true;
+
+      registerFromCreditsModule({ itemCredits: {} });
+      expect(stages.credits.resolved).to.be.true;
+
+      registerFromLayersModule({ itemLayers: {} });
+      expect(stages.layers.resolved).to.be.true;
+
+      registerFromPaletteModule({
+        paletteMetadata: { versions: {}, materials: {} },
+      });
+      expect(stages.palette.resolved).to.be.true;
+    });
+
+    it("resets to false after resetCatalogForTests()", () => {
+      registerFromItemModule({ itemMetadata: { a: { name: "A" } } });
+      expect(stages.lite.resolved).to.be.true;
+      resetCatalogForTests();
+      expect(stages.lite.resolved).to.be.false;
+    });
   });
 });

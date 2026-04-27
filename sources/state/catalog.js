@@ -15,12 +15,16 @@ function makeStage() {
   const promise = new Promise((r) => {
     resolveFn = r;
   });
-  return {
+  /** @type {{ promise: Promise<void>, resolved: boolean, resolve: () => void }} */
+  const stage = {
     promise,
+    resolved: false,
     resolve: () => {
+      stage.resolved = true;
       resolveFn?.();
     },
   };
+  return stage;
 }
 
 let indexStage = makeStage();
@@ -72,6 +76,29 @@ export const catalogReady = {
       paletteStage.promise,
       layersStage.promise,
     ]).then(() => {});
+  },
+};
+
+/**
+ * Synchronous resolution flags for each stage (mirrors `catalogReady` but without awaiting).
+ * Read by `catalog-typed.ts` to discriminate `Result.Ok` vs `Err({kind:"loading"})`.
+ * Recreated alongside the stages on `resetCatalogForTests()`.
+ */
+export const stages = {
+  get index() {
+    return indexStage;
+  },
+  get lite() {
+    return liteStage;
+  },
+  get credits() {
+    return creditsStage;
+  },
+  get palette() {
+    return paletteStage;
+  },
+  get layers() {
+    return layersStage;
   },
 };
 
@@ -297,6 +324,13 @@ export function loadCatalogFromFixtures(fixtureGlobals) {
   registerFromLayersModule({ itemLayers });
 }
 
+// TODO: Replace module-level singletons with a `createCatalog()` factory + DI.
+// This reset exists only because catalog state lives at module scope; tests
+// have to scrub it between cases. With a factory, each test would construct
+// its own instance, consumers would receive the catalog via context (e.g. a
+// Mithril provider component or `state.catalog`) instead of importing it
+// directly, and this function would disappear. Defer until after the
+// Result-API migration lands so the consumer surface is already typed.
 export function resetCatalogForTests() {
   indexStage = makeStage();
   liteStage = makeStage();

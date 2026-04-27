@@ -42,6 +42,7 @@
     "classnames": "^2.5.1",
     "jszip": "^3.10.1",
     "mithril": "^2.3.8",
+    "neverthrow": "^8.2.0",
     "tinygesture": "^3.0.0"
   },
   "devDependencies": {
