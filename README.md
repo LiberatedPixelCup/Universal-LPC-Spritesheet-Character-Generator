@@ -82,6 +82,8 @@ You can look at [the Animation Guide in Eliza's repository](https://github.com/E
 
 Also, each animation has a frame cycle documented which you can see next to the animation preview.
 
+The classic LPC frame size is `64x64`, but some weapon and oversize animations extend beyond that box. If you export or cut frames for those animations, choose the matching oversize frame dimensions instead of assuming every frame is `64x64`.
+
 ### Run This Project Locally for Development
 
 The UI is built with [Vite](https://vitejs.dev/). Use a dev server rather than opening `index.html` as a `file://` URL, since ES modules and asset paths expect HTTP and modern browsers restrict file URLs.
