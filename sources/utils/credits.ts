@@ -1,29 +1,9 @@
 // Credit collection and formatting utilities
 
-import * as catalog from "../state/catalog.js";
+import { getItemMerged, type Credit } from "../state/catalog-typed.ts";
 import { state } from "../state/state.js";
 import { replaceInPath } from "../state/path.js";
 import { variantToFilename } from "../utils/helpers.ts";
-
-// TODO: the shapes below duplicate data coming from catalog (itemMeta with
-// layers/credits/animations) and from the selection state. When catalog.js
-// and state.js convert to .ts, delete these local narrowings and use the
-// real exported types.
-type Credit = {
-  file: string;
-  authors: string[];
-  licenses: string[];
-  urls: string[];
-  notes?: string;
-};
-
-type LayerShape = Record<string, string | undefined>;
-
-type ItemMergedForCredits = {
-  credits?: Credit[];
-  layers?: Record<string, LayerShape | undefined>;
-  animations?: string[];
-};
 
 type Selection = {
   itemId: string;
@@ -45,11 +25,10 @@ export function getAllCredits(
 
   for (const [, selection] of Object.entries(selections)) {
     const { itemId } = selection;
-    const meta = catalog.getItemMerged(itemId) as
-      | ItemMergedForCredits
-      | undefined;
-
-    if (!meta || !meta.credits) continue;
+    const metaResult = getItemMerged(itemId);
+    if (metaResult.isErr()) continue;
+    const meta = metaResult.value;
+    if (meta.credits.length === 0) continue;
 
     // Build set of actual file paths being used for this item
     const usedPaths = new Set<string>();

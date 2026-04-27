@@ -4,7 +4,7 @@ import {
   FRAME_SIZE,
   DIRECTIONS,
 } from "./constants.ts";
-import * as catalog from "./catalog.js";
+import { getItemMerged } from "./catalog-typed.ts";
 import {
   extractAnimationFromCanvas,
   renderSingleItem,
@@ -365,8 +365,11 @@ export const exportSplitItemAnimations = async (deps = {}) => {
       // Export each item for this animation
       for (const [, selection] of Object.entries(state.selections)) {
         const { itemId, variant, name } = selection;
-        const meta = catalog.getItemMerged(itemId);
-        if (!meta || !meta.animations.includes(anim.value)) {
+        const metaResult = getItemMerged(itemId);
+        if (
+          metaResult.isErr() ||
+          !metaResult.value.animations.includes(anim.value)
+        ) {
           debugLog(
             "Skipping item ",
             itemId,

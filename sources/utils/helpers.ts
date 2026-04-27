@@ -1,18 +1,6 @@
 // Pure utility functions with minimal catalog reads for tree search
-import * as catalog from "../state/catalog.js";
-
-// TODO: catalog.js currently returns `object | undefined` from
-// getItemLite (JSDoc-erased shape). When catalog.js converts to .ts
-// and the generator output shapes it manages are typed, delete this
-// local narrowing and use the real exported type instead.
-type ItemLiteShape = { name?: string };
-
-// Tree shape used by nodeHasMatches. Recursive structure mirrors how
-// categoryTree nodes are organized in the generator output.
-type CategoryTreeNode = {
-  items?: string[];
-  children?: Record<string, CategoryTreeNode>;
-};
+import { stages } from "../state/catalog.js";
+import { getItemLite, type CategoryTreeNode } from "../state/catalog-typed.ts";
 
 /**
  * Simple ES6 template string replacement
@@ -57,17 +45,19 @@ export function nodeHasMatches(node: CategoryTreeNode, query: string): boolean {
   if (!query || query.length < 2) return true;
 
   // Until lite metadata is registered we cannot match item names; keep nodes visible
-  if (node.items && node.items.length > 0 && !catalog.isLiteReady()) {
+  if (node.items && node.items.length > 0 && !stages.lite.resolved) {
     return true;
   }
 
   // Check if any items in this node match
   if (
     node.items &&
-    node.items.some((itemId) => {
-      const meta = catalog.getItemLite(itemId) as ItemLiteShape | undefined;
-      return meta?.name != null && matchesSearch(meta.name, query);
-    })
+    node.items.some((itemId) =>
+      getItemLite(itemId).match(
+        (meta) => matchesSearch(meta.name, query),
+        () => false,
+      ),
+    )
   ) {
     return true;
   }

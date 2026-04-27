@@ -1,6 +1,6 @@
 import { customAnimationBase, customAnimations } from "../custom-animations.ts";
 import { LICENSE_CONFIG, ANIMATIONS } from "./constants.ts";
-import * as catalog from "./catalog.js";
+import { getItemLite, getItemMerged } from "./catalog-typed.ts";
 import { state } from "./state.js";
 
 // Dependency injection for testability
@@ -96,8 +96,10 @@ export function getAllowedLicenses() {
 
 // Helper function to check if an item is compatible with selected licenses
 export function isItemLicenseCompatible(itemId) {
-  const meta = catalog.getItemMerged(itemId);
-  if (!meta || !meta.credits || meta.credits.length === 0) return true; // No license info = assume compatible
+  const result = getItemMerged(itemId);
+  if (result.isErr()) return true; // chunk loading or unknown id — assume compatible
+  const meta = result.value;
+  if (meta.credits.length === 0) return true; // No license info = assume compatible
 
   const allowedLicenses = getAllowedLicenses();
   if (allowedLicenses.length === 0) return false; // No licenses selected = nothing compatible
@@ -107,7 +109,7 @@ export function isItemLicenseCompatible(itemId) {
 
   // Check if item has at least one credit with a compatible license
   for (const credit of meta.credits) {
-    if (credit.licenses && credit.licenses.length > 0) {
+    if (credit.licenses.length > 0) {
       const hasCompatibleLicense = credit.licenses.some((license) =>
         allowedSet.has(license.trim()),
       );
@@ -120,7 +122,7 @@ export function isItemLicenseCompatible(itemId) {
 
 // Helper function to check if an item is compatible with selected animations
 export function isItemAnimationCompatible(itemId) {
-  const meta = catalog.getItemLite(itemId);
+  const meta = getItemLite(itemId).unwrapOr(null);
   return isNodeAnimationCompatible(meta);
 }
 

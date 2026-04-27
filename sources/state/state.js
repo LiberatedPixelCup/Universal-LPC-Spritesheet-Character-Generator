@@ -2,13 +2,13 @@
 import m from "mithril";
 import { LICENSE_CONFIG, ANIMATIONS, BODY_TYPES } from "./constants.ts";
 import { syncSelectionsToHash, loadSelectionsFromHash } from "./hash.js";
-import * as catalog from "./catalog.js";
+import { getItemMerged } from "./catalog-typed.ts";
 import { renderCharacter } from "../canvas/renderer.js";
 
 // Dependency injection for testability (see setStateDeps / resetStateDeps)
 function createDefaultStateDeps() {
   return {
-    getItemMetadata: (itemId) => catalog.getItemMerged(itemId),
+    getItemMetadata: (itemId) => getItemMerged(itemId).unwrapOr(null),
     selectDefaults,
     redraw: () => m.redraw(),
     syncSelectionsToHash,

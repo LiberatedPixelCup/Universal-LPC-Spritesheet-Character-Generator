@@ -2,7 +2,7 @@
  * Preview panel loading gate: S5 (layers) alone is not enough — layers can load before the
  * offscreen canvas exists or before the first bootstrap `renderCharacter` finishes.
  */
-import { isLayersReady } from "./catalog.js";
+import { stages } from "./catalog.js";
 import { isOffscreenCanvasInitialized } from "../canvas/renderer.js";
 import { state } from "./state.js";
 
@@ -14,7 +14,7 @@ export function getPreviewCanvasLoadingMessage() {
   if (state.isRenderingCharacter) {
     return null;
   }
-  if (!isLayersReady()) {
+  if (!stages.layers.resolved) {
     return "Loading layer data…";
   }
   if (!isOffscreenCanvasInitialized()) {

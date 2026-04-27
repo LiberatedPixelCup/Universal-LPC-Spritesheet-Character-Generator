@@ -1,14 +1,7 @@
 // Canvas utility functions
 
-import * as catalog from "../state/catalog.js";
+import { getItemMerged } from "../state/catalog-typed.ts";
 import { debugWarn } from "../utils/debug.js";
-
-// TODO: catalog.js currently returns `object | undefined` from
-// getItemMerged (JSDoc-erased shape). When catalog.js converts to .ts
-// and the generator output shapes it manages are typed, delete this
-// local narrowing and use the real exported type instead.
-type ItemLayerMeta = { zPos?: number };
-type ItemMergedShape = { layers?: Record<string, ItemLayerMeta | undefined> };
 
 /**
  * Encode a canvas as a PNG Blob (rejects if toBlob yields null or throws).
@@ -70,12 +63,11 @@ export function hasContentInRegion(
 }
 
 export function getZPos(itemId: string, layerNum: number = 1): number {
-  const meta = catalog.getItemMerged(itemId) as ItemMergedShape | undefined;
-  if (!meta) return 100;
+  const result = getItemMerged(itemId);
+  if (result.isErr()) return 100;
 
   const layerKey = `layer_${layerNum}`;
-  const layer = meta.layers?.[layerKey];
-
+  const layer = result.value.layers[layerKey];
   return layer?.zPos ?? 100;
 }
 

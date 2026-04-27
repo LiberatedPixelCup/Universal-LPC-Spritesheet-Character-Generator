@@ -68,7 +68,16 @@ export type Credit = {
   notes?: string;
 };
 
-export type LayerEntry = Record<string, string>;
+/**
+ * A single `meta.layers[layer_N]` entry. Heterogeneous: known metadata fields
+ * (`zPos`, `custom_animation`) plus body-type-keyed asset paths. Modeled as
+ * an open shape because the body-type keys are dynamic.
+ */
+export type LayerEntry = {
+  zPos?: number;
+  custom_animation?: string;
+  [bodyTypeOrField: string]: string | number | undefined;
+};
 
 export type ItemMerged = ItemLite & {
   layers: Record<string, LayerEntry>;

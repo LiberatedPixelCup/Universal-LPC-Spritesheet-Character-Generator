@@ -46,6 +46,7 @@ const ZIP_SPEC_ITEM_METADATA = {
     type_name: "body",
     required: ["male", "female", "teen", "child", "muscular", "pregnant"],
     animations: ["walk"],
+    recolors: [],
     layers: {
       layer_1: {
         zPos: 10,
@@ -58,6 +59,7 @@ const ZIP_SPEC_ITEM_METADATA = {
     type_name: "head",
     required: ["male", "female", "teen", "muscular", "pregnant"],
     animations: ["walk"],
+    recolors: [],
     layers: {
       layer_1: {
         zPos: 100,
@@ -70,6 +72,7 @@ const ZIP_SPEC_ITEM_METADATA = {
     type_name: "weapon",
     required: ["male", "female", "teen", "muscular", "pregnant"],
     animations: ["walk"],
+    recolors: [],
     layers: {
       layer_1: {
         custom_animation: "walk_128",

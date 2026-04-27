@@ -20,7 +20,7 @@ import {
 } from "./preview-animation.js";
 import { getSortedLayersByAnim } from "../state/meta.js";
 import { catalogReady } from "../state/catalog.js";
-import * as catalog from "../state/catalog.js";
+import { getItemMerged } from "../state/catalog-typed.ts";
 import m from "mithril";
 import { debugWarn } from "../utils/debug.js";
 
@@ -165,9 +165,9 @@ async function runRenderCharacter(selections, bodyType, targetCanvas) {
 
     for (const [, selection] of Object.entries(selections)) {
       const { itemId, subId, variant } = selection;
-      const meta = catalog.getItemMerged(itemId);
-
-      if (!meta || subId) continue;
+      const metaResult = getItemMerged(itemId);
+      if (metaResult.isErr() || subId) continue;
+      const meta = metaResult.value;
 
       // Check if this body type is supported
       if (!meta.required.includes(bodyType)) {
@@ -563,11 +563,12 @@ export async function renderSingleItem(
   singleLayer = null,
   zipProfiler = null,
 ) {
-  const meta = catalog.getItemMerged(itemId);
-  if (!meta) {
+  const metaResult = getItemMerged(itemId);
+  if (metaResult.isErr()) {
     console.error("Item metadata not found:", itemId);
     return null;
   }
+  const meta = metaResult.value;
 
   // Check if this body type is supported
   if (!meta.required.includes(bodyType)) {
@@ -769,11 +770,12 @@ export async function renderSingleItemAnimation(
   singleLayer = null,
   zipProfiler = null,
 ) {
-  const meta = catalog.getItemMerged(itemId);
-  if (!meta) {
+  const metaResult = getItemMerged(itemId);
+  if (metaResult.isErr()) {
     console.error("Item metadata not found:", itemId);
     return null;
   }
+  const meta = metaResult.value;
 
   // Check if this body type is supported
   if (!meta.required.includes(bodyType)) {

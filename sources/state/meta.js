@@ -1,7 +1,7 @@
 import { getZPos } from "../canvas/canvas-utils.ts";
 import { variantToFilename } from "../utils/helpers.ts";
 import { replaceInPath } from "./path.js";
-import * as catalog from "./catalog.js";
+import { getItemMerged } from "./catalog-typed.ts";
 
 // Dependency injection for testability (see setMetaDeps / resetMetaDeps)
 function createDefaultMetaDeps() {
@@ -9,7 +9,9 @@ function createDefaultMetaDeps() {
     getZPos,
     variantToFilename,
     replaceInPath,
-    getItemMetadata: (itemId) => catalog.getItemMerged(itemId),
+    // DI shape kept as `(id) => meta | null` so callers don't need to handle
+    // a Result. The typed boundary lives here.
+    getItemMetadata: (itemId) => getItemMerged(itemId).unwrapOr(null),
   };
 }
 

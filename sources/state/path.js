@@ -1,7 +1,7 @@
 import "../install-item-metadata.js";
 import { ANIMATIONS } from "./constants.ts";
 import { getHashParamsforSelections } from "./hash.js";
-import * as catalog from "./catalog.js";
+import { getItemMerged, getMetadataIndexes } from "./catalog-typed.ts";
 import { variantToFilename, es6DynamicTemplate } from "../utils/helpers.ts";
 import { debugLog } from "../utils/debug.js";
 
@@ -13,8 +13,10 @@ function createDefaultPathDeps() {
     es6DynamicTemplate,
     debugLog,
     animations: ANIMATIONS,
-    getItemMetadata: (itemId) => catalog.getItemMerged(itemId),
-    getMetadataIndexes: () => catalog.getMetadataIndexes(),
+    // DI shape kept as `(id) => meta | null` so callers don't need to handle
+    // a Result. The typed boundary lives here.
+    getItemMetadata: (itemId) => getItemMerged(itemId).unwrapOr(null),
+    getMetadataIndexes: () => getMetadataIndexes().unwrapOr(null),
   };
 }
 
