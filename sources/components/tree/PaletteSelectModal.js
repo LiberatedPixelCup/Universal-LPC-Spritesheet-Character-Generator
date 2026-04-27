@@ -8,6 +8,7 @@ import {
   getItemMerged,
   getPaletteMetadata,
 } from "../../state/catalog.ts";
+import { ResultBoundary } from "../ResultBoundary.js";
 import { state, getSelectionGroup } from "../../state/state.js";
 import { ucwords } from "../../utils/helpers.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
@@ -264,24 +265,27 @@ function renderModal(attrs, paletteMeta, meta) {
 export const PaletteSelectModal = {
   view: function (vnode) {
     const { itemId, onClose } = vnode.attrs;
-    // Order matters: Result.combine short-circuits to the first Err, and we
-    // surface a different loading message for palette vs lite/layers (matches
-    // the legacy two-stage UX).
-    const result = Result.combine([
-      chunkReady("palette"),
-      chunkReady("lite"),
-      chunkReady("layers"),
-      getPaletteMetadata(),
-      getItemMerged(itemId),
-    ]);
-    if (result.isErr()) {
-      const message =
-        result.error.kind === "loading" && result.error.chunk === "palette"
-          ? "Loading palette data…"
-          : "Loading layer data…";
-      return renderLoadingOverlay(onClose, message);
-    }
-    const [, , , paletteMeta, meta] = result.value;
-    return renderModal(vnode.attrs, paletteMeta, meta);
+    // Order matters: Result.combine short-circuits to the first Err. We
+    // surface a different loading message depending on which chunk is
+    // missing (matches the legacy two-stage UX: palette first, then layer).
+    return m(ResultBoundary, {
+      read: () =>
+        Result.combine([
+          chunkReady("palette"),
+          chunkReady("lite"),
+          chunkReady("layers"),
+          getPaletteMetadata(),
+          getItemMerged(itemId),
+        ]),
+      view: ([, , , paletteMeta, meta]) =>
+        renderModal(vnode.attrs, paletteMeta, meta),
+      renderError: (error) => {
+        const message =
+          error.kind === "loading" && error.chunk === "palette"
+            ? "Loading palette data…"
+            : "Loading layer data…";
+        return renderLoadingOverlay(onClose, message);
+      },
+    });
   },
 };
