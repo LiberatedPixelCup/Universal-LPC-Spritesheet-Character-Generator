@@ -6,8 +6,8 @@ import {
   getSelectionGroup,
   applyMatchBodyColor,
 } from "../../state/state.js";
-import { stages } from "../../state/catalog.js";
-import { getCategoryTree, getItemMerged } from "../../state/catalog-typed.ts";
+import { isLiteReady } from "../../state/catalog.ts";
+import { getCategoryTree, getItemMerged } from "../../state/catalog.ts";
 import { ResultBoundary } from "../ResultBoundary.js";
 import { BodyTypeSelector } from "./BodyTypeSelector.js";
 import { TreeNode } from "./TreeNode.js";
@@ -27,7 +27,7 @@ function renderLoadingHost() {
 }
 
 function renderTree(categoryTree) {
-  const liteReady = stages.lite.resolved;
+  const liteReady = isLiteReady();
 
   return m("div.box.has-background-light.category-tree-panel", [
     m(

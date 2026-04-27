@@ -3,7 +3,16 @@ import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { PaletteSelectModal } from "../../../sources/components/tree/PaletteSelectModal.js";
 import { state } from "../../../sources/state/state.js";
-import * as catalog from "../../../sources/state/catalog.js";
+import {
+  isLayersReady,
+  isLiteReady,
+  isPaletteReady,
+  resetCatalogForTests,
+  registerFromCreditsModule,
+  registerFromIndexModule,
+  registerFromItemModule,
+  registerFromPaletteModule,
+} from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
 import { resetState } from "../../../sources/state/filters.js";
 import { buildItemsByTypeNameLite } from "../../../sources/state/resolve-hash-param.js";
@@ -129,11 +138,11 @@ describe("PaletteSelectModal", function () {
   }
 
   it("shows loading palette copy when the palette chunk is not registered", function () {
-    catalog.resetCatalogForTests();
+    resetCatalogForTests();
 
     m.render(host, m(PaletteSelectModal, modalAttrs()));
 
-    assert.strictEqual(catalog.isPaletteReady(), false);
+    assert.strictEqual(isPaletteReady(), false);
     assert.include(host.textContent, "Loading palette data…");
     assert.notEqual(host.querySelector(".palette-modal-overlay"), null);
     assert.strictEqual(
@@ -143,10 +152,10 @@ describe("PaletteSelectModal", function () {
   });
 
   it("shows loading layer copy when lite is ready but layers are not", function () {
-    catalog.resetCatalogForTests();
+    resetCatalogForTests();
     const itemMetadata = psmShirtItem();
     const byTypeName = buildItemsByTypeNameLite(itemMetadata);
-    catalog.registerFromIndexModule({
+    registerFromIndexModule({
       aliasMetadata: {},
       categoryTree: { items: [], children: {} },
       metadataIndexes: {
@@ -154,16 +163,16 @@ describe("PaletteSelectModal", function () {
         hashMatch: { itemsByTypeName: byTypeName },
       },
     });
-    catalog.registerFromPaletteModule({
+    registerFromPaletteModule({
       paletteMetadata: modalPaletteMetadata,
     });
     const { itemMetadataLite, itemCredits } =
       splitItemMetadataForRegisters(itemMetadata);
-    catalog.registerFromItemModule({ itemMetadata: itemMetadataLite });
-    catalog.registerFromCreditsModule({ itemCredits });
-    assert.strictEqual(catalog.isPaletteReady(), true);
-    assert.strictEqual(catalog.isLiteReady(), true);
-    assert.strictEqual(catalog.isLayersReady(), false);
+    registerFromItemModule({ itemMetadata: itemMetadataLite });
+    registerFromCreditsModule({ itemCredits });
+    assert.strictEqual(isPaletteReady(), true);
+    assert.strictEqual(isLiteReady(), true);
+    assert.strictEqual(isLayersReady(), false);
 
     m.render(host, m(PaletteSelectModal, modalAttrs()));
 
@@ -209,7 +218,7 @@ describe("PaletteSelectModal", function () {
   });
 
   it("invokes onClose when the overlay is clicked", function () {
-    catalog.resetCatalogForTests();
+    resetCatalogForTests();
     let closed = 0;
     m.render(
       host,

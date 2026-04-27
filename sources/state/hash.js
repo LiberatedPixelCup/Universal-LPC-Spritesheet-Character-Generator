@@ -2,23 +2,27 @@ import m from "mithril";
 import { state, selectDefaults } from "./state.js";
 import { parseRecolorKey } from "./palettes.js";
 import { debugWarn } from "../utils/debug.js";
-import { stages, buildItemsByTypeNameFromRegisteredLite } from "./catalog.js";
+import {
+  isIndexReady,
+  isLiteReady,
+  buildItemsByTypeNameFromRegisteredLite,
+} from "./catalog.ts";
 import {
   getAliasMetadata,
   getItemLite,
   getMetadataIndexes,
-} from "./catalog-typed.ts";
+} from "./catalog.ts";
 import { resolveHashParamFromHashMatch } from "./resolve-hash-param.js";
 
 function createDefaultHashDeps() {
   return {
     resolveHashParam: ({ typeName, nameAndVariant }) => {
       let itemsByTypeName;
-      if (stages.index.resolved) {
+      if (isIndexReady()) {
         const idx = getMetadataIndexes().unwrapOr(null);
         itemsByTypeName =
           idx?.hashMatch?.itemsByTypeName ?? idx?.byTypeName ?? {};
-      } else if (stages.lite.resolved) {
+      } else if (isLiteReady()) {
         itemsByTypeName = buildItemsByTypeNameFromRegisteredLite();
       } else {
         itemsByTypeName = {};

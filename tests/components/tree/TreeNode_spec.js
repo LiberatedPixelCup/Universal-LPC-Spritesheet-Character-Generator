@@ -7,7 +7,7 @@ import {
   resetCatalogForTests,
   registerFromIndexModule,
   registerFromPaletteModule,
-} from "../../../sources/state/catalog.js";
+} from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
 import {
   resetState,

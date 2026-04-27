@@ -1,4 +1,4 @@
-import { getItemMerged } from "../state/catalog-typed.ts";
+import { getItemMerged } from "../state/catalog.ts";
 
 function addExtensionIfMissing(filename: string, extension: string): string {
   if (filename.toLowerCase().endsWith(extension.toLowerCase())) {

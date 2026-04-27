@@ -1,6 +1,6 @@
 import { expect } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
-import { resetCatalogForTests } from "../../sources/state/catalog.js";
+import { resetCatalogForTests } from "../../sources/state/catalog.ts";
 import {
   restoreAppCatalogAfterTest,
   seedBrowserCatalog,

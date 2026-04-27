@@ -12,7 +12,7 @@ import {
   setCustomAnimations,
   setCustomAnimationBase,
 } from "../../sources/state/filters.js";
-import { resetCatalogForTests } from "../../sources/state/catalog.js";
+import { resetCatalogForTests } from "../../sources/state/catalog.ts";
 import {
   restoreAppCatalogAfterTest,
   seedBrowserCatalog,

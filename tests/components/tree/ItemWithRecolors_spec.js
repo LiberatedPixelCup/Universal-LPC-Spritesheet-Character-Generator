@@ -3,7 +3,7 @@ import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { ItemWithRecolors } from "../../../sources/components/tree/ItemWithRecolors.js";
 import { state } from "../../../sources/state/state.js";
-import * as catalog from "../../../sources/state/catalog.js";
+import { getItemMerged } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
 import { resetState } from "../../../sources/state/filters.js";
 import {
@@ -90,7 +90,7 @@ describe("ItemWithRecolors", function () {
         paletteMetadata: clothPaletteMetadata,
       },
     );
-    return catalog.getItemMerged("iwr_shirt");
+    return getItemMerged("iwr_shirt").unwrapOr(null);
   }
 
   function baseAttrs(meta, overrides = {}) {
@@ -198,7 +198,7 @@ describe("ItemWithRecolors", function () {
         paletteMetadata: clothPaletteMetadata,
       },
     );
-    const meta = catalog.getItemMerged("iwr_body");
+    const meta = getItemMerged("iwr_body").unwrapOr(null);
 
     m.render(
       host,

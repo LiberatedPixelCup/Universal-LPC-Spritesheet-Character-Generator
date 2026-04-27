@@ -1,6 +1,7 @@
 import { expect } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
-import * as catalog from "../../sources/state/catalog.js";
+import { resetCatalogForTests } from "../../sources/state/catalog.ts";
+import { getItemLite } from "../../sources/state/catalog.ts";
 import {
   restoreAppCatalogAfterTest,
   seedBrowserCatalog,
@@ -16,7 +17,7 @@ describe("state/palettes.js", () => {
 
   beforeEach(() => {
     previousSelections = state.selections;
-    catalog.resetCatalogForTests();
+    resetCatalogForTests();
 
     const paletteMetadata = {
       materials: {
@@ -277,7 +278,7 @@ describe("state/palettes.js", () => {
 
     const [paletteOptions, selectedColors] = getPaletteOptions(
       "head_ears_elven",
-      catalog.getItemLite("head_ears_elven"),
+      getItemLite("head_ears_elven").unwrapOr(null),
     );
 
     expect(selectedColors).to.deep.equal({ ears: "bronze" });

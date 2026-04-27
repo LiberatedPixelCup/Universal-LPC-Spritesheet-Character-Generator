@@ -2,7 +2,7 @@
 import m from "mithril";
 import classNames from "classnames";
 import { state, getSelectionGroup, selectItem } from "../../state/state.js";
-import { stages } from "../../state/catalog.js";
+import { isPaletteReady } from "../../state/catalog.ts";
 import { drawRecolorPreview } from "../../canvas/palette-recolor.js";
 import { getPaletteOptions } from "../../state/palettes.js";
 import { PaletteSelectModal } from "./PaletteSelectModal.js";
@@ -33,7 +33,7 @@ export const ItemWithRecolors = {
     const selection = state.selections[selectionGroup];
     const isSelected = selection?.itemId === itemId;
 
-    const paletteReady = stages.palette.resolved;
+    const paletteReady = isPaletteReady();
 
     // Build palette/color options for all recolor fields
     const [paletteOptions, selectedColors] = getPaletteOptions(itemId, meta);

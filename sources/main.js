@@ -4,7 +4,7 @@ import m from "mithril";
 import "./styles/critical-entry.scss";
 import "./vendor-globals.js";
 import { loadAllMetadata } from "./install-item-metadata.js";
-import { catalogReady } from "./state/catalog.js";
+import { catalogReady } from "./state/catalog.ts";
 
 // Import debug first so `window.DEBUG` is set before other modules run.
 import { debugLog, getDebugParam } from "./utils/debug.js";

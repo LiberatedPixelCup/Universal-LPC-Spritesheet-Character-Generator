@@ -23,7 +23,7 @@ export async function scrollVisualCaptureToTop(page) {
  */
 /**
  * Await `catalogReady.onAllReady` when the build exposes
- * `globalThis.__LPC_waitCatalogAllReady` (see `sources/state/catalog.js`).
+ * `globalThis.__LPC_waitCatalogAllReady` (see `sources/state/catalog.ts`).
  * Otherwise, if `__LPC_arePaletteModalMetadataChunksReady` exists, wait until it is true
  * (so palette / skintone modals are not opened while the UI still says “Loading layer data…”).
  * Legacy dists without those hooks: only then fall back to “#mithril-filters” un-spinner.

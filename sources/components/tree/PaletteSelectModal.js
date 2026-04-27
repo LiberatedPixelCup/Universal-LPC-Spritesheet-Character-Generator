@@ -7,7 +7,7 @@ import {
   chunkReady,
   getItemMerged,
   getPaletteMetadata,
-} from "../../state/catalog-typed.ts";
+} from "../../state/catalog.ts";
 import { state, getSelectionGroup } from "../../state/state.js";
 import { ucwords } from "../../utils/helpers.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";

@@ -1,6 +1,6 @@
 // Canvas utility functions
 
-import { getItemMerged } from "../state/catalog-typed.ts";
+import { getItemMerged } from "../state/catalog.ts";
 import { debugWarn } from "../utils/debug.js";
 
 /**

@@ -8,7 +8,7 @@ import {
   registerFromLayersModule,
   registerFromPaletteModule,
   resetCatalogForTests,
-} from "../../sources/state/catalog.js";
+} from "../../sources/state/catalog.ts";
 import {
   getAliasMetadata,
   getCategoryTree,
@@ -18,7 +18,7 @@ import {
   getItemMerged,
   getMetadataIndexes,
   getPaletteMetadata,
-} from "../../sources/state/catalog-typed.ts";
+} from "../../sources/state/catalog.ts";
 import { restoreAppCatalogAfterTest } from "../browser-catalog-fixture.js";
 
 const FIXTURES = {
@@ -32,7 +32,7 @@ const FIXTURES = {
   paletteMetadata: { versions: {}, materials: {} },
 };
 
-describe("state/catalog-typed.ts", () => {
+describe("state/catalog.ts", () => {
   beforeEach(() => {
     resetCatalogForTests();
   });

@@ -7,7 +7,7 @@ import {
 } from "./webgl-palette-recolor.js";
 import { debugLog, debugWarn } from "../utils/debug.js";
 import { get2DContext } from "./canvas-utils.ts";
-import { getItemLite } from "../state/catalog-typed.ts";
+import { getItemLite } from "../state/catalog.ts";
 import { state } from "../state/state.js";
 import { getLayersToLoad } from "../state/meta.js";
 import { getPalettesForItem, getTargetPalette } from "../state/palettes.js";

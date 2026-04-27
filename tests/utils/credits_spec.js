@@ -5,7 +5,7 @@ import {
   creditsToCsv,
   creditsToTxt,
 } from "../../sources/utils/credits.ts";
-import { resetCatalogForTests } from "../../sources/state/catalog.js";
+import { resetCatalogForTests } from "../../sources/state/catalog.ts";
 import {
   restoreAppCatalogAfterTest,
   seedBrowserCatalog,

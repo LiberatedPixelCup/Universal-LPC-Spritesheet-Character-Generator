@@ -1,11 +1,11 @@
 // Search control component
 import m from "mithril";
-import { stages } from "../../state/catalog.js";
+import { isLiteReady } from "../../state/catalog.ts";
 import { state } from "../../state/state.js";
 
 export const SearchControl = {
   view: function () {
-    const liteReady = stages.lite.resolved;
+    const liteReady = isLiteReady();
     return m("div.field", [
       m("label.label", "Search:"),
       m("input.input[type=search][placeholder=Search]", {

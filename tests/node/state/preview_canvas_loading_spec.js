@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {
   registerFromLayersModule,
   resetCatalogForTests,
-} from "../../../sources/state/catalog.js";
+} from "../../../sources/state/catalog.ts";
 import { getPreviewCanvasLoadingMessage } from "../../../sources/state/preview-canvas-loading.js";
 import { state } from "../../../sources/state/state.js";
 import {

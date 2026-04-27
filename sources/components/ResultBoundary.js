@@ -1,4 +1,4 @@
-// Render-prop boundary for `Result<T, LoadError>` from `catalog-typed.ts`.
+// Render-prop boundary for `Result<T, LoadError>` from `catalog.ts`.
 // The component is the only place in the render tree that knows about loading state.
 //
 // Usage:

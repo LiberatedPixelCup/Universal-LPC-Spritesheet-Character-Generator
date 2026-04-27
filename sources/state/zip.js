@@ -4,7 +4,7 @@ import {
   FRAME_SIZE,
   DIRECTIONS,
 } from "./constants.ts";
-import { getItemMerged } from "./catalog-typed.ts";
+import { getItemMerged } from "./catalog.ts";
 import {
   extractAnimationFromCanvas,
   renderSingleItem,

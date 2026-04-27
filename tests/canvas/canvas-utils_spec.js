@@ -8,7 +8,7 @@ import {
   getZPos,
   hasContentInRegion,
 } from "../../sources/canvas/canvas-utils.ts";
-import { resetCatalogForTests } from "../../sources/state/catalog.js";
+import { resetCatalogForTests } from "../../sources/state/catalog.ts";
 import {
   restoreAppCatalogAfterTest,
   seedBrowserCatalog,

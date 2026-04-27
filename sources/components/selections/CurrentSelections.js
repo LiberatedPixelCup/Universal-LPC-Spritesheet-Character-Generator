@@ -1,7 +1,7 @@
 // Current selections component
 import m from "mithril";
-import { stages } from "../../state/catalog.js";
-import { getItemMerged } from "../../state/catalog-typed.ts";
+import { isCreditsReady, isLiteReady } from "../../state/catalog.ts";
+import { getItemMerged } from "../../state/catalog.ts";
 import { state } from "../../state/state.js";
 import {
   isItemLicenseCompatible,
@@ -10,7 +10,7 @@ import {
 
 export const CurrentSelections = {
   view: function () {
-    if (!stages.lite.resolved) {
+    if (!isLiteReady()) {
       return m("div", [
         m("h3.title.is-5", "Current Selections"),
         m("p.is-size-7.has-text-grey", "Loading item list…"),
@@ -26,7 +26,7 @@ export const CurrentSelections = {
       ]);
     }
 
-    const creditsReady = stages.credits.resolved;
+    const creditsReady = isCreditsReady();
 
     return m("div", [
       m("h3.title.is-5", "Current Selections"),

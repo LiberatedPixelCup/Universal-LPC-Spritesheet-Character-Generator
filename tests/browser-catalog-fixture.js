@@ -1,7 +1,7 @@
 import {
   loadCatalogFromFixtures,
   resetCatalogForTests,
-} from "../sources/state/catalog.js";
+} from "../sources/state/catalog.ts";
 import {
   loadAllMetadata,
   resetLoadAllMetadataCacheForTests,

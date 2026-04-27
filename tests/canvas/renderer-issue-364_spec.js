@@ -23,7 +23,7 @@ import {
 } from "../../sources/canvas/renderer.js";
 import { resetImageLoadCache } from "../../sources/canvas/load-image.js";
 import { resetState } from "../../sources/state/hash.js";
-import { resetCatalogForTests } from "../../sources/state/catalog.js";
+import { resetCatalogForTests } from "../../sources/state/catalog.ts";
 import {
   restoreAppCatalogAfterTest,
   seedBrowserCatalog,

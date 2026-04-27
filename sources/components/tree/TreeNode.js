@@ -1,13 +1,13 @@
 // Recursive tree node component
 import m from "mithril";
 import { state, getSelectionGroup } from "../../state/state.js";
-import { stages } from "../../state/catalog.js";
+import { isCreditsReady, isLiteReady } from "../../state/catalog.ts";
 import {
   chunkReady,
   getItemCredits,
   getItemLite,
   getItemMerged,
-} from "../../state/catalog-typed.ts";
+} from "../../state/catalog.ts";
 import { ResultBoundary } from "../ResultBoundary.js";
 import {
   isItemLicenseCompatible,
@@ -52,7 +52,7 @@ function renderItem(itemId, meta, ctx) {
 
   // Build tooltip text (license list needs credits chunk)
   let licensesText;
-  if (!stages.credits.resolved) {
+  if (!isCreditsReady()) {
     licensesText = "License info loading…";
   } else {
     const allLicenses = new Set();
@@ -83,7 +83,7 @@ function renderItem(itemId, meta, ctx) {
   }
   tooltipText += `${licensesText}\n${animsText}`;
 
-  const showItemTooltips = stages.credits.resolved;
+  const showItemTooltips = isCreditsReady();
 
   if (!hasVariants && !hasRecolors) {
     // Simple item with no variants or recolors
@@ -205,7 +205,7 @@ export const TreeNode = {
       false;
     const displayName = node.label ?? capitalize(name);
 
-    const categoryTitle = stages.lite.resolved ? tooltipText : undefined;
+    const categoryTitle = isLiteReady() ? tooltipText : undefined;
 
     const itemIds = node.items ?? [];
     const itemListCtx = { isNodeAnimCompatible, searchQuery };

@@ -19,8 +19,8 @@ import {
   setCustomAnimYPositions,
 } from "./preview-animation.js";
 import { getSortedLayersByAnim } from "../state/meta.js";
-import { catalogReady } from "../state/catalog.js";
-import { getItemMerged } from "../state/catalog-typed.ts";
+import { catalogReady } from "../state/catalog.ts";
+import { getItemMerged } from "../state/catalog.ts";
 import m from "mithril";
 import { debugWarn } from "../utils/debug.js";
 

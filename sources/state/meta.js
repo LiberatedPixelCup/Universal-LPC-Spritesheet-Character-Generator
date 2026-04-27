@@ -1,7 +1,7 @@
 import { getZPos } from "../canvas/canvas-utils.ts";
 import { variantToFilename } from "../utils/helpers.ts";
 import { replaceInPath } from "./path.js";
-import { getItemMerged } from "./catalog-typed.ts";
+import { getItemMerged } from "./catalog.ts";
 
 // Dependency injection for testability (see setMetaDeps / resetMetaDeps)
 function createDefaultMetaDeps() {

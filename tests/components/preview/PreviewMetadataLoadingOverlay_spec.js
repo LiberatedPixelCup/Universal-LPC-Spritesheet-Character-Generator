@@ -7,7 +7,7 @@ import {
   resetOffscreenCanvasStateForTests,
   setOffscreenCanvasInitializedForTests,
 } from "../../../sources/canvas/renderer.js";
-import { resetCatalogForTests } from "../../../sources/state/catalog.js";
+import { resetCatalogForTests } from "../../../sources/state/catalog.ts";
 import { restoreAppCatalogAfterTest } from "../../browser-catalog-fixture.js";
 
 describe("PreviewMetadataLoadingOverlay", function () {

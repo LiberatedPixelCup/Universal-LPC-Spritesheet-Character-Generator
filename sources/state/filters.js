@@ -1,6 +1,6 @@
 import { customAnimationBase, customAnimations } from "../custom-animations.ts";
 import { LICENSE_CONFIG, ANIMATIONS } from "./constants.ts";
-import { getItemLite, getItemMerged } from "./catalog-typed.ts";
+import { getItemLite, getItemMerged } from "./catalog.ts";
 import { state } from "./state.js";
 
 // Dependency injection for testability

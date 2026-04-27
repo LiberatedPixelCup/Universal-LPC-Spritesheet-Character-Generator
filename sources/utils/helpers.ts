@@ -1,6 +1,6 @@
 // Pure utility functions with minimal catalog reads for tree search
-import { stages } from "../state/catalog.js";
-import { getItemLite, type CategoryTreeNode } from "../state/catalog-typed.ts";
+import { isLiteReady } from "../state/catalog.ts";
+import { getItemLite, type CategoryTreeNode } from "../state/catalog.ts";
 
 /**
  * Simple ES6 template string replacement
@@ -45,7 +45,7 @@ export function nodeHasMatches(node: CategoryTreeNode, query: string): boolean {
   if (!query || query.length < 2) return true;
 
   // Until lite metadata is registered we cannot match item names; keep nodes visible
-  if (node.items && node.items.length > 0 && !stages.lite.resolved) {
+  if (node.items && node.items.length > 0 && !isLiteReady()) {
     return true;
   }
 

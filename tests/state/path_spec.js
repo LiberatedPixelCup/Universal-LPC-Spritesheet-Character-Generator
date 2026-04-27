@@ -8,7 +8,7 @@ import {
 import {
   loadCatalogFromFixtures,
   resetCatalogForTests,
-} from "../../sources/state/catalog.js";
+} from "../../sources/state/catalog.ts";
 import { restoreAppCatalogAfterTest } from "../browser-catalog-fixture.js";
 import { es6DynamicTemplate } from "../../sources/utils/helpers.ts";
 import { expect } from "chai";

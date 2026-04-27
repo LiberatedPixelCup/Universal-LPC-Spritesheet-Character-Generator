@@ -14,7 +14,7 @@ import {
   registerFromItemModule,
   registerFromLayersModule,
   registerFromPaletteModule,
-} from "./state/catalog.js";
+} from "./state/catalog.ts";
 
 /** @returns {boolean} */
 function isBrowserTestHarnessPage() {

@@ -1,7 +1,7 @@
 import "../install-item-metadata.js";
 import { ANIMATIONS } from "./constants.ts";
 import { getHashParamsforSelections } from "./hash.js";
-import { getItemMerged, getMetadataIndexes } from "./catalog-typed.ts";
+import { getItemMerged, getMetadataIndexes } from "./catalog.ts";
 import { variantToFilename, es6DynamicTemplate } from "../utils/helpers.ts";
 import { debugLog } from "../utils/debug.js";
 
