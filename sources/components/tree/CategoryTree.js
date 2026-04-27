@@ -6,78 +6,60 @@ import {
   getSelectionGroup,
   applyMatchBodyColor,
 } from "../../state/state.js";
-import * as catalog from "../../state/catalog.js";
+import { stages } from "../../state/catalog.js";
+import { getCategoryTree, getItemMerged } from "../../state/catalog-typed.ts";
+import { ResultBoundary } from "../ResultBoundary.js";
 import { BodyTypeSelector } from "./BodyTypeSelector.js";
 import { TreeNode } from "./TreeNode.js";
 
-export const CategoryTree = {
-  view: function () {
-    if (!catalog.isIndexReady()) {
-      return m("div.box.has-background-light.category-tree-panel", [
-        m("div.category-tree-loading-host", [
-          m(
-            "div.category-tree-loading-overlay",
-            { "aria-busy": "true", "aria-live": "polite" },
-            m("span.loading", { "aria-label": "Loading category index" }),
-          ),
-          m("h3.title.is-5.mb-3", "Available Items"),
-          m("p.has-text-grey.is-size-7", "Loading category index…"),
-        ]),
-      ]);
-    }
-
-    const categoryTree = catalog.getCategoryTree();
-    if (!categoryTree) {
-      return m("div.box.has-background-light.category-tree-panel", [
-        m("div.category-tree-loading-host", [
-          m(
-            "div.category-tree-loading-overlay",
-            { "aria-busy": "true" },
-            m("span.loading", { "aria-label": "Loading category index" }),
-          ),
-          m("h3.title.is-5.mb-3", "Available Items"),
-          m("p.has-text-grey.is-size-7", "Loading category index…"),
-        ]),
-      ]);
-    }
-
-    const liteReady = catalog.isLiteReady();
-
-    return m("div.box.has-background-light.category-tree-panel", [
+function renderLoadingHost() {
+  return m("div.box.has-background-light.category-tree-panel", [
+    m("div.category-tree-loading-host", [
       m(
-        "div.is-flex.is-justify-content-space-between.is-align-items-center.mb-3",
-        [
-          m("h3.title.is-5.mb-0", "Available Items"),
-          m("div.buttons.mb-0", [
-            m(
-              "button.button.is-danger.is-small",
-              {
-                onclick: resetAll,
+        "div.category-tree-loading-overlay",
+        { "aria-busy": "true", "aria-live": "polite" },
+        m("span.loading", { "aria-label": "Loading category index" }),
+      ),
+      m("h3.title.is-5.mb-3", "Available Items"),
+      m("p.has-text-grey.is-size-7", "Loading category index…"),
+    ]),
+  ]);
+}
+
+function renderTree(categoryTree) {
+  const liteReady = stages.lite.resolved;
+
+  return m("div.box.has-background-light.category-tree-panel", [
+    m(
+      "div.is-flex.is-justify-content-space-between.is-align-items-center.mb-3",
+      [
+        m("h3.title.is-5.mb-0", "Available Items"),
+        m("div.buttons.mb-0", [
+          m(
+            "button.button.is-danger.is-small",
+            { onclick: resetAll },
+            "Reset all",
+          ),
+          m(
+            "button.button.is-small",
+            {
+              onclick: () => {
+                state.expandedNodes = {};
               },
-              "Reset all",
-            ),
-            m(
-              "button.button.is-small",
-              {
-                onclick: () => {
-                  state.expandedNodes = {};
-                },
-              },
-              "Collapse All",
-            ),
-            m(
-              "button.button.is-small",
-              {
-                disabled: !liteReady,
-                title: liteReady ? undefined : "Loading item list…",
-                onclick: () => {
-                  if (!liteReady) return;
-                  for (const [, selection] of Object.entries(
-                    state.selections,
-                  )) {
-                    const { itemId } = selection;
-                    const meta = catalog.getItemMerged(itemId);
-                    if (meta && meta.path) {
+            },
+            "Collapse All",
+          ),
+          m(
+            "button.button.is-small",
+            {
+              disabled: !liteReady,
+              title: liteReady ? undefined : "Loading item list…",
+              onclick: () => {
+                if (!liteReady) return;
+                for (const [, selection] of Object.entries(state.selections)) {
+                  const { itemId } = selection;
+                  getItemMerged(itemId).match(
+                    (meta) => {
                       let pathSoFar = "";
                       // Expand all path segments (categories)
                       for (const segment of meta.path) {
@@ -88,77 +70,91 @@ export const CategoryTree = {
                       }
                       // Also expand the item itself (to show variants)
                       state.expandedNodes[itemId] = true;
-                    }
-                  }
-                },
-              },
-              "Expand Selected",
-            ),
-            m(
-              "button.button.is-small",
-              {
-                class: state.compactDisplay ? "is-link" : "",
-                onclick: () => {
-                  state.compactDisplay = !state.compactDisplay;
-                },
-              },
-              "CompactDisplay",
-            ),
-          ]),
-        ],
-      ),
-      m("div.mb-3", [
-        m(
-          "label.checkbox",
-          {
-            title:
-              "When enabled, changing body color will automatically update all compatible items (heads, ears, noses, etc.) to the same color variant",
-          },
-          [
-            m("input[type=checkbox]", {
-              id: "match-body-color-checkbox",
-              "aria-describedby": "match-body-color-label",
-              checked: state.matchBodyColorEnabled,
-              onchange: (e) => {
-                state.matchBodyColorEnabled = e.target.checked;
-                // If enabling the checkbox, immediately apply match body color
-                if (e.target.checked) {
-                  // Use body-body as the source if available
-                  const bodySelectionGroup = getSelectionGroup("body-body");
-                  const bodySelection = state.selections[bodySelectionGroup];
-                  if (bodySelection?.variant) {
-                    applyMatchBodyColor(
-                      bodySelection.variant,
-                      bodySelection.recolor ?? bodySelection.variant,
-                    );
-                  }
+                    },
+                    () => {
+                      // Selection points at an unknown id (stale URL or
+                      // mid-load). Skip — nothing to expand.
+                    },
+                  );
                 }
               },
-            }),
-            " Match body color",
-          ],
-        ),
-        m(
-          "p.is-size-7.has-text-grey.mt-1.ml-4",
-          {
-            id: "match-body-color-label",
-          },
-          "Auto-update heads, ears, and other items when body color changes",
-        ),
-      ]),
-      m("div", [
-        // Body Type as first tree item
-        m(BodyTypeSelector),
-        // Rest of the category tree
-        Object.entries(categoryTree.children || {}).map(
-          ([categoryName, categoryNode]) =>
-            m(TreeNode, {
-              key: categoryName,
-              name: categoryName,
-              node: categoryNode,
-            }),
-        ),
-      ]),
-    ]);
+            },
+            "Expand Selected",
+          ),
+          m(
+            "button.button.is-small",
+            {
+              class: state.compactDisplay ? "is-link" : "",
+              onclick: () => {
+                state.compactDisplay = !state.compactDisplay;
+              },
+            },
+            "CompactDisplay",
+          ),
+        ]),
+      ],
+    ),
+    m("div.mb-3", [
+      m(
+        "label.checkbox",
+        {
+          title:
+            "When enabled, changing body color will automatically update all compatible items (heads, ears, noses, etc.) to the same color variant",
+        },
+        [
+          m("input[type=checkbox]", {
+            id: "match-body-color-checkbox",
+            "aria-describedby": "match-body-color-label",
+            checked: state.matchBodyColorEnabled,
+            onchange: (e) => {
+              state.matchBodyColorEnabled = e.target.checked;
+              // If enabling the checkbox, immediately apply match body color
+              if (e.target.checked) {
+                // Use body-body as the source if available
+                const bodySelectionGroup = getSelectionGroup("body-body");
+                const bodySelection = state.selections[bodySelectionGroup];
+                if (bodySelection?.variant) {
+                  applyMatchBodyColor(
+                    bodySelection.variant,
+                    bodySelection.recolor ?? bodySelection.variant,
+                  );
+                }
+              }
+            },
+          }),
+          " Match body color",
+        ],
+      ),
+      m(
+        "p.is-size-7.has-text-grey.mt-1.ml-4",
+        {
+          id: "match-body-color-label",
+        },
+        "Auto-update heads, ears, and other items when body color changes",
+      ),
+    ]),
+    m("div", [
+      // Body Type as first tree item
+      m(BodyTypeSelector),
+      // Rest of the category tree
+      Object.entries(categoryTree.children ?? {}).map(
+        ([categoryName, categoryNode]) =>
+          m(TreeNode, {
+            key: categoryName,
+            name: categoryName,
+            node: categoryNode,
+          }),
+      ),
+    ]),
+  ]);
+}
+
+export const CategoryTree = {
+  view: function () {
+    return m(ResultBoundary, {
+      read: () => getCategoryTree(),
+      view: (categoryTree) => renderTree(categoryTree),
+      renderError: () => renderLoadingHost(),
+    });
   },
 };

@@ -17,9 +17,9 @@ import {
   exportIndividualFrames,
 } from "../../state/zip.js";
 import { debugLog } from "../../utils/debug.js";
-import { isLayersReady } from "../../state/catalog.js";
+import { stages } from "../../state/catalog.js";
 
-const zipExportDisabled = () => !isLayersReady();
+const zipExportDisabled = () => !stages.layers.resolved;
 const zipExportTitle = "Wait for layer data to finish loading";
 
 export const Download = {

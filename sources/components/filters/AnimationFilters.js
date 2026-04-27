@@ -1,6 +1,6 @@
 // Animation Filters component
 import m from "mithril";
-import * as catalog from "../../state/catalog.js";
+import { stages } from "../../state/catalog.js";
 import { state } from "../../state/state.js";
 import { isItemAnimationCompatible } from "../../state/filters.js";
 import { ANIMATIONS } from "../../state/constants.ts";
@@ -30,7 +30,7 @@ export const AnimationFilters = {
     vnode.state.isExpanded = false; // Start collapsed by default
   },
   view: function (vnode) {
-    const liteReady = catalog.isLiteReady();
+    const liteReady = stages.lite.resolved;
 
     // Function to remove incompatible items from selections
     const removeIncompatibleItems = () => {

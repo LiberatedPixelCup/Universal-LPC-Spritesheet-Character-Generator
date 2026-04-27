@@ -1,7 +1,7 @@
 // License Filters component
 import m from "mithril";
 import { state } from "../../state/state.js";
-import * as catalog from "../../state/catalog.js";
+import { stages } from "../../state/catalog.js";
 import { isItemLicenseCompatible } from "../../state/filters.js";
 import { LICENSE_CONFIG } from "../../state/constants.ts";
 
@@ -30,7 +30,7 @@ export const LicenseFilters = {
     vnode.state.isExpanded = false; // Start collapsed by default
   },
   view: function (vnode) {
-    const liteReady = catalog.isLiteReady();
+    const liteReady = stages.lite.resolved;
 
     // Function to remove incompatible items from selections
     const removeIncompatibleItems = () => {
@@ -51,7 +51,7 @@ export const LicenseFilters = {
       }
     };
 
-    const creditsReady = catalog.isCreditsReady();
+    const creditsReady = stages.credits.resolved;
 
     // Check if there are any incompatible selected items (needs credits chunk)
     const incompatibleSelections = creditsReady

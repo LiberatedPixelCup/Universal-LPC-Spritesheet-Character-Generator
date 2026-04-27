@@ -56,6 +56,7 @@ export type ItemLite = {
   recolors: PaletteRecolor[];
   matchBodyColor: boolean;
   variants: string[];
+  path: string[];
   preview_row?: number;
 };
 
@@ -128,7 +129,7 @@ export type PaletteVersionMeta = {
 
 export type PaletteMetadata = {
   materials: Record<string, PaletteMaterialMeta>;
-  versions: Record<string, PaletteVersionMeta>;
+  versions?: Record<string, PaletteVersionMeta>;
 };
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -137,6 +138,16 @@ export type PaletteMetadata = {
 
 const loading = (chunk: ChunkName): LoadError => ({ kind: "loading", chunk });
 const notFound = (id: string): LoadError => ({ kind: "not-found", id });
+
+/**
+ * Boundary primitive: returns `Ok(true)` once the named chunk has registered,
+ * `Err({kind: "loading"})` otherwise. Use with `Result.combine` to gate a
+ * subtree on a chunk that has no consumer-facing data getter (e.g. layers,
+ * which only feeds rendering code).
+ */
+export function chunkReady(chunk: ChunkName): Result<true, LoadError> {
+  return raw.stages[chunk].resolved ? ok(true as const) : err(loading(chunk));
+}
 
 export function getItemLite(id: string): Result<ItemLite, LoadError> {
   if (!raw.stages.lite.resolved) return err(loading("lite"));
