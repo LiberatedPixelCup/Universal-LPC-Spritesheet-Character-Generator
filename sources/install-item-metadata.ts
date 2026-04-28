@@ -14,10 +14,26 @@ import {
   registerFromItemModule,
   registerFromLayersModule,
   registerFromPaletteModule,
+  type AliasMetadata,
+  type CategoryTree,
+  type Credit,
+  type ItemLite,
+  type LayerEntry,
+  type MetadataIndexes,
+  type PaletteMetadata,
 } from "./state/catalog.ts";
 
-/** @returns {boolean} */
-function isBrowserTestHarnessPage() {
+type LoadedChunks = {
+  itemMetadata: Record<string, ItemLite>;
+  layersMetadata: Record<string, Record<string, LayerEntry>>;
+  creditsMetadata: Record<string, Credit[]>;
+  aliasMetadata: AliasMetadata;
+  categoryTree: CategoryTree;
+  paletteMetadata: PaletteMetadata;
+  metadataIndexes: MetadataIndexes;
+};
+
+function isBrowserTestHarnessPage(): boolean {
   try {
     return /tests_run/i.test(globalThis.location?.pathname ?? "");
   } catch {
@@ -25,17 +41,16 @@ function isBrowserTestHarnessPage() {
   }
 }
 
-let loadAllMetadataPromise = null;
+let loadAllMetadataPromise: Promise<LoadedChunks> | null = null;
 
-/** @type {number|null} */
-let metadataRedrawRaf = null;
+let metadataRedrawRaf: number | null = null;
 
-function safeRedraw() {
+function safeRedraw(): void {
   if (metadataRedrawRaf !== null) return;
   metadataRedrawRaf = requestAnimationFrame(() => {
     metadataRedrawRaf = null;
     try {
-      globalThis.m?.redraw?.();
+      (globalThis as { m?: { redraw?: () => void } }).m?.redraw?.();
     } catch {
       /* ignore */
     }
@@ -43,24 +58,15 @@ function safeRedraw() {
 }
 
 /** Test harness: allow `loadAllMetadata()` to run again after `resetCatalogForTests()`. */
-export function resetLoadAllMetadataCacheForTests() {
+export function resetLoadAllMetadataCacheForTests(): void {
   loadAllMetadataPromise = null;
 }
 
 /**
  * Parallel `import()` of the five metadata modules; each registers as soon as its file loads.
- * @returns {Promise<{
- *   itemMetadata: Record<string, object>,
- *   layersMetadata: Record<string, Record<string, object>>,
- *   creditsMetadata: Record<string, object[]>,
- *   aliasMetadata: object,
- *   categoryTree: object,
- *   paletteMetadata: object,
- *   metadataIndexes: object,
- * }>}
  */
-export function loadAllMetadata() {
-  loadAllMetadataPromise ??= (async () => {
+export function loadAllMetadata(): Promise<LoadedChunks> {
+  loadAllMetadataPromise ??= (async (): Promise<LoadedChunks> => {
     const [indexMod, paletteMod, itemMod, creditsMod, layersMod] =
       await Promise.all([
         import("../index-metadata.js").then((mod) => {

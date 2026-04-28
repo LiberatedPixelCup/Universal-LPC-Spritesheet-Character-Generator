@@ -3,7 +3,7 @@ import "../sources/vendor-globals.js";
 import { catalogReady } from "../sources/state/catalog.ts";
 // `install-item-metadata` runs `loadAllMetadata()` on the Testem/Vite test page and registers
 // all five `dist/*-metadata.js` chunks with `catalog` before this module’s body runs.
-import "../sources/install-item-metadata.js";
+import "../sources/install-item-metadata.ts";
 
 await catalogReady.onAllReady;
 

@@ -1,10 +1,24 @@
 // Semi-transparent layer over the preview canvas until layers + offscreen canvas + bootstrap draw.
 import m from "mithril";
-import { getPreviewCanvasLoadingMessage } from "../../state/preview-canvas-loading.js";
+import { getPreviewCanvasState } from "../../state/preview-canvas-loading.ts";
+
+/** UI copy for blocking states. `rendering`/`ready` produce no overlay. */
+function messageForState(state) {
+  switch (state.kind) {
+    case "rendering":
+    case "ready":
+      return null;
+    case "loading-layers":
+    case "canvas-not-initialized":
+    case "bootstrap-pending":
+      return "Loading layer data…";
+  }
+  return null;
+}
 
 export const PreviewMetadataLoadingOverlay = {
   view: function () {
-    const message = getPreviewCanvasLoadingMessage();
+    const message = messageForState(getPreviewCanvasState());
     if (!message) {
       return null;
     }

@@ -5,7 +5,7 @@ import {
 import {
   loadAllMetadata,
   resetLoadAllMetadataCacheForTests,
-} from "../sources/install-item-metadata.js";
+} from "../sources/install-item-metadata.ts";
 import { buildItemsByTypeNameLite } from "../sources/state/resolve-hash-param.js";
 
 const emptyPalette = { versions: {}, materials: {} };

@@ -18,7 +18,7 @@ import {
   setCurrentCustomAnimations,
   setCustomAnimYPositions,
 } from "./preview-animation.js";
-import { getSortedLayersByAnim } from "../state/meta.js";
+import { getSortedLayersByAnim } from "../state/meta.ts";
 import { catalogReady } from "../state/catalog.ts";
 import { getItemMerged } from "../state/catalog.ts";
 import m from "mithril";
@@ -614,7 +614,7 @@ export async function renderSingleItem(
 
     // Render all layers of this custom animation item
     const customSprites = [];
-    const animsList = getSortedLayersByAnim(itemId, true);
+    const animsList = getSortedLayersByAnim(itemId, true).unwrapOr({});
     for (const animName in animsList) {
       for (let layerNum = 1; layerNum < 10; layerNum++) {
         if (singleLayer !== null && layerNum !== singleLayer) continue;

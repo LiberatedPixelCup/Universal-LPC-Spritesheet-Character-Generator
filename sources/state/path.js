@@ -1,4 +1,4 @@
-import "../install-item-metadata.js";
+import "../install-item-metadata.ts";
 import { ANIMATIONS } from "./constants.ts";
 import { getHashParamsforSelections } from "./hash.js";
 import { getItemMerged, getMetadataIndexes } from "./catalog.ts";

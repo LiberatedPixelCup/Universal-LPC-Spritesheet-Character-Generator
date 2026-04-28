@@ -9,7 +9,7 @@ import { debugLog, debugWarn } from "../utils/debug.js";
 import { get2DContext } from "./canvas-utils.ts";
 import { getItemLite } from "../state/catalog.ts";
 import { state } from "../state/state.js";
-import { getLayersToLoad } from "../state/meta.js";
+import { getLayersToLoad } from "../state/meta.ts";
 import { getPalettesForItem, getTargetPalette } from "../state/palettes.js";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../state/constants.ts";
 

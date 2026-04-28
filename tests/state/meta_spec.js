@@ -5,12 +5,13 @@ import {
   getSortedLayersWithCustomFallback,
   resetMetaDeps,
   setMetaDeps,
-} from "../../sources/state/meta.js";
+} from "../../sources/state/meta.ts";
+import { ok, err } from "neverthrow";
 import { expect } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 
-describe("state/meta.js", () => {
+describe("state/meta.ts", () => {
   beforeEach(() => {
     resetMetaDeps();
   });
@@ -20,28 +21,29 @@ describe("state/meta.js", () => {
   });
 
   describe("getSortedLayers", () => {
-    it("returns null and logs when item metadata is missing", () => {
-      const err = sinon.stub(console, "error");
+    it("forwards the LoadError when item metadata is missing", () => {
       setMetaDeps({
-        getItemMetadata: () => undefined,
+        getItemMetadata: () => err({ kind: "not-found", id: "missing" }),
       });
-      expect(getSortedLayers("missing")).to.be.null;
-      expect(err.calledOnce).to.be.true;
-      expect(err.firstCall.args[1]).to.equal("missing");
-      err.restore();
+      const r = getSortedLayers("missing");
+      expect(r.isErr()).to.be.true;
+      if (r.isErr()) {
+        expect(r.error).to.deep.equal({ kind: "not-found", id: "missing" });
+      }
     });
 
     it("returns layerNum and zPos for each layer until a gap", () => {
       setMetaDeps({
-        getItemMetadata: () => ({
-          layers: {
-            layer_1: {},
-            layer_2: {},
-          },
-        }),
+        getItemMetadata: () =>
+          ok({
+            layers: {
+              layer_1: {},
+              layer_2: {},
+            },
+          }),
         getZPos: (itemId, layerNum) => layerNum * 10,
       });
-      expect(getSortedLayers("itemA")).to.deep.equal([
+      expect(getSortedLayers("itemA")._unsafeUnwrap()).to.deep.equal([
         { layerNum: 1, zPos: 10 },
         { layerNum: 2, zPos: 20 },
       ]);
@@ -49,15 +51,16 @@ describe("state/meta.js", () => {
 
     it("skips custom animation layers when standardOnly is true", () => {
       setMetaDeps({
-        getItemMetadata: () => ({
-          layers: {
-            layer_1: { custom_animation: "combat" },
-            layer_2: {},
-          },
-        }),
+        getItemMetadata: () =>
+          ok({
+            layers: {
+              layer_1: { custom_animation: "combat" },
+              layer_2: {},
+            },
+          }),
         getZPos: () => 1,
       });
-      expect(getSortedLayers("itemA", true)).to.deep.equal([
+      expect(getSortedLayers("itemA", true)._unsafeUnwrap()).to.deep.equal([
         { layerNum: 2, zPos: 1 },
       ]);
     });
@@ -66,58 +69,62 @@ describe("state/meta.js", () => {
   describe("getSortedLayersWithCustomFallback", () => {
     it("matches getSortedLayers when standard rows exist", () => {
       setMetaDeps({
-        getItemMetadata: () => ({
-          layers: {
-            layer_1: {},
-            layer_2: {},
-          },
-        }),
+        getItemMetadata: () =>
+          ok({
+            layers: {
+              layer_1: {},
+              layer_2: {},
+            },
+          }),
         getZPos: (itemId, layerNum) => layerNum * 10,
       });
-      expect(getSortedLayersWithCustomFallback("itemA")).to.deep.equal(
-        getSortedLayers("itemA", true),
-      );
+      expect(
+        getSortedLayersWithCustomFallback("itemA")._unsafeUnwrap(),
+      ).to.deep.equal(getSortedLayers("itemA", true)._unsafeUnwrap());
     });
 
     it("falls back to all layers when standardOnly would be empty", () => {
       setMetaDeps({
-        getItemMetadata: () => ({
-          layers: {
-            layer_1: { custom_animation: "wheelchair" },
-          },
-        }),
+        getItemMetadata: () =>
+          ok({
+            layers: {
+              layer_1: { custom_animation: "wheelchair" },
+            },
+          }),
         getZPos: () => 100,
       });
-      expect(getSortedLayers("itemA", true)).to.deep.equal([]);
-      expect(getSortedLayersWithCustomFallback("itemA")).to.deep.equal(
-        getSortedLayers("itemA"),
-      );
+      expect(getSortedLayers("itemA", true)._unsafeUnwrap()).to.deep.equal([]);
+      expect(
+        getSortedLayersWithCustomFallback("itemA")._unsafeUnwrap(),
+      ).to.deep.equal(getSortedLayers("itemA")._unsafeUnwrap());
     });
   });
 
   describe("getSortedLayersByAnim", () => {
-    it("returns null when item metadata is missing", () => {
-      const err = sinon.stub(console, "error");
+    it("forwards the LoadError when item metadata is missing", () => {
       setMetaDeps({
-        getItemMetadata: () => undefined,
+        getItemMetadata: () => err({ kind: "not-found", id: "missing" }),
       });
-      expect(getSortedLayersByAnim("missing")).to.be.null;
-      expect(err.calledOnce).to.be.true;
-      err.restore();
+      const r = getSortedLayersByAnim("missing");
+      expect(r.isErr()).to.be.true;
+      if (r.isErr()) {
+        expect(r.error.kind).to.equal("not-found");
+      }
     });
 
     it("groups layers by custom animation name or standard", () => {
       setMetaDeps({
-        getItemMetadata: () => ({
-          layers: {
-            layer_1: { custom_animation: "swim" },
-            layer_2: { custom_animation: "swim" },
-            layer_3: {},
-          },
-        }),
+        getItemMetadata: () =>
+          ok({
+            layers: {
+              layer_1: { custom_animation: "swim" },
+              layer_2: { custom_animation: "swim" },
+              layer_3: {},
+            },
+          }),
         getZPos: (itemId, layerNum) => layerNum * 10,
       });
-      expect(getSortedLayersByAnim("item")).to.deep.equal({
+      expect(getSortedLayersByAnim("item")._unsafeUnwrap()).to.deep.equal({
         swim: [
           { layerNum: 1, animLayerNum: 1, zPos: 10 },
           { layerNum: 2, animLayerNum: 2, zPos: 20 },
@@ -128,15 +135,16 @@ describe("state/meta.js", () => {
 
     it("sorts layers within each group by zPos and assigns animLayerNum", () => {
       setMetaDeps({
-        getItemMetadata: () => ({
-          layers: {
-            layer_1: { custom_animation: "swim" },
-            layer_2: { custom_animation: "swim" },
-          },
-        }),
+        getItemMetadata: () =>
+          ok({
+            layers: {
+              layer_1: { custom_animation: "swim" },
+              layer_2: { custom_animation: "swim" },
+            },
+          }),
         getZPos: (itemId, layerNum) => (layerNum === 1 ? 50 : 5),
       });
-      expect(getSortedLayersByAnim("item").swim).to.deep.equal([
+      expect(getSortedLayersByAnim("item")._unsafeUnwrap().swim).to.deep.equal([
         { layerNum: 2, animLayerNum: 1, zPos: 5 },
         { layerNum: 1, animLayerNum: 2, zPos: 50 },
       ]);
@@ -144,17 +152,20 @@ describe("state/meta.js", () => {
 
     it("includes only custom animation layers when customOnly is true", () => {
       setMetaDeps({
-        getItemMetadata: () => ({
-          layers: {
-            layer_1: { custom_animation: "combat" },
-            layer_2: {},
-          },
-        }),
+        getItemMetadata: () =>
+          ok({
+            layers: {
+              layer_1: { custom_animation: "combat" },
+              layer_2: {},
+            },
+          }),
         getZPos: () => 1,
       });
-      expect(getSortedLayersByAnim("item", true)).to.deep.equal({
-        combat: [{ layerNum: 1, animLayerNum: 1, zPos: 1 }],
-      });
+      expect(getSortedLayersByAnim("item", true)._unsafeUnwrap()).to.deep.equal(
+        {
+          combat: [{ layerNum: 1, animLayerNum: 1, zPos: 1 }],
+        },
+      );
     });
   });
 

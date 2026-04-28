@@ -20,7 +20,7 @@ import { getItemFileName } from "../utils/fileName.ts";
 import { loadImage } from "../canvas/load-image.js";
 import { getImageToDraw } from "../canvas/palette-recolor.js";
 import { customAnimations, customAnimationSize } from "../custom-animations.ts";
-import { getSortedLayersWithCustomFallback } from "./meta.js";
+import { getSortedLayersWithCustomFallback } from "./meta.ts";
 import { canvasToBlob } from "../canvas/canvas-utils.ts";
 import {
   addAnimationToZipFolder,
@@ -228,7 +228,7 @@ export const exportSplitItemSheets = async (deps = {}) => {
     // Render each item individually
     for (const [, selection] of Object.entries(state.selections)) {
       const { itemId, variant, name } = selection;
-      const itemLayers = getSortedLayersWithCustomFallback(itemId);
+      const itemLayers = getSortedLayersWithCustomFallback(itemId).unwrapOr([]);
 
       // Get Multiple Recolors If Available
       const recolors = getMultiRecolors(itemId, state.selections);
@@ -382,7 +382,9 @@ export const exportSplitItemAnimations = async (deps = {}) => {
         // Get Multiple Recolors If Available
         const recolors = getMultiRecolors(itemId, state.selections);
 
-        const itemLayers = getSortedLayersWithCustomFallback(itemId);
+        const itemLayers = getSortedLayersWithCustomFallback(itemId).unwrapOr(
+          [],
+        );
         for (const layer of itemLayers) {
           const fileName = getItemFileName(
             itemId,

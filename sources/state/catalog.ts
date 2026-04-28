@@ -13,7 +13,7 @@
  *   - `Err({ kind: "not-found" })` when the chunk is registered but the id is absent.
  *
  * Dynamic-import failures intentionally crash today (no `Err` variant): the
- * chunk loading machinery in `install-item-metadata.js` propagates the
+ * chunk loading machinery in `install-item-metadata.ts` propagates the
  * rejection. If we ever need to recover instead of crash, add a `"load-failed"`
  * variant here.
  *
@@ -296,7 +296,7 @@ function expandInternedItemLitesInStore(): void {
 }
 
 // ────────────────────────────────────────────────────────────────────────────
-// Public: registers (called by `install-item-metadata.js` after each chunk's
+// Public: registers (called by `install-item-metadata.ts` after each chunk's
 // dynamic import resolves)
 // ────────────────────────────────────────────────────────────────────────────
 
