@@ -22,13 +22,20 @@ describe("state/meta.ts", () => {
 
   describe("getSortedLayers", () => {
     it("forwards the LoadError when item metadata is missing", () => {
-      setMetaDeps({
-        getItemMetadata: () => err({ kind: "not-found", id: "missing" }),
-      });
-      const r = getSortedLayers("missing");
-      expect(r.isErr()).to.be.true;
-      if (r.isErr()) {
-        expect(r.error).to.deep.equal({ kind: "not-found", id: "missing" });
+      const errStub = sinon.stub(console, "error");
+      try {
+        setMetaDeps({
+          getItemMetadata: () => err({ kind: "not-found", id: "missing" }),
+        });
+        const r = getSortedLayers("missing");
+        expect(r.isErr()).to.be.true;
+        if (r.isErr()) {
+          expect(r.error).to.deep.equal({ kind: "not-found", id: "missing" });
+        }
+        expect(errStub.calledWith("Item metadata not found:", "missing")).to.be
+          .true;
+      } finally {
+        errStub.restore();
       }
     });
 
@@ -102,13 +109,20 @@ describe("state/meta.ts", () => {
 
   describe("getSortedLayersByAnim", () => {
     it("forwards the LoadError when item metadata is missing", () => {
-      setMetaDeps({
-        getItemMetadata: () => err({ kind: "not-found", id: "missing" }),
-      });
-      const r = getSortedLayersByAnim("missing");
-      expect(r.isErr()).to.be.true;
-      if (r.isErr()) {
-        expect(r.error.kind).to.equal("not-found");
+      const errStub = sinon.stub(console, "error");
+      try {
+        setMetaDeps({
+          getItemMetadata: () => err({ kind: "not-found", id: "missing" }),
+        });
+        const r = getSortedLayersByAnim("missing");
+        expect(r.isErr()).to.be.true;
+        if (r.isErr()) {
+          expect(r.error.kind).to.equal("not-found");
+        }
+        expect(errStub.calledWith("Item metadata not found:", "missing")).to.be
+          .true;
+      } finally {
+        errStub.restore();
       }
     });
 

@@ -57,24 +57,40 @@ export function getMetaDeps(): MetaDeps {
 export type SortedLayer = { layerNum: number; zPos: number };
 export type AnimationLayer = SortedLayer & { animLayerNum: number };
 
+/**
+ * Tap a `LoadError` to surface a missing-item error to the console. Loading
+ * errors are transient (chunk hasn't registered yet) and stay silent.
+ */
+function logIfNotFound(itemId: string): (err: LoadError) => LoadError {
+  return (err) => {
+    if (err.kind === "not-found") {
+      console.error("Item metadata not found:", itemId);
+    }
+    return err;
+  };
+}
+
 /** Sort layers by zPos. */
 export function getSortedLayers(
   itemId: string,
   standardOnly: boolean = false,
 ): Result<SortedLayer[], LoadError> {
-  return metaDeps.getItemMetadata(itemId).map((meta) => {
-    const layersList: SortedLayer[] = [];
-    for (let layerNum = 1; layerNum < 10; layerNum++) {
-      const layerKey = `layer_${layerNum}`;
-      const layer = meta.layers[layerKey];
-      if (!layer) break;
-      if (standardOnly && layer.custom_animation) continue;
+  return metaDeps
+    .getItemMetadata(itemId)
+    .mapErr(logIfNotFound(itemId))
+    .map((meta) => {
+      const layersList: SortedLayer[] = [];
+      for (let layerNum = 1; layerNum < 10; layerNum++) {
+        const layerKey = `layer_${layerNum}`;
+        const layer = meta.layers[layerKey];
+        if (!layer) break;
+        if (standardOnly && layer.custom_animation) continue;
 
-      const zPos = metaDeps.getZPos(itemId, layerNum);
-      layersList.push({ layerNum, zPos });
-    }
-    return layersList;
-  });
+        const zPos = metaDeps.getZPos(itemId, layerNum);
+        layersList.push({ layerNum, zPos });
+      }
+      return layersList;
+    });
 }
 
 /**
@@ -94,38 +110,41 @@ export function getSortedLayersByAnim(
   itemId: string,
   customOnly: boolean = false,
 ): Result<Record<string, AnimationLayer[]>, LoadError> {
-  return metaDeps.getItemMetadata(itemId).map((meta) => {
-    const animsList: Record<string, SortedLayer[]> = {};
-    for (let layerNum = 1; layerNum < 10; layerNum++) {
-      const layerKey = `layer_${layerNum}`;
-      const layer = meta.layers[layerKey];
-      if (!layer) break;
-      if (customOnly && !layer.custom_animation) continue;
+  return metaDeps
+    .getItemMetadata(itemId)
+    .mapErr(logIfNotFound(itemId))
+    .map((meta) => {
+      const animsList: Record<string, SortedLayer[]> = {};
+      for (let layerNum = 1; layerNum < 10; layerNum++) {
+        const layerKey = `layer_${layerNum}`;
+        const layer = meta.layers[layerKey];
+        if (!layer) break;
+        if (customOnly && !layer.custom_animation) continue;
 
-      const animName =
-        (layer.custom_animation as string | undefined) || "standard";
-      if (!animsList[animName]) {
-        animsList[animName] = [];
+        const animName =
+          (layer.custom_animation as string | undefined) || "standard";
+        if (!animsList[animName]) {
+          animsList[animName] = [];
+        }
+
+        const zPos = metaDeps.getZPos(itemId, layerNum);
+        animsList[animName].push({ layerNum, zPos });
       }
 
-      const zPos = metaDeps.getZPos(itemId, layerNum);
-      animsList[animName].push({ layerNum, zPos });
-    }
+      // Sort each animation's layers by zPos.
+      const result: Record<string, AnimationLayer[]> = {};
+      for (const animName in animsList) {
+        result[animName] = animsList[animName]
+          .sort((a, b) => a.zPos - b.zPos)
+          .map((layer, index) => ({
+            layerNum: layer.layerNum,
+            animLayerNum: index + 1,
+            zPos: layer.zPos,
+          }));
+      }
 
-    // Sort each animation's layers by zPos.
-    const result: Record<string, AnimationLayer[]> = {};
-    for (const animName in animsList) {
-      result[animName] = animsList[animName]
-        .sort((a, b) => a.zPos - b.zPos)
-        .map((layer, index) => ({
-          layerNum: layer.layerNum,
-          animLayerNum: index + 1,
-          zPos: layer.zPos,
-        }));
-    }
-
-    return result;
-  });
+      return result;
+    });
 }
 
 export type LayerToLoad = { zPos: number; path: string };
