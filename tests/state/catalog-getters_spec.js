@@ -122,11 +122,13 @@ describe("state/catalog.ts", () => {
       if (r.isErr()) expect(r.error.kind).to.equal("loading");
     });
 
-    it("returns Ok([]) for missing id when credits chunk is loaded", () => {
+    it("returns Err({kind:'not-found'}) for unknown id when credits chunk is loaded", () => {
       registerFromCreditsModule({ itemCredits: {} });
       const r = getItemCredits("ghost");
-      expect(r.isOk()).to.be.true;
-      if (r.isOk()) expect(r.value).to.deep.equal([]);
+      expect(r.isErr()).to.be.true;
+      if (r.isErr()) {
+        expect(r.error).to.deep.equal({ kind: "not-found", id: "ghost" });
+      }
     });
 
     it("returns Ok(credits) when chunk is loaded and id has entries", () => {
@@ -137,6 +139,13 @@ describe("state/catalog.ts", () => {
       expect(r.isOk()).to.be.true;
       if (r.isOk()) expect(r.value[0].licenses).to.deep.equal(["MIT"]);
     });
+
+    it("returns Ok([]) when chunk is loaded and id has an empty array entry", () => {
+      registerFromCreditsModule({ itemCredits: { a: [] } });
+      const r = getItemCredits("a");
+      expect(r.isOk()).to.be.true;
+      if (r.isOk()) expect(r.value).to.deep.equal([]);
+    });
   });
 
   describe("getItemLayers", () => {
@@ -146,9 +155,18 @@ describe("state/catalog.ts", () => {
       if (r.isErr()) expect(r.error.kind).to.equal("loading");
     });
 
-    it("returns Ok({}) for missing id when layers chunk is loaded", () => {
+    it("returns Err({kind:'not-found'}) for unknown id when layers chunk is loaded", () => {
       registerFromLayersModule({ itemLayers: {} });
       const r = getItemLayers("ghost");
+      expect(r.isErr()).to.be.true;
+      if (r.isErr()) {
+        expect(r.error).to.deep.equal({ kind: "not-found", id: "ghost" });
+      }
+    });
+
+    it("returns Ok({}) when chunk is loaded and id has an empty object entry", () => {
+      registerFromLayersModule({ itemLayers: { a: {} } });
+      const r = getItemLayers("a");
       expect(r.isOk()).to.be.true;
       if (r.isOk()) expect(r.value).to.deep.equal({});
     });

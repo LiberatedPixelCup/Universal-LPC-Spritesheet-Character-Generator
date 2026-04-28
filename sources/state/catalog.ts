@@ -475,14 +475,16 @@ export function getItemMerged(id: string): Result<ItemMerged, LoadError> {
 
 export function getItemCredits(id: string): Result<Credit[], LoadError> {
   if (!creditsStage.resolved) return err(loading("credits"));
-  return ok(itemCreditsStore?.[id] ?? []);
+  const credits = itemCreditsStore?.[id];
+  return credits ? ok(credits) : err(notFound(id));
 }
 
 export function getItemLayers(
   id: string,
 ): Result<Record<string, LayerEntry>, LoadError> {
   if (!layersStage.resolved) return err(loading("layers"));
-  return ok(itemLayersStore?.[id] ?? {});
+  const layers = itemLayersStore?.[id];
+  return layers ? ok(layers) : err(notFound(id));
 }
 
 export function getPaletteMetadata(): Result<PaletteMetadata, LoadError> {
