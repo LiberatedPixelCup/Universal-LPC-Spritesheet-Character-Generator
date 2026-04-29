@@ -2,7 +2,7 @@ import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { CurrentSelections } from "../../../sources/components/selections/CurrentSelections.js";
-import { state } from "../../../sources/state/state.js";
+import { state } from "../../../sources/state/state.ts";
 import { resetCatalogForTests } from "../../../sources/state/catalog.ts";
 import {
   resetState,

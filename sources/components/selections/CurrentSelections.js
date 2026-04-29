@@ -2,7 +2,7 @@
 import m from "mithril";
 import { isCreditsReady, isLiteReady } from "../../state/catalog.ts";
 import { getItemMerged } from "../../state/catalog.ts";
-import { state } from "../../state/state.js";
+import { state } from "../../state/state.ts";
 import {
   isItemLicenseCompatible,
   isItemAnimationCompatible,

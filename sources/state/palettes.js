@@ -1,5 +1,5 @@
 // Palette utilities
-import { state, getSelectionGroup } from "./state.js";
+import { state, getSelectionGroup } from "./state.ts";
 import { getItemLite, getPaletteMetadata } from "./catalog.ts";
 
 /** Local helpers — collapse `Result<T, _>` into `T | null` for ergonomics. */

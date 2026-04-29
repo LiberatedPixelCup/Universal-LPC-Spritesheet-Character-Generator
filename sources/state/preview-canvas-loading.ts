@@ -7,7 +7,7 @@
  */
 import { isLayersReady } from "./catalog.ts";
 import { isOffscreenCanvasInitialized } from "../canvas/renderer.js";
-import { state } from "./state.js";
+import { state } from "./state.ts";
 
 export type PreviewState =
   | { kind: "rendering" }

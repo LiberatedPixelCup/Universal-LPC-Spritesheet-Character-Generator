@@ -1,7 +1,7 @@
 // Item with recolors component
 import m from "mithril";
 import classNames from "classnames";
-import { state, getSelectionGroup, selectItem } from "../../state/state.js";
+import { state, getSelectionGroup, selectItem } from "../../state/state.ts";
 import { isPaletteReady } from "../../state/catalog.ts";
 import { drawRecolorPreview } from "../../canvas/palette-recolor.js";
 import { getPaletteOptions } from "../../state/palettes.js";

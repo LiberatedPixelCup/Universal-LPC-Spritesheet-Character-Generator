@@ -75,7 +75,7 @@ export const exportSplitAnimations = async (deps = {}) => {
     const zip = new window.JSZip();
     const timestamp = zipExportTimestamp();
 
-    state = (await import("./state.js")).state; // Ensure state is loaded
+    state = (await import("./state.ts")).state; // Ensure state is loaded
     state.zipByAnimation.isRunning = true;
     m.redraw();
     beginZipExportUiSuspend();
@@ -212,7 +212,7 @@ export const exportSplitItemSheets = async (deps = {}) => {
     const zip = new window.JSZip();
     const timestamp = zipExportTimestamp();
 
-    state = (await import("./state.js")).state; // Ensure state is loaded
+    state = (await import("./state.ts")).state; // Ensure state is loaded
     state.zipByItem.isRunning = true;
     m.redraw();
     beginZipExportUiSuspend();
@@ -335,7 +335,7 @@ export const exportSplitItemAnimations = async (deps = {}) => {
     const zip = new window.JSZip();
     const timestamp = zipExportTimestamp();
 
-    state = (await import("./state.js")).state; // Ensure state is loaded
+    state = (await import("./state.ts")).state; // Ensure state is loaded
     state.zipByAnimimationAndItem.isRunning = true;
     m.redraw();
     beginZipExportUiSuspend();
@@ -589,7 +589,7 @@ export const exportIndividualFrames = async (deps = {}) => {
     const zip = new window.JSZip();
     const timestamp = zipExportTimestamp();
 
-    state = (await import("./state.js")).state;
+    state = (await import("./state.ts")).state;
     state.zipIndividualFrames = state.zipIndividualFrames || {
       isRunning: false,
     };

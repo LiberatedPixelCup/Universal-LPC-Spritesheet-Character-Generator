@@ -1,7 +1,7 @@
 // Animation Filters component
 import m from "mithril";
 import { isLiteReady } from "../../state/catalog.ts";
-import { state } from "../../state/state.js";
+import { state } from "../../state/state.ts";
 import { isItemAnimationCompatible } from "../../state/filters.js";
 import { ANIMATIONS } from "../../state/constants.ts";
 

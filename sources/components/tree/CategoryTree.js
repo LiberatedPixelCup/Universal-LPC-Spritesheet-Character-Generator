@@ -5,7 +5,7 @@ import {
   resetAll,
   getSelectionGroup,
   applyMatchBodyColor,
-} from "../../state/state.js";
+} from "../../state/state.ts";
 import { isLiteReady } from "../../state/catalog.ts";
 import { getCategoryTree, getItemMerged } from "../../state/catalog.ts";
 import { ResultBoundary } from "../ResultBoundary.js";

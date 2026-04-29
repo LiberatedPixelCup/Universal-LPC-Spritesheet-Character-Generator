@@ -139,7 +139,7 @@ async function runRenderCharacter(selections, bodyType, targetCanvas) {
   addedCustomAnimations = new Set(); // Track which custom animations we've added
 
   // Import state to access custom uploaded image (kept out of `renderCharacter` profile span)
-  const appState = await import("../state/state.js").then((mod) => mod.state);
+  const appState = await import("../state/state.ts").then((mod) => mod.state);
   appState.renderCharacter.isRendering = true;
   appState.isRenderingCharacter = true;
   m.redraw();

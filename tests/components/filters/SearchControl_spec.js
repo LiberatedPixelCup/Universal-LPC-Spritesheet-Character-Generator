@@ -1,5 +1,5 @@
 // SearchControl component tests - Browser compatible
-import { state } from "../../../sources/state/state.js";
+import { state } from "../../../sources/state/state.ts";
 import { SearchControl } from "../../../sources/components/filters/SearchControl.js";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";

@@ -1,6 +1,6 @@
 // License Filters component
 import m from "mithril";
-import { state } from "../../state/state.js";
+import { state } from "../../state/state.ts";
 import { isCreditsReady, isLiteReady } from "../../state/catalog.ts";
 import { isItemLicenseCompatible } from "../../state/filters.js";
 import { LICENSE_CONFIG } from "../../state/constants.ts";

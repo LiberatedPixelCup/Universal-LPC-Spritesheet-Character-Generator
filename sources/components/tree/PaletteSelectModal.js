@@ -9,7 +9,7 @@ import {
   getPaletteMetadata,
 } from "../../state/catalog.ts";
 import { ResultBoundary } from "../ResultBoundary.js";
-import { state, getSelectionGroup } from "../../state/state.js";
+import { state, getSelectionGroup } from "../../state/state.ts";
 import { ucwords } from "../../utils/helpers.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
 

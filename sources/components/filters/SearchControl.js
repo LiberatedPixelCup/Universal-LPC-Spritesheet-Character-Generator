@@ -1,7 +1,7 @@
 // Search control component
 import m from "mithril";
 import { isLiteReady } from "../../state/catalog.ts";
-import { state } from "../../state/state.js";
+import { state } from "../../state/state.ts";
 
 export const SearchControl = {
   view: function () {

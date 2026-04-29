@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import { describe, it, beforeEach } from "mocha-globals";
 import { BodyTypeSelector } from "../../../sources/components/tree/BodyTypeSelector.js";
-import { state } from "../../../sources/state/state.js";
+import { state } from "../../../sources/state/state.ts";
 
 describe("BodyTypeSelector Component", () => {
   let vnode;

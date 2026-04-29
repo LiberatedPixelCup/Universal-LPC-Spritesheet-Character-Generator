@@ -1,7 +1,7 @@
 // Credit collection and formatting utilities
 
 import { getItemMerged, type Credit } from "../state/catalog.ts";
-import { state } from "../state/state.js";
+import { state } from "../state/state.ts";
 import { replaceInPath } from "../state/path.js";
 import { variantToFilename } from "../utils/helpers.ts";
 

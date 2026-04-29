@@ -1,6 +1,6 @@
 // Download component
 import m from "mithril";
-import { state } from "../../state/state.js";
+import { state } from "../../state/state.ts";
 import { layers } from "../../canvas/renderer.js";
 import {
   getAllCredits,

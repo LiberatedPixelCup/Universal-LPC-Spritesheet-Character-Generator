@@ -4,7 +4,7 @@ import {
   loadSelectionsFromHash,
 } from "./hash.js";
 import { getAllCredits } from "../utils/credits.ts";
-import { state } from "./state.js";
+import { state } from "./state.ts";
 
 // Dependency injection for testability (see setJsonDeps / resetJsonDeps)
 function createDefaultJsonDeps() {

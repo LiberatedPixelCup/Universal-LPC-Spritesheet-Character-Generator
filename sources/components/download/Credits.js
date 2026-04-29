@@ -1,6 +1,6 @@
 // Credits/Attribution component
 import m from "mithril";
-import { state } from "../../state/state.js";
+import { state } from "../../state/state.ts";
 import {
   getAllCredits,
   creditsToCsv,

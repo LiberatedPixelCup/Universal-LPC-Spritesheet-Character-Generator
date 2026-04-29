@@ -44,7 +44,7 @@ window.setPaletteRecolorMode = setPaletteRecolorMode;
 window.getPaletteRecolorConfig = getPaletteRecolorConfig;
 
 // Import state management
-import { initState, state } from "./state/state.js";
+import { initState, state } from "./state/state.ts";
 import { initHashChangeListener } from "./state/hash.js";
 
 // Import components

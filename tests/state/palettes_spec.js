@@ -6,7 +6,7 @@ import {
   restoreAppCatalogAfterTest,
   seedBrowserCatalog,
 } from "../browser-catalog-fixture.js";
-import { state } from "../../sources/state/state.js";
+import { state } from "../../sources/state/state.ts";
 import {
   getMultiRecolors,
   getPaletteOptions,

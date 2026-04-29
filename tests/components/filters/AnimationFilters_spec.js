@@ -4,7 +4,7 @@ import {
   getAnimations,
   setAnimations,
 } from "../../../sources/components/filters/AnimationFilters.js";
-import { state } from "../../../sources/state/state.js";
+import { state } from "../../../sources/state/state.ts";
 import { expect } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";

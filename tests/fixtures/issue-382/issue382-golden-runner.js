@@ -23,7 +23,7 @@ import {
   exportSplitItemSheets,
 } from "../../../sources/state/zip.js";
 import { resetState } from "../../../sources/state/hash.js";
-import { state } from "../../../sources/state/state.js";
+import { state } from "../../../sources/state/state.ts";
 import { importStateFromJSON } from "../../../sources/state/json.js";
 import issue382ItemMetadata from "./issue-382-itemdata.js";
 import issue382Selections from "./issue-382-selections.js";

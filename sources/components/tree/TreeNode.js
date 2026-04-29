@@ -1,6 +1,6 @@
 // Recursive tree node component
 import m from "mithril";
-import { state, getSelectionGroup } from "../../state/state.js";
+import { state, getSelectionGroup } from "../../state/state.ts";
 import { isCreditsReady, isLiteReady } from "../../state/catalog.ts";
 import {
   chunkReady,

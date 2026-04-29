@@ -9,13 +9,13 @@ import {
   selectItem,
   setStateDeps,
   state,
-} from "../../sources/state/state.js";
+} from "../../sources/state/state.ts";
 import { resetState } from "../../sources/state/hash.js";
 import { expect } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 
-describe("state/state.js", () => {
+describe("state/state.ts", () => {
   beforeEach(() => {
     resetStateDeps();
     resetState();

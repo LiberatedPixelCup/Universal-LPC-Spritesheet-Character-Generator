@@ -3,20 +3,7 @@ import { getZPos } from "../canvas/canvas-utils.ts";
 import { variantToFilename } from "../utils/helpers.ts";
 import { replaceInPath } from "./path.js";
 import { getItemMerged, type ItemMerged, type LoadError } from "./catalog.ts";
-
-// TODO(PR 3 — state.ts conversion): replace this placeholder with the canonical
-// `Selection` type imported from `./state.ts`. `meta.ts` doesn't inspect the
-// values itself — these fields exist downstream (`hash.js` reads them via
-// `getHashParamsforSelections`) — but we declare them here so callers get a
-// real shape until `state.ts` becomes the canonical source.
-type Selection = {
-  itemId: string;
-  name?: string;
-  variant?: string;
-  recolor?: string;
-  subId?: number | null;
-};
-type Selections = Record<string, Selection>;
+import type { Selections } from "./state.ts";
 
 type MetaDeps = {
   getZPos: (itemId: string, layerNum?: number) => number;

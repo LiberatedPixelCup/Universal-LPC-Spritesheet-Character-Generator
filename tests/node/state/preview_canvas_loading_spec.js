@@ -5,7 +5,7 @@ import {
   resetCatalogForTests,
 } from "../../../sources/state/catalog.ts";
 import { getPreviewCanvasState } from "../../../sources/state/preview-canvas-loading.ts";
-import { state } from "../../../sources/state/state.js";
+import { state } from "../../../sources/state/state.ts";
 import {
   resetOffscreenCanvasStateForTests,
   setOffscreenCanvasInitializedForTests,
