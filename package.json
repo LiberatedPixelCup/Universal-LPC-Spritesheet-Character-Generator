@@ -15,7 +15,7 @@
     "serve:open": "vite --open",
     "lint": "eslint . --cache",
     "lint:fix": "eslint . --cache --fix",
-    "type-check": "tsc --noEmit && tsgo --noEmit",
+    "type-check": "tsgo --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "validate-site-sources": "concurrently -c auto -n \"credits,zpos\" \"node scripts/generate_credits.js\" \"node scripts/zPositioning/parse_zpos.js\"",
