@@ -1,6 +1,6 @@
 "use strict";
 
-const path = require("path");
+const path = require("node:path");
 const { createTestemViteMiddleware } = require("vite-plugin-testem");
 
 // Suppress app debug logs during tests by default (?debug=false), so localhost does not

@@ -1,6 +1,6 @@
-import fs from "fs";
-import path from "path";
-import { spawnSync } from "child_process";
+import fs from "node:fs";
+import path from "node:path";
+import { spawnSync } from "node:child_process";
 
 const moduleSpecDir = path.join("tests", "node", "scripts", "generateSources");
 const moduleSpecs = fs

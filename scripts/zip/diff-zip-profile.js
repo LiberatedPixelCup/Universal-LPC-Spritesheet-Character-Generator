@@ -9,9 +9,9 @@
  * Exit code 0 always (reporting tool).
  */
 
-import { readFileSync } from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.join(__dirname, "..", "..");

@@ -19,10 +19,10 @@
 
 /* eslint-disable no-undef -- Playwright page callbacks run in browser context */
 
-import { spawn } from "child_process";
-import { mkdirSync, writeFileSync } from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import { spawn } from "node:child_process";
+import { mkdirSync, writeFileSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
 
 import { ZIP_PROFILE_DEFAULT_HASH } from "./zip-profile-default-hash.js";

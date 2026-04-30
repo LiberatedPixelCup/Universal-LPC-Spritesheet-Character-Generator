@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 import { buildSlimByTypeNameRow } from "../../sources/state/resolve-hash-param.js";
 
 export const SHEETS_DIR = "sheet_definitions" + path.sep;

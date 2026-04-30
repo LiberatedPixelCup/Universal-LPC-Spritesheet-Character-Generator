@@ -8,7 +8,7 @@ import { execSync } from "node:child_process";
 import { debugLog } from "../utils/debug.js";
 
 const walk = function (dir) {
-  var results = [];
+  let results = [];
   const list = fs.readdirSync(dir);
   list.forEach(function (file) {
     file = dir + "/" + file;
@@ -38,7 +38,7 @@ const masterSheetNames = [
 walkDirectories.forEach(function (walkDirectory) {
   debugLog(`Start processing sheet: ${walkDirectory}`);
   const list = fs.readdirSync(walkDirectory + "/walk");
-  var variants = [];
+  let variants = [];
   list.forEach(function (file) {
     if (file.includes(".png")) {
       variants.push(file);
@@ -52,7 +52,7 @@ walkDirectories.forEach(function (walkDirectory) {
   }
   fs.mkdirSync(universalFolder);
   variants.forEach(function (variant) {
-    var imagesToCompose = [];
+    let imagesToCompose = [];
     masterSheetNames.forEach(function (animation) {
       const variantPath = `${walkDirectory}/${animation}/${variant}`;
       if (fs.existsSync(`${walkDirectory}/${animation}/${variant}`)) {

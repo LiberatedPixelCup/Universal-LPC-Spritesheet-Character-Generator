@@ -25,10 +25,10 @@
  */
 
 /* eslint-disable no-undef -- page.evaluate / waitForFunction callbacks execute in the browser */
-import { spawn } from "child_process";
-import { writeFileSync } from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import { spawn } from "node:child_process";
+import { writeFileSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));

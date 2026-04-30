@@ -1,4 +1,4 @@
-import path from "path";
+import path from "node:path";
 import debugUtils from "../utils/debug.js";
 import { ANIMATIONS } from "../../sources/state/constants.ts";
 import {

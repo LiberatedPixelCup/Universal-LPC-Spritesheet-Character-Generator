@@ -18,7 +18,7 @@ function cropToSubSheet(
     return false;
   }
   const index = sheet.lastIndexOf("/");
-  var directory = "";
+  let directory = "";
   if (index > -1) {
     directory = sheet.substring(0, index);
   }
@@ -35,7 +35,7 @@ function cropToSubSheet(
     }
   }
 
-  var newFile = `${directory}/${targetDir}${sheet.substring(index)}`;
+  let newFile = `${directory}/${targetDir}${sheet.substring(index)}`;
   if (isMasterSheet) {
     newFile = `${directory}/${targetDir.replace(/\/$/, "")}.png`;
   }
@@ -101,7 +101,7 @@ function cropSheet(sheet, sheetHeight, isMasterSheet) {
     sheetHeight,
     isMasterSheet,
   );
-  var result = cropToSubSheet(
+  let result = cropToSubSheet(
     sheet,
     6 * universalFrameSize,
     universalFrameSize,
@@ -231,7 +231,7 @@ function cropSheet(sheet, sheetHeight, isMasterSheet) {
 }
 
 const walk = function (dir) {
-  var results = [];
+  let results = [];
   const list = fs.readdirSync(dir);
   list.forEach(function (file) {
     file = dir + "/" + file;
@@ -262,7 +262,7 @@ const masterSheetNames = [
 files.forEach(function (sheetToProcess) {
   debugLog(`Start processing sheet: ${sheetToProcess}`);
   const index = sheetToProcess.lastIndexOf("/");
-  var directory = "";
+  let directory = "";
   if (index > -1) {
     directory = sheetToProcess.substring(0, index);
   }
@@ -280,7 +280,7 @@ files.forEach(function (sheetToProcess) {
   const widthAndHeight = String(imageInfo).split(",");
   const width = parseInt(widthAndHeight[0]);
   const height = parseInt(widthAndHeight[1]);
-  var masterSheet = "";
+  let masterSheet = "";
   masterSheetNames.every(function (masterSheetName) {
     if (sheetToProcess.includes(masterSheetName)) {
       masterSheet = masterSheetName;
@@ -289,7 +289,7 @@ files.forEach(function (sheetToProcess) {
     return true;
   });
   if (width === 832 && height >= 1344) {
-    var isMasterSheet = false;
+    let isMasterSheet = false;
     if (masterSheet !== "") {
       if (fs.existsSync(`${directory}/${masterSheet}`)) {
         execSync(
