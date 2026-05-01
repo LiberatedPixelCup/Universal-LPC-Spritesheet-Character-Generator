@@ -1,7 +1,7 @@
 import { ok, type Result } from "neverthrow";
 import { getZPos } from "../canvas/canvas-utils.ts";
 import { variantToFilename } from "../utils/helpers.ts";
-import { replaceInPath } from "./path.js";
+import { replaceInPath } from "./path.ts";
 import { getItemMerged, type ItemMerged, type LoadError } from "./catalog.ts";
 import type { Selections } from "./state.ts";
 

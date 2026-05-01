@@ -2,7 +2,7 @@
 import m from "mithril";
 import { state } from "../../state/state.ts";
 import { isCreditsReady, isLiteReady } from "../../state/catalog.ts";
-import { isItemLicenseCompatible } from "../../state/filters.js";
+import { isItemLicenseCompatible } from "../../state/filters.ts";
 import { LICENSE_CONFIG } from "../../state/constants.ts";
 
 // Dependency injection for testability

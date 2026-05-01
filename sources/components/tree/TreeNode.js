@@ -13,7 +13,7 @@ import {
   isItemLicenseCompatible,
   isItemAnimationCompatible,
   isNodeAnimationCompatible,
-} from "../../state/filters.js";
+} from "../../state/filters.ts";
 import {
   capitalize,
   matchesSearch,

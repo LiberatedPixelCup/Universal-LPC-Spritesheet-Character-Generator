@@ -8,7 +8,7 @@ import {
   resetState,
   setEnabledLicenses,
   setEnabledAnimations,
-} from "../../../sources/state/filters.js";
+} from "../../../sources/state/filters.ts";
 import {
   restoreAppCatalogAfterTest,
   seedBrowserCatalog,

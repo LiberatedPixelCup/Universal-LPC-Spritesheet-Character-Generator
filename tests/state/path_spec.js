@@ -4,18 +4,19 @@ import {
   replaceInPath,
   setPathDeps,
   resetPathDeps,
-} from "../../sources/state/path.js";
+} from "../../sources/state/path.ts";
 import {
   loadCatalogFromFixtures,
   resetCatalogForTests,
 } from "../../sources/state/catalog.ts";
 import { restoreAppCatalogAfterTest } from "../browser-catalog-fixture.js";
 import { es6DynamicTemplate } from "../../sources/utils/helpers.ts";
+import { err } from "neverthrow";
 import { expect } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 
-describe("state/path.js", () => {
+describe("state/path.ts", () => {
   beforeEach(() => {
     resetCatalogForTests();
     resetPathDeps();
@@ -239,29 +240,47 @@ describe("state/path.js", () => {
   });
 
   describe("getSpritePath", () => {
-    it("returns null when item metadata is missing", () => {
+    it("forwards the LoadError when item metadata is missing", () => {
       setPathDeps({
-        getItemMetadata: () => undefined,
+        getItemMetadata: () => err({ kind: "not-found", id: "missing_id" }),
       });
-      expect(
-        getSpritePath("missing_id", "v", null, "male", "walk", 1, {}, null),
-      ).to.be.null;
+      const r = getSpritePath(
+        "missing_id",
+        "v",
+        null,
+        "male",
+        "walk",
+        1,
+        {},
+        null,
+      );
+      expect(r.isErr()).to.be.true;
+      if (r.isErr()) expect(r.error.kind).to.equal("not-found");
     });
 
-    it("returns null when the requested layer is missing", () => {
+    it("returns a missing-layer error when the requested layer is absent", () => {
       const meta = { layers: {} };
-      expect(getSpritePath("id", "v", null, "male", "walk", 2, {}, meta)).to.be
-        .null;
+      const r = getSpritePath("id", "v", null, "male", "walk", 2, {}, meta);
+      expect(r.isErr()).to.be.true;
+      if (r.isErr()) {
+        expect(r.error).to.deep.equal({ kind: "missing-layer", layerNum: 2 });
+      }
     });
 
-    it("returns null when the body type has no path on the layer", () => {
+    it("returns a missing-bodytype-path error when the layer has no path for that body type", () => {
       const meta = {
         layers: {
           layer_1: { female: "path/" },
         },
       };
-      expect(getSpritePath("id", "v", null, "male", "walk", 1, {}, meta)).to.be
-        .null;
+      const r = getSpritePath("id", "v", null, "male", "walk", 1, {}, meta);
+      expect(r.isErr()).to.be.true;
+      if (r.isErr()) {
+        expect(r.error).to.deep.equal({
+          kind: "missing-bodytype-path",
+          bodyType: "male",
+        });
+      }
     });
 
     it("builds a spritesheet path from layer body type, animation, and variant", () => {
@@ -277,7 +296,16 @@ describe("state/path.js", () => {
         animations: [{ value: "walk", label: "Walk" }],
       });
       expect(
-        getSpritePath("item", "light brown", null, "male", "walk", 1, {}, meta),
+        getSpritePath(
+          "item",
+          "light brown",
+          null,
+          "male",
+          "walk",
+          1,
+          {},
+          meta,
+        )._unsafeUnwrap(),
       ).to.equal("spritesheets/armor/male/walk/light_brown.png");
     });
 
@@ -296,7 +324,16 @@ describe("state/path.js", () => {
         ],
       });
       expect(
-        getSpritePath("item", "v", null, "male", "combat", 1, {}, meta),
+        getSpritePath(
+          "item",
+          "v",
+          null,
+          "male",
+          "combat",
+          1,
+          {},
+          meta,
+        )._unsafeUnwrap(),
       ).to.equal("spritesheets/combat/combat_idle/v.png");
     });
 
@@ -322,7 +359,7 @@ describe("state/path.js", () => {
           1,
           {},
           meta,
-        ),
+        )._unsafeUnwrap(),
       ).to.equal("spritesheets/x/idle/red.png");
     });
 
@@ -338,7 +375,16 @@ describe("state/path.js", () => {
         animations: [{ value: "walk", label: "Walk" }],
       });
       expect(
-        getSpritePath("id", "v", true, "male", "walk", 1, {}, meta),
+        getSpritePath(
+          "id",
+          "v",
+          true,
+          "male",
+          "walk",
+          1,
+          {},
+          meta,
+        )._unsafeUnwrap(),
       ).to.equal("spritesheets/y/walk.png");
     });
 
@@ -359,7 +405,16 @@ describe("state/path.js", () => {
         animations: [{ value: "idle", label: "Idle" }],
       });
       expect(
-        getSpritePath("item", "v", null, "male", "idle", 1, {}, meta),
+        getSpritePath(
+          "item",
+          "v",
+          null,
+          "male",
+          "idle",
+          1,
+          {},
+          meta,
+        )._unsafeUnwrap(),
       ).to.equal("spritesheets/prefix/humanoid/idle/v.png");
     });
   });

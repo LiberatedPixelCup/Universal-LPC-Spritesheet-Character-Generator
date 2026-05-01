@@ -6,7 +6,7 @@ import { state } from "../../state/state.ts";
 import {
   isItemLicenseCompatible,
   isItemAnimationCompatible,
-} from "../../state/filters.js";
+} from "../../state/filters.ts";
 
 export const CurrentSelections = {
   view: function () {

@@ -2,7 +2,7 @@
 import m from "mithril";
 import { isLiteReady } from "../../state/catalog.ts";
 import { state } from "../../state/state.ts";
-import { isItemAnimationCompatible } from "../../state/filters.js";
+import { isItemAnimationCompatible } from "../../state/filters.ts";
 import { ANIMATIONS } from "../../state/constants.ts";
 
 // Dependency injection for testability

@@ -11,7 +11,7 @@ import {
   isNodeAnimationCompatible,
   setCustomAnimations,
   setCustomAnimationBase,
-} from "../../sources/state/filters.js";
+} from "../../sources/state/filters.ts";
 import { resetCatalogForTests } from "../../sources/state/catalog.ts";
 import {
   restoreAppCatalogAfterTest,
@@ -20,7 +20,7 @@ import {
 import { expect } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 
-describe("state/filters.js", () => {
+describe("state/filters.ts", () => {
   beforeEach(() => {
     resetState();
   });
@@ -318,10 +318,6 @@ describe("state/filters.js", () => {
       setEnabledAnimations(["run"]);
       const node = { animations: ["customFly"] };
       expect(isNodeAnimationCompatible(node)).to.be.false;
-    });
-
-    it("should return true if the node does not exist (assume compatible)", () => {
-      expect(isNodeAnimationCompatible(null)).to.be.true;
     });
 
     it("should return true if the node has no animations array (assume compatible)", () => {

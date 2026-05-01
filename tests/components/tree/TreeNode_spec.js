@@ -12,7 +12,7 @@ import { BODY_TYPES } from "../../../sources/state/constants.ts";
 import {
   resetState,
   setEnabledAnimations,
-} from "../../../sources/state/filters.js";
+} from "../../../sources/state/filters.ts";
 import {
   restoreAppCatalogAfterTest,
   seedBrowserCatalog,

@@ -2,7 +2,7 @@
 // Simplified renderer that draws character sprites based on selections
 
 import { loadImage, loadImagesInParallel } from "./load-image.js";
-import { getSpritePath } from "../state/path.js";
+import { getSpritePath } from "../state/path.ts";
 import { getImageToDraw } from "./palette-recolor.js";
 import { getMultiRecolors } from "../state/palettes.js";
 import { get2DContext, getZPos } from "./canvas-utils.ts";
@@ -253,7 +253,7 @@ async function runRenderCharacter(selections, bodyType, targetCanvas) {
             layerNum,
             selections,
             meta,
-          );
+          ).unwrapOr(null);
 
           itemsToDraw.push({
             itemId,
@@ -706,7 +706,7 @@ export async function renderSingleItem(
         layerNum,
         selections,
         meta,
-      );
+      ).unwrapOr(null);
 
       spritesToDraw.push({
         itemId,
@@ -849,7 +849,7 @@ export async function renderSingleItemAnimation(
       layerNum,
       selections,
       meta,
-    );
+    ).unwrapOr(null);
 
     spritesToDraw.push({
       spritePath,

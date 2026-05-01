@@ -2,13 +2,9 @@
 
 import { getItemMerged, type Credit } from "../state/catalog.ts";
 import { state } from "../state/state.ts";
-import { replaceInPath } from "../state/path.js";
+import type { Selections } from "../state/state.ts";
+import { replaceInPath } from "../state/path.ts";
 import { variantToFilename } from "../utils/helpers.ts";
-
-type Selection = {
-  itemId: string;
-  variant?: string;
-};
 
 type CreditWithFileName = Credit & { fileName: string };
 
@@ -17,7 +13,7 @@ type CreditWithFileName = Credit & { fileName: string };
  * actually being used based on current bodyType.
  */
 export function getAllCredits(
-  selections: Record<string, Selection>,
+  selections: Selections,
   bodyType: string,
 ): CreditWithFileName[] {
   const allCredits: CreditWithFileName[] = [];
@@ -39,8 +35,10 @@ export function getAllCredits(
       const layer = meta.layers?.[layerKey];
       if (!layer) break;
 
-      // Get the base path for current body type
-      let basePath = layer[bodyType];
+      // Get the base path for current body type. `LayerEntry`'s index
+      // signature widens body-type values to `string | number`; the
+      // body-type keys hold paths (always strings).
+      let basePath = layer[bodyType] as string | undefined;
       if (!basePath) continue;
 
       // Replace template variables like ${head} if present

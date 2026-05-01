@@ -14,7 +14,7 @@ import {
   registerFromPaletteModule,
 } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
-import { resetState } from "../../../sources/state/filters.js";
+import { resetState } from "../../../sources/state/filters.ts";
 import { buildItemsByTypeNameLite } from "../../../sources/state/resolve-hash-param.js";
 import {
   restoreAppCatalogAfterTest,
