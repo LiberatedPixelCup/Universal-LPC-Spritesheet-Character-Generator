@@ -1,7 +1,8 @@
 {
   "type": "module",
   "sideEffects": [
-    "sources/state/catalog.ts"
+    "sources/state/catalog.ts",
+    "sources/vendor-globals.js"
   ],
   "name": "universal-lpc-spritesheet-character-generator",
   "version": "0.0.0",
