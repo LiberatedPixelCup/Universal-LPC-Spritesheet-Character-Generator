@@ -21,7 +21,7 @@ import {
   exportSplitItemAnimations,
   exportSplitItemSheets,
 } from "../../sources/state/zip.js";
-import { resetState } from "../../sources/state/hash.js";
+import { resetState } from "../../sources/state/hash.ts";
 import { state } from "../../sources/state/state.ts";
 import { ANIMATIONS, DIRECTIONS } from "../../sources/state/constants.ts";
 import { createFakeJSZip } from "../helpers/fake-jszip.js";

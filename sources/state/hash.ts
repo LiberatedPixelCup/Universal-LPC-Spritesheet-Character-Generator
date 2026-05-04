@@ -1,23 +1,44 @@
 import m from "mithril";
 import { state, selectDefaults } from "./state.ts";
-import { parseRecolorKey } from "./palettes.js";
+import type { Selection, Selections } from "./state.ts";
+import { parseRecolorKey } from "./palettes.ts";
 import { debugWarn } from "../utils/debug.js";
 import {
-  isIndexReady,
-  isLiteReady,
   buildItemsByTypeNameFromRegisteredLite,
-} from "./catalog.ts";
-import {
   getAliasMetadata,
   getItemLite,
   getMetadataIndexes,
+  isIndexReady,
+  isLiteReady,
+  type AliasMetadata,
+  type ItemLite,
+  type SlimByTypeNameRow,
 } from "./catalog.ts";
 import { resolveHashParamFromHashMatch } from "./resolve-hash-param.js";
 
-function createDefaultHashDeps() {
+/**
+ * Outcome of resolving a `typeName`/`nameAndVariant` pair against the
+ * catalog. `foundItemId` is null when no match was made.
+ */
+type HashResolution = {
+  foundItemId: string | null;
+  matchedVariant: string;
+  matchedRecolor: string;
+};
+
+type HashDeps = {
+  resolveHashParam: (input: {
+    typeName: string;
+    nameAndVariant: string;
+  }) => HashResolution;
+  /** DI shape kept as `(id) => meta | null` so callers don't handle a Result. */
+  getItemLite: (itemId: string) => ItemLite | null;
+};
+
+function createDefaultHashDeps(): HashDeps {
   return {
     resolveHashParam: ({ typeName, nameAndVariant }) => {
-      let itemsByTypeName;
+      let itemsByTypeName: Record<string, SlimByTypeNameRow[]>;
       if (isIndexReady()) {
         const idx = getMetadataIndexes().unwrapOr(null);
         itemsByTypeName =
@@ -33,51 +54,57 @@ function createDefaultHashDeps() {
         itemsByTypeName,
       });
     },
-    // DI shape kept as `(id) => meta | null` so callers don't need to handle
-    // a Result. The typed boundary lives here.
     getItemLite: (itemId) => getItemLite(itemId).unwrapOr(null),
   };
 }
 
-let hashDeps = createDefaultHashDeps();
+let hashDeps: HashDeps = createDefaultHashDeps();
 
-export function setHashDeps(overrides) {
+export function setHashDeps(overrides: Partial<HashDeps>): void {
   Object.assign(hashDeps, overrides);
 }
 
-export function resetHashDeps() {
+export function resetHashDeps(): void {
   hashDeps = createDefaultHashDeps();
 }
 
-export function getHashDeps() {
+export function getHashDeps(): HashDeps {
   return hashDeps;
 }
 
-// Dependency injection for testability
-export function getState() {
+export function getState(): typeof state {
   return state;
 }
 
-export function updateState(updates) {
+export function updateState(updates: Partial<typeof state>): void {
   Object.assign(state, updates);
 }
 
-export function resetState() {
+export function resetState(): void {
   state.bodyType = "male";
   state.selections = {};
 }
 
-// window.location.hash is immutable in tests, this is so we can use a stub to manage it
+// `window.location.hash` is immutable in tests, this is so we can use a stub to manage it.
 let _hash = "";
 let _setHashCalledTimes = 0;
 
-export function getHash() {
-  if (window.isTesting) return "#" + _hash;
+/**
+ * `window.isTesting` is set by browser test setup to route hash reads/writes
+ * through the in-memory `_hash` rather than `window.location.hash` (the real
+ * value is immutable in tests).
+ */
+type WindowWithTesting = Window & { isTesting?: boolean };
+
+export function getHash(): string {
+  const w = window as WindowWithTesting;
+  if (w.isTesting) return "#" + _hash;
   return window.location.hash;
 }
 
-export function setHash(hash) {
-  if (window.isTesting) {
+export function setHash(hash: string): void {
+  const w = window as WindowWithTesting;
+  if (w.isTesting) {
     _hash = hash[0] === "#" ? hash.substring(1) : hash;
     _setHashCalledTimes++;
     return;
@@ -85,16 +112,16 @@ export function setHash(hash) {
   window.location.hash = hash;
 }
 
-export function resetHashCalledTimes() {
+export function resetHashCalledTimes(): void {
   _setHashCalledTimes = 0;
 }
 
-export function getSetHashCalledTimes() {
+export function getSetHashCalledTimes(): number {
   return _setHashCalledTimes;
 }
 
 // URL hash parameter management
-export function getHashParams() {
+export function getHashParams(): Record<string, string> {
   let hash = getHash().substring(1); // Remove '#'
 
   // Handle case where hash starts with '?' (some old URLs might have this)
@@ -107,8 +134,10 @@ export function getHashParams() {
   return getHashParamsFromString(hash);
 }
 
-export function getHashParamsFromString(hashString) {
-  const params = {};
+export function getHashParamsFromString(
+  hashString: string,
+): Record<string, string> {
+  const params: Record<string, string> = {};
   hashString.split("&").forEach((pair) => {
     const [key, value] = pair.split("=");
     if (key && value) {
@@ -120,7 +149,9 @@ export function getHashParamsFromString(hashString) {
   return params;
 }
 
-export function createHashStringFromParams(params) {
+export function createHashStringFromParams(
+  params: Record<string, string>,
+): string {
   return Object.entries(params)
     .map(
       ([key, value]) =>
@@ -129,37 +160,40 @@ export function createHashStringFromParams(params) {
     .join("&");
 }
 
-export function setHashParams(params) {
+export function setHashParams(params: Record<string, string>): void {
   const hash = createHashStringFromParams(params);
   setHash(hash);
 }
 
 export function buildNewSelection(
-  foundItemId,
-  matchedVariant,
-  matchedRecolor,
-  subId = null,
-) {
-  // Get Meta Data for Item ID
-  const meta = hashDeps.getItemLite(foundItemId);
+  foundItemId: string,
+  matchedVariant: string | null,
+  matchedRecolor: string,
+  subId: number | null = null,
+): Selection {
+  // Get meta data for itemId. Existing JS assumes meta is non-null at this
+  // point (resolveHashParam returned a hit); preserve that contract.
+  const meta = hashDeps.getItemLite(foundItemId)!;
   const subMeta = meta.recolors?.[subId ?? 0];
 
-  // Build New Selection
-  let newSelection = {
+  const newSelection: Selection = {
     itemId: foundItemId,
     subId,
     variant:
       matchedVariant || (matchedRecolor != "" ? "" : meta.variants?.[0] || ""),
     recolor:
       matchedRecolor ||
-      ((meta.variants?.length ?? 0) === 0 ? subMeta?.variants[0] || "" : ""),
-    name: subId ? subMeta?.label : meta.name,
+      ((meta.variants?.length ?? 0) === 0 ? subMeta?.variants?.[0] || "" : ""),
+    name: subId ? (subMeta?.label ?? "") : meta.name,
   };
 
   if (newSelection.variant || newSelection.recolor) {
-    let recolorLabel = newSelection.recolor;
+    let recolorLabel: string | null | undefined = newSelection.recolor;
     if (recolorLabel) {
-      const [, ver, recolor] = parseRecolorKey(newSelection.recolor, subMeta);
+      const [, ver, recolor] = parseRecolorKey(
+        newSelection.recolor ?? null,
+        subMeta,
+      );
       recolorLabel = ver !== subMeta?.default ? `${ver} ${recolor}` : recolor;
     }
     newSelection.name +=
@@ -172,49 +206,56 @@ export function buildNewSelection(
   return newSelection;
 }
 
-export function getHashParamsforSelections(selections) {
-  const params = {};
+export function getHashParamsforSelections(
+  selections: Selections,
+): Record<string, string> {
+  const params: Record<string, string> = {};
 
-  // Add body type (using 'sex' for backwards compatibility with old URLs)
+  // Add body type (using 'sex' for backwards compatibility with old URLs).
   params.sex = state.bodyType;
 
-  // Add selections - use old format: type_name=Name_variant
-  // Format: "body=Body_color_light", "shoes=Sara_sara"
-  const aliasMetadata = getAliasMetadata().unwrapOr({});
+  // Add selections — old format: `type_name=Name_variant`.
+  // e.g., "body=Body_color_light", "shoes=Sara_sara".
+  const aliasMetadata = getAliasMetadata().unwrapOr({} as AliasMetadata);
   for (const [typeName, selection] of Object.entries(selections)) {
     const meta = getItemLite(selection.itemId).unwrapOr(null);
     // Defensive: real production data has type_name, but a few test fixtures
     // (and possibly malformed URLs) might lack it. Treat as alias-fallback.
     if (!meta || !meta.type_name) {
-      // Check if an alias is overriding this entry (e.g., "sash=Waistband_rose" instead of "waistband=Waistband_rose")
-      const name = selection.name.split(" (")[0]; // Get base name without variant (e.g., "Waistband" from "Waistband (rose)")
+      // Check if an alias is overriding this entry
+      // (e.g., "sash=Waistband_rose" instead of "waistband=Waistband_rose").
+      const name = selection.name.split(" (")[0]; // Get base name without variant
       const nameAndVariant =
         name.replaceAll(" ", "_") +
         (selection.variant ? `_${selection.variant}` : "");
       const aliasType = aliasMetadata[typeName];
       if (!aliasType) continue;
 
-      // Check Name and Variant
+      // Check name and variant
       const aliasMeta = aliasType?.[nameAndVariant];
       if (aliasMeta && aliasMeta.typeName) {
         params[aliasMeta.typeName] = `${aliasMeta.name}_${aliasMeta.variant}`;
       } else {
-        // If no exact match, check if there's a type-name wildcard alias entry (aliasType["*"]) that applies to any name+variant
+        // No exact match — check for type-name wildcard alias entry (`*`)
+        // that applies to any name+variant.
         const anyAliasMeta = aliasType?.[`*`];
         if (!anyAliasMeta || !anyAliasMeta.typeName) {
           continue;
         }
-        params[anyAliasMeta.typeName] = nameAndVariant; // Use the original name and variant if a type-name wildcard alias exists
+        params[anyAliasMeta.typeName] = nameAndVariant;
       }
     } else {
-      // Get Subcolor Metadata if applicable
-      const subMeta = meta.recolors?.[selection.subId];
+      // Get sub-color metadata if applicable.
+      const subMeta =
+        selection.subId !== null && selection.subId !== undefined
+          ? meta.recolors?.[selection.subId]
+          : undefined;
 
-      // Use type_name as key (selection group)
+      // Use `type_name` as key (selection group).
       const key = subMeta?.type_name ?? meta.type_name;
 
-      // Build name part for URL: use full name with underscores
-      // "Body color" -> "Body_color", "Sara Shoes" -> "Sara_Shoes", "Waistband" -> "Waistband"
+      // Build name part for URL using full name with underscores —
+      // "Body color" → "Body_color", "Sara Shoes" → "Sara_Shoes".
       const namePart = (subMeta?.label ?? meta.name).replaceAll(" ", "_");
 
       const variantPart = selection.variant ?? "";
@@ -231,13 +272,20 @@ export function getHashParamsforSelections(selections) {
   return params;
 }
 
-export function syncSelectionsToHash() {
+export function syncSelectionsToHash(): void {
   const params = getHashParamsforSelections(state.selections);
   setHashParams(params);
 }
 
-export function loadSelectionsFromHash(hashString = null) {
-  const profiler = window.profiler;
+/** Profiler hook is a global injected by the test harness; absent in production. */
+type Profiler = {
+  mark: (name: string) => void;
+  measure: (name: string, start: string, end: string) => void;
+};
+type WindowWithProfiler = Window & { profiler?: Profiler };
+
+export function loadSelectionsFromHash(hashString: string | null = null): void {
+  const profiler = (window as WindowWithProfiler).profiler;
   if (profiler) {
     profiler.mark("hash-loadSelectionsFromHash:start");
   }
@@ -246,12 +294,12 @@ export function loadSelectionsFromHash(hashString = null) {
     ? getHashParamsFromString(hashString)
     : getHashParams();
 
-  // Build new selections object without mutating state yet
-  const newSelections = {};
-  const skippedEntries = {};
+  // Build new selections object without mutating state yet.
+  const newSelections: Selections = {};
+  const skippedEntries: Record<string, string> = {};
 
-  // Load selections
-  // Old format: type_name=Name_variant (e.g., "body=Body_color_light", "sash=Waistband_rose")
+  // Old format: `type_name=Name_variant`
+  // (e.g., "body=Body_color_light", "sash=Waistband_rose").
   for (let [typeName, nameAndVariant] of Object.entries(params)) {
     // Handle special parameters
     if (typeName === "bodyType" || typeName === "sex") {
@@ -259,31 +307,31 @@ export function loadSelectionsFromHash(hashString = null) {
       continue;
     }
 
-    // Check Name and Variant
-    const aliasMd = getAliasMetadata().unwrapOr({});
+    // Check name and variant
+    const aliasMd = getAliasMetadata().unwrapOr({} as AliasMetadata);
     const aliasType = aliasMd[typeName];
     const aliasMeta = aliasType?.[nameAndVariant];
     if (aliasMeta) {
       typeName = aliasMeta.typeName;
       nameAndVariant = `${aliasMeta.name}_${aliasMeta.variant}`;
     } else {
-      // If no exact match, check if there's a type name alias
+      // No exact match — check for a type-name wildcard alias.
       const anyAliasMeta = aliasType?.[`*`];
       if (anyAliasMeta) {
         typeName = anyAliasMeta.typeName;
-        // Keep the original nameAndVariant since the wildcard alias can match any variant
+        // Keep the original `nameAndVariant` since the wildcard alias
+        // can match any variant.
       }
     }
 
     // Skip "none" selections
     if (nameAndVariant === "none") continue;
 
-    // Parse the Name_variant format by trying different split positions
-    // Try from left to right to find a valid name+variant combination
-    // e.g., "Tiara_tiara_silver" -> try "Tiara" + "tiara_silver" ✓
-    // e.g., "Human_female_light" -> try "Human_female" + "light" ✓
-    // e.g., "Human_female_light|light" -> try "Human_female" + "light" + "light" ✓
-
+    // Parse the `Name_variant` format by trying different split positions
+    // from left to right to find a valid name+variant combination:
+    //   "Tiara_tiara_silver"  →  "Tiara" + "tiara_silver"  ✓
+    //   "Human_female_light"  →  "Human_female" + "light"  ✓
+    //   "Human_female_light|light"  →  "Human_female" + "light" + "light"  ✓
     const { foundItemId, matchedVariant, matchedRecolor } =
       hashDeps.resolveHashParam({ typeName, nameAndVariant });
 
@@ -295,7 +343,7 @@ export function loadSelectionsFromHash(hashString = null) {
       continue;
     }
 
-    // Use type_name as selection group
+    // Use `type_name` as selection group.
     newSelections[typeName] = buildNewSelection(
       foundItemId,
       matchedVariant,
@@ -303,13 +351,13 @@ export function loadSelectionsFromHash(hashString = null) {
     );
   }
 
-  // Check if Skipped Entries Are Sub-Items!
+  // Check if skipped entries are sub-items.
   if (profiler) {
     profiler.mark("hash-loadSelectionsFromHash:subitems:start");
   }
 
-  const subItemKeySeparator = "\u0000";
-  const subItemLookup = new Map();
+  const subItemKeySeparator = " ";
+  const subItemLookup = new Map<string, { itemId: string; subId: number }>();
   for (const selection of Object.values(newSelections)) {
     const recolors = hashDeps.getItemLite(selection.itemId)?.recolors;
     if (!Array.isArray(recolors)) continue;
@@ -330,9 +378,8 @@ export function loadSelectionsFromHash(hashString = null) {
     }
   }
 
-  // Insert Selections for Skipped Entries That Might Be Sub-Items
+  // Insert selections for skipped entries that might be sub-items.
   for (const [subType, nameAndVariant] of Object.entries(skippedEntries)) {
-    // Handle sub-items logic here
     const parts = nameAndVariant.split("_");
     for (let i = 1; i <= parts.length; i++) {
       const variants = parts.slice(i).join("_");
@@ -340,7 +387,6 @@ export function loadSelectionsFromHash(hashString = null) {
       const lookupKey = `${subType}${subItemKeySeparator}${recolorToMatch}`;
       const subItem = subItemLookup.get(lookupKey);
 
-      // Build New Selection
       if (subItem) {
         newSelections[subType] = buildNewSelection(
           subItem.itemId,
@@ -361,7 +407,7 @@ export function loadSelectionsFromHash(hashString = null) {
     );
   }
 
-  // Now update state once with complete new selections
+  // Now update state once with complete new selections.
   state.selections = newSelections;
 
   // Load body type
@@ -369,7 +415,8 @@ export function loadSelectionsFromHash(hashString = null) {
     state.bodyType = params.bodyType;
   }
 
-  syncSelectionsToHash(); // Ensure hash is in sync with loaded selections (handles any normalization)
+  // Ensure hash is in sync with loaded selections (handles any normalization).
+  syncSelectionsToHash();
 
   if (profiler) {
     profiler.mark("hash-loadSelectionsFromHash:end");
@@ -381,50 +428,48 @@ export function loadSelectionsFromHash(hashString = null) {
   }
 }
 
-// Initialize hash change listener
-export function initHashChangeListener(listener) {
+/** Wire up the browser hashchange event. */
+export function initHashChangeListener(listener?: () => void): void {
   if (listener) {
     window.addEventListener("hashchange", listener);
     return;
   }
 
-  // Listen for browser back/forward navigation
+  // Listen for browser back/forward navigation.
   window.addEventListener("hashchange", async function () {
     const currentHash = getHash();
 
-    // Check if this is an external change (browser navigation) vs our own update
-    // Our afterStateChange() will update the hash, but we don't want to reload from it
-    // We can detect external changes by checking if the hash is different from what we expect
+    // Distinguish external changes (browser navigation) from our own updates:
+    // `afterStateChange()` updates the hash; we don't want to reload from it.
+    // External changes show as a hash that differs from the one we'd produce.
     const expectedHash =
       "#" +
       Object.entries({
         bodyType: state.bodyType,
         ...Object.fromEntries(
-          Object.values(state.selections).map((s) => [
+          Object.values(state.selections).map((s): [string, string] => [
             s.itemId,
-            s.subId,
-            s.variant || "",
-            s.recolor || "",
+            String(s.subId),
           ]),
         ),
       })
         .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
         .join("&");
 
-    // If the hash matches what we expect from current state, ignore (it's our own update)
+    // Hash matches what we'd produce — it's our own update; ignore.
     if (currentHash === expectedHash) {
       return;
     }
 
-    // Load from hash (updates state once)
+    // Load from hash (updates state once).
     loadSelectionsFromHash();
 
-    // If nothing loaded from hash, use defaults
+    // If nothing loaded from hash, use defaults.
     if (Object.keys(state.selections).length === 0) {
       await selectDefaults();
     }
 
-    // Trigger redraw which calls App.onupdate (syncs hash and renders canvas)
+    // Trigger redraw which calls `App.onupdate` (syncs hash and renders canvas).
     m.redraw();
   });
 }

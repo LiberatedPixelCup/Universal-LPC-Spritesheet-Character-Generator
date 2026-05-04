@@ -10,9 +10,9 @@ import { state } from "../../sources/state/state.ts";
 import {
   getMultiRecolors,
   getPaletteOptions,
-} from "../../sources/state/palettes.js";
+} from "../../sources/state/palettes.ts";
 
-describe("state/palettes.js", () => {
+describe("state/palettes.ts", () => {
   let previousSelections;
 
   beforeEach(() => {

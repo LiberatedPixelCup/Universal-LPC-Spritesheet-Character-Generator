@@ -18,14 +18,14 @@ import {
   getSetHashCalledTimes,
   resetHashCalledTimes,
   resetHashDeps,
-} from "../../sources/state/hash.js";
+} from "../../sources/state/hash.ts";
 import { resetCatalogForTests } from "../../sources/state/catalog.ts";
 import {
   restoreAppCatalogAfterTest,
   seedBrowserCatalog,
 } from "../browser-catalog-fixture.js";
 
-describe("state/hash.js", () => {
+describe("state/hash.ts", () => {
   let sandbox;
 
   beforeEach(() => {

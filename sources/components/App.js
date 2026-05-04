@@ -1,7 +1,7 @@
 // Main app component
 import m from "mithril";
 import { state } from "../state/state.ts";
-import { syncSelectionsToHash } from "../state/hash.js";
+import { syncSelectionsToHash } from "../state/hash.ts";
 import { Download } from "./download/Download.js";
 import { FiltersPanel } from "./FiltersPanel.js";
 import { Credits } from "./download/Credits.js";

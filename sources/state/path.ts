@@ -1,7 +1,7 @@
 import "../install-item-metadata.ts";
 import { ok, err, type Result } from "neverthrow";
 import { ANIMATIONS } from "./constants.ts";
-import { getHashParamsforSelections as getHashParamsforSelectionsRaw } from "./hash.js";
+import { getHashParamsforSelections } from "./hash.ts";
 import {
   getItemMerged,
   getMetadataIndexes,
@@ -14,18 +14,6 @@ import { variantToFilename, es6DynamicTemplate } from "../utils/helpers.ts";
 import { debugLog } from "../utils/debug.js";
 import type { Selections } from "./state.ts";
 import type { AnimationEntry } from "./filters.ts";
-
-/**
- * `hash.js` is still untyped — TS infers its return as the closed shape
- * `{ sex: string }` (only field assigned before the dynamic `params[key]`
- * loop). Wrap it in a typed shim that pins the real runtime contract; the
- * shim disappears when `hash.js` converts.
- */
-function getHashParamsforSelections(
-  selections: Selections,
-): Record<string, string> {
-  return getHashParamsforSelectionsRaw(selections);
-}
 
 /**
  * `meta` arguments to `getSpritePath` / `replaceInPath` come from a few

@@ -29,7 +29,7 @@ import {
   exportSplitItemAnimations,
   exportSplitItemSheets,
 } from "../../sources/state/zip.js";
-import { resetState } from "../../sources/state/hash.js";
+import { resetState } from "../../sources/state/hash.ts";
 import { state } from "../../sources/state/state.ts";
 import { importStateFromJSON } from "../../sources/state/json.js";
 import issue382ItemMetadata from "../fixtures/issue-382/issue-382-itemdata.js";

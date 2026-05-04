@@ -1,7 +1,7 @@
 // Global state and state operations
 import m from "mithril";
 import { LICENSE_CONFIG, ANIMATIONS, BODY_TYPES } from "./constants.ts";
-import { syncSelectionsToHash, loadSelectionsFromHash } from "./hash.js";
+import { syncSelectionsToHash, loadSelectionsFromHash } from "./hash.ts";
 import { getItemMerged, type ItemMerged } from "./catalog.ts";
 import { renderCharacter } from "../canvas/renderer.js";
 

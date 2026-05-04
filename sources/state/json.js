@@ -2,7 +2,7 @@ import {
   createHashStringFromParams,
   getHashParamsforSelections,
   loadSelectionsFromHash,
-} from "./hash.js";
+} from "./hash.ts";
 import { getAllCredits } from "../utils/credits.ts";
 import { state } from "./state.ts";
 

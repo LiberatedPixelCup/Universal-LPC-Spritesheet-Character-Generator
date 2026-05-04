@@ -10,7 +10,7 @@ import {
   setStateDeps,
   state,
 } from "../../sources/state/state.ts";
-import { resetState } from "../../sources/state/hash.js";
+import { resetState } from "../../sources/state/hash.ts";
 import { expect } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";

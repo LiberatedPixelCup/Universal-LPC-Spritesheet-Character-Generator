@@ -10,7 +10,7 @@ import { get2DContext } from "./canvas-utils.ts";
 import { getItemLite } from "../state/catalog.ts";
 import { state } from "../state/state.ts";
 import { getLayersToLoad } from "../state/meta.ts";
-import { getPalettesForItem, getTargetPalette } from "../state/palettes.js";
+import { getPalettesFromMeta, getTargetPalette } from "../state/palettes.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../state/constants.ts";
 
 // Configuration flags
@@ -266,7 +266,7 @@ export async function getImageToDraw(img, itemId, recolors, spritePath = null) {
     return img; // No recolor specified, return original image
   }
   const meta = getItemLite(itemId).unwrapOr(null);
-  const paletteConfig = getPalettesForItem(itemId, meta);
+  const paletteConfig = getPalettesFromMeta(meta).unwrapOr(null);
   if (!paletteConfig) {
     return img; // Item doesn't use palette recoloring
   }
@@ -338,7 +338,7 @@ export async function recolorWithPalette(
     const targetPalette = getTargetPalette(
       palette.material,
       targetColors[typeName],
-    );
+    ).unwrapOr(null);
     if (!targetPalette) {
       throw new Error(
         `Unknown target palette color: ${JSON.stringify(targetColors)}`,

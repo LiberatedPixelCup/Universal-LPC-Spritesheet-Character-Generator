@@ -15,7 +15,7 @@ import {
   customAreaItems,
   addedCustomAnimations,
 } from "../canvas/renderer.js";
-import { getMultiRecolors } from "./palettes.js";
+import { getMultiRecolors } from "./palettes.ts";
 import { getItemFileName } from "../utils/fileName.ts";
 import { loadImage } from "../canvas/load-image.js";
 import { getImageToDraw } from "../canvas/palette-recolor.js";

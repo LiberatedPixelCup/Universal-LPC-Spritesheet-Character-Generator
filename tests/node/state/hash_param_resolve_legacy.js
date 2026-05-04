@@ -1,6 +1,6 @@
 /**
  * Legacy hash param resolution (full `itemMetadata` scan). Used only from tests (Commit 7b parity).
- * Mirrors `loadSelectionsFromHash` item-matching loops from `sources/state/hash.js` pre-index.
+ * Mirrors `loadSelectionsFromHash` item-matching loops from `sources/state/hash.ts` pre-index.
  */
 
 /**
