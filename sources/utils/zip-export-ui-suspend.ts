@@ -11,24 +11,28 @@ import {
  * Nesting depth allows future overlapping guards; each export uses one pair.
  */
 let suspendDepth = 0;
-/** @type {(() => void) | null} */
-let savedRedraw = null;
+let savedRedraw: (() => void) | null = null;
 let resumePreviewAnimation = false;
 
-export function beginZipExportUiSuspend() {
+/** Mithril is attached to `globalThis.m` by `vendor-globals.js`; treat as optional here. */
+type GlobalWithMithril = typeof globalThis & {
+  m?: { redraw?: () => void };
+};
+
+export function beginZipExportUiSuspend(): void {
   suspendDepth++;
   if (suspendDepth > 1) {
     return;
   }
   resumePreviewAnimation = stopPreviewAnimation();
-  const mithril = typeof globalThis !== "undefined" ? globalThis.m : undefined;
+  const mithril = (globalThis as GlobalWithMithril).m;
   if (mithril && typeof mithril.redraw === "function") {
     savedRedraw = mithril.redraw.bind(mithril);
     mithril.redraw = () => {};
   }
 }
 
-export function endZipExportUiSuspend() {
+export function endZipExportUiSuspend(): void {
   if (suspendDepth === 0) {
     return;
   }
@@ -36,7 +40,7 @@ export function endZipExportUiSuspend() {
   if (suspendDepth > 0) {
     return;
   }
-  const mithril = typeof globalThis !== "undefined" ? globalThis.m : undefined;
+  const mithril = (globalThis as GlobalWithMithril).m;
   if (mithril && savedRedraw) {
     mithril.redraw = savedRedraw;
     savedRedraw = null;

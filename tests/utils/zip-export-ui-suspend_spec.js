@@ -4,7 +4,7 @@ import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import {
   beginZipExportUiSuspend,
   endZipExportUiSuspend,
-} from "../../sources/utils/zip-export-ui-suspend.js";
+} from "../../sources/utils/zip-export-ui-suspend.ts";
 
 /** Drain nested suspend depth so module state does not leak between tests. */
 function drainZipExportUiSuspend() {
@@ -13,7 +13,7 @@ function drainZipExportUiSuspend() {
   }
 }
 
-describe("utils/zip-export-ui-suspend.js", () => {
+describe("utils/zip-export-ui-suspend.ts", () => {
   let savedM;
 
   beforeEach(() => {

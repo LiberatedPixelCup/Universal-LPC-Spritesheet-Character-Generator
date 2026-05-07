@@ -1,3 +1,4 @@
+import { ok, err, type Result } from "neverthrow";
 import {
   ANIMATION_CONFIGS,
   FRAME_SIZE,
@@ -5,30 +6,64 @@ import {
   DIRECTIONS,
 } from "../state/constants.ts";
 import { drawFramesToCustomAnimation } from "../canvas/draw-frames.ts";
-import { customAnimationSize } from "../custom-animations.ts";
+import {
+  customAnimationSize,
+  type CustomAnimationDefinition,
+} from "../custom-animations.ts";
 import {
   canvasToBlob,
   get2DContext,
   hasContentInRegion,
 } from "../canvas/canvas-utils.ts";
 import { debugLog, debugWarn } from "../utils/debug.js";
-import { getAllCredits, creditsToTxt, creditsToCsv } from "./credits.js";
+import { getAllCredits, creditsToTxt, creditsToCsv } from "./credits.ts";
 import { exportStateAsJSON } from "../state/json.js";
+import type { ZipExportProfiler } from "../performance-profiler.ts";
+import type { State } from "../state/state.ts";
+
+/**
+ * Subset of the JSZip folder API consumed by these helpers and downstream
+ * `zip.ts`. `window.JSZip` is provided by the runtime bundle. Pinning the
+ * shape here lets the consumer reuse it via a single import.
+ */
+export type ZipFolder = {
+  /** Present on JSZip folder instances; used in debug logging. */
+  root?: string;
+  folder: (name: string) => ZipFolder;
+  file: (name: string, data: Blob | string) => void;
+  generateAsync: (options: { type: "blob" }) => Promise<Blob>;
+};
+
+type RectLike = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
 
 /**
  * Maps direction names to row indices on a custom-animation grid (LPC order:
- * up, left, down, right).
- * Should match DIRECTIONS from constants.js
+ * up, left, down, right). Should match DIRECTIONS from constants.ts.
  */
-export const CUSTOM_ANIM_DIRECTION_TO_ROW = Object.freeze(
-  DIRECTIONS.reduce((acc, dir, index) => {
-    acc[dir] = index;
-    return acc;
-  }, {}),
-);
+export const CUSTOM_ANIM_DIRECTION_TO_ROW: Readonly<Record<string, number>> =
+  Object.freeze(
+    DIRECTIONS.reduce<Record<string, number>>((acc, dir, index) => {
+      acc[dir] = index;
+      return acc;
+    }, {}),
+  );
 
-function createFrameCanvasPool(poolSize, frameWidth, frameHeight) {
-  const canvasPool = [];
+type FrameCanvas = {
+  canvas: HTMLCanvasElement;
+  ctx: CanvasRenderingContext2D;
+};
+
+function createFrameCanvasPool(
+  poolSize: number,
+  frameWidth: number,
+  frameHeight: number,
+): FrameCanvas[] {
+  const canvasPool: FrameCanvas[] = [];
   for (let i = 0; i < poolSize; i++) {
     const frameCanvas = document.createElement("canvas");
     frameCanvas.width = frameWidth;
@@ -41,7 +76,13 @@ function createFrameCanvasPool(poolSize, frameWidth, frameHeight) {
   return canvasPool;
 }
 
-function blitFrameFromSheet(destCtx, sourceCanvas, sourceX, sourceY, size) {
+function blitFrameFromSheet(
+  destCtx: CanvasRenderingContext2D,
+  sourceCanvas: HTMLCanvasElement,
+  sourceX: number,
+  sourceY: number,
+  size: number,
+): void {
   destCtx.clearRect(0, 0, size, size);
   destCtx.drawImage(
     sourceCanvas,
@@ -56,11 +97,10 @@ function blitFrameFromSheet(destCtx, sourceCanvas, sourceX, sourceY, size) {
   );
 }
 
-/**
- * @param {HTMLCanvasElement} src
- * @param {DOMRect | { x: number; y: number; width: number; height: number } | undefined} srcRect
- */
-function normalizeAnimationSrcRect(src, srcRect) {
+function normalizeAnimationSrcRect(
+  src: HTMLCanvasElement,
+  srcRect: DOMRect | RectLike | undefined,
+): RectLike {
   return srcRect
     ? {
         x: srcRect.x,
@@ -76,14 +116,13 @@ function normalizeAnimationSrcRect(src, srcRect) {
       };
 }
 
-/**
- * @param {HTMLCanvasElement} src
- * @param {number} x
- * @param {number} y
- * @param {number} width
- * @param {number} height
- */
-function animationSubregionHasContent(src, x, y, width, height) {
+function animationSubregionHasContent(
+  src: HTMLCanvasElement,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+): boolean {
   const fromSubregion =
     x !== 0 || y !== 0 || width !== src.width || height !== src.height;
   if (fromSubregion) {
@@ -95,10 +134,15 @@ function animationSubregionHasContent(src, x, y, width, height) {
   return true;
 }
 
-/**
- * Draws the slice from `src` onto `animCanvas` (must already match width/height).
- */
-function drawAnimationSliceOntoCanvas(src, x, y, width, height, animCanvas) {
+/** Draws the slice from `src` onto `animCanvas` (must already match width/height). */
+function drawAnimationSliceOntoCanvas(
+  src: HTMLCanvasElement,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  animCanvas: HTMLCanvasElement,
+): void {
   const animCtx = get2DContext(animCanvas, true);
   if (!animCtx) {
     throw new Error("Failed to get canvas context");
@@ -106,10 +150,22 @@ function drawAnimationSliceOntoCanvas(src, x, y, width, height, animCanvas) {
   animCtx.drawImage(src, x, y, width, height, 0, 0, width, height);
 }
 
-export function newAnimationFromSheet(src, srcRect) {
+/** Why a slice operation produced no canvas (vs. the caller misusing the API). */
+export type AnimationSliceError = { kind: "empty-subregion" };
+
+/**
+ * Carve a subregion out of `src` onto a fresh canvas. Errs with
+ * `empty-subregion` when the region has no non-transparent pixels (callers
+ * route this to "skip the export" without conflating it with a load error).
+ * Use {@link addCanvasToZip} for the "encode the whole source" case.
+ */
+export function newAnimationFromSheet(
+  src: HTMLCanvasElement,
+  srcRect: DOMRect | RectLike,
+): Result<HTMLCanvasElement, AnimationSliceError> {
   const { x, y, width, height } = normalizeAnimationSrcRect(src, srcRect);
   if (!animationSubregionHasContent(src, x, y, width, height)) {
-    return null;
+    return err({ kind: "empty-subregion" });
   }
 
   const animCanvas = document.createElement("canvas");
@@ -117,26 +173,30 @@ export function newAnimationFromSheet(src, srcRect) {
   animCanvas.height = height;
   drawAnimationSliceOntoCanvas(src, x, y, width, height, animCanvas);
 
-  return animCanvas;
+  return ok(animCanvas);
 }
 
-/**
- * @param {{ phase: (name: string, fn: () => void | Promise<void>) => Promise<void> } | null | undefined} profiler
- * @param {string} name
- * @param {() => void | Promise<void>} fn
- */
-async function runZipProfilerPhase(profiler, name, fn) {
+/** Subset of `ZipExportProfiler` used by this module's instrumentation hooks. */
+type ZipHelpersProfiler = Pick<
+  ZipExportProfiler,
+  "phase" | "incrementCounter" | "addCounter"
+>;
+
+async function runZipProfilerPhase(
+  profiler: ZipHelpersProfiler | null | undefined,
+  name: string,
+  fn: () => void | Promise<void>,
+): Promise<void> {
   if (profiler && typeof profiler.phase === "function") {
     return profiler.phase(name, fn);
   }
-  return fn();
+  await fn();
 }
 
-/**
- * @param {{ incrementCounter?: (n: string, d?: number) => void; addCounter?: (n: string, a: number) => void } | null | undefined} profiler
- * @param {Blob} blob
- */
-function zipProfilerNotePngEncode(profiler, blob) {
+function zipProfilerNotePngEncode(
+  profiler: ZipHelpersProfiler | null | undefined,
+  blob: Blob | undefined,
+): void {
   if (!profiler || !blob) return;
   if (typeof profiler.incrementCounter === "function") {
     profiler.incrementCounter("pngEncodeCount");
@@ -146,113 +206,138 @@ function zipProfilerNotePngEncode(profiler, blob) {
   }
 }
 
-/**
- * @param {{ incrementCounter?: (n: string, d?: number) => void } | null | undefined} profiler
- */
-function zipProfilerNoteDrawAndSlice(profiler) {
+function zipProfilerNoteDrawAndSlice(
+  profiler: ZipHelpersProfiler | null | undefined,
+): void {
   if (!profiler || typeof profiler.incrementCounter !== "function") return;
   profiler.incrementCounter("drawAndSliceCount");
 }
 
-/**
- * @param {{ incrementCounter?: (n: string, d?: number) => void } | null | undefined} profiler
- */
-function zipProfilerNoteZipEntry(profiler) {
+function zipProfilerNoteZipEntry(
+  profiler: ZipHelpersProfiler | null | undefined,
+): void {
   if (!profiler || typeof profiler.incrementCounter !== "function") return;
   profiler.incrementCounter("zipFileEntryCount");
 }
 
+type ZipPhaseOptions = { profiler?: ZipHelpersProfiler };
+
+function ensureZipEntryName(fileName: string): string {
+  return fileName.endsWith(".png") ? fileName : `${fileName}.png`;
+}
+
+async function encodeAndAddToZip(
+  folder: ZipFolder,
+  fileName: string,
+  canvas: HTMLCanvasElement,
+  profiler: ZipHelpersProfiler | null,
+): Promise<void> {
+  let blob: Blob | undefined;
+  await runZipProfilerPhase(profiler, "pngEncode", async () => {
+    blob = await canvasToBlob(canvas);
+  });
+  if (!blob) return;
+  zipProfilerNotePngEncode(profiler, blob);
+
+  const zipEntryName = ensureZipEntryName(fileName);
+  debugLog(
+    `Adding to ZIP: `,
+    `${folder.root ?? ""}${zipEntryName}`,
+    "size: ",
+    blob.size,
+  );
+  const sealedBlob: Blob = blob;
+  await runZipProfilerPhase(profiler, "zipFile", async () => {
+    folder.file(zipEntryName, sealedBlob);
+  });
+  zipProfilerNoteZipEntry(profiler);
+}
+
+/** Why an "add to zip" operation produced no entry. */
+export type ZipAddError = { kind: "missing-src" } | { kind: "empty-subregion" };
+
 /**
- * @param {{
- *   profiler?: {
- *     phase: (name: string, fn: () => void | Promise<void>) => Promise<void>;
- *     incrementCounter?: (name: string, delta?: number) => void;
- *     addCounter?: (name: string, amount: number) => void;
- *   };
- * }} [options]
+ * Carve a subregion out of `srcCanvas` and add it as a PNG entry under
+ * `fileName`. Errs with `empty-subregion` when the subregion is fully
+ * transparent (no entry written), or `missing-src` when `srcCanvas` is
+ * falsy. Returns the new sliced canvas on success.
  */
-export async function addAnimationToZipFolder(
-  folder,
-  fileName,
-  srcCanvas,
-  srcRect,
-  options = {},
-) {
+export async function addAnimationSliceToZip(
+  folder: ZipFolder,
+  fileName: string,
+  srcCanvas: HTMLCanvasElement,
+  srcRect: DOMRect | RectLike,
+  options: ZipPhaseOptions = {},
+): Promise<Result<HTMLCanvasElement, ZipAddError>> {
+  if (!srcCanvas) return err({ kind: "missing-src" });
+
   const profiler = options.profiler ?? null;
-  if (srcCanvas) {
-    let animCanvas;
-    /** @type {Blob | undefined} */
-    let blob;
-    await runZipProfilerPhase(profiler, "drawAndSlice", async () => {
-      animCanvas = newAnimationFromSheet(srcCanvas, srcRect);
-    });
-    if (animCanvas) {
-      zipProfilerNoteDrawAndSlice(profiler);
-      await runZipProfilerPhase(profiler, "pngEncode", async () => {
-        blob = await canvasToBlob(animCanvas);
-      });
-      if (blob) {
-        zipProfilerNotePngEncode(profiler, blob);
-      }
-    }
-    if (animCanvas) {
-      if (blob) {
-        const zipEntryName = fileName.endsWith(".png")
-          ? fileName
-          : `${fileName}.png`;
-        debugLog(
-          `Adding to ZIP: `,
-          `${folder.root}${zipEntryName}`,
-          "size: ",
-          blob.size,
-        );
-        await runZipProfilerPhase(profiler, "zipFile", async () => {
-          folder.file(zipEntryName, blob);
-        });
-        zipProfilerNoteZipEntry(profiler);
-      }
-      return animCanvas;
-    }
-  }
+  let sliceResult: Result<HTMLCanvasElement, AnimationSliceError> | undefined;
+  await runZipProfilerPhase(profiler, "drawAndSlice", async () => {
+    sliceResult = newAnimationFromSheet(srcCanvas, srcRect);
+  });
+  // `runZipProfilerPhase` runs `fn` synchronously enough for `sliceResult`
+  // to be set before this line; the `!` documents that contract.
+  const sliced = sliceResult!;
+  if (sliced.isErr()) return err(sliced.error);
+
+  zipProfilerNoteDrawAndSlice(profiler);
+  await encodeAndAddToZip(folder, fileName, sliced.value, profiler);
+  return ok(sliced.value);
+}
+
+/**
+ * Add the whole `srcCanvas` as a PNG entry under `fileName`. No slicing, no
+ * subregion-content check. Errs with `missing-src` when `srcCanvas` is
+ * falsy.
+ */
+export async function addCanvasToZip(
+  folder: ZipFolder,
+  fileName: string,
+  srcCanvas: HTMLCanvasElement,
+  options: ZipPhaseOptions = {},
+): Promise<Result<HTMLCanvasElement, ZipAddError>> {
+  if (!srcCanvas) return err({ kind: "missing-src" });
+
+  const profiler = options.profiler ?? null;
+  await encodeAndAddToZip(folder, fileName, srcCanvas, profiler);
+  return ok(srcCanvas);
 }
 
 /**
  * Renders the full custom animation layout from drawable `src` (e.g. a layer
  * sprite) onto a new canvas sized to that animation via `customAnimationSize`.
  */
-export function newStandardAnimationForCustomAnimation(src, custAnim) {
+export function newStandardAnimationForCustomAnimation(
+  src: HTMLCanvasElement | HTMLImageElement,
+  custAnim: CustomAnimationDefinition,
+): HTMLCanvasElement {
   const custCanvas = document.createElement("canvas");
   const { width: custWidth, height: custHeight } =
     customAnimationSize(custAnim);
   custCanvas.width = custWidth;
   custCanvas.height = custHeight;
   const custCtx = get2DContext(custCanvas, true);
-  drawFramesToCustomAnimation(custCtx, custAnim, 0, src, null);
+  if (!custCtx) {
+    throw new Error("Failed to get canvas context");
+  }
+  drawFramesToCustomAnimation(custCtx, custAnim, 0, src);
   return custCanvas;
 }
 
 /**
  * Encodes the standard-animation slice for a custom animation as PNG and adds
  * it to a JSZip subfolder under the given filename.
- *
- * @param {{
- *   profiler?: {
- *     phase: (name: string, fn: () => void | Promise<void>) => Promise<void>;
- *     incrementCounter?: (name: string, delta?: number) => void;
- *     addCounter?: (name: string, amount: number) => void;
- *   };
- * }} [options]
  */
 export async function addStandardAnimationToZipCustomFolder(
-  custAnimFolder,
-  itemFileName,
-  src,
-  custAnim,
-  options = {},
-) {
+  custAnimFolder: ZipFolder,
+  itemFileName: string,
+  src: HTMLCanvasElement | HTMLImageElement,
+  custAnim: CustomAnimationDefinition,
+  options: ZipPhaseOptions = {},
+): Promise<HTMLCanvasElement | undefined> {
   const profiler = options.profiler ?? null;
-  /** @type {HTMLCanvasElement | undefined} */
-  let custCanvas;
+  let custCanvas: HTMLCanvasElement | undefined;
   await runZipProfilerPhase(profiler, "drawAndSlice", async () => {
     custCanvas = newStandardAnimationForCustomAnimation(src, custAnim);
   });
@@ -260,31 +345,41 @@ export async function addStandardAnimationToZipCustomFolder(
     return undefined;
   }
   zipProfilerNoteDrawAndSlice(profiler);
-  let custBlob;
+  let custBlob: Blob | undefined;
   await runZipProfilerPhase(profiler, "pngEncode", async () => {
-    custBlob = await canvasToBlob(custCanvas);
+    custBlob = await canvasToBlob(custCanvas as HTMLCanvasElement);
   });
   if (custBlob) {
     zipProfilerNotePngEncode(profiler, custBlob);
   }
   await runZipProfilerPhase(profiler, "zipFile", async () => {
-    custAnimFolder.file(itemFileName, custBlob);
+    if (custBlob) custAnimFolder.file(itemFileName, custBlob);
   });
   zipProfilerNoteZipEntry(profiler);
   return custCanvas;
 }
+
+export type ExtractedFrames = Record<
+  string,
+  Array<{ canvas: HTMLCanvasElement; frameNumber: number }>
+>;
 
 /**
  * Splits a built-in LPC animation canvas (rows = directions, 13 frames per row)
  * into per-frame canvases. Skips frames that are fully transparent in the sheet.
  */
 export function extractFramesFromAnimation(
-  animationCanvas,
-  animationName,
-  directions = DIRECTIONS,
-) {
-  const frames = {};
-  const config = ANIMATION_CONFIGS[animationName];
+  animationCanvas: HTMLCanvasElement,
+  animationName: string,
+  directions: readonly string[] = DIRECTIONS,
+): ExtractedFrames {
+  const frames: ExtractedFrames = {};
+  const config = (
+    ANIMATION_CONFIGS as Record<
+      string,
+      { row: number; num: number; cycle: number[] }
+    >
+  )[animationName];
   if (!config) return frames;
 
   const frameWidth = FRAME_SIZE;
@@ -292,6 +387,7 @@ export function extractFramesFromAnimation(
   const framesPerRow = STANDARD_ANIMATION_FRAMES_PER_ROW;
 
   const sourceCtx = get2DContext(animationCanvas, true);
+  if (!sourceCtx) return frames;
 
   const canvasPool = createFrameCanvasPool(
     directions.length * framesPerRow,
@@ -355,11 +451,11 @@ export function extractFramesFromAnimation(
  * non-transparent pixel in the frame column starting at `startX`.
  */
 export function checkFrameContentFromImageData(
-  imageData,
-  startX,
-  frameWidth,
-  frameHeight,
-) {
+  imageData: ImageData,
+  startX: number,
+  frameWidth: number,
+  frameHeight: number,
+): boolean {
   const data = imageData.data;
   const imageWidth = imageData.width;
 
@@ -381,11 +477,11 @@ export function checkFrameContentFromImageData(
  * included, including fully transparent ones).
  */
 export function extractFramesFromCustomAnimation(
-  animationCanvas,
-  customAnimationDef,
-  directions = DIRECTIONS,
-) {
-  const frames = {};
+  animationCanvas: HTMLCanvasElement,
+  customAnimationDef: CustomAnimationDefinition,
+  directions: readonly string[] = DIRECTIONS,
+): ExtractedFrames {
+  const frames: ExtractedFrames = {};
   const frameSize = customAnimationDef.frameSize;
   const animationFrames = customAnimationDef.frames;
 
@@ -399,6 +495,7 @@ export function extractFramesFromCustomAnimation(
   });
 
   const sourceCtx = get2DContext(animationCanvas, true);
+  if (!sourceCtx) return frames;
 
   const maxFrames = Math.max(...animationFrames.map((row) => row.length));
   const canvasPool = createFrameCanvasPool(
@@ -459,13 +556,19 @@ export function extractFramesFromCustomAnimation(
 }
 
 /** ISO-like filename token for ZIP names (no colons). */
-export function zipExportTimestamp() {
+export function zipExportTimestamp(): string {
   return new Date().toISOString().replace(/[:.]/g, "-").slice(0, -5);
 }
 
-/** @returns {boolean} */
-export function guardZipExportEnvironment() {
-  if (!window.canvasRenderer || !window.JSZip) {
+/** Globals required for ZIP export at runtime. */
+type WindowWithZipDeps = Window & {
+  canvasRenderer?: unknown;
+  JSZip?: new () => ZipFolder;
+};
+
+export function guardZipExportEnvironment(): boolean {
+  const w = window as WindowWithZipDeps;
+  if (!w.canvasRenderer || !w.JSZip) {
     alert("JSZip library not loaded");
     return false;
   }
@@ -475,36 +578,52 @@ export function guardZipExportEnvironment() {
 /**
  * Writes `character.json` at zip root and `credits.txt` / `credits.csv` under `creditsFolder`.
  */
-export function addCharacterJsonAndCredits(zip, creditsFolder, state, layers) {
+export function addCharacterJsonAndCredits(
+  zip: ZipFolder,
+  creditsFolder: ZipFolder,
+  state: State,
+  layers: unknown[],
+): void {
   zip.file("character.json", exportStateAsJSON(state, layers));
   const allCredits = getAllCredits(state.selections, state.bodyType);
   creditsFolder.file("credits.txt", creditsToTxt(allCredits));
   creditsFolder.file("credits.csv", creditsToCsv(allCredits));
 }
 
-/**
- * Runs the `generateZip` profiler phase, `generateAsync({ type: "blob" })`, and `logReport()`.
- */
-export async function zipGenerateBlobWithProfiler(profiler, zip) {
-  let zipBlob;
+/** Exposes a snapshot of the last completed export's profile for debugging. */
+type WindowWithProfileSnapshot = Window & {
+  __lastZipExportProfile?: ReturnType<ZipExportProfiler["toMetadata"]>;
+  __zipExportProfiles?: Record<
+    string,
+    ReturnType<ZipExportProfiler["toMetadata"]>
+  >;
+};
+
+/** Runs the `generateZip` profiler phase, `generateAsync({ type: "blob" })`, and `logReport()`. */
+export async function zipGenerateBlobWithProfiler(
+  profiler: ZipExportProfiler,
+  zip: ZipFolder,
+): Promise<Blob> {
+  let zipBlob: Blob | undefined;
   await profiler.phase("generateZip", async () => {
     zipBlob = await zip.generateAsync({ type: "blob" });
   });
   profiler.logReport();
   if (
     typeof window !== "undefined" &&
-    profiler &&
     typeof profiler.toMetadata === "function"
   ) {
     const meta = profiler.toMetadata();
-    window.__lastZipExportProfile = meta;
-    window.__zipExportProfiles = window.__zipExportProfiles || {};
-    window.__zipExportProfiles[meta.exportKind] = meta;
+    const w = window as WindowWithProfileSnapshot;
+    w.__lastZipExportProfile = meta;
+    w.__zipExportProfiles = w.__zipExportProfiles || {};
+    w.__zipExportProfiles[meta.exportKind] = meta;
   }
-  return zipBlob;
+  // `zipBlob` is set inside the profiler.phase callback above.
+  return zipBlob as Blob;
 }
 
-export function downloadZipBlob(zipBlob, filename) {
+export function downloadZipBlob(zipBlob: Blob, filename: string): void {
   const url = URL.createObjectURL(zipBlob);
   const a = document.createElement("a");
   a.href = url;

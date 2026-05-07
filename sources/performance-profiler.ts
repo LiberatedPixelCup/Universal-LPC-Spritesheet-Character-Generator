@@ -13,28 +13,61 @@ import {
  * - {@link createZipExportProfiler}: phase timings for ZIP export (metadata.json + optional DEBUG table).
  *
  * Usage (global profiler):
- *   import { PerformanceProfiler } from './performance-profiler.js';
+ *   import { PerformanceProfiler } from './performance-profiler.ts';
  *   const profiler = new PerformanceProfiler({ enabled: true });
  *   profiler.mark('operation:start');
  *   profiler.mark('operation:end');
  *   profiler.measure('operation', 'operation:start', 'operation:end');
  *
  * Usage (ZIP export):
- *   import { createZipExportProfiler } from './performance-profiler.js';
+ *   import { createZipExportProfiler } from './performance-profiler.ts';
  *   const zipProfiler = createZipExportProfiler('splitAnimations');
  *   await zipProfiler.phase('drawAndSlice', async () => { ... });
  *   zipProfiler.syncPhase('render_composite_extractAnimationFromCanvas', () => { ... });
  *   zipProfiler.incrementCounter('pngEncodeCount');
  */
 
+export type PerformanceProfilerOptions = {
+  enabled?: boolean;
+  logSlowOperations?: boolean;
+  slowThresholdMs?: number;
+  verbose?: boolean;
+};
+
+type MetricBucket = { count: number; totalTime: number };
+type MetricsByCategory = {
+  imageLoads: MetricBucket;
+  draws: MetricBucket;
+  previews: MetricBucket;
+  domUpdates: MetricBucket;
+};
+
+/** Chrome-only `performance.memory`; absent in other browsers. */
+type PerformanceWithMemory = Performance & {
+  memory?: {
+    usedJSHeapSize: number;
+    totalJSHeapSize: number;
+    jsHeapSizeLimit: number;
+  };
+};
+
 export class PerformanceProfiler {
-  constructor(options = {}) {
-    this.enabled = options.enabled ?? false; // Default: disabled
+  enabled: boolean;
+  logSlowOperations: boolean;
+  slowThresholdMs: number;
+  verbose: boolean;
+
+  metrics: MetricsByCategory;
+  fpsFrames: number;
+  fpsStartTime: number | null;
+  currentFps: number;
+
+  constructor(options: PerformanceProfilerOptions = {}) {
+    this.enabled = options.enabled ?? false;
     this.logSlowOperations = options.logSlowOperations !== false;
     this.slowThresholdMs = options.slowThresholdMs || 50;
     this.verbose = options.verbose || false;
 
-    // Track metrics
     this.metrics = {
       imageLoads: { count: 0, totalTime: 0 },
       draws: { count: 0, totalTime: 0 },
@@ -42,7 +75,6 @@ export class PerformanceProfiler {
       domUpdates: { count: 0, totalTime: 0 },
     };
 
-    // FPS monitoring
     this.fpsFrames = 0;
     this.fpsStartTime = null;
     this.currentFps = 0;
@@ -54,10 +86,8 @@ export class PerformanceProfiler {
     }
   }
 
-  /**
-   * Enable profiler at runtime
-   */
-  enable() {
+  /** Enable profiler at runtime. */
+  enable(): void {
     if (!this.enabled) {
       this.enabled = true;
       this._initializeFPSMonitor();
@@ -66,20 +96,16 @@ export class PerformanceProfiler {
     }
   }
 
-  /**
-   * Disable profiler at runtime
-   */
-  disable() {
+  /** Disable profiler at runtime. */
+  disable(): void {
     if (this.enabled) {
       this.enabled = false;
       debugLog("📊 Performance Profiler disabled");
     }
   }
 
-  /**
-   * Create a performance mark (appears in DevTools timeline)
-   */
-  mark(name) {
+  /** Create a performance mark (appears in DevTools timeline). */
+  mark(name: string): void {
     if (!this.enabled) return;
 
     try {
@@ -96,21 +122,23 @@ export class PerformanceProfiler {
    * Measure time between two marks.
    * `renderCharacter` is bracketed only around compositing work (not dynamic-import latency).
    * `image-load:…` pairings require unique mark names; duplicate fetches of the same URL are
-   * deduplicated in `load-image.js` so one span per network load.
+   * deduplicated in `load-image.ts` so one span per network load.
    */
-  measure(measureName, startMark, endMark) {
+  measure(
+    measureName: string,
+    startMark: string,
+    endMark: string,
+  ): number | null {
     if (!this.enabled) return null;
 
     try {
       performance.measure(measureName, startMark, endMark);
 
-      // Get the measurement
       const measures = performance.getEntriesByName(measureName, "measure");
       if (measures.length > 0) {
         const measure = measures[measures.length - 1];
         const duration = measure.duration;
 
-        // Log slow operations
         if (this.logSlowOperations && duration > this.slowThresholdMs) {
           debugWarn(
             `⚠️ Slow operation: ${measureName} took ${duration.toFixed(2)}ms`,
@@ -119,7 +147,6 @@ export class PerformanceProfiler {
           debugLog(`⏱️ ${measureName}: ${duration.toFixed(2)}ms`);
         }
 
-        // Track in metrics
         this._trackMetric(measureName, duration);
 
         return duration;
@@ -131,12 +158,9 @@ export class PerformanceProfiler {
     return null;
   }
 
-  /**
-   * Track metric by category
-   */
-  _trackMetric(name, duration) {
-    // Categorize the metric
-    let category = null;
+  /** Bucket a measurement into one of the named metric categories. */
+  _trackMetric(name: string, duration: number): void {
+    let category: keyof MetricsByCategory | null = null;
     if (name.includes("image") || name.includes("load")) {
       category = "imageLoads";
     } else if (name.includes("draw") || name.includes("render")) {
@@ -157,10 +181,7 @@ export class PerformanceProfiler {
     }
   }
 
-  /**
-   * Initialize FPS monitoring
-   */
-  _initializeFPSMonitor() {
+  _initializeFPSMonitor(): void {
     this.fpsStartTime = performance.now();
 
     const countFrame = () => {
@@ -169,10 +190,9 @@ export class PerformanceProfiler {
     };
     requestAnimationFrame(countFrame);
 
-    // Report FPS every 2 seconds
     setInterval(() => {
       const now = performance.now();
-      const elapsed = (now - this.fpsStartTime) / 1000;
+      const elapsed = (now - (this.fpsStartTime ?? now)) / 1000;
       this.currentFps = Math.round(this.fpsFrames / elapsed);
 
       if (this.verbose) {
@@ -181,40 +201,34 @@ export class PerformanceProfiler {
         debugLog(`${fpsEmoji} FPS: ${this.currentFps}`);
       }
 
-      // Reset
       this.fpsFrames = 0;
       this.fpsStartTime = now;
     }, 2000);
   }
 
-  /**
-   * Get current FPS
-   */
-  getFPS() {
+  getFPS(): number {
     return this.currentFps;
   }
 
-  /**
-   * Get memory usage (Chrome only)
-   */
-  getMemoryUsage() {
-    if (performance.memory) {
+  /** Memory usage (Chrome only). */
+  getMemoryUsage(): {
+    usedJSHeapSize: string;
+    totalJSHeapSize: string;
+    jsHeapSizeLimit: string;
+  } | null {
+    const mem = (performance as PerformanceWithMemory).memory;
+    if (mem) {
       return {
-        usedJSHeapSize:
-          (performance.memory.usedJSHeapSize / 1048576).toFixed(2) + " MB",
-        totalJSHeapSize:
-          (performance.memory.totalJSHeapSize / 1048576).toFixed(2) + " MB",
-        jsHeapSizeLimit:
-          (performance.memory.jsHeapSizeLimit / 1048576).toFixed(2) + " MB",
+        usedJSHeapSize: (mem.usedJSHeapSize / 1048576).toFixed(2) + " MB",
+        totalJSHeapSize: (mem.totalJSHeapSize / 1048576).toFixed(2) + " MB",
+        jsHeapSizeLimit: (mem.jsHeapSizeLimit / 1048576).toFixed(2) + " MB",
       };
     }
     return null;
   }
 
-  /**
-   * Print comprehensive performance report
-   */
-  report() {
+  /** Print comprehensive performance report. */
+  report(): void {
     if (!this.enabled) {
       debugLog("Performance profiler is disabled");
       return;
@@ -222,7 +236,6 @@ export class PerformanceProfiler {
 
     debugGroup("📊 Performance Report");
 
-    // Summary by category
     debugGroup("⏱️ Timing Summary");
     for (const [category, data] of Object.entries(this.metrics)) {
       if (data.count > 0) {
@@ -234,10 +247,8 @@ export class PerformanceProfiler {
     }
     debugGroupEnd();
 
-    // FPS
     debugLog(`\n🎬 Current FPS: ${this.currentFps}`);
 
-    // Memory (Chrome only)
     const memory = this.getMemoryUsage();
     if (memory) {
       debugGroup("💾 Memory Usage");
@@ -245,16 +256,14 @@ export class PerformanceProfiler {
       debugGroupEnd();
     }
 
-    // All measures
     const allMeasures = performance.getEntriesByType("measure");
     if (allMeasures.length > 0) {
       debugGroup(`📏 All Measurements (${allMeasures.length} total)`);
 
-      // Sort by duration
       const sorted = allMeasures
         .map((m) => ({ name: m.name, duration: m.duration }))
         .sort((a, b) => b.duration - a.duration)
-        .slice(0, 20); // Top 20
+        .slice(0, 20);
 
       debugTable(
         sorted.map((m) => ({
@@ -271,10 +280,8 @@ export class PerformanceProfiler {
     debugGroupEnd();
   }
 
-  /**
-   * Clear all performance marks and measures
-   */
-  clear() {
+  /** Clear all performance marks and measures. */
+  clear(): void {
     if (!this.enabled) return;
 
     try {
@@ -293,7 +300,7 @@ export class PerformanceProfiler {
   }
 }
 
-function zipProfilerNowMs() {
+function zipProfilerNowMs(): number {
   if (
     typeof performance !== "undefined" &&
     typeof performance.now === "function"
@@ -303,7 +310,7 @@ function zipProfilerNowMs() {
   return Date.now();
 }
 
-function zipProfilerRoundMs(ms) {
+function zipProfilerRoundMs(ms: number): number {
   return Math.round(ms * 10) / 10;
 }
 
@@ -318,26 +325,52 @@ const ZIP_EXPORT_COUNTER_KEYS = [
   "renderSingleItemAnimationCalls",
   "extractFramesFromAnimationBatchCount",
   "renderSliceCanvasForCustomAnimCalls",
-];
+] as const;
+
+/** Snapshot shape returned by `ZipExportProfiler.toMetadata()`. */
+export type ZipExportProfilerMetadata = {
+  exportKind: string;
+  /** Wall time for recorded phases only (typically everything except JSZip compression). */
+  totalMs: number;
+  phasesMs: Record<string, number>;
+  counters: Record<string, number>;
+  userAgent: string | undefined;
+};
 
 /**
- * High-resolution phase timings for ZIP export. Safe in tests (no User Timing side effects unless DEBUG).
- *
- * @param {string} exportKind — e.g. `splitAnimations` (for logging / optional performance marks)
+ * Profiler instance returned by `createZipExportProfiler`. Pinned here so the
+ * ZIP export consumer (zip.ts) and helpers (zip-helpers.ts) reuse the same
+ * shape via a single import.
  */
-export function createZipExportProfiler(exportKind) {
-  const t0 = zipProfilerNowMs();
-  /** @type {Record<string, number>} */
-  const phases = {};
-  /** @type {Record<string, number>} */
-  const counters = {};
+export type ZipExportProfiler = {
+  phase: (name: string, fn: () => void | Promise<void>) => Promise<void>;
+  syncPhase: <T>(name: string, fn: () => T) => T;
+  incrementCounter: (name: string, delta?: number) => void;
+  addCounter: (name: string, amount: number) => void;
+  toMetadata: () => ZipExportProfilerMetadata;
+  logReport: () => void;
+};
 
-  function userMark(suffix) {
+/** `window.DEBUG` is a project-specific runtime flag set by `utils/debug.js`. */
+type WindowWithDebug = Window & { DEBUG?: boolean };
+
+/**
+ * High-resolution phase timings for ZIP export. Safe in tests (no User Timing
+ * side effects unless DEBUG).
+ *
+ * @param exportKind e.g. `splitAnimations` (for logging / optional performance marks)
+ */
+export function createZipExportProfiler(exportKind: string): ZipExportProfiler {
+  const t0 = zipProfilerNowMs();
+  const phases: Record<string, number> = {};
+  const counters: Record<string, number> = {};
+
+  function userMark(suffix: string): void {
     if (
       typeof performance === "undefined" ||
       typeof performance.mark !== "function" ||
       typeof window === "undefined" ||
-      !window.DEBUG
+      !(window as WindowWithDebug).DEBUG
     ) {
       return;
     }
@@ -348,11 +381,10 @@ export function createZipExportProfiler(exportKind) {
     }
   }
 
-  /**
-   * @param {string} name
-   * @param {() => void | Promise<void>} fn
-   */
-  async function phase(name, fn) {
+  async function phase(
+    name: string,
+    fn: () => void | Promise<void>,
+  ): Promise<void> {
     const start = zipProfilerNowMs();
     userMark(`${name}-start`);
     try {
@@ -364,14 +396,8 @@ export function createZipExportProfiler(exportKind) {
     }
   }
 
-  /**
-   * Like {@link phase} but for synchronous work (no `await` inside `fn`).
-   * @template T
-   * @param {string} name
-   * @param {() => T} fn
-   * @returns {T}
-   */
-  function syncPhase(name, fn) {
+  /** Like {@link phase} but for synchronous work (no `await` inside `fn`). */
+  function syncPhase<T>(name: string, fn: () => T): T {
     const start = zipProfilerNowMs();
     userMark(`${name}-start`);
     try {
@@ -383,36 +409,29 @@ export function createZipExportProfiler(exportKind) {
     }
   }
 
-  /**
-   * @param {string} name
-   * @param {number} [delta]
-   */
-  function incrementCounter(name, delta = 1) {
+  function incrementCounter(name: string, delta: number = 1): void {
     counters[name] = (counters[name] ?? 0) + delta;
   }
 
-  /**
-   * @param {string} name
-   * @param {number} amount
-   */
-  function addCounter(name, amount) {
+  function addCounter(name: string, amount: number): void {
     counters[name] = (counters[name] ?? 0) + amount;
   }
 
-  function totalMs() {
+  function totalMs(): number {
     return zipProfilerNowMs() - t0;
   }
 
   /**
-   * Snapshot for metadata.json (deterministic rounding).
-   * Call before `generateZip` so the zip does not embed compression time (avoids a second `generateAsync`).
+   * Snapshot for metadata.json (deterministic rounding). Call before
+   * `generateZip` so the zip does not embed compression time (avoids a
+   * second `generateAsync`).
    */
-  function toMetadata() {
-    const phasesRounded = {};
+  function toMetadata(): ZipExportProfilerMetadata {
+    const phasesRounded: Record<string, number> = {};
     for (const [k, v] of Object.entries(phases)) {
       phasesRounded[k] = zipProfilerRoundMs(v);
     }
-    const countersOut = {};
+    const countersOut: Record<string, number> = {};
     for (const k of ZIP_EXPORT_COUNTER_KEYS) {
       countersOut[k] = 0;
     }
@@ -421,7 +440,6 @@ export function createZipExportProfiler(exportKind) {
     }
     return {
       exportKind,
-      /** Wall time for recorded phases only (typically everything except JSZip compression). */
       totalMs: zipProfilerRoundMs(totalMs()),
       phasesMs: phasesRounded,
       counters: countersOut,
@@ -431,8 +449,9 @@ export function createZipExportProfiler(exportKind) {
   }
 
   /** Pretty console report when `window.DEBUG` is set. */
-  function logReport() {
-    if (typeof window === "undefined" || !window.DEBUG) return;
+  function logReport(): void {
+    if (typeof window === "undefined" || !(window as WindowWithDebug).DEBUG)
+      return;
     const meta = toMetadata();
     debugGroup(`ZIP export profile: ${exportKind} (${meta.totalMs} ms total)`);
     const rows = Object.entries(meta.phasesMs).map(([phase, ms]) => ({

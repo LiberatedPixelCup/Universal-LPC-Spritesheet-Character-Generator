@@ -1,5 +1,6 @@
 import { expect } from "chai";
 import sinon from "sinon";
+import { ok } from "neverthrow";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import {
   initCanvas,
@@ -10,9 +11,10 @@ import {
   renderCharacter,
 } from "../../sources/canvas/renderer.js";
 import {
-  addAnimationToZipFolder,
+  addAnimationSliceToZip,
+  addCanvasToZip,
   addStandardAnimationToZipCustomFolder,
-} from "../../sources/utils/zip-helpers.js";
+} from "../../sources/utils/zip-helpers.ts";
 import { getItemFileName } from "../../sources/utils/fileName.ts";
 import { getSortedLayers } from "../../sources/state/meta.ts";
 import {
@@ -155,10 +157,10 @@ describe("state/zip.js", () => {
       state.zipByAnimation.isRunning = false;
     });
 
-    it("calls addAnimationToZipFolder for each standard animation with folder, file name, extracted canvas, and a DOMRect covering the full canvas", async () => {
-      const addSpy = sinon.spy(addAnimationToZipFolder);
+    it("calls addCanvasToZip for each standard animation with folder, file name, and extracted canvas (no crop rect)", async () => {
+      const addSpy = sinon.spy(addCanvasToZip);
 
-      await exportSplitAnimations({ addAnimationToZipFolder: addSpy });
+      await exportSplitAnimations({ addCanvasToZip: addSpy });
 
       const standardCalls = addSpy
         .getCalls()
@@ -170,15 +172,10 @@ describe("state/zip.js", () => {
         const expectedName = `${ANIMATIONS[i].value}.png`;
         const call = standardCalls.find((c) => c.args[1] === expectedName);
         expect(call, `call for ${expectedName}`).to.exist;
-        const [folder, fileName, animCanvas, srcRect] = call.args;
+        const [folder, fileName, animCanvas] = call.args;
         expect(folder, `call ${i} folder`).to.equal(firstFolder);
         expect(fileName).to.equal(expectedName);
         expect(animCanvas).to.be.instanceOf(HTMLCanvasElement);
-        expect(srcRect).to.be.instanceOf(DOMRect);
-        expect(srcRect.x).to.equal(0);
-        expect(srcRect.y).to.equal(0);
-        expect(srcRect.width).to.equal(animCanvas.width);
-        expect(srcRect.height).to.equal(animCanvas.height);
       }
     });
 
@@ -228,7 +225,7 @@ describe("state/zip.js", () => {
       expect(fakeZip.files.get("credits/metadata.json")).to.exist;
     });
 
-    it("calls addAnimationToZipFolder for custom/<name>.png when addedCustomAnimations is non-empty after renderCharacter", async () => {
+    it("calls addAnimationSliceToZip for custom/<name>.png when addedCustomAnimations is non-empty after renderCharacter", async () => {
       await seedBrowserCatalogMergedOnDist(ZIP_SPEC_ITEM_METADATA);
       state.selections = {
         body: {
@@ -248,10 +245,10 @@ describe("state/zip.js", () => {
         },
       };
 
-      const addSpy = sinon.spy(addAnimationToZipFolder);
+      const addSpy = sinon.spy(addAnimationSliceToZip);
 
       await renderCharacter(state.selections, "male");
-      await exportSplitAnimations({ addAnimationToZipFolder: addSpy });
+      await exportSplitAnimations({ addAnimationSliceToZip: addSpy });
 
       const customPng = addSpy
         .getCalls()
@@ -325,13 +322,13 @@ describe("state/zip.js", () => {
       state.zipByItem.isRunning = false;
     });
 
-    it("calls addAnimationToZipFolder for each item layer with items folder, file name, and canvas (no crop rect)", async () => {
+    it("calls addCanvasToZip for each item layer with items folder, file name, and canvas (no crop rect)", async () => {
       const renderStub = sandbox.stub().resolves(nonEmptyItemCanvas());
-      const addSpy = sinon.spy(addAnimationToZipFolder);
+      const addSpy = sinon.spy(addCanvasToZip);
 
       await exportSplitItemSheets({
         renderSingleItem: renderStub,
-        addAnimationToZipFolder: addSpy,
+        addCanvasToZip: addSpy,
       });
 
       const bodyLayers = getSortedLayers("body", true)._unsafeUnwrap();
@@ -356,7 +353,6 @@ describe("state/zip.js", () => {
       expect(folder.root).to.equal("items/");
       expect(zipName).to.equal(expectedFileName);
       expect(canvas).to.be.instanceOf(HTMLCanvasElement);
-      expect(itemsCalls[0].args[3]).to.equal(undefined);
 
       expect(renderStub.callCount).to.equal(bodyLayers.length);
       const renderCall = renderStub.firstCall;
@@ -537,11 +533,11 @@ describe("state/zip.js", () => {
         ).to.have.length(1);
 
         const renderStub = sandbox.stub().resolves(nonEmptyItemCanvas());
-        const addSpy = sinon.spy(addAnimationToZipFolder);
+        const addSpy = sinon.spy(addCanvasToZip);
 
         await exportSplitItemSheets({
           renderSingleItem: renderStub,
-          addAnimationToZipFolder: addSpy,
+          addCanvasToZip: addSpy,
         });
 
         const allLayers = getSortedLayers(
@@ -707,13 +703,13 @@ describe("state/zip.js", () => {
       state.zipByAnimimationAndItem.isRunning = false;
     });
 
-    it("calls addAnimationToZipFolder for each matching item layer under standard/<anim>/ with file name and canvas (no crop rect)", async () => {
+    it("calls addCanvasToZip for each matching item layer under standard/<anim>/ with file name and canvas (no crop rect)", async () => {
       const renderStub = sandbox.stub().resolves(nonEmptyAnimCanvas());
-      const addSpy = sinon.spy(addAnimationToZipFolder);
+      const addSpy = sinon.spy(addCanvasToZip);
 
       await exportSplitItemAnimations({
         renderSingleItemAnimation: renderStub,
-        addAnimationToZipFolder: addSpy,
+        addCanvasToZip: addSpy,
       });
 
       const bodyLayers = getSortedLayers("body", true)._unsafeUnwrap();
@@ -737,7 +733,6 @@ describe("state/zip.js", () => {
       expect(folder.root).to.equal("standard/walk/");
       expect(zipName).to.equal(expectedFileName);
       expect(canvas).to.be.instanceOf(HTMLCanvasElement);
-      expect(walkCalls[0].args[3]).to.equal(undefined);
 
       expect(renderStub.callCount).to.equal(bodyLayers.length);
       const rc = renderStub.firstCall;
@@ -936,7 +931,7 @@ describe("state/zip.js", () => {
       };
 
       const loadImageStub = sandbox.stub().resolves(nonEmptyAnimCanvas());
-      const addAnimationToZipFolderSpy = sinon.spy(addAnimationToZipFolder);
+      const addAnimationSliceToZipSpy = sinon.spy(addAnimationSliceToZip);
       const addStandardAnimationToZipCustomFolderSpy = sinon.spy(
         addStandardAnimationToZipCustomFolder,
       );
@@ -944,7 +939,7 @@ describe("state/zip.js", () => {
       await renderCharacter(state.selections, "male");
       await exportSplitItemAnimations({
         loadImage: loadImageStub,
-        addAnimationToZipFolder: addAnimationToZipFolderSpy,
+        addAnimationSliceToZip: addAnimationSliceToZipSpy,
         addStandardAnimationToZipCustomFolder:
           addStandardAnimationToZipCustomFolderSpy,
       });
@@ -971,7 +966,7 @@ describe("state/zip.js", () => {
         bodyLayers.length + headLayers.length,
       );
 
-      const addCalls = addAnimationToZipFolderSpy
+      const addCalls = addAnimationSliceToZipSpy
         .getCalls()
         .filter((c) => c.args[0]?.root === "custom/walk_128/");
       expect(addCalls.length).to.equal(swordLayers.length);
@@ -1038,7 +1033,7 @@ describe("state/zip.js", () => {
       const recoloredCanvas = solidColorCanvas(255, 0, 0);
       const loadImageStub = sandbox.stub().resolves(rawLoadedCanvas);
       const getImageToDrawStub = sandbox.stub().resolves(recoloredCanvas);
-      const addAnimationToZipFolderSpy = sinon.spy(addAnimationToZipFolder);
+      const addAnimationSliceToZipSpy = sinon.spy(addAnimationSliceToZip);
       const addStandardAnimationToZipCustomFolderSpy = sinon.spy(
         addStandardAnimationToZipCustomFolder,
       );
@@ -1047,7 +1042,7 @@ describe("state/zip.js", () => {
       await exportSplitItemAnimations({
         loadImage: loadImageStub,
         getImageToDraw: getImageToDrawStub,
-        addAnimationToZipFolder: addAnimationToZipFolderSpy,
+        addAnimationSliceToZip: addAnimationSliceToZipSpy,
         addStandardAnimationToZipCustomFolder:
           addStandardAnimationToZipCustomFolderSpy,
       });
@@ -1055,7 +1050,7 @@ describe("state/zip.js", () => {
       const stdToCustCalls = addStandardAnimationToZipCustomFolderSpy
         .getCalls()
         .filter((c) => c.args[0]?.root === "custom/walk_128/");
-      const addCalls = addAnimationToZipFolderSpy
+      const addCalls = addAnimationSliceToZipSpy
         .getCalls()
         .filter((c) => c.args[0]?.root === "custom/walk_128/");
 
@@ -1095,11 +1090,11 @@ describe("state/zip.js", () => {
         ).to.have.length(0);
 
         const renderStub = sandbox.stub().resolves(nonEmptyAnimCanvas());
-        const addSpy = sinon.spy(addAnimationToZipFolder);
+        const addSpy = sinon.spy(addCanvasToZip);
 
         await exportSplitItemAnimations({
           renderSingleItemAnimation: renderStub,
-          addAnimationToZipFolder: addSpy,
+          addCanvasToZip: addSpy,
         });
 
         const allLayers = getSortedLayers(
@@ -1315,7 +1310,7 @@ describe("state/zip.js", () => {
         extractAnimationFromCanvas: extractStub,
         extractFramesFromAnimation: framesStub,
         extractFramesFromCustomAnimation: extractCustomStub,
-        newAnimationFromSheet: () => smallAnimCanvas(),
+        newAnimationFromSheet: () => ok(smallAnimCanvas()),
         canvasToBlob: () => Promise.resolve(new Blob(["x"])),
       });
 

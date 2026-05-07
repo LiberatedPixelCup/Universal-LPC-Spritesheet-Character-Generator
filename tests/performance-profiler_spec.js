@@ -4,7 +4,7 @@ import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import {
   PerformanceProfiler,
   createZipExportProfiler,
-} from "../sources/performance-profiler.js";
+} from "../sources/performance-profiler.ts";
 
 /** Deterministic work so phase timings are non-zero without relying on setTimeout (throttled in some browsers). */
 function cpuWork(iterations = 400_000) {
@@ -13,7 +13,7 @@ function cpuWork(iterations = 400_000) {
   return x;
 }
 
-describe("performance-profiler.js", () => {
+describe("performance-profiler.ts", () => {
   describe("PerformanceProfiler", () => {
     it("is disabled by default and does not create marks", () => {
       const before = performance.getEntriesByType("mark").length;

@@ -17,13 +17,14 @@ import {
 } from "../canvas/renderer.js";
 import { getMultiRecolors } from "./palettes.ts";
 import { getItemFileName } from "../utils/fileName.ts";
-import { loadImage } from "../canvas/load-image.js";
+import { loadImage } from "../canvas/load-image.ts";
 import { getImageToDraw } from "../canvas/palette-recolor.js";
 import { customAnimations, customAnimationSize } from "../custom-animations.ts";
 import { getSortedLayersWithCustomFallback } from "./meta.ts";
 import { canvasToBlob } from "../canvas/canvas-utils.ts";
 import {
-  addAnimationToZipFolder,
+  addAnimationSliceToZip,
+  addCanvasToZip,
   addStandardAnimationToZipCustomFolder,
   addCharacterJsonAndCredits,
   downloadZipBlob,
@@ -33,19 +34,19 @@ import {
   newAnimationFromSheet,
   zipExportTimestamp,
   zipGenerateBlobWithProfiler,
-} from "../utils/zip-helpers.js";
+} from "../utils/zip-helpers.ts";
 import m from "mithril";
 import { debugLog, debugWarn } from "../utils/debug.js";
-import { createZipExportProfiler } from "../performance-profiler.js";
+import { createZipExportProfiler } from "../performance-profiler.ts";
 import {
   beginZipExportUiSuspend,
   endZipExportUiSuspend,
-} from "../utils/zip-export-ui-suspend.js";
+} from "../utils/zip-export-ui-suspend.ts";
 
 /**
  * ZIP download pack exports. Each flow uses `createZipExportProfiler` (see
- * `performance-profiler.js`) for `credits/metadata.json` timings where applicable,
- * suspends UI redraw/preview during export (`zip-export-ui-suspend.js`), and uses
+ * `performance-profiler.ts`) for `credits/metadata.json` timings where applicable,
+ * suspends UI redraw/preview during export (`zip-export-ui-suspend.ts`), and uses
  * `zipGenerateBlobWithProfiler` for the final blob.
  *
  * Reviewer map: `PERFORMANCE_PROFILING.md` → “Reviewing ZIP performance changes (PR)”.
@@ -54,11 +55,13 @@ import {
 // Export ZIP - Split by animation
 /**
  * @param {object} [deps]
- * @param {typeof addAnimationToZipFolder} [deps.addAnimationToZipFolder] — for tests (e.g. sinon.spy wrap)
+ * @param {typeof addAnimationSliceToZip} [deps.addAnimationSliceToZip] — for tests (e.g. sinon.spy wrap)
+ * @param {typeof addCanvasToZip} [deps.addCanvasToZip] — for tests
  */
 export const exportSplitAnimations = async (deps = {}) => {
-  const baseAddAnimationToZipFolder =
-    deps.addAnimationToZipFolder ?? addAnimationToZipFolder;
+  const baseAddAnimationSliceToZip =
+    deps.addAnimationSliceToZip ?? addAnimationSliceToZip;
+  const baseAddCanvasToZip = deps.addCanvasToZip ?? addCanvasToZip;
 
   if (!guardZipExportEnvironment()) return;
 
@@ -67,8 +70,10 @@ export const exportSplitAnimations = async (deps = {}) => {
   const profiler = createZipExportProfiler("splitAnimations");
 
   try {
-    const addAnimationToZipFolderFn = (folder, fileName, srcCanvas, srcRect) =>
-      baseAddAnimationToZipFolder(folder, fileName, srcCanvas, srcRect, {
+    const addCanvas = (folder, fileName, srcCanvas) =>
+      baseAddCanvasToZip(folder, fileName, srcCanvas, { profiler });
+    const addSlice = (folder, fileName, srcCanvas, srcRect) =>
+      baseAddAnimationSliceToZip(folder, fileName, srcCanvas, srcRect, {
         profiler,
       });
 
@@ -99,13 +104,12 @@ export const exportSplitAnimations = async (deps = {}) => {
           () => extractAnimationFromCanvas(anim.value),
         );
         profiler.incrementCounter("renderExtractAnimationFromCanvasCalls");
-        const result = await addAnimationToZipFolderFn(
+        const result = await addCanvas(
           standardFolder,
           `${anim.value}.png`,
           animCanvas,
-          new DOMRect(0, 0, animCanvas.width, animCanvas.height),
         );
-        if (result) {
+        if (result.isOk()) {
           exportedStandard.push(anim.value);
         }
       } catch (err) {
@@ -127,14 +131,14 @@ export const exportSplitAnimations = async (deps = {}) => {
         }
 
         const srcRect = { x: 0, y, ...customAnimationSize(anim) };
-        const result = await addAnimationToZipFolderFn(
+        const result = await addSlice(
           customFolder,
           `${animName}.png`,
           canvas,
           srcRect,
         );
 
-        if (result) {
+        if (result.isOk()) {
           exportedCustom.push(animName);
         }
 
@@ -191,17 +195,14 @@ export const exportSplitAnimations = async (deps = {}) => {
 // Export ZIP - Split by item
 /**
  * @param {object} [deps]
- * @param {typeof addAnimationToZipFolder} [deps.addAnimationToZipFolder]
+ * @param {typeof addCanvasToZip} [deps.addCanvasToZip]
  * @param {typeof renderSingleItem} [deps.renderSingleItem]
  */
 export const exportSplitItemSheets = async (deps = {}) => {
-  const baseAddAnimationToZipFolder =
-    deps.addAnimationToZipFolder ?? addAnimationToZipFolder;
+  const baseAddCanvasToZip = deps.addCanvasToZip ?? addCanvasToZip;
   const profiler = createZipExportProfiler("splitItemSheets");
-  const addAnimationToZipFolderFn = (folder, fileName, srcCanvas, srcRect) =>
-    baseAddAnimationToZipFolder(folder, fileName, srcCanvas, srcRect, {
-      profiler,
-    });
+  const addCanvas = (folder, fileName, srcCanvas) =>
+    baseAddCanvasToZip(folder, fileName, srcCanvas, { profiler });
   const renderSingleItemFn = deps.renderSingleItem ?? renderSingleItem;
 
   if (!guardZipExportEnvironment()) return;
@@ -250,7 +251,7 @@ export const exportSplitItemSheets = async (deps = {}) => {
           profiler.incrementCounter("renderSingleItemCalls");
 
           if (itemCanvas) {
-            await addAnimationToZipFolderFn(itemsFolder, fileName, itemCanvas);
+            await addCanvas(itemsFolder, fileName, itemCanvas);
             exportedItems.push(fileName);
           }
         } catch (err) {
@@ -292,21 +293,25 @@ export const exportSplitItemSheets = async (deps = {}) => {
 // Export ZIP - Split by animation and item
 /**
  * @param {object} [deps]
- * @param {typeof addAnimationToZipFolder} [deps.addAnimationToZipFolder]
+ * @param {typeof addAnimationSliceToZip} [deps.addAnimationSliceToZip]
+ * @param {typeof addCanvasToZip} [deps.addCanvasToZip]
  * @param {typeof renderSingleItemAnimation} [deps.renderSingleItemAnimation]
  * @param {typeof loadImage} [deps.loadImage]
  * @param {typeof addStandardAnimationToZipCustomFolder} [deps.addStandardAnimationToZipCustomFolder]
  * @param {typeof getImageToDraw} [deps.getImageToDraw]
  */
 export const exportSplitItemAnimations = async (deps = {}) => {
-  const baseAddAnimationToZipFolder =
-    deps.addAnimationToZipFolder ?? addAnimationToZipFolder;
+  const baseAddAnimationSliceToZip =
+    deps.addAnimationSliceToZip ?? addAnimationSliceToZip;
+  const baseAddCanvasToZip = deps.addCanvasToZip ?? addCanvasToZip;
   const baseAddStandardAnimationToZipCustomFolder =
     deps.addStandardAnimationToZipCustomFolder ??
     addStandardAnimationToZipCustomFolder;
   const profiler = createZipExportProfiler("splitItemAnimations");
-  const addAnimationToZipFolderFn = (folder, fileName, srcCanvas, srcRect) =>
-    baseAddAnimationToZipFolder(folder, fileName, srcCanvas, srcRect, {
+  const addCanvas = (folder, fileName, srcCanvas) =>
+    baseAddCanvasToZip(folder, fileName, srcCanvas, { profiler });
+  const addSlice = (folder, fileName, srcCanvas, srcRect) =>
+    baseAddAnimationSliceToZip(folder, fileName, srcCanvas, srcRect, {
       profiler,
     });
   const addStandardAnimationToZipCustomFolderFn = (
@@ -408,7 +413,7 @@ export const exportSplitItemAnimations = async (deps = {}) => {
             profiler.incrementCounter("renderSingleItemAnimationCalls");
 
             if (animCanvas) {
-              await addAnimationToZipFolderFn(animFolder, fileName, animCanvas);
+              await addCanvas(animFolder, fileName, animCanvas);
               exportedStandard[anim.value].push(fileName);
             }
           } catch (err) {
@@ -474,22 +479,29 @@ export const exportSplitItemAnimations = async (deps = {}) => {
           const custSize = customAnimationSize(custAnim);
           const srcRect = { x: 0, y: 0, ...custSize };
           const animFolder = customFolder.folder(customAnimName);
-          const animCanvas =
-            (layer.type === "extracted_frames" &&
-              (await addStandardAnimationToZipCustomFolderFn(
-                animFolder,
-                itemFileName,
-                imgCanvas,
-                custAnim,
-              ))) ||
-            (await addAnimationToZipFolderFn(
+          // Try the "extracted_frames" rendering first; fall back to the raw
+          // slice when that path doesn't apply or yields no canvas.
+          let succeeded = false;
+          if (layer.type === "extracted_frames") {
+            const fromExtracted = await addStandardAnimationToZipCustomFolderFn(
+              animFolder,
+              itemFileName,
+              imgCanvas,
+              custAnim,
+            );
+            if (fromExtracted) succeeded = true;
+          }
+          if (!succeeded) {
+            const sliceResult = await addSlice(
               animFolder,
               itemFileName,
               imgCanvas,
               srcRect,
-            ));
+            );
+            if (sliceResult.isOk()) succeeded = true;
+          }
 
-          if (animCanvas) custExportedItems.push(itemFileName);
+          if (succeeded) custExportedItems.push(itemFileName);
         } catch (err) {
           console.error(
             `Failed to export item ${itemFileName} in custom animation ${customAnimName}:`,
@@ -699,7 +711,9 @@ export const exportIndividualFrames = async (deps = {}) => {
         /** @type {HTMLCanvasElement | null | undefined} */
         let custAnimCanvas;
         profiler.syncPhase("render_composite_sliceCanvasForCustomAnim", () => {
-          custAnimCanvas = sliceCanvasForCustomAnim(canvas, srcRect);
+          custAnimCanvas = sliceCanvasForCustomAnim(canvas, srcRect).unwrapOr(
+            null,
+          );
         });
         if (custAnimCanvas) {
           profiler.syncPhase(

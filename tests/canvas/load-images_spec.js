@@ -3,9 +3,9 @@ import { describe, it } from "mocha-globals";
 import {
   loadImage,
   loadImagesInParallel,
-} from "../../sources/canvas/load-image.js";
+} from "../../sources/canvas/load-image.ts";
 
-describe("canvas/load-image.js", () => {
+describe("canvas/load-image.ts", () => {
   describe("loadImage", () => {
     it("should load an image successfully", async () => {
       const src = "/spritesheets/arms/bracers/thin/hurt.png";

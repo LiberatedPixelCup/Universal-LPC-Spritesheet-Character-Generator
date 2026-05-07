@@ -6,7 +6,8 @@ import {
   customAnimationSize,
 } from "../../sources/custom-animations.ts";
 import {
-  addAnimationToZipFolder,
+  addAnimationSliceToZip,
+  addCanvasToZip,
   addCharacterJsonAndCredits,
   addStandardAnimationToZipCustomFolder,
   checkFrameContentFromImageData,
@@ -19,7 +20,7 @@ import {
   newStandardAnimationForCustomAnimation,
   zipExportTimestamp,
   zipGenerateBlobWithProfiler,
-} from "../../sources/utils/zip-helpers.js";
+} from "../../sources/utils/zip-helpers.ts";
 import { DIRECTIONS } from "../../sources/state/constants.ts";
 
 function createCanvas(width, height) {
@@ -37,7 +38,7 @@ function createWheelchairTestSrc() {
   return canvas;
 }
 
-describe("utils/zip-helpers.js", () => {
+describe("utils/zip-helpers.ts", () => {
   describe("CUSTOM_ANIM_DIRECTION_TO_ROW", () => {
     it("maps LPC direction names to fixed row indices (up, left, down, right)", () => {
       expect(CUSTOM_ANIM_DIRECTION_TO_ROW).to.deep.equal({
@@ -51,35 +52,19 @@ describe("utils/zip-helpers.js", () => {
   });
 
   describe("newAnimationFromSheet", () => {
-    it("copies the full source when srcRect is omitted", () => {
-      const src = createCanvas(24, 16);
-      const sctx = src.getContext("2d");
-      sctx.fillStyle = "#3366cc";
-      sctx.fillRect(5, 3, 2, 2);
-
-      const out = newAnimationFromSheet(src);
-
-      expect(out.width).to.equal(24);
-      expect(out.height).to.equal(16);
-      const d = out.getContext("2d").getImageData(0, 0, 24, 16).data;
-      const i = (3 * 24 + 5) * 4;
-      expect([d[i], d[i + 1], d[i + 2], d[i + 3]]).to.deep.equal([
-        51, 102, 204, 255,
-      ]);
-    });
-
     it("copies the full source when srcRect matches the entire canvas", () => {
       const src = createCanvas(12, 10);
       const sctx = src.getContext("2d");
       sctx.fillStyle = "#ff00aa";
       sctx.fillRect(0, 0, 1, 1);
 
-      const out = newAnimationFromSheet(src, {
+      const r = newAnimationFromSheet(src, {
         x: 0,
         y: 0,
         width: 12,
         height: 10,
       });
+      const out = r._unsafeUnwrap();
 
       expect(out.width).to.equal(12);
       expect(out.height).to.equal(10);
@@ -93,12 +78,13 @@ describe("utils/zip-helpers.js", () => {
       sctx.fillStyle = "#00ff00";
       sctx.fillRect(10, 11, 2, 2);
 
-      const out = newAnimationFromSheet(src, {
+      const r = newAnimationFromSheet(src, {
         x: 10,
         y: 11,
         width: 2,
         height: 2,
       });
+      const out = r._unsafeUnwrap();
 
       expect(out.width).to.equal(2);
       expect(out.height).to.equal(2);
@@ -111,23 +97,29 @@ describe("utils/zip-helpers.js", () => {
       }
     });
 
-    it("returns null when the subregion is fully transparent", () => {
+    it("errs with empty-subregion when the subregion is fully transparent", () => {
       const src = createCanvas(40, 40);
-      const out = newAnimationFromSheet(src, {
+      const r = newAnimationFromSheet(src, {
         x: 8,
         y: 8,
         width: 12,
         height: 12,
       });
 
-      expect(out).to.equal(null);
+      expect(r.isErr()).to.equal(true);
+      if (r.isErr()) {
+        expect(r.error).to.deep.equal({ kind: "empty-subregion" });
+      }
     });
 
     it("accepts a DOMRect-like subregion for cropping", () => {
       const src = createCanvas(20, 20);
       src.getContext("2d").fillRect(4, 5, 3, 3);
 
-      const out = newAnimationFromSheet(src, new DOMRect(4, 5, 3, 3));
+      const out = newAnimationFromSheet(
+        src,
+        new DOMRect(4, 5, 3, 3),
+      )._unsafeUnwrap();
 
       expect(out.width).to.equal(3);
       expect(out.height).to.equal(3);
@@ -136,7 +128,7 @@ describe("utils/zip-helpers.js", () => {
     });
   });
 
-  describe("addAnimationToZipFolder", () => {
+  describe("addAnimationSliceToZip / addCanvasToZip", () => {
     afterEach(() => {
       sinon.restore();
     });
@@ -152,25 +144,33 @@ describe("utils/zip-helpers.js", () => {
       };
     }
 
-    it("does nothing when srcCanvas is falsy", async () => {
+    it("addCanvasToZip errs with missing-src when srcCanvas is falsy", async () => {
       const folder = createFakeFolder();
-      await addAnimationToZipFolder(folder, "out.png", null);
+      const r = await addCanvasToZip(folder, "out.png", null);
+      expect(r.isErr()).to.equal(true);
+      if (r.isErr()) {
+        expect(r.error).to.deep.equal({ kind: "missing-src" });
+      }
       expect(folder.files).to.have.length(0);
     });
 
-    it("does nothing when newAnimationFromSheet returns null", async () => {
+    it("addAnimationSliceToZip errs with empty-subregion when the slice is fully transparent", async () => {
       const folder = createFakeFolder();
       const src = createCanvas(20, 20);
-      await addAnimationToZipFolder(folder, "out.png", src, {
+      const r = await addAnimationSliceToZip(folder, "out.png", src, {
         x: 2,
         y: 2,
         width: 8,
         height: 8,
       });
+      expect(r.isErr()).to.equal(true);
+      if (r.isErr()) {
+        expect(r.error).to.deep.equal({ kind: "empty-subregion" });
+      }
       expect(folder.files).to.have.length(0);
     });
 
-    it("rejects when canvasToBlob fails (toBlob yields null)", async () => {
+    it("addCanvasToZip rejects when canvasToBlob fails (toBlob yields null)", async () => {
       sinon
         .stub(HTMLCanvasElement.prototype, "toBlob")
         .callsFake((callback) => callback(null));
@@ -180,7 +180,7 @@ describe("utils/zip-helpers.js", () => {
       src.getContext("2d").fillRect(0, 0, 4, 4);
 
       try {
-        await addAnimationToZipFolder(folder, "out.png", src);
+        await addCanvasToZip(folder, "out.png", src);
         expect.fail("expected rejection");
       } catch (err) {
         expect(err).to.be.instanceOf(Error);
@@ -194,7 +194,7 @@ describe("utils/zip-helpers.js", () => {
       const src = createCanvas(4, 4);
       src.getContext("2d").fillRect(0, 0, 1, 1);
 
-      await addAnimationToZipFolder(folder, "walk_south.png", src);
+      await addCanvasToZip(folder, "walk_south.png", src);
 
       expect(folder.files).to.have.length(1);
       expect(folder.files[0].name).to.equal("walk_south.png");
@@ -207,18 +207,19 @@ describe("utils/zip-helpers.js", () => {
       const src = createCanvas(4, 4);
       src.getContext("2d").fillRect(0, 0, 1, 1);
 
-      await addAnimationToZipFolder(folder, "050_body_male", src);
+      await addCanvasToZip(folder, "050_body_male", src);
 
       expect(folder.files).to.have.length(1);
       expect(folder.files[0].name).to.equal("050_body_male.png");
     });
 
-    it("resolves to the animation canvas on success", async () => {
+    it("resolves to ok(canvas) on success", async () => {
       const folder = createFakeFolder();
       const src = createCanvas(6, 6);
       src.getContext("2d").fillRect(0, 0, 2, 2);
 
-      const result = await addAnimationToZipFolder(folder, "a.png", src);
+      const r = await addCanvasToZip(folder, "a.png", src);
+      const result = r._unsafeUnwrap();
 
       expect(result).to.be.instanceOf(HTMLCanvasElement);
       expect(result.width).to.equal(6);
