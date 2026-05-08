@@ -11,6 +11,7 @@ import { getCategoryTree, getItemMerged } from "../../state/catalog.ts";
 import { ResultBoundary } from "../ResultBoundary.js";
 import { BodyTypeSelector } from "./BodyTypeSelector.js";
 import { TreeNode } from "./TreeNode.js";
+import { t } from "../../i18n/index.ts";
 
 function renderLoadingHost() {
   return m("div.box.has-background-light.category-tree-panel", [
@@ -18,10 +19,10 @@ function renderLoadingHost() {
       m(
         "div.category-tree-loading-overlay",
         { "aria-busy": "true", "aria-live": "polite" },
-        m("span.loading", { "aria-label": "Loading category index" }),
+        m("span.loading", { "aria-label": t("common.loadingCategoryIndex") }),
       ),
-      m("h3.title.is-5.mb-3", "Available Items"),
-      m("p.has-text-grey.is-size-7", "Loading category index…"),
+      m("h3.title.is-5.mb-3", t("tree.availableItems")),
+      m("p.has-text-grey.is-size-7", t("common.loadingCategoryIndex")),
     ]),
   ]);
 }
@@ -33,12 +34,12 @@ function renderTree(categoryTree) {
     m(
       "div.is-flex.is-justify-content-space-between.is-align-items-center.mb-3",
       [
-        m("h3.title.is-5.mb-0", "Available Items"),
+        m("h3.title.is-5.mb-0", t("tree.availableItems")),
         m("div.buttons.mb-0", [
           m(
             "button.button.is-danger.is-small",
             { onclick: resetAll },
-            "Reset all",
+            t("common.resetAll"),
           ),
           m(
             "button.button.is-small",
@@ -47,13 +48,13 @@ function renderTree(categoryTree) {
                 state.expandedNodes = {};
               },
             },
-            "Collapse All",
+            t("common.collapseAll"),
           ),
           m(
             "button.button.is-small",
             {
               disabled: !liteReady,
-              title: liteReady ? undefined : "Loading item list…",
+              title: liteReady ? undefined : t("common.loadingItemList"),
               onclick: () => {
                 if (!liteReady) return;
                 for (const [, selection] of Object.entries(state.selections)) {
@@ -79,7 +80,7 @@ function renderTree(categoryTree) {
                 }
               },
             },
-            "Expand Selected",
+            t("common.expandSelected"),
           ),
           m(
             "button.button.is-small",
@@ -89,7 +90,7 @@ function renderTree(categoryTree) {
                 state.compactDisplay = !state.compactDisplay;
               },
             },
-            "CompactDisplay",
+            t("common.compactDisplay"),
           ),
         ]),
       ],
@@ -98,8 +99,7 @@ function renderTree(categoryTree) {
       m(
         "label.checkbox",
         {
-          title:
-            "When enabled, changing body color will automatically update all compatible items (heads, ears, noses, etc.) to the same color variant",
+          title: t("tree.matchBodyColorTitle"),
         },
         [
           m("input[type=checkbox]", {
@@ -122,7 +122,7 @@ function renderTree(categoryTree) {
               }
             },
           }),
-          " Match body color",
+          t("tree.matchBodyColor"),
         ],
       ),
       m(
@@ -130,7 +130,7 @@ function renderTree(categoryTree) {
         {
           id: "match-body-color-label",
         },
-        "Auto-update heads, ears, and other items when body color changes",
+        t("tree.matchBodyColorHelp"),
       ),
     ]),
     m("div", [

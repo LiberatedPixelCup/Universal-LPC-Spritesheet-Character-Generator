@@ -17,6 +17,8 @@ import PinchToZoom from "./PinchToZoom.js";
 import { getCustomAnimations } from "../../canvas/preview-animation.js";
 import { ScrollableContainer } from "./ScrollableContainer.js";
 import { PreviewMetadataLoadingOverlay } from "./PreviewMetadataLoadingOverlay.js";
+import { t } from "../../i18n/index.ts";
+import { translateAnimationLabel } from "../../i18n/metadata.ts";
 
 // Canvas wrapper component with its own lifecycle
 const PreviewCanvas = {
@@ -95,6 +97,10 @@ const PreviewCanvas = {
   },
 };
 
+function getAnimationLabel(anim) {
+  return translateAnimationLabel(anim.value, anim.label);
+}
+
 export const AnimationPreview = {
   oninit: function (vnode) {
     vnode.state.selectedAnimation = "walk";
@@ -138,7 +144,7 @@ export const AnimationPreview = {
     return m(
       CollapsibleSection,
       {
-        title: "Animation Preview",
+        title: t("preview.animationTitle"),
         storageKey: "animation-preview",
         defaultOpen: true,
         boxClass: "box",
@@ -149,7 +155,7 @@ export const AnimationPreview = {
           m("div.column", [
             m("div.field.is-horizontal.is-align-items-center", [
               m("div.field-label.is-normal", [
-                m("label.label.mb-0", "Animation"),
+                m("label.label.mb-0", t("preview.animationLabel")),
               ]),
               m("div.field-body", [
                 m("div.field.has-addons.mb-0", [
@@ -174,7 +180,11 @@ export const AnimationPreview = {
                           },
                         },
                         allAnimations.map((anim) =>
-                          m("option", { value: anim.value }, anim.label),
+                          m(
+                            "option",
+                            { value: anim.value },
+                            getAnimationLabel(anim),
+                          ),
                         ),
                       ),
                     ]),
@@ -192,7 +202,9 @@ export const AnimationPreview = {
               m("div.field-label.is-normal", [
                 m(
                   "label.label.mb-0",
-                  `Zoom: ${Math.round(vnode.state.zoomLevel * 100)}%`,
+                  t("common.zoom", {
+                    percent: Math.round(vnode.state.zoomLevel * 100),
+                  }),
                 ),
               ]),
               m("div.field-body", [
@@ -231,7 +243,7 @@ export const AnimationPreview = {
                 state.isRenderingCharacter
                   ? m("div.preview-canvas-busy", { "aria-hidden": true }, [
                       m("span.loading", {
-                        "aria-label": "Rendering character",
+                        "aria-label": t("common.renderingCharacter"),
                       }),
                     ])
                   : null,

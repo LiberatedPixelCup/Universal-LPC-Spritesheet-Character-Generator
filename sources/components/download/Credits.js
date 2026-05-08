@@ -8,6 +8,7 @@ import {
 } from "../../utils/credits.ts";
 import { CollapsibleSection } from "../CollapsibleSection.js";
 import { downloadFile } from "../../canvas/download.js";
+import { t } from "../../i18n/index.ts";
 
 export const Credits = {
   view: function () {
@@ -17,7 +18,7 @@ export const Credits = {
     return m(
       CollapsibleSection,
       {
-        title: "Credits & Attribution",
+        title: t("credits.title"),
         storageKey: "credits",
         defaultOpen: true,
         boxClass: "box",
@@ -25,30 +26,30 @@ export const Credits = {
       },
       [
         m("p.is-size-7.mb-2", [
-          "You must credit the authors of this artwork. ",
+          t("credits.mustCredit"),
           m(
             "a",
             {
               href: "https://github.com/liberatedpixelcup/Universal-LPC-Spritesheet-Character-Generator/blob/master/README.md",
               target: "_blank",
             },
-            "Detailed attribution instructions",
+            t("credits.detailedInstructions"),
           ),
         ]),
         m("p.is-size-7.mb-3", [
-          "License information for all spritesheets in this generator is available ",
+          t("credits.licenseInfoPrefix"),
           m(
             "a",
             {
               href: "https://github.com/liberatedpixelcup/Universal-LPC-Spritesheet-Character-Generator/raw/refs/heads/master/CREDITS.csv",
               target: "_blank",
             },
-            "here",
+            t("common.here"),
           ),
         ]),
 
         !state.previewBootstrapRenderDone
-          ? m("p.has-text-grey", "Loading selections…")
+          ? m("p.has-text-grey", t("common.loadingSelections"))
           : allCredits.length > 0
             ? [
                 m(
@@ -58,11 +59,11 @@ export const Credits = {
                       m("strong.is-size-6", credit.fileName),
                       credit.notes ? m("p.is-size-7", credit.notes) : null,
                       m("p.is-size-7", [
-                        m("strong", "Licenses: "),
+                        m("strong", t("common.licensesLabel")),
                         credit.licenses.join(", "),
                       ]),
                       m("p.is-size-7", [
-                        m("strong", "Authors: "),
+                        m("strong", t("common.authors")),
                         credit.authors.join(", "),
                       ]),
                     ]),
@@ -75,7 +76,7 @@ export const Credits = {
                       onclick: () =>
                         downloadFile(creditsToTxt(allCredits), "credits.txt"),
                     },
-                    "Download TXT",
+                    t("common.downloadTxt"),
                   ),
                   m(
                     "button.button.is-small",
@@ -83,11 +84,11 @@ export const Credits = {
                       onclick: () =>
                         downloadFile(creditsToCsv(allCredits), "credits.csv"),
                     },
-                    "Download CSV",
+                    t("common.downloadCsv"),
                   ),
                 ]),
               ]
-            : m("p.has-text-grey", "No items selected"),
+            : m("p.has-text-grey", t("common.noItemsSelected")),
       ],
     );
   },

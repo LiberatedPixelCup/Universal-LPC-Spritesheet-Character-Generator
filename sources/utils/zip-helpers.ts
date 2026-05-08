@@ -20,6 +20,7 @@ import { getAllCredits, creditsToTxt, creditsToCsv } from "./credits.ts";
 import { exportStateAsJSON } from "../state/json.js";
 import type { ZipExportProfiler } from "../performance-profiler.ts";
 import type { State } from "../state/state.ts";
+import { t } from "../i18n/index.ts";
 
 /**
  * Subset of the JSZip folder API consumed by these helpers and downstream
@@ -569,7 +570,7 @@ type WindowWithZipDeps = Window & {
 export function guardZipExportEnvironment(): boolean {
   const w = window as WindowWithZipDeps;
   if (!w.canvasRenderer || !w.JSZip) {
-    alert("JSZip library not loaded");
+    alert(t("zip.jszipNotLoaded"));
     return false;
   }
   return true;

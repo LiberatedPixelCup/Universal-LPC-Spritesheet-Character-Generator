@@ -1,6 +1,6 @@
 // Download component
 import m from "mithril";
-import { state } from "../../state/state.ts";
+import { applyCurrentLocale, state } from "../../state/state.ts";
 import { layers } from "../../canvas/renderer.js";
 import {
   getAllCredits,
@@ -18,13 +18,14 @@ import {
 } from "../../state/zip.js";
 import { debugLog } from "../../utils/debug.js";
 import { isLayersReady } from "../../state/catalog.ts";
+import { t } from "../../i18n/index.ts";
 
 const zipExportDisabled = () => !isLayersReady();
-const zipExportTitle = "Wait for layer data to finish loading";
 
 export const Download = {
   view: function () {
     const zipDisabled = zipExportDisabled();
+    const zipExportTitle = t("download.waitForLayerData");
     // Export to clipboard
     const exportToClipboard = async () => {
       if (!window.canvasRenderer) return;
@@ -32,10 +33,10 @@ export const Download = {
         const json = exportStateAsJSON(state, layers);
         debugLog(json);
         await navigator.clipboard.writeText(json);
-        alert("Exported to clipboard!");
+        alert(t("download.copied"));
       } catch (err) {
         console.error("Failed to copy to clipboard:", err);
-        alert("Failed to copy to clipboard. Please check browser permissions.");
+        alert(t("download.copyFailed"));
       }
     };
 
@@ -47,14 +48,13 @@ export const Download = {
         debugLog(json);
         const imported = importStateFromJSON(json);
         Object.assign(state, imported);
+        applyCurrentLocale();
 
         m.redraw(); // Force Mithril to update the UI
-        alert("Imported successfully!");
+        alert(t("download.imported"));
       } catch (err) {
         console.error("Failed to import from clipboard:", err);
-        alert(
-          "Failed to import. Please check clipboard content and browser permissions.",
-        );
+        alert(t("download.importFailed"));
       }
     };
 
@@ -69,7 +69,7 @@ export const Download = {
     return m(
       CollapsibleSection,
       {
-        title: "Download",
+        title: t("download.title"),
         storageKey: "download",
         defaultOpen: true,
       },
@@ -78,7 +78,7 @@ export const Download = {
           m(
             "button.button.is-small.is-primary",
             { onclick: saveAsPNG },
-            "Spritesheet (PNG)",
+            t("download.spritesheetPng"),
           ),
           m(
             "button.button.is-small",
@@ -92,7 +92,7 @@ export const Download = {
                 downloadFile(txtContent, "credits.txt", "text/plain");
               },
             },
-            "Credits (TXT)",
+            t("common.creditsTxt"),
           ),
           m(
             "button.button.is-small",
@@ -106,7 +106,7 @@ export const Download = {
                 downloadFile(csvContent, "credits.csv", "text/csv");
               },
             },
-            "Credits (CSV)",
+            t("common.creditsCsv"),
           ),
           m(
             "button.button.is-small.is-info",
@@ -115,7 +115,7 @@ export const Download = {
               title: zipDisabled ? zipExportTitle : undefined,
               onclick: exportSplitAnimations,
             },
-            "ZIP: Split by animation",
+            t("download.splitByAnimation"),
           ),
           state.zipByAnimation.isRunning ? m("span.loading") : null,
           m(
@@ -125,7 +125,7 @@ export const Download = {
               title: zipDisabled ? zipExportTitle : undefined,
               onclick: exportSplitItemSheets,
             },
-            "ZIP: Split by item",
+            t("download.splitByItem"),
           ),
           state.zipByItem.isRunning ? m("span.loading") : null,
           m(
@@ -135,7 +135,7 @@ export const Download = {
               title: zipDisabled ? zipExportTitle : undefined,
               onclick: exportSplitItemAnimations,
             },
-            "ZIP: Split by animation and item",
+            t("download.splitByAnimationAndItem"),
           ),
           state.zipByAnimimationAndItem.isRunning ? m("span.loading") : null,
           m(
@@ -145,7 +145,7 @@ export const Download = {
               title: zipDisabled ? zipExportTitle : undefined,
               onclick: exportIndividualFrames,
             },
-            "ZIP: Split by animation and frame",
+            t("download.splitByAnimationAndFrame"),
           ),
           state.zipIndividualFrames && state.zipIndividualFrames.isRunning
             ? m("span.loading")
@@ -153,12 +153,12 @@ export const Download = {
           m(
             "button.button.is-small.is-link",
             { onclick: exportToClipboard },
-            "Export to Clipboard (JSON)",
+            t("download.exportJson"),
           ),
           m(
             "button.button.is-small.is-link",
             { onclick: importFromClipboard },
-            "Import from Clipboard (JSON)",
+            t("download.importJson"),
           ),
         ]),
       ],

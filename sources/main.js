@@ -44,7 +44,7 @@ window.setPaletteRecolorMode = setPaletteRecolorMode;
 window.getPaletteRecolorConfig = getPaletteRecolorConfig;
 
 // Import state management
-import { initState, state } from "./state/state.ts";
+import { applyCurrentLocale, initState, state } from "./state/state.ts";
 import { initHashChangeListener } from "./state/hash.ts";
 
 // Import components
@@ -88,6 +88,8 @@ let hashHydrationInitDone = false;
 
 // Wait for DOM to be ready, then mount UI; catalog may already be loading or ready.
 document.addEventListener("DOMContentLoaded", () => {
+  applyCurrentLocale();
+
   m.mount(document.getElementById("mithril-filters"), App);
   m.mount(document.getElementById("mithril-preview"), AnimationPreview);
   m.mount(

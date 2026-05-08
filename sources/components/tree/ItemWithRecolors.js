@@ -7,6 +7,11 @@ import { drawRecolorPreview } from "../../canvas/palette-recolor.js";
 import { getPaletteOptions } from "../../state/palettes.ts";
 import { PaletteSelectModal } from "./PaletteSelectModal.js";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
+import { t } from "../../i18n/index.ts";
+import {
+  translateItemName,
+  translateRecolorOptionLabel,
+} from "../../i18n/metadata.ts";
 
 export const ItemWithRecolors = {
   view: function (vnode) {
@@ -20,10 +25,10 @@ export const ItemWithRecolors = {
     } = vnode.attrs;
     const rowTitle = showItemTooltips ? tooltipText : undefined;
     const compactDisplay = state.compactDisplay;
-    const displayName = meta.name;
+    const displayName = translateItemName(itemId, meta.name);
     const rootViewNode = vnode;
     let nodePath = itemId;
-    if (displayName === "Body Color") {
+    if (meta.name === "Body Color") {
       nodePath = "body-body";
     }
 
@@ -176,7 +181,7 @@ export const ItemWithRecolors = {
                               },
                             },
                             [
-                              m("label", opt.label),
+                              m("label", translateRecolorOptionLabel(opt)),
                               m(
                                 "div.palette-swatch",
                                 gradient.map((color) =>
@@ -194,7 +199,10 @@ export const ItemWithRecolors = {
                     : null,
                 ],
               ),
-              m("p.is-size-7.has-text-grey.mt-2", "Loading palette data…"),
+              m(
+                "p.is-size-7.has-text-grey.mt-2",
+                t("common.loadingPaletteData"),
+              ),
             ])
           : isExpanded
             ? m("div", [
@@ -301,7 +309,7 @@ export const ItemWithRecolors = {
                                 },
                               },
                               [
-                                m("label", opt.label),
+                                m("label", translateRecolorOptionLabel(opt)),
                                 m(
                                   "div.palette-swatch",
                                   gradient.map((color) =>

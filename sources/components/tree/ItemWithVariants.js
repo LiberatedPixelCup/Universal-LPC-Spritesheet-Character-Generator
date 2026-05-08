@@ -5,6 +5,10 @@ import { state, getSelectionGroup, selectItem } from "../../state/state.ts";
 import { getLayersToLoad } from "../../state/meta.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
 import { capitalize } from "../../utils/helpers.ts";
+import {
+  translateItemName,
+  translateVariantLabel,
+} from "../../i18n/metadata.ts";
 
 export const ItemWithVariants = {
   view: function (vnode) {
@@ -18,10 +22,10 @@ export const ItemWithVariants = {
     } = vnode.attrs;
     const rowTitle = showItemTooltips ? tooltipText : undefined;
     const compactDisplay = state.compactDisplay;
-    const displayName = meta.name;
+    const displayName = translateItemName(itemId, meta.name);
     const rootViewNode = vnode;
     let nodePath = itemId;
-    if (displayName === "Body Color") {
+    if (meta.name === "Body Color") {
       nodePath = "body-body";
     }
     const isExpanded = state.expandedNodes[nodePath] || false;
@@ -124,7 +128,10 @@ export const ItemWithVariants = {
                     [
                       m(
                         "span.variant-display-name.has-text-centered.is-size-7",
-                        capitalize(variantDisplayName),
+                        translateVariantLabel(
+                          variant,
+                          capitalize(variantDisplayName),
+                        ),
                       ),
                       m("canvas.variant-canvas.box.p-0", {
                         width: compactDisplay ? COMPACT_FRAME_SIZE : FRAME_SIZE,

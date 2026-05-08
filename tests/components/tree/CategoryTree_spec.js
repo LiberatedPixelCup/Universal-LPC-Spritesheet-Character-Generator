@@ -114,7 +114,7 @@ describe("CategoryTree", function () {
       "Reset all",
       "Collapse All",
       "Expand Selected",
-      "CompactDisplay",
+      "Compact Display",
     ]);
 
     const expandSelected = [...host.querySelectorAll("button")].find(

@@ -4,6 +4,13 @@ import { LICENSE_CONFIG, ANIMATIONS, BODY_TYPES } from "./constants.ts";
 import { syncSelectionsToHash, loadSelectionsFromHash } from "./hash.ts";
 import { getItemMerged, type ItemMerged } from "./catalog.ts";
 import { renderCharacter } from "../canvas/renderer.js";
+import {
+  DEFAULT_LOCALE,
+  normalizeLocale,
+  setLocale as setI18nLocale,
+  t,
+  type Locale,
+} from "../i18n/index.ts";
 
 /** A single item selection within a selection group (e.g. body, head, ears). */
 export type Selection = {
@@ -35,6 +42,7 @@ export type State = {
   // saved in URL hash
   selections: Selections;
   bodyType: string;
+  locale: Locale;
 
   // potentially saved in future
   selectedAnimation: string;
@@ -109,6 +117,7 @@ export const state: State = {
   // state that is saved in url hash
   selections: {},
   bodyType: BODY_TYPES[0],
+  locale: DEFAULT_LOCALE,
 
   // State that is currently not saved but could be in future
   selectedAnimation: "walk",
@@ -138,6 +147,57 @@ export const state: State = {
   zipIndividualFrames: { isRunning: false },
   renderCharacter: { isRendering: false },
 };
+
+type SetAppLocaleOptions = {
+  syncHash?: boolean;
+  redraw?: boolean;
+};
+
+export function setAppLocale(
+  localeValue: string | null | undefined,
+  options: SetAppLocaleOptions = {},
+): Locale {
+  const locale = normalizeLocale(localeValue);
+  if (!locale) return state.locale;
+
+  state.locale = locale;
+  setI18nLocale(locale);
+  syncDocumentLocale(locale);
+
+  if (options.syncHash ?? true) {
+    stateDeps.syncSelectionsToHash();
+  }
+  if (options.redraw ?? true) {
+    stateDeps.redraw();
+  }
+  return locale;
+}
+
+export function applyCurrentLocale(): void {
+  setI18nLocale(state.locale);
+  syncDocumentLocale(state.locale);
+}
+
+function syncDocumentLocale(locale: Locale): void {
+  if (typeof document === "undefined") return;
+
+  document.documentElement.lang = locale;
+  document.title = t("app.title");
+  setElementText("app-heading", t("app.heading"));
+  setElementText("app-subtitle-prefix", t("app.subtitlePrefix"));
+  setElementText("app-credit-prefix", t("app.creditPrefix"));
+  setElementText("app-credit-link", t("app.creditAuthors"));
+  setElementText("netlify-link", t("app.netlify"));
+  setElementText("argos-link", t("app.argos"));
+  document
+    .getElementById("github-link-image")
+    ?.setAttribute("alt", t("app.githubAlt"));
+}
+
+function setElementText(id: string, text: string): void {
+  const element = document.getElementById(id);
+  if (element) element.textContent = text;
+}
 
 /**
  * Selection group = `type_name` (e.g. "body", "heads", "ears"). Ensures only
@@ -239,6 +299,7 @@ export function applyMatchBodyColor(
 
 export async function initState(): Promise<void> {
   stateDeps.loadSelectionsFromHash();
+  applyCurrentLocale();
 
   if (Object.keys(state.selections).length === 0) {
     await stateDeps.selectDefaults();

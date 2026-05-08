@@ -12,6 +12,12 @@ import { ResultBoundary } from "../ResultBoundary.js";
 import { state, getSelectionGroup } from "../../state/state.ts";
 import { ucwords } from "../../utils/helpers.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
+import { t } from "../../i18n/index.ts";
+import {
+  translatePaletteLabel,
+  translateRecolorOptionLabel,
+  translateVariantLabel,
+} from "../../i18n/metadata.ts";
 
 /**
  * Mirrors which variant canvases the modal will mount: default-expands the first version row,
@@ -108,8 +114,12 @@ function renderModal(attrs, paletteMeta, meta) {
       },
       [
         m("header.is-flex", [
-          m("h4", opt.label),
-          m("button", { onclick: onClose }, "x"),
+          m("h4", translateRecolorOptionLabel(opt)),
+          m(
+            "button",
+            { onclick: onClose, "aria-label": t("common.close") },
+            "x",
+          ),
         ]),
         m(
           "section",
@@ -139,10 +149,16 @@ function renderModal(attrs, paletteMeta, meta) {
                     }),
                     m(
                       "span.palette-version",
-                      paletteVersionMeta?.label +
-                        (material !== opt.material
-                          ? ` - ${materialMeta?.label}`
-                          : ""),
+                      material !== opt.material
+                        ? t("metadata.paletteMaterialFormat", {
+                            palette: translatePaletteLabel(
+                              paletteVersionMeta?.label,
+                            ),
+                            material: translatePaletteLabel(
+                              materialMeta?.label,
+                            ),
+                          })
+                        : translatePaletteLabel(paletteVersionMeta?.label),
                     ),
                   ],
                 ),
@@ -190,7 +206,10 @@ function renderModal(attrs, paletteMeta, meta) {
                             [
                               m(
                                 "span.variant-display-name.has-text-centered.is-size-7",
-                                ucwords(palette.replaceAll("_", " ")),
+                                translateVariantLabel(
+                                  palette,
+                                  ucwords(palette.replaceAll("_", " ")),
+                                ),
                               ),
                               m("canvas.variant-canvas.box.p-0", {
                                 width: compactDisplay
@@ -282,8 +301,8 @@ export const PaletteSelectModal = {
       renderError: (error) => {
         const message =
           error.kind === "loading" && error.chunk === "palette"
-            ? "Loading palette data…"
-            : "Loading layer data…";
+            ? t("common.loadingPaletteData")
+            : t("common.loadingLayerData");
         return renderLoadingOverlay(onClose, message);
       },
     });
