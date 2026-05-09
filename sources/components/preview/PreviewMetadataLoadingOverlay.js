@@ -1,6 +1,7 @@
 // Semi-transparent layer over the preview canvas until layers + offscreen canvas + bootstrap draw.
 import m from "mithril";
 import { getPreviewCanvasState } from "../../state/preview-canvas-loading.ts";
+import { t } from "../../i18n/index.ts";
 
 /** UI copy for blocking states. `rendering`/`ready` produce no overlay. */
 function messageForState(state) {
@@ -11,7 +12,7 @@ function messageForState(state) {
     case "loading-layers":
     case "canvas-not-initialized":
     case "bootstrap-pending":
-      return "Loading layer data…";
+      return t("common.loadingLayerData");
   }
   return null;
 }

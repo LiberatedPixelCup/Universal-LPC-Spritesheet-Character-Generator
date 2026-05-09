@@ -4,6 +4,8 @@ import {
   resetJsonDeps,
   setJsonDeps,
 } from "../../sources/state/json.js";
+import { state } from "../../sources/state/state.ts";
+import { DEFAULT_LOCALE } from "../../sources/i18n/index.ts";
 import { expect } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
@@ -11,6 +13,7 @@ import { describe, it, beforeEach, afterEach } from "mocha-globals";
 describe("state/json.js", () => {
   beforeEach(() => {
     resetJsonDeps();
+    state.locale = DEFAULT_LOCALE;
   });
 
   afterEach(() => {
@@ -28,6 +31,7 @@ describe("state/json.js", () => {
       });
       const snapshot = {
         bodyType: "male",
+        locale: "zh-CN",
         selections: {},
         selectedAnimation: "walk",
         showTransparencyGrid: true,
@@ -44,6 +48,7 @@ describe("state/json.js", () => {
       expect(parsed.layers).to.deep.equal([{ zPos: 1, path: "p" }]);
       expect(parsed.credits).to.deep.equal({ "Artist A": ["file1"] });
       expect(parsed.bodyType).to.equal("male");
+      expect(parsed.locale).to.equal("zh-CN");
     });
   });
 
@@ -52,13 +57,36 @@ describe("state/json.js", () => {
       const json = JSON.stringify({
         version: 2,
         bodyType: "female",
+        locale: "ja",
         selections: { body: { itemId: "1" } },
         selectedAnimation: "idle",
       });
       const result = importStateFromJSON(json);
       expect(result.bodyType).to.equal("female");
       expect(result.selections.body.itemId).to.equal("1");
+      expect(result.locale).to.equal("ja");
       expect(result.selectedAnimation).to.equal("idle");
+    });
+
+    it("keeps the current locale for version 2 JSON without locale", () => {
+      const json = JSON.stringify({
+        version: 2,
+        bodyType: "female",
+        selections: { body: { itemId: "1" } },
+      });
+      const result = importStateFromJSON(json);
+      expect(result.locale).to.equal("en");
+    });
+
+    it("ignores invalid locale values", () => {
+      const json = JSON.stringify({
+        version: 2,
+        bodyType: "female",
+        locale: "fr-FR",
+        selections: { body: { itemId: "1" } },
+      });
+      const result = importStateFromJSON(json);
+      expect(result.locale).to.equal("en");
     });
 
     it("calls loadSelectionsFromHash with the URL hash for version 1", () => {

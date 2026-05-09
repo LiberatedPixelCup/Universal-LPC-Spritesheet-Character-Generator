@@ -5,6 +5,7 @@ import {
 } from "./hash.ts";
 import { getAllCredits } from "../utils/credits.ts";
 import { state } from "./state.ts";
+import { normalizeLocale } from "../i18n/index.ts";
 
 // Dependency injection for testability (see setJsonDeps / resetJsonDeps)
 function createDefaultJsonDeps() {
@@ -43,6 +44,7 @@ export function exportStateAsJSON(state, layers) {
   const exportedState = {
     version: 2,
     bodyType: state.bodyType,
+    locale: state.locale,
     selections: state.selections,
     selectedAnimation: state.selectedAnimation,
     showTransparencyGrid: state.showTransparencyGrid,
@@ -73,8 +75,10 @@ export function importStateFromJSON(jsonString) {
       throw new Error("Invalid JSON format");
     }
     if (importedState.version === 2) {
+      const importedLocale = normalizeLocale(importedState.locale);
       const newState = {
         bodyType: importedState.bodyType,
+        locale: importedLocale ?? state.locale,
         selections: importedState.selections,
         selectedAnimation:
           importedState.selectedAnimation ?? state.selectedAnimation,

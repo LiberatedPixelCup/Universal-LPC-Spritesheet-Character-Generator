@@ -7,13 +7,18 @@ import {
   isItemLicenseCompatible,
   isItemAnimationCompatible,
 } from "../../state/filters.ts";
+import { t } from "../../i18n/index.ts";
+import {
+  translateAnimationList,
+  translateSelectionName,
+} from "../../i18n/metadata.ts";
 
 export const CurrentSelections = {
   view: function () {
     if (!isLiteReady()) {
       return m("div", [
-        m("h3.title.is-5", "Current Selections"),
-        m("p.is-size-7.has-text-grey", "Loading item list…"),
+        m("h3.title.is-5", t("selections.title")),
+        m("p.is-size-7.has-text-grey", t("common.loadingItemList")),
       ]);
     }
 
@@ -21,15 +26,15 @@ export const CurrentSelections = {
 
     if (selectionCount === 0) {
       return m("div", [
-        m("h3.title.is-5", "Current Selections"),
-        m("p.has-text-grey", "No items selected yet"),
+        m("h3.title.is-5", t("selections.title")),
+        m("p.has-text-grey", t("common.noItemsSelectedYet")),
       ]);
     }
 
     const creditsReady = isCreditsReady();
 
     return m("div", [
-      m("h3.title.is-5", "Current Selections"),
+      m("h3.title.is-5", t("selections.title")),
       m(
         "div.tags",
         Object.entries(state.selections).map(([selectionKey, selection]) => {
@@ -49,25 +54,33 @@ export const CurrentSelections = {
             }
           }
           const licensesText = !creditsReady
-            ? "License info loading…"
+            ? t("common.loadingAssetLicenseData")
             : allLicenses.size > 0
-              ? `Licenses: ${Array.from(allLicenses).join(", ")}`
-              : "No license info";
+              ? t("common.licenses", {
+                  items: Array.from(allLicenses).join(", "),
+                })
+              : t("common.noLicenseInfo");
 
           // Get supported animations for this item
           const supportedAnims = meta?.animations ?? [];
           const animsText =
             supportedAnims.length > 0
-              ? `Animations: ${supportedAnims.join(", ")}`
-              : "No animation info";
+              ? t("common.animations", {
+                  items: translateAnimationList(supportedAnims),
+                })
+              : t("common.noAnimationInfo");
 
           // Build tooltip text
           let tooltipText = "";
           if (!isCompatible) {
             const issues = [];
-            if (!isLicenseCompatible) issues.push("licenses");
-            if (!isAnimCompatible) issues.push("animations");
-            tooltipText = `⚠️ Incompatible with selected ${issues.join(" and ")}\n`;
+            if (!isLicenseCompatible)
+              issues.push(t("compatibility.issues.licenses"));
+            if (!isAnimCompatible)
+              issues.push(t("compatibility.issues.animations"));
+            tooltipText = `${t("compatibility.incompatibleWithSelected", {
+              issues: issues.join(t("compatibility.issues.and")),
+            })}\n`;
           }
           tooltipText += `${licensesText}\n${animsText}`;
 
@@ -79,7 +92,7 @@ export const CurrentSelections = {
               title: creditsReady ? tooltipText : undefined,
             },
             [
-              m("span", selection.name),
+              m("span", translateSelectionName(selection, meta)),
               !isCompatible ? m("span.ml-1", "⚠️") : null,
               m("button.delete.is-small", {
                 onclick: () => {

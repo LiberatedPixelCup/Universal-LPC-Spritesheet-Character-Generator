@@ -16,15 +16,16 @@
 //   })
 
 import m from "mithril";
+import { t } from "../i18n/index.ts";
 
 function defaultRenderError(error) {
   switch (error.kind) {
     case "loading":
-      return m("div.result-loading", "Loading…");
+      return m("div.result-loading", t("common.loading"));
     case "not-found":
-      return m("div.result-error", `Not found: ${error.id}`);
+      return m("div.result-error", t("common.notFound", { id: error.id }));
     default:
-      return m("div.result-error", "Unknown error");
+      return m("div.result-error", t("common.unknownError"));
   }
 }
 

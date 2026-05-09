@@ -6,6 +6,7 @@ import { Download } from "./download/Download.js";
 import { FiltersPanel } from "./FiltersPanel.js";
 import { Credits } from "./download/Credits.js";
 import { AdvancedTools } from "./advanced/AdvancedTools.js";
+import { LanguageSelector } from "./LanguageSelector.js";
 import { renderCharacter } from "../canvas/renderer.js";
 
 export const App = {
@@ -47,6 +48,7 @@ export const App = {
   },
   view: function () {
     return m("div", [
+      m(LanguageSelector),
       m(Download),
       m(FiltersPanel),
       m(Credits),

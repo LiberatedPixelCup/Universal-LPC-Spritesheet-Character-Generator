@@ -14,6 +14,7 @@ import "./canvas/palette-recolor-cache_spec.js";
 import "./canvas/palette-recolor-merge_spec.js";
 import "./canvas/renderer-issue-364_spec.js";
 import "./components/CollapsibleSection_spec.js";
+import "./components/LanguageSelector_spec.js";
 import "./components/FiltersPanel_spec.js";
 import "./components/ResultBoundary_spec.js";
 import "./components/filters/AnimationFilters_spec.js";
@@ -45,6 +46,7 @@ import "./utils/zip-helpers_spec.js";
 import "./utils/zip-export-ui-suspend_spec.js";
 import "./state/zip_spec.js";
 import "./state/zip-issue-382_spec.js";
+import "./i18n/i18n_spec.js";
 import "./performance-profiler_spec.js";
 
 mocha.run();

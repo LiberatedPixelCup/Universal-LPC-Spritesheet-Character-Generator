@@ -21,6 +21,12 @@ import {
 } from "../../utils/helpers.ts";
 import { ItemWithVariants } from "./ItemWithVariants.js";
 import { ItemWithRecolors } from "./ItemWithRecolors.js";
+import { t } from "../../i18n/index.ts";
+import {
+  translateAnimationList,
+  translateCategoryLabel,
+  translateItemName,
+} from "../../i18n/metadata.ts";
 
 function renderSkeletons(itemIds) {
   return itemIds.map((itemId) =>
@@ -37,13 +43,14 @@ function renderSkeletons(itemIds) {
 
 function renderItem(itemId, meta, ctx) {
   const { isNodeAnimCompatible, searchQuery } = ctx;
-  const displayName = meta.name;
+  const displayName = translateItemName(itemId, meta.name);
   const hasVariants = meta.variants && meta.variants.length > 0;
   const hasRecolors = !hasVariants && meta.recolors && meta.recolors.length > 0;
   const isSearchMatch =
     searchQuery &&
     searchQuery.length >= 2 &&
-    matchesSearch(meta.name, searchQuery);
+    (matchesSearch(meta.name, searchQuery) ||
+      matchesSearch(displayName, searchQuery));
 
   const isLicenseCompatibleFlag = isItemLicenseCompatible(itemId);
   const isAnimCompatibleFlag =
@@ -53,7 +60,7 @@ function renderItem(itemId, meta, ctx) {
   // Build tooltip text (license list needs credits chunk)
   let licensesText;
   if (!isCreditsReady()) {
-    licensesText = "License info loading…";
+    licensesText = t("common.loadingAssetLicenseData");
   } else {
     const allLicenses = new Set();
     const credits = getItemCredits(itemId).unwrapOr([]);
@@ -64,22 +71,28 @@ function renderItem(itemId, meta, ctx) {
     }
     licensesText =
       allLicenses.size > 0
-        ? `Licenses: ${Array.from(allLicenses).join(", ")}`
-        : "No license info";
+        ? t("common.licenses", { items: Array.from(allLicenses).join(", ") })
+        : t("common.noLicenseInfo");
   }
 
   const supportedAnims = meta.animations || [];
   const animsText =
     supportedAnims.length > 0
-      ? `Animations: ${supportedAnims.join(", ")}`
-      : "No animation info";
+      ? t("common.animations", {
+          items: translateAnimationList(supportedAnims),
+        })
+      : t("common.noAnimationInfo");
 
   let tooltipText = "";
   if (!isCompatible) {
     const issues = [];
-    if (!isLicenseCompatibleFlag) issues.push("licenses");
-    if (!isAnimCompatibleFlag) issues.push("animations");
-    tooltipText = `⚠️ Incompatible with selected ${issues.join(" and ")}\n`;
+    if (!isLicenseCompatibleFlag)
+      issues.push(t("compatibility.issues.licenses"));
+    if (!isAnimCompatibleFlag)
+      issues.push(t("compatibility.issues.animations"));
+    tooltipText = `${t("compatibility.incompatibleWithSelected", {
+      issues: issues.join(t("compatibility.issues.and")),
+    })}\n`;
   }
   tooltipText += `${licensesText}\n${animsText}`;
 
@@ -103,7 +116,7 @@ function renderItem(itemId, meta, ctx) {
           } else {
             state.selections[selectionGroup] = {
               itemId,
-              name: displayName,
+              name: meta.name,
             };
           }
         },
@@ -150,7 +163,8 @@ function renderItemList(itemIds, ctx) {
       if (
         searchQuery &&
         searchQuery.length >= 2 &&
-        !matchesSearch(lite.name, searchQuery)
+        !matchesSearch(lite.name, searchQuery) &&
+        !matchesSearch(translateItemName(itemId, lite.name), searchQuery)
       ) {
         return false;
       }
@@ -188,13 +202,15 @@ export const TreeNode = {
     const supportedAnims = node.animations || [];
     const animsText =
       supportedAnims.length > 0
-        ? `Animations: ${supportedAnims.join(", ")}`
+        ? t("common.animations", {
+            items: translateAnimationList(supportedAnims),
+          })
         : null;
 
     // Build tooltip text
     let tooltipText = "";
     if (!isNodeAnimCompatible) {
-      tooltipText = `⚠️ Incompatible with selected animations\n`;
+      tooltipText = `${t("compatibility.incompatibleWithSelectedAnimations")}\n`;
     }
     tooltipText += `${animsText}`;
 
@@ -203,7 +219,10 @@ export const TreeNode = {
       (searchQuery && searchQuery.length >= 2 && hasSearchMatches) ||
       state.expandedNodes[nodePath] ||
       false;
-    const displayName = node.label ?? capitalize(name);
+    const displayName = translateCategoryLabel(
+      name,
+      node.label ?? capitalize(name),
+    );
 
     const categoryTitle = isLiteReady() ? tooltipText : undefined;
 

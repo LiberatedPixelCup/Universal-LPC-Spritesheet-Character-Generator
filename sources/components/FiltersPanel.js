@@ -6,13 +6,14 @@ import { AnimationFilters } from "./filters/AnimationFilters.js";
 import { CurrentSelections } from "./selections/CurrentSelections.js";
 import { CategoryTree } from "./tree/CategoryTree.js";
 import { CollapsibleSection } from "./CollapsibleSection.js";
+import { t } from "../i18n/index.ts";
 
 export const FiltersPanel = {
   view: function () {
     return m(
       CollapsibleSection,
       {
-        title: "Filters",
+        title: t("filters.title"),
         storageKey: "filters",
         defaultOpen: true,
       },

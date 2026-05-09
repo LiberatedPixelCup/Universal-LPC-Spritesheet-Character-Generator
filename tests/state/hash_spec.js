@@ -152,6 +152,33 @@ describe("state/hash.ts", () => {
       });
     });
 
+    it("should include non-default locale in hash params", () => {
+      updateState({
+        bodyType: "male",
+        locale: "ja",
+        selections: {},
+      });
+
+      const params = getHashParamsforSelections(getState().selections);
+      expect(params).to.deep.equal({
+        sex: "male",
+        lang: "ja",
+      });
+    });
+
+    it("should omit the default English locale from hash params", () => {
+      updateState({
+        bodyType: "male",
+        locale: "en",
+        selections: {},
+      });
+
+      const params = getHashParamsforSelections(getState().selections);
+      expect(params).to.deep.equal({
+        sex: "male",
+      });
+    });
+
     it("should generate hash params for recolor selections containing subcolors", () => {
       updateState({
         bodyType: "male",
@@ -220,6 +247,28 @@ describe("state/hash.ts", () => {
           recolor: "",
         },
       });
+    });
+
+    it("should load locale from hash", () => {
+      setHash("#lang=zh-CN");
+
+      loadSelectionsFromHash();
+      expect(getState().locale).to.equal("zh-CN");
+    });
+
+    it("should load Japanese locale from hash", () => {
+      setHash("#lang=ja");
+
+      loadSelectionsFromHash();
+      expect(getState().locale).to.equal("ja");
+    });
+
+    it("should ignore invalid locale values", () => {
+      updateState({ locale: "en" });
+      setHash("#lang=fr-FR");
+
+      loadSelectionsFromHash();
+      expect(getState().locale).to.equal("en");
     });
 
     it("should be case insensitive", () => {

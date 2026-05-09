@@ -1,5 +1,6 @@
 import m from "mithril";
-import { state, selectDefaults } from "./state.ts";
+import { state, selectDefaults, setAppLocale } from "./state.ts";
+import { DEFAULT_LOCALE } from "../i18n/index.ts";
 import type { Selection, Selections } from "./state.ts";
 import { parseRecolorKey } from "./palettes.ts";
 import { debugWarn } from "../utils/debug.js";
@@ -82,6 +83,7 @@ export function updateState(updates: Partial<typeof state>): void {
 
 export function resetState(): void {
   state.bodyType = "male";
+  setAppLocale(DEFAULT_LOCALE, { syncHash: false, redraw: false });
   state.selections = {};
 }
 
@@ -213,6 +215,9 @@ export function getHashParamsforSelections(
 
   // Add body type (using 'sex' for backwards compatibility with old URLs).
   params.sex = state.bodyType;
+  if (state.locale !== DEFAULT_LOCALE) {
+    params.lang = state.locale;
+  }
 
   // Add selections — old format: `type_name=Name_variant`.
   // e.g., "body=Body_color_light", "shoes=Sara_sara".
@@ -304,6 +309,10 @@ export function loadSelectionsFromHash(hashString: string | null = null): void {
     // Handle special parameters
     if (typeName === "bodyType" || typeName === "sex") {
       state.bodyType = nameAndVariant;
+      continue;
+    }
+    if (typeName === "lang") {
+      setAppLocale(nameAndVariant, { syncHash: false, redraw: false });
       continue;
     }
 

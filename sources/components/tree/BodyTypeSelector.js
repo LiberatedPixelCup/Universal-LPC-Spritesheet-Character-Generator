@@ -2,7 +2,7 @@
 import m from "mithril";
 import { state } from "../../state/state.ts";
 import { BODY_TYPES } from "../../state/constants.ts";
-import { capitalize } from "../../utils/helpers.ts";
+import { t } from "../../i18n/index.ts";
 
 export const BodyTypeSelector = {
   oninit: function (vnode) {
@@ -21,7 +21,7 @@ export const BodyTypeSelector = {
           m("span.tree-arrow", {
             class: vnode.state.isExpanded ? "expanded" : "collapsed",
           }),
-          m("span.has-text-weight-semibold", "Body Type"),
+          m("span.has-text-weight-semibold", t("tree.bodyType")),
         ],
       ),
       vnode.state.isExpanded
@@ -37,7 +37,7 @@ export const BodyTypeSelector = {
                       state.bodyType = type;
                     },
                   },
-                  capitalize(type),
+                  t(`bodyType.${type}`),
                 ),
               ),
             ),

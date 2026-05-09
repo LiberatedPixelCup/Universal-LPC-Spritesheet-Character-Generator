@@ -2,6 +2,7 @@
 import m from "mithril";
 import { state } from "../../state/state.ts";
 import { CollapsibleSection } from "../CollapsibleSection.js";
+import { t } from "../../i18n/index.ts";
 
 export const AdvancedTools = {
   view: function () {
@@ -36,26 +37,23 @@ export const AdvancedTools = {
     return m(
       CollapsibleSection,
       {
-        title: "Advanced Tools",
+        title: t("advanced.title"),
         storageKey: "advanced",
         defaultOpen: false,
       },
       [
         m("div.field", [
-          m("label.label", "Custom File Upload"),
+          m("label.label", t("advanced.customFileUpload")),
           m("div.control", [
             m("input.input[type=file]#customFileInput", {
               accept: "image/*",
               onchange: handleFileUpload,
             }),
           ]),
-          m(
-            "p.help",
-            "Upload a local image file to overlay on the spritesheet",
-          ),
+          m("p.help", t("advanced.customFileHelp")),
         ]),
         m("div.field", [
-          m("label.label", "Z-Position"),
+          m("label.label", t("advanced.zPosition")),
           m("div.control", [
             m("input.input[type=number]", {
               value: state.customImageZPos,
@@ -64,14 +62,14 @@ export const AdvancedTools = {
             }),
           ]),
           m("p.help", [
-            "Layer order: ",
-            m("code", "0=shadow"),
+            t("advanced.layerOrder"),
+            m("code", `0=${t("metadata.word.shadow")}`),
             ", ",
-            m("code", "10=body"),
+            m("code", `10=${t("metadata.word.body")}`),
             ", ",
-            m("code", "70=arms"),
+            m("code", `70=${t("metadata.word.arms")}`),
             ", ",
-            m("code", "110=beard"),
+            m("code", `110=${t("metadata.word.beard")}`),
           ]),
         ]),
         state.customUploadedImage &&
@@ -82,7 +80,7 @@ export const AdvancedTools = {
                 {
                   onclick: clearCustomImage,
                 },
-                "Clear Custom Image",
+                t("advanced.clearCustomImage"),
               ),
             ]),
           ]),

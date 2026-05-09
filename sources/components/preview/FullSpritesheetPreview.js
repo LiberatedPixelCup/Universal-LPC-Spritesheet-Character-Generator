@@ -10,6 +10,7 @@ import {
 import { isOffscreenCanvasInitialized } from "../../canvas/renderer.js";
 import { ScrollableContainer } from "./ScrollableContainer.js";
 import { PreviewMetadataLoadingOverlay } from "./PreviewMetadataLoadingOverlay.js";
+import { t } from "../../i18n/index.ts";
 
 /**
  * Offscreen `canvas` in renderer.js is created in `initCanvas()` after index+lite
@@ -119,7 +120,7 @@ export const FullSpritesheetPreview = {
     return m(
       CollapsibleSection,
       {
-        title: "Full Spritesheet Preview",
+        title: t("preview.fullSpritesheetTitle"),
         storageKey: "spritesheet-preview",
         defaultOpen: true,
         boxClass: "box mt-4",
@@ -141,7 +142,7 @@ export const FullSpritesheetPreview = {
                       m.redraw();
                     },
                   }),
-                  " Show transparency grid",
+                  t("preview.showTransparencyGrid"),
                 ]),
               ]),
               m("div.mt-1", [
@@ -155,7 +156,7 @@ export const FullSpritesheetPreview = {
                       m.redraw();
                     },
                   }),
-                  " Replace Mask (Pink)",
+                  t("preview.replaceMask"),
                 ]),
               ]),
             ],
@@ -166,7 +167,9 @@ export const FullSpritesheetPreview = {
               m("div.field-label.is-normal", [
                 m(
                   "label.label.mb-0",
-                  `Zoom: ${Math.round(vnode.state.zoomLevel * 100)}%`,
+                  t("common.zoom", {
+                    percent: Math.round(vnode.state.zoomLevel * 100),
+                  }),
                 ),
               ]),
               m("div.field-body", [
@@ -202,7 +205,7 @@ export const FullSpritesheetPreview = {
               state.isRenderingCharacter
                 ? m("div.preview-canvas-busy", { "aria-hidden": true }, [
                     m("span.loading", {
-                      "aria-label": "Rendering character",
+                      "aria-label": t("common.renderingCharacter"),
                     }),
                   ])
                 : null,

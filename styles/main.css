@@ -226,6 +226,26 @@ canvas {
   margin-bottom: 1rem;
 }
 
+.language-selector {
+  position: fixed;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 120;
+  padding: 0.25rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.language-selector .select select {
+  width: auto;
+  min-width: 6.5rem;
+  height: 1.75rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 0.75rem;
+}
+
 .search-result {
   background-color: #fffbea;
 }
