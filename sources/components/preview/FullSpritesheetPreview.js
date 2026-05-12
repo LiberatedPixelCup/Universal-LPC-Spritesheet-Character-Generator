@@ -6,8 +6,8 @@ import PinchToZoom from "./PinchToZoom.js";
 import {
   copyToPreviewCanvas,
   primeSpritesheetPreviewCanvasElement,
-} from "../../canvas/preview-canvas.js";
-import { isOffscreenCanvasInitialized } from "../../canvas/renderer.js";
+} from "../../canvas/preview-canvas.ts";
+import { isOffscreenCanvasInitialized } from "../../canvas/renderer.ts";
 import { ScrollableContainer } from "./ScrollableContainer.js";
 import { PreviewMetadataLoadingOverlay } from "./PreviewMetadataLoadingOverlay.js";
 

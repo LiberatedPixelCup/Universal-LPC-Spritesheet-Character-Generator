@@ -8,13 +8,13 @@ import {
   setPreviewAnimation,
   startPreviewAnimation,
   stopPreviewAnimation,
-} from "../../canvas/preview-animation.js";
+} from "../../canvas/preview-animation.ts";
 import {
   initPreviewCanvas,
   setPreviewCanvasZoom,
-} from "../../canvas/preview-canvas.js";
+} from "../../canvas/preview-canvas.ts";
 import PinchToZoom from "./PinchToZoom.js";
-import { getCustomAnimations } from "../../canvas/preview-animation.js";
+import { getCustomAnimations } from "../../canvas/preview-animation.ts";
 import { ScrollableContainer } from "./ScrollableContainer.js";
 import { PreviewMetadataLoadingOverlay } from "./PreviewMetadataLoadingOverlay.js";
 

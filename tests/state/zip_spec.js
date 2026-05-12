@@ -9,7 +9,7 @@ import {
   SHEET_WIDTH,
   SHEET_HEIGHT,
   renderCharacter,
-} from "../../sources/canvas/renderer.js";
+} from "../../sources/canvas/renderer.ts";
 import {
   addAnimationSliceToZip,
   addCanvasToZip,
