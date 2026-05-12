@@ -5,7 +5,7 @@ import {
   recolorImageWebGL,
   isWebGLAvailable,
 } from "./webgl-palette-recolor.js";
-import { debugLog, debugWarn } from "../utils/debug.js";
+import { debugLog, debugWarn } from "../utils/debug.ts";
 import { get2DContext } from "./canvas-utils.ts";
 import { getItemLite } from "../state/catalog.ts";
 import { state } from "../state/state.ts";

@@ -11,19 +11,32 @@
  * `recolorVariantArrays`); `catalog.registerFromIndexModule` expands `byTypeName` to the slim row
  * shape and keeps the two array tables for expanding interned `item-metadata.js` lites. Emitted
  * `item-metadata.js` may store per-item `v` / `r` and stripped `recolors[0].variants` only.
- *
- * @param {string} itemId
- * @param {object} meta Full or lite item metadata (may include `layers` / `credits`).
- * @returns {{ itemId: string, name: unknown, type_name: unknown, variants: Array, recolors: Array<{ variants: string[] }> }}
  */
+
+import type {
+  ItemLite,
+  MetadataIndexes,
+  SlimByTypeNameRow,
+} from "./catalog.ts";
+
+/**
+ * Lite item as emitted with interned variant indices: `v` / `r` point into the
+ * shared `variantArrays` / `recolorVariantArrays` tables in `index-metadata.js`.
+ * The expanded form is `ItemLite`.
+ */
+export type InternedItemLite = Omit<ItemLite, "variants"> & {
+  v: number;
+  r: number;
+};
+
 /**
  * Expands `metadataIndexes` as emitted with interned `variantArrays` + `recolorVariantArrays` and
  * per-row `v` / `r` indices (production `index-metadata.js`). In-memory / test fixtures with full
  * `variants` + `recolors` on each row are returned unchanged.
- * @param {object} metadataIndexes
- * @returns {object}
  */
-export function expandMetadataIndexesWithInternedArrays(metadataIndexes) {
+export function expandMetadataIndexesWithInternedArrays(
+  metadataIndexes: MetadataIndexes | null | undefined,
+): MetadataIndexes | null | undefined {
   if (!metadataIndexes || !metadataIndexes.byTypeName) {
     return metadataIndexes;
   }
@@ -34,7 +47,9 @@ export function expandMetadataIndexesWithInternedArrays(metadataIndexes) {
   const firstType = Object.values(byTypeName).find(
     (rows) => Array.isArray(rows) && rows.length > 0,
   );
-  const firstRow = firstType?.[0];
+  const firstRow = firstType?.[0] as
+    | (SlimByTypeNameRow & { v?: number; r?: number })
+    | undefined;
   if (
     !firstRow ||
     firstRow.variants !== undefined ||
@@ -46,17 +61,21 @@ export function expandMetadataIndexesWithInternedArrays(metadataIndexes) {
 
   const V = variantArrays;
   const R = recolorVariantArrays;
-  const expanded = {};
+  const expanded: Record<string, SlimByTypeNameRow[]> = {};
   for (const [t, rows] of Object.entries(byTypeName)) {
     expanded[t] = rows.map((row) => {
-      const variants = V[row.v] ?? [];
-      const rArr = R[row.r] ?? [];
+      const internedRow = row as unknown as SlimByTypeNameRow & {
+        v: number;
+        r: number;
+      };
+      const variants = V[internedRow.v] ?? [];
+      const rArr = R[internedRow.r] ?? [];
       const recolors =
         Array.isArray(rArr) && rArr.length > 0 ? [{ variants: rArr }] : [];
       return {
-        itemId: row.itemId,
-        name: row.name,
-        type_name: row.type_name,
+        itemId: internedRow.itemId,
+        name: internedRow.name,
+        type_name: internedRow.type_name,
         variants: [...variants],
         recolors,
       };
@@ -76,32 +95,24 @@ export function expandMetadataIndexesWithInternedArrays(metadataIndexes) {
   };
 }
 
-/**
- * @param {object|undefined} lite
- * @returns {boolean}
- */
-export function isInternedItemLite(lite) {
+export function isInternedItemLite(lite: unknown): boolean {
+  if (lite == null || typeof lite !== "object") return false;
+  const obj = lite as Record<string, unknown>;
   return (
-    lite != null &&
-    typeof lite === "object" &&
-    typeof lite.v === "number" &&
-    typeof lite.r === "number" &&
-    !Object.prototype.hasOwnProperty.call(lite, "variants")
+    typeof obj.v === "number" &&
+    typeof obj.r === "number" &&
+    !Object.prototype.hasOwnProperty.call(obj, "variants")
   );
 }
 
 /**
  * Restores `variants` and `recolors[0].variants` from the shared tables (same as `index-metadata.js`).
- * @param {object} lite
- * @param {string[][]|undefined} variantArrays
- * @param {string[][]|undefined} recolorVariantArrays
- * @returns {object}
  */
 export function expandInternedItemLite(
-  lite,
-  variantArrays,
-  recolorVariantArrays,
-) {
+  lite: ItemLite | InternedItemLite,
+  variantArrays?: string[][],
+  recolorVariantArrays?: string[][],
+): ItemLite | InternedItemLite {
   if (
     !isInternedItemLite(lite) ||
     !Array.isArray(variantArrays) ||
@@ -109,10 +120,14 @@ export function expandInternedItemLite(
   ) {
     return lite;
   }
-  const { v, r, recolors: rcIn, ...rest } = lite;
+  type LooseRecolor = { variants?: string[] } & Record<string, unknown>;
+  const interned = lite as unknown as Omit<InternedItemLite, "recolors"> & {
+    recolors?: LooseRecolor[];
+  };
+  const { v, r, recolors: rcIn, ...rest } = interned;
   const variants = variantArrays[v] ?? [];
   const rList = recolorVariantArrays[r] ?? [];
-  let recolors = Array.isArray(rcIn) ? rcIn : [];
+  let recolors: LooseRecolor[] = Array.isArray(rcIn) ? rcIn : [];
   if (recolors.length > 0) {
     const [head, ...tail] = recolors;
     if (head && typeof head === "object") {
@@ -121,22 +136,19 @@ export function expandInternedItemLite(
     }
   } else if (rList.length > 0) {
     recolors = [{ variants: [...rList] }];
-  } else {
-    recolors = recolors ?? [];
   }
-  return { ...rest, variants, recolors };
+  return { ...rest, variants, recolors } as unknown as ItemLite;
 }
 
-export function buildSlimByTypeNameRow(itemId, meta) {
-  if (!meta) {
-    return {
-      itemId,
-      name: undefined,
-      type_name: undefined,
-      variants: [],
-      recolors: [],
-    };
-  }
+type ItemLikeForSlimRow = Pick<ItemLite, "name" | "type_name"> & {
+  variants?: ItemLite["variants"];
+  recolors?: { variants?: string[] }[];
+};
+
+export function buildSlimByTypeNameRow(
+  itemId: string,
+  meta: ItemLikeForSlimRow,
+): SlimByTypeNameRow {
   const variants = Array.isArray(meta.variants) ? meta.variants : [];
   const v0 = meta.recolors?.[0]?.variants;
   const recolors =
@@ -150,15 +162,11 @@ export function buildSlimByTypeNameRow(itemId, meta) {
   };
 }
 
-/**
- * @param {Record<string, object>|null|undefined} itemMetadata
- * @returns {Record<string, Array<ReturnType<typeof buildSlimByTypeNameRow>>>}
- */
-export function buildItemsByTypeNameLite(itemMetadata) {
-  const byType = {};
-  for (const itemId of Object.keys(itemMetadata || {})) {
-    const meta = itemMetadata[itemId];
-    if (!meta) continue;
+export function buildItemsByTypeNameLite(
+  itemMetadata: Record<string, ItemLikeForSlimRow>,
+): Record<string, SlimByTypeNameRow[]> {
+  const byType: Record<string, SlimByTypeNameRow[]> = {};
+  for (const [itemId, meta] of Object.entries(itemMetadata)) {
     const t = meta.type_name;
     if (!byType[t]) byType[t] = [];
     byType[t].push(buildSlimByTypeNameRow(itemId, meta));
@@ -166,19 +174,20 @@ export function buildItemsByTypeNameLite(itemMetadata) {
   return byType;
 }
 
-/**
- * @param {object} opts
- * @param {string} opts.typeName
- * @param {string} opts.nameAndVariant
- * @param {Record<string, Array<{ itemId: string, name: string, type_name: string, variants: string[], recolors: Array<{ variants: string[] }> }>>} opts.itemsByTypeName
- * @returns {{ foundItemId: string|null, matchedVariant: string, matchedRecolor: string }}
- */
 export function resolveHashParamFromHashMatch({
   typeName,
   nameAndVariant,
   itemsByTypeName,
-}) {
-  let foundItemId = null;
+}: {
+  typeName: string;
+  nameAndVariant: string;
+  itemsByTypeName: Record<string, SlimByTypeNameRow[]>;
+}): {
+  foundItemId: string | null;
+  matchedVariant: string;
+  matchedRecolor: string;
+} {
+  let foundItemId: string | null = null;
   let matchedVariant = "";
   let matchedRecolor = "";
 
@@ -188,7 +197,7 @@ export function resolveHashParamFromHashMatch({
   for (let i = 1; i <= parts.length; i++) {
     const nameToMatch = parts.slice(0, i).join("_");
     const variants = parts.slice(i).join("_");
-    const variantToMatch = variants.split("|")[0];
+    const variantToMatch = variants.split("|")[0] ?? "";
     const recolorToMatch = variants.split("|")[1] || "";
 
     for (const row of metasForType) {
@@ -209,8 +218,8 @@ export function resolveHashParamFromHashMatch({
             }
           }
         }
-        if (meta.recolors?.[0]?.variants?.length > 0) {
-          for (const variant of meta.recolors[0].variants) {
+        if ((meta.recolors?.[0]?.variants?.length ?? 0) > 0) {
+          for (const variant of meta.recolors[0]?.variants ?? []) {
             if (
               (recolorToMatch !== "" &&
                 variant.toLowerCase() === recolorToMatch.toLowerCase()) ||

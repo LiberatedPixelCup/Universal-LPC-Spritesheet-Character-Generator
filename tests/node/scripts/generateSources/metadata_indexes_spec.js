@@ -8,7 +8,7 @@ import {
   categoryTree,
   itemMetadata,
 } from "../../../../scripts/generateSources/state.js";
-import { expandMetadataIndexesWithInternedArrays } from "../../../../sources/state/resolve-hash-param.js";
+import { expandMetadataIndexesWithInternedArrays } from "../../../../sources/state/resolve-hash-param.ts";
 import { resetTestState } from "./test_helpers.js";
 
 test("buildMetadataIndexes rows are slim: itemId, name, type_name, variants, recolors", () => {

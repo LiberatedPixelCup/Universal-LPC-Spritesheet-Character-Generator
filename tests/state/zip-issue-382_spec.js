@@ -31,7 +31,7 @@ import {
 } from "../../sources/state/zip.js";
 import { resetState } from "../../sources/state/hash.ts";
 import { state } from "../../sources/state/state.ts";
-import { importStateFromJSON } from "../../sources/state/json.js";
+import { importStateFromJSON } from "../../sources/state/json.ts";
 import issue382ItemMetadata from "../fixtures/issue-382/issue-382-itemdata.js";
 import issue382Selections from "../fixtures/issue-382/issue-382-selections.js";
 import { paths as issue382ZipPathsSplitAnimations } from "../fixtures/issue-382/issue-382-zip-paths-split-animations.js";

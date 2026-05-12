@@ -4,7 +4,7 @@ import {
   debugGroup,
   debugGroupEnd,
   debugTable,
-} from "./utils/debug.js";
+} from "./utils/debug.ts";
 
 /**
  * Performance Profiler for LPC Spritesheet Generator
@@ -351,9 +351,6 @@ export type ZipExportProfiler = {
   logReport: () => void;
 };
 
-/** `window.DEBUG` is a project-specific runtime flag set by `utils/debug.js`. */
-type WindowWithDebug = Window & { DEBUG?: boolean };
-
 /**
  * High-resolution phase timings for ZIP export. Safe in tests (no User Timing
  * side effects unless DEBUG).
@@ -370,7 +367,7 @@ export function createZipExportProfiler(exportKind: string): ZipExportProfiler {
       typeof performance === "undefined" ||
       typeof performance.mark !== "function" ||
       typeof window === "undefined" ||
-      !(window as WindowWithDebug).DEBUG
+      !window.DEBUG
     ) {
       return;
     }
@@ -450,8 +447,7 @@ export function createZipExportProfiler(exportKind: string): ZipExportProfiler {
 
   /** Pretty console report when `window.DEBUG` is set. */
   function logReport(): void {
-    if (typeof window === "undefined" || !(window as WindowWithDebug).DEBUG)
-      return;
+    if (typeof window === "undefined" || !window.DEBUG) return;
     const meta = toMetadata();
     debugGroup(`ZIP export profile: ${exportKind} (${meta.totalMs} ms total)`);
     const rows = Object.entries(meta.phasesMs).map(([phase, ms]) => ({

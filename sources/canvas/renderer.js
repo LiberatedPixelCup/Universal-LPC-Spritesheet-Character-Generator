@@ -22,7 +22,7 @@ import { getSortedLayersByAnim } from "../state/meta.ts";
 import { catalogReady } from "../state/catalog.ts";
 import { getItemMerged } from "../state/catalog.ts";
 import m from "mithril";
-import { debugWarn } from "../utils/debug.js";
+import { debugWarn } from "../utils/debug.ts";
 
 /**
  * When `zipProfiler` is set, records separate load/decode vs compositing phases; otherwise runs load then composite.

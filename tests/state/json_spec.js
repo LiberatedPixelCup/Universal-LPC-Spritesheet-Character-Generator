@@ -3,12 +3,12 @@ import {
   importStateFromJSON,
   resetJsonDeps,
   setJsonDeps,
-} from "../../sources/state/json.js";
+} from "../../sources/state/json.ts";
 import { expect } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 
-describe("state/json.js", () => {
+describe("state/json.ts", () => {
   beforeEach(() => {
     resetJsonDeps();
   });

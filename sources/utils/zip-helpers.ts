@@ -15,9 +15,9 @@ import {
   get2DContext,
   hasContentInRegion,
 } from "../canvas/canvas-utils.ts";
-import { debugLog, debugWarn } from "../utils/debug.js";
+import { debugLog, debugWarn } from "../utils/debug.ts";
 import { getAllCredits, creditsToTxt, creditsToCsv } from "./credits.ts";
-import { exportStateAsJSON } from "../state/json.js";
+import { exportStateAsJSON } from "../state/json.ts";
 import type { ZipExportProfiler } from "../performance-profiler.ts";
 import type { State } from "../state/state.ts";
 

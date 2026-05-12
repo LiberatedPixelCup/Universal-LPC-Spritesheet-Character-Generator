@@ -2,7 +2,7 @@ import m from "mithril";
 import { state, selectDefaults } from "./state.ts";
 import type { Selection, Selections } from "./state.ts";
 import { parseRecolorKey } from "./palettes.ts";
-import { debugWarn } from "../utils/debug.js";
+import { debugWarn } from "../utils/debug.ts";
 import {
   buildItemsByTypeNameFromRegisteredLite,
   getAliasMetadata,
@@ -14,7 +14,7 @@ import {
   type ItemLite,
   type SlimByTypeNameRow,
 } from "./catalog.ts";
-import { resolveHashParamFromHashMatch } from "./resolve-hash-param.js";
+import { resolveHashParamFromHashMatch } from "./resolve-hash-param.ts";
 
 /**
  * Outcome of resolving a `typeName`/`nameAndVariant` pair against the

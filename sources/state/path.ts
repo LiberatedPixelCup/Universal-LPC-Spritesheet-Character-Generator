@@ -11,7 +11,7 @@ import {
   type SlimByTypeNameRow,
 } from "./catalog.ts";
 import { variantToFilename, es6DynamicTemplate } from "../utils/helpers.ts";
-import { debugLog } from "../utils/debug.js";
+import { debugLog } from "../utils/debug.ts";
 import type { Selections } from "./state.ts";
 import type { AnimationEntry } from "./filters.ts";
 

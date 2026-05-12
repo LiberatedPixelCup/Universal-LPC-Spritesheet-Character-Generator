@@ -1,7 +1,7 @@
 // Canvas utility functions
 
 import { getItemMerged } from "../state/catalog.ts";
-import { debugWarn } from "../utils/debug.js";
+import { debugWarn } from "../utils/debug.ts";
 
 /**
  * Encode a canvas as a PNG Blob (rejects if toBlob yields null or throws).

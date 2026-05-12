@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {
   buildItemsByTypeNameLite,
   resolveHashParamFromHashMatch,
-} from "../../../sources/state/resolve-hash-param.js";
+} from "../../../sources/state/resolve-hash-param.ts";
 import { resolveHashParamLegacy } from "./hash_param_resolve_legacy.js";
 
 /**

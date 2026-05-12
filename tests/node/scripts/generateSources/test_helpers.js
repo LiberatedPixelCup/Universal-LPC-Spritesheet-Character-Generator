@@ -10,7 +10,7 @@ import { loadPaletteMetadata } from "../../../../scripts/generateSources/palette
 import {
   expandInternedItemLite,
   expandMetadataIndexesWithInternedArrays,
-} from "../../../../sources/state/resolve-hash-param.js";
+} from "../../../../sources/state/resolve-hash-param.ts";
 import { parseTree } from "../../../../scripts/generateSources/tree.js";
 import { parseItem } from "../../../../scripts/generateSources/items.js";
 import { processItemCredits } from "../../../../scripts/generateSources/credits.js";

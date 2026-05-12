@@ -6,16 +6,16 @@
  * so `window.DEBUG` is set before they run.
  */
 
-const BOOL_MAP = {
-  true: true,
-  false: false,
-};
-
-function bool(s) {
-  return BOOL_MAP[s] ?? null;
+declare global {
+  interface Window {
+    /** Set by this module on startup; gates `debugLog` / `debugWarn` / etc. */
+    DEBUG?: boolean;
+    /** Set by the browser test harness (`tests/vitest-setup.js`) to prevent this module from overriding `window.DEBUG`. */
+    __TEST_DEBUG_LOCKED__?: boolean;
+  }
 }
 
-function isLocalhost() {
+function isLocalhost(): boolean {
   return (
     typeof window !== "undefined" &&
     (window.location.hostname === "localhost" ||
@@ -23,12 +23,10 @@ function isLocalhost() {
   );
 }
 
-/** @returns {boolean} */
-export function getDebugParam() {
+export function getDebugParam(): boolean {
   if (typeof window === "undefined") return false;
-  const urlParams = new URLSearchParams(window.location.search);
-  const debugParam = urlParams.get("debug");
-  return bool(debugParam) ?? isLocalhost();
+  const debugParam = new URLSearchParams(window.location.search).get("debug");
+  return debugParam === "true" || (debugParam !== "false" && isLocalhost());
 }
 
 if (typeof window !== "undefined") {
@@ -39,32 +37,32 @@ if (typeof window !== "undefined") {
   }
 }
 
-export function debugLog(...args) {
+export function debugLog(...args: unknown[]): void {
   if (typeof window !== "undefined" && window.DEBUG) {
     console.log(...args);
   }
 }
 
-export function debugWarn(...args) {
+export function debugWarn(...args: unknown[]): void {
   if (typeof window !== "undefined" && window.DEBUG) {
     console.warn(...args);
   }
 }
 
 /** Grouped console output (e.g. profiler reports); only when `window.DEBUG` is true. */
-export function debugGroup(...args) {
+export function debugGroup(...args: unknown[]): void {
   if (typeof window !== "undefined" && window.DEBUG) {
     console.group(...args);
   }
 }
 
-export function debugGroupEnd() {
+export function debugGroupEnd(): void {
   if (typeof window !== "undefined" && window.DEBUG) {
     console.groupEnd();
   }
 }
 
-export function debugTable(...args) {
+export function debugTable(...args: unknown[]): void {
   if (typeof window !== "undefined" && window.DEBUG) {
     console.table(...args);
   }

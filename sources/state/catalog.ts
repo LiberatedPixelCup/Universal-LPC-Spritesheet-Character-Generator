@@ -28,7 +28,7 @@ import {
   expandInternedItemLite,
   expandMetadataIndexesWithInternedArrays,
   isInternedItemLite,
-} from "./resolve-hash-param.js";
+} from "./resolve-hash-param.ts";
 
 // ────────────────────────────────────────────────────────────────────────────
 // Error shape
@@ -115,7 +115,7 @@ export type CategoryTree = CategoryTreeNode;
 
 /**
  * Slim row shape stored in `MetadataIndexes.byTypeName[typeName]` and
- * `hashMatch.itemsByTypeName[typeName]`. Documented in `resolve-hash-param.js`:
+ * `hashMatch.itemsByTypeName[typeName]`. Documented in `resolve-hash-param.ts`:
  * just enough fields for hash-resolution and path-name lookups; the full
  * record lives in the lite item store.
  */

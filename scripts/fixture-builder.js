@@ -128,7 +128,7 @@ function collectItemIdsFromExport(obj, out = new Set()) {
 async function loadFullItemMetadata() {
   const { expandInternedItemLite, isInternedItemLite } = await import(
     pathToFileURL(
-      path.join(REPO_ROOT, "sources", "state", "resolve-hash-param.js"),
+      path.join(REPO_ROOT, "sources", "state", "resolve-hash-param.ts"),
     ).href
   );
   const itemUrl = pathToFileURL(ITEM_METADATA_PATH).href;

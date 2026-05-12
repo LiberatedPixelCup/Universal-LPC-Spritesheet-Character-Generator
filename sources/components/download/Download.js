@@ -9,14 +9,14 @@ import {
 } from "../../utils/credits.ts";
 import { CollapsibleSection } from "../CollapsibleSection.js";
 import { downloadFile, downloadAsPNG } from "../../canvas/download.js";
-import { importStateFromJSON, exportStateAsJSON } from "../../state/json.js";
+import { importStateFromJSON, exportStateAsJSON } from "../../state/json.ts";
 import {
   exportSplitAnimations,
   exportSplitItemSheets,
   exportSplitItemAnimations,
   exportIndividualFrames,
 } from "../../state/zip.js";
-import { debugLog } from "../../utils/debug.js";
+import { debugLog } from "../../utils/debug.ts";
 import { isLayersReady } from "../../state/catalog.ts";
 
 const zipExportDisabled = () => !isLayersReady();

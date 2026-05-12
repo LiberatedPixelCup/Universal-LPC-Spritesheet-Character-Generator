@@ -1,4 +1,4 @@
-import { debugWarn } from "../utils/debug.js";
+import { debugWarn } from "../utils/debug.ts";
 
 let loadedImages: Record<string, HTMLImageElement> = {};
 /** In-flight loads: same `src` shares one `Image` and one profiler span. */

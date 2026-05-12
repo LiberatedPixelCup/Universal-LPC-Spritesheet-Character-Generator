@@ -7,7 +7,7 @@ import { loadAllMetadata } from "./install-item-metadata.ts";
 import { catalogReady } from "./state/catalog.ts";
 
 // Import debug first so `window.DEBUG` is set before other modules run.
-import { debugLog, getDebugParam } from "./utils/debug.js";
+import { debugLog, getDebugParam } from "./utils/debug.ts";
 
 export { getDebugParam };
 
@@ -66,7 +66,7 @@ export const profiler = new PerformanceProfiler({
   logSlowOperations: true,
 });
 
-// Always expose profiler globally for manual control (window.DEBUG is set in utils/debug.js)
+// Always expose profiler globally for manual control (window.DEBUG is set in utils/debug.ts)
 window.profiler = profiler;
 
 // Expose canvas renderer to global scope for compatibility

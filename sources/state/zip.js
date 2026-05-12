@@ -36,7 +36,7 @@ import {
   zipGenerateBlobWithProfiler,
 } from "../utils/zip-helpers.ts";
 import m from "mithril";
-import { debugLog, debugWarn } from "../utils/debug.js";
+import { debugLog, debugWarn } from "../utils/debug.ts";
 import { createZipExportProfiler } from "../performance-profiler.ts";
 import {
   beginZipExportUiSuspend,

@@ -2,7 +2,7 @@
 // Uses GPU shaders for fast color replacement
 
 import { get2DContext } from "./canvas-utils.ts";
-import { debugLog } from "../utils/debug.js";
+import { debugLog } from "../utils/debug.ts";
 
 // Shared WebGL resources for reuse
 let sharedGL = null;

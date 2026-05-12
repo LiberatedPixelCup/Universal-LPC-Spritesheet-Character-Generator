@@ -6,7 +6,7 @@ import {
   loadAllMetadata,
   resetLoadAllMetadataCacheForTests,
 } from "../sources/install-item-metadata.ts";
-import { buildItemsByTypeNameLite } from "../sources/state/resolve-hash-param.js";
+import { buildItemsByTypeNameLite } from "../sources/state/resolve-hash-param.ts";
 
 const emptyPalette = { versions: {}, materials: {} };
 const emptyTree = { items: [], children: {} };
