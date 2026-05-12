@@ -6,7 +6,7 @@ import { state } from "../../../sources/state/state.ts";
 import {
   resetOffscreenCanvasStateForTests,
   setOffscreenCanvasInitializedForTests,
-} from "../../../sources/canvas/renderer.ts";
+} from "../../../sources/canvas/renderer.js";
 import { resetCatalogForTests } from "../../../sources/state/catalog.ts";
 import { restoreAppCatalogAfterTest } from "../../browser-catalog-fixture.js";
 

@@ -9,7 +9,7 @@ import { state } from "../../../sources/state/state.ts";
 import {
   resetOffscreenCanvasStateForTests,
   setOffscreenCanvasInitializedForTests,
-} from "../../../sources/canvas/renderer.ts";
+} from "../../../sources/canvas/renderer.js";
 
 test("getPreviewCanvasState walks through pending kinds in order, then ready", () => {
   resetCatalogForTests();

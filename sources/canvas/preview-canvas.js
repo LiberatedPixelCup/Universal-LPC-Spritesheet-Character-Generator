@@ -1,38 +1,34 @@
-import type { Result } from "neverthrow";
 import {
   canvas,
   SHEET_WIDTH,
   SHEET_HEIGHT,
   isOffscreenCanvasInitialized,
-} from "./renderer.ts";
+} from "./renderer.js";
 import { drawTransparencyBackground, get2DContext } from "./canvas-utils.ts";
 import { FRAME_SIZE } from "../state/constants.ts";
 import { applyTransparencyMaskToCanvas } from "./mask.ts";
 import {
   activeCustomAnimation,
   getCustomAnimations,
-} from "./preview-animation.ts";
+} from "./preview-animation.js";
+
+let previewCanvas = null;
+let previewCtx = null;
+
+export { previewCanvas, previewCtx };
 
 /**
- * Error variants for "no preview canvas to draw onto." Callers (Mithril
- * lifecycle hooks) wrap `vnode.dom` in `ok(...)` once mounted; pass `err(...)`
- * when the canvas isn't ready yet (early mount, unmounted, hidden).
+ * Copy offscreen canvas to a preview canvas with optional transparency grid
+ * @param {HTMLCanvasElement} previewCanvasElement - The preview canvas to copy to
+ * @param {boolean} showTransparencyGrid - Whether to draw transparency grid background
+ * @param {boolean} applyTransparencyMask - Whether to apply transparency mask
+ * @param {number} zoomLevel - Zoom level to apply (optional, will use CSS zoom)
  */
-export type PreviewCanvasUnavailable = { kind: "preview-canvas-not-mounted" };
-
-type MaybePreviewCanvas = Result<HTMLCanvasElement, PreviewCanvasUnavailable>;
-
-export let previewCanvas: HTMLCanvasElement | null = null;
-export let previewCtx: CanvasRenderingContext2D | null = null;
-
 /**
  * Size the DOM spritesheet preview canvas to match the offscreen buffer (or standard sheet size
  * before init) so layout does not jump when the first copy runs.
  */
-export function primeSpritesheetPreviewCanvasElement(
-  previewCanvasElementResult: MaybePreviewCanvas,
-): void {
-  const previewCanvasElement = previewCanvasElementResult.unwrapOr(null);
+export function primeSpritesheetPreviewCanvasElement(previewCanvasElement) {
   if (!previewCanvasElement) {
     return;
   }
@@ -46,16 +42,12 @@ export function primeSpritesheetPreviewCanvasElement(
   ctx.clearRect(0, 0, w, h);
 }
 
-/**
- * Copy offscreen canvas to a preview canvas with optional transparency grid.
- */
 export function copyToPreviewCanvas(
-  previewCanvasElementResult: MaybePreviewCanvas,
-  showTransparencyGrid: boolean = false,
-  applyTransparencyMask: boolean = false,
-  zoomLevel: number = 1,
-): void {
-  const previewCanvasElement = previewCanvasElementResult.unwrapOr(null);
+  previewCanvasElement,
+  showTransparencyGrid = false,
+  applyTransparencyMask = false,
+  zoomLevel = 1,
+) {
   if (!previewCanvasElement) {
     return;
   }
@@ -109,10 +101,10 @@ export function copyToPreviewCanvas(
   }
 }
 
-/** Initialize the preview canvas. */
-export function initPreviewCanvas(
-  previewCanvasElement: HTMLCanvasElement,
-): void {
+/**
+ * Initialize the preview canvas
+ */
+export function initPreviewCanvas(previewCanvasElement) {
   previewCanvas = previewCanvasElement;
   previewCtx = get2DContext(previewCanvas);
   const customAnimations = getCustomAnimations();
@@ -130,8 +122,11 @@ export function initPreviewCanvas(
   previewCanvas.height = frameSize; // 1 frame tall
 }
 
-/** Set preview canvas zoom level (0.5 to 2). */
-export function setPreviewCanvasZoom(zoomLevel: number): void {
+/**
+ * Set preview canvas zoom level
+ * @param {number} zoomLevel - Zoom level (0.5 to 2)
+ */
+export function setPreviewCanvasZoom(zoomLevel) {
   if (previewCanvas) {
     previewCanvas.style.zoom = zoomLevel.toString();
   }

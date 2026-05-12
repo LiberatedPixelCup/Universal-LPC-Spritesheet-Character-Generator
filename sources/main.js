@@ -12,7 +12,7 @@ import { debugLog, getDebugParam } from "./utils/debug.ts";
 export { getDebugParam };
 
 // Import canvas renderer
-import * as canvasRenderer from "./canvas/renderer.ts";
+import * as canvasRenderer from "./canvas/renderer.js";
 
 // Import palette recoloring
 import {

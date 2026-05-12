@@ -6,7 +6,7 @@
  * surface a `rendering` state that consumers treat as ready.
  */
 import { isLayersReady } from "./catalog.ts";
-import { isOffscreenCanvasInitialized } from "../canvas/renderer.ts";
+import { isOffscreenCanvasInitialized } from "../canvas/renderer.js";
 import { state } from "./state.ts";
 
 export type PreviewState =

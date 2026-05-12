@@ -20,7 +20,7 @@ import {
   layers as rendererLayers,
   itemsToDraw,
   customAreaItems,
-} from "../../sources/canvas/renderer.ts";
+} from "../../sources/canvas/renderer.js";
 import { resetImageLoadCache } from "../../sources/canvas/load-image.ts";
 import { resetState } from "../../sources/state/hash.ts";
 import { resetCatalogForTests } from "../../sources/state/catalog.ts";
@@ -47,7 +47,7 @@ const ISSUE_364_METADATA = {
   },
 };
 
-describe("canvas/renderer.ts issue #364 (addedCustomAnimations export)", () => {
+describe("canvas/renderer.js issue #364 (addedCustomAnimations export)", () => {
   let sandbox;
 
   beforeEach(() => {

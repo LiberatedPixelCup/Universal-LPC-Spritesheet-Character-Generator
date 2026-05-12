@@ -19,7 +19,7 @@ import {
   SHEET_HEIGHT,
   SHEET_WIDTH,
   renderCharacter,
-} from "../../sources/canvas/renderer.ts";
+} from "../../sources/canvas/renderer.js";
 import {
   exportIndividualFrames,
   exportSplitAnimations,
