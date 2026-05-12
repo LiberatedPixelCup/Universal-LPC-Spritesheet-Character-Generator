@@ -1,30 +1,36 @@
-import { previewCanvas, previewCtx } from "./preview-canvas.js";
+import { previewCanvas, previewCtx } from "./preview-canvas.ts";
 import { state } from "../state/state.ts";
 import { FRAME_SIZE, ANIMATION_CONFIGS } from "../state/constants.ts";
 import { get2DContext, drawTransparencyBackground } from "./canvas-utils.ts";
 import { applyTransparencyMaskToCanvas } from "./mask.ts";
-import { canvas } from "./renderer.js";
+import { canvas } from "./renderer.ts";
 import { customAnimations } from "../custom-animations.ts";
+import type { CustomAnimationDefinition } from "../custom-animations.ts";
+
+declare global {
+  interface Window {
+    /** Set by Playwright visual tests (tests/visual/home.spec.js) to suppress rAF cycling. */
+    __DISABLE_PREVIEW_ANIMATION__?: boolean;
+  }
+}
 
 // Animation preview state
-let animationFrames = [1, 2, 3, 4, 5, 6, 7, 8]; // default for walk
+let animationFrames: number[] = [1, 2, 3, 4, 5, 6, 7, 8]; // default for walk
 let animRowStart = 8; // default for walk (row number)
 let animRowNum = 4; // default for walk (number of rows to stack)
 let currentFrameIndex = 0;
 let lastFrameTime = Date.now();
-let animationFrameId = null;
+let animationFrameId: number | null = null;
 
 // Track custom animations present in current render
-let currentCustomAnimations = {};
-let customAnimYPositions = {}; // Y positions of custom animations in canvas
-let activeCustomAnimation = null; // Currently selected custom animation for preview
-
-export { activeCustomAnimation };
+let currentCustomAnimations: Record<string, CustomAnimationDefinition> = {};
+let customAnimYPositions: Record<string, number> = {}; // Y positions of custom animations in canvas
+export let activeCustomAnimation: string | null = null; // Currently selected custom animation for preview
 
 /**
  * Set which animation to preview
  */
-export function setPreviewAnimation(animationName) {
+export function setPreviewAnimation(animationName: string): number[] {
   // Check if this is a custom animation
   if (customAnimations && customAnimations[animationName]) {
     const customAnimDef = customAnimations[animationName];
@@ -49,7 +55,11 @@ export function setPreviewAnimation(animationName) {
 
   // Standard animation
   activeCustomAnimation = null;
-  const config = ANIMATION_CONFIGS[animationName];
+  const configs = ANIMATION_CONFIGS as Record<
+    string,
+    { row: number; num: number; cycle: number[] } | undefined
+  >;
+  const config = configs[animationName];
   if (!config) {
     console.error("Unknown animation:", animationName);
     return [];
@@ -67,8 +77,8 @@ export function setPreviewAnimation(animationName) {
  * Draw one preview frame for a given index into `animationFrames` (the cycle).
  * Used by the animation loop and by visual tests (static frame, no rAF).
  */
-function paintPreviewFrameForCycleIndex(cycleIndex) {
-  if (!previewCtx || !canvas) {
+function paintPreviewFrameForCycleIndex(cycleIndex: number): void {
+  if (!previewCtx || !canvas || !previewCanvas) {
     return;
   }
 
@@ -97,7 +107,7 @@ function paintPreviewFrameForCycleIndex(cycleIndex) {
     }
   }
 
-  let tmpCanvas;
+  let tmpCanvas: HTMLCanvasElement;
   if (state.applyTransparencyMask) {
     // using a tmpCanvas here to avoid modifying the original offscreen canvas
     // which causes a bug if the user toggles the checkbox multiple times
@@ -131,14 +141,11 @@ function paintPreviewFrameForCycleIndex(cycleIndex) {
 }
 
 /**
- * Start the preview animation loop
- */
-/**
  * When Playwright sets `__DISABLE_PREVIEW_ANIMATION__`, we paint once instead of using rAF.
  * The first paint can run before `renderCharacter` finishes; call this after any redraw that
  * may follow a completed render so the preview copies fresh offscreen pixels (Argos / visual tests).
  */
-export function repaintStaticPreviewFrameForTests() {
+export function repaintStaticPreviewFrameForTests(): void {
   if (
     typeof window !== "undefined" &&
     window.__DISABLE_PREVIEW_ANIMATION__ === true
@@ -147,7 +154,7 @@ export function repaintStaticPreviewFrameForTests() {
   }
 }
 
-export function startPreviewAnimation() {
+export function startPreviewAnimation(): void {
   if (animationFrameId !== null) {
     return; // Already running
   }
@@ -163,7 +170,7 @@ export function startPreviewAnimation() {
     return;
   }
 
-  function nextFrame() {
+  function nextFrame(): void {
     const fpsInterval = 1000 / 8; // 8 FPS
     const now = Date.now();
     const elapsed = now - lastFrameTime;
@@ -185,9 +192,9 @@ export function startPreviewAnimation() {
 
 /**
  * Stop the preview animation loop.
- * @returns {boolean} true if a running loop was stopped
+ * @returns true if a running loop was stopped
  */
-export function stopPreviewAnimation() {
+export function stopPreviewAnimation(): boolean {
   if (animationFrameId !== null) {
     cancelAnimationFrame(animationFrameId);
     animationFrameId = null;
@@ -196,28 +203,22 @@ export function stopPreviewAnimation() {
   return false;
 }
 
-/**
- * Get list of custom animations present in current render
- * @returns {string[]} Array of custom animation names
- */
-export function getCustomAnimations() {
+/** Get list of custom animations present in current render. */
+export function getCustomAnimations(): Record<
+  string,
+  CustomAnimationDefinition
+> {
   return currentCustomAnimations;
 }
 
-/**
- * Set the list of custom animations present in current render
- * @param {Record<string, Object>} customAnimations Record of
- * custom animation names mapped to their definitions
- */
-export function setCurrentCustomAnimations(customAnimations) {
+export function setCurrentCustomAnimations(
+  customAnimations: Record<string, CustomAnimationDefinition>,
+): void {
   currentCustomAnimations = customAnimations;
 }
 
-/**
- * Set the Y positions for custom animations
- * @param {Record<string, number>} yPositions Record of
- * custom animation names mapped to their Y positions
- */
-export function setCustomAnimYPositions(yPositions) {
+export function setCustomAnimYPositions(
+  yPositions: Record<string, number>,
+): void {
   customAnimYPositions = yPositions;
 }

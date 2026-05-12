@@ -6,7 +6,7 @@ import { Download } from "./download/Download.js";
 import { FiltersPanel } from "./FiltersPanel.js";
 import { Credits } from "./download/Credits.js";
 import { AdvancedTools } from "./advanced/AdvancedTools.js";
-import { renderCharacter } from "../canvas/renderer.js";
+import { renderCharacter } from "../canvas/renderer.ts";
 
 export const App = {
   oninit: function (vnode) {

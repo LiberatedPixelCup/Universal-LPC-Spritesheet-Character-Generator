@@ -1,7 +1,7 @@
 import {
   startPreviewAnimation,
   stopPreviewAnimation,
-} from "../canvas/preview-animation.js";
+} from "../canvas/preview-animation.ts";
 
 /**
  * While ZIP export runs, Mithril `m.redraw()` and the preview canvas rAF loop

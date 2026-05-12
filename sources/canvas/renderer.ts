@@ -1,9 +1,11 @@
 // Canvas rendering module for Mithril UI
 // Simplified renderer that draws character sprites based on selections
 
+import { ok, err, type Result } from "neverthrow";
 import { loadImage, loadImagesInParallel } from "./load-image.ts";
+import type { LoadedImage } from "./load-image.ts";
 import { getSpritePath } from "../state/path.ts";
-import { getImageToDraw } from "./palette-recolor.js";
+import { getImageToDraw as getImageToDrawUntyped } from "./palette-recolor.js";
 import { getMultiRecolors } from "../state/palettes.ts";
 import { get2DContext, getZPos } from "./canvas-utils.ts";
 import { variantToFilename } from "../utils/helpers.ts";
@@ -17,29 +19,123 @@ import { customAnimations, customAnimationBase } from "../custom-animations.ts";
 import {
   setCurrentCustomAnimations,
   setCustomAnimYPositions,
-} from "./preview-animation.js";
+} from "./preview-animation.ts";
 import { getSortedLayersByAnim } from "../state/meta.ts";
-import { catalogReady } from "../state/catalog.ts";
-import { getItemMerged } from "../state/catalog.ts";
+import type { AnimationLayer } from "../state/meta.ts";
+import { catalogReady, getItemMerged } from "../state/catalog.ts";
 import m from "mithril";
 import { debugWarn } from "../utils/debug.ts";
+import type { Selections } from "../state/state.ts";
+import type { ZipExportProfiler } from "../performance-profiler.ts";
+
+declare global {
+  interface Window {
+    /** Performance profiler installed by tests / dev tooling; absent in production. */
+    profiler?: {
+      mark: (name: string) => void;
+      measure: (name: string, start: string, end: string) => void;
+    };
+    /** Module namespace of this file, attached at boot by `main.js`. */
+    canvasRenderer?: typeof import("./renderer.ts");
+  }
+}
+
+type Recolors = ReturnType<typeof getMultiRecolors>;
+
+// `palette-recolor.js` is still JS; its JSDoc types `recolors` as `Object` (no
+// null) and the return as untyped. Re-export with a more honest signature so
+// renderer.ts call sites can pass `null`/`undefined` (the real runtime contract).
+const getImageToDraw = getImageToDrawUntyped as (
+  img: HTMLImageElement | HTMLCanvasElement,
+  itemId: string,
+  recolors: Recolors | undefined,
+  spritePath: string | null,
+) => Promise<HTMLImageElement | HTMLCanvasElement>;
+
+type AnimationConfig = { row: number; num: number; cycle: number[] };
+const animationConfigByName = ANIMATION_CONFIGS as Record<
+  string,
+  AnimationConfig | undefined
+>;
+
+/**
+ * A standard-animation sprite item collected during `runRenderCharacter`. The
+ * `customImage` variant (used for the user-uploaded sprite) carries an
+ * already-loaded `HTMLImageElement` and has `spritePath: null`; everything else
+ * resolves a path through `getSpritePath`.
+ */
+export type ItemToDraw = {
+  itemId: string;
+  name?: string;
+  variant: string | null;
+  recolors?: Recolors;
+  spritePath: string | null;
+  zPos: number;
+  layerNum: number;
+  animation: string;
+  yPos: number;
+  isCustom: boolean;
+  needsRecolor?: boolean;
+  customImage?: HTMLImageElement;
+};
+
+/**
+ * One entry in the exported `layers` array — deduplicated by `(itemId, layerNum)`
+ * across all standard animations of `itemsToDraw`. Consumers: `state/zip.js`,
+ * `components/download/Download.js`, and tests.
+ */
+export type RenderedLayer = Omit<ItemToDraw, "spritePath" | "animation"> & {
+  fileName: string;
+  supportedAnimations: string[];
+};
+
+type CustomAnimationItem = {
+  itemId: string;
+  name?: string;
+  variant: string | null;
+  recolors: Recolors;
+  spritePath: string;
+  zPos: number;
+  layerNum: number;
+  customAnimation: string;
+  isCustom: true;
+};
+
+type CustomSpriteAreaItem = {
+  type: "custom_sprite";
+  zPos: number;
+  spritePath: string;
+  itemId: string;
+  animation: string;
+  recolors: Recolors;
+  variant: string | null;
+  name?: string;
+};
+
+type ExtractedFramesAreaItem = {
+  type: "extracted_frames";
+  zPos: number;
+  spritePath: string | null;
+  itemId: string;
+  animation: string;
+  needsRecolor?: boolean;
+  recolors?: Recolors;
+  variant: string | null;
+  name?: string;
+};
+
+export type CustomAreaItem = CustomSpriteAreaItem | ExtractedFramesAreaItem;
 
 /**
  * When `zipProfiler` is set, records separate load/decode vs compositing phases; otherwise runs load then composite.
- *
- * @param {null | { phase?: (name: string, fn: () => void | Promise<void>) => Promise<void> }} zipProfiler
- * @param {string} loadPhaseName
- * @param {string} compositePhaseName
- * @param {() => void | Promise<void>} loadFn
- * @param {() => void | Promise<void>} compositeFn
  */
 async function zipExportProfiledLoadComposite(
-  zipProfiler,
-  loadPhaseName,
-  compositePhaseName,
-  loadFn,
-  compositeFn,
-) {
+  zipProfiler: ZipExportProfiler | null | undefined,
+  loadPhaseName: string,
+  compositePhaseName: string,
+  loadFn: () => void | Promise<void>,
+  compositeFn: () => void | Promise<void>,
+): Promise<void> {
   if (zipProfiler && typeof zipProfiler.phase === "function") {
     await zipProfiler.phase(loadPhaseName, loadFn);
     await zipProfiler.phase(compositePhaseName, compositeFn);
@@ -52,19 +148,19 @@ async function zipExportProfiledLoadComposite(
 export const SHEET_HEIGHT = 3456; // Full universal sheet height
 export const SHEET_WIDTH = 832; // 13 frames * 64px
 
-let canvas = null;
-let ctx = null;
-let layers = [];
-let itemsToDraw = [];
-let addedCustomAnimations = new Set();
-let customAreaItems = {};
+export let canvas: HTMLCanvasElement | null = null;
+export let ctx: CanvasRenderingContext2D | null = null;
+export let layers: RenderedLayer[] = [];
+export let itemsToDraw: ItemToDraw[] = [];
+export let addedCustomAnimations: Set<string> = new Set();
+export let customAreaItems: Record<string, CustomAreaItem[]> = {};
 /** True after `initCanvas()` — offscreen buffer exists (main bootstrap runs this after S1∧S2). */
 let offscreenCanvasInitialized = false;
 
 /**
  * Initialize the canvas (creates offscreen canvas)
  */
-export function initCanvas() {
+export function initCanvas(): void {
   canvas = document.createElement("canvas");
   ctx = get2DContext(canvas);
   canvas.width = SHEET_WIDTH;
@@ -72,36 +168,27 @@ export function initCanvas() {
   offscreenCanvasInitialized = true;
 }
 
-export function isOffscreenCanvasInitialized() {
+export function isOffscreenCanvasInitialized(): boolean {
   return offscreenCanvasInitialized;
 }
 
 /** @internal Test helper */
-export function resetOffscreenCanvasStateForTests() {
+export function resetOffscreenCanvasStateForTests(): void {
   offscreenCanvasInitialized = false;
   canvas = null;
   ctx = null;
 }
 
 /** @internal Test helper (e.g. Node without a DOM) */
-export function setOffscreenCanvasInitializedForTests(value) {
+export function setOffscreenCanvasInitializedForTests(value: boolean): void {
   offscreenCanvasInitialized = value;
 }
 
-export {
-  canvas,
-  ctx,
-  layers,
-  addedCustomAnimations,
-  itemsToDraw,
-  customAreaItems,
-};
-
 /** Commit 10: one render at a time; new calls wait behind the in-flight one. */
-let renderCharacterSerial = Promise.resolve();
+let renderCharacterSerial: Promise<void> = Promise.resolve();
 
 /** @internal */
-export function resetRenderCharacterQueueForTests() {
+export function resetRenderCharacterQueueForTests(): void {
   renderCharacterSerial = Promise.resolve();
 }
 
@@ -110,15 +197,12 @@ export function resetRenderCharacterQueueForTests() {
  * hash, defaults, and App updates cannot overlap expensive full renders.
  * The `onLayersReady` wait, dynamic `import` of `state`, and the serialized render queue
  * are outside the `renderCharacter` performance measure; marks wrap compositing in `runRenderCharacter` only.
- * @param {Object} selections - Selected items
- * @param {string} bodyType - Body type
- * @param {HTMLCanvasElement} targetCanvas - Canvas to render to (defaults to main canvas)
  */
 export async function renderCharacter(
-  selections,
-  bodyType,
-  targetCanvas = null,
-) {
+  selections: Selections,
+  bodyType: string,
+  targetCanvas: HTMLCanvasElement | null = null,
+): Promise<void> {
   await catalogReady.onLayersReady;
 
   const p = renderCharacterSerial.then(() =>
@@ -131,7 +215,11 @@ export async function renderCharacter(
   return p;
 }
 
-async function runRenderCharacter(selections, bodyType, targetCanvas) {
+async function runRenderCharacter(
+  selections: Selections,
+  bodyType: string,
+  targetCanvas: HTMLCanvasElement | null,
+): Promise<void> {
   const profiler = window.profiler;
 
   // Build list of items to draw
@@ -151,7 +239,7 @@ async function runRenderCharacter(selections, bodyType, targetCanvas) {
   try {
     // Use provided canvas or default to main canvas
     const renderCanvas = targetCanvas || canvas;
-    const renderCtx = renderCanvas.getContext("2d", {
+    const renderCtx = renderCanvas?.getContext("2d", {
       willReadFrequently: true,
     });
 
@@ -161,7 +249,7 @@ async function runRenderCharacter(selections, bodyType, targetCanvas) {
     }
 
     // Build list of items to draw
-    const customAnimationItems = []; // Track items with custom animations
+    const customAnimationItems: CustomAnimationItem[] = []; // Track items with custom animations
 
     for (const [, selection] of Object.entries(selections)) {
       const { itemId, subId, variant } = selection;
@@ -188,24 +276,24 @@ async function runRenderCharacter(selections, bodyType, targetCanvas) {
 
         // Check if this layer has a custom animation
         if (layer.custom_animation) {
-          const customAnimName = layer.custom_animation;
+          const customAnimName = layer.custom_animation as string;
           addedCustomAnimations.add(customAnimName);
 
           // Get base path for this body type
-          let basePath = layer[bodyType];
+          const basePath = layer[bodyType] as string | undefined;
           if (!basePath) {
             continue;
           }
 
           // Custom animations use direct file path
           const spritePath = `spritesheets/${basePath}${variantToFilename(
-            variant,
+            variant ?? "",
           )}.png`;
 
           customAnimationItems.push({
             itemId,
             name: selection.name,
-            variant,
+            variant: variant ?? null,
             recolors,
             spritePath,
             zPos,
@@ -246,7 +334,7 @@ async function runRenderCharacter(selections, bodyType, targetCanvas) {
 
           const spritePath = getSpritePath(
             itemId,
-            variant,
+            variant ?? null,
             recolors,
             bodyType,
             animName,
@@ -258,7 +346,7 @@ async function runRenderCharacter(selections, bodyType, targetCanvas) {
           itemsToDraw.push({
             itemId,
             name: selection.name,
-            variant,
+            variant: variant ?? null,
             recolors,
             spritePath,
             zPos,
@@ -294,33 +382,34 @@ async function runRenderCharacter(selections, bodyType, targetCanvas) {
     // This ensures shadow (zPos=0) is drawn before body (zPos=10), etc.
     itemsToDraw.sort((a, b) => a.zPos - b.zPos);
 
-    // save layers for external access
-    layers = itemsToDraw
-      .map((item) => {
-        const layer = Object.assign({}, item);
-        layer.fileName = item.spritePath.substring("spritesheets/".length);
-        delete layer.spritePath;
-        return layer;
-      })
-      .reduce((acc, layer) => {
-        const animation = layer.animation;
-        const accLayer = acc.find(
-          (l) => l.itemId === layer.itemId && l.layerNum === layer.layerNum,
-        );
-        if (!accLayer) {
-          layer.supportedAnimations = [animation];
-          delete layer.animation;
-          acc.push(layer);
-        } else {
-          accLayer.supportedAnimations.push(animation);
-        }
+    // save layers for external access — dedupe by (itemId, layerNum), collecting
+    // all `animation` values into `supportedAnimations`.
+    layers = itemsToDraw.reduce<RenderedLayer[]>((acc, item) => {
+      const existing = acc.find(
+        (l) => l.itemId === item.itemId && l.layerNum === item.layerNum,
+      );
+      if (existing) {
+        existing.supportedAnimations.push(item.animation);
         return acc;
-      }, []);
+      }
+      const { spritePath, animation, ...rest } = item;
+      acc.push({
+        ...rest,
+        fileName: spritePath
+          ? spritePath.substring("spritesheets/".length)
+          : "",
+        supportedAnimations: [animation],
+      });
+      return acc;
+    }, []);
 
     // Calculate total canvas height needed (standard sheet + custom animations)
     let totalHeight = SHEET_HEIGHT;
     let totalWidth = SHEET_WIDTH;
-    let currentCustomAnimations = {};
+    const currentCustomAnimations: Record<
+      string,
+      (typeof customAnimations)[string]
+    > = {};
 
     if (addedCustomAnimations.size > 0 && customAnimations) {
       for (const customAnimName of addedCustomAnimations) {
@@ -332,8 +421,8 @@ async function runRenderCharacter(selections, bodyType, targetCanvas) {
             customAnimDef.frameSize * customAnimDef.frames[0].length;
           totalHeight += animHeight;
           totalWidth = Math.max(totalWidth, animWidth);
+          currentCustomAnimations[customAnimName] = customAnimDef;
         }
-        currentCustomAnimations[customAnimName] = customAnimDef;
       }
     }
 
@@ -348,7 +437,7 @@ async function runRenderCharacter(selections, bodyType, targetCanvas) {
     setCurrentCustomAnimations(currentCustomAnimations);
 
     // Calculate custom animation Y positions first (needed for drawing standard items into custom areas)
-    const customAnimYPositions = {};
+    const customAnimYPositions: Record<string, number> = {};
     if (addedCustomAnimations.size > 0 && customAnimations) {
       let currentY = SHEET_HEIGHT;
       for (const customAnimName of addedCustomAnimations) {
@@ -372,11 +461,15 @@ async function runRenderCharacter(selections, bodyType, targetCanvas) {
         return Promise.resolve({ item, img: item.customImage, success: true });
       } else {
         // Load standard image
-        return loadImage(item.spritePath)
+        return loadImage(item.spritePath!)
           .then((img) => ({ item, img, success: true }))
           .catch(() => {
             debugWarn(`Failed to load sprite: ${item.spritePath}`);
-            return { item, img: null, success: false };
+            return {
+              item,
+              img: null as HTMLImageElement | null,
+              success: false,
+            };
           });
       }
     });
@@ -411,12 +504,13 @@ async function runRenderCharacter(selections, bodyType, targetCanvas) {
           : null;
 
         // Collect all items that need to be drawn in this custom animation area
-        customAreaItems[customAnimName] = [];
+        const areaItems: CustomAreaItem[] = [];
+        customAreaItems[customAnimName] = areaItems;
 
         // 1. Add custom animation sprite layers (wheelchair background/foreground)
         for (const item of customAnimationItems) {
           if (item.customAnimation === customAnimName) {
-            customAreaItems[customAnimName].push({
+            areaItems.push({
               type: "custom_sprite",
               zPos: item.zPos,
               spritePath: item.spritePath,
@@ -434,7 +528,7 @@ async function runRenderCharacter(selections, bodyType, targetCanvas) {
         if (baseAnim) {
           for (const item of itemsToDraw) {
             if (item.animation === baseAnim) {
-              customAreaItems[customAnimName].push({
+              areaItems.push({
                 type: "extracted_frames",
                 zPos: item.zPos,
                 spritePath: item.spritePath,
@@ -450,12 +544,10 @@ async function runRenderCharacter(selections, bodyType, targetCanvas) {
         }
 
         // Sort by zPos to get correct layer order
-        customAreaItems[customAnimName].sort((a, b) => a.zPos - b.zPos);
+        areaItems.sort((a, b) => a.zPos - b.zPos);
 
         // Load all custom area images in parallel
-        const loadedCustomImages = await loadImagesInParallel(
-          customAreaItems[customAnimName],
-        );
+        const loadedCustomImages = await loadImagesInParallel(areaItems);
 
         // Draw in zPos order
         for (const { item: areaItem, img, success } of loadedCustomImages) {
@@ -501,15 +593,17 @@ async function runRenderCharacter(selections, bodyType, targetCanvas) {
 }
 
 /**
- * Extract a specific animation from the main canvas
- * Returns a new canvas with just that animation
+ * Extract a specific animation from the main canvas.
+ * Returns a new canvas with just that animation.
  */
-export function extractAnimationFromCanvas(animationName) {
+export function extractAnimationFromCanvas(
+  animationName: string,
+): HTMLCanvasElement | null {
   if (!canvas) {
     return null;
   }
 
-  const config = ANIMATION_CONFIGS[animationName];
+  const config = animationConfigByName[animationName];
   if (!config) {
     console.error("Unknown animation:", animationName);
     return null;
@@ -541,28 +635,27 @@ export function extractAnimationFromCanvas(animationName) {
   return animCanvas;
 }
 
-/**
- * Get current canvas reference (for external use)
- */
-export function getCanvas() {
-  return canvas;
+/** Error returned by `getCanvas` when called before `initCanvas` runs. */
+export type CanvasNotInitialized = { kind: "canvas-not-initialized" };
+
+/** Get current canvas reference (for external use). */
+export function getCanvas(): Result<HTMLCanvasElement, CanvasNotInitialized> {
+  return canvas ? ok(canvas) : err({ kind: "canvas-not-initialized" });
 }
 
 /**
- * Render a single item to a new canvas
- * Returns a canvas with just this one item rendered
- *
- * @param {null | { phase?: (name: string, fn: () => void | Promise<void>) => Promise<void> }} [zipProfiler]
+ * Render a single item to a new canvas.
+ * Returns a canvas with just this one item rendered.
  */
 export async function renderSingleItem(
-  itemId,
-  variant,
-  recolors,
-  bodyType,
-  selections,
-  singleLayer = null,
-  zipProfiler = null,
-) {
+  itemId: string,
+  variant: string | null,
+  recolors: Recolors,
+  bodyType: string,
+  selections: Selections,
+  singleLayer: number | null = null,
+  zipProfiler: ZipExportProfiler | null = null,
+): Promise<HTMLCanvasElement | null> {
   const metaResult = getItemMerged(itemId);
   if (metaResult.isErr()) {
     console.error("Item metadata not found:", itemId);
@@ -581,11 +674,12 @@ export async function renderSingleItem(
     meta.layers && Object.values(meta.layers).find((l) => l.custom_animation);
   const hasCustomAnimation = layer1 && layer1.custom_animation;
 
-  let itemCanvas, itemCtx;
+  let itemCanvas: HTMLCanvasElement;
+  let itemCtx: CanvasRenderingContext2D;
 
   if (hasCustomAnimation && customAnimations) {
     // Custom animation item - use custom animation size
-    const customAnimName = layer1.custom_animation;
+    const customAnimName = layer1.custom_animation as string;
     const customAnimDef = customAnimations[customAnimName];
     if (!customAnimDef) {
       console.error("Custom animation definition not found:", customAnimName);
@@ -599,10 +693,10 @@ export async function renderSingleItem(
       (l) => l.custom_animation,
     );
     const customAnimationsInItem = customLayers
-      .map((l) => l.custom_animation)
+      .map((l) => l.custom_animation as string)
       .filter((value, index, array) => array.indexOf(value) === index);
     const numCustomAnims = customAnimationsInItem.length;
-    const getYPosForCustomAnim = (name) => {
+    const getYPosForCustomAnim = (name: string): number => {
       const index = customAnimationsInItem.indexOf(name);
       return SHEET_HEIGHT + index * animHeight;
     };
@@ -613,25 +707,30 @@ export async function renderSingleItem(
     itemCtx = get2DContext(itemCanvas);
 
     // Render all layers of this custom animation item
-    const customSprites = [];
-    const animsList = getSortedLayersByAnim(itemId, true).unwrapOr({});
+    const customSprites: { spritePath: string; zPos: number; yPos: number }[] =
+      [];
+    const animsList = getSortedLayersByAnim(itemId, true).unwrapOr(
+      {} as Record<string, AnimationLayer[]>,
+    );
     for (const animName in animsList) {
       for (let layerNum = 1; layerNum < 10; layerNum++) {
         if (singleLayer !== null && layerNum !== singleLayer) continue;
-        const animLayer = animsList[animName].find(
+        const animLayer = animsList[animName]?.find(
           (l) => l.animLayerNum === layerNum,
         );
+        if (!animLayer) continue;
         const layerKey = `layer_${animLayer.layerNum}`;
         const layer = meta.layers?.[layerKey];
         if (!layer) break;
 
-        const yPos = getYPosForCustomAnim(layer.custom_animation);
-        let basePath = layer[bodyType];
+        const yPos = getYPosForCustomAnim(layer.custom_animation as string);
+        const basePath = layer[bodyType] as string | undefined;
         if (!basePath) continue;
 
         const spritePath = `spritesheets/${basePath}${variantToFilename(
-          variant,
+          variant ?? "",
         )}.png`;
+
         customSprites.push({ spritePath, zPos: animLayer.zPos, yPos });
       }
     }
@@ -639,8 +738,9 @@ export async function renderSingleItem(
     // Sort by zPos
     customSprites.sort((a, b) => a.zPos - b.zPos);
 
-    /** @type {Awaited<ReturnType<typeof loadImagesInParallel>> | undefined} */
-    let loadedSprites;
+    let loadedSprites:
+      | LoadedImage<(typeof customSprites)[number]>[]
+      | undefined;
     await zipExportProfiledLoadComposite(
       zipProfiler,
       "render_imageLoadDecode_renderSingleItem",
@@ -649,6 +749,7 @@ export async function renderSingleItem(
         loadedSprites = await loadImagesInParallel(customSprites);
       },
       async () => {
+        if (!loadedSprites) return;
         for (const { item: sprite, img, success } of loadedSprites) {
           if (success && img) {
             const imageToDraw = await getImageToDraw(
@@ -671,7 +772,17 @@ export async function renderSingleItem(
   }
 
   // Build list of sprites to draw for this item
-  const spritesToDraw = [];
+  type StandardSprite = {
+    itemId: string;
+    variant: string | null;
+    recolors: Recolors;
+    spritePath: string | null;
+    zPos: number;
+    layerNum: number;
+    animation: string;
+    yPos: number;
+  };
+  const spritesToDraw: StandardSprite[] = [];
 
   for (let layerNum = 1; layerNum < 10; layerNum++) {
     if (singleLayer !== null && layerNum !== singleLayer) continue;
@@ -726,8 +837,7 @@ export async function renderSingleItem(
       return a.zPos - b.zPos;
     });
 
-    /** @type {Awaited<ReturnType<typeof loadImagesInParallel>> | undefined} */
-    let loadedImages;
+    let loadedImages: LoadedImage<StandardSprite>[] | undefined;
     await zipExportProfiledLoadComposite(
       zipProfiler,
       "render_imageLoadDecode_renderSingleItem",
@@ -736,6 +846,7 @@ export async function renderSingleItem(
         loadedImages = await loadImagesInParallel(spritesToDraw);
       },
       async () => {
+        if (!loadedImages) return;
         for (const { item: sprite, img, success } of loadedImages) {
           if (success && img) {
             const imageToDraw = await getImageToDraw(
@@ -755,21 +866,19 @@ export async function renderSingleItem(
 }
 
 /**
- * Render a single item for a single animation to a new canvas
- * Returns a canvas with just this one item's one animation rendered
- *
- * @param {null | { phase?: (name: string, fn: () => void | Promise<void>) => Promise<void> }} [zipProfiler]
+ * Render a single item for a single animation to a new canvas.
+ * Returns a canvas with just this one item's one animation rendered.
  */
 export async function renderSingleItemAnimation(
-  itemId,
-  variant,
-  recolors,
-  bodyType,
-  animationName,
-  selections,
-  singleLayer = null,
-  zipProfiler = null,
-) {
+  itemId: string,
+  variant: string | null,
+  recolors: Recolors,
+  bodyType: string,
+  animationName: string,
+  selections: Selections,
+  singleLayer: number | null = null,
+  zipProfiler: ZipExportProfiler | null = null,
+): Promise<HTMLCanvasElement | null> {
   const metaResult = getItemMerged(itemId);
   if (metaResult.isErr()) {
     console.error("Item metadata not found:", itemId);
@@ -799,7 +908,7 @@ export async function renderSingleItemAnimation(
     );
   }
 
-  const config = ANIMATION_CONFIGS[animationName];
+  const config = animationConfigByName[animationName];
   if (!config) {
     console.error("Unknown animation:", animationName);
     return null;
@@ -816,7 +925,13 @@ export async function renderSingleItemAnimation(
   const animCtx = get2DContext(animCanvas);
 
   // Build list of sprites to draw for this item & animation
-  const spritesToDraw = [];
+  type AnimSprite = {
+    spritePath: string | null;
+    zPos: number;
+    layerNum: number;
+    recolors: Recolors;
+  };
+  const spritesToDraw: AnimSprite[] = [];
 
   for (let layerNum = 1; layerNum < 10; layerNum++) {
     if (singleLayer !== null && layerNum !== singleLayer) continue;
@@ -862,8 +977,7 @@ export async function renderSingleItemAnimation(
   // Sort by zPos
   spritesToDraw.sort((a, b) => a.zPos - b.zPos);
 
-  /** @type {Awaited<ReturnType<typeof loadImagesInParallel>> | undefined} */
-  let loadedImages;
+  let loadedImages: LoadedImage<AnimSprite>[] | undefined;
   await zipExportProfiledLoadComposite(
     zipProfiler,
     "render_imageLoadDecode_renderSingleItemAnimation",
@@ -872,6 +986,7 @@ export async function renderSingleItemAnimation(
       loadedImages = await loadImagesInParallel(spritesToDraw);
     },
     async () => {
+      if (!loadedImages) return;
       for (const { item: sprite, img, success } of loadedImages) {
         if (success && img) {
           const imageToDraw = await getImageToDraw(

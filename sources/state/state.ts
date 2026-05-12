@@ -3,7 +3,7 @@ import m from "mithril";
 import { LICENSE_CONFIG, ANIMATIONS, BODY_TYPES } from "./constants.ts";
 import { syncSelectionsToHash, loadSelectionsFromHash } from "./hash.ts";
 import { getItemMerged, type ItemMerged } from "./catalog.ts";
-import { renderCharacter } from "../canvas/renderer.js";
+import { renderCharacter } from "../canvas/renderer.ts";
 
 /** A single item selection within a selection group (e.g. body, head, ears). */
 export type Selection = {

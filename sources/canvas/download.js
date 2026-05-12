@@ -1,11 +1,11 @@
 import { canvasToBlob } from "./canvas-utils.ts";
-import { getCanvas } from "./renderer.js";
+import { getCanvas } from "./renderer.ts";
 
 /**
  * Get the main renderer canvas as a PNG blob (for download / export).
  */
 export function getCanvasBlob() {
-  const canvas = getCanvas();
+  const canvas = getCanvas().unwrapOr(null);
   if (!canvas) {
     console.error("Canvas not initialized");
     return Promise.reject(new Error("Canvas not initialized"));
