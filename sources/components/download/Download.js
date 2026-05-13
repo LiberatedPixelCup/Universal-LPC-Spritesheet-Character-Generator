@@ -8,7 +8,7 @@ import {
   creditsToTxt,
 } from "../../utils/credits.ts";
 import { CollapsibleSection } from "../CollapsibleSection.js";
-import { downloadFile, downloadAsPNG } from "../../canvas/download.js";
+import { downloadFile, downloadAsPNG } from "../../canvas/download.ts";
 import { importStateFromJSON, exportStateAsJSON } from "../../state/json.ts";
 import {
   exportSplitAnimations,

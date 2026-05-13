@@ -1,9 +1,10 @@
 import { expect } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import sinon from "sinon";
-import { downloadFile, downloadAsPNG } from "../../sources/canvas/download.js";
+import { ok } from "neverthrow";
+import { downloadFile, downloadAsPNG } from "../../sources/canvas/download.ts";
 
-describe("canvas/download.js", () => {
+describe("canvas/download.ts", () => {
   describe("downloadFile", () => {
     let createObjectURLStub, revokeObjectURLStub, createElementStub, clickStub;
 
@@ -72,9 +73,8 @@ describe("canvas/download.js", () => {
   describe("downloadAsPNG", () => {
     let createObjectURLStub, revokeObjectURLStub, createElementStub, clickStub;
     const content = "PNG content";
-    const getCanvasBlobMock = () => {
-      return new Blob([content], { type: "image/png" });
-    };
+    const getCanvasBlobMock = async () =>
+      ok(new Blob([content], { type: "image/png" }));
 
     beforeEach(() => {
       // Stub browser-specific functions

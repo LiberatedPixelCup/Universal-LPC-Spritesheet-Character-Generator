@@ -3,7 +3,7 @@ import m from "mithril";
 import classNames from "classnames";
 import { state, getSelectionGroup, selectItem } from "../../state/state.ts";
 import { isPaletteReady } from "../../state/catalog.ts";
-import { drawRecolorPreview } from "../../canvas/palette-recolor.js";
+import { drawRecolorPreview } from "../../canvas/palette-recolor.ts";
 import { getPaletteOptions } from "../../state/palettes.ts";
 import { PaletteSelectModal } from "./PaletteSelectModal.js";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";

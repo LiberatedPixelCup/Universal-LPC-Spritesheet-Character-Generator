@@ -2,7 +2,7 @@
 import m from "mithril";
 import classNames from "classnames";
 import { Result } from "neverthrow";
-import { drawRecolorPreview } from "../../canvas/palette-recolor.js";
+import { drawRecolorPreview } from "../../canvas/palette-recolor.ts";
 import {
   chunkReady,
   getItemMerged,

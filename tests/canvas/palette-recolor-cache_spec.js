@@ -14,7 +14,7 @@ import { describe, it, beforeEach } from "mocha-globals";
 import {
   getImageToDraw,
   clearRecolorCache,
-} from "../../sources/canvas/palette-recolor.js";
+} from "../../sources/canvas/palette-recolor.ts";
 
 // Real item id from the dataset with a single recolor region.
 // `body` has type_name="body", recolors=[{material: "body"}].
@@ -30,7 +30,7 @@ function solidColorCanvas(r, g, b, w = 8, h = 8) {
   return c;
 }
 
-describe("canvas/palette-recolor.js recolor cache", () => {
+describe("canvas/palette-recolor.ts recolor cache", () => {
   beforeEach(() => {
     clearRecolorCache();
   });

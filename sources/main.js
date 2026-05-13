@@ -20,7 +20,7 @@ import {
   resetRecolorStats,
   setPaletteRecolorMode,
   getPaletteRecolorConfig,
-} from "./canvas/palette-recolor.js";
+} from "./canvas/palette-recolor.ts";
 
 // Expose palette recolor stats globally
 window.getPaletteRecolorStats = () => {

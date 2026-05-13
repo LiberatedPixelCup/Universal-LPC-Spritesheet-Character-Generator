@@ -7,7 +7,7 @@ import {
   creditsToTxt,
 } from "../../utils/credits.ts";
 import { CollapsibleSection } from "../CollapsibleSection.js";
-import { downloadFile } from "../../canvas/download.js";
+import { downloadFile } from "../../canvas/download.ts";
 
 export const Credits = {
   view: function () {

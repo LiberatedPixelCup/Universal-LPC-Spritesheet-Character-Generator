@@ -5,7 +5,7 @@ import { ok, err, type Result } from "neverthrow";
 import { loadImage, loadImagesInParallel } from "./load-image.ts";
 import type { LoadedImage } from "./load-image.ts";
 import { getSpritePath } from "../state/path.ts";
-import { getImageToDraw as getImageToDrawUntyped } from "./palette-recolor.js";
+import { getImageToDraw } from "./palette-recolor.ts";
 import { getMultiRecolors } from "../state/palettes.ts";
 import { get2DContext, getZPos } from "./canvas-utils.ts";
 import { variantToFilename } from "../utils/helpers.ts";
@@ -41,16 +41,6 @@ declare global {
 }
 
 type Recolors = ReturnType<typeof getMultiRecolors>;
-
-// `palette-recolor.js` is still JS; its JSDoc types `recolors` as `Object` (no
-// null) and the return as untyped. Re-export with a more honest signature so
-// renderer.ts call sites can pass `null`/`undefined` (the real runtime contract).
-const getImageToDraw = getImageToDrawUntyped as (
-  img: HTMLImageElement | HTMLCanvasElement,
-  itemId: string,
-  recolors: Recolors | undefined,
-  spritePath: string | null,
-) => Promise<HTMLImageElement | HTMLCanvasElement>;
 
 type AnimationConfig = { row: number; num: number; cycle: number[] };
 const animationConfigByName = ANIMATION_CONFIGS as Record<

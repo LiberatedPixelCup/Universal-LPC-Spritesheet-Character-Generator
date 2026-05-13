@@ -12,7 +12,7 @@ import {
   recolorImage,
   setPaletteRecolorMode,
   getPaletteRecolorConfig,
-} from "../../sources/canvas/palette-recolor.js";
+} from "../../sources/canvas/palette-recolor.ts";
 
 function solidCanvas(r, g, b, w = 4, h = 4) {
   const c = document.createElement("canvas");
@@ -42,7 +42,7 @@ function readPixel(canvas, x, y) {
   return { r: data[0], g: data[1], b: data[2], a: data[3] };
 }
 
-describe("canvas/palette-recolor.js single-pass merge (CPU path)", () => {
+describe("canvas/palette-recolor.ts single-pass merge (CPU path)", () => {
   let previousMode;
 
   before(() => {

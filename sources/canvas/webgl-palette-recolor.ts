@@ -4,10 +4,12 @@
 import { get2DContext } from "./canvas-utils.ts";
 import { debugLog } from "../utils/debug.ts";
 
+export type PaletteMapping = { source: string[]; target: string[] };
+
 // Shared WebGL resources for reuse
-let sharedGL = null;
-let sharedCanvas = null;
-let sharedProgram = null;
+let sharedGL: WebGLRenderingContext | null = null;
+let sharedCanvas: HTMLCanvasElement | null = null;
+let sharedProgram: WebGLProgram | null = null;
 
 /**
  * Vertex shader - renders a full-screen quad
@@ -67,15 +69,15 @@ void main() {
 }
 `;
 
-/**
- * Compile a shader
- * @param {WebGLRenderingContext} gl - WebGL context
- * @param {number} type - Shader type (VERTEX_SHADER or FRAGMENT_SHADER)
- * @param {string} source - Shader source code
- * @returns {WebGLShader} Compiled shader
- */
-function compileShader(gl, type, source) {
+function compileShader(
+  gl: WebGLRenderingContext,
+  type: GLenum,
+  source: string,
+): WebGLShader {
   const shader = gl.createShader(type);
+  if (!shader) {
+    throw new Error("Failed to allocate WebGL shader");
+  }
   gl.shaderSource(shader, source);
   gl.compileShader(shader);
 
@@ -88,18 +90,18 @@ function compileShader(gl, type, source) {
   return shader;
 }
 
-/**
- * Create a shader program
- * @param {WebGLRenderingContext} gl - WebGL context
- * @param {string} vertexSource - Vertex shader source
- * @param {string} fragmentSource - Fragment shader source
- * @returns {WebGLProgram} Shader program
- */
-function createProgram(gl, vertexSource, fragmentSource) {
+function createProgram(
+  gl: WebGLRenderingContext,
+  vertexSource: string,
+  fragmentSource: string,
+): WebGLProgram {
   const vertexShader = compileShader(gl, gl.VERTEX_SHADER, vertexSource);
   const fragmentShader = compileShader(gl, gl.FRAGMENT_SHADER, fragmentSource);
 
   const program = gl.createProgram();
+  if (!program) {
+    throw new Error("Failed to allocate WebGL program");
+  }
   gl.attachShader(program, vertexShader);
   gl.attachShader(program, fragmentShader);
   gl.linkProgram(program);
@@ -113,12 +115,8 @@ function createProgram(gl, vertexSource, fragmentSource) {
   return program;
 }
 
-/**
- * Convert hex color to RGB array
- * @param {string} hex - Hex color (e.g., "#271920")
- * @returns {number[]} RGB values [r, g, b] normalized to 0-1
- */
-function hexToRgbNormalized(hex) {
+/** Convert hex color to RGB array normalized 0-1. */
+function hexToRgbNormalized(hex: string): [number, number, number] {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   if (!result) return [0, 0, 0];
   return [
@@ -133,11 +131,11 @@ function hexToRgbNormalized(hex) {
  * All source colors are concatenated into row 0; target colors at the same
  * index sit in row 1. The shader loops up to `u_paletteSize` slots, so N
  * regions can be recolored in a single pass by packing them back-to-back.
- * @param {WebGLRenderingContext} gl - WebGL context
- * @param {Array<{source: string[], target: string[]}>} paletteMappings
- * @returns {{ texture: WebGLTexture, totalSize: number }}
  */
-function createPaletteTexture(gl, paletteMappings) {
+function createPaletteTexture(
+  gl: WebGLRenderingContext,
+  paletteMappings: PaletteMapping[],
+): { texture: WebGLTexture; totalSize: number } {
   const data = new Uint8Array(32 * 2 * 4); // 32 colors × 2 rows × RGBA
   const TARGET_ROW_OFFSET = 32 * 4;
 
@@ -160,6 +158,9 @@ function createPaletteTexture(gl, paletteMappings) {
   }
 
   const texture = gl.createTexture();
+  if (!texture) {
+    throw new Error("Failed to allocate WebGL palette texture");
+  }
   gl.bindTexture(gl.TEXTURE_2D, texture);
   gl.texImage2D(
     gl.TEXTURE_2D,
@@ -180,14 +181,14 @@ function createPaletteTexture(gl, paletteMappings) {
   return { texture, totalSize: slot };
 }
 
-/**
- * Create a texture from an image
- * @param {WebGLRenderingContext} gl - WebGL context
- * @param {HTMLImageElement|HTMLCanvasElement} image - Source image
- * @returns {WebGLTexture} Image texture
- */
-function createImageTexture(gl, image) {
+function createImageTexture(
+  gl: WebGLRenderingContext,
+  image: HTMLImageElement | HTMLCanvasElement,
+): WebGLTexture {
   const texture = gl.createTexture();
+  if (!texture) {
+    throw new Error("Failed to allocate WebGL image texture");
+  }
   gl.bindTexture(gl.TEXTURE_2D, texture);
   gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
@@ -198,12 +199,8 @@ function createImageTexture(gl, image) {
   return texture;
 }
 
-/**
- * Setup a full-screen quad for rendering
- * @param {WebGLRenderingContext} gl - WebGL context
- * @param {WebGLProgram} program - Shader program
- */
-function setupQuad(gl, program) {
+/** Setup a full-screen quad for rendering. */
+function setupQuad(gl: WebGLRenderingContext, program: WebGLProgram): void {
   // Quad vertices (position + texCoord)
   const vertices = new Float32Array([
     -1,
@@ -225,6 +222,9 @@ function setupQuad(gl, program) {
   ]);
 
   const buffer = gl.createBuffer();
+  if (!buffer) {
+    throw new Error("Failed to allocate WebGL vertex buffer");
+  }
   gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
   gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
 
@@ -238,10 +238,8 @@ function setupQuad(gl, program) {
   gl.vertexAttribPointer(texCoordLocation, 2, gl.FLOAT, false, 16, 8);
 }
 
-/**
- * Initialize shared WebGL context and resources (call once)
- */
-function initSharedWebGL() {
+/** Initialize shared WebGL context and resources (call once). */
+function initSharedWebGL(): void {
   if (sharedGL) return; // Already initialized
 
   // Create a reusable canvas
@@ -271,31 +269,34 @@ function initSharedWebGL() {
  * Accepts a list of (source, target) palette mappings and applies them all in
  * a single shader pass by packing them into one palette texture. The combined
  * total must fit within the 32-slot palette texture.
- * @param {HTMLImageElement|HTMLCanvasElement} sourceImage - Source image
- * @param {Array<{source: string[], target: string[]}>} paletteMappings
- * @returns {HTMLCanvasElement} Recolored canvas
  */
-export function recolorImageWebGL(sourceImage, paletteMappings) {
+export function recolorImageWebGL(
+  sourceImage: HTMLImageElement | HTMLCanvasElement,
+  paletteMappings: PaletteMapping[],
+): HTMLCanvasElement {
   // Initialize shared resources if needed
   if (!sharedGL) {
     initSharedWebGL();
   }
 
-  const gl = sharedGL;
+  // `initSharedWebGL` either populates these or throws.
+  const gl = sharedGL!;
+  const canvas = sharedCanvas!;
+  const program = sharedProgram!;
 
   try {
     // Resize canvas if needed
     if (
-      sharedCanvas.width !== sourceImage.width ||
-      sharedCanvas.height !== sourceImage.height
+      canvas.width !== sourceImage.width ||
+      canvas.height !== sourceImage.height
     ) {
-      sharedCanvas.width = sourceImage.width;
-      sharedCanvas.height = sourceImage.height;
-      gl.viewport(0, 0, sharedCanvas.width, sharedCanvas.height);
+      canvas.width = sourceImage.width;
+      canvas.height = sourceImage.height;
+      gl.viewport(0, 0, canvas.width, canvas.height);
     }
 
     // Use the shared program
-    gl.useProgram(sharedProgram);
+    gl.useProgram(program);
 
     // Create textures (these are temporary and must be created per operation)
     const imageTexture = createImageTexture(gl, sourceImage);
@@ -305,12 +306,9 @@ export function recolorImageWebGL(sourceImage, paletteMappings) {
     );
 
     // Set uniforms
-    const imageLocation = gl.getUniformLocation(sharedProgram, "u_image");
-    const paletteLocation = gl.getUniformLocation(sharedProgram, "u_palette");
-    const paletteSizeLocation = gl.getUniformLocation(
-      sharedProgram,
-      "u_paletteSize",
-    );
+    const imageLocation = gl.getUniformLocation(program, "u_image");
+    const paletteLocation = gl.getUniformLocation(program, "u_palette");
+    const paletteSizeLocation = gl.getUniformLocation(program, "u_paletteSize");
 
     gl.uniform1i(imageLocation, 0);
     gl.uniform1i(paletteLocation, 1);
@@ -333,10 +331,10 @@ export function recolorImageWebGL(sourceImage, paletteMappings) {
 
     // Copy result to a new 2D canvas (so we can return it and free WebGL canvas)
     const resultCanvas = document.createElement("canvas");
-    resultCanvas.width = sharedCanvas.width;
-    resultCanvas.height = sharedCanvas.height;
+    resultCanvas.width = canvas.width;
+    resultCanvas.height = canvas.height;
     const ctx = get2DContext(resultCanvas);
-    ctx.drawImage(sharedCanvas, 0, 0);
+    ctx.drawImage(canvas, 0, 0);
 
     return resultCanvas;
   } catch (error) {
@@ -345,11 +343,8 @@ export function recolorImageWebGL(sourceImage, paletteMappings) {
   }
 }
 
-/**
- * Check if WebGL is available
- * @returns {boolean} True if WebGL is supported
- */
-export function isWebGLAvailable() {
+/** Check if WebGL is available. */
+export function isWebGLAvailable(): boolean {
   try {
     const canvas = document.createElement("canvas");
     return !!(
