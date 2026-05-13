@@ -21,7 +21,7 @@ import {
   exportSplitAnimations,
   exportSplitItemAnimations,
   exportSplitItemSheets,
-} from "../../../sources/state/zip.js";
+} from "../../../sources/state/zip.ts";
 import { resetState } from "../../../sources/state/hash.ts";
 import { state } from "../../../sources/state/state.ts";
 import { importStateFromJSON } from "../../../sources/state/json.ts";

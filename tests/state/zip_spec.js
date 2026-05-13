@@ -22,7 +22,7 @@ import {
   exportSplitAnimations,
   exportSplitItemAnimations,
   exportSplitItemSheets,
-} from "../../sources/state/zip.js";
+} from "../../sources/state/zip.ts";
 import { resetState } from "../../sources/state/hash.ts";
 import { state } from "../../sources/state/state.ts";
 import { ANIMATIONS, DIRECTIONS } from "../../sources/state/constants.ts";
@@ -107,7 +107,7 @@ const CUSTOM_ANIMATION_ONLY_ITEM_METADATA = {
   },
 };
 
-describe("state/zip.js", () => {
+describe("state/zip.ts", () => {
   afterEach(async () => {
     await restoreAppCatalogAfterTest();
   });

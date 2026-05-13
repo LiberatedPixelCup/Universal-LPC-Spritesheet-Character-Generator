@@ -28,7 +28,7 @@ import {
   exportSplitAnimations,
   exportSplitItemAnimations,
   exportSplitItemSheets,
-} from "../../sources/state/zip.js";
+} from "../../sources/state/zip.ts";
 import { resetState } from "../../sources/state/hash.ts";
 import { state } from "../../sources/state/state.ts";
 import { importStateFromJSON } from "../../sources/state/json.ts";
@@ -48,7 +48,7 @@ function applyImportedStateFromFixture() {
   Object.assign(state, importStateFromJSON(JSON.stringify(issue382Selections)));
 }
 
-describe("state/zip.js issue #382 regression (longsword + full outfit)", () => {
+describe("state/zip.ts issue #382 regression (longsword + full outfit)", () => {
   let sandbox;
   let fakeZip;
   let alertStub;

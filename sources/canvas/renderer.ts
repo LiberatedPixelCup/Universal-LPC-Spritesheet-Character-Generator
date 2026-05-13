@@ -71,7 +71,7 @@ export type ItemToDraw = {
 
 /**
  * One entry in the exported `layers` array — deduplicated by `(itemId, layerNum)`
- * across all standard animations of `itemsToDraw`. Consumers: `state/zip.js`,
+ * across all standard animations of `itemsToDraw`. Consumers: `state/zip.ts`,
  * `components/download/Download.js`, and tests.
  */
 export type RenderedLayer = Omit<ItemToDraw, "spritePath" | "animation"> & {

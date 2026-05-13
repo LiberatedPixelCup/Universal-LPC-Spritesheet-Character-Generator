@@ -25,7 +25,7 @@ import {
   exportSplitAnimations,
   exportSplitItemAnimations,
   exportSplitItemSheets,
-} from "../../sources/state/zip.js";
+} from "../../sources/state/zip.ts";
 import {
   loadSelectionsFromHash,
   resetState,

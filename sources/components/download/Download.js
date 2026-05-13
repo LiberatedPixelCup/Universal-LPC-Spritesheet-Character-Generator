@@ -15,7 +15,7 @@ import {
   exportSplitItemSheets,
   exportSplitItemAnimations,
   exportIndividualFrames,
-} from "../../state/zip.js";
+} from "../../state/zip.ts";
 import { debugLog } from "../../utils/debug.ts";
 import { isLayersReady } from "../../state/catalog.ts";
 
