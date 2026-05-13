@@ -1,7 +1,7 @@
 import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
-import { ItemWithVariants } from "../../../sources/components/tree/ItemWithVariants.js";
+import { ItemWithVariants } from "../../../sources/components/tree/ItemWithVariants.ts";
 import { state } from "../../../sources/state/state.ts";
 import { getItemMerged } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";

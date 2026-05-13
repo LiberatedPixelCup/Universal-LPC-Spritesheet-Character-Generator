@@ -1,4 +1,3 @@
-// PaletteSelectModal.js
 import m from "mithril";
 import classNames from "classnames";
 import { Result } from "neverthrow";
@@ -8,20 +7,46 @@ import {
   getItemMerged,
   getPaletteMetadata,
 } from "../../state/catalog.ts";
+import type { ItemMerged, PaletteMetadata } from "../../state/catalog.ts";
 import { ResultBoundary } from "../ResultBoundary.js";
 import { state, getSelectionGroup } from "../../state/state.ts";
 import { ucwords } from "../../utils/helpers.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
+import type { PaletteOption } from "../../state/palettes.ts";
+
+type RootViewState = {
+  palettePreviewGateSeq?: number;
+  _palettePreviewLastTotal?: number;
+  palettePreviewExpected?: number;
+  palettePreviewCompleted?: number;
+};
+
+/**
+ * Minimal slice of the parent vnode the modal reads/mutates. Using `{ state }`
+ * rather than `m.Vnode<...>` sidesteps Mithril's invariant Vnode generic when
+ * the parent's full state is wider than `RootViewState`.
+ */
+type RootViewRef = { state: RootViewState };
+
+export type PaletteSelectModalAttrs = {
+  itemId: string;
+  opt: PaletteOption;
+  selectedColors: Record<string, string>;
+  compactDisplay: boolean;
+  rootViewNode: RootViewRef;
+  onClose: () => void;
+  onSelect: (recolor: string) => void;
+};
 
 /**
  * Mirrors which variant canvases the modal will mount: default-expands the first version row,
  * then counts recolor tiles for every expanded `opt.versions` category.
- * @param {string} itemId
- * @param {object} opt palette option from `getPaletteOptions`
- * @param {object} paletteMeta resolved palette metadata
- * @returns {number}
  */
-function prepareAndCountPalettePreviewCanvases(itemId, opt, paletteMeta) {
+function prepareAndCountPalettePreviewCanvases(
+  itemId: string,
+  opt: PaletteOption,
+  paletteMeta: PaletteMetadata,
+): number {
   const firstNodePath = `${itemId}-${opt.idx}-${opt.versions[0]}`;
   if (state.expandedNodes[firstNodePath] === undefined) {
     state.expandedNodes[firstNodePath] = true;
@@ -43,10 +68,11 @@ function prepareAndCountPalettePreviewCanvases(itemId, opt, paletteMeta) {
 /**
  * When the number of preview canvases changes (modal open, expand/collapse), reset the gate so
  * stale `drawRecolorPreview` completions are ignored and `data-previews-ready` stays accurate.
- * @param {import("mithril").Vnode} rootViewNode
- * @param {number} total
  */
-function syncPalettePreviewGate(rootViewNode, total) {
+function syncPalettePreviewGate(
+  rootViewNode: RootViewRef,
+  total: number,
+): void {
   if (rootViewNode.state._palettePreviewLastTotal === total) {
     return;
   }
@@ -57,13 +83,13 @@ function syncPalettePreviewGate(rootViewNode, total) {
   rootViewNode.state.palettePreviewCompleted = 0;
 }
 
-function renderLoadingOverlay(onClose, message) {
+function renderLoadingOverlay(onClose: () => void, message: string) {
   return [
     m("div.palette-modal-overlay", { onclick: onClose }),
     m(
       "div.palette-modal",
       {
-        onclick: (e) => e.stopPropagation(),
+        onclick: (e: MouseEvent) => e.stopPropagation(),
         "data-previews-ready": "false",
       },
       m("p.has-text-grey", message),
@@ -71,7 +97,11 @@ function renderLoadingOverlay(onClose, message) {
   ];
 }
 
-function renderModal(attrs, paletteMeta, meta) {
+function renderModal(
+  attrs: PaletteSelectModalAttrs,
+  paletteMeta: PaletteMetadata,
+  meta: ItemMerged,
+) {
   const {
     itemId,
     opt,
@@ -93,8 +123,8 @@ function renderModal(attrs, paletteMeta, meta) {
 
   const previewsReady =
     rootViewNode.state.palettePreviewExpected === 0 ||
-    rootViewNode.state.palettePreviewCompleted >=
-      rootViewNode.state.palettePreviewExpected;
+    (rootViewNode.state.palettePreviewCompleted ?? 0) >=
+      (rootViewNode.state.palettePreviewExpected ?? 0);
 
   const overlay = m("div.palette-modal-overlay", { onclick: onClose });
 
@@ -103,7 +133,7 @@ function renderModal(attrs, paletteMeta, meta) {
     m(
       "div.palette-modal",
       {
-        onclick: (e) => e.stopPropagation(),
+        onclick: (e: MouseEvent) => e.stopPropagation(),
         "data-previews-ready": previewsReady ? "true" : "false",
       },
       [
@@ -170,19 +200,19 @@ function renderModal(attrs, paletteMeta, meta) {
                                 "has-background-link-light has-text-weight-bold has-text-link":
                                   isSelected,
                               }),
-                              onmouseover: (e) => {
-                                const div = e.currentTarget;
+                              onmouseover: (e: MouseEvent) => {
+                                const div = e.currentTarget as HTMLElement;
                                 if (!isSelected)
                                   div.classList.add("has-background-white-ter");
                               },
-                              onmouseout: (e) => {
-                                const div = e.currentTarget;
+                              onmouseout: (e: MouseEvent) => {
+                                const div = e.currentTarget as HTMLElement;
                                 if (!isSelected)
                                   div.classList.remove(
                                     "has-background-white-ter",
                                   );
                               },
-                              onclick: (e) => {
+                              onclick: (e: MouseEvent) => {
                                 e.stopPropagation();
                                 onSelect(key);
                               },
@@ -200,22 +230,28 @@ function renderModal(attrs, paletteMeta, meta) {
                                   ? COMPACT_FRAME_SIZE
                                   : FRAME_SIZE,
                                 class: compactDisplay ? " compact-display" : "",
-                                onremove: (canvasVnode) => {
-                                  canvasVnode.dom._recolorRenderId =
-                                    (canvasVnode.dom._recolorRenderId || 0) + 1;
+                                onremove: (canvasVnode: m.VnodeDOM) => {
+                                  const cs = canvasVnode.state as {
+                                    renderId?: number;
+                                  };
+                                  cs.renderId = (cs.renderId ?? 0) + 1;
                                 },
-                                oncreate: (canvasVnode) => {
-                                  const renderId =
-                                    (canvasVnode.dom._recolorRenderId || 0) + 1;
-                                  canvasVnode.dom._recolorRenderId = renderId;
+                                oncreate: (canvasVnode: m.VnodeDOM) => {
+                                  const canvas =
+                                    canvasVnode.dom as HTMLCanvasElement;
+                                  const cs = canvasVnode.state as {
+                                    renderId?: number;
+                                  };
+                                  const renderId = (cs.renderId ?? 0) + 1;
+                                  cs.renderId = renderId;
                                   const settledGate =
                                     rootViewNode.state.palettePreviewGateSeq;
                                   void drawRecolorPreview(
                                     itemId,
                                     meta,
-                                    canvasVnode.dom,
+                                    canvas,
                                     itemColors,
-                                    renderId,
+                                    () => cs.renderId !== renderId,
                                   ).then(() => {
                                     if (
                                       settledGate !==
@@ -223,15 +259,12 @@ function renderModal(attrs, paletteMeta, meta) {
                                     ) {
                                       return;
                                     }
-                                    if (
-                                      typeof renderId === "number" &&
-                                      canvasVnode.dom._recolorRenderId !==
-                                        renderId
-                                    ) {
+                                    if (cs.renderId !== renderId) {
                                       return;
                                     }
-                                    rootViewNode.state
-                                      .palettePreviewCompleted++;
+                                    rootViewNode.state.palettePreviewCompleted =
+                                      (rootViewNode.state
+                                        .palettePreviewCompleted ?? 0) + 1;
                                     m.redraw();
                                   });
                                 },
@@ -262,8 +295,8 @@ function renderModal(attrs, paletteMeta, meta) {
   ];
 }
 
-export const PaletteSelectModal = {
-  view: function (vnode) {
+export const PaletteSelectModal: m.Component<PaletteSelectModalAttrs> = {
+  view(vnode) {
     const { itemId, onClose } = vnode.attrs;
     // Order matters: Result.combine short-circuits to the first Err. We
     // surface a different loading message depending on which chunk is
@@ -277,9 +310,14 @@ export const PaletteSelectModal = {
           getPaletteMetadata(),
           getItemMerged(itemId),
         ]),
-      view: ([, , , paletteMeta, meta]) =>
-        renderModal(vnode.attrs, paletteMeta, meta),
-      renderError: (error) => {
+      view: ([, , , paletteMeta, meta]: [
+        unknown,
+        unknown,
+        unknown,
+        PaletteMetadata,
+        ItemMerged,
+      ]) => renderModal(vnode.attrs, paletteMeta, meta),
+      renderError: (error: { kind: string; chunk?: string }) => {
         const message =
           error.kind === "loading" && error.chunk === "palette"
             ? "Loading palette data…"

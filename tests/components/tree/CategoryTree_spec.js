@@ -1,7 +1,7 @@
 import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
-import { CategoryTree } from "../../../sources/components/tree/CategoryTree.js";
+import { CategoryTree } from "../../../sources/components/tree/CategoryTree.ts";
 import { state } from "../../../sources/state/state.ts";
 import {
   resetCatalogForTests,

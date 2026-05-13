@@ -4,7 +4,7 @@ import { SearchControl } from "../../sources/components/filters/SearchControl.js
 import { LicenseFilters } from "../../sources/components/filters/LicenseFilters.js";
 import { AnimationFilters } from "../../sources/components/filters/AnimationFilters.js";
 import { CurrentSelections } from "../../sources/components/selections/CurrentSelections.js";
-import { CategoryTree } from "../../sources/components/tree/CategoryTree.js";
+import { CategoryTree } from "../../sources/components/tree/CategoryTree.ts";
 import { expect } from "chai";
 import { describe, it, beforeEach } from "mocha-globals";
 

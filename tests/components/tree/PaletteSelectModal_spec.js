@@ -1,7 +1,7 @@
 import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
-import { PaletteSelectModal } from "../../../sources/components/tree/PaletteSelectModal.js";
+import { PaletteSelectModal } from "../../../sources/components/tree/PaletteSelectModal.ts";
 import { state } from "../../../sources/state/state.ts";
 import {
   isLayersReady,

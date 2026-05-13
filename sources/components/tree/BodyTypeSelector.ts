@@ -4,11 +4,13 @@ import { state } from "../../state/state.ts";
 import { BODY_TYPES } from "../../state/constants.ts";
 import { capitalize } from "../../utils/helpers.ts";
 
-export const BodyTypeSelector = {
-  oninit: function (vnode) {
+type State = { isExpanded: boolean };
+
+export const BodyTypeSelector: m.Component<Record<string, never>, State> = {
+  oninit(vnode) {
     vnode.state.isExpanded = true; // Start expanded by default
   },
-  view: function (vnode) {
+  view(vnode) {
     return m("div.mb-3", [
       m(
         "div.tree-label",

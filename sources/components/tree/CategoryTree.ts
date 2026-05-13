@@ -8,9 +8,10 @@ import {
 } from "../../state/state.ts";
 import { isLiteReady } from "../../state/catalog.ts";
 import { getCategoryTree, getItemMerged } from "../../state/catalog.ts";
+import type { CategoryTree as CategoryTreeShape } from "../../state/catalog.ts";
 import { ResultBoundary } from "../ResultBoundary.js";
-import { BodyTypeSelector } from "./BodyTypeSelector.js";
-import { TreeNode } from "./TreeNode.js";
+import { BodyTypeSelector } from "./BodyTypeSelector.ts";
+import { TreeNode } from "./TreeNode.ts";
 
 function renderLoadingHost() {
   return m("div.box.has-background-light.category-tree-panel", [
@@ -26,7 +27,7 @@ function renderLoadingHost() {
   ]);
 }
 
-function renderTree(categoryTree) {
+function renderTree(categoryTree: CategoryTreeShape) {
   const liteReady = isLiteReady();
 
   return m("div.box.has-background-light.category-tree-panel", [
@@ -106,10 +107,11 @@ function renderTree(categoryTree) {
             id: "match-body-color-checkbox",
             "aria-describedby": "match-body-color-label",
             checked: state.matchBodyColorEnabled,
-            onchange: (e) => {
-              state.matchBodyColorEnabled = e.target.checked;
+            onchange: (e: Event) => {
+              const target = e.target as HTMLInputElement;
+              state.matchBodyColorEnabled = target.checked;
               // If enabling the checkbox, immediately apply match body color
-              if (e.target.checked) {
+              if (target.checked) {
                 // Use body-body as the source if available
                 const bodySelectionGroup = getSelectionGroup("body-body");
                 const bodySelection = state.selections[bodySelectionGroup];
@@ -149,11 +151,11 @@ function renderTree(categoryTree) {
   ]);
 }
 
-export const CategoryTree = {
-  view: function () {
+export const CategoryTree: m.Component = {
+  view() {
     return m(ResultBoundary, {
       read: () => getCategoryTree(),
-      view: (categoryTree) => renderTree(categoryTree),
+      view: (categoryTree: CategoryTreeShape) => renderTree(categoryTree),
       renderError: () => renderLoadingHost(),
     });
   },

@@ -1,7 +1,7 @@
 import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
-import { TreeNode } from "../../../sources/components/tree/TreeNode.js";
+import { TreeNode } from "../../../sources/components/tree/TreeNode.ts";
 import { state } from "../../../sources/state/state.ts";
 import {
   resetCatalogForTests,

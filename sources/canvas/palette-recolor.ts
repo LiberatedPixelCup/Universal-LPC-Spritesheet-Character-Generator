@@ -365,52 +365,43 @@ export async function recolorWithPalette(
 }
 
 /**
- * `drawRecolorPreview` callers (currently `ItemWithRecolors.js` and
- * `PaletteSelectModal.js`, both JS) stash a render-id and the loaded layers
- * on the DOM canvas element as a soft contract. Type those slots so this
- * module can read/write them without ad-hoc casts at each call site.
- */
-type PreviewCanvas = HTMLCanvasElement & {
-  _recolorRenderId?: number;
-  loadedLayers?: Array<{
-    img: HTMLImageElement | null;
-    layer: { path: string };
-  }>;
-};
-
-/**
  * Draw preview for recolorable asset.
- * Returns count of images drawn, or 0 when the render is skipped (canvas
- * detached, or `renderId` no longer matches `canvas._recolorRenderId`).
+ *
+ * `isStaleRender` is an optional caller-supplied predicate. The function
+ * checks it between `await` points and bails (returns 0) if it returns true.
+ * Callers use it to track per-mount renderIds (Mithril `oncreate`/`onupdate`
+ * may fire again with new selectedColors before the previous async render
+ * finishes; without the bailout, the older call's draw can land *after* the
+ * newer one and leave the canvas stuck on stale colors). See
+ * `components/tree/ItemWithRecolors.ts` and `PaletteSelectModal.ts`.
+ *
+ * `canvas.isConnected` is always also checked (callers don't need to handle
+ * "canvas was removed from DOM" themselves).
+ *
+ * Returns count of images drawn, or 0 when the render is skipped.
+ *
+ * TODO: replace the `isStaleRender` predicate with an `AbortSignal` parameter
+ * and have callers `.abort()` the prior signal before issuing a new call.
+ * Lets us also cancel the in-flight image loads via `Image.decode()` /
+ * `fetch(signal)` rather than just suppressing the final draw. Out of scope
+ * for the tree/ migration; track separately.
  */
 export async function drawRecolorPreview(
   itemId: string,
   meta: ItemMerged,
   canvas: HTMLCanvasElement,
   selectedColors: Record<string, string>,
-  renderId: number | null = null,
+  isStaleRender: () => boolean = () => false,
 ): Promise<number> {
-  const previewCanvas = canvas as PreviewCanvas;
-  if (!previewCanvas || !previewCanvas.isConnected) {
+  if (!canvas.isConnected) {
     return 0;
   }
 
-  const isStaleRender = (): boolean => {
-    if (!previewCanvas.isConnected) {
-      return true;
-    }
-    if (
-      typeof renderId === "number" &&
-      previewCanvas._recolorRenderId !== renderId
-    ) {
-      return true;
-    }
-    return false;
-  };
+  const isStale = (): boolean => !canvas.isConnected || isStaleRender();
 
-  // Skip if canvas is not connected or renderId doesn't match (stale render)
-  const ctx = previewCanvas.getContext("2d", { willReadFrequently: true });
-  if (!ctx || isStaleRender()) {
+  // Skip if canvas is not connected or stale
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+  if (!ctx || isStale()) {
     return 0;
   }
 
@@ -442,16 +433,15 @@ export async function drawRecolorPreview(
       });
     }),
   );
-  if (isStaleRender()) {
+  if (isStale()) {
     return 0;
   }
 
-  previewCanvas.loadedLayers = loadedLayers;
-  ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   // Draw each layer in zPos order
   imagesLoaded = 0;
   for (const { img, layer } of loadedLayers) {
-    if (isStaleRender()) {
+    if (isStale()) {
       return 0;
     }
 

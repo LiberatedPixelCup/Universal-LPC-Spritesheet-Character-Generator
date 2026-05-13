@@ -4,7 +4,7 @@ import { SearchControl } from "./filters/SearchControl.js";
 import { LicenseFilters } from "./filters/LicenseFilters.js";
 import { AnimationFilters } from "./filters/AnimationFilters.js";
 import { CurrentSelections } from "./selections/CurrentSelections.js";
-import { CategoryTree } from "./tree/CategoryTree.js";
+import { CategoryTree } from "./tree/CategoryTree.ts";
 import { CollapsibleSection } from "./CollapsibleSection.js";
 
 export const FiltersPanel = {

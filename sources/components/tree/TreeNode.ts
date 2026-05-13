@@ -8,6 +8,7 @@ import {
   getItemLite,
   getItemMerged,
 } from "../../state/catalog.ts";
+import type { CategoryTreeNode, ItemMerged } from "../../state/catalog.ts";
 import { ResultBoundary } from "../ResultBoundary.js";
 import {
   isItemLicenseCompatible,
@@ -19,10 +20,25 @@ import {
   matchesSearch,
   nodeHasMatches,
 } from "../../utils/helpers.ts";
-import { ItemWithVariants } from "./ItemWithVariants.js";
-import { ItemWithRecolors } from "./ItemWithRecolors.js";
+import { ItemWithVariants } from "./ItemWithVariants.ts";
+import { ItemWithRecolors } from "./ItemWithRecolors.ts";
 
-function renderSkeletons(itemIds) {
+export type TreeNodeAttrs = {
+  name: string;
+  node: CategoryTreeNode & {
+    required?: string[];
+    animations?: string[];
+    label?: string;
+  };
+  pathPrefix?: string;
+};
+
+type ItemListCtx = {
+  isNodeAnimCompatible: boolean;
+  searchQuery: string;
+};
+
+function renderSkeletons(itemIds: string[]) {
   return itemIds.map((itemId) =>
     m(
       "div.skeleton-row",
@@ -35,13 +51,13 @@ function renderSkeletons(itemIds) {
   );
 }
 
-function renderItem(itemId, meta, ctx) {
+function renderItem(itemId: string, meta: ItemMerged, ctx: ItemListCtx) {
   const { isNodeAnimCompatible, searchQuery } = ctx;
   const displayName = meta.name;
   const hasVariants = meta.variants && meta.variants.length > 0;
   const hasRecolors = !hasVariants && meta.recolors && meta.recolors.length > 0;
   const isSearchMatch =
-    searchQuery &&
+    !!searchQuery &&
     searchQuery.length >= 2 &&
     matchesSearch(meta.name, searchQuery);
 
@@ -51,11 +67,11 @@ function renderItem(itemId, meta, ctx) {
   const isCompatible = isLicenseCompatibleFlag && isAnimCompatibleFlag;
 
   // Build tooltip text (license list needs credits chunk)
-  let licensesText;
+  let licensesText: string;
   if (!isCreditsReady()) {
     licensesText = "License info loading…";
   } else {
-    const allLicenses = new Set();
+    const allLicenses = new Set<string>();
     const credits = getItemCredits(itemId).unwrapOr([]);
     for (const credit of credits) {
       for (const lic of credit.licenses) {
@@ -76,7 +92,7 @@ function renderItem(itemId, meta, ctx) {
 
   let tooltipText = "";
   if (!isCompatible) {
-    const issues = [];
+    const issues: string[] = [];
     if (!isLicenseCompatibleFlag) issues.push("licenses");
     if (!isAnimCompatibleFlag) issues.push("animations");
     tooltipText = `⚠️ Incompatible with selected ${issues.join(" and ")}\n`;
@@ -135,7 +151,7 @@ function renderItem(itemId, meta, ctx) {
   });
 }
 
-function renderItemList(itemIds, ctx) {
+function renderItemList(itemIds: string[], ctx: ItemListCtx) {
   const { isNodeAnimCompatible, searchQuery } = ctx;
   return itemIds
     .filter((itemId) => {
@@ -163,8 +179,8 @@ function renderItemList(itemIds, ctx) {
     });
 }
 
-export const TreeNode = {
-  view: function (vnode) {
+export const TreeNode: m.Component<TreeNodeAttrs> = {
+  view(vnode) {
     const { name, node, pathPrefix = "" } = vnode.attrs;
     const nodePath = pathPrefix ? `${pathPrefix}-${name}` : name;
     const searchQuery = state.searchQuery;
@@ -177,7 +193,7 @@ export const TreeNode = {
       node.required.length > 0 &&
       !node.required.includes(state.bodyType)
     )
-      return false;
+      return null;
 
     // Hide this node if search is active and there are no matches
     if (searchQuery && searchQuery.length >= 2 && !hasSearchMatches) {
@@ -200,7 +216,7 @@ export const TreeNode = {
 
     // Auto-expand if search is active and has matches
     const isExpanded =
-      (searchQuery && searchQuery.length >= 2 && hasSearchMatches) ||
+      (!!searchQuery && searchQuery.length >= 2 && hasSearchMatches) ||
       state.expandedNodes[nodePath] ||
       false;
     const displayName = node.label ?? capitalize(name);
@@ -208,7 +224,7 @@ export const TreeNode = {
     const categoryTitle = isLiteReady() ? tooltipText : undefined;
 
     const itemIds = node.items ?? [];
-    const itemListCtx = { isNodeAnimCompatible, searchQuery };
+    const itemListCtx: ItemListCtx = { isNodeAnimCompatible, searchQuery };
 
     return m(
       "div",

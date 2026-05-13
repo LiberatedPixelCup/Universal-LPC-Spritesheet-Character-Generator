@@ -5,11 +5,36 @@ import { state, getSelectionGroup, selectItem } from "../../state/state.ts";
 import { isPaletteReady } from "../../state/catalog.ts";
 import { drawRecolorPreview } from "../../canvas/palette-recolor.ts";
 import { getPaletteOptions } from "../../state/palettes.ts";
-import { PaletteSelectModal } from "./PaletteSelectModal.js";
+import { PaletteSelectModal } from "./PaletteSelectModal.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
+import type { ItemMerged } from "../../state/catalog.ts";
 
-export const ItemWithRecolors = {
-  view: function (vnode) {
+export type ItemWithRecolorsAttrs = {
+  itemId: string;
+  meta: ItemMerged;
+  isSearchMatch: boolean;
+  isCompatible: boolean;
+  tooltipText: string;
+  showItemTooltips?: boolean;
+};
+
+type ItemWithRecolorsState = {
+  showPaletteModal: number | null;
+  isLoading?: boolean;
+  imagesLoaded: number;
+  oldSelectedColors: string;
+  _palettePreviewLastTotal?: number;
+  // Mutated by `PaletteSelectModal` via the `rootViewNode` ref it receives.
+  palettePreviewGateSeq?: number;
+  palettePreviewExpected?: number;
+  palettePreviewCompleted?: number;
+};
+
+export const ItemWithRecolors: m.Component<
+  ItemWithRecolorsAttrs,
+  ItemWithRecolorsState
+> = {
+  view(vnode) {
     const {
       itemId,
       meta,
@@ -122,38 +147,47 @@ export const ItemWithRecolors = {
                           ? COMPACT_FRAME_SIZE
                           : FRAME_SIZE,
                         class: compactDisplay ? " compact-display" : "",
-                        oncreate: (canvasVnode) => {
-                          const renderId =
-                            (canvasVnode.dom._recolorRenderId || 0) + 1;
-                          canvasVnode.dom._recolorRenderId = renderId;
-                          canvasVnode.state.lastColorsKey =
-                            JSON.stringify(selectedColors);
+                        oncreate: (canvasVnode: m.VnodeDOM) => {
+                          const canvas = canvasVnode.dom as HTMLCanvasElement;
+                          const cs = canvasVnode.state as {
+                            renderId?: number;
+                            lastColorsKey?: string;
+                          };
+                          const renderId = (cs.renderId ?? 0) + 1;
+                          cs.renderId = renderId;
+                          cs.lastColorsKey = JSON.stringify(selectedColors);
                           drawRecolorPreview(
                             itemId,
                             meta,
-                            canvasVnode.dom,
+                            canvas,
                             selectedColors,
-                            renderId,
+                            () => cs.renderId !== renderId,
                           );
                         },
-                        onupdate: (canvasVnode) => {
+                        onupdate: (canvasVnode: m.VnodeDOM) => {
+                          const canvas = canvasVnode.dom as HTMLCanvasElement;
+                          const cs = canvasVnode.state as {
+                            renderId?: number;
+                            lastColorsKey?: string;
+                          };
                           const key = JSON.stringify(selectedColors);
-                          if (canvasVnode.state.lastColorsKey === key) return;
-                          canvasVnode.state.lastColorsKey = key;
-                          const renderId =
-                            (canvasVnode.dom._recolorRenderId || 0) + 1;
-                          canvasVnode.dom._recolorRenderId = renderId;
+                          if (cs.lastColorsKey === key) return;
+                          cs.lastColorsKey = key;
+                          const renderId = (cs.renderId ?? 0) + 1;
+                          cs.renderId = renderId;
                           drawRecolorPreview(
                             itemId,
                             meta,
-                            canvasVnode.dom,
+                            canvas,
                             selectedColors,
-                            renderId,
+                            () => cs.renderId !== renderId,
                           );
                         },
-                        onremove: (canvasVnode) => {
-                          canvasVnode.dom._recolorRenderId =
-                            (canvasVnode.dom._recolorRenderId || 0) + 1;
+                        onremove: (canvasVnode: m.VnodeDOM) => {
+                          const cs = canvasVnode.state as {
+                            renderId?: number;
+                          };
+                          cs.renderId = (cs.renderId ?? 0) + 1;
                         },
                       }),
                     ],
@@ -163,11 +197,11 @@ export const ItemWithRecolors = {
                     ? m(
                         "div.ml-3.is-align-items-center.palette-recolor-list",
                         paletteOptions.map((opt, idx) => {
-                          const gradient = opt.colors.slice().reverse();
+                          const gradient = (opt.colors ?? []).slice().reverse();
                           return m(
                             "div.is-flex.palette-recolor-item",
                             {
-                              onclick: (e) => {
+                              onclick: (e: MouseEvent) => {
                                 e.stopPropagation();
                                 rootViewNode.state._palettePreviewLastTotal =
                                   undefined;
@@ -205,20 +239,20 @@ export const ItemWithRecolors = {
                   "div.is-flex.is-align-items-center",
                   {
                     title: rowTitle,
-                    onmouseover: (e) => {
+                    onmouseover: (e: MouseEvent) => {
                       if (!isCompatible) return;
-                      const div = e.currentTarget;
+                      const div = e.currentTarget as HTMLElement;
                       if (!isSelected)
                         div.classList.add("has-background-white-ter");
                     },
-                    onmouseout: (e) => {
+                    onmouseout: (e: MouseEvent) => {
                       if (!isCompatible) return;
-                      const div = e.currentTarget;
+                      const div = e.currentTarget as HTMLElement;
 
                       if (!isSelected)
                         div.classList.remove("has-background-white-ter");
                     },
-                    onclick: (e) => {
+                    onclick: (e: MouseEvent) => {
                       e.stopPropagation();
                       if (!paletteReady) return;
                       rootViewNode.state._palettePreviewLastTotal = undefined;
@@ -246,11 +280,12 @@ export const ItemWithRecolors = {
                             ? COMPACT_FRAME_SIZE
                             : FRAME_SIZE,
                           class: compactDisplay ? " compact-display" : "",
-                          oncreate: async (canvasVnode) => {
-                            const imagesLoaded = drawRecolorPreview(
+                          oncreate: async (canvasVnode: m.VnodeDOM) => {
+                            const canvas = canvasVnode.dom as HTMLCanvasElement;
+                            const imagesLoaded = await drawRecolorPreview(
                               itemId,
                               meta,
-                              canvasVnode.dom,
+                              canvas,
                               selectedColors,
                             );
                             if (imagesLoaded > 0) {
@@ -259,17 +294,18 @@ export const ItemWithRecolors = {
                                 JSON.stringify(selectedColors);
                             }
                           },
-                          onupdate: async (canvasVnode) => {
+                          onupdate: async (canvasVnode: m.VnodeDOM) => {
                             if (
                               rootViewNode.state.oldSelectedColors ===
                               JSON.stringify(selectedColors)
                             ) {
                               return;
                             }
-                            const imagesLoaded = drawRecolorPreview(
+                            const canvas = canvasVnode.dom as HTMLCanvasElement;
+                            const imagesLoaded = await drawRecolorPreview(
                               itemId,
                               meta,
-                              canvasVnode.dom,
+                              canvas,
                               selectedColors,
                             );
                             if (imagesLoaded > 0) {
@@ -291,7 +327,7 @@ export const ItemWithRecolors = {
                             return m(
                               "div.is-flex.palette-recolor-item",
                               {
-                                onclick: (e) => {
+                                onclick: (e: MouseEvent) => {
                                   e.stopPropagation();
                                   if (!paletteReady) return;
                                   rootViewNode.state._palettePreviewLastTotal =

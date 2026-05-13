@@ -3,11 +3,35 @@ import m from "mithril";
 import classNames from "classnames";
 import { state, getSelectionGroup, selectItem } from "../../state/state.ts";
 import { getLayersToLoad } from "../../state/meta.ts";
+import type { LayerToLoad } from "../../state/meta.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
 import { capitalize } from "../../utils/helpers.ts";
+import type { ItemMerged } from "../../state/catalog.ts";
 
-export const ItemWithVariants = {
-  view: function (vnode) {
+export type ItemWithVariantsAttrs = {
+  itemId: string;
+  meta: ItemMerged;
+  isSearchMatch: boolean;
+  isCompatible: boolean;
+  tooltipText: string;
+  showItemTooltips?: boolean;
+};
+
+type ItemWithVariantsState = {
+  isLoading: boolean;
+  imagesToLoad: number;
+  imagesLoaded: number;
+};
+
+type CanvasState = {
+  loadedLayers?: Array<{ img: HTMLImageElement | null; layer: LayerToLoad }>;
+};
+
+export const ItemWithVariants: m.Component<
+  ItemWithVariantsAttrs,
+  ItemWithVariantsState
+> = {
+  view(vnode) {
     const {
       itemId,
       meta,
@@ -89,9 +113,14 @@ export const ItemWithVariants = {
 
                   // Get preview metadata from item metadata
                   const previewRow = meta.preview_row ?? 2;
-                  const previewCol = meta.preview_column ?? 0;
-                  const previewXOffset = meta.preview_x_offset ?? 0;
-                  const previewYOffset = meta.preview_y_offset ?? 0;
+                  const previewCol =
+                    (meta as { preview_column?: number }).preview_column ?? 0;
+                  const previewXOffset =
+                    (meta as { preview_x_offset?: number }).preview_x_offset ??
+                    0;
+                  const previewYOffset =
+                    (meta as { preview_y_offset?: number }).preview_y_offset ??
+                    0;
 
                   return m(
                     "div.variant-item.is-flex.is-flex-direction-column.is-align-items-center.is-clickable",
@@ -103,15 +132,15 @@ export const ItemWithVariants = {
                         "is-not-compatible": !isCompatible,
                       }),
                       title: rowTitle,
-                      onmouseover: (e) => {
+                      onmouseover: (e: MouseEvent) => {
                         if (!isCompatible) return;
-                        const div = e.currentTarget;
+                        const div = e.currentTarget as HTMLElement;
                         if (!isSelected)
                           div.classList.add("has-background-white-ter");
                       },
-                      onmouseout: (e) => {
+                      onmouseout: (e: MouseEvent) => {
                         if (!isCompatible) return;
-                        const div = e.currentTarget;
+                        const div = e.currentTarget as HTMLElement;
 
                         if (!isSelected)
                           div.classList.remove("has-background-white-ter");
@@ -135,11 +164,13 @@ export const ItemWithVariants = {
                         style: isSelected
                           ? " hsl(217, 71%, 53%)"
                           : " hsl(0, 0%, 86%)",
-                        oncreate: (canvasVnode) => {
-                          const canvas = canvasVnode.dom;
+                        oncreate: (canvasVnode: m.VnodeDOM) => {
+                          const canvas = canvasVnode.dom as HTMLCanvasElement;
+                          const cs = canvasVnode.state as CanvasState;
                           const ctx = canvas.getContext("2d", {
                             willReadFrequently: true,
                           });
+                          if (!ctx) return;
 
                           // Get Layers to Load for Variant
                           const layersToLoad = getLayersToLoad(
@@ -152,7 +183,10 @@ export const ItemWithVariants = {
                           // Load and draw all layers
                           Promise.all(
                             layersToLoad.map((layer) => {
-                              return new Promise((resolve) => {
+                              return new Promise<{
+                                img: HTMLImageElement | null;
+                                layer: LayerToLoad;
+                              }>((resolve) => {
                                 const img = new Image();
                                 img.onload = () => resolve({ img, layer });
                                 img.onerror = () =>
@@ -161,14 +195,13 @@ export const ItemWithVariants = {
                               });
                             }),
                           ).then((loadedLayers) => {
-                            canvas.loadedLayers = loadedLayers;
+                            cs.loadedLayers = loadedLayers;
                             // Draw each layer in zPos order
                             for (const { img } of loadedLayers) {
                               if (img) {
                                 const size = compactDisplay
                                   ? COMPACT_FRAME_SIZE
                                   : FRAME_SIZE;
-                                // Master branch uses: previewColumn * FRAME_SIZE + previewXOffset
                                 const srcX =
                                   previewCol * FRAME_SIZE + previewXOffset;
                                 const srcY =
@@ -191,21 +224,21 @@ export const ItemWithVariants = {
                             m.redraw();
                           });
                         },
-                        onupdate: (canvasVnode) => {
-                          const canvas = canvasVnode.dom;
+                        onupdate: (canvasVnode: m.VnodeDOM) => {
+                          const canvas = canvasVnode.dom as HTMLCanvasElement;
+                          const cs = canvasVnode.state as CanvasState;
                           const ctx = canvas.getContext("2d", {
                             willReadFrequently: true,
                           });
+                          if (!ctx) return;
 
                           // Process Layers Loaded for Variant
-                          if (canvas.loadedLayers) {
-                            // Draw each layer in zPos order
-                            for (const { img } of canvas.loadedLayers) {
+                          if (cs.loadedLayers) {
+                            for (const { img } of cs.loadedLayers) {
                               if (img) {
                                 const size = compactDisplay
                                   ? COMPACT_FRAME_SIZE
                                   : FRAME_SIZE;
-                                // Master branch uses: previewColumn * FRAME_SIZE + previewXOffset
                                 const srcX =
                                   previewCol * FRAME_SIZE + previewXOffset;
                                 const srcY =
