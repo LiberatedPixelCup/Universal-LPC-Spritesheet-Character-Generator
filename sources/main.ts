@@ -2,7 +2,7 @@
 
 import m from "mithril";
 import "./styles/critical-entry.scss";
-import "./vendor-globals.js";
+import "./vendor-globals.ts";
 import { loadAllMetadata } from "./install-item-metadata.ts";
 import { catalogReady } from "./state/catalog.ts";
 
@@ -21,6 +21,26 @@ import {
   setPaletteRecolorMode,
   getPaletteRecolorConfig,
 } from "./canvas/palette-recolor.ts";
+import type {
+  RecolorStats,
+  RecolorMode,
+  RecolorConfig,
+} from "./canvas/palette-recolor.ts";
+
+declare global {
+  interface Window {
+    /** Console-only diagnostic; logs and returns recolor pipeline stats. */
+    getPaletteRecolorStats?: () => RecolorStats;
+    /** Console-only diagnostic; resets the recolor stats counters. */
+    resetPaletteRecolorStats?: () => void;
+    /** Console-only; force the recolor mode. */
+    setPaletteRecolorMode?: (mode: RecolorMode) => void;
+    /** Console-only; reads current recolor config. */
+    getPaletteRecolorConfig?: () => RecolorConfig;
+    /** Set by main.ts after boot; awaited inside the DOMContentLoaded handler. */
+    setDefaultSelections?: () => Promise<void>;
+  }
+}
 
 // Expose palette recolor stats globally
 window.getPaletteRecolorStats = () => {
@@ -88,10 +108,11 @@ let hashHydrationInitDone = false;
 
 // Wait for DOM to be ready, then mount UI; catalog may already be loading or ready.
 document.addEventListener("DOMContentLoaded", () => {
-  m.mount(document.getElementById("mithril-filters"), App);
-  m.mount(document.getElementById("mithril-preview"), AnimationPreview);
+  // Mount roots are static markup in index.html; assert non-null.
+  m.mount(document.getElementById("mithril-filters")!, App);
+  m.mount(document.getElementById("mithril-preview")!, AnimationPreview);
   m.mount(
-    document.getElementById("mithril-spritesheet-preview"),
+    document.getElementById("mithril-spritesheet-preview")!,
     FullSpritesheetPreview,
   );
 
@@ -124,7 +145,7 @@ const SHELL_LOADING_ROOT_IDS = [
   "mithril-spritesheet-preview",
 ];
 
-function clearShellLoadingClass() {
+function clearShellLoadingClass(): void {
   for (const id of SHELL_LOADING_ROOT_IDS) {
     document.getElementById(id)?.classList.remove("loading");
   }

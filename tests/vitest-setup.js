@@ -1,5 +1,5 @@
 import "chai";
-import "../sources/vendor-globals.js";
+import "../sources/vendor-globals.ts";
 import { catalogReady } from "../sources/state/catalog.ts";
 // `install-item-metadata` runs `loadAllMetadata()` on the Testem/Vite test page and registers
 // all five `dist/*-metadata.js` chunks with `catalog` before this module’s body runs.
