@@ -17,9 +17,8 @@
  * rejection. If we ever need to recover instead of crash, add a `"load-failed"`
  * variant here.
  *
- * Consumer-side code pairs this with the `ResultBoundary` component (in the
- * render tree) or with `.match` / `.unwrapOr` / `if (r.isErr())` (everywhere
- * else).
+ * Consumer-side code pairs this with the `renderResult` helper (in the render
+ * tree) or with `.match` / `.unwrapOr` / `if (r.isErr())` (everywhere else).
  */
 
 import { ok, err, type Result } from "neverthrow";

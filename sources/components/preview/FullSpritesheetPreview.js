@@ -1,7 +1,7 @@
 // Full Spritesheet Preview component
 import m from "mithril";
 import { state } from "../../state/state.ts";
-import { CollapsibleSection } from "../CollapsibleSection.js";
+import { CollapsibleSection } from "../CollapsibleSection.ts";
 import PinchToZoom from "./PinchToZoom.js";
 import {
   copyToPreviewCanvas,
@@ -120,7 +120,6 @@ export const FullSpritesheetPreview = {
       CollapsibleSection,
       {
         title: "Full Spritesheet Preview",
-        storageKey: "spritesheet-preview",
         defaultOpen: true,
         boxClass: "box mt-4",
       },

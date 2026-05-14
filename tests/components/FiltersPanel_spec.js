@@ -1,5 +1,5 @@
-import { FiltersPanel } from "../../sources/components/FiltersPanel.js";
-import { CollapsibleSection } from "../../sources/components/CollapsibleSection.js";
+import { FiltersPanel } from "../../sources/components/FiltersPanel.ts";
+import { CollapsibleSection } from "../../sources/components/CollapsibleSection.ts";
 import { SearchControl } from "../../sources/components/filters/SearchControl.js";
 import { LicenseFilters } from "../../sources/components/filters/LicenseFilters.js";
 import { AnimationFilters } from "../../sources/components/filters/AnimationFilters.js";
@@ -19,7 +19,6 @@ describe("FiltersPanel", () => {
     expect(vnode.tag).to.equal(CollapsibleSection);
     expect(vnode.attrs).to.deep.include({
       title: "Filters",
-      storageKey: "filters",
       defaultOpen: true,
     });
   });

@@ -1,5 +1,5 @@
 // CollapsibleSection component tests - Browser compatible
-import { CollapsibleSection } from "../../sources/components/CollapsibleSection.js";
+import { CollapsibleSection } from "../../sources/components/CollapsibleSection.ts";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 

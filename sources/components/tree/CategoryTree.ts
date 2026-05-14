@@ -9,7 +9,7 @@ import {
 import { isLiteReady } from "../../state/catalog.ts";
 import { getCategoryTree, getItemMerged } from "../../state/catalog.ts";
 import type { CategoryTree as CategoryTreeShape } from "../../state/catalog.ts";
-import { ResultBoundary } from "../ResultBoundary.js";
+import { renderResult } from "../../utils/render-result.ts";
 import { BodyTypeSelector } from "./BodyTypeSelector.ts";
 import { TreeNode } from "./TreeNode.ts";
 
@@ -153,10 +153,10 @@ function renderTree(categoryTree: CategoryTreeShape) {
 
 export const CategoryTree: m.Component = {
   view() {
-    return m(ResultBoundary, {
-      read: () => getCategoryTree(),
-      view: (categoryTree: CategoryTreeShape) => renderTree(categoryTree),
-      renderError: () => renderLoadingHost(),
-    });
+    return renderResult(
+      getCategoryTree(),
+      (categoryTree) => renderTree(categoryTree),
+      () => renderLoadingHost(),
+    );
   },
 };

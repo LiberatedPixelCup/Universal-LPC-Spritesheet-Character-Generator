@@ -68,7 +68,7 @@ import { initState, state } from "./state/state.ts";
 import { initHashChangeListener } from "./state/hash.ts";
 
 // Import components
-import { App } from "./components/App.js";
+import { App } from "./components/App.ts";
 import { AnimationPreview } from "./components/preview/AnimationPreview.js";
 import { FullSpritesheetPreview } from "./components/preview/FullSpritesheetPreview.js";
 

@@ -9,7 +9,7 @@ import {
   getItemMerged,
 } from "../../state/catalog.ts";
 import type { CategoryTreeNode, ItemMerged } from "../../state/catalog.ts";
-import { ResultBoundary } from "../ResultBoundary.js";
+import { renderResult } from "../../utils/render-result.ts";
 import {
   isItemLicenseCompatible,
   isItemAnimationCompatible,
@@ -259,11 +259,11 @@ export const TreeNode: m.Component<TreeNodeAttrs> = {
             ),
             // Render items in this category. Skeletons until lite registers,
             // then real items via .filter / .map using typed getters.
-            m(ResultBoundary, {
-              read: () => chunkReady("lite"),
-              view: () => renderItemList(itemIds, itemListCtx),
-              renderError: () => renderSkeletons(itemIds),
-            }),
+            renderResult(
+              chunkReady("lite"),
+              () => renderItemList(itemIds, itemListCtx),
+              () => renderSkeletons(itemIds),
+            ),
           ])
         : null,
     );

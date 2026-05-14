@@ -7,7 +7,7 @@ import {
   creditsToCsv,
   creditsToTxt,
 } from "../../utils/credits.ts";
-import { CollapsibleSection } from "../CollapsibleSection.js";
+import { CollapsibleSection } from "../CollapsibleSection.ts";
 import { downloadFile, downloadAsPNG } from "../../canvas/download.ts";
 import { importStateFromJSON, exportStateAsJSON } from "../../state/json.ts";
 import {
@@ -70,7 +70,6 @@ export const Download = {
       CollapsibleSection,
       {
         title: "Download",
-        storageKey: "download",
         defaultOpen: true,
       },
       [

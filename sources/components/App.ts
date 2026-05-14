@@ -3,20 +3,27 @@ import m from "mithril";
 import { state } from "../state/state.ts";
 import { syncSelectionsToHash } from "../state/hash.ts";
 import { Download } from "./download/Download.js";
-import { FiltersPanel } from "./FiltersPanel.js";
+import { FiltersPanel } from "./FiltersPanel.ts";
 import { Credits } from "./download/Credits.js";
 import { AdvancedTools } from "./advanced/AdvancedTools.js";
 import { renderCharacter } from "../canvas/renderer.ts";
 
-export const App = {
-  oninit: function (vnode) {
+type AppState = {
+  prevSelections: string;
+  prevBodyType: string;
+  prevCustomImage: HTMLImageElement | null;
+  prevCustomZPos: number;
+};
+
+export const App: m.Component<Record<string, never>, AppState> = {
+  oninit(vnode) {
     // Track previous state to detect changes
     vnode.state.prevSelections = JSON.stringify(state.selections);
     vnode.state.prevBodyType = state.bodyType;
     vnode.state.prevCustomImage = state.customUploadedImage;
     vnode.state.prevCustomZPos = state.customImageZPos;
   },
-  onupdate: function (vnode) {
+  onupdate(vnode) {
     // Only sync hash and render canvas if selections, bodyType, or custom image changed
     const currentSelections = JSON.stringify(state.selections);
     const currentBodyType = state.bodyType;
@@ -45,7 +52,7 @@ export const App = {
       vnode.state.prevCustomZPos = currentCustomZPos;
     }
   },
-  view: function () {
+  view() {
     return m("div", [
       m(Download),
       m(FiltersPanel),

@@ -5,15 +5,14 @@ import { LicenseFilters } from "./filters/LicenseFilters.js";
 import { AnimationFilters } from "./filters/AnimationFilters.js";
 import { CurrentSelections } from "./selections/CurrentSelections.js";
 import { CategoryTree } from "./tree/CategoryTree.ts";
-import { CollapsibleSection } from "./CollapsibleSection.js";
+import { CollapsibleSection } from "./CollapsibleSection.ts";
 
-export const FiltersPanel = {
-  view: function () {
+export const FiltersPanel: m.Component = {
+  view() {
     return m(
       CollapsibleSection,
       {
         title: "Filters",
-        storageKey: "filters",
         defaultOpen: true,
       },
       [

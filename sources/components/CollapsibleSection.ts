@@ -1,18 +1,25 @@
 // Reusable CollapsibleSection component
 import m from "mithril";
-export const CollapsibleSection = {
-  oninit: function (vnode) {
+
+export type CollapsibleSectionAttrs = {
+  title: string;
+  defaultOpen?: boolean;
+  boxClass?: string;
+  onToggle?: (isCollapsed: boolean) => void;
+};
+
+type CollapsibleSectionState = { isCollapsed: boolean };
+
+export const CollapsibleSection: m.Component<
+  CollapsibleSectionAttrs,
+  CollapsibleSectionState
+> = {
+  oninit(vnode) {
     const { defaultOpen = true } = vnode.attrs;
     vnode.state.isCollapsed = !defaultOpen;
   },
-  view: function (vnode) {
-    const {
-      title,
-      boxClass = "box",
-      onToggle,
-      defaultOpen: _, // Consume so it doesn't leak to the html
-      ...additionalAttrs
-    } = vnode.attrs;
+  view(vnode) {
+    const { title, boxClass = "box", onToggle } = vnode.attrs;
     const { isCollapsed } = vnode.state;
 
     const toggleCollapse = () => {
@@ -25,7 +32,7 @@ export const CollapsibleSection = {
       }
     };
 
-    return m(`div.${boxClass}`, additionalAttrs, [
+    return m(`div.${boxClass}`, [
       // Collapsible header
       m(
         "div",

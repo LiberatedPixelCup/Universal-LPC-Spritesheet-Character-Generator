@@ -6,7 +6,7 @@ import {
   creditsToCsv,
   creditsToTxt,
 } from "../../utils/credits.ts";
-import { CollapsibleSection } from "../CollapsibleSection.js";
+import { CollapsibleSection } from "../CollapsibleSection.ts";
 import { downloadFile } from "../../canvas/download.ts";
 
 export const Credits = {
@@ -18,10 +18,8 @@ export const Credits = {
       CollapsibleSection,
       {
         title: "Credits & Attribution",
-        storageKey: "credits",
         defaultOpen: true,
         boxClass: "box",
-        id: "credits-section",
       },
       [
         m("p.is-size-7.mb-2", [

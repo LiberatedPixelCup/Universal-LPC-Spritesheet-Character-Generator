@@ -2,7 +2,7 @@
 import m from "mithril";
 import { state } from "../../state/state.ts";
 import { ANIMATIONS } from "../../state/constants.ts";
-import { CollapsibleSection } from "../CollapsibleSection.js";
+import { CollapsibleSection } from "../CollapsibleSection.ts";
 import {
   repaintStaticPreviewFrameForTests,
   setPreviewAnimation,
@@ -139,7 +139,6 @@ export const AnimationPreview = {
       CollapsibleSection,
       {
         title: "Animation Preview",
-        storageKey: "animation-preview",
         defaultOpen: true,
         boxClass: "box",
       },

@@ -8,7 +8,8 @@ import {
   getPaletteMetadata,
 } from "../../state/catalog.ts";
 import type { ItemMerged, PaletteMetadata } from "../../state/catalog.ts";
-import { ResultBoundary } from "../ResultBoundary.js";
+import { renderResult } from "../../utils/render-result.ts";
+import type { LoadError } from "../../state/catalog.ts";
 import { state, getSelectionGroup } from "../../state/state.ts";
 import { ucwords } from "../../utils/helpers.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
@@ -301,29 +302,23 @@ export const PaletteSelectModal: m.Component<PaletteSelectModalAttrs> = {
     // Order matters: Result.combine short-circuits to the first Err. We
     // surface a different loading message depending on which chunk is
     // missing (matches the legacy two-stage UX: palette first, then layer).
-    return m(ResultBoundary, {
-      read: () =>
-        Result.combine([
-          chunkReady("palette"),
-          chunkReady("lite"),
-          chunkReady("layers"),
-          getPaletteMetadata(),
-          getItemMerged(itemId),
-        ]),
-      view: ([, , , paletteMeta, meta]: [
-        unknown,
-        unknown,
-        unknown,
-        PaletteMetadata,
-        ItemMerged,
-      ]) => renderModal(vnode.attrs, paletteMeta, meta),
-      renderError: (error: { kind: string; chunk?: string }) => {
+    return renderResult(
+      Result.combine([
+        chunkReady("palette"),
+        chunkReady("lite"),
+        chunkReady("layers"),
+        getPaletteMetadata(),
+        getItemMerged(itemId),
+      ]),
+      ([, , , paletteMeta, meta]) =>
+        renderModal(vnode.attrs, paletteMeta, meta),
+      (error: LoadError) => {
         const message =
           error.kind === "loading" && error.chunk === "palette"
             ? "Loading palette data…"
             : "Loading layer data…";
         return renderLoadingOverlay(onClose, message);
       },
-    });
+    );
   },
 };
