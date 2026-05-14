@@ -11,7 +11,10 @@ import path from "node:path";
 export function getPurgeContentGlobs(repoRoot) {
   return [
     path.join(repoRoot, "index.html"),
-    path.join(repoRoot, "sources", "**", "*.js"),
+    // Scan both .js and .ts — the codebase is mid-migration. PurgeCSS-extracted
+    // class names need to come from every source file regardless of extension,
+    // otherwise classes used only in .ts files get purged from critical CSS.
+    path.join(repoRoot, "sources", "**", "*.{js,ts}"),
     path.join(repoRoot, "tests", "tests_run.html"),
   ];
 }
