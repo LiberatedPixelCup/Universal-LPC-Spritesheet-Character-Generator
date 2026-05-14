@@ -5,36 +5,53 @@ import { isCreditsReady, isLiteReady } from "../../state/catalog.ts";
 import { isItemLicenseCompatible } from "../../state/filters.ts";
 import { LICENSE_CONFIG } from "../../state/constants.ts";
 
+type LicenseOption = {
+  key: string;
+  label: string;
+  url?: string;
+  urlLabel?: string;
+};
+type LicenseFiltersDeps = {
+  isItemLicenseCompatible: (itemId: string) => boolean;
+  licenseConfig: readonly LicenseOption[];
+};
+
 // Dependency injection for testability
-let deps = {
+const deps: LicenseFiltersDeps = {
   isItemLicenseCompatible,
   licenseConfig: LICENSE_CONFIG,
 };
 
-export function setLicenseCompatible({ isItemLicenseCompatible }) {
-  deps.isItemLicenseCompatible = isItemLicenseCompatible;
+export function setLicenseCompatible(
+  overrides: Pick<LicenseFiltersDeps, "isItemLicenseCompatible">,
+): void {
+  deps.isItemLicenseCompatible = overrides.isItemLicenseCompatible;
 }
-export function isLicenseCompatible() {
-  return deps.isItemLicenseCompatible(...arguments);
+export function isLicenseCompatible(itemId: string): boolean {
+  return deps.isItemLicenseCompatible(itemId);
 }
 
-export function setLicenseConfig(config) {
+export function setLicenseConfig(config: readonly LicenseOption[]): void {
   deps.licenseConfig = config;
 }
-export function getLicenseConfig() {
+export function getLicenseConfig(): readonly LicenseOption[] {
   return deps.licenseConfig;
 }
 
-export const LicenseFilters = {
-  oninit: function (vnode) {
-    vnode.state.isExpanded = false; // Start collapsed by default
+type LicenseFiltersState = { isExpanded: boolean };
+
+export const LicenseFilters: m.Component<
+  Record<string, never>,
+  LicenseFiltersState
+> = {
+  oninit(vnode) {
+    vnode.state.isExpanded = false;
   },
-  view: function (vnode) {
+  view(vnode) {
     const liteReady = isLiteReady();
 
-    // Function to remove incompatible items from selections
     const removeIncompatibleItems = () => {
-      const toRemove = [];
+      const toRemove: string[] = [];
       for (const [selectionGroup, selection] of Object.entries(
         state.selections,
       )) {
@@ -53,7 +70,6 @@ export const LicenseFilters = {
 
     const creditsReady = isCreditsReady();
 
-    // Check if there are any incompatible selected items (needs credits chunk)
     const incompatibleSelections = creditsReady
       ? Object.values(state.selections).filter(
           (selection) => !isLicenseCompatible(selection.itemId),
@@ -62,7 +78,6 @@ export const LicenseFilters = {
     const hasIncompatibleItems =
       creditsReady && incompatibleSelections.length > 0;
 
-    // Count how many licenses are enabled
     const enabledCount = Object.values(state.enabledLicenses).filter(
       Boolean,
     ).length;
@@ -106,8 +121,9 @@ export const LicenseFilters = {
                     m("input[type=checkbox]", {
                       checked: state.enabledLicenses[license.key],
                       disabled: !liteReady,
-                      onchange: (e) => {
-                        state.enabledLicenses[license.key] = e.target.checked;
+                      onchange: (e: Event) => {
+                        const target = e.target as HTMLInputElement;
+                        state.enabledLicenses[license.key] = target.checked;
                       },
                     }),
                     ` ${license.label} `,

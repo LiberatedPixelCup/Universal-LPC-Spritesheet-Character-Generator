@@ -1,9 +1,9 @@
 // Filters Panel - combines Controls, LicenseFilters, AnimationFilters, CurrentSelections, and CategoryTree
 import m from "mithril";
-import { SearchControl } from "./filters/SearchControl.js";
-import { LicenseFilters } from "./filters/LicenseFilters.js";
-import { AnimationFilters } from "./filters/AnimationFilters.js";
-import { CurrentSelections } from "./selections/CurrentSelections.js";
+import { SearchControl } from "./filters/SearchControl.ts";
+import { LicenseFilters } from "./filters/LicenseFilters.ts";
+import { AnimationFilters } from "./filters/AnimationFilters.ts";
+import { CurrentSelections } from "./selections/CurrentSelections.ts";
 import { CategoryTree } from "./tree/CategoryTree.ts";
 import { CollapsibleSection } from "./CollapsibleSection.ts";
 

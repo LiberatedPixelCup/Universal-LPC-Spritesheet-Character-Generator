@@ -3,23 +3,24 @@ import m from "mithril";
 import { state } from "../../state/state.ts";
 import { CollapsibleSection } from "../CollapsibleSection.ts";
 
-export const AdvancedTools = {
-  view: function () {
-    const handleFileUpload = (e) => {
-      const file = e.target.files[0];
+export const AdvancedTools: m.Component = {
+  view() {
+    const handleFileUpload = (e: Event) => {
+      const target = e.target as HTMLInputElement;
+      const file = target.files?.[0];
       if (!file) return;
 
-      // Load the image file
       const img = new Image();
-      img.onload = function () {
+      img.onload = () => {
         state.customUploadedImage = img;
         m.redraw();
       };
       img.src = URL.createObjectURL(file);
     };
 
-    const handleZPosChange = (e) => {
-      const value = parseInt(e.target.value);
+    const handleZPosChange = (e: Event) => {
+      const target = e.target as HTMLInputElement;
+      const value = parseInt(target.value, 10);
       state.customImageZPos = isNaN(value) ? 0 : value;
       m.redraw();
     };
@@ -27,8 +28,9 @@ export const AdvancedTools = {
     const clearCustomImage = () => {
       state.customUploadedImage = null;
       state.customImageZPos = 0;
-      // Clear the file input
-      const fileInput = document.getElementById("customFileInput");
+      const fileInput = document.getElementById(
+        "customFileInput",
+      ) as HTMLInputElement | null;
       if (fileInput) fileInput.value = "";
       m.redraw();
     };

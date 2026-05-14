@@ -2,10 +2,10 @@
 import m from "mithril";
 import { state } from "../state/state.ts";
 import { syncSelectionsToHash } from "../state/hash.ts";
-import { Download } from "./download/Download.js";
+import { Download } from "./download/Download.ts";
 import { FiltersPanel } from "./FiltersPanel.ts";
-import { Credits } from "./download/Credits.js";
-import { AdvancedTools } from "./advanced/AdvancedTools.js";
+import { Credits } from "./download/Credits.ts";
+import { AdvancedTools } from "./advanced/AdvancedTools.ts";
 import { renderCharacter } from "../canvas/renderer.ts";
 
 type AppState = {

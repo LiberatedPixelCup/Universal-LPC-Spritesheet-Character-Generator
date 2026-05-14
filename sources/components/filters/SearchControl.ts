@@ -3,8 +3,8 @@ import m from "mithril";
 import { isLiteReady } from "../../state/catalog.ts";
 import { state } from "../../state/state.ts";
 
-export const SearchControl = {
-  view: function () {
+export const SearchControl: m.Component = {
+  view() {
     const liteReady = isLiteReady();
     return m("div.field", [
       m("label.label", "Search:"),
@@ -12,8 +12,8 @@ export const SearchControl = {
         value: state.searchQuery,
         disabled: !liteReady,
         title: liteReady ? undefined : "Loading item list…",
-        oninput: (e) => {
-          state.searchQuery = e.target.value;
+        oninput: (e: Event) => {
+          state.searchQuery = (e.target as HTMLInputElement).value;
         },
       }),
     ]);

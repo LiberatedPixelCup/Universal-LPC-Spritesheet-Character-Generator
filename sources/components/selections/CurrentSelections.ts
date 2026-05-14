@@ -1,15 +1,18 @@
 // Current selections component
 import m from "mithril";
-import { isCreditsReady, isLiteReady } from "../../state/catalog.ts";
-import { getItemMerged } from "../../state/catalog.ts";
+import {
+  getItemMerged,
+  isCreditsReady,
+  isLiteReady,
+} from "../../state/catalog.ts";
 import { state } from "../../state/state.ts";
 import {
   isItemLicenseCompatible,
   isItemAnimationCompatible,
 } from "../../state/filters.ts";
 
-export const CurrentSelections = {
-  view: function () {
+export const CurrentSelections: m.Component = {
+  view() {
     if (!isLiteReady()) {
       return m("div", [
         m("h3.title.is-5", "Current Selections"),
@@ -39,8 +42,7 @@ export const CurrentSelections = {
           const metaResult = getItemMerged(selection.itemId);
           const meta = metaResult.isOk() ? metaResult.value : null;
 
-          // Get all licenses for this item
-          const allLicenses = new Set();
+          const allLicenses = new Set<string>();
           if (meta) {
             for (const credit of meta.credits) {
               for (const lic of credit.licenses) {
@@ -54,17 +56,15 @@ export const CurrentSelections = {
               ? `Licenses: ${Array.from(allLicenses).join(", ")}`
               : "No license info";
 
-          // Get supported animations for this item
           const supportedAnims = meta?.animations ?? [];
           const animsText =
             supportedAnims.length > 0
               ? `Animations: ${supportedAnims.join(", ")}`
               : "No animation info";
 
-          // Build tooltip text
           let tooltipText = "";
           if (!isCompatible) {
-            const issues = [];
+            const issues: string[] = [];
             if (!isLicenseCompatible) issues.push("licenses");
             if (!isAnimCompatible) issues.push("animations");
             tooltipText = `⚠️ Incompatible with selected ${issues.join(" and ")}\n`;

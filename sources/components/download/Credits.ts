@@ -9,9 +9,8 @@ import {
 import { CollapsibleSection } from "../CollapsibleSection.ts";
 import { downloadFile } from "../../canvas/download.ts";
 
-export const Credits = {
-  view: function () {
-    // Collect credits from all selected items
+export const Credits: m.Component = {
+  view() {
     const allCredits = getAllCredits(state.selections, state.bodyType);
 
     return m(

@@ -1,9 +1,9 @@
 import { FiltersPanel } from "../../sources/components/FiltersPanel.ts";
 import { CollapsibleSection } from "../../sources/components/CollapsibleSection.ts";
-import { SearchControl } from "../../sources/components/filters/SearchControl.js";
-import { LicenseFilters } from "../../sources/components/filters/LicenseFilters.js";
-import { AnimationFilters } from "../../sources/components/filters/AnimationFilters.js";
-import { CurrentSelections } from "../../sources/components/selections/CurrentSelections.js";
+import { SearchControl } from "../../sources/components/filters/SearchControl.ts";
+import { LicenseFilters } from "../../sources/components/filters/LicenseFilters.ts";
+import { AnimationFilters } from "../../sources/components/filters/AnimationFilters.ts";
+import { CurrentSelections } from "../../sources/components/selections/CurrentSelections.ts";
 import { CategoryTree } from "../../sources/components/tree/CategoryTree.ts";
 import { expect } from "chai";
 import { describe, it, beforeEach } from "mocha-globals";

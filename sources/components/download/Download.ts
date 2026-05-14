@@ -22,11 +22,11 @@ import { isLayersReady } from "../../state/catalog.ts";
 const zipExportDisabled = () => !isLayersReady();
 const zipExportTitle = "Wait for layer data to finish loading";
 
-export const Download = {
-  view: function () {
+export const Download: m.Component = {
+  view() {
     const zipDisabled = zipExportDisabled();
-    // Export to clipboard
-    const exportToClipboard = async () => {
+
+    const exportToClipboard = async (): Promise<void> => {
       if (!window.canvasRenderer) return;
       try {
         const json = exportStateAsJSON(state, layers);
@@ -39,8 +39,7 @@ export const Download = {
       }
     };
 
-    // Import from clipboard
-    const importFromClipboard = async () => {
+    const importFromClipboard = async (): Promise<void> => {
       if (!window.canvasRenderer) return;
       try {
         const json = await navigator.clipboard.readText();
@@ -48,7 +47,7 @@ export const Download = {
         const imported = importStateFromJSON(json);
         Object.assign(state, imported);
 
-        m.redraw(); // Force Mithril to update the UI
+        m.redraw();
         alert("Imported successfully!");
       } catch (err) {
         console.error("Failed to import from clipboard:", err);
@@ -58,11 +57,8 @@ export const Download = {
       }
     };
 
-    // Save as PNG
     const saveAsPNG = () => {
       if (!window.canvasRenderer) return;
-
-      // Export offscreen canvas directly
       downloadAsPNG("character-spritesheet.png");
     };
 

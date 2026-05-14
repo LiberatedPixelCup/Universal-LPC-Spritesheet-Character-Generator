@@ -5,36 +5,48 @@ import { state } from "../../state/state.ts";
 import { isItemAnimationCompatible } from "../../state/filters.ts";
 import { ANIMATIONS } from "../../state/constants.ts";
 
+type AnimationOption = { value: string; label: string };
+type AnimationFiltersDeps = {
+  isItemAnimationCompatible: (itemId: string) => boolean;
+  animations: readonly AnimationOption[];
+};
+
 // Dependency injection for testability
-let deps = {
+const deps: AnimationFiltersDeps = {
   isItemAnimationCompatible,
   animations: ANIMATIONS,
 };
 
-export function setAnimationCompatible({ isItemAnimationCompatible }) {
-  deps.isItemAnimationCompatible = isItemAnimationCompatible;
+export function setAnimationCompatible(
+  overrides: Pick<AnimationFiltersDeps, "isItemAnimationCompatible">,
+): void {
+  deps.isItemAnimationCompatible = overrides.isItemAnimationCompatible;
 }
-export function isAnimationCompatible() {
-  return deps.isItemAnimationCompatible(...arguments);
+export function isAnimationCompatible(itemId: string): boolean {
+  return deps.isItemAnimationCompatible(itemId);
 }
 
-export function setAnimations(anims) {
+export function setAnimations(anims: readonly AnimationOption[]): void {
   deps.animations = anims;
 }
-export function getAnimations() {
+export function getAnimations(): readonly AnimationOption[] {
   return deps.animations;
 }
 
-export const AnimationFilters = {
-  oninit: function (vnode) {
-    vnode.state.isExpanded = false; // Start collapsed by default
+type AnimationFiltersState = { isExpanded: boolean };
+
+export const AnimationFilters: m.Component<
+  Record<string, never>,
+  AnimationFiltersState
+> = {
+  oninit(vnode) {
+    vnode.state.isExpanded = false;
   },
-  view: function (vnode) {
+  view(vnode) {
     const liteReady = isLiteReady();
 
-    // Function to remove incompatible items from selections
     const removeIncompatibleItems = () => {
-      const toRemove = [];
+      const toRemove: string[] = [];
       for (const [selectionGroup, selection] of Object.entries(
         state.selections,
       )) {
@@ -51,13 +63,11 @@ export const AnimationFilters = {
       }
     };
 
-    // Check if there are any incompatible selected items
     const incompatibleSelections = Object.values(state.selections).filter(
       (selection) => !isAnimationCompatible(selection.itemId),
     );
     const hasIncompatibleItems = incompatibleSelections.length > 0;
 
-    // Count how many animations are enabled
     const enabledCount = Object.values(state.enabledAnimations).filter(
       Boolean,
     ).length;
@@ -96,8 +106,9 @@ export const AnimationFilters = {
                     m("input[type=checkbox]", {
                       checked: state.enabledAnimations[anim.value],
                       disabled: !liteReady,
-                      onchange: (e) => {
-                        state.enabledAnimations[anim.value] = e.target.checked;
+                      onchange: (e: Event) => {
+                        const target = e.target as HTMLInputElement;
+                        state.enabledAnimations[anim.value] = target.checked;
                       },
                     }),
                     ` ${anim.label}`,

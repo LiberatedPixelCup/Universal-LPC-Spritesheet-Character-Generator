@@ -3,7 +3,7 @@ import {
   setAnimationCompatible,
   getAnimations,
   setAnimations,
-} from "../../../sources/components/filters/AnimationFilters.js";
+} from "../../../sources/components/filters/AnimationFilters.ts";
 import { state } from "../../../sources/state/state.ts";
 import { expect } from "chai";
 import sinon from "sinon";

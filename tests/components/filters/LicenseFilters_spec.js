@@ -3,7 +3,7 @@ import {
   setLicenseCompatible,
   getLicenseConfig,
   setLicenseConfig,
-} from "../../../sources/components/filters/LicenseFilters.js";
+} from "../../../sources/components/filters/LicenseFilters.ts";
 import { state } from "../../../sources/state/state.ts";
 import { expect } from "chai";
 import sinon from "sinon";
