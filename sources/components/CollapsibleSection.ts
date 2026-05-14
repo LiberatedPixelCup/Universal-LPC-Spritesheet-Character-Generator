@@ -6,6 +6,7 @@ export type CollapsibleSectionAttrs = {
   defaultOpen?: boolean;
   boxClass?: string;
   onToggle?: (isCollapsed: boolean) => void;
+  id?: string;
 };
 
 type CollapsibleSectionState = { isCollapsed: boolean };
@@ -19,7 +20,7 @@ export const CollapsibleSection: m.Component<
     vnode.state.isCollapsed = !defaultOpen;
   },
   view(vnode) {
-    const { title, boxClass = "box", onToggle } = vnode.attrs;
+    const { title, boxClass = "box", onToggle, id } = vnode.attrs;
     const { isCollapsed } = vnode.state;
 
     const toggleCollapse = () => {
@@ -32,7 +33,7 @@ export const CollapsibleSection: m.Component<
       }
     };
 
-    return m(`div.${boxClass}`, [
+    return m(`div.${boxClass}`, { id }, [
       // Collapsible header
       m(
         "div",

@@ -20,6 +20,7 @@ export const Credits = {
         title: "Credits & Attribution",
         defaultOpen: true,
         boxClass: "box",
+        id: "credits-section",
       },
       [
         m("p.is-size-7.mb-2", [
