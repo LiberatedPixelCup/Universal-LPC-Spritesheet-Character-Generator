@@ -69,8 +69,8 @@ import { initHashChangeListener } from "./state/hash.ts";
 
 // Import components
 import { App } from "./components/App.ts";
-import { AnimationPreview } from "./components/preview/AnimationPreview.js";
-import { FullSpritesheetPreview } from "./components/preview/FullSpritesheetPreview.js";
+import { AnimationPreview } from "./components/preview/AnimationPreview.ts";
+import { FullSpritesheetPreview } from "./components/preview/FullSpritesheetPreview.ts";
 
 // Import performance profiler
 import { PerformanceProfiler } from "./performance-profiler.ts";

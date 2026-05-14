@@ -1,5 +1,5 @@
 import m from "mithril";
-import { ScrollableContainer } from "../../../sources/components/preview/ScrollableContainer.js";
+import { ScrollableContainer } from "../../../sources/components/preview/ScrollableContainer.ts";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 

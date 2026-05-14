@@ -8,22 +8,33 @@ import {
   setPreviewAnimation,
   startPreviewAnimation,
   stopPreviewAnimation,
+  getCustomAnimations,
 } from "../../canvas/preview-animation.ts";
 import {
   initPreviewCanvas,
   setPreviewCanvasZoom,
 } from "../../canvas/preview-canvas.ts";
-import PinchToZoom from "./PinchToZoom.js";
-import { getCustomAnimations } from "../../canvas/preview-animation.ts";
-import { ScrollableContainer } from "./ScrollableContainer.js";
-import { PreviewMetadataLoadingOverlay } from "./PreviewMetadataLoadingOverlay.js";
+import PinchToZoom from "./PinchToZoom.ts";
+import { ScrollableContainer } from "./ScrollableContainer.ts";
+import { PreviewMetadataLoadingOverlay } from "./PreviewMetadataLoadingOverlay.ts";
 
-// Canvas wrapper component with its own lifecycle
-const PreviewCanvas = {
-  oncreate: function (vnode) {
-    const canvas = vnode.dom;
-    const selectedAnimation = vnode.attrs.selectedAnimation;
-    const onFrameCycleUpdate = vnode.attrs.onFrameCycleUpdate;
+type PreviewCanvasAttrs = {
+  selectedAnimation: string;
+  zoomLevel: number;
+  onFrameCycleUpdate: (frameCycle: string) => void;
+};
+
+type PreviewCanvasState = {
+  zoomLevel: number;
+  lastAnimation: string;
+  _pinchUnmounted: boolean;
+  pinch: PinchToZoom | null;
+};
+
+const PreviewCanvas: m.Component<PreviewCanvasAttrs, PreviewCanvasState> = {
+  oncreate(vnode) {
+    const canvas = vnode.dom as HTMLCanvasElement;
+    const { selectedAnimation, onFrameCycleUpdate } = vnode.attrs;
     const zoomLevel = vnode.attrs.zoomLevel || 1;
 
     if (!window.canvasRenderer) {
@@ -35,17 +46,17 @@ const PreviewCanvas = {
     const frames = setPreviewAnimation(selectedAnimation);
     startPreviewAnimation();
 
-    if (onFrameCycleUpdate && frames) {
+    if (frames) {
       onFrameCycleUpdate(frames.join("-"));
     }
 
     vnode.state.zoomLevel = zoomLevel;
     vnode.state.lastAnimation = selectedAnimation;
     vnode.state._pinchUnmounted = false;
+    vnode.state.pinch = null;
     PinchToZoom.create(
       canvas,
       (scale) => {
-        // Update zoom level on pinch
         vnode.state.zoomLevel = scale;
 
         if (window.canvasRenderer) {
@@ -64,15 +75,14 @@ const PreviewCanvas = {
       vnode.state.pinch = pinch;
     });
   },
-  onupdate: function (vnode) {
-    const selectedAnimation = vnode.attrs.selectedAnimation;
+  onupdate(vnode) {
+    const { selectedAnimation } = vnode.attrs;
 
-    // If animation changed, reinitialize canvas with new frameSize
     if (vnode.state.lastAnimation !== selectedAnimation) {
       if (window.canvasRenderer) {
         stopPreviewAnimation();
         setPreviewAnimation(selectedAnimation);
-        initPreviewCanvas(vnode.dom);
+        initPreviewCanvas(vnode.dom as HTMLCanvasElement);
         startPreviewAnimation();
       }
       vnode.state.lastAnimation = selectedAnimation;
@@ -81,25 +91,34 @@ const PreviewCanvas = {
     vnode.state.zoomLevel = state.previewCanvasZoomLevel || 1;
     repaintStaticPreviewFrameForTests();
   },
-  onremove: function (vnode) {
+  onremove(vnode) {
     vnode.state._pinchUnmounted = true;
     vnode.state.pinch?.destroy();
     vnode.state.pinch = null;
-    // Stop animation when canvas is removed from DOM
     if (window.canvasRenderer) {
       stopPreviewAnimation();
     }
   },
-  view: function () {
+  view() {
     return m("canvas#previewAnimations");
   },
 };
 
-export const AnimationPreview = {
-  oninit: function (vnode) {
+type AnimationOption = { value: string; label: string };
+
+type AnimationPreviewState = {
+  selectedAnimation: string;
+  zoomLevel: number;
+  frameCycle: string;
+};
+
+export const AnimationPreview: m.Component<
+  Record<string, never>,
+  AnimationPreviewState
+> = {
+  oninit(vnode) {
     vnode.state.selectedAnimation = "walk";
     vnode.state.zoomLevel = state.previewCanvasZoomLevel || 1;
-    // Initialize frame cycle for default animation
     if (window.canvasRenderer) {
       const frames = setPreviewAnimation("walk");
       vnode.state.frameCycle = frames ? frames.join("-") : "";
@@ -107,13 +126,12 @@ export const AnimationPreview = {
       vnode.state.frameCycle = "";
     }
   },
-  onupdate: function (vnode) {
+  onupdate(vnode) {
     vnode.state.zoomLevel = state.previewCanvasZoomLevel || 1;
   },
-  view: function (vnode) {
-    // Combine standard animations with custom animations from current render
+  view(vnode) {
     const customAnims = Object.keys(getCustomAnimations());
-    const allAnimations = [
+    const allAnimations: AnimationOption[] = [
       ...ANIMATIONS,
       ...customAnims.map((anim) => ({
         value: anim,
@@ -126,7 +144,6 @@ export const AnimationPreview = {
         (anim) => anim.value === vnode.state.selectedAnimation,
       )
     ) {
-      // Selected animation is no longer available, reset to default
       vnode.state.selectedAnimation = "walk";
       state.selectedAnimation = "walk";
       if (window.canvasRenderer) {
@@ -144,7 +161,6 @@ export const AnimationPreview = {
       },
       [
         m("div.columns.is-multiline", [
-          // Animation column
           m("div.column", [
             m("div.field.is-horizontal.is-align-items-center", [
               m("div.field-label.is-normal", [
@@ -158,14 +174,13 @@ export const AnimationPreview = {
                         "select",
                         {
                           value: vnode.state.selectedAnimation,
-                          onchange: (e) => {
-                            vnode.state.selectedAnimation = e.target.value;
+                          onchange: (e: Event) => {
+                            const target = e.target as HTMLSelectElement;
+                            vnode.state.selectedAnimation = target.value;
                             state.selectedAnimation =
                               vnode.state.selectedAnimation;
                             if (window.canvasRenderer) {
-                              const frames = setPreviewAnimation(
-                                e.target.value,
-                              );
+                              const frames = setPreviewAnimation(target.value);
                               vnode.state.frameCycle = frames
                                 ? frames.join("-")
                                 : "";
@@ -185,7 +200,6 @@ export const AnimationPreview = {
               ]),
             ]),
           ]),
-          // Zoom column
           m("div.column", [
             m("div.field.is-horizontal.is-align-items-center", [
               m("div.field-label.is-normal", [
@@ -202,8 +216,9 @@ export const AnimationPreview = {
                       max: 2,
                       step: 0.1,
                       value: vnode.state.zoomLevel,
-                      oninput: (e) => {
-                        vnode.state.zoomLevel = parseFloat(e.target.value);
+                      oninput: (e: Event) => {
+                        const target = e.target as HTMLInputElement;
+                        vnode.state.zoomLevel = parseFloat(target.value);
                         state.previewCanvasZoomLevel = vnode.state.zoomLevel;
                         if (window.canvasRenderer) {
                           setPreviewCanvasZoom(vnode.state.zoomLevel);

@@ -1,7 +1,7 @@
 import sinon from "sinon";
 import { assert } from "chai";
 import { describe, it, afterEach } from "mocha-globals";
-import PinchToZoom from "../../../sources/components/preview/PinchToZoom.js";
+import PinchToZoom from "../../../sources/components/preview/PinchToZoom.ts";
 
 const polyfilledDocs = new WeakSet();
 

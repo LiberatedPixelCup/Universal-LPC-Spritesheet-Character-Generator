@@ -2,21 +2,36 @@
 import m from "mithril";
 import { state } from "../../state/state.ts";
 import { CollapsibleSection } from "../CollapsibleSection.ts";
-import PinchToZoom from "./PinchToZoom.js";
+import PinchToZoom from "./PinchToZoom.ts";
 import {
   copyToPreviewCanvas,
   primeSpritesheetPreviewCanvasElement,
 } from "../../canvas/preview-canvas.ts";
 import { isOffscreenCanvasInitialized } from "../../canvas/renderer.ts";
-import { ScrollableContainer } from "./ScrollableContainer.js";
-import { PreviewMetadataLoadingOverlay } from "./PreviewMetadataLoadingOverlay.js";
+import { ScrollableContainer } from "./ScrollableContainer.ts";
+import { PreviewMetadataLoadingOverlay } from "./PreviewMetadataLoadingOverlay.ts";
+
+type SpritesheetCanvasAttrs = {
+  showTransparencyGrid: boolean;
+  applyTransparencyMask: boolean;
+  zoomLevel: number;
+};
+
+type SpritesheetCanvasState = {
+  zoomLevel: number;
+  pinch: PinchToZoom | null;
+  _pinchUnmounted: boolean;
+  _pinchCreatePromise: Promise<PinchToZoom> | null;
+};
 
 /**
- * Offscreen `canvas` in renderer.js is created in `initCanvas()` after index+lite
+ * Offscreen `canvas` in renderer.ts is created in `initCanvas()` after index+lite
  * metadata register; the spritesheet preview mounts earlier, so we defer PinchToZoom
  * and the first `copyToPreviewCanvas` until `isOffscreenCanvasInitialized()`.
  */
-function syncFullSpritesheetFromOffscreen(vnode) {
+function syncFullSpritesheetFromOffscreen(
+  vnode: m.VnodeDOM<SpritesheetCanvasAttrs, SpritesheetCanvasState>,
+): void {
   if (!window.canvasRenderer) {
     return;
   }
@@ -24,10 +39,9 @@ function syncFullSpritesheetFromOffscreen(vnode) {
     return;
   }
 
-  const domCanvas = vnode.dom;
-  const showTransparencyGrid = vnode.attrs.showTransparencyGrid;
-  const applyTransparencyMask = vnode.attrs.applyTransparencyMask;
-  const zoomLevel = vnode.attrs.zoomLevel;
+  const domCanvas = vnode.dom as HTMLCanvasElement;
+  const { showTransparencyGrid, applyTransparencyMask, zoomLevel } =
+    vnode.attrs;
 
   if (!vnode.state.pinch) {
     copyToPreviewCanvas(
@@ -59,9 +73,10 @@ function syncFullSpritesheetFromOffscreen(vnode) {
         vnode.state._pinchCreatePromise = null;
         if (vnode.state._pinchUnmounted) {
           pinch.destroy();
-          return;
+          return pinch;
         }
         vnode.state.pinch = pinch;
+        return pinch;
       });
     }
     return;
@@ -76,46 +91,52 @@ function syncFullSpritesheetFromOffscreen(vnode) {
   );
 }
 
-// Canvas wrapper component with its own lifecycle
-const SpritesheetCanvas = {
-  oncreate: function (vnode) {
+const SpritesheetCanvas: m.Component<
+  SpritesheetCanvasAttrs,
+  SpritesheetCanvasState
+> = {
+  oncreate(vnode) {
     vnode.state.zoomLevel = vnode.attrs.zoomLevel;
     vnode.state._pinchUnmounted = false;
-    primeSpritesheetPreviewCanvasElement(vnode.dom);
+    vnode.state.pinch = null;
+    vnode.state._pinchCreatePromise = null;
+    primeSpritesheetPreviewCanvasElement(vnode.dom as HTMLCanvasElement);
     if (!window.canvasRenderer) {
       console.error("Canvas renderer not available yet");
       return;
     }
     syncFullSpritesheetFromOffscreen(vnode);
   },
-  onupdate: function (vnode) {
+  onupdate(vnode) {
     if (!window.canvasRenderer) {
       return;
     }
     syncFullSpritesheetFromOffscreen(vnode);
   },
-  onremove: function (vnode) {
+  onremove(vnode) {
     vnode.state._pinchUnmounted = true;
     vnode.state.pinch?.destroy();
     vnode.state.pinch = null;
     vnode.state._pinchCreatePromise = null;
   },
-  view: function () {
+  view() {
     return m("canvas#spritesheet-preview");
   },
 };
 
-export const FullSpritesheetPreview = {
-  oninit: function (vnode) {
-    // Initialize zoom level to 1 (100%)
+type FullSpritesheetPreviewState = { zoomLevel: number };
+
+export const FullSpritesheetPreview: m.Component<
+  Record<string, never>,
+  FullSpritesheetPreviewState
+> = {
+  oninit(vnode) {
     vnode.state.zoomLevel = state.fullSpritesheetCanvasZoomLevel || 1;
   },
-  onupdate: function (vnode) {
-    // When state changes (selections, bodyType, etc.), preview canvas needs to update
-    // The SpritesheetCanvas component will handle the actual copy in its onupdate
+  onupdate(vnode) {
     vnode.state.zoomLevel = state.fullSpritesheetCanvasZoomLevel || 1;
   },
-  view: function (vnode) {
+  view(vnode) {
     return m(
       CollapsibleSection,
       {
@@ -125,18 +146,16 @@ export const FullSpritesheetPreview = {
       },
       [
         m("div.columns.is-mobile.is-variable.is-1.is-multiline", [
-          // Checkboxes column
           m(
             "div.column.is-narrow.is-flex.is-align-items-left.is-flex-direction-column",
             [
               m("div.my-1", [
-                // Show transparency grid checkbox
                 m("label.checkbox", [
                   m("input[type=checkbox]", {
                     checked: state.showTransparencyGrid,
-                    onchange: (e) => {
-                      state.showTransparencyGrid = e.target.checked;
-                      // Trigger re-render to update preview canvas
+                    onchange: (e: Event) => {
+                      const target = e.target as HTMLInputElement;
+                      state.showTransparencyGrid = target.checked;
                       m.redraw();
                     },
                   }),
@@ -144,13 +163,12 @@ export const FullSpritesheetPreview = {
                 ]),
               ]),
               m("div.mt-1", [
-                // Apply transparency mask checkbox
                 m("label.checkbox", [
                   m("input[type=checkbox]", {
                     checked: state.applyTransparencyMask,
-                    onclick: (e) => {
-                      state.applyTransparencyMask = e.target.checked;
-                      // Trigger re-render to update preview canvas
+                    onclick: (e: Event) => {
+                      const target = e.target as HTMLInputElement;
+                      state.applyTransparencyMask = target.checked;
                       m.redraw();
                     },
                   }),
@@ -159,7 +177,6 @@ export const FullSpritesheetPreview = {
               ]),
             ],
           ),
-          // Zoom column
           m("div.column", [
             m("div.field.is-horizontal.is-align-items-center", [
               m("div.field-label.is-normal", [
@@ -176,11 +193,11 @@ export const FullSpritesheetPreview = {
                       max: 2,
                       step: 0.1,
                       value: vnode.state.zoomLevel,
-                      oninput: (e) => {
-                        vnode.state.zoomLevel = parseFloat(e.target.value);
+                      oninput: (e: Event) => {
+                        const target = e.target as HTMLInputElement;
+                        vnode.state.zoomLevel = parseFloat(target.value);
                         state.fullSpritesheetCanvasZoomLevel =
                           vnode.state.zoomLevel;
-                        // Trigger re-render to update preview canvas zoom
                         m.redraw();
                       },
                     }),
