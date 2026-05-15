@@ -39,6 +39,17 @@ export type LoadError =
   | { kind: "loading"; chunk: ChunkName }
   | { kind: "not-found"; id: string };
 
+/** Human-readable description of a catalog `LoadError`. Shared formatter for
+ *  every getter that returns `Result<T, LoadError>`. Exhaustive over `kind`. */
+export function formatLoadError(e: LoadError): string {
+  switch (e.kind) {
+    case "loading":
+      return `chunk "${e.chunk}" not loaded`;
+    case "not-found":
+      return `item ${e.id} not in catalog`;
+  }
+}
+
 // ────────────────────────────────────────────────────────────────────────────
 // Catalog data shapes (audited from real consumer usage)
 // ────────────────────────────────────────────────────────────────────────────

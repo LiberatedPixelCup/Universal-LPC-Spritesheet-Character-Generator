@@ -4,7 +4,7 @@
 import { ok, err, type Result } from "neverthrow";
 import { loadImage, loadImagesInParallel } from "./load-image.ts";
 import type { LoadedImage } from "./load-image.ts";
-import { getSpritePath } from "../state/path.ts";
+import { getSpritePath, type PathError } from "../state/path.ts";
 import { getImageToDraw } from "./palette-recolor.ts";
 import { getMultiRecolors } from "../state/palettes.ts";
 import { get2DContext, getZPos } from "./canvas-utils.ts";
@@ -22,7 +22,11 @@ import {
 } from "./preview-animation.ts";
 import { getSortedLayersByAnim } from "../state/meta.ts";
 import type { AnimationLayer } from "../state/meta.ts";
-import { catalogReady, getItemMerged } from "../state/catalog.ts";
+import {
+  catalogReady,
+  formatLoadError,
+  getItemMerged,
+} from "../state/catalog.ts";
 import m from "mithril";
 import { debugWarn } from "../utils/debug.ts";
 import type { Selections } from "../state/state.ts";
@@ -48,11 +52,25 @@ const animationConfigByName = ANIMATION_CONFIGS as Record<
   AnimationConfig | undefined
 >;
 
+function formatPathError(itemId: string, e: PathError): string {
+  switch (e.kind) {
+    case "loading":
+    case "not-found":
+      return `getSpritePath: ${formatLoadError(e)} (item ${itemId})`;
+    case "missing-layer":
+      return `getSpritePath: item ${itemId} has no layer ${e.layerNum}`;
+    case "missing-bodytype-path":
+      return `getSpritePath: item ${itemId} has no path for bodyType ${e.bodyType}`;
+  }
+}
+
 /**
- * A standard-animation sprite item collected during `runRenderCharacter`. The
- * `customImage` variant (used for the user-uploaded sprite) carries an
- * already-loaded `HTMLImageElement` and has `spritePath: null`; everything else
- * resolves a path through `getSpritePath`.
+ * A standard-animation sprite item collected during `runRenderCharacter`.
+ *
+ * Invariant: `spritePath === null` iff `customImage !== undefined`. The
+ * customImage variant (user-uploaded sprite) carries an already-loaded
+ * `HTMLImageElement`; everything else resolves a path through `getSpritePath`.
+ * On `getSpritePath` err the entry is skipped (not pushed with a null path).
  */
 export type ItemToDraw = {
   itemId: string;
@@ -322,7 +340,7 @@ async function runRenderCharacter(
             if (!meta.animations.includes(animName)) continue;
           }
 
-          const spritePath = getSpritePath(
+          const pathResult = getSpritePath(
             itemId,
             variant ?? null,
             recolors,
@@ -331,14 +349,18 @@ async function runRenderCharacter(
             layerNum,
             selections,
             meta,
-          ).unwrapOr(null);
+          );
+          if (pathResult.isErr()) {
+            debugWarn(formatPathError(itemId, pathResult.error));
+            continue;
+          }
 
           itemsToDraw.push({
             itemId,
             name: selection.name,
             variant: variant ?? null,
             recolors,
-            spritePath,
+            spritePath: pathResult.value,
             zPos,
             layerNum,
             animation: animName,
@@ -766,7 +788,7 @@ export async function renderSingleItem(
     itemId: string;
     variant: string | null;
     recolors: Recolors;
-    spritePath: string | null;
+    spritePath: string;
     zPos: number;
     layerNum: number;
     animation: string;
@@ -798,7 +820,7 @@ export async function renderSingleItem(
         if (!meta.animations.includes(animName)) continue;
       }
 
-      const spritePath = getSpritePath(
+      const pathResult = getSpritePath(
         itemId,
         variant,
         recolors,
@@ -807,13 +829,17 @@ export async function renderSingleItem(
         layerNum,
         selections,
         meta,
-      ).unwrapOr(null);
+      );
+      if (pathResult.isErr()) {
+        debugWarn(formatPathError(itemId, pathResult.error));
+        continue;
+      }
 
       spritesToDraw.push({
         itemId,
         variant,
         recolors,
-        spritePath,
+        spritePath: pathResult.value,
         zPos,
         layerNum,
         animation: animName,
@@ -916,7 +942,7 @@ export async function renderSingleItemAnimation(
 
   // Build list of sprites to draw for this item & animation
   type AnimSprite = {
-    spritePath: string | null;
+    spritePath: string;
     zPos: number;
     layerNum: number;
     recolors: Recolors;
@@ -945,7 +971,7 @@ export async function renderSingleItemAnimation(
       if (!meta.animations.includes(animationName)) continue;
     }
 
-    const spritePath = getSpritePath(
+    const pathResult = getSpritePath(
       itemId,
       variant,
       recolors,
@@ -954,10 +980,14 @@ export async function renderSingleItemAnimation(
       layerNum,
       selections,
       meta,
-    ).unwrapOr(null);
+    );
+    if (pathResult.isErr()) {
+      debugWarn(formatPathError(itemId, pathResult.error));
+      continue;
+    }
 
     spritesToDraw.push({
-      spritePath,
+      spritePath: pathResult.value,
       zPos,
       layerNum,
       recolors,
