@@ -5,7 +5,7 @@
  *
  * Real sprite URLs (no global Image stub): avoids cache/global issues in the
  * shared `load-image` module. `try`/`finally` plus `resetRendererModuleState()`
- * (layers, itemsToDraw, customAreaItems, addedCustomAnimations, initCanvas) plus
+ * (drawCalls, customAreaItems, addedCustomAnimations, initCanvas) plus
  * `resetImageLoadCache()` and restoring the app catalog keep later specs
  * safe when this file is imported first (e.g. if test order is randomized later).
  */
@@ -17,8 +17,7 @@ import {
   renderCharacter,
   resetRenderCharacterQueueForTests,
   addedCustomAnimations,
-  layers as rendererLayers,
-  itemsToDraw,
+  drawCalls,
   customAreaItems,
 } from "../../sources/canvas/renderer.ts";
 import { resetImageLoadCache } from "../../sources/canvas/load-image.ts";
@@ -70,8 +69,7 @@ describe("canvas/renderer.ts issue #364 (addedCustomAnimations export)", () => {
 
   function resetRendererModuleState() {
     resetRenderCharacterQueueForTests();
-    rendererLayers.length = 0;
-    itemsToDraw.length = 0;
+    drawCalls.length = 0;
     for (const k of Object.keys(customAreaItems)) {
       delete customAreaItems[k];
     }

@@ -5,7 +5,7 @@ import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import {
   initCanvas,
   canvas as rendererCanvas,
-  layers,
+  drawCalls,
   SHEET_WIDTH,
   SHEET_HEIGHT,
   renderCharacter,
@@ -119,7 +119,7 @@ describe("state/zip.ts", () => {
 
     beforeEach(() => {
       resetState();
-      layers.length = 0;
+      drawCalls.length = 0;
 
       sandbox = sinon.createSandbox();
       window.canvasRenderer = {};
@@ -274,7 +274,7 @@ describe("state/zip.ts", () => {
 
     beforeEach(async () => {
       resetState();
-      layers.length = 0;
+      drawCalls.length = 0;
 
       await seedBrowserCatalogMergedOnDist(ZIP_SPEC_ITEM_METADATA);
 
@@ -655,7 +655,7 @@ describe("state/zip.ts", () => {
 
     beforeEach(async () => {
       resetState();
-      layers.length = 0;
+      drawCalls.length = 0;
 
       await seedBrowserCatalogMergedOnDist(ZIP_SPEC_ITEM_METADATA);
 
@@ -1135,7 +1135,7 @@ describe("state/zip.ts", () => {
 
     beforeEach(() => {
       resetState();
-      layers.length = 0;
+      drawCalls.length = 0;
 
       sandbox = sinon.createSandbox();
       window.canvasRenderer = {};

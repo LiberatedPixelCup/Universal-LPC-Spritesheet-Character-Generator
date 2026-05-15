@@ -17,9 +17,10 @@ import {
 } from "../canvas/canvas-utils.ts";
 import { debugLog, debugWarn } from "../utils/debug.ts";
 import { getAllCredits, creditsToTxt, creditsToCsv } from "./credits.ts";
-import { exportStateAsJSON } from "../state/json.ts";
+import { exportStateAsJSON, serializeLayersForJson } from "../state/json.ts";
 import type { ZipExportProfiler } from "../performance-profiler.ts";
 import type { State } from "../state/state.ts";
+import type { DrawCall } from "../canvas/renderer.ts";
 
 /**
  * Subset of the JSZip folder API consumed by these helpers and downstream
@@ -582,9 +583,12 @@ export function addCharacterJsonAndCredits(
   zip: ZipFolder,
   creditsFolder: ZipFolder,
   state: State,
-  layers: unknown[],
+  drawCalls: readonly DrawCall[],
 ): void {
-  zip.file("character.json", exportStateAsJSON(state, layers));
+  zip.file(
+    "character.json",
+    exportStateAsJSON(state, serializeLayersForJson(drawCalls)),
+  );
   const allCredits = getAllCredits(state.selections, state.bodyType);
   creditsFolder.file("credits.txt", creditsToTxt(allCredits));
   creditsFolder.file("credits.csv", creditsToCsv(allCredits));

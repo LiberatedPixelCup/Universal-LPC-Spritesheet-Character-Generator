@@ -11,7 +11,7 @@
 import {
   initCanvas,
   canvas as rendererCanvas,
-  layers,
+  drawCalls,
   SHEET_HEIGHT,
   SHEET_WIDTH,
   renderCharacter,
@@ -34,7 +34,7 @@ let fakeZip;
 
 async function runGoldens() {
   resetState();
-  layers.length = 0;
+  drawCalls.length = 0;
 
   await seedBrowserCatalogMergedOnDist(issue382ItemMetadata);
 

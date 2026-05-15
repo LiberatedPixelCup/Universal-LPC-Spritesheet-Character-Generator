@@ -11,7 +11,7 @@ import {
   renderSingleItemAnimation,
   SHEET_HEIGHT,
   canvas,
-  layers,
+  drawCalls,
   customAreaItems,
   addedCustomAnimations,
 } from "../canvas/renderer.ts";
@@ -175,7 +175,7 @@ export const exportSplitAnimations = async (
     }
 
     await profiler.phase("staticFiles", async () => {
-      addCharacterJsonAndCredits(zip, creditsFolder, state!, layers);
+      addCharacterJsonAndCredits(zip, creditsFolder, state!, drawCalls);
     });
 
     const metadata = {
@@ -295,7 +295,7 @@ export const exportSplitItemSheets = async (
     }
 
     await profiler.phase("staticFiles", async () => {
-      addCharacterJsonAndCredits(zip, creditsFolder, state!, layers);
+      addCharacterJsonAndCredits(zip, creditsFolder, state!, drawCalls);
     });
 
     const zipBlob = await zipGenerateBlobWithProfiler(profiler, zip);
@@ -551,7 +551,7 @@ export const exportSplitItemAnimations = async (
     }
 
     await profiler.phase("staticFiles", async () => {
-      addCharacterJsonAndCredits(zip, creditsFolder, state!, layers);
+      addCharacterJsonAndCredits(zip, creditsFolder, state!, drawCalls);
     });
 
     const metadata = {
@@ -857,7 +857,7 @@ export const exportIndividualFrames = async (
     );
 
     await profiler.phase("staticFiles", async () => {
-      addCharacterJsonAndCredits(zip, creditsFolder, state!, layers);
+      addCharacterJsonAndCredits(zip, creditsFolder, state!, drawCalls);
     });
 
     const metadata = {

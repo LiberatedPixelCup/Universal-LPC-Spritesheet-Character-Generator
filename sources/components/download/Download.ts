@@ -1,7 +1,7 @@
 // Download component
 import m from "mithril";
 import { state } from "../../state/state.ts";
-import { layers } from "../../canvas/renderer.ts";
+import { drawCalls } from "../../canvas/renderer.ts";
 import {
   getAllCredits,
   creditsToCsv,
@@ -9,7 +9,11 @@ import {
 } from "../../utils/credits.ts";
 import { CollapsibleSection } from "../CollapsibleSection.ts";
 import { downloadFile, downloadAsPNG } from "../../canvas/download.ts";
-import { importStateFromJSON, exportStateAsJSON } from "../../state/json.ts";
+import {
+  importStateFromJSON,
+  exportStateAsJSON,
+  serializeLayersForJson,
+} from "../../state/json.ts";
 import {
   exportSplitAnimations,
   exportSplitItemSheets,
@@ -29,7 +33,10 @@ export const Download: m.Component = {
     const exportToClipboard = async (): Promise<void> => {
       if (!window.canvasRenderer) return;
       try {
-        const json = exportStateAsJSON(state, layers);
+        const json = exportStateAsJSON(
+          state,
+          serializeLayersForJson(drawCalls),
+        );
         debugLog(json);
         await navigator.clipboard.writeText(json);
         alert("Exported to clipboard!");

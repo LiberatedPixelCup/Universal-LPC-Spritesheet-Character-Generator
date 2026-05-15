@@ -6,6 +6,70 @@ import {
 import { getAllCredits } from "../utils/credits.ts";
 import { state } from "./state.ts";
 import type { Selections, State } from "./state.ts";
+import type { DrawCall } from "../canvas/renderer.ts";
+
+/** Shape of a layer as it appears in the exported `character.json` manifest.
+ *  The live `HTMLImageElement` carried by `DrawCall.source` for custom uploads
+ *  is dropped, and the catalog `spritePath` is rewritten as a path relative to
+ *  the asset root (no `spritesheets/` URL prefix). */
+type SerializedLayerSource =
+  | { kind: "catalog"; spritePath: string }
+  | { kind: "custom" };
+
+export type SerializedLayer = {
+  itemId: string;
+  name?: string;
+  variant: string | null;
+  recolors?: DrawCall["recolors"];
+  zPos: number;
+  layerNum: number;
+  yPos: number;
+  needsRecolor?: boolean;
+  source: SerializedLayerSource;
+  supportedAnimations: string[];
+};
+
+/**
+ * Build the per-layer JSON manifest from the renderer's flat draw-call list.
+ * Deduplicates by `(itemId, layerNum)` — each unique layer appears once with
+ * its `supportedAnimations` aggregated from the draw calls that referenced it.
+ */
+export function serializeLayersForJson(
+  draws: readonly DrawCall[],
+): SerializedLayer[] {
+  const out: SerializedLayer[] = [];
+  for (const draw of draws) {
+    const existing = out.find(
+      (l) => l.itemId === draw.itemId && l.layerNum === draw.layerNum,
+    );
+    if (existing) {
+      existing.supportedAnimations.push(draw.animation);
+      continue;
+    }
+    const source: SerializedLayerSource =
+      draw.source.kind === "catalog"
+        ? {
+            kind: "catalog",
+            spritePath: draw.source.spritePath.substring(
+              "spritesheets/".length,
+            ),
+          }
+        : { kind: "custom" };
+    out.push({
+      itemId: draw.itemId,
+      name: draw.name,
+      variant: draw.variant,
+      recolors: draw.recolors,
+      zPos: draw.zPos,
+      layerNum: draw.layerNum,
+      yPos: draw.yPos,
+      needsRecolor: draw.needsRecolor,
+      source,
+      supportedAnimations: [draw.animation],
+    });
+  }
+  return out;
+}
 
 type CreditsByFile = ReturnType<typeof getAllCredits>;
 
