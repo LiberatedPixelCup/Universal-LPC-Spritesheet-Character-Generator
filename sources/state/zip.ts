@@ -379,7 +379,7 @@ export const exportSplitItemAnimations = async (
     const timestamp = zipExportTimestamp();
 
     state = (await import("./state.ts")).state; // Ensure state is loaded
-    state.zipByAnimimationAndItem.isRunning = true;
+    state.zipByAnimationAndItem.isRunning = true;
     m.redraw();
     beginZipExportUiSuspend();
     const bodyType = state.bodyType;
@@ -599,7 +599,7 @@ export const exportSplitItemAnimations = async (
   } finally {
     endZipExportUiSuspend();
     if (state) {
-      state.zipByAnimimationAndItem.isRunning = false;
+      state.zipByAnimationAndItem.isRunning = false;
     }
     m.redraw();
   }

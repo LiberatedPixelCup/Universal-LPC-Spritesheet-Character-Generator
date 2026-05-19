@@ -700,7 +700,7 @@ describe("state/zip.ts", () => {
       sandbox.restore();
       delete window.canvasRenderer;
       delete window.JSZip;
-      state.zipByAnimimationAndItem.isRunning = false;
+      state.zipByAnimationAndItem.isRunning = false;
     });
 
     it("calls addCanvasToZip for each matching item layer under standard/<anim>/ with file name and canvas (no crop rect)", async () => {

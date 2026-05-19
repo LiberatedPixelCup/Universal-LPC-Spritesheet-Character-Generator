@@ -58,9 +58,7 @@ export type State = {
   // transient (never saved)
   zipByAnimation: ZipMode;
   zipByItem: ZipMode;
-  // TODO: rename `zipByAnimimationAndItem` → `zipByAnimationAndItem`. Out of
-  // scope for this conversion: callers spell the same typo in zip.js / Download.js.
-  zipByAnimimationAndItem: ZipMode;
+  zipByAnimationAndItem: ZipMode;
   zipIndividualFrames: ZipMode;
   /** Duplicate of `isRenderingCharacter` consumed by `renderer.js`. */
   renderCharacter: { isRendering: boolean };
@@ -134,7 +132,7 @@ export const state: State = {
   // Following transient state should never be saved
   zipByAnimation: { isRunning: false },
   zipByItem: { isRunning: false },
-  zipByAnimimationAndItem: { isRunning: false },
+  zipByAnimationAndItem: { isRunning: false },
   zipIndividualFrames: { isRunning: false },
   renderCharacter: { isRendering: false },
 };

@@ -83,7 +83,7 @@ async function runGoldens() {
 
   await exportSplitItemAnimations();
   out.splitItemAnimations = sortedZipKeys(fakeZip);
-  state.zipByAnimimationAndItem.isRunning = false;
+  state.zipByAnimationAndItem.isRunning = false;
 
   await exportIndividualFrames();
   out.individualFrames = sortedZipKeys(fakeZip);

@@ -99,7 +99,7 @@ describe("state/zip.ts issue #382 regression (longsword + full outfit)", () => {
     await restoreAppCatalogAfterTest();
     state.zipByAnimation.isRunning = false;
     state.zipByItem.isRunning = false;
-    state.zipByAnimimationAndItem.isRunning = false;
+    state.zipByAnimationAndItem.isRunning = false;
     if (state.zipIndividualFrames) {
       state.zipIndividualFrames.isRunning = false;
     }

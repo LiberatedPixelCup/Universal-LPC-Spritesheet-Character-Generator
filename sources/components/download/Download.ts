@@ -139,7 +139,7 @@ export const Download: m.Component = {
             },
             "ZIP: Split by animation and item",
           ),
-          state.zipByAnimimationAndItem.isRunning ? m("span.loading") : null,
+          state.zipByAnimationAndItem.isRunning ? m("span.loading") : null,
           m(
             "button.button.is-small.is-info",
             {
