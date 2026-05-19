@@ -24,7 +24,10 @@ describe("SearchControl", function () {
   });
 
   it("renders a search input field", function () {
-    m.render(container, m(SearchControl));
+    m.render(
+      container,
+      m(SearchControl, { catalog: { isLiteReady: () => true } }),
+    );
 
     // Should render an input with type=search and placeholder attribute
     const input = container.querySelector(
@@ -34,7 +37,10 @@ describe("SearchControl", function () {
   });
 
   it("displays the label 'Search:'", function () {
-    m.render(container, m(SearchControl));
+    m.render(
+      container,
+      m(SearchControl, { catalog: { isLiteReady: () => true } }),
+    );
 
     // Should have a label with text "Search:"
     assert.include(container.textContent, "Search:");
@@ -43,7 +49,10 @@ describe("SearchControl", function () {
   it("input reflects current state value", function () {
     const test_query = "test query";
     state.searchQuery = test_query;
-    m.render(container, m(SearchControl));
+    m.render(
+      container,
+      m(SearchControl, { catalog: { isLiteReady: () => true } }),
+    );
 
     // Input value should match state
     const input = container.querySelector("input");

@@ -1,7 +1,7 @@
 // License Filters component
 import m from "mithril";
 import { state } from "../../state/state.ts";
-import { isCreditsReady, isLiteReady } from "../../state/catalog.ts";
+import type { CatalogReader } from "../../state/catalog.ts";
 import { isItemLicenseCompatible } from "../../state/filters.ts";
 import { LICENSE_CONFIG } from "../../state/constants.ts";
 
@@ -39,16 +39,19 @@ export function getLicenseConfig(): readonly LicenseOption[] {
 }
 
 type LicenseFiltersState = { isExpanded: boolean };
+type LicenseFiltersAttrs = {
+  catalog: Pick<CatalogReader, "isLiteReady" | "isCreditsReady">;
+};
 
 export const LicenseFilters: m.Component<
-  Record<string, never>,
+  LicenseFiltersAttrs,
   LicenseFiltersState
 > = {
   oninit(vnode) {
     vnode.state.isExpanded = false;
   },
   view(vnode) {
-    const liteReady = isLiteReady();
+    const liteReady = vnode.attrs.catalog.isLiteReady();
 
     const removeIncompatibleItems = () => {
       const toRemove: string[] = [];
@@ -68,7 +71,7 @@ export const LicenseFilters: m.Component<
       }
     };
 
-    const creditsReady = isCreditsReady();
+    const creditsReady = vnode.attrs.catalog.isCreditsReady();
 
     const incompatibleSelections = creditsReady
       ? Object.values(state.selections).filter(

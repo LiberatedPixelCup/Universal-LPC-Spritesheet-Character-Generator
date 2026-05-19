@@ -4,7 +4,7 @@ import m from "mithril";
 import "./styles/critical-entry.scss";
 import "./vendor-globals.ts";
 import { loadAllMetadata } from "./install-item-metadata.ts";
-import { catalogReady } from "./state/catalog.ts";
+import { catalogReady, defaultCatalog } from "./state/catalog.ts";
 
 // Import debug first so `window.DEBUG` is set before other modules run.
 import { debugLog, getDebugParam } from "./utils/debug.ts";
@@ -126,7 +126,10 @@ let hashHydrationInitDone = false;
 // Wait for DOM to be ready, then mount UI; catalog may already be loading or ready.
 document.addEventListener("DOMContentLoaded", () => {
   // Mount roots are static markup in index.html; assert non-null.
-  m.mount(document.getElementById("mithril-filters")!, App);
+  // App is the composition root for catalog DI — services pass through via attrs.
+  m.mount(document.getElementById("mithril-filters")!, {
+    view: () => m(App, { catalog: defaultCatalog }),
+  });
   m.mount(document.getElementById("mithril-preview")!, AnimationPreview);
   m.mount(
     document.getElementById("mithril-spritesheet-preview")!,

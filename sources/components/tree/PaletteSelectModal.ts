@@ -2,18 +2,22 @@ import m from "mithril";
 import classNames from "classnames";
 import { Result } from "neverthrow";
 import { drawRecolorPreview } from "../../canvas/palette-recolor.ts";
-import {
-  chunkReady,
-  getItemMerged,
-  getPaletteMetadata,
+import type {
+  CatalogReader,
+  ItemMerged,
+  PaletteMetadata,
+  LoadError,
 } from "../../state/catalog.ts";
-import type { ItemMerged, PaletteMetadata } from "../../state/catalog.ts";
 import { renderResult } from "../../utils/render-result.ts";
-import type { LoadError } from "../../state/catalog.ts";
 import { state, getSelectionGroup } from "../../state/state.ts";
 import { ucwords } from "../../utils/helpers.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
 import type { PaletteOption } from "../../state/palettes.ts";
+
+type PaletteSelectModalCatalog = Pick<
+  CatalogReader,
+  "chunkReady" | "getItemMerged" | "getPaletteMetadata"
+>;
 
 type RootViewState = {
   palettePreviewGateSeq?: number;
@@ -37,6 +41,7 @@ export type PaletteSelectModalAttrs = {
   rootViewNode: RootViewRef;
   onClose: () => void;
   onSelect: (recolor: string) => void;
+  catalog: PaletteSelectModalCatalog;
 };
 
 /**
@@ -298,17 +303,17 @@ function renderModal(
 
 export const PaletteSelectModal: m.Component<PaletteSelectModalAttrs> = {
   view(vnode) {
-    const { itemId, onClose } = vnode.attrs;
+    const { itemId, onClose, catalog } = vnode.attrs;
     // Order matters: Result.combine short-circuits to the first Err. We
     // surface a different loading message depending on which chunk is
     // missing (matches the legacy two-stage UX: palette first, then layer).
     return renderResult(
       Result.combine([
-        chunkReady("palette"),
-        chunkReady("lite"),
-        chunkReady("layers"),
-        getPaletteMetadata(),
-        getItemMerged(itemId),
+        catalog.chunkReady("palette"),
+        catalog.chunkReady("lite"),
+        catalog.chunkReady("layers"),
+        catalog.getPaletteMetadata(),
+        catalog.getItemMerged(itemId),
       ]),
       ([, , , paletteMeta, meta]) =>
         renderModal(vnode.attrs, paletteMeta, meta),

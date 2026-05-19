@@ -3,7 +3,10 @@ import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { CurrentSelections } from "../../../sources/components/selections/CurrentSelections.ts";
 import { state } from "../../../sources/state/state.ts";
-import { resetCatalogForTests } from "../../../sources/state/catalog.ts";
+import {
+  defaultCatalog,
+  resetCatalogForTests,
+} from "../../../sources/state/catalog.ts";
 import {
   resetState,
   setEnabledLicenses,
@@ -35,7 +38,7 @@ describe("CurrentSelections", function () {
   it("shows loading copy when item list (lite) is not ready", function () {
     resetCatalogForTests();
 
-    m.render(host, m(CurrentSelections));
+    m.render(host, m(CurrentSelections, { catalog: defaultCatalog }));
 
     assert.include(host.textContent, "Current Selections");
     assert.include(host.textContent, "Loading item list…");
@@ -54,7 +57,7 @@ describe("CurrentSelections", function () {
     });
     state.selections = {};
 
-    m.render(host, m(CurrentSelections));
+    m.render(host, m(CurrentSelections, { catalog: defaultCatalog }));
 
     assert.include(host.textContent, "No items selected yet");
     assert.strictEqual(host.querySelector(".tag"), null);
@@ -84,7 +87,7 @@ describe("CurrentSelections", function () {
       coat: { itemId: "sel_coat", name: "Winter Coat (long)" },
     };
 
-    m.render(host, m(CurrentSelections));
+    m.render(host, m(CurrentSelections, { catalog: defaultCatalog }));
 
     const heading = host.querySelector("h3.title");
     assert.notEqual(heading, null);
@@ -126,7 +129,7 @@ describe("CurrentSelections", function () {
       misc: { itemId: "sel_gpl_item", name: "GPL Asset" },
     };
 
-    m.render(host, m(CurrentSelections));
+    m.render(host, m(CurrentSelections, { catalog: defaultCatalog }));
 
     const tag = host.querySelector("span.tag.is-medium.is-warning");
     assert.notEqual(tag, null);
@@ -152,7 +155,7 @@ describe("CurrentSelections", function () {
       hat: { itemId: "sel_walk_only", name: "Walk Only" },
     };
 
-    m.render(host, m(CurrentSelections));
+    m.render(host, m(CurrentSelections, { catalog: defaultCatalog }));
 
     const tag = host.querySelector("span.tag.is-medium.is-warning");
     assert.notEqual(tag, null);
@@ -175,7 +178,7 @@ describe("CurrentSelections", function () {
       only: { itemId: "sel_a", name: "Item A" },
     };
 
-    m.render(host, m(CurrentSelections));
+    m.render(host, m(CurrentSelections, { catalog: defaultCatalog }));
 
     const del = host.querySelector("button.delete.is-small");
     assert.notEqual(del, null);
@@ -183,7 +186,7 @@ describe("CurrentSelections", function () {
 
     assert.deepEqual(state.selections, {});
     // `m.render` roots do not always redraw after inline handlers in tests; re-sync the tree.
-    m.render(host, m(CurrentSelections));
+    m.render(host, m(CurrentSelections, { catalog: defaultCatalog }));
     assert.include(host.textContent, "No items selected yet");
   });
 });

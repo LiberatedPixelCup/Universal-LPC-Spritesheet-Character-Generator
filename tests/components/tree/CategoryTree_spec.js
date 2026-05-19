@@ -4,6 +4,7 @@ import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { CategoryTree } from "../../../sources/components/tree/CategoryTree.ts";
 import { state } from "../../../sources/state/state.ts";
 import {
+  defaultCatalog,
   resetCatalogForTests,
   registerFromIndexModule,
   registerFromPaletteModule,
@@ -38,7 +39,7 @@ describe("CategoryTree", function () {
   it("shows loading panel until the category index is ready", function () {
     resetCatalogForTests();
 
-    m.render(host, m(CategoryTree));
+    m.render(host, m(CategoryTree, { catalog: defaultCatalog }));
 
     assert.ok(host.querySelector(".category-tree-loading-overlay"));
     assert.strictEqual(
@@ -66,7 +67,7 @@ describe("CategoryTree", function () {
       paletteMetadata: { versions: {}, materials: {} },
     });
 
-    m.render(host, m(CategoryTree));
+    m.render(host, m(CategoryTree, { catalog: defaultCatalog }));
 
     const expandBtn = [...host.querySelectorAll("button")].find(
       (b) => b.textContent.trim() === "Expand Selected",
@@ -100,7 +101,7 @@ describe("CategoryTree", function () {
     );
     state.expandedNodes.Gear = true;
 
-    m.render(host, m(CategoryTree));
+    m.render(host, m(CategoryTree, { catalog: defaultCatalog }));
 
     assert.strictEqual(
       host.querySelector("h3.title")?.textContent?.trim(),
@@ -170,7 +171,7 @@ describe("CategoryTree", function () {
     };
     state.expandedNodes = {};
 
-    m.render(host, m(CategoryTree));
+    m.render(host, m(CategoryTree, { catalog: defaultCatalog }));
 
     const expandBtn = [...host.querySelectorAll("button")].find(
       (b) => b.textContent.trim() === "Expand Selected",
@@ -205,7 +206,7 @@ describe("CategoryTree", function () {
     );
     state.expandedNodes = { Gear: true };
 
-    m.render(host, m(CategoryTree));
+    m.render(host, m(CategoryTree, { catalog: defaultCatalog }));
 
     const collapseBtn = [...host.querySelectorAll("button")].find(
       (b) => b.textContent.trim() === "Collapse All",

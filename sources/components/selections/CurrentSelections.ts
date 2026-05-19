@@ -1,19 +1,23 @@
 // Current selections component
 import m from "mithril";
-import {
-  getItemMerged,
-  isCreditsReady,
-  isLiteReady,
-} from "../../state/catalog.ts";
+import type { CatalogReader } from "../../state/catalog.ts";
 import { state } from "../../state/state.ts";
 import {
   isItemLicenseCompatible,
   isItemAnimationCompatible,
 } from "../../state/filters.ts";
 
-export const CurrentSelections: m.Component = {
-  view() {
-    if (!isLiteReady()) {
+type CurrentSelectionsAttrs = {
+  catalog: Pick<
+    CatalogReader,
+    "isLiteReady" | "isCreditsReady" | "getItemMerged"
+  >;
+};
+
+export const CurrentSelections: m.Component<CurrentSelectionsAttrs> = {
+  view(vnode) {
+    const { catalog } = vnode.attrs;
+    if (!catalog.isLiteReady()) {
       return m("div", [
         m("h3.title.is-5", "Current Selections"),
         m("p.is-size-7.has-text-grey", "Loading item list…"),
@@ -29,7 +33,7 @@ export const CurrentSelections: m.Component = {
       ]);
     }
 
-    const creditsReady = isCreditsReady();
+    const creditsReady = catalog.isCreditsReady();
 
     return m("div", [
       m("h3.title.is-5", "Current Selections"),
@@ -39,7 +43,7 @@ export const CurrentSelections: m.Component = {
           const isLicenseCompatible = isItemLicenseCompatible(selection.itemId);
           const isAnimCompatible = isItemAnimationCompatible(selection.itemId);
           const isCompatible = isLicenseCompatible && isAnimCompatible;
-          const metaResult = getItemMerged(selection.itemId);
+          const metaResult = catalog.getItemMerged(selection.itemId);
           const meta = metaResult.isOk() ? metaResult.value : null;
 
           const allLicenses = new Set<string>();

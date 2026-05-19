@@ -1,6 +1,6 @@
 // Animation Filters component
 import m from "mithril";
-import { isLiteReady } from "../../state/catalog.ts";
+import type { CatalogReader } from "../../state/catalog.ts";
 import { state } from "../../state/state.ts";
 import { isItemAnimationCompatible } from "../../state/filters.ts";
 import { ANIMATIONS } from "../../state/constants.ts";
@@ -34,16 +34,19 @@ export function getAnimations(): readonly AnimationOption[] {
 }
 
 type AnimationFiltersState = { isExpanded: boolean };
+type AnimationFiltersAttrs = {
+  catalog: Pick<CatalogReader, "isLiteReady">;
+};
 
 export const AnimationFilters: m.Component<
-  Record<string, never>,
+  AnimationFiltersAttrs,
   AnimationFiltersState
 > = {
   oninit(vnode) {
     vnode.state.isExpanded = false;
   },
   view(vnode) {
-    const liteReady = isLiteReady();
+    const liteReady = vnode.attrs.catalog.isLiteReady();
 
     const removeIncompatibleItems = () => {
       const toRemove: string[] = [];

@@ -63,7 +63,10 @@ describe("AnimationFilters Component", () => {
     ).length;
     const totalCount = getAnimations().length;
 
-    m.render(container, m(AnimationFilters));
+    m.render(
+      container,
+      m(AnimationFilters, { catalog: { isLiteReady: () => true } }),
+    );
 
     const labelText = container.querySelector(
       ".tree-label .is-size-7",
@@ -82,7 +85,9 @@ describe("AnimationFilters Component", () => {
       anim1: true,
     };
 
-    m.mount(container, AnimationFilters);
+    m.mount(container, {
+      view: () => m(AnimationFilters, { catalog: { isLiteReady: () => true } }),
+    });
 
     const expandButton = container.querySelector("span.tree-arrow");
     expandButton.click(); // Expand to show content
@@ -110,7 +115,9 @@ describe("AnimationFilters Component", () => {
       anim1: true,
     };
 
-    m.mount(container, AnimationFilters);
+    m.mount(container, {
+      view: () => m(AnimationFilters, { catalog: { isLiteReady: () => true } }),
+    });
 
     const expandButton = container.querySelector("span.tree-arrow");
     expandButton.click(); // Expand to show content
