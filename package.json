@@ -80,6 +80,9 @@
     "vite-plugin-testem": "^1.0.1"
   },
   "overrides": {
+    "minimatch@^10.2.5": {
+      "brace-expansion": "^5.0.6"
+    },
     "mocha": {
       "diff": "^8.0.3",
       "minimatch": "^9.0.7",
