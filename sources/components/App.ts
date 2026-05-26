@@ -11,10 +11,10 @@ import { renderCharacter } from "../canvas/renderer.ts";
 
 /**
  * App is the composition root for catalog DI. main.ts mounts it with the
- * `defaultCatalog` instance; App threads narrow slices down to children that
- * have migrated to receive `catalog` via attrs (so far: FiltersPanel and its
- * subtree). Children that still import from `state/catalog.ts` directly are
- * unaffected — they read the same `defaultCatalog` state under the hood.
+ * `defaultCatalog` instance; App threads catalog down to children that have
+ * migrated to receive it via attrs. Children that still import from
+ * `state/catalog.ts` directly are unaffected — they read the same
+ * `defaultCatalog` state under the hood.
  */
 type AppAttrs = { catalog: CatalogReader };
 
@@ -46,7 +46,7 @@ export const App: m.Component<AppAttrs, AppState> = {
       currentCustomImage !== vnode.state.prevCustomImage ||
       currentCustomZPos !== vnode.state.prevCustomZPos
     ) {
-      syncSelectionsToHash();
+      syncSelectionsToHash(vnode.attrs.catalog);
       if (window.canvasRenderer) {
         // Render to offscreen canvas (async)
         renderCharacter(state.selections, state.bodyType).then(() => {
@@ -66,7 +66,7 @@ export const App: m.Component<AppAttrs, AppState> = {
     return m("div", [
       m(Download, { catalog: vnode.attrs.catalog }),
       m(FiltersPanel, { catalog: vnode.attrs.catalog }),
-      m(Credits),
+      m(Credits, { catalog: vnode.attrs.catalog }),
       m(AdvancedTools),
     ]);
   },

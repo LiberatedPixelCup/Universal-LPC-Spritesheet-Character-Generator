@@ -6,10 +6,13 @@ import {
   resetPathDeps,
 } from "../../sources/state/path.ts";
 import {
-  loadCatalogFromFixtures,
+  defaultCatalog,
   resetCatalogForTests,
 } from "../../sources/state/catalog.ts";
-import { restoreAppCatalogAfterTest } from "../browser-catalog-fixture.js";
+import {
+  restoreAppCatalogAfterTest,
+  seedBrowserCatalog,
+} from "../browser-catalog-fixture.js";
 import { es6DynamicTemplate } from "../../sources/utils/helpers.ts";
 import { err } from "neverthrow";
 import { expect } from "chai";
@@ -21,6 +24,30 @@ describe("state/path.ts", () => {
     resetCatalogForTests();
     resetPathDeps();
   });
+
+  function seedTemplateCatalog() {
+    seedBrowserCatalog({
+      headItem: {
+        type_name: "head",
+        name: "human",
+        variants: ["head"],
+        layers: {},
+        credits: [],
+      },
+      bodyItem: {
+        type_name: "body",
+        name: "shirt",
+        variants: ["red"],
+        layers: {},
+        credits: [],
+      },
+    });
+  }
+
+  const templateSelections = {
+    head: { itemId: "headItem", variant: "head" },
+    body: { itemId: "bodyItem", variant: "red" },
+  };
 
   afterEach(async () => {
     resetPathDeps();
@@ -67,70 +94,32 @@ describe("state/path.ts", () => {
   describe("replaceInPath", () => {
     it("returns the path unchanged when it has no template placeholders", () => {
       const meta = { replace_in_path: {} };
-      expect(replaceInPath("sprites/foo/bar", {}, meta)).to.equal(
-        "sprites/foo/bar",
-      );
+      expect(
+        replaceInPath(defaultCatalog, "sprites/foo/bar", {}, meta),
+      ).to.equal("sprites/foo/bar");
     });
 
-    it("resolves ${} segments using stubbed hash params and meta.replace_in_path", () => {
-      setPathDeps({
-        getHashParamsforSelections: () => ({ head: "human_head" }),
-      });
+    it("resolves ${} segments using catalog hash params and meta.replace_in_path", () => {
+      seedTemplateCatalog();
       const meta = {
         replace_in_path: {
           head: { human: "humanoid" },
         },
       };
-      expect(replaceInPath("base/${head}/tail", {}, meta)).to.equal(
-        "base/humanoid/tail",
-      );
-    });
-
-    it("resolves ${} using catalog byTypeName for name stripping", () => {
-      loadCatalogFromFixtures({
-        itemMetadata: {
-          x: {
-            type_name: "head",
-            name: "Human",
-            variants: ["head", "red"],
-            layers: {},
-            credits: [],
-          },
-        },
-        aliasMetadata: {},
-        categoryTree: { items: [], children: {} },
-        metadataIndexes: {
-          byTypeName: {
-            head: [
-              {
-                itemId: "x",
-                type_name: "head",
-                name: "Human",
-                variants: ["head", "red"],
-                recolors: [],
-              },
-            ],
-          },
-        },
-        paletteMetadata: { versions: {}, materials: {} },
-      });
-      setPathDeps({
-        getHashParamsforSelections: () => ({ head: "human_head" }),
-      });
-      const meta = {
-        replace_in_path: {
-          head: { human: "humanoid" },
-        },
-      };
-      expect(replaceInPath("base/${head}/tail", {}, meta)).to.equal(
-        "base/humanoid/tail",
-      );
+      expect(
+        replaceInPath(
+          defaultCatalog,
+          "base/${head}/tail",
+          templateSelections,
+          meta,
+        ),
+      ).to.equal("base/humanoid/tail");
     });
 
     it("calls debugLog when a placeholder has no replacement", () => {
+      seedTemplateCatalog();
       const debugLog = sinon.stub();
       setPathDeps({
-        getHashParamsforSelections: () => ({ head: "human_head" }),
         debugLog,
       });
       const meta = {
@@ -138,92 +127,98 @@ describe("state/path.ts", () => {
           head: {},
         },
       };
-      replaceInPath("base/${head}/tail", {}, meta);
+      replaceInPath(
+        defaultCatalog,
+        "base/${head}/tail",
+        templateSelections,
+        meta,
+      );
       expect(debugLog.calledOnce).to.be.true;
       expect(debugLog.firstCall.args[0]).to.include("head");
     });
 
     it("resolves multiple placeholders in one path", () => {
-      setPathDeps({
-        getHashParamsforSelections: () => ({
-          head: "human_head",
-          body: "shirt_red",
-        }),
-      });
+      seedTemplateCatalog();
       const meta = {
         replace_in_path: {
           head: { human: "h1" },
           body: { shirt: "s1" },
         },
       };
-      expect(replaceInPath("pre/${head}/mid/${body}/tail", {}, meta)).to.equal(
-        "pre/h1/mid/s1/tail",
-      );
+      expect(
+        replaceInPath(
+          defaultCatalog,
+          "pre/${head}/mid/${body}/tail",
+          templateSelections,
+          meta,
+        ),
+      ).to.equal("pre/h1/mid/s1/tail");
     });
 
     it("ignores extra hash keys that do not appear in the path", () => {
-      setPathDeps({
-        getHashParamsforSelections: () => ({
-          head: "human_head",
-          body: "shirt_red",
-        }),
-      });
+      seedTemplateCatalog();
       const meta = {
         replace_in_path: {
           head: { human: "humanoid" },
         },
       };
-      expect(replaceInPath("base/${head}/tail", {}, meta)).to.equal(
-        "base/humanoid/tail",
-      );
+      expect(
+        replaceInPath(
+          defaultCatalog,
+          "base/${head}/tail",
+          templateSelections,
+          meta,
+        ),
+      ).to.equal("base/humanoid/tail");
     });
 
-    it("passes an empty object to getHashParamsforSelections when selections is null or undefined", () => {
-      const getHashParamsforSelections = sinon.stub().returns({
-        head: "human_head",
-      });
-      setPathDeps({ getHashParamsforSelections });
+    it("treats null or undefined selections as empty", () => {
+      seedTemplateCatalog();
       const meta = {
         replace_in_path: {
           head: { human: "x" },
         },
       };
-      replaceInPath("p/${head}/q", null, meta);
-      expect(getHashParamsforSelections.firstCall.args[0]).to.deep.equal({});
-      getHashParamsforSelections.resetHistory();
-      replaceInPath("p/${head}/q", undefined, meta);
-      expect(getHashParamsforSelections.firstCall.args[0]).to.deep.equal({});
+      expect(replaceInPath(defaultCatalog, "p/${head}/q", null, meta)).to.equal(
+        "p/${head}/q",
+      );
+      expect(
+        replaceInPath(defaultCatalog, "p/${head}/q", undefined, meta),
+      ).to.equal("p/${head}/q");
     });
 
     it("leaves placeholders unchanged when the hash omits that key", () => {
-      setPathDeps({
-        getHashParamsforSelections: () => ({}),
-      });
+      seedTemplateCatalog();
       const meta = {
         replace_in_path: {
           head: { human: "humanoid" },
         },
       };
-      expect(replaceInPath("base/${head}/tail", {}, meta)).to.equal(
-        "base/${head}/tail",
-      );
+      expect(
+        replaceInPath(defaultCatalog, "base/${head}/tail", {}, meta),
+      ).to.equal("base/${head}/tail");
     });
 
     it("throws when meta.replace_in_path is missing", () => {
-      setPathDeps({
-        getHashParamsforSelections: () => ({ head: "human_head" }),
-      });
-      expect(() => replaceInPath("base/${head}/tail", {}, {})).to.throw();
+      seedTemplateCatalog();
+      expect(() =>
+        replaceInPath(
+          defaultCatalog,
+          "base/${head}/tail",
+          templateSelections,
+          {},
+        ),
+      ).to.throw();
     });
 
     it("invokes es6DynamicTemplate with the path and replacement map", () => {
+      seedTemplateCatalog();
       const es6Spy = sinon
         .stub()
         .callsFake((path, replacements) =>
           es6DynamicTemplate(path, replacements),
         );
       setPathDeps({
-        getHashParamsforSelections: () => ({ head: "human_head" }),
         es6DynamicTemplate: es6Spy,
       });
       const meta = {
@@ -232,19 +227,22 @@ describe("state/path.ts", () => {
         },
       };
       const path = "base/${head}/tail";
-      expect(replaceInPath(path, {}, meta)).to.equal("base/humanoid/tail");
+      expect(
+        replaceInPath(defaultCatalog, path, templateSelections, meta),
+      ).to.equal("base/humanoid/tail");
       expect(es6Spy.calledOnce).to.be.true;
       expect(es6Spy.firstCall.args[0]).to.equal(path);
-      expect(es6Spy.firstCall.args[1]).to.deep.equal({ head: "humanoid" });
+      expect(es6Spy.firstCall.args[1]).to.include({ head: "humanoid" });
     });
   });
 
   describe("getSpritePath", () => {
     it("forwards the LoadError when item metadata is missing", () => {
-      setPathDeps({
-        getItemMetadata: () => err({ kind: "not-found", id: "missing_id" }),
-      });
+      const catalog = {
+        getItemMerged: () => err({ kind: "not-found", id: "missing_id" }),
+      };
       const r = getSpritePath(
+        catalog,
         "missing_id",
         "v",
         null,
@@ -260,7 +258,17 @@ describe("state/path.ts", () => {
 
     it("returns a missing-layer error when the requested layer is absent", () => {
       const meta = { layers: {} };
-      const r = getSpritePath("id", "v", null, "male", "walk", 2, {}, meta);
+      const r = getSpritePath(
+        defaultCatalog,
+        "id",
+        "v",
+        null,
+        "male",
+        "walk",
+        2,
+        {},
+        meta,
+      );
       expect(r.isErr()).to.be.true;
       if (r.isErr()) {
         expect(r.error).to.deep.equal({ kind: "missing-layer", layerNum: 2 });
@@ -273,7 +281,17 @@ describe("state/path.ts", () => {
           layer_1: { female: "path/" },
         },
       };
-      const r = getSpritePath("id", "v", null, "male", "walk", 1, {}, meta);
+      const r = getSpritePath(
+        defaultCatalog,
+        "id",
+        "v",
+        null,
+        "male",
+        "walk",
+        1,
+        {},
+        meta,
+      );
       expect(r.isErr()).to.be.true;
       if (r.isErr()) {
         expect(r.error).to.deep.equal({
@@ -297,6 +315,7 @@ describe("state/path.ts", () => {
       });
       expect(
         getSpritePath(
+          defaultCatalog,
           "item",
           "light brown",
           null,
@@ -325,6 +344,7 @@ describe("state/path.ts", () => {
       });
       expect(
         getSpritePath(
+          defaultCatalog,
           "item",
           "v",
           null,
@@ -351,6 +371,7 @@ describe("state/path.ts", () => {
       });
       expect(
         getSpritePath(
+          defaultCatalog,
           "shirt_blue_red",
           null,
           null,
@@ -376,6 +397,7 @@ describe("state/path.ts", () => {
       });
       expect(
         getSpritePath(
+          defaultCatalog,
           "id",
           "v",
           true,
@@ -389,6 +411,7 @@ describe("state/path.ts", () => {
     });
 
     it("runs replaceInPath when the layer path contains ${}", () => {
+      seedTemplateCatalog();
       const meta = {
         layers: {
           layer_1: {
@@ -400,19 +423,19 @@ describe("state/path.ts", () => {
         },
       };
       setPathDeps({
-        getHashParamsforSelections: () => ({ head: "human_head" }),
         variantToFilename: (v) => v,
         animations: [{ value: "idle", label: "Idle" }],
       });
       expect(
         getSpritePath(
+          defaultCatalog,
           "item",
           "v",
           null,
           "male",
           "idle",
           1,
-          {},
+          templateSelections,
           meta,
         )._unsafeUnwrap(),
       ).to.equal("spritesheets/prefix/humanoid/idle/v.png");

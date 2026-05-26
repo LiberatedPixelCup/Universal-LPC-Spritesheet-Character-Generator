@@ -334,6 +334,7 @@ async function runRenderCharacter(
           }
 
           const pathResult = getSpritePath(
+            defaultCatalog,
             itemId,
             variant ?? null,
             recolors,
@@ -793,6 +794,7 @@ export async function renderSingleItem(
       }
 
       const pathResult = getSpritePath(
+        defaultCatalog,
         itemId,
         variant,
         recolors,
@@ -944,6 +946,7 @@ export async function renderSingleItemAnimation(
     }
 
     const pathResult = getSpritePath(
+      defaultCatalog,
       itemId,
       variant,
       recolors,

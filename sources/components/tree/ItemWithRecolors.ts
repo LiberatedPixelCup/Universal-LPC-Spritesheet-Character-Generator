@@ -5,11 +5,15 @@ import { state, getSelectionGroup, selectItem } from "../../state/state.ts";
 import type { CatalogReader, ItemMerged } from "../../state/catalog.ts";
 import { drawRecolorPreview } from "../../canvas/palette-recolor.ts";
 import { getPaletteOptions } from "../../state/palettes.ts";
-import { PaletteSelectModal } from "./PaletteSelectModal.ts";
+import {
+  PaletteSelectModal,
+  type PaletteSelectModalCatalog,
+} from "./PaletteSelectModal.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
 
-// Forwarder: own use is just `isPaletteReady`, but it forwards a wider slice
-// to PaletteSelectModal. Full reader keeps the contract simple; leaf narrows.
+export type ItemWithRecolorsCatalog = Pick<CatalogReader, "isPaletteReady"> &
+  PaletteSelectModalCatalog;
+
 export type ItemWithRecolorsAttrs = {
   itemId: string;
   meta: ItemMerged;
@@ -17,7 +21,7 @@ export type ItemWithRecolorsAttrs = {
   isCompatible: boolean;
   tooltipText: string;
   showItemTooltips?: boolean;
-  catalog: CatalogReader;
+  catalog: ItemWithRecolorsCatalog;
 };
 
 type ItemWithRecolorsState = {
@@ -161,6 +165,7 @@ export const ItemWithRecolors: m.Component<
                           cs.renderId = renderId;
                           cs.lastColorsKey = JSON.stringify(selectedColors);
                           drawRecolorPreview(
+                            catalog,
                             itemId,
                             meta,
                             canvas,
@@ -180,6 +185,7 @@ export const ItemWithRecolors: m.Component<
                           const renderId = (cs.renderId ?? 0) + 1;
                           cs.renderId = renderId;
                           drawRecolorPreview(
+                            catalog,
                             itemId,
                             meta,
                             canvas,
@@ -287,6 +293,7 @@ export const ItemWithRecolors: m.Component<
                           oncreate: async (canvasVnode: m.VnodeDOM) => {
                             const canvas = canvasVnode.dom as HTMLCanvasElement;
                             const imagesLoaded = await drawRecolorPreview(
+                              catalog,
                               itemId,
                               meta,
                               canvas,
@@ -307,6 +314,7 @@ export const ItemWithRecolors: m.Component<
                             }
                             const canvas = canvasVnode.dom as HTMLCanvasElement;
                             const imagesLoaded = await drawRecolorPreview(
+                              catalog,
                               itemId,
                               meta,
                               canvas,

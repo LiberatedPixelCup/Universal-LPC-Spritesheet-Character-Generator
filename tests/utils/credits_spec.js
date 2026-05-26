@@ -5,7 +5,10 @@ import {
   creditsToCsv,
   creditsToTxt,
 } from "../../sources/utils/credits.ts";
-import { resetCatalogForTests } from "../../sources/state/catalog.ts";
+import {
+  defaultCatalog,
+  resetCatalogForTests,
+} from "../../sources/state/catalog.ts";
 import {
   restoreAppCatalogAfterTest,
   seedBrowserCatalog,
@@ -28,7 +31,7 @@ describe("utils/credits.ts", () => {
   describe("getAllCredits", () => {
     it("returns an empty array when selections is empty", () => {
       seedBrowserCatalog({});
-      expect(getAllCredits({}, "male")).to.deep.equal([]);
+      expect(getAllCredits(defaultCatalog, {}, "male")).to.deep.equal([]);
     });
 
     it("skips items with no metadata or no credits", () => {
@@ -39,7 +42,11 @@ describe("utils/credits.ts", () => {
         },
       });
       expect(
-        getAllCredits({ g: { itemId: "noCredits", variant: null } }, "male"),
+        getAllCredits(
+          defaultCatalog,
+          { g: { itemId: "noCredits", variant: null } },
+          "male",
+        ),
       ).to.deep.equal([]);
     });
 
@@ -64,6 +71,7 @@ describe("utils/credits.ts", () => {
       state.selectedAnimation = "walk";
 
       const result = getAllCredits(
+        defaultCatalog,
         { slot: { itemId: "item1", variant: null } },
         "male",
       );
@@ -96,6 +104,7 @@ describe("utils/credits.ts", () => {
       state.selectedAnimation = "walk";
 
       const result = getAllCredits(
+        defaultCatalog,
         { slot: { itemId: "item1", variant: "light brown" } },
         "male",
       );
@@ -124,6 +133,7 @@ describe("utils/credits.ts", () => {
       state.selectedAnimation = "run";
 
       const result = getAllCredits(
+        defaultCatalog,
         { slot: { itemId: "item1", variant: null } },
         "male",
       );
@@ -151,6 +161,7 @@ describe("utils/credits.ts", () => {
       state.selectedAnimation = undefined;
 
       const result = getAllCredits(
+        defaultCatalog,
         { slot: { itemId: "item1", variant: null } },
         "male",
       );
@@ -178,6 +189,7 @@ describe("utils/credits.ts", () => {
       state.selectedAnimation = "walk";
 
       const result = getAllCredits(
+        defaultCatalog,
         { slot: { itemId: "item1", variant: null } },
         "male",
       );
@@ -212,6 +224,7 @@ describe("utils/credits.ts", () => {
       state.selectedAnimation = "walk";
 
       const result = getAllCredits(
+        defaultCatalog,
         { slot: { itemId: "item1", variant: null } },
         "male",
       );

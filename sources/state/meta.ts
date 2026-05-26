@@ -1,6 +1,6 @@
 import { ok, type Result } from "neverthrow";
 import { variantToFilename } from "../utils/helpers.ts";
-import { replaceInPath } from "./path.ts";
+import { replaceInPath, type ReplaceInPathCatalog } from "./path.ts";
 import {
   type CatalogReader,
   type ItemMerged,
@@ -9,6 +9,7 @@ import {
 import type { Selections } from "./state.ts";
 
 type MetaCatalog = Pick<CatalogReader, "getItemMerged">;
+export type LayersToLoadCatalog = ReplaceInPathCatalog;
 
 export type SortedLayer = { layerNum: number; zPos: number };
 export type AnimationLayer = SortedLayer & { animLayerNum: number };
@@ -113,6 +114,7 @@ export function getSortedLayersByAnim(
  * are omitted if missing).
  */
 export function getLayersToLoad(
+  catalog: LayersToLoadCatalog,
   meta: ItemMerged,
   bodyType: string,
   selections: Selections,
@@ -142,7 +144,7 @@ export function getLayersToLoad(
 
     // Replace template variables like ${head}.
     if (layerPath.includes("${")) {
-      layerPath = replaceInPath(layerPath, selections, meta);
+      layerPath = replaceInPath(catalog, layerPath, selections, meta);
     }
 
     const hasCustomAnim = layer.custom_animation;

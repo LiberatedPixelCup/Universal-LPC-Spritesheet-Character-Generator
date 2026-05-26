@@ -175,7 +175,13 @@ export const exportSplitAnimations = async (
     }
 
     await profiler.phase("staticFiles", async () => {
-      addCharacterJsonAndCredits(zip, creditsFolder, state!, drawCalls);
+      addCharacterJsonAndCredits(
+        defaultCatalog,
+        zip,
+        creditsFolder,
+        state!,
+        drawCalls,
+      );
     });
 
     const metadata = {
@@ -298,7 +304,13 @@ export const exportSplitItemSheets = async (
     }
 
     await profiler.phase("staticFiles", async () => {
-      addCharacterJsonAndCredits(zip, creditsFolder, state!, drawCalls);
+      addCharacterJsonAndCredits(
+        defaultCatalog,
+        zip,
+        creditsFolder,
+        state!,
+        drawCalls,
+      );
     });
 
     const zipBlob = await zipGenerateBlobWithProfiler(profiler, zip);
@@ -555,7 +567,13 @@ export const exportSplitItemAnimations = async (
     }
 
     await profiler.phase("staticFiles", async () => {
-      addCharacterJsonAndCredits(zip, creditsFolder, state!, drawCalls);
+      addCharacterJsonAndCredits(
+        defaultCatalog,
+        zip,
+        creditsFolder,
+        state!,
+        drawCalls,
+      );
     });
 
     const metadata = {
@@ -861,7 +879,13 @@ export const exportIndividualFrames = async (
     );
 
     await profiler.phase("staticFiles", async () => {
-      addCharacterJsonAndCredits(zip, creditsFolder, state!, drawCalls);
+      addCharacterJsonAndCredits(
+        defaultCatalog,
+        zip,
+        creditsFolder,
+        state!,
+        drawCalls,
+      );
     });
 
     const metadata = {

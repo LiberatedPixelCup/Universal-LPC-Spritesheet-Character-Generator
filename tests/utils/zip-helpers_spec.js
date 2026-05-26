@@ -22,6 +22,7 @@ import {
   zipGenerateBlobWithProfiler,
 } from "../../sources/utils/zip-helpers.ts";
 import { DIRECTIONS } from "../../sources/state/constants.ts";
+import { defaultCatalog } from "../../sources/state/catalog.ts";
 
 function createCanvas(width, height) {
   const canvas = document.createElement("canvas");
@@ -637,7 +638,13 @@ describe("utils/zip-helpers.ts", () => {
         };
         const layerList = [];
 
-        addCharacterJsonAndCredits(zip, creditsFolder, state, layerList);
+        addCharacterJsonAndCredits(
+          defaultCatalog,
+          zip,
+          creditsFolder,
+          state,
+          layerList,
+        );
 
         expect(rootWrites).to.have.length(1);
         expect(rootWrites[0].name).to.equal("character.json");

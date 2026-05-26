@@ -3,10 +3,12 @@ import m from "mithril";
 import classNames from "classnames";
 import { state, getSelectionGroup, selectItem } from "../../state/state.ts";
 import { getLayersToLoad } from "../../state/meta.ts";
-import type { LayerToLoad } from "../../state/meta.ts";
+import type { LayerToLoad, LayersToLoadCatalog } from "../../state/meta.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
 import { capitalize } from "../../utils/helpers.ts";
 import type { ItemMerged } from "../../state/catalog.ts";
+
+export type ItemWithVariantsCatalog = LayersToLoadCatalog;
 
 export type ItemWithVariantsAttrs = {
   itemId: string;
@@ -15,6 +17,7 @@ export type ItemWithVariantsAttrs = {
   isCompatible: boolean;
   tooltipText: string;
   showItemTooltips?: boolean;
+  catalog: ItemWithVariantsCatalog;
 };
 
 type ItemWithVariantsState = {
@@ -39,6 +42,7 @@ export const ItemWithVariants: m.Component<
       isCompatible,
       tooltipText,
       showItemTooltips = true,
+      catalog,
     } = vnode.attrs;
     const rowTitle = showItemTooltips ? tooltipText : undefined;
     const compactDisplay = state.compactDisplay;
@@ -49,7 +53,12 @@ export const ItemWithVariants: m.Component<
       nodePath = "body-body";
     }
     const isExpanded = state.expandedNodes[nodePath] || false;
-    const layers = getLayersToLoad(meta, state.bodyType, state.selections);
+    const layers = getLayersToLoad(
+      catalog,
+      meta,
+      state.bodyType,
+      state.selections,
+    );
 
     return m(
       "div",
@@ -174,6 +183,7 @@ export const ItemWithVariants: m.Component<
 
                           // Get Layers to Load for Variant
                           const layersToLoad = getLayersToLoad(
+                            catalog,
                             meta,
                             state.bodyType,
                             state.selections,

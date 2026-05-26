@@ -6,6 +6,7 @@ import {
   getAllCredits,
   creditsToCsv,
   creditsToTxt,
+  type CreditsCatalog,
 } from "../../utils/credits.ts";
 import { CollapsibleSection } from "../CollapsibleSection.ts";
 import { downloadFile, downloadAsPNG } from "../../canvas/download.ts";
@@ -13,6 +14,7 @@ import {
   importStateFromJSON,
   exportStateAsJSON,
   serializeLayersForJson,
+  type JsonExportCatalog,
 } from "../../state/json.ts";
 import {
   exportSplitAnimations,
@@ -25,11 +27,11 @@ import type { CatalogReader } from "../../state/catalog.ts";
 
 const zipExportTitle = "Wait for layer data to finish loading";
 
-type DownloadAttrs = {
-  catalog: Pick<CatalogReader, "isLayersReady">;
-};
+type DownloadCatalog = Pick<CatalogReader, "isLayersReady"> &
+  CreditsCatalog &
+  JsonExportCatalog;
 
-export const Download: m.Component<DownloadAttrs> = {
+export const Download: m.Component<{ catalog: DownloadCatalog }> = {
   view(vnode) {
     const zipDisabled = !vnode.attrs.catalog.isLayersReady();
 
@@ -37,6 +39,7 @@ export const Download: m.Component<DownloadAttrs> = {
       if (!window.canvasRenderer) return;
       try {
         const json = exportStateAsJSON(
+          vnode.attrs.catalog,
           state,
           serializeLayersForJson(drawCalls),
         );
@@ -90,6 +93,7 @@ export const Download: m.Component<DownloadAttrs> = {
             {
               onclick: () => {
                 const allCredits = getAllCredits(
+                  vnode.attrs.catalog,
                   state.selections,
                   state.bodyType,
                 );
@@ -104,6 +108,7 @@ export const Download: m.Component<DownloadAttrs> = {
             {
               onclick: () => {
                 const allCredits = getAllCredits(
+                  vnode.attrs.catalog,
                   state.selections,
                   state.bodyType,
                 );

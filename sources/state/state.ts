@@ -2,7 +2,7 @@
 import m from "mithril";
 import { LICENSE_CONFIG, ANIMATIONS, BODY_TYPES } from "./constants.ts";
 import { syncSelectionsToHash, loadSelectionsFromHash } from "./hash.ts";
-import { getItemMerged, type ItemMerged } from "./catalog.ts";
+import { defaultCatalog, getItemMerged, type ItemMerged } from "./catalog.ts";
 import { renderCharacter } from "../canvas/renderer.ts";
 
 /** A single item selection within a selection group (e.g. body, head, ears). */
@@ -80,7 +80,7 @@ function createDefaultStateDeps(): StateDeps {
     getItemMetadata: (itemId) => getItemMerged(itemId).unwrapOr(null),
     selectDefaults,
     redraw: () => m.redraw(),
-    syncSelectionsToHash,
+    syncSelectionsToHash: () => syncSelectionsToHash(defaultCatalog),
     renderCharacter,
     loadSelectionsFromHash,
     getCanvasRenderer: () =>

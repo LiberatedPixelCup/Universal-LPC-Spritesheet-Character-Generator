@@ -2,11 +2,14 @@ import {
   createHashStringFromParams,
   getHashParamsforSelections,
   loadSelectionsFromHash,
+  type HashParamsCatalog,
 } from "./hash.ts";
-import { getAllCredits } from "../utils/credits.ts";
+import { getAllCredits, type CreditsCatalog } from "../utils/credits.ts";
 import { state } from "./state.ts";
 import type { Selections, State } from "./state.ts";
 import type { DrawCall } from "../canvas/renderer.ts";
+
+export type JsonExportCatalog = HashParamsCatalog & CreditsCatalog;
 
 /** Shape of a layer as it appears in the exported `character.json` manifest.
  *  The live `HTMLImageElement` carried by `DrawCall.source` for custom uploads
@@ -76,10 +79,15 @@ type CreditsByFile = ReturnType<typeof getAllCredits>;
 type JsonDeps = {
   createHashStringFromParams: (params: Record<string, string>) => string;
   getHashParamsforSelections: (
+    catalog: HashParamsCatalog,
     selections: Selections,
   ) => Record<string, string>;
   loadSelectionsFromHash: (hashString?: string | null) => void;
-  getAllCredits: (selections: Selections, bodyType: string) => CreditsByFile;
+  getAllCredits: (
+    catalog: CreditsCatalog,
+    selections: Selections,
+    bodyType: string,
+  ) => CreditsByFile;
   getLocationOrigin: () => string;
   getLocationPathname: () => string;
 };
@@ -119,11 +127,12 @@ export function getJsonDeps(): JsonDeps {
  * needs is "an array of JSON-serializable values."
  */
 export function exportStateAsJSON(
+  catalog: JsonExportCatalog,
   state: State,
   layers: readonly unknown[],
 ): string {
   const hash = jsonDeps.createHashStringFromParams(
-    jsonDeps.getHashParamsforSelections(state.selections),
+    jsonDeps.getHashParamsforSelections(catalog, state.selections),
   );
   const url = `${jsonDeps.getLocationOrigin()}${jsonDeps.getLocationPathname()}#${hash}`;
   const exportedState = {
@@ -139,7 +148,7 @@ export function exportStateAsJSON(
     enabledAnimations: state.enabledAnimations,
     url,
     layers,
-    credits: jsonDeps.getAllCredits(state.selections, state.bodyType),
+    credits: jsonDeps.getAllCredits(catalog, state.selections, state.bodyType),
   };
   return JSON.stringify(exportedState, null, 2);
 }

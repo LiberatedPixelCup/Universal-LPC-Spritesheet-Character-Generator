@@ -7,6 +7,7 @@ import {
 import { expect } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
+import { defaultCatalog } from "../../sources/state/catalog.ts";
 
 describe("state/json.ts", () => {
   beforeEach(() => {
@@ -37,7 +38,9 @@ describe("state/json.ts", () => {
         enabledLicenses: { CC0: true },
         enabledAnimations: { walk: false },
       };
-      const out = exportStateAsJSON(snapshot, [{ zPos: 1, path: "p" }]);
+      const out = exportStateAsJSON(defaultCatalog, snapshot, [
+        { zPos: 1, path: "p" },
+      ]);
       const parsed = JSON.parse(out);
       expect(parsed.version).to.equal(2);
       expect(parsed.url).to.equal("https://example.com/lpc/#sex=male");

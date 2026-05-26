@@ -19,7 +19,10 @@ import {
   resetHashCalledTimes,
   resetHashDeps,
 } from "../../sources/state/hash.ts";
-import { resetCatalogForTests } from "../../sources/state/catalog.ts";
+import {
+  defaultCatalog,
+  resetCatalogForTests,
+} from "../../sources/state/catalog.ts";
 import {
   restoreAppCatalogAfterTest,
   seedBrowserCatalog,
@@ -121,7 +124,10 @@ describe("state/hash.ts", () => {
         1: { type_name: "body", name: "Body", variants: ["light"] },
       });
 
-      const params = getHashParamsforSelections(getState().selections);
+      const params = getHashParamsforSelections(
+        defaultCatalog,
+        getState().selections,
+      );
       expect(params).to.deep.equal({
         sex: "male",
         body: "Body_light",
@@ -145,7 +151,10 @@ describe("state/hash.ts", () => {
         },
       });
 
-      const params = getHashParamsforSelections(getState().selections);
+      const params = getHashParamsforSelections(
+        defaultCatalog,
+        getState().selections,
+      );
       expect(params).to.deep.equal({
         sex: "male",
         body: "Body_light",
@@ -177,7 +186,10 @@ describe("state/hash.ts", () => {
         },
       });
 
-      const params = getHashParamsforSelections(getState().selections);
+      const params = getHashParamsforSelections(
+        defaultCatalog,
+        getState().selections,
+      );
       expect(params).to.deep.equal({
         sex: "male",
         body: "Body_light",
@@ -198,7 +210,7 @@ describe("state/hash.ts", () => {
         1: { type_name: "body", name: "Body", variants: ["light"] },
       });
 
-      syncSelectionsToHash();
+      syncSelectionsToHash(defaultCatalog);
       expect(getSetHashCalledTimes()).to.equal(1);
     });
   });

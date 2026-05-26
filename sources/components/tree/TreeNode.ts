@@ -17,12 +17,28 @@ import {
   matchesSearch,
   nodeHasMatches,
 } from "../../utils/helpers.ts";
-import { ItemWithVariants } from "./ItemWithVariants.ts";
-import { ItemWithRecolors } from "./ItemWithRecolors.ts";
+import {
+  ItemWithVariants,
+  type ItemWithVariantsCatalog,
+} from "./ItemWithVariants.ts";
+import {
+  ItemWithRecolors,
+  type ItemWithRecolorsCatalog,
+} from "./ItemWithRecolors.ts";
 
-// Forwarder: catalog flows to ItemWithRecolors → PaletteSelectModal. Full
-// reader avoids enumerating the transitive union of downstream needs. The
-// leaf (PaletteSelectModal) narrows.
+// Forwarder: catalog flows through variant/recolor preview paths; compose the
+// direct tree needs with the child component needs.
+export type TreeNodeCatalog = Pick<
+  CatalogReader,
+  | "getItemLite"
+  | "getItemMerged"
+  | "getItemCredits"
+  | "isLiteReady"
+  | "isCreditsReady"
+> &
+  ItemWithVariantsCatalog &
+  ItemWithRecolorsCatalog;
+
 export type TreeNodeAttrs = {
   name: string;
   node: CategoryTreeNode & {
@@ -31,13 +47,13 @@ export type TreeNodeAttrs = {
     label?: string;
   };
   pathPrefix?: string;
-  catalog: CatalogReader;
+  catalog: TreeNodeCatalog;
 };
 
 type ItemListCtx = {
   isNodeAnimCompatible: boolean;
   searchQuery: string;
-  catalog: CatalogReader;
+  catalog: TreeNodeCatalog;
 };
 
 function renderSkeletons(itemIds: string[]) {
@@ -151,6 +167,7 @@ function renderItem(itemId: string, meta: ItemMerged, ctx: ItemListCtx) {
     isCompatible,
     tooltipText,
     showItemTooltips,
+    catalog,
   });
 }
 

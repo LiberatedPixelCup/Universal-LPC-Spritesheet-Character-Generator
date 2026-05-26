@@ -5,16 +5,23 @@ import { parseRecolorKey } from "./palettes.ts";
 import { debugWarn } from "../utils/debug.ts";
 import {
   buildItemsByTypeNameFromRegisteredLite,
+  defaultCatalog,
   getAliasMetadata,
   getItemLite,
   getMetadataIndexes,
   isIndexReady,
   isLiteReady,
   type AliasMetadata,
+  type CatalogReader,
   type ItemLite,
   type SlimByTypeNameRow,
 } from "./catalog.ts";
 import { resolveHashParamFromHashMatch } from "./resolve-hash-param.ts";
+
+export type HashParamsCatalog = Pick<
+  CatalogReader,
+  "getAliasMetadata" | "getItemLite"
+>;
 
 /**
  * Outcome of resolving a `typeName`/`nameAndVariant` pair against the
@@ -207,6 +214,7 @@ export function buildNewSelection(
 }
 
 export function getHashParamsforSelections(
+  catalog: HashParamsCatalog,
   selections: Selections,
 ): Record<string, string> {
   const params: Record<string, string> = {};
@@ -216,9 +224,11 @@ export function getHashParamsforSelections(
 
   // Add selections — old format: `type_name=Name_variant`.
   // e.g., "body=Body_color_light", "shoes=Sara_sara".
-  const aliasMetadata = getAliasMetadata().unwrapOr({} as AliasMetadata);
+  const aliasMetadata = catalog
+    .getAliasMetadata()
+    .unwrapOr({} as AliasMetadata);
   for (const [typeName, selection] of Object.entries(selections)) {
-    const meta = getItemLite(selection.itemId).unwrapOr(null);
+    const meta = catalog.getItemLite(selection.itemId).unwrapOr(null);
     // Defensive: real production data has type_name, but a few test fixtures
     // (and possibly malformed URLs) might lack it. Treat as alias-fallback.
     if (!meta || !meta.type_name) {
@@ -272,8 +282,8 @@ export function getHashParamsforSelections(
   return params;
 }
 
-export function syncSelectionsToHash(): void {
-  const params = getHashParamsforSelections(state.selections);
+export function syncSelectionsToHash(catalog: HashParamsCatalog): void {
+  const params = getHashParamsforSelections(catalog, state.selections);
   setHashParams(params);
 }
 
@@ -416,7 +426,7 @@ export function loadSelectionsFromHash(hashString: string | null = null): void {
   }
 
   // Ensure hash is in sync with loaded selections (handles any normalization).
-  syncSelectionsToHash();
+  syncSelectionsToHash(defaultCatalog);
 
   if (profiler) {
     profiler.mark("hash-loadSelectionsFromHash:end");
