@@ -5,12 +5,12 @@ import {
   getAllCredits,
   creditsToCsv,
   creditsToTxt,
-  type CreditsCatalog,
 } from "../../utils/credits.ts";
 import { CollapsibleSection } from "../CollapsibleSection.ts";
 import { downloadFile } from "../../canvas/download.ts";
+import type { CatalogReader } from "../../state/catalog.ts";
 
-export const Credits: m.Component<{ catalog: CreditsCatalog }> = {
+export const Credits: m.Component<{ catalog: CatalogReader }> = {
   view(vnode) {
     const allCredits = getAllCredits(
       vnode.attrs.catalog,

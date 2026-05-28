@@ -43,7 +43,7 @@ export function matchesSearch(text: string, query: string): boolean {
 export function nodeHasMatches(
   node: CategoryTreeNode,
   query: string,
-  catalog: Pick<CatalogReader, "isLiteReady" | "getItemLite">,
+  catalog: CatalogReader,
 ): boolean {
   if (!query || query.length < 2) return true;
 

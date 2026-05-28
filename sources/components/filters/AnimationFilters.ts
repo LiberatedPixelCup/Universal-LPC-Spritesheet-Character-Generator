@@ -24,7 +24,7 @@ export function setAnimationCompatible(
 }
 export function isAnimationCompatible(
   itemId: string,
-  catalog: Pick<CatalogReader, "getItemLite">,
+  catalog: CatalogReader,
 ): boolean {
   return deps.isItemAnimationCompatible(itemId, catalog);
 }
@@ -38,7 +38,7 @@ export function getAnimations(): readonly AnimationOption[] {
 
 type AnimationFiltersState = { isExpanded: boolean };
 type AnimationFiltersAttrs = {
-  catalog: Pick<CatalogReader, "isLiteReady" | "getItemLite">;
+  catalog: CatalogReader;
 };
 
 export const AnimationFilters: m.Component<

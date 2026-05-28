@@ -6,7 +6,6 @@ import {
   getAllCredits,
   creditsToCsv,
   creditsToTxt,
-  type CreditsCatalog,
 } from "../../utils/credits.ts";
 import { CollapsibleSection } from "../CollapsibleSection.ts";
 import { downloadFile, downloadAsPNG } from "../../canvas/download.ts";
@@ -14,7 +13,6 @@ import {
   importStateFromJSON,
   exportStateAsJSON,
   serializeLayersForJson,
-  type JsonExportCatalog,
 } from "../../state/json.ts";
 import {
   exportSplitAnimations,
@@ -27,11 +25,7 @@ import type { CatalogReader } from "../../state/catalog.ts";
 
 const zipExportTitle = "Wait for layer data to finish loading";
 
-type DownloadCatalog = Pick<CatalogReader, "isLayersReady"> &
-  CreditsCatalog &
-  JsonExportCatalog;
-
-export const Download: m.Component<{ catalog: DownloadCatalog }> = {
+export const Download: m.Component<{ catalog: CatalogReader }> = {
   view(vnode) {
     const zipDisabled = !vnode.attrs.catalog.isLayersReady();
 

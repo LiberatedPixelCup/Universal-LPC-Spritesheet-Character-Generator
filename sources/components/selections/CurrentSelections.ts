@@ -8,10 +8,7 @@ import {
 } from "../../state/filters.ts";
 
 type CurrentSelectionsAttrs = {
-  catalog: Pick<
-    CatalogReader,
-    "isLiteReady" | "isCreditsReady" | "getItemLite" | "getItemMerged"
-  >;
+  catalog: CatalogReader;
 };
 
 export const CurrentSelections: m.Component<CurrentSelectionsAttrs> = {

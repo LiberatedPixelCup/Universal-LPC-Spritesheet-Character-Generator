@@ -10,10 +10,9 @@ import {
 import { debugLog, debugWarn } from "../utils/debug.ts";
 import { get2DContext } from "./canvas-utils.ts";
 import { getItemLite } from "../state/catalog.ts";
-import type { ItemMerged } from "../state/catalog.ts";
+import type { CatalogReader, ItemMerged } from "../state/catalog.ts";
 import { state } from "../state/state.ts";
 import { getLayersToLoad } from "../state/meta.ts";
-import type { LayersToLoadCatalog } from "../state/meta.ts";
 import { getPalettesFromMeta, getTargetPalette } from "../state/palettes.ts";
 import type { PaletteForItem } from "../state/palettes.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../state/constants.ts";
@@ -388,7 +387,7 @@ export async function recolorWithPalette(
  * for the tree/ migration; track separately.
  */
 export async function drawRecolorPreview(
-  catalog: LayersToLoadCatalog,
+  catalog: CatalogReader,
   itemId: string,
   meta: ItemMerged,
   canvas: HTMLCanvasElement,

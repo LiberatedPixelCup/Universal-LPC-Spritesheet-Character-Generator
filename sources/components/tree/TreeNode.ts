@@ -17,27 +17,8 @@ import {
   matchesSearch,
   nodeHasMatches,
 } from "../../utils/helpers.ts";
-import {
-  ItemWithVariants,
-  type ItemWithVariantsCatalog,
-} from "./ItemWithVariants.ts";
-import {
-  ItemWithRecolors,
-  type ItemWithRecolorsCatalog,
-} from "./ItemWithRecolors.ts";
-
-// Forwarder: catalog flows through variant/recolor preview paths; compose the
-// direct tree needs with the child component needs.
-export type TreeNodeCatalog = Pick<
-  CatalogReader,
-  | "getItemLite"
-  | "getItemMerged"
-  | "getItemCredits"
-  | "isLiteReady"
-  | "isCreditsReady"
-> &
-  ItemWithVariantsCatalog &
-  ItemWithRecolorsCatalog;
+import { ItemWithVariants } from "./ItemWithVariants.ts";
+import { ItemWithRecolors } from "./ItemWithRecolors.ts";
 
 export type TreeNodeAttrs = {
   name: string;
@@ -47,13 +28,13 @@ export type TreeNodeAttrs = {
     label?: string;
   };
   pathPrefix?: string;
-  catalog: TreeNodeCatalog;
+  catalog: CatalogReader;
 };
 
 type ItemListCtx = {
   isNodeAnimCompatible: boolean;
   searchQuery: string;
-  catalog: TreeNodeCatalog;
+  catalog: CatalogReader;
 };
 
 function renderSkeletons(itemIds: string[]) {

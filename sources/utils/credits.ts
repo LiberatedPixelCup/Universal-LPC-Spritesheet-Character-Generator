@@ -3,19 +3,17 @@
 import type { CatalogReader, Credit } from "../state/catalog.ts";
 import { state } from "../state/state.ts";
 import type { Selections } from "../state/state.ts";
-import { replaceInPath, type ReplaceInPathCatalog } from "../state/path.ts";
+import { replaceInPath } from "../state/path.ts";
 import { variantToFilename } from "../utils/helpers.ts";
 
 type CreditWithFileName = Credit & { fileName: string };
-export type CreditsCatalog = Pick<CatalogReader, "getItemMerged"> &
-  ReplaceInPathCatalog;
 
 /**
  * Collect credits from all selected items. Only includes credits for files
  * actually being used based on current bodyType.
  */
 export function getAllCredits(
-  catalog: CreditsCatalog,
+  catalog: CatalogReader,
   selections: Selections,
   bodyType: string,
 ): CreditWithFileName[] {

@@ -1,7 +1,7 @@
 import "../install-item-metadata.ts";
 import { ok, err, type Result } from "neverthrow";
 import { ANIMATIONS } from "./constants.ts";
-import { getHashParamsforSelections, type HashParamsCatalog } from "./hash.ts";
+import { getHashParamsforSelections } from "./hash.ts";
 import {
   type CatalogReader,
   type ItemMerged,
@@ -23,12 +23,6 @@ import type { AnimationEntry } from "./filters.ts";
 type PathMeta = Partial<ItemMerged> & {
   replace_in_path?: Record<string, Record<string, string>>;
 };
-
-export type ReplaceInPathCatalog = HashParamsCatalog &
-  Pick<CatalogReader, "getMetadataIndexes">;
-
-export type SpritePathCatalog = ReplaceInPathCatalog &
-  Pick<CatalogReader, "getItemMerged">;
 
 /** Subset of `SlimByTypeNameRow` consumed by `getNameWithoutVariant`. */
 type NameVariantRow = {
@@ -120,7 +114,7 @@ export function getNameWithoutVariant(
 
 /** Build a sprite-path string for a specific item layer + animation + variant. */
 export function getSpritePath(
-  catalog: SpritePathCatalog,
+  catalog: CatalogReader,
   itemId: string,
   variant: string | null,
   recolors: Record<string, string> | boolean | null,
@@ -166,7 +160,7 @@ export function getSpritePath(
 
 /** Replace `${typeName}` placeholders in a path using the current selections. */
 export function replaceInPath(
-  catalog: ReplaceInPathCatalog,
+  catalog: CatalogReader,
   path: string,
   selections: Selections | null | undefined,
   meta: PathMeta,
@@ -197,7 +191,7 @@ export function replaceInPath(
 }
 
 function _getNameWithoutVariant(
-  catalog: ReplaceInPathCatalog,
+  catalog: CatalogReader,
   typeName: string,
   nameAndVariant: string,
 ): string {

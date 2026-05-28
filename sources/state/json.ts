@@ -2,14 +2,12 @@ import {
   createHashStringFromParams,
   getHashParamsforSelections,
   loadSelectionsFromHash,
-  type HashParamsCatalog,
 } from "./hash.ts";
-import { getAllCredits, type CreditsCatalog } from "../utils/credits.ts";
+import { getAllCredits } from "../utils/credits.ts";
 import { state } from "./state.ts";
 import type { Selections, State } from "./state.ts";
 import type { DrawCall } from "../canvas/renderer.ts";
-
-export type JsonExportCatalog = HashParamsCatalog & CreditsCatalog;
+import type { CatalogReader } from "./catalog.ts";
 
 /** Shape of a layer as it appears in the exported `character.json` manifest.
  *  The live `HTMLImageElement` carried by `DrawCall.source` for custom uploads
@@ -79,12 +77,12 @@ type CreditsByFile = ReturnType<typeof getAllCredits>;
 type JsonDeps = {
   createHashStringFromParams: (params: Record<string, string>) => string;
   getHashParamsforSelections: (
-    catalog: HashParamsCatalog,
+    catalog: CatalogReader,
     selections: Selections,
   ) => Record<string, string>;
   loadSelectionsFromHash: (hashString?: string | null) => void;
   getAllCredits: (
-    catalog: CreditsCatalog,
+    catalog: CatalogReader,
     selections: Selections,
     bodyType: string,
   ) => CreditsByFile;
@@ -127,7 +125,7 @@ export function getJsonDeps(): JsonDeps {
  * needs is "an array of JSON-serializable values."
  */
 export function exportStateAsJSON(
-  catalog: JsonExportCatalog,
+  catalog: CatalogReader,
   state: State,
   layers: readonly unknown[],
 ): string {

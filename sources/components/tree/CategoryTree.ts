@@ -12,15 +12,9 @@ import type {
 } from "../../state/catalog.ts";
 import { renderResult } from "../../utils/render-result.ts";
 import { BodyTypeSelector } from "./BodyTypeSelector.ts";
-import { TreeNode, type TreeNodeCatalog } from "./TreeNode.ts";
+import { TreeNode } from "./TreeNode.ts";
 
-type CategoryTreeCatalog = Pick<
-  CatalogReader,
-  "getCategoryTree" | "isLiteReady" | "getItemMerged"
-> &
-  TreeNodeCatalog;
-
-type CategoryTreeAttrs = { catalog: CategoryTreeCatalog };
+type CategoryTreeAttrs = { catalog: CatalogReader };
 
 function renderLoadingHost() {
   return m("div.box.has-background-light.category-tree-panel", [
@@ -36,10 +30,7 @@ function renderLoadingHost() {
   ]);
 }
 
-function renderTree(
-  categoryTree: CategoryTreeShape,
-  catalog: CategoryTreeCatalog,
-) {
+function renderTree(categoryTree: CategoryTreeShape, catalog: CatalogReader) {
   const liteReady = catalog.isLiteReady();
 
   return m("div.box.has-background-light.category-tree-panel", [

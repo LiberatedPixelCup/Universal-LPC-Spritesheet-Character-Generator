@@ -5,14 +5,8 @@ import { state, getSelectionGroup, selectItem } from "../../state/state.ts";
 import type { CatalogReader, ItemMerged } from "../../state/catalog.ts";
 import { drawRecolorPreview } from "../../canvas/palette-recolor.ts";
 import { getPaletteOptions } from "../../state/palettes.ts";
-import {
-  PaletteSelectModal,
-  type PaletteSelectModalCatalog,
-} from "./PaletteSelectModal.ts";
+import { PaletteSelectModal } from "./PaletteSelectModal.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
-
-export type ItemWithRecolorsCatalog = Pick<CatalogReader, "isPaletteReady"> &
-  PaletteSelectModalCatalog;
 
 export type ItemWithRecolorsAttrs = {
   itemId: string;
@@ -21,7 +15,7 @@ export type ItemWithRecolorsAttrs = {
   isCompatible: boolean;
   tooltipText: string;
   showItemTooltips?: boolean;
-  catalog: ItemWithRecolorsCatalog;
+  catalog: CatalogReader;
 };
 
 type ItemWithRecolorsState = {

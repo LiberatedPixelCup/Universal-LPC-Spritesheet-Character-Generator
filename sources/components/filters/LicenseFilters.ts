@@ -29,7 +29,7 @@ export function setLicenseCompatible(
 }
 export function isLicenseCompatible(
   itemId: string,
-  catalog: Pick<CatalogReader, "getItemMerged">,
+  catalog: CatalogReader,
 ): boolean {
   return deps.isItemLicenseCompatible(itemId, catalog);
 }
@@ -43,10 +43,7 @@ export function getLicenseConfig(): readonly LicenseOption[] {
 
 type LicenseFiltersState = { isExpanded: boolean };
 type LicenseFiltersAttrs = {
-  catalog: Pick<
-    CatalogReader,
-    "isLiteReady" | "isCreditsReady" | "getItemMerged"
-  >;
+  catalog: CatalogReader;
 };
 
 export const LicenseFilters: m.Component<

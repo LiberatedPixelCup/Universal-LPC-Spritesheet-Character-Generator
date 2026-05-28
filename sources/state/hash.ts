@@ -18,11 +18,6 @@ import {
 } from "./catalog.ts";
 import { resolveHashParamFromHashMatch } from "./resolve-hash-param.ts";
 
-export type HashParamsCatalog = Pick<
-  CatalogReader,
-  "getAliasMetadata" | "getItemLite"
->;
-
 /**
  * Outcome of resolving a `typeName`/`nameAndVariant` pair against the
  * catalog. `foundItemId` is null when no match was made.
@@ -214,7 +209,7 @@ export function buildNewSelection(
 }
 
 export function getHashParamsforSelections(
-  catalog: HashParamsCatalog,
+  catalog: CatalogReader,
   selections: Selections,
 ): Record<string, string> {
   const params: Record<string, string> = {};
@@ -282,7 +277,7 @@ export function getHashParamsforSelections(
   return params;
 }
 
-export function syncSelectionsToHash(catalog: HashParamsCatalog): void {
+export function syncSelectionsToHash(catalog: CatalogReader): void {
   const params = getHashParamsforSelections(catalog, state.selections);
   setHashParams(params);
 }
