@@ -1,5 +1,6 @@
 // Pure utility functions with minimal catalog reads for tree search
 import type { CatalogReader, CategoryTreeNode } from "../state/catalog.ts";
+import { getItemDisplayName } from "../../lang/i18n.ts";
 
 /**
  * Simple ES6 template string replacement
@@ -57,7 +58,9 @@ export function nodeHasMatches(
     node.items &&
     node.items.some((itemId) =>
       catalog.getItemLite(itemId).match(
-        (meta) => matchesSearch(meta.name, query),
+        (meta) =>
+          matchesSearch(meta.name, query) ||
+          matchesSearch(getItemDisplayName(meta.name), query),
         () => false,
       ),
     )

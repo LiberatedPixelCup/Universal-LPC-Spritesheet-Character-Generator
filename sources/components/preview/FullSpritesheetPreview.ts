@@ -10,6 +10,7 @@ import {
 import { isOffscreenCanvasInitialized } from "../../canvas/renderer.ts";
 import { ScrollableContainer } from "./ScrollableContainer.ts";
 import { PreviewMetadataLoadingOverlay } from "./PreviewMetadataLoadingOverlay.ts";
+import { t } from "../../../lang/i18n.ts";
 
 type SpritesheetCanvasAttrs = {
   showTransparencyGrid: boolean;
@@ -140,7 +141,7 @@ export const FullSpritesheetPreview: m.Component<
     return m(
       CollapsibleSection,
       {
-        title: "Full Spritesheet Preview",
+        title: t("fullSpritesheetPreview.title"),
         defaultOpen: true,
         boxClass: "box mt-4",
       },
@@ -159,7 +160,7 @@ export const FullSpritesheetPreview: m.Component<
                       m.redraw();
                     },
                   }),
-                  " Show transparency grid",
+                  ` ${t("fullSpritesheetPreview.showGrid")}`,
                 ]),
               ]),
               m("div.mt-1", [
@@ -172,7 +173,7 @@ export const FullSpritesheetPreview: m.Component<
                       m.redraw();
                     },
                   }),
-                  " Replace Mask (Pink)",
+                  ` ${t("fullSpritesheetPreview.replaceMask")}`,
                 ]),
               ]),
             ],
@@ -182,7 +183,9 @@ export const FullSpritesheetPreview: m.Component<
               m("div.field-label.is-normal", [
                 m(
                   "label.label.mb-0",
-                  `Zoom: ${Math.round(vnode.state.zoomLevel * 100)}%`,
+                  t("fullSpritesheetPreview.zoom", {
+                    zoom: Math.round(vnode.state.zoomLevel * 100),
+                  }),
                 ),
               ]),
               m("div.field-body", [
@@ -218,7 +221,9 @@ export const FullSpritesheetPreview: m.Component<
               state.isRenderingCharacter
                 ? m("div.preview-canvas-busy", { "aria-hidden": true }, [
                     m("span.loading", {
-                      "aria-label": "Rendering character",
+                      "aria-label": t(
+                        "fullSpritesheetPreview.renderingCharacter",
+                      ),
                     }),
                   ])
                 : null,

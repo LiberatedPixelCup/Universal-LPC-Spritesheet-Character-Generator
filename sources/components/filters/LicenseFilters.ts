@@ -4,6 +4,7 @@ import { state } from "../../state/state.ts";
 import type { CatalogReader } from "../../state/catalog.ts";
 import { isItemLicenseCompatible } from "../../state/filters.ts";
 import { LICENSE_CONFIG } from "../../state/constants.ts";
+import { t } from "../../../lang/i18n.ts";
 
 type LicenseOption = {
   key: string;
@@ -71,9 +72,11 @@ export const LicenseFilters: m.Component<
 
       if (toRemove.length > 0) {
         toRemove.forEach((key) => delete state.selections[key]);
-        alert(`Removed ${toRemove.length} incompatible item(s)`);
+        alert(
+          t("licenseFilters.removedIncompatible", { count: toRemove.length }),
+        );
       } else {
-        alert("No incompatible items found");
+        alert(t("licenseFilters.noIncompatible"));
       }
     };
 
@@ -105,22 +108,25 @@ export const LicenseFilters: m.Component<
           m("span.tree-arrow", {
             class: vnode.state.isExpanded ? "expanded" : "collapsed",
           }),
-          m("span.title.is-6.is-inline", "License Filters"),
+          m("span.title.is-6.is-inline", t("licenseFilters.title")),
           m(
             "span.is-size-7.has-text-grey.ml-2",
-            `(${enabledCount}/${totalCount} enabled)`,
+            `(${enabledCount}/${totalCount} ${t("licenseFilters.enabled")})`,
           ),
         ],
       ),
       vnode.state.isExpanded
         ? m("div.content.mt-3", [
             !liteReady
-              ? m("p.is-size-7.has-text-grey.mb-3", "Loading item list…")
+              ? m(
+                  "p.is-size-7.has-text-grey.mb-3",
+                  t("licenseFilters.loadingItemList"),
+                )
               : null,
             !creditsReady
               ? m(
                   "p.is-size-7.has-text-grey.mb-3",
-                  "Loading asset license data…",
+                  t("licenseFilters.loadingLicenseData"),
                 )
               : null,
             m(
@@ -144,7 +150,7 @@ export const LicenseFilters: m.Component<
                         target: "_blank",
                         rel: "noopener noreferrer",
                       },
-                      `(Show license${license.urlLabel ? " " + license.urlLabel : ""})`,
+                      `(${t("licenseFilters.showLicense")}${license.urlLabel ? " " + license.urlLabel : ""})`,
                     ),
                   ]),
                 ]),
@@ -156,19 +162,23 @@ export const LicenseFilters: m.Component<
                     m("p.is-size-7", [
                       m(
                         "strong",
-                        `${incompatibleSelections.length} selected item${incompatibleSelections.length > 1 ? "s are" : " is"} incompatible`,
+                        `${incompatibleSelections.length}${t("licenseFilters.incompatibleItems")}`,
                       ),
-                      " with your current license selection. ",
-                      m("span.has-text-grey", "(marked with ⚠️ above)"),
+                      t("licenseFilters.withLicenseSelection"),
+                      m("span.has-text-grey", t("licenseFilters.markedAbove")),
                     ]),
                   ]),
                   m(
                     "button.button.is-small.is-warning.mt-2",
                     {
                       onclick: removeIncompatibleItems,
-                      title: `Remove ${incompatibleSelections.length} incompatible item${incompatibleSelections.length > 1 ? "s" : ""}`,
+                      title: t("licenseFilters.removeIncompatible", {
+                        count: incompatibleSelections.length,
+                      }),
                     },
-                    `Remove ${incompatibleSelections.length} Incompatible Asset${incompatibleSelections.length > 1 ? "s" : ""}`,
+                    t("licenseFilters.removeIncompatible", {
+                      count: incompatibleSelections.length,
+                    }),
                   ),
                 ]
               : null,

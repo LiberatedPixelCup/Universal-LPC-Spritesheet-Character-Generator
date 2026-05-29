@@ -22,8 +22,7 @@ import {
 } from "../../state/zip.ts";
 import { debugLog } from "../../utils/debug.ts";
 import type { CatalogReader } from "../../state/catalog.ts";
-
-const zipExportTitle = "Wait for layer data to finish loading";
+import { t } from "../../../lang/i18n.ts";
 
 type DownloadAttrs = {
   catalog: Pick<CatalogReader, "isLayersReady">;
@@ -32,6 +31,7 @@ type DownloadAttrs = {
 export const Download: m.Component<DownloadAttrs> = {
   view(vnode) {
     const zipDisabled = !vnode.attrs.catalog.isLayersReady();
+    const zipExportTitle = t("download.waitLoading");
 
     const exportToClipboard = async (): Promise<void> => {
       if (!window.canvasRenderer) return;
@@ -42,10 +42,10 @@ export const Download: m.Component<DownloadAttrs> = {
         );
         debugLog(json);
         await navigator.clipboard.writeText(json);
-        alert("Exported to clipboard!");
+        alert(t("download.exportedSuccess"));
       } catch (err) {
         console.error("Failed to copy to clipboard:", err);
-        alert("Failed to copy to clipboard. Please check browser permissions.");
+        alert(t("download.exportFailed"));
       }
     };
 
@@ -58,12 +58,10 @@ export const Download: m.Component<DownloadAttrs> = {
         Object.assign(state, imported);
 
         m.redraw();
-        alert("Imported successfully!");
+        alert(t("download.importedSuccess"));
       } catch (err) {
         console.error("Failed to import from clipboard:", err);
-        alert(
-          "Failed to import. Please check clipboard content and browser permissions.",
-        );
+        alert(t("download.importFailed"));
       }
     };
 
@@ -75,7 +73,7 @@ export const Download: m.Component<DownloadAttrs> = {
     return m(
       CollapsibleSection,
       {
-        title: "Download",
+        title: t("download.title"),
         defaultOpen: true,
       },
       [
@@ -83,7 +81,7 @@ export const Download: m.Component<DownloadAttrs> = {
           m(
             "button.button.is-small.is-primary",
             { onclick: saveAsPNG },
-            "Spritesheet (PNG)",
+            t("download.spritesheet"),
           ),
           m(
             "button.button.is-small",
@@ -97,7 +95,7 @@ export const Download: m.Component<DownloadAttrs> = {
                 downloadFile(txtContent, "credits.txt", "text/plain");
               },
             },
-            "Credits (TXT)",
+            t("download.creditsTxt"),
           ),
           m(
             "button.button.is-small",
@@ -111,7 +109,7 @@ export const Download: m.Component<DownloadAttrs> = {
                 downloadFile(csvContent, "credits.csv", "text/csv");
               },
             },
-            "Credits (CSV)",
+            t("download.creditsCsv"),
           ),
           m(
             "button.button.is-small.is-info",
@@ -120,7 +118,7 @@ export const Download: m.Component<DownloadAttrs> = {
               title: zipDisabled ? zipExportTitle : undefined,
               onclick: exportSplitAnimations,
             },
-            "ZIP: Split by animation",
+            t("download.zipByAnimation"),
           ),
           state.zipByAnimation.isRunning ? m("span.loading") : null,
           m(
@@ -130,7 +128,7 @@ export const Download: m.Component<DownloadAttrs> = {
               title: zipDisabled ? zipExportTitle : undefined,
               onclick: exportSplitItemSheets,
             },
-            "ZIP: Split by item",
+            t("download.zipByItem"),
           ),
           state.zipByItem.isRunning ? m("span.loading") : null,
           m(
@@ -140,7 +138,7 @@ export const Download: m.Component<DownloadAttrs> = {
               title: zipDisabled ? zipExportTitle : undefined,
               onclick: exportSplitItemAnimations,
             },
-            "ZIP: Split by animation and item",
+            t("download.zipByAnimationAndItem"),
           ),
           state.zipByAnimationAndItem.isRunning ? m("span.loading") : null,
           m(
@@ -150,7 +148,7 @@ export const Download: m.Component<DownloadAttrs> = {
               title: zipDisabled ? zipExportTitle : undefined,
               onclick: exportIndividualFrames,
             },
-            "ZIP: Split by animation and frame",
+            t("download.zipByAnimationAndFrame"),
           ),
           state.zipIndividualFrames && state.zipIndividualFrames.isRunning
             ? m("span.loading")
@@ -158,12 +156,12 @@ export const Download: m.Component<DownloadAttrs> = {
           m(
             "button.button.is-small.is-link",
             { onclick: exportToClipboard },
-            "Export to Clipboard (JSON)",
+            t("download.exportJson"),
           ),
           m(
             "button.button.is-small.is-link",
             { onclick: importFromClipboard },
-            "Import from Clipboard (JSON)",
+            t("download.importJson"),
           ),
         ]),
       ],

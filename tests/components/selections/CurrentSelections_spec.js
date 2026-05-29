@@ -96,8 +96,8 @@ describe("CurrentSelections", function () {
     const tags = host.querySelectorAll("span.tag.is-medium.is-info");
     assert.strictEqual(tags.length, 2);
 
-    assert.include(host.textContent, "Test Hat (blue)");
-    assert.include(host.textContent, "Winter Coat (long)");
+    assert.include(host.textContent, "Test Hat（Blue）");
+    assert.include(host.textContent, "Winter Coat（Long）");
 
     const hatTag = [...host.querySelectorAll("span.tag.is-medium")].find((el) =>
       el.textContent.includes("Test Hat"),
@@ -105,7 +105,7 @@ describe("CurrentSelections", function () {
     assert.notEqual(hatTag, null);
     const hatTitle = hatTag.getAttribute("title");
     assert.include(hatTitle, "Licenses: CC0");
-    assert.include(hatTitle, "Animations: walk, idle");
+    assert.include(hatTitle, "Animations: Walk, Idle");
 
     assert.strictEqual(
       host.querySelectorAll("button.delete.is-small").length,

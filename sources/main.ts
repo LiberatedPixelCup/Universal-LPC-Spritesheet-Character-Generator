@@ -6,6 +6,11 @@ import "./vendor-globals.ts";
 import { loadAllMetadata } from "./install-item-metadata.ts";
 import { catalogReady, defaultCatalog } from "./state/catalog.ts";
 
+// Import i18n system
+import { loadTranslations, setLanguage } from "../lang/i18n.ts";
+import zhTranslations from "../lang/zh.json";
+import enTranslations from "../lang/en.json";
+
 // Import debug first so `window.DEBUG` is set before other modules run.
 import { debugLog, getDebugParam } from "./utils/debug.ts";
 
@@ -170,3 +175,62 @@ function clearShellLoadingClass(): void {
     document.getElementById(id)?.classList.remove("loading");
   }
 }
+
+// Initialize i18n system
+function initI18n(): void {
+  // Load translation dictionaries
+  loadTranslations("zh", zhTranslations);
+  loadTranslations("en", enTranslations);
+
+  // Default to Chinese
+  setLanguage("zh");
+}
+
+// Call i18n initialization
+initI18n();
+
+// Update static HTML text with translations
+function updateStaticHtmlText(): void {
+  import("../lang/i18n.ts").then(({ t, getLanguage }) => {
+    const lang = getLanguage();
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+    document.title = t("site.title");
+
+    const h1 = document.querySelector("#header-left h1");
+    if (h1) {
+      const link = h1.querySelector("a");
+      h1.textContent = t("site.title");
+      if (link) h1.appendChild(link);
+    }
+
+    const githubImg = document.querySelector("#header-left img[alt]");
+    if (githubImg) githubImg.setAttribute("alt", t("site.viewOnGitHub"));
+
+    const subtitle = document.querySelector(
+      "#header-left .subtitle.has-text-grey",
+    );
+    if (subtitle) {
+      const lpcLink = document.createElement("a");
+      lpcLink.href = "https://lpc.opengameart.org";
+      lpcLink.textContent = "Liberated Pixel Cup";
+      const creditsLink = document.createElement("a");
+      creditsLink.href = "#credits-section";
+      creditsLink.textContent = t("site.creditsNote");
+      subtitle.innerHTML =
+        t("site.subtitle").replace("Liberated Pixel Cup", lpcLink.outerHTML) +
+        ' <span class="mx-2">|</span> ' +
+        creditsLink.outerHTML;
+    }
+
+    const sponsors = document.getElementById("sponsors-links");
+    if (sponsors) {
+      const links = sponsors.querySelectorAll("a");
+      if (links.length >= 2) {
+        links[0].textContent = t("site.netlifyPreview");
+        links[1].textContent = t("site.argosTesting");
+      }
+    }
+  });
+}
+
+updateStaticHtmlText();

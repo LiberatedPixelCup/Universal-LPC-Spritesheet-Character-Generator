@@ -109,7 +109,7 @@ describe("ItemWithVariants", function () {
     );
 
     assert.strictEqual(host.querySelectorAll(".variant-item").length, 2);
-    assert.ok(host.textContent.includes("Dark blue"));
+    assert.ok(host.textContent.includes("DarkBlue"));
     assert.ok(host.textContent.includes("Red"));
   });
 
