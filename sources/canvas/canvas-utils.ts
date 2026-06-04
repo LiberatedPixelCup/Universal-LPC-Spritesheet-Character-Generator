@@ -1,6 +1,6 @@
 // Canvas utility functions
 
-import { getItemMerged } from "../state/catalog.ts";
+import type { CatalogReader } from "../state/catalog.ts";
 import { debugWarn } from "../utils/debug.ts";
 
 /**
@@ -62,8 +62,12 @@ export function hasContentInRegion(
   }
 }
 
-export function getZPos(itemId: string, layerNum: number = 1): number {
-  const result = getItemMerged(itemId);
+export function getZPos(
+  catalog: Pick<CatalogReader, "getItemMerged">,
+  itemId: string,
+  layerNum: number = 1,
+): number {
+  const result = catalog.getItemMerged(itemId);
   if (result.isErr()) return 100;
 
   const layerKey = `layer_${layerNum}`;

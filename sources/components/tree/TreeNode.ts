@@ -1,14 +1,11 @@
 // Recursive tree node component
 import m from "mithril";
 import { state, getSelectionGroup } from "../../state/state.ts";
-import { isCreditsReady, isLiteReady } from "../../state/catalog.ts";
-import {
-  chunkReady,
-  getItemCredits,
-  getItemLite,
-  getItemMerged,
+import type {
+  CatalogReader,
+  CategoryTreeNode,
+  ItemMerged,
 } from "../../state/catalog.ts";
-import type { CategoryTreeNode, ItemMerged } from "../../state/catalog.ts";
 import { renderResult } from "../../utils/render-result.ts";
 import {
   isItemLicenseCompatible,
@@ -23,6 +20,9 @@ import {
 import { ItemWithVariants } from "./ItemWithVariants.ts";
 import { ItemWithRecolors } from "./ItemWithRecolors.ts";
 
+// Forwarder: catalog flows to ItemWithRecolors → PaletteSelectModal. Full
+// reader avoids enumerating the transitive union of downstream needs. The
+// leaf (PaletteSelectModal) narrows.
 export type TreeNodeAttrs = {
   name: string;
   node: CategoryTreeNode & {
@@ -31,11 +31,13 @@ export type TreeNodeAttrs = {
     label?: string;
   };
   pathPrefix?: string;
+  catalog: CatalogReader;
 };
 
 type ItemListCtx = {
   isNodeAnimCompatible: boolean;
   searchQuery: string;
+  catalog: CatalogReader;
 };
 
 function renderSkeletons(itemIds: string[]) {
@@ -52,7 +54,7 @@ function renderSkeletons(itemIds: string[]) {
 }
 
 function renderItem(itemId: string, meta: ItemMerged, ctx: ItemListCtx) {
-  const { isNodeAnimCompatible, searchQuery } = ctx;
+  const { isNodeAnimCompatible, searchQuery, catalog } = ctx;
   const displayName = meta.name;
   const hasVariants = meta.variants && meta.variants.length > 0;
   const hasRecolors = !hasVariants && meta.recolors && meta.recolors.length > 0;
@@ -61,18 +63,18 @@ function renderItem(itemId: string, meta: ItemMerged, ctx: ItemListCtx) {
     searchQuery.length >= 2 &&
     matchesSearch(meta.name, searchQuery);
 
-  const isLicenseCompatibleFlag = isItemLicenseCompatible(itemId);
+  const isLicenseCompatibleFlag = isItemLicenseCompatible(itemId, catalog);
   const isAnimCompatibleFlag =
-    isItemAnimationCompatible(itemId) && isNodeAnimCompatible;
+    isItemAnimationCompatible(itemId, catalog) && isNodeAnimCompatible;
   const isCompatible = isLicenseCompatibleFlag && isAnimCompatibleFlag;
 
   // Build tooltip text (license list needs credits chunk)
   let licensesText: string;
-  if (!isCreditsReady()) {
+  if (!catalog.isCreditsReady()) {
     licensesText = "License info loading…";
   } else {
     const allLicenses = new Set<string>();
-    const credits = getItemCredits(itemId).unwrapOr([]);
+    const credits = catalog.getItemCredits(itemId).unwrapOr([]);
     for (const credit of credits) {
       for (const lic of credit.licenses) {
         allLicenses.add(lic.trim());
@@ -99,7 +101,7 @@ function renderItem(itemId: string, meta: ItemMerged, ctx: ItemListCtx) {
   }
   tooltipText += `${licensesText}\n${animsText}`;
 
-  const showItemTooltips = isCreditsReady();
+  const showItemTooltips = catalog.isCreditsReady();
 
   if (!hasVariants && !hasRecolors) {
     // Simple item with no variants or recolors
@@ -138,6 +140,7 @@ function renderItem(itemId: string, meta: ItemMerged, ctx: ItemListCtx) {
       isCompatible,
       tooltipText,
       showItemTooltips,
+      catalog,
     });
   }
   return m(ItemWithVariants, {
@@ -152,15 +155,15 @@ function renderItem(itemId: string, meta: ItemMerged, ctx: ItemListCtx) {
 }
 
 function renderItemList(itemIds: string[], ctx: ItemListCtx) {
-  const { isNodeAnimCompatible, searchQuery } = ctx;
+  const { isNodeAnimCompatible, searchQuery, catalog } = ctx;
   return itemIds
     .filter((itemId) => {
-      const liteResult = getItemLite(itemId);
+      const liteResult = catalog.getItemLite(itemId);
       if (liteResult.isErr()) return false; // unknown id (stale URL etc.)
       const lite = liteResult.value;
       // Filter: Only show items compatible with current body type
       if (!lite.required.includes(state.bodyType)) return false;
-      if (!isItemAnimationCompatible(itemId) || !isNodeAnimCompatible)
+      if (!isItemAnimationCompatible(itemId, catalog) || !isNodeAnimCompatible)
         return false;
       // Filter: Only show items matching search query
       if (
@@ -173,7 +176,7 @@ function renderItemList(itemIds: string[], ctx: ItemListCtx) {
       return true;
     })
     .map((itemId) => {
-      const mergedResult = getItemMerged(itemId);
+      const mergedResult = catalog.getItemMerged(itemId);
       if (mergedResult.isErr()) return null; // unknown id
       return renderItem(itemId, mergedResult.value, ctx);
     });
@@ -181,10 +184,10 @@ function renderItemList(itemIds: string[], ctx: ItemListCtx) {
 
 export const TreeNode: m.Component<TreeNodeAttrs> = {
   view(vnode) {
-    const { name, node, pathPrefix = "" } = vnode.attrs;
+    const { name, node, pathPrefix = "", catalog } = vnode.attrs;
     const nodePath = pathPrefix ? `${pathPrefix}-${name}` : name;
     const searchQuery = state.searchQuery;
-    const hasSearchMatches = nodeHasMatches(node, searchQuery);
+    const hasSearchMatches = nodeHasMatches(node, searchQuery, catalog);
     const isNodeAnimCompatible = isNodeAnimationCompatible(node);
 
     // Filter: Only show items compatible with current body type
@@ -221,10 +224,14 @@ export const TreeNode: m.Component<TreeNodeAttrs> = {
       false;
     const displayName = node.label ?? capitalize(name);
 
-    const categoryTitle = isLiteReady() ? tooltipText : undefined;
+    const categoryTitle = catalog.isLiteReady() ? tooltipText : undefined;
 
     const itemIds = node.items ?? [];
-    const itemListCtx: ItemListCtx = { isNodeAnimCompatible, searchQuery };
+    const itemListCtx: ItemListCtx = {
+      isNodeAnimCompatible,
+      searchQuery,
+      catalog,
+    };
 
     return m(
       "div",
@@ -255,12 +262,13 @@ export const TreeNode: m.Component<TreeNodeAttrs> = {
                 name: childName,
                 node: childNode,
                 pathPrefix: nodePath,
+                catalog,
               }),
             ),
             // Render items in this category. Skeletons until lite registers,
             // then real items via .filter / .map using typed getters.
             renderResult(
-              chunkReady("lite"),
+              catalog.chunkReady("lite"),
               () => renderItemList(itemIds, itemListCtx),
               () => renderSkeletons(itemIds),
             ),

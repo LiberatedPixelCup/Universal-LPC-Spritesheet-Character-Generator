@@ -2,13 +2,14 @@
 import m from "mithril";
 import classNames from "classnames";
 import { state, getSelectionGroup, selectItem } from "../../state/state.ts";
-import { isPaletteReady } from "../../state/catalog.ts";
+import type { CatalogReader, ItemMerged } from "../../state/catalog.ts";
 import { drawRecolorPreview } from "../../canvas/palette-recolor.ts";
 import { getPaletteOptions } from "../../state/palettes.ts";
 import { PaletteSelectModal } from "./PaletteSelectModal.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
-import type { ItemMerged } from "../../state/catalog.ts";
 
+// Forwarder: own use is just `isPaletteReady`, but it forwards a wider slice
+// to PaletteSelectModal. Full reader keeps the contract simple; leaf narrows.
 export type ItemWithRecolorsAttrs = {
   itemId: string;
   meta: ItemMerged;
@@ -16,6 +17,7 @@ export type ItemWithRecolorsAttrs = {
   isCompatible: boolean;
   tooltipText: string;
   showItemTooltips?: boolean;
+  catalog: CatalogReader;
 };
 
 type ItemWithRecolorsState = {
@@ -42,6 +44,7 @@ export const ItemWithRecolors: m.Component<
       isCompatible,
       tooltipText,
       showItemTooltips = true,
+      catalog,
     } = vnode.attrs;
     const rowTitle = showItemTooltips ? tooltipText : undefined;
     const compactDisplay = state.compactDisplay;
@@ -58,7 +61,7 @@ export const ItemWithRecolors: m.Component<
     const selection = state.selections[selectionGroup];
     const isSelected = selection?.itemId === itemId;
 
-    const paletteReady = isPaletteReady();
+    const paletteReady = catalog.isPaletteReady();
 
     // Build palette/color options for all recolor fields
     const [paletteOptions, selectedColors] = getPaletteOptions(itemId, meta);
@@ -77,6 +80,7 @@ export const ItemWithRecolors: m.Component<
         selectedColors,
         compactDisplay,
         rootViewNode,
+        catalog,
         onClose: () => {
           rootViewNode.state.showPaletteModal = null;
           rootViewNode.state._palettePreviewLastTotal = undefined;

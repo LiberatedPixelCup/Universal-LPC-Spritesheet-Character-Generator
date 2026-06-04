@@ -31,6 +31,7 @@ import {
   restoreAppCatalogAfterTest,
   seedBrowserCatalogMergedOnDist,
 } from "../browser-catalog-fixture.js";
+import { defaultCatalog } from "../../sources/state/catalog.ts";
 
 /**
  * `noExport` on an entry in ANIMATIONS is handled differently per export:
@@ -88,7 +89,7 @@ const ZIP_SPEC_ITEM_METADATA = {
 /**
  * Item whose layers are exclusively custom_animation (no standard sheet rows).
  * LiberatedPixelCup#364 / PR "Fixed Item Split and Animation Split Exports":
- * export must fall back when getSortedLayers(id, true)._unsafeUnwrap() is empty.
+ * export must fall back when getSortedLayers(defaultCatalog, id, true)._unsafeUnwrap() is empty.
  */
 const CUSTOM_ANIMATION_ONLY_ITEM_METADATA = {
   custom_only_whip: {
@@ -331,7 +332,11 @@ describe("state/zip.ts", () => {
         addCanvasToZip: addSpy,
       });
 
-      const bodyLayers = getSortedLayers("body", true)._unsafeUnwrap();
+      const bodyLayers = getSortedLayers(
+        defaultCatalog,
+        "body",
+        true,
+      )._unsafeUnwrap();
       expect(bodyLayers, "body item should have layers in itemMetadata").to.be
         .ok;
       expect(bodyLayers.length).to.be.at.least(1);
@@ -371,7 +376,11 @@ describe("state/zip.ts", () => {
         renderSingleItem: renderStub,
       });
 
-      const bodyLayers = getSortedLayers("body", true)._unsafeUnwrap();
+      const bodyLayers = getSortedLayers(
+        defaultCatalog,
+        "body",
+        true,
+      )._unsafeUnwrap();
       const expectedFileName = getItemFileName(
         "body",
         "light",
@@ -419,8 +428,13 @@ describe("state/zip.ts", () => {
 
       await exportSplitItemSheets({ renderSingleItem: renderStub });
 
-      const bodyLayers = getSortedLayers("body", true)._unsafeUnwrap();
+      const bodyLayers = getSortedLayers(
+        defaultCatalog,
+        "body",
+        true,
+      )._unsafeUnwrap();
       const headLayers = getSortedLayers(
+        defaultCatalog,
         "heads_human_male",
         true,
       )._unsafeUnwrap();
@@ -477,13 +491,25 @@ describe("state/zip.ts", () => {
 
       await exportSplitItemSheets({ renderSingleItem: renderStub });
 
-      const bodyLayers = getSortedLayers("body", true)._unsafeUnwrap();
+      const bodyLayers = getSortedLayers(
+        defaultCatalog,
+        "body",
+        true,
+      )._unsafeUnwrap();
       const headLayers = getSortedLayers(
+        defaultCatalog,
         "heads_human_male",
         true,
       )._unsafeUnwrap();
-      const weaponLayers = getSortedLayers("longsword", true)._unsafeUnwrap();
-      const realWeaponLayers = getSortedLayers("longsword")._unsafeUnwrap();
+      const weaponLayers = getSortedLayers(
+        defaultCatalog,
+        "longsword",
+        true,
+      )._unsafeUnwrap();
+      const realWeaponLayers = getSortedLayers(
+        defaultCatalog,
+        "longsword",
+      )._unsafeUnwrap();
       const firstFileName = getItemFileName(
         "body",
         "light",
@@ -525,11 +551,19 @@ describe("state/zip.ts", () => {
 
       it("exportSplitItemSheets calls renderSingleItem and writes items/ when every layer is custom_animation (standard-only layer list empty)", async () => {
         expect(
-          getSortedLayers("custom_only_whip", true)._unsafeUnwrap(),
+          getSortedLayers(
+            defaultCatalog,
+            "custom_only_whip",
+            true,
+          )._unsafeUnwrap(),
           "precondition: standard-only layers must be empty for this fixture",
         ).to.have.length(0);
         expect(
-          getSortedLayers("custom_only_whip", false)._unsafeUnwrap(),
+          getSortedLayers(
+            defaultCatalog,
+            "custom_only_whip",
+            false,
+          )._unsafeUnwrap(),
         ).to.have.length(1);
 
         const renderStub = sandbox.stub().resolves(nonEmptyItemCanvas());
@@ -541,6 +575,7 @@ describe("state/zip.ts", () => {
         });
 
         const allLayers = getSortedLayers(
+          defaultCatalog,
           "custom_only_whip",
           false,
         )._unsafeUnwrap();
@@ -712,7 +747,11 @@ describe("state/zip.ts", () => {
         addCanvasToZip: addSpy,
       });
 
-      const bodyLayers = getSortedLayers("body", true)._unsafeUnwrap();
+      const bodyLayers = getSortedLayers(
+        defaultCatalog,
+        "body",
+        true,
+      )._unsafeUnwrap();
       expect(bodyLayers, "body item should have layers in itemMetadata").to.be
         .ok;
       expect(bodyLayers.length).to.be.at.least(1);
@@ -756,7 +795,11 @@ describe("state/zip.ts", () => {
       expect(metadataEntry, "metadata.json should exist").to.exist;
       const metadata = JSON.parse(metadataEntry);
 
-      const bodyLayers = getSortedLayers("body", true)._unsafeUnwrap();
+      const bodyLayers = getSortedLayers(
+        defaultCatalog,
+        "body",
+        true,
+      )._unsafeUnwrap();
       const expectedFileName = getItemFileName(
         "body",
         "light",
@@ -867,8 +910,13 @@ describe("state/zip.ts", () => {
         renderSingleItemAnimation: renderStub,
       });
 
-      const bodyLayers = getSortedLayers("body", true)._unsafeUnwrap();
+      const bodyLayers = getSortedLayers(
+        defaultCatalog,
+        "body",
+        true,
+      )._unsafeUnwrap();
       const headLayers = getSortedLayers(
+        defaultCatalog,
         "heads_human_male",
         true,
       )._unsafeUnwrap();
@@ -944,17 +992,26 @@ describe("state/zip.ts", () => {
           addStandardAnimationToZipCustomFolderSpy,
       });
 
-      const bodyLayers = getSortedLayers("body")._unsafeUnwrap();
+      const bodyLayers = getSortedLayers(
+        defaultCatalog,
+        "body",
+      )._unsafeUnwrap();
       expect(bodyLayers, "body item should have layers in itemMetadata").to.be
         .ok;
       expect(bodyLayers.length).to.be.at.least(1);
 
-      const headLayers = getSortedLayers("heads_human_male")._unsafeUnwrap();
+      const headLayers = getSortedLayers(
+        defaultCatalog,
+        "heads_human_male",
+      )._unsafeUnwrap();
       expect(headLayers, "head item should have layers in itemMetadata").to.be
         .ok;
       expect(headLayers.length).to.be.at.least(1);
 
-      const swordLayers = getSortedLayers("longsword")._unsafeUnwrap();
+      const swordLayers = getSortedLayers(
+        defaultCatalog,
+        "longsword",
+      )._unsafeUnwrap();
       expect(swordLayers, "longsword item should have layers in itemMetadata")
         .to.be.ok;
       expect(swordLayers.length).to.be.at.least(1);
@@ -1085,7 +1142,11 @@ describe("state/zip.ts", () => {
 
       it("exportSplitItemAnimations calls renderSingleItemAnimation under standard/<anim>/ when every layer is custom_animation (standard-only layer list empty)", async () => {
         expect(
-          getSortedLayers("custom_only_whip", true)._unsafeUnwrap(),
+          getSortedLayers(
+            defaultCatalog,
+            "custom_only_whip",
+            true,
+          )._unsafeUnwrap(),
           "precondition: standard-only layers must be empty for this fixture",
         ).to.have.length(0);
 
@@ -1098,6 +1159,7 @@ describe("state/zip.ts", () => {
         });
 
         const allLayers = getSortedLayers(
+          defaultCatalog,
           "custom_only_whip",
           false,
         )._unsafeUnwrap();

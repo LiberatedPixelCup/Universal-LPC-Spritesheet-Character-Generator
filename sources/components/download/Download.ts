@@ -21,14 +21,17 @@ import {
   exportIndividualFrames,
 } from "../../state/zip.ts";
 import { debugLog } from "../../utils/debug.ts";
-import { isLayersReady } from "../../state/catalog.ts";
+import type { CatalogReader } from "../../state/catalog.ts";
 
-const zipExportDisabled = () => !isLayersReady();
 const zipExportTitle = "Wait for layer data to finish loading";
 
-export const Download: m.Component = {
-  view() {
-    const zipDisabled = zipExportDisabled();
+type DownloadAttrs = {
+  catalog: Pick<CatalogReader, "isLayersReady">;
+};
+
+export const Download: m.Component<DownloadAttrs> = {
+  view(vnode) {
+    const zipDisabled = !vnode.attrs.catalog.isLayersReady();
 
     const exportToClipboard = async (): Promise<void> => {
       if (!window.canvasRenderer) return;

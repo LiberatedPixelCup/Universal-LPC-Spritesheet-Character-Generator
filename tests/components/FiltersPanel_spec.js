@@ -12,7 +12,8 @@ describe("FiltersPanel", () => {
   let vnode;
 
   beforeEach(() => {
-    vnode = FiltersPanel.view();
+    const catalog = { isLiteReady: () => true };
+    vnode = FiltersPanel.view({ attrs: { catalog } });
   });
 
   it("should render the CollapsibleSection component with correct attributes", () => {

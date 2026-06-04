@@ -2,11 +2,21 @@
 import m from "mithril";
 import { state } from "../state/state.ts";
 import { syncSelectionsToHash } from "../state/hash.ts";
+import type { CatalogReader } from "../state/catalog.ts";
 import { Download } from "./download/Download.ts";
 import { FiltersPanel } from "./FiltersPanel.ts";
 import { Credits } from "./download/Credits.ts";
 import { AdvancedTools } from "./advanced/AdvancedTools.ts";
 import { renderCharacter } from "../canvas/renderer.ts";
+
+/**
+ * App is the composition root for catalog DI. main.ts mounts it with the
+ * `defaultCatalog` instance; App threads narrow slices down to children that
+ * have migrated to receive `catalog` via attrs (so far: FiltersPanel and its
+ * subtree). Children that still import from `state/catalog.ts` directly are
+ * unaffected — they read the same `defaultCatalog` state under the hood.
+ */
+type AppAttrs = { catalog: CatalogReader };
 
 type AppState = {
   prevSelections: string;
@@ -15,7 +25,7 @@ type AppState = {
   prevCustomZPos: number;
 };
 
-export const App: m.Component<Record<string, never>, AppState> = {
+export const App: m.Component<AppAttrs, AppState> = {
   oninit(vnode) {
     // Track previous state to detect changes
     vnode.state.prevSelections = JSON.stringify(state.selections);
@@ -52,10 +62,10 @@ export const App: m.Component<Record<string, never>, AppState> = {
       vnode.state.prevCustomZPos = currentCustomZPos;
     }
   },
-  view() {
+  view(vnode) {
     return m("div", [
-      m(Download),
-      m(FiltersPanel),
+      m(Download, { catalog: vnode.attrs.catalog }),
+      m(FiltersPanel, { catalog: vnode.attrs.catalog }),
       m(Credits),
       m(AdvancedTools),
     ]);

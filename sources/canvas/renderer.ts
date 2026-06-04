@@ -24,6 +24,7 @@ import { getSortedLayersByAnim } from "../state/meta.ts";
 import type { AnimationLayer } from "../state/meta.ts";
 import {
   catalogReady,
+  defaultCatalog,
   formatLoadError,
   getItemMerged,
 } from "../state/catalog.ts";
@@ -273,7 +274,7 @@ async function runRenderCharacter(
         const layer = meta.layers?.[layerKey];
         if (!layer) break;
 
-        const zPos = getZPos(itemId, layerNum);
+        const zPos = getZPos(defaultCatalog, itemId, layerNum);
 
         // Check if this layer has a custom animation
         if (layer.custom_animation) {
@@ -690,9 +691,11 @@ export async function renderSingleItem(
     // Render all layers of this custom animation item
     const customSprites: { spritePath: string; zPos: number; yPos: number }[] =
       [];
-    const animsList = getSortedLayersByAnim(itemId, true).unwrapOr(
-      {} as Record<string, AnimationLayer[]>,
-    );
+    const animsList = getSortedLayersByAnim(
+      defaultCatalog,
+      itemId,
+      true,
+    ).unwrapOr({} as Record<string, AnimationLayer[]>);
     for (const animName in animsList) {
       for (let layerNum = 1; layerNum < 10; layerNum++) {
         if (singleLayer !== null && layerNum !== singleLayer) continue;
@@ -770,7 +773,7 @@ export async function renderSingleItem(
     const layerKey = `layer_${layerNum}`;
     if (!meta.layers?.[layerKey]) break;
 
-    const zPos = getZPos(itemId, layerNum);
+    const zPos = getZPos(defaultCatalog, itemId, layerNum);
 
     // Add each animation for this layer
     for (const [animName, yPos] of Object.entries(ANIMATION_OFFSETS)) {
@@ -923,7 +926,7 @@ export async function renderSingleItemAnimation(
     const layerKey = `layer_${layerNum}`;
     if (!meta.layers?.[layerKey]) break;
 
-    const zPos = getZPos(itemId, layerNum);
+    const zPos = getZPos(defaultCatalog, itemId, layerNum);
 
     // Check animation support
     if (animationName === "combat_idle") {

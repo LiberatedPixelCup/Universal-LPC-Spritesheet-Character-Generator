@@ -1,6 +1,5 @@
 // Pure utility functions with minimal catalog reads for tree search
-import { isLiteReady } from "../state/catalog.ts";
-import { getItemLite, type CategoryTreeNode } from "../state/catalog.ts";
+import type { CatalogReader, CategoryTreeNode } from "../state/catalog.ts";
 
 /**
  * Simple ES6 template string replacement
@@ -41,11 +40,15 @@ export function matchesSearch(text: string, query: string): boolean {
   return text.toLowerCase().includes(query.toLowerCase());
 }
 
-export function nodeHasMatches(node: CategoryTreeNode, query: string): boolean {
+export function nodeHasMatches(
+  node: CategoryTreeNode,
+  query: string,
+  catalog: Pick<CatalogReader, "isLiteReady" | "getItemLite">,
+): boolean {
   if (!query || query.length < 2) return true;
 
   // Until lite metadata is registered we cannot match item names; keep nodes visible
-  if (node.items && node.items.length > 0 && !isLiteReady()) {
+  if (node.items && node.items.length > 0 && !catalog.isLiteReady()) {
     return true;
   }
 
@@ -53,7 +56,7 @@ export function nodeHasMatches(node: CategoryTreeNode, query: string): boolean {
   if (
     node.items &&
     node.items.some((itemId) =>
-      getItemLite(itemId).match(
+      catalog.getItemLite(itemId).match(
         (meta) => matchesSearch(meta.name, query),
         () => false,
       ),
@@ -65,7 +68,7 @@ export function nodeHasMatches(node: CategoryTreeNode, query: string): boolean {
   // Check if any child nodes have matches
   if (node.children) {
     return Object.values(node.children).some((childNode) =>
-      nodeHasMatches(childNode, query),
+      nodeHasMatches(childNode, query, catalog),
     );
   }
 

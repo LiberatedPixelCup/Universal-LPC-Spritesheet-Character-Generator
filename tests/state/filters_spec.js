@@ -12,7 +12,10 @@ import {
   setCustomAnimations,
   setCustomAnimationBase,
 } from "../../sources/state/filters.ts";
-import { resetCatalogForTests } from "../../sources/state/catalog.ts";
+import {
+  defaultCatalog,
+  resetCatalogForTests,
+} from "../../sources/state/catalog.ts";
 import {
   restoreAppCatalogAfterTest,
   seedBrowserCatalog,
@@ -115,7 +118,7 @@ describe("state/filters.ts", () => {
     });
 
     it("should return true if item metadata is missing", () => {
-      const result = isItemLicenseCompatible("item1");
+      const result = isItemLicenseCompatible("item1", defaultCatalog);
       expect(result).to.be.true;
     });
 
@@ -123,7 +126,7 @@ describe("state/filters.ts", () => {
       seedBrowserCatalog({
         item1: { credits: [] },
       });
-      const result = isItemLicenseCompatible("item1");
+      const result = isItemLicenseCompatible("item1", defaultCatalog);
       expect(result).to.be.true;
     });
 
@@ -135,7 +138,7 @@ describe("state/filters.ts", () => {
           credits: [{ licenses: ["license1 1.0"] }],
         },
       });
-      const result = isItemLicenseCompatible("item1");
+      const result = isItemLicenseCompatible("item1", defaultCatalog);
       expect(result).to.be.false;
     });
 
@@ -150,7 +153,7 @@ describe("state/filters.ts", () => {
           credits: [{ licenses: ["license1 1.0", "license2 1.0"] }],
         },
       });
-      const result = isItemLicenseCompatible("item1");
+      const result = isItemLicenseCompatible("item1", defaultCatalog);
       expect(result).to.be.true;
     });
 
@@ -166,7 +169,7 @@ describe("state/filters.ts", () => {
           credits: [{ licenses: ["license1 1.0", "license2 1.0"] }],
         },
       });
-      const result = isItemLicenseCompatible("item1");
+      const result = isItemLicenseCompatible("item1", defaultCatalog);
       expect(result).to.be.false;
     });
 
@@ -178,7 +181,7 @@ describe("state/filters.ts", () => {
           credits: [{ licenses: [" license1 1.0 "] }],
         },
       });
-      const result = isItemLicenseCompatible("item1");
+      const result = isItemLicenseCompatible("item1", defaultCatalog);
       expect(result).to.be.true;
     });
   });
@@ -216,21 +219,21 @@ describe("state/filters.ts", () => {
     });
 
     it("should return true if no animations are enabled", () => {
-      expect(isItemAnimationCompatible("item1")).to.be.true;
-      expect(isItemAnimationCompatible("item2")).to.be.true;
-      expect(isItemAnimationCompatible("item3")).to.be.true;
+      expect(isItemAnimationCompatible("item1", defaultCatalog)).to.be.true;
+      expect(isItemAnimationCompatible("item2", defaultCatalog)).to.be.true;
+      expect(isItemAnimationCompatible("item3", defaultCatalog)).to.be.true;
     });
 
     it("should return true if the item's animations match enabled animations", () => {
       setEnabledAnimations(["walk"]);
-      expect(isItemAnimationCompatible("item1")).to.be.true;
-      expect(isItemAnimationCompatible("item2")).to.be.false;
+      expect(isItemAnimationCompatible("item1", defaultCatalog)).to.be.true;
+      expect(isItemAnimationCompatible("item2", defaultCatalog)).to.be.false;
     });
 
     it("should return false if the item's animations do not match enabled animations", () => {
       setEnabledAnimations(["jump"]);
-      expect(isItemAnimationCompatible("item1")).to.be.false;
-      expect(isItemAnimationCompatible("item2")).to.be.true;
+      expect(isItemAnimationCompatible("item1", defaultCatalog)).to.be.false;
+      expect(isItemAnimationCompatible("item2", defaultCatalog)).to.be.true;
     });
 
     it("should return true if the item's animations include a base animation from custom animations", () => {
@@ -239,7 +242,7 @@ describe("state/filters.ts", () => {
       });
       setCustomAnimationBase((anim) => anim.base);
       setEnabledAnimations(["run"]);
-      expect(isItemAnimationCompatible("item4")).to.be.true;
+      expect(isItemAnimationCompatible("item4", defaultCatalog)).to.be.true;
     });
 
     it("should return false if the item's animations do not include a base animation from custom animations", () => {
@@ -248,15 +251,19 @@ describe("state/filters.ts", () => {
       });
       setCustomAnimationBase((anim) => anim.base);
       setEnabledAnimations(["run"]);
-      expect(isItemAnimationCompatible("item5")).to.be.false;
+      expect(isItemAnimationCompatible("item5", defaultCatalog)).to.be.false;
     });
 
     it("should return true if the item has no animations (assume compatible)", () => {
-      expect(isItemAnimationCompatible("item3")).to.be.true;
+      expect(isItemAnimationCompatible("item3", defaultCatalog)).to.be.true;
     });
 
     it("should return true if the item does not exist in metadata (assume compatible)", () => {
-      expect(isItemAnimationCompatible("nonExistentItem")).to.be.true;
+      const result = isItemAnimationCompatible(
+        "nonExistentItem",
+        defaultCatalog,
+      );
+      expect(result).to.be.true;
     });
   });
 

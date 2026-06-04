@@ -55,7 +55,12 @@ describe("LicenseFilters Component", () => {
     ).length;
     const totalCount = getLicenseConfig().length;
 
-    m.render(container, m(LicenseFilters));
+    m.render(
+      container,
+      m(LicenseFilters, {
+        catalog: { isLiteReady: () => true, isCreditsReady: () => true },
+      }),
+    );
 
     const labelText = container.querySelector(
       ".tree-label .is-size-7",
@@ -71,7 +76,12 @@ describe("LicenseFilters Component", () => {
     };
     state.enabledLicenses = { l1: true };
 
-    m.mount(container, LicenseFilters);
+    m.mount(container, {
+      view: () =>
+        m(LicenseFilters, {
+          catalog: { isLiteReady: () => true, isCreditsReady: () => true },
+        }),
+    });
 
     const expandButton = container.querySelector("span.tree-arrow");
     expandButton.click(); // Expand to show content
@@ -90,7 +100,12 @@ describe("LicenseFilters Component", () => {
     };
     state.enabledLicenses = { l1: true };
 
-    m.mount(container, LicenseFilters);
+    m.mount(container, {
+      view: () =>
+        m(LicenseFilters, {
+          catalog: { isLiteReady: () => true, isCreditsReady: () => true },
+        }),
+    });
 
     const expandButton = container.querySelector("span.tree-arrow");
     expandButton.click(); // Expand to show content

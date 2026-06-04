@@ -1,6 +1,11 @@
 import { expect } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
-import { resetCatalogForTests } from "../../sources/state/catalog.ts";
+import {
+  createCatalog,
+  defaultCatalog,
+  resetCatalogForTests,
+} from "../../sources/state/catalog.ts";
+import { buildItemsByTypeNameLite } from "../../sources/state/resolve-hash-param.ts";
 import {
   restoreAppCatalogAfterTest,
   seedBrowserCatalog,
@@ -12,6 +17,22 @@ import {
   matchesSearch,
   nodeHasMatches,
 } from "../../sources/utils/helpers.ts";
+
+function createFixtureCatalog(itemMetadata) {
+  const catalog = createCatalog();
+  const byTypeName = buildItemsByTypeNameLite(itemMetadata);
+  catalog.loadCatalogFromFixtures({
+    itemMetadata,
+    aliasMetadata: {},
+    categoryTree: { items: [], children: {} },
+    metadataIndexes: {
+      byTypeName,
+      hashMatch: { itemsByTypeName: byTypeName },
+    },
+    paletteMetadata: { versions: {}, materials: {} },
+  });
+  return catalog;
+}
 
 describe("utils/helpers.ts", () => {
   describe("es6DynamicTemplate", () => {
@@ -88,12 +109,15 @@ describe("utils/helpers.ts", () => {
   });
 
   describe("nodeHasMatches", () => {
+    let catalog;
+
     beforeEach(() => {
       resetCatalogForTests();
       seedBrowserCatalog({
         1: { name: "Sword" },
         2: { name: "Shield" },
       });
+      catalog = defaultCatalog;
     });
 
     afterEach(async () => {
@@ -102,13 +126,13 @@ describe("utils/helpers.ts", () => {
 
     it("should return true if the query is empty or less than 2 characters", () => {
       const node = { items: [1], children: {} };
-      expect(nodeHasMatches(node, "")).to.be.true;
-      expect(nodeHasMatches(node, "a")).to.be.true;
+      expect(nodeHasMatches(node, "", catalog)).to.be.true;
+      expect(nodeHasMatches(node, "a", catalog)).to.be.true;
     });
 
     it("should return true if any item in the node matches the query", () => {
       const node = { items: [1], children: {} };
-      expect(nodeHasMatches(node, "sword")).to.be.true;
+      expect(nodeHasMatches(node, "sword", catalog)).to.be.true;
     });
 
     it("should return true if any child node has matches", () => {
@@ -118,7 +142,7 @@ describe("utils/helpers.ts", () => {
           child1: { items: [2], children: {} },
         },
       };
-      expect(nodeHasMatches(node, "shield")).to.be.true;
+      expect(nodeHasMatches(node, "shield", catalog)).to.be.true;
     });
 
     it("should return false if no items or children match the query", () => {
@@ -128,7 +152,32 @@ describe("utils/helpers.ts", () => {
           child1: { items: [], children: {} },
         },
       };
-      expect(nodeHasMatches(node, "axe")).to.be.false;
+      expect(nodeHasMatches(node, "axe", catalog)).to.be.false;
+    });
+
+    it("uses the provided catalog instead of the default singleton", () => {
+      resetCatalogForTests();
+      seedBrowserCatalog({
+        shared_item: { name: "Haystack", type_name: "test" },
+      });
+      const isolatedCatalog = createFixtureCatalog({
+        shared_item: {
+          name: "Needle",
+          type_name: "test",
+          required: [],
+          animations: [],
+          recolors: [],
+          matchBodyColor: false,
+          variants: [],
+          path: [],
+          layers: {},
+          credits: [],
+        },
+      });
+      const node = { items: ["shared_item"], children: {} };
+
+      expect(nodeHasMatches(node, "needle", isolatedCatalog)).to.be.true;
+      expect(nodeHasMatches(node, "needle", defaultCatalog)).to.be.false;
     });
   });
 });

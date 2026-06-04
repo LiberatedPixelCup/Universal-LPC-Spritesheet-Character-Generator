@@ -1,7 +1,7 @@
 // License Filters component
 import m from "mithril";
 import { state } from "../../state/state.ts";
-import { isCreditsReady, isLiteReady } from "../../state/catalog.ts";
+import type { CatalogReader } from "../../state/catalog.ts";
 import { isItemLicenseCompatible } from "../../state/filters.ts";
 import { LICENSE_CONFIG } from "../../state/constants.ts";
 
@@ -12,7 +12,7 @@ type LicenseOption = {
   urlLabel?: string;
 };
 type LicenseFiltersDeps = {
-  isItemLicenseCompatible: (itemId: string) => boolean;
+  isItemLicenseCompatible: typeof isItemLicenseCompatible;
   licenseConfig: readonly LicenseOption[];
 };
 
@@ -27,8 +27,11 @@ export function setLicenseCompatible(
 ): void {
   deps.isItemLicenseCompatible = overrides.isItemLicenseCompatible;
 }
-export function isLicenseCompatible(itemId: string): boolean {
-  return deps.isItemLicenseCompatible(itemId);
+export function isLicenseCompatible(
+  itemId: string,
+  catalog: Pick<CatalogReader, "getItemMerged">,
+): boolean {
+  return deps.isItemLicenseCompatible(itemId, catalog);
 }
 
 export function setLicenseConfig(config: readonly LicenseOption[]): void {
@@ -39,23 +42,29 @@ export function getLicenseConfig(): readonly LicenseOption[] {
 }
 
 type LicenseFiltersState = { isExpanded: boolean };
+type LicenseFiltersAttrs = {
+  catalog: Pick<
+    CatalogReader,
+    "isLiteReady" | "isCreditsReady" | "getItemMerged"
+  >;
+};
 
 export const LicenseFilters: m.Component<
-  Record<string, never>,
+  LicenseFiltersAttrs,
   LicenseFiltersState
 > = {
   oninit(vnode) {
     vnode.state.isExpanded = false;
   },
   view(vnode) {
-    const liteReady = isLiteReady();
+    const liteReady = vnode.attrs.catalog.isLiteReady();
 
     const removeIncompatibleItems = () => {
       const toRemove: string[] = [];
       for (const [selectionGroup, selection] of Object.entries(
         state.selections,
       )) {
-        if (!isLicenseCompatible(selection.itemId)) {
+        if (!isLicenseCompatible(selection.itemId, vnode.attrs.catalog)) {
           toRemove.push(selectionGroup);
         }
       }
@@ -68,11 +77,12 @@ export const LicenseFilters: m.Component<
       }
     };
 
-    const creditsReady = isCreditsReady();
+    const creditsReady = vnode.attrs.catalog.isCreditsReady();
 
     const incompatibleSelections = creditsReady
       ? Object.values(state.selections).filter(
-          (selection) => !isLicenseCompatible(selection.itemId),
+          (selection) =>
+            !isLicenseCompatible(selection.itemId, vnode.attrs.catalog),
         )
       : [];
     const hasIncompatibleItems =

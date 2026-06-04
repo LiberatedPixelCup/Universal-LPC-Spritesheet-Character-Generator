@@ -4,6 +4,7 @@ import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { TreeNode } from "../../../sources/components/tree/TreeNode.ts";
 import { state } from "../../../sources/state/state.ts";
 import {
+  defaultCatalog,
   resetCatalogForTests,
   registerFromIndexModule,
   registerFromPaletteModule,
@@ -58,7 +59,10 @@ describe("TreeNode", function () {
       children: {},
     };
 
-    m.render(host, m(TreeNode, { name: "Armor", node }));
+    m.render(
+      host,
+      m(TreeNode, { name: "Armor", node, catalog: defaultCatalog }),
+    );
 
     assert.strictEqual(host.querySelector(".tree-label"), null);
     assert.strictEqual(host.textContent.trim(), "");
@@ -80,6 +84,7 @@ describe("TreeNode", function () {
     m.render(
       host,
       m(TreeNode, {
+        catalog: defaultCatalog,
         name: "Headgear",
         node: { items: ["tn_alpha"], children: {} },
       }),
@@ -107,6 +112,7 @@ describe("TreeNode", function () {
     m.render(
       host,
       m(TreeNode, {
+        catalog: defaultCatalog,
         name: "Warehouse",
         node: { items: ["pending-id"], children: {} },
       }),
@@ -137,6 +143,7 @@ describe("TreeNode", function () {
     m.render(
       host,
       m(TreeNode, {
+        catalog: defaultCatalog,
         name: "outer_category",
         node: {
           label: "Custom Label",
@@ -156,6 +163,7 @@ describe("TreeNode", function () {
     m.render(
       host,
       m(TreeNode, {
+        catalog: defaultCatalog,
         name: "outer_category",
         node: {
           label: "Custom Label",
@@ -179,6 +187,7 @@ describe("TreeNode", function () {
     m.render(
       host,
       m(TreeNode, {
+        catalog: defaultCatalog,
         name: "armor",
         node: { items: [], children: {} },
       }),
@@ -203,6 +212,7 @@ describe("TreeNode", function () {
     m.render(
       host,
       m(TreeNode, {
+        catalog: defaultCatalog,
         name: "Gear",
         node: { items: ["tn_search_hat"], children: {} },
       }),
@@ -235,6 +245,7 @@ describe("TreeNode", function () {
     m.render(
       host,
       m(TreeNode, {
+        catalog: defaultCatalog,
         name: "capes",
         node: { items: ["tn_pick"], children: {} },
       }),
@@ -250,6 +261,7 @@ describe("TreeNode", function () {
     m.render(
       host,
       m(TreeNode, {
+        catalog: defaultCatalog,
         name: "capes",
         node: { items: ["tn_pick"], children: {} },
       }),
@@ -267,6 +279,7 @@ describe("TreeNode", function () {
     m.render(
       host,
       m(TreeNode, {
+        catalog: defaultCatalog,
         name: "AnimCat",
         node: {
           animations: ["walk"],
@@ -292,6 +305,7 @@ describe("TreeNode", function () {
     m.render(
       host,
       m(TreeNode, {
+        catalog: defaultCatalog,
         name: "parent",
         node: {
           items: [],

@@ -4,7 +4,7 @@ import {
   type CustomAnimationDefinition,
 } from "../custom-animations.ts";
 import { LICENSE_CONFIG, ANIMATIONS } from "./constants.ts";
-import { getItemLite, getItemMerged } from "./catalog.ts";
+import type { CatalogReader } from "./catalog.ts";
 import { state } from "./state.ts";
 
 /**
@@ -127,8 +127,11 @@ export function getAllowedLicenses(): string[] {
 }
 
 /** Whether an item's credits include at least one license that's currently enabled. */
-export function isItemLicenseCompatible(itemId: string): boolean {
-  const result = getItemMerged(itemId);
+export function isItemLicenseCompatible(
+  itemId: string,
+  catalog: Pick<CatalogReader, "getItemMerged">,
+): boolean {
+  const result = catalog.getItemMerged(itemId);
   if (result.isErr()) return true; // chunk loading or unknown id — assume compatible
   const meta = result.value;
   if (meta.credits.length === 0) return true; // No license info = assume compatible
@@ -151,8 +154,11 @@ export function isItemLicenseCompatible(itemId: string): boolean {
 }
 
 /** Whether an item supports at least one currently-enabled animation. */
-export function isItemAnimationCompatible(itemId: string): boolean {
-  const meta = getItemLite(itemId).unwrapOr(null);
+export function isItemAnimationCompatible(
+  itemId: string,
+  catalog: Pick<CatalogReader, "getItemLite">,
+): boolean {
+  const meta = catalog.getItemLite(itemId).unwrapOr(null);
   if (!meta) return true; // unknown item — assume compatible
   return isNodeAnimationCompatible(meta);
 }

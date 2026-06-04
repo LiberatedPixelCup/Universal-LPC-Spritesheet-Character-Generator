@@ -1,45 +1,14 @@
 import { ok, type Result } from "neverthrow";
-import { getZPos } from "../canvas/canvas-utils.ts";
 import { variantToFilename } from "../utils/helpers.ts";
 import { replaceInPath } from "./path.ts";
-import { getItemMerged, type ItemMerged, type LoadError } from "./catalog.ts";
+import {
+  type CatalogReader,
+  type ItemMerged,
+  type LoadError,
+} from "./catalog.ts";
 import type { Selections } from "./state.ts";
 
-type MetaDeps = {
-  getZPos: (itemId: string, layerNum?: number) => number;
-  variantToFilename: (variant: string) => string;
-  replaceInPath: (
-    path: string,
-    selections: Selections,
-    meta: ItemMerged,
-  ) => string;
-  /** Result-returning lookup; callers either `.unwrapOr(default)` or branch on `.isErr()`. */
-  getItemMetadata: (itemId: string) => Result<ItemMerged, LoadError>;
-};
-
-// Dependency injection for testability (see setMetaDeps / resetMetaDeps)
-function createDefaultMetaDeps(): MetaDeps {
-  return {
-    getZPos,
-    variantToFilename,
-    replaceInPath,
-    getItemMetadata: getItemMerged,
-  };
-}
-
-let metaDeps = createDefaultMetaDeps();
-
-export function setMetaDeps(overrides: Partial<MetaDeps>): void {
-  Object.assign(metaDeps, overrides);
-}
-
-export function resetMetaDeps(): void {
-  metaDeps = createDefaultMetaDeps();
-}
-
-export function getMetaDeps(): MetaDeps {
-  return metaDeps;
-}
+type MetaCatalog = Pick<CatalogReader, "getItemMerged">;
 
 export type SortedLayer = { layerNum: number; zPos: number };
 export type AnimationLayer = SortedLayer & { animLayerNum: number };
@@ -57,13 +26,16 @@ function logIfNotFound(itemId: string): (err: LoadError) => LoadError {
   };
 }
 
+export type LayerToLoad = { zPos: number; path: string };
+
 /** Sort layers by zPos. */
 export function getSortedLayers(
+  catalog: MetaCatalog,
   itemId: string,
   standardOnly: boolean = false,
 ): Result<SortedLayer[], LoadError> {
-  return metaDeps
-    .getItemMetadata(itemId)
+  return catalog
+    .getItemMerged(itemId)
     .mapErr(logIfNotFound(itemId))
     .map((meta) => {
       const layersList: SortedLayer[] = [];
@@ -73,8 +45,7 @@ export function getSortedLayers(
         if (!layer) break;
         if (standardOnly && layer.custom_animation) continue;
 
-        const zPos = metaDeps.getZPos(itemId, layerNum);
-        layersList.push({ layerNum, zPos });
+        layersList.push({ layerNum, zPos: layer.zPos ?? 100 });
       }
       return layersList;
     });
@@ -85,20 +56,22 @@ export function getSortedLayers(
  * (custom-animation-only items), fall back to all layers.
  */
 export function getSortedLayersWithCustomFallback(
+  catalog: MetaCatalog,
   itemId: string,
 ): Result<SortedLayer[], LoadError> {
-  return getSortedLayers(itemId, true).andThen((layers) =>
-    layers.length === 0 ? getSortedLayers(itemId) : ok(layers),
+  return getSortedLayers(catalog, itemId, true).andThen((layers) =>
+    layers.length === 0 ? getSortedLayers(catalog, itemId) : ok(layers),
   );
 }
 
 /** Split layers by animation type, then sort by zPos. */
 export function getSortedLayersByAnim(
+  catalog: MetaCatalog,
   itemId: string,
   customOnly: boolean = false,
 ): Result<Record<string, AnimationLayer[]>, LoadError> {
-  return metaDeps
-    .getItemMetadata(itemId)
+  return catalog
+    .getItemMerged(itemId)
     .mapErr(logIfNotFound(itemId))
     .map((meta) => {
       const animsList: Record<string, SortedLayer[]> = {};
@@ -114,8 +87,7 @@ export function getSortedLayersByAnim(
           animsList[animName] = [];
         }
 
-        const zPos = metaDeps.getZPos(itemId, layerNum);
-        animsList[animName].push({ layerNum, zPos });
+        animsList[animName].push({ layerNum, zPos: layer.zPos ?? 100 });
       }
 
       // Sort each animation's layers by zPos.
@@ -133,8 +105,6 @@ export function getSortedLayersByAnim(
       return result;
     });
 }
-
-export type LayerToLoad = { zPos: number; path: string };
 
 /**
  * Get layers to load for the given metadata and variant.
@@ -172,13 +142,13 @@ export function getLayersToLoad(
 
     // Replace template variables like ${head}.
     if (layerPath.includes("${")) {
-      layerPath = metaDeps.replaceInPath(layerPath, selections, meta);
+      layerPath = replaceInPath(layerPath, selections, meta);
     }
 
     const hasCustomAnim = layer.custom_animation;
     let imagePath: string;
     const variantFileName =
-      variant !== null ? `${metaDeps.variantToFilename(variant)}` : "";
+      variant !== null ? `${variantToFilename(variant)}` : "";
     if (hasCustomAnim) {
       if (!variantFileName) {
         continue;

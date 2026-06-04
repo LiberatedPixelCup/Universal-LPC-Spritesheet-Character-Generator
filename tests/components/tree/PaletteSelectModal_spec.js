@@ -4,6 +4,7 @@ import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { PaletteSelectModal } from "../../../sources/components/tree/PaletteSelectModal.ts";
 import { state } from "../../../sources/state/state.ts";
 import {
+  defaultCatalog,
   isLayersReady,
   isLiteReady,
   isPaletteReady,
@@ -133,6 +134,7 @@ describe("PaletteSelectModal", function () {
       rootViewNode: rootViewNodeStub(),
       onClose: () => {},
       onSelect: () => {},
+      catalog: defaultCatalog,
     };
     return { ...base, ...overrides };
   }

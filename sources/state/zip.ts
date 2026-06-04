@@ -4,7 +4,7 @@ import {
   FRAME_SIZE,
   DIRECTIONS,
 } from "./constants.ts";
-import { getItemMerged } from "./catalog.ts";
+import { defaultCatalog, getItemMerged } from "./catalog.ts";
 import {
   extractAnimationFromCanvas,
   renderSingleItem,
@@ -258,7 +258,10 @@ export const exportSplitItemSheets = async (
     // Render each item individually
     for (const [, selection] of Object.entries(state.selections)) {
       const { itemId, variant, name } = selection;
-      const itemLayers = getSortedLayersWithCustomFallback(itemId).unwrapOr([]);
+      const itemLayers = getSortedLayersWithCustomFallback(
+        defaultCatalog,
+        itemId,
+      ).unwrapOr([]);
 
       // Get Multiple Recolors If Available
       const recolors = getMultiRecolors(itemId, state.selections);
@@ -424,9 +427,10 @@ export const exportSplitItemAnimations = async (
         // Get Multiple Recolors If Available
         const recolors = getMultiRecolors(itemId, state.selections);
 
-        const itemLayers = getSortedLayersWithCustomFallback(itemId).unwrapOr(
-          [],
-        );
+        const itemLayers = getSortedLayersWithCustomFallback(
+          defaultCatalog,
+          itemId,
+        ).unwrapOr([]);
         for (const layer of itemLayers) {
           const fileName = getItemFileName(
             itemId,

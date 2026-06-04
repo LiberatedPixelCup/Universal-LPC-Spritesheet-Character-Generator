@@ -6,12 +6,19 @@ import {
   getSelectionGroup,
   applyMatchBodyColor,
 } from "../../state/state.ts";
-import { isLiteReady } from "../../state/catalog.ts";
-import { getCategoryTree, getItemMerged } from "../../state/catalog.ts";
-import type { CategoryTree as CategoryTreeShape } from "../../state/catalog.ts";
+import type {
+  CatalogReader,
+  CategoryTree as CategoryTreeShape,
+} from "../../state/catalog.ts";
 import { renderResult } from "../../utils/render-result.ts";
 import { BodyTypeSelector } from "./BodyTypeSelector.ts";
 import { TreeNode } from "./TreeNode.ts";
+
+// Forwarder: passes catalog down to TreeNode subtree. Declared as the full
+// reader (rather than a narrow Pick) because the transitive union of what its
+// descendants need covers most of CatalogReader anyway, and enumerating it
+// would make adding a downstream method an N-place edit. Leaves narrow.
+type CategoryTreeAttrs = { catalog: CatalogReader };
 
 function renderLoadingHost() {
   return m("div.box.has-background-light.category-tree-panel", [
@@ -27,8 +34,8 @@ function renderLoadingHost() {
   ]);
 }
 
-function renderTree(categoryTree: CategoryTreeShape) {
-  const liteReady = isLiteReady();
+function renderTree(categoryTree: CategoryTreeShape, catalog: CatalogReader) {
+  const liteReady = catalog.isLiteReady();
 
   return m("div.box.has-background-light.category-tree-panel", [
     m(
@@ -59,7 +66,7 @@ function renderTree(categoryTree: CategoryTreeShape) {
                 if (!liteReady) return;
                 for (const [, selection] of Object.entries(state.selections)) {
                   const { itemId } = selection;
-                  getItemMerged(itemId).match(
+                  catalog.getItemMerged(itemId).match(
                     (meta) => {
                       let pathSoFar = "";
                       // Expand all path segments (categories)
@@ -145,17 +152,19 @@ function renderTree(categoryTree: CategoryTreeShape) {
             key: categoryName,
             name: categoryName,
             node: categoryNode,
+            catalog,
           }),
       ),
     ]),
   ]);
 }
 
-export const CategoryTree: m.Component = {
-  view() {
+export const CategoryTree: m.Component<CategoryTreeAttrs> = {
+  view(vnode) {
+    const { catalog } = vnode.attrs;
     return renderResult(
-      getCategoryTree(),
-      (categoryTree) => renderTree(categoryTree),
+      catalog.getCategoryTree(),
+      (categoryTree) => renderTree(categoryTree, catalog),
       () => renderLoadingHost(),
     );
   },

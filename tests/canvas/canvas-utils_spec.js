@@ -8,7 +8,10 @@ import {
   getZPos,
   hasContentInRegion,
 } from "../../sources/canvas/canvas-utils.ts";
-import { resetCatalogForTests } from "../../sources/state/catalog.ts";
+import {
+  defaultCatalog,
+  resetCatalogForTests,
+} from "../../sources/state/catalog.ts";
 import {
   restoreAppCatalogAfterTest,
   seedBrowserCatalog,
@@ -121,7 +124,7 @@ describe("canvas/canvas-utils.ts", () => {
 
     it("returns 100 when item id is missing from itemMetadata", () => {
       seedBrowserCatalog({});
-      expect(getZPos("unknown-id")).to.equal(100);
+      expect(getZPos(defaultCatalog, "unknown-id")).to.equal(100);
     });
 
     it("returns layer zPos for the default layer (layer_1)", () => {
@@ -132,7 +135,7 @@ describe("canvas/canvas-utils.ts", () => {
           },
         },
       });
-      expect(getZPos("itemA")).to.equal(42);
+      expect(getZPos(defaultCatalog, "itemA")).to.equal(42);
     });
 
     it("returns zPos for layer_N when layerNum is provided", () => {
@@ -144,14 +147,14 @@ describe("canvas/canvas-utils.ts", () => {
           },
         },
       });
-      expect(getZPos("itemB", 2)).to.equal(77);
+      expect(getZPos(defaultCatalog, "itemB", 2)).to.equal(77);
     });
 
     it("returns 100 when metadata exists but the layer is missing", () => {
       seedBrowserCatalog({
         itemC: { layers: { layer_1: { zPos: 5 } } },
       });
-      expect(getZPos("itemC", 3)).to.equal(100);
+      expect(getZPos(defaultCatalog, "itemC", 3)).to.equal(100);
     });
 
     it("returns 100 when the layer has no zPos", () => {
@@ -162,14 +165,14 @@ describe("canvas/canvas-utils.ts", () => {
           },
         },
       });
-      expect(getZPos("itemD")).to.equal(100);
+      expect(getZPos(defaultCatalog, "itemD")).to.equal(100);
     });
 
     it("returns 100 when metadata has no layers object", () => {
       seedBrowserCatalog({
         itemE: {},
       });
-      expect(getZPos("itemE")).to.equal(100);
+      expect(getZPos(defaultCatalog, "itemE")).to.equal(100);
     });
   });
 

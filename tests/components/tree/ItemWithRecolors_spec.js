@@ -3,7 +3,10 @@ import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { ItemWithRecolors } from "../../../sources/components/tree/ItemWithRecolors.ts";
 import { state } from "../../../sources/state/state.ts";
-import { getItemMerged } from "../../../sources/state/catalog.ts";
+import {
+  defaultCatalog,
+  getItemMerged,
+} from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
 import { resetState } from "../../../sources/state/filters.ts";
 import {
@@ -101,6 +104,7 @@ describe("ItemWithRecolors", function () {
       isCompatible: true,
       tooltipText: "tip",
       showItemTooltips: true,
+      catalog: defaultCatalog,
       ...overrides,
     };
   }
@@ -209,6 +213,7 @@ describe("ItemWithRecolors", function () {
         isCompatible: true,
         tooltipText: "",
         showItemTooltips: false,
+        catalog: defaultCatalog,
       }),
     );
 

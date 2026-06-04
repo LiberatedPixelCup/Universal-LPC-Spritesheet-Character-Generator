@@ -3,31 +3,83 @@ import {
   getSortedLayers,
   getSortedLayersByAnim,
   getSortedLayersWithCustomFallback,
-  resetMetaDeps,
-  setMetaDeps,
 } from "../../sources/state/meta.ts";
-import { ok, err } from "neverthrow";
+import { setPathDeps, resetPathDeps } from "../../sources/state/path.ts";
+import { createCatalog, defaultCatalog } from "../../sources/state/catalog.ts";
+import { err } from "neverthrow";
 import { expect } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 
+function createCatalogWithItem(itemId, item) {
+  const catalog = createCatalog();
+  const { credits = [], layers = {}, ...liteOverrides } = item;
+  catalog.registerFromItemModule({
+    itemMetadata: {
+      [itemId]: {
+        name: itemId,
+        type_name: "test",
+        required: [],
+        animations: [],
+        recolors: [],
+        matchBodyColor: false,
+        variants: [],
+        path: [],
+        ...liteOverrides,
+      },
+    },
+  });
+  catalog.registerFromCreditsModule({ itemCredits: { [itemId]: credits } });
+  catalog.registerFromLayersModule({ itemLayers: { [itemId]: layers } });
+  return catalog;
+}
+
 describe("state/meta.ts", () => {
   beforeEach(() => {
-    resetMetaDeps();
+    resetPathDeps();
   });
 
   afterEach(() => {
-    resetMetaDeps();
+    resetPathDeps();
+  });
+
+  describe("catalog input", () => {
+    it("uses the provided catalog instead of the default singleton", () => {
+      const itemId = "meta_explicit_catalog_item";
+      const catalog = createCatalogWithItem(itemId, {
+        layers: {
+          layer_1: { zPos: 42 },
+        },
+      });
+
+      expect(defaultCatalog.getItemMerged(itemId).isErr()).to.equal(true);
+      expect(getSortedLayers(catalog, itemId)._unsafeUnwrap()).to.deep.equal([
+        { layerNum: 1, zPos: 42 },
+      ]);
+    });
+
+    it("keeps custom fallback calls on the same catalog argument", () => {
+      const itemId = "meta_explicit_catalog_custom_only_item";
+      const catalog = createCatalogWithItem(itemId, {
+        layers: {
+          layer_1: { custom_animation: "wheelchair", zPos: 88 },
+        },
+      });
+
+      expect(
+        getSortedLayersWithCustomFallback(catalog, itemId)._unsafeUnwrap(),
+      ).to.deep.equal([{ layerNum: 1, zPos: 88 }]);
+    });
   });
 
   describe("getSortedLayers", () => {
     it("forwards the LoadError when item metadata is missing", () => {
       const errStub = sinon.stub(console, "error");
       try {
-        setMetaDeps({
-          getItemMetadata: () => err({ kind: "not-found", id: "missing" }),
-        });
-        const r = getSortedLayers("missing");
+        const catalog = {
+          getItemMerged: () => err({ kind: "not-found", id: "missing" }),
+        };
+        const r = getSortedLayers(catalog, "missing");
         expect(r.isErr()).to.be.true;
         if (r.isErr()) {
           expect(r.error).to.deep.equal({ kind: "not-found", id: "missing" });
@@ -40,70 +92,60 @@ describe("state/meta.ts", () => {
     });
 
     it("returns layerNum and zPos for each layer until a gap", () => {
-      setMetaDeps({
-        getItemMetadata: () =>
-          ok({
-            layers: {
-              layer_1: {},
-              layer_2: {},
-            },
-          }),
-        getZPos: (itemId, layerNum) => layerNum * 10,
+      const catalog = createCatalogWithItem("itemA", {
+        layers: {
+          layer_2: { zPos: 20 },
+          layer_1: { zPos: 10 },
+        },
       });
-      expect(getSortedLayers("itemA")._unsafeUnwrap()).to.deep.equal([
+
+      expect(getSortedLayers(catalog, "itemA")._unsafeUnwrap()).to.deep.equal([
         { layerNum: 1, zPos: 10 },
         { layerNum: 2, zPos: 20 },
       ]);
     });
 
     it("skips custom animation layers when standardOnly is true", () => {
-      setMetaDeps({
-        getItemMetadata: () =>
-          ok({
-            layers: {
-              layer_1: { custom_animation: "combat" },
-              layer_2: {},
-            },
-          }),
-        getZPos: () => 1,
+      const catalog = createCatalogWithItem("itemA", {
+        layers: {
+          layer_1: { custom_animation: "combat", zPos: 9 },
+          layer_2: { zPos: 1 },
+        },
       });
-      expect(getSortedLayers("itemA", true)._unsafeUnwrap()).to.deep.equal([
-        { layerNum: 2, zPos: 1 },
-      ]);
+
+      expect(
+        getSortedLayers(catalog, "itemA", true)._unsafeUnwrap(),
+      ).to.deep.equal([{ layerNum: 2, zPos: 1 }]);
     });
   });
 
   describe("getSortedLayersWithCustomFallback", () => {
     it("matches getSortedLayers when standard rows exist", () => {
-      setMetaDeps({
-        getItemMetadata: () =>
-          ok({
-            layers: {
-              layer_1: {},
-              layer_2: {},
-            },
-          }),
-        getZPos: (itemId, layerNum) => layerNum * 10,
+      const catalog = createCatalogWithItem("itemA", {
+        layers: {
+          layer_1: { zPos: 10 },
+          layer_2: { zPos: 20 },
+        },
       });
+
       expect(
-        getSortedLayersWithCustomFallback("itemA")._unsafeUnwrap(),
-      ).to.deep.equal(getSortedLayers("itemA", true)._unsafeUnwrap());
+        getSortedLayersWithCustomFallback(catalog, "itemA")._unsafeUnwrap(),
+      ).to.deep.equal(getSortedLayers(catalog, "itemA", true)._unsafeUnwrap());
     });
 
     it("falls back to all layers when standardOnly would be empty", () => {
-      setMetaDeps({
-        getItemMetadata: () =>
-          ok({
-            layers: {
-              layer_1: { custom_animation: "wheelchair" },
-            },
-          }),
-        getZPos: () => 100,
+      const catalog = createCatalogWithItem("itemA", {
+        layers: {
+          layer_1: { custom_animation: "wheelchair", zPos: 100 },
+        },
       });
-      expect(getSortedLayers("itemA", true)._unsafeUnwrap()).to.deep.equal([]);
+
       expect(
-        getSortedLayersWithCustomFallback("itemA")._unsafeUnwrap(),
-      ).to.deep.equal(getSortedLayers("itemA")._unsafeUnwrap());
+        getSortedLayers(catalog, "itemA", true)._unsafeUnwrap(),
+      ).to.deep.equal([]);
+      expect(
+        getSortedLayersWithCustomFallback(catalog, "itemA")._unsafeUnwrap(),
+      ).to.deep.equal(getSortedLayers(catalog, "itemA")._unsafeUnwrap());
     });
   });
 
@@ -111,10 +153,10 @@ describe("state/meta.ts", () => {
     it("forwards the LoadError when item metadata is missing", () => {
       const errStub = sinon.stub(console, "error");
       try {
-        setMetaDeps({
-          getItemMetadata: () => err({ kind: "not-found", id: "missing" }),
-        });
-        const r = getSortedLayersByAnim("missing");
+        const catalog = {
+          getItemMerged: () => err({ kind: "not-found", id: "missing" }),
+        };
+        const r = getSortedLayersByAnim(catalog, "missing");
         expect(r.isErr()).to.be.true;
         if (r.isErr()) {
           expect(r.error.kind).to.equal("not-found");
@@ -127,18 +169,17 @@ describe("state/meta.ts", () => {
     });
 
     it("groups layers by custom animation name or standard", () => {
-      setMetaDeps({
-        getItemMetadata: () =>
-          ok({
-            layers: {
-              layer_1: { custom_animation: "swim" },
-              layer_2: { custom_animation: "swim" },
-              layer_3: {},
-            },
-          }),
-        getZPos: (itemId, layerNum) => layerNum * 10,
+      const catalog = createCatalogWithItem("item", {
+        layers: {
+          layer_1: { custom_animation: "swim", zPos: 10 },
+          layer_2: { custom_animation: "swim", zPos: 20 },
+          layer_3: { zPos: 30 },
+        },
       });
-      expect(getSortedLayersByAnim("item")._unsafeUnwrap()).to.deep.equal({
+
+      expect(
+        getSortedLayersByAnim(catalog, "item")._unsafeUnwrap(),
+      ).to.deep.equal({
         swim: [
           { layerNum: 1, animLayerNum: 1, zPos: 10 },
           { layerNum: 2, animLayerNum: 2, zPos: 20 },
@@ -148,38 +189,34 @@ describe("state/meta.ts", () => {
     });
 
     it("sorts layers within each group by zPos and assigns animLayerNum", () => {
-      setMetaDeps({
-        getItemMetadata: () =>
-          ok({
-            layers: {
-              layer_1: { custom_animation: "swim" },
-              layer_2: { custom_animation: "swim" },
-            },
-          }),
-        getZPos: (itemId, layerNum) => (layerNum === 1 ? 50 : 5),
+      const catalog = createCatalogWithItem("item", {
+        layers: {
+          layer_1: { custom_animation: "swim", zPos: 50 },
+          layer_2: { custom_animation: "swim", zPos: 5 },
+        },
       });
-      expect(getSortedLayersByAnim("item")._unsafeUnwrap().swim).to.deep.equal([
+
+      expect(
+        getSortedLayersByAnim(catalog, "item")._unsafeUnwrap().swim,
+      ).to.deep.equal([
         { layerNum: 2, animLayerNum: 1, zPos: 5 },
         { layerNum: 1, animLayerNum: 2, zPos: 50 },
       ]);
     });
 
     it("includes only custom animation layers when customOnly is true", () => {
-      setMetaDeps({
-        getItemMetadata: () =>
-          ok({
-            layers: {
-              layer_1: { custom_animation: "combat" },
-              layer_2: {},
-            },
-          }),
-        getZPos: () => 1,
-      });
-      expect(getSortedLayersByAnim("item", true)._unsafeUnwrap()).to.deep.equal(
-        {
-          combat: [{ layerNum: 1, animLayerNum: 1, zPos: 1 }],
+      const catalog = createCatalogWithItem("item", {
+        layers: {
+          layer_1: { custom_animation: "combat", zPos: 1 },
+          layer_2: { zPos: 2 },
         },
-      );
+      });
+
+      expect(
+        getSortedLayersByAnim(catalog, "item", true)._unsafeUnwrap(),
+      ).to.deep.equal({
+        combat: [{ layerNum: 1, animLayerNum: 1, zPos: 1 }],
+      });
     });
   });
 
@@ -215,9 +252,6 @@ describe("state/meta.ts", () => {
     });
 
     it("appends variant filename for standard layers under the default animation", () => {
-      setMetaDeps({
-        variantToFilename: (v) => v.replaceAll(" ", "_"),
-      });
       const meta = {
         animations: ["walk"],
         layers: {
@@ -236,9 +270,6 @@ describe("state/meta.ts", () => {
     });
 
     it("builds a custom-animation path without the default animation folder", () => {
-      setMetaDeps({
-        variantToFilename: (v) => v,
-      });
       const meta = {
         animations: ["walk"],
         layers: {
@@ -254,15 +285,15 @@ describe("state/meta.ts", () => {
       ]);
     });
 
-    it("calls replaceInPath when the layer path contains ${}", () => {
-      const replaceInPath = sinon.stub().returns("resolved/");
-      setMetaDeps({
-        replaceInPath,
-        variantToFilename: (v) => v,
+    it("replaces template variables when the layer path contains ${}", () => {
+      setPathDeps({
+        getHashParamsforSelections: () => ({ head: "human_head" }),
       });
       const meta = {
         animations: ["walk"],
-        replace_in_path: {},
+        replace_in_path: {
+          head: { human: "resolved" },
+        },
         layers: {
           layer_1: {
             male: "pre/${head}/",
@@ -270,16 +301,9 @@ describe("state/meta.ts", () => {
           },
         },
       };
-      const selections = { a: 1 };
-      const out = getLayersToLoad(meta, "male", selections, "v");
-      expect(replaceInPath.calledOnce).to.be.true;
-      expect(replaceInPath.firstCall.args).to.deep.equal([
-        "pre/${head}/",
-        selections,
-        meta,
-      ]);
+      const out = getLayersToLoad(meta, "male", {}, "v");
       expect(out).to.deep.equal([
-        { zPos: 0, path: "spritesheets/resolved/walk/v.png" },
+        { zPos: 0, path: "spritesheets/pre/resolved/walk/v.png" },
       ]);
     });
 
