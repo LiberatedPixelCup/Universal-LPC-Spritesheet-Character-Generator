@@ -46,11 +46,11 @@ body,layer_1,10,body/bodies/male/ body/bodies/female/ body/bodies/muscular/ body
 body_skeleton,layer_1,10,body/bodies/skeleton/ body/bodies/skeleton/
 body_zombie,layer_1,10,body/bodies/zombie/ body/bodies/zombie/
 buckles,layer_1,75,torso/waist/buckles/female/
-cape_solid,layer_1,85,cape/solid/female/ cape/solid/female/ cape/solid/female/ cape/solid/female/
-cape_solid,layer_2,5,cape/solid_behind/ cape/solid_behind/ cape/solid_behind/ cape/solid_behind/
-cape_tattered,layer_1,85,cape/tattered/female/ cape/tattered/female/ cape/tattered/female/ cape/tattered/female/
-cape_tattered,layer_2,5,cape/tattered_behind/ cape/tattered_behind/ cape/tattered_behind/ cape/tattered_behind/
-cape_trim,layer_1,90,cape/trim/female/ cape/trim/female/ cape/trim/female/ cape/trim/female/
+cape_solid,layer_1,85,cape/solid/fg/ cape/solid/fg/ cape/solid/fg/ cape/solid/fg/
+cape_solid,layer_2,5,cape/solid/bg/ cape/solid/bg/ cape/solid/bg/ cape/solid/bg/
+cape_tattered,layer_1,85,cape/tattered/fg/ cape/tattered/fg/ cape/tattered/fg/ cape/tattered/fg/
+cape_tattered,layer_2,5,cape/tattered/bg/ cape/tattered/bg/ cape/tattered/bg/ cape/tattered/bg/
+cape_trim,layer_1,90,cape/trim/ cape/trim/ cape/trim/ cape/trim/
 dress_bodice,layer_1,45,dress/bodice/female/
 dress_kimono,layer_1,30,dress/kimono/normal/universal/female/
 dress_kimono_longsleeve,layer_1,31,dress/kimono/sleeves/universal/female/

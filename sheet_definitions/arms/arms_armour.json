@@ -19,12 +19,14 @@
     "watering",
     "climb",
     "idle",
+    "jump",
+    "sit",
     "emote"
   ],
   "credits": [
     {
       "file": "arms/armour/plate/male",
-      "notes": "original by wulax, recolors by bigbeargames; adapted to v3 bases and further recolors by bluecarrot16, climb/emote by JaidynReiman",
+      "notes": "original by wulax, recolors by bigbeargames; adapted to v3 bases and further recolors by bluecarrot16, climb/emote/jump by JaidynReiman",
       "authors": [
         "Michael Whitlock (bigbeargames)",
         "Matthew Krohn (makrohn)",

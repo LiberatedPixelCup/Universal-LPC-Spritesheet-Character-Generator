@@ -18,12 +18,15 @@
     "watering",
     "climb",
     "idle",
-    "emote"
+    "jump",
+    "sit",
+    "emote",
+    "run"
   ],
   "credits": [
     {
       "file": "arms/bracers",
-      "notes": "original by wulax, adjustments by Makrohn, climb/emote by JaidynReiman",
+      "notes": "original by wulax, adjustments by Makrohn, climb/emote/jump/sit/run by JaidynReiman",
       "authors": [
         "Matthew Krohn (makrohn)",
         "Johannes Sjölund (wulax)",
