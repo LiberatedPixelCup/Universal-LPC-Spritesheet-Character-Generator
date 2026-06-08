@@ -6,49 +6,34 @@
   ],
   "layer_1": {
     "zPos": 85,
-    "male": "cape/solid/female/",
-    "muscular": "cape/solid/female/",
-    "teen": "cape/solid/female/",
-    "female": "cape/solid/female/",
-    "pregnant": "cape/solid/female/"
+    "male": "cape/solid/fg/",
+    "muscular": "cape/solid/fg/",
+    "teen": "cape/solid/fg/",
+    "female": "cape/solid/fg/",
+    "pregnant": "cape/solid/fg/"
   },
   "layer_2": {
     "zPos": 5,
-    "male": "cape/solid_behind/",
-    "muscular": "cape/solid_behind/",
-    "teen": "cape/solid_behind/",
-    "female": "cape/solid_behind/",
-    "pregnant": "cape/solid_behind/"
+    "male": "cape/solid/bg/",
+    "muscular": "cape/solid/bg/",
+    "teen": "cape/solid/bg/",
+    "female": "cape/solid/bg/",
+    "pregnant": "cape/solid/bg/"
   },
-  "variants": [
-    "black",
-    "blue",
-    "bluegray",
-    "brown",
-    "charcoal",
-    "forest",
-    "gray",
-    "green",
-    "lavender",
-    "leather",
-    "maroon",
-    "navy",
-    "orange",
-    "pink",
-    "purple",
-    "red",
-    "rose",
-    "sky",
-    "slate",
-    "tan",
-    "teal",
-    "walnut",
-    "white",
-    "yellow"
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "climb",
+    "idle"
   ],
   "credits": [
     {
-      "file": "cape/solid/female",
+      "file": "cape/solid/fg",
       "notes": "",
       "authors": [
         "bluecarrot16",
@@ -66,7 +51,7 @@
       ]
     },
     {
-      "file": "cape/solid_behind",
+      "file": "cape/solid/bg",
       "notes": "",
       "authors": [
         "Nila122",
@@ -83,5 +68,12 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "cloth",
+    "palettes": [
+      "ulpc",
+      "all.lpcr"
+    ]
+  },
   "type_name": "cape"
 }

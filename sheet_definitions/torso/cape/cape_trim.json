@@ -9,37 +9,22 @@
   ],
   "layer_1": {
     "zPos": 90,
-    "male": "cape/trim/female/",
-    "muscular": "cape/trim/female/",
-    "teen": "cape/trim/female/",
-    "female": "cape/trim/female/",
-    "pregnant": "cape/trim/female/"
+    "male": "cape/trim/",
+    "muscular": "cape/trim/",
+    "teen": "cape/trim/",
+    "female": "cape/trim/",
+    "pregnant": "cape/trim/"
   },
-  "variants": [
-    "black",
-    "blue",
-    "bluegray",
-    "brown",
-    "charcoal",
-    "forest",
-    "gray",
-    "green",
-    "lavender",
-    "leather",
-    "maroon",
-    "navy",
-    "orange",
-    "pink",
-    "purple",
-    "red",
-    "rose",
-    "sky",
-    "slate",
-    "tan",
-    "teal",
-    "walnut",
-    "white",
-    "yellow"
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "climb",
+    "idle"
   ],
   "credits": [
     {
@@ -60,5 +45,13 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "cloth",
+    "base": "brown",
+    "palettes": [
+      "ulpc",
+      "all.lpcr"
+    ]
+  },
   "type_name": "cape_trim"
 }

@@ -6,49 +6,34 @@
   ],
   "layer_1": {
     "zPos": 85,
-    "male": "cape/tattered/female/",
-    "muscular": "cape/tattered/female/",
-    "teen": "cape/tattered/female/",
-    "female": "cape/tattered/female/",
-    "pregnant": "cape/tattered/female/"
+    "male": "cape/tattered/fg/",
+    "muscular": "cape/tattered/fg/",
+    "teen": "cape/tattered/fg/",
+    "female": "cape/tattered/fg/",
+    "pregnant": "cape/tattered/fg/"
   },
   "layer_2": {
     "zPos": 5,
-    "male": "cape/tattered_behind/",
-    "muscular": "cape/tattered_behind/",
-    "teen": "cape/tattered_behind/",
-    "female": "cape/tattered_behind/",
-    "pregnant": "cape/tattered_behind/"
+    "male": "cape/tattered/bg/",
+    "muscular": "cape/tattered/bg/",
+    "teen": "cape/tattered/bg/",
+    "female": "cape/tattered/bg/",
+    "pregnant": "cape/tattered/bg/"
   },
-  "variants": [
-    "black",
-    "blue",
-    "bluegray",
-    "brown",
-    "charcoal",
-    "forest",
-    "gray",
-    "green",
-    "lavender",
-    "leather",
-    "maroon",
-    "navy",
-    "orange",
-    "pink",
-    "purple",
-    "red",
-    "rose",
-    "sky",
-    "slate",
-    "tan",
-    "teal",
-    "walnut",
-    "white",
-    "yellow"
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "climb",
+    "idle"
   ],
   "credits": [
     {
-      "file": "cape/tattered",
+      "file": "cape/tattered/fg",
       "notes": "",
       "authors": [
         "Nila122",
@@ -65,7 +50,7 @@
       ]
     },
     {
-      "file": "cape/tattered_behind",
+      "file": "cape/tattered/bg",
       "notes": "",
       "authors": [
         "Nila122",
@@ -82,5 +67,12 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "cloth",
+    "palettes": [
+      "ulpc",
+      "all.lpcr"
+    ]
+  },
   "type_name": "cape"
 }
