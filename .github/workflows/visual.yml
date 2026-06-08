@@ -21,7 +21,10 @@ jobs:
   visual:
     name: Visual tests (Playwright + Argos)
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && !github.event.pull_request.head.repo.fork)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.60.0-noble
+      options: --ipc=host
     permissions:
       contents: read
     steps:
@@ -39,8 +42,16 @@ jobs:
       - name: Install dependencies
         run: npm ci --ignore-scripts
 
-      - name: Install Playwright Chromium
-        run: npx playwright install --with-deps chromium
+      - name: Install Linux System Fonts
+        run: |
+          apt-get update
+          apt-get install -y \
+            fonts-liberation \
+            fonts-noto-color-emoji \
+            fonts-noto-cjk \
+            fonts-wqy-zenhei \
+            fonts-dejavu \
+            fonts-freefont-ttf
 
       - name: Run visual tests
         run: npm run test:visual
