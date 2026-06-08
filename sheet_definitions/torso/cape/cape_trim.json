@@ -50,6 +50,7 @@
     "base": "brown",
     "palettes": [
       "ulpc",
+      "metal.ulpc",
       "all.lpcr"
     ]
   },

@@ -18,12 +18,15 @@
     "watering",
     "climb",
     "idle",
-    "emote"
+    "jump",
+    "sit",
+    "emote",
+    "run"
   ],
   "credits": [
     {
       "file": "shoulders/bauldron",
-      "notes": "Original by Nila122, climb/emote by JaidynReiman",
+      "notes": "Original by Nila122, climb/jump/sit/emote/run by JaidynReiman",
       "authors": [
         "Nila122",
         "JaidynReiman"
