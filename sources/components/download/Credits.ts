@@ -8,10 +8,15 @@ import {
 } from "../../utils/credits.ts";
 import { CollapsibleSection } from "../CollapsibleSection.ts";
 import { downloadFile } from "../../canvas/download.ts";
+import type { CatalogReader } from "../../state/catalog.ts";
 
-export const Credits: m.Component = {
-  view() {
-    const allCredits = getAllCredits(state.selections, state.bodyType);
+export const Credits: m.Component<{ catalog: CatalogReader }> = {
+  view(vnode) {
+    const allCredits = getAllCredits(
+      vnode.attrs.catalog,
+      state.selections,
+      state.bodyType,
+    );
 
     return m(
       CollapsibleSection,

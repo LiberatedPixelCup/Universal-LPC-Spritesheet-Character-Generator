@@ -63,7 +63,7 @@ export function hasContentInRegion(
 }
 
 export function getZPos(
-  catalog: Pick<CatalogReader, "getItemMerged">,
+  catalog: CatalogReader,
   itemId: string,
   layerNum: number = 1,
 ): number {

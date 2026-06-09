@@ -14,10 +14,6 @@ import { renderResult } from "../../utils/render-result.ts";
 import { BodyTypeSelector } from "./BodyTypeSelector.ts";
 import { TreeNode } from "./TreeNode.ts";
 
-// Forwarder: passes catalog down to TreeNode subtree. Declared as the full
-// reader (rather than a narrow Pick) because the transitive union of what its
-// descendants need covers most of CatalogReader anyway, and enumerating it
-// would make adding a downstream method an N-place edit. Leaves narrow.
 type CategoryTreeAttrs = { catalog: CatalogReader };
 
 function renderLoadingHost() {

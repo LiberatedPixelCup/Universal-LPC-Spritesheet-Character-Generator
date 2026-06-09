@@ -1,6 +1,6 @@
 // Credit collection and formatting utilities
 
-import { getItemMerged, type Credit } from "../state/catalog.ts";
+import type { CatalogReader, Credit } from "../state/catalog.ts";
 import { state } from "../state/state.ts";
 import type { Selections } from "../state/state.ts";
 import { replaceInPath } from "../state/path.ts";
@@ -13,6 +13,7 @@ type CreditWithFileName = Credit & { fileName: string };
  * actually being used based on current bodyType.
  */
 export function getAllCredits(
+  catalog: CatalogReader,
   selections: Selections,
   bodyType: string,
 ): CreditWithFileName[] {
@@ -21,7 +22,7 @@ export function getAllCredits(
 
   for (const [, selection] of Object.entries(selections)) {
     const { itemId } = selection;
-    const metaResult = getItemMerged(itemId);
+    const metaResult = catalog.getItemMerged(itemId);
     if (metaResult.isErr()) continue;
     const meta = metaResult.value;
     if (meta.credits.length === 0) continue;
@@ -42,7 +43,7 @@ export function getAllCredits(
       if (!basePath) continue;
 
       // Replace template variables like ${head} if present
-      basePath = replaceInPath(basePath, selections, meta);
+      basePath = replaceInPath(catalog, basePath, selections, meta);
 
       const animation =
         (state.selectedAnimation as string | undefined) ??

@@ -4,7 +4,7 @@ import {
   getSortedLayersByAnim,
   getSortedLayersWithCustomFallback,
 } from "../../sources/state/meta.ts";
-import { setPathDeps, resetPathDeps } from "../../sources/state/path.ts";
+import { resetPathDeps } from "../../sources/state/path.ts";
 import { createCatalog, defaultCatalog } from "../../sources/state/catalog.ts";
 import { err } from "neverthrow";
 import { expect } from "chai";
@@ -231,9 +231,9 @@ describe("state/meta.ts", () => {
           },
         },
       };
-      expect(getLayersToLoad(meta, "male", {}, null)).to.deep.equal([
-        { zPos: 10, path: "spritesheets/armor/male/walk.png" },
-      ]);
+      expect(
+        getLayersToLoad(defaultCatalog, meta, "male", {}, null),
+      ).to.deep.equal([{ zPos: 10, path: "spritesheets/armor/male/walk.png" }]);
     });
 
     it("uses the first animation when walk is not present", () => {
@@ -246,9 +246,9 @@ describe("state/meta.ts", () => {
           },
         },
       };
-      expect(getLayersToLoad(meta, "male", {}, null)).to.deep.equal([
-        { zPos: 1, path: "spritesheets/x/idle.png" },
-      ]);
+      expect(
+        getLayersToLoad(defaultCatalog, meta, "male", {}, null),
+      ).to.deep.equal([{ zPos: 1, path: "spritesheets/x/idle.png" }]);
     });
 
     it("appends variant filename for standard layers under the default animation", () => {
@@ -261,7 +261,9 @@ describe("state/meta.ts", () => {
           },
         },
       };
-      expect(getLayersToLoad(meta, "male", {}, "light brown")).to.deep.equal([
+      expect(
+        getLayersToLoad(defaultCatalog, meta, "male", {}, "light brown"),
+      ).to.deep.equal([
         {
           zPos: 10,
           path: "spritesheets/armor/male/walk/light_brown.png",
@@ -280,14 +282,16 @@ describe("state/meta.ts", () => {
           },
         },
       };
-      expect(getLayersToLoad(meta, "male", {}, "red")).to.deep.equal([
-        { zPos: 5, path: "spritesheets/custom/base/red.png" },
-      ]);
+      expect(
+        getLayersToLoad(defaultCatalog, meta, "male", {}, "red"),
+      ).to.deep.equal([{ zPos: 5, path: "spritesheets/custom/base/red.png" }]);
     });
 
     it("replaces template variables when the layer path contains ${}", () => {
-      setPathDeps({
-        getHashParamsforSelections: () => ({ head: "human_head" }),
+      const catalog = createCatalogWithItem("headItem", {
+        type_name: "head",
+        name: "human",
+        variants: ["head"],
       });
       const meta = {
         animations: ["walk"],
@@ -301,7 +305,13 @@ describe("state/meta.ts", () => {
           },
         },
       };
-      const out = getLayersToLoad(meta, "male", {}, "v");
+      const out = getLayersToLoad(
+        catalog,
+        meta,
+        "male",
+        { head: { itemId: "headItem", variant: "head" } },
+        "v",
+      );
       expect(out).to.deep.equal([
         { zPos: 0, path: "spritesheets/pre/resolved/walk/v.png" },
       ]);
@@ -321,7 +331,7 @@ describe("state/meta.ts", () => {
           },
         },
       };
-      const out = getLayersToLoad(meta, "male", {}, null);
+      const out = getLayersToLoad(defaultCatalog, meta, "male", {}, null);
       expect(out.map((o) => o.zPos)).to.deep.equal([10, 50]);
     });
 
@@ -342,7 +352,9 @@ describe("state/meta.ts", () => {
       };
       // layer_2: no matching custom_animation vs layer_1. layer_1: custom layers need a
       // variant to form a loadable path; without one, nothing to load.
-      expect(getLayersToLoad(meta, "male", {}, null)).to.deep.equal([]);
+      expect(
+        getLayersToLoad(defaultCatalog, meta, "male", {}, null),
+      ).to.deep.equal([]);
     });
 
     it("skips layers whose body type has no path", () => {
@@ -355,7 +367,9 @@ describe("state/meta.ts", () => {
           },
         },
       };
-      expect(getLayersToLoad(meta, "male", {}, null)).to.deep.equal([]);
+      expect(
+        getLayersToLoad(defaultCatalog, meta, "male", {}, null),
+      ).to.deep.equal([]);
     });
   });
 });

@@ -14,11 +14,6 @@ import { ucwords } from "../../utils/helpers.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
 import type { PaletteOption } from "../../state/palettes.ts";
 
-type PaletteSelectModalCatalog = Pick<
-  CatalogReader,
-  "chunkReady" | "getItemMerged" | "getPaletteMetadata"
->;
-
 type RootViewState = {
   palettePreviewGateSeq?: number;
   _palettePreviewLastTotal?: number;
@@ -41,7 +36,7 @@ export type PaletteSelectModalAttrs = {
   rootViewNode: RootViewRef;
   onClose: () => void;
   onSelect: (recolor: string) => void;
-  catalog: PaletteSelectModalCatalog;
+  catalog: CatalogReader;
 };
 
 /**
@@ -116,6 +111,7 @@ function renderModal(
     rootViewNode,
     onClose,
     onSelect,
+    catalog,
   } = attrs;
 
   const selectionGroup = opt.type_name ?? getSelectionGroup(itemId);
@@ -253,6 +249,7 @@ function renderModal(
                                   const settledGate =
                                     rootViewNode.state.palettePreviewGateSeq;
                                   void drawRecolorPreview(
+                                    catalog,
                                     itemId,
                                     meta,
                                     canvas,

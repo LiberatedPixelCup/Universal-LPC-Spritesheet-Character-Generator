@@ -4,7 +4,7 @@ import type { CatalogReader } from "../../state/catalog.ts";
 import { state } from "../../state/state.ts";
 
 type SearchControlAttrs = {
-  catalog: Pick<CatalogReader, "isLiteReady">;
+  catalog: CatalogReader;
 };
 
 export const SearchControl: m.Component<SearchControlAttrs> = {

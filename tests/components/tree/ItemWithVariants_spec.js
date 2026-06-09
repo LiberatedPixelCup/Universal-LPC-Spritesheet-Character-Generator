@@ -3,7 +3,10 @@ import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { ItemWithVariants } from "../../../sources/components/tree/ItemWithVariants.ts";
 import { state } from "../../../sources/state/state.ts";
-import { getItemMerged } from "../../../sources/state/catalog.ts";
+import {
+  defaultCatalog,
+  getItemMerged,
+} from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
 import { resetState } from "../../../sources/state/filters.ts";
 import {
@@ -61,6 +64,7 @@ describe("ItemWithVariants", function () {
         isCompatible: true,
         tooltipText: "Licenses: CC0\nAnimations: walk",
         showItemTooltips: true,
+        catalog: defaultCatalog,
       }),
     );
 
@@ -83,6 +87,7 @@ describe("ItemWithVariants", function () {
         isCompatible: false,
         tooltipText: "⚠️ Incompatible\nAnimations: walk",
         showItemTooltips: true,
+        catalog: defaultCatalog,
       }),
     );
 
@@ -105,6 +110,7 @@ describe("ItemWithVariants", function () {
         isCompatible: true,
         tooltipText: "tip",
         showItemTooltips: true,
+        catalog: defaultCatalog,
       }),
     );
 
@@ -149,6 +155,7 @@ describe("ItemWithVariants", function () {
         isCompatible: true,
         tooltipText: "",
         showItemTooltips: false,
+        catalog: defaultCatalog,
       }),
     );
 
@@ -171,6 +178,7 @@ describe("ItemWithVariants", function () {
         isCompatible: true,
         tooltipText: "tip",
         showItemTooltips: true,
+        catalog: defaultCatalog,
       }),
     );
     state.expandedNodes.iwv_cloak = true;
@@ -183,6 +191,7 @@ describe("ItemWithVariants", function () {
         isCompatible: true,
         tooltipText: "tip",
         showItemTooltips: true,
+        catalog: defaultCatalog,
       }),
     );
 
@@ -207,6 +216,7 @@ describe("ItemWithVariants", function () {
         isCompatible: true,
         tooltipText: "tip",
         showItemTooltips: true,
+        catalog: defaultCatalog,
       }),
     );
     host
@@ -230,6 +240,7 @@ describe("ItemWithVariants", function () {
         isCompatible: false,
         tooltipText: "bad",
         showItemTooltips: true,
+        catalog: defaultCatalog,
       }),
     );
 
@@ -255,6 +266,7 @@ describe("ItemWithVariants", function () {
         isCompatible: true,
         tooltipText: "tip",
         showItemTooltips: true,
+        catalog: defaultCatalog,
       }),
     );
 

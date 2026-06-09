@@ -20,9 +20,6 @@ import {
 import { ItemWithVariants } from "./ItemWithVariants.ts";
 import { ItemWithRecolors } from "./ItemWithRecolors.ts";
 
-// Forwarder: catalog flows to ItemWithRecolors → PaletteSelectModal. Full
-// reader avoids enumerating the transitive union of downstream needs. The
-// leaf (PaletteSelectModal) narrows.
 export type TreeNodeAttrs = {
   name: string;
   node: CategoryTreeNode & {
@@ -151,6 +148,7 @@ function renderItem(itemId: string, meta: ItemMerged, ctx: ItemListCtx) {
     isCompatible,
     tooltipText,
     showItemTooltips,
+    catalog,
   });
 }
 

@@ -25,11 +25,7 @@ import type { CatalogReader } from "../../state/catalog.ts";
 
 const zipExportTitle = "Wait for layer data to finish loading";
 
-type DownloadAttrs = {
-  catalog: Pick<CatalogReader, "isLayersReady">;
-};
-
-export const Download: m.Component<DownloadAttrs> = {
+export const Download: m.Component<{ catalog: CatalogReader }> = {
   view(vnode) {
     const zipDisabled = !vnode.attrs.catalog.isLayersReady();
 
@@ -37,6 +33,7 @@ export const Download: m.Component<DownloadAttrs> = {
       if (!window.canvasRenderer) return;
       try {
         const json = exportStateAsJSON(
+          vnode.attrs.catalog,
           state,
           serializeLayersForJson(drawCalls),
         );
@@ -90,6 +87,7 @@ export const Download: m.Component<DownloadAttrs> = {
             {
               onclick: () => {
                 const allCredits = getAllCredits(
+                  vnode.attrs.catalog,
                   state.selections,
                   state.bodyType,
                 );
@@ -104,6 +102,7 @@ export const Download: m.Component<DownloadAttrs> = {
             {
               onclick: () => {
                 const allCredits = getAllCredits(
+                  vnode.attrs.catalog,
                   state.selections,
                   state.bodyType,
                 );

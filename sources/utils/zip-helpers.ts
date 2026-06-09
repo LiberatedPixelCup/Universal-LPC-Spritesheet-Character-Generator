@@ -21,6 +21,7 @@ import { exportStateAsJSON, serializeLayersForJson } from "../state/json.ts";
 import type { ZipExportProfiler } from "../performance-profiler.ts";
 import type { State } from "../state/state.ts";
 import type { DrawCall } from "../canvas/renderer.ts";
+import type { CatalogReader } from "../state/catalog.ts";
 
 /**
  * Subset of the JSZip folder API consumed by these helpers and downstream
@@ -580,6 +581,7 @@ export function guardZipExportEnvironment(): boolean {
  * Writes `character.json` at zip root and `credits.txt` / `credits.csv` under `creditsFolder`.
  */
 export function addCharacterJsonAndCredits(
+  catalog: CatalogReader,
   zip: ZipFolder,
   creditsFolder: ZipFolder,
   state: State,
@@ -587,9 +589,9 @@ export function addCharacterJsonAndCredits(
 ): void {
   zip.file(
     "character.json",
-    exportStateAsJSON(state, serializeLayersForJson(drawCalls)),
+    exportStateAsJSON(catalog, state, serializeLayersForJson(drawCalls)),
   );
-  const allCredits = getAllCredits(state.selections, state.bodyType);
+  const allCredits = getAllCredits(catalog, state.selections, state.bodyType);
   creditsFolder.file("credits.txt", creditsToTxt(allCredits));
   creditsFolder.file("credits.csv", creditsToCsv(allCredits));
 }

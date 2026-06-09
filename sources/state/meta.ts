@@ -8,8 +8,6 @@ import {
 } from "./catalog.ts";
 import type { Selections } from "./state.ts";
 
-type MetaCatalog = Pick<CatalogReader, "getItemMerged">;
-
 export type SortedLayer = { layerNum: number; zPos: number };
 export type AnimationLayer = SortedLayer & { animLayerNum: number };
 
@@ -30,7 +28,7 @@ export type LayerToLoad = { zPos: number; path: string };
 
 /** Sort layers by zPos. */
 export function getSortedLayers(
-  catalog: MetaCatalog,
+  catalog: CatalogReader,
   itemId: string,
   standardOnly: boolean = false,
 ): Result<SortedLayer[], LoadError> {
@@ -56,7 +54,7 @@ export function getSortedLayers(
  * (custom-animation-only items), fall back to all layers.
  */
 export function getSortedLayersWithCustomFallback(
-  catalog: MetaCatalog,
+  catalog: CatalogReader,
   itemId: string,
 ): Result<SortedLayer[], LoadError> {
   return getSortedLayers(catalog, itemId, true).andThen((layers) =>
@@ -66,7 +64,7 @@ export function getSortedLayersWithCustomFallback(
 
 /** Split layers by animation type, then sort by zPos. */
 export function getSortedLayersByAnim(
-  catalog: MetaCatalog,
+  catalog: CatalogReader,
   itemId: string,
   customOnly: boolean = false,
 ): Result<Record<string, AnimationLayer[]>, LoadError> {
@@ -113,6 +111,7 @@ export function getSortedLayersByAnim(
  * are omitted if missing).
  */
 export function getLayersToLoad(
+  catalog: CatalogReader,
   meta: ItemMerged,
   bodyType: string,
   selections: Selections,
@@ -142,7 +141,7 @@ export function getLayersToLoad(
 
     // Replace template variables like ${head}.
     if (layerPath.includes("${")) {
-      layerPath = replaceInPath(layerPath, selections, meta);
+      layerPath = replaceInPath(catalog, layerPath, selections, meta);
     }
 
     const hasCustomAnim = layer.custom_animation;

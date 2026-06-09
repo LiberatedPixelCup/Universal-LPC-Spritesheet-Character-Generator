@@ -3,11 +3,9 @@ import { ok, err, type Result } from "neverthrow";
 import { ANIMATIONS } from "./constants.ts";
 import { getHashParamsforSelections } from "./hash.ts";
 import {
-  getItemMerged,
-  getMetadataIndexes,
+  type CatalogReader,
   type ItemMerged,
   type LoadError,
-  type MetadataIndexes,
   type SlimByTypeNameRow,
 } from "./catalog.ts";
 import { variantToFilename, es6DynamicTemplate } from "../utils/helpers.ts";
@@ -43,9 +41,6 @@ export type PathError =
   | { kind: "missing-bodytype-path"; bodyType: string };
 
 type PathDeps = {
-  getHashParamsforSelections: (
-    selections: Selections,
-  ) => Record<string, string>;
   variantToFilename: (variant: string) => string;
   es6DynamicTemplate: (
     template: string,
@@ -53,20 +48,14 @@ type PathDeps = {
   ) => string;
   debugLog: (message: string) => void;
   animations: AnimationEntry[];
-  /** Result-returning lookups; callers `.unwrapOr(...)` at the use site. */
-  getItemMetadata: (itemId: string) => Result<PathMeta, LoadError>;
-  getMetadataIndexes: () => Result<MetadataIndexes, LoadError>;
 };
 
 function createDefaultPathDeps(): PathDeps {
   return {
-    getHashParamsforSelections,
     variantToFilename,
     es6DynamicTemplate,
     debugLog,
     animations: ANIMATIONS,
-    getItemMetadata: getItemMerged,
-    getMetadataIndexes,
   };
 }
 
@@ -125,6 +114,7 @@ export function getNameWithoutVariant(
 
 /** Build a sprite-path string for a specific item layer + animation + variant. */
 export function getSpritePath(
+  catalog: CatalogReader,
   itemId: string,
   variant: string | null,
   recolors: Record<string, string> | boolean | null,
@@ -135,7 +125,7 @@ export function getSpritePath(
   meta: PathMeta | null = null,
 ): Result<string, PathError> {
   if (!meta) {
-    const r = pathDeps.getItemMetadata(itemId);
+    const r = catalog.getItemMerged(itemId);
     if (r.isErr()) return err(r.error);
     meta = r.value;
   }
@@ -148,7 +138,7 @@ export function getSpritePath(
   if (!basePath) return err({ kind: "missing-bodytype-path", bodyType });
 
   if (basePath.includes("${")) {
-    basePath = replaceInPath(basePath, selections, meta);
+    basePath = replaceInPath(catalog, basePath, selections, meta);
   }
 
   // If no variant specified, try to extract from itemId.
@@ -170,6 +160,7 @@ export function getSpritePath(
 
 /** Replace `${typeName}` placeholders in a path using the current selections. */
 export function replaceInPath(
+  catalog: CatalogReader,
   path: string,
   selections: Selections | null | undefined,
   meta: PathMeta,
@@ -177,10 +168,10 @@ export function replaceInPath(
   if (path.includes("${")) {
     // TODO: optimize — recomputed on every layer/frame today; could be cached
     // per-selection-change or skipped when `path` doesn't contain `${`.
-    const hashParams = pathDeps.getHashParamsforSelections(selections || {});
+    const hashParams = getHashParamsforSelections(catalog, selections || {});
     const replacements = Object.fromEntries(
       Object.entries(hashParams).map(([typeName, nameAndVariant]) => {
-        const name = _getNameWithoutVariant(typeName, nameAndVariant);
+        const name = _getNameWithoutVariant(catalog, typeName, nameAndVariant);
         // `meta.replace_in_path` may be undefined; preserved JS behavior is to
         // throw when the path has placeholders but the field is missing.
         const replacement = meta.replace_in_path![typeName]?.[name];
@@ -200,10 +191,11 @@ export function replaceInPath(
 }
 
 function _getNameWithoutVariant(
+  catalog: CatalogReader,
   typeName: string,
   nameAndVariant: string,
 ): string {
-  const indexes = pathDeps.getMetadataIndexes().unwrapOr(null);
+  const indexes = catalog.getMetadataIndexes().unwrapOr(null);
   const itemsForType = indexes?.byTypeName?.[typeName] ?? [];
   return getNameWithoutVariant(nameAndVariant, itemsForType);
 }

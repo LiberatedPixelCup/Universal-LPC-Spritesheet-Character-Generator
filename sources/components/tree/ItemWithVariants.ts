@@ -6,7 +6,7 @@ import { getLayersToLoad } from "../../state/meta.ts";
 import type { LayerToLoad } from "../../state/meta.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
 import { capitalize } from "../../utils/helpers.ts";
-import type { ItemMerged } from "../../state/catalog.ts";
+import type { CatalogReader, ItemMerged } from "../../state/catalog.ts";
 
 export type ItemWithVariantsAttrs = {
   itemId: string;
@@ -15,6 +15,7 @@ export type ItemWithVariantsAttrs = {
   isCompatible: boolean;
   tooltipText: string;
   showItemTooltips?: boolean;
+  catalog: CatalogReader;
 };
 
 type ItemWithVariantsState = {
@@ -39,6 +40,7 @@ export const ItemWithVariants: m.Component<
       isCompatible,
       tooltipText,
       showItemTooltips = true,
+      catalog,
     } = vnode.attrs;
     const rowTitle = showItemTooltips ? tooltipText : undefined;
     const compactDisplay = state.compactDisplay;
@@ -49,7 +51,12 @@ export const ItemWithVariants: m.Component<
       nodePath = "body-body";
     }
     const isExpanded = state.expandedNodes[nodePath] || false;
-    const layers = getLayersToLoad(meta, state.bodyType, state.selections);
+    const layers = getLayersToLoad(
+      catalog,
+      meta,
+      state.bodyType,
+      state.selections,
+    );
 
     return m(
       "div",
@@ -174,6 +181,7 @@ export const ItemWithVariants: m.Component<
 
                           // Get Layers to Load for Variant
                           const layersToLoad = getLayersToLoad(
+                            catalog,
                             meta,
                             state.bodyType,
                             state.selections,
