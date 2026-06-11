@@ -18,7 +18,8 @@
     "jump",
     "sit",
     "emote",
-    "climb"
+    "climb",
+    "run"
   ],
   "credits": [
     {
