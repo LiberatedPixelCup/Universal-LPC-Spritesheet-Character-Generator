@@ -347,9 +347,11 @@ export async function recolorWithPalette(
   // in a single shader pass.
   const mappings: PaletteMapping[] = [];
   for (const [typeName, palette] of Object.entries(sourcePalettes)) {
+    const targetColor = targetColors[typeName];
+    if (!targetColor || targetColor === "source") continue;
     const targetPalette = getTargetPalette(
       palette.material,
-      targetColors[typeName],
+      targetColor,
     ).unwrapOr(null);
     if (!targetPalette) {
       throw new Error(

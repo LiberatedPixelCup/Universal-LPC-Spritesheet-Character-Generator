@@ -117,7 +117,7 @@ export function getMultiRecolors(
   }
 
   // If body color, force match body color
-  if (meta.matchBodyColor) {
+  if (meta.matchBodyColor && state.matchBodyColorEnabled) {
     const bodyColor = getBodyColor(itemId, selections).unwrapOr(null);
     if (bodyColor) recolors[meta.type_name] = bodyColor;
   }
@@ -265,8 +265,12 @@ export type PaletteOption = {
   matchBodyColor: boolean;
   versions: string[];
   selectionColor: string | null;
+  sourceColors: string[] | null;
   colors: string[] | null;
 };
+
+export const CUSTOM_KEY: string = "source";
+export const CUSTOM_VERSION: string = "custom";
 
 /** Palette options + currently-selected colors for the item's selection group. */
 export function getPaletteOptions(
@@ -288,6 +292,20 @@ export function getPaletteOptions(
         selectedColor,
         color,
       );
+
+      if (color.source) {
+        versions.unshift(`${material}.${CUSTOM_VERSION}`);
+      }
+
+      let palette = null;
+      if (selectedColor === CUSTOM_KEY || (!selectedColor && color.source)) {
+        palette = color.source ?? null;
+      } else if (material !== undefined) {
+        palette = getTargetPalette(material, `${version}.${recolor}`).unwrapOr(
+          null,
+        );
+      }
+
       paletteOptions.push({
         idx,
         label: color.label,
@@ -297,10 +315,8 @@ export function getPaletteOptions(
         matchBodyColor: color.matchBodyColor ?? false,
         versions,
         selectionColor: selectedColor,
-        colors:
-          material !== undefined
-            ? getTargetPalette(material, `${version}.${recolor}`).unwrapOr(null)
-            : null,
+        sourceColors: color.source ?? null,
+        colors: palette,
       });
     });
   }
@@ -340,4 +356,26 @@ export function parseRecolorKey(
     version = palette?.default;
   }
   return [material, version, recolor];
+}
+
+/**
+ * Compile Palette Key for Recolor Modal
+ */
+export function compilePaletteKey(
+  material: string,
+  version: string,
+  palette: string,
+  opt: PaletteOption,
+): string {
+  if (version === CUSTOM_VERSION) {
+    return CUSTOM_KEY;
+  }
+
+  let key = material !== opt.material ? material + "." : "";
+
+  if (version !== opt.default) {
+    key += version + ".";
+  }
+
+  return key + palette;
 }

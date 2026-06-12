@@ -97,7 +97,16 @@ function clothOptFromPaletteOptions() {
     matchBodyColor: false,
     versions: ["cloth.ulpc"],
     selectionColor: null,
+    sourceColors: null,
     colors: ["#1d131e", "#400B1F", "#651117", "#82171C"],
+  };
+}
+
+function clothOptWithSourceFromPaletteOptions() {
+  return {
+    ...clothOptFromPaletteOptions(),
+    versions: ["cloth.custom", "cloth.ulpc"],
+    sourceColors: ["#1d131e", "#54242E", "#6C3536", "#8c288b"],
   };
 }
 
@@ -299,5 +308,104 @@ describe("PaletteSelectModal", function () {
     assert.strictEqual(canvas.getAttribute("width"), "32");
     assert.strictEqual(canvas.getAttribute("height"), "32");
     assert.ok(canvas.className.includes("compact-display"));
+  });
+
+  it("does not render a source tile when sourceColors is missing", function () {
+    seedBrowserCatalog(psmShirtItem(), {
+      categoryTree: { items: [], children: {} },
+      paletteMetadata: modalPaletteMetadata,
+    });
+
+    m.render(host, m(PaletteSelectModal, modalAttrs()));
+
+    const labels = Array.from(
+      host.querySelectorAll(".variant-display-name"),
+    ).map((el) => el.textContent?.trim().toLowerCase());
+
+    assert.isFalse(labels.includes("source"));
+  });
+
+  it("renders a source tile first when sourceColors is provided", function () {
+    seedBrowserCatalog(psmShirtItem(), {
+      categoryTree: { items: [], children: {} },
+      paletteMetadata: modalPaletteMetadata,
+    });
+
+    m.render(
+      host,
+      m(
+        PaletteSelectModal,
+        modalAttrs({
+          opt: clothOptWithSourceFromPaletteOptions(),
+        }),
+      ),
+    );
+
+    const labels = Array.from(
+      host.querySelectorAll(".variant-display-name"),
+    ).map((el) => el.textContent?.trim());
+
+    assert.strictEqual(labels[0], "Source");
+  });
+
+  it("invokes onSelect with source when source tile is clicked", function () {
+    seedBrowserCatalog(psmShirtItem(), {
+      categoryTree: { items: [], children: {} },
+      paletteMetadata: modalPaletteMetadata,
+    });
+
+    let selected = null;
+    m.render(
+      host,
+      m(
+        PaletteSelectModal,
+        modalAttrs({
+          opt: clothOptWithSourceFromPaletteOptions(),
+          onSelect: (key) => {
+            selected = key;
+          },
+        }),
+      ),
+    );
+
+    const sourceLabel = Array.from(
+      host.querySelectorAll(".variant-display-name"),
+    ).find((el) => el.textContent?.trim().toLowerCase() === "source");
+    assert.notEqual(sourceLabel, null);
+    sourceLabel.closest(".variant-item")?.click();
+
+    assert.strictEqual(selected, "source");
+  });
+
+  it("renders source in a standalone block above version categories", function () {
+    seedBrowserCatalog(psmShirtItem(), {
+      categoryTree: { items: [], children: {} },
+      paletteMetadata: modalPaletteMetadata,
+    });
+
+    m.render(
+      host,
+      m(
+        PaletteSelectModal,
+        modalAttrs({
+          opt: clothOptWithSourceFromPaletteOptions(),
+        }),
+      ),
+    );
+
+    const sourceBlock = host.querySelector(".palette-modal-source-block");
+    const firstVersionBlock = host.querySelector(
+      ".palette-modal-version-block",
+    );
+    assert.notEqual(sourceBlock, null);
+    assert.notEqual(firstVersionBlock, null);
+    assert.isTrue(
+      Boolean(
+        sourceBlock &&
+        firstVersionBlock &&
+        sourceBlock.compareDocumentPosition(firstVersionBlock) &
+          Node.DOCUMENT_POSITION_FOLLOWING,
+      ),
+    );
   });
 });

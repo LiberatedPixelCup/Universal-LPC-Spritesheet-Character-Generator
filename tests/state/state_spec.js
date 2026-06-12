@@ -494,5 +494,52 @@ describe("state/state.ts", () => {
         name: "Eyes (blue)",
       });
     });
+
+    it("selects the parent item with current main color when sub-color is chosen first", () => {
+      setStateDeps({
+        getItemMetadata: () => ({
+          type_name: "hair",
+          name: "Long Tied Hair",
+          recolors: [
+            {
+              label: "Hair",
+              variants: ["walnut", "blonde"],
+            },
+            {
+              type_name: "hair_tie",
+              label: "Hair Tie",
+              variants: ["teal", "walnut"],
+            },
+          ],
+        }),
+      });
+
+      state.selections = {
+        hair: {
+          itemId: "other_hair",
+          subId: null,
+          variant: null,
+          recolor: "walnut",
+          name: "Other Hair (walnut)",
+        },
+      };
+
+      selectItem("item_multi", "teal", false, 1);
+
+      expect(state.selections.hair).to.deep.equal({
+        itemId: "item_multi",
+        subId: null,
+        variant: null,
+        recolor: "walnut",
+        name: "Long Tied Hair (walnut)",
+      });
+      expect(state.selections.hair_tie).to.deep.equal({
+        itemId: "item_multi",
+        subId: 1,
+        variant: null,
+        recolor: "teal",
+        name: "Hair Tie (teal)",
+      });
+    });
   });
 });

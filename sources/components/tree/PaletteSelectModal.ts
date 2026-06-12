@@ -12,7 +12,12 @@ import { renderResult } from "../../utils/render-result.ts";
 import { state, getSelectionGroup } from "../../state/state.ts";
 import { ucwords } from "../../utils/helpers.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
-import type { PaletteOption } from "../../state/palettes.ts";
+import {
+  compilePaletteKey,
+  CUSTOM_KEY,
+  CUSTOM_VERSION,
+  type PaletteOption,
+} from "../../state/palettes.ts";
 
 type PaletteSelectModalCatalog = Pick<
   CatalogReader,
@@ -68,6 +73,9 @@ function prepareAndCountPalettePreviewCanvases(
       n += Object.keys(recolors).length;
     }
   }
+  if (opt.sourceColors?.length) {
+    n += 1;
+  }
   return n;
 }
 
@@ -120,6 +128,7 @@ function renderModal(
 
   const selectionGroup = opt.type_name ?? getSelectionGroup(itemId);
   const selection = state.selections[selectionGroup];
+  const activeRecolor = selection?.recolor ?? selectedColors[selectionGroup];
   const previewCanvasTotal = prepareAndCountPalettePreviewCanvases(
     itemId,
     opt,
@@ -147,17 +156,21 @@ function renderModal(
           m("h4", opt.label),
           m("button", { onclick: onClose }, "x"),
         ]),
-        m(
-          "section",
-          opt.versions.map((cat) => {
+        m("section", [
+          ...opt.versions.map((cat) => {
             const [material, version] = cat.split(".");
             const nodePath = `${itemId}-${opt.idx}-${cat}`;
             const paletteVersionMeta = paletteMeta.versions?.[version];
             const materialMeta = paletteMeta.materials[material];
-            const recolors = materialMeta?.palettes?.[version] ?? {};
             const isExpanded = state.expandedNodes[nodePath] || false;
+            let recolors = materialMeta?.palettes?.[version] ?? {};
+            if (version === CUSTOM_VERSION && opt.sourceColors?.length) {
+              recolors = { [CUSTOM_KEY]: opt.sourceColors };
+            }
             return m(
-              "div.palette-modal-version-block",
+              version === CUSTOM_VERSION
+                ? "div.palette-modal-source-block"
+                : "div.palette-modal-version-block",
               {
                 key: `${rootViewNode.state.palettePreviewGateSeq}-${nodePath}`,
               },
@@ -186,14 +199,16 @@ function renderModal(
                   ? m("div.variants-container.is-flex.is-flex-wrap-wrap", [
                       ...Object.entries(recolors).map(([palette, colors]) => {
                         const gradient = colors.slice().reverse();
-                        const key =
-                          (material !== opt.material ? material + "." : "") +
-                          (version !== opt.default ? version + "." : "") +
-                          palette;
+                        const key = compilePaletteKey(
+                          material,
+                          version,
+                          palette,
+                          opt,
+                        );
                         const isSelected =
                           (selection?.itemId === itemId ||
                             selectionGroup === opt.type_name) &&
-                          selection?.recolor === key;
+                          activeRecolor === key;
                         const itemColors = {
                           ...selectedColors,
                           [selectionGroup]: key,
@@ -205,6 +220,7 @@ function renderModal(
                               class: classNames({
                                 "has-background-link-light has-text-weight-bold has-text-link":
                                   isSelected,
+                                [`key-${key}`]: true,
                               }),
                               onmouseover: (e: MouseEvent) => {
                                 const div = e.currentTarget as HTMLElement;
@@ -294,7 +310,7 @@ function renderModal(
               ],
             );
           }),
-        ),
+        ]),
         m("footer", " "),
       ],
     ),

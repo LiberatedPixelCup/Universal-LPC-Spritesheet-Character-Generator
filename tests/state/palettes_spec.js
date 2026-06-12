@@ -14,9 +14,12 @@ import {
 
 describe("state/palettes.ts", () => {
   let previousSelections;
+  let previousMatchBodyColorEnabled;
 
   beforeEach(() => {
     previousSelections = state.selections;
+    previousMatchBodyColorEnabled = state.matchBodyColorEnabled;
+    state.matchBodyColorEnabled = true;
     resetCatalogForTests();
 
     const paletteMetadata = {
@@ -225,6 +228,49 @@ describe("state/palettes.ts", () => {
           },
         ],
       },
+      hair_long_tied_test: {
+        name: "Long tied",
+        type_name: "hair",
+        matchBodyColor: false,
+        recolors: [
+          {
+            label: "Hair",
+            type_name: null,
+            material: "cloth",
+            default: "ulpc",
+            base: "ulpc.red",
+            palettes: {
+              ulpc: {
+                red: ["#1d131e", "#400B1F", "#651117", "#82171C"],
+                bluegray: ["#11150b", "#0B2B28", "#2E403A", "#315B49"],
+              },
+            },
+            variants: ["red", "bluegray"],
+          },
+          {
+            label: "Hair Tie",
+            type_name: "hair_tie",
+            material: "cloth",
+            default: "ulpc",
+            base: null,
+            source: [
+              "#1d131e",
+              "#54242E",
+              "#6C3536",
+              "#8c288b",
+              "#b75ea5",
+              "#d27abc",
+            ],
+            palettes: {
+              ulpc: {
+                red: ["#1d131e", "#400B1F", "#651117", "#82171C"],
+                bluegray: ["#11150b", "#0B2B28", "#2E403A", "#315B49"],
+              },
+            },
+            variants: ["red", "bluegray"],
+          },
+        ],
+      },
     };
 
     seedBrowserCatalog(testItemMetadata, { paletteMetadata });
@@ -233,6 +279,7 @@ describe("state/palettes.ts", () => {
 
   afterEach(async () => {
     state.selections = previousSelections;
+    state.matchBodyColorEnabled = previousMatchBodyColorEnabled;
     await restoreAppCatalogAfterTest();
   });
 
@@ -292,6 +339,24 @@ describe("state/palettes.ts", () => {
     ]);
   });
 
+  it("defaults source-backed recolors to source in getPaletteOptions", () => {
+    const [paletteOptions, selectedColors] = getPaletteOptions(
+      "hair_long_tied_test",
+      getItemLite("hair_long_tied_test").unwrapOr(null),
+    );
+
+    expect(selectedColors).to.deep.equal({});
+    expect(paletteOptions[1].selectionColor).to.equal(null);
+    expect(paletteOptions[1].colors).to.deep.equal([
+      "#1d131e",
+      "#54242E",
+      "#6C3536",
+      "#8c288b",
+      "#b75ea5",
+      "#d27abc",
+    ]);
+  });
+
   it("returns head and eye recolors for the same head asset", () => {
     state.selections = {
       head: {
@@ -330,6 +395,29 @@ describe("state/palettes.ts", () => {
     const recolors = getMultiRecolors("heads_human_male", state.selections);
 
     expect(recolors).to.deep.equal({ head: "bronze", eyes: "lpcr.black" });
+  });
+
+  it("does not force body recolor when matchBodyColorEnabled is false", () => {
+    state.matchBodyColorEnabled = false;
+    state.selections = {
+      body: {
+        itemId: "body",
+        recolor: "bronze",
+      },
+      head: {
+        itemId: "heads_human_male",
+        recolor: "light",
+      },
+      eyes: {
+        itemId: "heads_human_male",
+        subId: 1,
+        recolor: "lpcr.black",
+      },
+    };
+
+    const recolors = getMultiRecolors("heads_human_male", state.selections);
+
+    expect(recolors).to.deep.equal({ head: "light", eyes: "lpcr.black" });
   });
 
   it("removes one color if a color doesn't exist", () => {

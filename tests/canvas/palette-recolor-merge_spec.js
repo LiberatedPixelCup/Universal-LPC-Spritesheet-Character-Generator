@@ -10,9 +10,11 @@ import { expect } from "chai";
 import { describe, it, before, after } from "mocha-globals";
 import {
   recolorImage,
+  recolorWithPalette,
   setPaletteRecolorMode,
   getPaletteRecolorConfig,
 } from "../../sources/canvas/palette-recolor.ts";
+import { getPaletteMetadata } from "../../sources/state/catalog.ts";
 
 function solidCanvas(r, g, b, w = 4, h = 4) {
   const c = document.createElement("canvas");
@@ -133,5 +135,41 @@ describe("canvas/palette-recolor.ts single-pass merge (CPU path)", () => {
 
     const pixel = readPixel(out, 0, 0);
     expect(pixel).to.deep.include({ r: 0, g: 0, b: 255 });
+  });
+
+  it("falls back to the item source key when target color is missing", async () => {
+    const paletteMeta = getPaletteMetadata().unwrapOr(null);
+    expect(paletteMeta).to.not.equal(null);
+
+    const bodyMaterial = paletteMeta.materials.body;
+    const version = bodyMaterial.default;
+    const variants = Object.keys(bodyMaterial.palettes[version] ?? {});
+    const sourceVariant = variants.find((v) => v !== bodyMaterial.base);
+    expect(sourceVariant).to.not.equal(undefined);
+
+    const sourceColors = bodyMaterial.palettes[version][sourceVariant];
+    const srcHex = sourceColors[0];
+    const srcRgb = {
+      r: parseInt(srcHex.slice(1, 3), 16),
+      g: parseInt(srcHex.slice(3, 5), 16),
+      b: parseInt(srcHex.slice(5, 7), 16),
+    };
+    const img = solidCanvas(srcRgb.r, srcRgb.g, srcRgb.b);
+
+    const out = await recolorWithPalette(
+      img,
+      {},
+      {
+        body: {
+          material: "body",
+          version,
+          source: sourceVariant,
+          colors: sourceColors,
+        },
+      },
+    );
+
+    const pixel = readPixel(out, 0, 0);
+    expect(pixel).to.deep.include(srcRgb);
   });
 });

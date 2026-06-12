@@ -337,9 +337,6 @@ export function loadSelectionsFromHash(hashString: string | null = null): void {
 
     if (!foundItemId) {
       skippedEntries[typeName] = nameAndVariant;
-      debugWarn(
-        `No item found with type_name "${typeName}" and nameAndVariant "${nameAndVariant}"`,
-      );
       continue;
     }
 
@@ -380,6 +377,7 @@ export function loadSelectionsFromHash(hashString: string | null = null): void {
 
   // Insert selections for skipped entries that might be sub-items.
   for (const [subType, nameAndVariant] of Object.entries(skippedEntries)) {
+    let matchedSubItem = false;
     const parts = nameAndVariant.split("_");
     for (let i = 1; i <= parts.length; i++) {
       const variants = parts.slice(i).join("_");
@@ -394,7 +392,15 @@ export function loadSelectionsFromHash(hashString: string | null = null): void {
           recolorToMatch,
           subItem.subId,
         );
+        matchedSubItem = true;
+        break;
       }
+    }
+
+    if (!matchedSubItem) {
+      debugWarn(
+        `No item found with type_name "${subType}" and nameAndVariant "${nameAndVariant}"`,
+      );
     }
   }
 
