@@ -17,6 +17,7 @@ import {
 import PinchToZoom from "./PinchToZoom.ts";
 import { ScrollableContainer } from "./ScrollableContainer.ts";
 import { PreviewMetadataLoadingOverlay } from "./PreviewMetadataLoadingOverlay.ts";
+import { t, getAnimationDisplayName } from "../../../lang/i18n.ts";
 
 type PreviewCanvasAttrs = {
   selectedAnimation: string;
@@ -135,7 +136,7 @@ export const AnimationPreview: m.Component<
       ...ANIMATIONS,
       ...customAnims.map((anim) => ({
         value: anim,
-        label: anim.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase()),
+        label: getAnimationDisplayName(anim),
       })),
     ];
 
@@ -155,7 +156,7 @@ export const AnimationPreview: m.Component<
     return m(
       CollapsibleSection,
       {
-        title: "Animation Preview",
+        title: t("animationPreview.title"),
         defaultOpen: true,
         boxClass: "box",
       },
@@ -164,7 +165,7 @@ export const AnimationPreview: m.Component<
           m("div.column", [
             m("div.field.is-horizontal.is-align-items-center", [
               m("div.field-label.is-normal", [
-                m("label.label.mb-0", "Animation"),
+                m("label.label.mb-0", t("animationPreview.animation")),
               ]),
               m("div.field-body", [
                 m("div.field.has-addons.mb-0", [
@@ -205,7 +206,9 @@ export const AnimationPreview: m.Component<
               m("div.field-label.is-normal", [
                 m(
                   "label.label.mb-0",
-                  `Zoom: ${Math.round(vnode.state.zoomLevel * 100)}%`,
+                  t("animationPreview.zoom", {
+                    zoom: Math.round(vnode.state.zoomLevel * 100),
+                  }),
                 ),
               ]),
               m("div.field-body", [
@@ -245,7 +248,7 @@ export const AnimationPreview: m.Component<
                 state.isRenderingCharacter
                   ? m("div.preview-canvas-busy", { "aria-hidden": true }, [
                       m("span.loading", {
-                        "aria-label": "Rendering character",
+                        "aria-label": t("animationPreview.renderingCharacter"),
                       }),
                     ])
                   : null,

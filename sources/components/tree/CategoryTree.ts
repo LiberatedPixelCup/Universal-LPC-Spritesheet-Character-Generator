@@ -13,6 +13,7 @@ import type {
 import { renderResult } from "../../utils/render-result.ts";
 import { BodyTypeSelector } from "./BodyTypeSelector.ts";
 import { TreeNode } from "./TreeNode.ts";
+import { t } from "../../../lang/i18n.ts";
 
 // Forwarder: passes catalog down to TreeNode subtree. Declared as the full
 // reader (rather than a narrow Pick) because the transitive union of what its
@@ -26,10 +27,10 @@ function renderLoadingHost() {
       m(
         "div.category-tree-loading-overlay",
         { "aria-busy": "true", "aria-live": "polite" },
-        m("span.loading", { "aria-label": "Loading category index" }),
+        m("span.loading", { "aria-label": t("categoryTree.loadingIndex") }),
       ),
-      m("h3.title.is-5.mb-3", "Available Items"),
-      m("p.has-text-grey.is-size-7", "Loading category index…"),
+      m("h3.title.is-5.mb-3", t("categoryTree.title")),
+      m("p.has-text-grey.is-size-7", t("categoryTree.loadingIndex")),
     ]),
   ]);
 }
@@ -41,12 +42,12 @@ function renderTree(categoryTree: CategoryTreeShape, catalog: CatalogReader) {
     m(
       "div.is-flex.is-justify-content-space-between.is-align-items-center.mb-3",
       [
-        m("h3.title.is-5.mb-0", "Available Items"),
+        m("h3.title.is-5.mb-0", t("categoryTree.title")),
         m("div.buttons.mb-0", [
           m(
             "button.button.is-danger.is-small",
             { onclick: resetAll },
-            "Reset all",
+            t("categoryTree.resetAll"),
           ),
           m(
             "button.button.is-small",
@@ -55,13 +56,13 @@ function renderTree(categoryTree: CategoryTreeShape, catalog: CatalogReader) {
                 state.expandedNodes = {};
               },
             },
-            "Collapse All",
+            t("categoryTree.collapseAll"),
           ),
           m(
             "button.button.is-small",
             {
               disabled: !liteReady,
-              title: liteReady ? undefined : "Loading item list…",
+              title: liteReady ? undefined : t("categoryTree.loadingItemList"),
               onclick: () => {
                 if (!liteReady) return;
                 for (const [, selection] of Object.entries(state.selections)) {
@@ -87,7 +88,7 @@ function renderTree(categoryTree: CategoryTreeShape, catalog: CatalogReader) {
                 }
               },
             },
-            "Expand Selected",
+            t("categoryTree.expandSelected"),
           ),
           m(
             "button.button.is-small",
@@ -97,7 +98,7 @@ function renderTree(categoryTree: CategoryTreeShape, catalog: CatalogReader) {
                 state.compactDisplay = !state.compactDisplay;
               },
             },
-            "CompactDisplay",
+            t("categoryTree.compactDisplay"),
           ),
         ]),
       ],
@@ -106,8 +107,7 @@ function renderTree(categoryTree: CategoryTreeShape, catalog: CatalogReader) {
       m(
         "label.checkbox",
         {
-          title:
-            "When enabled, changing body color will automatically update all compatible items (heads, ears, noses, etc.) to the same color variant",
+          title: t("categoryTree.matchBodyColorTooltip"),
         },
         [
           m("input[type=checkbox]", {
@@ -131,7 +131,7 @@ function renderTree(categoryTree: CategoryTreeShape, catalog: CatalogReader) {
               }
             },
           }),
-          " Match body color",
+          ` ${t("categoryTree.matchBodyColor")}`,
         ],
       ),
       m(
@@ -139,7 +139,7 @@ function renderTree(categoryTree: CategoryTreeShape, catalog: CatalogReader) {
         {
           id: "match-body-color-label",
         },
-        "Auto-update heads, ears, and other items when body color changes",
+        t("categoryTree.matchBodyColorDesc"),
       ),
     ]),
     m("div", [

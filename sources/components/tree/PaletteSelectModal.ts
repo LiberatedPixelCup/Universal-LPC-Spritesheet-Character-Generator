@@ -10,9 +10,15 @@ import type {
 } from "../../state/catalog.ts";
 import { renderResult } from "../../utils/render-result.ts";
 import { state, getSelectionGroup } from "../../state/state.ts";
-import { ucwords } from "../../utils/helpers.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
 import type { PaletteOption } from "../../state/palettes.ts";
+import {
+  t,
+  getPaletteColorDisplayName,
+  getPaletteMaterialDisplayName,
+  getPaletteVersionDisplayName,
+  getRecolorLabelDisplayName,
+} from "../../../lang/i18n.ts";
 
 type PaletteSelectModalCatalog = Pick<
   CatalogReader,
@@ -144,8 +150,12 @@ function renderModal(
       },
       [
         m("header.is-flex", [
-          m("h4", opt.label),
-          m("button", { onclick: onClose }, "x"),
+          m("h4", getRecolorLabelDisplayName(opt.label)),
+          m(
+            "button",
+            { onclick: onClose, "aria-label": t("common.close") },
+            t("common.close"),
+          ),
         ]),
         m(
           "section",
@@ -175,10 +185,17 @@ function renderModal(
                     }),
                     m(
                       "span.palette-version",
-                      paletteVersionMeta?.label +
-                        (material !== opt.material
-                          ? ` - ${materialMeta?.label}`
-                          : ""),
+                      (() => {
+                        const versionLabel = getPaletteVersionDisplayName(
+                          paletteVersionMeta?.label ?? version,
+                        );
+                        const materialLabel = getPaletteMaterialDisplayName(
+                          materialMeta?.label ?? material,
+                        );
+                        return material !== opt.material
+                          ? `${versionLabel} - ${materialLabel}`
+                          : versionLabel;
+                      })(),
                     ),
                   ],
                 ),
@@ -226,7 +243,7 @@ function renderModal(
                             [
                               m(
                                 "span.variant-display-name.has-text-centered.is-size-7",
-                                ucwords(palette.replaceAll("_", " ")),
+                                getPaletteColorDisplayName(palette),
                               ),
                               m("canvas.variant-canvas.box.p-0", {
                                 width: compactDisplay
@@ -320,8 +337,8 @@ export const PaletteSelectModal: m.Component<PaletteSelectModalAttrs> = {
       (error: LoadError) => {
         const message =
           error.kind === "loading" && error.chunk === "palette"
-            ? "Loading palette data…"
-            : "Loading layer data…";
+            ? t("paletteSelect.loadingPalette")
+            : t("paletteSelect.loadingLayer");
         return renderLoadingOverlay(onClose, message);
       },
     );

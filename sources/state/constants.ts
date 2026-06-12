@@ -1,4 +1,6 @@
 // Constants used throughout the application
+import { getAnimationDisplayName } from "../../lang/i18n.ts";
+
 export const FRAME_SIZE = 64; // Size of each frame in the spritesheet
 export const COMPACT_FRAME_SIZE = 32; // Size of compact frame preview
 
@@ -56,39 +58,37 @@ export const LICENSE_CONFIG = [
   },
 ];
 
-// Animation list - used for filters and preview
-export const ANIMATIONS = [
-  { value: "spellcast", label: "Spellcast" },
-  { value: "thrust", label: "Thrust" },
-  { value: "walk", label: "Walk" },
-  { value: "slash", label: "Slash" },
-  { value: "shoot", label: "Shoot" },
-  { value: "hurt", label: "Hurt" },
-  { value: "climb", label: "Climb" },
-  { value: "idle", label: "Idle" },
-  { value: "jump", label: "Jump" },
-  { value: "sit", label: "Sit" },
-  { value: "emote", label: "Emote" },
-  { value: "run", label: "Run" },
-  { value: "watering", label: "Watering", noExport: true },
-  { value: "combat", label: "Combat Idle", folderName: "combat_idle" },
-  {
-    value: "1h_slash",
-    label: "1-Handed Slash",
-    folderName: "backslash",
-    noExport: true,
-  },
-  {
-    value: "1h_backslash",
-    label: "1-Handed Backslash",
-    folderName: "backslash",
-  },
-  {
-    value: "1h_halfslash",
-    label: "1-Handed Halfslash",
-    folderName: "halfslash",
-  },
+// Animation values (labels are computed lazily to avoid i18n timing issues)
+const ANIMATION_VALUES: readonly {
+  value: string;
+  noExport?: boolean;
+  folderName?: string;
+}[] = [
+  { value: "spellcast" },
+  { value: "thrust" },
+  { value: "walk" },
+  { value: "slash" },
+  { value: "shoot" },
+  { value: "hurt" },
+  { value: "climb" },
+  { value: "idle" },
+  { value: "jump" },
+  { value: "sit" },
+  { value: "emote" },
+  { value: "run" },
+  { value: "watering", noExport: true },
+  { value: "combat", folderName: "combat_idle" },
+  { value: "1h_slash", folderName: "backslash", noExport: true },
+  { value: "1h_backslash", folderName: "backslash" },
+  { value: "1h_halfslash", folderName: "halfslash" },
 ];
+
+export const ANIMATIONS = ANIMATION_VALUES.map((a) => ({
+  ...a,
+  get label() {
+    return getAnimationDisplayName(a.value);
+  },
+}));
 
 // Default animations used when a sheet definition omits an explicit animations list
 export const ANIMATION_DEFAULTS = [

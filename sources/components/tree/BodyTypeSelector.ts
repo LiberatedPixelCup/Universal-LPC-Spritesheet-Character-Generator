@@ -2,7 +2,7 @@
 import m from "mithril";
 import { state } from "../../state/state.ts";
 import { BODY_TYPES } from "../../state/constants.ts";
-import { capitalize } from "../../utils/helpers.ts";
+import { t, getBodyTypeDisplayName } from "../../../lang/i18n.ts";
 
 type State = { isExpanded: boolean };
 
@@ -23,7 +23,7 @@ export const BodyTypeSelector: m.Component<Record<string, never>, State> = {
           m("span.tree-arrow", {
             class: vnode.state.isExpanded ? "expanded" : "collapsed",
           }),
-          m("span.has-text-weight-semibold", "Body Type"),
+          m("span.has-text-weight-semibold", t("bodyType.title")),
         ],
       ),
       vnode.state.isExpanded
@@ -39,7 +39,7 @@ export const BodyTypeSelector: m.Component<Record<string, never>, State> = {
                       state.bodyType = type;
                     },
                   },
-                  capitalize(type),
+                  getBodyTypeDisplayName(type),
                 ),
               ),
             ),

@@ -4,6 +4,7 @@ import {
   getPreviewCanvasState,
   type PreviewState,
 } from "../../state/preview-canvas-loading.ts";
+import { t } from "../../../lang/i18n.ts";
 
 /** UI copy for blocking states. `rendering`/`ready` produce no overlay. */
 function messageForState(state: PreviewState): string | null {
@@ -14,7 +15,7 @@ function messageForState(state: PreviewState): string | null {
     case "loading-layers":
     case "canvas-not-initialized":
     case "bootstrap-pending":
-      return "Loading layer data…";
+      return t("previewMetadata.loadingLayer");
   }
 }
 

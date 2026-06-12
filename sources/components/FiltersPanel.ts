@@ -7,6 +7,7 @@ import { AnimationFilters } from "./filters/AnimationFilters.ts";
 import { CurrentSelections } from "./selections/CurrentSelections.ts";
 import { CategoryTree } from "./tree/CategoryTree.ts";
 import { CollapsibleSection } from "./CollapsibleSection.ts";
+import { t } from "../../lang/i18n.ts";
 
 type FiltersPanelAttrs = { catalog: CatalogReader };
 
@@ -15,7 +16,7 @@ export const FiltersPanel: m.Component<FiltersPanelAttrs> = {
     return m(
       CollapsibleSection,
       {
-        title: "Filters",
+        title: t("filters.title"),
         defaultOpen: true,
       },
       [

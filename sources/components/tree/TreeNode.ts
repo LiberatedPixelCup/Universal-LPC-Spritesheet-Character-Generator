@@ -19,6 +19,12 @@ import {
 } from "../../utils/helpers.ts";
 import { ItemWithVariants } from "./ItemWithVariants.ts";
 import { ItemWithRecolors } from "./ItemWithRecolors.ts";
+import {
+  t,
+  getAnimationListDisplayName,
+  getItemDisplayName,
+  getCategoryDisplayName,
+} from "../../../lang/i18n.ts";
 
 // Forwarder: catalog flows to ItemWithRecolors → PaletteSelectModal. Full
 // reader avoids enumerating the transitive union of downstream needs. The
@@ -55,13 +61,14 @@ function renderSkeletons(itemIds: string[]) {
 
 function renderItem(itemId: string, meta: ItemMerged, ctx: ItemListCtx) {
   const { isNodeAnimCompatible, searchQuery, catalog } = ctx;
-  const displayName = meta.name;
+  const displayName = getItemDisplayName(meta.name);
   const hasVariants = meta.variants && meta.variants.length > 0;
   const hasRecolors = !hasVariants && meta.recolors && meta.recolors.length > 0;
   const isSearchMatch =
     !!searchQuery &&
     searchQuery.length >= 2 &&
-    matchesSearch(meta.name, searchQuery);
+    (matchesSearch(meta.name, searchQuery) ||
+      matchesSearch(getItemDisplayName(meta.name), searchQuery));
 
   const isLicenseCompatibleFlag = isItemLicenseCompatible(itemId, catalog);
   const isAnimCompatibleFlag =
@@ -71,7 +78,7 @@ function renderItem(itemId: string, meta: ItemMerged, ctx: ItemListCtx) {
   // Build tooltip text (license list needs credits chunk)
   let licensesText: string;
   if (!catalog.isCreditsReady()) {
-    licensesText = "License info loading…";
+    licensesText = t("treeNode.licenseInfoLoading");
   } else {
     const allLicenses = new Set<string>();
     const credits = catalog.getItemCredits(itemId).unwrapOr([]);
@@ -82,22 +89,19 @@ function renderItem(itemId: string, meta: ItemMerged, ctx: ItemListCtx) {
     }
     licensesText =
       allLicenses.size > 0
-        ? `Licenses: ${Array.from(allLicenses).join(", ")}`
-        : "No license info";
+        ? `${t("treeNode.licenses")}${Array.from(allLicenses).join(", ")}`
+        : t("treeNode.noLicenseInfo");
   }
 
   const supportedAnims = meta.animations || [];
   const animsText =
     supportedAnims.length > 0
-      ? `Animations: ${supportedAnims.join(", ")}`
-      : "No animation info";
+      ? `${t("treeNode.animations")}${getAnimationListDisplayName(supportedAnims)}`
+      : t("treeNode.noAnimationInfo");
 
   let tooltipText = "";
   if (!isCompatible) {
-    const issues: string[] = [];
-    if (!isLicenseCompatibleFlag) issues.push("licenses");
-    if (!isAnimCompatibleFlag) issues.push("animations");
-    tooltipText = `⚠️ Incompatible with selected ${issues.join(" and ")}\n`;
+    tooltipText = `⚠️ ${t("treeNode.incompatibleLicenses")}\n`;
   }
   tooltipText += `${licensesText}\n${animsText}`;
 
@@ -121,7 +125,7 @@ function renderItem(itemId: string, meta: ItemMerged, ctx: ItemListCtx) {
           } else {
             state.selections[selectionGroup] = {
               itemId,
-              name: displayName,
+              name: meta.name,
             };
           }
         },
@@ -169,7 +173,8 @@ function renderItemList(itemIds: string[], ctx: ItemListCtx) {
       if (
         searchQuery &&
         searchQuery.length >= 2 &&
-        !matchesSearch(lite.name, searchQuery)
+        !matchesSearch(lite.name, searchQuery) &&
+        !matchesSearch(getItemDisplayName(lite.name), searchQuery)
       ) {
         return false;
       }
@@ -207,13 +212,13 @@ export const TreeNode: m.Component<TreeNodeAttrs> = {
     const supportedAnims = node.animations || [];
     const animsText =
       supportedAnims.length > 0
-        ? `Animations: ${supportedAnims.join(", ")}`
+        ? `${t("treeNode.animations")}${getAnimationListDisplayName(supportedAnims)}`
         : null;
 
     // Build tooltip text
     let tooltipText = "";
     if (!isNodeAnimCompatible) {
-      tooltipText = `⚠️ Incompatible with selected animations\n`;
+      tooltipText = `⚠️ ${t("treeNode.incompatibleAnimations")}\n`;
     }
     tooltipText += `${animsText}`;
 
@@ -222,7 +227,7 @@ export const TreeNode: m.Component<TreeNodeAttrs> = {
       (!!searchQuery && searchQuery.length >= 2 && hasSearchMatches) ||
       state.expandedNodes[nodePath] ||
       false;
-    const displayName = node.label ?? capitalize(name);
+    const displayName = getCategoryDisplayName(node.label ?? capitalize(name));
 
     const categoryTitle = catalog.isLiteReady() ? tooltipText : undefined;
 
