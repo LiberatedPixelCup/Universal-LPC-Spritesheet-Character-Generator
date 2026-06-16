@@ -2,6 +2,7 @@
 import m from "mithril";
 import { state } from "../../state/state.ts";
 import { CollapsibleSection } from "../CollapsibleSection.ts";
+import { t } from "../../../lang/i18n.ts";
 
 export const AdvancedTools: m.Component = {
   view() {
@@ -38,25 +39,22 @@ export const AdvancedTools: m.Component = {
     return m(
       CollapsibleSection,
       {
-        title: "Advanced Tools",
+        title: t("advancedTools.title"),
         defaultOpen: false,
       },
       [
         m("div.field", [
-          m("label.label", "Custom File Upload"),
+          m("label.label", t("advancedTools.customFileUpload")),
           m("div.control", [
             m("input.input[type=file]#customFileInput", {
               accept: "image/*",
               onchange: handleFileUpload,
             }),
           ]),
-          m(
-            "p.help",
-            "Upload a local image file to overlay on the spritesheet",
-          ),
+          m("p.help", t("advancedTools.uploadHelp")),
         ]),
         m("div.field", [
-          m("label.label", "Z-Position"),
+          m("label.label", t("advancedTools.zPosition")),
           m("div.control", [
             m("input.input[type=number]", {
               value: state.customImageZPos,
@@ -65,14 +63,14 @@ export const AdvancedTools: m.Component = {
             }),
           ]),
           m("p.help", [
-            "Layer order: ",
-            m("code", "0=shadow"),
+            t("advancedTools.layerOrder"),
+            m("code", t("advancedTools.layer0")),
             ", ",
-            m("code", "10=body"),
+            m("code", t("advancedTools.layer10")),
             ", ",
-            m("code", "70=arms"),
+            m("code", t("advancedTools.layer70")),
             ", ",
-            m("code", "110=beard"),
+            m("code", t("advancedTools.layer110")),
           ]),
         ]),
         state.customUploadedImage &&
@@ -83,7 +81,7 @@ export const AdvancedTools: m.Component = {
                 {
                   onclick: clearCustomImage,
                 },
-                "Clear Custom Image",
+                t("advancedTools.clearCustomImage"),
               ),
             ]),
           ]),

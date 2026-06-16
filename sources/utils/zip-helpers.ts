@@ -21,6 +21,7 @@ import { exportStateAsJSON, serializeLayersForJson } from "../state/json.ts";
 import type { ZipExportProfiler } from "../performance-profiler.ts";
 import type { State } from "../state/state.ts";
 import type { DrawCall } from "../canvas/renderer.ts";
+import { t } from "../../lang/i18n.ts";
 
 /**
  * Subset of the JSZip folder API consumed by these helpers and downstream
@@ -570,7 +571,7 @@ type WindowWithZipDeps = Window & {
 export function guardZipExportEnvironment(): boolean {
   const w = window as WindowWithZipDeps;
   if (!w.canvasRenderer || !w.JSZip) {
-    alert("JSZip library not loaded");
+    alert(t("zipHelpers.jszipNotLoaded"));
     return false;
   }
   return true;

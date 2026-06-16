@@ -4,6 +4,7 @@ import type { CatalogReader } from "../../state/catalog.ts";
 import { state } from "../../state/state.ts";
 import { isItemAnimationCompatible } from "../../state/filters.ts";
 import { ANIMATIONS } from "../../state/constants.ts";
+import { t, getAnimationDisplayName } from "../../../lang/i18n.ts";
 
 type AnimationOption = { value: string; label: string };
 type AnimationFiltersDeps = {
@@ -63,9 +64,11 @@ export const AnimationFilters: m.Component<
 
       if (toRemove.length > 0) {
         toRemove.forEach((key) => delete state.selections[key]);
-        alert(`Removed ${toRemove.length} incompatible item(s)`);
+        alert(
+          t("animationFilters.removedIncompatible", { count: toRemove.length }),
+        );
       } else {
-        alert("No incompatible items found");
+        alert(t("animationFilters.noIncompatible"));
       }
     };
 
@@ -93,17 +96,22 @@ export const AnimationFilters: m.Component<
           m("span.tree-arrow", {
             class: vnode.state.isExpanded ? "expanded" : "collapsed",
           }),
-          m("span.title.is-inline.is-6", "Animation Filters"),
+          m("span.title.is-inline.is-6", t("animationFilters.title")),
           m(
             "span.is-size-7.has-text-grey.ml-2",
-            isFilterActive ? `(${enabledCount}/${totalCount})` : "(All)",
+            isFilterActive
+              ? `(${enabledCount}/${totalCount})`
+              : t("animationFilters.all"),
           ),
         ],
       ),
       vnode.state.isExpanded
         ? m("div.content.mt-3", [
             !liteReady
-              ? m("p.is-size-7.has-text-grey.mb-3", "Loading item list…")
+              ? m(
+                  "p.is-size-7.has-text-grey.mb-3",
+                  t("animationFilters.loadingItemList"),
+                )
               : null,
             m(
               "ul.tree-list",
@@ -118,7 +126,7 @@ export const AnimationFilters: m.Component<
                         state.enabledAnimations[anim.value] = target.checked;
                       },
                     }),
-                    ` ${anim.label}`,
+                    ` ${getAnimationDisplayName(anim.value)}`,
                   ]),
                 ]),
               ),
@@ -129,19 +137,26 @@ export const AnimationFilters: m.Component<
                     m("p.is-size-7", [
                       m(
                         "strong",
-                        `${incompatibleSelections.length} selected item${incompatibleSelections.length > 1 ? "s are" : " is"} incompatible`,
+                        `${incompatibleSelections.length}${t("animationFilters.incompatibleItems")}`,
                       ),
-                      " with your current animation selection. ",
-                      m("span.has-text-grey", "(marked with ⚠️ above)"),
+                      t("animationFilters.withAnimationSelection"),
+                      m(
+                        "span.has-text-grey",
+                        t("animationFilters.markedAbove"),
+                      ),
                     ]),
                   ]),
                   m(
                     "button.button.is-small.is-warning.mt-2",
                     {
                       onclick: removeIncompatibleItems,
-                      title: `Remove ${incompatibleSelections.length} incompatible item${incompatibleSelections.length > 1 ? "s" : ""}`,
+                      title: t("animationFilters.removeIncompatible", {
+                        count: incompatibleSelections.length,
+                      }),
                     },
-                    `Remove ${incompatibleSelections.length} Incompatible Asset${incompatibleSelections.length > 1 ? "s" : ""}`,
+                    t("animationFilters.removeIncompatible", {
+                      count: incompatibleSelections.length,
+                    }),
                   ),
                 ]
               : null,

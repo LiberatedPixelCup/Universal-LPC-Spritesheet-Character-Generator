@@ -5,6 +5,7 @@ import { state } from "../state/state.ts";
 import type { Selections } from "../state/state.ts";
 import { replaceInPath } from "../state/path.ts";
 import { variantToFilename } from "../utils/helpers.ts";
+import { t } from "../../lang/i18n.ts";
 
 type CreditWithFileName = Credit & { fileName: string };
 
@@ -87,7 +88,7 @@ export function getAllCredits(
 }
 
 export function creditsToCsv(allCredits: CreditWithFileName[]): string {
-  const header = "filename,notes,authors,licenses,urls";
+  const header = t("credits.csvHeader");
   let csvBody = header + "\n";
   allCredits.forEach((credit) => {
     const authors = credit.authors.join(", ");
@@ -104,11 +105,11 @@ export function creditsToTxt(allCredits: CreditWithFileName[]): string {
   allCredits.forEach((credit) => {
     txt += `${credit.fileName}\n`;
     if (credit.notes) {
-      txt += `\t- Note: ${credit.notes}\n`;
+      txt += `\t- ${t("credits.txtNote")} ${credit.notes}\n`;
     }
-    txt += `\t- Licenses:\n\t\t- ${credit.licenses.join("\n\t\t- ")}\n`;
-    txt += `\t- Authors:\n\t\t- ${credit.authors.join("\n\t\t- ")}\n`;
-    txt += `\t- Links:\n\t\t- ${credit.urls.join("\n\t\t- ")}\n\n`;
+    txt += `\t- ${t("credits.txtLicenses")}\n\t\t- ${credit.licenses.join("\n\t\t- ")}\n`;
+    txt += `\t- ${t("credits.txtAuthors")}\n\t\t- ${credit.authors.join("\n\t\t- ")}\n`;
+    txt += `\t- ${t("credits.txtLinks")}\n\t\t- ${credit.urls.join("\n\t\t- ")}\n\n`;
   });
   return txt;
 }

@@ -9,3 +9,11 @@ export const before = g.before;
 export const after = g.after;
 export const beforeEach = g.beforeEach;
 export const afterEach = g.afterEach;
+
+// Load i18n translations so components using t() render correctly in tests.
+import { loadTranslations, setLanguage } from "../lang/i18n.ts";
+import zhTranslations from "../lang/zh.json";
+import enTranslations from "../lang/en.json";
+loadTranslations("zh", zhTranslations);
+loadTranslations("en", enTranslations);
+setLanguage("en");

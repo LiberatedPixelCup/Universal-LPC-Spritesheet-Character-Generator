@@ -44,6 +44,7 @@ import {
   endZipExportUiSuspend,
 } from "../utils/zip-export-ui-suspend.ts";
 import type { State } from "./state.ts";
+import { t } from "../../lang/i18n.ts";
 
 declare global {
   interface Window {
@@ -200,16 +201,16 @@ export const exportSplitAnimations = async (
 
     if (failedStandard.length > 0 || failedCustom.length > 0) {
       alert(
-        `Export completed with some issues:\nFailed to export animations: ${failedStandard.join(
-          ", ",
-        )}`,
+        t("zip.exportCompletedWithIssues", {
+          details: t("zip.failedExportAnimations") + failedStandard.join(", "),
+        }),
       );
     } else {
-      alert("Export complete!");
+      alert(t("zip.exportComplete"));
     }
   } catch (err) {
     console.error("Export failed:", err);
-    alert(`Export failed: ${(err as Error).message}`);
+    alert(t("zip.exportFailed", { error: (err as Error).message }));
   } finally {
     endZipExportUiSuspend();
     if (state) {
@@ -309,16 +310,16 @@ export const exportSplitItemSheets = async (
 
     if (failedItems.length > 0) {
       alert(
-        `Export completed with some issues:\nFailed items: ${failedItems.join(
-          ", ",
-        )}`,
+        t("zip.exportCompletedWithIssues", {
+          details: t("zip.failedItems") + failedItems.join(", "),
+        }),
       );
     } else {
-      alert("Export complete!");
+      alert(t("zip.exportComplete"));
     }
   } catch (err) {
     console.error("Export failed:", err);
-    alert(`Export failed: ${(err as Error).message}`);
+    alert(t("zip.exportFailed", { error: (err as Error).message }));
   } finally {
     endZipExportUiSuspend();
     if (state) {
@@ -587,19 +588,19 @@ export const exportSplitItemAnimations = async (
       0,
     );
     if (failedCount > 0) {
-      let msg = "Export completed with some issues:\n";
+      let details = "";
       for (const [anim, items] of Object.entries(failedStandard)) {
         if (items.length > 0) {
-          msg += `${anim}: ${items.join(", ")}\n`;
+          details += `${anim}: ${items.join(", ")}\n`;
         }
       }
-      alert(msg);
+      alert(t("zip.exportCompletedWithIssues", { details }));
     } else {
-      alert("Export complete!");
+      alert(t("zip.exportComplete"));
     }
   } catch (err) {
     console.error("Export failed:", err);
-    alert(`Export failed: ${(err as Error).message}`);
+    alert(t("zip.exportFailed", { error: (err as Error).message }));
   } finally {
     endZipExportUiSuspend();
     if (state) {
@@ -895,20 +896,24 @@ export const exportIndividualFrames = async (
     // Report results
     const totalFailed = failedAnimations.length + failedCustom.length;
     if (totalFailed > 0) {
-      let msg = "Export completed with some issues:\n";
+      let details = "";
       if (failedAnimations.length > 0) {
-        msg += `Failed standard animations: ${failedAnimations.join(", ")}\n`;
+        details +=
+          t("zip.failedStandardAnimations") +
+          failedAnimations.join(", ") +
+          "\n";
       }
       if (failedCustom.length > 0) {
-        msg += `Failed custom animations: ${failedCustom.join(", ")}\n`;
+        details +=
+          t("zip.failedCustomAnimations") + failedCustom.join(", ") + "\n";
       }
-      alert(msg);
+      alert(t("zip.exportCompletedWithIssues", { details }));
     } else {
-      alert("Individual frames export complete!");
+      alert(t("zip.individualFramesComplete"));
     }
   } catch (err) {
     console.error("Individual frames export failed:", err);
-    alert(`Export failed: ${(err as Error).message}`);
+    alert(t("zip.exportFailed", { error: (err as Error).message }));
   } finally {
     endZipExportUiSuspend();
     if (state) {
