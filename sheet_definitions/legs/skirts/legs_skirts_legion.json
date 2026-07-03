@@ -26,10 +26,11 @@
   "credits": [
     {
       "file": "legs/skirts/legion",
-      "notes": "original by Nila122 to legion, adapted to v3 bases by bluecarrot16",
+      "notes": "original by Nila122 to legion, adapted to v3 bases by bluecarrot16, climb/jump/sit/run by JaidynReiman",
       "authors": [
         "bluecarrot16",
-        "Nila122"
+        "Nila122",
+        "JaidynReiman"
       ],
       "licenses": [
         "OGA-BY 3.0",
@@ -39,7 +40,8 @@
       ],
       "urls": [
         "https://opengameart.org/content/lpc-roman-armor",
-        "http://opengameart.org/content/lpc-clothing-updates"
+        "http://opengameart.org/content/lpc-clothing-updates",
+        "https://opengameart.org/content/lpc-expanded-armour"
       ]
     }
   ],

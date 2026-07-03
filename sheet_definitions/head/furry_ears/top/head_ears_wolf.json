@@ -2,57 +2,22 @@
   "name": "Wolf Ears",
   "layer_1": {
     "zPos": 130,
-    "male": "head/ears/wolf/adult_front/",
-    "muscular": "head/ears/wolf/adult_front/",
-    "female": "head/ears/wolf/adult_front/",
-    "teen": "head/ears/wolf/adult_front/",
-    "pregnant": "head/ears/wolf/adult_front/",
-    "child": "head/ears/wolf/child_front/"
+    "male": "head/ears/wolf/adult/fg/",
+    "muscular": "head/ears/wolf/adult/fg/",
+    "female": "head/ears/wolf/adult/fg/",
+    "teen": "head/ears/wolf/adult/fg/",
+    "pregnant": "head/ears/wolf/adult/fg/",
+    "child": "head/ears/wolf/child/fg/"
   },
   "layer_2": {
     "zPos": 8,
-    "male": "head/ears/wolf/adult_back/",
-    "muscular": "head/ears/wolf/adult_back/",
-    "female": "head/ears/wolf/adult_back/",
-    "pregnant": "head/ears/wolf/adult_back/",
-    "teen": "head/ears/wolf/adult_back/",
-    "child": "head/ears/wolf/child_back/"
+    "male": "head/ears/wolf/adult/bg/",
+    "muscular": "head/ears/wolf/adult/bg/",
+    "female": "head/ears/wolf/adult/bg/",
+    "pregnant": "head/ears/wolf/adult/bg/",
+    "teen": "head/ears/wolf/adult/bg/",
+    "child": "head/ears/wolf/child/bg/"
   },
-  "variants": [
-    "blonde",
-    "ash",
-    "sandy",
-    "platinum",
-    "strawberry",
-    "redhead",
-    "ginger",
-    "carrot",
-    "chestnut",
-    "light brown",
-    "dark brown",
-    "black",
-    "raven",
-    "dark gray",
-    "gray",
-    "white",
-    "red",
-    "orange",
-    "gold",
-    "green",
-    "blue",
-    "navy",
-    "violet",
-    "purple",
-    "pink",
-    "rose",
-    "fur_black",
-    "fur_brown",
-    "fur_tan",
-    "fur_copper",
-    "fur_gold",
-    "fur_grey",
-    "fur_white"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -89,5 +54,26 @@
       ]
     }
   ],
+  "recolors": {
+    "color_1": {
+      "material": "hair",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
+      ]
+    },
+    "color_2": {
+      "type_name": "inner_ear",
+      "label": "Inner Ear",
+      "material": "hair",
+      "base": "white",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
+      ]
+    }
+  },
   "type_name": "furry_ears"
 }

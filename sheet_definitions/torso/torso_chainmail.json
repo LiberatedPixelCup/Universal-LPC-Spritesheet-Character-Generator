@@ -19,12 +19,13 @@
     "idle",
     "jump",
     "sit",
-    "emote"
+    "emote",
+    "run"
   ],
   "credits": [
     {
       "file": "torso/chainmail",
-      "notes": "minor edits by bluecarrot16, reduced colors by Napsio, adjusted Male colors and Idle/Sit/Emote/Climb by JaidynReiman",
+      "notes": "minor edits by bluecarrot16, reduced colors by Napsio, adjusted Male colors and Idle/Sit/Emote/Climb/Run by JaidynReiman",
       "authors": [
         "Johannes Sjölund (wulax)",
         "Napsio (Vitruvian Studio)",

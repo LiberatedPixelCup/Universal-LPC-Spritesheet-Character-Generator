@@ -9,29 +9,6 @@
     "teen": "feet/hoofs/female/",
     "pregnant": "feet/hoofs/female/"
   },
-  "variants": [
-    "light",
-    "amber",
-    "olive",
-    "taupe",
-    "bronze",
-    "brown",
-    "black",
-    "lavender",
-    "blue",
-    "zombie_green",
-    "green",
-    "pale_green",
-    "bright_green",
-    "dark_green",
-    "fur_black",
-    "fur_brown",
-    "fur_tan",
-    "fur_copper",
-    "fur_gold",
-    "fur_grey",
-    "fur_white"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -73,5 +50,18 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "body",
+    "base": "fur_tan",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "hair.ulpc",
+      "all.lpcr"
+    ]
+  },
+  "aliases": {
+    "Hoofs_hoofs": "olive"
+  },
   "type_name": "shoes"
 }

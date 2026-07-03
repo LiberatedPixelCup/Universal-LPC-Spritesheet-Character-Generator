@@ -2,57 +2,22 @@
   "name": "Cat Ears",
   "layer_1": {
     "zPos": 130,
-    "male": "head/ears/cat/adult_front/",
-    "muscular": "head/ears/cat/adult_front/",
-    "female": "head/ears/cat/adult_front/",
-    "teen": "head/ears/cat/adult_front/",
-    "pregnant": "head/ears/cat/adult_front/",
-    "child": "head/ears/cat/child_front/"
+    "male": "head/ears/cat/adult/fg/",
+    "muscular": "head/ears/cat/adult/fg/",
+    "female": "head/ears/cat/adult/fg/",
+    "teen": "head/ears/cat/adult/fg/",
+    "pregnant": "head/ears/cat/adult/fg/",
+    "child": "head/ears/cat/child/fg/"
   },
   "layer_2": {
     "zPos": 8,
-    "male": "head/ears/cat/adult_back/",
-    "muscular": "head/ears/cat/adult_back/",
-    "female": "head/ears/cat/adult_back/",
-    "pregnant": "head/ears/cat/adult_back/",
-    "teen": "head/ears/cat/adult_back/",
-    "child": "head/ears/cat/child_back/"
+    "male": "head/ears/cat/adult/bg/",
+    "muscular": "head/ears/cat/adult/bg/",
+    "female": "head/ears/cat/adult/bg/",
+    "pregnant": "head/ears/cat/adult/bg/",
+    "teen": "head/ears/cat/adult/bg/",
+    "child": "head/ears/cat/child/bg/"
   },
-  "variants": [
-    "blonde",
-    "ash",
-    "sandy",
-    "platinum",
-    "strawberry",
-    "redhead",
-    "ginger",
-    "carrot",
-    "chestnut",
-    "light brown",
-    "dark brown",
-    "black",
-    "raven",
-    "dark gray",
-    "gray",
-    "white",
-    "red",
-    "orange",
-    "gold",
-    "green",
-    "blue",
-    "navy",
-    "violet",
-    "purple",
-    "pink",
-    "rose",
-    "fur_black",
-    "fur_brown",
-    "fur_tan",
-    "fur_copper",
-    "fur_gold",
-    "fur_grey",
-    "fur_white"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -89,5 +54,26 @@
       ]
     }
   ],
+  "recolors": {
+    "color_1": {
+      "material": "hair",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
+      ]
+    },
+    "color_2": {
+      "type_name": "inner_ear",
+      "label": "Inner Ear",
+      "material": "hair",
+      "base": "white",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
+      ]
+    }
+  },
   "type_name": "furry_ears"
 }
