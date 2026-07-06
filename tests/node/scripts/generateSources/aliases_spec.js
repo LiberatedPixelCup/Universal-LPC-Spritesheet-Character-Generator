@@ -121,6 +121,67 @@ test("writeAliases falls back to recolor variants when explicit variants are mis
   ]);
 });
 
+test("writeAliases stores name-wildcard alias as a pattern key", () => {
+  resetTestState();
+
+  const mappings = writeAliases(
+    {
+      "Fur_Pants_*": "Formal_Pants_*",
+    },
+    {
+      type_name: "legs",
+      name: "Formal Pants",
+      variants: [],
+      recolors: [{ variants: ["brown"] }],
+    },
+  );
+
+  assert.deepEqual(mappings, [
+    {
+      typeName: "legs",
+      originVariant: "Fur_Pants_*",
+      forward: {
+        typeName: "legs",
+        name: "Formal_Pants",
+        variant: "*",
+      },
+    },
+  ]);
+  assert.deepEqual(aliasMetadata.legs["Fur_Pants_*"], {
+    typeName: "legs",
+    name: "Formal_Pants",
+    variant: "*",
+  });
+});
+
+test("writeAliases name-wildcard respects explicit target type", () => {
+  resetTestState();
+
+  const mappings = writeAliases(
+    {
+      "Old_Hat_*": "new_type=New_Hat_*",
+    },
+    {
+      type_name: "head",
+      name: "New Hat",
+      variants: [],
+      recolors: [{ variants: ["brown"] }],
+    },
+  );
+
+  assert.deepEqual(mappings, [
+    {
+      typeName: "head",
+      originVariant: "Old_Hat_*",
+      forward: {
+        typeName: "new_type",
+        name: "New_Hat",
+        variant: "*",
+      },
+    },
+  ]);
+});
+
 test("writeAliases skips unresolved alias targets", () => {
   resetTestState();
 

@@ -89,6 +89,26 @@ export function writeAliases(aliases, meta) {
 
   for (const [original, alias] of Object.entries(aliases)) {
     const [aliasVariant, aliasType] = alias.split("=").reverse();
+    const [originVariant, originType] = original.split("=").reverse();
+    const typeName = originType ?? meta.type_name;
+
+    // Name-wildcard alias: both sides end with "_*" (e.g., "Fur_Pants_*": "Formal_Pants_*").
+    // Stored as a pattern key so the runtime can match any suffix (body type, explicit variant,
+    // or recolor) without needing to enumerate all combinations at build time.
+    if (originVariant.endsWith("_*") && aliasVariant.endsWith("_*")) {
+      const forward = {
+        typeName: aliasType ?? meta.type_name,
+        name: aliasVariant.slice(0, -2),
+        variant: "*",
+      };
+      if (!aliasMetadata[typeName]) {
+        aliasMetadata[typeName] = {};
+      }
+      aliasMetadata[typeName][originVariant] = forward;
+      appliedAliases.push({ typeName, originVariant, forward });
+      continue;
+    }
+
     const target = resolveAliasTarget(meta, aliasVariant, aliasType);
 
     if (!target) {
@@ -102,8 +122,6 @@ export function writeAliases(aliases, meta) {
       variant: target.targetVariant,
     };
 
-    const [originVariant, originType] = original.split("=").reverse();
-    const typeName = originType ?? meta.type_name;
     if (!aliasMetadata[typeName]) {
       aliasMetadata[typeName] = {};
     }
