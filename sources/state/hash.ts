@@ -321,6 +321,18 @@ export function loadSelectionsFromHash(hashString: string | null = null): void {
         typeName = anyAliasMeta.typeName;
         // Keep the original `nameAndVariant` since the wildcard alias
         // can match any variant.
+      } else if (aliasType) {
+        // No type wildcard — scan for name-wildcard aliases (e.g., "Fur_Pants_*").
+        // The stored key ends with "_*"; strip the "*" to get the prefix to match against.
+        for (const [pattern, patternMeta] of Object.entries(aliasType)) {
+          if (!pattern.endsWith("_*")) continue;
+          const prefix = pattern.slice(0, -1); // "Fur_Pants_" (keep trailing "_")
+          if (nameAndVariant.startsWith(prefix)) {
+            typeName = patternMeta.typeName;
+            nameAndVariant = patternMeta.name + "_" + nameAndVariant.slice(prefix.length);
+            break;
+          }
+        }
       }
     }
 

@@ -77,12 +77,13 @@
   ],
   "recolors": {
     "material": "cloth",
-    "base": null,
-    "source": ["#101820", "#182611", "#1b2f15", "#203416", "#314f22", "#446d29"],
     "palettes": [
       "ulpc",
       "all.lpcr"
     ]
+  },
+  "aliases": {
+    "Fur_Pants_*": "Formal_Pants_*"
   },
   "type_name": "legs"
 }
