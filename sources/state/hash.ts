@@ -334,7 +334,8 @@ export function loadSelectionsFromHash(hashString: string | null = null): void {
           const prefix = pattern.slice(0, -1); // "Fur_Pants_" (keep trailing "_")
           if (nameAndVariant.startsWith(prefix)) {
             typeName = patternMeta.typeName;
-            nameAndVariant = patternMeta.name + "_" + nameAndVariant.slice(prefix.length);
+            nameAndVariant =
+              patternMeta.name + "_" + nameAndVariant.slice(prefix.length);
             break;
           }
         }

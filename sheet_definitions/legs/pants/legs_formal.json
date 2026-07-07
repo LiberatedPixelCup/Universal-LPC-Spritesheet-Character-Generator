@@ -83,7 +83,9 @@
     ]
   },
   "aliases": {
-    "Fur_Pants_*": "Formal_Pants_*"
+    "Fur_Pants_*": "Formal_Pants_*",
+    "Fur_Pants_fur": "Formal_Pants_brown",
+    "Formal_Pants_fur": "Formal_Pants_brown"
   },
   "type_name": "legs"
 }
