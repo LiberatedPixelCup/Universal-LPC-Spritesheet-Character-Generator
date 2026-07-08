@@ -5,9 +5,9 @@
     "zPos": 15,
     "male": "feet/hoofs/male/",
     "muscular": "feet/hoofs/male/",
-    "female": "feet/hoofs/female/",
-    "teen": "feet/hoofs/female/",
-    "pregnant": "feet/hoofs/female/"
+    "female": "feet/hoofs/thin/",
+    "teen": "feet/hoofs/thin/",
+    "pregnant": "feet/hoofs/thin/"
   },
   "animations": [
     "spellcast",
@@ -16,13 +16,19 @@
     "slash",
     "shoot",
     "hurt",
-    "idle"
+    "watering",
+    "idle",
+    "climb",
+    "jump",
+    "sit",
+    "emote"
   ],
   "credits": [
     {
       "file": "feet/hoofs",
-      "notes": "",
+      "notes": "original by Evert, color cleanup/minor fixes/climb/jump/sit/emote by JaidynReiman",
       "authors": [
+        "JaidynReiman",
         "Evert"
       ],
       "licenses": [
@@ -35,8 +41,9 @@
     },
     {
       "file": "feet/hoofs/female",
-      "notes": "edited for v3 female bases by bluecarrot16",
+      "notes": "edited for v3 female bases by bluecarrot16, color cleanup/minor fixes/climb/jump/sit/emote by JaidynReiman",
       "authors": [
+        "JaidynReiman",
         "bluecarrot16",
         "Evert"
       ],
