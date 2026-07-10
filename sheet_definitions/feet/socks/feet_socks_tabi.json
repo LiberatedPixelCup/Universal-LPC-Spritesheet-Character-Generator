@@ -49,6 +49,7 @@
   ],
   "recolors": {
     "material": "cloth",
+    "base": "brown",
     "palettes": [
       "ulpc",
       "all.lpcr"
