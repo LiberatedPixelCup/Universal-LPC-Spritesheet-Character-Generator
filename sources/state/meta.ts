@@ -149,6 +149,10 @@ export function getLayersToLoad(
     const variantFileName =
       variant !== null ? `${variantToFilename(variant)}` : "";
     if (hasCustomAnim) {
+      // Skip if no variant and no recolors exist
+      if (!variantFileName && layerPath.endsWith("/")) {
+        continue;
+      }
       imagePath = `spritesheets/${layerPath}${variantFileName}.png`;
     } else {
       const defaultAnim = meta.animations.includes("walk")

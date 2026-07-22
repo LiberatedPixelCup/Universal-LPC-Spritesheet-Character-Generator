@@ -657,7 +657,7 @@ const customAnimations: Record<string, CustomAnimationDefinition> = {
         "slash-e,0",
       ],
     ],
-  }
+  },
 };
 
 const customAnimationSize = (

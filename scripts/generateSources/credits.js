@@ -138,7 +138,13 @@ export function collectCreditsCsvRows(definition, meta) {
 
         const file = layerDefinition[sex];
         if (file !== null && file !== "") {
-          const searchFileName = file + snakeItemName;
+          // New-format custom animation layers (no trailing slash) reference a
+          // single file for all animations — use the base path directly.
+          // Old-format layers (trailing slash) still need the animation suffix.
+          const searchFileName =
+            layerDefinition.custom_animation && !file.endsWith("/")
+              ? file
+              : file + snakeItemName;
           const [newCreditToUse, lineText, creditsFor] = parseCredits(
             searchFileName,
             meta.credits,
