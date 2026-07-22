@@ -9,7 +9,7 @@ import { getImageToDraw } from "./palette-recolor.ts";
 import { getMultiRecolors } from "../state/palettes.ts";
 import { get2DContext, getZPos } from "./canvas-utils.ts";
 import { variantToFilename } from "../utils/helpers.ts";
-import { drawFramesToCustomAnimation } from "./draw-frames.ts";
+import { drawFramesToCustomAnimation, drawSingleAnimSpriteToCustomAnimation } from "./draw-frames.ts";
 import {
   FRAME_SIZE,
   ANIMATION_OFFSETS,
@@ -318,6 +318,9 @@ async function runRenderCharacter(
           if (animName === "combat_idle") {
             // combat_idle is supported if item has "combat" in metadata
             if (!meta.animations.includes("combat")) continue;
+          } else if (animName === "thrust") {
+            // thrust row also serves the watering animation
+            if (!meta.animations.includes("thrust") && !meta.animations.includes("watering")) continue;
           } else if (animName === "backslash") {
             // backslash is supported if item has "1h_slash" OR "1h_backslash" in metadata
             if (
@@ -543,8 +546,18 @@ async function runRenderCharacter(
             );
 
             if (areaItem.type === "custom_sprite") {
-              // Draw custom sprite directly (wheelchair background or foreground)
-              renderCtx.drawImage(imageToUse, 0, offsetY);
+              if (customAnimDef.sourceSingleAnimation) {
+                // Extract frames from native 4-row (n/w/s/e) tool sprite
+                drawSingleAnimSpriteToCustomAnimation(
+                  renderCtx,
+                  customAnimDef,
+                  offsetY,
+                  imageToUse,
+                );
+              } else {
+                // Draw pre-built custom animation sheet directly (e.g. wheelchair, fishing rod)
+                renderCtx.drawImage(imageToUse, 0, offsetY);
+              }
             } else if (areaItem.type === "extracted_frames") {
               // Extract and draw frames from standard sprite
               drawFramesToCustomAnimation(
