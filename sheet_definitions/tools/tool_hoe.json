@@ -1,0 +1,70 @@
+{
+  "name": "Hoe",
+  "layer_1": {
+    "zPos": 9,
+    "male": "tools/hoe/bg/",
+    "muscular": "tools/hoe/bg/",
+    "female": "tools/hoe/bg/",
+    "pregnant": "tools/hoe/bg/",
+    "teen": "tools/hoe/bg/"
+  },
+  "layer_2": {
+    "zPos": 150,
+    "male": "tools/hoe/fg/",
+    "muscular": "tools/hoe/fg/",
+    "female": "tools/hoe/fg/",
+    "pregnant": "tools/hoe/fg/",
+    "teen": "tools/hoe/fg/"
+  },
+  "animations": [
+    "thrust",
+    "walk"
+  ],
+  "credits": [
+    {
+      "file": "tools/hoe",
+      "notes": "original by bluecarrot16, color reduced by JaidynReiman",
+      "authors": [
+        "bluecarrot16",
+        "JaidynReiman",
+        "Pierre Vigier (pvigier)",
+        "Tuomo Untinen (reemax)",
+        "Johannes Sjölund (wulax)",
+        "Inboxninja"
+      ],
+      "licenses": [
+        "CC-BY-SA 3.0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-hand-tools"
+      ]
+    }
+  ],
+  "recolors": {
+    "color_1": {
+      "material": "metal",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "cloth.ulpc",
+        "all.lpcr"
+      ]
+    },
+    "color_2": {
+      "type_name": "handle",
+      "label": "Handle",
+      "material": "wood",
+      "base": "maple",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "cloth.ulpc",
+        "all.lpcr"
+      ]
+    }
+  },
+  "aliases": {
+    "Thrust_hoe": "Hoe_steel"
+  },
+  "type_name": "weapon"
+}

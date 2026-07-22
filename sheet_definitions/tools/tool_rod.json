@@ -1,5 +1,5 @@
 {
-  "name": "Rod",
+  "name": "Fishing Rod",
   "preview_row": 0,
   "preview_column": 0,
   "preview_x_offset": 304,
@@ -7,45 +7,76 @@
   "layer_1": {
     "zPos": 9,
     "custom_animation": "tool_rod",
-    "male": "tools/rod/background/",
-    "muscular": "tools/rod/background/",
-    "female": "tools/rod/background/",
-    "pregnant": "tools/rod/background/",
-    "teen": "tools/rod/background/"
+    "male": "tools/fishing_rod/bg",
+    "muscular": "tools/fishing_rod/bg",
+    "female": "tools/fishing_rod/bg",
+    "pregnant": "tools/fishing_rod/bg",
+    "teen": "tools/fishing_rod/bg"
   },
   "layer_2": {
     "zPos": 150,
     "custom_animation": "tool_rod",
-    "male": "tools/rod/foreground/",
-    "muscular": "tools/rod/foreground/",
-    "female": "tools/rod/foreground/",
-    "pregnant": "tools/rod/foreground/",
-    "teen": "tools/rod/foreground/"
+    "male": "tools/fishing_rod/fg",
+    "muscular": "tools/fishing_rod/fg",
+    "female": "tools/fishing_rod/fg",
+    "pregnant": "tools/fishing_rod/fg",
+    "teen": "tools/fishing_rod/fg"
   },
-  "variants": [
-    "rod"
-  ],
   "animations": [
     "tool_rod"
   ],
   "credits": [
     {
-      "file": "tools/rod",
+      "file": "tools/fishing_rod",
       "notes": "",
       "authors": [
-        "bluecarrot16",
-        "Pierre Vigier (pvigier)",
-        "Tuomo Untinen (reemax)",
-        "Johannes Sjölund (wulax)",
-        "and Inboxninja"
+        "bluecarrot16"
       ],
       "licenses": [
-        "CC-BY-SA 3.0"
+        "OGA-BY 3.0+",
+        "CC-BY 4.0+",
+        "GPL 2.0+"
       ],
       "urls": [
         "https://opengameart.org/content/lpc-hand-tools"
       ]
     }
   ],
+  "recolors": {
+    "color_1": {
+      "material": "cloth",
+      "base": "tan",
+      "palettes": [
+        "ulpc",
+        "all.lpcr"
+      ]
+    },
+    "color_2": {
+      "type_name": "handle",
+      "label": "Grip",
+      "material": "wood",
+      "base": "oak",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "cloth.ulpc",
+        "all.lpcr"
+      ]
+    },
+    "color_3": {
+      "type_name": "reel",
+      "label": "Reel",
+      "material": "metal",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "cloth.ulpc",
+        "all.lpcr"
+      ]
+    }
+  },
+  "aliases": {
+    "Rod_rod": "Fishing_Rod_tan"
+  },
   "type_name": "weapon"
 }

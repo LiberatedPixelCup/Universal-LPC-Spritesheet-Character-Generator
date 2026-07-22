@@ -1,0 +1,80 @@
+{
+  "name": "Hammer",
+  "layer_1": {
+    "zPos": 140,
+    "male": "tools/hammer/male/",
+    "muscular": "tools/hammer/male/",
+    "female": "tools/hammer/thin/",
+    "pregnant": "tools/hammer/thin/",
+    "teen": "tools/hammer/thin/"
+  },
+  "layer_2": {
+    "zPos": 9,
+    "custom_animation": "tool_hammer",
+    "male": "tools/hammer/bg",
+    "muscular": "tools/hammer/bg",
+    "female": "tools/hammer/bg",
+    "pregnant": "tools/hammer/bg",
+    "teen": "tools/hammer/bg"
+  },
+  "layer_3": {
+    "zPos": 150,
+    "custom_animation": "tool_hammer",
+    "male": "tools/hammer/fg",
+    "muscular": "tools/hammer/fg",
+    "female": "tools/hammer/fg",
+    "pregnant": "tools/hammer/fg",
+    "teen": "tools/hammer/fg"
+  },
+  "animations": [
+    "walk",
+    "tool_hammer"
+  ],
+  "credits": [
+    {
+      "file": "tools/hammer",
+      "notes": "original by bluecarrot16, color reduced by JaidynReiman",
+      "authors": [
+        "bluecarrot16",
+        "Pierre Vigier (pvigier)",
+        "Tuomo Untinen (reemax)"
+      ],
+      "licenses": [
+        "OGA-BY-3.0",
+        "CC-BY 4.0",
+        "CC-BY-SA 3.0+",
+        "GPL 2.0+"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-hand-tools"
+      ]
+    }
+  ],
+  "recolors": {
+    "color_1": {
+      "material": "metal",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "cloth.ulpc",
+        "all.lpcr"
+      ]
+    },
+    "color_2": {
+      "type_name": "handle",
+      "label": "Handle",
+      "material": "wood",
+      "base": "maple",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "cloth.ulpc",
+        "all.lpcr"
+      ]
+    }
+  },
+  "aliases": {
+    "Smash_hammer": "Hammer_steel"
+  },
+  "type_name": "weapon"
+}
