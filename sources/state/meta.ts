@@ -149,7 +149,7 @@ export function getLayersToLoad(
     const variantFileName =
       variant !== null ? `${variantToFilename(variant)}` : "";
     if (hasCustomAnim) {
-      // Skip if no variant and no recolors exist
+      // Skip legacy custom-animation directory paths (trailing slash) when no variant is selected
       if (!variantFileName && layerPath.endsWith("/")) {
         continue;
       }

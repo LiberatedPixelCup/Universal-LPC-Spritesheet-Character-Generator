@@ -22,6 +22,9 @@
     "pregnant": "tools/whip/fg",
     "teen": "tools/whip/fg"
   },
+  "animations": [
+    "tool_whip"
+  ],
   "credits": [
     {
       "file": "tools/whip",
