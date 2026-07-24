@@ -646,15 +646,25 @@ tail_wolf,layer_1,125,body/tail/wolf/adult/fg/ body/tail/wolf/adult/fg/ body/tai
 tail_wolf,layer_2,5,body/tail/wolf/adult/bg/ body/tail/wolf/adult/bg/ body/tail/wolf/adult/bg/ body/tail/wolf/adult/bg/ body/tail/wolf/child/bg/
 tail_wolf_fluffy,layer_1,125,body/tail/fluffy/adult/fg/ body/tail/fluffy/adult/fg/ body/tail/fluffy/adult/fg/ body/tail/fluffy/adult/fg/ body/tail/fluffy/child/fg/
 tail_wolf_fluffy,layer_2,5,body/tail/fluffy/adult/bg/ body/tail/fluffy/adult/bg/ body/tail/fluffy/adult/bg/ body/tail/fluffy/adult/bg/ body/tail/fluffy/child/bg/
-tool_rod,layer_1,9,tools/rod/background/ tools/rod/background/ tools/rod/background/ tools/rod/background/
-tool_rod,layer_2,150,tools/rod/foreground/ tools/rod/foreground/ tools/rod/foreground/ tools/rod/foreground/
-tool_smash,layer_1,140,tools/smash/universal/male/ tools/smash/universal/female/ tools/smash/universal/male/ tools/smash/universal/female/
-tool_smash,layer_2,9,tools/smash/background/ tools/smash/background/ tools/smash/background/ tools/smash/background/
-tool_smash,layer_3,150,tools/smash/foreground/ tools/smash/foreground/ tools/smash/foreground/ tools/smash/foreground/
-tool_thrust,layer_1,9,tools/thrust/background/ tools/thrust/background/ tools/thrust/background/ tools/thrust/background/
-tool_thrust,layer_2,150,tools/thrust/foreground/ tools/thrust/foreground/ tools/thrust/foreground/ tools/thrust/foreground/
-tool_whip,layer_1,9,tools/whip/background/ tools/whip/background/ tools/whip/background/ tools/whip/background/
-tool_whip,layer_2,150,tools/whip/ tools/whip/ tools/whip/ tools/whip/
+tool_axe,layer_1,140,tools/axe/male/ tools/axe/thin/ tools/axe/male/ tools/axe/thin/
+tool_axe,layer_2,9,tools/axe/bg tools/axe/bg tools/axe/bg tools/axe/bg
+tool_axe,layer_3,150,tools/axe/fg tools/axe/fg tools/axe/fg tools/axe/fg
+tool_hammer,layer_1,140,tools/hammer/male/ tools/hammer/thin/ tools/hammer/male/ tools/hammer/thin/
+tool_hammer,layer_2,9,tools/hammer/bg tools/hammer/bg tools/hammer/bg tools/hammer/bg
+tool_hammer,layer_3,150,tools/hammer/fg tools/hammer/fg tools/hammer/fg tools/hammer/fg
+tool_hoe,layer_1,9,tools/hoe/bg/ tools/hoe/bg/ tools/hoe/bg/ tools/hoe/bg/
+tool_hoe,layer_2,150,tools/hoe/fg/ tools/hoe/fg/ tools/hoe/fg/ tools/hoe/fg/
+tool_pickaxe,layer_1,140,tools/pickaxe/male/ tools/pickaxe/thin/ tools/pickaxe/male/ tools/pickaxe/thin/
+tool_pickaxe,layer_2,9,tools/pickaxe/bg tools/pickaxe/bg tools/pickaxe/bg tools/pickaxe/bg
+tool_pickaxe,layer_3,150,tools/pickaxe/fg tools/pickaxe/fg tools/pickaxe/fg tools/pickaxe/fg
+tool_rod,layer_1,9,tools/fishing_rod/bg tools/fishing_rod/bg tools/fishing_rod/bg tools/fishing_rod/bg
+tool_rod,layer_2,150,tools/fishing_rod/fg tools/fishing_rod/fg tools/fishing_rod/fg tools/fishing_rod/fg
+tool_shovel,layer_1,9,tools/shovel/bg/ tools/shovel/bg/ tools/shovel/bg/ tools/shovel/bg/
+tool_shovel,layer_2,150,tools/shovel/fg/ tools/shovel/fg/ tools/shovel/fg/ tools/shovel/fg/
+tool_watering_can,layer_1,9,tools/watering_can/bg/ tools/watering_can/bg/ tools/watering_can/bg/ tools/watering_can/bg/
+tool_watering_can,layer_2,150,tools/watering_can/fg/ tools/watering_can/fg/ tools/watering_can/fg/ tools/watering_can/fg/
+tool_whip,layer_1,9,tools/whip/bg tools/whip/bg tools/whip/bg tools/whip/bg
+tool_whip,layer_2,150,tools/whip/fg tools/whip/fg tools/whip/fg tools/whip/fg
 torso_aprons_apron,layer_1,40,torso/aprons/apron/male/ torso/aprons/apron/female/
 torso_aprons_apron_full,layer_1,40,torso/aprons/apron_full/female/
 torso_aprons_apron_half,layer_1,40,torso/aprons/apron_half/female/

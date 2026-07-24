@@ -7,24 +7,21 @@
   "layer_1": {
     "zPos": 9,
     "custom_animation": "tool_whip",
-    "male": "tools/whip/background/",
-    "muscular": "tools/whip/background/",
-    "female": "tools/whip/background/",
-    "pregnant": "tools/whip/background/",
-    "teen": "tools/whip/background/"
+    "male": "tools/whip/bg",
+    "muscular": "tools/whip/bg",
+    "female": "tools/whip/bg",
+    "pregnant": "tools/whip/bg",
+    "teen": "tools/whip/bg"
   },
   "layer_2": {
     "zPos": 150,
     "custom_animation": "tool_whip",
-    "male": "tools/whip/",
-    "muscular": "tools/whip/",
-    "female": "tools/whip/",
-    "pregnant": "tools/whip/",
-    "teen": "tools/whip/"
+    "male": "tools/whip/fg",
+    "muscular": "tools/whip/fg",
+    "female": "tools/whip/fg",
+    "pregnant": "tools/whip/fg",
+    "teen": "tools/whip/fg"
   },
-  "variants": [
-    "whip"
-  ],
   "animations": [
     "tool_whip"
   ],
@@ -45,5 +42,15 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "wood",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "metal.ulpc",
+      "cloth.ulpc",
+      "all.lpcr"
+    ]
+  },
   "type_name": "weapon"
 }

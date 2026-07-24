@@ -149,7 +149,8 @@ export function getLayersToLoad(
     const variantFileName =
       variant !== null ? `${variantToFilename(variant)}` : "";
     if (hasCustomAnim) {
-      if (!variantFileName) {
+      // Skip legacy custom-animation directory paths (trailing slash) when no variant is selected
+      if (!variantFileName && layerPath.endsWith("/")) {
         continue;
       }
       imagePath = `spritesheets/${layerPath}${variantFileName}.png`;
