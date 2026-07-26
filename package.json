@@ -36,7 +36,10 @@
     "compute-style-dump": "node scripts/computed-style/dump-computed-styles.js",
     "compute-style-dump:mobile": "node scripts/computed-style/dump-computed-styles.js --preset mobile",
     "compute-style-diff-all": "node scripts/computed-style/computed-style-diff-all.js",
-    "compute-style-diff-all:preview-ports": "node scripts/computed-style/computed-style-diff-all.js --url-a http://localhost:4176 --url-b http://localhost:4177"
+    "compute-style-diff-all:preview-ports": "node scripts/computed-style/computed-style-diff-all.js --url-a http://localhost:4176 --url-b http://localhost:4177",
+    "palettes:all": "node scripts/generate_all_palettes.js --variant both",
+    "palettes:all:ulpc": "node scripts/generate_all_palettes.js --variant ulpc",
+    "palettes:all:lpcr": "node scripts/generate_all_palettes.js --variant lpcr"
   },
   "dependencies": {
     "bulma": "1.0.4",
