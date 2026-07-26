@@ -5,7 +5,7 @@
     "default": "ulpc",
     "base": "ivory",
     "forward": {
-        "brown": "saddle_brown",
+        "brown": "saddle",
         "walnut": "russet",
         "orange": "flame",
         "rose": "terracotta",
