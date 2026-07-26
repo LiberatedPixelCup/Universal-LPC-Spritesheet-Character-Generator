@@ -19,6 +19,19 @@ function paletteMetaOrNull(): PaletteMetadata | null {
   return getPaletteMetadata().unwrapOr(null);
 }
 
+function resolveForwardPaletteAlias(
+  material: string | undefined,
+  version: string | undefined,
+  recolor: string,
+): string {
+  if (!material || !version || material === "all") {
+    return recolor;
+  }
+
+  const materialMeta = paletteMetaOrNull()?.materials?.[material];
+  return materialMeta?.forward?.[recolor] ?? recolor;
+}
+
 /**
  * Why `fixMissingRecolor` couldn't produce a recolor. `LoadError` reflects a
  * real fetch failure; the other two are domain outcomes a caller might want
@@ -185,8 +198,9 @@ export function getBasePalette(
   const [version, recolor] = base
     ? base.split(".")
     : [materialMeta.default, materialMeta.base];
-  const colors = materialMeta.palettes[version]?.[recolor];
-  return ok([version, recolor, colors]);
+  const resolvedRecolor = resolveForwardPaletteAlias(material, version, recolor);
+  const colors = materialMeta.palettes[version]?.[resolvedRecolor];
+  return ok([version, resolvedRecolor, colors]);
 }
 
 /** Resolve the target color array for a recolor key. */
@@ -334,7 +348,7 @@ export function parseRecolorKey(
   palette: PaletteRecolor | PaletteMaterialMeta | undefined,
 ): [string | undefined, string | undefined, string] {
   if (!recolorKey) recolorKey = palette?.base ?? "";
-  const [recolor, parsedVersion, parsedMaterial] = recolorKey
+  let [recolor, parsedVersion, parsedMaterial] = recolorKey
     .split(".")
     .reverse() as [string, string | undefined, string | undefined];
   let version = parsedVersion;
@@ -355,6 +369,8 @@ export function parseRecolorKey(
   if (!version) {
     version = palette?.default;
   }
+
+  recolor = resolveForwardPaletteAlias(material, version, recolor);
   return [material, version, recolor];
 }
 

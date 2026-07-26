@@ -88,6 +88,30 @@ Items declare which palette they use via a `recolors` field in their sheet defin
 // The system loads tools/palettes/ulpc-body-palettes.json when needed
 ```
 
+### Palette Forwarding (Metadata Aliases)
+
+Palette material metadata may include a `forward` object to map legacy palette
+names directly to canonical names:
+
+```json
+{
+  "type": "material",
+  "default": "ulpc",
+  "base": "fair",
+  "forward": {
+    "light": "fair",
+    "white": "ivory"
+  }
+}
+```
+
+Rules:
+
+- `forward` is optional; omit it entirely when no palette names need forwarding
+- Forwarding applies to sub-palette materials (`body`, `hair`, `cloth`, etc.)
+- Material `all` is intentionally excluded from forwarding
+- Base/default palette names should use the canonical forwarded names
+
 ## Creating a Palette File
 
 ### File Format

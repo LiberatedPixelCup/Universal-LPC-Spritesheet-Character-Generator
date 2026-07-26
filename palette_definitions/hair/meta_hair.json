@@ -3,5 +3,17 @@
     "label": "Hair",
     "desc": "Palettes designed to look good for hair colors, but also may include fantasy colors.",
     "default": "ulpc",
-    "base": "orange"
+    "base": "orange",
+    "forward": {
+        "orange": "orange",
+        "gold": "sunfire",
+        "redhead": "auburn",
+        "red": "scarlet",
+        "black": "raven",
+        "raven": "midnight",
+        "pink": "fuchsia",
+        "green": "forest_green",
+        "blue": "azure",
+        "champagne": "platinum"
+    }
 }

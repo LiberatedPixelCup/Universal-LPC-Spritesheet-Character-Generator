@@ -3,5 +3,14 @@
     "label": "Skintone",
     "desc": "Palettes designed for skin tones and flesh colors, but may include fantasy colors.",
     "default": "ulpc",
-    "base": "light"
+    "base": "fair",
+    "forward": {
+        "light": "fair",
+        "bronze": "sienna",
+        "brown": "umber",
+        "black": "espresso",
+        "blue": "moonblue",
+        "green": "goblin",
+        "lavender": "moonstone"
+    }
 }
