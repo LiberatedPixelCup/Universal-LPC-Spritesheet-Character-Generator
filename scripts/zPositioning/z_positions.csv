@@ -69,6 +69,7 @@ dress_slit,layer_1,30,dress/slit/female/
 eyebrows_thick,layer_1,106,eyes/eyebrows/thick/adult/ eyes/eyebrows/thick/adult/ eyes/eyebrows/thick/adult/ eyes/eyebrows/thick/adult/ eyes/eyebrows/thick/child/
 eyebrows_thin,layer_1,106,eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/adult/ eyes/eyebrows/thin/child/
 eyes_cyclops,layer_1,105,eyes/cyclops/adult/ eyes/cyclops/adult/ eyes/cyclops/adult/ eyes/cyclops/adult/ eyes/cyclops/child/
+eyes_cyclops2,layer_1,105,eyes/cyclops2/adult/ eyes/cyclops2/adult/ eyes/cyclops2/adult/ eyes/cyclops2/adult/ eyes/cyclops2/child/
 face_angry,layer_1,101,head/faces/${head}/anger/ head/faces/${head}/anger/ head/faces/${head}/anger/ head/faces/${head}/anger/
 face_angry2,layer_1,106,head/faces/global/angry2/ head/faces/global/angry2/ head/faces/global/angry2/ head/faces/global/angry2/
 face_blush,layer_1,101,head/faces/${head}/blush/ head/faces/${head}/blush/ head/faces/${head}/blush/ head/faces/${head}/blush/

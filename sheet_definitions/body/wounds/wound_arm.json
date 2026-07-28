@@ -9,8 +9,20 @@
     "pregnant": "body/wound/arm/",
     "teen": "body/wound/arm/"
   },
-  "variants": [
-    "red"
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "climb"
   ],
   "credits": [
     {
@@ -29,5 +41,14 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "cloth",
+    "base": "maroon",
+    "palettes": [
+      "ulpc",
+      "body.ulpc",
+      "all.lpcr"
+    ]
+  },
   "type_name": "wound_arm"
 }

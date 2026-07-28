@@ -1,13 +1,13 @@
 {
-  "name": "Cyclops Eyes",
+  "name": "Alt Cyclops Eyes",
   "layer_1": {
     "zPos": 105,
-    "male": "eyes/cyclops/adult/",
-    "muscular": "eyes/cyclops/adult/",
-    "female": "eyes/cyclops/adult/",
-    "teen": "eyes/cyclops/adult/",
-    "pregnant": "eyes/cyclops/adult/",
-    "child": "eyes/cyclops/child/"
+    "male": "eyes/cyclops2/adult/",
+    "muscular": "eyes/cyclops2/adult/",
+    "female": "eyes/cyclops2/adult/",
+    "teen": "eyes/cyclops2/adult/",
+    "pregnant": "eyes/cyclops2/adult/",
+    "child": "eyes/cyclops2/child/"
   },
   "animations": [
     "spellcast",
@@ -29,8 +29,8 @@
   ],
   "credits": [
     {
-      "file": "eyes/cyclops",
-      "notes": "original by kirts, repositioned by JaidynReiman",
+      "file": "eyes/cyclops2",
+      "notes": "original by kirts, repositioned by JaidynReiman along with shading and recolors",
       "authors": [
         "kirts",
         "JaidynReiman"

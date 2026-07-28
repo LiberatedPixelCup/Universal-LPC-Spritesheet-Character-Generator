@@ -12,9 +12,6 @@
     "pregnant": "head/heads/skeleton/adult/",
     "teen": "head/heads/skeleton/adult/"
   },
-  "variants": [
-    "skeleton"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -40,6 +37,8 @@
       "notes": "",
       "authors": [
         "bluecarrot16",
+        "Napsio",
+        "JaidynReiman",
         "Johannes Sjölund (wulax)",
         "Stephen Challener (Redshrike)"
       ],
@@ -56,5 +55,14 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "cloth",
+    "base": "white",
+    "palettes": [
+      "ulpc",
+      "body.ulpc",
+      "all.lpcr"
+    ]
+  },
   "type_name": "head"
 }

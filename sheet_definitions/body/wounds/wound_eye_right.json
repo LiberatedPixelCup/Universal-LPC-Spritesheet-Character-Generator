@@ -9,9 +9,6 @@
     "pregnant": "body/wound/eye_right/",
     "teen": "body/wound/eye_right/"
   },
-  "variants": [
-    "red"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -25,7 +22,6 @@
     "run",
     "sit",
     "emote",
-    "climb",
     "combat",
     "1h_slash",
     "1h_backslash",
@@ -34,7 +30,7 @@
   "credits": [
     {
       "file": "body/wound/eye_right",
-      "notes": "",
+      "notes": "Zombie by BenCreating, commissioned by castelonia",
       "authors": [
         "Benjamin K. Smith (BenCreating)",
         "Sander Frenken (castelonia)"
@@ -48,5 +44,14 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "cloth",
+    "base": "maroon",
+    "palettes": [
+      "ulpc",
+      "body.ulpc",
+      "all.lpcr"
+    ]
+  },
   "type_name": "wound_eye_right"
 }
