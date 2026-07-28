@@ -50,7 +50,13 @@ export function setPreviewAnimation(animationName: string): number[] {
     animRowNum = 4; // Show all 4 directions
     currentFrameIndex = 0;
 
-    return animationFrames;
+    // For display: extract source column numbers from the first row's frame specs
+    // e.g. ["slash-n,5","slash-n,5","slash-n,4",...] → [5,5,4,...]
+    const displayFrames = customAnimDef.frames[0]
+      .slice(skipFirstFrame ? 1 : 0)
+      .map((spec) => parseInt(spec.split(",")[1]));
+
+    return displayFrames;
   }
 
   // Standard animation

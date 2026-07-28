@@ -1,7 +1,7 @@
 {
     "type": "material",
-    "label": "Cloth",
-    "desc": "Palettes designed for cloth materials such as clothing and fabric.",
+    "label": "General",
+    "desc": "Palettes designed for general colors, but especially cloth or fabric.",
     "default": "ulpc",
     "base": "white"
 }

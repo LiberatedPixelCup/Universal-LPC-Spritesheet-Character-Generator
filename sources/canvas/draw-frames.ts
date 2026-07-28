@@ -91,3 +91,45 @@ export function drawFramesToCustomAnimation(
     }
   }
 }
+
+/**
+ * Draw a single-animation source sprite (4 rows: n/w/s/e) into a custom animation area,
+ * remapping frames according to the custom animation definition.
+ * Used when the tool sprite is in its native slash/thrust layout rather than
+ * a pre-built custom animation sheet.
+ */
+export function drawSingleAnimSpriteToCustomAnimation(
+  ctx: CanvasRenderingContext2D,
+  customAnimDef: CustomAnimationDefinition,
+  offsetY: number,
+  src: SpriteSource,
+): void {
+  const frameSize = customAnimDef.frameSize;
+  const srcFrameSize = Math.round(src.height / 4); // 4 rows: n=0, w=1, s=2, e=3
+  const directionMap: Record<string, number> = { n: 0, w: 1, s: 2, e: 3 };
+
+  for (let i = 0; i < customAnimDef.frames.length; i++) {
+    const frames = customAnimDef.frames[i];
+    for (let j = 0; j < frames.length; j++) {
+      const frameSpec = frames[j]; // e.g. "slash-n,5"
+      const [srcRowName, srcColumnStr] = frameSpec.split(",");
+      const srcColumn = parseInt(srcColumnStr);
+      const direction = srcRowName.split("-")[1];
+      const srcRow = directionMap[direction] ?? 0;
+
+      const srcX = srcFrameSize * srcColumn;
+      const srcY = srcFrameSize * srcRow;
+      const destX = frameSize * j;
+      const destY = frameSize * i + offsetY;
+
+      drawFrameToFrame(
+        ctx,
+        { x: destX, y: destY },
+        frameSize,
+        src,
+        { x: srcX, y: srcY },
+        srcFrameSize,
+      );
+    }
+  }
+}

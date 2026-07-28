@@ -9,23 +9,44 @@
     "zPos": 100,
     "male": "body/prosthesis/peg_leg/male/"
   },
-  "variants": [
-    "peg_leg"
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "emote"
   ],
   "credits": [
     {
       "file": "body/prosthesis/peg_leg",
-      "notes": "",
+      "notes": "original by bluecarrot16, emote by JaidynReiman",
       "authors": [
-        "bluecarrot16"
+        "bluecarrot16",
+        "JaidynReiman"
       ],
       "licenses": [
-        "CC-BY-SA 3.0"
+        "OGA-BY 3.0",
+        "CC-BY-SA 3.0",
+        "GPL 3.0"
       ],
       "urls": [
         "https://opengameart.org/content/lpc-pirates"
       ]
     }
   ],
+  "recolors": {
+    "material": "wood",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "cloth.ulpc",
+      "metal.ulpc",
+      "all.lpcr"
+    ]
+  },
   "type_name": "prosthesis_leg"
 }

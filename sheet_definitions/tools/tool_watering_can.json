@@ -1,0 +1,54 @@
+{
+  "name": "Watering Can",
+  "layer_1": {
+    "zPos": 9,
+    "male": "tools/watering_can/bg/",
+    "muscular": "tools/watering_can/bg/",
+    "female": "tools/watering_can/bg/",
+    "pregnant": "tools/watering_can/bg/",
+    "teen": "tools/watering_can/bg/"
+  },
+  "layer_2": {
+    "zPos": 150,
+    "male": "tools/watering_can/fg/",
+    "muscular": "tools/watering_can/fg/",
+    "female": "tools/watering_can/fg/",
+    "pregnant": "tools/watering_can/fg/",
+    "teen": "tools/watering_can/fg/"
+  },
+  "animations": [
+    "walk",
+    "watering"
+  ],
+  "credits": [
+    {
+      "file": "tools/watering_can",
+      "notes": "",
+      "authors": [
+        "bluecarrot16"
+      ],
+      "licenses": [
+        "OGA-BY 3.0+",
+        "CC-BY 4.0+",
+        "GPL 2.0+"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-hand-tools"
+      ]
+    }
+  ],
+  "recolors": {
+    "material": "wood",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "cloth.ulpc",
+      "metal.ulpc",
+      "all.lpcr"
+    ]
+  },
+  "aliases": {
+    "Thrust_watering": "Watering_Can_maple"
+  },
+  "type_name": "weapon"
+}

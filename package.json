@@ -47,7 +47,7 @@
     "tinygesture": "^3.0.0"
   },
   "devDependencies": {
-    "@argos-ci/playwright": "^7.0.5",
+    "@argos-ci/playwright": "^7.3.6",
     "@babel/eslint-parser": "^7.28.6",
     "@eslint/js": "^9.39.4",
     "@playwright/test": "^1.60.0",
