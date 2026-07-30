@@ -9,14 +9,6 @@
     "muscular": "neck/scarf/",
     "teen": "neck/scarf/"
   },
-  "variants": [
-    "black",
-    "blue",
-    "brown",
-    "gray",
-    "red",
-    "white"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -24,14 +16,20 @@
     "slash",
     "shoot",
     "hurt",
-    "idle"
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote"
   ],
   "credits": [
     {
       "file": "neck/scarf",
-      "notes": "",
+      "notes": "Original by Nila122, climb/sit/emote/jump/run animations by JaidynReiman",
       "authors": [
         "Nila122",
+        "JaidynReiman",
         "Johannes Sjölund (wulax)",
         "Stephen Challener (Redshrike)"
       ],
@@ -46,5 +44,12 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "cloth",
+    "palettes": [
+      "ulpc",
+      "all.lpcr"
+    ]
+  },
   "type_name": "neck"
 }

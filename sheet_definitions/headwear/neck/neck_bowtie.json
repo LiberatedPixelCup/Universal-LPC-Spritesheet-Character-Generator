@@ -9,33 +9,6 @@
     "pregnant": "neck/tie/bowtie/adult/",
     "teen": "neck/tie/bowtie/adult/"
   },
-  "variants": [
-    "base",
-    "black",
-    "blue",
-    "bluegray",
-    "brown",
-    "charcoal",
-    "forest",
-    "gray",
-    "green",
-    "lavender",
-    "leather",
-    "maroon",
-    "navy",
-    "orange",
-    "pink",
-    "purple",
-    "red",
-    "rose",
-    "sky",
-    "slate",
-    "tan",
-    "teal",
-    "walnut",
-    "white",
-    "yellow"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -49,7 +22,6 @@
     "run",
     "sit",
     "emote",
-    "climb",
     "combat",
     "1h_slash",
     "1h_backslash",
@@ -76,5 +48,12 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "cloth",
+    "palettes": [
+      "ulpc",
+      "all.lpcr"
+    ]
+  },
   "type_name": "neck"
 }
