@@ -9,32 +9,6 @@
     "teen": "neck/capeclip/female/",
     "pregnant": "neck/capeclip/female/"
   },
-  "variants": [
-    "black",
-    "blue",
-    "bluegray",
-    "brown",
-    "charcoal",
-    "forest",
-    "gray",
-    "green",
-    "lavender",
-    "leather",
-    "maroon",
-    "navy",
-    "orange",
-    "pink",
-    "purple",
-    "red",
-    "rose",
-    "sky",
-    "slate",
-    "tan",
-    "teal",
-    "walnut",
-    "white",
-    "yellow"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -42,7 +16,12 @@
     "slash",
     "shoot",
     "hurt",
-    "idle"
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote"
   ],
   "credits": [
     {
@@ -63,5 +42,25 @@
       ]
     }
   ],
+  "recolors": {
+    "color_1": {
+      "material": "cloth",
+      "palettes": [
+        "ulpc",
+        "all.lpcr"
+      ]
+    },
+    "color_2": {
+      "type_name": "clip",
+      "label": "Clip",
+      "material": "metal",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "cloth.ulpc",
+        "all.lpcr"
+      ]
+    }
+  },
   "type_name": "neck"
 }
