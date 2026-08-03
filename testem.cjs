@@ -56,13 +56,14 @@ let testemConfig = {
         "--disable-session-crashed-bubble",
       ],
       ci: [
-        // needed to run ci mode locally on MacOS ARM
-        process.env.CI ? null : "--use-gl=angle",
-
         "--headless",
         "--no-sandbox",
         "--disable-dev-shm-usage",
-        "--disable-gpu",
+        // Software WebGL so palette-recolor WebGL parity/fallback tests run in CI
+        // (bare --disable-gpu often makes getContext("webgl") return null).
+        "--use-gl=angle",
+        "--use-angle=swiftshader-webgl",
+        "--enable-unsafe-swiftshader",
         "--disable-popup-blocking",
         "--mute-audio",
         "--remote-debugging-port=0",
@@ -73,7 +74,7 @@ let testemConfig = {
         "--disable-session-crashed-bubble",
         // Omit --user-data-dir: Testem already sets a per-run temp profile. A second flag breaks
         // Chrome on some setups (e.g. macOS), and /tmp is not valid on Windows.
-      ].filter(Boolean),
+      ],
     },
     Firefox: {
       dev: [],
