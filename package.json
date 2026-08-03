@@ -7,6 +7,9 @@
   "name": "universal-lpc-spritesheet-character-generator",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
   "scripts": {
     "dev": "vite",
     "prebuild": "rimraf \"dist/!(spritesheets)\"",
@@ -62,7 +65,7 @@
     "eslint-plugin-prettier": "^5.5.5",
     "execa": "^9.6.1",
     "globals": "^16.5.0",
-    "mocha": "^11.7.5",
+    "mocha": "^12.0.0-rc.5",
     "open": "^10.2.0",
     "prettier": "^3.8.1",
     "purgecss": "^6.0.0",
@@ -83,11 +86,6 @@
     "@babel/core": "^7.28.6",
     "minimatch@^10.2.5": {
       "brace-expansion": "^5.0.6"
-    },
-    "mocha": {
-      "diff": "^8.0.3",
-      "minimatch": "^9.0.7",
-      "serialize-javascript": "^7.0.5"
     }
   }
 }
