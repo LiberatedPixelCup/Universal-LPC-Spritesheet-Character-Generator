@@ -6,8 +6,15 @@
     "female": "body/bodies/skeleton/",
     "teen": "body/bodies/skeleton/"
   },
-  "variants": [
-    "skeleton"
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle"
   ],
   "credits": [
     {
@@ -15,6 +22,8 @@
       "notes": "",
       "authors": [
         "bluecarrot16",
+        "Napsio",
+        "JaidynReiman",
         "Johannes Sjölund (wulax)",
         "Stephen Challener (Redshrike)"
       ],
@@ -31,5 +40,14 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "cloth",
+    "base": "white",
+    "palettes": [
+      "ulpc",
+      "body.ulpc",
+      "all.lpcr"
+    ]
+  },
   "type_name": "body"
 }

@@ -9,8 +9,19 @@
     "pregnant": "body/wound/ribs/",
     "teen": "body/wound/ribs/"
   },
-  "variants": [
-    "red"
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote"
   ],
   "credits": [
     {
@@ -29,5 +40,35 @@
       ]
     }
   ],
+  "recolors": {
+    "color_1": {
+      "material": "cloth",
+      "base": "maroon",
+      "palettes": [
+        "ulpc",
+        "all.lpcr"
+      ]
+    },
+    "color_2": {
+      "type_name": "bones",
+      "label": "Ribs",
+      "material": "cloth",
+      "base": "white",
+      "palettes": [
+        "ulpc",
+        "all.lpcr"
+      ]
+    },
+    "color_3": {
+      "type_name": "stomach",
+      "label": "Stomach",
+      "material": "body",
+      "palettes": [
+        "ulpc",
+        "lpcr",
+        "all.lpcr"
+      ]
+    }
+  },
   "type_name": "wound_ribs"
 }

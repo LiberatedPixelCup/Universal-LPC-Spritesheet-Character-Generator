@@ -9,17 +9,6 @@
     "pregnant": "eyes/cyclops/adult/",
     "child": "eyes/cyclops/child/"
   },
-  "variants": [
-    "cyclops",
-    "blue",
-    "brown",
-    "gray",
-    "green",
-    "orange",
-    "purple",
-    "red",
-    "yellow"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -33,7 +22,6 @@
     "run",
     "sit",
     "emote",
-    "climb",
     "combat",
     "1h_slash",
     "1h_backslash",
@@ -42,7 +30,7 @@
   "credits": [
     {
       "file": "eyes/cyclops",
-      "notes": "original by kirts, repositioned by JaidynReiman along with shading and recolors",
+      "notes": "original by kirts, repositioned by JaidynReiman",
       "authors": [
         "kirts",
         "JaidynReiman"
@@ -55,5 +43,13 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "eye",
+    "base": "red",
+    "palettes": [
+      "ulpc",
+      "lpcr"
+    ]
+  },
   "type_name": "eyes"
 }

@@ -1,0 +1,55 @@
+{
+  "name": "Alt Cyclops Eyes",
+  "layer_1": {
+    "zPos": 105,
+    "male": "eyes/cyclops2/adult/",
+    "muscular": "eyes/cyclops2/adult/",
+    "female": "eyes/cyclops2/adult/",
+    "teen": "eyes/cyclops2/adult/",
+    "pregnant": "eyes/cyclops2/adult/",
+    "child": "eyes/cyclops2/child/"
+  },
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "eyes/cyclops2",
+      "notes": "original by kirts, repositioned by JaidynReiman along with shading and recolors",
+      "authors": [
+        "kirts",
+        "JaidynReiman"
+      ],
+      "licenses": [
+        "CC0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/cyclops-and-his-eye"
+      ]
+    }
+  ],
+  "recolors": {
+    "material": "eye",
+    "base": "red",
+    "palettes": [
+      "ulpc",
+      "lpcr"
+    ]
+  },
+  "type_name": "eyes"
+}
