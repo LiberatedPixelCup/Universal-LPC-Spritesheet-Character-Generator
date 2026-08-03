@@ -11,6 +11,13 @@ let sharedGL: WebGLRenderingContext | null = null;
 let sharedCanvas: HTMLCanvasElement | null = null;
 let sharedProgram: WebGLProgram | null = null;
 
+/** @internal Test helper — drop shared GL so the next call re-inits. */
+export function resetSharedWebGLForTests(): void {
+  sharedGL = null;
+  sharedCanvas = null;
+  sharedProgram = null;
+}
+
 /**
  * Vertex shader - renders a full-screen quad
  */
