@@ -161,6 +161,7 @@ export type PaletteMaterialMeta = {
   desc: string;
   default: string;
   base: string;
+  forward?: Record<string, string>;
 };
 
 export type PaletteVersionMeta = {

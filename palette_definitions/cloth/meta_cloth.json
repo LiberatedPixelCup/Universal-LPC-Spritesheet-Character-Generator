@@ -3,5 +3,22 @@
     "label": "General",
     "desc": "Palettes designed for general colors, but especially cloth or fabric.",
     "default": "ulpc",
-    "base": "white"
+    "base": "ivory",
+    "forward": {
+        "brown": "saddle",
+        "walnut": "russet",
+        "orange": "flame",
+        "rose": "terracotta",
+        "red": "crimson",
+        "pink": "dusty_rose",
+        "lavender": "purple",
+        "purple": "dark_purple",
+        "blue": "cobalt",
+        "forest": "evergreen",
+        "white": "ivory",
+        "slate": "pewter",
+        "gray": "slate",
+        "black": "charcoal",
+        "charcoal": "graphite"
+    }
 }
