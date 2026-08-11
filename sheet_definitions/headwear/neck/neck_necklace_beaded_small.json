@@ -5,20 +5,10 @@
     "zPos": 80,
     "male": "neck/necklace/beaded_small/male/",
     "muscular": "neck/necklace/beaded_small/male/",
-    "female": "neck/necklace/beaded_small/female/",
-    "teen": "neck/necklace/beaded_small/female/",
-    "pregnant": "neck/necklace/beaded_small/female/"
+    "female": "neck/necklace/beaded_small/thin/",
+    "teen": "neck/necklace/beaded_small/thin/",
+    "pregnant": "neck/necklace/beaded_small/thin/"
   },
-  "variants": [
-    "steel",
-    "iron",
-    "ceramic",
-    "brass",
-    "copper",
-    "bronze",
-    "silver",
-    "gold"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -26,14 +16,20 @@
     "slash",
     "shoot",
     "hurt",
-    "idle"
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote"
   ],
   "credits": [
     {
       "file": "neck/necklace/beaded_small",
-      "notes": "",
+      "notes": "minor cleanup + Jump/Run/Sit/Emote by JaidynReiman",
       "authors": [
-        "bluecarrot16"
+        "bluecarrot16",
+        "JaidynReiman"
       ],
       "licenses": [
         "CC0"
@@ -43,5 +39,14 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "metal",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "cloth.ulpc",
+      "all.lpcr"
+    ]
+  },
   "type_name": "necklace"
 }
