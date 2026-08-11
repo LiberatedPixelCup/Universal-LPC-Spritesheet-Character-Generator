@@ -4,8 +4,10 @@
   "layer_1": {
     "zPos": 90,
     "male": "neck/jabot/male/",
-    "female": "neck/jabot/male/",
-    "teen": "neck/jabot/male/"
+    "muscular": "neck/jabot/male/",
+    "female": "neck/jabot/thin/",
+    "teen": "neck/jabot/thin/",
+    "pregnant": "neck/jabot/thin/"
   },
   "animations": [
     "spellcast",

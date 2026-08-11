@@ -5,20 +5,10 @@
     "zPos": 80,
     "male": "neck/necklace/beaded_large/male/",
     "muscular": "neck/necklace/beaded_large/male/",
-    "female": "neck/necklace/beaded_large/female/",
-    "teen": "neck/necklace/beaded_large/female/",
-    "pregnant": "neck/necklace/beaded_large/female/"
+    "female": "neck/necklace/beaded_large/thin/",
+    "teen": "neck/necklace/beaded_large/thin/",
+    "pregnant": "neck/necklace/beaded_large/thin/"
   },
-  "variants": [
-    "steel",
-    "iron",
-    "ceramic",
-    "brass",
-    "copper",
-    "bronze",
-    "silver",
-    "gold"
-  ],
   "animations": [
     "spellcast",
     "thrust",
@@ -26,7 +16,12 @@
     "slash",
     "shoot",
     "hurt",
-    "idle"
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote"
   ],
   "credits": [
     {
@@ -43,5 +38,14 @@
       ]
     }
   ],
+  "recolors": {
+    "material": "metal",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "cloth.ulpc",
+      "all.lpcr"
+    ]
+  },
   "type_name": "necklace"
 }

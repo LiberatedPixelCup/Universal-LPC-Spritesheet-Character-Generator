@@ -479,13 +479,13 @@ neck_amulet_spider,layer_1,81,neck/amulet/spider/male/ neck/amulet/spider/female
 neck_amulet_star,layer_1,81,neck/amulet/star/male/ neck/amulet/star/female/ neck/amulet/star/male/ neck/amulet/star/female/
 neck_bowtie,layer_1,90,neck/tie/bowtie/adult/ neck/tie/bowtie/adult/ neck/tie/bowtie/adult/ neck/tie/bowtie/adult/
 neck_bowtie2,layer_1,90,neck/tie/bowtie2/adult/ neck/tie/bowtie2/adult/ neck/tie/bowtie2/adult/ neck/tie/bowtie2/adult/
-neck_capeclip,layer_1,90,neck/capeclip/male/ neck/capeclip/female/ neck/capeclip/male/ neck/capeclip/female/
-neck_capetie,layer_1,90,neck/capetie/male/ neck/capetie/female/ neck/capetie/male/ neck/capetie/female/
+neck_capeclip,layer_1,90,neck/capeclip/male/ neck/capeclip/thin/ neck/capeclip/male/ neck/capeclip/thin/
+neck_capetie,layer_1,90,neck/capetie/male/ neck/capetie/thin/ neck/capetie/male/ neck/capetie/thin/
 neck_charm_box,layer_1,81,neck/charm/box/male/ neck/charm/box/female/ neck/charm/box/male/ neck/charm/box/female/
 neck_charm_oval,layer_1,81,neck/charm/oval/male/ neck/charm/oval/female/ neck/charm/oval/male/ neck/charm/oval/female/
 neck_charm_ring,layer_1,81,neck/charm/ring/male/ neck/charm/ring/female/ neck/charm/ring/male/ neck/charm/ring/female/
 neck_charm_star,layer_1,81,neck/charm/star/male/ neck/charm/star/female/ neck/charm/star/male/ neck/charm/star/female/
-neck_cravat,layer_1,90,neck/cravat/male/ neck/cravat/male/
+neck_cravat,layer_1,90,neck/cravat/male/ neck/cravat/thin/ neck/cravat/male/ neck/cravat/thin/
 neck_gem_emerald,layer_1,81,neck/gem/emerald/male/ neck/gem/emerald/female/ neck/gem/emerald/male/ neck/gem/emerald/female/
 neck_gem_marquise,layer_1,81,neck/gem/marquise/male/ neck/gem/marquise/female/ neck/gem/marquise/male/ neck/gem/marquise/female/
 neck_gem_natural,layer_1,81,neck/gem/natural/male/ neck/gem/natural/female/ neck/gem/natural/male/ neck/gem/natural/female/
@@ -494,10 +494,10 @@ neck_gem_pearl,layer_1,81,neck/gem/pearl/male/ neck/gem/pearl/female/ neck/gem/p
 neck_gem_princess,layer_1,81,neck/gem/princess/male/ neck/gem/princess/female/ neck/gem/princess/male/ neck/gem/princess/female/
 neck_gem_round,layer_1,81,neck/gem/round/male/ neck/gem/round/female/ neck/gem/round/male/ neck/gem/round/female/
 neck_gem_trilliant,layer_1,81,neck/gem/trilliant/male/ neck/gem/trilliant/female/ neck/gem/trilliant/male/ neck/gem/trilliant/female/
-neck_jabot,layer_1,90,neck/jabot/male/ neck/jabot/male/
+neck_jabot,layer_1,90,neck/jabot/male/ neck/jabot/thin/ neck/jabot/male/ neck/jabot/thin/
 neck_necklace,layer_1,80,neck/necklace/female/ neck/necklace/female/ neck/necklace/female/ neck/necklace/female/
-neck_necklace_beaded_large,layer_1,80,neck/necklace/beaded_large/male/ neck/necklace/beaded_large/female/ neck/necklace/beaded_large/male/ neck/necklace/beaded_large/female/
-neck_necklace_beaded_small,layer_1,80,neck/necklace/beaded_small/male/ neck/necklace/beaded_small/female/ neck/necklace/beaded_small/male/ neck/necklace/beaded_small/female/
+neck_necklace_beaded_large,layer_1,80,neck/necklace/beaded_large/male/ neck/necklace/beaded_large/thin/ neck/necklace/beaded_large/male/ neck/necklace/beaded_large/thin/
+neck_necklace_beaded_small,layer_1,80,neck/necklace/beaded_small/male/ neck/necklace/beaded_small/thin/ neck/necklace/beaded_small/male/ neck/necklace/beaded_small/thin/
 neck_necklace_chain,layer_1,80,neck/necklace/chain/male/ neck/necklace/chain/female/ neck/necklace/chain/male/ neck/necklace/chain/female/
 neck_necklace_simple,layer_1,80,neck/necklace/simple/male/ neck/necklace/simple/female/ neck/necklace/simple/male/ neck/necklace/simple/female/
 neck_necktie,layer_1,90,neck/tie/necktie/male/ neck/tie/necktie/female/ neck/tie/necktie/male/ neck/tie/necktie/female/

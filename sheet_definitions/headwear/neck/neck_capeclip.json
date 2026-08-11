@@ -1,5 +1,5 @@
 {
-  "name": "Capeclip",
+  "name": "Cape Clip",
   "priority": 60,
   "layer_1": {
     "zPos": 90,
@@ -54,6 +54,7 @@
       "type_name": "clip",
       "label": "Clip",
       "material": "metal",
+      "base": "gold",
       "palettes": [
         "ulpc",
         "lpcr",

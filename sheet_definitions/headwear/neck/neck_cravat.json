@@ -4,8 +4,10 @@
   "layer_1": {
     "zPos": 90,
     "male": "neck/cravat/male/",
-    "female": "neck/cravat/male/",
-    "teen": "neck/cravat/male/"
+    "muscular": "neck/cravat/male/",
+    "female": "neck/cravat/thin/",
+    "teen": "neck/cravat/thin/",
+    "pregnant": "neck/cravat/thin/"
   },
   "animations": [
     "spellcast",
