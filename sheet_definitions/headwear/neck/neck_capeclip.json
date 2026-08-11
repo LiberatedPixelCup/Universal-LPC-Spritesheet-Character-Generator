@@ -5,9 +5,9 @@
     "zPos": 90,
     "male": "neck/capeclip/male/",
     "muscular": "neck/capeclip/male/",
-    "female": "neck/capeclip/female/",
-    "teen": "neck/capeclip/female/",
-    "pregnant": "neck/capeclip/female/"
+    "female": "neck/capeclip/thin/",
+    "teen": "neck/capeclip/thin/",
+    "pregnant": "neck/capeclip/thin/"
   },
   "animations": [
     "spellcast",
