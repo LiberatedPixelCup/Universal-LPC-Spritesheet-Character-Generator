@@ -44,8 +44,7 @@ import {
 export type ChunkName = "index" | "lite" | "credits" | "palette" | "layers";
 
 export type LoadError =
-  | { kind: "loading"; chunk: ChunkName }
-  | { kind: "not-found"; id: string };
+  { kind: "loading"; chunk: ChunkName } | { kind: "not-found"; id: string };
 
 /** Human-readable description of a catalog `LoadError`. Shared formatter for
  *  every getter that returns `Result<T, LoadError>`. Exhaustive over `kind`. */
