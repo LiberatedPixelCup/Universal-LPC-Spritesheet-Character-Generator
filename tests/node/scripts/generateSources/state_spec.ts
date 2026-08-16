@@ -23,7 +23,8 @@ import {
   readDirTree,
   parseJson,
   splitItemMetadataMaps,
-} from "../../../../scripts/generateSources/state.js";
+  type GeneratorItem,
+} from "../../../../scripts/generateSources/state.ts";
 import { buildPath, resetTestState } from "./test_helpers.js";
 
 test("state exports expected constant directory suffixes", () => {
@@ -126,7 +127,7 @@ test("buildAllMetadataModules yields five basenames without window assignments",
 
 test("metadata JSON is compact in production and pretty in development", () => {
   resetTestState();
-  itemMetadata.nested = { bar: 1 };
+  itemMetadata.nested = { bar: 1 } as GeneratorItem;
 
   const prodItem = buildItemMetadataLiteJs(itemMetadata, "production");
   const devItem = buildItemMetadataLiteJs(itemMetadata, "development");
@@ -252,7 +253,11 @@ test("parseJson reads and parses a valid palette fixture file", () => {
     "meta_body.json",
   );
 
-  const result = parseJson(fullPath);
+  const result = parseJson(fullPath) as {
+    type: string;
+    label: string;
+    default: string;
+  };
 
   assert.equal(result.type, "material");
   assert.equal(result.label, "Body");

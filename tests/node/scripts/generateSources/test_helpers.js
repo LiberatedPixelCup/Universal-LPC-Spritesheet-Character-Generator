@@ -5,7 +5,7 @@ import {
   METADATA_MODULE_BASENAMES,
   readDirTree,
   resetGeneratorState,
-} from "../../../../scripts/generateSources/state.js";
+} from "../../../../scripts/generateSources/state.ts";
 import { loadPaletteMetadata } from "../../../../scripts/generateSources/palettes.js";
 import {
   expandInternedItemLite,

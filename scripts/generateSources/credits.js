@@ -8,7 +8,7 @@ import {
   licensesFound,
   onlyIfTemplate,
   SHEETS_DIR,
-} from "./state.js";
+} from "./state.ts";
 
 const { debugLog } = debugUtils;
 export const CREDITS_OUTPUT = "CREDITS.csv";

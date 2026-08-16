@@ -6,7 +6,7 @@ import {
   itemMetadata,
   onlyIfTemplate,
   SHEETS_DIR,
-} from "./state.js";
+} from "./state.ts";
 
 const { debugLog } = debugUtils;
 

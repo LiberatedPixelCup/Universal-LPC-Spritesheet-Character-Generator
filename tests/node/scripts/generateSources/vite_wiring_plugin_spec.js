@@ -4,7 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { METADATA_MODULE_BASENAMES } from "../../../../scripts/generateSources/state.js";
+import { METADATA_MODULE_BASENAMES } from "../../../../scripts/generateSources/state.ts";
 import { vitePluginItemMetadata } from "../../../../vite/vite-plugin-item-metadata.js";
 import {
   itemMetadataCodeSplittingGroups,

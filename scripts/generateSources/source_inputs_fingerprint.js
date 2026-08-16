@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
-import { readDirTree } from "./state.js";
+import { readDirTree } from "./state.ts";
 
 /**
  * SHA-256 of all file contents under `sheet_definitions` and `palette_definitions` (repo-relative roots).

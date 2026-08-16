@@ -1,6 +1,6 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { METADATA_MODULE_BASENAMES } from "../scripts/generateSources/state.js";
+import { METADATA_MODULE_BASENAMES } from "../scripts/generateSources/state.ts";
 import { vitePluginItemMetadata } from "./vite-plugin-item-metadata.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -16,7 +16,7 @@ function escapeForRegExp(string) {
  * `resolve.alias` entries so the app and browser tests resolve generated metadata from `dist/`.
  * Uses a regexp because root-level `*.js` metadata entry points are removed; Rolldown still needs to
  * rewrite `../item-metadata.js` (and similar) to `dist/` without an on-disk target at the alias key.
- * Basenames come from [`METADATA_MODULE_BASENAMES`](../scripts/generateSources/state.js) (Commit 4).
+ * Basenames come from [`METADATA_MODULE_BASENAMES`](../scripts/generateSources/state.ts) (Commit 4).
  * @returns {import("vite").AliasOptions[]}
  */
 export function itemMetadataResolveAliases() {

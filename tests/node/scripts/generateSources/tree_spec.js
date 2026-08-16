@@ -9,7 +9,7 @@ import {
 import {
   categoryTree,
   itemMetadata,
-} from "../../../../scripts/generateSources/state.js";
+} from "../../../../scripts/generateSources/state.ts";
 import { buildPath, resetTestState } from "./test_helpers.js";
 
 test("parseTree creates a category node from valid meta", () => {

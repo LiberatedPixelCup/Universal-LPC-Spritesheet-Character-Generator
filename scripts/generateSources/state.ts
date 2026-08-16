@@ -1,5 +1,15 @@
 import fs from "node:fs";
 import path from "node:path";
+import type {
+  AliasMetadata,
+  CategoryTree,
+  Credit,
+  ItemLite,
+  LayerEntry,
+  PaletteMetadata,
+  PaletteRecolor,
+  SlimByTypeNameRow,
+} from "../../sources/state/catalog.ts";
 import { buildSlimByTypeNameRow } from "../../sources/state/resolve-hash-param.ts";
 
 export const SHEETS_DIR = "sheet_definitions" + path.sep;
@@ -13,22 +23,58 @@ export const METADATA_MODULE_BASENAMES = [
   "item-metadata.js",
   "credits-metadata.js",
   "layers-metadata.js",
-];
+] as const;
 
-export const licensesFound = [];
-export const csvList = [];
-export const itemMetadata = {};
-export const paletteMetadata = { versions: {}, materials: {} };
-export const aliasMetadata = {};
-export const categoryTree = { items: [], children: {} };
+export type MetadataEnv = "development" | "production";
+
+export type DirTreeEntry = {
+  parentPath: string;
+  name: string;
+};
+
+export type CsvListEntry = {
+  path: string;
+  csv: Array<{ priority?: number | null; lineText: string }>;
+};
+
+/**
+ * Item record in generator state. Parsers fill fields incrementally, so this is
+ * {@link ItemMerged} with optional catalog fields plus extras written during parse.
+ */
+export type GeneratorItem = Partial<ItemLite> & {
+  layers?: Record<string, LayerEntry>;
+  credits?: Array<Partial<Credit>>;
+  licenses?: Record<string, string[]>;
+};
+
+export type InternedSlimByTypeNameRow = Pick<
+  SlimByTypeNameRow,
+  "itemId" | "name" | "type_name"
+> & {
+  v: number;
+  r: number;
+};
+
+export type MetadataModuleSources = {
+  itemMetadata?: Record<string, GeneratorItem>;
+  aliasMetadata?: AliasMetadata;
+  categoryTree?: CategoryTree;
+};
+
+export const licensesFound: string[] = [];
+export const csvList: CsvListEntry[] = [];
+export const itemMetadata: Record<string, GeneratorItem> = {};
+export const paletteMetadata: PaletteMetadata = { versions: {}, materials: {} };
+export const aliasMetadata: AliasMetadata = {};
+export const categoryTree: CategoryTree = { items: [], children: {} };
 
 const METADATA_FILE_BANNER = `// THIS FILE IS AUTO-GENERATED. PLEASE DON'T ALTER IT MANUALLY
 // Generated from sheet_definitions/*.json by scripts/generate_sources.js
 `;
 
-function clearObject(obj) {
+function clearObject(obj: object): void {
   for (const key of Object.keys(obj)) {
-    delete obj[key];
+    delete (obj as Record<string, unknown>)[key];
   }
 }
 
@@ -47,22 +93,16 @@ export function resetGeneratorState() {
   categoryTree.children = {};
 }
 
-/**
- * @param {"development"|"production"} env
- * @returns {number|undefined} JSON.stringify indent (2 in dev, compact in prod)
- */
-export function getMetadataJsonIndent(env = "production") {
+export function getMetadataJsonIndent(
+  env: MetadataEnv = "production",
+): number | undefined {
   return env === "development" ? 2 : undefined;
 }
 
 /**
  * Sorts recursive directory entries by depth first, then locale-aware path name.
- * @param {{parentPath: string, name: string}} a First directory entry.
- * @param {{parentPath: string, name: string}} b Second directory entry.
- * @return {number} Sort comparator result compatible with Array.prototype.sort.
- * @throws {TypeError} If entry objects do not include expected path fields.
  */
-export function sortDirTree(a, b) {
+export function sortDirTree(a: DirTreeEntry, b: DirTreeEntry): number {
   const pa = path.join(a.parentPath, a.name);
   const pb = path.join(b.parentPath, b.name);
 
@@ -75,11 +115,8 @@ export function sortDirTree(a, b) {
 
 /**
  * Reads and parses a Directory Tree and sorts it.
- * @param {string} dirToRead Absolute path to the directory to read.
- * @return {Array} Array of directory entries sorted by depth and name.
- * @throws {Error} If the directory does not exist.
  */
-export function readDirTree(dirToRead) {
+export function readDirTree(dirToRead: string): fs.Dirent[] {
   return fs
     .readdirSync(dirToRead, {
       recursive: true,
@@ -90,14 +127,10 @@ export function readDirTree(dirToRead) {
 
 /**
  * Reads and parses a JSON file from disk.
- * @param {string} fullPath Absolute file path to the JSON file.
- * @return {Object} Parsed JSON object.
- * @throws {SyntaxError} If file contents are not valid JSON.
- * @throws {Error} If the file does not exist.
  */
-export function parseJson(fullPath) {
+export function parseJson(fullPath: string): unknown {
   try {
-    return JSON.parse(fs.readFileSync(fullPath));
+    return JSON.parse(fs.readFileSync(fullPath).toString());
   } catch (e) {
     console.error("Error parsing JSON from file:", fullPath);
     throw e;
@@ -106,13 +139,20 @@ export function parseJson(fullPath) {
 
 /**
  * Splits full generator item entries into lite fields, credits, and layers maps.
- * @param {Record<string, object>} fullItemMetadata
- * @returns {{ itemMetadataLite: Record<string, object>, itemCredits: Record<string, Array>, itemLayers: Record<string, object> }}
  */
-export function splitItemMetadataMaps(fullItemMetadata) {
-  const itemMetadataLite = {};
-  const itemCredits = {};
-  const itemLayers = {};
+export function splitItemMetadataMaps(
+  fullItemMetadata: Record<string, GeneratorItem>,
+): {
+  itemMetadataLite: Record<string, Omit<GeneratorItem, "layers" | "credits">>;
+  itemCredits: Record<string, Array<Partial<Credit>>>;
+  itemLayers: Record<string, Record<string, LayerEntry>>;
+} {
+  const itemMetadataLite: Record<
+    string,
+    Omit<GeneratorItem, "layers" | "credits">
+  > = {};
+  const itemCredits: Record<string, Array<Partial<Credit>>> = {};
+  const itemLayers: Record<string, Record<string, LayerEntry>> = {};
 
   for (const [itemId, meta] of Object.entries(fullItemMetadata)) {
     const { layers, credits, ...lite } = meta;
@@ -125,59 +165,71 @@ export function splitItemMetadataMaps(fullItemMetadata) {
 }
 
 /**
- * Builds `metadataIndexes.byTypeName` for path/hash helpers: `itemId`, `name`, `type_name`,
- * `variants`, and a minimal `recolors` (only `recolors[0].variants` for matching). The full
- * lite item map is emitted separately in `item-metadata.js`. `hashMatch.itemsByTypeName` shares
- * the same ordered lists as `byTypeName` (emitted as one JSON blob + shared references in JS).
- *
- * @param {Record<string, object>} fullItemMetadata
- * @param {Record<string, object>} _aliasMetadata Reserved for future alias-aware indexes.
+ * Builds `metadataIndexes.byTypeName` for path/hash helpers.
+ * `_aliasMetadata` is reserved for future alias-aware indexes.
  */
-export function buildMetadataIndexes(fullItemMetadata, _aliasMetadata) {
+export function buildMetadataIndexes(
+  fullItemMetadata: Record<string, GeneratorItem>,
+  _aliasMetadata: AliasMetadata | Record<string, unknown>,
+): { byTypeName: Record<string, SlimByTypeNameRow[]> } {
   const keys = Object.keys(fullItemMetadata);
-  const byTypeName = {};
+  const byTypeName: Record<string, SlimByTypeNameRow[]> = {};
   for (const itemId of keys) {
     const meta = fullItemMetadata[itemId];
-    const t = meta.type_name;
+    const t = meta.type_name ?? "";
     if (!byTypeName[t]) byTypeName[t] = [];
-    byTypeName[t].push(buildSlimByTypeNameRow(itemId, meta));
+    byTypeName[t].push(
+      buildSlimByTypeNameRow(itemId, {
+        name: meta.name ?? "",
+        type_name: meta.type_name ?? "",
+        variants: meta.variants,
+        recolors: meta.recolors,
+      }),
+    );
   }
   return { byTypeName };
 }
 
 /**
- * Deduplicate repeated `variants` and `recolor[0].variants` across slim rows (smaller `index-metadata.js`).
- * Rows become `{ itemId, name, type_name, v, r }` indexing into the two parallel tables.
- * @param {Record<string, object[]>} byTypeNameFull  Slim rows from `buildSlimByTypeNameRow`
- * @returns {{ variantArrays: string[][], recolorVariantArrays: string[][], byTypeName: Record<string, Array<{ itemId: string, name: unknown, type_name: unknown, v: number, r: number }>> }}
+ * Deduplicate repeated `variants` and `recolor[0].variants` across slim rows.
  */
-export function internSlimByTypeNameRows(byTypeNameFull) {
-  const vKey = new Map();
-  const rKey = new Map();
-  const variantArrays = [];
-  const recolorVariantArrays = [];
+export function internSlimByTypeNameRows(
+  byTypeNameFull: Record<string, SlimByTypeNameRow[]>,
+): {
+  variantArrays: string[][];
+  recolorVariantArrays: string[][];
+  byTypeName: Record<string, InternedSlimByTypeNameRow[]>;
+} {
+  const vKey = new Map<string, number>();
+  const rKey = new Map<string, number>();
+  const variantArrays: string[][] = [];
+  const recolorVariantArrays: string[][] = [];
 
-  function internVariants(variants) {
+  function internVariants(variants: string[] | undefined): number {
     const k = JSON.stringify(variants);
-    if (!vKey.has(k)) {
-      vKey.set(k, variantArrays.length);
-      variantArrays.push(Array.isArray(variants) ? [...variants] : []);
-    }
-    return vKey.get(k);
+    const existing = vKey.get(k);
+    if (existing !== undefined) return existing;
+    const idx = variantArrays.length;
+    vKey.set(k, idx);
+    variantArrays.push(Array.isArray(variants) ? [...variants] : []);
+    return idx;
   }
 
-  function internRecolorVariants(recolors) {
+  function internRecolorVariants(
+    recolors: SlimByTypeNameRow["recolors"] | undefined,
+  ): number {
     const v0 = recolors?.[0]?.variants;
     const arr = Array.isArray(v0) && v0.length > 0 ? [...v0] : [];
     const k = JSON.stringify(arr);
-    if (!rKey.has(k)) {
-      rKey.set(k, recolorVariantArrays.length);
-      recolorVariantArrays.push(arr);
-    }
-    return rKey.get(k);
+    const existing = rKey.get(k);
+    if (existing !== undefined) return existing;
+    const idx = recolorVariantArrays.length;
+    rKey.set(k, idx);
+    recolorVariantArrays.push(arr);
+    return idx;
   }
 
-  const byTypeName = {};
+  const byTypeName: Record<string, InternedSlimByTypeNameRow[]> = {};
   for (const [t, rows] of Object.entries(byTypeNameFull)) {
     byTypeName[t] = rows.map((row) => ({
       itemId: row.itemId,
@@ -193,10 +245,10 @@ export function internSlimByTypeNameRows(byTypeNameFull) {
 /**
  * Drop duplicate variant strings on `recolors[0]`; runtime restores them from
  * `recolorVariantArrays[r]` in `index-metadata.js`.
- * @param {Array|undefined} recolors
- * @returns {Array}
  */
-function stripRecolorEntryZeroVariantsForEmit(recolors) {
+function stripRecolorEntryZeroVariantsForEmit(
+  recolors: PaletteRecolor[] | undefined,
+): PaletteRecolor[] {
   if (!Array.isArray(recolors) || recolors.length === 0) {
     return recolors ?? [];
   }
@@ -208,22 +260,17 @@ function stripRecolorEntryZeroVariantsForEmit(recolors) {
   });
 }
 
-/**
- * @param {Record<string, object>} itemMetadataLite
- * @param {Record<string, { v: number, r: number, itemId: string }[]>} internedByTypeName
- * @return {Record<string, object>}
- */
 function buildInternedItemMetadataLiteMap(
-  itemMetadataLite,
-  internedByTypeName,
-) {
-  const itemIdToVr = new Map();
+  itemMetadataLite: Record<string, Omit<GeneratorItem, "layers" | "credits">>,
+  internedByTypeName: Record<string, InternedSlimByTypeNameRow[]>,
+): Record<string, unknown> {
+  const itemIdToVr = new Map<string, { v: number; r: number }>();
   for (const rows of Object.values(internedByTypeName)) {
     for (const row of rows) {
       itemIdToVr.set(row.itemId, { v: row.v, r: row.r });
     }
   }
-  const out = {};
+  const out: Record<string, unknown> = {};
   for (const [itemId, lite] of Object.entries(itemMetadataLite)) {
     const vr = itemIdToVr.get(itemId);
     if (vr == null) {
@@ -241,7 +288,11 @@ function buildInternedItemMetadataLiteMap(
   return out;
 }
 
-function buildNamedConstModule(constName, valueJson, exportNames) {
+function buildNamedConstModule(
+  constName: string,
+  valueJson: string,
+  exportNames: string[],
+): string {
   const exports = exportNames.join(", ");
   return `${METADATA_FILE_BANNER}
 const ${constName} = ${valueJson};
@@ -250,23 +301,16 @@ export { ${exports} };
 `;
 }
 
-/**
- * @param {Record<string, object>} aliasMetadata
- * @param {Record<string, object>} categoryTree
- * @param {Record<string, object>} fullItemMetadata
- * @param {"development"|"production"} [env="production"]
- * @return {string} JavaScript module source for index-metadata.js
- */
 export function buildIndexMetadataJs(
-  aliasMetadata,
-  categoryTree,
-  fullItemMetadata,
-  env = "production",
-) {
+  aliasMetadataArg: AliasMetadata,
+  categoryTreeArg: CategoryTree,
+  fullItemMetadata: Record<string, GeneratorItem>,
+  env: MetadataEnv = "production",
+): string {
   const indent = getMetadataJsonIndent(env);
   const { byTypeName: byTypeNameFull } = buildMetadataIndexes(
     fullItemMetadata,
-    aliasMetadata,
+    aliasMetadataArg,
   );
   const { variantArrays, recolorVariantArrays, byTypeName } =
     internSlimByTypeNameRows(byTypeNameFull);
@@ -277,8 +321,8 @@ export function buildIndexMetadataJs(
     indent,
   );
   const byTypeJson = JSON.stringify(byTypeName, null, indent);
-  const aliasJson = JSON.stringify(aliasMetadata, null, indent);
-  const treeJson = JSON.stringify(categoryTree, null, indent);
+  const aliasJson = JSON.stringify(aliasMetadataArg, null, indent);
+  const treeJson = JSON.stringify(categoryTreeArg, null, indent);
 
   return `${METADATA_FILE_BANNER}
 const variantArrays = ${variantArraysJson};
@@ -302,11 +346,9 @@ export { aliasMetadata, categoryTree, metadataIndexes };
 `;
 }
 
-/**
- * @param {"development"|"production"} [env="production"]
- * @return {string} JavaScript module source for palette-metadata.js
- */
-export function buildPaletteMetadataJs(env = "production") {
+export function buildPaletteMetadataJs(
+  env: MetadataEnv = "production",
+): string {
   const indent = getMetadataJsonIndent(env);
   const paletteJson = JSON.stringify(paletteMetadata, null, indent);
   return buildNamedConstModule("paletteMetadata", paletteJson, [
@@ -314,12 +356,10 @@ export function buildPaletteMetadataJs(env = "production") {
   ]);
 }
 
-/**
- * @param {Record<string, object>} fullItemMetadata
- * @param {"development"|"production"} [env="production"]
- * @return {string} JavaScript module source for item-metadata.js (lite records only)
- */
-export function buildItemMetadataLiteJs(fullItemMetadata, env = "production") {
+export function buildItemMetadataLiteJs(
+  fullItemMetadata: Record<string, GeneratorItem>,
+  env: MetadataEnv = "production",
+): string {
   const indent = getMetadataJsonIndent(env);
   const { itemMetadataLite } = splitItemMetadataMaps(fullItemMetadata);
   const { byTypeName: byTypeNameFull } = buildMetadataIndexes(
@@ -336,41 +376,35 @@ export function buildItemMetadataLiteJs(fullItemMetadata, env = "production") {
   return buildNamedConstModule("itemMetadata", itemJson, ["itemMetadata"]);
 }
 
-/**
- * @param {Record<string, object>} fullItemMetadata
- * @param {"development"|"production"} [env="production"]
- * @return {string} JavaScript module source for credits-metadata.js
- */
-export function buildCreditsMetadataJs(fullItemMetadata, env = "production") {
+export function buildCreditsMetadataJs(
+  fullItemMetadata: Record<string, GeneratorItem>,
+  env: MetadataEnv = "production",
+): string {
   const indent = getMetadataJsonIndent(env);
   const { itemCredits } = splitItemMetadataMaps(fullItemMetadata);
   const json = JSON.stringify(itemCredits, null, indent);
   return buildNamedConstModule("itemCredits", json, ["itemCredits"]);
 }
 
-/**
- * @param {Record<string, object>} fullItemMetadata
- * @param {"development"|"production"} [env="production"]
- * @return {string} JavaScript module source for layers-metadata.js
- */
-export function buildLayersMetadataJs(fullItemMetadata, env = "production") {
+export function buildLayersMetadataJs(
+  fullItemMetadata: Record<string, GeneratorItem>,
+  env: MetadataEnv = "production",
+): string {
   const indent = getMetadataJsonIndent(env);
   const { itemLayers } = splitItemMetadataMaps(fullItemMetadata);
   const json = JSON.stringify(itemLayers, null, indent);
   return buildNamedConstModule("itemLayers", json, ["itemLayers"]);
 }
 
-/**
- * @param {"development"|"production"} [env="production"]
- * @param {Record<string, object>} [sources] Defaults to shared generator state objects.
- * @returns {Map<string, string>} basename -> module source
- */
-export function buildAllMetadataModules(env = "production", sources = {}) {
+export function buildAllMetadataModules(
+  env: MetadataEnv = "production",
+  sources: MetadataModuleSources = {},
+): Map<string, string> {
   const fullItems = sources.itemMetadata ?? itemMetadata;
   const aliases = sources.aliasMetadata ?? aliasMetadata;
   const tree = sources.categoryTree ?? categoryTree;
 
-  const out = new Map();
+  const out = new Map<string, string>();
   out.set(
     "index-metadata.js",
     buildIndexMetadataJs(aliases, tree, fullItems, env),

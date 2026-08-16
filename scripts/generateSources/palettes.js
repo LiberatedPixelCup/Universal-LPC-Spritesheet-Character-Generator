@@ -4,7 +4,7 @@ import {
   paletteMetadata,
   parseJson,
   readDirTree,
-} from "./state.js";
+} from "./state.ts";
 
 /**
  * Parses one palette JSON file and merges it into shared palette metadata state.

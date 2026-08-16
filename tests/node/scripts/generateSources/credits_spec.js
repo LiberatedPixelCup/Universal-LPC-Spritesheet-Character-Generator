@@ -14,7 +14,7 @@ import {
   csvList,
   itemMetadata,
   licensesFound,
-} from "../../../../scripts/generateSources/state.js";
+} from "../../../../scripts/generateSources/state.ts";
 import { buildPath, resetTestState } from "./test_helpers.js";
 
 function buildCredit(file) {

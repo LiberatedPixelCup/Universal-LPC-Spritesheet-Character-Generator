@@ -19,7 +19,7 @@ import {
   resetGeneratorState,
   SHEETS_DIR,
   readDirTree,
-} from "./generateSources/state.js";
+} from "./generateSources/state.ts";
 
 export function generateSources(deps = {}, legacyEnv) {
   const env = deps.env ?? legacyEnv ?? "production";

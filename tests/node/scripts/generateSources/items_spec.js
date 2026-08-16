@@ -15,7 +15,7 @@ import {
   aliasMetadata,
   itemMetadata,
   parseJson,
-} from "../../../../scripts/generateSources/state.js";
+} from "../../../../scripts/generateSources/state.ts";
 import { buildPath, resetTestState } from "./test_helpers.js";
 
 function writeTempJson(tempRoot, fileName, jsonContent, subdir = "body") {

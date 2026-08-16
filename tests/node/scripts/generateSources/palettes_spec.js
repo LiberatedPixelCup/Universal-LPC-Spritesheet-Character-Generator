@@ -8,7 +8,7 @@ import {
   parsePalette,
 } from "../../../../scripts/generateSources/palettes.js";
 import { normalizeRecolors } from "../../../../scripts/generateSources/item-helper.js";
-import { paletteMetadata } from "../../../../scripts/generateSources/state.js";
+import { paletteMetadata } from "../../../../scripts/generateSources/state.ts";
 import { buildPath, resetTestState } from "./test_helpers.js";
 
 function writeTempPaletteFile(root, subDir, fileName, content) {
