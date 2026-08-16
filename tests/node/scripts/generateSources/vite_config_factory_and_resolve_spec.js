@@ -7,7 +7,7 @@ import { METADATA_MODULE_BASENAMES } from "../../../../scripts/generateSources/s
 import {
   itemMetadataCodeSplittingGroups,
   itemMetadataResolveAliases,
-} from "../../../../vite/wiring.js";
+} from "../../../../vite/wiring.ts";
 
 const repoRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),

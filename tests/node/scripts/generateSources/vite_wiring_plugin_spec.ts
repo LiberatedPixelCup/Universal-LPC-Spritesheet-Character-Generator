@@ -13,7 +13,7 @@ import {
   itemMetadataPlugins,
   itemMetadataResolveAliases,
   metadataEnvForViteCommand,
-} from "../../../../vite/wiring.js";
+} from "../../../../vite/wiring.ts";
 
 const repoRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -22,17 +22,6 @@ const repoRoot = path.resolve(
   "..",
   "..",
 );
-
-type AliasEntry = { find: string | RegExp; replacement: string };
-
-type MetadataChunkGroup = {
-  name: string;
-  test: RegExp;
-  priority: number;
-  minSize: number;
-  maxSize: number;
-  maxModuleSize: number;
-};
 
 function callPluginHook(hook: unknown, ...args: unknown[]): void {
   if (typeof hook === "function") {
@@ -53,7 +42,7 @@ function runBuildStart(plugin: Plugin): void {
 }
 
 test("itemMetadataResolveAliases: one entry per metadata basename, dist replacements, regex matches", () => {
-  const aliases = itemMetadataResolveAliases() as AliasEntry[];
+  const aliases = itemMetadataResolveAliases();
   assert.equal(aliases.length, METADATA_MODULE_BASENAMES.length);
   for (let i = 0; i < METADATA_MODULE_BASENAMES.length; i++) {
     const basename = METADATA_MODULE_BASENAMES[i];
@@ -66,7 +55,7 @@ test("itemMetadataResolveAliases: one entry per metadata basename, dist replacem
 });
 
 test("itemMetadataCodeSplittingGroups: names and tests align with METADATA_MODULE_BASENAMES order", () => {
-  const groups = itemMetadataCodeSplittingGroups() as MetadataChunkGroup[];
+  const groups = itemMetadataCodeSplittingGroups();
   assert.equal(groups.length, METADATA_MODULE_BASENAMES.length);
   for (let i = 0; i < METADATA_MODULE_BASENAMES.length; i++) {
     const basename = METADATA_MODULE_BASENAMES[i];

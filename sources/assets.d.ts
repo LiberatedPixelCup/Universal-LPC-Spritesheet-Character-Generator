@@ -7,7 +7,7 @@ declare module "*.scss";
 declare module "*.css";
 
 // Generated metadata chunks — imported via dynamic `import()` from
-// `install-item-metadata.ts`. Vite's `vite/wiring.js` aliases these to
+// `install-item-metadata.ts`. Vite's `vite/wiring.ts` aliases these to
 // `dist/*-metadata.js` (regex match), which the metadata plugin generates
 // from `sheet_definitions/` + `palette_definitions/`. The shapes mirror
 // the catalog's `register*` payloads.

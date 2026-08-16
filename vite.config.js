@@ -10,7 +10,7 @@ import {
   itemMetadataCodeSplittingGroups,
   itemMetadataPlugins,
   itemMetadataResolveAliases,
-} from "./vite/wiring.js";
+} from "./vite/wiring.ts";
 import istanbul from "vite-plugin-istanbul";
 import { vitePluginCoverageCollect } from "./vite/vite-plugin-coverage-collect.js";
 
@@ -18,7 +18,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const coverageEnabled = process.env.VITE_COVERAGE === "true";
 
 /**
- * Item-metadata pipeline (Commit 4): `vite/wiring.js` registers the pre-plugin,
+ * Item-metadata pipeline (Commit 4): `vite/wiring.ts` registers the pre-plugin,
  * `resolve.alias`, and Rolldown chunk groups for generated metadata modules. Testem’s Vite
  * middleware loads this file via `configFile` so browser tests get the same behavior. Other
  * plugins stay below.
