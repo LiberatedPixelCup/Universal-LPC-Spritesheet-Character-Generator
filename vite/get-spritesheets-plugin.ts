@@ -2,9 +2,9 @@ import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { DynamicPublicDirectory } from "vite-multiple-assets";
 import { run } from "vite-plugin-run";
+import type { Plugin } from "vite";
 
-/** @returns {string[]} Command and args for vite-plugin-run (first element is the executable). */
-function copySpritesheetsRsyncRun() {
+function copySpritesheetsRsyncRun(): string[] {
   return [
     "rsync",
     "-ahu",
@@ -20,7 +20,7 @@ function copySpritesheetsRsyncRun() {
  * Windows: mirror `spritesheets/` into `dist/spritesheets` with robocopy (same flags as before).
  * Robocopy uses exit codes 0–7 for success; ≥8 is failure — we fail the build only on real errors.
  */
-function vitePluginCopySpritesheetsRobocopy() {
+function vitePluginCopySpritesheetsRobocopy(): Plugin {
   return {
     name: "copy-spritesheets-robocopy",
     apply: "build",
@@ -64,13 +64,13 @@ function vitePluginCopySpritesheetsRobocopy() {
  * - **Dev (`vite`, `command === "serve"`):** serve `public/` and `spritesheets/` (no `dist/` copy).
  * - **Build on Windows:** robocopy into `dist/` with exit codes mapped so real failures fail the build.
  * - **Build on macOS / Linux:** `rsync` via `vite-plugin-run`.
- *
- * @param {"serve" | "build"} command Vite CLI command from `defineConfig`.
- * @returns {import("vite").Plugin}
  */
-export function getSpritesheetsPlugin(command) {
+export function getSpritesheetsPlugin(command: "serve" | "build"): Plugin {
   if (command === "serve") {
-    return DynamicPublicDirectory(["public/**", "{\x01,spritesheets}/**"]);
+    return DynamicPublicDirectory([
+      "public/**",
+      "{\x01,spritesheets}/**",
+    ]) as Plugin;
   }
 
   if (process.platform === "win32") {

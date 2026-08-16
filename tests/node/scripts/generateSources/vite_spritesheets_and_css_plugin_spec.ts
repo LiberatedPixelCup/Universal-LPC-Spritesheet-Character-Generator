@@ -1,13 +1,30 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { getSpritesheetsPlugin } from "../../../../vite/get-spritesheets-plugin.js";
-import { vitePluginBundledCssAfterBulma } from "../../../../vite/vite-plugin-bundled-css-after-bulma.js";
+import { getSpritesheetsPlugin } from "../../../../vite/get-spritesheets-plugin.ts";
+import { vitePluginBundledCssAfterBulma } from "../../../../vite/vite-plugin-bundled-css-after-bulma.ts";
+import type { IndexHtmlTransformContext } from "vite";
+
+function bundledCssHtmlTransform() {
+  const transform = vitePluginBundledCssAfterBulma().transformIndexHtml;
+  if (!transform || typeof transform === "function") {
+    throw new Error("expected object transformIndexHtml");
+  }
+  return transform;
+}
+
+function applyBundledCss(html: string): string {
+  const handler = bundledCssHtmlTransform().handler as (
+    inputHtml: string,
+    ctx: IndexHtmlTransformContext,
+  ) => string;
+  return handler(html, {} as IndexHtmlTransformContext);
+}
 
 /**
  * @param {NodeJS.Platform} platform
  * @param {() => void} fn
  */
-function withPlatform(platform, fn) {
+function withPlatform(platform: NodeJS.Platform, fn: () => void) {
   const original = process.platform;
   Object.defineProperty(process, "platform", {
     configurable: true,
@@ -50,43 +67,40 @@ test("getSpritesheetsPlugin(build) on Windows uses robocopy closeBundle plugin",
 
 test("vitePluginBundledCssAfterBulma exposes post-order transformIndexHtml", () => {
   const plugin = vitePluginBundledCssAfterBulma();
+  const transform = bundledCssHtmlTransform();
   assert.equal(plugin.name, "bundled-css-after-bulma");
-  assert.equal(plugin.transformIndexHtml.order, "post");
-  assert.equal(typeof plugin.transformIndexHtml.handler, "function");
+  assert.equal(transform.order, "post");
+  assert.equal(typeof transform.handler, "function");
 });
 
 test("vitePluginBundledCssAfterBulma leaves HTML unchanged when no hashed asset stylesheet", () => {
-  const { handler } = vitePluginBundledCssAfterBulma().transformIndexHtml;
   const html = `<!doctype html><html><head>
 <link rel="stylesheet" href="./node_modules/bulma/css/bulma.min.css">
 </head><body></body></html>`;
-  assert.equal(handler(html), html);
+  assert.equal(applyBundledCss(html), html);
 });
 
 test("vitePluginBundledCssAfterBulma leaves HTML unchanged when bundled CSS but no Bulma link", () => {
-  const { handler } = vitePluginBundledCssAfterBulma().transformIndexHtml;
   const html = `<!doctype html><html><head>
 <link rel="stylesheet" href="./assets/main-abc.css">
 </head><body></body></html>`;
-  assert.equal(handler(html), html);
+  assert.equal(applyBundledCss(html), html);
 });
 
 test("vitePluginBundledCssAfterBulma skips remote asset stylesheet URLs", () => {
-  const { handler } = vitePluginBundledCssAfterBulma().transformIndexHtml;
   const html = `<!doctype html><html><head>
 <link rel="stylesheet" href="https://example.com/assets/main-abc.css">
 <link rel="stylesheet" href="./node_modules/bulma/css/bulma.min.css">
 </head><body></body></html>`;
-  assert.equal(handler(html), html);
+  assert.equal(applyBundledCss(html), html);
 });
 
 test("vitePluginBundledCssAfterBulma moves local hashed bundle CSS immediately after Bulma", () => {
-  const { handler } = vitePluginBundledCssAfterBulma().transformIndexHtml;
   const html = `<!doctype html><html><head>
 <link rel="stylesheet" href="./assets/main-CHT-X2QB.css">
 <link rel="stylesheet" href="./node_modules/bulma/css/bulma.min.css">
 </head><body></body></html>`;
-  const out = handler(html);
+  const out = applyBundledCss(html);
   assert.match(out, /bulma\.min\.css/);
   assert.match(out, /main-CHT-X2QB\.css/);
   const bulmaIdx = out.indexOf("bulma.min.css");
@@ -100,12 +114,11 @@ test("vitePluginBundledCssAfterBulma moves local hashed bundle CSS immediately a
 });
 
 test("vitePluginBundledCssAfterBulma supports /assets/ href (no leading dot)", () => {
-  const { handler } = vitePluginBundledCssAfterBulma().transformIndexHtml;
   const html = `<head>
 <link rel="stylesheet" href="/assets/main-xyz.css">
 <link rel="stylesheet" href="./vendor/bulma.css">
 </head>`;
-  const out = handler(html);
+  const out = applyBundledCss(html);
   assert.ok(out.includes("bulma.css"));
   assert.ok(out.includes("main-xyz.css"));
   const bulmaIdx = out.indexOf("bulma.css");

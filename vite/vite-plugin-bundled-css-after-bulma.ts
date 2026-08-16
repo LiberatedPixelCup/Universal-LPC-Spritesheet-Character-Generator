@@ -1,17 +1,18 @@
+import type { Plugin } from "vite";
+
 /**
  * Vite injects the extracted entry CSS after module scripts in built HTML.
  * Keep Bulma first, then the app bundle (same cascade as source index.html).
- * @returns {import("vite").Plugin}
  */
-export function vitePluginBundledCssAfterBulma() {
+export function vitePluginBundledCssAfterBulma(): Plugin {
   return {
     name: "bundled-css-after-bulma",
     transformIndexHtml: {
       order: "post",
       handler(html) {
         const stylesheetLinkRe = /<link\b[^>]*\brel=["']stylesheet["'][^>]*>/gi;
-        const bundled = [];
-        let m;
+        const bundled: string[] = [];
+        let m: RegExpExecArray | null;
         while ((m = stylesheetLinkRe.exec(html)) !== null) {
           const tag = m[0];
           // With `base: "./"`, href is `./assets/...`; older builds used `/assets/...`.
@@ -39,7 +40,7 @@ export function vitePluginBundledCssAfterBulma() {
 
         return out.replace(
           bulmaRe,
-          (_, bulmaTag) => `${bulmaTag}\n\t${bundled.join("\n\t")}`,
+          (_, bulmaTag: string) => `${bulmaTag}\n\t${bundled.join("\n\t")}`,
         );
       },
     },

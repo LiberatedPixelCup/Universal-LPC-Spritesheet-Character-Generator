@@ -1,3 +1,5 @@
+import type { IndexHtmlTransformContext, Plugin } from "vite";
+
 /**
  * Injects `<link rel="modulepreload">` for the three largest metadata chunks
  * (index, item, layers) so the browser fetches them in parallel with the entry graph.
@@ -10,20 +12,21 @@ const CRITICAL_PREFIXES = [
   "index-metadata",
   "item-metadata",
   "layers-metadata",
-];
+] as const;
+
+type CriticalPrefix = (typeof CRITICAL_PREFIXES)[number];
 
 /**
- * @returns {import("vite").Plugin}
+ * @returns Vite plugin
  */
-export function vitePluginMetadataModulePreload() {
+export function vitePluginMetadataModulePreload(): Plugin {
   return {
     name: "vite-plugin-metadata-modulepreload",
     transformIndexHtml: {
       order: "post",
-      handler(html, ctx) {
+      handler(html, ctx: IndexHtmlTransformContext) {
         if (ctx.bundle) {
-          /** @type {Map<string, { fileName: string, size: number }>} */
-          const best = new Map();
+          const best = new Map<string, { fileName: string; size: number }>();
           for (const chunk of Object.values(ctx.bundle)) {
             if (chunk.type !== "chunk") continue;
             const fileName = chunk.fileName;
@@ -33,14 +36,14 @@ export function vitePluginMetadataModulePreload() {
               /^(index-metadata|item-metadata|layers-metadata)-/,
             );
             if (!m) continue;
-            const prefix = m[1];
+            const prefix = m[1] as CriticalPrefix;
             const size = chunk.code?.length ?? 0;
             const prev = best.get(prefix);
             if (!prev || size > prev.size) {
               best.set(prefix, { fileName, size });
             }
           }
-          const links = [];
+          const links: string[] = [];
           for (const prefix of CRITICAL_PREFIXES) {
             const entry = best.get(prefix);
             if (entry) {
