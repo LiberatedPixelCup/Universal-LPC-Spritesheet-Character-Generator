@@ -2,29 +2,30 @@ import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { App } from "../../sources/components/App.ts";
-import { defaultCatalog } from "../../sources/state/catalog.ts";
-import { state } from "../../sources/state/state.ts";
+import { createCatalog } from "../../sources/state/catalog.ts";
+import { configureStateCatalog, state } from "../../sources/state/state.ts";
 import {
   getSetHashCalledTimes,
   resetHashCalledTimes,
   resetState as resetHashState,
   setHash,
 } from "../../sources/state/hash.ts";
-import {
-  restoreAppCatalogAfterTest,
-  seedBrowserCatalog,
-} from "../browser-catalog-fixture.js";
+import { seedCatalog } from "../browser-catalog-fixture.js";
 
 describe("App", function () {
   let host;
   let previousRenderer;
   let previousTesting;
+  let catalog;
 
   beforeEach(function () {
     host = document.createElement("div");
     document.body.appendChild(host);
     previousRenderer = window.canvasRenderer;
     previousTesting = window.isTesting;
+    catalog = createCatalog();
+    seedCatalog(catalog, {});
+    configureStateCatalog(catalog);
     delete window.canvasRenderer;
     window.isTesting = true;
     setHash("");
@@ -35,7 +36,7 @@ describe("App", function () {
     state.customImageZPos = 0;
   });
 
-  afterEach(async function () {
+  afterEach(function () {
     m.mount(host, null);
     if (host.parentNode) {
       host.parentNode.removeChild(host);
@@ -52,12 +53,11 @@ describe("App", function () {
     state.bodyType = "male";
     state.customUploadedImage = null;
     state.customImageZPos = 0;
-    await restoreAppCatalogAfterTest();
   });
 
   it("renders Download, Filters, Credits, and Advanced Tools", function () {
     m.mount(host, {
-      view: () => m(App, { catalog: defaultCatalog }),
+      view: () => m(App, { catalog }),
     });
 
     const titles = [...host.querySelectorAll("h3.collapsible-title")].map(
@@ -71,11 +71,11 @@ describe("App", function () {
 
   it("syncs the hash when selections change and skips render without canvasRenderer", function () {
     m.mount(host, {
-      view: () => m(App, { catalog: defaultCatalog }),
+      view: () => m(App, { catalog }),
     });
     resetHashCalledTimes();
 
-    seedBrowserCatalog({
+    seedCatalog(catalog, {
       item1: {
         name: "Test Body",
         type_name: "body",
@@ -92,7 +92,7 @@ describe("App", function () {
 
   it("syncs the hash when bodyType or custom overlay state changes", function () {
     m.mount(host, {
-      view: () => m(App, { catalog: defaultCatalog }),
+      view: () => m(App, { catalog }),
     });
     resetHashCalledTimes();
 

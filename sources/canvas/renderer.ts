@@ -742,7 +742,8 @@ export async function renderSingleItem(
     customSprites.sort((a, b) => a.zPos - b.zPos);
 
     let loadedSprites:
-      LoadedImage<(typeof customSprites)[number]>[] | undefined;
+      | LoadedImage<(typeof customSprites)[number]>[]
+      | undefined;
     await zipExportProfiledLoadComposite(
       zipProfiler,
       "render_imageLoadDecode_renderSingleItem",

@@ -87,13 +87,14 @@ export async function loadImagesInParallel<T>(
   getPath: (item: T) => string = (item) =>
     (item as { spritePath: string }).spritePath,
 ): Promise<LoadedImage<T>[]> {
-  const promises = items.map((item): Promise<LoadedImage<T>> =>
-    loadImage(getPath(item))
-      .then((img): LoadedImage<T> => ({ item, img, success: true }))
-      .catch(() => {
-        debugWarn(`Failed to load sprite: ${getPath(item)}`);
-        return { item, img: null, success: false };
-      }),
+  const promises = items.map(
+    (item): Promise<LoadedImage<T>> =>
+      loadImage(getPath(item))
+        .then((img): LoadedImage<T> => ({ item, img, success: true }))
+        .catch(() => {
+          debugWarn(`Failed to load sprite: ${getPath(item)}`);
+          return { item, img: null, success: false };
+        }),
   );
 
   return Promise.all(promises);

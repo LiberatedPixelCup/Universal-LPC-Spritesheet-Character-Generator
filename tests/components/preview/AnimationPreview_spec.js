@@ -10,16 +10,19 @@ import { customAnimations } from "../../../sources/custom-animations.ts";
 import * as canvasRenderer from "../../../sources/canvas/renderer.ts";
 import { state } from "../../../sources/state/state.ts";
 import { ANIMATION_CONFIGS } from "../../../sources/state/constants.ts";
-import { restoreAppCatalogAfterTest } from "../../browser-catalog-fixture.js";
+import { createCatalog } from "../../../sources/state/catalog.ts";
 
 describe("AnimationPreview", function () {
   let host;
   let previousRenderer;
+  let catalog;
 
   beforeEach(function () {
     host = document.createElement("div");
     document.body.appendChild(host);
     previousRenderer = window.canvasRenderer;
+    catalog = createCatalog();
+    catalog.registerFromLayersModule({ itemLayers: {} });
     window.canvasRenderer = canvasRenderer;
     window.__DISABLE_PREVIEW_ANIMATION__ = true;
     canvasRenderer.initCanvas();
@@ -29,7 +32,7 @@ describe("AnimationPreview", function () {
     setCurrentCustomAnimations({});
   });
 
-  afterEach(async function () {
+  afterEach(function () {
     stopPreviewAnimation();
     m.mount(host, null);
     if (host.parentNode) {
@@ -42,11 +45,10 @@ describe("AnimationPreview", function () {
     state.previewCanvasZoomLevel = 1;
     state.isRenderingCharacter = false;
     canvasRenderer.resetOffscreenCanvasStateForTests();
-    await restoreAppCatalogAfterTest();
   });
 
   it("renders the walk select, zoom slider, and preview canvas", function () {
-    m.mount(host, AnimationPreview);
+    m.mount(host, { view: () => m(AnimationPreview, { catalog }) });
 
     const select = host.querySelector("select");
     assert.notEqual(select, null);
@@ -57,7 +59,7 @@ describe("AnimationPreview", function () {
   });
 
   it("updates selectedAnimation and the frame-cycle label when the select changes", function () {
-    m.mount(host, AnimationPreview);
+    m.mount(host, { view: () => m(AnimationPreview, { catalog }) });
 
     const select = host.querySelector("select");
     select.value = "slash";
@@ -70,7 +72,7 @@ describe("AnimationPreview", function () {
 
   it("adds a custom animation option and selects it", function () {
     setCurrentCustomAnimations({ wheelchair: customAnimations.wheelchair });
-    m.mount(host, AnimationPreview);
+    m.mount(host, { view: () => m(AnimationPreview, { catalog }) });
 
     const option = host.querySelector('option[value="wheelchair"]');
     assert.notEqual(option, null);
@@ -85,7 +87,7 @@ describe("AnimationPreview", function () {
   });
 
   it("writes previewCanvasZoomLevel from the zoom slider", function () {
-    m.mount(host, AnimationPreview);
+    m.mount(host, { view: () => m(AnimationPreview, { catalog }) });
 
     const slider = host.querySelector("input[type=range]");
     slider.value = "1.5";
@@ -98,7 +100,7 @@ describe("AnimationPreview", function () {
 
   it("shows a busy overlay while the character is rendering", function () {
     state.isRenderingCharacter = true;
-    m.mount(host, AnimationPreview);
+    m.mount(host, { view: () => m(AnimationPreview, { catalog }) });
 
     const busy = host.querySelector(".preview-canvas-busy");
     assert.notEqual(busy, null);
@@ -107,7 +109,7 @@ describe("AnimationPreview", function () {
 
   it("stops the preview loop on remove", function () {
     window.__DISABLE_PREVIEW_ANIMATION__ = false;
-    m.mount(host, AnimationPreview);
+    m.mount(host, { view: () => m(AnimationPreview, { catalog }) });
     m.mount(host, null);
     assert.strictEqual(stopPreviewAnimation(), false);
   });
