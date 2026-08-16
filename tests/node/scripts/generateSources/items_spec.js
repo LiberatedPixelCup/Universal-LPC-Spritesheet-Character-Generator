@@ -10,7 +10,7 @@ import {
   buildTreePath,
   collectLayers,
 } from "../../../../scripts/generateSources/items.js";
-import { loadPaletteMetadata } from "../../../../scripts/generateSources/palettes.js";
+import { loadPaletteMetadata } from "../../../../scripts/generateSources/palettes.ts";
 import {
   aliasMetadata,
   itemMetadata,

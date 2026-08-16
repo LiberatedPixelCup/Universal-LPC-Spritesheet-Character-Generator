@@ -6,7 +6,7 @@ import {
   readDirTree,
   resetGeneratorState,
 } from "../../../../scripts/generateSources/state.ts";
-import { loadPaletteMetadata } from "../../../../scripts/generateSources/palettes.js";
+import { loadPaletteMetadata } from "../../../../scripts/generateSources/palettes.ts";
 import {
   expandInternedItemLite,
   expandMetadataIndexesWithInternedArrays,

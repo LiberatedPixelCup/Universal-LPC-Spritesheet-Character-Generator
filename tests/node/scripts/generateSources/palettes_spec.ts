@@ -6,12 +6,21 @@ import path from "node:path";
 import {
   loadPaletteMetadata,
   parsePalette,
-} from "../../../../scripts/generateSources/palettes.js";
+} from "../../../../scripts/generateSources/palettes.ts";
 import { normalizeRecolors } from "../../../../scripts/generateSources/item-helper.ts";
 import { paletteMetadata } from "../../../../scripts/generateSources/state.ts";
 import { buildPath, resetTestState } from "./test_helpers.js";
 
-function writeTempPaletteFile(root, subDir, fileName, content) {
+type MaterialWithOldField = (typeof paletteMetadata.materials)[string] & {
+  oldField?: boolean;
+};
+
+function writeTempPaletteFile(
+  root: string,
+  subDir: string,
+  fileName: string,
+  content: string,
+): string {
   const dir = path.join(root, subDir);
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, fileName), content);
@@ -33,11 +42,17 @@ test("parsePalette parses material meta files", () => {
 test("parsePalette merges material meta files when material already exists", () => {
   resetTestState();
   const palettesDir = buildPath("build1-basic", "palettes");
-  paletteMetadata.materials.body = { palettes: {}, oldField: true };
+  paletteMetadata.materials.body = {
+    palettes: {},
+    oldField: true,
+  } as MaterialWithOldField;
 
   parsePalette(path.join(palettesDir, "body"), "meta_body.json");
 
-  assert.equal(paletteMetadata.materials.body.oldField, true);
+  assert.equal(
+    (paletteMetadata.materials.body as MaterialWithOldField).oldField,
+    true,
+  );
   assert.equal(paletteMetadata.materials.body.label, "Body");
 });
 
@@ -56,7 +71,7 @@ test("parsePalette writes non-material meta files to versions", () => {
 
   assert.equal(result.kind, "meta");
   assert.equal(result.name, "colors");
-  assert.equal(paletteMetadata.versions.colors.label, "Colors");
+  assert.equal(paletteMetadata.versions?.colors.label, "Colors");
 });
 
 test("parsePalette parses palette data files", () => {
@@ -117,9 +132,9 @@ test("normalizeRecolors expands single recolor palette entries", () => {
   assert.equal(recolors[0].default, "ulpc");
   assert.equal(recolors[0].base, "ulpc.skin");
   assert.equal(recolors[0].label, "Body");
-  assert.ok(recolors[0].variants.includes("light"));
-  assert.ok(recolors[0].variants.includes("lpcr.ashen"));
-  assert.ok(recolors[0].variants.includes("all.lpcr.indigo"));
+  assert.ok(recolors[0]?.variants?.includes("light"));
+  assert.ok(recolors[0]?.variants?.includes("lpcr.ashen"));
+  assert.ok(recolors[0]?.variants?.includes("all.lpcr.indigo"));
 });
 
 test("normalizeRecolors supports color_n recolor blocks", () => {

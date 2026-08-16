@@ -6,7 +6,7 @@ import {
   generateCreditsCsv,
   processItemCredits,
 } from "./generateSources/credits.js";
-import { loadPaletteMetadata } from "./generateSources/palettes.js";
+import { loadPaletteMetadata } from "./generateSources/palettes.ts";
 import { parseItem } from "./generateSources/items.js";
 import {
   parseTree,
