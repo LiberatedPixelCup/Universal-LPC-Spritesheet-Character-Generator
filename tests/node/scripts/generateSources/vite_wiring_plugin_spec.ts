@@ -4,8 +4,10 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import type { Plugin, ResolvedConfig } from "vite";
 import { METADATA_MODULE_BASENAMES } from "../../../../scripts/generateSources/state.ts";
-import { vitePluginItemMetadata } from "../../../../vite/vite-plugin-item-metadata.js";
+import type { GenerateSourcesDeps } from "../../../../scripts/generate_sources.ts";
+import { vitePluginItemMetadata } from "../../../../vite/vite-plugin-item-metadata.ts";
 import {
   itemMetadataCodeSplittingGroups,
   itemMetadataPlugins,
@@ -21,8 +23,37 @@ const repoRoot = path.resolve(
   "..",
 );
 
+type AliasEntry = { find: string | RegExp; replacement: string };
+
+type MetadataChunkGroup = {
+  name: string;
+  test: RegExp;
+  priority: number;
+  minSize: number;
+  maxSize: number;
+  maxModuleSize: number;
+};
+
+function callPluginHook(hook: unknown, ...args: unknown[]): void {
+  if (typeof hook === "function") {
+    hook(...args);
+    return;
+  }
+  if (hook && typeof hook === "object" && "handler" in hook) {
+    (hook as { handler: (...hookArgs: unknown[]) => unknown }).handler(...args);
+  }
+}
+
+function runConfigResolved(plugin: Plugin, root: string): void {
+  callPluginHook(plugin.configResolved, { root } as ResolvedConfig);
+}
+
+function runBuildStart(plugin: Plugin): void {
+  callPluginHook(plugin.buildStart);
+}
+
 test("itemMetadataResolveAliases: one entry per metadata basename, dist replacements, regex matches", () => {
-  const aliases = itemMetadataResolveAliases();
+  const aliases = itemMetadataResolveAliases() as AliasEntry[];
   assert.equal(aliases.length, METADATA_MODULE_BASENAMES.length);
   for (let i = 0; i < METADATA_MODULE_BASENAMES.length; i++) {
     const basename = METADATA_MODULE_BASENAMES[i];
@@ -35,7 +66,7 @@ test("itemMetadataResolveAliases: one entry per metadata basename, dist replacem
 });
 
 test("itemMetadataCodeSplittingGroups: names and tests align with METADATA_MODULE_BASENAMES order", () => {
-  const groups = itemMetadataCodeSplittingGroups();
+  const groups = itemMetadataCodeSplittingGroups() as MetadataChunkGroup[];
   assert.equal(groups.length, METADATA_MODULE_BASENAMES.length);
   for (let i = 0; i < METADATA_MODULE_BASENAMES.length; i++) {
     const basename = METADATA_MODULE_BASENAMES[i];
@@ -64,35 +95,41 @@ test("metadataEnvForViteCommand: build is production; serve is development", () 
 });
 
 test("itemMetadataPlugins forwards production vs development env via stub generateSources", () => {
-  const buildCalls = [];
+  const buildCalls: GenerateSourcesDeps[] = [];
   const [buildPlugin] = itemMetadataPlugins("build", {
-    generateSources: (opts) => buildCalls.push(opts),
+    generateSources: (opts = {}) => {
+      buildCalls.push(opts);
+    },
   });
-  buildPlugin.configResolved({ root: "/tmp/vite-root-build" });
-  buildPlugin.buildStart();
+  runConfigResolved(buildPlugin, "/tmp/vite-root-build");
+  runBuildStart(buildPlugin);
   assert.equal(buildCalls.length, 1);
   assert.equal(buildCalls[0].env, "production");
 
-  const serveCalls = [];
+  const serveCalls: GenerateSourcesDeps[] = [];
   const [servePlugin] = itemMetadataPlugins("serve", {
-    generateSources: (opts) => serveCalls.push(opts),
+    generateSources: (opts = {}) => {
+      serveCalls.push(opts);
+    },
   });
-  servePlugin.configResolved({ root: "/tmp/vite-root-serve" });
-  servePlugin.buildStart();
+  runConfigResolved(servePlugin, "/tmp/vite-root-serve");
+  runBuildStart(servePlugin);
   assert.equal(serveCalls.length, 1);
   assert.equal(serveCalls[0].env, "development");
 });
 
 test("vitePluginItemMetadata buildStart invokes generateSources with writeMetadata and metadataOutputPath", () => {
-  const calls = [];
+  const calls: GenerateSourcesDeps[] = [];
   const plugin = vitePluginItemMetadata("development", {
-    generateSources: (opts) => calls.push(opts),
+    generateSources: (opts = {}) => {
+      calls.push(opts);
+    },
   });
   const root = path.join(os.tmpdir(), `vite-meta-test-${process.pid}`);
   fs.mkdirSync(root, { recursive: true });
   try {
-    plugin.configResolved({ root });
-    plugin.buildStart();
+    runConfigResolved(plugin, root);
+    runBuildStart(plugin);
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }
@@ -110,23 +147,23 @@ test("vitePluginItemMetadata buildStart invokes generateSources with writeMetada
 
 test("vitePluginItemMetadata does not set writeCredits in metadata-only temp roots", () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "vite-credits-skip-"));
-  const calls = [];
+  const calls: GenerateSourcesDeps[] = [];
   const originalWrite = fs.writeFileSync;
-  const captured = [];
-  fs.writeFileSync = (filePath, contents) => {
-    captured.push([filePath, String(contents)]);
+  const captured: Array<[string, string]> = [];
+  fs.writeFileSync = ((filePath: fs.PathOrFileDescriptor, contents: string) => {
+    captured.push([String(filePath), String(contents)]);
     return originalWrite(filePath, contents);
-  };
+  }) as typeof fs.writeFileSync;
 
   try {
     const plugin = vitePluginItemMetadata("production", {
-      generateSources: (opts) => {
+      generateSources: (opts = {}) => {
         calls.push(opts);
-        opts.writeFileSync(path.join(root, "dist", "item-metadata.js"), "js");
+        opts.writeFileSync!(path.join(root, "dist", "item-metadata.js"), "js");
       },
     });
-    plugin.configResolved({ root });
-    plugin.buildStart();
+    runConfigResolved(plugin, root);
+    runBuildStart(plugin);
   } finally {
     fs.writeFileSync = originalWrite;
     fs.rmSync(root, { recursive: true, force: true });

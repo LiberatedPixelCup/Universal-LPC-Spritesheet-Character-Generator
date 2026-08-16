@@ -1,7 +1,7 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { METADATA_MODULE_BASENAMES } from "../scripts/generateSources/state.ts";
-import { vitePluginItemMetadata } from "./vite-plugin-item-metadata.js";
+import { vitePluginItemMetadata } from "./vite-plugin-item-metadata.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
