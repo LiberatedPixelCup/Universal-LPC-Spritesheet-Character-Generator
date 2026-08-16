@@ -39,7 +39,8 @@
     "compute-style-dump": "node scripts/computed-style/dump-computed-styles.js",
     "compute-style-dump:mobile": "node scripts/computed-style/dump-computed-styles.js --preset mobile",
     "compute-style-diff-all": "node scripts/computed-style/computed-style-diff-all.js",
-    "compute-style-diff-all:preview-ports": "node scripts/computed-style/computed-style-diff-all.js --url-a http://localhost:4176 --url-b http://localhost:4177"
+    "compute-style-diff-all:preview-ports": "node scripts/computed-style/computed-style-diff-all.js --url-a http://localhost:4176 --url-b http://localhost:4177",
+    "lockfile:fix": "bash scripts/fix-lockfile-after-rebase.sh"
   },
   "dependencies": {
     "bulma": "1.0.4",
