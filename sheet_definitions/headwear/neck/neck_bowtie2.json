@@ -1,0 +1,55 @@
+{
+  "name": "Bowtie 2",
+  "priority": 30,
+  "layer_1": {
+    "zPos": 90,
+    "male": "neck/tie/bowtie2/adult/",
+    "female": "neck/tie/bowtie2/adult/",
+    "muscular": "neck/tie/bowtie2/adult/",
+    "pregnant": "neck/tie/bowtie2/adult/",
+    "teen": "neck/tie/bowtie2/adult/"
+  },
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote",
+    "combat",
+    "1h_slash",
+    "1h_backslash",
+    "1h_halfslash"
+  ],
+  "credits": [
+    {
+      "file": "neck/tie/bowtie2",
+      "notes": "",
+      "authors": [
+        "ElizaWy"
+      ],
+      "licenses": [
+        "OGA-BY 3.0"
+      ],
+      "urls": [
+        "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing/Feminine%2C%20Thin/Accessories",
+        "https://github.com/ElizaWy/LPC/tree/main/Characters/Clothing/Masculine%2C%20Thin/Accessories/Neckwear%2001%20-%20Bowtie",
+        "https://opengameart.org/content/lpc-expanded-sit-run-jump-more"
+      ]
+    }
+  ],
+  "recolors": {
+    "material": "cloth",
+    "palettes": [
+      "ulpc",
+      "all.lpcr"
+    ]
+  },
+  "type_name": "neck"
+}

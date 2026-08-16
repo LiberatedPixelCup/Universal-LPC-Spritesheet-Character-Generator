@@ -1,0 +1,52 @@
+{
+  "name": "Small Beaded Necklace",
+  "priority": 130,
+  "layer_1": {
+    "zPos": 80,
+    "male": "neck/necklace/beaded_small/male/",
+    "muscular": "neck/necklace/beaded_small/male/",
+    "female": "neck/necklace/beaded_small/thin/",
+    "teen": "neck/necklace/beaded_small/thin/",
+    "pregnant": "neck/necklace/beaded_small/thin/"
+  },
+  "animations": [
+    "spellcast",
+    "thrust",
+    "walk",
+    "slash",
+    "shoot",
+    "hurt",
+    "watering",
+    "idle",
+    "jump",
+    "run",
+    "sit",
+    "emote"
+  ],
+  "credits": [
+    {
+      "file": "neck/necklace/beaded_small",
+      "notes": "minor cleanup + Jump/Run/Sit/Emote by JaidynReiman",
+      "authors": [
+        "bluecarrot16",
+        "JaidynReiman"
+      ],
+      "licenses": [
+        "CC0"
+      ],
+      "urls": [
+        "https://opengameart.org/content/lpc-jewelry"
+      ]
+    }
+  ],
+  "recolors": {
+    "material": "metal",
+    "palettes": [
+      "ulpc",
+      "lpcr",
+      "cloth.ulpc",
+      "all.lpcr"
+    ]
+  },
+  "type_name": "necklace"
+}
