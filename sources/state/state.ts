@@ -93,7 +93,7 @@ function createDefaultStateDeps(catalog: CatalogReader): StateDeps {
 
 let stateDeps: StateDeps | undefined;
 
-/** Bind the singleton state operations to the catalog owned by application bootstrap. */
+/** Bind state operations to the catalog owned by application bootstrap. */
 export function configureStateCatalog(catalog: CatalogReader): void {
   configuredCatalog = catalog;
   stateDeps = createDefaultStateDeps(catalog);

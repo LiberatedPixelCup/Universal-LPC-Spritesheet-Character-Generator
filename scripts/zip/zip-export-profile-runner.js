@@ -30,8 +30,8 @@ import {
   loadSelectionsFromHash,
   resetState,
 } from "../../sources/state/hash.js";
-import { state } from "../../sources/state/state.js";
-import { defaultCatalog } from "../../sources/state/catalog.ts";
+import { configureStateCatalog, state } from "../../sources/state/state.js";
+import { createCatalog } from "../../sources/state/catalog.ts";
 import { ZIP_PROFILE_DEFAULT_HASH } from "./zip-profile-default-hash.js";
 
 /** @type {readonly string[]} */
@@ -71,10 +71,20 @@ async function runProfiles(opts = {}) {
 
   const run = (kind) => only === null || only === kind;
 
+  const catalog = createCatalog();
+  catalog.loadCatalogFromFixtures({
+    itemMetadata: window.itemMetadata,
+    aliasMetadata: window.aliasMetadata,
+    categoryTree: window.categoryTree,
+    metadataIndexes: window.metadataIndexes,
+    paletteMetadata: window.paletteMetadata,
+  });
+  configureStateCatalog(catalog);
+
   resetState();
   layers.length = 0;
 
-  loadSelectionsFromHash(resolveProfileHashString());
+  loadSelectionsFromHash(catalog, resolveProfileHashString());
 
   window.alert = () => {};
   if (typeof m !== "undefined" && m.redraw) {
@@ -114,25 +124,25 @@ async function runProfiles(opts = {}) {
   ctx.fillStyle = "#445566";
   ctx.fillRect(0, 0, SHEET_WIDTH, SHEET_HEIGHT);
 
-  await renderCharacter(defaultCatalog, state.selections, state.bodyType);
+  await renderCharacter(catalog, state.selections, state.bodyType);
 
   if (run("splitAnimations")) {
-    await exportSplitAnimations(defaultCatalog);
+    await exportSplitAnimations(catalog);
     state.zipByAnimation.isRunning = false;
   }
 
   if (run("splitItemSheets")) {
-    await exportSplitItemSheets(defaultCatalog);
+    await exportSplitItemSheets(catalog);
     state.zipByItem.isRunning = false;
   }
 
   if (run("splitItemAnimations")) {
-    await exportSplitItemAnimations(defaultCatalog);
+    await exportSplitItemAnimations(catalog);
     state.zipByAnimimationAndItem.isRunning = false;
   }
 
   if (run("individualFrames")) {
-    await exportIndividualFrames(defaultCatalog);
+    await exportIndividualFrames(catalog);
     if (state.zipIndividualFrames) {
       state.zipIndividualFrames.isRunning = false;
     }
