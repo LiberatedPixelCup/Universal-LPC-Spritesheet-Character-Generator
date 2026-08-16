@@ -4,7 +4,7 @@ import {
   buildItemsByTypeNameLite,
   resolveHashParamFromHashMatch,
 } from "../../../sources/state/resolve-hash-param.ts";
-import { resolveHashParamLegacy } from "./hash_param_resolve_legacy.js";
+import { resolveHashParamLegacy } from "./hash_param_resolve_legacy.ts";
 
 /**
  * @param {Record<string, object>} itemMetadata
@@ -176,4 +176,68 @@ test("parity: multiple types in one map", () => {
     { typeName: "body", nameAndVariant: "Body_light" },
     { typeName: "shoes", nameAndVariant: "Sara_sara" },
   ]);
+});
+
+// Issue #296: old exports used underscores for multi-word variants
+// (`dark_brown`), while catalog names use spaces (`dark brown`).
+test("matches underscore-separated multi-word variants from old hashes (issue #296)", () => {
+  const itemMetadata = {
+    1: {
+      type_name: "eyebrows",
+      name: "Thin_Eyebrows",
+      variants: ["dark brown"],
+    },
+  };
+  const result = resolveHashParamFromHashMatch({
+    typeName: "eyebrows",
+    nameAndVariant: "Thin_Eyebrows_dark_brown",
+    itemsByTypeName: buildItemsByTypeNameLite(itemMetadata),
+  });
+  assert.deepEqual(result, {
+    foundItemId: "1",
+    matchedVariant: "dark brown",
+    matchedRecolor: "",
+  });
+});
+
+test("matches underscore-separated multi-word recolor variants from old hashes (issue #296)", () => {
+  const itemMetadata = {
+    1: {
+      type_name: "eyebrows",
+      name: "Thin Eyebrows",
+      recolors: [
+        { material: "hair", palettes: ["ulpc"], variants: ["dark brown"] },
+      ],
+    },
+  };
+  const result = resolveHashParamFromHashMatch({
+    typeName: "eyebrows",
+    nameAndVariant: "Thin_Eyebrows_dark_brown",
+    itemsByTypeName: buildItemsByTypeNameLite(itemMetadata),
+  });
+  assert.deepEqual(result, {
+    foundItemId: "1",
+    matchedVariant: "",
+    matchedRecolor: "dark brown",
+  });
+});
+
+test("matches spaced hash variants against underscore catalog keys (issue #296)", () => {
+  const itemMetadata = {
+    1: {
+      type_name: "eyebrows",
+      name: "Thin_Eyebrows",
+      variants: ["dark_brown"],
+    },
+  };
+  const result = resolveHashParamFromHashMatch({
+    typeName: "eyebrows",
+    nameAndVariant: "Thin_Eyebrows_dark brown",
+    itemsByTypeName: buildItemsByTypeNameLite(itemMetadata),
+  });
+  assert.deepEqual(result, {
+    foundItemId: "1",
+    matchedVariant: "dark_brown",
+    matchedRecolor: "",
+  });
 });
