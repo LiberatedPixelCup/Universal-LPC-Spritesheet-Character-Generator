@@ -7,6 +7,8 @@ coverage:
         threshold: 0%
         only_pulls: true
         if_not_found: success
+        # Comment/blank lines are marked hit in uploaded lcov so documentation-only
+        # diffs do not fail this 100% patch gate. See mark-non-executable-lines.js.
     changes:
       default:
         if_not_found: success
