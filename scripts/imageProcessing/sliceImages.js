@@ -218,7 +218,7 @@ function cropSheet(sheet, sheetHeight, isMasterSheet) {
   if (!result) {
     return;
   }
-  result = cropToSubSheet(
+  cropToSubSheet(
     sheet,
     6 * universalFrameSize,
     4 * universalFrameSize,
