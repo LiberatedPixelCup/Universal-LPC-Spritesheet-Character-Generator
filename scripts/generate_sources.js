@@ -7,7 +7,7 @@ import {
   processItemCredits,
 } from "./generateSources/credits.ts";
 import { loadPaletteMetadata } from "./generateSources/palettes.ts";
-import { parseItem } from "./generateSources/items.js";
+import { parseItem } from "./generateSources/items.ts";
 import {
   parseTree,
   populateAndSortCategoryTree,

@@ -9,7 +9,8 @@ import {
   getRequiredSexes,
   buildTreePath,
   collectLayers,
-} from "../../../../scripts/generateSources/items.js";
+  type SheetDefinition,
+} from "../../../../scripts/generateSources/items.ts";
 import { loadPaletteMetadata } from "../../../../scripts/generateSources/palettes.ts";
 import {
   aliasMetadata,
@@ -18,7 +19,12 @@ import {
 } from "../../../../scripts/generateSources/state.ts";
 import { buildPath, resetTestState } from "./test_helpers.js";
 
-function writeTempJson(tempRoot, fileName, jsonContent, subdir = "body") {
+function writeTempJson(
+  tempRoot: string,
+  fileName: string,
+  jsonContent: unknown,
+  subdir = "body",
+) {
   const dir = path.join(tempRoot, subdir);
   fs.mkdirSync(dir, { recursive: true });
   const fullPath = path.join(dir, fileName);
@@ -48,7 +54,7 @@ test("parseItem parses valid fixture file and writes item metadata", () => {
     "pregnant",
   ]);
   assert.deepEqual(itemMetadata.wheelchair.path, ["body", "wheelchair"]);
-  assert.equal(Object.keys(itemMetadata.wheelchair.layers).length, 2);
+  assert.equal(Object.keys(itemMetadata.wheelchair.layers!).length, 2);
 });
 
 test("parseItem throws for ignored fixture item", () => {
@@ -101,7 +107,7 @@ test("parseItem applies animation defaults and alias mappings when fields are om
   assert.equal(parsed.itemId, "alias_item");
   assert.deepEqual(itemMetadata.alias_item.animations, ANIMATION_DEFAULTS);
   assert.deepEqual(itemMetadata.alias_item.required, ["male"]);
-  assert.deepEqual(itemMetadata.alias_item.recolors[0].material, "missing");
+  assert.deepEqual(itemMetadata.alias_item.recolors![0].material, "missing");
   assert.deepEqual(aliasMetadata.aliasType.old, {
     typeName: "aliasType",
     name: "Alias_Item",
@@ -121,12 +127,12 @@ test("parseItem normalizes recolors when palette metadata is loaded", () => {
     sheetsDir,
   });
 
-  const [recolor] = itemMetadata.head_nose_big.recolors;
+  const [recolor] = itemMetadata.head_nose_big.recolors!;
   assert.equal(recolor.default, "ulpc");
   assert.equal(recolor.base, "ulpc.skin");
-  assert.ok(recolor.variants.includes("light"));
-  assert.ok(recolor.variants.includes("lpcr.ashen"));
-  assert.ok(recolor.variants.includes("all.lpcr.indigo"));
+  assert.ok(recolor.variants!.includes("light"));
+  assert.ok(recolor.variants!.includes("lpcr.ashen"));
+  assert.ok(recolor.variants!.includes("all.lpcr.indigo"));
 });
 
 test("parseItem defaults to empty recolor list when recolors are absent", () => {
@@ -223,7 +229,7 @@ test("parseJson reads and parses a valid fixture JSON file", () => {
     "wheelchair.json",
   );
 
-  const result = parseJson(fullPath);
+  const result = parseJson(fullPath) as SheetDefinition;
 
   assert.equal(result.name, "Wheelchair");
   assert.ok(result.layer_1);

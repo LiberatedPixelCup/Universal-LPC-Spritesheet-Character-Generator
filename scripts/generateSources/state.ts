@@ -6,7 +6,6 @@ import type {
   ItemLite,
   LayerEntry,
   PaletteMetadata,
-  PaletteRecolor,
   SlimByTypeNameRow,
 } from "../../sources/state/catalog.ts";
 import { buildSlimByTypeNameRow } from "../../sources/state/resolve-hash-param.ts";
@@ -40,11 +39,28 @@ export type CsvListEntry = {
  * Item record in generator state. Parsers fill fields incrementally, so this is
  * {@link ItemMerged} with optional catalog fields plus extras written during parse.
  */
-export type GeneratorItem = Partial<ItemLite> & {
+export type GeneratorItem = Omit<Partial<ItemLite>, "recolors"> & {
   layers?: Record<string, LayerEntry>;
   credits?: Array<Partial<Credit>>;
   licenses?: Record<string, string[]>;
   priority?: number | null;
+  tags?: string[];
+  required_tags?: string[];
+  excluded_tags?: string[];
+  replace_in_path?: Record<string, Record<string, string>>;
+  preview_column?: number;
+  preview_x_offset?: number;
+  preview_y_offset?: number;
+  /** Palettes start as token lists, then expand to maps during normalizeRecolors. */
+  recolors?: Array<{
+    material?: string;
+    palettes?: string[] | Record<string, string[]>;
+    type_name?: string | null;
+    variants?: string[];
+    label?: string;
+    default?: string;
+    base?: string;
+  }>;
 };
 
 /** Category tree node as written by generateSources (label/priority/required/animations). */
@@ -257,8 +273,8 @@ export function internSlimByTypeNameRows(
  * `recolorVariantArrays[r]` in `index-metadata.js`.
  */
 function stripRecolorEntryZeroVariantsForEmit(
-  recolors: PaletteRecolor[] | undefined,
-): PaletteRecolor[] {
+  recolors: NonNullable<GeneratorItem["recolors"]> | undefined,
+): NonNullable<GeneratorItem["recolors"]> {
   if (!Array.isArray(recolors) || recolors.length === 0) {
     return recolors ?? [];
   }

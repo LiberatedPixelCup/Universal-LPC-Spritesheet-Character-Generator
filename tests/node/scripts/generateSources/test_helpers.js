@@ -12,7 +12,7 @@ import {
   expandMetadataIndexesWithInternedArrays,
 } from "../../../../sources/state/resolve-hash-param.ts";
 import { parseTree } from "../../../../scripts/generateSources/tree.ts";
-import { parseItem } from "../../../../scripts/generateSources/items.js";
+import { parseItem } from "../../../../scripts/generateSources/items.ts";
 import { processItemCredits } from "../../../../scripts/generateSources/credits.ts";
 
 const __filename = fileURLToPath(import.meta.url);
