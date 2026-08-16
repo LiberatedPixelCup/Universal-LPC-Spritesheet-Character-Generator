@@ -270,7 +270,11 @@ export const exportSplitItemSheets = async (
       ).unwrapOr([]);
 
       // Get Multiple Recolors If Available
-      const recolors = getMultiRecolors(itemId, state.selections);
+      const recolors = getMultiRecolors(
+        defaultCatalog,
+        itemId,
+        state.selections,
+      );
 
       // Render each layer of the item separately
       for (const layer of itemLayers) {
@@ -437,7 +441,11 @@ export const exportSplitItemAnimations = async (
         }
 
         // Get Multiple Recolors If Available
-        const recolors = getMultiRecolors(itemId, state.selections);
+        const recolors = getMultiRecolors(
+          defaultCatalog,
+          itemId,
+          state.selections,
+        );
 
         const itemLayers = getSortedLayersWithCustomFallback(
           defaultCatalog,
@@ -516,6 +524,7 @@ export const exportSplitItemAnimations = async (
             "render_composite_customItemSprite",
             async () => {
               imgCanvas = await getImageToDrawFn(
+                defaultCatalog,
                 img!,
                 layer.itemId,
                 layer.recolors,

@@ -62,7 +62,11 @@ export const ItemWithRecolors: m.Component<
     const paletteReady = catalog.isPaletteReady();
 
     // Build palette/color options for all recolor fields
-    const [paletteOptions, selectedColors] = getPaletteOptions(itemId, meta);
+    const [paletteOptions, selectedColors] = getPaletteOptions(
+      catalog,
+      itemId,
+      meta,
+    );
 
     // Check Selection Status
     let paletteModal = null;
