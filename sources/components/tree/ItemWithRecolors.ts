@@ -8,7 +8,7 @@ import {
 } from "../../state/state.ts";
 import type { CatalogReader, ItemMerged } from "../../state/catalog.ts";
 import { drawRecolorPreview } from "../../canvas/palette-recolor.ts";
-import { getPaletteOptions } from "../../state/palettes.ts";
+import { getPaletteOptions, type PaletteOption } from "../../state/palettes.ts";
 import { PaletteSelectModal } from "./PaletteSelectModal.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
 
@@ -34,6 +34,62 @@ type ItemWithRecolorsState = {
   palettePreviewExpected?: number;
   palettePreviewCompleted?: number;
 };
+
+/**
+ * When switching to a different same-type recolor asset, apply the mapped
+ * remembered color(s) immediately. First pick, already-selected, and
+ * incompatible items are left unchanged; the caller still opens the popover.
+ */
+function applyRememberedColorsOnSwitch(
+  itemId: string,
+  meta: ItemMerged,
+  paletteOptions: PaletteOption[],
+  selectedColors: Record<string, string>,
+  isSelected: boolean,
+  isCompatible: boolean,
+): void {
+  if (isSelected || !isCompatible) {
+    return;
+  }
+  if (!state.selections[getSelectionGroup(itemId)]) {
+    return;
+  }
+
+  for (let idx = 0; idx < paletteOptions.length; idx++) {
+    const opt = paletteOptions[idx];
+    const group =
+      idx !== 0 ? (opt.type_name ?? meta.type_name) : meta.type_name;
+    const mapped = selectedColors[group];
+    const recolor =
+      mapped ?? (idx === 0 ? meta.recolors[0]?.variants?.[0] : mapped);
+    if (recolor) {
+      selectItem(itemId, recolor, false, opt.type_name ? idx : null);
+    }
+  }
+}
+
+function openPaletteModal(
+  rootViewNode: { state: ItemWithRecolorsState },
+  modalIdx: number,
+  itemId: string,
+  meta: ItemMerged,
+  paletteOptions: PaletteOption[],
+  selectedColors: Record<string, string>,
+  isSelected: boolean,
+  isCompatible: boolean,
+): void {
+  applyRememberedColorsOnSwitch(
+    itemId,
+    meta,
+    paletteOptions,
+    selectedColors,
+    isSelected,
+    isCompatible,
+  );
+  rootViewNode.state._palettePreviewLastTotal = undefined;
+  rootViewNode.state.showPaletteModal = modalIdx;
+  m.redraw();
+}
 
 export const ItemWithRecolors: m.Component<
   ItemWithRecolorsAttrs,
@@ -274,9 +330,16 @@ export const ItemWithRecolors: m.Component<
                     onclick: (e: MouseEvent) => {
                       e.stopPropagation();
                       if (!paletteReady) return;
-                      rootViewNode.state._palettePreviewLastTotal = undefined;
-                      rootViewNode.state.showPaletteModal = 0;
-                      m.redraw();
+                      openPaletteModal(
+                        rootViewNode,
+                        0,
+                        itemId,
+                        meta,
+                        paletteOptions,
+                        selectedColors,
+                        isSelected,
+                        isCompatible,
+                      );
                     },
                   },
                   [
@@ -353,10 +416,16 @@ export const ItemWithRecolors: m.Component<
                                 onclick: (e: MouseEvent) => {
                                   e.stopPropagation();
                                   if (!paletteReady) return;
-                                  rootViewNode.state._palettePreviewLastTotal =
-                                    undefined;
-                                  rootViewNode.state.showPaletteModal = idx;
-                                  m.redraw();
+                                  openPaletteModal(
+                                    rootViewNode,
+                                    idx,
+                                    itemId,
+                                    meta,
+                                    paletteOptions,
+                                    selectedColors,
+                                    isSelected,
+                                    isCompatible,
+                                  );
                                 },
                               },
                               [
