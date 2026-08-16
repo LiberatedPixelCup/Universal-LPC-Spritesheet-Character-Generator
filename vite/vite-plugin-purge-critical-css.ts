@@ -1,6 +1,7 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { PurgeCSS } from "purgecss";
+import type { Plugin } from "vite";
 import {
   getPurgeContentGlobs,
   getPurgeSafelist,
@@ -12,7 +13,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
  * Runs PurgeCSS on emitted CSS assets except the async deferred stylesheet
  * (`*load-deferred-styles*.css`), so the full Bulma + app bundle stays intact.
  */
-export function vitePluginPurgeCriticalCss() {
+export function vitePluginPurgeCriticalCss(): Plugin {
   const repoRoot = path.resolve(__dirname, "..");
 
   return {
@@ -31,7 +32,7 @@ export function vitePluginPurgeCriticalCss() {
           continue;
         }
 
-        let src;
+        let src: string;
         if (typeof asset.source === "string") {
           src = asset.source;
         } else if (asset.source instanceof Uint8Array) {

@@ -4,7 +4,7 @@ import { defineConfig } from "vite";
 import { getSpritesheetsPlugin } from "./vite/get-spritesheets-plugin.ts";
 import { vitePluginPreviewServeDistSpritesheets } from "./vite/vite-plugin-preview-serve-dist-spritesheets.ts";
 import { vitePluginBundledCssAfterBulma } from "./vite/vite-plugin-bundled-css-after-bulma.ts";
-import { vitePluginPurgeCriticalCss } from "./vite/vite-plugin-purge-critical-css.js";
+import { vitePluginPurgeCriticalCss } from "./vite/vite-plugin-purge-critical-css.ts";
 import { vitePluginMetadataModulePreload } from "./vite/vite-plugin-metadata-modulepreload.ts";
 import {
   itemMetadataCodeSplittingGroups,
