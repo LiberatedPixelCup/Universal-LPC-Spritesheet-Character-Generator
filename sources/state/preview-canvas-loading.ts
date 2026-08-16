@@ -5,7 +5,7 @@
  * Mid-render is not "blocked" — the render itself is the activity, so we
  * surface a `rendering` state that consumers treat as ready.
  */
-import { isLayersReady } from "./catalog.ts";
+import type { CatalogReader } from "./catalog.ts";
 import { isOffscreenCanvasInitialized } from "../canvas/renderer.ts";
 import { state } from "./state.ts";
 
@@ -20,9 +20,9 @@ export type PreviewState =
  * Snapshot the preview's current state. The UI overlay shows for any kind
  * other than `rendering` or `ready`.
  */
-export function getPreviewCanvasState(): PreviewState {
+export function getPreviewCanvasState(catalog: CatalogReader): PreviewState {
   if (state.isRenderingCharacter) return { kind: "rendering" };
-  if (!isLayersReady()) return { kind: "loading-layers" };
+  if (!catalog.isLayersReady()) return { kind: "loading-layers" };
   if (!isOffscreenCanvasInitialized())
     return { kind: "canvas-not-initialized" };
   if (!state.previewBootstrapRenderDone) return { kind: "bootstrap-pending" };

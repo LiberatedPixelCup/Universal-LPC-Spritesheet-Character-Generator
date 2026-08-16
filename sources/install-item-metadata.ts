@@ -3,18 +3,13 @@
  * Each chunk calls `register*` as soon as its file loads; `m.redraw()` is coalesced to at most
  * once per animation frame so several chunks landing together do not thrash layout.
  *
- * Call `loadAllMetadata()` to start loading; it returns a promise that resolves when all five
+ * Call `loadAllMetadata(catalog)` to start loading; it returns a promise that resolves when all five
  * chunks are registered. The return value exposes lite `itemMetadata`, `layersMetadata`, and
  * `creditsMetadata` separately (no merged per-item objects). Tests merge as needed.
- * The browser test page (`tests_run.html`) still awaits `loadAllMetadata()` at module evaluation.
  */
 import {
-  registerFromCreditsModule,
-  registerFromIndexModule,
-  registerFromItemModule,
-  registerFromLayersModule,
-  registerFromPaletteModule,
   type AliasMetadata,
+  type CatalogWriter,
   type CategoryTree,
   type Credit,
   type ItemLite,
@@ -33,15 +28,7 @@ type LoadedChunks = {
   metadataIndexes: MetadataIndexes;
 };
 
-function isBrowserTestHarnessPage(): boolean {
-  try {
-    return /tests_run/i.test(globalThis.location?.pathname ?? "");
-  } catch {
-    return false;
-  }
-}
-
-let loadAllMetadataPromise: Promise<LoadedChunks> | null = null;
+let metadataLoadStarted = false;
 
 let metadataRedrawRaf: number | null = null;
 
@@ -57,20 +44,20 @@ function safeRedraw(): void {
   });
 }
 
-/** Test harness: allow `loadAllMetadata()` to run again after `resetCatalogForTests()`. */
-export function resetLoadAllMetadataCacheForTests(): void {
-  loadAllMetadataPromise = null;
-}
-
 /**
  * Parallel `import()` of the five metadata modules; each registers as soon as its file loads.
  */
-export function loadAllMetadata(): Promise<LoadedChunks> {
-  loadAllMetadataPromise ??= (async (): Promise<LoadedChunks> => {
+export function loadAllMetadata(catalog: CatalogWriter): Promise<LoadedChunks> {
+  if (metadataLoadStarted) {
+    throw new Error("loadAllMetadata() may only be called once");
+  }
+  metadataLoadStarted = true;
+
+  return (async (): Promise<LoadedChunks> => {
     const [indexMod, paletteMod, itemMod, creditsMod, layersMod] =
       await Promise.all([
         import("../index-metadata.js").then((mod) => {
-          registerFromIndexModule({
+          catalog.registerFromIndexModule({
             aliasMetadata: mod.aliasMetadata,
             categoryTree: mod.categoryTree,
             metadataIndexes: mod.metadataIndexes,
@@ -79,22 +66,24 @@ export function loadAllMetadata(): Promise<LoadedChunks> {
           return mod;
         }),
         import("../palette-metadata.js").then((mod) => {
-          registerFromPaletteModule({ paletteMetadata: mod.paletteMetadata });
+          catalog.registerFromPaletteModule({
+            paletteMetadata: mod.paletteMetadata,
+          });
           safeRedraw();
           return mod;
         }),
         import("../item-metadata.js").then((mod) => {
-          registerFromItemModule({ itemMetadata: mod.itemMetadata });
+          catalog.registerFromItemModule({ itemMetadata: mod.itemMetadata });
           safeRedraw();
           return mod;
         }),
         import("../credits-metadata.js").then((mod) => {
-          registerFromCreditsModule({ itemCredits: mod.itemCredits });
+          catalog.registerFromCreditsModule({ itemCredits: mod.itemCredits });
           safeRedraw();
           return mod;
         }),
         import("../layers-metadata.js").then((mod) => {
-          registerFromLayersModule({ itemLayers: mod.itemLayers });
+          catalog.registerFromLayersModule({ itemLayers: mod.itemLayers });
           safeRedraw();
           return mod;
         }),
@@ -110,10 +99,4 @@ export function loadAllMetadata(): Promise<LoadedChunks> {
       metadataIndexes: indexMod.metadataIndexes,
     };
   })();
-
-  return loadAllMetadataPromise;
-}
-
-if (isBrowserTestHarnessPage()) {
-  await loadAllMetadata();
 }

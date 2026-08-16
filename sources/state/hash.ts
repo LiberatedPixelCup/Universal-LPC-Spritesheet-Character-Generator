@@ -4,16 +4,8 @@ import type { Selection, Selections } from "./state.ts";
 import { parseRecolorKey } from "./palettes.ts";
 import { debugWarn } from "../utils/debug.ts";
 import {
-  buildItemsByTypeNameFromRegisteredLite,
-  defaultCatalog,
-  getAliasMetadata,
-  getItemLite,
-  getMetadataIndexes,
-  isIndexReady,
-  isLiteReady,
   type AliasMetadata,
   type CatalogReader,
-  type ItemLite,
   type SlimByTypeNameRow,
 } from "./catalog.ts";
 import { resolveHashParamFromHashMatch } from "./resolve-hash-param.ts";
@@ -28,50 +20,24 @@ type HashResolution = {
   matchedRecolor: string;
 };
 
-type HashDeps = {
-  resolveHashParam: (input: {
-    typeName: string;
-    nameAndVariant: string;
-  }) => HashResolution;
-  /** DI shape kept as `(id) => meta | null` so callers don't handle a Result. */
-  getItemLite: (itemId: string) => ItemLite | null;
-};
-
-function createDefaultHashDeps(): HashDeps {
-  return {
-    resolveHashParam: ({ typeName, nameAndVariant }) => {
-      let itemsByTypeName: Record<string, SlimByTypeNameRow[]>;
-      if (isIndexReady()) {
-        const idx = getMetadataIndexes().unwrapOr(null);
-        itemsByTypeName =
-          idx?.hashMatch?.itemsByTypeName ?? idx?.byTypeName ?? {};
-      } else if (isLiteReady()) {
-        itemsByTypeName = buildItemsByTypeNameFromRegisteredLite();
-      } else {
-        itemsByTypeName = {};
-      }
-      return resolveHashParamFromHashMatch({
-        typeName,
-        nameAndVariant,
-        itemsByTypeName,
-      });
-    },
-    getItemLite: (itemId) => getItemLite(itemId).unwrapOr(null),
-  };
-}
-
-let hashDeps: HashDeps = createDefaultHashDeps();
-
-export function setHashDeps(overrides: Partial<HashDeps>): void {
-  Object.assign(hashDeps, overrides);
-}
-
-export function resetHashDeps(): void {
-  hashDeps = createDefaultHashDeps();
-}
-
-export function getHashDeps(): HashDeps {
-  return hashDeps;
+function resolveHashParam(
+  catalog: CatalogReader,
+  input: { typeName: string; nameAndVariant: string },
+): HashResolution {
+  let itemsByTypeName: Record<string, SlimByTypeNameRow[]>;
+  if (catalog.isIndexReady()) {
+    const indexes = catalog.getMetadataIndexes().unwrapOr(null);
+    itemsByTypeName =
+      indexes?.hashMatch?.itemsByTypeName ?? indexes?.byTypeName ?? {};
+  } else if (catalog.isLiteReady()) {
+    itemsByTypeName = catalog.buildItemsByTypeNameFromRegisteredLite();
+  } else {
+    itemsByTypeName = {};
+  }
+  return resolveHashParamFromHashMatch({
+    ...input,
+    itemsByTypeName,
+  });
 }
 
 export function getState(): typeof state {
@@ -168,6 +134,7 @@ export function setHashParams(params: Record<string, string>): void {
 }
 
 export function buildNewSelection(
+  catalog: CatalogReader,
   foundItemId: string,
   matchedVariant: string | null,
   matchedRecolor: string,
@@ -175,7 +142,13 @@ export function buildNewSelection(
 ): Selection {
   // Get meta data for itemId. Existing JS assumes meta is non-null at this
   // point (resolveHashParam returned a hit); preserve that contract.
-  const meta = hashDeps.getItemLite(foundItemId)!;
+  const metaResult = catalog.getItemLite(foundItemId);
+  if (metaResult.isErr()) {
+    throw new Error(
+      `Resolved hash item is missing from catalog: ${foundItemId}`,
+    );
+  }
+  const meta = metaResult.value;
   const subMeta = meta.recolors?.[subId ?? 0];
 
   const newSelection: Selection = {
@@ -193,7 +166,7 @@ export function buildNewSelection(
     let recolorLabel: string | null | undefined = newSelection.recolor;
     if (recolorLabel) {
       const [, ver, recolor] = parseRecolorKey(
-        defaultCatalog,
+        catalog,
         newSelection.recolor ?? null,
         subMeta,
       );
@@ -290,7 +263,10 @@ type Profiler = {
 };
 type WindowWithProfiler = Window & { profiler?: Profiler };
 
-export function loadSelectionsFromHash(hashString: string | null = null): void {
+export function loadSelectionsFromHash(
+  catalog: CatalogReader,
+  hashString: string | null = null,
+): void {
   const profiler = (window as WindowWithProfiler).profiler;
   if (profiler) {
     profiler.mark("hash-loadSelectionsFromHash:start");
@@ -314,7 +290,7 @@ export function loadSelectionsFromHash(hashString: string | null = null): void {
     }
 
     // Check name and variant
-    const aliasMd = getAliasMetadata().unwrapOr({} as AliasMetadata);
+    const aliasMd = catalog.getAliasMetadata().unwrapOr({} as AliasMetadata);
     const aliasType = aliasMd[typeName];
     const aliasMeta = aliasType?.[nameAndVariant];
     if (aliasMeta) {
@@ -351,8 +327,10 @@ export function loadSelectionsFromHash(hashString: string | null = null): void {
     //   "Tiara_tiara_silver"  →  "Tiara" + "tiara_silver"  ✓
     //   "Human_female_light"  →  "Human_female" + "light"  ✓
     //   "Human_female_light|light"  →  "Human_female" + "light" + "light"  ✓
-    const { foundItemId, matchedVariant, matchedRecolor } =
-      hashDeps.resolveHashParam({ typeName, nameAndVariant });
+    const { foundItemId, matchedVariant, matchedRecolor } = resolveHashParam(
+      catalog,
+      { typeName, nameAndVariant },
+    );
 
     if (!foundItemId) {
       skippedEntries[typeName] = nameAndVariant;
@@ -361,6 +339,7 @@ export function loadSelectionsFromHash(hashString: string | null = null): void {
 
     // Use `type_name` as selection group.
     newSelections[typeName] = buildNewSelection(
+      catalog,
       foundItemId,
       matchedVariant,
       matchedRecolor,
@@ -375,7 +354,9 @@ export function loadSelectionsFromHash(hashString: string | null = null): void {
   const subItemKeySeparator = " ";
   const subItemLookup = new Map<string, { itemId: string; subId: number }>();
   for (const selection of Object.values(newSelections)) {
-    const recolors = hashDeps.getItemLite(selection.itemId)?.recolors;
+    const recolors = catalog
+      .getItemLite(selection.itemId)
+      .unwrapOr(null)?.recolors;
     if (!Array.isArray(recolors)) continue;
 
     for (let recolorIndex = 0; recolorIndex < recolors.length; recolorIndex++) {
@@ -406,6 +387,7 @@ export function loadSelectionsFromHash(hashString: string | null = null): void {
 
       if (subItem) {
         newSelections[subType] = buildNewSelection(
+          catalog,
           subItem.itemId,
           null,
           recolorToMatch,
@@ -441,7 +423,7 @@ export function loadSelectionsFromHash(hashString: string | null = null): void {
   }
 
   // Ensure hash is in sync with loaded selections (handles any normalization).
-  syncSelectionsToHash(defaultCatalog);
+  syncSelectionsToHash(catalog);
 
   if (profiler) {
     profiler.mark("hash-loadSelectionsFromHash:end");
@@ -454,7 +436,10 @@ export function loadSelectionsFromHash(hashString: string | null = null): void {
 }
 
 /** Wire up the browser hashchange event. */
-export function initHashChangeListener(listener?: () => void): void {
+export function initHashChangeListener(
+  catalog: CatalogReader,
+  listener?: () => void,
+): void {
   if (listener) {
     window.addEventListener("hashchange", listener);
     return;
@@ -487,7 +472,7 @@ export function initHashChangeListener(listener?: () => void): void {
     }
 
     // Load from hash (updates state once).
-    loadSelectionsFromHash();
+    loadSelectionsFromHash(catalog);
 
     // If nothing loaded from hash, use defaults.
     if (Object.keys(state.selections).length === 0) {

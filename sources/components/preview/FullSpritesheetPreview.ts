@@ -10,6 +10,7 @@ import {
 import { isOffscreenCanvasInitialized } from "../../canvas/renderer.ts";
 import { ScrollableContainer } from "./ScrollableContainer.ts";
 import { PreviewMetadataLoadingOverlay } from "./PreviewMetadataLoadingOverlay.ts";
+import type { CatalogReader } from "../../state/catalog.ts";
 
 type SpritesheetCanvasAttrs = {
   showTransparencyGrid: boolean;
@@ -127,7 +128,7 @@ const SpritesheetCanvas: m.Component<
 type FullSpritesheetPreviewState = { zoomLevel: number };
 
 export const FullSpritesheetPreview: m.Component<
-  Record<string, never>,
+  { catalog: CatalogReader },
   FullSpritesheetPreviewState
 > = {
   oninit(vnode) {
@@ -224,7 +225,9 @@ export const FullSpritesheetPreview: m.Component<
                 : null,
             ]),
           ]),
-          m(PreviewMetadataLoadingOverlay),
+          m(PreviewMetadataLoadingOverlay, {
+            catalog: vnode.attrs.catalog,
+          }),
         ]),
       ],
     );

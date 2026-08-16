@@ -17,6 +17,7 @@ import {
 import PinchToZoom from "./PinchToZoom.ts";
 import { ScrollableContainer } from "./ScrollableContainer.ts";
 import { PreviewMetadataLoadingOverlay } from "./PreviewMetadataLoadingOverlay.ts";
+import type { CatalogReader } from "../../state/catalog.ts";
 
 type PreviewCanvasAttrs = {
   selectedAnimation: string;
@@ -113,7 +114,7 @@ type AnimationPreviewState = {
 };
 
 export const AnimationPreview: m.Component<
-  Record<string, never>,
+  { catalog: CatalogReader },
   AnimationPreviewState
 > = {
   oninit(vnode) {
@@ -249,7 +250,9 @@ export const AnimationPreview: m.Component<
                       }),
                     ])
                   : null,
-                m(PreviewMetadataLoadingOverlay),
+                m(PreviewMetadataLoadingOverlay, {
+                  catalog: vnode.attrs.catalog,
+                }),
               ]),
             ]),
           ]),
