@@ -4,7 +4,7 @@ import {
   buildItemsByTypeNameLite,
   resolveHashParamFromHashMatch,
 } from "../../../sources/state/resolve-hash-param.ts";
-import { resolveHashParamLegacy } from "./hash_param_resolve_legacy.js";
+import { resolveHashParamLegacy } from "./hash_param_resolve_legacy.ts";
 
 /**
  * @param {Record<string, object>} itemMetadata

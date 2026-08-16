@@ -3,19 +3,35 @@
  * Mirrors `loadSelectionsFromHash` item-matching loops from `sources/state/hash.ts` pre-index.
  */
 
-/**
- * @param {object} opts
- * @param {string} opts.typeName
- * @param {string} opts.nameAndVariant
- * @param {Record<string, object>|null|undefined} opts.itemMetadata
- * @returns {{ foundItemId: string|null, matchedVariant: string, matchedRecolor: string }}
- */
+import { normalizeVariantForHashMatch } from "../../../sources/state/resolve-hash-param.ts";
+
+type LegacyItemMeta = {
+  type_name: string;
+  name: string;
+  variants?: string[];
+  recolors?: { variants?: string[] }[];
+};
+
+type HashResolution = {
+  foundItemId: string | null;
+  matchedVariant: string;
+  matchedRecolor: string;
+};
+
+function hashVariantsEqual(a: string, b: string): boolean {
+  return normalizeVariantForHashMatch(a) === normalizeVariantForHashMatch(b);
+}
+
 export function resolveHashParamLegacy({
   typeName,
   nameAndVariant,
   itemMetadata,
-}) {
-  let foundItemId = null;
+}: {
+  typeName: string;
+  nameAndVariant: string;
+  itemMetadata: Record<string, LegacyItemMeta> | null | undefined;
+}): HashResolution {
+  let foundItemId: string | null = null;
   let matchedVariant = "";
   let matchedRecolor = "";
 
@@ -24,7 +40,7 @@ export function resolveHashParamLegacy({
   for (let i = 1; i <= parts.length; i++) {
     const nameToMatch = parts.slice(0, i).join("_");
     const variants = parts.slice(i).join("_");
-    const variantToMatch = variants.split("|")[0];
+    const variantToMatch = variants.split("|")[0] ?? "";
     const recolorToMatch = variants.split("|")[1] || "";
 
     for (const [itemId, meta] of Object.entries(itemMetadata || {})) {
@@ -33,9 +49,10 @@ export function resolveHashParamLegacy({
       const metaNameNormalized = meta.name.replaceAll(" ", "_");
 
       if (metaNameNormalized.toLowerCase() === nameToMatch.toLowerCase()) {
-        if (meta.variants?.length > 0) {
-          for (const variant of meta.variants) {
-            if (variant.toLowerCase() === variantToMatch.toLowerCase()) {
+        const itemVariants = meta.variants ?? [];
+        if (itemVariants.length > 0) {
+          for (const variant of itemVariants) {
+            if (hashVariantsEqual(variant, variantToMatch)) {
               foundItemId = itemId;
               matchedVariant = variant;
               matchedRecolor = "";
@@ -43,13 +60,14 @@ export function resolveHashParamLegacy({
             }
           }
         }
-        if (meta.recolors?.[0]?.variants?.length > 0) {
-          for (const variant of meta.recolors[0].variants) {
+        const recolorVariants = meta.recolors?.[0]?.variants ?? [];
+        if (recolorVariants.length > 0) {
+          for (const variant of recolorVariants) {
             if (
               (recolorToMatch !== "" &&
-                variant.toLowerCase() === recolorToMatch.toLowerCase()) ||
+                hashVariantsEqual(variant, recolorToMatch)) ||
               (recolorToMatch === "" &&
-                variant.toLowerCase() === variantToMatch.toLowerCase())
+                hashVariantsEqual(variant, variantToMatch))
             ) {
               foundItemId = itemId;
               matchedVariant = "";

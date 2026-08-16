@@ -173,6 +173,24 @@ export function buildItemsByTypeNameLite(
   return byType;
 }
 
+/**
+ * Normalize a hash/catalog variant so `dark_brown`, `dark brown`, and
+ * `dark%20brown` compare equal (issue #296).
+ */
+export function normalizeVariantForHashMatch(value: string): string {
+  let decoded = value;
+  try {
+    decoded = decodeURIComponent(value);
+  } catch {
+    // Keep the raw string when percent-encoding is malformed.
+  }
+  return decoded.replaceAll(" ", "_").toLowerCase();
+}
+
+function hashVariantsEqual(a: string, b: string): boolean {
+  return normalizeVariantForHashMatch(a) === normalizeVariantForHashMatch(b);
+}
+
 export function resolveHashParamFromHashMatch({
   typeName,
   nameAndVariant,
@@ -209,7 +227,7 @@ export function resolveHashParamFromHashMatch({
       if (metaNameNormalized.toLowerCase() === nameToMatch.toLowerCase()) {
         if (meta.variants?.length > 0) {
           for (const variant of meta.variants) {
-            if (variant.toLowerCase() === variantToMatch.toLowerCase()) {
+            if (hashVariantsEqual(variant, variantToMatch)) {
               foundItemId = itemId;
               matchedVariant = variant;
               matchedRecolor = "";
@@ -221,9 +239,9 @@ export function resolveHashParamFromHashMatch({
           for (const variant of meta.recolors[0]?.variants ?? []) {
             if (
               (recolorToMatch !== "" &&
-                variant.toLowerCase() === recolorToMatch.toLowerCase()) ||
+                hashVariantsEqual(variant, recolorToMatch)) ||
               (recolorToMatch === "" &&
-                variant.toLowerCase() === variantToMatch.toLowerCase())
+                hashVariantsEqual(variant, variantToMatch))
             ) {
               foundItemId = itemId;
               matchedVariant = "";
