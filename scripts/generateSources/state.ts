@@ -2,7 +2,6 @@ import fs from "node:fs";
 import path from "node:path";
 import type {
   AliasMetadata,
-  CategoryTree,
   Credit,
   ItemLite,
   LayerEntry,
@@ -48,6 +47,16 @@ export type GeneratorItem = Partial<ItemLite> & {
   priority?: number | null;
 };
 
+/** Category tree node as written by generateSources (label/priority/required/animations). */
+export type GeneratorTreeNode = {
+  items?: string[];
+  children?: Record<string, GeneratorTreeNode>;
+  label?: string;
+  priority?: number | null;
+  required?: string[];
+  animations?: string[];
+};
+
 export type InternedSlimByTypeNameRow = Pick<
   SlimByTypeNameRow,
   "itemId" | "name" | "type_name"
@@ -59,7 +68,7 @@ export type InternedSlimByTypeNameRow = Pick<
 export type MetadataModuleSources = {
   itemMetadata?: Record<string, GeneratorItem>;
   aliasMetadata?: AliasMetadata;
-  categoryTree?: CategoryTree;
+  categoryTree?: GeneratorTreeNode;
 };
 
 export const licensesFound: string[] = [];
@@ -67,7 +76,7 @@ export const csvList: CsvListEntry[] = [];
 export const itemMetadata: Record<string, GeneratorItem> = {};
 export const paletteMetadata: PaletteMetadata = { versions: {}, materials: {} };
 export const aliasMetadata: AliasMetadata = {};
-export const categoryTree: CategoryTree = { items: [], children: {} };
+export const categoryTree: GeneratorTreeNode = { items: [], children: {} };
 
 const METADATA_FILE_BANNER = `// THIS FILE IS AUTO-GENERATED. PLEASE DON'T ALTER IT MANUALLY
 // Generated from sheet_definitions/*.json by scripts/generate_sources.js
@@ -304,7 +313,7 @@ export { ${exports} };
 
 export function buildIndexMetadataJs(
   aliasMetadataArg: AliasMetadata,
-  categoryTreeArg: CategoryTree,
+  categoryTreeArg: GeneratorTreeNode,
   fullItemMetadata: Record<string, GeneratorItem>,
   env: MetadataEnv = "production",
 ): string {

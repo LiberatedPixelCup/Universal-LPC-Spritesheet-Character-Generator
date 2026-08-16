@@ -6,28 +6,37 @@ import {
   itemMetadata,
   onlyIfTemplate,
   SHEETS_DIR,
+  type GeneratorItem,
+  type GeneratorTreeNode,
 } from "./state.ts";
 
 const { debugLog } = debugUtils;
 
+type CategoryMeta = {
+  label?: string;
+  priority?: number | null;
+  required?: string[];
+  animations?: string[];
+};
+
 /**
  * Parses category meta JSON and ensures the corresponding category tree path exists with metadata.
- * @param {string} filePath Parent directory containing the meta file.
- * @param {string} fileName Meta filename to parse.
- * @param {{sheetsDir?: string}} [options] Optional parser options.
- * @param {string} [options.sheetsDir] Sheets root used for relative path normalization.
- * @return {Object} The final tree node corresponding to filePath.
- * @throws {SyntaxError} If the category meta file JSON is malformed.
  */
-export function parseTree(filePath, fileName, options = {}) {
+export function parseTree(
+  filePath: string,
+  fileName: string,
+  options: { sheetsDir?: string } = {},
+): GeneratorTreeNode {
   const { sheetsDir = SHEETS_DIR } = options;
 
   const fullPath = path.join(filePath, fileName);
   if (!onlyIfTemplate) debugLog(`Parsing tree ${fullPath}`);
 
-  let meta;
+  let meta: CategoryMeta;
   try {
-    meta = JSON.parse(fs.readFileSync(fullPath));
+    meta = JSON.parse(
+      fs.readFileSync(fullPath) as unknown as string,
+    ) as CategoryMeta;
   } catch (e) {
     console.error("Error parsing json from category file ", fullPath);
     throw e;
@@ -43,20 +52,21 @@ export function parseTree(filePath, fileName, options = {}) {
   const treeId = filePath.split(path.sep).pop();
 
   for (const segment of categoryPath) {
-    if (!current.children[segment]) {
-      current.children[segment] = {
+    const children = current.children!;
+    if (!children[segment]) {
+      children[segment] = {
         items: [],
         children: {},
       };
 
       if (segment === treeId) {
-        current.children[segment].label = label;
-        current.children[segment].priority = priority || null;
-        current.children[segment].required = required || [];
-        current.children[segment].animations = animations || [];
+        children[segment].label = label;
+        children[segment].priority = priority || null;
+        children[segment].required = required || [];
+        children[segment].animations = animations || [];
       }
     }
-    current = current.children[segment];
+    current = children[segment];
   }
 
   return current;
@@ -64,12 +74,11 @@ export function parseTree(filePath, fileName, options = {}) {
 
 /**
  * Recursively sorts category tree children and item lists by priority and display name.
- * @param {{items?: Array<string>, children?: Object<string, Object>, priority?: number, label?: string}} node Tree node to sort.
- * @param {Object<string, Object>} itemMetadata Item metadata map used for item sorting.
- * @return {Object} The same node instance after in-place sorting.
- * @throws {TypeError} If node structure is invalid and sortable collections are not iterable.
  */
-export function sortCategoryTree(node, itemMetadata) {
+export function sortCategoryTree(
+  node: GeneratorTreeNode,
+  itemMetadataMap: Record<string, GeneratorItem>,
+): GeneratorTreeNode {
   const sortedChildren = Object.entries(node.children || {}).sort(
     ([keyA, valA], [keyB, valB]) => {
       const a = valA.priority ?? Number.POSITIVE_INFINITY;
@@ -81,17 +90,17 @@ export function sortCategoryTree(node, itemMetadata) {
     },
   );
 
-  const reordered = {};
+  const reordered: Record<string, GeneratorTreeNode> = {};
   for (const [key, child] of sortedChildren) {
-    sortCategoryTree(child, itemMetadata);
+    sortCategoryTree(child, itemMetadataMap);
     reordered[key] = child;
   }
   node.children = reordered;
 
   if (node.items) {
     node.items.sort((idA, idB) => {
-      const metaA = itemMetadata[idA] || {};
-      const metaB = itemMetadata[idB] || {};
+      const metaA = itemMetadataMap[idA] || {};
+      const metaB = itemMetadataMap[idB] || {};
       const a = metaA.priority ?? Number.POSITIVE_INFINITY;
       const b = metaB.priority ?? Number.POSITIVE_INFINITY;
       if (a !== b) return a - b;
@@ -106,9 +115,8 @@ export function sortCategoryTree(node, itemMetadata) {
 
 /**
  * Populates category tree item lists from metadata paths and sorts the tree in place.
- * @return {{items?: Array<string>, children: Object<string, Object>}} The shared category tree after population and sorting.
  */
-export function populateAndSortCategoryTree() {
+export function populateAndSortCategoryTree(): GeneratorTreeNode {
   for (const [itemId, meta] of Object.entries(itemMetadata)) {
     const itemPath = meta.path || ["Other"];
 
@@ -117,10 +125,11 @@ export function populateAndSortCategoryTree() {
 
     let current = categoryTree;
     for (const segment of categoryPath) {
-      if (!current.children[segment]) {
-        current.children[segment] = { items: [], children: {} };
+      const children = current.children!;
+      if (!children[segment]) {
+        children[segment] = { items: [], children: {} };
       }
-      current = current.children[segment];
+      current = children[segment];
     }
 
     if (!Array.isArray(current.items)) {

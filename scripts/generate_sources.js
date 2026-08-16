@@ -11,7 +11,7 @@ import { parseItem } from "./generateSources/items.js";
 import {
   parseTree,
   populateAndSortCategoryTree,
-} from "./generateSources/tree.js";
+} from "./generateSources/tree.ts";
 import {
   buildAllMetadataModules,
   METADATA_OUTPUT,

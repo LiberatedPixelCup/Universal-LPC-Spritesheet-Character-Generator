@@ -5,7 +5,7 @@ import {
   parseTree,
   sortCategoryTree,
   populateAndSortCategoryTree,
-} from "../../../../scripts/generateSources/tree.js";
+} from "../../../../scripts/generateSources/tree.ts";
 import {
   categoryTree,
   itemMetadata,
@@ -31,12 +31,12 @@ test("parseTree does not overwrite existing node metadata", () => {
   const bodyDir = path.join(sheetsDir, "body");
 
   parseTree(bodyDir, "meta_body.json", { sheetsDir });
-  const firstNode = categoryTree.children.body;
-  firstNode.label = "Custom Label";
+  const firstNode = categoryTree.children!.body;
+  firstNode!.label = "Custom Label";
 
   parseTree(bodyDir, "meta_body.json", { sheetsDir });
 
-  assert.equal(categoryTree.children.body.label, "Custom Label");
+  assert.equal(categoryTree.children!.body!.label, "Custom Label");
 });
 
 test("parseTree throws for malformed meta JSON", () => {
@@ -81,7 +81,7 @@ test("sortCategoryTree sorts children and items recursively", () => {
 
   const sorted = sortCategoryTree(root, metadata);
 
-  assert.deepEqual(Object.keys(sorted.children), ["first", "second"]);
+  assert.deepEqual(Object.keys(sorted.children!), ["first", "second"]);
   assert.deepEqual(sorted.items, ["item_a", "item_z"]);
 });
 
@@ -112,8 +112,12 @@ test("populateAndSortCategoryTree places items into correct category nodes", () 
 
   populateAndSortCategoryTree();
 
-  assert.deepEqual(categoryTree.children.body.children.torso.items, ["item_a"]);
-  assert.deepEqual(categoryTree.children.body.children.arms.items, ["item_b"]);
+  assert.deepEqual(categoryTree.children!.body!.children!.torso.items, [
+    "item_a",
+  ]);
+  assert.deepEqual(categoryTree.children!.body!.children!.arms.items, [
+    "item_b",
+  ]);
 });
 
 test("populateAndSortCategoryTree falls back to Other for items with no path", () => {
@@ -124,7 +128,7 @@ test("populateAndSortCategoryTree falls back to Other for items with no path", (
   populateAndSortCategoryTree();
 
   // path defaults to ["Other"], categoryPath is [] (slice 0, -1), so item lands at root
-  assert.ok(categoryTree.items.includes("item_no_path"));
+  assert.ok(categoryTree.items!.includes("item_no_path"));
 });
 
 test("populateAndSortCategoryTree sorts children and items after population", () => {
@@ -135,7 +139,7 @@ test("populateAndSortCategoryTree sorts children and items after population", ()
 
   populateAndSortCategoryTree();
 
-  assert.deepEqual(categoryTree.children.body.items, ["item_a", "item_z"]);
+  assert.deepEqual(categoryTree.children!.body!.items, ["item_a", "item_z"]);
 });
 
 test("populateAndSortCategoryTree appends to existing node items without duplicating children", () => {
@@ -154,6 +158,6 @@ test("populateAndSortCategoryTree appends to existing node items without duplica
 
   populateAndSortCategoryTree();
 
-  assert.equal(Object.keys(categoryTree.children).length, 1);
-  assert.deepEqual(categoryTree.children.torso.items, ["item_1", "item_2"]);
+  assert.equal(Object.keys(categoryTree.children!).length, 1);
+  assert.deepEqual(categoryTree.children!.torso.items, ["item_1", "item_2"]);
 });
