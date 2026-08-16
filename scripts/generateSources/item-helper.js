@@ -1,4 +1,4 @@
-import debugUtils from "../utils/debug.js";
+import debugUtils from "../utils/debug.ts";
 import { ucwords } from "../../sources/utils/helpers.ts";
 import { paletteMetadata } from "./state.js";
 

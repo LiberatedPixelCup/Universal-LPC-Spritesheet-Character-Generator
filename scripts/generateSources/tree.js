@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import debugUtils from "../utils/debug.js";
+import debugUtils from "../utils/debug.ts";
 import {
   categoryTree,
   itemMetadata,

@@ -9,7 +9,7 @@
  * Disable explicitly with `DEBUG=0` or `DEBUG=false`.
  */
 
-function isTruthyEnv(value) {
+function isTruthyEnv(value: string | undefined): boolean {
   if (value === undefined || value === "") return false;
   const lower = String(value).toLowerCase().trim();
   if (lower === "0" || lower === "false" || lower === "no" || lower === "off") {
@@ -18,17 +18,17 @@ function isTruthyEnv(value) {
   return true;
 }
 
-function isDebugEnabled() {
+function isDebugEnabled(): boolean {
   return isTruthyEnv(process.env.DEBUG);
 }
 
-function debugLog(...args) {
+function debugLog(...args: unknown[]): void {
   if (isDebugEnabled()) {
     console.log(...args);
   }
 }
 
-function debugWarn(...args) {
+function debugWarn(...args: unknown[]): void {
   if (isDebugEnabled()) {
     console.warn(...args);
   }

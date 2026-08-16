@@ -103,6 +103,16 @@ export default [
     rules: commonRulesTs,
   },
   {
+    files: ["scripts/**/*.ts", "vite/**/*.ts"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.es2021,
+      },
+    },
+    rules: commonRulesTs,
+  },
+  {
     files: ["tests/**/*.js"],
     ignores: ["tests/visual/**"],
     languageOptions: {

@@ -1,5 +1,5 @@
 import path from "node:path";
-import debugUtils from "../utils/debug.js";
+import debugUtils from "../utils/debug.ts";
 import { ANIMATIONS } from "../../sources/state/constants.ts";
 import {
   categoryTree,
