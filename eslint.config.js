@@ -103,7 +103,7 @@ export default [
     rules: commonRulesTs,
   },
   {
-    files: ["scripts/**/*.ts", "vite/**/*.ts"],
+    files: ["scripts/**/*.ts", "vite/**/*.ts", "vite.config.ts"],
     languageOptions: {
       globals: {
         ...globals.node,

@@ -20,8 +20,7 @@ const coverageEnabled = process.env.VITE_COVERAGE === "true";
 /**
  * Item-metadata pipeline (Commit 4): `vite/wiring.ts` registers the pre-plugin,
  * `resolve.alias`, and Rolldown chunk groups for generated metadata modules. Testem’s Vite
- * middleware loads this file via `configFile` so browser tests get the same behavior. Other
- * plugins stay below.
+ * middleware loads this file so browser tests get the same behavior. Other plugins stay below.
  */
 
 export default defineConfig(({ command }) => ({

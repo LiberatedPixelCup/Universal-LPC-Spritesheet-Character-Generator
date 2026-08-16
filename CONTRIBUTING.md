@@ -165,7 +165,7 @@ The root **`package.json`** sets **`"type": "module"`**, so first-party **`.js`*
 **Type-check:** `npm run type-check` runs `tsc --noEmit` (also in the Lint workflow). The app under **`sources/`** is TypeScript; **`scripts/`**, **`vite/`**, and **`tests/`** are mid-migration (`allowJs` is still on).
 
 **Copying `spritesheets/` into `dist/` (build)**  
-**`npm run build`** copies the large **`spritesheets/`** tree into **`dist/`** as part of the Vite build (see `vite.config.js`). Which tool runs depends on the OS:
+**`npm run build`** copies the large **`spritesheets/`** tree into **`dist/`** as part of the Vite build (see `vite.config.ts`). Which tool runs depends on the OS:
 
 - **Windows:** The build invokes **`robocopy`** (built into Windows). You do **not** need **rsync** or any separate copy utility for this step.
 - **macOS and Linux:** The build invokes **`rsync` 3.x** on your **`PATH`**, with options that update files incrementally (for example **`-u` / `--update`**: skip overwriting when the destination file is newer).

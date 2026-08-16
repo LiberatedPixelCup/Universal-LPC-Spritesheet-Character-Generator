@@ -32,5 +32,5 @@
     // TODO: Revisit when the migration is done
     "noPropertyAccessFromIndexSignature": false,
   },
-  "include": ["sources", "scripts", "vite", "tests"],
+  "include": ["sources", "scripts", "vite", "tests", "vite.config.ts"],
 }

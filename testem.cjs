@@ -41,7 +41,7 @@ let testemConfig = {
   src_files: [
     "tests/**/*.js",
     "sources/**/*.js",
-    "vite.config.js",
+    "vite.config.ts",
     "tests_run.html",
   ],
   browser_args: {
