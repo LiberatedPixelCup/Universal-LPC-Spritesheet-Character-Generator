@@ -3,12 +3,17 @@ import path from "node:path";
 import { createHash } from "node:crypto";
 import { readDirTree } from "./state.ts";
 
+export type SourceInputsFingerprintDeps = {
+  root?: string;
+  readFileSync?: (filePath: string) => string | NodeJS.ArrayBufferView;
+};
+
 /**
  * SHA-256 of all file contents under `sheet_definitions` and `palette_definitions` (repo-relative roots).
- * @param {{ root?: string, readFileSync?: typeof fs.readFileSync }} [deps]
- * @returns {string} Hex digest
  */
-export function computeSourceInputsFingerprint(deps) {
+export function computeSourceInputsFingerprint(
+  deps?: SourceInputsFingerprintDeps,
+): string {
   const { root = process.cwd(), readFileSync = fs.readFileSync } = deps ?? {};
   const h = createHash("sha256");
   const relRoots = ["sheet_definitions", "palette_definitions"].sort((a, b) =>
@@ -35,14 +40,17 @@ export function computeSourceInputsFingerprint(deps) {
   return h.digest("hex");
 }
 
-export function getSourceInputsCachePath(cwd) {
+export function getSourceInputsCachePath(cwd: string): string {
   return path.join(path.resolve(cwd), ".cache", "lpc-source-inputs.sha256");
 }
 
 export function readStoredSourceInputsFingerprint(
-  cachePath,
-  readFileSync = fs.readFileSync,
-) {
+  cachePath: string,
+  readFileSync: (
+    filePath: string,
+    encoding: BufferEncoding,
+  ) => string = fs.readFileSync,
+): string | null {
   try {
     return readFileSync(cachePath, "utf8").trim();
   } catch {
@@ -51,10 +59,20 @@ export function readStoredSourceInputsFingerprint(
 }
 
 export function writeStoredSourceInputsFingerprint(
-  cachePath,
-  hex,
-  { mkdirSync = fs.mkdirSync, writeFileSync = fs.writeFileSync } = {},
-) {
+  cachePath: string,
+  hex: string,
+  {
+    mkdirSync = fs.mkdirSync,
+    writeFileSync = fs.writeFileSync,
+  }: {
+    mkdirSync?: (dirPath: string, options: { recursive: boolean }) => void;
+    writeFileSync?: (
+      filePath: string,
+      data: string,
+      encoding?: BufferEncoding,
+    ) => void;
+  } = {},
+): void {
   mkdirSync(path.dirname(cachePath), { recursive: true });
   writeFileSync(cachePath, `${hex}\n`, "utf8");
 }

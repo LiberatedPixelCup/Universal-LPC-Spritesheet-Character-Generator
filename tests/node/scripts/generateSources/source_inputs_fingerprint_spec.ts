@@ -8,9 +8,9 @@ import {
   getSourceInputsCachePath,
   readStoredSourceInputsFingerprint,
   writeStoredSourceInputsFingerprint,
-} from "../../../../scripts/generateSources/source_inputs_fingerprint.js";
+} from "../../../../scripts/generateSources/source_inputs_fingerprint.ts";
 
-function writeTree(root) {
+function writeTree(root: string) {
   fs.mkdirSync(path.join(root, "sheet_definitions"), { recursive: true });
   fs.mkdirSync(path.join(root, "palette_definitions"), { recursive: true });
   fs.writeFileSync(
@@ -50,10 +50,10 @@ test("getSourceInputsCachePath, writeStored, and readStored round-trip", () => {
 
   assert.equal(readStoredSourceInputsFingerprint(cachePath), null);
 
-  const writes = [];
+  const writes: Array<{ outPath: string; contents: string }> = [];
   writeStoredSourceInputsFingerprint("ignored/cache", "abc123", {
     mkdirSync: () => {},
-    writeFileSync: (outPath, contents) => {
+    writeFileSync: (outPath: string, contents: string) => {
       writes.push({ outPath, contents });
     },
   });

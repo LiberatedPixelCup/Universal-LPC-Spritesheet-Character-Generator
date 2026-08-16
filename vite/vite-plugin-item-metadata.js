@@ -6,7 +6,7 @@ import {
   getSourceInputsCachePath,
   readStoredSourceInputsFingerprint,
   writeStoredSourceInputsFingerprint,
-} from "../scripts/generateSources/source_inputs_fingerprint.js";
+} from "../scripts/generateSources/source_inputs_fingerprint.ts";
 import { writeZPositionsFromSheetsSync } from "../scripts/zPositioning/write_z_positions_from_sheets.ts";
 
 /**
