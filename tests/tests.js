@@ -29,6 +29,7 @@ import "./components/tree/TreeNode_spec.js";
 import "./components/tree/ItemWithVariants_spec.js";
 import "./components/tree/ItemWithRecolors_spec.js";
 import "./components/tree/PaletteSelectModal_spec.js";
+import "./components/preview/AnimationPreview_spec.js";
 import "./components/preview/ScrollableContainer_spec.js";
 import "./components/preview/PreviewMetadataLoadingOverlay_spec.js";
 import "./components/preview/PinchToZoom_spec.js";
