@@ -1,27 +1,33 @@
+import type { AliasEntry } from "../../sources/state/catalog.ts";
 import debugUtils from "../utils/debug.ts";
 import { aliasMetadata } from "./state.ts";
 
 const { debugWarn } = debugUtils;
 
-/**
- * Derives the variant list used for alias target resolution.
- * @param {Object} meta Item metadata.
- * @return {string[]} Variant names to match against alias targets.
- */
-function getAliasVariants(meta) {
+export type AliasItemMeta = {
+  type_name: string;
+  name: string;
+  variants?: string[];
+  recolors?: Array<{ variants?: string[] }>;
+};
+
+export type AppliedAlias = {
+  typeName: string;
+  originVariant: string;
+  forward: AliasEntry;
+};
+
+function getAliasVariants(meta: AliasItemMeta): string[] {
   if (meta.variants && meta.variants.length) {
     return meta.variants;
   }
-  return meta.recolors[0].variants;
+  return meta.recolors![0]!.variants!;
 }
 
-/**
- * Resolves segmented alias targets by shifting name tokens until a variant match is found.
- * @param {string[]} variants Candidate variants.
- * @param {string} aliasVariant Alias variant expression.
- * @return {{targetName: string, targetVariant: string}} Resolved name/variant pair.
- */
-function resolveSegmentedTarget(variants, aliasVariant) {
+function resolveSegmentedTarget(
+  variants: string[],
+  aliasVariant: string,
+): { targetName: string; targetVariant: string } {
   const parts = aliasVariant.split("_");
   let targetName = "";
   let targetVariant = "";
@@ -37,22 +43,12 @@ function resolveSegmentedTarget(variants, aliasVariant) {
   return { targetName, targetVariant };
 }
 
-/**
- * Resolves a name-wildcard alias where both sides end with "_*"
- * (e.g., "Fur_Pants_*" → "Formal_Pants_*"). Returns the forward object when
- * the pattern matches, or null when either side is not a name-wildcard.
- * @param {string} originVariant Origin variant expression (left side of alias).
- * @param {string} aliasVariant Target variant expression (right side of alias).
- * @param {string|undefined} aliasType Explicit target type, if provided.
- * @param {string} defaultTypeName Fallback type name from item metadata.
- * @return {{typeName: string, name: string, variant: string}|null} Forward object or null.
- */
 function resolveNameWildcardAlias(
-  originVariant,
-  aliasVariant,
-  aliasType,
-  defaultTypeName,
-) {
+  originVariant: string,
+  aliasVariant: string,
+  aliasType: string | undefined,
+  defaultTypeName: string,
+): AliasEntry | null {
   if (!originVariant.endsWith("_*") || !aliasVariant.endsWith("_*")) {
     return null;
   }
@@ -63,14 +59,11 @@ function resolveNameWildcardAlias(
   };
 }
 
-/**
- * Resolves alias target metadata for a single alias entry.
- * @param {Object} meta Item metadata.
- * @param {string} aliasVariant Alias variant expression.
- * @param {string|undefined} aliasType Alias type expression.
- * @return {{targetName: string, targetVariant: string, typeName: string}|null} Resolved target data or null when invalid.
- */
-function resolveAliasTarget(meta, aliasVariant, aliasType) {
+function resolveAliasTarget(
+  meta: AliasItemMeta,
+  aliasVariant: string,
+  aliasType: string | undefined,
+): { targetName: string; targetVariant: string; typeName: string } | null {
   const variants = getAliasVariants(meta);
 
   // Wildcard Match
@@ -106,12 +99,12 @@ function resolveAliasTarget(meta, aliasVariant, aliasType) {
 
 /**
  * Normalizes alias definitions into canonical forwarding metadata for legacy URL and bookmark compatibility.
- * @param {Object<string, string>} aliases Alias map from origin pattern to destination pattern.
- * @param {Object} meta Item metadata containing variants, recolors, and type naming.
- * @return {Array<{typeName: string, originVariant: string, forward: {typeName: string, name: string, variant: string}}>} Applied alias mappings.
  */
-export function writeAliases(aliases, meta) {
-  const appliedAliases = [];
+export function writeAliases(
+  aliases: Record<string, string>,
+  meta: AliasItemMeta,
+): AppliedAlias[] {
+  const appliedAliases: AppliedAlias[] = [];
 
   for (const [original, alias] of Object.entries(aliases)) {
     const [aliasVariant, aliasType] = alias.split("=").reverse();

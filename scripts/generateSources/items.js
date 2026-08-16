@@ -4,7 +4,7 @@ import {
   ANIMATION_DEFAULTS,
   BODY_TYPES,
 } from "../../sources/state/constants.ts";
-import { writeAliases } from "./aliases.js";
+import { writeAliases } from "./aliases.ts";
 import { normalizeRecolors } from "./item-helper.ts";
 import {
   itemMetadata,
