@@ -14,8 +14,7 @@ import type { CatalogReader } from "./catalog.ts";
  *  is dropped, and the catalog `spritePath` is rewritten as a path relative to
  *  the asset root (no `spritesheets/` URL prefix). */
 type SerializedLayerSource =
-  | { kind: "catalog"; spritePath: string }
-  | { kind: "custom" };
+  { kind: "catalog"; spritePath: string } | { kind: "custom" };
 
 export type SerializedLayer = {
   itemId: string;
