@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { generateSources } from "../scripts/generate_sources.js";
+import { generateSources } from "../scripts/generate_sources.ts";
 import {
   computeSourceInputsFingerprint,
   getSourceInputsCachePath,

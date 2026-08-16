@@ -19,9 +19,29 @@ import {
   resetGeneratorState,
   SHEETS_DIR,
   readDirTree,
+  type MetadataEnv,
 } from "./generateSources/state.ts";
 
-export function generateSources(deps = {}, legacyEnv) {
+export type GenerateSourcesDeps = {
+  env?: MetadataEnv;
+  writeFileSync?: (
+    file: fs.PathOrFileDescriptor,
+    data: string | NodeJS.ArrayBufferView,
+  ) => void;
+  parseTreeFn?: typeof parseTree;
+  parseItemFn?: typeof parseItem;
+  processItemCreditsFn?: typeof processItemCredits;
+  loadPaletteMetadataFn?: typeof loadPaletteMetadata;
+  readDirTreeFn?: typeof readDirTree;
+  writeMetadata?: boolean;
+  writeCredits?: boolean;
+  metadataOutputPath?: string;
+};
+
+export function generateSources(
+  deps: GenerateSourcesDeps = {},
+  legacyEnv?: MetadataEnv,
+): void {
   const env = deps.env ?? legacyEnv ?? "production";
   const writeFileSyncFn = deps.writeFileSync ?? fs.writeFileSync;
   const parseTreeFn = deps.parseTreeFn ?? parseTree;
@@ -38,7 +58,6 @@ export function generateSources(deps = {}, legacyEnv) {
 
   loadPaletteMetadataFn();
 
-  // Read sheet_definitions/*.json line by line
   const files = readDirTreeFn(SHEETS_DIR);
 
   files.forEach((file) => {
@@ -53,7 +72,11 @@ export function generateSources(deps = {}, legacyEnv) {
 
     try {
       const { itemId, definition } = parseItemFn(file.parentPath, file.name);
-      processItemCreditsFn(itemId, file.parentPath, definition);
+      processItemCreditsFn(
+        itemId,
+        file.parentPath,
+        definition as Parameters<typeof processItemCredits>[2],
+      );
     } catch (e) {
       const fullPath = path.join(file.parentPath, file.name);
       if (!onlyIfTemplate)
@@ -61,10 +84,8 @@ export function generateSources(deps = {}, legacyEnv) {
     }
   });
 
-  // Build and sort category tree for runtime metadata output.
   populateAndSortCategoryTree();
 
-  // Write Credits CSV Output
   if (writeCredits) {
     const csvGenerated = generateCreditsCsv();
     try {
@@ -75,7 +96,6 @@ export function generateSources(deps = {}, legacyEnv) {
     }
   }
 
-  // Build and write five metadata ES modules (optional: CLI / tests skip; Vite plugin enables)
   if (writeMetadata) {
     const outDir = path.dirname(metadataOutputPath);
     const modules = buildAllMetadataModules(env);

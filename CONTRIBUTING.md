@@ -231,11 +231,11 @@ The app creates a catalog in **[`sources/main.ts`](sources/main.ts)**, then load
 npm run validate-site-sources
 ```
 
-That uses **`concurrently`** to run **`generate_credits.js`** and **`parse_zpos.js`** (same as writing **`z_positions.csv`** from the JSON) in parallel. Alternatively, run **`node scripts/generate_credits.js`** and **`node scripts/zPositioning/parse_zpos.js`** separately. Do not run **`node scripts/generate_sources.js`** as a CLI; it only prints a pointer to **`npm run validate-site-sources`** (the file’s role is to export **`generateSources`** for Vite and tests).
+That uses **`concurrently`** to run **`generate_credits.js`** and **`parse_zpos.js`** (same as writing **`z_positions.csv`** from the JSON) in parallel. Alternatively, run **`node scripts/generate_credits.js`** and **`node scripts/zPositioning/parse_zpos.js`** separately. Do not run **`node scripts/generate_sources.ts`** as a CLI; it only prints a pointer to **`npm run validate-site-sources`** (the file’s role is to export **`generateSources`** for Vite and tests).
 
 Vite is responsible for the five `dist/*-metadata.js` files when the plugin runs (and may update **CREDITS** / **z_positions** in the “inputs changed or first run / missing `dist` metadata” case). The plugin passes **`env`** (`development` vs `production`) into **`generateSources`** and controls JSON indentation in metadata.
 
-**`index.html`** is the Vite entry shell (layout, stylesheets, `sources/main.ts`). It is not emitted by `generate_sources.js`. Change it only when you mean to adjust the page structure or global assets.
+**`index.html`** is the Vite entry shell (layout, stylesheets, `sources/main.ts`). It is not emitted by `generate_sources.ts`. Change it only when you mean to adjust the page structure or global assets.
 
 The **Validate site sources** workflow (`.github/workflows/validate-site-sources.yml`) runs **`npm run validate-site-sources`** and fails if the working tree is dirty afterward. PRs that touch definitions must include regenerated **`CREDITS.csv`** and **`scripts/zPositioning/z_positions.csv`** whenever those files change.
 

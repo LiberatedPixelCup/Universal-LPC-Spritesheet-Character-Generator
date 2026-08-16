@@ -19,7 +19,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, "..", "..", "..", "..");
 const generatorModuleUrl = pathToFileURL(
-  projectPath("scripts", "generate_sources.js"),
+  projectPath("scripts", "generate_sources.ts"),
 ).href;
 
 let moduleLoadCounter = 0;

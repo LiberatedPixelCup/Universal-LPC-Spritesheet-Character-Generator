@@ -7,18 +7,39 @@ import {
   withCapturedConsoleError,
 } from "./generateSources/test_helpers.js";
 import { loadPaletteMetadata } from "../../../scripts/generateSources/palettes.ts";
+import type {
+  GeneratorItem,
+  GeneratorTreeNode,
+} from "../../../scripts/generateSources/state.ts";
+import type {
+  AliasMetadata,
+  MetadataIndexes,
+  PaletteMetadata,
+} from "../../../sources/state/catalog.ts";
+
+type GeneratorBuildGlobals = {
+  itemMetadata: Record<string, GeneratorItem>;
+  aliasMetadata: AliasMetadata;
+  categoryTree: GeneratorTreeNode;
+  paletteMetadata: PaletteMetadata;
+  metadataIndexes: MetadataIndexes;
+};
+
+function asGlobals(globals: unknown): GeneratorBuildGlobals {
+  return globals as GeneratorBuildGlobals;
+}
 
 test("build1-basic aligns merged metadata and index-metadata.js indexes", async () => {
   const result = await runBuild("build1-basic");
-  const metadata = result.globals.itemMetadata;
-  const alias = result.globals.aliasMetadata;
-  const category = result.globals.categoryTree;
-  const palette = result.globals.paletteMetadata;
-  const { metadataIndexes } = result.globals;
+  const metadata = asGlobals(result.globals).itemMetadata;
+  const alias = asGlobals(result.globals).aliasMetadata;
+  const category = asGlobals(result.globals).categoryTree;
+  const palette = asGlobals(result.globals).paletteMetadata;
+  const { metadataIndexes } = asGlobals(result.globals);
 
   assert.equal(metadata.wheelchair.name, "Wheelchair");
   assert.deepEqual(metadata.wheelchair.animations, ["wheelchair"]);
-  assert.deepEqual(metadata.wheelchair.credits[0].licenses, [
+  assert.deepEqual(metadata.wheelchair.credits![0].licenses, [
     "CC-BY 3.0",
     "OGA-BY 3.0",
   ]);
@@ -31,17 +52,17 @@ test("build1-basic aligns merged metadata and index-metadata.js indexes", async 
   ]);
 
   assert.deepEqual(alias, {});
-  assert.equal(category.children.body.label, "Body");
-  assert.equal(category.children.body.priority, 10);
-  assert.deepEqual(category.children.body.required, ["male"]);
+  assert.equal(category.children!.body.label, "Body");
+  assert.equal(category.children!.body.priority, 10);
+  assert.deepEqual(category.children!.body.required, ["male"]);
   assert.equal(palette.materials.body.default, "ulpc");
   assert.equal(palette.materials.body.base, "skin");
-  const [recolor] = metadata.head_nose_big.recolors;
+  const [recolor] = metadata.head_nose_big.recolors!;
   assert.equal(recolor.default, "ulpc");
   assert.equal(recolor.base, "ulpc.skin");
-  assert.ok(recolor.variants.includes("light"));
-  assert.ok(recolor.variants.includes("lpcr.ashen"));
-  assert.ok(recolor.variants.includes("all.lpcr.indigo"));
+  assert.ok(recolor.variants!.includes("light"));
+  assert.ok(recolor.variants!.includes("lpcr.ashen"));
+  assert.ok(recolor.variants!.includes("all.lpcr.indigo"));
 
   assert.deepEqual(metadata.wheelchair.path, ["body", "wheelchair"]);
   assert.deepEqual(metadata.head_nose_big.path, [
@@ -79,9 +100,9 @@ test("ignored-only sheets build can produce empty item metadata", async () => {
     runBuild("build2-invalid", "build1-basic"),
   );
 
-  assert.deepEqual(result.globals.itemMetadata, {});
-  assert.deepEqual(result.globals.metadataIndexes.byTypeName, {});
-  assert.deepEqual(result.globals.categoryTree.items, []);
+  assert.deepEqual(asGlobals(result.globals).itemMetadata, {});
+  assert.deepEqual(asGlobals(result.globals).metadataIndexes.byTypeName, {});
+  assert.deepEqual(asGlobals(result.globals).categoryTree.items, []);
   assert.ok(
     errors.some((entry) =>
       entry.includes("Skipping ignored item: ignored_item"),
@@ -93,7 +114,8 @@ test(
   "fails fast when a palette definition is invalid JSON",
   { timeout: 60000 },
   async () => {
-    const { generateSources } = await loadGeneratorModule();
+    const { generateSources } =
+      (await loadGeneratorModule()) as typeof import("../../../scripts/generate_sources.ts");
     assert.throws(
       () =>
         generateSources({
@@ -115,15 +137,16 @@ test("generateSources logs sheet parse errors and still builds multiple valid sh
     runBuild("build3-errors", "build1-basic"),
   );
 
-  assert.equal(result.globals.itemMetadata.good.name, "Wheelchair");
-  assert.equal(result.globals.itemMetadata.head_nose_big.name, "Big nose");
-  assert.deepEqual(result.globals.itemMetadata.good.path, ["body", "good"]);
-  assert.deepEqual(result.globals.itemMetadata.head_nose_big.path, [
+  const globals = asGlobals(result.globals);
+  assert.equal(globals.itemMetadata.good.name, "Wheelchair");
+  assert.equal(globals.itemMetadata.head_nose_big.name, "Big nose");
+  assert.deepEqual(globals.itemMetadata.good.path, ["body", "good"]);
+  assert.deepEqual(globals.itemMetadata.head_nose_big.path, [
     "head",
     "nose",
     "head_nose_big",
   ]);
-  assert.equal(result.globals.categoryTree.children.body.label, "Body");
+  assert.equal(globals.categoryTree.children!.body.label, "Body");
   assert.ok(
     errors.some((entry) =>
       entry.includes("Error parsing sheet file json data:"),
@@ -143,9 +166,9 @@ test("build4-expansive loads broad tree/palette coverage and captures fixture er
     runBuild("build4-expansive", "build4-expansive"),
   );
 
-  const metadata = result.globals.itemMetadata;
-  const tree = result.globals.categoryTree;
-  const palettes = result.globals.paletteMetadata;
+  const metadata = asGlobals(result.globals).itemMetadata;
+  const tree = asGlobals(result.globals).categoryTree;
+  const palettes = asGlobals(result.globals).paletteMetadata;
 
   assert.ok(Object.keys(metadata).length >= 15);
   assert.equal(metadata.shoulders_mantal.name, "Mantal");
@@ -204,7 +227,7 @@ test("build5-aliases emits non-empty aliasMetadata and pretty index when env is 
     env: "development",
   });
 
-  const alias = result.globals.aliasMetadata;
+  const alias = asGlobals(result.globals).aliasMetadata;
   assert.ok(Object.keys(alias).length >= 1);
   assert.deepEqual(alias.alias_build.legacy_slot, {
     typeName: "alias_build",
@@ -219,7 +242,7 @@ test("build5-aliases emits non-empty aliasMetadata and pretty index when env is 
   );
   assert.match(indexSrc, /"alias_build"/);
 
-  const rows = result.globals.metadataIndexes.byTypeName.alias_build;
+  const rows = asGlobals(result.globals).metadataIndexes.byTypeName.alias_build;
   assert.equal(rows.length, 1);
   assert.equal(rows[0].itemId, "alias_build_item");
   assert.ok(!Object.prototype.hasOwnProperty.call(rows[0], "layers"));

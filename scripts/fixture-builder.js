@@ -87,7 +87,7 @@ const TESTS_FIXTURES = path.join(REPO_ROOT, "tests", "fixtures", "issue-382");
  */
 async function ensureDistItemMetadata() {
   const genUrl = pathToFileURL(
-    path.join(REPO_ROOT, "scripts", "generate_sources.js"),
+    path.join(REPO_ROOT, "scripts", "generate_sources.ts"),
   ).href;
   const { generateSources } = await import(genUrl);
   const distDir = path.join(REPO_ROOT, "dist");
