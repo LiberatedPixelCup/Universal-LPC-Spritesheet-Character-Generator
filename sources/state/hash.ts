@@ -193,6 +193,7 @@ export function buildNewSelection(
     let recolorLabel: string | null | undefined = newSelection.recolor;
     if (recolorLabel) {
       const [, ver, recolor] = parseRecolorKey(
+        defaultCatalog,
         newSelection.recolor ?? null,
         subMeta,
       );
