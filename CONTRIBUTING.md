@@ -44,9 +44,9 @@ For example, you have created at this point:
 `body_robot.json`
 
 A category can exist of n-layers. For each layer, define the z-position the sheet needs to be drawn at.
-For an example of a multi-layered definition, refer here [here](/sheet_definitions/tail_lizard.json).
+For an example of a multi-layered definition, see [tail_lizard.json](sheet_definitions/body/lizard/tail_lizard.json).
 
-You can optionally also specify the available animations the asset supports. You do not have to feel obligated to fill out all animations, and some assets may not work well on all animations anyway. In the sheet definition, you can add the "animations" array below "variants". Again, refer here [here](/sheet_definitions/tail_lizard.json):
+You can optionally also specify the available animations the asset supports. You do not have to feel obligated to fill out all animations, and some assets may not work well on all animations anyway. In the sheet definition, you can add the "animations" array below "variants". Again, see [tail_lizard.json](sheet_definitions/body/lizard/tail_lizard.json):
 
 ```
   "animations": [
@@ -137,6 +137,24 @@ If the type_name is NOT included, the type_name from the current sheet definitio
 
 It is highly recommended to simply drop the aliases on the sheet definition that the alias was moved to, in which case you do not need to include the type name.
 
+#### Repository layout
+
+| Path | Role |
+| --- | --- |
+| `sources/` | App TypeScript (components, canvas, state, utils) |
+| `scripts/` | Node generation and other tooling (TypeScript) |
+| `vite/` | Vite plugins and metadata wiring (TypeScript; config is `vite.config.ts`) |
+| `tests/` | Browser Mocha specs, Node specs, Playwright visual tests (migrating to TypeScript) |
+| `sheet_definitions/` | Item/category JSON (source of truth for layers, credits, aliases) |
+| `palette_definitions/` | Palette JSON for GPU/CPU recolor |
+| `spritesheets/` | Licensed art; do not add files without credits |
+| `styles/` | App CSS (critical-shell, main, Bulma overrides, components) |
+| `sources/styles/` | PurgeCSS SCSS entries (`critical-entry.scss`, `deferred-entry.scss`) |
+| `dist/` | Vite output including five `*-metadata.js` modules; gitignored — do not commit |
+| `coverage/` | Local/CI coverage HTML + `lcov.info`; gitignored — do not commit |
+
+App CSS lives under **`styles/`**. PurgeCSS entry SCSS lives under **`sources/styles/`**. **`index.html`** is the Vite shell (layout, stylesheets, `sources/main.ts`). Change it only when you mean to adjust the page structure or global assets.
+
 #### Requirements
 
 Install these on your machine before you run builds or tests. Versions match what CI uses (see `.github/workflows/`).
@@ -156,11 +174,23 @@ After cloning, install JavaScript dependencies from the repo root:
 
 ```bash
 npm ci
-# or, for everyday work: npm install
+# After a lockfile merge or rebase conflict, use npm run lockfile:fix
+# (not npm install — that drops other-platform optional dependencies)
 ```
 
+| Task | Command |
+| --- | --- |
+| Local app (not `file://` on `index.html`) | `npm run dev` |
+| Lint / auto-fix (includes Prettier) | `npm run lint` / `npm run lint:fix` |
+| Type-check | `npm run type-check` |
+| Full uninstrumented suite | `npm test` |
+| Browser coverage (`sources/`) | `npm run test:browser:coverage` |
+| Node coverage (`scripts/`) | `npm run test:node:coverage` |
+| Refresh committed `CREDITS.csv` + `z_positions.csv` | `npm run validate-site-sources` |
+| Restore lockfile after merge/rebase (keeps optional deps) | `npm run lockfile:fix` |
+
 **JavaScript / TypeScript module format (Node)**  
-The root **`package.json`** sets **`"type": "module"`**, so first-party **`.js`** and **`.ts`** files are **ESM**—use **`import`** and **`export`**, not **`require`** or **`module.exports`**, for new Node scripts and tooling under **`scripts/`**, **`vite/`**, **`tests/node/`**, and similar paths. Relative imports use **explicit extensions** (`.js` or `.ts`, matching the file on disk). TypeScript must stay [erasable](https://www.typescriptlang.org/tsconfig/#erasableSyntaxOnly): no enums, namespaces, or parameter properties, so `node path/to/file.ts` works. One exception: the Testem configuration is **[`testem.cjs`](testem.cjs)** (CommonJS). [Testem](https://github.com/testem/testem) discovers **`testem.cjs`** automatically (same as **`testem.js`**, after **`testem.json` / `testem.yml`**, if those exist). Use **`--file testem.cjs`** only to force a path when you have multiple config files or need a non-default name.
+New code must be TypeScript (`.ts`), including tests, scripts, and Vite plugins. Do not add new `.js` files. Editing an existing `.js` file is a chance to convert it, or at least not grow it. The root **`package.json`** sets **`"type": "module"`**, so first-party **`.js`** and **`.ts`** files are **ESM**—use **`import`** and **`export`**, not **`require`** or **`module.exports`**, for new Node scripts and tooling under **`scripts/`**, **`vite/`**, **`tests/node/`**, and similar paths. Relative imports use **explicit extensions** (`.js` or `.ts`, matching the file on disk). TypeScript must stay [erasable](https://www.typescriptlang.org/tsconfig/#erasableSyntaxOnly): no enums, namespaces, or parameter properties, so `node path/to/file.ts` works. One exception: the Testem configuration is **[`testem.cjs`](testem.cjs)** (CommonJS). [Testem](https://github.com/testem/testem) discovers **`testem.cjs`** automatically (same as **`testem.js`**, after **`testem.json` / `testem.yml`**, if those exist). Use **`--file testem.cjs`** only to force a path when you have multiple config files or need a non-default name. Unused bindings that must exist use a **`_`** prefix (ESLint). **`console.*`** except **`console.error`** are lint errors; use **`console.error`**, or **`debugLog`** / **`debugWarn`** from [`sources/utils/debug.ts`](sources/utils/debug.ts) (gated by localhost / `?debug=`).
 
 **Type-check:** `npm run type-check` runs `tsc --noEmit` (also in the Lint workflow). The app under **`sources/`** and Vite plugins/config under **`vite/`** are TypeScript; **`scripts/`** and **`tests/`** are mid-migration (`allowJs` is still on).
 
@@ -195,6 +225,9 @@ If you develop on **macOS** or **Linux**, install **rsync 3.x** and ensure it is
 
 **Windows note:** If you run **`npm run build`** inside **WSL** or another **Linux** environment, that environment uses the **rsync** path above, not **robocopy**. Native **Windows** shells (**cmd**, **PowerShell**, **Git Bash** with Node for Windows) use **robocopy**.
 
+**Critical CSS (PurgeCSS)**  
+First-paint CSS is trimmed by PurgeCSS. If you add a class used on first paint (or only from TypeScript), make sure it is still present after a production build. Extend the safelist in [`vite/purgecss-critical-safelist.ts`](vite/purgecss-critical-safelist.ts) when the scanner would drop it. Most styles live under **`styles/`**. PurgeCSS entry SCSS lives under **`sources/styles/`**. A class that exists only at runtime and is not scanned or safelisted can be purged and ship a blank control.
+
 **Browsers**
 
 - **`npm test`** (browser suite via [Testem](https://github.com/testem/testem) + [Vite](https://vitejs.dev/)) uses **Chrome** and **Firefox** as configured in [`testem.cjs`](testem.cjs). CI installs them with **`browser-actions/setup-chrome`** and **`browser-actions/setup-firefox`** (see [`.github/workflows/ci.yml`](.github/workflows/ci.yml)).
@@ -219,7 +252,7 @@ For visual tests only, **`npx playwright install chromium`** is enough. The Argo
 | **`credits-metadata.js`** | `itemCredits` — map `itemId → credits[]`                                                                |
 | **`layers-metadata.js`**  | `itemLayers` — map `itemId → layer objects`                                                             |
 
-The app creates a catalog in **[`sources/main.ts`](sources/main.ts)**, then loads the generated modules with **parallel `import()`** and registers each chunk into that instance (entry: [`sources/install-item-metadata.ts`](sources/install-item-metadata.ts)). Production code receives the catalog explicitly and uses its typed getters (`catalog.getCategoryTree()`, `catalog.getItemLite()`, `catalog.getItemLayers()`, `catalog.getItemCredits()`, `catalog.getPaletteMetadata()`, `catalog.getMetadataIndexes()`, …), not ad hoc globals.
+The app creates a catalog in **[`sources/main.ts`](sources/main.ts)**, then loads the generated modules with **parallel `import()`** and registers each chunk into that instance (entry: [`sources/install-item-metadata.ts`](sources/install-item-metadata.ts)). Bootstrap calls **`configureStateCatalog`** so production state uses that instance. UI components are Mithril **`m.Component<Attrs, State>`** objects; thread **`catalog: CatalogReader`** through attrs from bootstrap. Getters return **`Result<T, LoadError>`** from **`neverthrow`**. In views, use **`renderResult`** from [`sources/utils/render-result.ts`](sources/utils/render-result.ts). Elsewhere use **`.match`** / **`.unwrapOr`** / **`if (r.isErr())`**. Production code uses typed getters (`catalog.getCategoryTree()`, `catalog.getItemLite()`, `catalog.getItemLayers()`, `catalog.getItemCredits()`, `catalog.getPaletteMetadata()`, `catalog.getMetadataIndexes()`, …), not ad hoc globals. Tests create their own catalog with **`createCatalog()`** and seed it.
 
 **Staged loading** — Each catalog exposes **`isIndexReady()`**, **`isLiteReady()`**, **`isCreditsReady()`**, **`isPaletteReady()`**, and **`isLayersReady()`** as synchronous predicates. Its **`catalog.ready`** object provides **`onIndexReady`**, **`onLiteReady`**, …, and **`onAllReady`** (each a **`Promise<void>`** that resolves once). The UI and bootstrap can treat **index** (tree skeleton), **lite** (item rows, hash), **credits** (license text), **palette**, and **layers** (canvas, sprite paths) as separate readiness stages.
 
@@ -238,6 +271,8 @@ Vite is responsible for the five `dist/*-metadata.js` files when the plugin runs
 **`index.html`** is the Vite entry shell (layout, stylesheets, `sources/main.ts`). It is not emitted by `generate_sources.ts`. Change it only when you mean to adjust the page structure or global assets.
 
 The **Validate site sources** workflow (`.github/workflows/validate-site-sources.yml`) runs **`npm run validate-site-sources`** and fails if the working tree is dirty afterward. PRs that touch definitions must include regenerated **`CREDITS.csv`** and **`scripts/zPositioning/z_positions.csv`** whenever those files change.
+
+**Other derived files** — Fixtures under **`tests/fixtures/`** that come from [`scripts/fixture-builder.ts`](scripts/fixture-builder.ts) are committed when they change; review the diffs and do not regenerate blindly. **`coverage/`** is produced by the coverage scripts and is gitignored — do not commit it.
 
 #### Running Tests
 
@@ -286,13 +321,17 @@ npm run test:browser:coverage
 
 Plain **`npm test`** / **`npm run test:server`** stay uninstrumented. Coverage HTML and `lcov.info` land under **`coverage/node/`** and **`coverage/browser/`**. Browser collection is off unless **`VITE_COVERAGE=true`** (the `test:browser:coverage` script sets that).
 
+If you changed patch-gated code under **`scripts/`** (see [`codecov.yml`](codecov.yml) `ignore:`), run **`npm run test:node:coverage`**. Browser coverage will not see those files. If you changed **`sources/`**, run **`npm run test:browser:coverage`**.
+
+**Confirm new lines locally** — Open **`coverage/browser/index.html`** or **`coverage/node/index.html`** (or the terminal report) and check that every new or edited production line is marked hit. Do not wait for Codecov CI.
+
 **PR checks** (see [`codecov.yml`](codecov.yml)):
 
 - **`codecov/patch`** — every new or edited production line under `sources/` (browser) or the generate-sources scripts (Node) must be executed by a unit test (100% patch). Comments, blank lines, erased TypeScript, and lines Istanbul does not give a statement counter (argument-only lines, object shorthands, function headers, or source-map holes with no `DA` row) do not count. A `DA:0` row on a straight-line statement in an already-entered function is treated as a neighbor source-map hole; `DA:0` inside a nested branch still fails until a test executes that statement.
 - **`codecov/changes`** — existing production lines must not lose hits (deleted or weakened unit tests).
 - There is **no** overall coverage-percentage gate. Adding a large file will not fail the PR just because the project average moved.
 
-Ignored in the report: `tests/`, generated `dist/`, `spritesheets/`, `sheet_definitions/`, CSS, Vite plugins, non-generator `scripts/` (image processing, zip profiling, coverage merge, and similar), `sources/performance-profiler.ts`, `sources/utils/debug.ts`, `testem.cjs`, and `vite.config.js`. See [`codecov.yml`](codecov.yml).
+Ignored in the report: see the `ignore:` block in [`codecov.yml`](codecov.yml).
 
 Contributors do not need a Codecov account or token. Fork pull requests run on the same `pull_request` workflow as today’s browser tests; uploads from forks are tokenless. Maintainers: installing the [Codecov GitHub App](https://github.com/apps/codecov), setting the `CODECOV_TOKEN` Actions secret, and requiring `codecov/patch` plus `codecov/changes` after `master` has a baseline are one-time repo settings. See [Codecov’s GitHub quick start](https://docs.codecov.com/docs/quick-start).
 
@@ -323,7 +362,7 @@ Full-page screenshots live under [`tests/visual/`](tests/visual/) and use [`play
 
 **Unit and component specs (Mocha + Chai)**
 
-[`tests/tests.js`](tests/tests.js) imports every browser spec listed there (`*_spec.js` today; some Node specs are already `*_spec.ts`). **`tests/node/`** is exercised by **`before_tests`** and by **`npm run test:node`** directly. [`tests/node/run-node-tests.js`](tests/node/run-node-tests.js) collects both **`_spec.js`** and **`_spec.ts`** under **`tests/node/`**.
+[`tests/tests.js`](tests/tests.js) imports every browser spec listed there. New specs are TypeScript (`*_spec.ts`); do not add a new `.js` spec. **`tests/node/`** is exercised by **`before_tests`** and by **`npm run test:node`** directly. [`tests/node/run-node-tests.js`](tests/node/run-node-tests.js) collects both **`_spec.js`** and **`_spec.ts`** under **`tests/node/`**.
 
 [`tests/vitest-setup.js`](tests/vitest-setup.js) loads **`sources/vendor-globals.ts`** and sets test flags on **`window`**. Specs create independent catalogs with **`createCatalog()`** and register only the metadata stages and records they exercise. Shared helpers in [`tests/browser-catalog-fixture.js`](tests/browser-catalog-fixture.js) seed explicit fixture catalogs for larger ZIP scenarios.
 
@@ -333,15 +372,15 @@ Typical patterns:
 - Render with **`m.render(…)`** using the global **`m`**.
 - Use **`beforeEach` / `afterEach`** to create and remove DOM containers.
 
-Example:
+Example (`tests/components/MyComponent_spec.ts`):
 
-```javascript
-import { MyComponent } from "../sources/components/MyComponent.ts";
+```typescript
+import { MyComponent } from "../../sources/components/MyComponent.ts";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 
 describe("MyComponent", () => {
-  let container;
+  let container: HTMLDivElement;
 
   beforeEach(() => {
     container = document.createElement("div");
@@ -349,7 +388,7 @@ describe("MyComponent", () => {
   });
 
   afterEach(() => {
-    container?.remove();
+    container.remove();
   });
 
   it("renders correctly", () => {
