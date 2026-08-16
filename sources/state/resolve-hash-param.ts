@@ -48,8 +48,7 @@ export function expandMetadataIndexesWithInternedArrays(
     (rows) => Array.isArray(rows) && rows.length > 0,
   );
   const firstRow = firstType?.[0] as
-    | (SlimByTypeNameRow & { v?: number; r?: number })
-    | undefined;
+    (SlimByTypeNameRow & { v?: number; r?: number }) | undefined;
   if (
     !firstRow ||
     firstRow.variants !== undefined ||

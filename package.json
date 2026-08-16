@@ -52,7 +52,7 @@
   "devDependencies": {
     "@argos-ci/playwright": "^7.3.6",
     "@eslint/js": "^10.0.1",
-    "@playwright/test": "^1.60.0",
+    "@playwright/test": "^1.62.1",
     "@tsconfig/strictest": "^2.0.8",
     "@types/mithril": "^2.2.8",
     "@types/node": "^25.6.0",
@@ -78,7 +78,7 @@
     "vite": "^8.0.16",
     "vite-multiple-assets": "^2.2.6",
     "vite-plugin-cp": "^6.0.3",
-    "vite-plugin-run": "^0.8.0",
+    "vite-plugin-run": "^0.9.1",
     "vite-plugin-testem": "^1.0.1"
   },
   "overrides": {
