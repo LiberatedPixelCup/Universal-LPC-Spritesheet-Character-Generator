@@ -248,7 +248,7 @@ describe("state/zip.ts", () => {
 
       const addSpy = sinon.spy(addAnimationSliceToZip);
 
-      await renderCharacter(state.selections, "male");
+      await renderCharacter(defaultCatalog, state.selections, "male");
       await exportSplitAnimations({ addAnimationSliceToZip: addSpy });
 
       const customPng = addSpy
@@ -361,12 +361,13 @@ describe("state/zip.ts", () => {
 
       expect(renderStub.callCount).to.equal(bodyLayers.length);
       const renderCall = renderStub.firstCall;
-      expect(renderCall.args[0]).to.equal("body");
-      expect(renderCall.args[1]).to.equal("light");
-      expect(renderCall.args[2]).to.equal(null);
-      expect(renderCall.args[3]).to.equal(state.bodyType);
-      expect(renderCall.args[4]).to.equal(state.selections);
-      expect(renderCall.args[5]).to.equal(bodyLayers[0].layerNum);
+      expect(renderCall.args[0]).to.equal(defaultCatalog);
+      expect(renderCall.args[1]).to.equal("body");
+      expect(renderCall.args[2]).to.equal("light");
+      expect(renderCall.args[3]).to.equal(null);
+      expect(renderCall.args[4]).to.equal(state.bodyType);
+      expect(renderCall.args[5]).to.equal(state.selections);
+      expect(renderCall.args[6]).to.equal(bodyLayers[0].layerNum);
     });
 
     it("writes PNG blobs under items/ when render succeeds", async () => {
@@ -775,13 +776,14 @@ describe("state/zip.ts", () => {
 
       expect(renderStub.callCount).to.equal(bodyLayers.length);
       const rc = renderStub.firstCall;
-      expect(rc.args[0]).to.equal("body");
-      expect(rc.args[1]).to.equal("light");
-      expect(rc.args[2]).to.equal(null);
-      expect(rc.args[3]).to.equal(state.bodyType);
-      expect(rc.args[4]).to.equal("walk");
-      expect(rc.args[5]).to.equal(state.selections);
-      expect(rc.args[6]).to.equal(bodyLayers[0].layerNum);
+      expect(rc.args[0]).to.equal(defaultCatalog);
+      expect(rc.args[1]).to.equal("body");
+      expect(rc.args[2]).to.equal("light");
+      expect(rc.args[3]).to.equal(null);
+      expect(rc.args[4]).to.equal(state.bodyType);
+      expect(rc.args[5]).to.equal("walk");
+      expect(rc.args[6]).to.equal(state.selections);
+      expect(rc.args[7]).to.equal(bodyLayers[0].layerNum);
     });
 
     it("writes metadata.json with standardAnimations.exported / failed maps per animation (walk only in fixture)", async () => {
@@ -866,7 +868,7 @@ describe("state/zip.ts", () => {
 
       const loadImageStub = sandbox.stub().resolves(nonEmptyAnimCanvas());
 
-      await renderCharacter(state.selections, "male");
+      await renderCharacter(defaultCatalog, state.selections, "male");
       await exportSplitItemAnimations({
         loadImage: loadImageStub,
       });
@@ -984,7 +986,7 @@ describe("state/zip.ts", () => {
         addStandardAnimationToZipCustomFolder,
       );
 
-      await renderCharacter(state.selections, "male");
+      await renderCharacter(defaultCatalog, state.selections, "male");
       await exportSplitItemAnimations({
         loadImage: loadImageStub,
         addAnimationSliceToZip: addAnimationSliceToZipSpy,
@@ -1095,7 +1097,7 @@ describe("state/zip.ts", () => {
         addStandardAnimationToZipCustomFolder,
       );
 
-      await renderCharacter(state.selections, "male");
+      await renderCharacter(defaultCatalog, state.selections, "male");
       await exportSplitItemAnimations({
         loadImage: loadImageStub,
         getImageToDraw: getImageToDrawStub,
@@ -1360,7 +1362,7 @@ describe("state/zip.ts", () => {
         },
       };
 
-      await renderCharacter(state.selections, "male");
+      await renderCharacter(defaultCatalog, state.selections, "male");
 
       const extractStub = sandbox.stub().callsFake(() => smallAnimCanvas());
       const framesStub = sinon.stub().returns({});

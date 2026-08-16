@@ -6,7 +6,7 @@
  * Real sprite URLs (no global Image stub): avoids cache/global issues in the
  * shared `load-image` module. `try`/`finally` plus `resetRendererModuleState()`
  * (drawCalls, customAreaItems, addedCustomAnimations, initCanvas) plus
- * `resetImageLoadCache()` and restoring the app catalog keep later specs
+ * `resetImageLoadCache()` and an isolated catalog keep later specs
  * safe when this file is imported first (e.g. if test order is randomized later).
  */
 import { expect } from "chai";
@@ -22,11 +22,8 @@ import {
 } from "../../sources/canvas/renderer.ts";
 import { resetImageLoadCache } from "../../sources/canvas/load-image.ts";
 import { resetState } from "../../sources/state/hash.ts";
-import { resetCatalogForTests } from "../../sources/state/catalog.ts";
-import {
-  restoreAppCatalogAfterTest,
-  seedBrowserCatalog,
-} from "../browser-catalog-fixture.js";
+import { createCatalog } from "../../sources/state/catalog.ts";
+import { seedCatalog } from "../browser-catalog-fixture.js";
 import { state } from "../../sources/state/state.ts";
 
 const ISSUE_364_METADATA = {
@@ -48,13 +45,14 @@ const ISSUE_364_METADATA = {
 
 describe("canvas/renderer.ts issue #364 (addedCustomAnimations export)", () => {
   let sandbox;
+  let catalog;
 
   beforeEach(() => {
     sandbox = sinon.createSandbox();
     resetState();
     initCanvas();
-    resetCatalogForTests();
-    seedBrowserCatalog(ISSUE_364_METADATA);
+    catalog = createCatalog();
+    seedCatalog(catalog, ISSUE_364_METADATA);
     state.selections = {
       slot: {
         itemId: "issue364_wheel_item",
@@ -77,18 +75,17 @@ describe("canvas/renderer.ts issue #364 (addedCustomAnimations export)", () => {
     initCanvas();
   }
 
-  afterEach(async () => {
+  afterEach(() => {
     resetImageLoadCache();
     resetRendererModuleState();
     if (sandbox) {
       sandbox.restore();
       sandbox = null;
     }
-    await restoreAppCatalogAfterTest();
   });
 
   it("records custom animation names on the exported addedCustomAnimations set after renderCharacter", async () => {
-    await renderCharacter(state.selections, "male");
+    await renderCharacter(catalog, state.selections, "male");
 
     expect(
       addedCustomAnimations.size,

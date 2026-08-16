@@ -31,11 +31,8 @@ import {
 } from "../../sources/canvas/renderer.ts";
 import { resetImageLoadCache } from "../../sources/canvas/load-image.ts";
 import { resetState } from "../../sources/state/hash.ts";
-import { resetCatalogForTests } from "../../sources/state/catalog.ts";
-import {
-  restoreAppCatalogAfterTest,
-  seedBrowserCatalog,
-} from "../browser-catalog-fixture.js";
+import { createCatalog } from "../../sources/state/catalog.ts";
+import { seedCatalog } from "../browser-catalog-fixture.js";
 import { state } from "../../sources/state/state.ts";
 import {
   ANIMATION_CONFIGS,
@@ -188,6 +185,7 @@ describe("canvas/renderer.ts", () => {
     this.timeout(15_000);
 
     let sandbox;
+    let catalog;
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
@@ -195,13 +193,13 @@ describe("canvas/renderer.ts", () => {
       state.customUploadedImage = null;
       state.customImageZPos = 100;
       initCanvas();
-      resetCatalogForTests();
+      catalog = createCatalog();
       if (typeof m !== "undefined" && m.redraw) {
         sandbox.stub(m, "redraw");
       }
     });
 
-    afterEach(async () => {
+    afterEach(() => {
       resetImageLoadCache();
       resetRendererModuleState();
       state.customUploadedImage = null;
@@ -209,12 +207,12 @@ describe("canvas/renderer.ts", () => {
         sandbox.restore();
         sandbox = null;
       }
-      await restoreAppCatalogAfterTest();
     });
 
     it("skips items whose required list excludes the body type", async () => {
-      seedBrowserCatalog({ walk_only: walkItemMeta() });
+      seedCatalog(catalog, { walk_only: walkItemMeta() });
       await renderCharacter(
+        catalog,
         {
           slot: {
             itemId: "walk_only",
@@ -228,9 +226,10 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("skips selections that have a subId", async () => {
-      seedBrowserCatalog({ walk_only: walkItemMeta() });
+      seedCatalog(catalog, { walk_only: walkItemMeta() });
       // `subId` is checked for truthiness in the renderer (0 would not skip).
       await renderCharacter(
+        catalog,
         {
           slot: {
             itemId: "walk_only",
@@ -245,8 +244,9 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("queues walk and omits alias folders for a walk-only item", async () => {
-      seedBrowserCatalog({ walk_only: walkItemMeta() });
+      seedCatalog(catalog, { walk_only: walkItemMeta() });
       await renderCharacter(
+        catalog,
         {
           slot: {
             itemId: "walk_only",
@@ -265,10 +265,11 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("maps combat metadata to combat_idle drawCalls", async () => {
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         combat_item: walkItemMeta({ animations: ["combat"] }),
       });
       await renderCharacter(
+        catalog,
         {
           slot: {
             itemId: "combat_item",
@@ -282,10 +283,11 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("maps 1h_slash metadata to backslash drawCalls", async () => {
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         slash_item: walkItemMeta({ animations: ["1h_slash"] }),
       });
       await renderCharacter(
+        catalog,
         {
           slot: {
             itemId: "slash_item",
@@ -299,10 +301,11 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("maps 1h_halfslash metadata to halfslash drawCalls", async () => {
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         half_item: walkItemMeta({ animations: ["1h_halfslash"] }),
       });
       await renderCharacter(
+        catalog,
         {
           slot: {
             itemId: "half_item",
@@ -316,7 +319,7 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("sorts drawCalls by ascending zPos", async () => {
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         layered: walkItemMeta({
           layers: {
             layer_1: {
@@ -331,6 +334,7 @@ describe("canvas/renderer.ts", () => {
         }),
       });
       await renderCharacter(
+        catalog,
         {
           slot: {
             itemId: "layered",
@@ -349,13 +353,14 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("sets needsRecolor for body-body with a non-light variant", async () => {
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         "body-body": walkItemMeta({
           name: "Body Color",
           type_name: "body",
         }),
       });
       await renderCharacter(
+        catalog,
         {
           body: {
             itemId: "body-body",
@@ -372,11 +377,11 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("queues custom-upload drawCalls from state.customUploadedImage", async () => {
-      seedBrowserCatalog({});
+      seedCatalog(catalog, {});
       state.customUploadedImage = await imageFromFilledCanvas(8, 8, "#00ff00");
       state.customImageZPos = 42;
 
-      await renderCharacter({}, "male");
+      await renderCharacter(catalog, {}, "male");
 
       const customCalls = drawCalls.filter((d) => d.itemId === "custom-upload");
       expect(customCalls.length).to.be.at.least(1);
@@ -391,13 +396,14 @@ describe("canvas/renderer.ts", () => {
     this.timeout(15_000);
 
     let sandbox;
+    let catalog;
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
       resetState();
       initCanvas();
-      resetCatalogForTests();
-      seedBrowserCatalog({
+      catalog = createCatalog();
+      seedCatalog(catalog, {
         wheel_item: WHEELCHAIR_ITEM_META,
       });
       if (typeof m !== "undefined" && m.redraw) {
@@ -405,18 +411,18 @@ describe("canvas/renderer.ts", () => {
       }
     });
 
-    afterEach(async () => {
+    afterEach(() => {
       resetImageLoadCache();
       resetRendererModuleState();
       if (sandbox) {
         sandbox.restore();
         sandbox = null;
       }
-      await restoreAppCatalogAfterTest();
     });
 
     it("grows the canvas and records custom_sprite area items for wheelchair", async () => {
       await renderCharacter(
+        catalog,
         {
           slot: {
             itemId: "wheel_item",
@@ -440,30 +446,31 @@ describe("canvas/renderer.ts", () => {
     this.timeout(15_000);
 
     let sandbox;
+    let catalog;
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
       resetState();
       initCanvas();
-      resetCatalogForTests();
+      catalog = createCatalog();
       if (typeof m !== "undefined" && m.redraw) {
         sandbox.stub(m, "redraw");
       }
     });
 
-    afterEach(async () => {
+    afterEach(() => {
       resetImageLoadCache();
       resetRendererModuleState();
       if (sandbox) {
         sandbox.restore();
         sandbox = null;
       }
-      await restoreAppCatalogAfterTest();
     });
 
     it("returns null for a missing item", async () => {
-      seedBrowserCatalog({});
+      seedCatalog(catalog, {});
       const result = await renderSingleItem(
+        catalog,
         "does_not_exist",
         null,
         null,
@@ -474,8 +481,9 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("returns null for an unsupported body type", async () => {
-      seedBrowserCatalog({ walk_only: walkItemMeta() });
+      seedCatalog(catalog, { walk_only: walkItemMeta() });
       const result = await renderSingleItem(
+        catalog,
         "walk_only",
         "olive",
         null,
@@ -486,8 +494,9 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("returns null for an unknown animation name", async () => {
-      seedBrowserCatalog({ walk_only: walkItemMeta() });
+      seedCatalog(catalog, { walk_only: walkItemMeta() });
       const result = await renderSingleItemAnimation(
+        catalog,
         "walk_only",
         "olive",
         null,
@@ -499,9 +508,10 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("returns a standard sheet-sized canvas for a walk item", async () => {
-      seedBrowserCatalog({ walk_only: walkItemMeta() });
+      seedCatalog(catalog, { walk_only: walkItemMeta() });
       // Truthy recolors omit the variant segment so paths hit existing walk.png.
       const result = await renderSingleItem(
+        catalog,
         "walk_only",
         null,
         { misc: "unused" },
@@ -514,9 +524,10 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("returns a single-anim canvas with height num * FRAME_SIZE", async () => {
-      seedBrowserCatalog({ walk_only: walkItemMeta() });
+      seedCatalog(catalog, { walk_only: walkItemMeta() });
       const walk = ANIMATION_CONFIGS.walk;
       const result = await renderSingleItemAnimation(
+        catalog,
         "walk_only",
         null,
         { misc: "unused" },
@@ -530,8 +541,9 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("draws content into the walk band for a successful single-item render", async () => {
-      seedBrowserCatalog({ walk_only: walkItemMeta() });
+      seedCatalog(catalog, { walk_only: walkItemMeta() });
       const result = await renderSingleItem(
+        catalog,
         "walk_only",
         null,
         { misc: "unused" },
@@ -548,8 +560,9 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("returns a taller-than-sheet canvas for a custom-animation-only item", async () => {
-      seedBrowserCatalog({ wheel_item: WHEELCHAIR_ITEM_META });
+      seedCatalog(catalog, { wheel_item: WHEELCHAIR_ITEM_META });
       const result = await renderSingleItem(
+        catalog,
         "wheel_item",
         "brass",
         null,
