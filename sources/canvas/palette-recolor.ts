@@ -424,7 +424,6 @@ export async function drawRecolorPreview(
   );
 
   // Load and draw all layers
-  let imagesLoaded = 0;
   const loadedLayers = await Promise.all(
     layersToLoad.map((layer) => {
       return new Promise<{
@@ -447,7 +446,7 @@ export async function drawRecolorPreview(
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   // Draw each layer in zPos order
-  imagesLoaded = 0;
+  let imagesLoaded = 0;
   for (const { img, layer } of loadedLayers) {
     if (isStale()) {
       return 0;

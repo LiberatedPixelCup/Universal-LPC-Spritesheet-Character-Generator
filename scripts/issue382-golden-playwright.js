@@ -121,7 +121,7 @@ export async function generateIssue382GoldenZipFixtures(inputRelativeToRepo) {
         .catch(() => null);
       const extra = [statusText, pageText].filter(Boolean).join(" | ");
       if (extra) {
-        throw new Error(`Golden runner timed out at: ${extra}`);
+        throw new Error(`Golden runner timed out at: ${extra}`, { cause: err });
       }
       throw err;
     }

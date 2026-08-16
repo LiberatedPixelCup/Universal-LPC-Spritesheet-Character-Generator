@@ -25,7 +25,7 @@ export function parseTree(filePath, fileName, options = {}) {
   const fullPath = path.join(filePath, fileName);
   if (!onlyIfTemplate) debugLog(`Parsing tree ${fullPath}`);
 
-  let meta = null;
+  let meta;
   try {
     meta = JSON.parse(fs.readFileSync(fullPath));
   } catch (e) {
