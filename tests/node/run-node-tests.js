@@ -2,26 +2,26 @@ import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 
-const moduleSpecDir = path.join("tests", "node", "scripts", "generateSources");
-const moduleSpecs = fs
-  .readdirSync(moduleSpecDir)
-  .filter((fileName) => fileName.endsWith("_spec.js"))
-  .map((fileName) => path.join(moduleSpecDir, fileName));
+/**
+ * Recursively collect `*_spec.js` files under `dir`.
+ * @param {string} dir
+ * @param {string[]} acc
+ * @returns {string[]}
+ */
+function collectSpecFiles(dir, acc = []) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      collectSpecFiles(full, acc);
+    } else if (entry.name.endsWith("_spec.js")) {
+      acc.push(full);
+    }
+  }
+  return acc;
+}
 
-const stateSpecDir = path.join("tests", "node", "state");
-const stateSpecs = fs.existsSync(stateSpecDir)
-  ? fs
-      .readdirSync(stateSpecDir)
-      .filter((fileName) => fileName.endsWith("_spec.js"))
-      .map((fileName) => path.join(stateSpecDir, fileName))
-  : [];
-
-const args = [
-  "--test",
-  "tests/node/scripts/generate_sources_spec.js",
-  ...moduleSpecs,
-  ...stateSpecs,
-];
+const specs = collectSpecFiles(path.join("tests", "node")).sort();
+const args = ["--test", ...specs];
 const result = spawnSync(process.execPath, args, {
   stdio: "inherit",
   shell: false,
