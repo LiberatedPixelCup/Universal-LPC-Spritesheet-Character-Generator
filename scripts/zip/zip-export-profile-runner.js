@@ -117,22 +117,22 @@ async function runProfiles(opts = {}) {
   await renderCharacter(defaultCatalog, state.selections, state.bodyType);
 
   if (run("splitAnimations")) {
-    await exportSplitAnimations();
+    await exportSplitAnimations(defaultCatalog);
     state.zipByAnimation.isRunning = false;
   }
 
   if (run("splitItemSheets")) {
-    await exportSplitItemSheets();
+    await exportSplitItemSheets(defaultCatalog);
     state.zipByItem.isRunning = false;
   }
 
   if (run("splitItemAnimations")) {
-    await exportSplitItemAnimations();
+    await exportSplitItemAnimations(defaultCatalog);
     state.zipByAnimimationAndItem.isRunning = false;
   }
 
   if (run("individualFrames")) {
-    await exportIndividualFrames();
+    await exportIndividualFrames(defaultCatalog);
     if (state.zipIndividualFrames) {
       state.zipIndividualFrames.isRunning = false;
     }

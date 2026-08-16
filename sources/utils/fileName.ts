@@ -1,4 +1,4 @@
-import { getItemMerged } from "../state/catalog.ts";
+import type { CatalogReader } from "../state/catalog.ts";
 
 function addExtensionIfMissing(filename: string, extension: string): string {
   if (filename.toLowerCase().endsWith(extension.toLowerCase())) {
@@ -8,13 +8,14 @@ function addExtensionIfMissing(filename: string, extension: string): string {
 }
 
 export function getItemFileName(
+  catalog: CatalogReader,
   itemId: string,
   variant: string,
   name: string,
   layerNum: number = 1,
   zOverride?: number,
 ): string {
-  const result = getItemMerged(itemId);
+  const result = catalog.getItemMerged(itemId);
   if (result.isErr()) return addExtensionIfMissing(name, "png");
 
   // Get zPos from specified layer
