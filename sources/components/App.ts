@@ -49,7 +49,11 @@ export const App: m.Component<AppAttrs, AppState> = {
       syncSelectionsToHash(vnode.attrs.catalog);
       if (window.canvasRenderer) {
         // Render to offscreen canvas (async)
-        renderCharacter(state.selections, state.bodyType).then(() => {
+        renderCharacter(
+          vnode.attrs.catalog,
+          state.selections,
+          state.bodyType,
+        ).then(() => {
           // Trigger redraw to update preview canvas after offscreen render completes
           m.redraw();
         });

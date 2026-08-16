@@ -25,12 +25,7 @@ import {
 } from "./preview-animation.ts";
 import { getSortedLayersByAnim } from "../state/meta.ts";
 import type { AnimationLayer } from "../state/meta.ts";
-import {
-  catalogReady,
-  defaultCatalog,
-  formatLoadError,
-  getItemMerged,
-} from "../state/catalog.ts";
+import { formatLoadError, type CatalogReader } from "../state/catalog.ts";
 import m from "mithril";
 import { debugWarn } from "../utils/debug.ts";
 import type { Selections } from "../state/state.ts";
@@ -204,14 +199,15 @@ export function resetRenderCharacterQueueForTests(): void {
  * are outside the `renderCharacter` performance measure; marks wrap compositing in `runRenderCharacter` only.
  */
 export async function renderCharacter(
+  catalog: CatalogReader,
   selections: Selections,
   bodyType: string,
   targetCanvas: HTMLCanvasElement | null = null,
 ): Promise<void> {
-  await catalogReady.onLayersReady;
+  await catalog.ready.onLayersReady;
 
   const p = renderCharacterSerial.then(() =>
-    runRenderCharacter(selections, bodyType, targetCanvas),
+    runRenderCharacter(catalog, selections, bodyType, targetCanvas),
   );
   renderCharacterSerial = p.then(
     () => {},
@@ -221,6 +217,7 @@ export async function renderCharacter(
 }
 
 async function runRenderCharacter(
+  catalog: CatalogReader,
   selections: Selections,
   bodyType: string,
   targetCanvas: HTMLCanvasElement | null,
@@ -258,7 +255,7 @@ async function runRenderCharacter(
 
     for (const [, selection] of Object.entries(selections)) {
       const { itemId, subId, variant } = selection;
-      const metaResult = getItemMerged(itemId);
+      const metaResult = catalog.getItemMerged(itemId);
       if (metaResult.isErr() || subId) continue;
       const meta = metaResult.value;
 
@@ -268,7 +265,7 @@ async function runRenderCharacter(
       }
 
       // Get Multiple Recolors If Available
-      const recolors = getMultiRecolors(defaultCatalog, itemId, selections);
+      const recolors = getMultiRecolors(catalog, itemId, selections);
 
       // Process all layers for this item
       for (let layerNum = 1; layerNum < 10; layerNum++) {
@@ -277,7 +274,7 @@ async function runRenderCharacter(
         const layer = meta.layers?.[layerKey];
         if (!layer) break;
 
-        const zPos = getZPos(defaultCatalog, itemId, layerNum);
+        const zPos = getZPos(catalog, itemId, layerNum);
 
         // Check if this layer has a custom animation
         if (layer.custom_animation) {
@@ -344,7 +341,7 @@ async function runRenderCharacter(
           }
 
           const pathResult = getSpritePath(
-            defaultCatalog,
+            catalog,
             itemId,
             variant ?? null,
             recolors,
@@ -472,7 +469,7 @@ async function runRenderCharacter(
     for (const { item, img, success } of loadedItems) {
       if (success && img) {
         const imageToDraw = await getImageToDraw(
-          defaultCatalog,
+          catalog,
           img,
           item.itemId,
           item.recolors,
@@ -547,7 +544,7 @@ async function runRenderCharacter(
         for (const { item: areaItem, img, success } of loadedCustomImages) {
           if (success && img) {
             const imageToUse = await getImageToDraw(
-              defaultCatalog,
+              catalog,
               img,
               areaItem.itemId,
               areaItem.recolors,
@@ -653,6 +650,7 @@ export function getCanvas(): Result<HTMLCanvasElement, CanvasNotInitialized> {
  * Returns a canvas with just this one item rendered.
  */
 export async function renderSingleItem(
+  catalog: CatalogReader,
   itemId: string,
   variant: string | null,
   recolors: Recolors,
@@ -661,7 +659,7 @@ export async function renderSingleItem(
   singleLayer: number | null = null,
   zipProfiler: ZipExportProfiler | null = null,
 ): Promise<HTMLCanvasElement | null> {
-  const metaResult = getItemMerged(itemId);
+  const metaResult = catalog.getItemMerged(itemId);
   if (metaResult.isErr()) {
     console.error("Item metadata not found:", itemId);
     return null;
@@ -714,11 +712,9 @@ export async function renderSingleItem(
     // Render all layers of this custom animation item
     const customSprites: { spritePath: string; zPos: number; yPos: number }[] =
       [];
-    const animsList = getSortedLayersByAnim(
-      defaultCatalog,
-      itemId,
-      true,
-    ).unwrapOr({} as Record<string, AnimationLayer[]>);
+    const animsList = getSortedLayersByAnim(catalog, itemId, true).unwrapOr(
+      {} as Record<string, AnimationLayer[]>,
+    );
     for (const animName in animsList) {
       for (let layerNum = 1; layerNum < 10; layerNum++) {
         if (singleLayer !== null && layerNum !== singleLayer) continue;
@@ -760,7 +756,7 @@ export async function renderSingleItem(
         for (const { item: sprite, img, success } of loadedSprites) {
           if (success && img) {
             const imageToDraw = await getImageToDraw(
-              defaultCatalog,
+              catalog,
               img,
               itemId,
               recolors,
@@ -797,7 +793,7 @@ export async function renderSingleItem(
     const layerKey = `layer_${layerNum}`;
     if (!meta.layers?.[layerKey]) break;
 
-    const zPos = getZPos(defaultCatalog, itemId, layerNum);
+    const zPos = getZPos(catalog, itemId, layerNum);
 
     // Add each animation for this layer
     for (const [animName, yPos] of Object.entries(ANIMATION_OFFSETS)) {
@@ -824,7 +820,7 @@ export async function renderSingleItem(
       }
 
       const pathResult = getSpritePath(
-        defaultCatalog,
+        catalog,
         itemId,
         variant,
         recolors,
@@ -870,7 +866,7 @@ export async function renderSingleItem(
         for (const { item: sprite, img, success } of loadedImages) {
           if (success && img) {
             const imageToDraw = await getImageToDraw(
-              defaultCatalog,
+              catalog,
               img,
               itemId,
               sprite.recolors,
@@ -891,6 +887,7 @@ export async function renderSingleItem(
  * Returns a canvas with just this one item's one animation rendered.
  */
 export async function renderSingleItemAnimation(
+  catalog: CatalogReader,
   itemId: string,
   variant: string | null,
   recolors: Recolors,
@@ -900,7 +897,7 @@ export async function renderSingleItemAnimation(
   singleLayer: number | null = null,
   zipProfiler: ZipExportProfiler | null = null,
 ): Promise<HTMLCanvasElement | null> {
-  const metaResult = getItemMerged(itemId);
+  const metaResult = catalog.getItemMerged(itemId);
   if (metaResult.isErr()) {
     console.error("Item metadata not found:", itemId);
     return null;
@@ -919,6 +916,7 @@ export async function renderSingleItemAnimation(
   if (hasCustomAnimation && customAnimations) {
     // Custom animation item - just return the full item canvas (custom animations are not split by standard animation)
     return await renderSingleItem(
+      catalog,
       itemId,
       variant,
       recolors,
@@ -959,7 +957,7 @@ export async function renderSingleItemAnimation(
     const layerKey = `layer_${layerNum}`;
     if (!meta.layers?.[layerKey]) break;
 
-    const zPos = getZPos(defaultCatalog, itemId, layerNum);
+    const zPos = getZPos(catalog, itemId, layerNum);
 
     // Check animation support
     if (animationName === "combat_idle") {
@@ -977,7 +975,7 @@ export async function renderSingleItemAnimation(
     }
 
     const pathResult = getSpritePath(
-      defaultCatalog,
+      catalog,
       itemId,
       variant,
       recolors,
@@ -1016,7 +1014,7 @@ export async function renderSingleItemAnimation(
       for (const { item: sprite, img, success } of loadedImages) {
         if (success && img) {
           const imageToDraw = await getImageToDraw(
-            defaultCatalog,
+            catalog,
             img,
             itemId,
             sprite.recolors,

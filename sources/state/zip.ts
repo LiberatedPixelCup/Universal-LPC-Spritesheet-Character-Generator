@@ -286,6 +286,7 @@ export const exportSplitItemSheets = async (
         );
         try {
           const itemCanvas = await renderSingleItemFn(
+            defaultCatalog,
             itemId,
             variant ?? null,
             recolors,
@@ -461,6 +462,7 @@ export const exportSplitItemAnimations = async (
 
           try {
             const animCanvas = await renderSingleItemAnimationFn(
+              defaultCatalog,
               itemId,
               variant ?? null,
               recolors,

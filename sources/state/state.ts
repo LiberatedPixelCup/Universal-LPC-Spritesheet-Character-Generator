@@ -81,7 +81,8 @@ function createDefaultStateDeps(): StateDeps {
     selectDefaults,
     redraw: () => m.redraw(),
     syncSelectionsToHash: () => syncSelectionsToHash(defaultCatalog),
-    renderCharacter,
+    renderCharacter: (selections, bodyType) =>
+      renderCharacter(defaultCatalog, selections, bodyType),
     loadSelectionsFromHash,
     getCanvasRenderer: () =>
       (window as unknown as { canvasRenderer?: unknown }).canvasRenderer,

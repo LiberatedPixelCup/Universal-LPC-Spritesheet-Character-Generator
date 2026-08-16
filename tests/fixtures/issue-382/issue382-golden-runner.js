@@ -24,6 +24,7 @@ import {
 } from "../../../sources/state/zip.ts";
 import { resetState } from "../../../sources/state/hash.ts";
 import { state } from "../../../sources/state/state.ts";
+import { defaultCatalog } from "../../../sources/state/catalog.ts";
 import { importStateFromJSON } from "../../../sources/state/json.ts";
 import issue382ItemMetadata from "./issue-382-itemdata.js";
 import issue382Selections from "./issue-382-selections.js";
@@ -79,7 +80,7 @@ async function runGoldens() {
   ctx.fillRect(0, 0, SHEET_WIDTH, SHEET_HEIGHT);
 
   setStatus("Rendering character...");
-  await renderCharacter(state.selections, state.bodyType);
+  await renderCharacter(defaultCatalog, state.selections, state.bodyType);
 
   const out = {};
 

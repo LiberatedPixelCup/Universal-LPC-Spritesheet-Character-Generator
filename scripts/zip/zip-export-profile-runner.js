@@ -31,6 +31,7 @@ import {
   resetState,
 } from "../../sources/state/hash.js";
 import { state } from "../../sources/state/state.js";
+import { defaultCatalog } from "../../sources/state/catalog.ts";
 import { ZIP_PROFILE_DEFAULT_HASH } from "./zip-profile-default-hash.js";
 
 /** @type {readonly string[]} */
@@ -113,7 +114,7 @@ async function runProfiles(opts = {}) {
   ctx.fillStyle = "#445566";
   ctx.fillRect(0, 0, SHEET_WIDTH, SHEET_HEIGHT);
 
-  await renderCharacter(state.selections, state.bodyType);
+  await renderCharacter(defaultCatalog, state.selections, state.bodyType);
 
   if (run("splitAnimations")) {
     await exportSplitAnimations();

@@ -248,7 +248,7 @@ describe("state/zip.ts", () => {
 
       const addSpy = sinon.spy(addAnimationSliceToZip);
 
-      await renderCharacter(state.selections, "male");
+      await renderCharacter(defaultCatalog, state.selections, "male");
       await exportSplitAnimations({ addAnimationSliceToZip: addSpy });
 
       const customPng = addSpy
@@ -866,7 +866,7 @@ describe("state/zip.ts", () => {
 
       const loadImageStub = sandbox.stub().resolves(nonEmptyAnimCanvas());
 
-      await renderCharacter(state.selections, "male");
+      await renderCharacter(defaultCatalog, state.selections, "male");
       await exportSplitItemAnimations({
         loadImage: loadImageStub,
       });
@@ -984,7 +984,7 @@ describe("state/zip.ts", () => {
         addStandardAnimationToZipCustomFolder,
       );
 
-      await renderCharacter(state.selections, "male");
+      await renderCharacter(defaultCatalog, state.selections, "male");
       await exportSplitItemAnimations({
         loadImage: loadImageStub,
         addAnimationSliceToZip: addAnimationSliceToZipSpy,
@@ -1095,7 +1095,7 @@ describe("state/zip.ts", () => {
         addStandardAnimationToZipCustomFolder,
       );
 
-      await renderCharacter(state.selections, "male");
+      await renderCharacter(defaultCatalog, state.selections, "male");
       await exportSplitItemAnimations({
         loadImage: loadImageStub,
         getImageToDraw: getImageToDrawStub,
@@ -1360,7 +1360,7 @@ describe("state/zip.ts", () => {
         },
       };
 
-      await renderCharacter(state.selections, "male");
+      await renderCharacter(defaultCatalog, state.selections, "male");
 
       const extractStub = sandbox.stub().callsFake(() => smallAnimCanvas());
       const framesStub = sinon.stub().returns({});
