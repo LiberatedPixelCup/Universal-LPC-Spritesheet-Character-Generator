@@ -74,6 +74,23 @@ test("parsePalette writes non-material meta files to versions", () => {
   assert.equal(paletteMetadata.versions?.colors.label, "Colors");
 });
 
+test("parsePalette creates a versions map when it is missing", () => {
+  resetTestState();
+  Reflect.deleteProperty(paletteMetadata, "versions");
+
+  const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "gen-palettes-"));
+  const dir = writeTempPaletteFile(
+    tempRoot,
+    "colors",
+    "meta_colors.json",
+    JSON.stringify({ type: "version", label: "Colors" }),
+  );
+
+  parsePalette(dir, "meta_colors.json");
+
+  assert.equal(paletteMetadata.versions?.colors.label, "Colors");
+});
+
 test("parsePalette parses palette data files", () => {
   resetTestState();
   const palettesDir = buildPath("build1-basic", "palettes");

@@ -22,9 +22,11 @@ import {
   sortDirTree,
   readDirTree,
   parseJson,
+  internSlimByTypeNameRows,
   splitItemMetadataMaps,
   type GeneratorItem,
 } from "../../../../scripts/generateSources/state.ts";
+import type { SlimByTypeNameRow } from "../../../../sources/state/catalog.ts";
 import { buildPath, resetTestState } from "./test_helpers.js";
 
 test("state exports expected constant directory suffixes", () => {
@@ -95,6 +97,21 @@ test("buildMetadataIndexes groups lite rows by type_name in key order", () => {
     variants: [],
     recolors: [],
   });
+});
+
+test("internSlimByTypeNameRows treats missing variants as an empty array", () => {
+  const { variantArrays, byTypeName } = internSlimByTypeNameRows({
+    t: [
+      {
+        itemId: "a",
+        name: "A",
+        type_name: "t",
+      } as SlimByTypeNameRow,
+    ],
+  });
+
+  assert.deepEqual(variantArrays, [[]]);
+  assert.equal(byTypeName.t[0].v, 0);
 });
 
 test("buildIndexMetadataJs shares byTypeName between metadataIndexes fields", () => {

@@ -1,5 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import {
   parseTree,
@@ -23,6 +25,22 @@ test("parseTree creates a category node from valid meta", () => {
   assert.equal(node.label, "Body");
   assert.equal(node.priority, 10);
   assert.deepEqual(node.required, ["male"]);
+});
+
+test("parseTree stores null priority when meta omits it", () => {
+  resetTestState();
+  const sheetsDir = fs.mkdtempSync(path.join(os.tmpdir(), "gen-tree-"));
+  const bodyDir = path.join(sheetsDir, "body");
+  fs.mkdirSync(bodyDir);
+  fs.writeFileSync(
+    path.join(bodyDir, "meta_body.json"),
+    JSON.stringify({ label: "Body", required: ["male"] }),
+  );
+
+  const node = parseTree(bodyDir, "meta_body.json", { sheetsDir });
+
+  assert.equal(node.label, "Body");
+  assert.equal(node.priority, null);
 });
 
 test("parseTree does not overwrite existing node metadata", () => {

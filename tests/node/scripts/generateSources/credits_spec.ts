@@ -209,6 +209,30 @@ test("collectCreditsCsvRows skips noExport animations and empty layer files", ()
   );
 });
 
+test("collectCreditsCsvRows uses the layer path as-is for custom_animation files without a trailing slash", () => {
+  resetTestState();
+
+  const fileName = "body/wheelchair/adult/background/wheelchair";
+  const { listItemsCSV, listCreditToUse } = collectCreditsCsvRows(
+    {
+      layer_1: {
+        custom_animation: "wheelchair",
+        male: fileName,
+      },
+    },
+    {
+      animations: ["wheelchair"],
+      required: ["male"],
+      credits: [buildCredit(fileName)],
+      priority: 10,
+    },
+  );
+
+  assert.equal(listItemsCSV.length, 1);
+  assert.equal(listCreditToUse?.file, fileName);
+  assert.match(listItemsCSV[0].lineText, /wheelchair\.png/);
+});
+
 test("processItemCredits builds csv, appends entries, and injects licenses", () => {
   resetTestState();
   const sheetsDir = buildPath("build1-basic", "sheets");
