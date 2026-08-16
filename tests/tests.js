@@ -17,6 +17,7 @@ import "./canvas/preview-animation_spec.js";
 import "./canvas/preview-canvas_spec.js";
 import "./canvas/renderer-issue-364_spec.js";
 import "./canvas/renderer_spec.js";
+import "./components/advanced/AdvancedTools_spec.js";
 import "./components/CollapsibleSection_spec.js";
 import "./components/download/Download_spec.js";
 import "./components/download/Credits_spec.js";
