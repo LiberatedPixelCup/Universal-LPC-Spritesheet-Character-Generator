@@ -13,6 +13,7 @@ import "./canvas/mask_spec.js";
 import "./canvas/palette-recolor-cache_spec.js";
 import "./canvas/palette-recolor-merge_spec.js";
 import "./canvas/palette-recolor-webgl_spec.js";
+import "./canvas/preview-animation_spec.js";
 import "./canvas/preview-canvas_spec.js";
 import "./canvas/renderer-issue-364_spec.js";
 import "./canvas/renderer_spec.js";
