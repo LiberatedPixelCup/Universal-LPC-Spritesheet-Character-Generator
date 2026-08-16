@@ -117,7 +117,7 @@ export const Download: m.Component<{ catalog: CatalogReader }> = {
             {
               disabled: zipDisabled,
               title: zipDisabled ? zipExportTitle : undefined,
-              onclick: exportSplitAnimations,
+              onclick: () => exportSplitAnimations(vnode.attrs.catalog),
             },
             "ZIP: Split by animation",
           ),
@@ -127,7 +127,7 @@ export const Download: m.Component<{ catalog: CatalogReader }> = {
             {
               disabled: zipDisabled,
               title: zipDisabled ? zipExportTitle : undefined,
-              onclick: exportSplitItemSheets,
+              onclick: () => exportSplitItemSheets(vnode.attrs.catalog),
             },
             "ZIP: Split by item",
           ),
@@ -137,7 +137,7 @@ export const Download: m.Component<{ catalog: CatalogReader }> = {
             {
               disabled: zipDisabled,
               title: zipDisabled ? zipExportTitle : undefined,
-              onclick: exportSplitItemAnimations,
+              onclick: () => exportSplitItemAnimations(vnode.attrs.catalog),
             },
             "ZIP: Split by animation and item",
           ),
@@ -147,7 +147,7 @@ export const Download: m.Component<{ catalog: CatalogReader }> = {
             {
               disabled: zipDisabled,
               title: zipDisabled ? zipExportTitle : undefined,
-              onclick: exportIndividualFrames,
+              onclick: () => exportIndividualFrames(vnode.attrs.catalog),
             },
             "ZIP: Split by animation and frame",
           ),

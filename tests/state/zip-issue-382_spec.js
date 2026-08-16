@@ -107,7 +107,7 @@ describe("state/zip.ts issue #382 regression (longsword + full outfit)", () => {
   });
 
   it("exportSplitAnimations creates the expected zip paths", async () => {
-    await exportSplitAnimations();
+    await exportSplitAnimations(defaultCatalog);
     expect(sortedZipKeys(fakeZip)).to.deep.equal(
       [...issue382ZipPathsSplitAnimations].sort(),
     );
@@ -115,7 +115,7 @@ describe("state/zip.ts issue #382 regression (longsword + full outfit)", () => {
   });
 
   it("exportSplitItemSheets creates the expected zip paths", async () => {
-    await exportSplitItemSheets();
+    await exportSplitItemSheets(defaultCatalog);
     expect(sortedZipKeys(fakeZip)).to.deep.equal(
       [...issue382ZipPathsSplitItemSheets].sort(),
     );
@@ -123,7 +123,7 @@ describe("state/zip.ts issue #382 regression (longsword + full outfit)", () => {
   });
 
   it("exportSplitItemAnimations creates the expected zip paths (custom folders include standard layers)", async () => {
-    await exportSplitItemAnimations();
+    await exportSplitItemAnimations(defaultCatalog);
     expect(sortedZipKeys(fakeZip)).to.deep.equal(
       [...issue382ZipPathsSplitItemAnimations].sort(),
     );
@@ -136,7 +136,7 @@ describe("state/zip.ts issue #382 regression (longsword + full outfit)", () => {
   });
 
   it("exportIndividualFrames creates the expected zip paths (golden list)", async () => {
-    await exportIndividualFrames();
+    await exportIndividualFrames(defaultCatalog);
     expect(sortedZipKeys(fakeZip)).to.deep.equal(
       [...issue382ZipPathsIndividualFrames].sort(),
     );

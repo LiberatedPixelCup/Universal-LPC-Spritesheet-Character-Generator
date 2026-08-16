@@ -85,22 +85,22 @@ async function runGoldens() {
   const out = {};
 
   setStatus("Exporting split animations...");
-  await exportSplitAnimations();
+  await exportSplitAnimations(defaultCatalog);
   out.splitAnimations = sortedZipKeys(fakeZip);
   state.zipByAnimation.isRunning = false;
 
   setStatus("Exporting split item sheets...");
-  await exportSplitItemSheets();
+  await exportSplitItemSheets(defaultCatalog);
   out.splitItemSheets = sortedZipKeys(fakeZip);
   state.zipByItem.isRunning = false;
 
   setStatus("Exporting split item animations...");
-  await exportSplitItemAnimations();
+  await exportSplitItemAnimations(defaultCatalog);
   out.splitItemAnimations = sortedZipKeys(fakeZip);
   state.zipByAnimationAndItem.isRunning = false;
 
   setStatus("Exporting individual frames...");
-  await exportIndividualFrames();
+  await exportIndividualFrames(defaultCatalog);
   out.individualFrames = sortedZipKeys(fakeZip);
   if (state.zipIndividualFrames) {
     state.zipIndividualFrames.isRunning = false;
