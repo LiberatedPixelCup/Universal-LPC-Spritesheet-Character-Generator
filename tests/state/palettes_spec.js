@@ -1,9 +1,6 @@
 import { expect } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
-import {
-  createCatalog,
-  defaultCatalog,
-} from "../../sources/state/catalog.ts";
+import { createCatalog, defaultCatalog } from "../../sources/state/catalog.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
 import { state } from "../../sources/state/state.ts";
 import {

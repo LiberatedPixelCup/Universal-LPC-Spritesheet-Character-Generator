@@ -55,11 +55,7 @@ export function fixMissingRecolor(
   // Get material from palette metadata
   const materialMeta =
     paletteMetaOrNull(catalog)?.materials?.[palette.material];
-  const [, , parsedRecolor] = parseRecolorKey(
-    catalog,
-    recolor,
-    materialMeta,
-  );
+  const [, , parsedRecolor] = parseRecolorKey(catalog, recolor, materialMeta);
 
   // See if recolor is non-standard for the current asset
   for (const variant of palette.variants ?? []) {
