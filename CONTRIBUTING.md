@@ -231,7 +231,7 @@ The app creates a catalog in **[`sources/main.ts`](sources/main.ts)**, then load
 npm run validate-site-sources
 ```
 
-That uses **`concurrently`** to run **`generate_credits.ts`** and **`parse_zpos.js`** (same as writing **`z_positions.csv`** from the JSON) in parallel. Alternatively, run **`node scripts/generate_credits.ts`** and **`node scripts/zPositioning/parse_zpos.js`** separately. Do not run **`node scripts/generate_sources.ts`** as a CLI; it only prints a pointer to **`npm run validate-site-sources`** (the file’s role is to export **`generateSources`** for Vite and tests).
+That uses **`concurrently`** to run **`generate_credits.ts`** and **`parse_zpos.ts`** (same as writing **`z_positions.csv`** from the JSON) in parallel. Alternatively, run **`node scripts/generate_credits.ts`** and **`node scripts/zPositioning/parse_zpos.ts`** separately. Do not run **`node scripts/generate_sources.ts`** as a CLI; it only prints a pointer to **`npm run validate-site-sources`** (the file’s role is to export **`generateSources`** for Vite and tests).
 
 Vite is responsible for the five `dist/*-metadata.js` files when the plugin runs (and may update **CREDITS** / **z_positions** in the “inputs changed or first run / missing `dist` metadata” case). The plugin passes **`env`** (`development` vs `production`) into **`generateSources`** and controls JSON indentation in metadata.
 
@@ -365,11 +365,11 @@ Node specs are listed and run via [`tests/node/run-node-tests.js`](tests/node/ru
 
 #### z-positions
 
-In order to facilitate easier management of the z-positions of the assets in this repo, there is a [script](/scripts/zPositioning/parse_zpos.js) that traverses all JSON files and write's the layer's z-position to a CSV.
+In order to facilitate easier management of the z-positions of the assets in this repo, there is a [script](/scripts/zPositioning/parse_zpos.ts) that traverses all JSON files and write's the layer's z-position to a CSV.
 
 To run this script directly:
 
-`node scripts/zPositioning/parse_zpos.js`
+`node scripts/zPositioning/parse_zpos.ts`
 
 The same script is also available as **`npm run z-positions`**.
 
