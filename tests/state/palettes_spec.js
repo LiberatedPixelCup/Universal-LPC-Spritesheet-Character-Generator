@@ -2,7 +2,7 @@ import { expect } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { createCatalog } from "../../sources/state/catalog.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
-import { state } from "../../sources/state/state.ts";
+import { configureStateCatalog, state } from "../../sources/state/state.ts";
 import {
   getMultiRecolors,
   getPaletteOptions,
@@ -271,6 +271,7 @@ describe("state/palettes.ts", () => {
     };
 
     seedCatalog(catalog, testItemMetadata, { paletteMetadata });
+    configureStateCatalog(catalog);
     state.selections = {};
   });
 
