@@ -14,7 +14,10 @@ import {
   setPaletteRecolorMode,
   getPaletteRecolorConfig,
 } from "../../sources/canvas/palette-recolor.ts";
-import { getPaletteMetadata } from "../../sources/state/catalog.ts";
+import {
+  defaultCatalog,
+  getPaletteMetadata,
+} from "../../sources/state/catalog.ts";
 import {
   solidCanvas,
   splitCanvas,
@@ -134,6 +137,7 @@ describe("canvas/palette-recolor.ts single-pass merge (CPU path)", () => {
     const img = solidCanvas(srcRgb.r, srcRgb.g, srcRgb.b);
 
     const out = await recolorWithPalette(
+      defaultCatalog,
       img,
       {},
       {

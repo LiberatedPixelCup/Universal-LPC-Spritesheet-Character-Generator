@@ -2,8 +2,7 @@
 import { ok, err, type Result } from "neverthrow";
 import { state, getSelectionGroup, type Selections } from "./state.ts";
 import {
-  getItemLite,
-  getPaletteMetadata,
+  type CatalogReader,
   type ItemLite,
   type LoadError,
   type PaletteMaterialMeta,
@@ -12,11 +11,11 @@ import {
 } from "./catalog.ts";
 
 /** Local helpers — collapse `Result<T, _>` into `T | null` for ergonomics. */
-function liteOrNull(itemId: string): ItemLite | null {
-  return getItemLite(itemId).unwrapOr(null);
+function liteOrNull(catalog: CatalogReader, itemId: string): ItemLite | null {
+  return catalog.getItemLite(itemId).unwrapOr(null);
 }
-function paletteMetaOrNull(): PaletteMetadata | null {
-  return getPaletteMetadata().unwrapOr(null);
+function paletteMetaOrNull(catalog: CatalogReader): PaletteMetadata | null {
+  return catalog.getPaletteMetadata().unwrapOr(null);
 }
 
 /**
@@ -36,11 +35,12 @@ export type RecolorFixError =
  * exists, distinguishing load failure from domain "no match" outcomes.
  */
 export function fixMissingRecolor(
+  catalog: CatalogReader,
   itemId: string,
   recolor: string,
   typeName: string | null = null,
 ): Result<string, RecolorFixError> {
-  const metaResult = getItemLite(itemId);
+  const metaResult = catalog.getItemLite(itemId);
   if (metaResult.isErr()) return err(metaResult.error);
   const meta = metaResult.value;
 
@@ -53,8 +53,13 @@ export function fixMissingRecolor(
   }
 
   // Get material from palette metadata
-  const materialMeta = paletteMetaOrNull()?.materials?.[palette.material];
-  const [, , parsedRecolor] = parseRecolorKey(recolor, materialMeta);
+  const materialMeta =
+    paletteMetaOrNull(catalog)?.materials?.[palette.material];
+  const [, , parsedRecolor] = parseRecolorKey(
+    catalog,
+    recolor,
+    materialMeta,
+  );
 
   // See if recolor is non-standard for the current asset
   for (const variant of palette.variants ?? []) {
@@ -73,10 +78,11 @@ export function fixMissingRecolor(
  * `type_name`, valued by recolor variant. Returns null when no recolors apply.
  */
 export function getMultiRecolors(
+  catalog: CatalogReader,
   itemId: string,
   selections: Selections,
 ): Record<string, string> | null {
-  const meta = liteOrNull(itemId);
+  const meta = liteOrNull(catalog, itemId);
   if (!meta) return null;
   const types: string[] = [meta.type_name];
   for (const recolor of meta.recolors) {
@@ -87,7 +93,7 @@ export function getMultiRecolors(
 
   const recolors: Record<string, string> = {};
   for (const [, selection] of Object.entries(selections)) {
-    const subMeta = liteOrNull(selection.itemId);
+    const subMeta = liteOrNull(catalog, selection.itemId);
     const typeName =
       (selection.subId !== null && selection.subId !== undefined
         ? subMeta?.recolors?.[selection.subId]?.type_name
@@ -103,6 +109,7 @@ export function getMultiRecolors(
       continue;
 
     const verifiedRecolor = fixMissingRecolor(
+      catalog,
       itemId,
       selection.recolor ?? "",
       !selection.subId ? null : typeName,
@@ -118,7 +125,7 @@ export function getMultiRecolors(
 
   // If body color, force match body color
   if (meta.matchBodyColor && state.matchBodyColorEnabled) {
-    const bodyColor = getBodyColor(itemId, selections).unwrapOr(null);
+    const bodyColor = getBodyColor(catalog, itemId, selections).unwrapOr(null);
     if (bodyColor) recolors[meta.type_name] = bodyColor;
   }
 
@@ -133,17 +140,18 @@ export type BodyColorError =
 
 /** Find body color from selections when match body color is enabled on an item. */
 export function getBodyColor(
+  catalog: CatalogReader,
   itemId: string,
   selections: Selections,
 ): Result<string, BodyColorError> {
-  const metaResult = getItemLite(itemId);
+  const metaResult = catalog.getItemLite(itemId);
   if (metaResult.isErr()) return err(metaResult.error);
   const meta = metaResult.value;
 
   if (!meta.matchBodyColor) return err({ kind: "match-body-color-disabled" });
 
   for (const [, selection] of Object.entries(selections)) {
-    const subMeta = liteOrNull(selection.itemId);
+    const subMeta = liteOrNull(catalog, selection.itemId);
     if (subMeta && subMeta.matchBodyColor && selection.recolor) {
       return ok(selection.recolor);
     }
@@ -166,11 +174,12 @@ export type PaletteLookupError =
  * colors]`, err when the material is unknown (also logs to console).
  */
 export function getBasePalette(
+  catalog: CatalogReader,
   material: string,
   base: string | null = null,
   source: string[] | null = null,
 ): Result<[string, string, string[]], PaletteLookupError> {
-  const materialMeta = paletteMetaOrNull()?.materials?.[material];
+  const materialMeta = paletteMetaOrNull(catalog)?.materials?.[material];
   if (!materialMeta) {
     console.error(`Palettes for ${material} not found`);
     return err({ kind: "material-not-found", material });
@@ -191,17 +200,22 @@ export function getBasePalette(
 
 /** Resolve the target color array for a recolor key. */
 export function getTargetPalette(
+  catalog: CatalogReader,
   material: string,
   targetColor: string,
 ): Result<string[], PaletteLookupError> {
-  const paletteMeta = paletteMetaOrNull();
+  const paletteMeta = paletteMetaOrNull(catalog);
   let materialMeta = paletteMeta?.materials?.[material];
   if (!materialMeta) {
     console.error(`Palettes for ${material} not found`);
     return err({ kind: "material-not-found", material });
   }
 
-  const [newMat, version, recolor] = parseRecolorKey(targetColor, materialMeta);
+  const [newMat, version, recolor] = parseRecolorKey(
+    catalog,
+    targetColor,
+    materialMeta,
+  );
   if (newMat) {
     const newMaterialMeta = paletteMeta?.materials?.[newMat];
     if (newMaterialMeta) {
@@ -233,6 +247,7 @@ export type PalettesFromMetaError = { kind: "no-recolors-on-item" };
 
 /** Build the palette configuration from an item's meta, keyed by `type_name`. */
 export function getPalettesFromMeta(
+  catalog: CatalogReader,
   meta: ItemLite | null,
 ): Result<Record<string, PaletteForItem>, PalettesFromMetaError> {
   if (!meta || !meta.recolors) return err({ kind: "no-recolors-on-item" });
@@ -242,6 +257,7 @@ export function getPalettesFromMeta(
     // `getBasePalette` errs when the material is unknown; preserve the legacy
     // crash-on-null destructure rather than silently masking that bug.
     const [version, source, colors] = getBasePalette(
+      catalog,
       palette.material,
       palette.base ?? null,
       palette.source ?? null,
@@ -274,12 +290,13 @@ export const CUSTOM_VERSION: string = "custom";
 
 /** Palette options + currently-selected colors for the item's selection group. */
 export function getPaletteOptions(
+  catalog: CatalogReader,
   itemId: string,
   meta: ItemLite,
 ): [PaletteOption[], Record<string, string>] {
   const selectionGroup = getSelectionGroup(itemId);
   const paletteOptions: PaletteOption[] = [];
-  const selectedColors = getMultiRecolors(itemId, state.selections);
+  const selectedColors = getMultiRecolors(catalog, itemId, state.selections);
 
   if (meta.recolors && meta.recolors.length > 0) {
     meta.recolors.forEach((color, idx) => {
@@ -289,6 +306,7 @@ export function getPaletteOptions(
       const selectedColor = selectedColors?.[subGroup] ?? null;
 
       const [material, version, recolor] = parseRecolorKey(
+        catalog,
         selectedColor,
         color,
       );
@@ -301,9 +319,11 @@ export function getPaletteOptions(
       if (selectedColor === CUSTOM_KEY || (!selectedColor && color.source)) {
         palette = color.source ?? null;
       } else if (material !== undefined) {
-        palette = getTargetPalette(material, `${version}.${recolor}`).unwrapOr(
-          null,
-        );
+        palette = getTargetPalette(
+          catalog,
+          material,
+          `${version}.${recolor}`,
+        ).unwrapOr(null);
       }
 
       paletteOptions.push({
@@ -330,6 +350,7 @@ export function getPaletteOptions(
  * those segments are absent.
  */
 export function parseRecolorKey(
+  catalog: CatalogReader,
   recolorKey: string | null,
   palette: PaletteRecolor | PaletteMaterialMeta | undefined,
 ): [string | undefined, string | undefined, string] {
@@ -343,7 +364,7 @@ export function parseRecolorKey(
   // Material (e.g. body, metal, cloth)
   if (!material) {
     // Maybe `version` is actually the material name
-    if (version && paletteMetaOrNull()?.materials?.[version]) {
+    if (version && paletteMetaOrNull(catalog)?.materials?.[version]) {
       material = version;
       version = undefined;
     } else {

@@ -1,4 +1,5 @@
 import {
+  defaultCatalog,
   loadCatalogFromFixtures,
   resetCatalogForTests,
 } from "../sources/state/catalog.ts";
@@ -38,8 +39,13 @@ function mergedItemMapFromLoadedChunks(loaded) {
  * @param {{ aliasMetadata?: object, categoryTree?: object, paletteMetadata?: object }} [extras]
  */
 export function seedBrowserCatalog(itemMetadata, extras = {}) {
+  seedCatalog(defaultCatalog, itemMetadata, extras);
+}
+
+/** Seed a specific catalog instance from a merged item map. */
+export function seedCatalog(catalog, itemMetadata, extras = {}) {
   const byTypeName = buildItemsByTypeNameLite(itemMetadata);
-  loadCatalogFromFixtures({
+  catalog.loadCatalogFromFixtures({
     itemMetadata,
     aliasMetadata: extras.aliasMetadata ?? {},
     categoryTree: extras.categoryTree ?? emptyTree,

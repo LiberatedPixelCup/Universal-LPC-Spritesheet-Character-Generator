@@ -15,6 +15,7 @@ import {
   getImageToDraw,
   clearRecolorCache,
 } from "../../sources/canvas/palette-recolor.ts";
+import { defaultCatalog } from "../../sources/state/catalog.ts";
 
 // Real item id from the dataset with a single recolor region.
 // `body` has type_name="body", recolors=[{material: "body"}].
@@ -40,8 +41,20 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
     const recolors = { body: "olive" };
     const path = "spritesheets/body/bodies/male/walk.png";
 
-    const first = await getImageToDraw(img, RECOLOR_ITEM_ID, recolors, path);
-    const second = await getImageToDraw(img, RECOLOR_ITEM_ID, recolors, path);
+    const first = await getImageToDraw(
+      defaultCatalog,
+      img,
+      RECOLOR_ITEM_ID,
+      recolors,
+      path,
+    );
+    const second = await getImageToDraw(
+      defaultCatalog,
+      img,
+      RECOLOR_ITEM_ID,
+      recolors,
+      path,
+    );
 
     expect(first).to.equal(second);
   });
@@ -51,12 +64,14 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
     const path = "spritesheets/body/bodies/male/walk.png";
 
     const olive = await getImageToDraw(
+      defaultCatalog,
       img,
       RECOLOR_ITEM_ID,
       { body: "olive" },
       path,
     );
     const bronze = await getImageToDraw(
+      defaultCatalog,
       img,
       RECOLOR_ITEM_ID,
       { body: "bronze" },
@@ -71,12 +86,14 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
     const recolors = { body: "olive" };
 
     const a = await getImageToDraw(
+      defaultCatalog,
       img,
       RECOLOR_ITEM_ID,
       recolors,
       "spritesheets/body/bodies/male/walk.png",
     );
     const b = await getImageToDraw(
+      defaultCatalog,
       img,
       RECOLOR_ITEM_ID,
       recolors,
@@ -90,8 +107,20 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
     const img = solidColorCanvas(255, 0, 0);
     const recolors = { body: "olive" };
 
-    const first = await getImageToDraw(img, RECOLOR_ITEM_ID, recolors, null);
-    const second = await getImageToDraw(img, RECOLOR_ITEM_ID, recolors, null);
+    const first = await getImageToDraw(
+      defaultCatalog,
+      img,
+      RECOLOR_ITEM_ID,
+      recolors,
+      null,
+    );
+    const second = await getImageToDraw(
+      defaultCatalog,
+      img,
+      RECOLOR_ITEM_ID,
+      recolors,
+      null,
+    );
 
     expect(first).to.not.equal(second);
   });
@@ -100,7 +129,13 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
     const img = solidColorCanvas(255, 0, 0);
     const path = "spritesheets/body/bodies/male/walk.png";
 
-    const result = await getImageToDraw(img, RECOLOR_ITEM_ID, null, path);
+    const result = await getImageToDraw(
+      defaultCatalog,
+      img,
+      RECOLOR_ITEM_ID,
+      null,
+      path,
+    );
 
     expect(result).to.equal(img);
   });
@@ -110,9 +145,21 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
     const recolors = { body: "olive" };
     const path = "spritesheets/body/bodies/male/walk.png";
 
-    const first = await getImageToDraw(img, RECOLOR_ITEM_ID, recolors, path);
+    const first = await getImageToDraw(
+      defaultCatalog,
+      img,
+      RECOLOR_ITEM_ID,
+      recolors,
+      path,
+    );
     clearRecolorCache();
-    const second = await getImageToDraw(img, RECOLOR_ITEM_ID, recolors, path);
+    const second = await getImageToDraw(
+      defaultCatalog,
+      img,
+      RECOLOR_ITEM_ID,
+      recolors,
+      path,
+    );
 
     expect(first).to.not.equal(second);
   });
@@ -123,9 +170,9 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
     const path = "spritesheets/body/bodies/male/walk.png";
 
     const [a, b, c] = await Promise.all([
-      getImageToDraw(img, RECOLOR_ITEM_ID, recolors, path),
-      getImageToDraw(img, RECOLOR_ITEM_ID, recolors, path),
-      getImageToDraw(img, RECOLOR_ITEM_ID, recolors, path),
+      getImageToDraw(defaultCatalog, img, RECOLOR_ITEM_ID, recolors, path),
+      getImageToDraw(defaultCatalog, img, RECOLOR_ITEM_ID, recolors, path),
+      getImageToDraw(defaultCatalog, img, RECOLOR_ITEM_ID, recolors, path),
     ]);
 
     expect(a).to.equal(b);

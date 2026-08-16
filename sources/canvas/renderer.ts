@@ -268,7 +268,7 @@ async function runRenderCharacter(
       }
 
       // Get Multiple Recolors If Available
-      const recolors = getMultiRecolors(itemId, selections);
+      const recolors = getMultiRecolors(defaultCatalog, itemId, selections);
 
       // Process all layers for this item
       for (let layerNum = 1; layerNum < 10; layerNum++) {
@@ -472,6 +472,7 @@ async function runRenderCharacter(
     for (const { item, img, success } of loadedItems) {
       if (success && img) {
         const imageToDraw = await getImageToDraw(
+          defaultCatalog,
           img,
           item.itemId,
           item.recolors,
@@ -546,6 +547,7 @@ async function runRenderCharacter(
         for (const { item: areaItem, img, success } of loadedCustomImages) {
           if (success && img) {
             const imageToUse = await getImageToDraw(
+              defaultCatalog,
               img,
               areaItem.itemId,
               areaItem.recolors,
@@ -758,6 +760,7 @@ export async function renderSingleItem(
         for (const { item: sprite, img, success } of loadedSprites) {
           if (success && img) {
             const imageToDraw = await getImageToDraw(
+              defaultCatalog,
               img,
               itemId,
               recolors,
@@ -867,6 +870,7 @@ export async function renderSingleItem(
         for (const { item: sprite, img, success } of loadedImages) {
           if (success && img) {
             const imageToDraw = await getImageToDraw(
+              defaultCatalog,
               img,
               itemId,
               sprite.recolors,
@@ -1012,6 +1016,7 @@ export async function renderSingleItemAnimation(
       for (const { item: sprite, img, success } of loadedImages) {
         if (success && img) {
           const imageToDraw = await getImageToDraw(
+            defaultCatalog,
             img,
             itemId,
             sprite.recolors,

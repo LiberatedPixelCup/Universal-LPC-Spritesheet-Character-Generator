@@ -9,7 +9,6 @@ import {
 } from "./webgl-palette-recolor.ts";
 import { debugLog, debugWarn } from "../utils/debug.ts";
 import { get2DContext } from "./canvas-utils.ts";
-import { getItemLite } from "../state/catalog.ts";
 import type { CatalogReader, ItemMerged } from "../state/catalog.ts";
 import { state } from "../state/state.ts";
 import { getLayersToLoad } from "../state/meta.ts";
@@ -274,6 +273,7 @@ const recolorCache = new Map<
  * same (spritePath, recolors) skip the entire recolor pipeline.
  */
 export async function getImageToDraw(
+  catalog: CatalogReader,
   img: HTMLImageElement | HTMLCanvasElement,
   itemId: string,
   recolors: Record<string, string> | null | undefined,
@@ -282,8 +282,8 @@ export async function getImageToDraw(
   if (!recolors) {
     return img; // No recolor specified, return original image
   }
-  const meta = getItemLite(itemId).unwrapOr(null);
-  const paletteConfig = getPalettesFromMeta(meta).unwrapOr(null);
+  const meta = catalog.getItemLite(itemId).unwrapOr(null);
+  const paletteConfig = getPalettesFromMeta(catalog, meta).unwrapOr(null);
   if (!paletteConfig) {
     return img; // Item doesn't use palette recoloring
   }
@@ -301,7 +301,7 @@ export async function getImageToDraw(
     }
   }
 
-  const promise = recolorWithPalette(img, recolors, paletteConfig);
+  const promise = recolorWithPalette(catalog, img, recolors, paletteConfig);
 
   if (cacheKey) {
     recolorCache.set(cacheKey, promise);
@@ -339,6 +339,7 @@ export function clearRecolorCache(): void {
  * Automatically loads the palette on first use (lazy loading).
  */
 export async function recolorWithPalette(
+  catalog: CatalogReader,
   sourceImage: HTMLImageElement | HTMLCanvasElement,
   targetColors: Record<string, string>,
   sourcePalettes: Record<string, PaletteForItem>,
@@ -350,6 +351,7 @@ export async function recolorWithPalette(
     const targetColor = targetColors[typeName];
     if (!targetColor || targetColor === "source") continue;
     const targetPalette = getTargetPalette(
+      catalog,
       palette.material,
       targetColor,
     ).unwrapOr(null);
@@ -455,6 +457,7 @@ export async function drawRecolorPreview(
 
     if (img) {
       const imageToDraw = await getImageToDraw(
+        catalog,
         img,
         itemId,
         selectedColors,
