@@ -52,7 +52,7 @@
   "devDependencies": {
     "@argos-ci/playwright": "^7.3.6",
     "@eslint/js": "^10.0.1",
-    "@playwright/test": "^1.60.0",
+    "@playwright/test": "^1.62.1",
     "@tsconfig/strictest": "^2.0.8",
     "@types/mithril": "^2.2.8",
     "@types/node": "^25.6.0",
