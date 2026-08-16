@@ -7,7 +7,7 @@ import {
   loadPaletteMetadata,
   parsePalette,
 } from "../../../../scripts/generateSources/palettes.js";
-import { normalizeRecolors } from "../../../../scripts/generateSources/item-helper.js";
+import { normalizeRecolors } from "../../../../scripts/generateSources/item-helper.ts";
 import { paletteMetadata } from "../../../../scripts/generateSources/state.ts";
 import { buildPath, resetTestState } from "./test_helpers.js";
 

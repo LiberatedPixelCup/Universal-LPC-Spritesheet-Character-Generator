@@ -5,7 +5,7 @@ import {
   BODY_TYPES,
 } from "../../sources/state/constants.ts";
 import { writeAliases } from "./aliases.js";
-import { normalizeRecolors } from "./item-helper.js";
+import { normalizeRecolors } from "./item-helper.ts";
 import {
   itemMetadata,
   onlyIfTemplate,

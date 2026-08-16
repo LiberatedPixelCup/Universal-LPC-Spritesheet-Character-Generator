@@ -1,16 +1,29 @@
-import debugUtils from "../utils/debug.ts";
+import type { PaletteMaterialMeta } from "../../sources/state/catalog.ts";
 import { ucwords } from "../../sources/utils/helpers.ts";
+import debugUtils from "../utils/debug.ts";
 import { paletteMetadata } from "./state.ts";
 
 const { debugWarn } = debugUtils;
 
-/**
- * Collects recolor entries from either multi-color or single-color recolor definitions.
- * @param {Object} definition Parsed sheet definition JSON.
- * @return {Object[]} Recolor entries extracted from definition.
- */
-function collectRecolorEntries(definition) {
-  const recolors = [];
+/** Recolor entry while generating metadata; `palettes` starts as tokens then becomes a map. */
+export type GeneratorRecolor = {
+  material: string;
+  palettes: string[] | Record<string, string[]>;
+  type_name?: string | null;
+  variants?: string[];
+  label?: string;
+  default?: string;
+  base?: string;
+};
+
+export type RecolorSheetDefinition = {
+  recolors?: Record<string, unknown>;
+};
+
+function collectRecolorEntries(
+  definition: RecolorSheetDefinition,
+): GeneratorRecolor[] {
+  const recolors: GeneratorRecolor[] = [];
   if (definition.recolors === undefined) {
     return recolors;
   }
@@ -18,26 +31,23 @@ function collectRecolorEntries(definition) {
   for (let n = 1; n < 10; n++) {
     const colorDef = definition.recolors[`color_${n}`];
     if (colorDef) {
-      recolors.push(colorDef);
+      recolors.push(colorDef as GeneratorRecolor);
     } else {
       break;
     }
   }
 
   if (recolors.length === 0) {
-    recolors.push(definition.recolors);
+    recolors.push(definition.recolors as GeneratorRecolor);
   }
 
   return recolors;
 }
 
-/**
- * Resolves palette material/version pair for one recolor palette token.
- * @param {string} paletteToken Palette token from recolor.palettes.
- * @param {string} fallbackMaterial Default material when token omits one.
- * @return {{material: string, version: string}} Resolved material/version pair.
- */
-function resolvePaletteToken(paletteToken, fallbackMaterial) {
+function resolvePaletteToken(
+  paletteToken: string,
+  fallbackMaterial: string,
+): { material: string; version: string } {
   let [material, version] = paletteToken.split(".");
   if (!version) {
     version = material;
@@ -46,13 +56,10 @@ function resolvePaletteToken(paletteToken, fallbackMaterial) {
   return { material, version };
 }
 
-/**
- * Applies default metadata fields for one recolor entry.
- * @param {Object} recolor Recolor entry to mutate.
- * @param {Object} materialMeta Material metadata resolved for recolor.material.
- * @return {void} No return value.
- */
-function applyRecolorDefaults(recolor, materialMeta) {
+function applyRecolorDefaults(
+  recolor: GeneratorRecolor,
+  materialMeta: PaletteMaterialMeta,
+): void {
   recolor.default = materialMeta.default;
   recolor.type_name = recolor.type_name ?? null;
   recolor.label =
@@ -65,16 +72,12 @@ function applyRecolorDefaults(recolor, materialMeta) {
   }
 }
 
-/**
- * Expands one recolor entry into concrete palette map and variant names.
- * @param {Object} recolor Recolor entry to mutate.
- * @return {void} No return value.
- */
-function expandRecolorPalettes(recolor) {
-  const colorPalettes = {};
-  const colorVariants = new Set();
+function expandRecolorPalettes(recolor: GeneratorRecolor): void {
+  const colorPalettes: Record<string, string[]> = {};
+  const colorVariants = new Set<string>();
+  const paletteTokens = recolor.palettes as string[];
 
-  for (const paletteToken of recolor.palettes) {
+  for (const paletteToken of paletteTokens) {
     const { material, version } = resolvePaletteToken(
       paletteToken,
       recolor.material,
@@ -99,10 +102,10 @@ function expandRecolorPalettes(recolor) {
 
 /**
  * Normalizes recolor definitions and expands palette variants for runtime metadata.
- * @param {Object} definition Parsed sheet definition JSON.
- * @return {Object[]} Normalized recolor objects with expanded variants.
  */
-export function normalizeRecolors(definition) {
+export function normalizeRecolors(
+  definition: RecolorSheetDefinition,
+): GeneratorRecolor[] {
   const recolors = collectRecolorEntries(definition);
 
   for (const recolor of recolors) {
