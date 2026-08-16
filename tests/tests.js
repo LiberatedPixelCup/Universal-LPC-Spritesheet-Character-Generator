@@ -59,4 +59,28 @@ import "./state/zip_spec.js";
 import "./state/zip-issue-382_spec.js";
 import "./performance-profiler_spec.js";
 
+after(async function () {
+  if (!globalThis.__coverage__) {
+    return;
+  }
+  this.timeout(15000);
+  const id = /Firefox\//.test(navigator.userAgent)
+    ? "Firefox"
+    : /Edg\//.test(navigator.userAgent)
+      ? "Edge"
+      : /Chrome\//.test(navigator.userAgent)
+        ? "Chrome"
+        : /Safari\//.test(navigator.userAgent)
+          ? "Safari"
+          : "other";
+  const res = await fetch(`/__coverage__?id=${encodeURIComponent(id)}`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(globalThis.__coverage__),
+  });
+  if (!res.ok) {
+    throw new Error(`coverage POST failed: ${res.status}`);
+  }
+});
+
 mocha.run();

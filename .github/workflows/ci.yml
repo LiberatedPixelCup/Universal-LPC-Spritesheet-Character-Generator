@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -39,11 +41,32 @@ jobs:
       - name: Install dependencies
         run: npm ci --ignore-scripts
 
-      - name: Run browser tests
+      - name: Run Node unit tests with coverage
+        run: npm run test:node:coverage
+
+      - name: Run browser tests with coverage
         run: |
           export DISPLAY=':99.0'
           Xvfb $DISPLAY -screen 0 1920x1080x24 &
           sleep 3
           export XDG_RUNTIME_DIR="/run/user/$(id -u)"
           export DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
-          dbus-run-session npm test
+          dbus-run-session npm run test:browser:coverage
+
+      - name: Upload Node coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage/node/lcov.info
+          flags: node
+          name: node
+          fail_ci_if_error: false
+
+      - name: Upload browser coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage/browser/lcov.info
+          flags: browser
+          name: browser
+          fail_ci_if_error: false

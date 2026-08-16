@@ -1,7 +1,10 @@
 "use strict";
 
 const path = require("node:path");
+const { spawnSync } = require("node:child_process");
 const { createTestemViteMiddleware } = require("vite-plugin-testem");
+
+const coverageEnabled = process.env.VITE_COVERAGE === "true";
 
 // Suppress app debug logs during tests by default (?debug=false), so localhost does not
 // enable window.DEBUG via getDebugParam(). Set DEBUG=true or DEBUG=1 in the environment
@@ -111,12 +114,28 @@ module.exports = async function testemConfigFactory() {
     ...testemConfig,
     middleware: [middleware],
     on_exit(config, data, callback) {
-      if (!viteClose) {
-        return callback(null);
+      const done = (err) => {
+        if (!viteClose) {
+          return callback(err ?? null);
+        }
+        viteClose()
+          .then(() => callback(err ?? null))
+          .catch((closeErr) => callback(err ?? closeErr));
+      };
+
+      if (!coverageEnabled) {
+        return done(null);
       }
-      viteClose()
-        .then(() => callback(null))
-        .catch(callback);
+
+      const result = spawnSync(
+        process.execPath,
+        [path.join(__dirname, "scripts/coverage/merge-browser-coverage.js")],
+        { stdio: "inherit" },
+      );
+      if (result.status !== 0) {
+        return done(new Error("Failed to merge browser coverage reports"));
+      }
+      done(null);
     },
   };
 };

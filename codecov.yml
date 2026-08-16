@@ -1,0 +1,50 @@
+coverage:
+  status:
+    project: false
+    patch:
+      default:
+        target: 100%
+        threshold: 0%
+        only_pulls: true
+        if_not_found: success
+    changes:
+      default:
+        if_not_found: success
+
+comment:
+  layout: "condensed_header, condensed_files, condensed_footer"
+  behavior: default
+  require_changes: false
+  require_base: false
+  require_head: true
+  hide_project_coverage: true
+
+ignore:
+  - tests/**
+  - dist/**
+  - spritesheets/**
+  - sheet_definitions/**
+  - scripts/coverage/**
+  - scripts/computed-style/**
+  - scripts/imageProcessing/**
+  - scripts/zip/**
+  - scripts/fixture-builder.js
+  - scripts/generate-purgecss-safelist-hints.js
+  - scripts/issue382-golden-playwright.js
+  - scripts/update_sheet_definitions.js
+  - scripts/generateSources/source_inputs_fingerprint.js
+  - vite/**
+  - vite.config.js
+  - testem.cjs
+  - sources/performance-profiler.ts
+  - sources/utils/debug.ts
+  - "**/*.css"
+  - "**/*.scss"
+
+flags:
+  node:
+    paths:
+      - scripts/
+  browser:
+    paths:
+      - sources/

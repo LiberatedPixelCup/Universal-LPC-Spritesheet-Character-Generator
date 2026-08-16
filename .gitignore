@@ -13,3 +13,5 @@ computed-style-diff-output/
 **/__screenshots__/
 /.vitest-attachments/
 .tool-versions
+/coverage/
+/.nyc_output/
