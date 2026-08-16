@@ -1,6 +1,16 @@
 import fs from "node:fs";
 import path from "node:path";
+
 const SHEETS_DIR = "sheet_definitions" + path.sep;
+
+type LayerDefinition = {
+  zPos: number;
+  [key: string]: unknown;
+};
+
+type SheetDefinition = {
+  [key: string]: LayerDefinition | undefined;
+};
 
 // Read z positions from csv
 const csv = fs
@@ -17,7 +27,9 @@ fs.readdirSync(SHEETS_DIR, {
     return;
   }
   const fullPath = path.join(file.parentPath, file.name);
-  const definition = JSON.parse(fs.readFileSync(fullPath));
+  const definition = JSON.parse(
+    fs.readFileSync(fullPath).toString(),
+  ) as SheetDefinition;
   for (let jdx = 1; jdx < 10; jdx++) {
     const layerDefinition = definition[`layer_${jdx}`];
     if (layerDefinition !== undefined) {
@@ -26,7 +38,7 @@ fs.readdirSync(SHEETS_DIR, {
         const item = csv[entryIdx];
         if (item.includes(file.name) && item.includes(`layer_${jdx}`)) {
           const requiredZposition = parseInt(item.split(",")[2]);
-          definition[`layer_${jdx}`].zPos = requiredZposition;
+          layerDefinition.zPos = requiredZposition;
           try {
             fs.writeFileSync(fullPath, JSON.stringify(definition, null, 2));
             // eslint-disable-next-line no-console

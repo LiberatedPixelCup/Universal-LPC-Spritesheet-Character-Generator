@@ -383,7 +383,7 @@ Using this CSV, one can more clearly see the overview of all the z-position used
 
 Moreover, one can adjust the z-position from within the CSV, and then run:
 
-`node scripts/zPositioning/update_zpos.js`
+`node scripts/zPositioning/update_zpos.ts`
 
 (equivalently **`npm run z-positions:update`**)
 
