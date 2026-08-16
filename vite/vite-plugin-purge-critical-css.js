@@ -4,7 +4,7 @@ import { PurgeCSS } from "purgecss";
 import {
   getPurgeContentGlobs,
   getPurgeSafelist,
-} from "./purgecss-critical-safelist.js";
+} from "./purgecss-critical-safelist.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 

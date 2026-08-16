@@ -7,8 +7,9 @@
  * Extend when first-paint UI adds new classes or Purge removes needed rules.
  */
 import path from "node:path";
+import type { ComplexSafelist } from "purgecss";
 
-export function getPurgeContentGlobs(repoRoot) {
+export function getPurgeContentGlobs(repoRoot: string): string[] {
   return [
     path.join(repoRoot, "index.html"),
     // Scan both .js and .ts — the codebase is mid-migration. PurgeCSS-extracted
@@ -19,8 +20,7 @@ export function getPurgeContentGlobs(repoRoot) {
   ];
 }
 
-/** @returns {import('purgecss').ComplexSafelist} */
-export function getPurgeSafelist() {
+export function getPurgeSafelist(): ComplexSafelist {
   return {
     keyframes: ["spin", "skeleton-pulse"],
     variables: [/^--bulma-/, /^--skeleton-/],
