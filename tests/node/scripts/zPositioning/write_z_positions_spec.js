@@ -12,7 +12,11 @@ test("writeZPositionsFromSheetsSync writes a header and layer rows", () => {
   fs.writeFileSync(
     path.join(sheetDir, "sword.json"),
     JSON.stringify({
-      layer_1: { zPos: 10, male: "weapon/sword/male", female: "weapon/sword/female" },
+      layer_1: {
+        zPos: 10,
+        male: "weapon/sword/male",
+        female: "weapon/sword/female",
+      },
       layer_2: { zPos: 20, male: "weapon/sword/behind/male" },
     }),
   );

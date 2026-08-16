@@ -11,7 +11,10 @@ const FRAME_SPEC = /^[a-z0-9_]+-[nwes],\d+$/;
 
 test("customAnimationSize and customAnimationBase for wheelchair", () => {
   const wheelchair = customAnimations.wheelchair;
-  assert.deepEqual(customAnimationSize(wheelchair), { width: 128, height: 256 });
+  assert.deepEqual(customAnimationSize(wheelchair), {
+    width: 128,
+    height: 256,
+  });
   assert.equal(customAnimationBase(wheelchair), "sit");
 });
 
