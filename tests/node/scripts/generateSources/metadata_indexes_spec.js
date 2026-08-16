@@ -7,7 +7,7 @@ import {
   internSlimByTypeNameRows,
   categoryTree,
   itemMetadata,
-} from "../../../../scripts/generateSources/state.js";
+} from "../../../../scripts/generateSources/state.ts";
 import { expandMetadataIndexesWithInternedArrays } from "../../../../sources/state/resolve-hash-param.ts";
 import { resetTestState } from "./test_helpers.js";
 

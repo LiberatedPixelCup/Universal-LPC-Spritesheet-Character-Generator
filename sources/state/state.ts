@@ -48,9 +48,9 @@ export type State = {
   customImageZPos: number;
   previewCanvasZoomLevel: number;
   fullSpritesheetCanvasZoomLevel: number;
-  /** True after `main.js` runs the first bootstrap `renderCharacter`. */
+  /** True after `main.ts` runs the first bootstrap `renderCharacter`. */
   previewBootstrapRenderDone: boolean;
-  /** Mirrored from `renderCharacter` compositing (see `renderer.js`). */
+  /** Mirrored from `renderCharacter` compositing (see `renderer.ts`). */
   isRenderingCharacter: boolean;
   enabledLicenses: Record<string, boolean>;
   enabledAnimations: Record<string, boolean>;

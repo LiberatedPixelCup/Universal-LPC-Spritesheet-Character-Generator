@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* eslint-disable no-console -- CLI helper prints hints to stdout */
 /**
- * Prints class-name hints for vite/purgecss-critical-safelist.js (manual merge).
+ * Prints class-name hints for vite/purgecss-critical-safelist.ts (manual merge).
  * Usage: node scripts/generate-purgecss-safelist-hints.js
  */
 import fs from "node:fs";

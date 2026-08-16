@@ -29,8 +29,8 @@ import {
 import {
   loadSelectionsFromHash,
   resetState,
-} from "../../sources/state/hash.js";
-import { configureStateCatalog, state } from "../../sources/state/state.js";
+} from "../../sources/state/hash.ts";
+import { configureStateCatalog, state } from "../../sources/state/state.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
 import { ZIP_PROFILE_DEFAULT_HASH } from "./zip-profile-default-hash.js";
 

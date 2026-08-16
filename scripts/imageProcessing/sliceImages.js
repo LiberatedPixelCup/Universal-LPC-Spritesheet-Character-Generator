@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import { execSync } from "node:child_process";
-import { debugLog } from "../utils/debug.js";
+import { debugLog } from "../utils/debug.ts";
 
 const universalFrameSize = 64;
 

@@ -103,6 +103,16 @@ export default [
     rules: commonRulesTs,
   },
   {
+    files: ["scripts/**/*.ts", "vite/**/*.ts", "vite.config.ts"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.es2021,
+      },
+    },
+    rules: commonRulesTs,
+  },
+  {
     files: ["tests/**/*.js"],
     ignores: ["tests/visual/**"],
     languageOptions: {
@@ -120,13 +130,23 @@ export default [
   },
   {
     files: ["tests/**/*.ts"],
-    ignores: ["tests/visual/**"],
+    ignores: ["tests/visual/**", "tests/node/**"],
     languageOptions: {
       globals: {
         ...globals.browser,
         ...globals.es2021,
         ...globals.mocha,
         m: "readonly",
+      },
+    },
+    rules: commonRulesTs,
+  },
+  {
+    files: ["tests/node/**/*.ts"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.es2021,
       },
     },
     rules: commonRulesTs,

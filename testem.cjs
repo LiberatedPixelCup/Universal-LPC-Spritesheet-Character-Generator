@@ -40,8 +40,9 @@ let testemConfig = {
   browser_start_timeout: 30,
   src_files: [
     "tests/**/*.js",
-    "sources/**/*.js",
-    "vite.config.js",
+    "tests/**/*.ts",
+    "sources/**/*.ts",
+    "vite.config.ts",
     "tests_run.html",
   ],
   browser_args: {
