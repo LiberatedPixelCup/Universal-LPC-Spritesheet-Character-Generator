@@ -145,7 +145,8 @@
     z-index: 999;
 }
 
-@media (max-width: 600px) {
+/* Full width through Bulma desktop (tablet + small desktop). Widescreen+ keeps the 25vw inset. */
+@media (max-width: 1215px) {
     .palette-modal {
         max-width: 100vw;
         width: 100vw;
