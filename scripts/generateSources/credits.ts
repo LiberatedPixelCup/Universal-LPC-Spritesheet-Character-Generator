@@ -1,6 +1,7 @@
 import path from "node:path";
-import debugUtils from "../utils/debug.ts";
+import type { Credit } from "../../sources/state/catalog.ts";
 import { ANIMATIONS } from "../../sources/state/constants.ts";
+import debugUtils from "../utils/debug.ts";
 import {
   categoryTree,
   csvList,
@@ -8,20 +9,46 @@ import {
   licensesFound,
   onlyIfTemplate,
   SHEETS_DIR,
+  type CsvListEntry,
+  type GeneratorItem,
 } from "./state.ts";
 
 const { debugLog } = debugUtils;
 export const CREDITS_OUTPUT = "CREDITS.csv";
 
-/**
- * Recursively resolves the best credit entry for a generated sprite filename.
- * @param {string} fileName Candidate filename or path fragment to match.
- * @param {Array<Object>} credits Credits list from a sheet definition.
- * @param {string} origFileName Original filename used for terminal error logging.
- * @return {Object|undefined} Matching credit object when found; otherwise undefined.
- * @throws {TypeError} If credits is not an array-like object and indexed access fails.
- */
-function searchCredit(fileName, credits, origFileName) {
+export type CreditEntry = Partial<Credit> & {
+  file: string;
+  licenses: string[];
+  authors: string[];
+  urls: string[];
+  notes?: string;
+};
+
+export type CreditsItemMeta = GeneratorItem & {
+  animations: string[];
+  required: string[];
+  credits: CreditEntry[];
+  priority?: number | null;
+};
+
+type LayerDefinition = {
+  custom_animation?: string;
+  [bodyOrField: string]: string | number | null | undefined;
+};
+
+type SheetDefinition = Record<string, LayerDefinition | undefined>;
+
+type SortTreeNode = {
+  children?: Record<string, SortTreeNode>;
+  priority?: number | null;
+  label?: string;
+};
+
+function searchCredit(
+  fileName: string,
+  credits: CreditEntry[],
+  origFileName: string,
+): CreditEntry | undefined {
   if (credits.length <= 0) {
     console.error("no credits for filename:", fileName);
     return undefined;
@@ -61,32 +88,23 @@ function searchCredit(fileName, credits, origFileName) {
 
 /**
  * Builds CSV credit row data for a specific rendered frame and tracks encountered licenses.
- * @param {string} fileName Render path to resolve credit information for.
- * @param {Array<Object>} credits Credit entries defined for the item.
- * @param {Object|null} listCreditToUse Current selected credit for this item run.
- * @param {Array<string>} addedCreditsFor Paths already emitted to CSV.
- * @return {[Object|null, string, string]} Updated selected credit, generated CSV line text, and image filename token.
- * @throws {Error} If no matching credit can be resolved for the requested filename.
  */
 export function parseCredits(
-  fileName,
-  credits,
-  listCreditToUse,
-  addedCreditsFor,
-) {
-  // Find Credit or Throw Error
+  fileName: string,
+  credits: CreditEntry[],
+  listCreditToUse: CreditEntry | null,
+  addedCreditsFor: string[],
+): [CreditEntry, string, string] {
   const creditToUse = searchCredit(fileName, credits, fileName);
   if (creditToUse === undefined)
     throw Error(`missing credit inside ${fileName}`);
 
-  // Append Licenses
   for (const license of creditToUse.licenses) {
     if (!licensesFound.includes(license)) {
       licensesFound.push(license);
     }
   }
 
-  // Fallback to CreditToUse
   if (listCreditToUse === null) {
     listCreditToUse = creditToUse;
   }
@@ -100,7 +118,7 @@ export function parseCredits(
   const licenses = '"' + creditToUse.licenses.join(",") + '" ';
   const authors = '"' + creditToUse.authors.join(",") + '" ';
   const urls = '"' + creditToUse.urls.join(",") + '" ';
-  const notes = '"' + creditToUse.notes.replaceAll('"', "**") + '" ';
+  const notes = '"' + creditToUse.notes!.replaceAll('"', "**") + '" ';
   let lineText = "";
   if (!addedCreditsFor.includes(imageFileName)) {
     const quotedShortName = '"' + fileName + '.png"';
@@ -111,26 +129,24 @@ export function parseCredits(
 
 /**
  * Builds CSV credit rows for one item across all supported animations, body types, and layers.
- * @param {Object} definition Parsed sheet definition object.
- * @param {Object} meta Parsed metadata object.
- * @return {{listCreditToUse: Object|null, listItemsCSV: Array<{priority: (number|null|undefined), lineText: string}>}} Generated CSV row payloads and selected credit.
- * @throws {Error} Propagates missing-credit errors from parseCredits.
  */
-export function collectCreditsCsvRows(definition, meta) {
-  let listCreditToUse = null;
-  const listItemsCSV = [];
-  const addedCreditsFor = [];
+export function collectCreditsCsvRows(
+  definition: SheetDefinition,
+  meta: CreditsItemMeta,
+): {
+  listCreditToUse: CreditEntry | null;
+  listItemsCSV: CsvListEntry["csv"];
+} {
+  let listCreditToUse: CreditEntry | null = null;
+  const listItemsCSV: CsvListEntry["csv"] = [];
+  const addedCreditsFor: string[] = [];
 
-  // Get Credits Per Animation Type
   for (const anim of meta.animations) {
-    // Skip Animation if No Export
     const animConfig = ANIMATIONS.find(({ value }) => value === anim);
     if (animConfig?.noExport) continue;
 
-    // Convert animation name to snake_case for file naming
     const snakeItemName = anim.replaceAll(" ", "_");
 
-    // Loop Body Types
     for (const sex of meta.required) {
       for (let jdx = 1; jdx < 10; jdx++) {
         const layerDefinition = definition[`layer_${jdx}`];
@@ -138,13 +154,11 @@ export function collectCreditsCsvRows(definition, meta) {
 
         const file = layerDefinition[sex];
         if (file !== null && file !== "") {
-          // New-format custom animation layers (no trailing slash) reference a
-          // single file for all animations — use the base path directly.
-          // Old-format layers (trailing slash) still need the animation suffix.
+          const filePath = file as string;
           const searchFileName =
-            layerDefinition.custom_animation && !file.endsWith("/")
-              ? file
-              : file + snakeItemName;
+            layerDefinition.custom_animation && !filePath.endsWith("/")
+              ? filePath
+              : filePath + snakeItemName;
           const [newCreditToUse, lineText, creditsFor] = parseCredits(
             searchFileName,
             meta.credits,
@@ -167,26 +181,19 @@ export function collectCreditsCsvRows(definition, meta) {
 
 /**
  * Generates CSV rows and injects resolved license data for one parsed item.
- * @param {string} itemId Parsed item identifier used to look up shared metadata.
- * @param {string} filePath Parent directory path of the processed sheet file.
- * @param {Object} definition Parsed sheet definition object used for layer traversal.
- * @param {string} [sheetsDir] Optional sheets root used for CSV path normalization.
- * @return {{csv: Array<{priority: (number|null|undefined), lineText: string}>, listCreditToUse: Object|null}} Generated CSV rows and selected credit.
- * @throws {Error} Propagates missing-credit errors from collectCreditsCsvRows.
  */
 export function processItemCredits(
-  itemId,
-  filePath,
-  definition,
-  sheetsDir = null,
-) {
-  const meta = itemMetadata[itemId];
+  itemId: string,
+  filePath: string,
+  definition: SheetDefinition,
+  sheetsDir: string | null = null,
+): { csv: CsvListEntry["csv"]; listCreditToUse: CreditEntry | null } {
+  const meta = itemMetadata[itemId] as CreditsItemMeta;
   const { listCreditToUse, listItemsCSV } = collectCreditsCsvRows(
     definition,
     meta,
   );
 
-  // Insert Licenses Per Body Type
   if (!meta.licenses) {
     meta.licenses = {};
   }
@@ -194,7 +201,6 @@ export function processItemCredits(
     meta.licenses[sex] = listCreditToUse?.licenses || [];
   }
 
-  // Append CSV List
   csvList.push({
     path: path.relative(sheetsDir ?? SHEETS_DIR, filePath),
     csv: listItemsCSV,
@@ -205,12 +211,12 @@ export function processItemCredits(
 
 /**
  * Sorts CSV list entries by category tree priority and label path.
- * @param {Array<{path: string, csv: Array<{priority: (number|null|undefined), lineText: string}>}>} csvList CSV sections grouped by directory path.
- * @param {{children?: Object<string, any>}} categoryTree Category tree used for priority and label lookup.
- * @return {void} No return value; sorts csvList in place.
  */
-export function sortCsvList(csvList, categoryTree) {
-  csvList.sort((a, b) => {
+export function sortCsvList(
+  csvListToSort: CsvListEntry[],
+  tree: SortTreeNode,
+): void {
+  csvListToSort.sort((a, b) => {
     const pathA = a.path.split(path.sep).filter(Boolean);
     const pathB = b.path.split(path.sep).filter(Boolean);
 
@@ -224,8 +230,8 @@ export function sortCsvList(csvList, categoryTree) {
 
       if (segA === segB) continue;
 
-      let nodeA = categoryTree;
-      let nodeB = categoryTree;
+      let nodeA: SortTreeNode | undefined = tree;
+      let nodeB: SortTreeNode | undefined = tree;
       for (let j = 0; j <= i; j++) {
         nodeA = nodeA.children?.[pathA[j]];
         nodeB = nodeB.children?.[pathB[j]];
@@ -247,9 +253,8 @@ export function sortCsvList(csvList, categoryTree) {
 
 /**
  * Generates final CREDITS.csv content text from shared CSV/category state.
- * @return {string} Full generated CSV text.
  */
-export function generateCreditsCsv() {
+export function generateCreditsCsv(): string {
   sortCsvList(csvList, categoryTree);
 
   let csvGenerated = "filename,notes,authors,licenses,urls\n";

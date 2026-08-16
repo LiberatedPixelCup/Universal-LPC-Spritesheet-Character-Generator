@@ -13,7 +13,7 @@ import {
 } from "../../../../sources/state/resolve-hash-param.ts";
 import { parseTree } from "../../../../scripts/generateSources/tree.js";
 import { parseItem } from "../../../../scripts/generateSources/items.js";
-import { processItemCredits } from "../../../../scripts/generateSources/credits.js";
+import { processItemCredits } from "../../../../scripts/generateSources/credits.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

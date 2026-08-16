@@ -7,7 +7,8 @@ import {
   parseCredits,
   processItemCredits,
   sortCsvList,
-} from "../../../../scripts/generateSources/credits.js";
+  type CreditEntry,
+} from "../../../../scripts/generateSources/credits.ts";
 import { ANIMATIONS } from "../../../../sources/state/constants.ts";
 import {
   categoryTree,
@@ -17,7 +18,7 @@ import {
 } from "../../../../scripts/generateSources/state.ts";
 import { buildPath, resetTestState } from "./test_helpers.js";
 
-function buildCredit(file) {
+function buildCredit(file: string) {
   return {
     file,
     notes: 'quoted "note"',
@@ -78,7 +79,7 @@ test("parseCredits throws when no matching credit exists", () => {
 test("parseCredits throws for array-like credits with length=0", () => {
   resetTestState();
 
-  const emptyCredits = [];
+  const emptyCredits: CreditEntry[] = [];
   emptyCredits.length = 0;
 
   assert.throws(
@@ -137,9 +138,9 @@ test("parseCredits succeeds for single-credit array when fileName includes credi
 test("parseCredits logs no-credits error for empty credits array before throwing", () => {
   resetTestState();
 
-  const errors = [];
+  const errors: string[] = [];
   const origError = console.error;
-  console.error = (...args) => errors.push(args.join(" "));
+  console.error = (...args: unknown[]) => errors.push(args.join(" "));
   try {
     assert.throws(
       () => parseCredits("body/wheelchair/walk", [], null, []),
@@ -155,9 +156,9 @@ test("parseCredits logs no-credits error for empty credits array before throwing
 test("parseCredits logs wrong-credit error for single-credit mismatch before throwing", () => {
   resetTestState();
 
-  const errors = [];
+  const errors: string[] = [];
   const origError = console.error;
-  console.error = (...args) => errors.push(args.join(" "));
+  console.error = (...args: unknown[]) => errors.push(args.join(" "));
   try {
     assert.throws(
       () =>
@@ -203,7 +204,7 @@ test("collectCreditsCsvRows skips noExport animations and empty layer files", ()
 
   assert.equal(listItemsCSV.length, 1);
   assert.equal(
-    listCreditToUse.file,
+    listCreditToUse?.file,
     "body/wheelchair/adult/background/wheelchair",
   );
 });
@@ -233,11 +234,11 @@ test("processItemCredits builds csv, appends entries, and injects licenses", () 
 
   assert.equal(csv.length, 2);
   assert.equal(
-    listCreditToUse.file,
+    listCreditToUse?.file,
     "body/wheelchair/adult/background/wheelchair",
   );
-  assert.deepEqual(itemMetadata.wheelchair.licenses.male, ["CC-BY 3.0"]);
-  assert.deepEqual(itemMetadata.wheelchair.licenses.female, ["CC-BY 3.0"]);
+  assert.deepEqual(itemMetadata.wheelchair.licenses?.male, ["CC-BY 3.0"]);
+  assert.deepEqual(itemMetadata.wheelchair.licenses?.female, ["CC-BY 3.0"]);
   assert.equal(csvList.length, 1);
   assert.equal(csvList[0].path, "body");
 });

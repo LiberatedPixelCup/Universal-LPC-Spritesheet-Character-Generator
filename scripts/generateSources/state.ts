@@ -45,6 +45,7 @@ export type GeneratorItem = Partial<ItemLite> & {
   layers?: Record<string, LayerEntry>;
   credits?: Array<Partial<Credit>>;
   licenses?: Record<string, string[]>;
+  priority?: number | null;
 };
 
 export type InternedSlimByTypeNameRow = Pick<
