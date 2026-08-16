@@ -51,7 +51,7 @@ export const Download: m.Component<{ catalog: CatalogReader }> = {
       try {
         const json = await navigator.clipboard.readText();
         debugLog(json);
-        const imported = importStateFromJSON(json);
+        const imported = importStateFromJSON(vnode.attrs.catalog, json);
         Object.assign(state, imported);
 
         m.redraw();

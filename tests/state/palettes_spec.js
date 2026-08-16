@@ -1,8 +1,8 @@
 import { expect } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
-import { createCatalog, defaultCatalog } from "../../sources/state/catalog.ts";
+import { createCatalog } from "../../sources/state/catalog.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
-import { state } from "../../sources/state/state.ts";
+import { configureStateCatalog, state } from "../../sources/state/state.ts";
 import {
   getMultiRecolors,
   getPaletteOptions,
@@ -271,21 +271,13 @@ describe("state/palettes.ts", () => {
     };
 
     seedCatalog(catalog, testItemMetadata, { paletteMetadata });
+    configureStateCatalog(catalog);
     state.selections = {};
   });
 
   afterEach(() => {
     state.selections = previousSelections;
     state.matchBodyColorEnabled = previousMatchBodyColorEnabled;
-  });
-
-  it("uses the provided catalog instead of the default singleton", () => {
-    const itemId = "hair_long_tied_test";
-    const meta = catalog.getItemLite(itemId)._unsafeUnwrap();
-
-    expect(defaultCatalog.getItemLite(itemId).isErr()).to.equal(true);
-    const [paletteOptions] = getPaletteOptions(catalog, itemId, meta);
-    expect(paletteOptions).to.have.lengthOf(2);
   });
 
   it("falls back to a matching dotted recolor when the exact recolor is missing", () => {

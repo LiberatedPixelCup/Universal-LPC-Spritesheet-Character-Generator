@@ -5,14 +5,8 @@ import {
   setPathDeps,
   resetPathDeps,
 } from "../../sources/state/path.ts";
-import {
-  defaultCatalog,
-  resetCatalogForTests,
-} from "../../sources/state/catalog.ts";
-import {
-  restoreAppCatalogAfterTest,
-  seedBrowserCatalog,
-} from "../browser-catalog-fixture.js";
+import { createCatalog } from "../../sources/state/catalog.ts";
+import { seedCatalog } from "../browser-catalog-fixture.js";
 import { es6DynamicTemplate } from "../../sources/utils/helpers.ts";
 import { err } from "neverthrow";
 import { expect } from "chai";
@@ -20,13 +14,15 @@ import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 
 describe("state/path.ts", () => {
+  let catalog;
+
   beforeEach(() => {
-    resetCatalogForTests();
+    catalog = createCatalog();
     resetPathDeps();
   });
 
   function seedTemplateCatalog() {
-    seedBrowserCatalog({
+    seedCatalog(catalog, {
       headItem: {
         type_name: "head",
         name: "human",
@@ -49,9 +45,8 @@ describe("state/path.ts", () => {
     body: { itemId: "bodyItem", variant: "red" },
   };
 
-  afterEach(async () => {
+  afterEach(() => {
     resetPathDeps();
-    await restoreAppCatalogAfterTest();
   });
 
   describe("getNameWithoutVariant", () => {
@@ -94,9 +89,9 @@ describe("state/path.ts", () => {
   describe("replaceInPath", () => {
     it("returns the path unchanged when it has no template placeholders", () => {
       const meta = { replace_in_path: {} };
-      expect(
-        replaceInPath(defaultCatalog, "sprites/foo/bar", {}, meta),
-      ).to.equal("sprites/foo/bar");
+      expect(replaceInPath(catalog, "sprites/foo/bar", {}, meta)).to.equal(
+        "sprites/foo/bar",
+      );
     });
 
     it("resolves ${} segments using catalog hash params and meta.replace_in_path", () => {
@@ -107,12 +102,7 @@ describe("state/path.ts", () => {
         },
       };
       expect(
-        replaceInPath(
-          defaultCatalog,
-          "base/${head}/tail",
-          templateSelections,
-          meta,
-        ),
+        replaceInPath(catalog, "base/${head}/tail", templateSelections, meta),
       ).to.equal("base/humanoid/tail");
     });
 
@@ -127,12 +117,7 @@ describe("state/path.ts", () => {
           head: {},
         },
       };
-      replaceInPath(
-        defaultCatalog,
-        "base/${head}/tail",
-        templateSelections,
-        meta,
-      );
+      replaceInPath(catalog, "base/${head}/tail", templateSelections, meta);
       expect(debugLog.calledOnce).to.be.true;
       expect(debugLog.firstCall.args[0]).to.include("head");
     });
@@ -147,7 +132,7 @@ describe("state/path.ts", () => {
       };
       expect(
         replaceInPath(
-          defaultCatalog,
+          catalog,
           "pre/${head}/mid/${body}/tail",
           templateSelections,
           meta,
@@ -163,12 +148,7 @@ describe("state/path.ts", () => {
         },
       };
       expect(
-        replaceInPath(
-          defaultCatalog,
-          "base/${head}/tail",
-          templateSelections,
-          meta,
-        ),
+        replaceInPath(catalog, "base/${head}/tail", templateSelections, meta),
       ).to.equal("base/humanoid/tail");
     });
 
@@ -179,12 +159,12 @@ describe("state/path.ts", () => {
           head: { human: "x" },
         },
       };
-      expect(replaceInPath(defaultCatalog, "p/${head}/q", null, meta)).to.equal(
+      expect(replaceInPath(catalog, "p/${head}/q", null, meta)).to.equal(
         "p/${head}/q",
       );
-      expect(
-        replaceInPath(defaultCatalog, "p/${head}/q", undefined, meta),
-      ).to.equal("p/${head}/q");
+      expect(replaceInPath(catalog, "p/${head}/q", undefined, meta)).to.equal(
+        "p/${head}/q",
+      );
     });
 
     it("leaves placeholders unchanged when the hash omits that key", () => {
@@ -194,20 +174,15 @@ describe("state/path.ts", () => {
           head: { human: "humanoid" },
         },
       };
-      expect(
-        replaceInPath(defaultCatalog, "base/${head}/tail", {}, meta),
-      ).to.equal("base/${head}/tail");
+      expect(replaceInPath(catalog, "base/${head}/tail", {}, meta)).to.equal(
+        "base/${head}/tail",
+      );
     });
 
     it("throws when meta.replace_in_path is missing", () => {
       seedTemplateCatalog();
       expect(() =>
-        replaceInPath(
-          defaultCatalog,
-          "base/${head}/tail",
-          templateSelections,
-          {},
-        ),
+        replaceInPath(catalog, "base/${head}/tail", templateSelections, {}),
       ).to.throw();
     });
 
@@ -227,9 +202,9 @@ describe("state/path.ts", () => {
         },
       };
       const path = "base/${head}/tail";
-      expect(
-        replaceInPath(defaultCatalog, path, templateSelections, meta),
-      ).to.equal("base/humanoid/tail");
+      expect(replaceInPath(catalog, path, templateSelections, meta)).to.equal(
+        "base/humanoid/tail",
+      );
       expect(es6Spy.calledOnce).to.be.true;
       expect(es6Spy.firstCall.args[0]).to.equal(path);
       expect(es6Spy.firstCall.args[1]).to.include({ head: "humanoid" });
@@ -259,7 +234,7 @@ describe("state/path.ts", () => {
     it("returns a missing-layer error when the requested layer is absent", () => {
       const meta = { layers: {} };
       const r = getSpritePath(
-        defaultCatalog,
+        catalog,
         "id",
         "v",
         null,
@@ -282,7 +257,7 @@ describe("state/path.ts", () => {
         },
       };
       const r = getSpritePath(
-        defaultCatalog,
+        catalog,
         "id",
         "v",
         null,
@@ -315,7 +290,7 @@ describe("state/path.ts", () => {
       });
       expect(
         getSpritePath(
-          defaultCatalog,
+          catalog,
           "item",
           "light brown",
           null,
@@ -344,7 +319,7 @@ describe("state/path.ts", () => {
       });
       expect(
         getSpritePath(
-          defaultCatalog,
+          catalog,
           "item",
           "v",
           null,
@@ -371,7 +346,7 @@ describe("state/path.ts", () => {
       });
       expect(
         getSpritePath(
-          defaultCatalog,
+          catalog,
           "shirt_blue_red",
           null,
           null,
@@ -397,7 +372,7 @@ describe("state/path.ts", () => {
       });
       expect(
         getSpritePath(
-          defaultCatalog,
+          catalog,
           "id",
           "v",
           true,
@@ -428,7 +403,7 @@ describe("state/path.ts", () => {
       });
       expect(
         getSpritePath(
-          defaultCatalog,
+          catalog,
           "item",
           "v",
           null,

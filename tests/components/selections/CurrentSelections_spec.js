@@ -3,42 +3,35 @@ import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { CurrentSelections } from "../../../sources/components/selections/CurrentSelections.ts";
 import { state } from "../../../sources/state/state.ts";
-import {
-  defaultCatalog,
-  resetCatalogForTests,
-} from "../../../sources/state/catalog.ts";
+import { createCatalog } from "../../../sources/state/catalog.ts";
 import {
   resetState,
   setEnabledLicenses,
   setEnabledAnimations,
 } from "../../../sources/state/filters.ts";
-import {
-  restoreAppCatalogAfterTest,
-  seedBrowserCatalog,
-} from "../../browser-catalog-fixture.js";
+import { seedCatalog } from "../../browser-catalog-fixture.js";
 
 describe("CurrentSelections", function () {
   let host;
+  let catalog;
 
   beforeEach(function () {
+    catalog = createCatalog();
     resetState();
     host = document.createElement("div");
     document.body.appendChild(host);
   });
 
-  afterEach(async function () {
+  afterEach(function () {
     m.render(host, null);
     if (host.parentNode) {
       host.parentNode.removeChild(host);
     }
     resetState();
-    await restoreAppCatalogAfterTest();
   });
 
   it("shows loading copy when item list (lite) is not ready", function () {
-    resetCatalogForTests();
-
-    m.render(host, m(CurrentSelections, { catalog: defaultCatalog }));
+    m.render(host, m(CurrentSelections, { catalog }));
 
     assert.include(host.textContent, "Current Selections");
     assert.include(host.textContent, "Loading item list…");
@@ -46,7 +39,7 @@ describe("CurrentSelections", function () {
   });
 
   it("shows empty copy when catalog is ready but nothing is selected", function () {
-    seedBrowserCatalog({
+    seedCatalog(catalog, {
       sel_body: {
         name: "Body",
         type_name: "body",
@@ -57,14 +50,14 @@ describe("CurrentSelections", function () {
     });
     state.selections = {};
 
-    m.render(host, m(CurrentSelections, { catalog: defaultCatalog }));
+    m.render(host, m(CurrentSelections, { catalog }));
 
     assert.include(host.textContent, "No items selected yet");
     assert.strictEqual(host.querySelector(".tag"), null);
   });
 
   it("renders selection tags with titles, license/animation lines, and delete controls", function () {
-    seedBrowserCatalog({
+    seedCatalog(catalog, {
       sel_hat: {
         name: "Test Hat",
         type_name: "hat",
@@ -87,7 +80,7 @@ describe("CurrentSelections", function () {
       coat: { itemId: "sel_coat", name: "Winter Coat (long)" },
     };
 
-    m.render(host, m(CurrentSelections, { catalog: defaultCatalog }));
+    m.render(host, m(CurrentSelections, { catalog }));
 
     const heading = host.querySelector("h3.title");
     assert.notEqual(heading, null);
@@ -114,7 +107,7 @@ describe("CurrentSelections", function () {
   });
 
   it("uses warning styling when license filters exclude item credits", function () {
-    seedBrowserCatalog({
+    seedCatalog(catalog, {
       sel_gpl_item: {
         name: "GPL Asset",
         type_name: "misc",
@@ -129,7 +122,7 @@ describe("CurrentSelections", function () {
       misc: { itemId: "sel_gpl_item", name: "GPL Asset" },
     };
 
-    m.render(host, m(CurrentSelections, { catalog: defaultCatalog }));
+    m.render(host, m(CurrentSelections, { catalog }));
 
     const tag = host.querySelector("span.tag.is-medium.is-warning");
     assert.notEqual(tag, null);
@@ -140,7 +133,7 @@ describe("CurrentSelections", function () {
   });
 
   it("uses warning styling when animation filters exclude item animations", function () {
-    seedBrowserCatalog({
+    seedCatalog(catalog, {
       sel_walk_only: {
         name: "Walk Only",
         type_name: "hat",
@@ -155,7 +148,7 @@ describe("CurrentSelections", function () {
       hat: { itemId: "sel_walk_only", name: "Walk Only" },
     };
 
-    m.render(host, m(CurrentSelections, { catalog: defaultCatalog }));
+    m.render(host, m(CurrentSelections, { catalog }));
 
     const tag = host.querySelector("span.tag.is-medium.is-warning");
     assert.notEqual(tag, null);
@@ -164,7 +157,7 @@ describe("CurrentSelections", function () {
   });
 
   it("remove control deletes that selection and updates the view", function () {
-    seedBrowserCatalog({
+    seedCatalog(catalog, {
       sel_a: {
         name: "Item A",
         type_name: "hat",
@@ -178,7 +171,7 @@ describe("CurrentSelections", function () {
       only: { itemId: "sel_a", name: "Item A" },
     };
 
-    m.render(host, m(CurrentSelections, { catalog: defaultCatalog }));
+    m.render(host, m(CurrentSelections, { catalog }));
 
     const del = host.querySelector("button.delete.is-small");
     assert.notEqual(del, null);
@@ -186,7 +179,7 @@ describe("CurrentSelections", function () {
 
     assert.deepEqual(state.selections, {});
     // `m.render` roots do not always redraw after inline handlers in tests; re-sync the tree.
-    m.render(host, m(CurrentSelections, { catalog: defaultCatalog }));
+    m.render(host, m(CurrentSelections, { catalog }));
     assert.include(host.textContent, "No items selected yet");
   });
 });

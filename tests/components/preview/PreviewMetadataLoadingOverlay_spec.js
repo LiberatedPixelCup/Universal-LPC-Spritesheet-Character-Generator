@@ -7,18 +7,20 @@ import {
   resetOffscreenCanvasStateForTests,
   setOffscreenCanvasInitializedForTests,
 } from "../../../sources/canvas/renderer.ts";
-import { resetCatalogForTests } from "../../../sources/state/catalog.ts";
-import { restoreAppCatalogAfterTest } from "../../browser-catalog-fixture.js";
+import { createCatalog } from "../../../sources/state/catalog.ts";
 
 describe("PreviewMetadataLoadingOverlay", function () {
   let host;
+  let catalog;
 
   beforeEach(function () {
+    catalog = createCatalog();
+    catalog.registerFromLayersModule({ itemLayers: {} });
     host = document.createElement("div");
     document.body.appendChild(host);
   });
 
-  afterEach(async function () {
+  afterEach(function () {
     m.render(host, null);
     if (host.parentNode) {
       host.parentNode.removeChild(host);
@@ -26,7 +28,6 @@ describe("PreviewMetadataLoadingOverlay", function () {
     state.isRenderingCharacter = false;
     state.previewBootstrapRenderDone = false;
     resetOffscreenCanvasStateForTests();
-    await restoreAppCatalogAfterTest();
   });
 
   it("renders no DOM when preview pipeline reports ready", function () {
@@ -34,7 +35,7 @@ describe("PreviewMetadataLoadingOverlay", function () {
     state.previewBootstrapRenderDone = true;
     state.isRenderingCharacter = false;
 
-    m.render(host, m(PreviewMetadataLoadingOverlay));
+    m.render(host, m(PreviewMetadataLoadingOverlay, { catalog }));
 
     assert.strictEqual(
       host.querySelector(".preview-canvas-loading-overlay"),
@@ -48,7 +49,7 @@ describe("PreviewMetadataLoadingOverlay", function () {
     state.previewBootstrapRenderDone = false;
     state.isRenderingCharacter = true;
 
-    m.render(host, m(PreviewMetadataLoadingOverlay));
+    m.render(host, m(PreviewMetadataLoadingOverlay, { catalog }));
 
     assert.strictEqual(
       host.querySelector(".preview-canvas-loading-overlay"),
@@ -57,9 +58,9 @@ describe("PreviewMetadataLoadingOverlay", function () {
   });
 
   it("renders overlay with status semantics while layer data is not ready", function () {
-    resetCatalogForTests();
+    catalog = createCatalog();
 
-    m.render(host, m(PreviewMetadataLoadingOverlay));
+    m.render(host, m(PreviewMetadataLoadingOverlay, { catalog }));
 
     const overlay = host.querySelector(".preview-canvas-loading-overlay");
     assert.notEqual(overlay, null);

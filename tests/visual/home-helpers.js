@@ -22,7 +22,7 @@ export async function scrollVisualCaptureToTop(page) {
  * @param {string} [baseUrl] Defaults to PLAYWRIGHT_TEST_BASE_URL or http://127.0.0.1:4173
  */
 /**
- * Await `catalogReady.onAllReady` when the build exposes
+ * Await catalog readiness when the build exposes
  * `globalThis.__LPC_waitCatalogAllReady` (see `sources/state/catalog.ts`).
  * Otherwise, if `__LPC_arePaletteModalMetadataChunksReady` exists, wait until it is true
  * (so palette / skintone modals are not opened while the UI still says “Loading layer data…”).

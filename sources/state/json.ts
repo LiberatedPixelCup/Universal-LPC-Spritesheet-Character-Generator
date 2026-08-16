@@ -79,7 +79,10 @@ type JsonDeps = {
     catalog: CatalogReader,
     selections: Selections,
   ) => Record<string, string>;
-  loadSelectionsFromHash: (hashString?: string | null) => void;
+  loadSelectionsFromHash: (
+    catalog: CatalogReader,
+    hashString?: string | null,
+  ) => void;
   getAllCredits: (
     catalog: CatalogReader,
     selections: Selections,
@@ -171,11 +174,13 @@ type ImportedV1 = {
 type ImportedState = ImportedV2 | ImportedV1;
 
 /**
- * Import state from JSON string. Returns a partial state for v2 documents; for
- * v1 (legacy URL-only exports) it calls into `loadSelectionsFromHash` and
- * returns `undefined`. Throws on malformed JSON or unsupported versions.
+ * Import state from JSON string using the supplied catalog. Returns a partial
+ * state for v2 documents; for v1 (legacy URL-only exports) it calls into
+ * `loadSelectionsFromHash` and returns `undefined`. Throws on malformed JSON
+ * or unsupported versions.
  */
 export function importStateFromJSON(
+  catalog: CatalogReader,
   jsonString: string,
 ): Partial<State> | undefined {
   try {
@@ -209,7 +214,7 @@ export function importStateFromJSON(
     } else if (importedState.version === 1) {
       const url = new URL(importedState.url);
       const hash = url.hash.toString().substring(1);
-      jsonDeps.loadSelectionsFromHash(hash);
+      jsonDeps.loadSelectionsFromHash(catalog, hash);
       return undefined;
     } else {
       throw new Error("Unsupported version");

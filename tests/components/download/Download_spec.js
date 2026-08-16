@@ -3,9 +3,9 @@ import { assert } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { Download } from "../../../sources/components/download/Download.ts";
-import { defaultCatalog } from "../../../sources/state/catalog.ts";
+import { createCatalog } from "../../../sources/state/catalog.ts";
 import { state } from "../../../sources/state/state.ts";
-import { restoreAppCatalogAfterTest } from "../../browser-catalog-fixture.js";
+import { seedCatalog } from "../../browser-catalog-fixture.js";
 
 const ZIP_TITLE = "Wait for layer data to finish loading";
 
@@ -25,11 +25,14 @@ describe("Download", function () {
   let host;
   let previousRenderer;
   let alertStub;
+  let catalog;
 
   beforeEach(function () {
     host = document.createElement("div");
     document.body.appendChild(host);
     previousRenderer = window.canvasRenderer;
+    catalog = createCatalog();
+    seedCatalog(catalog, {});
     window.canvasRenderer = {};
     alertStub = sinon.stub(window, "alert");
     state.zipByAnimation = { isRunning: false };
@@ -40,7 +43,7 @@ describe("Download", function () {
     state.selections = {};
   });
 
-  afterEach(async function () {
+  afterEach(function () {
     m.mount(host, null);
     if (host.parentNode) {
       host.parentNode.removeChild(host);
@@ -55,7 +58,6 @@ describe("Download", function () {
     state.bodyType = "male";
     state.selections = {};
     state.selectedAnimation = "walk";
-    await restoreAppCatalogAfterTest();
   });
 
   it("disables ZIP buttons until layer data is ready", function () {
@@ -98,7 +100,7 @@ describe("Download", function () {
 
   it("renders PNG, credits, and clipboard buttons", function () {
     m.mount(host, {
-      view: () => m(Download, { catalog: defaultCatalog }),
+      view: () => m(Download, { catalog }),
     });
 
     assert.notEqual(buttonByText(host, "Spritesheet (PNG)"), null);
@@ -116,7 +118,7 @@ describe("Download", function () {
     });
 
     m.mount(host, {
-      view: () => m(Download, { catalog: defaultCatalog }),
+      view: () => m(Download, { catalog }),
     });
     buttonByText(host, "Export to Clipboard (JSON)").click();
     await Promise.resolve();
@@ -144,7 +146,7 @@ describe("Download", function () {
     });
 
     m.mount(host, {
-      view: () => m(Download, { catalog: defaultCatalog }),
+      view: () => m(Download, { catalog }),
     });
     buttonByText(host, "Import from Clipboard (JSON)").click();
     await Promise.resolve();
@@ -173,7 +175,7 @@ describe("Download", function () {
     });
 
     m.mount(host, {
-      view: () => m(Download, { catalog: defaultCatalog }),
+      view: () => m(Download, { catalog }),
     });
     buttonByText(host, "Credits (TXT)").click();
     buttonByText(host, "Credits (CSV)").click();

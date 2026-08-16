@@ -2,22 +2,19 @@ import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { ItemWithVariants } from "../../../sources/components/tree/ItemWithVariants.ts";
-import { state } from "../../../sources/state/state.ts";
-import {
-  defaultCatalog,
-  getItemMerged,
-} from "../../../sources/state/catalog.ts";
+import { configureStateCatalog, state } from "../../../sources/state/state.ts";
+import { createCatalog } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
 import { resetState } from "../../../sources/state/filters.ts";
-import {
-  restoreAppCatalogAfterTest,
-  seedBrowserCatalog,
-} from "../../browser-catalog-fixture.js";
+import { seedCatalog } from "../../browser-catalog-fixture.js";
 
 describe("ItemWithVariants", function () {
   let host;
+  let catalog;
 
   beforeEach(function () {
+    catalog = createCatalog();
+    configureStateCatalog(catalog);
     resetState();
     state.expandedNodes = {};
     state.compactDisplay = false;
@@ -25,17 +22,17 @@ describe("ItemWithVariants", function () {
     document.body.appendChild(host);
   });
 
-  afterEach(async function () {
+  afterEach(function () {
     m.render(host, null);
     if (host.parentNode) {
       host.parentNode.removeChild(host);
     }
     resetState();
-    await restoreAppCatalogAfterTest();
   });
 
   function seedVariantItem() {
-    seedBrowserCatalog(
+    seedCatalog(
+      catalog,
       {
         iwv_cloak: {
           name: "Variant Cloak",
@@ -49,7 +46,7 @@ describe("ItemWithVariants", function () {
       },
       { categoryTree: { items: [], children: {} } },
     );
-    return getItemMerged("iwv_cloak").unwrapOr(null);
+    return catalog.getItemMerged("iwv_cloak").unwrapOr(null);
   }
 
   it("renders the item row with a collapsed tree label", function () {
@@ -64,7 +61,7 @@ describe("ItemWithVariants", function () {
         isCompatible: true,
         tooltipText: "Licenses: CC0\nAnimations: walk",
         showItemTooltips: true,
-        catalog: defaultCatalog,
+        catalog,
       }),
     );
 
@@ -87,7 +84,7 @@ describe("ItemWithVariants", function () {
         isCompatible: false,
         tooltipText: "⚠️ Incompatible\nAnimations: walk",
         showItemTooltips: true,
-        catalog: defaultCatalog,
+        catalog,
       }),
     );
 
@@ -110,7 +107,7 @@ describe("ItemWithVariants", function () {
         isCompatible: true,
         tooltipText: "tip",
         showItemTooltips: true,
-        catalog: defaultCatalog,
+        catalog,
       }),
     );
 
@@ -130,7 +127,8 @@ describe("ItemWithVariants", function () {
   });
 
   it("uses body-body as expandedNodes key when the display name is Body Color", function () {
-    seedBrowserCatalog(
+    seedCatalog(
+      catalog,
       {
         iwv_body_color: {
           name: "Body Color",
@@ -144,7 +142,7 @@ describe("ItemWithVariants", function () {
       },
       { categoryTree: { items: [], children: {} } },
     );
-    const meta = getItemMerged("iwv_body_color").unwrapOr(null);
+    const meta = catalog.getItemMerged("iwv_body_color").unwrapOr(null);
 
     m.render(
       host,
@@ -155,7 +153,7 @@ describe("ItemWithVariants", function () {
         isCompatible: true,
         tooltipText: "",
         showItemTooltips: false,
-        catalog: defaultCatalog,
+        catalog,
       }),
     );
 
@@ -178,7 +176,7 @@ describe("ItemWithVariants", function () {
         isCompatible: true,
         tooltipText: "tip",
         showItemTooltips: true,
-        catalog: defaultCatalog,
+        catalog,
       }),
     );
     state.expandedNodes.iwv_cloak = true;
@@ -191,7 +189,7 @@ describe("ItemWithVariants", function () {
         isCompatible: true,
         tooltipText: "tip",
         showItemTooltips: true,
-        catalog: defaultCatalog,
+        catalog,
       }),
     );
 
@@ -216,7 +214,7 @@ describe("ItemWithVariants", function () {
         isCompatible: true,
         tooltipText: "tip",
         showItemTooltips: true,
-        catalog: defaultCatalog,
+        catalog,
       }),
     );
     host
@@ -240,7 +238,7 @@ describe("ItemWithVariants", function () {
         isCompatible: false,
         tooltipText: "bad",
         showItemTooltips: true,
-        catalog: defaultCatalog,
+        catalog,
       }),
     );
 
@@ -266,7 +264,7 @@ describe("ItemWithVariants", function () {
         isCompatible: true,
         tooltipText: "tip",
         showItemTooltips: true,
-        catalog: defaultCatalog,
+        catalog,
       }),
     );
 

@@ -1,4 +1,3 @@
-import "../install-item-metadata.ts";
 import { ok, err, type Result } from "neverthrow";
 import { ANIMATIONS } from "./constants.ts";
 import { getHashParamsforSelections } from "./hash.ts";

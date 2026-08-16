@@ -1,5 +1,6 @@
 import {
   applyMatchBodyColor,
+  configureStateCatalog,
   getSelectionGroup,
   getSubSelectionGroup,
   initState,
@@ -10,6 +11,7 @@ import {
   setStateDeps,
   state,
 } from "../../sources/state/state.ts";
+import { createCatalog } from "../../sources/state/catalog.ts";
 import { resetState } from "../../sources/state/hash.ts";
 import { expect } from "chai";
 import sinon from "sinon";
@@ -17,6 +19,7 @@ import { describe, it, beforeEach, afterEach } from "mocha-globals";
 
 describe("state/state.ts", () => {
   beforeEach(() => {
+    configureStateCatalog(createCatalog());
     resetStateDeps();
     resetState();
   });

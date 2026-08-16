@@ -2,7 +2,7 @@
 import m from "mithril";
 import { LICENSE_CONFIG, ANIMATIONS, BODY_TYPES } from "./constants.ts";
 import { syncSelectionsToHash, loadSelectionsFromHash } from "./hash.ts";
-import { defaultCatalog, getItemMerged, type ItemMerged } from "./catalog.ts";
+import type { CatalogReader, ItemMerged } from "./catalog.ts";
 import { renderCharacter } from "../canvas/renderer.ts";
 
 /** A single item selection within a selection group (e.g. body, head, ears). */
@@ -74,32 +74,50 @@ type StateDeps = {
   getCanvasRenderer: () => unknown;
 };
 
-// Dependency injection for testability (see setStateDeps / resetStateDeps)
-function createDefaultStateDeps(): StateDeps {
+// Application bootstrap supplies the catalog; tests may override individual effects.
+let configuredCatalog: CatalogReader | undefined;
+
+function createDefaultStateDeps(catalog: CatalogReader): StateDeps {
   return {
-    getItemMetadata: (itemId) => getItemMerged(itemId).unwrapOr(null),
+    getItemMetadata: (itemId) => catalog.getItemMerged(itemId).unwrapOr(null),
     selectDefaults,
     redraw: () => m.redraw(),
-    syncSelectionsToHash: () => syncSelectionsToHash(defaultCatalog),
+    syncSelectionsToHash: () => syncSelectionsToHash(catalog),
     renderCharacter: (selections, bodyType) =>
-      renderCharacter(defaultCatalog, selections, bodyType),
-    loadSelectionsFromHash,
+      renderCharacter(catalog, selections, bodyType),
+    loadSelectionsFromHash: () => loadSelectionsFromHash(catalog),
     getCanvasRenderer: () =>
       (window as unknown as { canvasRenderer?: unknown }).canvasRenderer,
   };
 }
 
-let stateDeps: StateDeps = createDefaultStateDeps();
+let stateDeps: StateDeps | undefined;
+
+/** Bind state operations to the catalog owned by application bootstrap. */
+export function configureStateCatalog(catalog: CatalogReader): void {
+  configuredCatalog = catalog;
+  stateDeps = createDefaultStateDeps(catalog);
+}
 
 export function setStateDeps(overrides: Partial<StateDeps>): void {
-  Object.assign(stateDeps, overrides);
+  Object.assign(getStateDeps(), overrides);
 }
 
 export function resetStateDeps(): void {
-  stateDeps = createDefaultStateDeps();
+  if (!configuredCatalog) {
+    throw new Error(
+      "State catalog is not configured; call configureStateCatalog(catalog) before resetting dependencies",
+    );
+  }
+  stateDeps = createDefaultStateDeps(configuredCatalog);
 }
 
 export function getStateDeps(): StateDeps {
+  if (!stateDeps) {
+    throw new Error(
+      "State catalog is not configured; call configureStateCatalog(catalog) during bootstrap",
+    );
+  }
   return stateDeps;
 }
 
@@ -143,14 +161,14 @@ export const state: State = {
  * one item per type can be selected (mimics legacy radio-button behavior).
  */
 export function getSelectionGroup(itemId: string): string {
-  const meta = stateDeps.getItemMetadata(itemId);
+  const meta = getStateDeps().getItemMetadata(itemId);
   if (!meta || !meta.type_name) return itemId;
   return meta.type_name;
 }
 
 /** Sub-selection group for a recolor option; falls back to the item's type_name. */
 export function getSubSelectionGroup(itemId: string, idx: number): string {
-  const meta = stateDeps.getItemMetadata(itemId);
+  const meta = getStateDeps().getItemMetadata(itemId);
   const recolor = meta?.recolors?.[idx];
   if (!meta || !meta.type_name) return itemId;
   return recolor?.type_name ?? meta.type_name;
@@ -158,6 +176,7 @@ export function getSubSelectionGroup(itemId: string, idx: number): string {
 
 // Select default items (body color light + human male light head)
 export async function selectDefaults(): Promise<void> {
+  const deps = getStateDeps();
   // itemId is now based on filename (e.g., "body").
   const bodyItemId = "body";
   const bodySelectionGroup = getSelectionGroup(bodyItemId);
@@ -186,18 +205,19 @@ export async function selectDefaults(): Promise<void> {
     name: "Neutral (light)",
   };
 
-  stateDeps.syncSelectionsToHash();
-  await stateDeps.renderCharacter(state.selections, state.bodyType);
+  deps.syncSelectionsToHash();
+  await deps.renderCharacter(state.selections, state.bodyType);
   // Trigger redraw to update preview canvas after offscreen render completes
-  stateDeps.redraw();
+  deps.redraw();
 }
 
 export async function resetAll(): Promise<void> {
+  const deps = getStateDeps();
   state.selections = {};
   state.customUploadedImage = null;
   state.customImageZPos = 0;
-  await stateDeps.selectDefaults();
-  stateDeps.redraw();
+  await deps.selectDefaults();
+  deps.redraw();
 }
 
 /** When any body-colored part changes, propagate variant/recolor to other items with matchBodyColor. */
@@ -205,12 +225,13 @@ export function applyMatchBodyColor(
   variantToMatch: string | null,
   recolorToMatch: string | null,
 ): void {
+  const deps = getStateDeps();
   if (!state.matchBodyColorEnabled) return;
   if (!variantToMatch && !recolorToMatch) return;
 
   for (const selection of Object.values(state.selections)) {
     const itemId = selection.itemId;
-    const meta = stateDeps.getItemMetadata(itemId);
+    const meta = deps.getItemMetadata(itemId);
 
     if (!meta || !meta.matchBodyColor) continue;
 
@@ -237,13 +258,14 @@ export function applyMatchBodyColor(
 }
 
 export async function initState(): Promise<void> {
-  stateDeps.loadSelectionsFromHash();
+  const deps = getStateDeps();
+  deps.loadSelectionsFromHash();
 
   if (Object.keys(state.selections).length === 0) {
-    await stateDeps.selectDefaults();
-  } else if (stateDeps.getCanvasRenderer()) {
-    await stateDeps.renderCharacter(state.selections, state.bodyType);
-    stateDeps.redraw();
+    await deps.selectDefaults();
+  } else if (deps.getCanvasRenderer()) {
+    await deps.renderCharacter(state.selections, state.bodyType);
+    deps.redraw();
   }
 }
 
@@ -253,6 +275,7 @@ export function selectItem(
   isSelected: boolean = false,
   subId: number | null = null,
 ): void {
+  const deps = getStateDeps();
   const selectionGroup = getSelectionGroup(itemId);
   const subSelect =
     subId !== null ? getSubSelectionGroup(itemId, subId) : selectionGroup;
@@ -262,7 +285,7 @@ export function selectItem(
     return;
   }
 
-  const meta = stateDeps.getItemMetadata(itemId);
+  const meta = deps.getItemMetadata(itemId);
   if (!meta) return;
 
   const useVariants = (meta.variants?.length ?? 0) > 0;

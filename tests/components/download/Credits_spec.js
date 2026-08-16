@@ -3,12 +3,9 @@ import { assert } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { Credits } from "../../../sources/components/download/Credits.ts";
-import { defaultCatalog } from "../../../sources/state/catalog.ts";
+import { createCatalog } from "../../../sources/state/catalog.ts";
 import { state } from "../../../sources/state/state.ts";
-import {
-  restoreAppCatalogAfterTest,
-  seedBrowserCatalog,
-} from "../../browser-catalog-fixture.js";
+import { seedCatalog } from "../../browser-catalog-fixture.js";
 
 function buttonByText(host, text) {
   return [...host.querySelectorAll("button")].find(
@@ -18,17 +15,19 @@ function buttonByText(host, text) {
 
 describe("Credits", function () {
   let host;
+  let catalog;
 
   beforeEach(function () {
     host = document.createElement("div");
     document.body.appendChild(host);
+    catalog = createCatalog();
     state.previewBootstrapRenderDone = true;
     state.selections = {};
     state.bodyType = "male";
     state.selectedAnimation = "walk";
   });
 
-  afterEach(async function () {
+  afterEach(function () {
     sinon.restore();
     m.mount(host, null);
     if (host.parentNode) {
@@ -38,13 +37,12 @@ describe("Credits", function () {
     state.selections = {};
     state.bodyType = "male";
     state.selectedAnimation = "walk";
-    await restoreAppCatalogAfterTest();
   });
 
   it("shows loading copy before bootstrap render is done", function () {
     state.previewBootstrapRenderDone = false;
     m.mount(host, {
-      view: () => m(Credits, { catalog: defaultCatalog }),
+      view: () => m(Credits, { catalog }),
     });
 
     assert.include(host.textContent, "Loading selections…");
@@ -52,9 +50,9 @@ describe("Credits", function () {
   });
 
   it("shows empty copy when ready but nothing is credited", function () {
-    seedBrowserCatalog({});
+    seedCatalog(catalog, {});
     m.mount(host, {
-      view: () => m(Credits, { catalog: defaultCatalog }),
+      view: () => m(Credits, { catalog }),
     });
 
     assert.include(host.textContent, "No items selected");
@@ -62,7 +60,7 @@ describe("Credits", function () {
   });
 
   it("lists credits and downloads TXT/CSV files", function () {
-    seedBrowserCatalog({
+    seedCatalog(catalog, {
       item1: {
         animations: ["walk"],
         layers: {
@@ -82,7 +80,7 @@ describe("Credits", function () {
     state.selections = { slot: { itemId: "item1", variant: null } };
 
     m.mount(host, {
-      view: () => m(Credits, { catalog: defaultCatalog }),
+      view: () => m(Credits, { catalog }),
     });
 
     assert.include(host.textContent, "eyes/human/adult/walk.png");

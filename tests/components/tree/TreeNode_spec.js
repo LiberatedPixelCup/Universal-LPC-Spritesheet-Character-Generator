@@ -2,27 +2,22 @@ import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { TreeNode } from "../../../sources/components/tree/TreeNode.ts";
-import { state } from "../../../sources/state/state.ts";
-import {
-  defaultCatalog,
-  resetCatalogForTests,
-  registerFromIndexModule,
-  registerFromPaletteModule,
-} from "../../../sources/state/catalog.ts";
+import { configureStateCatalog, state } from "../../../sources/state/state.ts";
+import { createCatalog } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
 import {
   resetState,
   setEnabledAnimations,
 } from "../../../sources/state/filters.ts";
-import {
-  restoreAppCatalogAfterTest,
-  seedBrowserCatalog,
-} from "../../browser-catalog-fixture.js";
+import { seedCatalog } from "../../browser-catalog-fixture.js";
 
 describe("TreeNode", function () {
   let host;
+  let catalog;
 
   beforeEach(function () {
+    catalog = createCatalog();
+    configureStateCatalog(catalog);
     resetState();
     state.expandedNodes = {};
     state.searchQuery = "";
@@ -30,17 +25,16 @@ describe("TreeNode", function () {
     document.body.appendChild(host);
   });
 
-  afterEach(async function () {
+  afterEach(function () {
     m.render(host, null);
     if (host.parentNode) {
       host.parentNode.removeChild(host);
     }
     resetState();
-    await restoreAppCatalogAfterTest();
   });
 
   it("renders nothing when the node is restricted to other body types", function () {
-    seedBrowserCatalog({
+    seedCatalog(catalog, {
       tn_hidden: {
         name: "Female only",
         type_name: "hat",
@@ -59,17 +53,14 @@ describe("TreeNode", function () {
       children: {},
     };
 
-    m.render(
-      host,
-      m(TreeNode, { name: "Armor", node, catalog: defaultCatalog }),
-    );
+    m.render(host, m(TreeNode, { name: "Armor", node, catalog }));
 
     assert.strictEqual(host.querySelector(".tree-label"), null);
     assert.strictEqual(host.textContent.trim(), "");
   });
 
   it("renders nothing when search is active and nothing in the subtree matches", function () {
-    seedBrowserCatalog({
+    seedCatalog(catalog, {
       tn_alpha: {
         name: "Alpha Helm",
         type_name: "hat",
@@ -84,7 +75,7 @@ describe("TreeNode", function () {
     m.render(
       host,
       m(TreeNode, {
-        catalog: defaultCatalog,
+        catalog,
         name: "Headgear",
         node: { items: ["tn_alpha"], children: {} },
       }),
@@ -94,8 +85,7 @@ describe("TreeNode", function () {
   });
 
   it("shows skeleton rows for item ids until lite metadata is registered", function () {
-    resetCatalogForTests();
-    registerFromIndexModule({
+    catalog.registerFromIndexModule({
       aliasMetadata: {},
       categoryTree: { items: [], children: {} },
       metadataIndexes: {
@@ -103,7 +93,7 @@ describe("TreeNode", function () {
         hashMatch: { itemsByTypeName: {} },
       },
     });
-    registerFromPaletteModule({
+    catalog.registerFromPaletteModule({
       paletteMetadata: { versions: {}, materials: {} },
     });
 
@@ -112,7 +102,7 @@ describe("TreeNode", function () {
     m.render(
       host,
       m(TreeNode, {
-        catalog: defaultCatalog,
+        catalog,
         name: "Warehouse",
         node: { items: ["pending-id"], children: {} },
       }),
@@ -124,7 +114,8 @@ describe("TreeNode", function () {
   });
 
   it("renders display label, simple item row, and expand/collapse from the category row", function () {
-    seedBrowserCatalog(
+    seedCatalog(
+      catalog,
       {
         tn_hat: {
           name: "TreeNode Hat",
@@ -143,7 +134,7 @@ describe("TreeNode", function () {
     m.render(
       host,
       m(TreeNode, {
-        catalog: defaultCatalog,
+        catalog,
         name: "outer_category",
         node: {
           label: "Custom Label",
@@ -163,7 +154,7 @@ describe("TreeNode", function () {
     m.render(
       host,
       m(TreeNode, {
-        catalog: defaultCatalog,
+        catalog,
         name: "outer_category",
         node: {
           label: "Custom Label",
@@ -182,12 +173,12 @@ describe("TreeNode", function () {
   });
 
   it("capitalizes the category key when label is omitted", function () {
-    seedBrowserCatalog({}, { categoryTree: { items: [], children: {} } });
+    seedCatalog(catalog, {}, { categoryTree: { items: [], children: {} } });
 
     m.render(
       host,
       m(TreeNode, {
-        catalog: defaultCatalog,
+        catalog,
         name: "armor",
         node: { items: [], children: {} },
       }),
@@ -197,7 +188,7 @@ describe("TreeNode", function () {
   });
 
   it("auto-expands when search matches an item name", function () {
-    seedBrowserCatalog({
+    seedCatalog(catalog, {
       tn_search_hat: {
         name: "Unique Search Hat",
         type_name: "hat",
@@ -212,7 +203,7 @@ describe("TreeNode", function () {
     m.render(
       host,
       m(TreeNode, {
-        catalog: defaultCatalog,
+        catalog,
         name: "Gear",
         node: { items: ["tn_search_hat"], children: {} },
       }),
@@ -227,7 +218,8 @@ describe("TreeNode", function () {
   });
 
   it("selects and clears a simple item via the tree row", function () {
-    seedBrowserCatalog(
+    seedCatalog(
+      catalog,
       {
         tn_pick: {
           name: "Pickable Cape",
@@ -245,7 +237,7 @@ describe("TreeNode", function () {
     m.render(
       host,
       m(TreeNode, {
-        catalog: defaultCatalog,
+        catalog,
         name: "capes",
         node: { items: ["tn_pick"], children: {} },
       }),
@@ -261,7 +253,7 @@ describe("TreeNode", function () {
     m.render(
       host,
       m(TreeNode, {
-        catalog: defaultCatalog,
+        catalog,
         name: "capes",
         node: { items: ["tn_pick"], children: {} },
       }),
@@ -273,13 +265,13 @@ describe("TreeNode", function () {
   });
 
   it("shows animation mismatch styling on the category row and blocks expand", function () {
-    seedBrowserCatalog({}, { categoryTree: { items: [], children: {} } });
+    seedCatalog(catalog, {}, { categoryTree: { items: [], children: {} } });
     setEnabledAnimations(["run"]);
 
     m.render(
       host,
       m(TreeNode, {
-        catalog: defaultCatalog,
+        catalog,
         name: "AnimCat",
         node: {
           animations: ["walk"],
@@ -298,14 +290,14 @@ describe("TreeNode", function () {
   });
 
   it("nests child TreeNodes under pathPrefix", function () {
-    seedBrowserCatalog({}, { categoryTree: { items: [], children: {} } });
+    seedCatalog(catalog, {}, { categoryTree: { items: [], children: {} } });
     state.expandedNodes.parent = true;
     state.expandedNodes["parent-child"] = true;
 
     m.render(
       host,
       m(TreeNode, {
-        catalog: defaultCatalog,
+        catalog,
         name: "parent",
         node: {
           items: [],

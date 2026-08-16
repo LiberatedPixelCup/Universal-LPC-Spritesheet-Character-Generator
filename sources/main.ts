@@ -4,7 +4,7 @@ import m from "mithril";
 import "./styles/critical-entry.scss";
 import "./vendor-globals.ts";
 import { loadAllMetadata } from "./install-item-metadata.ts";
-import { catalogReady, defaultCatalog } from "./state/catalog.ts";
+import { createCatalog, type CatalogReader } from "./state/catalog.ts";
 
 // Import debug first so `window.DEBUG` is set before other modules run.
 import { debugLog, getDebugParam } from "./utils/debug.ts";
@@ -64,7 +64,7 @@ window.setPaletteRecolorMode = setPaletteRecolorMode;
 window.getPaletteRecolorConfig = getPaletteRecolorConfig;
 
 // Import state management
-import { initState, state } from "./state/state.ts";
+import { configureStateCatalog, initState, state } from "./state/state.ts";
 import { initHashChangeListener } from "./state/hash.ts";
 
 // Import components
@@ -74,6 +74,10 @@ import { FullSpritesheetPreview } from "./components/preview/FullSpritesheetPrev
 
 // Import performance profiler
 import { PerformanceProfiler } from "./performance-profiler.ts";
+
+const applicationCatalog = createCatalog();
+configureStateCatalog(applicationCatalog);
+installCatalogReadinessHooksForVisualTooling(applicationCatalog);
 
 // DEBUG mode will be turned on if on localhost and off in production
 // but this can be overridden by adding debug=(true|false) to the querystring.
@@ -99,7 +103,7 @@ window.setDefaultSelections = async function () {
 
 // Start metadata chunk fetches as soon as the entry module runs (no DOM required),
 // so download/parse overlaps HTML parse and the rest of this file.
-void loadAllMetadata();
+void loadAllMetadata(applicationCatalog);
 
 // TODO: this dynamic import doesn't actually load the deferred CSS in prod.
 // `load-deferred-styles.ts` has no JS exports (only `import "./deferred-entry.scss"`),
@@ -120,32 +124,36 @@ void loadAllMetadata();
 // manual link injection bypasses the missing CSS branch in the preload helper.
 void import("./styles/load-deferred-styles.ts");
 
-/** Commit 10 step 1: single-flight hash / init after index + lite are both registered. */
+/** Guard hash hydration and initial rendering after index + lite are registered. */
 let hashHydrationInitDone = false;
 
 // Wait for DOM to be ready, then mount UI; catalog may already be loading or ready.
 document.addEventListener("DOMContentLoaded", () => {
   // Mount roots are static markup in index.html; assert non-null.
-  // App is the composition root for catalog DI — services pass through via attrs.
+  // main.ts is the composition root; App and sibling previews receive the same catalog.
   m.mount(document.getElementById("mithril-filters")!, {
-    view: () => m(App, { catalog: defaultCatalog }),
+    view: () => m(App, { catalog: applicationCatalog }),
   });
-  m.mount(document.getElementById("mithril-preview")!, AnimationPreview);
-  m.mount(
-    document.getElementById("mithril-spritesheet-preview")!,
-    FullSpritesheetPreview,
-  );
+  m.mount(document.getElementById("mithril-preview")!, {
+    view: () => m(AnimationPreview, { catalog: applicationCatalog }),
+  });
+  m.mount(document.getElementById("mithril-spritesheet-preview")!, {
+    view: () => m(FullSpritesheetPreview, { catalog: applicationCatalog }),
+  });
 
   clearShellLoadingClass();
 
   void (async () => {
-    await Promise.all([catalogReady.onIndexReady, catalogReady.onLiteReady]);
+    await Promise.all([
+      applicationCatalog.ready.onIndexReady,
+      applicationCatalog.ready.onLiteReady,
+    ]);
     if (hashHydrationInitDone) return;
     hashHydrationInitDone = true;
 
     canvasRenderer.initCanvas();
 
-    initHashChangeListener();
+    initHashChangeListener(applicationCatalog);
 
     // Before first render: overlay uses this; during render, `isRenderingCharacter` hides overlay.
     state.previewBootstrapRenderDone = true;
@@ -169,4 +177,32 @@ function clearShellLoadingClass(): void {
   for (const id of SHELL_LOADING_ROOT_IDS) {
     document.getElementById(id)?.classList.remove("loading");
   }
+}
+
+/**
+ * Expose metadata readiness to Playwright, Argos, and dump-computed-styles.
+ * These tools execute in a separate browser context and need a global bridge
+ * to wait for dynamically imported catalog chunks before inspecting the UI.
+ */
+function installCatalogReadinessHooksForVisualTooling(
+  catalog: CatalogReader,
+): void {
+  (
+    globalThis as unknown as {
+      __LPC_waitCatalogAllReady: () => Promise<void>;
+    }
+  ).__LPC_waitCatalogAllReady = async () => {
+    await catalog.ready.onAllReady;
+  };
+
+  (
+    globalThis as unknown as {
+      __LPC_arePaletteModalMetadataChunksReady: () => boolean;
+    }
+  ).__LPC_arePaletteModalMetadataChunksReady = () =>
+    catalog.isIndexReady() &&
+    catalog.isLiteReady() &&
+    catalog.isCreditsReady() &&
+    catalog.isPaletteReady() &&
+    catalog.isLayersReady();
 }

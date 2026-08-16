@@ -5,37 +5,31 @@ import {
   creditsToCsv,
   creditsToTxt,
 } from "../../sources/utils/credits.ts";
-import {
-  defaultCatalog,
-  resetCatalogForTests,
-} from "../../sources/state/catalog.ts";
-import {
-  restoreAppCatalogAfterTest,
-  seedBrowserCatalog,
-} from "../browser-catalog-fixture.js";
+import { createCatalog } from "../../sources/state/catalog.ts";
+import { seedCatalog } from "../browser-catalog-fixture.js";
 import { state } from "../../sources/state/state.ts";
 
 describe("utils/credits.ts", () => {
   let previousSelectedAnimation;
+  let catalog;
 
   beforeEach(() => {
+    catalog = createCatalog();
     previousSelectedAnimation = state.selectedAnimation;
-    resetCatalogForTests();
   });
 
-  afterEach(async () => {
-    await restoreAppCatalogAfterTest();
+  afterEach(() => {
     state.selectedAnimation = previousSelectedAnimation;
   });
 
   describe("getAllCredits", () => {
     it("returns an empty array when selections is empty", () => {
-      seedBrowserCatalog({});
-      expect(getAllCredits(defaultCatalog, {}, "male")).to.deep.equal([]);
+      seedCatalog(catalog, {});
+      expect(getAllCredits(catalog, {}, "male")).to.deep.equal([]);
     });
 
     it("skips items with no metadata or no credits", () => {
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         noCredits: {
           animations: ["walk"],
           layers: { layer_1: { male: "a/" } },
@@ -43,7 +37,7 @@ describe("utils/credits.ts", () => {
       });
       expect(
         getAllCredits(
-          defaultCatalog,
+          catalog,
           { g: { itemId: "noCredits", variant: null } },
           "male",
         ),
@@ -51,7 +45,7 @@ describe("utils/credits.ts", () => {
     });
 
     it("includes a credit when the used sprite path matches the credit file prefix", () => {
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         item1: {
           animations: ["walk"],
           layers: {
@@ -71,7 +65,7 @@ describe("utils/credits.ts", () => {
       state.selectedAnimation = "walk";
 
       const result = getAllCredits(
-        defaultCatalog,
+        catalog,
         { slot: { itemId: "item1", variant: null } },
         "male",
       );
@@ -85,7 +79,7 @@ describe("utils/credits.ts", () => {
     });
 
     it("uses variant path segments when selection has a variant", () => {
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         item1: {
           animations: ["walk"],
           layers: {
@@ -104,7 +98,7 @@ describe("utils/credits.ts", () => {
       state.selectedAnimation = "walk";
 
       const result = getAllCredits(
-        defaultCatalog,
+        catalog,
         { slot: { itemId: "item1", variant: "light brown" } },
         "male",
       );
@@ -114,7 +108,7 @@ describe("utils/credits.ts", () => {
     });
 
     it("uses state.selectedAnimation when building paths", () => {
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         item1: {
           animations: ["walk", "run"],
           layers: {
@@ -133,7 +127,7 @@ describe("utils/credits.ts", () => {
       state.selectedAnimation = "run";
 
       const result = getAllCredits(
-        defaultCatalog,
+        catalog,
         { slot: { itemId: "item1", variant: null } },
         "male",
       );
@@ -142,7 +136,7 @@ describe("utils/credits.ts", () => {
     });
 
     it("uses the first listed animation when walk is not available", () => {
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         item1: {
           animations: ["idle", "jump"],
           layers: {
@@ -161,7 +155,7 @@ describe("utils/credits.ts", () => {
       state.selectedAnimation = undefined;
 
       const result = getAllCredits(
-        defaultCatalog,
+        catalog,
         { slot: { itemId: "item1", variant: null } },
         "male",
       );
@@ -170,7 +164,7 @@ describe("utils/credits.ts", () => {
     });
 
     it("matches credit when used path equals credit.file exactly", () => {
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         item1: {
           animations: ["walk"],
           layers: {
@@ -189,7 +183,7 @@ describe("utils/credits.ts", () => {
       state.selectedAnimation = "walk";
 
       const result = getAllCredits(
-        defaultCatalog,
+        catalog,
         { slot: { itemId: "item1", variant: null } },
         "male",
       );
@@ -199,7 +193,7 @@ describe("utils/credits.ts", () => {
     });
 
     it("does not emit duplicate entries for the same used path", () => {
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         item1: {
           animations: ["walk"],
           layers: {
@@ -224,7 +218,7 @@ describe("utils/credits.ts", () => {
       state.selectedAnimation = "walk";
 
       const result = getAllCredits(
-        defaultCatalog,
+        catalog,
         { slot: { itemId: "item1", variant: null } },
         "male",
       );

@@ -31,7 +31,7 @@ import {
 } from "../../sources/state/zip.ts";
 import { resetState } from "../../sources/state/hash.ts";
 import { state } from "../../sources/state/state.ts";
-import { defaultCatalog } from "../../sources/state/catalog.ts";
+import { createCatalog } from "../../sources/state/catalog.ts";
 import { importStateFromJSON } from "../../sources/state/json.ts";
 import issue382ItemMetadata from "../fixtures/issue-382/issue-382-itemdata.js";
 import issue382Selections from "../fixtures/issue-382/issue-382-selections.js";
@@ -40,27 +40,29 @@ import { paths as issue382ZipPathsSplitItemSheets } from "../fixtures/issue-382/
 import { paths as issue382ZipPathsSplitItemAnimations } from "../fixtures/issue-382/issue-382-zip-paths-split-item-animations.js";
 import { paths as issue382ZipPathsIndividualFrames } from "../fixtures/issue-382/issue-382-zip-paths-individual-frames.js";
 import { createFakeJSZip, sortedZipKeys } from "../helpers/fake-jszip.js";
-import {
-  restoreAppCatalogAfterTest,
-  seedBrowserCatalogMergedOnDist,
-} from "../browser-catalog-fixture.js";
+import { seedCatalogWithGeneratedContext } from "../browser-catalog-fixture.js";
 
-function applyImportedStateFromFixture() {
-  Object.assign(state, importStateFromJSON(JSON.stringify(issue382Selections)));
+function applyImportedStateFromFixture(catalog) {
+  Object.assign(
+    state,
+    importStateFromJSON(catalog, JSON.stringify(issue382Selections)),
+  );
 }
 
 describe("state/zip.ts issue #382 regression (longsword + full outfit)", () => {
   let sandbox;
   let fakeZip;
   let alertStub;
+  let catalog;
 
   beforeEach(async () => {
+    catalog = createCatalog();
     resetState();
     drawCalls.length = 0;
 
-    await seedBrowserCatalogMergedOnDist(issue382ItemMetadata);
+    seedCatalogWithGeneratedContext(catalog, issue382ItemMetadata);
 
-    applyImportedStateFromFixture();
+    applyImportedStateFromFixture(catalog);
 
     sandbox = sinon.createSandbox();
     window.canvasRenderer = {};
@@ -90,14 +92,13 @@ describe("state/zip.ts issue #382 regression (longsword + full outfit)", () => {
     ctx.fillStyle = "#445566";
     ctx.fillRect(0, 0, SHEET_WIDTH, SHEET_HEIGHT);
 
-    await renderCharacter(defaultCatalog, state.selections, state.bodyType);
+    await renderCharacter(catalog, state.selections, state.bodyType);
   });
 
-  afterEach(async () => {
+  afterEach(() => {
     sandbox.restore();
     delete window.canvasRenderer;
     delete window.JSZip;
-    await restoreAppCatalogAfterTest();
     state.zipByAnimation.isRunning = false;
     state.zipByItem.isRunning = false;
     state.zipByAnimationAndItem.isRunning = false;
@@ -107,7 +108,7 @@ describe("state/zip.ts issue #382 regression (longsword + full outfit)", () => {
   });
 
   it("exportSplitAnimations creates the expected zip paths", async () => {
-    await exportSplitAnimations(defaultCatalog);
+    await exportSplitAnimations(catalog);
     expect(sortedZipKeys(fakeZip)).to.deep.equal(
       [...issue382ZipPathsSplitAnimations].sort(),
     );
@@ -115,7 +116,7 @@ describe("state/zip.ts issue #382 regression (longsword + full outfit)", () => {
   });
 
   it("exportSplitItemSheets creates the expected zip paths", async () => {
-    await exportSplitItemSheets(defaultCatalog);
+    await exportSplitItemSheets(catalog);
     expect(sortedZipKeys(fakeZip)).to.deep.equal(
       [...issue382ZipPathsSplitItemSheets].sort(),
     );
@@ -123,7 +124,7 @@ describe("state/zip.ts issue #382 regression (longsword + full outfit)", () => {
   });
 
   it("exportSplitItemAnimations creates the expected zip paths (custom folders include standard layers)", async () => {
-    await exportSplitItemAnimations(defaultCatalog);
+    await exportSplitItemAnimations(catalog);
     expect(sortedZipKeys(fakeZip)).to.deep.equal(
       [...issue382ZipPathsSplitItemAnimations].sort(),
     );
@@ -136,7 +137,7 @@ describe("state/zip.ts issue #382 regression (longsword + full outfit)", () => {
   });
 
   it("exportIndividualFrames creates the expected zip paths (golden list)", async () => {
-    await exportIndividualFrames(defaultCatalog);
+    await exportIndividualFrames(catalog);
     expect(sortedZipKeys(fakeZip)).to.deep.equal(
       [...issue382ZipPathsIndividualFrames].sort(),
     );

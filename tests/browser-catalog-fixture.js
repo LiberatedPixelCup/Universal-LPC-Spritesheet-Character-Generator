@@ -1,46 +1,13 @@
-import {
-  defaultCatalog,
-  loadCatalogFromFixtures,
-  resetCatalogForTests,
-} from "../sources/state/catalog.ts";
-import {
-  loadAllMetadata,
-  resetLoadAllMetadataCacheForTests,
-} from "../sources/install-item-metadata.ts";
 import { buildItemsByTypeNameLite } from "../sources/state/resolve-hash-param.ts";
+import {
+  aliasMetadata,
+  categoryTree,
+  metadataIndexes,
+} from "../index-metadata.js";
+import { paletteMetadata } from "../palette-metadata.js";
 
 const emptyPalette = { versions: {}, materials: {} };
 const emptyTree = { items: [], children: {} };
-
-/**
- * @param {{
- *   itemMetadata: Record<string, object>,
- *   layersMetadata: Record<string, Record<string, object>>,
- *   creditsMetadata: Record<string, object[]>,
- * }} loaded
- * @returns {Record<string, object>}
- */
-function mergedItemMapFromLoadedChunks(loaded) {
-  const { itemMetadata: lite, layersMetadata, creditsMetadata } = loaded;
-  const out = {};
-  for (const id of Object.keys(lite)) {
-    out[id] = {
-      ...lite[id],
-      layers: layersMetadata[id] ?? {},
-      credits: creditsMetadata[id] ?? [],
-    };
-  }
-  return out;
-}
-
-/**
- * Load split catalog from a merged item map (browser tests; mirrors generator split).
- * @param {Record<string, object>} itemMetadata
- * @param {{ aliasMetadata?: object, categoryTree?: object, paletteMetadata?: object }} [extras]
- */
-export function seedBrowserCatalog(itemMetadata, extras = {}) {
-  seedCatalog(defaultCatalog, itemMetadata, extras);
-}
 
 /** Seed a specific catalog instance from a merged item map. */
 export function seedCatalog(catalog, itemMetadata, extras = {}) {
@@ -57,36 +24,18 @@ export function seedCatalog(catalog, itemMetadata, extras = {}) {
   });
 }
 
-/** Reload dist metadata into `catalog` after specs call `resetCatalogForTests()`. */
-export async function restoreAppCatalogAfterTest() {
-  resetCatalogForTests();
-  resetLoadAllMetadataCacheForTests();
-  await loadAllMetadata();
-}
-
-/**
- * Replace `catalog` with merged dist `itemMetadata` plus `patch` (re-seed lite + index after
- * loading real dist chunks, mirroring a targeted edit to the in-memory item map).
- * Preserves dist index, palette, alias, and tree data so palette resolution matches production.
- */
-export async function seedBrowserCatalogMergedOnDist(patch) {
-  resetLoadAllMetadataCacheForTests();
-  const loaded = await loadAllMetadata();
-  const mergedItems = {
-    ...mergedItemMapFromLoadedChunks(loaded),
-    ...patch,
-  };
-  const byTypeName = buildItemsByTypeNameLite(mergedItems);
-  resetCatalogForTests();
-  loadCatalogFromFixtures({
-    itemMetadata: mergedItems,
-    aliasMetadata: loaded.aliasMetadata,
-    categoryTree: loaded.categoryTree,
+/** Seed fixture items while retaining generated palette, alias, tree, and index context. */
+export function seedCatalogWithGeneratedContext(catalog, fixtureItems) {
+  const byTypeName = buildItemsByTypeNameLite(fixtureItems);
+  catalog.loadCatalogFromFixtures({
+    itemMetadata: fixtureItems,
+    aliasMetadata,
+    categoryTree,
     metadataIndexes: {
-      ...loaded.metadataIndexes,
+      ...metadataIndexes,
       byTypeName,
       hashMatch: { itemsByTypeName: byTypeName },
     },
-    paletteMetadata: loaded.paletteMetadata,
+    paletteMetadata,
   });
 }

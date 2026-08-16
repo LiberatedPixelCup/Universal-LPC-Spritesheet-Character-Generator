@@ -14,10 +14,7 @@ import {
   setPaletteRecolorMode,
   getPaletteRecolorConfig,
 } from "../../sources/canvas/palette-recolor.ts";
-import {
-  defaultCatalog,
-  getPaletteMetadata,
-} from "../../sources/state/catalog.ts";
+import { createCatalog } from "../../sources/state/catalog.ts";
 import {
   solidCanvas,
   splitCanvas,
@@ -26,8 +23,27 @@ import {
 
 describe("canvas/palette-recolor.ts single-pass merge (CPU path)", () => {
   let previousMode;
+  let catalog;
 
   before(() => {
+    catalog = createCatalog();
+    catalog.registerFromPaletteModule({
+      paletteMetadata: {
+        versions: {},
+        materials: {
+          body: {
+            default: "ulpc",
+            base: "light",
+            palettes: {
+              ulpc: {
+                light: ["#FF0000"],
+                olive: ["#00FF00"],
+              },
+            },
+          },
+        },
+      },
+    });
     previousMode = getPaletteRecolorConfig().activeMode;
     setPaletteRecolorMode("cpu");
   });
@@ -118,7 +134,7 @@ describe("canvas/palette-recolor.ts single-pass merge (CPU path)", () => {
   });
 
   it("falls back to the item source key when target color is missing", async () => {
-    const paletteMeta = getPaletteMetadata().unwrapOr(null);
+    const paletteMeta = catalog.getPaletteMetadata().unwrapOr(null);
     expect(paletteMeta).to.not.equal(null);
 
     const bodyMaterial = paletteMeta.materials.body;
@@ -137,7 +153,7 @@ describe("canvas/palette-recolor.ts single-pass merge (CPU path)", () => {
     const img = solidCanvas(srcRgb.r, srcRgb.g, srcRgb.b);
 
     const out = await recolorWithPalette(
-      defaultCatalog,
+      catalog,
       img,
       {},
       {
