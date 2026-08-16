@@ -11,8 +11,11 @@ import {
   itemMetadataPlugins,
   itemMetadataResolveAliases,
 } from "./vite/wiring.js";
+import istanbul from "vite-plugin-istanbul";
+import { vitePluginCoverageCollect } from "./vite/vite-plugin-coverage-collect.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const coverageEnabled = process.env.VITE_COVERAGE === "true";
 
 /**
  * Item-metadata pipeline (Commit 4): `vite/wiring.js` registers the pre-plugin,
@@ -73,5 +76,18 @@ export default defineConfig(({ command }) => ({
     vitePluginBundledCssAfterBulma(),
     getSpritesheetsPlugin(command),
     vitePluginPurgeCriticalCss(),
+    ...(coverageEnabled
+      ? [
+          istanbul({
+            include: "sources/**",
+            exclude: ["node_modules", "tests", "dist"],
+            extension: [".js", ".ts"],
+            requireEnv: true,
+            cypress: false,
+            checkProd: false,
+          }),
+          vitePluginCoverageCollect(),
+        ]
+      : []),
   ],
 }));

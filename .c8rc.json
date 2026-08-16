@@ -1,0 +1,6 @@
+{
+  "include": ["scripts/**", "vite/**"],
+  "exclude": ["node_modules/**", "tests/**", "dist/**", "sources/**"],
+  "reporter": ["lcovonly", "text", "html"],
+  "reports-dir": "coverage/node"
+}

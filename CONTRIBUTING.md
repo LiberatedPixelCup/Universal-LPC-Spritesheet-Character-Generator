@@ -269,7 +269,30 @@ npm run test:server
 
 This runs Testem in dev mode (browser picker / watch) against the same **[`tests_run.html`](tests_run.html)** harness.
 
-**CI:** [`.github/workflows/ci.yml`](.github/workflows/ci.yml) installs **Chrome** and **Firefox**, starts **Xvfb**, and runs **`npm test`** on pushes and pull requests to **`master`**. That workflow uses `npm ci --ignore-scripts`; for local development, `npm ci` or `npm install` without `--ignore-scripts` is typical.
+**CI:** [`.github/workflows/ci.yml`](.github/workflows/ci.yml) installs **Chrome** and **Firefox**, starts **Xvfb**, and runs **`npm run test:node:coverage`** plus **`npm run test:browser:coverage`** on pushes and pull requests to **`master`**, then uploads `lcov` to [Codecov](https://codecov.io/gh/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator). That workflow uses `npm ci --ignore-scripts`; for local development, `npm ci` or `npm install` without `--ignore-scripts` is typical.
+
+#### Unit-test coverage
+
+CI measures **unit-test** line coverage only: [`c8`](https://github.com/bcoe/c8) around the Node runner for **`scripts/`** (and local Vite-plugin reports), and Istanbul (`vite-plugin-istanbul`) in the Testem browser suite for **`sources/`**. Reports upload from [`.github/workflows/ci.yml`](.github/workflows/ci.yml) to Codecov as flags **`node`** (`scripts/`) and **`browser`** (`sources/`). Playwright / Argos visual tests are not instrumented.
+
+**Run locally**
+
+```bash
+npm run test:node:coverage
+npm run test:browser:coverage
+```
+
+Plain **`npm test`** / **`npm run test:server`** stay uninstrumented. Coverage HTML and `lcov.info` land under **`coverage/node/`** and **`coverage/browser/`**. Browser collection is off unless **`VITE_COVERAGE=true`** (the `test:browser:coverage` script sets that).
+
+**PR checks** (see [`codecov.yml`](codecov.yml)):
+
+- **`codecov/patch`** — every new or edited production line under `sources/` (browser) or the generate-sources scripts (Node) must be executed by a unit test (100% patch). Screenshots do not count.
+- **`codecov/changes`** — existing production lines must not lose hits (deleted or weakened unit tests).
+- There is **no** overall coverage-percentage gate. Adding a large file will not fail the PR just because the project average moved.
+
+Ignored in the report: `tests/`, generated `dist/`, `spritesheets/`, `sheet_definitions/`, CSS, Vite plugins, non-generator `scripts/` (image processing, zip profiling, coverage merge, and similar), `sources/performance-profiler.ts`, `sources/utils/debug.ts`, `testem.cjs`, and `vite.config.js`. See [`codecov.yml`](codecov.yml).
+
+Contributors do not need a Codecov account or token. Fork pull requests run on the same `pull_request` workflow as today’s browser tests; uploads from forks are tokenless. Maintainers: installing the [Codecov GitHub App](https://github.com/apps/codecov), setting the `CODECOV_TOKEN` Actions secret, and requiring `codecov/patch` plus `codecov/changes` after `master` has a baseline are one-time repo settings. See [Codecov’s GitHub quick start](https://docs.codecov.com/docs/quick-start).
 
 #### Visual regression tests (Playwright + Argos)
 

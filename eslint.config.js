@@ -53,6 +53,8 @@ export default [
       "tests/fixtures/**",
       "tmp/**",
       "spritesheets/**",
+      "/coverage/**",
+      "/.nyc_output/**",
     ],
   },
   js.configs.recommended,
