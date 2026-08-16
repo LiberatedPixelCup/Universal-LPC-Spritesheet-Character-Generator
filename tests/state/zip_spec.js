@@ -361,12 +361,13 @@ describe("state/zip.ts", () => {
 
       expect(renderStub.callCount).to.equal(bodyLayers.length);
       const renderCall = renderStub.firstCall;
-      expect(renderCall.args[0]).to.equal("body");
-      expect(renderCall.args[1]).to.equal("light");
-      expect(renderCall.args[2]).to.equal(null);
-      expect(renderCall.args[3]).to.equal(state.bodyType);
-      expect(renderCall.args[4]).to.equal(state.selections);
-      expect(renderCall.args[5]).to.equal(bodyLayers[0].layerNum);
+      expect(renderCall.args[0]).to.equal(defaultCatalog);
+      expect(renderCall.args[1]).to.equal("body");
+      expect(renderCall.args[2]).to.equal("light");
+      expect(renderCall.args[3]).to.equal(null);
+      expect(renderCall.args[4]).to.equal(state.bodyType);
+      expect(renderCall.args[5]).to.equal(state.selections);
+      expect(renderCall.args[6]).to.equal(bodyLayers[0].layerNum);
     });
 
     it("writes PNG blobs under items/ when render succeeds", async () => {
@@ -775,13 +776,14 @@ describe("state/zip.ts", () => {
 
       expect(renderStub.callCount).to.equal(bodyLayers.length);
       const rc = renderStub.firstCall;
-      expect(rc.args[0]).to.equal("body");
-      expect(rc.args[1]).to.equal("light");
-      expect(rc.args[2]).to.equal(null);
-      expect(rc.args[3]).to.equal(state.bodyType);
-      expect(rc.args[4]).to.equal("walk");
-      expect(rc.args[5]).to.equal(state.selections);
-      expect(rc.args[6]).to.equal(bodyLayers[0].layerNum);
+      expect(rc.args[0]).to.equal(defaultCatalog);
+      expect(rc.args[1]).to.equal("body");
+      expect(rc.args[2]).to.equal("light");
+      expect(rc.args[3]).to.equal(null);
+      expect(rc.args[4]).to.equal(state.bodyType);
+      expect(rc.args[5]).to.equal("walk");
+      expect(rc.args[6]).to.equal(state.selections);
+      expect(rc.args[7]).to.equal(bodyLayers[0].layerNum);
     });
 
     it("writes metadata.json with standardAnimations.exported / failed maps per animation (walk only in fixture)", async () => {
