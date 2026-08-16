@@ -1,3 +1,3 @@
-import { writeZPositionsFromSheetsSync } from "./write_z_positions_from_sheets.js";
+import { writeZPositionsFromSheetsSync } from "./write_z_positions_from_sheets.ts";
 
 writeZPositionsFromSheetsSync();

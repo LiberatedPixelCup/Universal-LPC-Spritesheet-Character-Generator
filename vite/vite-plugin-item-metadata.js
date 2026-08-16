@@ -7,7 +7,7 @@ import {
   readStoredSourceInputsFingerprint,
   writeStoredSourceInputsFingerprint,
 } from "../scripts/generateSources/source_inputs_fingerprint.js";
-import { writeZPositionsFromSheetsSync } from "../scripts/zPositioning/write_z_positions_from_sheets.js";
+import { writeZPositionsFromSheetsSync } from "../scripts/zPositioning/write_z_positions_from_sheets.ts";
 
 /**
  * @param {string} filePath

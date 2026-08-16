@@ -130,13 +130,23 @@ export default [
   },
   {
     files: ["tests/**/*.ts"],
-    ignores: ["tests/visual/**"],
+    ignores: ["tests/visual/**", "tests/node/**"],
     languageOptions: {
       globals: {
         ...globals.browser,
         ...globals.es2021,
         ...globals.mocha,
         m: "readonly",
+      },
+    },
+    rules: commonRulesTs,
+  },
+  {
+    files: ["tests/node/**/*.ts"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.es2021,
       },
     },
     rules: commonRulesTs,

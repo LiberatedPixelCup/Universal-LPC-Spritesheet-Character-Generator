@@ -3,12 +3,25 @@ import path from "node:path";
 
 const possibleBodies = ["male", "female", "muscular", "pregnant", "child"];
 
+export type WriteZPositionsOpts = {
+  root?: string;
+  writeFileSync?: (
+    file: string,
+    data: string,
+    encoding?: BufferEncoding,
+  ) => void;
+};
+
+type LayerDefinition = {
+  zPos: number;
+  [key: string]: unknown;
+};
+
 /**
  * Regenerates `scripts/zPositioning/z_positions.csv` from all `sheet_definitions` JSON files
  * (same data as the legacy `parse_zpos` CLI). Paths are resolved from `root` (default `process.cwd()`).
- * @param {{ root?: string, writeFileSync?: typeof fs.writeFileSync }} [opts]
  */
-export function writeZPositionsFromSheetsSync(opts = {}) {
+export function writeZPositionsFromSheetsSync(opts: WriteZPositionsOpts = {}) {
   const root = opts.root ?? process.cwd();
   const writeFileSync = opts.writeFileSync ?? fs.writeFileSync;
   const sheetDir = path.join(root, "sheet_definitions");
@@ -16,7 +29,7 @@ export function writeZPositionsFromSheetsSync(opts = {}) {
     return;
   }
 
-  const csvEntries = [];
+  const csvEntries: string[] = [];
   const files = fs
     .readdirSync(sheetDir, {
       recursive: true,
@@ -37,7 +50,10 @@ export function writeZPositionsFromSheetsSync(opts = {}) {
     }
     const fullPath = path.join(file.parentPath, file.name);
     const baseName = file.name.replace(".json", "");
-    const definition = JSON.parse(fs.readFileSync(fullPath, "utf8"));
+    const definition = JSON.parse(fs.readFileSync(fullPath, "utf8")) as Record<
+      string,
+      LayerDefinition | undefined
+    >;
     for (let jdx = 1; jdx < 10; jdx++) {
       const layerDefinition = definition[`layer_${jdx}`];
       if (layerDefinition === undefined) {
@@ -55,7 +71,7 @@ export function writeZPositionsFromSheetsSync(opts = {}) {
           if (!firstImage) {
             images += " ";
           }
-          images += imageRef;
+          images += String(imageRef);
           firstImage = false;
         }
         bodyIndex += 1;

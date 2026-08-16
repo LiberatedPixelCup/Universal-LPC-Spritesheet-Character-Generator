@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { writeZPositionsFromSheetsSync } from "../../../../scripts/zPositioning/write_z_positions_from_sheets.js";
+import { writeZPositionsFromSheetsSync } from "../../../../scripts/zPositioning/write_z_positions_from_sheets.ts";
 
 test("writeZPositionsFromSheetsSync writes a header and layer rows", () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "zpos-"));
@@ -21,7 +21,7 @@ test("writeZPositionsFromSheetsSync writes a header and layer rows", () => {
     }),
   );
 
-  const writes = [];
+  const writes: { outPath: string; contents: string }[] = [];
   writeZPositionsFromSheetsSync({
     root,
     writeFileSync: (outPath, contents) => {
@@ -44,7 +44,7 @@ test("writeZPositionsFromSheetsSync writes a header and layer rows", () => {
 
 test("writeZPositionsFromSheetsSync does not write when sheet_definitions is missing", () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "zpos-missing-"));
-  const writes = [];
+  const writes: { outPath: string; contents: string }[] = [];
   writeZPositionsFromSheetsSync({
     root,
     writeFileSync: (outPath, contents) => {
