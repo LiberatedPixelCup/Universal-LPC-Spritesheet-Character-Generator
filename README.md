@@ -166,7 +166,10 @@ If an engine is not listed above, try Google. However, it is very likely that yo
 
 #### Tooling
 
+Requires **Node.js 22.18+** (`package.json` `engines`; CI uses Node 24) so `node` can run first-party `.ts` files. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup.
+
 - **Lint:** `npm run lint`
+- **Type-check:** `npm run type-check`
 - **Format:** `npm run format:check` (verify) or `npm run format` (apply)
 - **Tests:** `npm test` (Node checks plus browser tests). Visual regression: `npm run test:visual`. Details are in [CONTRIBUTING.md](CONTRIBUTING.md).
 

@@ -3,7 +3,8 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 
 /**
- * Recursively collect `*_spec.js` files under `dir`.
+ * Recursively collect Node specs under `dir`.
+ * Accepts `*_spec.js` and `*_spec.ts` while the suite is mid-migration.
  * @param {string} dir
  * @param {string[]} acc
  * @returns {string[]}
@@ -13,7 +14,10 @@ function collectSpecFiles(dir, acc = []) {
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) {
       collectSpecFiles(full, acc);
-    } else if (entry.name.endsWith("_spec.js")) {
+    } else if (
+      entry.name.endsWith("_spec.js") ||
+      entry.name.endsWith("_spec.ts")
+    ) {
       acc.push(full);
     }
   }

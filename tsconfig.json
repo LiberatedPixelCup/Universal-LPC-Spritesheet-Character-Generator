@@ -11,6 +11,8 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
+    // Node type-strips .ts (no enums, namespaces, or parameter properties).
+    "erasableSyntaxOnly": true,
 
     // Flags from @tsconfig/strictest we deliberately turn OFF:
 

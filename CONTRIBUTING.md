@@ -144,11 +144,11 @@ Install these on your machine before you run builds or tests. Versions match wha
 **Git**  
 Used for clone, branch, and PR workflow. [Download Git](https://git-scm.com/downloads) or use your OS package manager (`git` is often pre-installed on macOS and Linux).
 
-**Node.js 24 and npm**  
-CI uses **Node.js 24** (see [`.github/workflows/`](.github/workflows/)). Install from [nodejs.org](https://nodejs.org/) or a version manager such as [fnm](https://github.com/Schniz/fnm) or [nvm](https://github.com/nvm-sh/nvm), then confirm your runtime matches or is compatible with CI:
+**Node.js 22.18+ (CI: Node.js 24) and npm**  
+[`package.json`](package.json) `engines.node` is **`>=22.18.0`** so Node can run first-party **`.ts`** files with [type stripping](https://nodejs.org/docs/latest/api/typescript.html) (no `tsx` / compile step). CI uses **Node.js 24** (see [`.github/workflows/`](.github/workflows/)). Install from [nodejs.org](https://nodejs.org/) or a version manager such as [fnm](https://github.com/Schniz/fnm) or [nvm](https://github.com/nvm-sh/nvm), then confirm your runtime:
 
 ```bash
-node -v   # expect v24.x
+node -v   # v22.18+ locally; CI is v24.x
 npm -v    # npm ships with Node
 ```
 
@@ -159,8 +159,10 @@ npm ci
 # or, for everyday work: npm install
 ```
 
-**JavaScript module format (Node)**  
-The root **`package.json`** sets **`"type": "module"`**, so first-party **`.js`** files are **ESM**—use **`import`** and **`export`**, not **`require`** or **`module.exports`**, for new Node scripts and tooling under **`scripts/`**, **`vite/`**, **`tests/node/`**, and similar paths. One exception: the Testem configuration is **[`testem.cjs`](testem.cjs)** (CommonJS). [Testem](https://github.com/testem/testem) discovers **`testem.cjs`** automatically (same as **`testem.js`**, after **`testem.json` / `testem.yml`**, if those exist). Use **`--file testem.cjs`** only to force a path when you have multiple config files or need a non-default name.
+**JavaScript / TypeScript module format (Node)**  
+The root **`package.json`** sets **`"type": "module"`**, so first-party **`.js`** and **`.ts`** files are **ESM**—use **`import`** and **`export`**, not **`require`** or **`module.exports`**, for new Node scripts and tooling under **`scripts/`**, **`vite/`**, **`tests/node/`**, and similar paths. Relative imports use **explicit extensions** (`.js` or `.ts`, matching the file on disk). TypeScript must stay [erasable](https://www.typescriptlang.org/tsconfig/#erasableSyntaxOnly): no enums, namespaces, or parameter properties, so `node path/to/file.ts` works. One exception: the Testem configuration is **[`testem.cjs`](testem.cjs)** (CommonJS). [Testem](https://github.com/testem/testem) discovers **`testem.cjs`** automatically (same as **`testem.js`**, after **`testem.json` / `testem.yml`**, if those exist). Use **`--file testem.cjs`** only to force a path when you have multiple config files or need a non-default name.
+
+**Type-check:** `npm run type-check` runs `tsc --noEmit` (also in the Lint workflow). The app under **`sources/`** is TypeScript; **`scripts/`**, **`vite/`**, and **`tests/`** are mid-migration (`allowJs` is still on).
 
 **Copying `spritesheets/` into `dist/` (build)**  
 **`npm run build`** copies the large **`spritesheets/`** tree into **`dist/`** as part of the Vite build (see `vite.config.js`). Which tool runs depends on the OS:
@@ -233,7 +235,7 @@ That uses **`concurrently`** to run **`generate_credits.js`** and **`parse_zpos.
 
 Vite is responsible for the five `dist/*-metadata.js` files when the plugin runs (and may update **CREDITS** / **z_positions** in the “inputs changed or first run / missing `dist` metadata” case). The plugin passes **`env`** (`development` vs `production`) into **`generateSources`** and controls JSON indentation in metadata.
 
-**`index.html`** is the Vite entry shell (layout, stylesheets, `sources/main.js`). It is not emitted by `generate_sources.js`. Change it only when you mean to adjust the page structure or global assets.
+**`index.html`** is the Vite entry shell (layout, stylesheets, `sources/main.ts`). It is not emitted by `generate_sources.js`. Change it only when you mean to adjust the page structure or global assets.
 
 The **Validate site sources** workflow (`.github/workflows/validate-site-sources.yml`) runs **`npm run validate-site-sources`** and fails if the working tree is dirty afterward. PRs that touch definitions must include regenerated **`CREDITS.csv`** and **`scripts/zPositioning/z_positions.csv`** whenever those files change.
 
@@ -253,7 +255,7 @@ This runs **`node ./node_modules/testem/testem.js ci`**, which loads **[`testem.
 
 **Testem client URL vs config:** [`tests_run.html`](tests_run.html) loads **`<script src="/testem.js">`**. That path is the **Testem in-browser client** served by the Testem server from the **`testem`** npm package; it is **not** the repo’s config file. Local Testem settings live in **[`testem.cjs`](testem.cjs)** at the repository root.
 
-**`DEBUG` environment variable (optional):** When `DEBUG` is `1` or `true`, the Vite middleware used by Testem defines `import.meta.env.VITEST_DEBUG === "true"`, and [`tests/vitest-setup.js`](tests/vitest-setup.js) turns on test-friendly verbose behavior aligned with `sources/utils/debug.js`.
+**`DEBUG` environment variable (optional):** When `DEBUG` is `1` or `true`, the Vite middleware used by Testem defines `import.meta.env.VITEST_DEBUG === "true"`, and [`tests/vitest-setup.js`](tests/vitest-setup.js) turns on test-friendly verbose behavior aligned with `sources/utils/debug.ts`.
 
 ```bash
 DEBUG=1 npm test
@@ -321,9 +323,9 @@ Full-page screenshots live under [`tests/visual/`](tests/visual/) and use [`play
 
 **Unit and component specs (Mocha + Chai)**
 
-[`tests/tests.js`](tests/tests.js) imports every `tests/**/*_spec.js` file (except files only used from **`tests/node/`**). **`tests/node/`** is exercised by **`before_tests`** and by **`npm run test:node`** directly.
+[`tests/tests.js`](tests/tests.js) imports every browser `tests/**/*_spec.js` file (except files only used from **`tests/node/`**). **`tests/node/`** is exercised by **`before_tests`** and by **`npm run test:node`** directly. [`tests/node/run-node-tests.js`](tests/node/run-node-tests.js) collects both **`_spec.js`** and **`_spec.ts`** under **`tests/node/`**.
 
-[`tests/vitest-setup.js`](tests/vitest-setup.js) loads **`sources/vendor-globals.js`** and sets test flags on **`window`**. Specs create independent catalogs with **`createCatalog()`** and register only the metadata stages and records they exercise. Shared helpers in [`tests/browser-catalog-fixture.js`](tests/browser-catalog-fixture.js) seed explicit fixture catalogs for larger ZIP scenarios.
+[`tests/vitest-setup.js`](tests/vitest-setup.js) loads **`sources/vendor-globals.ts`** and sets test flags on **`window`**. Specs create independent catalogs with **`createCatalog()`** and register only the metadata stages and records they exercise. Shared helpers in [`tests/browser-catalog-fixture.js`](tests/browser-catalog-fixture.js) seed explicit fixture catalogs for larger ZIP scenarios.
 
 Typical patterns:
 
@@ -334,7 +336,7 @@ Typical patterns:
 Example:
 
 ```javascript
-import { MyComponent } from "../sources/components/MyComponent.js";
+import { MyComponent } from "../sources/components/MyComponent.ts";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 
@@ -359,7 +361,7 @@ describe("MyComponent", () => {
 });
 ```
 
-Node specs are listed and run via [`tests/node/run-node-tests.js`](tests/node/run-node-tests.js); add new generator tests alongside the existing `tests/node/scripts/**` files.
+Node specs are listed and run via [`tests/node/run-node-tests.js`](tests/node/run-node-tests.js) (`*_spec.js` or `*_spec.ts`); add new generator tests alongside the existing `tests/node/scripts/**` files.
 
 #### z-positions
 
