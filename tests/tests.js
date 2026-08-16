@@ -42,6 +42,7 @@ import "./components/selections/CurrentSelections_spec.js";
 import "./install-item-metadata_spec.js";
 import "./state/catalog_spec.js";
 import "./state/catalog-getters_spec.js";
+import "./install-item-metadata_spec.js";
 import "./state/filters_spec.js";
 import "./state/hash_spec.js";
 import "./state/json_spec.js";

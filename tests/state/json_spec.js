@@ -7,10 +7,13 @@ import {
 import { expect } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
-import { defaultCatalog } from "../../sources/state/catalog.ts";
+import { createCatalog } from "../../sources/state/catalog.ts";
 
 describe("state/json.ts", () => {
+  let catalog;
+
   beforeEach(() => {
+    catalog = createCatalog();
     resetJsonDeps();
   });
 
@@ -38,7 +41,7 @@ describe("state/json.ts", () => {
         enabledLicenses: { CC0: true },
         enabledAnimations: { walk: false },
       };
-      const out = exportStateAsJSON(defaultCatalog, snapshot, [
+      const out = exportStateAsJSON(catalog, snapshot, [
         { zPos: 1, path: "p" },
       ]);
       const parsed = JSON.parse(out);
@@ -58,7 +61,7 @@ describe("state/json.ts", () => {
         selections: { body: { itemId: "1" } },
         selectedAnimation: "idle",
       });
-      const result = importStateFromJSON(json);
+      const result = importStateFromJSON(catalog, json);
       expect(result.bodyType).to.equal("female");
       expect(result.selections.body.itemId).to.equal("1");
       expect(result.selectedAnimation).to.equal("idle");
@@ -68,36 +71,44 @@ describe("state/json.ts", () => {
       const loadSelectionsFromHash = sinon.stub();
       setJsonDeps({ loadSelectionsFromHash });
       importStateFromJSON(
+        catalog,
         JSON.stringify({
           version: 1,
           url: "https://example.com/app/#body=Body_light",
         }),
       );
       expect(loadSelectionsFromHash.calledOnce).to.be.true;
-      expect(loadSelectionsFromHash.firstCall.args[0]).to.equal(
+      expect(loadSelectionsFromHash.firstCall.args[0]).to.equal(catalog);
+      expect(loadSelectionsFromHash.firstCall.args[1]).to.equal(
         "body=Body_light",
       );
     });
 
     it("throws for invalid JSON", () => {
-      expect(() => importStateFromJSON("not json")).to.throw(SyntaxError);
+      expect(() => importStateFromJSON(catalog, "not json")).to.throw(
+        SyntaxError,
+      );
     });
 
     it("throws when version 2 is missing required fields", () => {
       expect(() =>
-        importStateFromJSON(JSON.stringify({ version: 2, bodyType: "male" })),
+        importStateFromJSON(
+          catalog,
+          JSON.stringify({ version: 2, bodyType: "male" }),
+        ),
       ).to.throw("Invalid JSON format");
     });
 
     it("throws when version 1 has no url", () => {
       expect(() =>
-        importStateFromJSON(JSON.stringify({ version: 1 })),
+        importStateFromJSON(catalog, JSON.stringify({ version: 1 })),
       ).to.throw("Invalid JSON format");
     });
 
     it("throws for unsupported version", () => {
       expect(() =>
         importStateFromJSON(
+          catalog,
           JSON.stringify({
             version: 3,
             bodyType: "m",

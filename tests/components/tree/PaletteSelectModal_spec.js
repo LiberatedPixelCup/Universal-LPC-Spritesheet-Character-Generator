@@ -2,25 +2,12 @@ import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { PaletteSelectModal } from "../../../sources/components/tree/PaletteSelectModal.ts";
-import { state } from "../../../sources/state/state.ts";
-import {
-  defaultCatalog,
-  isLayersReady,
-  isLiteReady,
-  isPaletteReady,
-  resetCatalogForTests,
-  registerFromCreditsModule,
-  registerFromIndexModule,
-  registerFromItemModule,
-  registerFromPaletteModule,
-} from "../../../sources/state/catalog.ts";
+import { configureStateCatalog, state } from "../../../sources/state/state.ts";
+import { createCatalog } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
 import { resetState } from "../../../sources/state/filters.ts";
 import { buildItemsByTypeNameLite } from "../../../sources/state/resolve-hash-param.ts";
-import {
-  restoreAppCatalogAfterTest,
-  seedBrowserCatalog,
-} from "../../browser-catalog-fixture.js";
+import { seedCatalog } from "../../browser-catalog-fixture.js";
 
 const PSM_SHIRT = "psm_shirt";
 
@@ -116,8 +103,11 @@ function rootViewNodeStub() {
 
 describe("PaletteSelectModal", function () {
   let host;
+  let catalog;
 
   beforeEach(function () {
+    catalog = createCatalog();
+    configureStateCatalog(catalog);
     resetState();
     state.expandedNodes = {};
     state.compactDisplay = false;
@@ -125,13 +115,12 @@ describe("PaletteSelectModal", function () {
     document.body.appendChild(host);
   });
 
-  afterEach(async function () {
+  afterEach(function () {
     m.render(host, null);
     if (host.parentNode) {
       host.parentNode.removeChild(host);
     }
     resetState();
-    await restoreAppCatalogAfterTest();
   });
 
   function modalAttrs(overrides = {}) {
@@ -143,17 +132,15 @@ describe("PaletteSelectModal", function () {
       rootViewNode: rootViewNodeStub(),
       onClose: () => {},
       onSelect: () => {},
-      catalog: defaultCatalog,
+      catalog,
     };
     return { ...base, ...overrides };
   }
 
   it("shows loading palette copy when the palette chunk is not registered", function () {
-    resetCatalogForTests();
-
     m.render(host, m(PaletteSelectModal, modalAttrs()));
 
-    assert.strictEqual(isPaletteReady(), false);
+    assert.strictEqual(catalog.isPaletteReady(), false);
     assert.include(host.textContent, "Loading palette data…");
     assert.notEqual(host.querySelector(".palette-modal-overlay"), null);
     assert.strictEqual(
@@ -163,10 +150,9 @@ describe("PaletteSelectModal", function () {
   });
 
   it("shows loading layer copy when lite is ready but layers are not", function () {
-    resetCatalogForTests();
     const itemMetadata = psmShirtItem();
     const byTypeName = buildItemsByTypeNameLite(itemMetadata);
-    registerFromIndexModule({
+    catalog.registerFromIndexModule({
       aliasMetadata: {},
       categoryTree: { items: [], children: {} },
       metadataIndexes: {
@@ -174,16 +160,16 @@ describe("PaletteSelectModal", function () {
         hashMatch: { itemsByTypeName: byTypeName },
       },
     });
-    registerFromPaletteModule({
+    catalog.registerFromPaletteModule({
       paletteMetadata: modalPaletteMetadata,
     });
     const { itemMetadataLite, itemCredits } =
       splitItemMetadataForRegisters(itemMetadata);
-    registerFromItemModule({ itemMetadata: itemMetadataLite });
-    registerFromCreditsModule({ itemCredits });
-    assert.strictEqual(isPaletteReady(), true);
-    assert.strictEqual(isLiteReady(), true);
-    assert.strictEqual(isLayersReady(), false);
+    catalog.registerFromItemModule({ itemMetadata: itemMetadataLite });
+    catalog.registerFromCreditsModule({ itemCredits });
+    assert.strictEqual(catalog.isPaletteReady(), true);
+    assert.strictEqual(catalog.isLiteReady(), true);
+    assert.strictEqual(catalog.isLayersReady(), false);
 
     m.render(host, m(PaletteSelectModal, modalAttrs()));
 
@@ -195,7 +181,7 @@ describe("PaletteSelectModal", function () {
   });
 
   it("renders header, version row, and variant tiles when catalog data is ready", async function () {
-    seedBrowserCatalog(psmShirtItem(), {
+    seedCatalog(catalog, psmShirtItem(), {
       categoryTree: { items: [], children: {} },
       paletteMetadata: modalPaletteMetadata,
     });
@@ -229,7 +215,6 @@ describe("PaletteSelectModal", function () {
   });
 
   it("invokes onClose when the overlay is clicked", function () {
-    resetCatalogForTests();
     let closed = 0;
     m.render(
       host,
@@ -248,7 +233,7 @@ describe("PaletteSelectModal", function () {
   });
 
   it("invokes onClose when the header close button is clicked", function () {
-    seedBrowserCatalog(psmShirtItem(), {
+    seedCatalog(catalog, psmShirtItem(), {
       categoryTree: { items: [], children: {} },
       paletteMetadata: modalPaletteMetadata,
     });
@@ -272,7 +257,7 @@ describe("PaletteSelectModal", function () {
   });
 
   it("invokes onSelect with the recolor key when a variant tile is clicked", function () {
-    seedBrowserCatalog(psmShirtItem(), {
+    seedCatalog(catalog, psmShirtItem(), {
       categoryTree: { items: [], children: {} },
       paletteMetadata: modalPaletteMetadata,
     });
@@ -295,7 +280,7 @@ describe("PaletteSelectModal", function () {
   });
 
   it("uses compact canvas dimensions when compactDisplay is enabled", function () {
-    seedBrowserCatalog(psmShirtItem(), {
+    seedCatalog(catalog, psmShirtItem(), {
       categoryTree: { items: [], children: {} },
       paletteMetadata: modalPaletteMetadata,
     });
@@ -311,7 +296,7 @@ describe("PaletteSelectModal", function () {
   });
 
   it("does not render a source tile when sourceColors is missing", function () {
-    seedBrowserCatalog(psmShirtItem(), {
+    seedCatalog(catalog, psmShirtItem(), {
       categoryTree: { items: [], children: {} },
       paletteMetadata: modalPaletteMetadata,
     });
@@ -326,7 +311,7 @@ describe("PaletteSelectModal", function () {
   });
 
   it("renders a source tile first when sourceColors is provided", function () {
-    seedBrowserCatalog(psmShirtItem(), {
+    seedCatalog(catalog, psmShirtItem(), {
       categoryTree: { items: [], children: {} },
       paletteMetadata: modalPaletteMetadata,
     });
@@ -349,7 +334,7 @@ describe("PaletteSelectModal", function () {
   });
 
   it("invokes onSelect with source when source tile is clicked", function () {
-    seedBrowserCatalog(psmShirtItem(), {
+    seedCatalog(catalog, psmShirtItem(), {
       categoryTree: { items: [], children: {} },
       paletteMetadata: modalPaletteMetadata,
     });
@@ -378,7 +363,7 @@ describe("PaletteSelectModal", function () {
   });
 
   it("renders source in a standalone block above version categories", function () {
-    seedBrowserCatalog(psmShirtItem(), {
+    seedCatalog(catalog, psmShirtItem(), {
       categoryTree: { items: [], children: {} },
       paletteMetadata: modalPaletteMetadata,
     });

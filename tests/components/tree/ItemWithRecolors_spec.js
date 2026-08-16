@@ -2,17 +2,11 @@ import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { ItemWithRecolors } from "../../../sources/components/tree/ItemWithRecolors.ts";
-import { state } from "../../../sources/state/state.ts";
-import {
-  defaultCatalog,
-  getItemMerged,
-} from "../../../sources/state/catalog.ts";
+import { configureStateCatalog, state } from "../../../sources/state/state.ts";
+import { createCatalog } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
 import { resetState } from "../../../sources/state/filters.ts";
-import {
-  restoreAppCatalogAfterTest,
-  seedBrowserCatalog,
-} from "../../browser-catalog-fixture.js";
+import { seedCatalog } from "../../browser-catalog-fixture.js";
 
 /** Minimal `paletteMetadata.materials` + one recolor-only item (mirrors palettes_spec fixtures). */
 const clothPaletteMetadata = {
@@ -42,8 +36,11 @@ const clothPaletteMetadata = {
 
 describe("ItemWithRecolors", function () {
   let host;
+  let catalog;
 
   beforeEach(function () {
+    catalog = createCatalog();
+    configureStateCatalog(catalog);
     resetState();
     state.expandedNodes = {};
     state.compactDisplay = false;
@@ -51,17 +48,17 @@ describe("ItemWithRecolors", function () {
     document.body.appendChild(host);
   });
 
-  afterEach(async function () {
+  afterEach(function () {
     m.render(host, null);
     if (host.parentNode) {
       host.parentNode.removeChild(host);
     }
     resetState();
-    await restoreAppCatalogAfterTest();
   });
 
   function seedRecolorShirt() {
-    seedBrowserCatalog(
+    seedCatalog(
+      catalog,
       {
         iwr_shirt: {
           name: "Recolor Tee",
@@ -93,7 +90,7 @@ describe("ItemWithRecolors", function () {
         paletteMetadata: clothPaletteMetadata,
       },
     );
-    return getItemMerged("iwr_shirt").unwrapOr(null);
+    return catalog.getItemMerged("iwr_shirt").unwrapOr(null);
   }
 
   function baseAttrs(meta, overrides = {}) {
@@ -104,7 +101,7 @@ describe("ItemWithRecolors", function () {
       isCompatible: true,
       tooltipText: "tip",
       showItemTooltips: true,
-      catalog: defaultCatalog,
+      catalog,
       ...overrides,
     };
   }
@@ -169,7 +166,8 @@ describe("ItemWithRecolors", function () {
   });
 
   it("uses body-body as expandedNodes key when the display name is Body Color", function () {
-    seedBrowserCatalog(
+    seedCatalog(
+      catalog,
       {
         iwr_body: {
           name: "Body Color",
@@ -202,7 +200,7 @@ describe("ItemWithRecolors", function () {
         paletteMetadata: clothPaletteMetadata,
       },
     );
-    const meta = getItemMerged("iwr_body").unwrapOr(null);
+    const meta = catalog.getItemMerged("iwr_body").unwrapOr(null);
 
     m.render(
       host,
@@ -213,7 +211,7 @@ describe("ItemWithRecolors", function () {
         isCompatible: true,
         tooltipText: "",
         showItemTooltips: false,
-        catalog: defaultCatalog,
+        catalog,
       }),
     );
 

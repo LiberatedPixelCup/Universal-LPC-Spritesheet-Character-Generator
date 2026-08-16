@@ -1,15 +1,7 @@
 import { expect } from "chai";
-import { describe, it, beforeEach, afterEach } from "mocha-globals";
-import {
-  createCatalog,
-  defaultCatalog,
-  resetCatalogForTests,
-} from "../../sources/state/catalog.ts";
-import { buildItemsByTypeNameLite } from "../../sources/state/resolve-hash-param.ts";
-import {
-  restoreAppCatalogAfterTest,
-  seedBrowserCatalog,
-} from "../browser-catalog-fixture.js";
+import { describe, it, beforeEach } from "mocha-globals";
+import { createCatalog } from "../../sources/state/catalog.ts";
+import { seedCatalog } from "../browser-catalog-fixture.js";
 import {
   es6DynamicTemplate,
   variantToFilename,
@@ -17,22 +9,6 @@ import {
   matchesSearch,
   nodeHasMatches,
 } from "../../sources/utils/helpers.ts";
-
-function createFixtureCatalog(itemMetadata) {
-  const catalog = createCatalog();
-  const byTypeName = buildItemsByTypeNameLite(itemMetadata);
-  catalog.loadCatalogFromFixtures({
-    itemMetadata,
-    aliasMetadata: {},
-    categoryTree: { items: [], children: {} },
-    metadataIndexes: {
-      byTypeName,
-      hashMatch: { itemsByTypeName: byTypeName },
-    },
-    paletteMetadata: { versions: {}, materials: {} },
-  });
-  return catalog;
-}
 
 describe("utils/helpers.ts", () => {
   describe("es6DynamicTemplate", () => {
@@ -112,16 +88,11 @@ describe("utils/helpers.ts", () => {
     let catalog;
 
     beforeEach(() => {
-      resetCatalogForTests();
-      seedBrowserCatalog({
+      catalog = createCatalog();
+      seedCatalog(catalog, {
         1: { name: "Sword" },
         2: { name: "Shield" },
       });
-      catalog = defaultCatalog;
-    });
-
-    afterEach(async () => {
-      await restoreAppCatalogAfterTest();
     });
 
     it("should return true if the query is empty or less than 2 characters", () => {
@@ -153,31 +124,6 @@ describe("utils/helpers.ts", () => {
         },
       };
       expect(nodeHasMatches(node, "axe", catalog)).to.be.false;
-    });
-
-    it("uses the provided catalog instead of the default singleton", () => {
-      resetCatalogForTests();
-      seedBrowserCatalog({
-        shared_item: { name: "Haystack", type_name: "test" },
-      });
-      const isolatedCatalog = createFixtureCatalog({
-        shared_item: {
-          name: "Needle",
-          type_name: "test",
-          required: [],
-          animations: [],
-          recolors: [],
-          matchBodyColor: false,
-          variants: [],
-          path: [],
-          layers: {},
-          credits: [],
-        },
-      });
-      const node = { items: ["shared_item"], children: {} };
-
-      expect(nodeHasMatches(node, "needle", isolatedCatalog)).to.be.true;
-      expect(nodeHasMatches(node, "needle", defaultCatalog)).to.be.false;
     });
   });
 });

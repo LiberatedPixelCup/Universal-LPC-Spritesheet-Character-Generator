@@ -5,7 +5,7 @@ import {
   getSortedLayersWithCustomFallback,
 } from "../../sources/state/meta.ts";
 import { resetPathDeps } from "../../sources/state/path.ts";
-import { createCatalog, defaultCatalog } from "../../sources/state/catalog.ts";
+import { createCatalog } from "../../sources/state/catalog.ts";
 import { err } from "neverthrow";
 import { expect } from "chai";
 import sinon from "sinon";
@@ -35,7 +35,10 @@ function createCatalogWithItem(itemId, item) {
 }
 
 describe("state/meta.ts", () => {
+  let catalog;
+
   beforeEach(() => {
+    catalog = createCatalog();
     resetPathDeps();
   });
 
@@ -44,20 +47,6 @@ describe("state/meta.ts", () => {
   });
 
   describe("catalog input", () => {
-    it("uses the provided catalog instead of the default singleton", () => {
-      const itemId = "meta_explicit_catalog_item";
-      const catalog = createCatalogWithItem(itemId, {
-        layers: {
-          layer_1: { zPos: 42 },
-        },
-      });
-
-      expect(defaultCatalog.getItemMerged(itemId).isErr()).to.equal(true);
-      expect(getSortedLayers(catalog, itemId)._unsafeUnwrap()).to.deep.equal([
-        { layerNum: 1, zPos: 42 },
-      ]);
-    });
-
     it("keeps custom fallback calls on the same catalog argument", () => {
       const itemId = "meta_explicit_catalog_custom_only_item";
       const catalog = createCatalogWithItem(itemId, {
@@ -231,9 +220,9 @@ describe("state/meta.ts", () => {
           },
         },
       };
-      expect(
-        getLayersToLoad(defaultCatalog, meta, "male", {}, null),
-      ).to.deep.equal([{ zPos: 10, path: "spritesheets/armor/male/walk.png" }]);
+      expect(getLayersToLoad(catalog, meta, "male", {}, null)).to.deep.equal([
+        { zPos: 10, path: "spritesheets/armor/male/walk.png" },
+      ]);
     });
 
     it("uses the first animation when walk is not present", () => {
@@ -246,9 +235,9 @@ describe("state/meta.ts", () => {
           },
         },
       };
-      expect(
-        getLayersToLoad(defaultCatalog, meta, "male", {}, null),
-      ).to.deep.equal([{ zPos: 1, path: "spritesheets/x/idle.png" }]);
+      expect(getLayersToLoad(catalog, meta, "male", {}, null)).to.deep.equal([
+        { zPos: 1, path: "spritesheets/x/idle.png" },
+      ]);
     });
 
     it("appends variant filename for standard layers under the default animation", () => {
@@ -262,7 +251,7 @@ describe("state/meta.ts", () => {
         },
       };
       expect(
-        getLayersToLoad(defaultCatalog, meta, "male", {}, "light brown"),
+        getLayersToLoad(catalog, meta, "male", {}, "light brown"),
       ).to.deep.equal([
         {
           zPos: 10,
@@ -282,9 +271,9 @@ describe("state/meta.ts", () => {
           },
         },
       };
-      expect(
-        getLayersToLoad(defaultCatalog, meta, "male", {}, "red"),
-      ).to.deep.equal([{ zPos: 5, path: "spritesheets/custom/base/red.png" }]);
+      expect(getLayersToLoad(catalog, meta, "male", {}, "red")).to.deep.equal([
+        { zPos: 5, path: "spritesheets/custom/base/red.png" },
+      ]);
     });
 
     it("replaces template variables when the layer path contains ${}", () => {
@@ -331,7 +320,7 @@ describe("state/meta.ts", () => {
           },
         },
       };
-      const out = getLayersToLoad(defaultCatalog, meta, "male", {}, null);
+      const out = getLayersToLoad(catalog, meta, "male", {}, null);
       expect(out.map((o) => o.zPos)).to.deep.equal([10, 50]);
     });
 
@@ -352,9 +341,9 @@ describe("state/meta.ts", () => {
       };
       // layer_2: no matching custom_animation vs layer_1. layer_1: custom layers need a
       // variant to form a loadable path; without one, nothing to load.
-      expect(
-        getLayersToLoad(defaultCatalog, meta, "male", {}, null),
-      ).to.deep.equal([]);
+      expect(getLayersToLoad(catalog, meta, "male", {}, null)).to.deep.equal(
+        [],
+      );
     });
 
     it("skips layers whose body type has no path", () => {
@@ -367,9 +356,9 @@ describe("state/meta.ts", () => {
           },
         },
       };
-      expect(
-        getLayersToLoad(defaultCatalog, meta, "male", {}, null),
-      ).to.deep.equal([]);
+      expect(getLayersToLoad(catalog, meta, "male", {}, null)).to.deep.equal(
+        [],
+      );
     });
   });
 });

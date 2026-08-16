@@ -17,34 +17,26 @@ import {
   initHashChangeListener,
   getSetHashCalledTimes,
   resetHashCalledTimes,
-  resetHashDeps,
 } from "../../sources/state/hash.ts";
-import {
-  defaultCatalog,
-  resetCatalogForTests,
-} from "../../sources/state/catalog.ts";
-import {
-  restoreAppCatalogAfterTest,
-  seedBrowserCatalog,
-} from "../browser-catalog-fixture.js";
+import { createCatalog } from "../../sources/state/catalog.ts";
+import { seedCatalog } from "../browser-catalog-fixture.js";
 
 describe("state/hash.ts", () => {
   let sandbox;
+  let catalog;
 
   beforeEach(() => {
-    resetCatalogForTests();
+    catalog = createCatalog();
     sandbox = sinon.createSandbox();
     sandbox.stub(window, "addEventListener").callsFake(() => {});
     window.isTesting = true;
   });
 
-  afterEach(async () => {
+  afterEach(() => {
     resetState();
-    resetHashDeps();
     resetHashCalledTimes();
     sandbox.restore();
     delete window.isTesting;
-    await restoreAppCatalogAfterTest();
   });
 
   describe("getHashParams", () => {
@@ -120,14 +112,11 @@ describe("state/hash.ts", () => {
           body: { itemId: "1", variant: "light" },
         },
       });
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         1: { type_name: "body", name: "Body", variants: ["light"] },
       });
 
-      const params = getHashParamsforSelections(
-        defaultCatalog,
-        getState().selections,
-      );
+      const params = getHashParamsforSelections(catalog, getState().selections);
       expect(params).to.deep.equal({
         sex: "male",
         body: "Body_light",
@@ -141,7 +130,7 @@ describe("state/hash.ts", () => {
           body: { itemId: "1", recolor: "light" },
         },
       });
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         1: {
           type_name: "body",
           name: "Body",
@@ -151,10 +140,7 @@ describe("state/hash.ts", () => {
         },
       });
 
-      const params = getHashParamsforSelections(
-        defaultCatalog,
-        getState().selections,
-      );
+      const params = getHashParamsforSelections(catalog, getState().selections);
       expect(params).to.deep.equal({
         sex: "male",
         body: "Body_light",
@@ -169,7 +155,7 @@ describe("state/hash.ts", () => {
           eyes: { itemId: "1", subId: 1, recolor: "blue" },
         },
       });
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         1: {
           type_name: "body",
           name: "Body",
@@ -186,10 +172,7 @@ describe("state/hash.ts", () => {
         },
       });
 
-      const params = getHashParamsforSelections(
-        defaultCatalog,
-        getState().selections,
-      );
+      const params = getHashParamsforSelections(catalog, getState().selections);
       expect(params).to.deep.equal({
         sex: "male",
         body: "Body_light",
@@ -206,11 +189,11 @@ describe("state/hash.ts", () => {
           body: { itemId: "1", variant: "light" },
         },
       });
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         1: { type_name: "body", name: "Body", variants: ["light"] },
       });
 
-      syncSelectionsToHash(defaultCatalog);
+      syncSelectionsToHash(catalog);
       expect(getSetHashCalledTimes()).to.equal(1);
     });
   });
@@ -218,11 +201,11 @@ describe("state/hash.ts", () => {
   describe("loadSelectionsFromHash", () => {
     it("should load selections from hash", () => {
       setHash("#body=Body_light");
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         1: { type_name: "body", name: "Body", variants: ["light"] },
       });
 
-      loadSelectionsFromHash();
+      loadSelectionsFromHash(catalog);
       expect(getState().selections).to.deep.equal({
         body: {
           itemId: "1",
@@ -236,11 +219,11 @@ describe("state/hash.ts", () => {
 
     it("should be case insensitive", () => {
       setHash("#body=Body_color_light");
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         1: { type_name: "body", name: "Body_Color", variants: ["light"] },
       });
 
-      loadSelectionsFromHash();
+      loadSelectionsFromHash(catalog);
       expect(getState().selections).to.deep.equal({
         body: {
           itemId: "1",
@@ -254,7 +237,7 @@ describe("state/hash.ts", () => {
 
     it("should load recolor options", () => {
       setHash("#body=Body_light");
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         1: {
           type_name: "body",
           name: "Body",
@@ -264,7 +247,7 @@ describe("state/hash.ts", () => {
         },
       });
 
-      loadSelectionsFromHash();
+      loadSelectionsFromHash(catalog);
       expect(getState().selections).to.deep.equal({
         body: {
           itemId: "1",
@@ -278,7 +261,7 @@ describe("state/hash.ts", () => {
 
     it("should load multiple recolor options", () => {
       setHash("#body=Body_light&eyes=Eyes_blue");
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         1: {
           type_name: "body",
           name: "Body",
@@ -295,7 +278,7 @@ describe("state/hash.ts", () => {
         },
       });
 
-      loadSelectionsFromHash();
+      loadSelectionsFromHash(catalog);
       expect(getState().selections).to.deep.equal({
         body: {
           itemId: "1",
@@ -316,7 +299,7 @@ describe("state/hash.ts", () => {
 
     it("should remove subcolor if doesn't exist on item", () => {
       setHash("#body=Body_light&eyes=Eyes_blue");
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         1: {
           type_name: "body",
           name: "Body",
@@ -326,7 +309,7 @@ describe("state/hash.ts", () => {
         },
       });
 
-      loadSelectionsFromHash();
+      loadSelectionsFromHash(catalog);
       expect(getState().selections).to.deep.equal({
         body: {
           itemId: "1",
@@ -340,7 +323,7 @@ describe("state/hash.ts", () => {
 
     it("should remove subcolor if type name does not match", () => {
       setHash("#body=Body_light&eyes=Eyes_blue");
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         1: {
           type_name: "body",
           name: "Body",
@@ -357,7 +340,7 @@ describe("state/hash.ts", () => {
         },
       });
 
-      loadSelectionsFromHash();
+      loadSelectionsFromHash(catalog);
       expect(getState().selections).to.deep.equal({
         body: {
           itemId: "1",
@@ -371,7 +354,8 @@ describe("state/hash.ts", () => {
 
     it("should forward to robe belt", () => {
       setHash("#body=Body_color_light&belt=Other_belts_white");
-      seedBrowserCatalog(
+      seedCatalog(
+        catalog,
         {
           1: { type_name: "body", name: "Body_Color", variants: ["light"] },
           2: { type_name: "belt", name: "Other_belts", variants: ["white"] },
@@ -390,7 +374,7 @@ describe("state/hash.ts", () => {
         },
       );
 
-      loadSelectionsFromHash();
+      loadSelectionsFromHash(catalog);
       expect(getState().selections).to.deep.equal({
         body: {
           itemId: "1",
@@ -414,7 +398,8 @@ describe("state/hash.ts", () => {
 
     it("should forward to waist = robe belt", () => {
       setHash("#body=Body_color_light&belt=Other_belts_white");
-      seedBrowserCatalog(
+      seedCatalog(
+        catalog,
         {
           1: { type_name: "body", name: "Body_Color", variants: ["light"] },
           2: { type_name: "belt", name: "Other_belts", variants: ["white"] },
@@ -433,7 +418,7 @@ describe("state/hash.ts", () => {
         },
       );
 
-      loadSelectionsFromHash();
+      loadSelectionsFromHash(catalog);
       expect(getState().selections).to.deep.equal({
         body: {
           itemId: "1",
@@ -457,7 +442,8 @@ describe("state/hash.ts", () => {
 
     it("should forward only type name, wrinkes > wrinkles", () => {
       setHash("#body=Body_color_light&wrinkes=Wrinkles_light");
-      seedBrowserCatalog(
+      seedCatalog(
+        catalog,
         {
           1: { type_name: "body", name: "Body_Color", variants: ["light"] },
           2: { type_name: "belt", name: "Other_belts", variants: ["white"] },
@@ -476,7 +462,7 @@ describe("state/hash.ts", () => {
         },
       );
 
-      loadSelectionsFromHash();
+      loadSelectionsFromHash(catalog);
       expect(getState().selections).to.deep.equal({
         body: {
           itemId: "1",
@@ -499,12 +485,12 @@ describe("state/hash.ts", () => {
     });
 
     it("loads selections from catalog only (no window metadata globals)", () => {
-      seedBrowserCatalog({
+      seedCatalog(catalog, {
         1: { type_name: "body", name: "Body", variants: ["light"] },
       });
 
       setHash("#body=Body_light");
-      loadSelectionsFromHash();
+      loadSelectionsFromHash(catalog);
       expect(getState().selections).to.deep.equal({
         body: {
           itemId: "1",
@@ -519,13 +505,13 @@ describe("state/hash.ts", () => {
 
   describe("initHashChangeListener", () => {
     it("should add a 'hashchange' event listener to the window", () => {
-      initHashChangeListener();
+      initHashChangeListener(catalog);
       expect(window.addEventListener.calledWith("hashchange")).to.be.true;
     });
 
     it("should call the provided callback when the hash changes", () => {
       const callback = sandbox.spy();
-      initHashChangeListener(callback);
+      initHashChangeListener(catalog, callback);
 
       // Simulate hash change
       setHash("#key=value");
@@ -536,7 +522,7 @@ describe("state/hash.ts", () => {
     });
 
     it("should not throw an error if no callback is provided", () => {
-      expect(() => initHashChangeListener()).to.not.throw();
+      expect(() => initHashChangeListener(catalog)).to.not.throw();
     });
   });
 });

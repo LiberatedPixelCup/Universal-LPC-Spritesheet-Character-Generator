@@ -2,24 +2,19 @@ import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { CategoryTree } from "../../../sources/components/tree/CategoryTree.ts";
-import { state } from "../../../sources/state/state.ts";
-import {
-  defaultCatalog,
-  resetCatalogForTests,
-  registerFromIndexModule,
-  registerFromPaletteModule,
-} from "../../../sources/state/catalog.ts";
+import { configureStateCatalog, state } from "../../../sources/state/state.ts";
+import { createCatalog } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
 import { resetState } from "../../../sources/state/filters.ts";
-import {
-  restoreAppCatalogAfterTest,
-  seedBrowserCatalog,
-} from "../../browser-catalog-fixture.js";
+import { seedCatalog } from "../../browser-catalog-fixture.js";
 
 describe("CategoryTree", function () {
   let host;
+  let catalog;
 
   beforeEach(function () {
+    catalog = createCatalog();
+    configureStateCatalog(catalog);
     resetState();
     state.expandedNodes = {};
     state.searchQuery = "";
@@ -27,19 +22,16 @@ describe("CategoryTree", function () {
     document.body.appendChild(host);
   });
 
-  afterEach(async function () {
+  afterEach(function () {
     m.render(host, null);
     if (host.parentNode) {
       host.parentNode.removeChild(host);
     }
     resetState();
-    await restoreAppCatalogAfterTest();
   });
 
   it("shows loading panel until the category index is ready", function () {
-    resetCatalogForTests();
-
-    m.render(host, m(CategoryTree, { catalog: defaultCatalog }));
+    m.render(host, m(CategoryTree, { catalog }));
 
     assert.ok(host.querySelector(".category-tree-loading-overlay"));
     assert.strictEqual(
@@ -54,8 +46,7 @@ describe("CategoryTree", function () {
   });
 
   it("disables Expand Selected while the item list (lite) is not ready", function () {
-    resetCatalogForTests();
-    registerFromIndexModule({
+    catalog.registerFromIndexModule({
       aliasMetadata: {},
       categoryTree: { items: [], children: {} },
       metadataIndexes: {
@@ -63,11 +54,11 @@ describe("CategoryTree", function () {
         hashMatch: { itemsByTypeName: {} },
       },
     });
-    registerFromPaletteModule({
+    catalog.registerFromPaletteModule({
       paletteMetadata: { versions: {}, materials: {} },
     });
 
-    m.render(host, m(CategoryTree, { catalog: defaultCatalog }));
+    m.render(host, m(CategoryTree, { catalog }));
 
     const expandBtn = [...host.querySelectorAll("button")].find(
       (b) => b.textContent.trim() === "Expand Selected",
@@ -78,7 +69,8 @@ describe("CategoryTree", function () {
   });
 
   it("renders toolbar, match-body-color control, body selector, and category items", function () {
-    seedBrowserCatalog(
+    seedCatalog(
+      catalog,
       {
         ct_hat_1: {
           name: "Category Tree Hat",
@@ -101,7 +93,7 @@ describe("CategoryTree", function () {
     );
     state.expandedNodes.Gear = true;
 
-    m.render(host, m(CategoryTree, { catalog: defaultCatalog }));
+    m.render(host, m(CategoryTree, { catalog }));
 
     assert.strictEqual(
       host.querySelector("h3.title")?.textContent?.trim(),
@@ -144,7 +136,8 @@ describe("CategoryTree", function () {
   });
 
   it("Expand Selected expands paths for the current selection", function () {
-    seedBrowserCatalog(
+    seedCatalog(
+      catalog,
       {
         ct_hat_1: {
           name: "Category Tree Hat",
@@ -171,7 +164,7 @@ describe("CategoryTree", function () {
     };
     state.expandedNodes = {};
 
-    m.render(host, m(CategoryTree, { catalog: defaultCatalog }));
+    m.render(host, m(CategoryTree, { catalog }));
 
     const expandBtn = [...host.querySelectorAll("button")].find(
       (b) => b.textContent.trim() === "Expand Selected",
@@ -183,7 +176,8 @@ describe("CategoryTree", function () {
   });
 
   it("Collapse All clears expanded nodes", function () {
-    seedBrowserCatalog(
+    seedCatalog(
+      catalog,
       {
         ct_hat_1: {
           name: "Category Tree Hat",
@@ -206,7 +200,7 @@ describe("CategoryTree", function () {
     );
     state.expandedNodes = { Gear: true };
 
-    m.render(host, m(CategoryTree, { catalog: defaultCatalog }));
+    m.render(host, m(CategoryTree, { catalog }));
 
     const collapseBtn = [...host.querySelectorAll("button")].find(
       (b) => b.textContent.trim() === "Collapse All",
