@@ -2,7 +2,7 @@
 
 /**
  * Debug logging gated by `window.DEBUG` (localhost / ?debug=).
- * Import this module from the app entry (main.js) before other `sources/` modules
+ * Import this module from the app entry (main.ts) before other `sources/` modules
  * so `window.DEBUG` is set before they run.
  */
 

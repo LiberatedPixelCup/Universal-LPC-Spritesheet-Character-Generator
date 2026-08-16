@@ -95,7 +95,7 @@ export const aliasMetadata: AliasMetadata = {};
 export const categoryTree: GeneratorTreeNode = { items: [], children: {} };
 
 const METADATA_FILE_BANNER = `// THIS FILE IS AUTO-GENERATED. PLEASE DON'T ALTER IT MANUALLY
-// Generated from sheet_definitions/*.json by scripts/generate_sources.js
+// Generated from sheet_definitions/*.json by scripts/generate_sources.ts
 `;
 
 function clearObject(obj: object): void {
