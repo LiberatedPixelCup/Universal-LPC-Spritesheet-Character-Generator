@@ -25,7 +25,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
 
-import { ZIP_PROFILE_DEFAULT_HASH } from "./zip-profile-default-hash.js";
+import { ZIP_PROFILE_DEFAULT_HASH } from "./zip-profile-default-hash.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.join(__dirname, "..", "..");

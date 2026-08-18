@@ -32,7 +32,7 @@ import {
 } from "../../sources/state/hash.ts";
 import { configureStateCatalog, state } from "../../sources/state/state.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
-import { ZIP_PROFILE_DEFAULT_HASH } from "./zip-profile-default-hash.js";
+import { ZIP_PROFILE_DEFAULT_HASH } from "./zip-profile-default-hash.ts";
 
 /** @type {readonly string[]} */
 export const ZIP_PROFILE_EXPORT_KINDS = [

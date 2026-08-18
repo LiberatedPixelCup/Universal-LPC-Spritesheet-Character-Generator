@@ -38,11 +38,11 @@ ZIP generation uses **`createZipExportProfiler`** in `sources/performance-profil
 - **Split-by-item sheets** does not add `metadata.json`; use the console table and Performance marks when DEBUG is on.
 
 - **Automation / agents:** After each export, `zipGenerateBlobWithProfiler` stores the latest `toMetadata()` snapshot on **`window.__lastZipExportProfile`** and accumulates **`window.__zipExportProfiles`** keyed by `exportKind`.
-  - **Scripts:** **`npm run profile:zip`** or **`npm run profile:zip:quick`** — run headless Chromium with the default URL hash from **`scripts/zip/zip-profile-default-hash.js`** (full outfit + weapon so custom layers show up in profiles).
+  - **Scripts:** **`npm run profile:zip`** or **`npm run profile:zip:quick`** — run headless Chromium with the default URL hash from **`scripts/zip/zip-profile-default-hash.ts`** (full outfit + weapon so custom layers show up in profiles).
   - **Output:** **`tmp/zip-export-profile.json`** or **`tmp/zip-export-profile-quick.json`** (gitignored), and the same JSON on stdout.
   - **Flags:** **`--only <kind>`** (e.g. **`npm run profile:zip -- --only splitAnimations`**) with kinds `splitAnimations`, `splitItemSheets`, `splitItemAnimations`, `individualFrames`. **`--out <path>`** overrides the JSON path. **`--quick`** uses a fake JSZip (faster; small **`generateZip`** time); default mode uses real JSZip.
   - **Setup:** Playwright browsers **`npx playwright install`**. Server port **`ZIP_PROFILE_PORT`** (default **`9877`**). Entry points: **`scripts/zip/zip-export-profile.js`**, **`scripts/zip/zip-export-profile-runner.html`**.
-  - **`serve` and query strings:** Redirects may drop **`?`** params on the runner URL, so **`--quick`**, **`--only`**, and the default hash are injected via **`window.__ZIP_PROFILE_OPTS__`** before load (Playwright `addInitScript`). Opening the runner manually: preserve the query when possible, or add **`#`** plus the same hash as in **`zip-profile-default-hash.js`** (or rely on that module’s default in the runner).
+  - **`serve` and query strings:** Redirects may drop **`?`** params on the runner URL, so **`--quick`**, **`--only`**, and the default hash are injected via **`window.__ZIP_PROFILE_OPTS__`** before load (Playwright `addInitScript`). Opening the runner manually: preserve the query when possible, or add **`#`** plus the same hash as in **`zip-profile-default-hash.ts`** (or rely on that module’s default in the runner).
 
 - **Baseline snapshots (local, gitignored):**
   - **`npm run profile:zip:baseline`** → **`tmp/baseline-zip-export-profile.json`**
