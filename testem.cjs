@@ -130,7 +130,7 @@ module.exports = async function testemConfigFactory() {
 
       const result = spawnSync(
         process.execPath,
-        [path.join(__dirname, "scripts/coverage/merge-browser-coverage.js")],
+        [path.join(__dirname, "scripts/coverage/merge-browser-coverage.ts")],
         { stdio: "inherit" },
       );
       if (result.status !== 0) {
