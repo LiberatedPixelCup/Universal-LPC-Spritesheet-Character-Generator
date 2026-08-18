@@ -5,15 +5,15 @@ import { debugLog } from "../utils/debug.ts";
 const universalFrameSize = 64;
 
 function cropToSubSheet(
-  sheet,
-  width,
-  height,
-  offsetX,
-  offsetY,
-  targetDir,
-  sheetHeight,
-  isMasterSheet,
-) {
+  sheet: string,
+  width: number,
+  height: number,
+  offsetX: number,
+  offsetY: number,
+  targetDir: string,
+  sheetHeight: number,
+  isMasterSheet: boolean,
+): boolean {
   if (offsetY >= sheetHeight) {
     return false;
   }
@@ -27,11 +27,7 @@ function cropToSubSheet(
   }
   if (!isMasterSheet) {
     if (!fs.existsSync(`${directory}/${targetDir}`)) {
-      execSync(`mkdir ${directory}/${targetDir}`, (err) => {
-        if (err) {
-          throw err;
-        }
-      });
+      execSync(`mkdir ${directory}/${targetDir}`);
     }
   }
 
@@ -41,16 +37,15 @@ function cropToSubSheet(
   }
   execSync(
     `magick ${sheet} -crop ${width}x${height}+${offsetX}+${offsetY} ${newFile}`,
-    (err) => {
-      if (err) {
-        throw err;
-      }
-    },
   );
   return true;
 }
 
-function cropSheet(sheet, sheetHeight, isMasterSheet) {
+function cropSheet(
+  sheet: string,
+  sheetHeight: number,
+  isMasterSheet: boolean,
+): void {
   cropToSubSheet(
     sheet,
     7 * universalFrameSize,
@@ -230,8 +225,8 @@ function cropSheet(sheet, sheetHeight, isMasterSheet) {
   );
 }
 
-const walk = function (dir) {
-  let results = [];
+const walk = function (dir: string): string[] {
+  let results: string[] = [];
   const list = fs.readdirSync(dir);
   list.forEach(function (file) {
     file = dir + "/" + file;
@@ -271,11 +266,6 @@ files.forEach(function (sheetToProcess) {
   }
   const imageInfo = execSync(
     `magick identify -format "%w,%h" ${sheetToProcess}`,
-    (err) => {
-      if (err) {
-        throw err;
-      }
-    },
   );
   const widthAndHeight = String(imageInfo).split(",");
   const width = parseInt(widthAndHeight[0]);
@@ -294,21 +284,12 @@ files.forEach(function (sheetToProcess) {
       if (fs.existsSync(`${directory}/${masterSheet}`)) {
         execSync(
           `mv ${sheetToProcess} ${directory}/${masterSheet.replace(".png", "/")}`,
-          (err) => {
-            if (err) {
-              throw err;
-            }
-          },
         );
         sheetToProcess = `${directory}/${masterSheet.replace(".png", "/")}${masterSheet}`;
         isMasterSheet = true;
       }
     }
     cropSheet(sheetToProcess, height, isMasterSheet);
-    execSync(`rm ${sheetToProcess}`, (err) => {
-      if (err) {
-        throw err;
-      }
-    });
+    execSync(`rm ${sheetToProcess}`);
   }
 });
