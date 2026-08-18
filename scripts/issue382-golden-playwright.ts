@@ -5,7 +5,7 @@
  *
  * Why Playwright
  * --------------
- * Zip layout depends on `renderCharacter`, canvas, `loadImage`, and `zip.js` — all
+ * Zip layout depends on `renderCharacter`, canvas, `loadImage`, and `zip.ts` — all
  * browser-oriented. This script runs the same modules as `tests/state/zip-issue-382_spec.js`
  * in Chromium and writes path snapshots. See `scripts/fixture-builder.ts` for rationale.
  *

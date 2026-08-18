@@ -14,7 +14,7 @@ let suspendDepth = 0;
 let savedRedraw: (() => void) | null = null;
 let resumePreviewAnimation = false;
 
-/** Mithril is attached to `globalThis.m` by `vendor-globals.js`; treat as optional here. */
+/** Mithril is attached to `globalThis.m` by `vendor-globals.ts`; treat as optional here. */
 type GlobalWithMithril = typeof globalThis & {
   m?: { redraw?: () => void };
 };

@@ -47,7 +47,7 @@ import type { State } from "./state.ts";
 
 declare global {
   interface Window {
-    /** JSZip constructor attached at runtime by `vendor-globals.js`. */
+    /** JSZip constructor attached at runtime by `vendor-globals.ts`. */
     JSZip?: new () => ZipFolder;
   }
 }

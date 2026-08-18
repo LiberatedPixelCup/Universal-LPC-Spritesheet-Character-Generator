@@ -57,7 +57,7 @@ export function urlWithDebugEnabled(url: string): string {
 
 /**
  * Set `LPC_DEBUG_COMPUTED_STYLE=1` (or `true` / `yes`) to print phase logs and browser `console`
- * to stderr while `dumpComputedStylesForUrl` runs (see also `compute-style-diff-all.js`).
+ * to stderr while `dumpComputedStylesForUrl` runs (see also `computed-style-diff-all.ts`).
  */
 export function isLpcComputedStyleDebug(): boolean {
   const v = process.env.LPC_DEBUG_COMPUTED_STYLE;
