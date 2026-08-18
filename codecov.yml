@@ -31,7 +31,7 @@ ignore:
   - scripts/imageProcessing/**
   - scripts/zip/**
   - scripts/fixture-builder.js
-  - scripts/generate-purgecss-safelist-hints.js
+  - scripts/generate-purgecss-safelist-hints.ts
   - scripts/issue382-golden-playwright.js
   - scripts/update_sheet_definitions.ts
   - scripts/generateSources/source_inputs_fingerprint.ts
