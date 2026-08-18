@@ -1,9 +1,9 @@
 /**
- * Shared computed-style dump config + helpers for dump-computed-styles.js
- * and computed-style-diff-all.js.
+ * Shared computed-style dump config + helpers for dump-computed-styles.ts
+ * and computed-style-diff-all.ts.
  */
 
-import { chromium } from "playwright";
+import { chromium, type BrowserContext, type Page } from "playwright";
 import {
   gotoHomepageReady,
   openHumanMaleSkintonePalette,
@@ -11,8 +11,41 @@ import {
   openLicenseAnimationAdvancedAndSearchArm,
 } from "../../tests/visual/home-helpers.ts";
 
+export type ViewportSize = { width: number; height: number };
+
+export type ComputedStyleDumpPage =
+  "homepage" | "human-male-skintone" | "filters-search-arm";
+
+export type ComputedStyleTarget = {
+  label: string;
+  selector: string;
+  omitProps?: string[];
+  omitDumpLines?: string[];
+  includeRect?: boolean;
+  rectPrecision?: "fine";
+  includeClientRects?: boolean;
+  includeContentBounds?: boolean;
+  includeOverflowLayout?: boolean;
+  includeWrapRowMetrics?: boolean;
+};
+
+export type FontMetricsProbe = { label: string; selector: string };
+
+export type CollectComputedStyleDumpOptions = {
+  props?: string[];
+  targets?: ComputedStyleTarget[];
+  fontDiagnostics?: boolean;
+  fontMetricsSnippets?: string[];
+  fontMetricsProbes?: FontMetricsProbe[];
+};
+
+export type DumpComputedStylesOptions = CollectComputedStyleDumpOptions & {
+  page?: string;
+  skipSkintoneModal?: boolean;
+};
+
 /** Appends `?debug=true` (or &debug=true) so `getDebugParam()` turns on `window.DEBUG` after load. */
-export function urlWithDebugEnabled(url) {
+export function urlWithDebugEnabled(url: string): string {
   try {
     const u = new URL(url);
     u.searchParams.set("debug", "true");
@@ -26,7 +59,7 @@ export function urlWithDebugEnabled(url) {
  * Set `LPC_DEBUG_COMPUTED_STYLE=1` (or `true` / `yes`) to print phase logs and browser `console`
  * to stderr while `dumpComputedStylesForUrl` runs (see also `compute-style-diff-all.js`).
  */
-export function isLpcComputedStyleDebug() {
+export function isLpcComputedStyleDebug(): boolean {
   const v = process.env.LPC_DEBUG_COMPUTED_STYLE;
   if (v == null || v === "") {
     return false;
@@ -34,8 +67,7 @@ export function isLpcComputedStyleDebug() {
   return v === "1" || /^true$/i.test(v) || /^yes$/i.test(v);
 }
 
-/** @param {unknown[]} parts */
-export function lpcComputedStyleLog(...parts) {
+export function lpcComputedStyleLog(...parts: unknown[]): void {
   if (!isLpcComputedStyleDebug()) {
     return;
   }
@@ -46,14 +78,14 @@ export function lpcComputedStyleLog(...parts) {
  * Computed-style dump “pages” — same sequence as tests/visual/home.spec.js / Argos:
  * homepage → human-male-skintone → (close modal) filters-search-arm.
  */
-export const COMPUTED_STYLE_DUMP_PAGES = [
+export const COMPUTED_STYLE_DUMP_PAGES: readonly ComputedStyleDumpPage[] = [
   "homepage",
   "human-male-skintone",
   "filters-search-arm",
 ];
 
 /** Same dimensions as tests/visual/home.spec.js (Argos). */
-export const VIEWPORT_PRESETS = {
+export const VIEWPORT_PRESETS: Record<string, ViewportSize> = {
   mobile: { width: 390, height: 844 },
   tablet: { width: 834, height: 1112 },
   mediumDesktop: { width: 1440, height: 900 },
@@ -189,7 +221,7 @@ export const COMPUTED_STYLE_PROPS = [
  * Argos `home.spec.js` captures three states per viewport: homepage, Human Male → skintone modal,
  * then filters expanded + search "arm". `dumpComputedStylesForUrl` defaults to `page: human-male-skintone`;
  * use `page: homepage` or CLI `--no-skintone-modal` for the first capture; `page: filters-search-arm`
- * for the third (matches `openLicenseAnimationAdvancedAndSearchArm` in home-helpers.js).
+ * for the third (matches `openLicenseAnimationAdvancedAndSearchArm` in home-helpers.ts).
  *
  * Each dump starts with `__viewport_context`: `innerWidth` / `#chooser-column` width. A manual
  * screenshot with docked DevTools uses a **narrower** content width than headless 390×844, so wrap
@@ -201,7 +233,7 @@ export const COMPUTED_STYLE_PROPS = [
  *   vertical gap from each card’s `.tree-label` to the expanded `.content` block (checkbox list);
  *   sensitive to margin between filter headers and checkboxes (Bulma 1 vs 0.9 regressions).
  */
-export const COMPUTED_STYLE_TARGETS = [
+export const COMPUTED_STYLE_TARGETS: ComputedStyleTarget[] = [
   { label: "html", selector: "html" },
   { label: "body", selector: "body" },
   { label: "header section", selector: "#header-left" },
@@ -795,7 +827,7 @@ export const COMPUTED_STYLE_TARGETS = [
 ];
 
 /** Normalize host:port in dump header so diffs aren’t noisy between worktrees. */
-export function normalizeUrlForDumpHeader(url) {
+export function normalizeUrlForDumpHeader(url: string): string {
   try {
     const u = new URL(url);
     return `${u.protocol}//${u.hostname}:__PORT__${u.pathname}${u.search}${u.hash}`;
@@ -804,21 +836,27 @@ export function normalizeUrlForDumpHeader(url) {
   }
 }
 
-export function makeDumpHeader(viewport, url, page = "human-male-skintone") {
+export function makeDumpHeader(
+  viewport: ViewportSize,
+  url: string,
+  page: ComputedStyleDumpPage = "human-male-skintone",
+): string {
   const u = normalizeUrlForDumpHeader(url);
   return `# computed-style-dump viewport=${viewport.width}x${viewport.height} page=${page} url=${u}\n\n`;
 }
 
 /** Resolve dump page id from CLI/options (explicit `page` wins over legacy `skipSkintoneModal`). */
-export function resolveComputedStyleDumpPage(options = {}) {
+export function resolveComputedStyleDumpPage(
+  options: Pick<DumpComputedStylesOptions, "page" | "skipSkintoneModal"> = {},
+): ComputedStyleDumpPage {
   if (options.page && typeof options.page === "string") {
     const p = options.page.trim();
-    if (!COMPUTED_STYLE_DUMP_PAGES.includes(p)) {
+    if (!(COMPUTED_STYLE_DUMP_PAGES as readonly string[]).includes(p)) {
       throw new Error(
         `Unknown dump page "${p}". Expected one of: ${COMPUTED_STYLE_DUMP_PAGES.join(", ")}`,
       );
     }
-    return p;
+    return p as ComputedStyleDumpPage;
   }
   if (options.skipSkintoneModal === true) {
     return "homepage";
@@ -834,7 +872,7 @@ export const FONT_METRICS_SNIPPETS = [
 ];
 
 /** Selectors for font shorthand + measureText probes (label for dump lines only). */
-export const FONT_METRICS_PROBES = [
+export const FONT_METRICS_PROBES: FontMetricsProbe[] = [
   { label: "body", selector: "body" },
   { label: "h1.title", selector: "h1.title" },
   { label: "download .button (first)", selector: "#download-buttons .button" },
@@ -842,7 +880,10 @@ export const FONT_METRICS_PROBES = [
   { label: ".tree-label (first)", selector: ".tree-label" },
 ];
 
-export async function collectComputedStyleDump(page, options = {}) {
+export async function collectComputedStyleDump(
+  page: Page,
+  options: CollectComputedStyleDumpOptions = {},
+): Promise<string> {
   const props = options.props ?? COMPUTED_STYLE_PROPS;
   const targets = options.targets ?? COMPUTED_STYLE_TARGETS;
   const fontDiagnostics = options.fontDiagnostics !== false;
@@ -856,8 +897,7 @@ export async function collectComputedStyleDump(page, options = {}) {
       fontSnippets: snippets,
       fontProbes: probes,
     }) => {
-      /* eslint-disable no-undef -- browser */
-
+      // @ts-expect-error serialized into the page; keep this callback free of TypeScript syntax
       function fontShorthandFromComputed(cs) {
         const direct = cs.font;
         if (direct && direct !== "initial" && direct !== "") {
@@ -872,6 +912,7 @@ export async function collectComputedStyleDump(page, options = {}) {
           .trim();
       }
 
+      // @ts-expect-error serialized into the page; keep this callback free of TypeScript syntax
       function canvasMeasureTextWidth(fontCss, text) {
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d");
@@ -922,6 +963,9 @@ export async function collectComputedStyleDump(page, options = {}) {
 
         for (let i = 0; i < nodes.length; i++) {
           const el = nodes[i];
+          if (!(el instanceof HTMLElement)) {
+            continue;
+          }
           const header =
             nodes.length === 1
               ? `=== ${label} <${selector}> ===`
@@ -1009,6 +1053,7 @@ export async function collectComputedStyleDump(page, options = {}) {
         lines.push("");
       }
 
+      // @ts-expect-error serialized into the page; keep this callback free of TypeScript syntax
       function headerToCheckboxBlockGap(box, title) {
         if (!box) {
           return;
@@ -1125,7 +1170,6 @@ export async function collectComputedStyleDump(page, options = {}) {
       }
 
       return lines.join("\n");
-      /* eslint-enable no-undef */
     },
     {
       props,
@@ -1145,11 +1189,15 @@ export async function collectComputedStyleDump(page, options = {}) {
  * @param {string} [options.page] One of COMPUTED_STYLE_DUMP_PAGES (default human-male-skintone).
  * @param {boolean} [options.skipSkintoneModal] Legacy: if true and `page` unset, same as page=homepage.
  */
-export async function dumpComputedStylesForUrl(url, viewport, options = {}) {
+export async function dumpComputedStylesForUrl(
+  url: string,
+  viewport: ViewportSize,
+  options: DumpComputedStylesOptions = {},
+): Promise<string> {
   const dumpPage = resolveComputedStyleDumpPage(options);
-  const collectOptions = { ...options };
-  delete collectOptions.skipSkintoneModal;
-  delete collectOptions.page;
+  const collectOptions: CollectComputedStyleDumpOptions = { ...options };
+  delete (collectOptions as DumpComputedStylesOptions).skipSkintoneModal;
+  delete (collectOptions as DumpComputedStylesOptions).page;
 
   const deviceScaleFactor =
     Number(process.env.PLAYWRIGHT_DEVICE_SCALE_FACTOR ?? "1") || 1;
@@ -1160,7 +1208,7 @@ export async function dumpComputedStylesForUrl(url, viewport, options = {}) {
   );
 
   const browser = await chromium.launch({ headless: true });
-  let context;
+  let context: BrowserContext | undefined;
   try {
     context = await browser.newContext({
       viewport: { width: viewport.width, height: viewport.height },
@@ -1190,7 +1238,7 @@ export async function dumpComputedStylesForUrl(url, viewport, options = {}) {
     }
     await page.addInitScript(() => {
       // Same flag as tests/visual/home.spec.js (prevents preview animation layout churn).
-      globalThis.__DISABLE_PREVIEW_ANIMATION__ = true;
+      window.__DISABLE_PREVIEW_ANIMATION__ = true;
     });
     const loadUrl = urlWithDebugEnabled(url);
     const t1 = Date.now();

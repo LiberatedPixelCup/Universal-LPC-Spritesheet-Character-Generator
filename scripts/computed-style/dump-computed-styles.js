@@ -36,7 +36,7 @@ import {
   VIEWPORT_PRESETS,
   COMPUTED_STYLE_DUMP_PAGES,
   dumpComputedStylesForUrl,
-} from "./computed-style-dump-shared.js";
+} from "./computed-style-dump-shared.ts";
 
 function parseArgs(argv) {
   const out = {

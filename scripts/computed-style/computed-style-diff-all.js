@@ -30,7 +30,7 @@ import {
   COMPUTED_STYLE_DUMP_PAGES,
   dumpComputedStylesForUrl,
   lpcComputedStyleLog,
-} from "./computed-style-dump-shared.js";
+} from "./computed-style-dump-shared.ts";
 
 const PRESET_ORDER = [
   "mobile",
