@@ -24,7 +24,7 @@
  *   diff -u /tmp/master-mobile.txt /tmp/branch-mobile.txt
  *
  * All presets + diffs at once:
- *   node scripts/computed-style/computed-style-diff-all.js
+ *   node scripts/computed-style/computed-style-diff-all.ts
  *
  * Verbose stderr (timings + browser console): LPC_DEBUG_COMPUTED_STYLE=1
  */
