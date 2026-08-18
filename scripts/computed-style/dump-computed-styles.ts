@@ -4,13 +4,13 @@
  * (e.g. master vs update_bulma) served from two worktrees on different ports.
  *
  * Usage:
- *   node scripts/dump-computed-styles.js http://127.0.0.1:4173 > /tmp/master.txt
- *   node scripts/dump-computed-styles.js http://127.0.0.1:4174 > /tmp/branch.txt
+ *   node scripts/computed-style/dump-computed-styles.ts http://127.0.0.1:4173 > /tmp/master.txt
+ *   node scripts/computed-style/dump-computed-styles.ts http://127.0.0.1:4174 > /tmp/branch.txt
  *   diff -u /tmp/master.txt /tmp/branch.txt
  *
  * Or with labels and an output directory:
- *   node scripts/dump-computed-styles.js --out-dir /tmp/cmp --label master http://127.0.0.1:4173
- *   node scripts/dump-computed-styles.js --out-dir /tmp/cmp --label branch http://127.0.0.1:4174
+ *   node scripts/computed-style/dump-computed-styles.ts --out-dir /tmp/cmp --label master http://127.0.0.1:4173
+ *   node scripts/computed-style/dump-computed-styles.ts --out-dir /tmp/cmp --label branch http://127.0.0.1:4174
  *
  * Options:
  *   --viewport WxH        Explicit size (default 1440x900 = Argos medium desktop)
@@ -19,12 +19,12 @@
  *   --out-dir <dir>       Implies --label required; writes <dir>/<label>.txt
  *
  * Mobile / responsive debugging (e.g. full-width Download buttons):
- *   node scripts/dump-computed-styles.js --preset mobile http://127.0.0.1:4173 > /tmp/master-mobile.txt
- *   node scripts/dump-computed-styles.js --preset mobile http://127.0.0.1:4174 > /tmp/branch-mobile.txt
+ *   node scripts/computed-style/dump-computed-styles.ts --preset mobile http://127.0.0.1:4173 > /tmp/master-mobile.txt
+ *   node scripts/computed-style/dump-computed-styles.ts --preset mobile http://127.0.0.1:4174 > /tmp/branch-mobile.txt
  *   diff -u /tmp/master-mobile.txt /tmp/branch-mobile.txt
  *
  * All presets + diffs at once:
- *   node scripts/computed-style-diff-all.js
+ *   node scripts/computed-style/computed-style-diff-all.js
  *
  * Verbose stderr (timings + browser console): LPC_DEBUG_COMPUTED_STYLE=1
  */
@@ -36,10 +36,22 @@ import {
   VIEWPORT_PRESETS,
   COMPUTED_STYLE_DUMP_PAGES,
   dumpComputedStylesForUrl,
+  type ViewportSize,
 } from "./computed-style-dump-shared.ts";
 
-function parseArgs(argv) {
-  const out = {
+type DumpCliArgs = {
+  url: string | null;
+  outFile: string | null;
+  outDir: string | null;
+  label: string | null;
+  viewport: ViewportSize;
+  page: string | null;
+  skipSkintoneModal: boolean;
+  help: boolean;
+};
+
+function parseArgs(argv: string[]): DumpCliArgs {
+  const out: DumpCliArgs = {
     url: null,
     outFile: null,
     outDir: null,
@@ -78,16 +90,16 @@ function parseArgs(argv) {
       out.skipSkintoneModal = true;
     } else if (a === "--page" && argv[i + 1]) {
       out.page = argv[++i];
-    } else if (!a.startsWith("-")) {
+    } else if (a && !a.startsWith("-")) {
       out.url = a;
     }
   }
   return out;
 }
 
-function printHelp() {
+function printHelp(): void {
   console.error(`Usage:
-  node scripts/dump-computed-styles.js [options] <url>
+  node scripts/computed-style/dump-computed-styles.ts [options] <url>
 
 Options:
   --out <file>           Write dump to file (default: stdout)
@@ -100,16 +112,16 @@ Options:
   --help, -h
 
 Examples:
-  node scripts/dump-computed-styles.js http://127.0.0.1:4173 > /tmp/master.txt
-  node scripts/dump-computed-styles.js --preset mobile http://127.0.0.1:4173 > /tmp/master-mobile.txt
-  node scripts/dump-computed-styles.js --out /tmp/branch.txt http://127.0.0.1:4174
+  node scripts/computed-style/dump-computed-styles.ts http://127.0.0.1:4173 > /tmp/master.txt
+  node scripts/computed-style/dump-computed-styles.ts --preset mobile http://127.0.0.1:4173 > /tmp/master-mobile.txt
+  node scripts/computed-style/dump-computed-styles.ts --out /tmp/branch.txt http://127.0.0.1:4174
   diff -u /tmp/master.txt /tmp/branch.txt
 
-  node scripts/computed-style-diff-all.js   # all presets vs default ports
+  node scripts/computed-style/computed-style-diff-all.ts   # all presets vs default ports
 `);
 }
 
-async function main() {
+async function main(): Promise<void> {
   const args = parseArgs(process.argv);
   if (args.help || !args.url) {
     printHelp();
@@ -125,7 +137,7 @@ async function main() {
     skipSkintoneModal: args.skipSkintoneModal,
   });
 
-  if (args.outDir) {
+  if (args.outDir && args.label) {
     fs.mkdirSync(args.outDir, { recursive: true });
     const safe = args.label.replace(/[^a-zA-Z0-9._-]+/g, "_");
     const outPath = path.join(args.outDir, `${safe}.txt`);
@@ -139,7 +151,7 @@ async function main() {
   }
 }
 
-main().catch((err) => {
+main().catch((err: unknown) => {
   console.error(err);
   process.exit(1);
 });

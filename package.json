@@ -38,8 +38,8 @@
     "profile:zip:baseline": "node scripts/zip/zip-export-profile.ts --out tmp/baseline-zip-export-profile.json",
     "profile:zip:baseline:quick": "node scripts/zip/zip-export-profile.ts --quick --out tmp/baseline-zip-export-profile-quick.json",
     "diff:zip-profile": "node scripts/zip/diff-zip-profile.ts",
-    "compute-style-dump": "node scripts/computed-style/dump-computed-styles.js",
-    "compute-style-dump:mobile": "node scripts/computed-style/dump-computed-styles.js --preset mobile",
+    "compute-style-dump": "node scripts/computed-style/dump-computed-styles.ts",
+    "compute-style-dump:mobile": "node scripts/computed-style/dump-computed-styles.ts --preset mobile",
     "compute-style-diff-all": "node scripts/computed-style/computed-style-diff-all.js",
     "compute-style-diff-all:preview-ports": "node scripts/computed-style/computed-style-diff-all.js --url-a http://localhost:4176 --url-b http://localhost:4177",
     "lockfile:fix": "bash scripts/fix-lockfile-after-rebase.sh"
