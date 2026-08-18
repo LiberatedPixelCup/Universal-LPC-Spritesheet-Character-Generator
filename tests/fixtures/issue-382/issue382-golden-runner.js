@@ -3,7 +3,7 @@
  * The HTML page sets `<base href="/">` so relative `spritesheets/...` URLs resolve like
  * `tests_run.html` even though this file lives under `tests/fixtures/issue-382/`.
  *
- * @see scripts/fixture-builder.js
+ * @see scripts/fixture-builder.ts
  * @see scripts/issue382-golden-playwright.ts
  * @see issue382-golden-runner.html
  */

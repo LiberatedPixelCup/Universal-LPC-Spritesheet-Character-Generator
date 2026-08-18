@@ -30,7 +30,7 @@ ignore:
   - scripts/computed-style/**
   - scripts/imageProcessing/**
   - scripts/zip/**
-  - scripts/fixture-builder.js
+  - scripts/fixture-builder.ts
   - scripts/generate-purgecss-safelist-hints.ts
   - scripts/issue382-golden-playwright.ts
   - scripts/update_sheet_definitions.ts

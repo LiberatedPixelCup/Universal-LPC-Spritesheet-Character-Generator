@@ -32,7 +32,7 @@
     "test:browser:coverage": "rimraf coverage/browser && VITE_COVERAGE=true node ./node_modules/testem/testem.js ci",
     "test:visual": "playwright test",
     "test:visual:headed": "playwright test --headed",
-    "fixture:issue382": "node scripts/fixture-builder.js tests/fixtures/issue-382/issue-382-selections.json",
+    "fixture:issue382": "node scripts/fixture-builder.ts tests/fixtures/issue-382/issue-382-selections.json",
     "profile:zip": "node scripts/zip/zip-export-profile.ts",
     "profile:zip:quick": "node scripts/zip/zip-export-profile.ts --quick",
     "profile:zip:baseline": "node scripts/zip/zip-export-profile.ts --out tmp/baseline-zip-export-profile.json",

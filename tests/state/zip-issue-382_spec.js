@@ -2,12 +2,12 @@
  * Regression: ZIP export folder/file layout for a fixed character (issue #382).
  *
  * Fixtures live under `tests/fixtures/` (`issue-382-*.js`). Regenerate everything with:
- *   node scripts/fixture-builder.js path/to/exported-selections.json
+ *   node scripts/fixture-builder.ts path/to/exported-selections.json
  *
  * Golden zip path lists (`issue-382-zip-paths-*.js`) are captured in headless Chromium
- * via `issue382-golden-runner.html` (see `scripts/fixture-builder.js`).
+ * via `issue382-golden-runner.html` (see `scripts/fixture-builder.ts`).
  *
- * @see scripts/fixture-builder.js
+ * @see scripts/fixture-builder.ts
  * @see scripts/issue382-golden-playwright.ts
  * @see issue382-golden-runner.html
  */

@@ -1,22 +1,22 @@
 /**
  * Headless browser capture of sorted zip paths for issue #382 fixtures.
- * Invoked by scripts/fixture-builder.js after tests/fixtures/issue-382-itemdata.js
+ * Invoked by scripts/fixture-builder.ts after tests/fixtures/issue-382-itemdata.js
  * and issue-382-selections.js are written.
  *
  * Why Playwright
  * --------------
  * Zip layout depends on `renderCharacter`, canvas, `loadImage`, and `zip.js` — all
  * browser-oriented. This script runs the same modules as `tests/state/zip-issue-382_spec.js`
- * in Chromium and writes path snapshots. See `scripts/fixture-builder.js` for rationale.
+ * in Chromium and writes path snapshots. See `scripts/fixture-builder.ts` for rationale.
  *
  * Snapshots vs bugs
  * -----------------
  * These files record **whatever paths the current code produces**. Regenerating after
  * a regression **bakes the regression into** `tests/fixtures/issue-382/issue-382-zip-paths-*.js`;
  * tests will still pass. Use code review when golden files change; combine with
- * non-snapshot tests for critical invariants (see fixture-builder.js header).
+ * non-snapshot tests for critical invariants (see fixture-builder.ts header).
  *
- * @see scripts/fixture-builder.js
+ * @see scripts/fixture-builder.ts
  * @see issue382-golden-runner.html
  *
  * Environment
@@ -79,12 +79,12 @@ function formatGoldenModule({
  * ${title}
  *
  * Regenerate (writes this file and sibling issue-382 fixtures):
- *   node scripts/fixture-builder.js ${inputRelativeToRepo}
+ *   node scripts/fixture-builder.ts ${inputRelativeToRepo}
  *
  * Snapshot: encodes current export behavior — review diffs; do not regenerate blindly
- * after a suspected bug without verifying output (see scripts/fixture-builder.js).
+ * after a suspected bug without verifying output (see scripts/fixture-builder.ts).
  *
- * @see scripts/fixture-builder.js
+ * @see scripts/fixture-builder.ts
  * @see scripts/issue382-golden-playwright.ts
  * @see issue382-golden-runner.html
  */
