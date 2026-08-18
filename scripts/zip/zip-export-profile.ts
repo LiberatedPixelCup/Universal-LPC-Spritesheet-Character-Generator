@@ -14,7 +14,7 @@
  *   ZIP_PROFILE_PORT — TCP port for `npx serve` (default 9877).
  *
  * @see scripts/zip/zip-export-profile-runner.html
- * @see scripts/zip/zip-export-profile-runner.js
+ * @see scripts/zip/zip-export-profile-runner.ts
  */
 
 import { spawn } from "node:child_process";

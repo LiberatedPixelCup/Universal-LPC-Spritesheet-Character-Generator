@@ -1,8 +1,6 @@
-/* eslint-disable no-undef -- browser harness (window, document, m) */
-
 /**
  * Browser harness for `scripts/zip/zip-export-profile.ts`.
- * Loads selections from the URL hash (see `zip-profile-default-hash.js`) so
+ * Loads selections from the URL hash (see `zip-profile-default-hash.ts`) so
  * layered gear and custom sprites are present; runs ZIP export(s) with real
  * canvas + optional real JSZip.
  *
@@ -15,7 +13,7 @@
 import {
   initCanvas,
   canvas as rendererCanvas,
-  layers,
+  drawCalls,
   SHEET_HEIGHT,
   SHEET_WIDTH,
   renderCharacter,
@@ -31,18 +29,37 @@ import {
   resetState,
 } from "../../sources/state/hash.ts";
 import { configureStateCatalog, state } from "../../sources/state/state.ts";
-import { createCatalog } from "../../sources/state/catalog.ts";
+import {
+  createCatalog,
+  type AliasMetadata,
+  type CategoryTree,
+  type MetadataIndexes,
+  type PaletteMetadata,
+} from "../../sources/state/catalog.ts";
+import type { ZipFolder } from "../../sources/utils/zip-helpers.ts";
+import type { ZipExportProfilerMetadata } from "../../sources/performance-profiler.ts";
 import { ZIP_PROFILE_DEFAULT_HASH } from "./zip-profile-default-hash.ts";
 
-/** @type {readonly string[]} */
 export const ZIP_PROFILE_EXPORT_KINDS = [
   "splitAnimations",
   "splitItemSheets",
   "splitItemAnimations",
   "individualFrames",
-];
+] as const;
 
-function resolveProfileHashString() {
+type ZipProfileExportKind = (typeof ZIP_PROFILE_EXPORT_KINDS)[number];
+
+type ZipProfileWindow = Window & {
+  itemMetadata?: Record<string, unknown>;
+  aliasMetadata?: AliasMetadata;
+  categoryTree?: CategoryTree;
+  metadataIndexes?: MetadataIndexes;
+  paletteMetadata?: PaletteMetadata;
+  __zipExportProfiles?: Record<string, ZipExportProfilerMetadata>;
+  __lastZipExportProfile?: ZipExportProfilerMetadata;
+};
+
+function resolveProfileHashString(): string {
   const fromUrl = window.location.hash?.replace(/^#/, "")?.trim();
   if (fromUrl) {
     return fromUrl;
@@ -54,61 +71,83 @@ function resolveProfileHashString() {
   return ZIP_PROFILE_DEFAULT_HASH;
 }
 
-/**
- * @param {{ useRealJsZip?: boolean }} opts
- * @param {string | null} [opts.only] — one of {@link ZIP_PROFILE_EXPORT_KINDS}, or null for all
- */
-async function runProfiles(opts = {}) {
-  /** @type {boolean} — default true; pass `false` for fake JSZip (quick mode). */
+async function runProfiles(
+  opts: {
+    useRealJsZip?: boolean;
+    only?: string | null;
+  } = {},
+): Promise<{
+  profiles: Record<string, ZipExportProfilerMetadata>;
+  selectionLabel: string;
+  useRealJsZip: boolean;
+  only: string;
+}> {
   const useRealJsZip = opts.useRealJsZip ?? true;
   const only = opts.only ?? null;
 
-  if (only !== null && !ZIP_PROFILE_EXPORT_KINDS.includes(only)) {
+  if (
+    only !== null &&
+    !(ZIP_PROFILE_EXPORT_KINDS as readonly string[]).includes(only)
+  ) {
     throw new Error(
       `Invalid only=${JSON.stringify(only)}; expected one of: ${ZIP_PROFILE_EXPORT_KINDS.join(", ")}`,
     );
   }
 
-  const run = (kind) => only === null || only === kind;
+  const run = (kind: ZipProfileExportKind) => only === null || only === kind;
+
+  const w = window as ZipProfileWindow;
+  if (
+    !w.itemMetadata ||
+    !w.aliasMetadata ||
+    !w.categoryTree ||
+    !w.metadataIndexes ||
+    !w.paletteMetadata
+  ) {
+    throw new Error("Profile runner missing catalog metadata globals");
+  }
 
   const catalog = createCatalog();
   catalog.loadCatalogFromFixtures({
-    itemMetadata: window.itemMetadata,
-    aliasMetadata: window.aliasMetadata,
-    categoryTree: window.categoryTree,
-    metadataIndexes: window.metadataIndexes,
-    paletteMetadata: window.paletteMetadata,
+    itemMetadata: w.itemMetadata,
+    aliasMetadata: w.aliasMetadata,
+    categoryTree: w.categoryTree,
+    metadataIndexes: w.metadataIndexes,
+    paletteMetadata: w.paletteMetadata,
   });
   configureStateCatalog(catalog);
 
   resetState();
-  layers.length = 0;
+  drawCalls.length = 0;
 
   loadSelectionsFromHash(catalog, resolveProfileHashString());
 
   window.alert = () => {};
-  if (typeof m !== "undefined" && m.redraw) {
-    m.redraw = () => {};
+  if (window.m?.redraw) {
+    window.m.redraw = (() => {}) as typeof window.m.redraw;
   }
 
-  const origCreateEl = document.createElement;
-  document.createElement = function (tag) {
+  const origCreateEl = document.createElement.bind(document);
+  document.createElement = function (
+    tag: string,
+    options?: ElementCreationOptions,
+  ) {
     if (tag === "a") {
       const el = origCreateEl.call(document, "a");
       el.click = () => {};
       return el;
     }
-    return origCreateEl.call(document, tag);
-  };
+    return origCreateEl.call(document, tag, options);
+  } as typeof document.createElement;
   const origCreateURL = URL.createObjectURL;
   const origRevokeURL = URL.revokeObjectURL;
   URL.createObjectURL = () => "blob:url";
   URL.revokeObjectURL = () => {};
 
-  window.__zipExportProfiles = {};
-  window.__lastZipExportProfile = undefined;
+  w.__zipExportProfiles = {};
+  w.__lastZipExportProfile = undefined;
 
-  window.canvasRenderer = {};
+  window.canvasRenderer = {} as NonNullable<Window["canvasRenderer"]>;
 
   const RealJSZip = window.JSZip;
   if (!useRealJsZip) {
@@ -116,11 +155,17 @@ async function runProfiles(opts = {}) {
       await import("../../tests/helpers/fake-jszip.js");
     window.JSZip = function FakeJSZip() {
       return createFakeJSZip();
-    };
+    } as unknown as new () => ZipFolder;
   }
 
   initCanvas();
+  if (!rendererCanvas) {
+    throw new Error("Canvas not initialized");
+  }
   const ctx = rendererCanvas.getContext("2d");
+  if (!ctx) {
+    throw new Error("2d context not available");
+  }
   ctx.fillStyle = "#445566";
   ctx.fillRect(0, 0, SHEET_WIDTH, SHEET_HEIGHT);
 
@@ -138,7 +183,7 @@ async function runProfiles(opts = {}) {
 
   if (run("splitItemAnimations")) {
     await exportSplitItemAnimations(catalog);
-    state.zipByAnimimationAndItem.isRunning = false;
+    state.zipByAnimationAndItem.isRunning = false;
   }
 
   if (run("individualFrames")) {
@@ -156,7 +201,7 @@ async function runProfiles(opts = {}) {
   URL.createObjectURL = origCreateURL;
   URL.revokeObjectURL = origRevokeURL;
 
-  const profiles = window.__zipExportProfiles || {};
+  const profiles = w.__zipExportProfiles || {};
   return {
     profiles,
     selectionLabel: "zip-profile-default-hash.js",
@@ -186,8 +231,9 @@ runProfiles({ useRealJsZip: !quick, only })
     const el = document.getElementById("status");
     if (el) el.textContent = "Done (ZIP export profiling).";
   })
-  .catch((err) => {
-    window.__ZIP_PROFILE_ERROR__ = String(err?.stack || err);
+  .catch((err: unknown) => {
+    window.__ZIP_PROFILE_ERROR__ =
+      err instanceof Error ? String(err.stack || err) : String(err);
     window.__ZIP_PROFILE_READY__ = true;
     const el = document.getElementById("status");
     if (el) el.textContent = `Error: ${window.__ZIP_PROFILE_ERROR__}`;

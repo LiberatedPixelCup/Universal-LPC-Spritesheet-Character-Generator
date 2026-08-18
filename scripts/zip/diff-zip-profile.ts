@@ -1,5 +1,5 @@
 /**
- * Compare two ZIP-profile JSON files (from `zip-export-profile.js` or `profile:zip`).
+ * Compare two ZIP-profile JSON files (from `zip-export-profile.ts` or `profile:zip`).
  *
  * Usage:
  *   node scripts/zip/diff-zip-profile.ts <before.json> <after.json>

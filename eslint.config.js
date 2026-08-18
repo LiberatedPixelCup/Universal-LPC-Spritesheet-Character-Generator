@@ -113,6 +113,17 @@ export default [
     rules: commonRulesTs,
   },
   {
+    files: ["scripts/zip/zip-export-profile-runner.ts"],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.es2021,
+        m: "readonly",
+      },
+    },
+    rules: commonRulesTs,
+  },
+  {
     files: ["tests/**/*.js"],
     ignores: ["tests/visual/**"],
     languageOptions: {
