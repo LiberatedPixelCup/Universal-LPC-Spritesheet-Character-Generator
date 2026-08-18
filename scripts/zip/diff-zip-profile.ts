@@ -2,8 +2,8 @@
  * Compare two ZIP-profile JSON files (from `zip-export-profile.js` or `profile:zip`).
  *
  * Usage:
- *   node scripts/zip/diff-zip-profile.js <before.json> <after.json>
- *   node scripts/zip/diff-zip-profile.js --before tmp/baseline.json --after tmp/current.json
+ *   node scripts/zip/diff-zip-profile.ts <before.json> <after.json>
+ *   node scripts/zip/diff-zip-profile.ts --before tmp/baseline.json --after tmp/current.json
  *
  * Prints per-export-kind phase deltas (after − before). Positive Δ means slower.
  * Exit code 0 always (reporting tool).
@@ -16,49 +16,68 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.join(__dirname, "..", "..");
 
-function parseArgs(argv) {
+type ZipKindProfile = {
+  totalMs?: number;
+  phasesMs?: Record<string, number>;
+};
+
+type ZipProfileFile = {
+  generatedAt?: string;
+  quickMode?: boolean;
+  only?: string | null;
+  profiles?: Record<string, ZipKindProfile>;
+};
+
+function parseArgs(argv: string[]): { beforePath: string; afterPath: string } {
   const args = argv.slice(2);
   const bi = args.indexOf("--before");
   const ai = args.indexOf("--after");
-  let beforePath;
-  let afterPath;
-  if (bi !== -1 && args[bi + 1] && ai !== -1 && args[ai + 1]) {
-    beforePath = path.resolve(REPO_ROOT, args[bi + 1]);
-    afterPath = path.resolve(REPO_ROOT, args[ai + 1]);
-  } else if (args.length >= 2 && !args[0].startsWith("-")) {
+  let beforePath: string | undefined;
+  let afterPath: string | undefined;
+  const beforeArg = args[bi + 1];
+  const afterArg = args[ai + 1];
+  if (bi !== -1 && beforeArg && ai !== -1 && afterArg) {
+    beforePath = path.resolve(REPO_ROOT, beforeArg);
+    afterPath = path.resolve(REPO_ROOT, afterArg);
+  } else if (
+    args.length >= 2 &&
+    args[0] &&
+    args[1] &&
+    !args[0].startsWith("-")
+  ) {
     beforePath = path.resolve(REPO_ROOT, args[0]);
     afterPath = path.resolve(REPO_ROOT, args[1]);
   } else {
     throw new Error(
-      "Usage: diff-zip-profile.js <before.json> <after.json>\n" +
-        "   or: diff-zip-profile.js --before <before.json> --after <after.json>",
+      "Usage: diff-zip-profile.ts <before.json> <after.json>\n" +
+        "   or: diff-zip-profile.ts --before <before.json> --after <after.json>",
     );
   }
   return { beforePath, afterPath };
 }
 
-function loadProfile(p) {
+function loadProfile(p: string): ZipProfileFile {
   const raw = readFileSync(p, "utf8");
-  return JSON.parse(raw);
+  return JSON.parse(raw) as ZipProfileFile;
 }
 
-function round1(n) {
+function round1(n: number): number {
   return Math.round(n * 10) / 10;
 }
 
-function fmt(n) {
+function fmt(n: number | undefined | null): string {
   if (n === undefined || n === null || Number.isNaN(n)) {
     return "—";
   }
   return String(round1(n));
 }
 
-function main() {
+function main(): void {
   const { beforePath, afterPath } = parseArgs(process.argv);
   const before = loadProfile(beforePath);
   const after = loadProfile(afterPath);
 
-  const lines = [];
+  const lines: string[] = [];
   lines.push("ZIP profile diff");
   lines.push(`  before: ${path.relative(REPO_ROOT, beforePath)}`);
   if (before.generatedAt)
@@ -102,7 +121,7 @@ function main() {
 
     const tb = b.totalMs;
     const ta = a.totalMs;
-    const dt = ta - tb;
+    const dt = (ta ?? 0) - (tb ?? 0);
     lines.push(
       `  totalMs: ${fmt(tb)} → ${fmt(ta)}  (Δ ${dt >= 0 ? "+" : ""}${fmt(dt)})`,
     );
@@ -126,7 +145,8 @@ function main() {
       w.delta = Math.max(w.delta, `${d >= 0 ? "+" : ""}${fmt(d)}`.length);
     }
 
-    const pad = (s, n) => s + " ".repeat(Math.max(0, n - s.length));
+    const pad = (s: string, n: number) =>
+      s + " ".repeat(Math.max(0, n - s.length));
     lines.push(
       `  ${pad("phase", w.phase)}  ${pad("before", w.before)}  ${pad("after", w.after)}  ${pad("Δ", w.delta)}`,
     );
@@ -152,6 +172,6 @@ function main() {
 try {
   main();
 } catch (e) {
-  console.error(e.message || e);
+  console.error(e instanceof Error ? e.message : e);
   process.exit(1);
 }
