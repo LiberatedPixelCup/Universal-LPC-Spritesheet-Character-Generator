@@ -7,8 +7,8 @@ import fs from "node:fs";
 import { execSync } from "node:child_process";
 import { debugLog } from "../utils/debug.ts";
 
-const walk = function (dir) {
-  let results = [];
+const walk = function (dir: string): string[] {
+  let results: string[] = [];
   const list = fs.readdirSync(dir);
   list.forEach(function (file) {
     file = dir + "/" + file;
@@ -38,7 +38,7 @@ const masterSheetNames = [
 walkDirectories.forEach(function (walkDirectory) {
   debugLog(`Start processing sheet: ${walkDirectory}`);
   const list = fs.readdirSync(walkDirectory + "/walk");
-  let variants = [];
+  const variants: string[] = [];
   list.forEach(function (file) {
     if (file.includes(".png")) {
       variants.push(file);
@@ -48,11 +48,11 @@ walkDirectories.forEach(function (walkDirectory) {
 
   const universalFolder = `${walkDirectory}/_universal`;
   if (fs.existsSync(universalFolder)) {
-    fs.rmdirSync(universalFolder, { recursive: true, force: true });
+    fs.rmSync(universalFolder, { recursive: true, force: true });
   }
   fs.mkdirSync(universalFolder);
   variants.forEach(function (variant) {
-    let imagesToCompose = [];
+    const imagesToCompose: string[] = [];
     masterSheetNames.forEach(function (animation) {
       const variantPath = `${walkDirectory}/${animation}/${variant}`;
       if (fs.existsSync(`${walkDirectory}/${animation}/${variant}`)) {
@@ -67,10 +67,6 @@ walkDirectories.forEach(function (walkDirectory) {
     const newFile = `${universalFolder}/${variant}`;
     const inputArguments = imagesToCompose.join(" ");
     const command = `magick convert -background transparent -append ${inputArguments} ${newFile}`;
-    execSync(command, (err) => {
-      if (err) {
-        throw err;
-      }
-    });
+    execSync(command);
   });
 });
