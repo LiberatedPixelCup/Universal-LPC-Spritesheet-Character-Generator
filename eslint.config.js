@@ -177,6 +177,17 @@ export default [
     },
   },
   {
+    files: ["tests/visual/**/*.ts"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.browser,
+        ...globals.es2021,
+      },
+    },
+    rules: commonRulesTs,
+  },
+  {
     files: ["**/*.cjs"],
     languageOptions: {
       parserOptions: {

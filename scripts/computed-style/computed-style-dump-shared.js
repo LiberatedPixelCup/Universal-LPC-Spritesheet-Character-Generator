@@ -9,7 +9,7 @@ import {
   openHumanMaleSkintonePalette,
   closeSkintonePaletteModal,
   openLicenseAnimationAdvancedAndSearchArm,
-} from "../../tests/visual/home-helpers.js";
+} from "../../tests/visual/home-helpers.ts";
 
 /** Appends `?debug=true` (or &debug=true) so `getDebugParam()` turns on `window.DEBUG` after load. */
 export function urlWithDebugEnabled(url) {

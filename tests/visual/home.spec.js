@@ -7,7 +7,7 @@ import {
   openHumanMaleSkintonePalette,
   closeSkintonePaletteModal,
   openLicenseAnimationAdvancedAndSearchArm,
-} from "./home-helpers.js";
+} from "./home-helpers.ts";
 
 /** Base URL for the static site (see `webServer` in playwright.config.js). */
 const BASE_URL =
