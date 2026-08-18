@@ -144,11 +144,11 @@ Install these on your machine before you run builds or tests. Versions match wha
 **Git**  
 Used for clone, branch, and PR workflow. [Download Git](https://git-scm.com/downloads) or use your OS package manager (`git` is often pre-installed on macOS and Linux).
 
-**Node.js 24 and npm**  
-CI uses **Node.js 24** (see [`.github/workflows/`](.github/workflows/)). Install from [nodejs.org](https://nodejs.org/) or a version manager such as [fnm](https://github.com/Schniz/fnm) or [nvm](https://github.com/nvm-sh/nvm), then confirm your runtime matches or is compatible with CI:
+**Node.js 22.18+ (CI: Node.js 24) and npm**  
+[`package.json`](package.json) `engines.node` is **`>=22.18.0`** so Node can run first-party **`.ts`** files with [type stripping](https://nodejs.org/docs/latest/api/typescript.html) (no `tsx` / compile step). CI uses **Node.js 24** (see [`.github/workflows/`](.github/workflows/)). Install from [nodejs.org](https://nodejs.org/) or a version manager such as [fnm](https://github.com/Schniz/fnm) or [nvm](https://github.com/nvm-sh/nvm), then confirm your runtime:
 
 ```bash
-node -v   # expect v24.x
+node -v   # v22.18+ locally; CI is v24.x
 npm -v    # npm ships with Node
 ```
 
@@ -159,11 +159,13 @@ npm ci
 # or, for everyday work: npm install
 ```
 
-**JavaScript module format (Node)**  
-The root **`package.json`** sets **`"type": "module"`**, so first-party **`.js`** files are **ESM**—use **`import`** and **`export`**, not **`require`** or **`module.exports`**, for new Node scripts and tooling under **`scripts/`**, **`vite/`**, **`tests/node/`**, and similar paths. One exception: the Testem configuration is **[`testem.cjs`](testem.cjs)** (CommonJS). [Testem](https://github.com/testem/testem) discovers **`testem.cjs`** automatically (same as **`testem.js`**, after **`testem.json` / `testem.yml`**, if those exist). Use **`--file testem.cjs`** only to force a path when you have multiple config files or need a non-default name.
+**JavaScript / TypeScript module format (Node)**  
+The root **`package.json`** sets **`"type": "module"`**, so first-party **`.js`** and **`.ts`** files are **ESM**—use **`import`** and **`export`**, not **`require`** or **`module.exports`**, for new Node scripts and tooling under **`scripts/`**, **`vite/`**, **`tests/node/`**, and similar paths. Relative imports use **explicit extensions** (`.js` or `.ts`, matching the file on disk). TypeScript must stay [erasable](https://www.typescriptlang.org/tsconfig/#erasableSyntaxOnly): no enums, namespaces, or parameter properties, so `node path/to/file.ts` works. One exception: the Testem configuration is **[`testem.cjs`](testem.cjs)** (CommonJS). [Testem](https://github.com/testem/testem) discovers **`testem.cjs`** automatically (same as **`testem.js`**, after **`testem.json` / `testem.yml`**, if those exist). Use **`--file testem.cjs`** only to force a path when you have multiple config files or need a non-default name.
+
+**Type-check:** `npm run type-check` runs `tsc --noEmit` (also in the Lint workflow). The app under **`sources/`** and Vite plugins/config under **`vite/`** are TypeScript; **`scripts/`** and **`tests/`** are mid-migration (`allowJs` is still on).
 
 **Copying `spritesheets/` into `dist/` (build)**  
-**`npm run build`** copies the large **`spritesheets/`** tree into **`dist/`** as part of the Vite build (see `vite.config.js`). Which tool runs depends on the OS:
+**`npm run build`** copies the large **`spritesheets/`** tree into **`dist/`** as part of the Vite build (see `vite.config.ts`). Which tool runs depends on the OS:
 
 - **Windows:** The build invokes **`robocopy`** (built into Windows). You do **not** need **rsync** or any separate copy utility for this step.
 - **macOS and Linux:** The build invokes **`rsync` 3.x** on your **`PATH`**, with options that update files incrementally (for example **`-u` / `--update`**: skip overwriting when the destination file is newer).
@@ -207,7 +209,7 @@ For visual tests only, **`npx playwright install chromium`** is enough. The Argo
 
 #### File Generation
 
-**Generated metadata modules (`dist/`, gitignored)** — The Vite metadata plugin (see [`vite/vite-plugin-item-metadata.js`](vite/vite-plugin-item-metadata.js)) runs **`generateSources`** on dev/build and writes **five** ES modules under **`dist/`** from the sheet JSON under **`sheet_definitions/`** and **`palette_definitions/`**. It hashes both trees; if the hash matches a gitignored [`.cache/`](.cache/) copy from the last run and **`dist/index-metadata.js` already exists**, it **skips** all generation. Otherwise it also regenerates **[CREDITS.csv](CREDITS.csv)** and **[scripts/zPositioning/z_positions.csv](scripts/zPositioning/z_positions.csv)** in line with `npm run validate-site-sources`. Set **`VITE_REGENERATE_SOURCES=1`** to always run the full pipeline. Do not edit the generated `dist` files by hand.
+**Generated metadata modules (`dist/`, gitignored)** — The Vite metadata plugin (see [`vite/vite-plugin-item-metadata.ts`](vite/vite-plugin-item-metadata.ts)) runs **`generateSources`** on dev/build and writes **five** ES modules under **`dist/`** from the sheet JSON under **`sheet_definitions/`** and **`palette_definitions/`**. It hashes both trees; if the hash matches a gitignored [`.cache/`](.cache/) copy from the last run and **`dist/index-metadata.js` already exists**, it **skips** all generation. Otherwise it also regenerates **[CREDITS.csv](CREDITS.csv)** and **[scripts/zPositioning/z_positions.csv](scripts/zPositioning/z_positions.csv)** in line with `npm run validate-site-sources`. Set **`VITE_REGENERATE_SOURCES=1`** to always run the full pipeline. Do not edit the generated `dist` files by hand.
 
 | File                      | Main exports (named)                                                                                    |
 | ------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -229,11 +231,11 @@ The app creates a catalog in **[`sources/main.ts`](sources/main.ts)**, then load
 npm run validate-site-sources
 ```
 
-That uses **`concurrently`** to run **`generate_credits.js`** and **`parse_zpos.js`** (same as writing **`z_positions.csv`** from the JSON) in parallel. Alternatively, run **`node scripts/generate_credits.js`** and **`node scripts/zPositioning/parse_zpos.js`** separately. Do not run **`node scripts/generate_sources.js`** as a CLI; it only prints a pointer to **`npm run validate-site-sources`** (the file’s role is to export **`generateSources`** for Vite and tests).
+That uses **`concurrently`** to run **`generate_credits.ts`** and **`parse_zpos.ts`** (same as writing **`z_positions.csv`** from the JSON) in parallel. Alternatively, run **`node scripts/generate_credits.ts`** and **`node scripts/zPositioning/parse_zpos.ts`** separately. Do not run **`node scripts/generate_sources.ts`** as a CLI; it only prints a pointer to **`npm run validate-site-sources`** (the file’s role is to export **`generateSources`** for Vite and tests).
 
 Vite is responsible for the five `dist/*-metadata.js` files when the plugin runs (and may update **CREDITS** / **z_positions** in the “inputs changed or first run / missing `dist` metadata” case). The plugin passes **`env`** (`development` vs `production`) into **`generateSources`** and controls JSON indentation in metadata.
 
-**`index.html`** is the Vite entry shell (layout, stylesheets, `sources/main.js`). It is not emitted by `generate_sources.js`. Change it only when you mean to adjust the page structure or global assets.
+**`index.html`** is the Vite entry shell (layout, stylesheets, `sources/main.ts`). It is not emitted by `generate_sources.ts`. Change it only when you mean to adjust the page structure or global assets.
 
 The **Validate site sources** workflow (`.github/workflows/validate-site-sources.yml`) runs **`npm run validate-site-sources`** and fails if the working tree is dirty afterward. PRs that touch definitions must include regenerated **`CREDITS.csv`** and **`scripts/zPositioning/z_positions.csv`** whenever those files change.
 
@@ -253,7 +255,7 @@ This runs **`node ./node_modules/testem/testem.js ci`**, which loads **[`testem.
 
 **Testem client URL vs config:** [`tests_run.html`](tests_run.html) loads **`<script src="/testem.js">`**. That path is the **Testem in-browser client** served by the Testem server from the **`testem`** npm package; it is **not** the repo’s config file. Local Testem settings live in **[`testem.cjs`](testem.cjs)** at the repository root.
 
-**`DEBUG` environment variable (optional):** When `DEBUG` is `1` or `true`, the Vite middleware used by Testem defines `import.meta.env.VITEST_DEBUG === "true"`, and [`tests/vitest-setup.js`](tests/vitest-setup.js) turns on test-friendly verbose behavior aligned with `sources/utils/debug.js`.
+**`DEBUG` environment variable (optional):** When `DEBUG` is `1` or `true`, the Vite middleware used by Testem defines `import.meta.env.VITEST_DEBUG === "true"`, and [`tests/vitest-setup.js`](tests/vitest-setup.js) turns on test-friendly verbose behavior aligned with `sources/utils/debug.ts`.
 
 ```bash
 DEBUG=1 npm test
@@ -286,7 +288,7 @@ Plain **`npm test`** / **`npm run test:server`** stay uninstrumented. Coverage H
 
 **PR checks** (see [`codecov.yml`](codecov.yml)):
 
-- **`codecov/patch`** — every new or edited production line under `sources/` (browser) or the generate-sources scripts (Node) must be executed by a unit test (100% patch). Screenshots do not count.
+- **`codecov/patch`** — every new or edited production line under `sources/` (browser) or the generate-sources scripts (Node) must be executed by a unit test (100% patch). Screenshots, comments, and blank lines do not count.
 - **`codecov/changes`** — existing production lines must not lose hits (deleted or weakened unit tests).
 - There is **no** overall coverage-percentage gate. Adding a large file will not fail the PR just because the project average moved.
 
@@ -321,9 +323,9 @@ Full-page screenshots live under [`tests/visual/`](tests/visual/) and use [`play
 
 **Unit and component specs (Mocha + Chai)**
 
-[`tests/tests.js`](tests/tests.js) imports every `tests/**/*_spec.js` file (except files only used from **`tests/node/`**). **`tests/node/`** is exercised by **`before_tests`** and by **`npm run test:node`** directly.
+[`tests/tests.js`](tests/tests.js) imports every browser spec listed there (`*_spec.js` today; some Node specs are already `*_spec.ts`). **`tests/node/`** is exercised by **`before_tests`** and by **`npm run test:node`** directly. [`tests/node/run-node-tests.js`](tests/node/run-node-tests.js) collects both **`_spec.js`** and **`_spec.ts`** under **`tests/node/`**.
 
-[`tests/vitest-setup.js`](tests/vitest-setup.js) loads **`sources/vendor-globals.js`** and sets test flags on **`window`**. Specs create independent catalogs with **`createCatalog()`** and register only the metadata stages and records they exercise. Shared helpers in [`tests/browser-catalog-fixture.js`](tests/browser-catalog-fixture.js) seed explicit fixture catalogs for larger ZIP scenarios.
+[`tests/vitest-setup.js`](tests/vitest-setup.js) loads **`sources/vendor-globals.ts`** and sets test flags on **`window`**. Specs create independent catalogs with **`createCatalog()`** and register only the metadata stages and records they exercise. Shared helpers in [`tests/browser-catalog-fixture.js`](tests/browser-catalog-fixture.js) seed explicit fixture catalogs for larger ZIP scenarios.
 
 Typical patterns:
 
@@ -334,7 +336,7 @@ Typical patterns:
 Example:
 
 ```javascript
-import { MyComponent } from "../sources/components/MyComponent.js";
+import { MyComponent } from "../sources/components/MyComponent.ts";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 
@@ -359,15 +361,15 @@ describe("MyComponent", () => {
 });
 ```
 
-Node specs are listed and run via [`tests/node/run-node-tests.js`](tests/node/run-node-tests.js); add new generator tests alongside the existing `tests/node/scripts/**` files.
+Node specs are listed and run via [`tests/node/run-node-tests.js`](tests/node/run-node-tests.js) (`*_spec.js` or `*_spec.ts`); add new generator tests alongside the existing `tests/node/scripts/**` files.
 
 #### z-positions
 
-In order to facilitate easier management of the z-positions of the assets in this repo, there is a [script](/scripts/zPositioning/parse_zpos.js) that traverses all JSON files and write's the layer's z-position to a CSV.
+In order to facilitate easier management of the z-positions of the assets in this repo, there is a [script](/scripts/zPositioning/parse_zpos.ts) that traverses all JSON files and write's the layer's z-position to a CSV.
 
 To run this script directly:
 
-`node scripts/zPositioning/parse_zpos.js`
+`node scripts/zPositioning/parse_zpos.ts`
 
 The same script is also available as **`npm run z-positions`**.
 
@@ -381,7 +383,7 @@ Using this CSV, one can more clearly see the overview of all the z-position used
 
 Moreover, one can adjust the z-position from within the CSV, and then run:
 
-`node scripts/zPositioning/update_zpos.js`
+`node scripts/zPositioning/update_zpos.ts`
 
 (equivalently **`npm run z-positions:update`**)
 

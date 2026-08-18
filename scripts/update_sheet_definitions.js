@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { promisify } from "node:util";
 import { exec } from "node:child_process";
-import { debugLog } from "./utils/debug.js";
+import { debugLog } from "./utils/debug.ts";
 
 const execAsync = promisify(exec);
 

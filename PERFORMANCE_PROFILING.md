@@ -8,7 +8,7 @@ The app includes a performance profiler that is automatically enabled when:
 2. Adding `?debug=true` to the URL query string (overrides localhost detection)
 3. Adding `?debug=false` to disable it even on localhost
 
-The DEBUG flag and profiler are initialized in `sources/main.js`.
+The DEBUG flag and profiler are initialized in `sources/main.ts`.
 
 ## Profiled Operations
 
@@ -16,19 +16,19 @@ The profiler tracks these expensive operations:
 
 ### Image Loading
 
-- **Operation:** `loadImage()` in `sources/canvas/renderer.js`
+- **Operation:** `loadImage()` in `sources/canvas/renderer.ts`
 - **Measures:** Individual image load times
 - **Format:** `image-load:<path>`
 
 ### Character Rendering
 
-- **Operation:** `renderCharacter()` in `sources/canvas/renderer.js`
+- **Operation:** `renderCharacter()` in `sources/canvas/renderer.ts`
 - **Measures:** Total rendering time including image loading and canvas operations
 - **Format:** `renderCharacter`
 
 ### ZIP export (download packs)
 
-ZIP generation uses **`createZipExportProfiler`** in `sources/performance-profiler.js`, wired from `sources/state/zip.js` (split-by-animation, split-by-item, split-by-animation-and-item, individual frames).
+ZIP generation uses **`createZipExportProfiler`** in `sources/performance-profiler.ts`, wired from `sources/state/zip.ts` (split-by-animation, split-by-item, split-by-animation-and-item, individual frames).
 
 - **Embedded timings:** Exports that write `credits/metadata.json` include a **`performance`** object (`exportKind`, `totalMs`, `phasesMs`, `userAgent`).
   - In the downloaded zip: **`credits/metadata.json`** → **`performance.phasesMs`** for per-phase milliseconds.
@@ -49,7 +49,7 @@ ZIP generation uses **`createZipExportProfiler`** in `sources/performance-profil
   - **`npm run profile:zip:baseline:quick`** → **`tmp/baseline-zip-export-profile-quick.json`**
   - Compare runs: **`npm run diff:zip-profile -- tmp/baseline-zip-export-profile.json tmp/zip-export-profile.json`**, or **`node scripts/zip/diff-zip-profile.js --before … --after …`**, for per-phase deltas on the same machine/fixture.
 
-Query param note: only **`?debug=true`** and **`?debug=false`** are recognized as overrides (`sources/utils/debug.js`). Other values (e.g. `?debug=1`) fall through to localhost detection.
+Query param note: only **`?debug=true`** and **`?debug=false`** are recognized as overrides (`sources/utils/debug.ts`). Other values (e.g. `?debug=1`) fall through to localhost detection.
 
 ## Reviewing ZIP performance changes (PR)
 
@@ -57,11 +57,11 @@ Suggested **read order** (core behavior → profiling → automation):
 
 | Order | File | What to check |
 | ----- | ---- | ------------- |
-| 1 | `sources/state/zip.js` | Four exports (`exportSplitAnimations`, `exportSplitItemSheets`, `exportSplitItemAnimations`, `exportIndividualFrames`): `createZipExportProfiler`, `beginZipExportUiSuspend` / `endZipExportUiSuspend` in `try`/`finally`, `zipGenerateBlobWithProfiler` |
-| 2 | `sources/utils/zip-helpers.js` | `addAnimationToZipFolder`, `addStandardAnimationToZipCustomFolder`, `zipGenerateBlobWithProfiler`; phases `drawAndSlice` → `pngEncode` → `zipFile` |
-| 3 | `sources/canvas/renderer.js` | `zipExportProfiledLoadComposite` — splits **image load/decode** vs **composite** for item renders when `zipProfiler` is passed |
-| 4 | `sources/performance-profiler.js` | `createZipExportProfiler`, `ZIP_EXPORT_COUNTER_KEYS`, `toMetadata()` |
-| 5 | `sources/utils/zip-export-ui-suspend.js` | Mithril redraw + preview rAF suspend during export |
+| 1 | `sources/state/zip.ts` | Four exports (`exportSplitAnimations`, `exportSplitItemSheets`, `exportSplitItemAnimations`, `exportIndividualFrames`): `createZipExportProfiler`, `beginZipExportUiSuspend` / `endZipExportUiSuspend` in `try`/`finally`, `zipGenerateBlobWithProfiler` |
+| 2 | `sources/utils/zip-helpers.ts` | `addAnimationToZipFolder`, `addStandardAnimationToZipCustomFolder`, `zipGenerateBlobWithProfiler`; phases `drawAndSlice` → `pngEncode` → `zipFile` |
+| 3 | `sources/canvas/renderer.ts` | `zipExportProfiledLoadComposite` — splits **image load/decode** vs **composite** for item renders when `zipProfiler` is passed |
+| 4 | `sources/performance-profiler.ts` | `createZipExportProfiler`, `ZIP_EXPORT_COUNTER_KEYS`, `toMetadata()` |
+| 5 | `sources/utils/zip-export-ui-suspend.ts` | Mithril redraw + preview rAF suspend during export |
 | 6 | `scripts/zip/*` | Headless profile runner, `diff-zip-profile`, default hash |
 
 **Phase name vocabulary** (strings in `phasesMs` / metadata):
@@ -74,7 +74,7 @@ Suggested **read order** (core behavior → profiling → automation):
 - **`staticFiles`** — `character.json`, credits, metadata.
 - **`generateZip`** — `zip.generateAsync` (often profiled separately from metadata embedding).
 
-Counters (`pngEncodeCount`, `drawAndSliceCount`, etc.) are defined on `ZIP_EXPORT_COUNTER_KEYS` in `performance-profiler.js`.
+Counters (`pngEncodeCount`, `drawAndSliceCount`, etc.) are defined on `ZIP_EXPORT_COUNTER_KEYS` in `performance-profiler.ts`.
 
 ## Using the Profiler
 
@@ -105,7 +105,7 @@ window.profiler.disable();
 
 ### Configuration
 
-The profiler is configured in `sources/main.js`:
+The profiler is configured in `sources/main.ts`:
 
 ```javascript
 const profiler = new window.PerformanceProfiler({
@@ -117,7 +117,7 @@ const profiler = new window.PerformanceProfiler({
 
 ## Example Output
 
-With **`verbose: true`** in `main.js` (or if a measure exceeds `slowThresholdMs`), you may see timing lines in the console. Slow-operation warnings use the configured threshold (default 50ms).
+With **`verbose: true`** in `main.ts` (or if a measure exceeds `slowThresholdMs`), you may see timing lines in the console. Slow-operation warnings use the configured threshold (default 50ms).
 
 Call **`window.profiler.report()`** to open grouped console output: category totals (imageLoads, draws, etc.), current FPS, optional memory (Chrome), and a table of recent **`performance.measure`** entries from the User Timing API.
 

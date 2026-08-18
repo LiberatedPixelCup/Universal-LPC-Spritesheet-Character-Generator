@@ -73,7 +73,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { debugLog } from "./utils/debug.js";
+import { debugLog } from "./utils/debug.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.join(__dirname, "..");
@@ -87,7 +87,7 @@ const TESTS_FIXTURES = path.join(REPO_ROOT, "tests", "fixtures", "issue-382");
  */
 async function ensureDistItemMetadata() {
   const genUrl = pathToFileURL(
-    path.join(REPO_ROOT, "scripts", "generate_sources.js"),
+    path.join(REPO_ROOT, "scripts", "generate_sources.ts"),
   ).href;
   const { generateSources } = await import(genUrl);
   const distDir = path.join(REPO_ROOT, "dist");

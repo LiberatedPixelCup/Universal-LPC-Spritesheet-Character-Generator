@@ -8,7 +8,7 @@
   "version": "0.0.0",
   "private": true,
   "engines": {
-    "node": "^20.19.0 || >=22.12.0"
+    "node": ">=22.18.0"
   },
   "scripts": {
     "dev": "vite",
@@ -22,12 +22,12 @@
     "type-check": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "validate-site-sources": "concurrently -c auto -n \"credits,zpos\" \"node scripts/generate_credits.js\" \"node scripts/zPositioning/parse_zpos.js\"",
-    "z-positions": "node scripts/zPositioning/parse_zpos.js",
-    "z-positions:update": "node scripts/zPositioning/update_zpos.js",
+    "validate-site-sources": "concurrently -c auto -n \"credits,zpos\" \"node scripts/generate_credits.ts\" \"node scripts/zPositioning/parse_zpos.ts\"",
+    "z-positions": "node scripts/zPositioning/parse_zpos.ts",
+    "z-positions:update": "node scripts/zPositioning/update_zpos.ts",
     "test": "npm run test:node && node ./node_modules/testem/testem.js ci",
     "test:node": "node ./tests/node/run-node-tests.js",
-    "test:node:coverage": "rimraf coverage/node && c8 node ./tests/node/run-node-tests.js",
+    "test:node:coverage": "rimraf coverage/node && c8 node ./tests/node/run-node-tests.js && node scripts/coverage/mark-non-executable-lines.js coverage/node/lcov.info",
     "test:server": "node ./node_modules/testem/testem.js",
     "test:browser:coverage": "rimraf coverage/browser && VITE_COVERAGE=true node ./node_modules/testem/testem.js ci",
     "test:visual": "playwright test",

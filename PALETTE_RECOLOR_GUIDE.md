@@ -41,17 +41,17 @@ The system automatically:
 
 The palette system consists of three main components:
 
-1. **`sources/canvas/palette-recolor.js`** - Core palette management
+1. **`sources/canvas/palette-recolor.ts`** - Core palette management
    - Lazy-loads palette JSON files on first use
    - Maps items to palettes based on their `recolors` field in metadata
    - Coordinates between WebGL and CPU implementations
 
-2. **`sources/canvas/webgl-palette-recolor.js`** - GPU implementation
+2. **`sources/canvas/webgl-palette-recolor.ts`** - GPU implementation
    - WebGL shader for fast color replacement
    - Shared context to avoid browser limits
    - Automatic fallback on errors
 
-3. **`sources/canvas/renderer.js`** - Integration point
+3. **`sources/canvas/renderer.ts`** - Integration point
    - Calls palette system during sprite rendering
    - Handles async palette loading
 
@@ -201,7 +201,7 @@ Edit the item's JSON file in `sheet_definitions/` and add the `recolors` field:
 
 ### Available Palette Names
 
-The system has these palette files available (mapped in `sources/canvas/palette-recolor.js`):
+The system has these palette files available (mapped in `sources/canvas/palette-recolor.ts`):
 
 - `body` - Body skin tones
 - `hair` - Hair colors
@@ -369,7 +369,7 @@ Expected output:
 
 ### Step 2: Add Palette Mapping (if needed)
 
-Check if "hair" is already in `PALETTE_FILES` in `sources/canvas/palette-recolor.js`:
+Check if "hair" is already in `PALETTE_FILES` in `sources/canvas/palette-recolor.ts`:
 
 ```javascript
 const PALETTE_FILES = {
@@ -456,7 +456,7 @@ ls spritesheets/hair/afro/adult/orange.png
 
 **Solutions**:
 - **Note**: Palettes load lazily - you'll only see the message when using a non-base variant
-- Check that `PALETTE_FILES` in `palette-recolor.js` has the palette name mapped
+- Check that `PALETTE_FILES` in `palette-recolor.ts` has the palette name mapped
 - Verify JSON file is valid (use JSON validator)
 - Check browser console for fetch errors
 - Ensure palette file is committed to repository

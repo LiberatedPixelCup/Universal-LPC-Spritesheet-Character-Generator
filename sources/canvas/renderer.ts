@@ -38,7 +38,7 @@ declare global {
       mark: (name: string) => void;
       measure: (name: string, start: string, end: string) => void;
     };
-    /** Module namespace of this file, attached at boot by `main.js`. */
+    /** Module namespace of this file, attached at boot by `main.ts`. */
     canvasRenderer?: typeof import("./renderer.ts");
   }
 }

@@ -4,7 +4,7 @@ let loadedImages: Record<string, HTMLImageElement> = {};
 /** In-flight loads: same `src` shares one `Image` and one profiler span. */
 const inFlight = new Map<string, Promise<HTMLImageElement>>();
 
-/** Profiler is attached to `window.profiler` by `main.js`; absent in tests / Node. */
+/** Profiler is attached to `window.profiler` by `main.ts`; absent in tests / Node. */
 type WindowWithProfiler = Window & {
   profiler?: {
     mark: (name: string) => void;

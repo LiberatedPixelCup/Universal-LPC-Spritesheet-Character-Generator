@@ -176,7 +176,7 @@ export function resetRecolorStats(): void {
 
 /**
  * Set palette recolor mode.
- * Runtime guard preserved: main.js attaches this to `window` and the dev
+ * Runtime guard preserved: main.ts attaches this to `window` and the dev
  * console may pass arbitrary strings.
  */
 export function setPaletteRecolorMode(mode: RecolorMode): void {
