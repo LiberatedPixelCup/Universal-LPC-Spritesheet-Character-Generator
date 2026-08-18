@@ -32,7 +32,7 @@ ignore:
   - scripts/zip/**
   - scripts/fixture-builder.js
   - scripts/generate-purgecss-safelist-hints.ts
-  - scripts/issue382-golden-playwright.js
+  - scripts/issue382-golden-playwright.ts
   - scripts/update_sheet_definitions.ts
   - scripts/generateSources/source_inputs_fingerprint.ts
   - vite/**

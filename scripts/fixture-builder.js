@@ -10,7 +10,7 @@
  * 2. **Selections** — Writes `tests/fixtures/issue-382-selections.js` (`export default`
  *    the parsed JSON) for the browser golden runner and tests.
  * 3. **Golden zip paths** — Unless `--no-golden` is passed, starts a static server and
- *    runs `scripts/issue382-golden-playwright.js` (Playwright + Chromium) against
+ *    runs `scripts/issue382-golden-playwright.ts` (Playwright + Chromium) against
  *    `issue382-golden-runner.html` at the repo root (same URL base as `tests_run.html`
  *    so `spritesheets/...` paths resolve). The runner mirrors `tests/state/zip-issue-382_spec.js`
  *    and records sorted zip entry paths for all
@@ -32,7 +32,7 @@
  * - **CDN scripts:** `issue382-golden-runner.html` loads Mithril, JSZip, and related
  *   libraries from public CDNs. Golden generation needs those URLs to load (or a warmed
  *   browser cache); offline or locked-down environments may fail until assets resolve.
- * - **Port:** `scripts/issue382-golden-playwright.js` serves the repo on port **9876** by
+ * - **Port:** `scripts/issue382-golden-playwright.ts` serves the repo on port **9876** by
  *   default. If that port is in use, set **`ISSUE382_GOLDEN_PORT`** to another free port
  *   before running this script (same variable is read when `fixture-builder` invokes Playwright).
  *
@@ -64,7 +64,7 @@
  * - Pair snapshot tests with **property** or **unit** tests (e.g. invariants on folder
  *   structure) where you want failures that are harder to “fix” by updating blobs.
  *
- * @see scripts/issue382-golden-playwright.js
+ * @see scripts/issue382-golden-playwright.ts
  * @see issue382-golden-runner.html
  * @see issue382-golden-runner.js
  * @see tests/state/zip-issue-382_spec.js
@@ -283,7 +283,7 @@ async function main() {
   if (!skipGolden) {
     const rel = path.relative(REPO_ROOT, inputPath).replace(/\\/g, "/");
     const modUrl = pathToFileURL(
-      path.join(__dirname, "issue382-golden-playwright.js"),
+      path.join(__dirname, "issue382-golden-playwright.ts"),
     ).href;
     const { generateIssue382GoldenZipFixtures } = await import(modUrl);
     debugLog("Generating golden zip path fixtures (Playwright)…");
