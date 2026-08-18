@@ -5,10 +5,10 @@
  * under `tmp/` by default, and prints the same JSON to stdout.
  *
  * Usage:
- *   node scripts/zip/zip-export-profile.js
- *   node scripts/zip/zip-export-profile.js --quick
- *   node scripts/zip/zip-export-profile.js --only splitAnimations
- *   node scripts/zip/zip-export-profile.js --out custom/path.json
+ *   node scripts/zip/zip-export-profile.ts
+ *   node scripts/zip/zip-export-profile.ts --quick
+ *   node scripts/zip/zip-export-profile.ts --only splitAnimations
+ *   node scripts/zip/zip-export-profile.ts --out custom/path.json
  *
  * Environment:
  *   ZIP_PROFILE_PORT — TCP port for `npx serve` (default 9877).
@@ -17,13 +17,11 @@
  * @see scripts/zip/zip-export-profile-runner.js
  */
 
-/* eslint-disable no-undef -- Playwright page callbacks run in browser context */
-
 import { spawn } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { chromium } from "playwright";
+import { chromium, type Browser } from "playwright";
 
 import { ZIP_PROFILE_DEFAULT_HASH } from "./zip-profile-default-hash.ts";
 
@@ -36,6 +34,27 @@ const EXPORT_KINDS = new Set([
   "splitItemAnimations",
   "individualFrames",
 ]);
+
+type ZipProfileOpts = {
+  quick: boolean;
+  only: string | null;
+  profileHash: string;
+};
+
+type ZipProfileData = {
+  selectionLabel: string;
+  only: string;
+  profiles: Record<string, unknown>;
+};
+
+declare global {
+  interface Window {
+    __ZIP_PROFILE_OPTS__?: ZipProfileOpts;
+    __ZIP_PROFILE_READY__?: boolean;
+    __ZIP_PROFILE_ERROR__?: string | null;
+    __ZIP_PROFILE_DATA__?: ZipProfileData | null;
+  }
+}
 
 const SERVE_PORT = (() => {
   const raw = process.env.ZIP_PROFILE_PORT;
@@ -53,18 +72,24 @@ const SERVE_PORT = (() => {
 
 const BASE_URL = `http://127.0.0.1:${SERVE_PORT}`;
 
-function parseArgs(argv) {
+function parseArgs(argv: string[]): {
+  quick: boolean;
+  outPath: string;
+  only: string | null;
+} {
   const args = argv.slice(2);
   const quick = args.includes("--quick");
-  let outPath = null;
+  let outPath: string | null = null;
   const outIdx = args.indexOf("--out");
-  if (outIdx !== -1 && args[outIdx + 1]) {
-    outPath = path.resolve(REPO_ROOT, args[outIdx + 1]);
+  const outArg = args[outIdx + 1];
+  if (outIdx !== -1 && outArg) {
+    outPath = path.resolve(REPO_ROOT, outArg);
   }
-  let only = null;
+  let only: string | null = null;
   const onlyIdx = args.indexOf("--only");
-  if (onlyIdx !== -1 && args[onlyIdx + 1]) {
-    only = args[onlyIdx + 1];
+  const onlyArg = args[onlyIdx + 1];
+  if (onlyIdx !== -1 && onlyArg) {
+    only = onlyArg;
     if (!EXPORT_KINDS.has(only)) {
       throw new Error(`--only must be one of: ${[...EXPORT_KINDS].join(", ")}`);
     }
@@ -80,7 +105,7 @@ function parseArgs(argv) {
   return { quick, outPath, only };
 }
 
-async function main() {
+async function main(): Promise<void> {
   const { quick, outPath, only } = parseArgs(process.argv);
 
   const serve = spawn("npx", ["serve", REPO_ROOT, "-l", String(SERVE_PORT)], {
@@ -89,7 +114,7 @@ async function main() {
     shell: process.platform === "win32",
   });
 
-  let browser;
+  let browser: Browser | undefined;
   try {
     await waitForHttpOk(`${BASE_URL}/`, 30000);
 
@@ -100,7 +125,7 @@ async function main() {
 
     browser = await chromium.launch({ headless: true });
     const page = await browser.newPage();
-    const pageErrors = [];
+    const pageErrors: string[] = [];
     page.on("pageerror", (e) => pageErrors.push(String(e)));
 
     /**
@@ -166,7 +191,7 @@ async function main() {
   }
 }
 
-async function waitForHttpOk(url, maxMs) {
+async function waitForHttpOk(url: string, maxMs: number): Promise<void> {
   const start = Date.now();
   while (Date.now() - start < maxMs) {
     try {
@@ -180,7 +205,7 @@ async function waitForHttpOk(url, maxMs) {
   throw new Error(`Timeout waiting for dev server: ${url}`);
 }
 
-main().catch((err) => {
+main().catch((err: unknown) => {
   console.error(err);
   process.exit(1);
 });

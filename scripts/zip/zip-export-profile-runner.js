@@ -1,7 +1,7 @@
 /* eslint-disable no-undef -- browser harness (window, document, m) */
 
 /**
- * Browser harness for `scripts/zip/zip-export-profile.js`.
+ * Browser harness for `scripts/zip/zip-export-profile.ts`.
  * Loads selections from the URL hash (see `zip-profile-default-hash.js`) so
  * layered gear and custom sprites are present; runs ZIP export(s) with real
  * canvas + optional real JSZip.
@@ -9,7 +9,7 @@
  * Query: `only=splitAnimations` | `splitItemSheets` | `splitItemAnimations` | `individualFrames`
  * — omit to run all four. `quick=1` uses fake JSZip.
  *
- * @see scripts/zip/zip-export-profile.js
+ * @see scripts/zip/zip-export-profile.ts
  */
 
 import {
