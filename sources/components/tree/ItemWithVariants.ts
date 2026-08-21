@@ -1,7 +1,11 @@
 // Item with variants component
 import m from "mithril";
 import classNames from "classnames";
-import { state, getSelectionGroup, selectItem } from "../../state/state.ts";
+import {
+  getSelectionGroup,
+  selectItem,
+  type State,
+} from "../../state/state.ts";
 import { getLayersToLoad } from "../../state/meta.ts";
 import type { LayerToLoad } from "../../state/meta.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
@@ -16,6 +20,7 @@ export type ItemWithVariantsAttrs = {
   tooltipText: string;
   showItemTooltips?: boolean;
   catalog: CatalogReader;
+  state: State;
 };
 
 type ItemWithVariantsState = {
@@ -41,6 +46,7 @@ export const ItemWithVariants: m.Component<
       tooltipText,
       showItemTooltips = true,
       catalog,
+      state,
     } = vnode.attrs;
     const rowTitle = showItemTooltips ? tooltipText : undefined;
     const compactDisplay = state.compactDisplay;
@@ -154,7 +160,7 @@ export const ItemWithVariants: m.Component<
                       },
                       onclick: () => {
                         if (!isCompatible) return; // Prevent selecting incompatible
-                        selectItem(itemId, variant, isSelected);
+                        selectItem(state, itemId, variant, isSelected);
                       },
                     },
                     [

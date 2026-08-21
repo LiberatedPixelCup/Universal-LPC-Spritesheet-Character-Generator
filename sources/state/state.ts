@@ -66,11 +66,15 @@ export type State = {
 
 type StateDeps = {
   getItemMetadata: (itemId: string) => MetadataView | null;
-  selectDefaults: () => Promise<void>;
+  selectDefaults: (state: State) => Promise<void>;
   redraw: () => void;
-  syncSelectionsToHash: () => void;
-  renderCharacter: (selections: Selections, bodyType: string) => Promise<void>;
-  loadSelectionsFromHash: () => void;
+  syncSelectionsToHash: (state: State) => void;
+  renderCharacter: (
+    state: State,
+    selections: Selections,
+    bodyType: string,
+  ) => Promise<void>;
+  loadSelectionsFromHash: (state: State) => void;
   getCanvasRenderer: () => unknown;
 };
 
@@ -82,10 +86,10 @@ function createDefaultStateDeps(catalog: CatalogReader): StateDeps {
     getItemMetadata: (itemId) => catalog.getItemMerged(itemId).unwrapOr(null),
     selectDefaults,
     redraw: () => m.redraw(),
-    syncSelectionsToHash: () => syncSelectionsToHash(catalog),
-    renderCharacter: (selections, bodyType) =>
-      renderCharacter(catalog, selections, bodyType),
-    loadSelectionsFromHash: () => loadSelectionsFromHash(catalog),
+    syncSelectionsToHash: (state) => syncSelectionsToHash(catalog, state),
+    renderCharacter: (state, selections, bodyType) =>
+      renderCharacter(catalog, state, selections, bodyType),
+    loadSelectionsFromHash: (state) => loadSelectionsFromHash(catalog, state),
     getCanvasRenderer: () =>
       (window as unknown as { canvasRenderer?: unknown }).canvasRenderer,
   };
@@ -122,39 +126,41 @@ export function getStateDeps(): StateDeps {
 }
 
 // Global state
-export const state: State = {
-  // state that is saved in url hash
-  selections: {},
-  bodyType: BODY_TYPES[0],
+export function createState(): State {
+  return {
+    // state that is saved in url hash
+    selections: {},
+    bodyType: BODY_TYPES[0],
 
-  // State that is currently not saved but could be in future
-  selectedAnimation: "walk",
-  expandedNodes: {},
-  searchQuery: "",
-  showTransparencyGrid: true,
-  applyTransparencyMask: false,
-  matchBodyColorEnabled: true,
-  compactDisplay: false,
-  customUploadedImage: null,
-  customImageZPos: 0,
-  previewCanvasZoomLevel: 1,
-  fullSpritesheetCanvasZoomLevel: 1,
-  previewBootstrapRenderDone: false,
-  isRenderingCharacter: false,
-  enabledLicenses: Object.fromEntries(
-    LICENSE_CONFIG.map((lic) => [lic.key, true]),
-  ),
-  enabledAnimations: Object.fromEntries(
-    ANIMATIONS.map((anim) => [anim.value, false]),
-  ),
+    // State that is currently not saved but could be in future
+    selectedAnimation: "walk",
+    expandedNodes: {},
+    searchQuery: "",
+    showTransparencyGrid: true,
+    applyTransparencyMask: false,
+    matchBodyColorEnabled: true,
+    compactDisplay: false,
+    customUploadedImage: null,
+    customImageZPos: 0,
+    previewCanvasZoomLevel: 1,
+    fullSpritesheetCanvasZoomLevel: 1,
+    previewBootstrapRenderDone: false,
+    isRenderingCharacter: false,
+    enabledLicenses: Object.fromEntries(
+      LICENSE_CONFIG.map((lic) => [lic.key, true]),
+    ),
+    enabledAnimations: Object.fromEntries(
+      ANIMATIONS.map((anim) => [anim.value, false]),
+    ),
 
-  // Following transient state should never be saved
-  zipByAnimation: { isRunning: false },
-  zipByItem: { isRunning: false },
-  zipByAnimationAndItem: { isRunning: false },
-  zipIndividualFrames: { isRunning: false },
-  renderCharacter: { isRendering: false },
-};
+    // Following transient state should never be saved
+    zipByAnimation: { isRunning: false },
+    zipByItem: { isRunning: false },
+    zipByAnimationAndItem: { isRunning: false },
+    zipIndividualFrames: { isRunning: false },
+    renderCharacter: { isRendering: false },
+  };
+}
 
 /**
  * Selection group = `type_name` (e.g. "body", "heads", "ears"). Ensures only
@@ -175,7 +181,7 @@ export function getSubSelectionGroup(itemId: string, idx: number): string {
 }
 
 // Select default items (body color light + human male light head)
-export async function selectDefaults(): Promise<void> {
+export async function selectDefaults(state: State): Promise<void> {
   const deps = getStateDeps();
   // itemId is now based on filename (e.g., "body").
   const bodyItemId = "body";
@@ -205,23 +211,24 @@ export async function selectDefaults(): Promise<void> {
     name: "Neutral (light)",
   };
 
-  deps.syncSelectionsToHash();
-  await deps.renderCharacter(state.selections, state.bodyType);
+  deps.syncSelectionsToHash(state);
+  await deps.renderCharacter(state, state.selections, state.bodyType);
   // Trigger redraw to update preview canvas after offscreen render completes
   deps.redraw();
 }
 
-export async function resetAll(): Promise<void> {
+export async function resetAll(state: State): Promise<void> {
   const deps = getStateDeps();
   state.selections = {};
   state.customUploadedImage = null;
   state.customImageZPos = 0;
-  await deps.selectDefaults();
+  await deps.selectDefaults(state);
   deps.redraw();
 }
 
 /** When any body-colored part changes, propagate variant/recolor to other items with matchBodyColor. */
 export function applyMatchBodyColor(
+  state: State,
   variantToMatch: string | null,
   recolorToMatch: string | null,
 ): void {
@@ -257,19 +264,20 @@ export function applyMatchBodyColor(
   }
 }
 
-export async function initState(): Promise<void> {
+export async function initState(state: State): Promise<void> {
   const deps = getStateDeps();
-  deps.loadSelectionsFromHash();
+  deps.loadSelectionsFromHash(state);
 
   if (Object.keys(state.selections).length === 0) {
-    await deps.selectDefaults();
+    await deps.selectDefaults(state);
   } else if (deps.getCanvasRenderer()) {
-    await deps.renderCharacter(state.selections, state.bodyType);
+    await deps.renderCharacter(state, state.selections, state.bodyType);
     deps.redraw();
   }
 }
 
 export function selectItem(
+  state: State,
   itemId: string,
   variant: string,
   isSelected: boolean = false,
@@ -321,6 +329,6 @@ export function selectItem(
     subMeta?.matchBodyColor ||
     (subSelect === selectionGroup && meta.matchBodyColor)
   ) {
-    applyMatchBodyColor(variant, !useVariants ? variant : null);
+    applyMatchBodyColor(state, variant, !useVariants ? variant : null);
   }
 }

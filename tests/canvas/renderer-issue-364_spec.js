@@ -21,10 +21,10 @@ import {
   customAreaItems,
 } from "../../sources/canvas/renderer.ts";
 import { resetImageLoadCache } from "../../sources/canvas/load-image.ts";
-import { resetState } from "../../sources/state/hash.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
-import { state } from "../../sources/state/state.ts";
+import { createState } from "../../sources/state/state.ts";
+let state;
 
 const ISSUE_364_METADATA = {
   issue364_wheel_item: {
@@ -49,7 +49,7 @@ describe("canvas/renderer.ts issue #364 (addedCustomAnimations export)", () => {
 
   beforeEach(() => {
     sandbox = sinon.createSandbox();
-    resetState();
+    state = createState();
     initCanvas();
     catalog = createCatalog();
     seedCatalog(catalog, ISSUE_364_METADATA);
@@ -85,7 +85,7 @@ describe("canvas/renderer.ts issue #364 (addedCustomAnimations export)", () => {
   });
 
   it("records custom animation names on the exported addedCustomAnimations set after renderCharacter", async () => {
-    await renderCharacter(catalog, state.selections, "male");
+    await renderCharacter(catalog, state, state.selections, "male");
 
     expect(
       addedCustomAnimations.size,

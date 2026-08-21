@@ -1,13 +1,15 @@
 import { expect } from "chai";
 import { describe, it, beforeEach } from "mocha-globals";
 import { BodyTypeSelector } from "../../../sources/components/tree/BodyTypeSelector.ts";
-import { state } from "../../../sources/state/state.ts";
+import { createState } from "../../../sources/state/state.ts";
+let state;
 
 describe("BodyTypeSelector Component", () => {
   let vnode;
 
   beforeEach(() => {
-    vnode = { state: {} };
+    state = createState();
+    vnode = { state: {}, attrs: { state } };
     BodyTypeSelector.oninit(vnode);
   });
 

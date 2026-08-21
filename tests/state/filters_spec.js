@@ -3,7 +3,6 @@ import {
   setLicenseConfig,
   setAnimations,
   updateState,
-  resetState,
   setEnabledLicenses,
   setEnabledAnimations,
   isItemLicenseCompatible,
@@ -13,16 +12,18 @@ import {
   setCustomAnimationBase,
 } from "../../sources/state/filters.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
+import { createState } from "../../sources/state/state.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
 import { expect } from "chai";
 import { describe, it, beforeEach } from "mocha-globals";
 
 describe("state/filters.ts", () => {
   let catalog;
+  let state;
 
   beforeEach(() => {
     catalog = createCatalog();
-    resetState();
+    state = createState();
   });
 
   describe("getAllowedLicenses", () => {
@@ -31,9 +32,9 @@ describe("state/filters.ts", () => {
         { key: "license1", versions: ["1.0", "1.1"] },
         { key: "license2", versions: ["2.0"] },
       ]);
-      updateState({ enabledLicenses: {} });
+      updateState(state, { enabledLicenses: {} });
 
-      const result = getAllowedLicenses();
+      const result = getAllowedLicenses(state);
       expect(result.length).to.equal(0);
       expect(result).to.deep.equal([]);
     });
@@ -43,14 +44,14 @@ describe("state/filters.ts", () => {
         { key: "license1", versions: ["1.0", "1.1"] },
         { key: "license2", versions: ["2.0"] },
       ]);
-      updateState({
+      updateState(state, {
         enabledLicenses: {
           license1: true,
           license2: false,
         },
       });
 
-      const result = getAllowedLicenses();
+      const result = getAllowedLicenses(state);
       expect(result).to.deep.equal(["1.0", "1.1"]);
     });
 
@@ -59,26 +60,26 @@ describe("state/filters.ts", () => {
         { key: "license1", versions: ["1.0", "1.1"] },
         { key: "license2", versions: ["2.0", "2.1"] },
       ]);
-      updateState({
+      updateState(state, {
         enabledLicenses: {
           license1: true,
           license2: true,
         },
       });
 
-      const result = getAllowedLicenses();
+      const result = getAllowedLicenses(state);
       expect(result).to.deep.equal(["1.0", "1.1", "2.0", "2.1"]);
     });
 
     it("should return an empty array if licenseConfig is empty", () => {
       setLicenseConfig([]);
-      updateState({
+      updateState(state, {
         enabledLicenses: {
           license1: true,
         },
       });
 
-      const result = getAllowedLicenses();
+      const result = getAllowedLicenses(state);
       expect(result.length).to.equal(0);
       expect(result).to.deep.equal([]);
     });
@@ -91,7 +92,7 @@ describe("state/filters.ts", () => {
         { key: "license4", versions: ["2.0", "3.1"] },
         { key: "license5", versions: ["3.0", "4.1"] },
       ]);
-      updateState({
+      updateState(state, {
         enabledLicenses: {
           license1: false,
           license2: false,
@@ -100,14 +101,14 @@ describe("state/filters.ts", () => {
         },
       });
 
-      const result = getAllowedLicenses();
+      const result = getAllowedLicenses(state);
       expect(result).to.deep.equal(["1.0", "2.1", "2.0", "3.1"]);
     });
   });
 
   describe("isItemLicenseCompatible", () => {
     it("should return true if item metadata is missing", () => {
-      const result = isItemLicenseCompatible("item1", catalog);
+      const result = isItemLicenseCompatible(catalog, state, "item1");
       expect(result).to.be.true;
     });
 
@@ -115,24 +116,24 @@ describe("state/filters.ts", () => {
       seedCatalog(catalog, {
         item1: { credits: [] },
       });
-      const result = isItemLicenseCompatible("item1", catalog);
+      const result = isItemLicenseCompatible(catalog, state, "item1");
       expect(result).to.be.true;
     });
 
     it("should return false if no licenses are enabled", () => {
-      setEnabledLicenses([]);
+      setEnabledLicenses(state, []);
       setLicenseConfig([{ key: "license1", versions: ["license1 1.0"] }]);
       seedCatalog(catalog, {
         item1: {
           credits: [{ licenses: ["license1 1.0"] }],
         },
       });
-      const result = isItemLicenseCompatible("item1", catalog);
+      const result = isItemLicenseCompatible(catalog, state, "item1");
       expect(result).to.be.false;
     });
 
     it("should return true if item has at least one compatible license", () => {
-      setEnabledLicenses(["license1"]);
+      setEnabledLicenses(state, ["license1"]);
       setLicenseConfig([
         { key: "license1", versions: ["license1 1.0"] },
         { key: "license2", versions: ["license2 1.0"] },
@@ -142,12 +143,12 @@ describe("state/filters.ts", () => {
           credits: [{ licenses: ["license1 1.0", "license2 1.0"] }],
         },
       });
-      const result = isItemLicenseCompatible("item1", catalog);
+      const result = isItemLicenseCompatible(catalog, state, "item1");
       expect(result).to.be.true;
     });
 
     it("should return false if item has no compatible licenses", () => {
-      setEnabledLicenses(["license3"]);
+      setEnabledLicenses(state, ["license3"]);
       setLicenseConfig([
         { key: "license1", versions: ["license1 1.0"] },
         { key: "license2", versions: ["license2 1.0"] },
@@ -158,19 +159,19 @@ describe("state/filters.ts", () => {
           credits: [{ licenses: ["license1 1.0", "license2 1.0"] }],
         },
       });
-      const result = isItemLicenseCompatible("item1", catalog);
+      const result = isItemLicenseCompatible(catalog, state, "item1");
       expect(result).to.be.false;
     });
 
     it("should trim license strings before comparison", () => {
-      setEnabledLicenses(["license1"]);
+      setEnabledLicenses(state, ["license1"]);
       setLicenseConfig([{ key: "license1", versions: ["license1 1.0"] }]);
       seedCatalog(catalog, {
         item1: {
           credits: [{ licenses: [" license1 1.0 "] }],
         },
       });
-      const result = isItemLicenseCompatible("item1", catalog);
+      const result = isItemLicenseCompatible(catalog, state, "item1");
       expect(result).to.be.true;
     });
   });
@@ -197,27 +198,27 @@ describe("state/filters.ts", () => {
 
       // Reset dependencies
       setAnimations([{ value: "walk" }, { value: "run" }, { value: "jump" }]);
-      setEnabledAnimations([]);
+      setEnabledAnimations(state, []);
       setCustomAnimations({});
       setCustomAnimationBase(() => null);
     });
 
     it("should return true if no animations are enabled", () => {
-      expect(isItemAnimationCompatible("item1", catalog)).to.be.true;
-      expect(isItemAnimationCompatible("item2", catalog)).to.be.true;
-      expect(isItemAnimationCompatible("item3", catalog)).to.be.true;
+      expect(isItemAnimationCompatible(catalog, state, "item1")).to.be.true;
+      expect(isItemAnimationCompatible(catalog, state, "item2")).to.be.true;
+      expect(isItemAnimationCompatible(catalog, state, "item3")).to.be.true;
     });
 
     it("should return true if the item's animations match enabled animations", () => {
-      setEnabledAnimations(["walk"]);
-      expect(isItemAnimationCompatible("item1", catalog)).to.be.true;
-      expect(isItemAnimationCompatible("item2", catalog)).to.be.false;
+      setEnabledAnimations(state, ["walk"]);
+      expect(isItemAnimationCompatible(catalog, state, "item1")).to.be.true;
+      expect(isItemAnimationCompatible(catalog, state, "item2")).to.be.false;
     });
 
     it("should return false if the item's animations do not match enabled animations", () => {
-      setEnabledAnimations(["jump"]);
-      expect(isItemAnimationCompatible("item1", catalog)).to.be.false;
-      expect(isItemAnimationCompatible("item2", catalog)).to.be.true;
+      setEnabledAnimations(state, ["jump"]);
+      expect(isItemAnimationCompatible(catalog, state, "item1")).to.be.false;
+      expect(isItemAnimationCompatible(catalog, state, "item2")).to.be.true;
     });
 
     it("should return true if the item's animations include a base animation from custom animations", () => {
@@ -225,8 +226,8 @@ describe("state/filters.ts", () => {
         customRun: { base: "run" },
       });
       setCustomAnimationBase((anim) => anim.base);
-      setEnabledAnimations(["run"]);
-      expect(isItemAnimationCompatible("item4", catalog)).to.be.true;
+      setEnabledAnimations(state, ["run"]);
+      expect(isItemAnimationCompatible(catalog, state, "item4")).to.be.true;
     });
 
     it("should return false if the item's animations do not include a base animation from custom animations", () => {
@@ -234,16 +235,20 @@ describe("state/filters.ts", () => {
         customFly: { base: "fly" },
       });
       setCustomAnimationBase((anim) => anim.base);
-      setEnabledAnimations(["run"]);
-      expect(isItemAnimationCompatible("item5", catalog)).to.be.false;
+      setEnabledAnimations(state, ["run"]);
+      expect(isItemAnimationCompatible(catalog, state, "item5")).to.be.false;
     });
 
     it("should return true if the item has no animations (assume compatible)", () => {
-      expect(isItemAnimationCompatible("item3", catalog)).to.be.true;
+      expect(isItemAnimationCompatible(catalog, state, "item3")).to.be.true;
     });
 
     it("should return true if the item does not exist in metadata (assume compatible)", () => {
-      const result = isItemAnimationCompatible("nonExistentItem", catalog);
+      const result = isItemAnimationCompatible(
+        catalog,
+        state,
+        "nonExistentItem",
+      );
       expect(result).to.be.true;
     });
   });
@@ -251,41 +256,41 @@ describe("state/filters.ts", () => {
   describe("isNodeAnimationCompatible", () => {
     it("should return true if node has no animations", () => {
       const node = {};
-      expect(isNodeAnimationCompatible(node)).to.be.true;
+      expect(isNodeAnimationCompatible(node, state)).to.be.true;
     });
 
     it("should return true if no animations are enabled", () => {
-      setEnabledAnimations([]);
+      setEnabledAnimations(state, []);
       const node = { animations: ["walk", "run"] };
-      expect(isNodeAnimationCompatible(node)).to.be.true;
+      expect(isNodeAnimationCompatible(node, state)).to.be.true;
     });
 
     it("should return true if the node's animations are compatible with enabled animations", () => {
-      setEnabledAnimations(["walk"]);
+      setEnabledAnimations(state, ["walk"]);
       const node = { animations: ["walk", "run"] };
-      expect(isNodeAnimationCompatible(node)).to.be.true;
+      expect(isNodeAnimationCompatible(node, state)).to.be.true;
     });
 
     it("should return false if the node's animations are not compatible with enabled animations", () => {
-      setEnabledAnimations(["jump"]);
+      setEnabledAnimations(state, ["jump"]);
       const node = { animations: ["walk", "run"] };
-      expect(isNodeAnimationCompatible(node)).to.be.false;
+      expect(isNodeAnimationCompatible(node, state)).to.be.false;
     });
 
     it("should return true if node supports at least one enabled animation", () => {
       setAnimations([{ value: "walk" }, { value: "run" }]);
-      setEnabledAnimations(["walk", "run"]);
+      setEnabledAnimations(state, ["walk", "run"]);
 
       const node = { animations: ["jump", "run"] };
-      expect(isNodeAnimationCompatible(node)).to.be.true;
+      expect(isNodeAnimationCompatible(node, state)).to.be.true;
     });
 
     it("should return false if node does not support any enabled animations", () => {
       setAnimations([{ value: "walk" }, { value: "run" }]);
-      setEnabledAnimations(["walk"]);
+      setEnabledAnimations(state, ["walk"]);
 
       const node = { animations: ["jump", "run"] };
-      expect(isNodeAnimationCompatible(node)).to.be.false;
+      expect(isNodeAnimationCompatible(node, state)).to.be.false;
     });
 
     it("should return true if the node's animations include a base animation from custom animations", () => {
@@ -293,9 +298,9 @@ describe("state/filters.ts", () => {
         customRun: { base: "run" },
       });
       setCustomAnimationBase((anim) => anim.base);
-      setEnabledAnimations(["run"]);
+      setEnabledAnimations(state, ["run"]);
       const node = { animations: ["customRun"] };
-      expect(isNodeAnimationCompatible(node)).to.be.true;
+      expect(isNodeAnimationCompatible(node, state)).to.be.true;
     });
 
     it("should return false if the node's animations do not include a base animation from custom animations", () => {
@@ -303,14 +308,14 @@ describe("state/filters.ts", () => {
         customFly: { base: "fly" },
       });
       setCustomAnimationBase((anim) => anim.base);
-      setEnabledAnimations(["run"]);
+      setEnabledAnimations(state, ["run"]);
       const node = { animations: ["customFly"] };
-      expect(isNodeAnimationCompatible(node)).to.be.false;
+      expect(isNodeAnimationCompatible(node, state)).to.be.false;
     });
 
     it("should return true if the node has no animations array (assume compatible)", () => {
       const node = { someProperty: "value" };
-      expect(isNodeAnimationCompatible(node)).to.be.true;
+      expect(isNodeAnimationCompatible(node, state)).to.be.true;
     });
   });
 });

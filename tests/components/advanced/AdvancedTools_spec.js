@@ -3,7 +3,8 @@ import { assert } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { AdvancedTools } from "../../../sources/components/advanced/AdvancedTools.ts";
-import { state } from "../../../sources/state/state.ts";
+import { createState } from "../../../sources/state/state.ts";
+let state;
 
 function expandAdvancedTools(host) {
   host.querySelector(".collapsible-header").click();
@@ -14,6 +15,7 @@ describe("AdvancedTools", function () {
   let host;
 
   beforeEach(function () {
+    state = createState();
     host = document.createElement("div");
     document.body.appendChild(host);
     state.customUploadedImage = null;
@@ -31,7 +33,7 @@ describe("AdvancedTools", function () {
   });
 
   it("shows the file input and z-pos field after expand, without a clear button", function () {
-    m.mount(host, AdvancedTools);
+    m.mount(host, { view: () => m(AdvancedTools, { state }) });
     assert.strictEqual(host.querySelector("#customFileInput"), null);
 
     expandAdvancedTools(host);
@@ -47,7 +49,7 @@ describe("AdvancedTools", function () {
   });
 
   it("writes customImageZPos from the number field and treats invalid as 0", function () {
-    m.mount(host, AdvancedTools);
+    m.mount(host, { view: () => m(AdvancedTools, { state }) });
     expandAdvancedTools(host);
 
     const input = host.querySelector('input[type="number"]');
@@ -73,7 +75,7 @@ describe("AdvancedTools", function () {
     sinon.stub(URL, "createObjectURL").returns("blob:fake");
 
     try {
-      m.mount(host, AdvancedTools);
+      m.mount(host, { view: () => m(AdvancedTools, { state }) });
       expandAdvancedTools(host);
 
       const input = host.querySelector("#customFileInput");
@@ -98,7 +100,7 @@ describe("AdvancedTools", function () {
   });
 
   it("clears the custom image, z-pos, and file input", function () {
-    m.mount(host, AdvancedTools);
+    m.mount(host, { view: () => m(AdvancedTools, { state }) });
     expandAdvancedTools(host);
     state.customUploadedImage = new Image();
     state.customImageZPos = 10;

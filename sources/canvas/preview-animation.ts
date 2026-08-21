@@ -1,5 +1,5 @@
 import { previewCanvas, previewCtx } from "./preview-canvas.ts";
-import { state } from "../state/state.ts";
+import type { State } from "../state/state.ts";
 import { FRAME_SIZE, ANIMATION_CONFIGS } from "../state/constants.ts";
 import { get2DContext, drawTransparencyBackground } from "./canvas-utils.ts";
 import { applyTransparencyMaskToCanvas } from "./mask.ts";
@@ -83,7 +83,10 @@ export function setPreviewAnimation(animationName: string): number[] {
  * Draw one preview frame for a given index into `animationFrames` (the cycle).
  * Used by the animation loop and by visual tests (static frame, no rAF).
  */
-function paintPreviewFrameForCycleIndex(cycleIndex: number): void {
+function paintPreviewFrameForCycleIndex(
+  state: State,
+  cycleIndex: number,
+): void {
   if (!previewCtx || !canvas || !previewCanvas) {
     return;
   }
@@ -151,16 +154,16 @@ function paintPreviewFrameForCycleIndex(cycleIndex: number): void {
  * The first paint can run before `renderCharacter` finishes; call this after any redraw that
  * may follow a completed render so the preview copies fresh offscreen pixels (Argos / visual tests).
  */
-export function repaintStaticPreviewFrameForTests(): void {
+export function repaintStaticPreviewFrameForTests(state: State): void {
   if (
     typeof window !== "undefined" &&
     window.__DISABLE_PREVIEW_ANIMATION__ === true
   ) {
-    paintPreviewFrameForCycleIndex(currentFrameIndex);
+    paintPreviewFrameForCycleIndex(state, currentFrameIndex);
   }
 }
 
-export function startPreviewAnimation(): void {
+export function startPreviewAnimation(state: State): void {
   if (animationFrameId !== null) {
     return; // Already running
   }
@@ -172,7 +175,7 @@ export function startPreviewAnimation(): void {
     window.__DISABLE_PREVIEW_ANIMATION__ === true
   ) {
     currentFrameIndex = 0;
-    paintPreviewFrameForCycleIndex(0);
+    paintPreviewFrameForCycleIndex(state, 0);
     return;
   }
 
@@ -186,7 +189,7 @@ export function startPreviewAnimation(): void {
 
       if (previewCtx && canvas) {
         currentFrameIndex = (currentFrameIndex + 1) % animationFrames.length;
-        paintPreviewFrameForCycleIndex(currentFrameIndex);
+        paintPreviewFrameForCycleIndex(state, currentFrameIndex);
       }
     }
 

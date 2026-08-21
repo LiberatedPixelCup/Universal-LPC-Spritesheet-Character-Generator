@@ -1,7 +1,7 @@
 // Animation Filters component
 import m from "mithril";
 import type { CatalogReader } from "../../state/catalog.ts";
-import { state } from "../../state/state.ts";
+import type { State } from "../../state/state.ts";
 import { isItemAnimationCompatible } from "../../state/filters.ts";
 import { ANIMATIONS } from "../../state/constants.ts";
 
@@ -23,10 +23,11 @@ export function setAnimationCompatible(
   deps.isItemAnimationCompatible = overrides.isItemAnimationCompatible;
 }
 export function isAnimationCompatible(
-  itemId: string,
   catalog: CatalogReader,
+  state: State,
+  itemId: string,
 ): boolean {
-  return deps.isItemAnimationCompatible(itemId, catalog);
+  return deps.isItemAnimationCompatible(catalog, state, itemId);
 }
 
 export function setAnimations(anims: readonly AnimationOption[]): void {
@@ -39,6 +40,7 @@ export function getAnimations(): readonly AnimationOption[] {
 type AnimationFiltersState = { isExpanded: boolean };
 type AnimationFiltersAttrs = {
   catalog: CatalogReader;
+  state: State;
 };
 
 export const AnimationFilters: m.Component<
@@ -49,14 +51,15 @@ export const AnimationFilters: m.Component<
     vnode.state.isExpanded = false;
   },
   view(vnode) {
-    const liteReady = vnode.attrs.catalog.isLiteReady();
+    const { catalog, state } = vnode.attrs;
+    const liteReady = catalog.isLiteReady();
 
     const removeIncompatibleItems = () => {
       const toRemove: string[] = [];
       for (const [selectionGroup, selection] of Object.entries(
         state.selections,
       )) {
-        if (!isAnimationCompatible(selection.itemId, vnode.attrs.catalog)) {
+        if (!isAnimationCompatible(catalog, state, selection.itemId)) {
           toRemove.push(selectionGroup);
         }
       }
@@ -70,8 +73,7 @@ export const AnimationFilters: m.Component<
     };
 
     const incompatibleSelections = Object.values(state.selections).filter(
-      (selection) =>
-        !isAnimationCompatible(selection.itemId, vnode.attrs.catalog),
+      (selection) => !isAnimationCompatible(catalog, state, selection.itemId),
     );
     const hasIncompatibleItems = incompatibleSelections.length > 0;
 

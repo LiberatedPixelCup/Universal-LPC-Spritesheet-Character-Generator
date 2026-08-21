@@ -1,10 +1,11 @@
 // Advanced Tools component - Custom file upload with z-position
 import m from "mithril";
-import { state } from "../../state/state.ts";
+import type { State } from "../../state/state.ts";
 import { CollapsibleSection } from "../CollapsibleSection.ts";
 
-export const AdvancedTools: m.Component = {
-  view() {
+export const AdvancedTools: m.Component<{ state: State }> = {
+  view(vnode) {
+    const { state } = vnode.attrs;
     const handleFileUpload = (e: Event) => {
       const target = e.target as HTMLInputElement;
       const file = target.files?.[0];

@@ -2,10 +2,13 @@ import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { ItemWithRecolors } from "../../../sources/components/tree/ItemWithRecolors.ts";
-import { configureStateCatalog, state } from "../../../sources/state/state.ts";
+import {
+  configureStateCatalog,
+  createState,
+} from "../../../sources/state/state.ts";
+let state;
 import { createCatalog } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
-import { resetState } from "../../../sources/state/filters.ts";
 import { seedCatalog } from "../../browser-catalog-fixture.js";
 
 /** Minimal `paletteMetadata.materials` + one recolor-only item (mirrors palettes_spec fixtures). */
@@ -41,7 +44,7 @@ describe("ItemWithRecolors", function () {
   beforeEach(function () {
     catalog = createCatalog();
     configureStateCatalog(catalog);
-    resetState();
+    state = createState();
     state.expandedNodes = {};
     state.compactDisplay = false;
     host = document.createElement("div");
@@ -53,7 +56,6 @@ describe("ItemWithRecolors", function () {
     if (host.parentNode) {
       host.parentNode.removeChild(host);
     }
-    resetState();
   });
 
   function seedRecolorShirt() {
@@ -95,13 +97,14 @@ describe("ItemWithRecolors", function () {
 
   function baseAttrs(meta, overrides = {}) {
     return {
+      catalog,
+      state,
       itemId: "iwr_shirt",
       meta,
       isSearchMatch: false,
       isCompatible: true,
       tooltipText: "tip",
       showItemTooltips: true,
-      catalog,
       ...overrides,
     };
   }
@@ -212,6 +215,7 @@ describe("ItemWithRecolors", function () {
         tooltipText: "",
         showItemTooltips: false,
         catalog,
+        state,
       }),
     );
 

@@ -30,10 +30,10 @@ import {
   canvas as rendererCanvas,
 } from "../../sources/canvas/renderer.ts";
 import { resetImageLoadCache } from "../../sources/canvas/load-image.ts";
-import { resetState } from "../../sources/state/hash.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
-import { state } from "../../sources/state/state.ts";
+import { createState } from "../../sources/state/state.ts";
+let state;
 import {
   ANIMATION_CONFIGS,
   FRAME_SIZE,
@@ -189,7 +189,7 @@ describe("canvas/renderer.ts", () => {
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
-      resetState();
+      state = createState();
       state.customUploadedImage = null;
       state.customImageZPos = 100;
       initCanvas();
@@ -213,6 +213,7 @@ describe("canvas/renderer.ts", () => {
       seedCatalog(catalog, { walk_only: walkItemMeta() });
       await renderCharacter(
         catalog,
+        state,
         {
           slot: {
             itemId: "walk_only",
@@ -230,6 +231,7 @@ describe("canvas/renderer.ts", () => {
       // `subId` is checked for truthiness in the renderer (0 would not skip).
       await renderCharacter(
         catalog,
+        state,
         {
           slot: {
             itemId: "walk_only",
@@ -247,6 +249,7 @@ describe("canvas/renderer.ts", () => {
       seedCatalog(catalog, { walk_only: walkItemMeta() });
       await renderCharacter(
         catalog,
+        state,
         {
           slot: {
             itemId: "walk_only",
@@ -270,6 +273,7 @@ describe("canvas/renderer.ts", () => {
       });
       await renderCharacter(
         catalog,
+        state,
         {
           slot: {
             itemId: "combat_item",
@@ -288,6 +292,7 @@ describe("canvas/renderer.ts", () => {
       });
       await renderCharacter(
         catalog,
+        state,
         {
           slot: {
             itemId: "slash_item",
@@ -306,6 +311,7 @@ describe("canvas/renderer.ts", () => {
       });
       await renderCharacter(
         catalog,
+        state,
         {
           slot: {
             itemId: "half_item",
@@ -335,6 +341,7 @@ describe("canvas/renderer.ts", () => {
       });
       await renderCharacter(
         catalog,
+        state,
         {
           slot: {
             itemId: "layered",
@@ -361,6 +368,7 @@ describe("canvas/renderer.ts", () => {
       });
       await renderCharacter(
         catalog,
+        state,
         {
           body: {
             itemId: "body-body",
@@ -381,7 +389,7 @@ describe("canvas/renderer.ts", () => {
       state.customUploadedImage = await imageFromFilledCanvas(8, 8, "#00ff00");
       state.customImageZPos = 42;
 
-      await renderCharacter(catalog, {}, "male");
+      await renderCharacter(catalog, state, {}, "male");
 
       const customCalls = drawCalls.filter((d) => d.itemId === "custom-upload");
       expect(customCalls.length).to.be.at.least(1);
@@ -400,7 +408,7 @@ describe("canvas/renderer.ts", () => {
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
-      resetState();
+      state = createState();
       initCanvas();
       catalog = createCatalog();
       seedCatalog(catalog, {
@@ -423,6 +431,7 @@ describe("canvas/renderer.ts", () => {
     it("grows the canvas and records custom_sprite area items for wheelchair", async () => {
       await renderCharacter(
         catalog,
+        state,
         {
           slot: {
             itemId: "wheel_item",
@@ -450,7 +459,7 @@ describe("canvas/renderer.ts", () => {
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
-      resetState();
+      state = createState();
       initCanvas();
       catalog = createCatalog();
       if (typeof m !== "undefined" && m.redraw) {

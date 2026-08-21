@@ -1,6 +1,6 @@
 // Full Spritesheet Preview component
 import m from "mithril";
-import { state } from "../../state/state.ts";
+import type { State } from "../../state/state.ts";
 import { CollapsibleSection } from "../CollapsibleSection.ts";
 import PinchToZoom from "./PinchToZoom.ts";
 import {
@@ -13,6 +13,7 @@ import { PreviewMetadataLoadingOverlay } from "./PreviewMetadataLoadingOverlay.t
 import type { CatalogReader } from "../../state/catalog.ts";
 
 type SpritesheetCanvasAttrs = {
+  state: State;
   showTransparencyGrid: boolean;
   applyTransparencyMask: boolean;
   zoomLevel: number;
@@ -33,6 +34,7 @@ type SpritesheetCanvasState = {
 function syncFullSpritesheetFromOffscreen(
   vnode: m.VnodeDOM<SpritesheetCanvasAttrs, SpritesheetCanvasState>,
 ): void {
+  const { state } = vnode.attrs;
   if (!window.canvasRenderer) {
     return;
   }
@@ -128,16 +130,19 @@ const SpritesheetCanvas: m.Component<
 type FullSpritesheetPreviewState = { zoomLevel: number };
 
 export const FullSpritesheetPreview: m.Component<
-  { catalog: CatalogReader },
+  { catalog: CatalogReader; state: State },
   FullSpritesheetPreviewState
 > = {
   oninit(vnode) {
+    const { state } = vnode.attrs;
     vnode.state.zoomLevel = state.fullSpritesheetCanvasZoomLevel || 1;
   },
   onupdate(vnode) {
+    const { state } = vnode.attrs;
     vnode.state.zoomLevel = state.fullSpritesheetCanvasZoomLevel || 1;
   },
   view(vnode) {
+    const { catalog, state } = vnode.attrs;
     return m(
       CollapsibleSection,
       {
@@ -212,6 +217,7 @@ export const FullSpritesheetPreview: m.Component<
           m(ScrollableContainer, { classes: "spritesheet-preview" }, [
             m("div.preview-canvas-root", [
               m(SpritesheetCanvas, {
+                state,
                 showTransparencyGrid: state.showTransparencyGrid,
                 applyTransparencyMask: state.applyTransparencyMask,
                 zoomLevel: vnode.state.zoomLevel,
@@ -226,7 +232,8 @@ export const FullSpritesheetPreview: m.Component<
             ]),
           ]),
           m(PreviewMetadataLoadingOverlay, {
-            catalog: vnode.attrs.catalog,
+            catalog,
+            state,
           }),
         ]),
       ],

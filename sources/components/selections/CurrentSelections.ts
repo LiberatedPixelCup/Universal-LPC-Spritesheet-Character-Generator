@@ -1,7 +1,7 @@
 // Current selections component
 import m from "mithril";
 import type { CatalogReader } from "../../state/catalog.ts";
-import { state } from "../../state/state.ts";
+import type { State } from "../../state/state.ts";
 import {
   isItemLicenseCompatible,
   isItemAnimationCompatible,
@@ -9,11 +9,12 @@ import {
 
 type CurrentSelectionsAttrs = {
   catalog: CatalogReader;
+  state: State;
 };
 
 export const CurrentSelections: m.Component<CurrentSelectionsAttrs> = {
   view(vnode) {
-    const { catalog } = vnode.attrs;
+    const { catalog, state } = vnode.attrs;
     if (!catalog.isLiteReady()) {
       return m("div", [
         m("h3.title.is-5", "Current Selections"),
@@ -38,12 +39,14 @@ export const CurrentSelections: m.Component<CurrentSelectionsAttrs> = {
         "div.tags",
         Object.entries(state.selections).map(([selectionKey, selection]) => {
           const isLicenseCompatible = isItemLicenseCompatible(
-            selection.itemId,
             catalog,
+            state,
+            selection.itemId,
           );
           const isAnimCompatible = isItemAnimationCompatible(
-            selection.itemId,
             catalog,
+            state,
+            selection.itemId,
           );
           const isCompatible = isLicenseCompatible && isAnimCompatible;
           const metaResult = catalog.getItemMerged(selection.itemId);

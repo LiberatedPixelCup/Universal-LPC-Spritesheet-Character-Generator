@@ -2,6 +2,7 @@ import {
   startPreviewAnimation,
   stopPreviewAnimation,
 } from "../canvas/preview-animation.ts";
+import type { State } from "../state/state.ts";
 
 /**
  * While ZIP export runs, Mithril `m.redraw()` and the preview canvas rAF loop
@@ -32,7 +33,7 @@ export function beginZipExportUiSuspend(): void {
   }
 }
 
-export function endZipExportUiSuspend(): void {
+export function endZipExportUiSuspend(state: State): void {
   if (suspendDepth === 0) {
     return;
   }
@@ -46,7 +47,7 @@ export function endZipExportUiSuspend(): void {
     savedRedraw = null;
   }
   if (resumePreviewAnimation) {
-    startPreviewAnimation();
+    startPreviewAnimation(state);
     resumePreviewAnimation = false;
   }
 }

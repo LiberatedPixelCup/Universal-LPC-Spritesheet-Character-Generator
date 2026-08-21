@@ -4,7 +4,8 @@ import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { Credits } from "../../../sources/components/download/Credits.ts";
 import { createCatalog } from "../../../sources/state/catalog.ts";
-import { state } from "../../../sources/state/state.ts";
+import { createState } from "../../../sources/state/state.ts";
+let state;
 import { seedCatalog } from "../../browser-catalog-fixture.js";
 
 function buttonByText(host, text) {
@@ -18,6 +19,7 @@ describe("Credits", function () {
   let catalog;
 
   beforeEach(function () {
+    state = createState();
     host = document.createElement("div");
     document.body.appendChild(host);
     catalog = createCatalog();
@@ -42,7 +44,7 @@ describe("Credits", function () {
   it("shows loading copy before bootstrap render is done", function () {
     state.previewBootstrapRenderDone = false;
     m.mount(host, {
-      view: () => m(Credits, { catalog }),
+      view: () => m(Credits, { catalog, state }),
     });
 
     assert.include(host.textContent, "Loading selections…");
@@ -52,7 +54,7 @@ describe("Credits", function () {
   it("shows empty copy when ready but nothing is credited", function () {
     seedCatalog(catalog, {});
     m.mount(host, {
-      view: () => m(Credits, { catalog }),
+      view: () => m(Credits, { catalog, state }),
     });
 
     assert.include(host.textContent, "No items selected");
@@ -80,7 +82,7 @@ describe("Credits", function () {
     state.selections = { slot: { itemId: "item1", variant: null } };
 
     m.mount(host, {
-      view: () => m(Credits, { catalog }),
+      view: () => m(Credits, { catalog, state }),
     });
 
     assert.include(host.textContent, "eyes/human/adult/walk.png");

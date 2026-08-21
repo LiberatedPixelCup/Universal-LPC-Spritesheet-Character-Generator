@@ -2,7 +2,8 @@ import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { PreviewMetadataLoadingOverlay } from "../../../sources/components/preview/PreviewMetadataLoadingOverlay.ts";
-import { state } from "../../../sources/state/state.ts";
+import { createState } from "../../../sources/state/state.ts";
+let state;
 import {
   resetOffscreenCanvasStateForTests,
   setOffscreenCanvasInitializedForTests,
@@ -14,6 +15,7 @@ describe("PreviewMetadataLoadingOverlay", function () {
   let catalog;
 
   beforeEach(function () {
+    state = createState();
     catalog = createCatalog();
     catalog.registerFromLayersModule({ itemLayers: {} });
     host = document.createElement("div");
@@ -35,7 +37,7 @@ describe("PreviewMetadataLoadingOverlay", function () {
     state.previewBootstrapRenderDone = true;
     state.isRenderingCharacter = false;
 
-    m.render(host, m(PreviewMetadataLoadingOverlay, { catalog }));
+    m.render(host, m(PreviewMetadataLoadingOverlay, { catalog, state }));
 
     assert.strictEqual(
       host.querySelector(".preview-canvas-loading-overlay"),
@@ -49,7 +51,7 @@ describe("PreviewMetadataLoadingOverlay", function () {
     state.previewBootstrapRenderDone = false;
     state.isRenderingCharacter = true;
 
-    m.render(host, m(PreviewMetadataLoadingOverlay, { catalog }));
+    m.render(host, m(PreviewMetadataLoadingOverlay, { catalog, state }));
 
     assert.strictEqual(
       host.querySelector(".preview-canvas-loading-overlay"),
@@ -60,7 +62,7 @@ describe("PreviewMetadataLoadingOverlay", function () {
   it("renders overlay with status semantics while layer data is not ready", function () {
     catalog = createCatalog();
 
-    m.render(host, m(PreviewMetadataLoadingOverlay, { catalog }));
+    m.render(host, m(PreviewMetadataLoadingOverlay, { catalog, state }));
 
     const overlay = host.querySelector(".preview-canvas-loading-overlay");
     assert.notEqual(overlay, null);

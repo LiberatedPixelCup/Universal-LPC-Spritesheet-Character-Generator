@@ -4,9 +4,7 @@ import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import {
   getHash,
   setHash,
-  getState,
   updateState,
-  resetState,
   getHashParams,
   getHashParamsFromString,
   createHashStringFromParams,
@@ -19,21 +17,23 @@ import {
   resetHashCalledTimes,
 } from "../../sources/state/hash.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
+import { createState } from "../../sources/state/state.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
 
 describe("state/hash.ts", () => {
   let sandbox;
   let catalog;
+  let state;
 
   beforeEach(() => {
     catalog = createCatalog();
+    state = createState();
     sandbox = sinon.createSandbox();
     sandbox.stub(window, "addEventListener").callsFake(() => {});
     window.isTesting = true;
   });
 
   afterEach(() => {
-    resetState();
     resetHashCalledTimes();
     sandbox.restore();
     delete window.isTesting;
@@ -106,7 +106,7 @@ describe("state/hash.ts", () => {
 
   describe("getHashParamsforSelections", () => {
     it("should generate hash params for selections", () => {
-      updateState({
+      updateState(state, {
         bodyType: "male",
         selections: {
           body: { itemId: "1", variant: "light" },
@@ -116,7 +116,11 @@ describe("state/hash.ts", () => {
         1: { type_name: "body", name: "Body", variants: ["light"] },
       });
 
-      const params = getHashParamsforSelections(catalog, getState().selections);
+      const params = getHashParamsforSelections(
+        catalog,
+        state.selections,
+        state.bodyType,
+      );
       expect(params).to.deep.equal({
         sex: "male",
         body: "Body_light",
@@ -124,7 +128,7 @@ describe("state/hash.ts", () => {
     });
 
     it("should generate hash params for recolor selections", () => {
-      updateState({
+      updateState(state, {
         bodyType: "male",
         selections: {
           body: { itemId: "1", recolor: "light" },
@@ -140,7 +144,11 @@ describe("state/hash.ts", () => {
         },
       });
 
-      const params = getHashParamsforSelections(catalog, getState().selections);
+      const params = getHashParamsforSelections(
+        catalog,
+        state.selections,
+        state.bodyType,
+      );
       expect(params).to.deep.equal({
         sex: "male",
         body: "Body_light",
@@ -148,7 +156,7 @@ describe("state/hash.ts", () => {
     });
 
     it("should generate hash params for recolor selections containing subcolors", () => {
-      updateState({
+      updateState(state, {
         bodyType: "male",
         selections: {
           body: { itemId: "1", recolor: "light" },
@@ -172,7 +180,11 @@ describe("state/hash.ts", () => {
         },
       });
 
-      const params = getHashParamsforSelections(catalog, getState().selections);
+      const params = getHashParamsforSelections(
+        catalog,
+        state.selections,
+        state.bodyType,
+      );
       expect(params).to.deep.equal({
         sex: "male",
         body: "Body_light",
@@ -183,7 +195,7 @@ describe("state/hash.ts", () => {
 
   describe("syncSelectionsToHash", () => {
     it("should sync selections to the hash", () => {
-      updateState({
+      updateState(state, {
         bodyType: "male",
         selections: {
           body: { itemId: "1", variant: "light" },
@@ -193,7 +205,7 @@ describe("state/hash.ts", () => {
         1: { type_name: "body", name: "Body", variants: ["light"] },
       });
 
-      syncSelectionsToHash(catalog);
+      syncSelectionsToHash(catalog, state);
       expect(getSetHashCalledTimes()).to.equal(1);
     });
   });
@@ -205,8 +217,8 @@ describe("state/hash.ts", () => {
         1: { type_name: "body", name: "Body", variants: ["light"] },
       });
 
-      loadSelectionsFromHash(catalog);
-      expect(getState().selections).to.deep.equal({
+      loadSelectionsFromHash(catalog, state);
+      expect(state.selections).to.deep.equal({
         body: {
           itemId: "1",
           subId: null,
@@ -223,8 +235,8 @@ describe("state/hash.ts", () => {
         1: { type_name: "body", name: "Body_Color", variants: ["light"] },
       });
 
-      loadSelectionsFromHash(catalog);
-      expect(getState().selections).to.deep.equal({
+      loadSelectionsFromHash(catalog, state);
+      expect(state.selections).to.deep.equal({
         body: {
           itemId: "1",
           subId: null,
@@ -247,8 +259,8 @@ describe("state/hash.ts", () => {
         },
       });
 
-      loadSelectionsFromHash(catalog);
-      expect(getState().selections).to.deep.equal({
+      loadSelectionsFromHash(catalog, state);
+      expect(state.selections).to.deep.equal({
         body: {
           itemId: "1",
           subId: null,
@@ -278,8 +290,8 @@ describe("state/hash.ts", () => {
         },
       });
 
-      loadSelectionsFromHash(catalog);
-      expect(getState().selections).to.deep.equal({
+      loadSelectionsFromHash(catalog, state);
+      expect(state.selections).to.deep.equal({
         body: {
           itemId: "1",
           subId: null,
@@ -309,8 +321,8 @@ describe("state/hash.ts", () => {
         },
       });
 
-      loadSelectionsFromHash(catalog);
-      expect(getState().selections).to.deep.equal({
+      loadSelectionsFromHash(catalog, state);
+      expect(state.selections).to.deep.equal({
         body: {
           itemId: "1",
           subId: null,
@@ -340,8 +352,8 @@ describe("state/hash.ts", () => {
         },
       });
 
-      loadSelectionsFromHash(catalog);
-      expect(getState().selections).to.deep.equal({
+      loadSelectionsFromHash(catalog, state);
+      expect(state.selections).to.deep.equal({
         body: {
           itemId: "1",
           subId: null,
@@ -374,8 +386,8 @@ describe("state/hash.ts", () => {
         },
       );
 
-      loadSelectionsFromHash(catalog);
-      expect(getState().selections).to.deep.equal({
+      loadSelectionsFromHash(catalog, state);
+      expect(state.selections).to.deep.equal({
         body: {
           itemId: "1",
           subId: null,
@@ -418,8 +430,8 @@ describe("state/hash.ts", () => {
         },
       );
 
-      loadSelectionsFromHash(catalog);
-      expect(getState().selections).to.deep.equal({
+      loadSelectionsFromHash(catalog, state);
+      expect(state.selections).to.deep.equal({
         body: {
           itemId: "1",
           subId: null,
@@ -462,8 +474,8 @@ describe("state/hash.ts", () => {
         },
       );
 
-      loadSelectionsFromHash(catalog);
-      expect(getState().selections).to.deep.equal({
+      loadSelectionsFromHash(catalog, state);
+      expect(state.selections).to.deep.equal({
         body: {
           itemId: "1",
           subId: null,
@@ -490,8 +502,8 @@ describe("state/hash.ts", () => {
       });
 
       setHash("#body=Body_light");
-      loadSelectionsFromHash(catalog);
-      expect(getState().selections).to.deep.equal({
+      loadSelectionsFromHash(catalog, state);
+      expect(state.selections).to.deep.equal({
         body: {
           itemId: "1",
           subId: null,
@@ -511,7 +523,7 @@ describe("state/hash.ts", () => {
 
     it("should call the provided callback when the hash changes", () => {
       const callback = sandbox.spy();
-      initHashChangeListener(catalog, callback);
+      initHashChangeListener(catalog, state, callback);
 
       // Simulate hash change
       setHash("#key=value");

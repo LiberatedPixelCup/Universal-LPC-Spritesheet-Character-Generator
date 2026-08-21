@@ -1,6 +1,6 @@
 // Credits/Attribution component
 import m from "mithril";
-import { state } from "../../state/state.ts";
+import type { State } from "../../state/state.ts";
 import {
   getAllCredits,
   creditsToCsv,
@@ -10,12 +10,14 @@ import { CollapsibleSection } from "../CollapsibleSection.ts";
 import { downloadFile } from "../../canvas/download.ts";
 import type { CatalogReader } from "../../state/catalog.ts";
 
-export const Credits: m.Component<{ catalog: CatalogReader }> = {
+export const Credits: m.Component<{ catalog: CatalogReader; state: State }> = {
   view(vnode) {
+    const { catalog, state } = vnode.attrs;
     const allCredits = getAllCredits(
-      vnode.attrs.catalog,
+      catalog,
       state.selections,
       state.bodyType,
+      state.selectedAnimation,
     );
 
     return m(

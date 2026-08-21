@@ -69,6 +69,7 @@ type ExportSplitAnimationsDeps = {
 // Export ZIP - Split by animation
 export const exportSplitAnimations = async (
   catalog: CatalogReader,
+  state: State,
   deps: Partial<ExportSplitAnimationsDeps> = {},
 ): Promise<void> => {
   const baseAddAnimationSliceToZip =
@@ -76,8 +77,6 @@ export const exportSplitAnimations = async (
   const baseAddCanvasToZip = deps.addCanvasToZip ?? addCanvasToZip;
 
   if (!guardZipExportEnvironment()) return;
-
-  let state: State | undefined;
 
   const profiler = createZipExportProfiler("splitAnimations");
 
@@ -100,7 +99,6 @@ export const exportSplitAnimations = async (
     const zip = new window.JSZip!();
     const timestamp = zipExportTimestamp();
 
-    state = (await import("./state.ts")).state; // Ensure state is loaded
     state.zipByAnimation.isRunning = true;
     m.redraw();
     beginZipExportUiSuspend();
@@ -176,13 +174,7 @@ export const exportSplitAnimations = async (
     }
 
     await profiler.phase("staticFiles", async () => {
-      addCharacterJsonAndCredits(
-        catalog,
-        zip,
-        creditsFolder,
-        state!,
-        drawCalls,
-      );
+      addCharacterJsonAndCredits(catalog, state, zip, creditsFolder, drawCalls);
     });
 
     const metadata = {
@@ -218,7 +210,7 @@ export const exportSplitAnimations = async (
     console.error("Export failed:", err);
     alert(`Export failed: ${(err as Error).message}`);
   } finally {
-    endZipExportUiSuspend();
+    endZipExportUiSuspend(state);
     if (state) {
       state.zipByAnimation.isRunning = false;
     }
@@ -234,6 +226,7 @@ type ExportSplitItemSheetsDeps = {
 // Export ZIP - Split by item
 export const exportSplitItemSheets = async (
   catalog: CatalogReader,
+  state: State,
   deps: Partial<ExportSplitItemSheetsDeps> = {},
 ): Promise<void> => {
   const baseAddCanvasToZip = deps.addCanvasToZip ?? addCanvasToZip;
@@ -244,13 +237,10 @@ export const exportSplitItemSheets = async (
 
   if (!guardZipExportEnvironment()) return;
 
-  let state: State | undefined;
-
   try {
     const zip = new window.JSZip!();
     const timestamp = zipExportTimestamp();
 
-    state = (await import("./state.ts")).state; // Ensure state is loaded
     state.zipByItem.isRunning = true;
     m.redraw();
     beginZipExportUiSuspend();
@@ -272,7 +262,12 @@ export const exportSplitItemSheets = async (
       ).unwrapOr([]);
 
       // Get Multiple Recolors If Available
-      const recolors = getMultiRecolors(catalog, itemId, state.selections);
+      const recolors = getMultiRecolors(
+        catalog,
+        itemId,
+        state.selections,
+        state.matchBodyColorEnabled,
+      );
 
       // Render each layer of the item separately
       for (const layer of itemLayers) {
@@ -308,13 +303,7 @@ export const exportSplitItemSheets = async (
     }
 
     await profiler.phase("staticFiles", async () => {
-      addCharacterJsonAndCredits(
-        catalog,
-        zip,
-        creditsFolder,
-        state!,
-        drawCalls,
-      );
+      addCharacterJsonAndCredits(catalog, state, zip, creditsFolder, drawCalls);
     });
 
     const zipBlob = await zipGenerateBlobWithProfiler(profiler, zip);
@@ -336,7 +325,7 @@ export const exportSplitItemSheets = async (
     console.error("Export failed:", err);
     alert(`Export failed: ${(err as Error).message}`);
   } finally {
-    endZipExportUiSuspend();
+    endZipExportUiSuspend(state);
     if (state) {
       state.zipByItem.isRunning = false;
     }
@@ -356,6 +345,7 @@ type ExportSplitItemAnimationsDeps = {
 // Export ZIP - Split by animation and item
 export const exportSplitItemAnimations = async (
   catalog: CatalogReader,
+  state: State,
   deps: Partial<ExportSplitItemAnimationsDeps> = {},
 ): Promise<void> => {
   const baseAddAnimationSliceToZip =
@@ -392,13 +382,10 @@ export const exportSplitItemAnimations = async (
 
   if (!guardZipExportEnvironment()) return;
 
-  let state: State | undefined;
-
   try {
     const zip = new window.JSZip!();
     const timestamp = zipExportTimestamp();
 
-    state = (await import("./state.ts")).state; // Ensure state is loaded
     state.zipByAnimationAndItem.isRunning = true;
     m.redraw();
     beginZipExportUiSuspend();
@@ -442,7 +429,12 @@ export const exportSplitItemAnimations = async (
         }
 
         // Get Multiple Recolors If Available
-        const recolors = getMultiRecolors(catalog, itemId, state.selections);
+        const recolors = getMultiRecolors(
+          catalog,
+          itemId,
+          state.selections,
+          state.matchBodyColorEnabled,
+        );
 
         const itemLayers = getSortedLayersWithCustomFallback(
           catalog,
@@ -576,13 +568,7 @@ export const exportSplitItemAnimations = async (
     }
 
     await profiler.phase("staticFiles", async () => {
-      addCharacterJsonAndCredits(
-        catalog,
-        zip,
-        creditsFolder,
-        state!,
-        drawCalls,
-      );
+      addCharacterJsonAndCredits(catalog, state, zip, creditsFolder, drawCalls);
     });
 
     const metadata = {
@@ -628,7 +614,7 @@ export const exportSplitItemAnimations = async (
     console.error("Export failed:", err);
     alert(`Export failed: ${(err as Error).message}`);
   } finally {
-    endZipExportUiSuspend();
+    endZipExportUiSuspend(state);
     if (state) {
       state.zipByAnimationAndItem.isRunning = false;
     }
@@ -659,6 +645,7 @@ type BlobTaskResult = BlobTask & {
 // Export ZIP - Individual animation frames
 export const exportIndividualFrames = async (
   catalog: CatalogReader,
+  state: State,
   deps: Partial<ExportIndividualFramesDeps> = {},
 ): Promise<void> => {
   const extractAnimationFromCanvasFn =
@@ -681,15 +668,12 @@ export const exportIndividualFrames = async (
 
   if (!guardZipExportEnvironment()) return;
 
-  let state: State | undefined;
-
   const profiler = createZipExportProfiler("individualFrames");
 
   try {
     const zip = new window.JSZip!();
     const timestamp = zipExportTimestamp();
 
-    state = (await import("./state.ts")).state;
     state.zipIndividualFrames.isRunning = true;
     m.redraw();
     beginZipExportUiSuspend();
@@ -889,13 +873,7 @@ export const exportIndividualFrames = async (
     );
 
     await profiler.phase("staticFiles", async () => {
-      addCharacterJsonAndCredits(
-        catalog,
-        zip,
-        creditsFolder,
-        state!,
-        drawCalls,
-      );
+      addCharacterJsonAndCredits(catalog, state, zip, creditsFolder, drawCalls);
     });
 
     const metadata = {
@@ -944,7 +922,7 @@ export const exportIndividualFrames = async (
     console.error("Individual frames export failed:", err);
     alert(`Export failed: ${(err as Error).message}`);
   } finally {
-    endZipExportUiSuspend();
+    endZipExportUiSuspend(state);
     if (state) {
       state.zipIndividualFrames.isRunning = false;
     }

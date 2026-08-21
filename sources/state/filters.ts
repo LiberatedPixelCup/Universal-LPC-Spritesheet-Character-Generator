@@ -5,7 +5,7 @@ import {
 } from "../custom-animations.ts";
 import { LICENSE_CONFIG, ANIMATIONS } from "./constants.ts";
 import type { CatalogReader } from "./catalog.ts";
-import { state } from "./state.ts";
+import type { State } from "./state.ts";
 
 /**
  * Narrow shapes consumed inside `filters.ts`. Both are structural subsets of
@@ -22,7 +22,6 @@ export type AnimationEntry = {
 type FiltersDeps = {
   animations: AnimationEntry[];
   licenseConfig: LicenseEntry[];
-  state: typeof state;
   customAnimations: Record<string, CustomAnimationDefinition>;
   customAnimationBase: (custAnim: CustomAnimationDefinition) => string;
 };
@@ -30,7 +29,6 @@ type FiltersDeps = {
 const deps: FiltersDeps = {
   animations: ANIMATIONS,
   licenseConfig: LICENSE_CONFIG,
-  state,
   customAnimations,
   customAnimationBase,
 };
@@ -51,19 +49,15 @@ export function getAnimations(): AnimationEntry[] {
   return deps.animations;
 }
 
-export function getState(): typeof state {
-  return deps.state;
+export function updateState(state: State, updates: Partial<State>): void {
+  Object.assign(state, updates);
 }
 
-export function updateState(updates: Partial<typeof state>): void {
-  Object.assign(deps.state, updates);
-}
-
-export function resetState(): void {
-  deps.state.bodyType = "male";
-  deps.state.selections = {};
-  deps.state.enabledLicenses = {};
-  deps.state.enabledAnimations = {};
+export function resetState(state: State): void {
+  state.bodyType = "male";
+  state.selections = {};
+  state.enabledLicenses = {};
+  state.enabledAnimations = {};
 }
 
 export function getCustomAnimationBase(
@@ -91,35 +85,37 @@ export function setCustomAnimations(
   deps.customAnimations = anims;
 }
 
-export function getEnabledLicenses(): Record<string, boolean> {
-  return deps.state.enabledLicenses;
+export function getEnabledLicenses(state: State): Record<string, boolean> {
+  return state.enabledLicenses;
 }
 
-export function setEnabledLicenses(enabledLicenses: string[]): void {
-  updateState({
-    enabledLicenses: Object.fromEntries(
-      enabledLicenses.map((key) => [key, true]),
-    ),
-  });
+export function setEnabledLicenses(
+  state: State,
+  enabledLicenses: string[],
+): void {
+  state.enabledLicenses = Object.fromEntries(
+    enabledLicenses.map((key) => [key, true]),
+  );
 }
 
-export function getEnabledAnimations(): Record<string, boolean> {
-  return deps.state.enabledAnimations;
+export function getEnabledAnimations(state: State): Record<string, boolean> {
+  return state.enabledAnimations;
 }
 
-export function setEnabledAnimations(enabledAnimations: string[]): void {
-  updateState({
-    enabledAnimations: Object.fromEntries(
-      enabledAnimations.map((key) => [key, true]),
-    ),
-  });
+export function setEnabledAnimations(
+  state: State,
+  enabledAnimations: string[],
+): void {
+  state.enabledAnimations = Object.fromEntries(
+    enabledAnimations.map((key) => [key, true]),
+  );
 }
 
 /** Expand the enabled license keys into a flat list of allowed version strings. */
-export function getAllowedLicenses(): string[] {
+export function getAllowedLicenses(state: State): string[] {
   const allowed: string[] = [];
   for (const license of getLicenseConfig()) {
-    if (getEnabledLicenses()[license.key]) {
+    if (getEnabledLicenses(state)[license.key]) {
       allowed.push(...license.versions);
     }
   }
@@ -128,15 +124,16 @@ export function getAllowedLicenses(): string[] {
 
 /** Whether an item's credits include at least one license that's currently enabled. */
 export function isItemLicenseCompatible(
-  itemId: string,
   catalog: CatalogReader,
+  state: State,
+  itemId: string,
 ): boolean {
   const result = catalog.getItemMerged(itemId);
   if (result.isErr()) return true; // chunk loading or unknown id — assume compatible
   const meta = result.value;
   if (meta.credits.length === 0) return true; // No license info = assume compatible
 
-  const allowedLicenses = getAllowedLicenses();
+  const allowedLicenses = getAllowedLicenses(state);
   if (allowedLicenses.length === 0) return false; // No licenses selected = nothing compatible
 
   const allowedSet = new Set(allowedLicenses.map((l) => l.trim()));
@@ -155,20 +152,24 @@ export function isItemLicenseCompatible(
 
 /** Whether an item supports at least one currently-enabled animation. */
 export function isItemAnimationCompatible(
-  itemId: string,
   catalog: CatalogReader,
+  state: State,
+  itemId: string,
 ): boolean {
   const meta = catalog.getItemLite(itemId).unwrapOr(null);
   if (!meta) return true; // unknown item — assume compatible
-  return isNodeAnimationCompatible(meta);
+  return isNodeAnimationCompatible(meta, state);
 }
 
 /** Whether a tree node (or item) supports at least one enabled animation. */
-export function isNodeAnimationCompatible(node: {
-  animations?: string[];
-}): boolean {
+export function isNodeAnimationCompatible(
+  node: {
+    animations?: string[];
+  },
+  state: State,
+): boolean {
   const enabledAnims = getAnimations()
-    .filter((anim) => getEnabledAnimations()[anim.value])
+    .filter((anim) => getEnabledAnimations(state)[anim.value])
     .map((anim) => anim.value);
 
   if (enabledAnims.length === 0) return true;

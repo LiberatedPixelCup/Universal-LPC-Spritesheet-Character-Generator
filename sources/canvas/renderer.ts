@@ -28,7 +28,7 @@ import type { AnimationLayer } from "../state/meta.ts";
 import { formatLoadError, type CatalogReader } from "../state/catalog.ts";
 import m from "mithril";
 import { debugWarn } from "../utils/debug.ts";
-import type { Selections } from "../state/state.ts";
+import type { Selections, State } from "../state/state.ts";
 import type { ZipExportProfiler } from "../performance-profiler.ts";
 
 declare global {
@@ -195,11 +195,12 @@ export function resetRenderCharacterQueueForTests(): void {
 /**
  * Render character based on selections. Waits for layers metadata (S5), then runs serialized so
  * hash, defaults, and App updates cannot overlap expensive full renders.
- * The `onLayersReady` wait, dynamic `import` of `state`, and the serialized render queue
+ * The `onLayersReady` wait and serialized render queue
  * are outside the `renderCharacter` performance measure; marks wrap compositing in `runRenderCharacter` only.
  */
 export async function renderCharacter(
   catalog: CatalogReader,
+  state: State,
   selections: Selections,
   bodyType: string,
   targetCanvas: HTMLCanvasElement | null = null,
@@ -207,7 +208,7 @@ export async function renderCharacter(
   await catalog.ready.onLayersReady;
 
   const p = renderCharacterSerial.then(() =>
-    runRenderCharacter(catalog, selections, bodyType, targetCanvas),
+    runRenderCharacter(catalog, state, selections, bodyType, targetCanvas),
   );
   renderCharacterSerial = p.then(
     () => {},
@@ -218,6 +219,7 @@ export async function renderCharacter(
 
 async function runRenderCharacter(
   catalog: CatalogReader,
+  state: State,
   selections: Selections,
   bodyType: string,
   targetCanvas: HTMLCanvasElement | null,
@@ -228,10 +230,8 @@ async function runRenderCharacter(
   drawCalls = [];
   addedCustomAnimations = new Set(); // Track which custom animations we've added
 
-  // Import state to access custom uploaded image (kept out of `renderCharacter` profile span)
-  const appState = await import("../state/state.ts").then((mod) => mod.state);
-  appState.renderCharacter.isRendering = true;
-  appState.isRenderingCharacter = true;
+  state.renderCharacter.isRendering = true;
+  state.isRenderingCharacter = true;
   m.redraw();
 
   if (profiler) {
@@ -265,7 +265,12 @@ async function runRenderCharacter(
       }
 
       // Get Multiple Recolors If Available
-      const recolors = getMultiRecolors(catalog, itemId, selections);
+      const recolors = getMultiRecolors(
+        catalog,
+        itemId,
+        selections,
+        state.matchBodyColorEnabled,
+      );
 
       // Process all layers for this item
       for (let layerNum = 1; layerNum < 10; layerNum++) {
@@ -373,15 +378,15 @@ async function runRenderCharacter(
     }
 
     // Add custom uploaded image as a draw call if present
-    if (appState.customUploadedImage) {
-      const customImage = appState.customUploadedImage;
+    if (state.customUploadedImage) {
+      const customImage = state.customUploadedImage;
       // Add custom image to be drawn at all standard animation positions
       for (const [animName, yPos] of Object.entries(ANIMATION_OFFSETS)) {
         drawCalls.push({
           itemId: "custom-upload",
           variant: null,
           source: { kind: "custom", image: customImage },
-          zPos: appState.customImageZPos,
+          zPos: state.customImageZPos,
           layerNum: 0,
           animation: animName,
           yPos,
@@ -578,8 +583,8 @@ async function runRenderCharacter(
       }
     }
   } finally {
-    appState.renderCharacter.isRendering = false;
-    appState.isRenderingCharacter = false;
+    state.renderCharacter.isRendering = false;
+    state.isRenderingCharacter = false;
     m.redraw();
 
     // Mark end and measure

@@ -1,7 +1,6 @@
 // Credit collection and formatting utilities
 
 import type { CatalogReader, Credit } from "../state/catalog.ts";
-import { state } from "../state/state.ts";
 import type { Selections } from "../state/state.ts";
 import { replaceInPath } from "../state/path.ts";
 import { variantToFilename } from "../utils/helpers.ts";
@@ -16,6 +15,7 @@ export function getAllCredits(
   catalog: CatalogReader,
   selections: Selections,
   bodyType: string,
+  selectedAnimation?: string,
 ): CreditWithFileName[] {
   const allCredits: CreditWithFileName[] = [];
   const seenFiles = new Set<string>();
@@ -43,10 +43,10 @@ export function getAllCredits(
       if (!basePath) continue;
 
       // Replace template variables like ${head} if present
-      basePath = replaceInPath(catalog, basePath, selections, meta);
+      basePath = replaceInPath(catalog, basePath, selections, meta, bodyType);
 
       const animation =
-        (state.selectedAnimation as string | undefined) ??
+        selectedAnimation ??
         (meta.animations?.includes("walk") ? "walk" : meta.animations?.[0]);
 
       // Build full sprite path for this layer and animation

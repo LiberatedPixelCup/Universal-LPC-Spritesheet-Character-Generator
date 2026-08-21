@@ -2,10 +2,13 @@ import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { ItemWithVariants } from "../../../sources/components/tree/ItemWithVariants.ts";
-import { configureStateCatalog, state } from "../../../sources/state/state.ts";
+import {
+  configureStateCatalog,
+  createState,
+} from "../../../sources/state/state.ts";
+let state;
 import { createCatalog } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
-import { resetState } from "../../../sources/state/filters.ts";
 import { seedCatalog } from "../../browser-catalog-fixture.js";
 
 describe("ItemWithVariants", function () {
@@ -15,7 +18,7 @@ describe("ItemWithVariants", function () {
   beforeEach(function () {
     catalog = createCatalog();
     configureStateCatalog(catalog);
-    resetState();
+    state = createState();
     state.expandedNodes = {};
     state.compactDisplay = false;
     host = document.createElement("div");
@@ -27,7 +30,6 @@ describe("ItemWithVariants", function () {
     if (host.parentNode) {
       host.parentNode.removeChild(host);
     }
-    resetState();
   });
 
   function seedVariantItem() {
@@ -62,6 +64,7 @@ describe("ItemWithVariants", function () {
         tooltipText: "Licenses: CC0\nAnimations: walk",
         showItemTooltips: true,
         catalog,
+        state,
       }),
     );
 
@@ -85,6 +88,7 @@ describe("ItemWithVariants", function () {
         tooltipText: "⚠️ Incompatible\nAnimations: walk",
         showItemTooltips: true,
         catalog,
+        state,
       }),
     );
 
@@ -108,6 +112,7 @@ describe("ItemWithVariants", function () {
         tooltipText: "tip",
         showItemTooltips: true,
         catalog,
+        state,
       }),
     );
 
@@ -154,6 +159,7 @@ describe("ItemWithVariants", function () {
         tooltipText: "",
         showItemTooltips: false,
         catalog,
+        state,
       }),
     );
 
@@ -177,6 +183,7 @@ describe("ItemWithVariants", function () {
         tooltipText: "tip",
         showItemTooltips: true,
         catalog,
+        state,
       }),
     );
     state.expandedNodes.iwv_cloak = true;
@@ -190,6 +197,7 @@ describe("ItemWithVariants", function () {
         tooltipText: "tip",
         showItemTooltips: true,
         catalog,
+        state,
       }),
     );
 
@@ -215,6 +223,7 @@ describe("ItemWithVariants", function () {
         tooltipText: "tip",
         showItemTooltips: true,
         catalog,
+        state,
       }),
     );
     host
@@ -239,6 +248,7 @@ describe("ItemWithVariants", function () {
         tooltipText: "bad",
         showItemTooltips: true,
         catalog,
+        state,
       }),
     );
 
@@ -265,6 +275,7 @@ describe("ItemWithVariants", function () {
         tooltipText: "tip",
         showItemTooltips: true,
         catalog,
+        state,
       }),
     );
 

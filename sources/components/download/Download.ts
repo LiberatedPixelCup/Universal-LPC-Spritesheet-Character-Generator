@@ -1,6 +1,6 @@
 // Download component
 import m from "mithril";
-import { state } from "../../state/state.ts";
+import type { State } from "../../state/state.ts";
 import { drawCalls } from "../../canvas/renderer.ts";
 import {
   getAllCredits,
@@ -25,15 +25,16 @@ import type { CatalogReader } from "../../state/catalog.ts";
 
 const zipExportTitle = "Wait for layer data to finish loading";
 
-export const Download: m.Component<{ catalog: CatalogReader }> = {
+export const Download: m.Component<{ catalog: CatalogReader; state: State }> = {
   view(vnode) {
-    const zipDisabled = !vnode.attrs.catalog.isLayersReady();
+    const { catalog, state } = vnode.attrs;
+    const zipDisabled = !catalog.isLayersReady();
 
     const exportToClipboard = async (): Promise<void> => {
       if (!window.canvasRenderer) return;
       try {
         const json = exportStateAsJSON(
-          vnode.attrs.catalog,
+          catalog,
           state,
           serializeLayersForJson(drawCalls),
         );
@@ -51,7 +52,7 @@ export const Download: m.Component<{ catalog: CatalogReader }> = {
       try {
         const json = await navigator.clipboard.readText();
         debugLog(json);
-        const imported = importStateFromJSON(vnode.attrs.catalog, json);
+        const imported = importStateFromJSON(catalog, state, json);
         Object.assign(state, imported);
 
         m.redraw();
@@ -87,7 +88,7 @@ export const Download: m.Component<{ catalog: CatalogReader }> = {
             {
               onclick: () => {
                 const allCredits = getAllCredits(
-                  vnode.attrs.catalog,
+                  catalog,
                   state.selections,
                   state.bodyType,
                 );
@@ -102,7 +103,7 @@ export const Download: m.Component<{ catalog: CatalogReader }> = {
             {
               onclick: () => {
                 const allCredits = getAllCredits(
-                  vnode.attrs.catalog,
+                  catalog,
                   state.selections,
                   state.bodyType,
                 );
@@ -117,7 +118,7 @@ export const Download: m.Component<{ catalog: CatalogReader }> = {
             {
               disabled: zipDisabled,
               title: zipDisabled ? zipExportTitle : undefined,
-              onclick: () => exportSplitAnimations(vnode.attrs.catalog),
+              onclick: () => exportSplitAnimations(catalog, state),
             },
             "ZIP: Split by animation",
           ),
@@ -127,7 +128,7 @@ export const Download: m.Component<{ catalog: CatalogReader }> = {
             {
               disabled: zipDisabled,
               title: zipDisabled ? zipExportTitle : undefined,
-              onclick: () => exportSplitItemSheets(vnode.attrs.catalog),
+              onclick: () => exportSplitItemSheets(catalog, state),
             },
             "ZIP: Split by item",
           ),
@@ -137,7 +138,7 @@ export const Download: m.Component<{ catalog: CatalogReader }> = {
             {
               disabled: zipDisabled,
               title: zipDisabled ? zipExportTitle : undefined,
-              onclick: () => exportSplitItemAnimations(vnode.attrs.catalog),
+              onclick: () => exportSplitItemAnimations(catalog, state),
             },
             "ZIP: Split by animation and item",
           ),
@@ -147,7 +148,7 @@ export const Download: m.Component<{ catalog: CatalogReader }> = {
             {
               disabled: zipDisabled,
               title: zipDisabled ? zipExportTitle : undefined,
-              onclick: () => exportIndividualFrames(vnode.attrs.catalog),
+              onclick: () => exportIndividualFrames(catalog, state),
             },
             "ZIP: Split by animation and frame",
           ),

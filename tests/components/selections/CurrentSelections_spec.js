@@ -2,10 +2,10 @@ import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { CurrentSelections } from "../../../sources/components/selections/CurrentSelections.ts";
-import { state } from "../../../sources/state/state.ts";
+import { createState } from "../../../sources/state/state.ts";
+let state;
 import { createCatalog } from "../../../sources/state/catalog.ts";
 import {
-  resetState,
   setEnabledLicenses,
   setEnabledAnimations,
 } from "../../../sources/state/filters.ts";
@@ -17,7 +17,7 @@ describe("CurrentSelections", function () {
 
   beforeEach(function () {
     catalog = createCatalog();
-    resetState();
+    state = createState();
     host = document.createElement("div");
     document.body.appendChild(host);
   });
@@ -27,11 +27,10 @@ describe("CurrentSelections", function () {
     if (host.parentNode) {
       host.parentNode.removeChild(host);
     }
-    resetState();
   });
 
   it("shows loading copy when item list (lite) is not ready", function () {
-    m.render(host, m(CurrentSelections, { catalog }));
+    m.render(host, m(CurrentSelections, { catalog, state }));
 
     assert.include(host.textContent, "Current Selections");
     assert.include(host.textContent, "Loading item list…");
@@ -50,7 +49,7 @@ describe("CurrentSelections", function () {
     });
     state.selections = {};
 
-    m.render(host, m(CurrentSelections, { catalog }));
+    m.render(host, m(CurrentSelections, { catalog, state }));
 
     assert.include(host.textContent, "No items selected yet");
     assert.strictEqual(host.querySelector(".tag"), null);
@@ -73,14 +72,14 @@ describe("CurrentSelections", function () {
         layers: {},
       },
     });
-    setEnabledLicenses(["CC0"]);
+    setEnabledLicenses(state, ["CC0"]);
 
     state.selections = {
       hat: { itemId: "sel_hat", name: "Test Hat (blue)" },
       coat: { itemId: "sel_coat", name: "Winter Coat (long)" },
     };
 
-    m.render(host, m(CurrentSelections, { catalog }));
+    m.render(host, m(CurrentSelections, { catalog, state }));
 
     const heading = host.querySelector("h3.title");
     assert.notEqual(heading, null);
@@ -116,13 +115,13 @@ describe("CurrentSelections", function () {
         layers: {},
       },
     });
-    setEnabledLicenses(["CC0"]);
+    setEnabledLicenses(state, ["CC0"]);
 
     state.selections = {
       misc: { itemId: "sel_gpl_item", name: "GPL Asset" },
     };
 
-    m.render(host, m(CurrentSelections, { catalog }));
+    m.render(host, m(CurrentSelections, { catalog, state }));
 
     const tag = host.querySelector("span.tag.is-medium.is-warning");
     assert.notEqual(tag, null);
@@ -142,13 +141,13 @@ describe("CurrentSelections", function () {
         layers: {},
       },
     });
-    setEnabledAnimations(["run"]);
+    setEnabledAnimations(state, ["run"]);
 
     state.selections = {
       hat: { itemId: "sel_walk_only", name: "Walk Only" },
     };
 
-    m.render(host, m(CurrentSelections, { catalog }));
+    m.render(host, m(CurrentSelections, { catalog, state }));
 
     const tag = host.querySelector("span.tag.is-medium.is-warning");
     assert.notEqual(tag, null);
@@ -171,7 +170,7 @@ describe("CurrentSelections", function () {
       only: { itemId: "sel_a", name: "Item A" },
     };
 
-    m.render(host, m(CurrentSelections, { catalog }));
+    m.render(host, m(CurrentSelections, { catalog, state }));
 
     const del = host.querySelector("button.delete.is-small");
     assert.notEqual(del, null);
@@ -179,7 +178,7 @@ describe("CurrentSelections", function () {
 
     assert.deepEqual(state.selections, {});
     // `m.render` roots do not always redraw after inline handlers in tests; re-sync the tree.
-    m.render(host, m(CurrentSelections, { catalog }));
+    m.render(host, m(CurrentSelections, { catalog, state }));
     assert.include(host.textContent, "No items selected yet");
   });
 });

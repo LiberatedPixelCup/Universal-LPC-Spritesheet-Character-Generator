@@ -4,7 +4,8 @@ import {
   getAnimations,
   setAnimations,
 } from "../../../sources/components/filters/AnimationFilters.ts";
-import { state } from "../../../sources/state/state.ts";
+import { createState } from "../../../sources/state/state.ts";
+let state;
 import { expect } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
@@ -14,6 +15,7 @@ describe("AnimationFilters Component", () => {
   let alertStub;
 
   beforeEach(function () {
+    state = createState();
     // Create a fresh container for each test
     container = document.createElement("div");
     document.body.appendChild(container);
@@ -23,7 +25,8 @@ describe("AnimationFilters Component", () => {
     state.enabledAnimations = {};
 
     // stub the isAnimationCompatible method for dependency injection
-    const animationCompatibleStub = (itemId) => itemId === "item1";
+    const animationCompatibleStub = (_catalog, _state, itemId) =>
+      itemId === "item1";
     setAnimationCompatible({
       isItemAnimationCompatible: animationCompatibleStub,
     });
@@ -65,7 +68,7 @@ describe("AnimationFilters Component", () => {
 
     m.render(
       container,
-      m(AnimationFilters, { catalog: { isLiteReady: () => true } }),
+      m(AnimationFilters, { catalog: { isLiteReady: () => true }, state }),
     );
 
     const labelText = container.querySelector(
@@ -86,7 +89,8 @@ describe("AnimationFilters Component", () => {
     };
 
     m.mount(container, {
-      view: () => m(AnimationFilters, { catalog: { isLiteReady: () => true } }),
+      view: () =>
+        m(AnimationFilters, { catalog: { isLiteReady: () => true }, state }),
     });
 
     const expandButton = container.querySelector("span.tree-arrow");
@@ -116,7 +120,8 @@ describe("AnimationFilters Component", () => {
     };
 
     m.mount(container, {
-      view: () => m(AnimationFilters, { catalog: { isLiteReady: () => true } }),
+      view: () =>
+        m(AnimationFilters, { catalog: { isLiteReady: () => true }, state }),
     });
 
     const expandButton = container.querySelector("span.tree-arrow");

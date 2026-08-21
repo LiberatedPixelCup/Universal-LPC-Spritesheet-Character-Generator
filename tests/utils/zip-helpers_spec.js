@@ -640,9 +640,9 @@ describe("utils/zip-helpers.ts", () => {
 
         addCharacterJsonAndCredits(
           createCatalog(),
+          state,
           zip,
           creditsFolder,
-          state,
           layerList,
         );
 

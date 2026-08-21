@@ -2,10 +2,13 @@ import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { PaletteSelectModal } from "../../../sources/components/tree/PaletteSelectModal.ts";
-import { configureStateCatalog, state } from "../../../sources/state/state.ts";
+import {
+  configureStateCatalog,
+  createState,
+} from "../../../sources/state/state.ts";
+let state;
 import { createCatalog } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
-import { resetState } from "../../../sources/state/filters.ts";
 import { buildItemsByTypeNameLite } from "../../../sources/state/resolve-hash-param.ts";
 import { seedCatalog } from "../../browser-catalog-fixture.js";
 
@@ -108,7 +111,7 @@ describe("PaletteSelectModal", function () {
   beforeEach(function () {
     catalog = createCatalog();
     configureStateCatalog(catalog);
-    resetState();
+    state = createState();
     state.expandedNodes = {};
     state.compactDisplay = false;
     host = document.createElement("div");
@@ -120,11 +123,12 @@ describe("PaletteSelectModal", function () {
     if (host.parentNode) {
       host.parentNode.removeChild(host);
     }
-    resetState();
   });
 
   function modalAttrs(overrides = {}) {
     const base = {
+      catalog,
+      state,
       itemId: PSM_SHIRT,
       opt: clothOptFromPaletteOptions(),
       selectedColors: {},
@@ -132,7 +136,6 @@ describe("PaletteSelectModal", function () {
       rootViewNode: rootViewNodeStub(),
       onClose: () => {},
       onSelect: () => {},
-      catalog,
     };
     return { ...base, ...overrides };
   }

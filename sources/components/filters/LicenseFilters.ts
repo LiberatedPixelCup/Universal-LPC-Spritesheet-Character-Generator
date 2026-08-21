@@ -1,6 +1,6 @@
 // License Filters component
 import m from "mithril";
-import { state } from "../../state/state.ts";
+import type { State } from "../../state/state.ts";
 import type { CatalogReader } from "../../state/catalog.ts";
 import { isItemLicenseCompatible } from "../../state/filters.ts";
 import { LICENSE_CONFIG } from "../../state/constants.ts";
@@ -28,10 +28,11 @@ export function setLicenseCompatible(
   deps.isItemLicenseCompatible = overrides.isItemLicenseCompatible;
 }
 export function isLicenseCompatible(
-  itemId: string,
   catalog: CatalogReader,
+  state: State,
+  itemId: string,
 ): boolean {
-  return deps.isItemLicenseCompatible(itemId, catalog);
+  return deps.isItemLicenseCompatible(catalog, state, itemId);
 }
 
 export function setLicenseConfig(config: readonly LicenseOption[]): void {
@@ -44,6 +45,7 @@ export function getLicenseConfig(): readonly LicenseOption[] {
 type LicenseFiltersState = { isExpanded: boolean };
 type LicenseFiltersAttrs = {
   catalog: CatalogReader;
+  state: State;
 };
 
 export const LicenseFilters: m.Component<
@@ -54,14 +56,15 @@ export const LicenseFilters: m.Component<
     vnode.state.isExpanded = false;
   },
   view(vnode) {
-    const liteReady = vnode.attrs.catalog.isLiteReady();
+    const { catalog, state } = vnode.attrs;
+    const liteReady = catalog.isLiteReady();
 
     const removeIncompatibleItems = () => {
       const toRemove: string[] = [];
       for (const [selectionGroup, selection] of Object.entries(
         state.selections,
       )) {
-        if (!isLicenseCompatible(selection.itemId, vnode.attrs.catalog)) {
+        if (!isLicenseCompatible(catalog, state, selection.itemId)) {
           toRemove.push(selectionGroup);
         }
       }
@@ -74,12 +77,11 @@ export const LicenseFilters: m.Component<
       }
     };
 
-    const creditsReady = vnode.attrs.catalog.isCreditsReady();
+    const creditsReady = catalog.isCreditsReady();
 
     const incompatibleSelections = creditsReady
       ? Object.values(state.selections).filter(
-          (selection) =>
-            !isLicenseCompatible(selection.itemId, vnode.attrs.catalog),
+          (selection) => !isLicenseCompatible(catalog, state, selection.itemId),
         )
       : [];
     const hasIncompatibleItems =

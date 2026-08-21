@@ -1,16 +1,20 @@
 // Body type selector component (styled as tree category)
 import m from "mithril";
-import { state } from "../../state/state.ts";
+import type { State as AppState } from "../../state/state.ts";
 import { BODY_TYPES } from "../../state/constants.ts";
 import { capitalize } from "../../utils/helpers.ts";
 
-type State = { isExpanded: boolean };
+type BodyTypeSelectorState = { isExpanded: boolean };
 
-export const BodyTypeSelector: m.Component<Record<string, never>, State> = {
+export const BodyTypeSelector: m.Component<
+  { state: AppState },
+  BodyTypeSelectorState
+> = {
   oninit(vnode) {
     vnode.state.isExpanded = true; // Start expanded by default
   },
   view(vnode) {
+    const { state } = vnode.attrs;
     return m("div.mb-3", [
       m(
         "div.tree-label",

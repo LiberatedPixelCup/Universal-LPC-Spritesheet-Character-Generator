@@ -1,5 +1,6 @@
 // SearchControl component tests - Browser compatible
-import { state } from "../../../sources/state/state.ts";
+import { createState } from "../../../sources/state/state.ts";
+let state;
 import { SearchControl } from "../../../sources/components/filters/SearchControl.ts";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
@@ -8,6 +9,7 @@ describe("SearchControl", function () {
   let container;
 
   beforeEach(function () {
+    state = createState();
     // Reset state before each test
     state.searchQuery = "";
 
@@ -26,7 +28,7 @@ describe("SearchControl", function () {
   it("renders a search input field", function () {
     m.render(
       container,
-      m(SearchControl, { catalog: { isLiteReady: () => true } }),
+      m(SearchControl, { catalog: { isLiteReady: () => true }, state }),
     );
 
     // Should render an input with type=search and placeholder attribute
@@ -39,7 +41,7 @@ describe("SearchControl", function () {
   it("displays the label 'Search:'", function () {
     m.render(
       container,
-      m(SearchControl, { catalog: { isLiteReady: () => true } }),
+      m(SearchControl, { catalog: { isLiteReady: () => true }, state }),
     );
 
     // Should have a label with text "Search:"
@@ -51,7 +53,7 @@ describe("SearchControl", function () {
     state.searchQuery = test_query;
     m.render(
       container,
-      m(SearchControl, { catalog: { isLiteReady: () => true } }),
+      m(SearchControl, { catalog: { isLiteReady: () => true }, state }),
     );
 
     // Input value should match state

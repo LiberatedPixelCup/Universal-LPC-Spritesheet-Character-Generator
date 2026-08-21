@@ -7,7 +7,7 @@
  */
 import type { CatalogReader } from "./catalog.ts";
 import { isOffscreenCanvasInitialized } from "../canvas/renderer.ts";
-import { state } from "./state.ts";
+import type { State } from "./state.ts";
 
 export type PreviewState =
   | { kind: "rendering" }
@@ -20,7 +20,10 @@ export type PreviewState =
  * Snapshot the preview's current state. The UI overlay shows for any kind
  * other than `rendering` or `ready`.
  */
-export function getPreviewCanvasState(catalog: CatalogReader): PreviewState {
+export function getPreviewCanvasState(
+  catalog: CatalogReader,
+  state: State,
+): PreviewState {
   if (state.isRenderingCharacter) return { kind: "rendering" };
   if (!catalog.isLayersReady()) return { kind: "loading-layers" };
   if (!isOffscreenCanvasInitialized())

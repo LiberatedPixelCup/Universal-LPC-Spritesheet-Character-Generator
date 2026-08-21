@@ -9,24 +9,36 @@ import {
   selectDefaults,
   selectItem,
   setStateDeps,
-  state,
+  createState,
 } from "../../sources/state/state.ts";
+let state;
 import { createCatalog } from "../../sources/state/catalog.ts";
-import { resetState } from "../../sources/state/hash.ts";
 import { expect } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 
 describe("state/state.ts", () => {
+  it("creates isolated application state instances", () => {
+    const first = createState();
+    const second = createState();
+
+    first.bodyType = "female";
+    first.selections.body = { itemId: "body", name: "Body" };
+    first.zipByAnimation.isRunning = true;
+
+    expect(second.bodyType).to.equal("male");
+    expect(second.selections).to.deep.equal({});
+    expect(second.zipByAnimation.isRunning).to.equal(false);
+  });
+
   beforeEach(() => {
     configureStateCatalog(createCatalog());
     resetStateDeps();
-    resetState();
+    state = createState();
   });
 
   afterEach(() => {
     resetStateDeps();
-    resetState();
   });
 
   describe("getSelectionGroup", () => {
@@ -108,7 +120,7 @@ describe("state/state.ts", () => {
       setStateDeps(deps);
       state.selections = {};
 
-      await selectDefaults();
+      await selectDefaults(state);
 
       expect(state.selections).to.deep.equal({
         body: {
@@ -132,8 +144,9 @@ describe("state/state.ts", () => {
       });
       expect(deps.syncSelectionsToHash.calledOnce).to.be.true;
       expect(deps.renderCharacter.calledOnce).to.be.true;
-      expect(deps.renderCharacter.firstCall.args[0]).to.equal(state.selections);
-      expect(deps.renderCharacter.firstCall.args[1]).to.equal(state.bodyType);
+      expect(deps.renderCharacter.firstCall.args[0]).to.equal(state);
+      expect(deps.renderCharacter.firstCall.args[1]).to.equal(state.selections);
+      expect(deps.renderCharacter.firstCall.args[2]).to.equal(state.bodyType);
       expect(deps.redraw.calledOnce).to.be.true;
     });
 
@@ -146,7 +159,7 @@ describe("state/state.ts", () => {
       });
       state.selections = {};
 
-      await selectDefaults();
+      await selectDefaults(state);
 
       expect(state.selections).to.have.keys(
         "body",
@@ -170,7 +183,7 @@ describe("state/state.ts", () => {
       state.customUploadedImage = {};
       state.customImageZPos = 7;
 
-      await resetAll();
+      await resetAll(state);
 
       expect(state.selections).to.deep.equal({});
       expect(state.customUploadedImage).to.be.null;
@@ -196,7 +209,7 @@ describe("state/state.ts", () => {
       state.customUploadedImage = { fake: true };
       state.customImageZPos = 3;
 
-      await resetAll();
+      await resetAll(state);
 
       expect(state.selections.body.itemId).to.equal("body");
       expect(state.selections.heads.itemId).to.equal("heads_human_male");
@@ -220,7 +233,7 @@ describe("state/state.ts", () => {
       });
       state.selections = {};
 
-      await initState();
+      await initState(state);
 
       expect(selectDefaultsStub.calledOnce).to.be.true;
     });
@@ -239,7 +252,7 @@ describe("state/state.ts", () => {
         redraw,
       });
 
-      await initState();
+      await initState(state);
 
       expect(selectDefaultsStub.called).to.be.false;
       expect(renderCharacter.calledOnce).to.be.true;
@@ -259,7 +272,7 @@ describe("state/state.ts", () => {
         redraw,
       });
 
-      await initState();
+      await initState(state);
 
       expect(renderCharacter.called).to.be.false;
       expect(redraw.called).to.be.false;
@@ -288,7 +301,7 @@ describe("state/state.ts", () => {
         }),
       });
 
-      applyMatchBodyColor("new", null);
+      applyMatchBodyColor(state, "new", null);
 
       expect(state.selections.body.variant).to.equal("old");
     });
@@ -306,8 +319,8 @@ describe("state/state.ts", () => {
         }),
       });
 
-      applyMatchBodyColor(null, null);
-      applyMatchBodyColor("", "");
+      applyMatchBodyColor(state, null, null);
+      applyMatchBodyColor(state, "", "");
 
       expect(state.selections.body.variant).to.equal("old");
     });
@@ -324,7 +337,7 @@ describe("state/state.ts", () => {
         }),
       });
 
-      applyMatchBodyColor("new", null);
+      applyMatchBodyColor(state, "new", null);
 
       expect(state.selections.body.variant).to.equal("old");
     });
@@ -346,7 +359,7 @@ describe("state/state.ts", () => {
         }),
       });
 
-      applyMatchBodyColor("new", null);
+      applyMatchBodyColor(state, "new", null);
 
       expect(state.selections.body.variant).to.equal("new");
       expect(state.selections.body.name).to.equal("Shirt (new)");
@@ -369,7 +382,7 @@ describe("state/state.ts", () => {
         }),
       });
 
-      applyMatchBodyColor(null, "light");
+      applyMatchBodyColor(state, null, "light");
 
       expect(state.selections.body.recolor).to.equal("light");
       expect(state.selections.body.name).to.equal("Body (light)");
@@ -393,7 +406,7 @@ describe("state/state.ts", () => {
         }),
       });
 
-      applyMatchBodyColor(null, "blue");
+      applyMatchBodyColor(state, null, "blue");
 
       expect(state.selections.eyes.recolor).to.equal("red");
     });
@@ -423,7 +436,7 @@ describe("state/state.ts", () => {
             : undefined,
       });
 
-      applyMatchBodyColor("y", null);
+      applyMatchBodyColor(state, "y", null);
 
       expect(state.selections.a.variant).to.equal("y");
       expect(state.selections.b.variant).to.equal("y");
@@ -445,7 +458,7 @@ describe("state/state.ts", () => {
         name: "Body (light)",
       };
 
-      selectItem("body_item", "light", true);
+      selectItem(state, "body_item", "light", true);
 
       expect(state.selections.body).to.be.undefined;
     });
@@ -460,7 +473,7 @@ describe("state/state.ts", () => {
       });
       state.selections = {};
 
-      selectItem("body_1", "dark", false);
+      selectItem(state, "body_1", "dark", false);
 
       expect(state.selections.body).to.deep.equal({
         itemId: "body_1",
@@ -487,7 +500,7 @@ describe("state/state.ts", () => {
       });
       state.selections = {};
 
-      selectItem("item_multi", "blue", false, 0);
+      selectItem(state, "item_multi", "blue", false, 0);
 
       expect(state.selections.eyes).to.deep.equal({
         itemId: "item_multi",
@@ -527,7 +540,7 @@ describe("state/state.ts", () => {
         },
       };
 
-      selectItem("item_multi", "teal", false, 1);
+      selectItem(state, "item_multi", "teal", false, 1);
 
       expect(state.selections.hair).to.deep.equal({
         itemId: "item_multi",
