@@ -391,6 +391,9 @@ describe("canvas/renderer.ts", () => {
 
       await renderCharacter(catalog, state, {}, "male");
 
+      expect(state.renderCharacter.isRendering).to.equal(false);
+      expect(state.isRenderingCharacter).to.equal(false);
+
       const customCalls = drawCalls.filter((d) => d.itemId === "custom-upload");
       expect(customCalls.length).to.be.at.least(1);
       expect(customCalls.every((d) => d.source.kind === "custom")).to.equal(

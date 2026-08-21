@@ -100,6 +100,18 @@ describe("AnimationPreview", function () {
     assert.include(host.textContent, "150%");
   });
 
+  it("synchronizes its local zoom during component updates", function () {
+    state.previewCanvasZoomLevel = 1.75;
+    const vnode = {
+      attrs: { catalog, state },
+      state: { zoomLevel: 1 },
+    };
+
+    AnimationPreview.onupdate(vnode);
+
+    assert.strictEqual(vnode.state.zoomLevel, 1.75);
+  });
+
   it("shows a busy overlay while the character is rendering", function () {
     state.isRenderingCharacter = true;
     m.mount(host, { view: () => m(AnimationPreview, { catalog, state }) });
