@@ -9,7 +9,13 @@ import {
 } from "./load-image.ts";
 import type { LoadedImage } from "./load-image.ts";
 import { getSpritePath, type PathError } from "../state/path.ts";
-import { getImageToDraw, getRecolorCacheStats } from "./palette-recolor.ts";
+import {
+  getImageToDraw,
+  getRecolorCacheStats,
+  beginDeferredRecolorSnapshots,
+  endDeferredRecolorSnapshots,
+  flushDeferredRecolorCache,
+} from "./palette-recolor.ts";
 import { getMultiRecolors } from "../state/palettes.ts";
 import { get2DContext, getZPos } from "./canvas-utils.ts";
 import { variantToFilename } from "../utils/helpers.ts";
@@ -217,9 +223,16 @@ export async function renderCharacter(
 ): Promise<void> {
   await catalog.ready.onLayersReady;
 
-  const p = renderCharacterSerial.then(() =>
-    runRenderCharacter(catalog, state, selections, bodyType, targetCanvas),
-  );
+  const p = renderCharacterSerial.then(async () => {
+    await flushDeferredRecolorCache();
+    return runRenderCharacter(
+      catalog,
+      state,
+      selections,
+      bodyType,
+      targetCanvas,
+    );
+  });
   renderCharacterSerial = p.then(
     () => {},
     () => {},
@@ -248,6 +261,7 @@ async function runRenderCharacter(
   }
 
   state.renderCharacter.isRendering = state.isRenderingCharacter = true;
+  beginDeferredRecolorSnapshots();
   span.sync("mithrilRedrawStart", () => {
     m.redraw();
   });
@@ -621,8 +635,9 @@ async function runRenderCharacter(
       }
     }
   } finally {
-    state.renderCharacter.isRendering = state.isRenderingCharacter = false;
     span.sync("mithrilRedrawEnd", () => {
+      endDeferredRecolorSnapshots();
+      state.renderCharacter.isRendering = state.isRenderingCharacter = false;
       m.redraw();
     });
 
