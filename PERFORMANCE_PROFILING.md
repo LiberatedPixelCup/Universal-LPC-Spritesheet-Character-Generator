@@ -8,7 +8,7 @@ The app includes a performance profiler that is automatically enabled when:
 2. Adding `?debug=true` to the URL query string (overrides localhost detection)
 3. Adding `?debug=false` to disable it even on localhost
 
-The DEBUG flag and profiler are initialized in `sources/main.ts`.
+The DEBUG flag and profiler are initialized in `sources/main.ts`. Only `?debug=true` and `?debug=false` override localhost detection (`sources/utils/debug.ts`). Other values (for example `?debug=1`) fall through to the localhost check.
 
 ## Profiled Operations
 
@@ -37,19 +37,59 @@ ZIP generation uses **`createZipExportProfiler`** in `sources/performance-profil
 - **User Timing:** With DEBUG on, phases also emit `performance.mark` names like `zip:<exportKind>:<phase>-start` / `-end`, visible under **DevTools → Performance** when recording.
 - **Split-by-item sheets** does not add `metadata.json`; use the console table and Performance marks when DEBUG is on.
 
-- **Automation / agents:** After each export, `zipGenerateBlobWithProfiler` stores the latest `toMetadata()` snapshot on **`window.__lastZipExportProfile`** and accumulates **`window.__zipExportProfiles`** keyed by `exportKind`.
-  - **Scripts:** **`npm run profile:zip`** or **`npm run profile:zip:quick`** — run headless Chromium with the default URL hash from **`scripts/zip/zip-profile-default-hash.ts`** (full outfit + weapon so custom layers show up in profiles).
-  - **Output:** **`tmp/zip-export-profile.json`** or **`tmp/zip-export-profile-quick.json`** (gitignored), and the same JSON on stdout.
-  - **Flags:** **`--only <kind>`** (e.g. **`npm run profile:zip -- --only splitAnimations`**) with kinds `splitAnimations`, `splitItemSheets`, `splitItemAnimations`, `individualFrames`. **`--out <path>`** overrides the JSON path. **`--quick`** uses a fake JSZip (faster; small **`generateZip`** time); default mode uses real JSZip.
-  - **Setup:** Playwright browsers **`npx playwright install`**. Server port **`ZIP_PROFILE_PORT`** (default **`9877`**). Entry points: **`scripts/zip/zip-export-profile.ts`**, **`scripts/zip/zip-export-profile-runner.html`**.
-  - **`serve` and query strings:** Redirects may drop **`?`** params on the runner URL, so **`--quick`**, **`--only`**, and the default hash are injected via **`window.__ZIP_PROFILE_OPTS__`** before load (Playwright `addInitScript`). Opening the runner manually: preserve the query when possible, or add **`#`** plus the same hash as in **`zip-profile-default-hash.ts`** (or rely on that module’s default in the runner).
+After each export, `zipGenerateBlobWithProfiler` stores the latest `toMetadata()` snapshot on **`window.__lastZipExportProfile`** and accumulates **`window.__zipExportProfiles`** keyed by `exportKind`.
 
-- **Baseline snapshots (local, gitignored):**
-  - **`npm run profile:zip:baseline`** → **`tmp/baseline-zip-export-profile.json`**
-  - **`npm run profile:zip:baseline:quick`** → **`tmp/baseline-zip-export-profile-quick.json`**
-  - Compare runs: **`npm run diff:zip-profile -- tmp/baseline-zip-export-profile.json tmp/zip-export-profile.json`**, or **`node scripts/zip/diff-zip-profile.ts --before … --after …`**, for per-phase deltas on the same machine/fixture.
+#### Headless ZIP scripts
 
-Query param note: only **`?debug=true`** and **`?debug=false`** are recognized as overrides (`sources/utils/debug.ts`). Other values (e.g. `?debug=1`) fall through to localhost detection.
+Use these when ZIP **export** drawing or packaging changed. They open headless Chromium only. They do **not** replace checking WebGL and the CPU fallback in the app; for that, call `window.profiler.report()` (see [Using the Profiler](#using-the-profiler)).
+
+A full run can take several minutes (the runner waits up to 10 minutes).
+
+**Before you run**
+
+1. Install Chromium once: `npx playwright install`
+2. Generate catalog metadata so `dist/*-metadata.js` exists: `npm run dev` or `npm run build` (once is enough). The profiler serves the repo with `npx serve` (default port `9877`, override with `ZIP_PROFILE_PORT`). It does not start Vite, so a clean tree fails on missing `/dist/` files.
+
+**Which command**
+
+| What you changed | Command | Notes |
+| --- | --- | --- |
+| Drawing, slicing, or PNG encode | `npm run profile:zip:quick` | Uses a fake JSZip. Ignore the `generateZip` phase. |
+| Real zip packaging (`generateAsync`, `zip-helpers`) | `npm run profile:zip` | Uses real JSZip. Slower. |
+
+These are not interchangeable. Match the command to the change.
+
+**Compare to a baseline**
+
+Take a baseline on the same machine, then diff after your change. Use the matching pair (`:quick` with `:quick`).
+
+```bash
+npm run profile:zip:baseline:quick
+# …make your change…
+npm run profile:zip:quick
+npm run diff:zip-profile -- tmp/baseline-zip-export-profile-quick.json tmp/zip-export-profile-quick.json
+```
+
+For a full (real JSZip) comparison:
+
+```bash
+npm run profile:zip:baseline
+npm run profile:zip
+npm run diff:zip-profile -- tmp/baseline-zip-export-profile.json tmp/zip-export-profile.json
+```
+
+A positive Δ means the after run was slower. For a drawing change, look at `render_composite_*`, `drawAndSlice`, and `pngEncode`.
+
+JSON lands under `tmp/` (gitignored) and is also printed on stdout. Pass `--out <path>` to write somewhere else.
+
+**Optional**
+
+- Limit to one export: `npm run profile:zip -- --only splitAnimations` (also `splitItemSheets`, `splitItemAnimations`, `individualFrames`).
+- The default character is the full outfit in `scripts/zip/zip-profile-default-hash.ts`, not whatever you last had open in the browser.
+
+**Opening the runner page yourself**
+
+`npx serve` may drop `?` query params on redirect. The npm scripts inject `--quick`, `--only`, and the default hash via `window.__ZIP_PROFILE_OPTS__` before load. If you open `scripts/zip/zip-export-profile-runner.html` in a browser, keep the query string or put the same hash after `#`.
 
 ## Reviewing ZIP performance changes (PR)
 
@@ -108,7 +148,9 @@ window.profiler.disable();
 The profiler is configured in `sources/main.ts`:
 
 ```javascript
-const profiler = new window.PerformanceProfiler({
+import { PerformanceProfiler } from "./performance-profiler.ts";
+
+const profiler = new PerformanceProfiler({
   enabled: DEBUG, // Enable/disable profiler
   verbose: false, // Log all marks/measures to console
   logSlowOperations: true, // Log warnings for slow operations
