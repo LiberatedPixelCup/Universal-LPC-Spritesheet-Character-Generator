@@ -18,7 +18,7 @@ JSON or the diff. Phase names and console commands:
 
 | What changed | Command | Notes |
 | --- | --- | --- |
-| `loadImage()`, `renderCharacter()`, hash hydration, preview, palette recolor | `npm run profile:app` | Live app, `?debug=true`. Default `--recolor both` (WebGL + `?recolor=cpu`). |
+| `loadImage()`, `renderCharacter()`, hash hydration, preview, palette recolor | `npm run profile:app` | Live app, `?debug=true`. Default `--recolor both` (WebGL + `?recolor=cpu`). Headless Playwright Chromium is SwiftShader; real GPU: `--headed --channel chrome`. |
 | Drawing, slicing, or PNG encode | `npm run profile:zip:quick` | Fake JSZip. Ignore `generateZip`. |
 | Real zip packaging (`generateAsync`, `zip-helpers`) | `npm run profile:zip` | Real JSZip. Slower. |
 
@@ -71,7 +71,10 @@ two runs; repeat once if a single Δ is the only evidence.
 
 Confirm `activeMode` and `recolorStats` in each section: CPU must show
 `activeMode: cpu` and `cpu > 0` if the outfit recolours. WebGL should show
-`webgl > 0` (or `cpu` if this Chromium has no GL).
+`webgl > 0` (or `cpu` if this Chromium has no GL). Confirm `renderer`
+(`unmaskedRenderer`): SwiftShader / llvmpipe is software GL, not the user's
+GPU. Hardware looks like `ANGLE (Apple, … Metal …)` or an NVIDIA/AMD name.
+`--headed --channel chrome` fails the run if the renderer is still software.
 
 **App profile** (`profiler.snapshot()`, same buckets as `profiler.report()`):
 
@@ -97,6 +100,8 @@ layered gear (body + head + expression only).
 Limit one ZIP export: `npm run profile:zip -- --only splitAnimations`
 (also `splitItemSheets`, `splitItemAnimations`, `individualFrames`).
 Custom app hashes: `npm run profile:app -- --hash '…' --hash2 '…'`.
+Real GPU: `npm run profile:app -- --headed --channel chrome` (and the same
+flags on `profile:app:baseline`). Compare GPU baselines only to GPU runs.
 
 ## Still ask the user
 
