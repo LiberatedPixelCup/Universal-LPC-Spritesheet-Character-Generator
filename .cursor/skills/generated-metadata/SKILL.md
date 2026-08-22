@@ -16,7 +16,7 @@ Vite writes five modules to `dist/`: `index-`, `palette-`, `item-`,
 
 A resolve failure means `dist/` was never built. After a fresh clone, run
 `npm run dev` or `npm run build` once before specs, ZIP profiles, or
-`seedCatalogWithGeneratedContext`.
+`seedCatalogWithGeneratedContext`. `profile:app` starts Vite itself.
 
 The plugin fingerprints `sheet_definitions/` and `palette_definitions/` under
 `.cache/` (gitignored). If the fingerprint matches and

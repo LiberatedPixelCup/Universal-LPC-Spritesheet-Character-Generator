@@ -26,6 +26,37 @@ The profiler tracks these expensive operations:
 - **Measures:** Total rendering time including image loading and canvas operations
 - **Format:** `renderCharacter`
 
+### Headless app profiler
+
+Use these when **`loadImage()`**, **`renderCharacter()`**, or hash hydration changed. They open headless Chromium, drive the live app the way a human would (`?debug=true`, wait for catalog + first paint, change the selection once), then write **`profiler.snapshot()`** — the same data as **`window.profiler.report()`**, as JSON.
+
+They do **not** replace checking WebGL and the CPU fallback visually; for that, see [Force CPU Mode](PALETTE_RECOLOR_GUIDE.md#force-cpu-mode-testing). They are also not a substitute for the ZIP scripts below.
+
+**Before you run**
+
+1. Install Chromium once: `npx playwright install`
+2. The script starts Vite itself on `127.0.0.1` (default port `5178`, override with `APP_PROFILE_PORT`). Pass `--url http://127.0.0.1:5173` to attach to an already-running `npm run dev` instead.
+
+**Compare to a baseline**
+
+Take a baseline on the same machine, then diff after your change.
+
+```bash
+npm run profile:app:baseline
+# …make your change…
+npm run profile:app
+npm run diff:app-profile -- tmp/baseline-app-profile.json tmp/app-profile.json
+```
+
+A positive Δ means the after run was slower. Look at `renderCharacter`, `image-load:*`, and `hash-loadSelectionsFromHash`. A few milliseconds is noise; `renderCharacter` can swing tens of ms between two runs on the same machine.
+
+JSON lands under `tmp/` (gitignored) and is also printed on stdout. Pass `--out <path>` to write somewhere else.
+
+**Optional**
+
+- Custom selections: `npm run profile:app -- --hash 'sex=male&body=Body_Color_light' --hash2 '…'`
+- The default first hash is the full outfit in `scripts/zip/zip-profile-default-hash.ts`. The default second hash drops layered gear (body + head + expression only).
+
 ### ZIP export (download packs)
 
 ZIP generation uses **`createZipExportProfiler`** in `sources/performance-profiler.ts`, wired from `sources/state/zip.ts` (split-by-animation, split-by-item, split-by-animation-and-item, individual frames).
@@ -41,7 +72,7 @@ After each export, `zipGenerateBlobWithProfiler` stores the latest `toMetadata()
 
 #### Headless ZIP scripts
 
-Use these when ZIP **export** drawing or packaging changed. They open headless Chromium only. They do **not** replace checking WebGL and the CPU fallback in the app; for that, call `window.profiler.report()` (see [Using the Profiler](#using-the-profiler)).
+Use these when ZIP **export** drawing or packaging changed. They open headless Chromium only. They do **not** replace checking WebGL and the CPU fallback in the app, and they do **not** replace the [headless app profiler](#headless-app-profiler) for `loadImage()` / `renderCharacter()`.
 
 A full run can take several minutes (the runner waits up to 10 minutes).
 
@@ -129,6 +160,9 @@ Counters (`pngEncodeCount`, `drawAndSliceCount`, etc.) are defined on `ZIP_EXPOR
 // Full report (categories, FPS, User Timing measures)
 window.profiler.report();
 
+// Same data as report(), as JSON (headless scripts call this)
+window.profiler.snapshot();
+
 // Inspect measures by name (Performance API — not a method on profiler)
 performance.getEntriesByName("renderCharacter", "measure");
 
@@ -189,5 +223,5 @@ if (profiler) {
 
 - Use meaningful operation names (e.g., `render-body`, `load-sprites`)
 - Add profiling marks around suspected bottlenecks
-- Use the profiler.report() to identify patterns and outliers
-- Compare measurements before/after optimizations
+- Use `profiler.report()` or `profiler.snapshot()` to identify patterns and outliers
+- Compare measurements before/after optimizations on the same machine (`profile:app` / `profile:zip`)

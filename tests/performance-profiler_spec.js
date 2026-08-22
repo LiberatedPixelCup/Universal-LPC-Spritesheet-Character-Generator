@@ -35,6 +35,16 @@ describe("performance-profiler.ts", () => {
       const p = new PerformanceProfiler({ enabled: false });
       expect(() => p.report()).to.not.throw();
     });
+
+    it("snapshot() is empty when disabled", () => {
+      const p = new PerformanceProfiler({ enabled: false });
+      const snap = p.snapshot();
+      expect(snap.enabled).to.be.false;
+      expect(snap.fps).to.equal(0);
+      expect(snap.measures).to.deep.equal([]);
+      expect(snap.metrics.draws.count).to.equal(0);
+      expect(snap.memory).to.equal(null);
+    });
   });
 
   describe("PerformanceProfiler (enabled)", () => {
@@ -84,6 +94,19 @@ describe("performance-profiler.ts", () => {
       expect(p.enabled).to.be.true;
       p.disable();
       expect(p.enabled).to.be.false;
+    });
+
+    it("snapshot() copies metrics and User Timing measures", () => {
+      const p = new PerformanceProfiler({ enabled: true });
+      p.mark("snap:start");
+      p.mark("snap:end");
+      p.measure("draw_snapshot", "snap:start", "snap:end");
+      const snap = p.snapshot();
+      expect(snap.enabled).to.be.true;
+      expect(snap.metrics.draws.count).to.equal(1);
+      expect(snap.measures.some((m) => m.name === "draw_snapshot")).to.be.true;
+      snap.metrics.draws.count = 99;
+      expect(p.metrics.draws.count).to.equal(1);
     });
   });
 

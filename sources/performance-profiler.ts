@@ -42,6 +42,30 @@ type MetricsByCategory = {
   domUpdates: MetricBucket;
 };
 
+export type ProfilerMeasureRow = { name: string; durationMs: number };
+
+/** Machine-readable form of {@link PerformanceProfiler.report}. */
+export type ProfilerSnapshot = {
+  enabled: boolean;
+  fps: number;
+  metrics: MetricsByCategory;
+  memory: {
+    usedJSHeapSize: string;
+    totalJSHeapSize: string;
+    jsHeapSizeLimit: string;
+  } | null;
+  measures: ProfilerMeasureRow[];
+};
+
+function emptyMetrics(): MetricsByCategory {
+  return {
+    imageLoads: { count: 0, totalTime: 0 },
+    draws: { count: 0, totalTime: 0 },
+    previews: { count: 0, totalTime: 0 },
+    domUpdates: { count: 0, totalTime: 0 },
+  };
+}
+
 /** Chrome-only `performance.memory`; absent in other browsers. */
 type PerformanceWithMemory = Performance & {
   memory?: {
@@ -68,12 +92,7 @@ export class PerformanceProfiler {
     this.slowThresholdMs = options.slowThresholdMs || 50;
     this.verbose = options.verbose || false;
 
-    this.metrics = {
-      imageLoads: { count: 0, totalTime: 0 },
-      draws: { count: 0, totalTime: 0 },
-      previews: { count: 0, totalTime: 0 },
-      domUpdates: { count: 0, totalTime: 0 },
-    };
+    this.metrics = emptyMetrics();
 
     this.fpsFrames = 0;
     this.fpsStartTime = null;
@@ -227,6 +246,40 @@ export class PerformanceProfiler {
     return null;
   }
 
+  /**
+   * Same data as {@link report}, without console I/O. Used by the headless
+   * app profiler (`scripts/profile/app-profile.ts`) and by `copy(JSON.stringify(profiler.snapshot()))`.
+   */
+  snapshot(): ProfilerSnapshot {
+    if (!this.enabled) {
+      return {
+        enabled: false,
+        fps: 0,
+        metrics: emptyMetrics(),
+        memory: null,
+        measures: [],
+      };
+    }
+
+    const measures = performance
+      .getEntriesByType("measure")
+      .map((m) => ({ name: m.name, durationMs: m.duration }))
+      .sort((a, b) => b.durationMs - a.durationMs);
+
+    return {
+      enabled: true,
+      fps: this.currentFps,
+      metrics: {
+        imageLoads: { ...this.metrics.imageLoads },
+        draws: { ...this.metrics.draws },
+        previews: { ...this.metrics.previews },
+        domUpdates: { ...this.metrics.domUpdates },
+      },
+      memory: this.getMemoryUsage(),
+      measures,
+    };
+  }
+
   /** Print comprehensive performance report. */
   report(): void {
     if (!this.enabled) {
@@ -234,10 +287,12 @@ export class PerformanceProfiler {
       return;
     }
 
+    const snap = this.snapshot();
+
     debugGroup("📊 Performance Report");
 
     debugGroup("⏱️ Timing Summary");
-    for (const [category, data] of Object.entries(this.metrics)) {
+    for (const [category, data] of Object.entries(snap.metrics)) {
       if (data.count > 0) {
         const avg = (data.totalTime / data.count).toFixed(2);
         debugLog(
@@ -247,28 +302,21 @@ export class PerformanceProfiler {
     }
     debugGroupEnd();
 
-    debugLog(`\n🎬 Current FPS: ${this.currentFps}`);
+    debugLog(`\n🎬 Current FPS: ${snap.fps}`);
 
-    const memory = this.getMemoryUsage();
-    if (memory) {
+    if (snap.memory) {
       debugGroup("💾 Memory Usage");
-      debugTable(memory);
+      debugTable(snap.memory);
       debugGroupEnd();
     }
 
-    const allMeasures = performance.getEntriesByType("measure");
-    if (allMeasures.length > 0) {
-      debugGroup(`📏 All Measurements (${allMeasures.length} total)`);
-
-      const sorted = allMeasures
-        .map((m) => ({ name: m.name, duration: m.duration }))
-        .sort((a, b) => b.duration - a.duration)
-        .slice(0, 20);
+    if (snap.measures.length > 0) {
+      debugGroup(`📏 All Measurements (${snap.measures.length} total)`);
 
       debugTable(
-        sorted.map((m) => ({
+        snap.measures.slice(0, 20).map((m) => ({
           Operation: m.name,
-          "Duration (ms)": m.duration.toFixed(2),
+          "Duration (ms)": m.durationMs.toFixed(2),
         })),
       );
       debugGroupEnd();
@@ -287,12 +335,7 @@ export class PerformanceProfiler {
     try {
       performance.clearMarks();
       performance.clearMeasures();
-      this.metrics = {
-        imageLoads: { count: 0, totalTime: 0 },
-        draws: { count: 0, totalTime: 0 },
-        previews: { count: 0, totalTime: 0 },
-        domUpdates: { count: 0, totalTime: 0 },
-      };
+      this.metrics = emptyMetrics();
       debugLog("🧹 Performance data cleared");
     } catch (e) {
       debugWarn("Failed to clear performance data:", e);
