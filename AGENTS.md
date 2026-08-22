@@ -9,6 +9,7 @@ A Vite + Mithril app that composites [LPC](https://lpc.opengameart.org)
 character layers and exports a spritesheet ZIP plus attribution. Users
 pick body type, items, and palettes; the shareable selection is the URL
 hash. The canvas stacks PNGs (WebGL palette recolor, CPU fallback).
+Runtime wiring: [ARCHITECTURE.md](ARCHITECTURE.md).
 
 Source of truth: `sheet_definitions/`, `palette_definitions/`, and
 `spritesheets/`. Vite emits five `dist/*-metadata.js` modules. The app
@@ -42,8 +43,11 @@ module or a global; extend `CatalogReader`. Do not hand-edit generated
 
 ## Where to look
 
-- Layout, setup, commands: [Repository layout](CONTRIBUTING.md#repository-layout), [Requirements](CONTRIBUTING.md#requirements)
-- Generated metadata, Vite cache: [File Generation](CONTRIBUTING.md#file-generation)
+- Bootstrap, render path, module roles: [ARCHITECTURE.md](ARCHITECTURE.md)
+- Layout and setup: [Repository layout](CONTRIBUTING.md#repository-layout), [Requirements](CONTRIBUTING.md#requirements)
+- Every npm script: [Commands](CONTRIBUTING.md#commands)
+- What must be green on a PR: [CI checks](CONTRIBUTING.md#ci-checks)
+- Generated metadata, stale `dist/`: [File Generation](CONTRIBUTING.md#file-generation)
 - URL hash / aliases: [URL hash](CONTRIBUTING.md#url-hash), [Renaming an Asset](CONTRIBUTING.md#renaming-an-asset)
 - z-positions: [z-positions](CONTRIBUTING.md#z-positions)
 - Palette items: [Adding Palette Support](PALETTE_RECOLOR_GUIDE.md#adding-palette-support-to-items)

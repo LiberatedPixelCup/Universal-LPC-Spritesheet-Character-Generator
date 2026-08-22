@@ -158,6 +158,8 @@ It is highly recommended to simply drop the aliases on the sheet definition that
 
 App CSS lives under **`styles/`**. PurgeCSS entry SCSS lives under **`sources/styles/`**. **`index.html`** is the Vite shell (layout, stylesheets, `sources/main.ts`). Change it only when you mean to adjust the page structure or global assets.
 
+How these pieces fit together at runtime — bootstrap order, the selection-to-canvas flow, the render path, and per-module roles — is in [ARCHITECTURE.md](ARCHITECTURE.md).
+
 #### Requirements
 
 Install these on your machine before you run builds or tests. Versions match what CI uses (see `.github/workflows/`).
@@ -181,16 +183,7 @@ npm ci
 # (not npm install — that drops other-platform optional dependencies)
 ```
 
-| Task | Command |
-| --- | --- |
-| Local app (not `file://` on `index.html`) | `npm run dev` |
-| Lint / auto-fix (includes Prettier) | `npm run lint` / `npm run lint:fix` |
-| Type-check | `npm run type-check` |
-| Full uninstrumented suite | `npm test` |
-| Browser coverage (`sources/`) | `npm run test:browser:coverage` |
-| Node coverage (`scripts/`) | `npm run test:node:coverage` |
-| Refresh committed `CREDITS.csv` + `z_positions.csv` | `npm run validate-site-sources` |
-| Restore lockfile after merge/rebase (keeps optional deps) | `npm run lockfile:fix` |
+Every npm script is listed under [Commands](#commands).
 
 **JavaScript / TypeScript module format (Node)**  
 New code must be TypeScript (`.ts`), including tests, scripts, and Vite plugins. Do not add new `.js` files. Editing an existing `.js` file is a chance to convert it, or at least not grow it. The root **`package.json`** sets **`"type": "module"`**, so first-party **`.js`** and **`.ts`** files are **ESM**—use **`import`** and **`export`**, not **`require`** or **`module.exports`**, for new Node scripts and tooling under **`scripts/`**, **`vite/`**, **`tests/node/`**, and similar paths. Relative imports use **explicit extensions** (`.js` or `.ts`, matching the file on disk). TypeScript must stay [erasable](https://www.typescriptlang.org/tsconfig/#erasableSyntaxOnly): no enums, namespaces, or parameter properties, so `node path/to/file.ts` works. One exception: the Testem configuration is **[`testem.cjs`](testem.cjs)** (CommonJS). [Testem](https://github.com/testem/testem) discovers **`testem.cjs`** automatically (same as **`testem.js`**, after **`testem.json` / `testem.yml`**, if those exist). Use **`--file testem.cjs`** only to force a path when you have multiple config files or need a non-default name. Unused bindings that must exist use a **`_`** prefix (ESLint). **`console.*`** except **`console.error`** are lint errors; use **`console.error`**, or **`debugLog`** / **`debugWarn`** from [`sources/utils/debug.ts`](sources/utils/debug.ts) (gated by localhost / `?debug=`).
@@ -243,6 +236,85 @@ npx playwright install --with-deps chromium firefox webkit
 
 For visual tests only, **`npx playwright install chromium`** is enough. The Argos / visual workflow installs browsers as needed; elsewhere run **`npx playwright install chromium`** (or the full set) and add any system libraries Playwright’s installer or error output asks for if a browser fails to launch.
 
+#### Commands
+
+Every script in [`package.json`](package.json). Run them from the repository root.
+
+**Everyday**
+
+| Command | What it does | When |
+| --- | --- | --- |
+| `npm run dev` | Vite dev server on **5173**; runs the metadata plugin first | Working on the app. Do not open `index.html` over `file://` |
+| `npm run serve:open` | Same as `dev`, opens a browser | Convenience |
+| `npm run build` | Production build to `dist/`, including the `spritesheets/` copy | Before `preview`, or to test a production build |
+| `npm run preview` | Serves the built `dist/` on **4173** | Checking a production build locally |
+| `npm run lint` / `npm run lint:fix` | ESLint over `**/*.{js,cjs,ts}`, Prettier included via `eslint-plugin-prettier` | After any code edit. `lint` is a CI gate |
+| `npm run type-check` | `tsc --noEmit` over `sources`, `scripts`, `vite`, `tests` | After any code edit. A CI gate |
+| `npm run format` / `npm run format:check` | Prettier over the whole tree, Markdown included | Not gated in CI; ESLint already covers code |
+
+**Tests**
+
+| Command | What it does | When |
+| --- | --- | --- |
+| `npm test` | Node specs, then the Testem browser suite in Chrome and Firefox. Uninstrumented | Last resort; prefer one spec plus one coverage run |
+| `npm run test:node` | Every Node spec under `tests/node/`. Ignores extra CLI args | Broad Node check. For one file use `node --test <file>` |
+| `npm run test:server` | Testem in watch mode with a browser picker | Iterating on browser specs; supports `?grep=` |
+| `npm run test:browser:coverage` | Full browser suite with Istanbul; writes `coverage/browser/` | After a gated `sources/` edit |
+| `npm run test:node:coverage` | Every Node spec under `c8`; writes `coverage/node/` | After a gated `scripts/` edit |
+| `npm run test:visual` | Playwright visual suite; starts its own server | After a layout or CSS change |
+| `npm run test:visual:headed` | Same, with a visible browser | Debugging a visual failure |
+
+**Definitions and generated files**
+
+| Command | What it does | When |
+| --- | --- | --- |
+| `npm run validate-site-sources` | Regenerates `CREDITS.csv` and `z_positions.csv` in parallel | After any `sheet_definitions/` or `palette_definitions/` edit. A CI gate |
+| `npm run z-positions` | Writes `z_positions.csv` from the JSON | Inspecting z-positions without the credits pass |
+| `npm run z-positions:update` | Writes edited `z_positions.csv` **back** to the JSON | After bulk-editing z-positions in the CSV |
+| `npm run fixture:issue382` | Rebuilds the issue-382 regression fixtures under `tests/fixtures/` | Rarely. Review the diff; do not regenerate blindly |
+
+**Performance and diagnostics**
+
+| Command | What it does | When |
+| --- | --- | --- |
+| `npm run profile:zip:quick` | Headless ZIP profile with a fake JSZip | Drawing, slicing, or PNG encode changed |
+| `npm run profile:zip` | Headless ZIP profile with real JSZip. Slower | `generateAsync` or `zip-helpers` changed |
+| `npm run profile:zip:baseline` / `:baseline:quick` | Same runs, written to `tmp/baseline-*.json` | Take a baseline **before** your change |
+| `npm run diff:zip-profile` | Diffs two profile JSON files; positive Δ is slower | Comparing baseline against your change |
+| `npm run compute-style-dump` | Dumps computed CSS for one URL for text diffing | Comparing CSS between two branches or worktrees |
+| `npm run compute-style-dump:mobile` | Same at the mobile viewport | Responsive debugging |
+| `npm run compute-style-diff-all` | Dumps and diffs both URLs across all Argos viewports and page states | Wide CSS refactors, e.g. a Bulma upgrade |
+| `npm run compute-style-diff-all:preview-ports` | Same against ports 4176 and 4177 | Two `npm run preview` instances |
+
+Both `profile:zip` variants and the computed-style scripts need `dist/` to exist
+(`npm run dev` or `npm run build` once) and Chromium installed
+(`npx playwright install`). Details: [PERFORMANCE_PROFILING.md](PERFORMANCE_PROFILING.md).
+
+**Maintenance**
+
+| Command | What it does | When |
+| --- | --- | --- |
+| `npm run lockfile:fix` | Restores `package-lock.json` keeping other-platform optional deps | After a lockfile merge or rebase conflict. Never `npm install` |
+| `npm run prebuild` | Clears `dist/` except `spritesheets/`; runs automatically before `build` | Not called directly |
+
+#### CI checks
+
+Five workflows in [`.github/workflows/`](.github/workflows/) plus two Codecov
+statuses run on pull requests to `master`. All use Node 24.
+
+| Check | Workflow | Runs | Fails when |
+| --- | --- | --- | --- |
+| **Lint** | `lint.yml` | `npm run lint`, then `npm run type-check` | An ESLint error or any type error, including in `tests/` |
+| **Test browsers** | `ci.yml` | `npm run test:node:coverage`, then `npm run test:browser:coverage` under Xvfb | A Node or browser spec fails |
+| **Validate site sources** | `validate-site-sources.yml` | `npm run validate-site-sources`, then asserts a clean tree | `CREDITS.csv` or `z_positions.csv` would change, meaning you did not commit the regenerated file |
+| **Visual regression (Argos)** | `visual.yml` | `npm run test:visual` | A Playwright failure. Screenshot review happens in Argos, not the check |
+| **Deploy** | `deploy.yml` | `npm run build` to GitHub Pages | Only on `master`, not a PR gate |
+| **`codecov/patch`** | Codecov | Compares uploaded `lcov` | Any new or edited gated production line is uncovered |
+| **`codecov/changes`** | Codecov | Compares uploaded `lcov` | Previously covered lines lose hits |
+
+The two Codecov statuses are described in [Unit-test coverage](#unit-test-coverage). Nothing gates
+Markdown formatting, so `npm run format:check` is optional for a docs-only change.
+
 #### File Generation
 
 **Generated metadata modules (`dist/`, gitignored)** — The Vite metadata plugin (see [`vite/vite-plugin-item-metadata.ts`](vite/vite-plugin-item-metadata.ts)) runs **`generateSources`** on dev/build and writes **five** ES modules under **`dist/`** from the sheet JSON under **`sheet_definitions/`** and **`palette_definitions/`**. It hashes both trees; if the hash matches a gitignored [`.cache/`](.cache/) copy from the last run and **`dist/index-metadata.js` already exists**, it **skips** all generation. Otherwise it also regenerates **[CREDITS.csv](CREDITS.csv)** and **[scripts/zPositioning/z_positions.csv](scripts/zPositioning/z_positions.csv)** in line with `npm run validate-site-sources`. Set **`VITE_REGENERATE_SOURCES=1`** to always run the full pipeline. Do not edit the generated `dist` files by hand.
@@ -255,7 +327,30 @@ For visual tests only, **`npx playwright install chromium`** is enough. The Argo
 | **`credits-metadata.js`** | `itemCredits` — map `itemId → credits[]`                                                                |
 | **`layers-metadata.js`**  | `itemLayers` — map `itemId → layer objects`                                                             |
 
-How the app loads these modules: [Catalog](#catalog).
+How the app loads these modules: [Catalog](#catalog). Note that source code
+imports these as **`../<name>-metadata.js`**, not as a `dist/` path; a
+`resolve.alias` in [`vite/wiring.ts`](vite/wiring.ts) rewrites the specifier.
+See [ARCHITECTURE.md](ARCHITECTURE.md#generated-metadata-and-the-dist-alias).
+
+**When generation is skipped (stale metadata)** — The plugin fingerprints
+`sheet_definitions/` and `palette_definitions/` and stores the result under
+[`.cache/`](.cache/) (gitignored). On the next run, if the fingerprint matches
+**and** `dist/index-metadata.js` exists, it skips generation entirely. That is
+what makes `npm run dev` fast, but it also means `dist/` can lag behind reality
+if the fingerprint inputs did not change or the cache is stale from an
+interrupted run.
+
+Symptoms: a seeded catalog resolves nothing, `not-found` errors for items you
+just added, or a spec that passes for someone else. Force the full pipeline:
+
+```bash
+VITE_REGENERATE_SOURCES=1 npm run dev
+```
+
+Deleting `.cache/` has the same effect. If `dist/` is missing altogether,
+anything that reads generated metadata fails — including
+`seedCatalogWithGeneratedContext` in browser specs and the headless profiling
+scripts — so run `npm run dev` or `npm run build` once after a fresh clone.
 
 **Dev vs production JSON in generated files ([PR #432](https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator/pull/432))** — Payloads are embedded with `JSON.stringify(..., null, indent)`: **pretty-printed** when Vite runs in development (**`npm run dev`**) and **compact** when you run a production build (**`npm run build`**). The same rule applies to **all five** metadata modules, not only `item-metadata.js`. Inspect any of the files under **`dist/`** after a dev run to read structured JSON; CI and release builds use the compact form.
 
