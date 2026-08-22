@@ -1,16 +1,25 @@
 /**
  * Reset window and internal scroll regions so full-page captures align across viewports.
- *
- * @param {import('@playwright/test').Page} page
  */
-export async function scrollVisualCaptureToTop(page) {
+import type { Page } from "@playwright/test";
+
+declare global {
+  interface Window {
+    __LPC_waitCatalogAllReady?: () => Promise<void>;
+    __LPC_arePaletteModalMetadataChunksReady?: () => boolean;
+  }
+}
+
+export async function scrollVisualCaptureToTop(page: Page): Promise<void> {
   await page.evaluate(() => {
     window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
     document.querySelectorAll(".scrollable-container").forEach((el) => {
-      el.scrollTop = 0;
-      el.scrollLeft = 0;
+      if (el instanceof HTMLElement) {
+        el.scrollTop = 0;
+        el.scrollLeft = 0;
+      }
     });
   });
 }
@@ -18,21 +27,17 @@ export async function scrollVisualCaptureToTop(page) {
 /**
  * Shared homepage navigation + readiness wait for visual tests and tooling scripts.
  *
- * @param {import('@playwright/test').Page} page
- * @param {string} [baseUrl] Defaults to PLAYWRIGHT_TEST_BASE_URL or http://127.0.0.1:4173
- */
-/**
  * Await catalog readiness when the build exposes
  * `globalThis.__LPC_waitCatalogAllReady` (see `sources/state/catalog.ts`).
  * Otherwise, if `__LPC_arePaletteModalMetadataChunksReady` exists, wait until it is true
  * (so palette / skintone modals are not opened while the UI still says “Loading layer data…”).
  * Legacy dists without those hooks: only then fall back to “#mithril-filters” un-spinner.
  */
-export async function waitForCatalogAllReady(page) {
+export async function waitForCatalogAllReady(page: Page): Promise<void> {
   /* Playwright: options are the 3rd arg; the 2nd is passed to the page function. */
   await page.waitForFunction(
     () => {
-      if (typeof globalThis.__LPC_waitCatalogAllReady === "function") {
+      if (typeof window.__LPC_waitCatalogAllReady === "function") {
         return true;
       }
       const el = document.getElementById("mithril-filters");
@@ -40,10 +45,9 @@ export async function waitForCatalogAllReady(page) {
         return false;
       }
       if (
-        typeof globalThis.__LPC_arePaletteModalMetadataChunksReady ===
-        "function"
+        typeof window.__LPC_arePaletteModalMetadataChunksReady === "function"
       ) {
-        return globalThis.__LPC_arePaletteModalMetadataChunksReady();
+        return window.__LPC_arePaletteModalMetadataChunksReady();
       }
       return true;
     },
@@ -52,17 +56,17 @@ export async function waitForCatalogAllReady(page) {
   );
   if (
     await page.evaluate(
-      () => typeof globalThis.__LPC_waitCatalogAllReady === "function",
+      () => typeof window.__LPC_waitCatalogAllReady === "function",
     )
   ) {
-    await page.evaluate(() => globalThis.__LPC_waitCatalogAllReady());
+    await page.evaluate(() => window.__LPC_waitCatalogAllReady?.());
   }
 }
 
 export async function gotoHomepageReady(
-  page,
+  page: Page,
   baseUrl = process.env.PLAYWRIGHT_TEST_BASE_URL ?? "http://127.0.0.1:4173",
-) {
+): Promise<void> {
   const normalized = `${baseUrl.replace(/\/$/, "")}/`;
   await page.goto(normalized, { waitUntil: "load" });
   try {
@@ -106,9 +110,8 @@ export async function gotoHomepageReady(
  * Predicate for `page.waitForFunction` (executes in the browser).
  * True when the palette modal exists, has at least one variant canvas, and each canvas’s
  * top-left sample has some non-transparent pixels (async draws have finished).
- * @returns {boolean}
  */
-function paletteModalPreviewCanvasesHaveOpaquePixels() {
+function paletteModalPreviewCanvasesHaveOpaquePixels(): boolean {
   const modal = document.querySelector(".palette-modal");
   if (!modal) {
     return false;
@@ -117,13 +120,16 @@ function paletteModalPreviewCanvasesHaveOpaquePixels() {
   if (canvases.length === 0) {
     return false;
   }
-  for (const c of canvases) {
-    const ctx = c.getContext("2d", { willReadFrequently: true });
-    if (!ctx || c.width < 1 || c.height < 1) {
+  for (const node of canvases) {
+    if (!(node instanceof HTMLCanvasElement)) {
       return false;
     }
-    const w = Math.min(32, c.width);
-    const h = Math.min(32, c.height);
+    const ctx = node.getContext("2d", { willReadFrequently: true });
+    if (!ctx || node.width < 1 || node.height < 1) {
+      return false;
+    }
+    const w = Math.min(32, node.width);
+    const h = Math.min(32, node.height);
     const d = ctx.getImageData(0, 0, w, h).data;
     let hasOpaque = false;
     for (let i = 3; i < d.length; i += 4) {
@@ -143,15 +149,17 @@ function paletteModalPreviewCanvasesHaveOpaquePixels() {
  * Expands Head → Heads → Human Heads → Human Male, then opens the Skintone palette modal.
  * (The top-level "Head" row must be expanded before "Heads" is visible.)
  *
- * @param {import('@playwright/test').Page} page
- * @param {{ forComputedStyleDump?: boolean }} [opts] Use `forComputedStyleDump: true` for
- * `dump-computed-styles` only: keep Argos/strict waits for `data-previews-ready` and canvas
- * pixels, but do not require them for style text (stale dist / GPU can leave them unset forever).
+ * Use `forComputedStyleDump: true` for `dump-computed-styles` only: keep Argos/strict
+ * waits for `data-previews-ready` and canvas pixels, but do not require them for style
+ * text (stale dist / GPU can leave them unset forever).
  */
-export async function openHumanMaleSkintonePalette(page, opts = {}) {
+export async function openHumanMaleSkintonePalette(
+  page: Page,
+  opts: { forComputedStyleDump?: boolean } = {},
+): Promise<void> {
   const { forComputedStyleDump = false } = opts;
   const tree = page.locator("#chooser-column");
-  const clickTreeLabel = async (exact) => {
+  const clickTreeLabel = async (exact: string) => {
     const row = tree.locator("div.tree-label").filter({
       has: page.getByText(exact, { exact: true }),
     });
@@ -210,10 +218,8 @@ export async function openHumanMaleSkintonePalette(page, opts = {}) {
 
 /**
  * Closes the skintone / palette modal if it is open (overlay click).
- *
- * @param {import('@playwright/test').Page} page
  */
-export async function closeSkintonePaletteModal(page) {
+export async function closeSkintonePaletteModal(page: Page): Promise<void> {
   const overlay = page.locator(".palette-modal-overlay");
   await overlay.click({ position: { x: 2, y: 2 } });
   await page.locator(".palette-modal").waitFor({ state: "hidden" });
@@ -222,10 +228,10 @@ export async function closeSkintonePaletteModal(page) {
 /**
  * Expands License Filters, Animation Filters, and Advanced Tools, then sets the
  * asset search query to "arm" (tree filters client-side; waits for a visible match).
- *
- * @param {import('@playwright/test').Page} page
  */
-export async function openLicenseAnimationAdvancedAndSearchArm(page) {
+export async function openLicenseAnimationAdvancedAndSearchArm(
+  page: Page,
+): Promise<void> {
   const licenseCol = page.locator("div.filters-column").first();
   const licenseTreeLabel = licenseCol.locator("div.tree-label").first();
   licenseTreeLabel.evaluate((el) => (el.style.scrollMarginTop = "-12px"));

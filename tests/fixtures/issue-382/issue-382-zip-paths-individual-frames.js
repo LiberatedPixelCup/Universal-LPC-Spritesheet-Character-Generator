@@ -2,13 +2,13 @@
  * exportIndividualFrames — sorted zip paths
  *
  * Regenerate (writes this file and sibling issue-382 fixtures):
- *   node scripts/fixture-builder.js tests/fixtures/issue-382/issue-382-selections.json
+ *   node scripts/fixture-builder.ts tests/fixtures/issue-382/issue-382-selections.json
  *
  * Snapshot: encodes current export behavior — review diffs; do not regenerate blindly
- * after a suspected bug without verifying output (see scripts/fixture-builder.js).
+ * after a suspected bug without verifying output (see scripts/fixture-builder.ts).
  *
- * @see scripts/fixture-builder.js
- * @see scripts/issue382-golden-playwright.js
+ * @see scripts/fixture-builder.ts
+ * @see scripts/issue382-golden-playwright.ts
  * @see issue382-golden-runner.html
  */
 

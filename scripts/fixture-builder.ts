@@ -10,7 +10,7 @@
  * 2. **Selections** — Writes `tests/fixtures/issue-382-selections.js` (`export default`
  *    the parsed JSON) for the browser golden runner and tests.
  * 3. **Golden zip paths** — Unless `--no-golden` is passed, starts a static server and
- *    runs `scripts/issue382-golden-playwright.js` (Playwright + Chromium) against
+ *    runs `scripts/issue382-golden-playwright.ts` (Playwright + Chromium) against
  *    `issue382-golden-runner.html` at the repo root (same URL base as `tests_run.html`
  *    so `spritesheets/...` paths resolve). The runner mirrors `tests/state/zip-issue-382_spec.js`
  *    and records sorted zip entry paths for all
@@ -32,15 +32,15 @@
  * - **CDN scripts:** `issue382-golden-runner.html` loads Mithril, JSZip, and related
  *   libraries from public CDNs. Golden generation needs those URLs to load (or a warmed
  *   browser cache); offline or locked-down environments may fail until assets resolve.
- * - **Port:** `scripts/issue382-golden-playwright.js` serves the repo on port **9876** by
+ * - **Port:** `scripts/issue382-golden-playwright.ts` serves the repo on port **9876** by
  *   default. If that port is in use, set **`ISSUE382_GOLDEN_PORT`** to another free port
  *   before running this script (same variable is read when `fixture-builder` invokes Playwright).
  *
  * Usage (from repo root)
  * ----------------------
  *   npm run fixture:issue382 -- path/to/selections.json
- *   node scripts/fixture-builder.js path/to/selections.json
- *   node scripts/fixture-builder.js path/to/selections.json --no-golden
+ *   node scripts/fixture-builder.ts path/to/selections.json
+ *   node scripts/fixture-builder.ts path/to/selections.json --no-golden
  *
  * Outputs
  * -------
@@ -64,7 +64,7 @@
  * - Pair snapshot tests with **property** or **unit** tests (e.g. invariants on folder
  *   structure) where you want failures that are harder to “fix” by updating blobs.
  *
- * @see scripts/issue382-golden-playwright.js
+ * @see scripts/issue382-golden-playwright.ts
  * @see issue382-golden-runner.html
  * @see issue382-golden-runner.js
  * @see tests/state/zip-issue-382_spec.js
@@ -81,11 +81,16 @@ const ITEM_METADATA_PATH = path.join(REPO_ROOT, "dist", "item-metadata.js");
 const INDEX_METADATA_PATH = path.join(REPO_ROOT, "dist", "index-metadata.js");
 const TESTS_FIXTURES = path.join(REPO_ROOT, "tests", "fixtures", "issue-382");
 
+type FixtureItemRecord = Record<string, unknown> & {
+  layers: unknown;
+  credits: unknown;
+};
+
 /**
  * Writes all five `dist/*-metadata.js` files via the same generator pipeline as Vite
  * (no CREDITS.csv write from this path when the custom writer skips it).
  */
-async function ensureDistItemMetadata() {
+async function ensureDistItemMetadata(): Promise<void> {
   const genUrl = pathToFileURL(
     path.join(REPO_ROOT, "scripts", "generate_sources.ts"),
   ).href;
@@ -105,7 +110,10 @@ async function ensureDistItemMetadata() {
 /**
  * Collect every string value for keys named "itemId" (selections, layers, nested).
  */
-function collectItemIdsFromExport(obj, out = new Set()) {
+function collectItemIdsFromExport(
+  obj: unknown,
+  out: Set<string> = new Set(),
+): Set<string> {
   if (obj === null || typeof obj !== "object") {
     return out;
   }
@@ -125,7 +133,9 @@ function collectItemIdsFromExport(obj, out = new Set()) {
   return out;
 }
 
-async function loadFullItemMetadata() {
+async function loadFullItemMetadata(): Promise<
+  Record<string, FixtureItemRecord>
+> {
   const { expandInternedItemLite, isInternedItemLite } = await import(
     pathToFileURL(
       path.join(REPO_ROOT, "sources", "state", "resolve-hash-param.ts"),
@@ -141,19 +151,24 @@ async function loadFullItemMetadata() {
     import(pathToFileURL(layersPath).href),
     import(pathToFileURL(creditsPath).href),
   ]);
-  const lite = itemMod.itemMetadata;
+  const lite = itemMod.itemMetadata as Record<string, unknown> | undefined;
   const { variantArrays, recolorVariantArrays } =
-    indexMod.metadataIndexes ?? {};
-  const itemLayers = layersMod.itemLayers;
-  const itemCredits = creditsMod.itemCredits;
+    (indexMod.metadataIndexes as
+      | {
+          variantArrays?: unknown;
+          recolorVariantArrays?: unknown;
+        }
+      | undefined) ?? {};
+  const itemLayers = layersMod.itemLayers as Record<string, unknown>;
+  const itemCredits = creditsMod.itemCredits as Record<string, unknown>;
   if (!lite || typeof lite !== "object") {
     throw new Error(
       "dist/item-metadata.js did not export itemMetadata as an object",
     );
   }
-  const meta = {};
+  const meta: Record<string, FixtureItemRecord> = {};
   for (const id of Object.keys(lite)) {
-    let entry = lite[id];
+    let entry: unknown = lite[id];
     if (
       isInternedItemLite(entry) &&
       Array.isArray(variantArrays) &&
@@ -166,7 +181,9 @@ async function loadFullItemMetadata() {
       );
     }
     meta[id] = {
-      ...entry,
+      ...(typeof entry === "object" && entry !== null
+        ? (entry as Record<string, unknown>)
+        : {}),
       layers: itemLayers[id] ?? {},
       credits: itemCredits[id] ?? [],
     };
@@ -175,12 +192,12 @@ async function loadFullItemMetadata() {
 }
 
 function writeItemdataModule(
-  filePath,
-  filtered,
-  sourceSelectionsLabel,
-  itemCount,
-) {
-  const header = `// Auto-generated by scripts/fixture-builder.js — do not edit by hand.
+  filePath: string,
+  filtered: Record<string, FixtureItemRecord>,
+  sourceSelectionsLabel: string,
+  itemCount: number,
+): void {
+  const header = `// Auto-generated by scripts/fixture-builder.ts — do not edit by hand.
 // Source selections: ${sourceSelectionsLabel}
 // Item count: ${itemCount}
 `;
@@ -188,8 +205,12 @@ function writeItemdataModule(
   fs.writeFileSync(filePath, header + body, "utf8");
 }
 
-function writeSelectionsModule(filePath, data, sourceSelectionsLabel) {
-  const header = `// Auto-generated by scripts/fixture-builder.js — do not edit by hand.
+function writeSelectionsModule(
+  filePath: string,
+  data: unknown,
+  sourceSelectionsLabel: string,
+): void {
+  const header = `// Auto-generated by scripts/fixture-builder.ts — do not edit by hand.
 // Source: ${sourceSelectionsLabel}
 // Used by tests/state/zip-issue-382_spec.js and issue382-golden-runner.js (repo root)
 `;
@@ -197,7 +218,7 @@ function writeSelectionsModule(filePath, data, sourceSelectionsLabel) {
   fs.writeFileSync(filePath, header + body, "utf8");
 }
 
-async function main() {
+async function main(): Promise<void> {
   const argv = process.argv.slice(2);
   const skipGolden = argv.includes("--no-golden");
   const posArgs = argv.filter((a) => a !== "--no-golden");
@@ -205,7 +226,7 @@ async function main() {
   const inputArg = posArgs[0];
   if (!inputArg) {
     console.error(
-      "Usage: node scripts/fixture-builder.js <path-to-selections.json> [--no-golden]",
+      "Usage: node scripts/fixture-builder.ts <path-to-selections.json> [--no-golden]",
     );
     process.exit(1);
   }
@@ -220,11 +241,14 @@ async function main() {
   const outPath = path.join(path.dirname(inputPath), `${stem}-output.js`);
 
   const raw = fs.readFileSync(inputPath, "utf8");
-  let data;
+  let data: unknown;
   try {
     data = JSON.parse(raw);
   } catch (e) {
-    console.error(`Invalid JSON in ${inputPath}:`, e.message);
+    console.error(
+      `Invalid JSON in ${inputPath}:`,
+      e instanceof Error ? e.message : e,
+    );
     process.exit(1);
   }
 
@@ -241,8 +265,8 @@ async function main() {
   debugLog(`Loading ${ITEM_METADATA_PATH} …`);
   const full = await loadFullItemMetadata();
 
-  const filtered = {};
-  const missing = [];
+  const filtered: Record<string, FixtureItemRecord> = {};
+  const missing: string[] = [];
   for (const id of sortedWanted) {
     if (Object.prototype.hasOwnProperty.call(full, id)) {
       filtered[id] = full[id];
@@ -283,7 +307,7 @@ async function main() {
   if (!skipGolden) {
     const rel = path.relative(REPO_ROOT, inputPath).replace(/\\/g, "/");
     const modUrl = pathToFileURL(
-      path.join(__dirname, "issue382-golden-playwright.js"),
+      path.join(__dirname, "issue382-golden-playwright.ts"),
     ).href;
     const { generateIssue382GoldenZipFixtures } = await import(modUrl);
     debugLog("Generating golden zip path fixtures (Playwright)…");
@@ -297,7 +321,7 @@ async function main() {
   }
 }
 
-main().catch((err) => {
+main().catch((err: unknown) => {
   console.error(err);
   process.exit(1);
 });

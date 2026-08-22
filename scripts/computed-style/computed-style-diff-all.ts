@@ -17,9 +17,9 @@
  * Verbose stderr: `LPC_DEBUG_COMPUTED_STYLE=1` (phase timings + browser console in dump shared).
  *
  * Usage:
- *   node scripts/computed-style-diff-all.js
- *   node scripts/computed-style-diff-all.js --out-dir /tmp/cmp --url-a http://127.0.0.1:4174 --url-b http://127.0.0.1:4175
- *   node scripts/computed-style-diff-all.js --no-fail-on-diff   # exit 0 even when diffs exist
+ *   node scripts/computed-style/computed-style-diff-all.ts
+ *   node scripts/computed-style/computed-style-diff-all.ts --out-dir /tmp/cmp --url-a http://127.0.0.1:4174 --url-b http://127.0.0.1:4175
+ *   node scripts/computed-style/computed-style-diff-all.ts --no-fail-on-diff   # exit 0 even when diffs exist
  */
 
 import fs from "node:fs";
@@ -30,7 +30,7 @@ import {
   COMPUTED_STYLE_DUMP_PAGES,
   dumpComputedStylesForUrl,
   lpcComputedStyleLog,
-} from "./computed-style-dump-shared.js";
+} from "./computed-style-dump-shared.ts";
 
 const PRESET_ORDER = [
   "mobile",
@@ -41,10 +41,18 @@ const PRESET_ORDER = [
   "tabletLong",
   "mediumDesktopLong",
   "hugeDesktopLong",
-];
+] as const;
 
-function parseArgs(argv) {
-  const out = {
+type DiffCliArgs = {
+  urlA: string;
+  urlB: string;
+  outDir: string;
+  failOnDiff: boolean;
+  help: boolean;
+};
+
+function parseArgs(argv: string[]): DiffCliArgs {
+  const out: DiffCliArgs = {
     urlA: process.env.COMPUTED_STYLE_URL_A ?? "http://127.0.0.1:4174",
     urlB: process.env.COMPUTED_STYLE_URL_B ?? "http://127.0.0.1:4175",
     outDir: path.join(process.cwd(), "computed-style-diff-output"),
@@ -68,9 +76,9 @@ function parseArgs(argv) {
   return out;
 }
 
-function printHelp() {
+function printHelp(): void {
   console.error(`Usage:
-  node scripts/computed-style-diff-all.js [options]
+  node scripts/computed-style/computed-style-diff-all.ts [options]
 
 Options:
   --url-a <url>     First site (default: $COMPUTED_STYLE_URL_A or http://127.0.0.1:4174)
@@ -87,7 +95,7 @@ Writes per preset and page (${COMPUTED_STYLE_DUMP_PAGES.join(", ")}):
 `);
 }
 
-function unifiedDiff(pathA, pathB) {
+function unifiedDiff(pathA: string, pathB: string): string {
   try {
     return execFileSync("diff", ["-u", pathA, pathB], {
       encoding: "utf8",
@@ -97,7 +105,9 @@ function unifiedDiff(pathA, pathB) {
     if (
       e &&
       typeof e === "object" &&
+      "status" in e &&
       e.status === 1 &&
+      "stdout" in e &&
       typeof e.stdout === "string"
     ) {
       return e.stdout;
@@ -106,7 +116,7 @@ function unifiedDiff(pathA, pathB) {
   }
 }
 
-async function main() {
+async function main(): Promise<void> {
   const args = parseArgs(process.argv);
   if (args.help) {
     printHelp();
@@ -115,7 +125,7 @@ async function main() {
 
   fs.mkdirSync(args.outDir, { recursive: true });
 
-  const combined = [];
+  const combined: string[] = [];
   let anyDiff = false;
 
   for (const preset of PRESET_ORDER) {
@@ -193,7 +203,7 @@ async function main() {
   }
 }
 
-main().catch((err) => {
+main().catch((err: unknown) => {
   console.error(err);
   process.exit(1);
 });

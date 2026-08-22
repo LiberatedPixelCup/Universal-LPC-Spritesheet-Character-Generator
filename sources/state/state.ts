@@ -60,7 +60,7 @@ export type State = {
   zipByItem: ZipMode;
   zipByAnimationAndItem: ZipMode;
   zipIndividualFrames: ZipMode;
-  /** Duplicate of `isRenderingCharacter` consumed by `renderer.js`. */
+  /** Duplicate of `isRenderingCharacter` consumed by `renderer.ts`. */
   renderCharacter: { isRendering: boolean };
 };
 

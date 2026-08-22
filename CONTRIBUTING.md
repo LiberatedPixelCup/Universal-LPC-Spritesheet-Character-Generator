@@ -319,7 +319,7 @@ Full-page screenshots live under [`tests/visual/`](tests/visual/) and use [`play
 
    By default tests use **headless** Chromium. Use **`npm run test:visual:headed`** to watch the browser.
 
-   [`tests/visual/home-helpers.js`](tests/visual/home-helpers.js) waits for the preview canvas, for `.loading` to disappear on the preview panels, and for paint frames before Argos screenshots (with a best-effort **`networkidle`** wait). Without **`ARGOS_TOKEN`**, navigation and layout still run but Argos capture/upload is skipped. Override the origin with **`PLAYWRIGHT_TEST_BASE_URL`** (see [`tests/visual/home.spec.js`](tests/visual/home.spec.js)).
+   [`tests/visual/home-helpers.ts`](tests/visual/home-helpers.ts) waits for the preview canvas, for `.loading` to disappear on the preview panels, and for paint frames before Argos screenshots (with a best-effort **`networkidle`** wait). Without **`ARGOS_TOKEN`**, navigation and layout still run but Argos capture/upload is skipped. Override the origin with **`PLAYWRIGHT_TEST_BASE_URL`** (see [`tests/visual/home.spec.js`](tests/visual/home.spec.js)).
 
 **Unit and component specs (Mocha + Chai)**
 

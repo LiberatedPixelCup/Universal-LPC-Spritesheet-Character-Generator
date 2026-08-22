@@ -2,7 +2,7 @@
 /* eslint-disable no-console -- CLI helper prints hints to stdout */
 /**
  * Prints class-name hints for vite/purgecss-critical-safelist.ts (manual merge).
- * Usage: node scripts/generate-purgecss-safelist-hints.js
+ * Usage: node scripts/generate-purgecss-safelist-hints.ts
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -10,17 +10,18 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
-/** @param {string} dir */
-function walkJsFiles(dir, out = []) {
+function walkSourceFiles(dir: string, out: string[] = []): string[] {
   for (const name of fs.readdirSync(dir, { withFileTypes: true })) {
     const p = path.join(dir, name.name);
-    if (name.isDirectory()) walkJsFiles(p, out);
-    else if (name.isFile() && p.endsWith(".js")) out.push(p);
+    if (name.isDirectory()) walkSourceFiles(p, out);
+    else if (name.isFile() && (p.endsWith(".ts") || p.endsWith(".js"))) {
+      out.push(p);
+    }
   }
   return out;
 }
 
-const classes = new Set();
+const classes = new Set<string>();
 
 const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
 for (const m of html.matchAll(/\bclass="([^"]+)"/g)) {
@@ -29,7 +30,7 @@ for (const m of html.matchAll(/\bclass="([^"]+)"/g)) {
   }
 }
 
-for (const file of walkJsFiles(path.join(root, "sources"))) {
+for (const file of walkSourceFiles(path.join(root, "sources"))) {
   const text = fs.readFileSync(file, "utf8");
   for (const m of text.matchAll(/m\(\s*["']([a-z0-9._-]+)["']/gi)) {
     const sel = m[1];

@@ -122,7 +122,7 @@ export function getJsonDeps(): JsonDeps {
  * Export current state as JSON string.
  *
  * `layers` is opaque here — passed through verbatim into the exported document.
- * The production caller (`Download.js` → `renderer.js`'s `layers`) and the
+ * The production caller (`Download.ts` → `renderer.ts`'s `layers`) and the
  * tests pass differently-shaped objects, so the only contract this function
  * needs is "an array of JSON-serializable values."
  */
