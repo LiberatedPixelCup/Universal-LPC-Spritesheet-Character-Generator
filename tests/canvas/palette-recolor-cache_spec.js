@@ -10,14 +10,21 @@
  * - Concurrent callers for the same key share one in-flight Promise.
  */
 import { expect } from "chai";
+import sinon from "sinon";
 import { describe, it, beforeEach } from "mocha-globals";
 import {
   getImageToDraw,
   clearRecolorCache,
   getRecolorCacheStats,
+  setPaletteRecolorMode,
 } from "../../sources/canvas/palette-recolor.ts";
+import { isWebGLAvailable } from "../../sources/canvas/webgl-palette-recolor.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
+import {
+  drawSnapshotToDest,
+  assertOpaqueRemap,
+} from "./palette-recolor-test-helpers.js";
 
 const RECOLOR_ITEM_ID = "body";
 
@@ -232,5 +239,55 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
 
     expect(a).to.equal(b);
     expect(b).to.equal(c);
+  });
+
+  it("closes ImageBitmaps evicted from the LRU cache", async function () {
+    if (!isWebGLAvailable() || typeof ImageBitmap === "undefined") {
+      this.skip();
+    }
+    setPaletteRecolorMode("webgl");
+    const closeSpy = sinon.spy(ImageBitmap.prototype, "close");
+    try {
+      const img = solidColorCanvas(255, 0, 0);
+      await getImageToDraw(
+        catalog,
+        img,
+        RECOLOR_ITEM_ID,
+        { body: "olive" },
+        "spritesheets/evict/0.png",
+      );
+      for (let i = 1; i <= 250; i++) {
+        await getImageToDraw(
+          catalog,
+          img,
+          RECOLOR_ITEM_ID,
+          { body: "olive" },
+          `spritesheets/evict/${i}.png`,
+        );
+      }
+      expect(closeSpy.called).to.equal(true);
+    } finally {
+      closeSpy.restore();
+      clearRecolorCache();
+    }
+  });
+
+  it("does not close an in-flight ImageBitmap on clearRecolorCache", async function () {
+    if (!isWebGLAvailable() || typeof ImageBitmap === "undefined") {
+      this.skip();
+    }
+    setPaletteRecolorMode("webgl");
+    const img = solidColorCanvas(255, 0, 0);
+    const pending = getImageToDraw(
+      catalog,
+      img,
+      RECOLOR_ITEM_ID,
+      { body: "olive" },
+      "spritesheets/inflight/walk.png",
+    );
+    clearRecolorCache();
+    const result = await pending;
+    expect(result).to.be.instanceOf(ImageBitmap);
+    assertOpaqueRemap(drawSnapshotToDest(result), { r: 0, g: 255, b: 0 });
   });
 });

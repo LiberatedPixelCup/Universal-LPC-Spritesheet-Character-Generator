@@ -6,6 +6,7 @@ import {
   recolorImageWebGL,
   isWebGLAvailable,
   type PaletteMapping,
+  type RecolorOutput,
 } from "./webgl-palette-recolor.ts";
 import { debugLog, debugWarn, getRecolorParam } from "../utils/debug.ts";
 import { get2DContext } from "./canvas-utils.ts";
@@ -207,16 +208,16 @@ export function getPaletteRecolorConfig(): RecolorConfig {
  * Recolor an image using one or more palette mappings in a single pass.
  * Automatically uses WebGL if available, falls back to CPU.
  */
-export function recolorImage(
+export async function recolorImage(
   sourceImage: HTMLImageElement | HTMLCanvasElement,
   paletteMappings: PaletteMapping[],
-): HTMLCanvasElement {
+): Promise<RecolorOutput> {
   const shouldUseWebGL = config.useWebGL && !config.forceCPU;
 
   if (shouldUseWebGL) {
     try {
       recolorStats.webgl++;
-      return recolorImageWebGL(sourceImage, paletteMappings);
+      return await recolorImageWebGL(sourceImage, paletteMappings);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.warn("⚠️ WebGL recoloring failed, falling back to CPU:", error);
@@ -252,19 +253,35 @@ export async function loadPalette(
 }
 
 /**
- * Bounded LRU cache of recolored canvases, keyed by (spritePath, recolors).
+ * Bounded LRU cache of recolored snapshots, keyed by (spritePath, recolors).
  * A JS Map preserves insertion order; `get → delete → set` moves an entry to
  * the end (most-recently-used), and eviction always drops the head.
  *
- * We store the in-flight Promise rather than the resolved canvas so that
+ * We store the in-flight Promise rather than the resolved snapshot so that
  * concurrent callers for the same key (e.g. main render + a tree preview)
  * share one recolor operation instead of starting duplicates.
  */
 const RECOLOR_CACHE_CAP = 250;
-const recolorCache = new Map<
-  string,
-  Promise<HTMLImageElement | HTMLCanvasElement>
+type RecolorCacheValue = HTMLImageElement | RecolorOutput;
+const recolorCache = new Map<string, Promise<RecolorCacheValue>>();
+const resolvedRecolorValues = new WeakMap<
+  Promise<RecolorCacheValue>,
+  RecolorCacheValue
 >();
+
+function closeIfImageBitmap(value: RecolorCacheValue): void {
+  if (typeof ImageBitmap !== "undefined" && value instanceof ImageBitmap) {
+    value.close();
+  }
+}
+
+function closeSettledCacheEntry(entry: Promise<RecolorCacheValue>): void {
+  const value = resolvedRecolorValues.get(entry);
+  if (value) {
+    closeIfImageBitmap(value);
+    resolvedRecolorValues.delete(entry);
+  }
+}
 
 export type RecolorCacheStats = {
   skipped: number;
@@ -300,7 +317,7 @@ export async function getImageToDraw(
   itemId: string,
   recolors: Record<string, string> | null | undefined,
   spritePath: string | null = null,
-): Promise<HTMLImageElement | HTMLCanvasElement> {
+): Promise<RecolorCacheValue> {
   if (!recolors) {
     recolorCacheStats.skipped++;
     return img; // No recolor specified, return original image
@@ -328,6 +345,9 @@ export async function getImageToDraw(
 
   recolorCacheStats.misses++;
   const promise = recolorWithPalette(catalog, img, recolors, paletteConfig);
+  void promise.then((value) => {
+    resolvedRecolorValues.set(promise, value);
+  });
 
   if (cacheKey) {
     recolorCache.set(cacheKey, promise);
@@ -340,7 +360,12 @@ export async function getImageToDraw(
     while (recolorCache.size > RECOLOR_CACHE_CAP) {
       const oldestKey = recolorCache.keys().next().value;
       if (oldestKey === undefined) break;
+      const oldest = recolorCache.get(oldestKey);
       recolorCache.delete(oldestKey);
+      // Skip the in-flight miss we just inserted; only close settled bitmaps.
+      if (oldest && oldest !== promise) {
+        closeSettledCacheEntry(oldest);
+      }
     }
   }
 
@@ -357,6 +382,9 @@ export async function getImageToDraw(
 
 /** Clear the recolor cache. Mainly for tests; callable at runtime too. */
 export function clearRecolorCache(): void {
+  for (const entry of recolorCache.values()) {
+    closeSettledCacheEntry(entry);
+  }
   recolorCache.clear();
   resetRecolorCacheStats();
 }
@@ -370,7 +398,7 @@ export async function recolorWithPalette(
   sourceImage: HTMLImageElement | HTMLCanvasElement,
   targetColors: Record<string, string>,
   sourcePalettes: Record<string, PaletteForItem>,
-): Promise<HTMLCanvasElement | HTMLImageElement> {
+): Promise<RecolorCacheValue> {
   // Gather all (source, target) palette mappings so they can be applied
   // in a single shader pass.
   const mappings: PaletteMapping[] = [];

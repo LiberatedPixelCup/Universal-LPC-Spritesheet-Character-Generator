@@ -51,11 +51,11 @@ describe("canvas/palette-recolor.ts single-pass merge (CPU path)", () => {
     if (previousMode === "webgl") setPaletteRecolorMode("webgl");
   });
 
-  it("applies a single-mapping array (backward-compat shape)", () => {
+  it("applies a single-mapping array (backward-compat shape)", async () => {
     const img = solidCanvas(255, 0, 0);
     const mappings = [{ source: ["#FF0000"], target: ["#0000FF"] }];
 
-    const out = recolorImage(img, mappings);
+    const out = await recolorImage(img, mappings);
 
     const pixel = readPixel(out, 0, 0);
     expect(pixel.r).to.equal(0);
@@ -64,7 +64,7 @@ describe("canvas/palette-recolor.ts single-pass merge (CPU path)", () => {
     expect(pixel.a).to.equal(255);
   });
 
-  it("applies two palette mappings in one pass (no chaining)", () => {
+  it("applies two palette mappings in one pass (no chaining)", async () => {
     // Source image: red on the left, green on the right.
     const img = splitCanvas({ r: 255, g: 0, b: 0 }, { r: 0, g: 255, b: 0 });
     const mappings = [
@@ -72,7 +72,7 @@ describe("canvas/palette-recolor.ts single-pass merge (CPU path)", () => {
       { source: ["#00FF00"], target: ["#FFFF00"] }, // green → yellow
     ];
 
-    const out = recolorImage(img, mappings);
+    const out = await recolorImage(img, mappings);
 
     const left = readPixel(out, 0, 0);
     const right = readPixel(out, 3, 0);
@@ -80,11 +80,11 @@ describe("canvas/palette-recolor.ts single-pass merge (CPU path)", () => {
     expect(right).to.deep.include({ r: 255, g: 255, b: 0 });
   });
 
-  it("leaves non-matching pixels unchanged", () => {
+  it("leaves non-matching pixels unchanged", async () => {
     const img = solidCanvas(128, 64, 32);
     const mappings = [{ source: ["#FF0000"], target: ["#0000FF"] }];
 
-    const out = recolorImage(img, mappings);
+    const out = await recolorImage(img, mappings);
 
     const pixel = readPixel(out, 0, 0);
     expect(pixel.r).to.equal(128);
@@ -92,23 +92,23 @@ describe("canvas/palette-recolor.ts single-pass merge (CPU path)", () => {
     expect(pixel.b).to.equal(32);
   });
 
-  it("preserves alpha on transparent pixels (no recolor on alpha=0)", () => {
+  it("preserves alpha on transparent pixels (no recolor on alpha=0)", async () => {
     const c = document.createElement("canvas");
     c.width = 4;
     c.height = 4;
     // Leave all pixels transparent.
     const mappings = [{ source: ["#000000"], target: ["#FF00FF"] }];
 
-    const out = recolorImage(c, mappings);
+    const out = await recolorImage(c, mappings);
 
     const pixel = readPixel(out, 0, 0);
     expect(pixel.a).to.equal(0);
   });
 
-  it("handles an empty mappings array by leaving pixels unchanged", () => {
+  it("handles an empty mappings array by leaving pixels unchanged", async () => {
     const img = solidCanvas(200, 100, 50);
 
-    const out = recolorImage(img, []);
+    const out = await recolorImage(img, []);
 
     const pixel = readPixel(out, 0, 0);
     expect(pixel.r).to.equal(200);
@@ -116,7 +116,7 @@ describe("canvas/palette-recolor.ts single-pass merge (CPU path)", () => {
     expect(pixel.b).to.equal(50);
   });
 
-  it("preserves the first match in palette order when entries collide", () => {
+  it("preserves the first match in palette order when entries collide", async () => {
     // If two mappings in the concatenated list match the same source pixel,
     // the shader/CPU returns on the FIRST match. This guards against someone
     // inadvertently changing the early-return semantics.
@@ -126,7 +126,7 @@ describe("canvas/palette-recolor.ts single-pass merge (CPU path)", () => {
       { source: ["#FF0000"], target: ["#00FF00"] }, // second (ignored): red → green
     ];
 
-    const out = recolorImage(img, mappings);
+    const out = await recolorImage(img, mappings);
 
     const pixel = readPixel(out, 0, 0);
     expect(pixel).to.deep.include({ r: 0, g: 0, b: 255 });

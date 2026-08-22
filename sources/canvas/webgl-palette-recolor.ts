@@ -2,9 +2,12 @@
 // Uses GPU shaders for fast color replacement
 
 import { get2DContext } from "./canvas-utils.ts";
-import { debugLog } from "../utils/debug.ts";
+import { debugLog, debugWarn } from "../utils/debug.ts";
 
 export type PaletteMapping = { source: string[]; target: string[] };
+
+/** WebGL snapshot; CPU recolor still returns a canvas. */
+export type RecolorOutput = HTMLCanvasElement | ImageBitmap;
 
 // Shared WebGL resources for reuse
 let sharedGL: WebGLRenderingContext | null = null;
@@ -293,16 +296,49 @@ function initSharedWebGL(): void {
   debugLog("WebGL palette recoloring initialized (shared context)");
 }
 
+function copySharedCanvasTo2D(canvas: HTMLCanvasElement): HTMLCanvasElement {
+  const resultCanvas = document.createElement("canvas");
+  resultCanvas.width = canvas.width;
+  resultCanvas.height = canvas.height;
+  const ctx = get2DContext(resultCanvas);
+  ctx.drawImage(canvas, 0, 0);
+  return resultCanvas;
+}
+
 /**
- * Recolor an image using WebGL palette mapping (with shared context).
- * Accepts a list of (source, target) palette mappings and applies them all in
- * a single shader pass by packing them into one palette texture. The combined
- * total must fit within the 32-slot palette texture.
+ * Snapshot the current WebGL canvas. `createImageBitmap` copies without
+ * detaching the drawing buffer, so a later same-size recolor can reuse the
+ * canvas. Fall back to a 2D canvas copy when the API is missing or throws.
  */
-export function recolorImageWebGL(
+async function snapshotSharedCanvas(
+  canvas: HTMLCanvasElement,
+): Promise<RecolorOutput> {
+  if (typeof createImageBitmap === "function") {
+    try {
+      // Start the copy before yielding so a later draw cannot clobber it.
+      return await createImageBitmap(canvas);
+    } catch (error) {
+      debugWarn("createImageBitmap failed, copying to a 2D canvas", error);
+    }
+  }
+  return copySharedCanvasTo2D(canvas);
+}
+
+let recolorTail: Promise<unknown> = Promise.resolve();
+
+function enqueueRecolor<T>(fn: () => Promise<T>): Promise<T> {
+  const next = recolorTail.then(fn, fn);
+  recolorTail = next.then(
+    () => undefined,
+    () => undefined,
+  );
+  return next;
+}
+
+function recolorImageWebGLNow(
   sourceImage: HTMLImageElement | HTMLCanvasElement,
   paletteMappings: PaletteMapping[],
-): HTMLCanvasElement {
+): Promise<RecolorOutput> {
   // Initialize shared resources if needed
   if (!sharedGL) {
     initSharedWebGL();
@@ -339,18 +375,29 @@ export function recolorImageWebGL(
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 
-    // Copy result to a new 2D canvas (so we can return it and free WebGL canvas)
-    const resultCanvas = document.createElement("canvas");
-    resultCanvas.width = canvas.width;
-    resultCanvas.height = canvas.height;
-    const ctx = get2DContext(resultCanvas);
-    ctx.drawImage(canvas, 0, 0);
-
-    return resultCanvas;
+    return snapshotSharedCanvas(canvas);
   } catch (error) {
     console.error("WebGL recoloring failed:", error);
     throw error;
   }
+}
+
+/**
+ * Recolor an image using WebGL palette mapping (with shared context).
+ * Accepts a list of (source, target) palette mappings and applies them all in
+ * a single shader pass by packing them into one palette texture. The combined
+ * total must fit within the 32-slot palette texture.
+ *
+ * Recolors are queued so two callers cannot draw into the shared canvas while
+ * the previous snapshot is still copying.
+ */
+export function recolorImageWebGL(
+  sourceImage: HTMLImageElement | HTMLCanvasElement,
+  paletteMappings: PaletteMapping[],
+): Promise<RecolorOutput> {
+  return enqueueRecolor(() =>
+    recolorImageWebGLNow(sourceImage, paletteMappings),
+  );
 }
 
 /** Check if WebGL is available. */

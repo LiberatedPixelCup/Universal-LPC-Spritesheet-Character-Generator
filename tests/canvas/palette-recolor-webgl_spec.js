@@ -103,10 +103,10 @@ describe("canvas/palette-recolor WebGL mode / stats / fallback", () => {
     resetSharedWebGLForTests();
   });
 
-  it("increments cpu stats when forced to CPU mode", () => {
+  it("increments cpu stats when forced to CPU mode", async () => {
     setPaletteRecolorMode("cpu");
     const img = solidCanvas(255, 0, 0);
-    const out = recolorImage(img, [
+    const out = await recolorImage(img, [
       { source: ["#FF0000"], target: ["#0000FF"] },
     ]);
 
@@ -115,9 +115,9 @@ describe("canvas/palette-recolor WebGL mode / stats / fallback", () => {
     expect(readPixel(out, 0, 0)).to.deep.include({ r: 0, g: 0, b: 255 });
   });
 
-  it("resetRecolorStats clears counters", () => {
+  it("resetRecolorStats clears counters", async () => {
     setPaletteRecolorMode("cpu");
-    recolorImage(solidCanvas(255, 0, 0), [
+    await recolorImage(solidCanvas(255, 0, 0), [
       { source: ["#FF0000"], target: ["#0000FF"] },
     ]);
     expect(getRecolorStats().cpu).to.be.at.least(1);
@@ -130,7 +130,7 @@ describe("canvas/palette-recolor WebGL mode / stats / fallback", () => {
     });
   });
 
-  it("falls back to CPU with correct pixels when WebGL init fails", function () {
+  it("falls back to CPU with correct pixels when WebGL init fails", async function () {
     // Need WebGL mode selected at the config level. If the browser never had
     // WebGL, `setPaletteRecolorMode("webgl")` keeps forceCPU true — still
     // exercise fallback by temporarily enabling useWebGL via mode after stub.
@@ -158,7 +158,7 @@ describe("canvas/palette-recolor WebGL mode / stats / fallback", () => {
 
     const warnSpy = sandbox.spy(console, "warn");
     const img = solidCanvas(255, 0, 0);
-    const out = recolorImage(img, [
+    const out = await recolorImage(img, [
       { source: ["#FF0000"], target: ["#0000FF"] },
     ]);
 
@@ -202,9 +202,9 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
     setPaletteRecolorMode("webgl");
   });
 
-  it("recolorImageWebGL returns same-size canvas and remaps solid red→blue", () => {
+  it("recolorImageWebGL returns same-size canvas and remaps solid red→blue", async () => {
     const img = solidCanvas(255, 0, 0);
-    const out = recolorImageWebGL(img, [
+    const out = await recolorImageWebGL(img, [
       { source: ["#FF0000"], target: ["#0000FF"] },
     ]);
     expect(out.width).to.equal(img.width);
@@ -217,19 +217,19 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
     });
   });
 
-  it("increments webgl stats on successful recolorImage in WebGL mode", () => {
+  it("increments webgl stats on successful recolorImage in WebGL mode", async () => {
     const img = solidCanvas(255, 0, 0);
-    recolorImage(img, [{ source: ["#FF0000"], target: ["#0000FF"] }]);
+    await recolorImage(img, [{ source: ["#FF0000"], target: ["#0000FF"] }]);
     expect(getRecolorStats().webgl).to.be.at.least(1);
     expect(getRecolorStats().fallback).to.equal(0);
   });
 
-  function assertWebGlCpuParity(img, mappings) {
+  async function assertWebGlCpuParity(img, mappings) {
     setPaletteRecolorMode("cpu");
-    const cpuOut = recolorImage(img, mappings);
+    const cpuOut = await recolorImage(img, mappings);
     setPaletteRecolorMode("webgl");
     resetSharedWebGLForTests();
-    const glOut = recolorImage(img, mappings);
+    const glOut = await recolorImage(img, mappings);
 
     expect(glOut.width).to.equal(cpuOut.width);
     expect(glOut.height).to.equal(cpuOut.height);
@@ -245,14 +245,14 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
     expect(Array.from(glData)).to.deep.equal(Array.from(cpuData));
   }
 
-  it("matches CPU for a single mapping", () => {
-    assertWebGlCpuParity(solidCanvas(255, 0, 0), [
+  it("matches CPU for a single mapping", async () => {
+    await assertWebGlCpuParity(solidCanvas(255, 0, 0), [
       { source: ["#FF0000"], target: ["#0000FF"] },
     ]);
   });
 
-  it("matches CPU for dual-region two mappings", () => {
-    assertWebGlCpuParity(
+  it("matches CPU for dual-region two mappings", async () => {
+    await assertWebGlCpuParity(
       splitCanvas({ r: 255, g: 0, b: 0 }, { r: 0, g: 255, b: 0 }),
       [
         { source: ["#FF0000"], target: ["#0000FF"] },
@@ -261,68 +261,79 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
     );
   });
 
-  it("matches CPU when first match wins on colliding sources", () => {
-    assertWebGlCpuParity(solidCanvas(255, 0, 0), [
+  it("matches CPU when first match wins on colliding sources", async () => {
+    await assertWebGlCpuParity(solidCanvas(255, 0, 0), [
       { source: ["#FF0000"], target: ["#0000FF"] },
       { source: ["#FF0000"], target: ["#00FF00"] },
     ]);
   });
 
-  it("matches CPU for non-matching pixels", () => {
-    assertWebGlCpuParity(solidCanvas(128, 64, 32), [
+  it("matches CPU for non-matching pixels", async () => {
+    await assertWebGlCpuParity(solidCanvas(128, 64, 32), [
       { source: ["#FF0000"], target: ["#0000FF"] },
     ]);
   });
 
-  it("matches CPU for empty mappings", () => {
-    assertWebGlCpuParity(solidCanvas(200, 100, 50), []);
+  it("matches CPU for empty mappings", async () => {
+    await assertWebGlCpuParity(solidCanvas(200, 100, 50), []);
   });
 
-  it("matches CPU for fully transparent source", () => {
+  it("matches CPU for fully transparent source", async () => {
     const c = document.createElement("canvas");
     c.width = 4;
     c.height = 4;
-    assertWebGlCpuParity(c, [{ source: ["#000000"], target: ["#FF00FF"] }]);
+    await assertWebGlCpuParity(c, [
+      { source: ["#000000"], target: ["#FF00FF"] },
+    ]);
   });
 
-  it("reuses image and palette textures across successive recolors", () => {
+  it("reuses image and palette textures across successive recolors", async () => {
     const createSpy = sinon.spy(
       WebGLRenderingContext.prototype,
       "createTexture",
     );
     try {
       const red = solidCanvas(255, 0, 0, SHEET_WIDTH, 64);
-      recolorImageWebGL(red, [{ source: ["#FF0000"], target: ["#0000FF"] }]);
+      await recolorImageWebGL(red, [
+        { source: ["#FF0000"], target: ["#0000FF"] },
+      ]);
       const afterFirst = createSpy.callCount;
       expect(afterFirst).to.be.at.least(2);
-      recolorImageWebGL(red, [{ source: ["#FF0000"], target: ["#00FF00"] }]);
+      await recolorImageWebGL(red, [
+        { source: ["#FF0000"], target: ["#00FF00"] },
+      ]);
       expect(createSpy.callCount).to.equal(afterFirst);
     } finally {
       createSpy.restore();
     }
   });
 
-  it("throws when WebGL cannot allocate a texture", () => {
+  it("throws when WebGL cannot allocate a texture", async () => {
     const stub = sinon
       .stub(WebGLRenderingContext.prototype, "createTexture")
       .returns(null);
     try {
-      expect(() =>
-        recolorImageWebGL(solidCanvas(255, 0, 0), [
+      let thrown = null;
+      try {
+        await recolorImageWebGL(solidCanvas(255, 0, 0), [
           { source: ["#FF0000"], target: ["#0000FF"] },
-        ]),
-      ).to.throw(/Failed to allocate WebGL texture/);
+        ]);
+      } catch (error) {
+        thrown = error;
+      }
+      expect(thrown).to.not.equal(null);
+      expect(thrown.message).to.match(/Failed to allocate WebGL texture/);
     } finally {
       stub.restore();
     }
   });
 
-  it("same-size successive recolors are not blank", () => {
+  it("same-size successive recolors are not blank", async () => {
     const red = solidCanvas(255, 0, 0, SHEET_WIDTH, 64);
-    const first = recolorImageWebGL(red, [
+    const first = await recolorImageWebGL(red, [
       { source: ["#FF0000"], target: ["#0000FF"] },
     ]);
-    const second = recolorImageWebGL(red, [
+    const second = await recolorImageWebGL(red, [
       { source: ["#FF0000"], target: ["#00FF00"] },
     ]);
 
@@ -337,12 +348,14 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
     assertOpaqueRemap(secondDest, { r: 0, g: 255, b: 0 });
   });
 
-  it("held snapshot stays drawable after a later same-size recolor", () => {
+  it("held snapshot stays drawable after a later same-size recolor", async () => {
     const red = solidCanvas(255, 0, 0, SHEET_WIDTH, 64);
-    const first = recolorImageWebGL(red, [
+    const first = await recolorImageWebGL(red, [
       { source: ["#FF0000"], target: ["#0000FF"] },
     ]);
-    recolorImageWebGL(red, [{ source: ["#FF0000"], target: ["#00FF00"] }]);
+    await recolorImageWebGL(red, [
+      { source: ["#FF0000"], target: ["#00FF00"] },
+    ]);
 
     const dest = drawSnapshotToDest(first);
     assertOpaqueRemap(dest, { r: 0, g: 0, b: 255 });
@@ -374,5 +387,51 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
     const bronzeDest = drawSnapshotToDest(bronze);
     assertOpaqueRemap(oliveDest, { r: 0, g: 255, b: 0 });
     assertOpaqueRemap(bronzeDest, { r: 0, g: 0, b: 255 });
+  });
+
+  it("snapshots with createImageBitmap when available", async function () {
+    if (typeof createImageBitmap !== "function") {
+      this.skip();
+    }
+    const out = await recolorImageWebGL(solidCanvas(255, 0, 0), [
+      { source: ["#FF0000"], target: ["#0000FF"] },
+    ]);
+    expect(out).to.be.instanceOf(ImageBitmap);
+    assertOpaqueRemap(drawSnapshotToDest(out), { r: 0, g: 0, b: 255 });
+  });
+
+  it("copies to a 2D canvas when createImageBitmap is missing", async () => {
+    const original = globalThis.createImageBitmap;
+    globalThis.createImageBitmap = undefined;
+    try {
+      resetSharedWebGLForTests();
+      const out = await recolorImageWebGL(solidCanvas(255, 0, 0), [
+        { source: ["#FF0000"], target: ["#0000FF"] },
+      ]);
+      expect(out).to.be.instanceOf(HTMLCanvasElement);
+      assertOpaqueRemap(drawSnapshotToDest(out), { r: 0, g: 0, b: 255 });
+    } finally {
+      globalThis.createImageBitmap = original;
+    }
+  });
+
+  it("copies to a 2D canvas when createImageBitmap throws", async function () {
+    if (typeof createImageBitmap !== "function") {
+      this.skip();
+    }
+    const original = globalThis.createImageBitmap;
+    globalThis.createImageBitmap = () => {
+      throw new Error("createImageBitmap forced failure");
+    };
+    try {
+      resetSharedWebGLForTests();
+      const out = await recolorImageWebGL(solidCanvas(255, 0, 0), [
+        { source: ["#FF0000"], target: ["#0000FF"] },
+      ]);
+      expect(out).to.be.instanceOf(HTMLCanvasElement);
+      assertOpaqueRemap(drawSnapshotToDest(out), { r: 0, g: 0, b: 255 });
+    } finally {
+      globalThis.createImageBitmap = original;
+    }
   });
 });
