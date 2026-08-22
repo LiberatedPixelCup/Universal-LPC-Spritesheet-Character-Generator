@@ -1,5 +1,6 @@
 import {
   AnimationFilters,
+  isAnimationCompatible,
   setAnimationCompatible,
   getAnimations,
   setAnimations,
@@ -52,6 +53,12 @@ describe("AnimationFilters Component", () => {
     }
 
     alertStub.restore();
+  });
+
+  it("checks animation compatibility through the public helper", () => {
+    const catalog = { isLiteReady: () => true };
+    expect(isAnimationCompatible(catalog, state, "item1")).to.equal(true);
+    expect(isAnimationCompatible(catalog, state, "item2")).to.equal(false);
   });
 
   it("should display the correct count of enabled animations", () => {

@@ -13,10 +13,14 @@ import { seedCatalog } from "../../browser-catalog-fixture.js";
 
 /** Minimal `paletteMetadata.materials` + one recolor-only item (mirrors palettes_spec fixtures). */
 const clothPaletteMetadata = {
+  versions: {
+    ulpc: { label: "Universal LPC" },
+  },
   materials: {
     cloth: {
       default: "ulpc",
       base: "base",
+      label: "Cloth",
       palettes: {
         ulpc: {
           red: ["#1d131e", "#400B1F", "#651117", "#82171C"],
@@ -52,6 +56,7 @@ describe("ItemWithRecolors", function () {
   });
 
   afterEach(function () {
+    m.mount(host, null);
     m.render(host, null);
     if (host.parentNode) {
       host.parentNode.removeChild(host);
@@ -107,6 +112,12 @@ describe("ItemWithRecolors", function () {
       showItemTooltips: true,
       ...overrides,
     };
+  }
+
+  function mountItem(meta, overrides = {}) {
+    m.mount(host, {
+      view: () => m(ItemWithRecolors, baseAttrs(meta, overrides)),
+    });
   }
 
   it("renders the item row with a collapsed tree label", function () {
@@ -228,17 +239,21 @@ describe("ItemWithRecolors", function () {
 
   it("opens the palette modal when a swatch row is clicked", function () {
     const meta = seedRecolorShirt();
+    assert.isTrue(catalog.isPaletteReady());
     state.expandedNodes.iwr_shirt = true;
+    mountItem(meta);
 
-    m.render(host, m(ItemWithRecolors, baseAttrs(meta)));
-
-    host.querySelector(".palette-recolor-item").click();
-    // `m.render` does not subscribe `host` to `m.redraw`, so the handler's `m.redraw()` does not
-    // refresh this tree. Re-render to reconcile; Mithril copies component state from the old vnode.
-    m.render(host, m(ItemWithRecolors, baseAttrs(meta)));
+    const swatch = host.querySelector(".palette-recolor-item");
+    assert.notEqual(swatch, null);
+    swatch.click();
+    m.redraw.sync();
 
     assert.notEqual(host.querySelector(".palette-modal"), null);
     assert.notEqual(host.querySelector(".palette-modal-overlay"), null);
+
+    host.querySelector(".palette-modal-overlay").click();
+    m.redraw.sync();
+    assert.strictEqual(host.querySelector(".palette-modal"), null);
   });
 
   it("uses compact canvas sizing when compactDisplay is enabled", function () {

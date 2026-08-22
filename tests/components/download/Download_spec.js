@@ -7,6 +7,7 @@ import { createCatalog } from "../../../sources/state/catalog.ts";
 import { createState } from "../../../sources/state/state.ts";
 let state;
 import { seedCatalog } from "../../browser-catalog-fixture.js";
+import { createFakeJSZip } from "../../helpers/fake-jszip.js";
 
 const ZIP_TITLE = "Wait for layer data to finish loading";
 
@@ -88,6 +89,23 @@ describe("Download", function () {
       assert.strictEqual(btn.disabled, false);
       assert.strictEqual(btn.title, "");
     }
+  });
+
+  it("starts split-by-animation export from the ZIP button", function () {
+    window.JSZip = createFakeJSZip();
+    m.mount(host, {
+      view: () =>
+        m(Download, { catalog: { isLayersReady: () => true }, state }),
+    });
+
+    const button = buttonByText(host, "ZIP: Split by animation");
+    assert.notEqual(button, null);
+    button.click();
+    buttonByText(host, "ZIP: Split by item").click();
+    buttonByText(host, "ZIP: Split by animation and item").click();
+    buttonByText(host, "ZIP: Split by animation and frame").click();
+
+    assert.strictEqual(alertStub.calledWith("JSZip library not loaded"), false);
   });
 
   it("shows a loading spinner for each running zip export", function () {

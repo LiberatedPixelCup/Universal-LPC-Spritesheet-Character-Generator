@@ -70,6 +70,14 @@ export const Download: m.Component<{ catalog: CatalogReader; state: State }> = {
       downloadAsPNG("character-spritesheet.png");
     };
 
+    const exportZipSplitByAnimation = () =>
+      exportSplitAnimations(catalog, state);
+    const exportZipSplitByItem = () => exportSplitItemSheets(catalog, state);
+    const exportZipSplitByAnimationAndItem = () =>
+      exportSplitItemAnimations(catalog, state);
+    const exportZipSplitByAnimationAndFrame = () =>
+      exportIndividualFrames(catalog, state);
+
     return m(
       CollapsibleSection,
       {
@@ -118,7 +126,7 @@ export const Download: m.Component<{ catalog: CatalogReader; state: State }> = {
             {
               disabled: zipDisabled,
               title: zipDisabled ? zipExportTitle : undefined,
-              onclick: () => exportSplitAnimations(catalog, state),
+              onclick: exportZipSplitByAnimation,
             },
             "ZIP: Split by animation",
           ),
@@ -128,7 +136,7 @@ export const Download: m.Component<{ catalog: CatalogReader; state: State }> = {
             {
               disabled: zipDisabled,
               title: zipDisabled ? zipExportTitle : undefined,
-              onclick: () => exportSplitItemSheets(catalog, state),
+              onclick: exportZipSplitByItem,
             },
             "ZIP: Split by item",
           ),
@@ -138,7 +146,7 @@ export const Download: m.Component<{ catalog: CatalogReader; state: State }> = {
             {
               disabled: zipDisabled,
               title: zipDisabled ? zipExportTitle : undefined,
-              onclick: () => exportSplitItemAnimations(catalog, state),
+              onclick: exportZipSplitByAnimationAndItem,
             },
             "ZIP: Split by animation and item",
           ),
@@ -148,7 +156,7 @@ export const Download: m.Component<{ catalog: CatalogReader; state: State }> = {
             {
               disabled: zipDisabled,
               title: zipDisabled ? zipExportTitle : undefined,
-              onclick: () => exportIndividualFrames(catalog, state),
+              onclick: exportZipSplitByAnimationAndFrame,
             },
             "ZIP: Split by animation and frame",
           ),

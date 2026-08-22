@@ -112,6 +112,15 @@ describe("AnimationPreview", function () {
     assert.strictEqual(vnode.state.zoomLevel, 1.75);
   });
 
+  it("repaints the preview canvas when preview zoom changes", function () {
+    m.mount(host, { view: () => m(AnimationPreview, { catalog, state }) });
+
+    state.previewCanvasZoomLevel = 1.25;
+    m.redraw.sync();
+
+    assert.strictEqual(state.previewCanvasZoomLevel, 1.25);
+  });
+
   it("shows a busy overlay while the character is rendering", function () {
     state.isRenderingCharacter = true;
     m.mount(host, { view: () => m(AnimationPreview, { catalog, state }) });

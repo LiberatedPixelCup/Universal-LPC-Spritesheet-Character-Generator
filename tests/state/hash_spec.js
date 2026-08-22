@@ -18,6 +18,7 @@ import {
 } from "../../sources/state/hash.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
 import { createState } from "../../sources/state/state.ts";
+import { initCanvas } from "../../sources/canvas/renderer.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
 
 describe("state/hash.ts", () => {
@@ -517,7 +518,7 @@ describe("state/hash.ts", () => {
 
   describe("initHashChangeListener", () => {
     it("should add a 'hashchange' event listener to the window", () => {
-      initHashChangeListener(catalog);
+      initHashChangeListener(catalog, state);
       expect(window.addEventListener.calledWith("hashchange")).to.be.true;
     });
 
@@ -533,8 +534,19 @@ describe("state/hash.ts", () => {
       expect(getHash()).to.equal("#key=value");
     });
 
+    it("should reload selections when the hash changes externally", async () => {
+      initCanvas();
+      initHashChangeListener(catalog, state);
+      const handler = window.addEventListener.getCall(0).args[1];
+
+      setHash("#external=change");
+      await handler();
+
+      expect(state.selections.body).to.exist;
+    });
+
     it("should not throw an error if no callback is provided", () => {
-      expect(() => initHashChangeListener(catalog)).to.not.throw();
+      expect(() => initHashChangeListener(catalog, state)).to.not.throw();
     });
   });
 });

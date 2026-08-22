@@ -230,8 +230,7 @@ async function runRenderCharacter(
   drawCalls = [];
   addedCustomAnimations = new Set(); // Track which custom animations we've added
 
-  state.renderCharacter.isRendering = true;
-  state.isRenderingCharacter = true;
+  state.renderCharacter.isRendering = state.isRenderingCharacter = true;
   m.redraw();
 
   if (profiler) {
@@ -583,8 +582,7 @@ async function runRenderCharacter(
       }
     }
   } finally {
-    state.renderCharacter.isRendering = false;
-    state.isRenderingCharacter = false;
+    state.renderCharacter.isRendering = state.isRenderingCharacter = false;
     m.redraw();
 
     // Mark end and measure

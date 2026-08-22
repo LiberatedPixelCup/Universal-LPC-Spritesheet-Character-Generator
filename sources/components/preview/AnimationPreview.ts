@@ -4,7 +4,6 @@ import type { State } from "../../state/state.ts";
 import { ANIMATIONS } from "../../state/constants.ts";
 import { CollapsibleSection } from "../CollapsibleSection.ts";
 import {
-  repaintStaticPreviewFrameForTests,
   setPreviewAnimation,
   startPreviewAnimation,
   stopPreviewAnimation,
@@ -79,8 +78,7 @@ const PreviewCanvas: m.Component<PreviewCanvasAttrs, PreviewCanvasState> = {
     });
   },
   onupdate(vnode) {
-    const { state } = vnode.attrs;
-    const { selectedAnimation } = vnode.attrs;
+    const { state, selectedAnimation } = vnode.attrs;
 
     if (vnode.state.lastAnimation !== selectedAnimation) {
       if (window.canvasRenderer) {
@@ -93,7 +91,6 @@ const PreviewCanvas: m.Component<PreviewCanvasAttrs, PreviewCanvasState> = {
     }
 
     vnode.state.zoomLevel = state.previewCanvasZoomLevel || 1;
-    repaintStaticPreviewFrameForTests(state);
   },
   onremove(vnode) {
     vnode.state._pinchUnmounted = true;
