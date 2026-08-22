@@ -4,7 +4,8 @@ description: >-
   Diagnose missing or stale dist/*-metadata.js, the Vite metadata plugin
   cache, and the ../name-metadata.js import alias. Use when dist/ is
   missing, a catalog resolves nothing, a spec fails only locally, or
-  editing the Vite metadata plugin.
+  editing the Vite metadata plugin. Do not hand-edit dist/ or add another
+  metadata module.
 ---
 
 # Generated metadata

@@ -1,10 +1,11 @@
 ---
 name: catalog
 description: >-
-  Thread CatalogReader and State through Mithril attrs, handle
-  Result/LoadError, seed test catalogs, and keep URL hashes stable. Use when
-  adding or editing a component, a browser spec, or sources/state/ code, or
-  when the user mentions catalog, state, hash, or aliases.
+  Thread CatalogReader and State through Mithril attrs, never a hidden
+  global. Handle Result/LoadError, seed test catalogs, and keep URL hashes
+  stable. Use when adding or editing a component, a browser spec, or
+  sources/state/ code, or when the user mentions catalog, state, hash, or
+  aliases.
 ---
 
 # Catalog, state, and URL hash

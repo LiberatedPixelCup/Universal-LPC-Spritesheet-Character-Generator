@@ -544,7 +544,7 @@ More on stale metadata: [File Generation](#file-generation). More on coverage co
 
 #### Doc ownership
 
-When a change makes documentation stale, update the file that owns that topic. [AGENTS.md](AGENTS.md) is the invariant index; do not duplicate walkthroughs there.
+When a change makes documentation stale, update the file that owns that topic. [AGENTS.md](AGENTS.md) lists the prohibitions and routes each change to its check; the skill or section below owns the detail. Do not duplicate walkthroughs or restate a skill there.
 
 | Change | Update |
 | --- | --- |
