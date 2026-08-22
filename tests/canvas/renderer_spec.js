@@ -385,6 +385,83 @@ describe("canvas/renderer.ts", () => {
       expect(bodyCalls.every((d) => d.needsRecolor === true)).to.equal(true);
     });
 
+    it("keeps walk-band content after a palette change", async () => {
+      const paletteMetadata = {
+        versions: {},
+        materials: {
+          body: {
+            default: "ulpc",
+            base: "light",
+            palettes: {
+              ulpc: {
+                light: ["#FF0000"],
+                olive: ["#00FF00"],
+                bronze: ["#0000FF"],
+              },
+            },
+          },
+        },
+      };
+      seedCatalog(
+        catalog,
+        {
+          "body-body": walkItemMeta({
+            name: "Body Color",
+            type_name: "body",
+            recolors: [
+              {
+                label: "Body",
+                type_name: null,
+                material: "body",
+                default: "ulpc",
+                base: "ulpc.light",
+                variants: ["light", "olive", "bronze"],
+              },
+            ],
+          }),
+        },
+        { paletteMetadata },
+      );
+
+      const walk = ANIMATION_CONFIGS.walk;
+      const walkY = walk.row * FRAME_SIZE;
+      const walkH = walk.num * FRAME_SIZE;
+      const walkBandHasContent = () => {
+        const ctx = rendererCanvas.getContext("2d");
+        return hasContentInRegion(ctx, 0, walkY, SHEET_WIDTH, walkH);
+      };
+
+      await renderCharacter(
+        catalog,
+        state,
+        {
+          body: {
+            itemId: "body-body",
+            variant: null,
+            recolor: "olive",
+            name: "Body Color",
+          },
+        },
+        "male",
+      );
+      expect(walkBandHasContent()).to.equal(true);
+
+      await renderCharacter(
+        catalog,
+        state,
+        {
+          body: {
+            itemId: "body-body",
+            variant: null,
+            recolor: "bronze",
+            name: "Body Color",
+          },
+        },
+        "male",
+      );
+      expect(walkBandHasContent()).to.equal(true);
+    });
+
     it("queues custom-upload drawCalls from state.customUploadedImage", async () => {
       seedCatalog(catalog, {});
       state.customUploadedImage = await imageFromFilledCanvas(8, 8, "#00ff00");
