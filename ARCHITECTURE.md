@@ -113,7 +113,9 @@ offscreen canvas. `renderCharacter` awaits the layers chunk and delegates to
 3. Sorts with `drawCalls.sort((a, b) => a.zPos - b.zPos)`, so **lower `zPos`
    draws first and ends up behind**.
 4. Loads every sprite in parallel, then draws in that sorted order, passing each
-   image through `getImageToDraw` for palette recoloring.
+   image through `getImageToDraw` for palette recoloring. WebGL misses return
+   the live canvas for the compositor; LRU snapshots are filled on idle after
+   the render (or flushed before the next `renderCharacter`).
 5. Composites custom-animation regions below the standard sheet, sorted the same
    way.
 
@@ -170,7 +172,7 @@ Verifying it needs a real browser.
 | File | Role |
 | --- | --- |
 | `renderer.ts` | Offscreen compositing; owns `canvas`, `drawCalls`, `renderCharacter`, `renderSingleItem` |
-| `palette-recolor.ts` | Recolor dispatch, WebGL/CPU branch, LRU recolor cache |
+| `palette-recolor.ts` | Recolor dispatch, WebGL/CPU branch, LRU recolor cache (idle-filled after `renderCharacter`) |
 | `webgl-palette-recolor.ts` | The WebGL implementation and `isWebGLAvailable()` |
 | `load-image.ts` | Cached, deduplicated image loading |
 | `draw-frames.ts` | Frame extraction and custom-animation drawing |

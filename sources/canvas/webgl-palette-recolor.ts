@@ -439,8 +439,9 @@ export async function recolorImageWebGLNow(
  * total must fit within the 32-slot palette texture.
  *
  * Returns a stable snapshot (ImageBitmap or 2D canvas). Cacheable
- * `getImageToDraw` misses skip this copy and return the live canvas; the
- * next WebGL recolor snapshots into the LRU first.
+ * `getImageToDraw` misses skip this copy and return the live canvas. Outside
+ * `renderCharacter` the next WebGL recolor snapshots into the LRU first;
+ * during a render, copies wait until idle (or the next render).
  *
  * Recolors are queued so two callers cannot draw into the shared canvas while
  * the previous snapshot is still copying.

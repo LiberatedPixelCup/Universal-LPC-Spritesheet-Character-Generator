@@ -18,6 +18,9 @@ import {
   clearRecolorCache,
   getRecolorCacheStats,
   setPaletteRecolorMode,
+  beginDeferredRecolorSnapshots,
+  endDeferredRecolorSnapshots,
+  flushDeferredRecolorCache,
 } from "../../sources/canvas/palette-recolor.ts";
 import { isWebGLAvailable } from "../../sources/canvas/webgl-palette-recolor.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
@@ -296,6 +299,41 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
     } finally {
       closeSpy.restore();
       clearRecolorCache();
+    }
+  });
+
+  it("still caches CPU results while WebGL snapshots are deferred", async () => {
+    setPaletteRecolorMode("cpu");
+    const img = solidColorCanvas(255, 0, 0);
+    const path = "spritesheets/body/bodies/male/walk.png";
+    beginDeferredRecolorSnapshots();
+    try {
+      const first = await getImageToDraw(
+        catalog,
+        img,
+        RECOLOR_ITEM_ID,
+        { body: "olive" },
+        path,
+      );
+      const second = await getImageToDraw(
+        catalog,
+        img,
+        RECOLOR_ITEM_ID,
+        { body: "olive" },
+        path,
+      );
+      expect(first).to.equal(second);
+      expect(getRecolorCacheStats()).to.deep.equal({
+        skipped: 0,
+        cacheHits: 1,
+        misses: 1,
+      });
+    } finally {
+      endDeferredRecolorSnapshots();
+      await flushDeferredRecolorCache();
+      if (isWebGLAvailable()) {
+        setPaletteRecolorMode("webgl");
+      }
     }
   });
 
