@@ -45,7 +45,9 @@ that rewrites any specifier ending in a metadata basename to `dist/`. So
 write `../index-metadata.js` and get `dist/index-metadata.js`. Copy the
 existing specifier shape; do not "fix" it to a real path, and do not expect the
 file to exist next to the importer. If it fails to resolve, `dist/` was never
-built — run `npm run dev` or `npm run build`.
+built — run `npm run dev` or `npm run build`. Stale `.cache/` or a missing
+`dist/` after a definition change:
+[generated-metadata](../generated-metadata/SKILL.md).
 
 ## Tests
 

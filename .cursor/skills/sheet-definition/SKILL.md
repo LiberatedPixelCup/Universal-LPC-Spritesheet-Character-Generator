@@ -48,4 +48,7 @@ and an issue first. Other keys (`tags`, `replace_in_path`, `match_body_color`,
 Then `npm run validate-site-sources` and commit any dirty `CREDITS.csv` /
 `z_positions.csv`. `CREDITS.csv` is generate-only. `z_positions.csv` may be
 edited as a bulk aid; JSON is the source of truth
-(`npm run z-positions:update` writes the CSV back to JSON).
+(`npm run z-positions:update` writes the CSV back to JSON). The app reads
+generated `dist/*-metadata.js`, not the JSON directly; if a new item is
+invisible after `npm run dev`, see
+[generated-metadata](../generated-metadata/SKILL.md).

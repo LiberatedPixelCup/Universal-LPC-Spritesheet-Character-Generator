@@ -80,4 +80,5 @@ npx playwright test -g "title substring"
 
 Wait for catalog/canvas via [`tests/visual/home-helpers.ts`](../../../tests/visual/home-helpers.ts).
 Do not register visual specs in `tests/tests.js`. They are not
-Codecov-instrumented. Argos upload needs `ARGOS_TOKEN`.
+Codecov-instrumented. Argos upload needs `ARGOS_TOKEN`. When a change
+warrants a visual run: [visual-test](../visual-test/SKILL.md).

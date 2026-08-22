@@ -47,7 +47,9 @@ How to run one file: [run-one-spec](../run-one-spec/SKILL.md).
 Add cases under [`tests/visual/`](../../../tests/visual/). Reuse waits in
 [`home-helpers.ts`](../../../tests/visual/home-helpers.ts). Do not import the
 file from `tests/tests.js`. Visual tests are not Codecov-instrumented; Argos
-needs `ARGOS_TOKEN`. How to run one: [run-one-spec](../run-one-spec/SKILL.md).
+needs `ARGOS_TOKEN`. When a layout or CSS change warrants a run, and how to
+write one: [visual-test](../visual-test/SKILL.md). Isolated run:
+[run-one-spec](../run-one-spec/SKILL.md).
 
 ## Confirm the new lines are hit
 
