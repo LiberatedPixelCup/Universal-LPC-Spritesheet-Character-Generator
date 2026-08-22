@@ -3,6 +3,8 @@ import { describe, it } from "mocha-globals";
 import {
   loadImage,
   loadImagesInParallel,
+  getImageLoadStats,
+  resetImageLoadCache,
 } from "../../sources/canvas/load-image.ts";
 
 describe("canvas/load-image.ts", () => {
@@ -21,11 +23,23 @@ describe("canvas/load-image.ts", () => {
       expect(img1).to.equal(img2); // Cached image should be returned
     });
 
+    it("increments imageLoads on first fetch and imageCacheHits on cache hit", async () => {
+      resetImageLoadCache();
+      const src = "/spritesheets/arms/bracers/thin/hurt.png";
+      await loadImage(src);
+      expect(getImageLoadStats()).to.deep.equal({ cacheHits: 0, loads: 1 });
+      await loadImage(src);
+      expect(getImageLoadStats()).to.deep.equal({ cacheHits: 1, loads: 1 });
+    });
+
     it("should share one in-flight request when the same src is requested concurrently", async () => {
       // Not thin/hurt.png — earlier tests already cache that URL.
+      resetImageLoadCache();
       const src = "/spritesheets/arms/bracers/thin/walk.png";
       const [a, b] = await Promise.all([loadImage(src), loadImage(src)]);
       expect(a).to.equal(b);
+      expect(getImageLoadStats().loads).to.equal(1);
+      expect(getImageLoadStats().cacheHits).to.equal(0);
     });
 
     it("should reject if the image fails to load", async () => {

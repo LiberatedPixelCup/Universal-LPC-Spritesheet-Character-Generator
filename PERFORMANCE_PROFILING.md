@@ -27,6 +27,7 @@ The profiler tracks these expensive operations:
 - **Operation:** `renderCharacter()` in `sources/canvas/renderer.ts`
 - **Measures:** Total rendering time including image loading and canvas operations
 - **Format:** `renderCharacter`
+- **Phases:** `profiler.snapshot().renderCharacter.calls[]` — one report per completed `runRenderCharacter`. Each report has `totalMs`, `phasesMs`, `unaccountedMs`, and `counters`. Phase keys: `mithrilRedrawStart`, `buildDrawCalls`, `sizeCanvas`, `loadImages`, `recolor`, `draw`, `customLoad`, `customRecolor`, `customDraw`, `mithrilRedrawEnd`. Counters include `drawCalls`, `selections`, `customAnims`, canvas size, and image/recolor cache hits vs loads/misses. `diff:app-profile` prints a `── renderCharacter phases ──` section (per call index).
 
 ### Headless app profiler
 
@@ -52,7 +53,7 @@ npm run profile:app
 npm run diff:app-profile -- tmp/baseline-app-profile.json tmp/app-profile.json
 ```
 
-A positive Δ means the after run was slower. Look at `renderCharacter`, `image-load:*`, and `hash-loadSelectionsFromHash`. A few milliseconds is noise; `renderCharacter` can swing tens of ms between two runs on the same machine.
+A positive Δ means the after run was slower. Look at `renderCharacter` phases (`snapshot().renderCharacter.calls`), `image-load:*`, and `hash-loadSelectionsFromHash`. A few milliseconds is noise; `renderCharacter` can swing tens of ms between two runs on the same machine.
 
 JSON lands under `tmp/` (gitignored) and is also printed on stdout. Pass `--out <path>` to write somewhere else.
 
@@ -167,6 +168,9 @@ window.profiler.report();
 
 // Same data as report(), as JSON (headless scripts call this)
 window.profiler.snapshot();
+
+// Per-step renderCharacter timings (phasesMs, counters)
+window.profiler.snapshot().renderCharacter.calls;
 
 // Inspect measures by name (Performance API — not a method on profiler)
 performance.getEntriesByName("renderCharacter", "measure");

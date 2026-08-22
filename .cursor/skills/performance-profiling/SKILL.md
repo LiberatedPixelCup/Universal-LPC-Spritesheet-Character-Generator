@@ -76,10 +76,12 @@ Confirm `activeMode` and `recolorStats` in each section: CPU must show
 **App profile** (`profiler.snapshot()`, same buckets as `profiler.report()`):
 
 - `renderCharacter` — compositing only (not dynamic-import wait)
+- `snapshot().renderCharacter.calls[]` — per-step `phasesMs` / `counters` for each completed render (`mithrilRedrawStart`, `buildDrawCalls`, `sizeCanvas`, `loadImages`, `recolor`, `draw`, `customLoad`, `customRecolor`, `customDraw`, `mithrilRedrawEnd`)
 - `image-load:<path>` — one span per network load
 - `hash-loadSelectionsFromHash` — URL hash hydration
 - Category totals: `imageLoads`, `draws`, `previews`, `domUpdates`
 - Slow-operation threshold is 50ms (`slowThresholdMs`)
+- `diff:app-profile` prints `── renderCharacter phases ──` (call 0 vs call 0, call 1 vs call 1)
 
 **ZIP profile** (`phasesMs` / metadata):
 
