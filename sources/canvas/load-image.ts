@@ -21,6 +21,16 @@ export function resetImageLoadStats(): void {
   imageLoadStats = { cacheHits: 0, loads: 0 };
 }
 
+type LoadImageFn = (src: string) => Promise<HTMLImageElement>;
+
+/** When set, {@link loadImage} (and {@link loadImagesInParallel}) use this instead of `new Image()`. */
+let loadImageForTests: LoadImageFn | null = null;
+
+/** Browser specs inject synthetic sprites. `null` restores the real loader. */
+export function setLoadImageForTests(fn: LoadImageFn | null): void {
+  loadImageForTests = fn;
+}
+
 /** Profiler is attached to `window.profiler` by `main.ts`; absent in tests / Node. */
 type WindowWithProfiler = Window & {
   profiler?: {
@@ -37,10 +47,14 @@ export function resetImageLoadCache(): void {
   loadedImages = {};
   inFlight.clear();
   resetImageLoadStats();
+  loadImageForTests = null;
 }
 
 /** Load an image. Rejects with `Error("Failed to load <src>")` on error. */
 export function loadImage(src: string): Promise<HTMLImageElement> {
+  if (loadImageForTests) {
+    return loadImageForTests(src);
+  }
   if (loadedImages[src]) {
     imageLoadStats.cacheHits++;
     return Promise.resolve(loadedImages[src]);
