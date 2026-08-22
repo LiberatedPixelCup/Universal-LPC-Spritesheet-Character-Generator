@@ -100,7 +100,7 @@ The UI is built with [Vite](https://vitejs.dev/). Use a dev server rather than o
 
 **Recommended workflow**
 
-1. Run **`npm install`** once.
+1. Run **`npm ci`** once. After a lockfile merge or rebase, use **`npm run lockfile:fix`**, not **`npm install`**.
 2. Start the app with **`npm run dev`** (default **http://localhost:5173**) or **`npm run serve:open`** to open it in your default browser.
 
 For a **production-like** build locally, run **`npm run build`** then **`npm run preview`** (Vite’s default preview port is **4173**; the dev server uses **5173** by default). To use another port, pass Vite’s **`--port`** flag (for example `npm run dev -- --port 3000`).
@@ -173,7 +173,7 @@ Requires **Node.js 22.18+** (`package.json` `engines`; CI uses Node 24) so `node
 - **Format:** `npm run format:check` (verify) or `npm run format` (apply)
 - **Tests:** `npm test` (Node checks plus browser tests). Visual regression: `npm run test:visual`. Details are in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-**Generated files:** [CREDITS.csv](CREDITS.csv) and the z-position CSV under **`scripts/zPositioning/`** are updated by **`npm run validate-site-sources`**. **Vite** runs the metadata plugin; when inputs or **`dist/`** output warrant it, it can refresh those CSVs and always writes the **five** modules under **`dist/`** (`index-`, `palette-`, `item-`, `credits-`, `layers-metadata.js`). The app registers them in **`sources/state/catalog.ts`**. The **`dist/`** tree is gitignored—do not edit generated files by hand. **`npm run dev`** pretty-prints embedded JSON; **`npm run build`** writes compact (see [PR #432](https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator/pull/432)). See [CONTRIBUTING.md](CONTRIBUTING.md) for the full workflow, catalog API, and staged loading.
+**Generated files:** [CREDITS.csv](CREDITS.csv) and the z-position CSV under **`scripts/zPositioning/`** are updated by **`npm run validate-site-sources`**. **Vite** runs the metadata plugin; when inputs or **`dist/`** output warrant it, it can refresh those CSVs and always writes the **five** modules under **`dist/`** (`index-`, `palette-`, `item-`, `credits-`, `layers-metadata.js`). The app registers them in **[`sources/install-item-metadata.ts`](sources/install-item-metadata.ts)** into a **`CatalogReader`**. The **`dist/`** tree is gitignored—do not edit generated files by hand. **`npm run dev`** pretty-prints embedded JSON; **`npm run build`** writes compact (see [PR #432](https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator/pull/432)). See [CONTRIBUTING.md](CONTRIBUTING.md#catalog) for the catalog API and staged loading, and [File Generation](CONTRIBUTING.md#file-generation) for the full workflow.
 
 #### Performance Profiling
 

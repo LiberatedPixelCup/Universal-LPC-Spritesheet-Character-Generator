@@ -14,68 +14,60 @@ Source of truth: `sheet_definitions/`, `palette_definitions/`, and
 `spritesheets/`. Vite emits five `dist/*-metadata.js` modules. The app
 reads them only through `CatalogReader`. Do not add another metadata
 module or a global; extend `CatalogReader`. Do not hand-edit generated
-files. Credits are structural: every new or derived PNG needs a
+`dist/` files. Credits are structural: every new or derived PNG needs a
 `credits` entry on its sheet definition or generation fails.
-
-## Skills
-
-- Run one spec (Node, browser, visual): [run-one-spec](.cursor/skills/run-one-spec/SKILL.md)
-- Write a spec (browser Mocha or Node): [write-spec](.cursor/skills/write-spec/SKILL.md)
-- Sheet definition shape (copy an existing JSON): [sheet-definition](.cursor/skills/sheet-definition/SKILL.md)
 
 ## Invariants
 
-- **TypeScript:** New code is `.ts` (tests, scripts, Vite plugins). Do
-  not add or grow `.js`. [`testem.cjs`](testem.cjs) is the only CJS
-  exception. ESM (`import` / `export`); relative imports use the on-disk
-  extension. Erasable syntax only: no enums, namespaces, or parameter
-  properties. Do not add `tsx` or a compile step. Unused bindings that
-  must exist use a `_` prefix. `console.*` except `console.error` are
-  lint errors; use `console.error`, or `debugLog` / `debugWarn` from
-  `sources/utils/debug.ts`.
-- **Catalog:** Thread `catalog: CatalogReader` through attrs. Getters
-  return `Result<T, LoadError>` (`neverthrow`). In views, use
-  `renderResult`. Elsewhere `.match` / `.unwrapOr` / `if (r.isErr())`.
-  Tests create their own catalog and seed it. Do not read a hidden
-  global catalog.
-- **Hash / aliases:** Old hashes must keep working. Put `aliases` on
-  the **destination** definition; do not rewrite or delete old hash
-  keys in place. Discuss renames in an issue first.
-- **CSS:** First-paint CSS is PurgeCSS-trimmed. Do not drop a class
-  from markup or the safelist without checking
-  [`vite/purgecss-critical-safelist.ts`](vite/purgecss-critical-safelist.ts).
-  A class used only at runtime can be purged and ship a blank control.
-- **Lockfile:** After a lockfile merge or rebase, `npm run lockfile:fix`,
-  not `npm install`.
-- **Coverage:** `codecov/patch` is 100% on `sources/` (browser) and
-  `scripts/` (node). `codecov/changes` must not drop hits. No
-  project-percentage gate. Exceptions: [`codecov.yml`](codecov.yml)
-  `ignore:`. Confirm locally: run the matching coverage script and
-  inspect `coverage/browser/` or `coverage/node/` for the new lines.
-  Do not wait for CI.
+- **TypeScript:** New code is `.ts` (tests, scripts, Vite plugins); do
+  not add new `.js`. [`testem.cjs`](testem.cjs) is the only CJS
+  exception. ESM only; relative imports use the on-disk extension.
+  Erasable syntax only — no enums, namespaces, or parameter properties,
+  and no `tsx` or compile step. Converting a `.js` you touch is
+  encouraged, but check for hardcoded call sites first:
+  [typescript](.cursor/skills/typescript/SKILL.md).
+- **Catalog:** Thread `catalog: CatalogReader` through attrs; never read
+  a hidden global. Getters return `Result<T, LoadError>` (`neverthrow`)
+  — handle both arms. Tests create and seed their own catalog.
+  [catalog](.cursor/skills/catalog/SKILL.md).
+- **Hash / aliases:** Hash values are `Item_variant` (e.g.
+  `expression=Neutral_light`). Old hashes must keep working. Put
+  `aliases` on the **destination** definition; do not rewrite or delete
+  old hash keys in place. Discuss renames in an issue first.
+- **Coverage:** `codecov/patch` is 100% on gated production lines
+  (`sources/` browser, `scripts/` node, minus [`codecov.yml`](codecov.yml)
+  `ignore:`); `codecov/changes` must not drop hits. No project gate.
+  Confirm locally, do not wait for CI:
+  [coverage](.cursor/skills/coverage/SKILL.md).
 
 ## Where to look
 
 - Layout, setup, commands: [Repository layout](CONTRIBUTING.md#repository-layout), [Requirements](CONTRIBUTING.md#requirements)
-- Catalog API, generated metadata, Vite cache: [File Generation](CONTRIBUTING.md#file-generation)
-- Specs: [write-spec](.cursor/skills/write-spec/SKILL.md), [run-one-spec](.cursor/skills/run-one-spec/SKILL.md)
-- Sheet JSON / credits: [sheet-definition](.cursor/skills/sheet-definition/SKILL.md)
-- Asset rename / aliases: [Renaming an Asset](CONTRIBUTING.md#renaming-an-asset)
+- Generated metadata, Vite cache: [File Generation](CONTRIBUTING.md#file-generation)
+- URL hash / aliases: [URL hash](CONTRIBUTING.md#url-hash), [Renaming an Asset](CONTRIBUTING.md#renaming-an-asset)
 - z-positions: [z-positions](CONTRIBUTING.md#z-positions)
-- Palette items: [PALETTE_RECOLOR_GUIDE.md](PALETTE_RECOLOR_GUIDE.md)
+- Palette items: [Adding Palette Support](PALETTE_RECOLOR_GUIDE.md#adding-palette-support-to-items)
 - Canvas / ZIP profiling: [PERFORMANCE_PROFILING.md](PERFORMANCE_PROFILING.md)
 
 ## Narrowest check
 
-`npm test` is the full suite — last resort. Use `npm run lint:fix` for
-auto-fixable issues. Update docs and comments the change makes stale.
-Do not skip license/credit updates when touching art or definitions.
-Canvas (WebGL and CPU fallback) or ZIP export:
+`npm test` is the full suite — last resort. For any `sources/` /
+`scripts/` / `vite/` / `tests/` edit, run `npm run type-check` and
+`npm run lint:fix` (`tsconfig.json` includes all four). Update docs and
+comments the change makes stale. Do not skip license/credit updates when
+touching art or definitions.
+
+Canvas rendering must work on **both** WebGL and the CPU fallback, and
+you cannot confirm that yourself — it needs a browser. Ask the user to
+check. For ZIP export, match the headless script to the change:
 [PERFORMANCE_PROFILING.md](PERFORMANCE_PROFILING.md).
 
 | Change | Check |
 | --- | --- |
-| Definitions only | `npm run validate-site-sources` |
-| `sources/` | one spec ([run-one-spec](.cursor/skills/run-one-spec/SKILL.md)) + `npm run test:browser:coverage` |
-| `scripts/` (see [`codecov.yml`](codecov.yml) `ignore:`) | `node --test <file>` + `npm run test:node:coverage` |
-| Vite plugin | Node spec if behavior changed (plugins are Codecov-ignored) |
+| Definitions only | `npm run validate-site-sources`; commit dirty `CREDITS.csv` / `z_positions.csv` |
+| `sources/` | `npm run type-check` + one spec ([run-one-spec](.cursor/skills/run-one-spec/SKILL.md)) + `npm run test:browser:coverage` (full suite) |
+| `scripts/` | `node --test <file>` + `npm run test:node:coverage` (all Node specs) |
+| Either of the above, path in [`codecov.yml`](codecov.yml) `ignore:` | Skip the coverage run; it owes no test |
+| Vite plugin | Node spec if behavior changed (`vite/` is Codecov-ignored) |
+| First-paint CSS class | [`vite/purgecss-critical-safelist.ts`](vite/purgecss-critical-safelist.ts) |
+| Lockfile merge/rebase | `npm run lockfile:fix` (not `npm install`) |

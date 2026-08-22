@@ -35,10 +35,11 @@ If you don't add license information for your newly added files, the generation 
 To add sheets to an existing category, add the sheets to the correct folder(s) in `spritesheets/`.
 In addition, locate the correct `sheet_definition` in `sheet_definitions/`, and add the name of your added sheet to the `variants` array.
 
-#### Adding a new category / sheet definition
+#### Adding a new category
 
 To add a new category, add the sheets to the correct folder(s) in `spritesheets/`.
 In addition, create a json file in `sheet_definitions/`, and define the required properties.
+Copy a neighboring definition rather than inventing keys. The accepted shape is the `SheetDefinition` type in [`scripts/generateSources/items.ts`](scripts/generateSources/items.ts).
 For example, you have created at this point:
 
 `body_robot.json`
@@ -72,19 +73,21 @@ As such, if you wish to include less than this list, such as only walk and slash
 
 The category tree and items in the app come from generated metadata, not from HTML. After you add or change definitions, run **File Generation** (below) and commit the updated **`CREDITS.csv`**, **`scripts/zPositioning/z_positions.csv`**, and any other tracked outputs that changed. The app’s **five** `dist/*-metadata.js` modules (see [File Generation](#file-generation)) are built by **Vite** when you run **`npm run dev`** or **`npm run build`**; they are not committed (**`/dist/`** is gitignored).
 
-#### Renaming an Asset
+#### URL hash
 
-While rare, sometimes it may be deemed that a specific asset should get renamed or moved. In such situations, the aliases key comes into play.
-
-Aliases are a way to forward one asset path into another in order to maintain backward compatibility. This comes in the form of key=value pairs in the current url hash:
+The shareable selection is everything after `#` in the address bar: `key=value` pairs.
 
 ```
 #sex=male&body=Body_Color_light&head=Human_Male_light&expression=Neutral_light
 ```
 
-The hash tag is everything after `#` in the address bar. This shows the currently selected assets. The keys are before the equals sign and the values are after.
+Each value is `Item_variant`. For example, `expression=Neutral_light` is `type_name` `expression`, item `Neutral`, variant `light`.
 
-For example, `expression=Neutral_light` shows the type_name of `expression`, the selected item as `Neutral` and the variant as `light`.
+Old hashes must keep working. Do not rewrite or delete old hash keys in place. To forward a renamed asset, put `aliases` on the **destination** definition — see [Renaming an Asset](#renaming-an-asset).
+
+#### Renaming an Asset
+
+While rare, sometimes it may be deemed that a specific asset should get renamed or moved. In such situations, the `aliases` key comes into play. Aliases forward old [URL hash](#url-hash) values to a new item so existing links keep working.
 
 ##### When should an asset be renamed?
 
@@ -252,9 +255,7 @@ For visual tests only, **`npx playwright install chromium`** is enough. The Argo
 | **`credits-metadata.js`** | `itemCredits` — map `itemId → credits[]`                                                                |
 | **`layers-metadata.js`**  | `itemLayers` — map `itemId → layer objects`                                                             |
 
-The app creates a catalog in **[`sources/main.ts`](sources/main.ts)**, then loads the generated modules with **parallel `import()`** and registers each chunk into that instance (entry: [`sources/install-item-metadata.ts`](sources/install-item-metadata.ts)). Bootstrap calls **`configureStateCatalog`** so production state uses that instance. UI components are Mithril **`m.Component<Attrs, State>`** objects; thread **`catalog: CatalogReader`** through attrs from bootstrap. Getters return **`Result<T, LoadError>`** from **`neverthrow`**. In views, use **`renderResult`** from [`sources/utils/render-result.ts`](sources/utils/render-result.ts). Elsewhere use **`.match`** / **`.unwrapOr`** / **`if (r.isErr())`**. Production code uses typed getters (`catalog.getCategoryTree()`, `catalog.getItemLite()`, `catalog.getItemLayers()`, `catalog.getItemCredits()`, `catalog.getPaletteMetadata()`, `catalog.getMetadataIndexes()`, …), not ad hoc globals. Tests create their own catalog with **`createCatalog()`** and seed it.
-
-**Staged loading** — Each catalog exposes **`isIndexReady()`**, **`isLiteReady()`**, **`isCreditsReady()`**, **`isPaletteReady()`**, and **`isLayersReady()`** as synchronous predicates. Its **`catalog.ready`** object provides **`onIndexReady`**, **`onLiteReady`**, …, and **`onAllReady`** (each a **`Promise<void>`** that resolves once). The UI and bootstrap can treat **index** (tree skeleton), **lite** (item rows, hash), **credits** (license text), **palette**, and **layers** (canvas, sprite paths) as separate readiness stages.
+How the app loads these modules: [Catalog](#catalog).
 
 **Dev vs production JSON in generated files ([PR #432](https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator/pull/432))** — Payloads are embedded with `JSON.stringify(..., null, indent)`: **pretty-printed** when Vite runs in development (**`npm run dev`**) and **compact** when you run a production build (**`npm run build`**). The same rule applies to **all five** metadata modules, not only `item-metadata.js`. Inspect any of the files under **`dist/`** after a dev run to read structured JSON; CI and release builds use the compact form.
 
@@ -272,7 +273,27 @@ Vite is responsible for the five `dist/*-metadata.js` files when the plugin runs
 
 The **Validate site sources** workflow (`.github/workflows/validate-site-sources.yml`) runs **`npm run validate-site-sources`** and fails if the working tree is dirty afterward. PRs that touch definitions must include regenerated **`CREDITS.csv`** and **`scripts/zPositioning/z_positions.csv`** whenever those files change.
 
-**Other derived files** — Fixtures under **`tests/fixtures/`** that come from [`scripts/fixture-builder.ts`](scripts/fixture-builder.ts) are committed when they change; review the diffs and do not regenerate blindly. **`coverage/`** is produced by the coverage scripts and is gitignored — do not commit it.
+**What to commit**
+
+| Artifact | How it is produced | Commit? |
+| --- | --- | --- |
+| `dist/*-metadata.js` (five modules) | Vite metadata plugin on `dev` / `build` | No (`/dist/` gitignored) |
+| `CREDITS.csv` | `npm run validate-site-sources` | Yes, if it changed |
+| `scripts/zPositioning/z_positions.csv` | same (JSON is source of truth; the CSV is a bulk-edit aid — `npm run z-positions:update` writes back to JSON) | Yes, if it changed |
+| `tests/fixtures/**` from [`scripts/fixture-builder.ts`](scripts/fixture-builder.ts) | fixture builder | Yes, but review diffs; do not regenerate blindly |
+| `coverage/` | `test:node:coverage` / `test:browser:coverage` | No (`/coverage/` gitignored) |
+
+#### Catalog
+
+The app creates a catalog in **[`sources/main.ts`](sources/main.ts)**, then loads the generated modules with **parallel `import()`** and registers each chunk into that instance (entry: [`sources/install-item-metadata.ts`](sources/install-item-metadata.ts)). Bootstrap calls **`configureStateCatalog`** so production state uses that instance.
+
+UI components are Mithril **`m.Component<Attrs, State>`** objects; thread **`catalog: CatalogReader`** through attrs from bootstrap. Do not read a hidden global catalog.
+
+Getters return **`Result<T, LoadError>`** from **`neverthrow`**. `LoadError` is `{ kind: "loading"; chunk }` or `{ kind: "not-found"; id }` ([`sources/state/catalog.ts`](sources/state/catalog.ts)). In views, use **`renderResult`** from [`sources/utils/render-result.ts`](sources/utils/render-result.ts). Elsewhere use **`.match`** / **`.unwrapOr`** / **`if (r.isErr())`**. Production code uses typed getters (`catalog.getCategoryTree()`, `catalog.getItemLite()`, `catalog.getItemLayers()`, `catalog.getItemCredits()`, `catalog.getPaletteMetadata()`, `catalog.getMetadataIndexes()`, …), not ad hoc globals. Views must not call **`CatalogWriter`** methods (`registerFrom*`, `loadCatalogFromFixtures`).
+
+**Staged loading** — Each catalog exposes **`isIndexReady()`**, **`isLiteReady()`**, **`isCreditsReady()`**, **`isPaletteReady()`**, and **`isLayersReady()`** as synchronous predicates. Its **`catalog.ready`** object provides **`onIndexReady`**, **`onLiteReady`**, …, and **`onAllReady`** (each a **`Promise<void>`** that resolves once). The UI and bootstrap can treat **index** (tree skeleton), **lite** (item rows, hash), **credits** (license text), **palette**, and **layers** (canvas, sprite paths) as separate readiness stages.
+
+**Tests** — Create a catalog with **`createCatalog()`** and seed it. Use **`seedCatalog`** in [`tests/browser-catalog-fixture.js`](tests/browser-catalog-fixture.js) for explicit fixtures. **`seedCatalogWithGeneratedContext`** keeps generated palette, alias, tree, and index context and imports **`dist/index-metadata.js`** — run **`npm run dev`** or **`npm run build`** first. Alternatively register one stage with **`registerFrom*Module`**.
 
 #### Running Tests
 
@@ -306,7 +327,55 @@ npm run test:server
 
 This runs Testem in dev mode (browser picker / watch) against the same **[`tests_run.html`](tests_run.html)** harness.
 
-**CI:** [`.github/workflows/ci.yml`](.github/workflows/ci.yml) installs **Chrome** and **Firefox**, starts **Xvfb**, and runs **`npm run test:node:coverage`** plus **`npm run test:browser:coverage`** on pushes and pull requests to **`master`**, then uploads `lcov` to [Codecov](https://codecov.io/gh/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator). That workflow uses `npm ci --ignore-scripts`; for local development, `npm ci` or `npm install` without `--ignore-scripts` is typical.
+**CI:** [`.github/workflows/ci.yml`](.github/workflows/ci.yml) installs **Chrome** and **Firefox**, starts **Xvfb**, and runs **`npm run test:node:coverage`** plus **`npm run test:browser:coverage`** on pushes and pull requests to **`master`**, then uploads `lcov` to [Codecov](https://codecov.io/gh/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator). That workflow uses `npm ci --ignore-scripts`; locally, install with **`npm ci`** (and **`npm run lockfile:fix`** after a lockfile merge or rebase — not `npm install`, which drops other-platform optional dependencies).
+
+#### Unit and component specs
+
+[`tests/tests.js`](tests/tests.js) imports every browser spec listed there. New specs are TypeScript (`*_spec.ts`); do not add a new `.js` spec. **`tests/node/`** is exercised by **`before_tests`** and by **`npm run test:node`** directly. [`tests/node/run-node-tests.js`](tests/node/run-node-tests.js) collects both **`_spec.js`** and **`_spec.ts`** under **`tests/node/`**.
+
+[`tests/vitest-setup.js`](tests/vitest-setup.js) loads **`sources/vendor-globals.ts`** and sets test flags on **`window`**. Specs create independent catalogs with **`createCatalog()`** and register only the metadata stages and records they exercise. Shared helpers in [`tests/browser-catalog-fixture.js`](tests/browser-catalog-fixture.js) seed explicit fixture catalogs for larger ZIP scenarios. See [Catalog](#catalog).
+
+Typical patterns:
+
+- Import **`describe`**, **`it`**, **`beforeEach`**, **`afterEach`** (and suite-level **`before`** / **`after`** when needed) from **`"mocha-globals"`** (re-exported in [`tests/bdd-globals.js`](tests/bdd-globals.js)) and **`assert`** or **`expect`** from **`"chai"`**.
+- Render with **`m.render(…)`** using the global **`m`**.
+- Use **`beforeEach` / `afterEach`** to create and remove DOM containers.
+- Thread **`catalog: CatalogReader`**. Do not omit it from component attrs.
+
+Example (`tests/components/MyComponent_spec.ts`):
+
+```typescript
+import { MyComponent } from "../../sources/components/MyComponent.ts";
+import { createCatalog } from "../../sources/state/catalog.ts";
+import { seedCatalog } from "../browser-catalog-fixture.js";
+import { assert } from "chai";
+import { describe, it, beforeEach, afterEach } from "mocha-globals";
+
+describe("MyComponent", () => {
+  let container: HTMLDivElement;
+  let catalog: ReturnType<typeof createCatalog>;
+
+  beforeEach(() => {
+    catalog = createCatalog();
+    seedCatalog(catalog, {});
+    container = document.createElement("div");
+    document.body.appendChild(container);
+  });
+
+  afterEach(() => {
+    container.remove();
+  });
+
+  it("renders correctly", () => {
+    m.render(container, m(MyComponent, { catalog, prop: "value" }));
+    const element = container.querySelector(".expected-class");
+    assert.isNotNull(element);
+    assert.strictEqual(element.textContent, "expected content");
+  });
+});
+```
+
+Node specs are listed and run via [`tests/node/run-node-tests.js`](tests/node/run-node-tests.js) (`*_spec.js` or `*_spec.ts`); add new generator tests alongside the existing `tests/node/scripts/**` files.
 
 #### Unit-test coverage
 
@@ -359,48 +428,6 @@ Full-page screenshots live under [`tests/visual/`](tests/visual/) and use [`play
    By default tests use **headless** Chromium. Use **`npm run test:visual:headed`** to watch the browser.
 
    [`tests/visual/home-helpers.ts`](tests/visual/home-helpers.ts) waits for the preview canvas, for `.loading` to disappear on the preview panels, and for paint frames before Argos screenshots (with a best-effort **`networkidle`** wait). Without **`ARGOS_TOKEN`**, navigation and layout still run but Argos capture/upload is skipped. Override the origin with **`PLAYWRIGHT_TEST_BASE_URL`** (see [`tests/visual/home.spec.js`](tests/visual/home.spec.js)).
-
-**Unit and component specs (Mocha + Chai)**
-
-[`tests/tests.js`](tests/tests.js) imports every browser spec listed there. New specs are TypeScript (`*_spec.ts`); do not add a new `.js` spec. **`tests/node/`** is exercised by **`before_tests`** and by **`npm run test:node`** directly. [`tests/node/run-node-tests.js`](tests/node/run-node-tests.js) collects both **`_spec.js`** and **`_spec.ts`** under **`tests/node/`**.
-
-[`tests/vitest-setup.js`](tests/vitest-setup.js) loads **`sources/vendor-globals.ts`** and sets test flags on **`window`**. Specs create independent catalogs with **`createCatalog()`** and register only the metadata stages and records they exercise. Shared helpers in [`tests/browser-catalog-fixture.js`](tests/browser-catalog-fixture.js) seed explicit fixture catalogs for larger ZIP scenarios.
-
-Typical patterns:
-
-- Import **`describe`**, **`it`**, **`beforeEach`**, **`afterEach`** (and suite-level **`before`** / **`after`** when needed) from **`"mocha-globals"`** (re-exported in [`tests/bdd-globals.js`](tests/bdd-globals.js)) and **`assert`** or **`expect`** from **`"chai"`**.
-- Render with **`m.render(…)`** using the global **`m`**.
-- Use **`beforeEach` / `afterEach`** to create and remove DOM containers.
-
-Example (`tests/components/MyComponent_spec.ts`):
-
-```typescript
-import { MyComponent } from "../../sources/components/MyComponent.ts";
-import { assert } from "chai";
-import { describe, it, beforeEach, afterEach } from "mocha-globals";
-
-describe("MyComponent", () => {
-  let container: HTMLDivElement;
-
-  beforeEach(() => {
-    container = document.createElement("div");
-    document.body.appendChild(container);
-  });
-
-  afterEach(() => {
-    container.remove();
-  });
-
-  it("renders correctly", () => {
-    m.render(container, m(MyComponent, { prop: "value" }));
-    const element = container.querySelector(".expected-class");
-    assert.isNotNull(element);
-    assert.strictEqual(element.textContent, "expected content");
-  });
-});
-```
-
-Node specs are listed and run via [`tests/node/run-node-tests.js`](tests/node/run-node-tests.js) (`*_spec.js` or `*_spec.ts`); add new generator tests alongside the existing `tests/node/scripts/**` files.
 
 #### z-positions
 
