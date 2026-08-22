@@ -20,4 +20,4 @@ from `tests/tests.js`. They are not Codecov-instrumented.
 
 Argos upload needs `ARGOS_TOKEN`. Isolated run:
 [run-one-spec](../run-one-spec/SKILL.md). Walkthrough:
-[Visual regression tests](../../../CONTRIBUTING.md#visual-regression-tests-playwright--argos).
+[Visual regression tests](../../../CONTRIBUTING.md#visual-regression-tests-playwright-argos).

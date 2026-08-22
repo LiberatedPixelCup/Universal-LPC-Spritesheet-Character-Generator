@@ -527,6 +527,38 @@ Full-page screenshots live under [`tests/visual/`](tests/visual/) and use [`play
 
    [`tests/visual/home-helpers.ts`](tests/visual/home-helpers.ts) waits for the preview canvas, for `.loading` to disappear on the preview panels, and for paint frames before Argos screenshots (with a best-effort **`networkidle`** wait). Without **`ARGOS_TOKEN`**, navigation and layout still run but Argos capture/upload is skipped. Override the origin with **`PLAYWRIGHT_TEST_BASE_URL`** (see [`tests/visual/home.spec.js`](tests/visual/home.spec.js)).
 
+#### Troubleshooting
+
+Symptoms that look like catalog or test bugs are often environment. Check these first.
+
+| Symptom | Cause | Fix |
+| --- | --- | --- |
+| `not-found`, empty tree, or `seedCatalogWithGeneratedContext` resolves nothing after a fresh clone | `dist/*-metadata.js` was never built | `npm run dev` or `npm run build` once |
+| A new definition is invisible, or a spec passes for someone else | `.cache/` fingerprint skipped generation | `VITE_REGENERATE_SOURCES=1 npm run dev`, or delete `.cache/` |
+| Codecov patch fails with no Mocha failure | Browser spec is not imported from [`tests/tests.js`](tests/tests.js) | Add `import "./path/foo_spec.ts";` (real on-disk extension) |
+| Testem cannot bind | Port **7357** is busy | `TESTEM_PORT=7360 npm run test:server` |
+| `npm run test:visual` cannot launch a browser | Playwright browsers not installed | `npx playwright install chromium` (or `--with-deps`) |
+| `npm run test:browser:coverage` fails to launch Firefox | Firefox is not installed locally | `VITE_COVERAGE=true node ./node_modules/testem/testem.js ci --launch Chrome`. Firefox-only lines will read as uncovered |
+
+More on stale metadata: [File Generation](#file-generation). More on coverage collection: [Unit-test coverage](#unit-test-coverage).
+
+#### Doc ownership
+
+When a change makes documentation stale, update the file that owns that topic. [AGENTS.md](AGENTS.md) is the invariant index; do not duplicate walkthroughs there.
+
+| Change | Update |
+| --- | --- |
+| `sheet_definitions/`, credits, variants, aliases, z-positions | [sheet-definition](.cursor/skills/sheet-definition/SKILL.md); commit dirty `CREDITS.csv` / `z_positions.csv`; [z-positions](#z-positions) |
+| Bootstrap, render path, module roles | [ARCHITECTURE.md](ARCHITECTURE.md) |
+| `sources/canvas/`, palette recolor, WebGL vs CPU | [canvas-render](.cursor/skills/canvas-render/SKILL.md), [PALETTE_RECOLOR_GUIDE.md](PALETTE_RECOLOR_GUIDE.md) |
+| Catalog, `state`, hash | [catalog](.cursor/skills/catalog/SKILL.md), [Catalog and state](#catalog-and-state) |
+| `dist/` metadata, `.cache/`, Vite metadata plugin | [generated-metadata](.cursor/skills/generated-metadata/SKILL.md), [File Generation](#file-generation) |
+| Coverage gates or `codecov.yml` | [coverage](.cursor/skills/coverage/SKILL.md), [Unit-test coverage](#unit-test-coverage) |
+| Layout, first-paint CSS, PurgeCSS safelist, Playwright | [visual-test](.cursor/skills/visual-test/SKILL.md), [`vite/purgecss-critical-safelist.ts`](vite/purgecss-critical-safelist.ts) |
+| ZIP export timing | [PERFORMANCE_PROFILING.md](PERFORMANCE_PROFILING.md) |
+| `.js` → `.ts` conversion, erasable syntax, `tsc` | [typescript](.cursor/skills/typescript/SKILL.md) |
+| New npm script or CI workflow | [Commands](#commands), [CI checks](#ci-checks) |
+
 #### z-positions
 
 In order to facilitate easier management of the z-positions of the assets in this repo, there is a [script](/scripts/zPositioning/parse_zpos.ts) that traverses all JSON files and write's the layer's z-position to a CSV.
