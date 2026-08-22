@@ -8,6 +8,7 @@ import {
   startPreviewAnimation,
   stopPreviewAnimation,
   getCustomAnimations,
+  repaintStaticPreviewFrameForTests,
 } from "../../canvas/preview-animation.ts";
 import {
   initPreviewCanvas,
@@ -32,11 +33,13 @@ type PreviewCanvasState = {
   pinch: PinchToZoom | null;
 };
 
-const PreviewCanvas: m.Component<PreviewCanvasAttrs, PreviewCanvasState> = {
+export const PreviewCanvas: m.Component<
+  PreviewCanvasAttrs,
+  PreviewCanvasState
+> = {
   oncreate(vnode) {
-    const { state } = vnode.attrs;
     const canvas = vnode.dom as HTMLCanvasElement;
-    const { selectedAnimation, onFrameCycleUpdate } = vnode.attrs;
+    const { state, selectedAnimation, onFrameCycleUpdate } = vnode.attrs;
     const zoomLevel = vnode.attrs.zoomLevel || 1;
 
     if (!window.canvasRenderer) {
@@ -91,6 +94,7 @@ const PreviewCanvas: m.Component<PreviewCanvasAttrs, PreviewCanvasState> = {
     }
 
     vnode.state.zoomLevel = state.previewCanvasZoomLevel || 1;
+    repaintStaticPreviewFrameForTests(state);
   },
   onremove(vnode) {
     vnode.state._pinchUnmounted = true;

@@ -1,7 +1,10 @@
 import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
-import { AnimationPreview } from "../../../sources/components/preview/AnimationPreview.ts";
+import {
+  AnimationPreview,
+  PreviewCanvas,
+} from "../../../sources/components/preview/AnimationPreview.ts";
 import {
   setCurrentCustomAnimations,
   stopPreviewAnimation,
@@ -119,6 +122,74 @@ describe("AnimationPreview", function () {
     m.redraw.sync();
 
     assert.strictEqual(state.previewCanvasZoomLevel, 1.25);
+  });
+
+  it("starts a static preview from PreviewCanvas oncreate", function () {
+    const canvas = document.createElement("canvas");
+    host.appendChild(canvas);
+    const vnode = {
+      attrs: {
+        state,
+        selectedAnimation: "walk",
+        zoomLevel: 1,
+        onFrameCycleUpdate() {},
+      },
+      state: {},
+      dom: canvas,
+    };
+
+    PreviewCanvas.oncreate(vnode);
+    assert.strictEqual(vnode.state.lastAnimation, "walk");
+    PreviewCanvas.onremove(vnode);
+  });
+
+  it("repaints a static preview frame from PreviewCanvas onupdate", function () {
+    state.previewCanvasZoomLevel = 1.25;
+    const canvas = document.createElement("canvas");
+    host.appendChild(canvas);
+    const vnode = {
+      attrs: {
+        state,
+        selectedAnimation: "walk",
+        zoomLevel: 1,
+        onFrameCycleUpdate() {},
+      },
+      state: {
+        lastAnimation: "walk",
+        zoomLevel: 1,
+        pinch: null,
+        _pinchUnmounted: false,
+      },
+      dom: canvas,
+    };
+
+    PreviewCanvas.onupdate(vnode);
+
+    assert.strictEqual(vnode.state.zoomLevel, 1.25);
+  });
+
+  it("restarts preview animation when PreviewCanvas selectedAnimation changes", function () {
+    const canvas = document.createElement("canvas");
+    host.appendChild(canvas);
+    const vnode = {
+      attrs: {
+        state,
+        selectedAnimation: "slash",
+        zoomLevel: 1,
+        onFrameCycleUpdate() {},
+      },
+      state: {
+        lastAnimation: "walk",
+        zoomLevel: 1,
+        pinch: null,
+        _pinchUnmounted: false,
+      },
+      dom: canvas,
+    };
+
+    PreviewCanvas.onupdate(vnode);
+
+    assert.strictEqual(vnode.state.lastAnimation, "slash");
   });
 
   it("shows a busy overlay while the character is rendering", function () {
