@@ -15,10 +15,11 @@ New specs are TypeScript (`*_spec.ts`). Do not add a new `.js` spec.
 - Import `describe` / `it` / hooks from `"mocha-globals"` (Vite alias to
   [`tests/bdd-globals.js`](../../../tests/bdd-globals.js)) and `assert` or
   `expect` from `"chai"`. Render with global `m`.
-- Thread `catalog: CatalogReader`. Use `createCatalog()` and
+- Thread `catalog: CatalogReader` and `state: State`. Use `createCatalog()`,
+  `createState()`, and
   [`tests/browser-catalog-fixture.js`](../../../tests/browser-catalog-fixture.js)
   (`seedCatalog` / `seedCatalogWithGeneratedContext`). Do not depend on the
-  production catalog singleton. See [catalog](../catalog/SKILL.md).
+  production catalog or bootstrap state. See [catalog](../catalog/SKILL.md).
 - `seedCatalogWithGeneratedContext` pulls in generated metadata, so run
   `npm run dev` or `npm run build` first or it resolves nothing.
 - `beforeEach` / `afterEach` should create and remove DOM hosts.

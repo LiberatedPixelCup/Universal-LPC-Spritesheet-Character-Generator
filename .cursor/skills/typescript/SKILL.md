@@ -15,7 +15,9 @@ New code is `.ts`, including tests, scripts, and Vite plugins. Do not add new
 `npm run type-check` (`tsc --noEmit`) and `npm run lint` both gate PRs via the
 Lint workflow. Run `npm run type-check` and `npm run lint:fix` after any edit
 under `sources/`, `scripts/`, `vite/`, or `tests/` — all four are in
-`tsconfig.json` `include`.
+`tsconfig.json` `include`. `tsc` is the `typescript` package, which this repo
+aliases to `@typescript/typescript6`. `@typescript/native` is also in
+`devDependencies` and is unused by workflows.
 
 ## Erasable syntax only
 
@@ -59,24 +61,33 @@ on them being off.
 
 ## Converting a `.js` file
 
-Only two non-test `.js` files are left: `scripts/coverage/mark-non-executable-lines.js`
-and `vite/vite-plugin-coverage-collect.js`. The rest are under `tests/`.
+Four non-test `.js` files remain:
 
-Before renaming anything, grep for the filename. Several of the remaining files
-are named by **hardcoded string path** from places that no rename tool will
-follow, and breaking one of those fails a command rather than the type-check:
+- `scripts/coverage/mark-non-executable-lines.js`
+- `vite/vite-plugin-coverage-collect.js`
+- [`eslint.config.js`](../../../eslint.config.js)
+- [`playwright.config.js`](../../../playwright.config.js)
 
-- `scripts/coverage/mark-non-executable-lines.js` — named in
-  [`package.json`](../../../package.json) `test:node:coverage`, and imported by
-  [`merge-browser-coverage.ts`](../../../scripts/coverage/merge-browser-coverage.ts).
-- `tests/node/run-node-tests.js` — named in
-  [`testem.cjs`](../../../testem.cjs) `before_tests`.
-- `tests/tests.js` — named in [`tests_run.html`](../../../tests_run.html).
+The rest are under `tests/`. Ordinary `*_spec.js` files are not named by
+hardcoded path. These **harness** files are:
+
+- `tests/tests.js` — named in [`tests_run.html`](../../../tests_run.html)
 - `tests/bdd-globals.js` — the `mocha-globals` alias target in
   [`vite.config.ts`](../../../vite.config.ts), in two HTML import maps
   (`scripts/zip/zip-export-profile-runner.html`,
   `tests/fixtures/issue-382/issue382-golden-runner.html`), and asserted by path
-  in `tests/node/scripts/generateSources/vite_config_factory_and_resolve_spec.ts`.
+  in `tests/node/scripts/generateSources/vite_config_factory_and_resolve_spec.ts`
+- `tests/node/run-node-tests.js` — named in
+  [`testem.cjs`](../../../testem.cjs) `before_tests`
+- `tests/vitest-setup.js` — imported by `tests/tests.js`
+- `tests/testem-firefox-user.js` — named in `testem.cjs`
+
+Before renaming anything, grep for the filename. Breaking a harness path fails
+a command rather than the type-check:
+
+- `scripts/coverage/mark-non-executable-lines.js` — named in
+  [`package.json`](../../../package.json) `test:node:coverage`, and imported by
+  [`merge-browser-coverage.ts`](../../../scripts/coverage/merge-browser-coverage.ts).
 - `vite/vite-plugin-coverage-collect.js` — imported by
   [`vite.config.ts`](../../../vite.config.ts).
 
@@ -94,8 +105,8 @@ Checklist for a conversion:
 
 ## The first `.ts` browser spec
 
-There is no precedent to copy yet: every one of the 53 imports in
-[`tests/tests.js`](../../../tests/tests.js) ends in `_spec.js`, and no
+There is no precedent to copy yet: every browser spec imported from
+[`tests/tests.js`](../../../tests/tests.js) is still `*_spec.js`, and no
 `*_spec.ts` exists outside `tests/node/`. Two things differ from the lines
 around it:
 

@@ -1,19 +1,19 @@
 ---
 name: catalog
 description: >-
-  Thread CatalogReader through Mithril attrs, handle Result/LoadError, seed
-  test catalogs, and keep URL hashes stable. Use when adding or editing a
-  component, a browser spec, or sources/state/ code, or when the user
-  mentions catalog, hash, or aliases.
+  Thread CatalogReader and State through Mithril attrs, handle
+  Result/LoadError, seed test catalogs, and keep URL hashes stable. Use when
+  adding or editing a component, a browser spec, or sources/state/ code, or
+  when the user mentions catalog, state, hash, or aliases.
 ---
 
-# Catalog and URL hash
+# Catalog, state, and URL hash
 
 ## Production
 
-Thread `catalog: CatalogReader` from bootstrap through attrs. Do not read a
-hidden global. Views must not call `CatalogWriter` (`registerFrom*`,
-`loadCatalogFromFixtures`).
+Thread `catalog: CatalogReader` and `state: State` from bootstrap through
+attrs. Do not read a hidden global. Views must not call `CatalogWriter`
+(`registerFrom*`, `loadCatalogFromFixtures`).
 
 Getters return `Result<T, LoadError>` (`neverthrow`). `LoadError` is
 `{ kind: "loading"; chunk }` or `{ kind: "not-found"; id }`.
@@ -27,9 +27,12 @@ Readiness is staged: `isIndexReady()`, `isLiteReady()`, `isCreditsReady()`,
 `isPaletteReady()`, `isLayersReady()`, plus `catalog.ready.on*`. UI already
 branches on these (e.g. [`preview-canvas-loading.ts`](../../../sources/state/preview-canvas-loading.ts)).
 
-Bootstrap: [`sources/main.ts`](../../../sources/main.ts) and
+Only [`sources/main.ts`](../../../sources/main.ts) calls
+`configureStateCatalog`. That binds the catalog for `sources/state/` so those
+modules do not take a catalog argument on every call. It is not a hidden
+global for UI — components still receive `catalog` and `state` as attrs.
 [`sources/install-item-metadata.ts`](../../../sources/install-item-metadata.ts)
-call `configureStateCatalog`.
+only registers chunks into the catalog it is given.
 
 ## Importing generated metadata
 
@@ -46,7 +49,12 @@ built — run `npm run dev` or `npm run build`.
 
 ## Tests
 
-`createCatalog()` then seed. Never the production singleton.
+`createCatalog()` and `createState()`. Never the production catalog or the
+bootstrap state instance.
+
+Call `configureStateCatalog(catalog)` when the spec exercises `sources/state/`
+effects. Override individual effects with `setStateDeps` and restore them with
+`resetStateDeps`.
 
 - [`seedCatalog`](../../../tests/browser-catalog-fixture.js) — explicit fixtures
 - `seedCatalogWithGeneratedContext` — keeps generated palette/alias/tree/index
@@ -62,5 +70,5 @@ Shape: `type_name=Item_variant` (e.g. `expression=Neutral_light`). Old hashes
 must keep working. Put `aliases` on the **destination** definition. Do not
 rewrite or delete old hash keys. Discuss renames in an issue first.
 
-Details: [Catalog](../../../CONTRIBUTING.md#catalog),
+Details: [Catalog and state](../../../CONTRIBUTING.md#catalog-and-state),
 [URL hash](../../../CONTRIBUTING.md#url-hash).

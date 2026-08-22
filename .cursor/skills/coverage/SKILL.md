@@ -24,6 +24,17 @@ Both are **full-suite** runs. There is no per-file coverage run; see
 [run-one-spec](../run-one-spec/SKILL.md) for isolation while iterating, then one
 coverage run at the end.
 
+`npm run test:browser:coverage` launches Chrome **and** Firefox (`testem.cjs`
+`launch_in_ci`). If Firefox is not installed locally, confirm with Chrome only:
+
+```bash
+VITE_COVERAGE=true node ./node_modules/testem/testem.js ci --launch Chrome
+```
+
+[`merge-browser-coverage.ts`](../../../scripts/coverage/merge-browser-coverage.ts)
+merges whatever JSON is already in `coverage/browser/`. Firefox-only lines will
+read as uncovered.
+
 ## Before you conclude anything
 
 Check whether the path is in the `ignore:` block of
