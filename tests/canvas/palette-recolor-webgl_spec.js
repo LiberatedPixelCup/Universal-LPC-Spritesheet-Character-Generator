@@ -20,6 +20,8 @@ import {
   getPaletteRecolorConfig,
   getRecolorStats,
   resetRecolorStats,
+  getImageToDraw,
+  clearRecolorCache,
 } from "../../sources/canvas/palette-recolor.ts";
 import {
   recolorImageWebGL,
@@ -30,7 +32,46 @@ import {
   solidCanvas,
   splitCanvas,
   readPixel,
+  as2dCanvas,
+  drawSnapshotToDest,
+  assertOpaqueRemap,
 } from "./palette-recolor-test-helpers.js";
+import { createCatalog } from "../../sources/state/catalog.ts";
+import { seedCatalog } from "../browser-catalog-fixture.js";
+import { SHEET_WIDTH } from "../../sources/canvas/renderer.ts";
+
+const RECOLOR_ITEM_ID = "body";
+
+const itemMetadata = {
+  [RECOLOR_ITEM_ID]: {
+    name: "Body",
+    type_name: "body",
+    recolors: [
+      {
+        material: "body",
+        default: "ulpc",
+        base: "ulpc.light",
+      },
+    ],
+  },
+};
+
+const paletteMetadata = {
+  versions: {},
+  materials: {
+    body: {
+      default: "ulpc",
+      base: "light",
+      palettes: {
+        ulpc: {
+          light: ["#FF0000"],
+          olive: ["#00FF00"],
+          bronze: ["#0000FF"],
+        },
+      },
+    },
+  },
+};
 
 describe("canvas/palette-recolor WebGL mode / stats / fallback", () => {
   let previousMode;
@@ -193,12 +234,14 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
     expect(glOut.width).to.equal(cpuOut.width);
     expect(glOut.height).to.equal(cpuOut.height);
 
-    const cpuData = cpuOut
+    const cpuCanvas = as2dCanvas(cpuOut);
+    const glCanvas = as2dCanvas(glOut);
+    const cpuData = cpuCanvas
       .getContext("2d")
-      .getImageData(0, 0, cpuOut.width, cpuOut.height).data;
-    const glData = glOut
+      .getImageData(0, 0, cpuCanvas.width, cpuCanvas.height).data;
+    const glData = glCanvas
       .getContext("2d")
-      .getImageData(0, 0, glOut.width, glOut.height).data;
+      .getImageData(0, 0, glCanvas.width, glCanvas.height).data;
     expect(Array.from(glData)).to.deep.equal(Array.from(cpuData));
   }
 
@@ -240,5 +283,64 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
     c.width = 4;
     c.height = 4;
     assertWebGlCpuParity(c, [{ source: ["#000000"], target: ["#FF00FF"] }]);
+  });
+
+  it("same-size successive recolors are not blank", () => {
+    const red = solidCanvas(255, 0, 0, SHEET_WIDTH, 64);
+    const first = recolorImageWebGL(red, [
+      { source: ["#FF0000"], target: ["#0000FF"] },
+    ]);
+    const second = recolorImageWebGL(red, [
+      { source: ["#FF0000"], target: ["#00FF00"] },
+    ]);
+
+    expect(first.width).to.equal(SHEET_WIDTH);
+    expect(first.height).to.equal(64);
+    expect(second.width).to.equal(SHEET_WIDTH);
+    expect(second.height).to.equal(64);
+
+    const firstDest = drawSnapshotToDest(first);
+    const secondDest = drawSnapshotToDest(second);
+    assertOpaqueRemap(firstDest, { r: 0, g: 0, b: 255 });
+    assertOpaqueRemap(secondDest, { r: 0, g: 255, b: 0 });
+  });
+
+  it("held snapshot stays drawable after a later same-size recolor", () => {
+    const red = solidCanvas(255, 0, 0, SHEET_WIDTH, 64);
+    const first = recolorImageWebGL(red, [
+      { source: ["#FF0000"], target: ["#0000FF"] },
+    ]);
+    recolorImageWebGL(red, [{ source: ["#FF0000"], target: ["#00FF00"] }]);
+
+    const dest = drawSnapshotToDest(first);
+    assertOpaqueRemap(dest, { r: 0, g: 0, b: 255 });
+  });
+
+  it("getImageToDraw palette change keeps both results opaque and different", async () => {
+    const catalog = createCatalog();
+    seedCatalog(catalog, itemMetadata, { paletteMetadata });
+    clearRecolorCache();
+    const img = solidCanvas(255, 0, 0, SHEET_WIDTH, 64);
+    const path = "spritesheets/body/bodies/male/walk.png";
+
+    const olive = await getImageToDraw(
+      catalog,
+      img,
+      RECOLOR_ITEM_ID,
+      { body: "olive" },
+      path,
+    );
+    const bronze = await getImageToDraw(
+      catalog,
+      img,
+      RECOLOR_ITEM_ID,
+      { body: "bronze" },
+      path,
+    );
+
+    const oliveDest = drawSnapshotToDest(olive);
+    const bronzeDest = drawSnapshotToDest(bronze);
+    assertOpaqueRemap(oliveDest, { r: 0, g: 255, b: 0 });
+    assertOpaqueRemap(bronzeDest, { r: 0, g: 0, b: 255 });
   });
 });
