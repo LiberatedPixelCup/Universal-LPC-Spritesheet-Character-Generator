@@ -2,8 +2,9 @@
  * Tests for the bounded LRU recolor cache inside `getImageToDraw`.
  *
  * Invariants guarded:
- * - Same (spritePath, recolors) returns the same cached canvas reference.
- * - Different recolors produce different canvases (no false key collision).
+ * - Same (spritePath, recolors) returns the same cached reference.
+ * - Different recolors / paths stay distinct after the compositor draws
+ *   (WebGL may return the live shared canvas until the next miss).
  * - `spritePath = null` bypasses cache (custom uploads, etc.).
  * - `!recolors` short-circuits before cache (raw image returned).
  * - `clearRecolorCache()` empties the cache.
@@ -118,6 +119,7 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
       { body: "olive" },
       path,
     );
+    const oliveDest = drawSnapshotToDest(olive);
     const bronze = await getImageToDraw(
       catalog,
       img,
@@ -125,8 +127,19 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
       { body: "bronze" },
       path,
     );
+    const bronzeDest = drawSnapshotToDest(bronze);
+    assertOpaqueRemap(oliveDest, { r: 0, g: 255, b: 0 });
+    assertOpaqueRemap(bronzeDest, { r: 0, g: 0, b: 255 });
 
-    expect(olive).to.not.equal(bronze);
+    const oliveHit = await getImageToDraw(
+      catalog,
+      img,
+      RECOLOR_ITEM_ID,
+      { body: "olive" },
+      path,
+    );
+    expect(oliveHit).to.not.equal(bronze);
+    assertOpaqueRemap(drawSnapshotToDest(oliveHit), { r: 0, g: 255, b: 0 });
   });
 
   it("produces different canvases when spritePath differs", async () => {
@@ -140,6 +153,7 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
       recolors,
       "spritesheets/body/bodies/male/walk.png",
     );
+    const aDest = drawSnapshotToDest(a);
     const b = await getImageToDraw(
       catalog,
       img,
@@ -147,8 +161,18 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
       recolors,
       "spritesheets/body/bodies/male/slash.png",
     );
+    const bDest = drawSnapshotToDest(b);
+    assertOpaqueRemap(aDest, { r: 0, g: 255, b: 0 });
+    assertOpaqueRemap(bDest, { r: 0, g: 255, b: 0 });
 
-    expect(a).to.not.equal(b);
+    const aHit = await getImageToDraw(
+      catalog,
+      img,
+      RECOLOR_ITEM_ID,
+      recolors,
+      "spritesheets/body/bodies/male/walk.png",
+    );
+    expect(aHit).to.not.equal(b);
   });
 
   it("bypasses cache when spritePath is null (uncacheable inputs)", async () => {
@@ -214,7 +238,9 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
       recolors,
       path,
     );
+    assertOpaqueRemap(drawSnapshotToDest(first), { r: 0, g: 255, b: 0 });
     clearRecolorCache();
+    expect(getRecolorCacheStats().misses).to.equal(0);
     const second = await getImageToDraw(
       catalog,
       img,
@@ -223,7 +249,8 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
       path,
     );
 
-    expect(first).to.not.equal(second);
+    expect(getRecolorCacheStats().misses).to.equal(1);
+    assertOpaqueRemap(drawSnapshotToDest(second), { r: 0, g: 255, b: 0 });
   });
 
   it("concurrent callers for the same key resolve to the same canvas", async () => {
@@ -287,7 +314,7 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
     );
     clearRecolorCache();
     const result = await pending;
-    expect(result).to.be.instanceOf(ImageBitmap);
+    expect(result).to.be.instanceOf(HTMLCanvasElement);
     assertOpaqueRemap(drawSnapshotToDest(result), { r: 0, g: 255, b: 0 });
   });
 });

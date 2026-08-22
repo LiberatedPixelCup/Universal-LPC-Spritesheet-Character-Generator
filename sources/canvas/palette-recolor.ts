@@ -4,6 +4,10 @@
 import { ok, err, type Result } from "neverthrow";
 import {
   recolorImageWebGL,
+  recolorImageWebGLNow,
+  enqueueRecolor,
+  commitWebGLLiveSnapshot,
+  setWebGLLiveSnapshotHandler,
   isWebGLAvailable,
   type PaletteMapping,
   type RecolorOutput,
@@ -269,6 +273,26 @@ const resolvedRecolorValues = new WeakMap<
   RecolorCacheValue
 >();
 
+/** Cache key whose pixels are still on the shared WebGL canvas. */
+let pendingLiveKey: string | null = null;
+
+function installLiveSnapshot(snap: RecolorOutput): void {
+  if (!pendingLiveKey) {
+    closeIfImageBitmap(snap);
+    return;
+  }
+  const p = Promise.resolve(snap);
+  recolorCache.set(pendingLiveKey, p);
+  resolvedRecolorValues.set(p, snap);
+  pendingLiveKey = null;
+}
+
+export function bindWebGLLiveSnapshotHandler(): void {
+  setWebGLLiveSnapshotHandler(installLiveSnapshot);
+}
+
+bindWebGLLiveSnapshotHandler();
+
 function closeIfImageBitmap(value: RecolorCacheValue): void {
   if (typeof ImageBitmap !== "undefined" && value instanceof ImageBitmap) {
     value.close();
@@ -305,11 +329,48 @@ export function resetRecolorCacheStats(): void {
   recolorCacheStats = { skipped: 0, cacheHits: 0, misses: 0 };
 }
 
+function startRecolorMiss(
+  catalog: CatalogReader,
+  img: HTMLImageElement | HTMLCanvasElement,
+  recolors: Record<string, string>,
+  paletteConfig: Record<string, PaletteForItem>,
+  cacheKey: string | null,
+  shouldUseWebGL: boolean,
+): Promise<RecolorCacheValue> {
+  if (!cacheKey || !shouldUseWebGL) {
+    return recolorWithPalette(catalog, img, recolors, paletteConfig);
+  }
+  return enqueueRecolor(async () => {
+    await commitWebGLLiveSnapshot();
+    const mappings = collectPaletteMappings(catalog, recolors, paletteConfig);
+    if (mappings.length === 0) {
+      return img;
+    }
+    try {
+      recolorStats.webgl++;
+      const live = await recolorImageWebGLNow(img, mappings, false);
+      pendingLiveKey = cacheKey;
+      return live;
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.warn("⚠️ WebGL recoloring failed, falling back to CPU:", error);
+      recolorStats.fallback++;
+      pendingLiveKey = null;
+      return recolorImageCPU(img, mappings);
+    }
+  });
+}
+
 /**
  * Get image to draw - applies recoloring if needed based on palette configuration.
  * Async because palette loading is lazy (loads on first use). When `spritePath`
  * is supplied, the recolored result is memoized so repeated renders for the
  * same (spritePath, recolors) skip the entire recolor pipeline.
+ *
+ * On the WebGL path a cacheable miss returns the shared canvas so the
+ * compositor can `drawImage` it immediately. The next WebGL recolor copies
+ * that canvas into the LRU before drawing again. Callers must draw before
+ * awaiting another cacheable miss (the renderer already does).
  */
 export async function getImageToDraw(
   catalog: CatalogReader,
@@ -344,7 +405,15 @@ export async function getImageToDraw(
   }
 
   recolorCacheStats.misses++;
-  const promise = recolorWithPalette(catalog, img, recolors, paletteConfig);
+  const shouldUseWebGL = config.useWebGL && !config.forceCPU;
+  const promise = startRecolorMiss(
+    catalog,
+    img,
+    recolors,
+    paletteConfig,
+    cacheKey,
+    shouldUseWebGL,
+  );
   void promise.then((value) => {
     resolvedRecolorValues.set(promise, value);
   });
@@ -382,6 +451,7 @@ export async function getImageToDraw(
 
 /** Clear the recolor cache. Mainly for tests; callable at runtime too. */
 export function clearRecolorCache(): void {
+  pendingLiveKey = null;
   for (const entry of recolorCache.values()) {
     closeSettledCacheEntry(entry);
   }
@@ -390,17 +460,13 @@ export function clearRecolorCache(): void {
 }
 
 /**
- * Recolor an image using a specified palette type.
- * Automatically loads the palette on first use (lazy loading).
+ * Gather (source, target) palette mappings so they can be applied in one pass.
  */
-export async function recolorWithPalette(
+function collectPaletteMappings(
   catalog: CatalogReader,
-  sourceImage: HTMLImageElement | HTMLCanvasElement,
   targetColors: Record<string, string>,
   sourcePalettes: Record<string, PaletteForItem>,
-): Promise<RecolorCacheValue> {
-  // Gather all (source, target) palette mappings so they can be applied
-  // in a single shader pass.
+): PaletteMapping[] {
   const mappings: PaletteMapping[] = [];
   for (const [typeName, palette] of Object.entries(sourcePalettes)) {
     const targetColor = targetColors[typeName];
@@ -417,7 +483,24 @@ export async function recolorWithPalette(
     }
     mappings.push({ source: palette.colors, target: targetPalette });
   }
+  return mappings;
+}
 
+/**
+ * Recolor an image using a specified palette type.
+ * Automatically loads the palette on first use (lazy loading).
+ */
+export async function recolorWithPalette(
+  catalog: CatalogReader,
+  sourceImage: HTMLImageElement | HTMLCanvasElement,
+  targetColors: Record<string, string>,
+  sourcePalettes: Record<string, PaletteForItem>,
+): Promise<RecolorCacheValue> {
+  const mappings = collectPaletteMappings(
+    catalog,
+    targetColors,
+    sourcePalettes,
+  );
   return mappings.length > 0
     ? recolorImage(sourceImage, mappings)
     : sourceImage;

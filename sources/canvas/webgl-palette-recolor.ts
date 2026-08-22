@@ -19,8 +19,30 @@ let sharedImageLocation: WebGLUniformLocation | null = null;
 let sharedPaletteLocation: WebGLUniformLocation | null = null;
 let sharedPaletteSizeLocation: WebGLUniformLocation | null = null;
 
+/** True when the shared canvas still holds a result that has not been copied. */
+let liveUnsnapshotted = false;
+
+type LiveSnapshotHandler = (snap: RecolorOutput) => void;
+let liveSnapshotHandler: LiveSnapshotHandler | null = null;
+
+/**
+ * Called when a deferred live result is copied so the LRU can store the
+ * snapshot. `palette-recolor.ts` installs this at module load.
+ */
+export function setWebGLLiveSnapshotHandler(
+  handler: LiveSnapshotHandler | null,
+): void {
+  liveSnapshotHandler = handler;
+}
+
+/** Drop a deferred live result without copying (cache clear / GL reset). */
+export function discardWebGLLiveSnapshot(): void {
+  liveUnsnapshotted = false;
+}
+
 /** @internal Test helper — drop shared GL so the next call re-inits. */
 export function resetSharedWebGLForTests(): void {
+  discardWebGLLiveSnapshot();
   sharedGL = null;
   sharedCanvas = null;
   sharedProgram = null;
@@ -324,9 +346,31 @@ async function snapshotSharedCanvas(
   return copySharedCanvasTo2D(canvas);
 }
 
+function closeUnusedSnapshot(value: RecolorOutput): void {
+  if (typeof ImageBitmap !== "undefined" && value instanceof ImageBitmap) {
+    value.close();
+  }
+}
+
+/**
+ * Copy a deferred live result before the next draw clobbers the shared canvas.
+ * Must run inside {@link enqueueRecolor}.
+ */
+export async function commitWebGLLiveSnapshot(): Promise<void> {
+  if (!liveUnsnapshotted || !sharedCanvas) return;
+  const snap = await snapshotSharedCanvas(sharedCanvas);
+  liveUnsnapshotted = false;
+  if (liveSnapshotHandler) {
+    liveSnapshotHandler(snap);
+  } else {
+    closeUnusedSnapshot(snap);
+  }
+}
+
 let recolorTail: Promise<unknown> = Promise.resolve();
 
-function enqueueRecolor<T>(fn: () => Promise<T>): Promise<T> {
+/** Serialize shared-canvas draws and deferred snapshots. */
+export function enqueueRecolor<T>(fn: () => Promise<T>): Promise<T> {
   const next = recolorTail.then(fn, fn);
   recolorTail = next.then(
     () => undefined,
@@ -335,9 +379,10 @@ function enqueueRecolor<T>(fn: () => Promise<T>): Promise<T> {
   return next;
 }
 
-function recolorImageWebGLNow(
+export async function recolorImageWebGLNow(
   sourceImage: HTMLImageElement | HTMLCanvasElement,
   paletteMappings: PaletteMapping[],
+  snapshot: boolean,
 ): Promise<RecolorOutput> {
   // Initialize shared resources if needed
   if (!sharedGL) {
@@ -375,6 +420,11 @@ function recolorImageWebGLNow(
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 
+    if (!snapshot) {
+      liveUnsnapshotted = true;
+      return canvas;
+    }
+    liveUnsnapshotted = false;
     return snapshotSharedCanvas(canvas);
   } catch (error) {
     console.error("WebGL recoloring failed:", error);
@@ -388,6 +438,10 @@ function recolorImageWebGLNow(
  * a single shader pass by packing them into one palette texture. The combined
  * total must fit within the 32-slot palette texture.
  *
+ * Returns a stable snapshot (ImageBitmap or 2D canvas). Cacheable
+ * `getImageToDraw` misses skip this copy and return the live canvas; the
+ * next WebGL recolor snapshots into the LRU first.
+ *
  * Recolors are queued so two callers cannot draw into the shared canvas while
  * the previous snapshot is still copying.
  */
@@ -395,9 +449,10 @@ export function recolorImageWebGL(
   sourceImage: HTMLImageElement | HTMLCanvasElement,
   paletteMappings: PaletteMapping[],
 ): Promise<RecolorOutput> {
-  return enqueueRecolor(() =>
-    recolorImageWebGLNow(sourceImage, paletteMappings),
-  );
+  return enqueueRecolor(async () => {
+    await commitWebGLLiveSnapshot();
+    return recolorImageWebGLNow(sourceImage, paletteMappings, true);
+  });
 }
 
 /** Check if WebGL is available. */
