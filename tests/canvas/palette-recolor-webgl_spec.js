@@ -285,6 +285,38 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
     assertWebGlCpuParity(c, [{ source: ["#000000"], target: ["#FF00FF"] }]);
   });
 
+  it("reuses image and palette textures across successive recolors", () => {
+    const createSpy = sinon.spy(
+      WebGLRenderingContext.prototype,
+      "createTexture",
+    );
+    try {
+      const red = solidCanvas(255, 0, 0, SHEET_WIDTH, 64);
+      recolorImageWebGL(red, [{ source: ["#FF0000"], target: ["#0000FF"] }]);
+      const afterFirst = createSpy.callCount;
+      expect(afterFirst).to.be.at.least(2);
+      recolorImageWebGL(red, [{ source: ["#FF0000"], target: ["#00FF00"] }]);
+      expect(createSpy.callCount).to.equal(afterFirst);
+    } finally {
+      createSpy.restore();
+    }
+  });
+
+  it("throws when WebGL cannot allocate a texture", () => {
+    const stub = sinon
+      .stub(WebGLRenderingContext.prototype, "createTexture")
+      .returns(null);
+    try {
+      expect(() =>
+        recolorImageWebGL(solidCanvas(255, 0, 0), [
+          { source: ["#FF0000"], target: ["#0000FF"] },
+        ]),
+      ).to.throw(/Failed to allocate WebGL texture/);
+    } finally {
+      stub.restore();
+    }
+  });
+
   it("same-size successive recolors are not blank", () => {
     const red = solidCanvas(255, 0, 0, SHEET_WIDTH, 64);
     const first = recolorImageWebGL(red, [

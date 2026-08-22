@@ -10,12 +10,22 @@ export type PaletteMapping = { source: string[]; target: string[] };
 let sharedGL: WebGLRenderingContext | null = null;
 let sharedCanvas: HTMLCanvasElement | null = null;
 let sharedProgram: WebGLProgram | null = null;
+let sharedImageTexture: WebGLTexture | null = null;
+let sharedPaletteTexture: WebGLTexture | null = null;
+let sharedImageLocation: WebGLUniformLocation | null = null;
+let sharedPaletteLocation: WebGLUniformLocation | null = null;
+let sharedPaletteSizeLocation: WebGLUniformLocation | null = null;
 
 /** @internal Test helper — drop shared GL so the next call re-inits. */
 export function resetSharedWebGLForTests(): void {
   sharedGL = null;
   sharedCanvas = null;
   sharedProgram = null;
+  sharedImageTexture = null;
+  sharedPaletteTexture = null;
+  sharedImageLocation = null;
+  sharedPaletteLocation = null;
+  sharedPaletteSizeLocation = null;
 }
 
 /**
@@ -133,16 +143,33 @@ function hexToRgbNormalized(hex: string): [number, number, number] {
   ];
 }
 
+function setNearestClamp(gl: WebGLRenderingContext): void {
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+}
+
+function createReusableTexture(gl: WebGLRenderingContext): WebGLTexture {
+  const texture = gl.createTexture();
+  if (!texture) {
+    throw new Error("Failed to allocate WebGL texture");
+  }
+  gl.bindTexture(gl.TEXTURE_2D, texture);
+  setNearestClamp(gl);
+  return texture;
+}
+
 /**
- * Create a palette texture from one or more palette mappings.
+ * Pack source/target palettes into the shared 32×2 palette texture.
  * All source colors are concatenated into row 0; target colors at the same
  * index sit in row 1. The shader loops up to `u_paletteSize` slots, so N
  * regions can be recolored in a single pass by packing them back-to-back.
  */
-function createPaletteTexture(
+function uploadPaletteTexture(
   gl: WebGLRenderingContext,
   paletteMappings: PaletteMapping[],
-): { texture: WebGLTexture; totalSize: number } {
+): number {
   const data = new Uint8Array(32 * 2 * 4); // 32 colors × 2 rows × RGBA
   const TARGET_ROW_OFFSET = 32 * 4;
 
@@ -164,11 +191,8 @@ function createPaletteTexture(
     }
   }
 
-  const texture = gl.createTexture();
-  if (!texture) {
-    throw new Error("Failed to allocate WebGL palette texture");
-  }
-  gl.bindTexture(gl.TEXTURE_2D, texture);
+  gl.activeTexture(gl.TEXTURE1);
+  gl.bindTexture(gl.TEXTURE_2D, sharedPaletteTexture);
   gl.texImage2D(
     gl.TEXTURE_2D,
     0,
@@ -180,30 +204,16 @@ function createPaletteTexture(
     gl.UNSIGNED_BYTE,
     data,
   );
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-
-  return { texture, totalSize: slot };
+  return slot;
 }
 
-function createImageTexture(
+function uploadImageTexture(
   gl: WebGLRenderingContext,
   image: HTMLImageElement | HTMLCanvasElement,
-): WebGLTexture {
-  const texture = gl.createTexture();
-  if (!texture) {
-    throw new Error("Failed to allocate WebGL image texture");
-  }
-  gl.bindTexture(gl.TEXTURE_2D, texture);
+): void {
+  gl.activeTexture(gl.TEXTURE0);
+  gl.bindTexture(gl.TEXTURE_2D, sharedImageTexture);
   gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-
-  return texture;
 }
 
 /** Setup a full-screen quad for rendering. */
@@ -265,6 +275,18 @@ function initSharedWebGL(): void {
   sharedProgram = createProgram(sharedGL, VERTEX_SHADER, FRAGMENT_SHADER);
   sharedGL.useProgram(sharedProgram);
 
+  sharedImageTexture = createReusableTexture(sharedGL);
+  sharedPaletteTexture = createReusableTexture(sharedGL);
+  sharedImageLocation = sharedGL.getUniformLocation(sharedProgram, "u_image");
+  sharedPaletteLocation = sharedGL.getUniformLocation(
+    sharedProgram,
+    "u_palette",
+  );
+  sharedPaletteSizeLocation = sharedGL.getUniformLocation(
+    sharedProgram,
+    "u_paletteSize",
+  );
+
   // Setup quad geometry once
   setupQuad(sharedGL, sharedProgram);
 
@@ -305,36 +327,17 @@ export function recolorImageWebGL(
     // Use the shared program
     gl.useProgram(program);
 
-    // Create textures (these are temporary and must be created per operation)
-    const imageTexture = createImageTexture(gl, sourceImage);
-    const { texture: paletteTexture, totalSize } = createPaletteTexture(
-      gl,
-      paletteMappings,
-    );
+    uploadImageTexture(gl, sourceImage);
+    const totalSize = uploadPaletteTexture(gl, paletteMappings);
 
-    // Set uniforms
-    const imageLocation = gl.getUniformLocation(program, "u_image");
-    const paletteLocation = gl.getUniformLocation(program, "u_palette");
-    const paletteSizeLocation = gl.getUniformLocation(program, "u_paletteSize");
-
-    gl.uniform1i(imageLocation, 0);
-    gl.uniform1i(paletteLocation, 1);
-    gl.uniform1f(paletteSizeLocation, totalSize);
-
-    // Bind textures
-    gl.activeTexture(gl.TEXTURE0);
-    gl.bindTexture(gl.TEXTURE_2D, imageTexture);
-    gl.activeTexture(gl.TEXTURE1);
-    gl.bindTexture(gl.TEXTURE_2D, paletteTexture);
+    gl.uniform1i(sharedImageLocation, 0);
+    gl.uniform1i(sharedPaletteLocation, 1);
+    gl.uniform1f(sharedPaletteSizeLocation, totalSize);
 
     // Render
     gl.clearColor(0, 0, 0, 0);
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-
-    // Cleanup textures (but keep program and buffers)
-    gl.deleteTexture(imageTexture);
-    gl.deleteTexture(paletteTexture);
 
     // Copy result to a new 2D canvas (so we can return it and free WebGL canvas)
     const resultCanvas = document.createElement("canvas");
