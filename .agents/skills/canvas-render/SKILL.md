@@ -23,5 +23,6 @@ Lower `zPos` draws first and ends up behind
 ([ARCHITECTURE.md](../../../ARCHITECTURE.md#render-path)). Magenta `#FF2CE6` is
 keyed out in [`sources/canvas/mask.ts`](../../../sources/canvas/mask.ts).
 
-ZIP export drawing and render timing are a separate check:
-[performance-profiling](../performance-profiling/SKILL.md).
+ZIP export drawing and render timing (WebGL and CPU) are a separate check:
+[performance-profiling](../performance-profiling/SKILL.md). Visual
+correctness of both recolor paths is still this skill.

@@ -279,7 +279,7 @@ Every script in [`package.json`](package.json). Run them from the repository roo
 
 | Command | What it does | When |
 | --- | --- | --- |
-| `npm run profile:app` | Headless live-app profile (`window.profiler.snapshot()`) | `loadImage()`, `renderCharacter()`, or hash hydration changed |
+| `npm run profile:app` | Headless live-app profile (WebGL + CPU by default) | `loadImage()`, `renderCharacter()`, hash hydration, or palette recolor changed |
 | `npm run profile:app:baseline` | Same run, written to `tmp/baseline-app-profile.json` | Take a baseline **before** your change |
 | `npm run diff:app-profile` | Diffs two app-profile JSON files; positive Δ is slower | Comparing baseline against your change |
 | `npm run profile:zip:quick` | Headless ZIP profile with a fake JSZip | Drawing, slicing, or PNG encode changed |

@@ -294,6 +294,8 @@ setPaletteRecolorMode("cpu")
 setPaletteRecolorMode("webgl")
 ```
 
+`setPaletteRecolorMode` runs after the first paint. To force CPU from the first render, add `?recolor=cpu` to the URL (`getRecolorParam()` in `sources/utils/debug.ts`). The headless app profiler does that for its CPU arm: [PERFORMANCE_PROFILING.md](PERFORMANCE_PROFILING.md).
+
 #### Reset Statistics
 ```javascript
 resetPaletteRecolorStats()

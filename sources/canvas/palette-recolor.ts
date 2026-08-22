@@ -7,7 +7,7 @@ import {
   isWebGLAvailable,
   type PaletteMapping,
 } from "./webgl-palette-recolor.ts";
-import { debugLog, debugWarn } from "../utils/debug.ts";
+import { debugLog, debugWarn, getRecolorParam } from "../utils/debug.ts";
 import { get2DContext } from "./canvas-utils.ts";
 import type { CatalogReader, ItemMerged } from "../state/catalog.ts";
 import type { State } from "../state/state.ts";
@@ -18,7 +18,7 @@ import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../state/constants.ts";
 
 // Configuration flags
 const config = {
-  forceCPU: false, // Set to true to force CPU mode even if WebGL is available
+  forceCPU: getRecolorParam() === "cpu",
   useWebGL: isWebGLAvailable(),
 };
 
