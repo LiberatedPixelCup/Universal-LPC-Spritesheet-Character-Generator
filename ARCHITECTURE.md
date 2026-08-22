@@ -218,4 +218,5 @@ or `renderSingleItemAnimation`, which is why they are much slower. Canvas-to-zip
 helpers live in [`sources/utils/zip-helpers.ts`](sources/utils/zip-helpers.ts).
 
 Profiling these paths, including which headless script matches which change, is
-covered in [PERFORMANCE_PROFILING.md](PERFORMANCE_PROFILING.md).
+covered in [PERFORMANCE_PROFILING.md](PERFORMANCE_PROFILING.md) and
+[performance-profiling](.agents/skills/performance-profiling/SKILL.md).

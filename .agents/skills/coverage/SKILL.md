@@ -42,9 +42,10 @@ Check whether the path is in the `ignore:` block of
 coverage run tells you nothing about them. Currently ignored: `tests/**`,
 `dist/**`, `spritesheets/**`, `sheet_definitions/**`, `scripts/coverage/**`,
 `scripts/computed-style/**`, `scripts/imageProcessing/**`, `scripts/zip/**`,
-several individual `scripts/*.ts` files, `vite/**`, `vite.config.ts`,
-`testem.cjs`, `sources/performance-profiler.ts`, `sources/utils/debug.ts`, and
-all CSS/SCSS. Read the file rather than trusting this list.
+`scripts/profile/**`, several individual `scripts/*.ts` files, `vite/**`,
+`vite.config.ts`, `testem.cjs`, `sources/performance-profiler.ts`,
+`sources/utils/debug.ts`, and all CSS/SCSS. Read the file rather than
+trusting this list.
 
 ## Reading the report
 

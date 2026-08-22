@@ -38,6 +38,7 @@ waiting for CI.
 | `sheet_definitions/`, `palette_definitions/` | [sheet-definition](.agents/skills/sheet-definition/SKILL.md) |
 | `sources/`, `scripts/`, `vite/`, `tests/` | [typescript](.agents/skills/typescript/SKILL.md), then [run-one-spec](.agents/skills/run-one-spec/SKILL.md) and [coverage](.agents/skills/coverage/SKILL.md) |
 | `sources/canvas/`, palette recolor, z-positions | [canvas-render](.agents/skills/canvas-render/SKILL.md) — needs the user; you cannot check both paths |
+| `sources/canvas/`, `load-image`, `renderCharacter`, ZIP export drawing | [performance-profiling](.agents/skills/performance-profiling/SKILL.md) — do not ask the user to open DevTools |
 | Layout, first-paint CSS, PurgeCSS safelist | [visual-test](.agents/skills/visual-test/SKILL.md) |
 
 Update whatever doc the change makes stale
