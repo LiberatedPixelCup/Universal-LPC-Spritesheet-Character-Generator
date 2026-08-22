@@ -22,11 +22,13 @@ import {
   resetRecolorStats,
   getImageToDraw,
   clearRecolorCache,
+  bindWebGLLiveSnapshotHandler,
 } from "../../sources/canvas/palette-recolor.ts";
 import {
   recolorImageWebGL,
   isWebGLAvailable,
   resetSharedWebGLForTests,
+  setWebGLLiveSnapshotHandler,
 } from "../../sources/canvas/webgl-palette-recolor.ts";
 import {
   solidCanvas,
@@ -375,6 +377,7 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
       { body: "olive" },
       path,
     );
+    const oliveDest = drawSnapshotToDest(olive);
     const bronze = await getImageToDraw(
       catalog,
       img,
@@ -382,11 +385,163 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
       { body: "bronze" },
       path,
     );
-
-    const oliveDest = drawSnapshotToDest(olive);
     const bronzeDest = drawSnapshotToDest(bronze);
     assertOpaqueRemap(oliveDest, { r: 0, g: 255, b: 0 });
     assertOpaqueRemap(bronzeDest, { r: 0, g: 0, b: 255 });
+
+    const oliveHit = await getImageToDraw(
+      catalog,
+      img,
+      RECOLOR_ITEM_ID,
+      { body: "olive" },
+      path,
+    );
+    assertOpaqueRemap(drawSnapshotToDest(oliveHit), { r: 0, g: 255, b: 0 });
+  });
+
+  it("getImageToDraw defers the WebGL snapshot until the next cacheable miss", async function () {
+    if (typeof createImageBitmap !== "function") {
+      this.skip();
+    }
+    const catalog = createCatalog();
+    seedCatalog(catalog, itemMetadata, { paletteMetadata });
+    clearRecolorCache();
+    const img = solidCanvas(255, 0, 0, SHEET_WIDTH, 64);
+    const bitmapSpy = sinon.spy(globalThis, "createImageBitmap");
+    try {
+      const olive = await getImageToDraw(
+        catalog,
+        img,
+        RECOLOR_ITEM_ID,
+        { body: "olive" },
+        "spritesheets/body/bodies/male/walk.png",
+      );
+      expect(olive).to.be.instanceOf(HTMLCanvasElement);
+      expect(bitmapSpy.called).to.equal(false);
+      assertOpaqueRemap(drawSnapshotToDest(olive), { r: 0, g: 255, b: 0 });
+
+      const bronze = await getImageToDraw(
+        catalog,
+        img,
+        RECOLOR_ITEM_ID,
+        { body: "bronze" },
+        "spritesheets/body/bodies/male/walk.png",
+      );
+      expect(bitmapSpy.called).to.equal(true);
+      assertOpaqueRemap(drawSnapshotToDest(bronze), { r: 0, g: 0, b: 255 });
+
+      const oliveHit = await getImageToDraw(
+        catalog,
+        img,
+        RECOLOR_ITEM_ID,
+        { body: "olive" },
+        "spritesheets/body/bodies/male/walk.png",
+      );
+      expect(oliveHit).to.be.instanceOf(ImageBitmap);
+      assertOpaqueRemap(drawSnapshotToDest(oliveHit), { r: 0, g: 255, b: 0 });
+    } finally {
+      bitmapSpy.restore();
+      clearRecolorCache();
+    }
+  });
+
+  it("getImageToDraw returns the source when every mapping is skipped", async () => {
+    const catalog = createCatalog();
+    seedCatalog(catalog, itemMetadata, { paletteMetadata });
+    clearRecolorCache();
+    const img = solidCanvas(255, 0, 0, SHEET_WIDTH, 64);
+    const out = await getImageToDraw(
+      catalog,
+      img,
+      RECOLOR_ITEM_ID,
+      { body: "source" },
+      "spritesheets/body/bodies/male/walk.png",
+    );
+    expect(out).to.equal(img);
+  });
+
+  it("getImageToDraw falls back to CPU when a live WebGL draw throws", async () => {
+    const catalog = createCatalog();
+    seedCatalog(catalog, itemMetadata, { paletteMetadata });
+    clearRecolorCache();
+    const drawStub = sinon
+      .stub(WebGLRenderingContext.prototype, "drawArrays")
+      .throws(new Error("drawArrays forced failure"));
+    const warnSpy = sinon.spy(console, "warn");
+    try {
+      const img = solidCanvas(255, 0, 0, SHEET_WIDTH, 64);
+      const out = await getImageToDraw(
+        catalog,
+        img,
+        RECOLOR_ITEM_ID,
+        { body: "olive" },
+        "spritesheets/body/bodies/male/walk.png",
+      );
+      expect(getRecolorStats().fallback).to.be.at.least(1);
+      expect(warnSpy.called).to.equal(true);
+      assertOpaqueRemap(drawSnapshotToDest(out), { r: 0, g: 255, b: 0 });
+    } finally {
+      drawStub.restore();
+      warnSpy.restore();
+      clearRecolorCache();
+    }
+  });
+
+  it("closes a copy-on-write snapshot after clearRecolorCache", async function () {
+    if (typeof ImageBitmap === "undefined") {
+      this.skip();
+    }
+    const catalog = createCatalog();
+    seedCatalog(catalog, itemMetadata, { paletteMetadata });
+    clearRecolorCache();
+    const closeSpy = sinon.spy(ImageBitmap.prototype, "close");
+    try {
+      const img = solidCanvas(255, 0, 0, SHEET_WIDTH, 64);
+      await getImageToDraw(
+        catalog,
+        img,
+        RECOLOR_ITEM_ID,
+        { body: "olive" },
+        "spritesheets/body/bodies/male/walk.png",
+      );
+      clearRecolorCache();
+      await recolorImageWebGL(img, [
+        { source: ["#FF0000"], target: ["#0000FF"] },
+      ]);
+      expect(closeSpy.called).to.equal(true);
+    } finally {
+      closeSpy.restore();
+      clearRecolorCache();
+    }
+  });
+
+  it("closes a live snapshot when no cache key is pending", async function () {
+    if (typeof ImageBitmap === "undefined") {
+      this.skip();
+    }
+    const catalog = createCatalog();
+    seedCatalog(catalog, itemMetadata, { paletteMetadata });
+    clearRecolorCache();
+    setWebGLLiveSnapshotHandler(null);
+    const closeSpy = sinon.spy(ImageBitmap.prototype, "close");
+    try {
+      const img = solidCanvas(255, 0, 0, SHEET_WIDTH, 64);
+      await getImageToDraw(
+        catalog,
+        img,
+        RECOLOR_ITEM_ID,
+        { body: "olive" },
+        "spritesheets/body/bodies/male/walk.png",
+      );
+      await recolorImageWebGL(img, [
+        { source: ["#FF0000"], target: ["#0000FF"] },
+      ]);
+      expect(closeSpy.called).to.equal(true);
+    } finally {
+      closeSpy.restore();
+      bindWebGLLiveSnapshotHandler();
+      clearRecolorCache();
+    }
   });
 
   it("snapshots with createImageBitmap when available", async function () {
