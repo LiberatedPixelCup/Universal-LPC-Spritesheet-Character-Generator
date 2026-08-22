@@ -37,9 +37,11 @@ failure here means `dist/` was never built, not that the import is wrong.
 module runs, before any DOM exists:
 
 1. `createCatalog()` produces `applicationCatalog`
-   ([`sources/state/catalog.ts`](sources/state/catalog.ts)).
+   ([`sources/state/catalog.ts`](sources/state/catalog.ts)), and `createState()`
+   produces `applicationState` ([`sources/state/state.ts`](sources/state/state.ts)).
 2. `configureStateCatalog(applicationCatalog)` points the state layer at it, so
-   `sources/state/` does not need the instance threaded in.
+   `sources/state/` does not need the catalog instance threaded in. Tests may
+   override effects with `setStateDeps` / `resetStateDeps`.
 3. `DEBUG = getDebugParam()`, then `window.profiler = new PerformanceProfiler(...)`.
 4. `void loadAllMetadata(applicationCatalog)` starts the metadata fetch without
    blocking, so download and parse overlap HTML parsing.
@@ -50,7 +52,7 @@ parallel `import()` of all five chunks and calls the matching
 rather than all-or-nothing. Each registration triggers a coalesced redraw.
 
 On `DOMContentLoaded`, three separate Mithril roots mount against the same
-catalog instance:
+catalog and state instances:
 
 | Element in `index.html` | Component |
 | --- | --- |
@@ -63,6 +65,10 @@ awaits `onIndexReady` and `onLiteReady`, then calls `initCanvas()`,
 `initHashChangeListener()`, and `initState()`. Layers arrive later, and
 `renderCharacter` awaits `onLayersReady` itself rather than holding up the UI.
 
+Bootstrap also installs a few **sanctioned globals** for tooling, not for app
+code to read: `window.profiler`, `window.canvasRenderer`,
+`__LPC_waitCatalogAllReady`, and `__LPC_arePaletteModalMetadataChunksReady`.
+
 ## Selection flow
 
 Nothing calls the renderer directly from an event handler. Selections mutate
@@ -73,12 +79,12 @@ flowchart TD
   treeClick["Tree click, e.g. ItemWithVariants"] --> selectItem["selectItem() mutates state.selections"]
   selectItem --> redraw["Mithril auto-redraw"]
   redraw --> onupdate["App.onupdate diffs selections, bodyType, custom image"]
-  onupdate --> hash["syncSelectionsToHash(catalog) writes the URL hash"]
-  onupdate --> render["renderCharacter(catalog, selections, bodyType)"]
+  onupdate --> hash["syncSelectionsToHash(catalog, state) writes the URL hash"]
+  onupdate --> render["renderCharacter(catalog, state, state.selections, state.bodyType)"]
   render --> offscreen["Offscreen canvas in renderer.ts"]
   offscreen --> redraw2["m.redraw() after the async render resolves"]
   redraw2 --> preview["copyToPreviewCanvas / preview rAF loop"]
-  hashchange["Back / forward: hashchange"] --> load["loadSelectionsFromHash(catalog)"]
+  hashchange["Back / forward: hashchange"] --> load["loadSelectionsFromHash(catalog, state)"]
   load --> redraw
 ```
 
@@ -152,7 +158,7 @@ only one of them runs on any given machine. Verifying it needs a real browser.
 | `path.ts` | Sprite URL building (`getSpritePath`, `replaceInPath`) |
 | `preview-canvas-loading.ts` | Preview overlay state machine |
 | `resolve-hash-param.ts` | Hash value to item id resolution, including aliases |
-| `state.ts` | The global `state` object, `selectItem`, `selectDefaults`, `initState`, `configureStateCatalog` |
+| `state.ts` | `createState()`, `selectItem`, `selectDefaults`, `initState`, `configureStateCatalog`, and the `setStateDeps` / `resetStateDeps` / `getStateDeps` test seam |
 | `zip.ts` | The four ZIP export orchestrators |
 
 ### `sources/canvas/`

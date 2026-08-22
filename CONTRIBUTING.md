@@ -327,7 +327,7 @@ Markdown formatting, so `npm run format:check` is optional for a docs-only chang
 | **`credits-metadata.js`** | `itemCredits` — map `itemId → credits[]`                                                                |
 | **`layers-metadata.js`**  | `itemLayers` — map `itemId → layer objects`                                                             |
 
-How the app loads these modules: [Catalog](#catalog). Note that source code
+How the app loads these modules: [Catalog and state](#catalog-and-state). Note that source code
 imports these as **`../<name>-metadata.js`**, not as a `dist/` path; a
 `resolve.alias` in [`vite/wiring.ts`](vite/wiring.ts) rewrites the specifier.
 See [ARCHITECTURE.md](ARCHITECTURE.md#generated-metadata-and-the-dist-alias).
@@ -378,17 +378,17 @@ The **Validate site sources** workflow (`.github/workflows/validate-site-sources
 | `tests/fixtures/**` from [`scripts/fixture-builder.ts`](scripts/fixture-builder.ts) | fixture builder | Yes, but review diffs; do not regenerate blindly |
 | `coverage/` | `test:node:coverage` / `test:browser:coverage` | No (`/coverage/` gitignored) |
 
-#### Catalog
+#### Catalog and state
 
-The app creates a catalog in **[`sources/main.ts`](sources/main.ts)**, then loads the generated modules with **parallel `import()`** and registers each chunk into that instance (entry: [`sources/install-item-metadata.ts`](sources/install-item-metadata.ts)). Bootstrap calls **`configureStateCatalog`** so production state uses that instance.
+The app creates a catalog and a state object in **[`sources/main.ts`](sources/main.ts)**. It loads the generated modules with **parallel `import()`** and registers each chunk into that catalog (entry: [`sources/install-item-metadata.ts`](sources/install-item-metadata.ts)). Only **`main.ts`** calls **`configureStateCatalog`**, so production state operations can read that catalog instance without threading it through every `sources/state/` function. That binding is not a hidden global for UI to read.
 
-UI components are Mithril **`m.Component<Attrs, State>`** objects; thread **`catalog: CatalogReader`** through attrs from bootstrap. Do not read a hidden global catalog.
+UI components are Mithril **`m.Component<Attrs, State>`** objects; thread **`catalog: CatalogReader`** and **`state: State`** through attrs from bootstrap. Do not read a hidden global catalog or a module-level `state`.
 
 Getters return **`Result<T, LoadError>`** from **`neverthrow`**. `LoadError` is `{ kind: "loading"; chunk }` or `{ kind: "not-found"; id }` ([`sources/state/catalog.ts`](sources/state/catalog.ts)). In views, use **`renderResult`** from [`sources/utils/render-result.ts`](sources/utils/render-result.ts). Elsewhere use **`.match`** / **`.unwrapOr`** / **`if (r.isErr())`**. Production code uses typed getters (`catalog.getCategoryTree()`, `catalog.getItemLite()`, `catalog.getItemLayers()`, `catalog.getItemCredits()`, `catalog.getPaletteMetadata()`, `catalog.getMetadataIndexes()`, …), not ad hoc globals. Views must not call **`CatalogWriter`** methods (`registerFrom*`, `loadCatalogFromFixtures`).
 
 **Staged loading** — Each catalog exposes **`isIndexReady()`**, **`isLiteReady()`**, **`isCreditsReady()`**, **`isPaletteReady()`**, and **`isLayersReady()`** as synchronous predicates. Its **`catalog.ready`** object provides **`onIndexReady`**, **`onLiteReady`**, …, and **`onAllReady`** (each a **`Promise<void>`** that resolves once). The UI and bootstrap can treat **index** (tree skeleton), **lite** (item rows, hash), **credits** (license text), **palette**, and **layers** (canvas, sprite paths) as separate readiness stages.
 
-**Tests** — Create a catalog with **`createCatalog()`** and seed it. Use **`seedCatalog`** in [`tests/browser-catalog-fixture.js`](tests/browser-catalog-fixture.js) for explicit fixtures. **`seedCatalogWithGeneratedContext`** keeps generated palette, alias, tree, and index context and imports **`dist/index-metadata.js`** — run **`npm run dev`** or **`npm run build`** first. Alternatively register one stage with **`registerFrom*Module`**.
+**Tests** — Create a catalog with **`createCatalog()`** and a state object with **`createState()`**. Seed the catalog; call **`configureStateCatalog(catalog)`** when the spec exercises `sources/state/` effects. Override individual effects with **`setStateDeps`** and restore them with **`resetStateDeps`**. Use **`seedCatalog`** in [`tests/browser-catalog-fixture.js`](tests/browser-catalog-fixture.js) for explicit fixtures. **`seedCatalogWithGeneratedContext`** keeps generated palette, alias, tree, and index context and imports **`dist/index-metadata.js`** — run **`npm run dev`** or **`npm run build`** first. Alternatively register one stage with **`registerFrom*Module`**.
 
 #### Running Tests
 
@@ -428,20 +428,21 @@ This runs Testem in dev mode (browser picker / watch) against the same **[`tests
 
 [`tests/tests.js`](tests/tests.js) imports every browser spec listed there. New specs are TypeScript (`*_spec.ts`); do not add a new `.js` spec. **`tests/node/`** is exercised by **`before_tests`** and by **`npm run test:node`** directly. [`tests/node/run-node-tests.js`](tests/node/run-node-tests.js) collects both **`_spec.js`** and **`_spec.ts`** under **`tests/node/`**.
 
-[`tests/vitest-setup.js`](tests/vitest-setup.js) loads **`sources/vendor-globals.ts`** and sets test flags on **`window`**. Specs create independent catalogs with **`createCatalog()`** and register only the metadata stages and records they exercise. Shared helpers in [`tests/browser-catalog-fixture.js`](tests/browser-catalog-fixture.js) seed explicit fixture catalogs for larger ZIP scenarios. See [Catalog](#catalog).
+[`tests/vitest-setup.js`](tests/vitest-setup.js) loads **`sources/vendor-globals.ts`** and sets test flags on **`window`**. Specs create independent catalogs with **`createCatalog()`** and independent state with **`createState()`**, and register only the metadata stages and records they exercise. Shared helpers in [`tests/browser-catalog-fixture.js`](tests/browser-catalog-fixture.js) seed explicit fixture catalogs for larger ZIP scenarios. See [Catalog and state](#catalog-and-state).
 
 Typical patterns:
 
 - Import **`describe`**, **`it`**, **`beforeEach`**, **`afterEach`** (and suite-level **`before`** / **`after`** when needed) from **`"mocha-globals"`** (re-exported in [`tests/bdd-globals.js`](tests/bdd-globals.js)) and **`assert`** or **`expect`** from **`"chai"`**.
 - Render with **`m.render(…)`** using the global **`m`**.
 - Use **`beforeEach` / `afterEach`** to create and remove DOM containers.
-- Thread **`catalog: CatalogReader`**. Do not omit it from component attrs.
+- Thread **`catalog: CatalogReader`** and **`state: State`**. Do not omit them from component attrs.
 
 Example (`tests/components/MyComponent_spec.ts`):
 
 ```typescript
 import { MyComponent } from "../../sources/components/MyComponent.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
+import { createState, type State } from "../../sources/state/state.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
@@ -449,9 +450,11 @@ import { describe, it, beforeEach, afterEach } from "mocha-globals";
 describe("MyComponent", () => {
   let container: HTMLDivElement;
   let catalog: ReturnType<typeof createCatalog>;
+  let state: State;
 
   beforeEach(() => {
     catalog = createCatalog();
+    state = createState();
     seedCatalog(catalog, {});
     container = document.createElement("div");
     document.body.appendChild(container);
@@ -462,7 +465,7 @@ describe("MyComponent", () => {
   });
 
   it("renders correctly", () => {
-    m.render(container, m(MyComponent, { catalog, prop: "value" }));
+    m.render(container, m(MyComponent, { catalog, state, prop: "value" }));
     const element = container.querySelector(".expected-class");
     assert.isNotNull(element);
     assert.strictEqual(element.textContent, "expected content");

@@ -148,7 +148,9 @@ window.profiler.disable();
 The profiler is configured in `sources/main.ts`:
 
 ```javascript
-const profiler = new window.PerformanceProfiler({
+import { PerformanceProfiler } from "./performance-profiler.ts";
+
+const profiler = new PerformanceProfiler({
   enabled: DEBUG, // Enable/disable profiler
   verbose: false, // Log all marks/measures to console
   logSlowOperations: true, // Log warnings for slow operations
