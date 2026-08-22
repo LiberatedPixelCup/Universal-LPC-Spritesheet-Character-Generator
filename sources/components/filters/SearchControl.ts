@@ -1,15 +1,17 @@
 // Search control component
 import m from "mithril";
 import type { CatalogReader } from "../../state/catalog.ts";
-import { state } from "../../state/state.ts";
+import type { State } from "../../state/state.ts";
 
 type SearchControlAttrs = {
   catalog: CatalogReader;
+  state: State;
 };
 
 export const SearchControl: m.Component<SearchControlAttrs> = {
   view(vnode) {
-    const liteReady = vnode.attrs.catalog.isLiteReady();
+    const { catalog, state } = vnode.attrs;
+    const liteReady = catalog.isLiteReady();
     return m("div.field", [
       m("label.label", "Search:"),
       m("input.input[type=search][placeholder=Search]", {

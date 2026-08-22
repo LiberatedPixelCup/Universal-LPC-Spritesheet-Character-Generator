@@ -10,7 +10,7 @@ import {
 import { debugLog, debugWarn } from "../utils/debug.ts";
 import { get2DContext } from "./canvas-utils.ts";
 import type { CatalogReader, ItemMerged } from "../state/catalog.ts";
-import { state } from "../state/state.ts";
+import type { State } from "../state/state.ts";
 import { getLayersToLoad } from "../state/meta.ts";
 import { getPalettesFromMeta, getTargetPalette } from "../state/palettes.ts";
 import type { PaletteForItem } from "../state/palettes.ts";
@@ -392,6 +392,7 @@ export async function recolorWithPalette(
  */
 export async function drawRecolorPreview(
   catalog: CatalogReader,
+  state: State,
   itemId: string,
   meta: ItemMerged,
   canvas: HTMLCanvasElement,

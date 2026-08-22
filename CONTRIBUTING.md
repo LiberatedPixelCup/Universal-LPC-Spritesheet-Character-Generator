@@ -288,7 +288,7 @@ Plain **`npm test`** / **`npm run test:server`** stay uninstrumented. Coverage H
 
 **PR checks** (see [`codecov.yml`](codecov.yml)):
 
-- **`codecov/patch`** — every new or edited production line under `sources/` (browser) or the generate-sources scripts (Node) must be executed by a unit test (100% patch). Screenshots, comments, and blank lines do not count.
+- **`codecov/patch`** — every new or edited production line under `sources/` (browser) or the generate-sources scripts (Node) must be executed by a unit test (100% patch). Comments, blank lines, erased TypeScript, and lines Istanbul does not give a statement counter (argument-only lines, object shorthands, function headers, or source-map holes with no `DA` row) do not count. A `DA:0` row on a straight-line statement in an already-entered function is treated as a neighbor source-map hole; `DA:0` inside a nested branch still fails until a test executes that statement.
 - **`codecov/changes`** — existing production lines must not lose hits (deleted or weakened unit tests).
 - There is **no** overall coverage-percentage gate. Adding a large file will not fail the PR just because the project average moved.
 

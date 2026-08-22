@@ -1,7 +1,11 @@
 // Item with recolors component
 import m from "mithril";
 import classNames from "classnames";
-import { state, getSelectionGroup, selectItem } from "../../state/state.ts";
+import {
+  getSelectionGroup,
+  selectItem,
+  type State,
+} from "../../state/state.ts";
 import type { CatalogReader, ItemMerged } from "../../state/catalog.ts";
 import { drawRecolorPreview } from "../../canvas/palette-recolor.ts";
 import { getPaletteOptions } from "../../state/palettes.ts";
@@ -16,6 +20,7 @@ export type ItemWithRecolorsAttrs = {
   tooltipText: string;
   showItemTooltips?: boolean;
   catalog: CatalogReader;
+  state: State;
 };
 
 type ItemWithRecolorsState = {
@@ -43,6 +48,7 @@ export const ItemWithRecolors: m.Component<
       tooltipText,
       showItemTooltips = true,
       catalog,
+      state,
     } = vnode.attrs;
     const rowTitle = showItemTooltips ? tooltipText : undefined;
     const compactDisplay = state.compactDisplay;
@@ -64,6 +70,7 @@ export const ItemWithRecolors: m.Component<
     // Build palette/color options for all recolor fields
     const [paletteOptions, selectedColors] = getPaletteOptions(
       catalog,
+      state,
       itemId,
       meta,
     );
@@ -83,6 +90,7 @@ export const ItemWithRecolors: m.Component<
         compactDisplay,
         rootViewNode,
         catalog,
+        state,
         onClose: () => {
           rootViewNode.state.showPaletteModal = null;
           rootViewNode.state._palettePreviewLastTotal = undefined;
@@ -92,6 +100,7 @@ export const ItemWithRecolors: m.Component<
           const subSelectGroup =
             opt.type_name !== meta.type_name ? opt.type_name : null;
           selectItem(
+            state,
             itemId,
             recolor,
             isSelected &&
@@ -164,6 +173,7 @@ export const ItemWithRecolors: m.Component<
                           cs.lastColorsKey = JSON.stringify(selectedColors);
                           drawRecolorPreview(
                             catalog,
+                            state,
                             itemId,
                             meta,
                             canvas,
@@ -184,6 +194,7 @@ export const ItemWithRecolors: m.Component<
                           cs.renderId = renderId;
                           drawRecolorPreview(
                             catalog,
+                            state,
                             itemId,
                             meta,
                             canvas,
@@ -292,6 +303,7 @@ export const ItemWithRecolors: m.Component<
                             const canvas = canvasVnode.dom as HTMLCanvasElement;
                             const imagesLoaded = await drawRecolorPreview(
                               catalog,
+                              state,
                               itemId,
                               meta,
                               canvas,
@@ -313,6 +325,7 @@ export const ItemWithRecolors: m.Component<
                             const canvas = canvasVnode.dom as HTMLCanvasElement;
                             const imagesLoaded = await drawRecolorPreview(
                               catalog,
+                              state,
                               itemId,
                               meta,
                               canvas,

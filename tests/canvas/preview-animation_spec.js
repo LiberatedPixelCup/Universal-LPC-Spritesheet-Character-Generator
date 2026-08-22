@@ -18,12 +18,16 @@ import {
 } from "../../sources/canvas/renderer.ts";
 import { ANIMATION_CONFIGS } from "../../sources/state/constants.ts";
 import { customAnimations } from "../../sources/custom-animations.ts";
+import { createState } from "../../sources/state/state.ts";
+
+let state;
 
 describe("canvas/preview-animation.ts", () => {
   let previewEl;
   let errorStub;
 
   beforeEach(() => {
+    state = createState();
     window.__DISABLE_PREVIEW_ANIMATION__ = false;
     stopPreviewAnimation();
     setCurrentCustomAnimations({});
@@ -80,13 +84,13 @@ describe("canvas/preview-animation.ts", () => {
     it("paints once and does not start rAF when preview animation is disabled", () => {
       window.__DISABLE_PREVIEW_ANIMATION__ = true;
       setPreviewAnimation("walk");
-      startPreviewAnimation();
+      startPreviewAnimation(state);
       expect(stopPreviewAnimation()).to.equal(false);
     });
 
     it("starts a loop that stopPreviewAnimation can cancel", () => {
       setPreviewAnimation("walk");
-      startPreviewAnimation();
+      startPreviewAnimation(state);
       expect(stopPreviewAnimation()).to.equal(true);
       expect(stopPreviewAnimation()).to.equal(false);
     });
@@ -107,13 +111,13 @@ describe("canvas/preview-animation.ts", () => {
   describe("repaintStaticPreviewFrameForTests", () => {
     it("is a no-op unless the disable flag is set", () => {
       window.__DISABLE_PREVIEW_ANIMATION__ = false;
-      expect(() => repaintStaticPreviewFrameForTests()).to.not.throw();
+      expect(() => repaintStaticPreviewFrameForTests(state)).to.not.throw();
     });
 
     it("paints when the disable flag is set", () => {
       window.__DISABLE_PREVIEW_ANIMATION__ = true;
       setPreviewAnimation("walk");
-      expect(() => repaintStaticPreviewFrameForTests()).to.not.throw();
+      expect(() => repaintStaticPreviewFrameForTests(state)).to.not.throw();
     });
   });
 });

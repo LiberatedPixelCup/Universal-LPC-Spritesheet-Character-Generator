@@ -29,8 +29,8 @@ import {
   exportSplitItemAnimations,
   exportSplitItemSheets,
 } from "../../sources/state/zip.ts";
-import { resetState } from "../../sources/state/hash.ts";
-import { state } from "../../sources/state/state.ts";
+import { createState } from "../../sources/state/state.ts";
+let state;
 import { createCatalog } from "../../sources/state/catalog.ts";
 import { importStateFromJSON } from "../../sources/state/json.ts";
 import issue382ItemMetadata from "../fixtures/issue-382/issue-382-itemdata.js";
@@ -45,7 +45,7 @@ import { seedCatalogWithGeneratedContext } from "../browser-catalog-fixture.js";
 function applyImportedStateFromFixture(catalog) {
   Object.assign(
     state,
-    importStateFromJSON(catalog, JSON.stringify(issue382Selections)),
+    importStateFromJSON(catalog, state, JSON.stringify(issue382Selections)),
   );
 }
 
@@ -57,7 +57,7 @@ describe("state/zip.ts issue #382 regression (longsword + full outfit)", () => {
 
   beforeEach(async () => {
     catalog = createCatalog();
-    resetState();
+    state = createState();
     drawCalls.length = 0;
 
     seedCatalogWithGeneratedContext(catalog, issue382ItemMetadata);
@@ -92,7 +92,7 @@ describe("state/zip.ts issue #382 regression (longsword + full outfit)", () => {
     ctx.fillStyle = "#445566";
     ctx.fillRect(0, 0, SHEET_WIDTH, SHEET_HEIGHT);
 
-    await renderCharacter(catalog, state.selections, state.bodyType);
+    await renderCharacter(catalog, state, state.selections, state.bodyType);
   });
 
   afterEach(() => {
@@ -108,7 +108,7 @@ describe("state/zip.ts issue #382 regression (longsword + full outfit)", () => {
   });
 
   it("exportSplitAnimations creates the expected zip paths", async () => {
-    await exportSplitAnimations(catalog);
+    await exportSplitAnimations(catalog, state);
     expect(sortedZipKeys(fakeZip)).to.deep.equal(
       [...issue382ZipPathsSplitAnimations].sort(),
     );
@@ -116,7 +116,7 @@ describe("state/zip.ts issue #382 regression (longsword + full outfit)", () => {
   });
 
   it("exportSplitItemSheets creates the expected zip paths", async () => {
-    await exportSplitItemSheets(catalog);
+    await exportSplitItemSheets(catalog, state);
     expect(sortedZipKeys(fakeZip)).to.deep.equal(
       [...issue382ZipPathsSplitItemSheets].sort(),
     );
@@ -124,7 +124,7 @@ describe("state/zip.ts issue #382 regression (longsword + full outfit)", () => {
   });
 
   it("exportSplitItemAnimations creates the expected zip paths (custom folders include standard layers)", async () => {
-    await exportSplitItemAnimations(catalog);
+    await exportSplitItemAnimations(catalog, state);
     expect(sortedZipKeys(fakeZip)).to.deep.equal(
       [...issue382ZipPathsSplitItemAnimations].sort(),
     );
@@ -137,7 +137,7 @@ describe("state/zip.ts issue #382 regression (longsword + full outfit)", () => {
   });
 
   it("exportIndividualFrames creates the expected zip paths (golden list)", async () => {
-    await exportIndividualFrames(catalog);
+    await exportIndividualFrames(catalog, state);
     expect(sortedZipKeys(fakeZip)).to.deep.equal(
       [...issue382ZipPathsIndividualFrames].sort(),
     );

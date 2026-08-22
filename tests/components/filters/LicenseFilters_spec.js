@@ -4,7 +4,8 @@ import {
   getLicenseConfig,
   setLicenseConfig,
 } from "../../../sources/components/filters/LicenseFilters.ts";
-import { state } from "../../../sources/state/state.ts";
+import { createState } from "../../../sources/state/state.ts";
+let state;
 import { expect } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
@@ -14,6 +15,7 @@ describe("LicenseFilters Component", () => {
   let alertStub;
 
   beforeEach(() => {
+    state = createState();
     // Create a fresh container for each test
     container = document.createElement("div");
     document.body.appendChild(container);
@@ -23,7 +25,8 @@ describe("LicenseFilters Component", () => {
     state.enabledAnimations = {};
 
     // stub the isLicenseCompatible method for dependency injection
-    const licenseCompatibleStub = (itemId) => itemId === "item1";
+    const licenseCompatibleStub = (_catalog, _state, itemId) =>
+      itemId === "item1";
     setLicenseCompatible({ isItemLicenseCompatible: licenseCompatibleStub });
 
     // stub LICENSES for dependency injection
@@ -59,6 +62,7 @@ describe("LicenseFilters Component", () => {
       container,
       m(LicenseFilters, {
         catalog: { isLiteReady: () => true, isCreditsReady: () => true },
+        state,
       }),
     );
 
@@ -80,6 +84,7 @@ describe("LicenseFilters Component", () => {
       view: () =>
         m(LicenseFilters, {
           catalog: { isLiteReady: () => true, isCreditsReady: () => true },
+          state,
         }),
     });
 
@@ -104,6 +109,7 @@ describe("LicenseFilters Component", () => {
       view: () =>
         m(LicenseFilters, {
           catalog: { isLiteReady: () => true, isCreditsReady: () => true },
+          state,
         }),
     });
 

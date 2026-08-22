@@ -582,9 +582,9 @@ export function guardZipExportEnvironment(): boolean {
  */
 export function addCharacterJsonAndCredits(
   catalog: CatalogReader,
+  state: State,
   zip: ZipFolder,
   creditsFolder: ZipFolder,
-  state: State,
   drawCalls: readonly DrawCall[],
 ): void {
   zip.file(

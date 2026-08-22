@@ -137,7 +137,7 @@ export function getSpritePath(
   if (!basePath) return err({ kind: "missing-bodytype-path", bodyType });
 
   if (basePath.includes("${")) {
-    basePath = replaceInPath(catalog, basePath, selections, meta);
+    basePath = replaceInPath(catalog, basePath, selections, meta, bodyType);
   }
 
   // If no variant specified, try to extract from itemId.
@@ -163,11 +163,16 @@ export function replaceInPath(
   path: string,
   selections: Selections | null | undefined,
   meta: PathMeta,
+  bodyType: string = "male",
 ): string {
   if (path.includes("${")) {
     // TODO: optimize — recomputed on every layer/frame today; could be cached
     // per-selection-change or skipped when `path` doesn't contain `${`.
-    const hashParams = getHashParamsforSelections(catalog, selections || {});
+    const hashParams = getHashParamsforSelections(
+      catalog,
+      selections || {},
+      bodyType,
+    );
     const replacements = Object.fromEntries(
       Object.entries(hashParams).map(([typeName, nameAndVariant]) => {
         const name = _getNameWithoutVariant(catalog, typeName, nameAndVariant);

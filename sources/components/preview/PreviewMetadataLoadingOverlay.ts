@@ -5,6 +5,7 @@ import {
   type PreviewState,
 } from "../../state/preview-canvas-loading.ts";
 import type { CatalogReader } from "../../state/catalog.ts";
+import type { State } from "../../state/state.ts";
 
 /** UI copy for blocking states. `rendering`/`ready` produce no overlay. */
 function messageForState(state: PreviewState): string | null {
@@ -21,9 +22,11 @@ function messageForState(state: PreviewState): string | null {
 
 export const PreviewMetadataLoadingOverlay: m.Component<{
   catalog: CatalogReader;
+  state: State;
 }> = {
   view(vnode) {
-    const message = messageForState(getPreviewCanvasState(vnode.attrs.catalog));
+    const { catalog, state } = vnode.attrs;
+    const message = messageForState(getPreviewCanvasState(catalog, state));
     if (!message) {
       return null;
     }

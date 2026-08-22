@@ -23,8 +23,8 @@ import {
   exportSplitItemAnimations,
   exportSplitItemSheets,
 } from "../../sources/state/zip.ts";
-import { resetState } from "../../sources/state/hash.ts";
-import { state } from "../../sources/state/state.ts";
+import { createState } from "../../sources/state/state.ts";
+let state;
 import { ANIMATIONS, DIRECTIONS } from "../../sources/state/constants.ts";
 import { createFakeJSZip } from "../helpers/fake-jszip.js";
 import { seedCatalogWithGeneratedContext } from "../browser-catalog-fixture.js";
@@ -118,7 +118,7 @@ describe("state/zip.ts", () => {
     let alertStub;
 
     beforeEach(() => {
-      resetState();
+      state = createState();
       drawCalls.length = 0;
 
       sandbox = sinon.createSandbox();
@@ -160,7 +160,7 @@ describe("state/zip.ts", () => {
     it("calls addCanvasToZip for each standard animation with folder, file name, and extracted canvas (no crop rect)", async () => {
       const addSpy = sinon.spy(addCanvasToZip);
 
-      await exportSplitAnimations(catalog, { addCanvasToZip: addSpy });
+      await exportSplitAnimations(catalog, state, { addCanvasToZip: addSpy });
 
       const standardCalls = addSpy
         .getCalls()
@@ -180,7 +180,7 @@ describe("state/zip.ts", () => {
     });
 
     it("writes metadata.json with standardAnimations.exported listing each successfully written standard animation id", async () => {
-      await exportSplitAnimations(catalog);
+      await exportSplitAnimations(catalog, state);
 
       const metadataEntry = fakeZip.files.get("credits/metadata.json");
       expect(metadataEntry, "metadata.json should exist").to.exist;
@@ -196,7 +196,7 @@ describe("state/zip.ts", () => {
         return fakeZip;
       };
 
-      await exportSplitAnimations(catalog);
+      await exportSplitAnimations(catalog, state);
 
       const metadataEntry = fakeZip.files.get("credits/metadata.json");
       const metadata = JSON.parse(metadataEntry);
@@ -210,14 +210,14 @@ describe("state/zip.ts", () => {
     });
 
     it("noExport: still writes flat standard PNGs for animations marked noExport (e.g. watering, 1h_slash)", async () => {
-      await exportSplitAnimations(catalog);
+      await exportSplitAnimations(catalog, state);
 
       expect(fakeZip.files.get("standard/watering.png")).to.exist;
       expect(fakeZip.files.get("standard/1h_slash.png")).to.exist;
     });
 
     it("includes character.json, credits credits.txt/credits.csv, and credits/metadata.json", async () => {
-      await exportSplitAnimations(catalog);
+      await exportSplitAnimations(catalog, state);
 
       expect(fakeZip.files.get("character.json")).to.exist;
       expect(fakeZip.files.get("credits/credits.txt")).to.exist;
@@ -247,8 +247,8 @@ describe("state/zip.ts", () => {
 
       const addSpy = sinon.spy(addAnimationSliceToZip);
 
-      await renderCharacter(catalog, state.selections, "male");
-      await exportSplitAnimations(catalog, {
+      await renderCharacter(catalog, state, state.selections, "male");
+      await exportSplitAnimations(catalog, state, {
         addAnimationSliceToZip: addSpy,
       });
 
@@ -275,7 +275,7 @@ describe("state/zip.ts", () => {
     }
 
     beforeEach(async () => {
-      resetState();
+      state = createState();
       drawCalls.length = 0;
 
       seedCatalogWithGeneratedContext(catalog, ZIP_SPEC_ITEM_METADATA);
@@ -328,7 +328,7 @@ describe("state/zip.ts", () => {
       const renderStub = sandbox.stub().resolves(nonEmptyItemCanvas());
       const addSpy = sinon.spy(addCanvasToZip);
 
-      await exportSplitItemSheets(catalog, {
+      await exportSplitItemSheets(catalog, state, {
         renderSingleItem: renderStub,
         addCanvasToZip: addSpy,
       });
@@ -371,7 +371,7 @@ describe("state/zip.ts", () => {
     it("writes PNG blobs under items/ when render succeeds", async () => {
       const renderStub = sandbox.stub().resolves(nonEmptyItemCanvas());
 
-      await exportSplitItemSheets(catalog, {
+      await exportSplitItemSheets(catalog, state, {
         renderSingleItem: renderStub,
       });
 
@@ -391,7 +391,7 @@ describe("state/zip.ts", () => {
     it("includes character.json and credits credits.txt/credits.csv but not credits/metadata.json", async () => {
       const renderStub = sandbox.stub().resolves(nonEmptyItemCanvas());
 
-      await exportSplitItemSheets(catalog, {
+      await exportSplitItemSheets(catalog, state, {
         renderSingleItem: renderStub,
       });
 
@@ -422,7 +422,7 @@ describe("state/zip.ts", () => {
 
       const renderStub = sandbox.stub().resolves(nonEmptyItemCanvas());
 
-      await exportSplitItemSheets(catalog, {
+      await exportSplitItemSheets(catalog, state, {
         renderSingleItem: renderStub,
       });
 
@@ -485,7 +485,7 @@ describe("state/zip.ts", () => {
 
       const renderStub = sandbox.stub().resolves(nonEmptyItemCanvas());
 
-      await exportSplitItemSheets(catalog, {
+      await exportSplitItemSheets(catalog, state, {
         renderSingleItem: renderStub,
       });
 
@@ -559,7 +559,7 @@ describe("state/zip.ts", () => {
         const renderStub = sandbox.stub().resolves(nonEmptyItemCanvas());
         const addSpy = sinon.spy(addCanvasToZip);
 
-        await exportSplitItemSheets(catalog, {
+        await exportSplitItemSheets(catalog, state, {
           renderSingleItem: renderStub,
           addCanvasToZip: addSpy,
         });
@@ -680,7 +680,7 @@ describe("state/zip.ts", () => {
     });
 
     beforeEach(async () => {
-      resetState();
+      state = createState();
       drawCalls.length = 0;
 
       seedCatalogWithGeneratedContext(catalog, ZIP_SPEC_ITEM_METADATA);
@@ -733,7 +733,7 @@ describe("state/zip.ts", () => {
       const renderStub = sandbox.stub().resolves(nonEmptyAnimCanvas());
       const addSpy = sinon.spy(addCanvasToZip);
 
-      await exportSplitItemAnimations(catalog, {
+      await exportSplitItemAnimations(catalog, state, {
         renderSingleItemAnimation: renderStub,
         addCanvasToZip: addSpy,
       });
@@ -776,7 +776,7 @@ describe("state/zip.ts", () => {
     it("writes metadata.json with standardAnimations.exported / failed maps per animation (walk only in fixture)", async () => {
       const renderStub = sandbox.stub().resolves(nonEmptyAnimCanvas());
 
-      await exportSplitItemAnimations(catalog, {
+      await exportSplitItemAnimations(catalog, state, {
         renderSingleItemAnimation: renderStub,
       });
 
@@ -803,7 +803,7 @@ describe("state/zip.ts", () => {
     it("noExport: does not create standard/<anim>/ trees for animations marked noExport (e.g. watering, 1h_slash)", async () => {
       const renderStub = sandbox.stub().resolves(nonEmptyAnimCanvas());
 
-      await exportSplitItemAnimations(catalog, {
+      await exportSplitItemAnimations(catalog, state, {
         renderSingleItemAnimation: renderStub,
       });
 
@@ -816,7 +816,7 @@ describe("state/zip.ts", () => {
     it("includes character.json, credits credits.txt/credits.csv, and credits/metadata.json", async () => {
       const renderStub = sandbox.stub().resolves(nonEmptyAnimCanvas());
 
-      await exportSplitItemAnimations(catalog, {
+      await exportSplitItemAnimations(catalog, state, {
         renderSingleItemAnimation: renderStub,
       });
 
@@ -852,8 +852,8 @@ describe("state/zip.ts", () => {
 
       const loadImageStub = sandbox.stub().resolves(nonEmptyAnimCanvas());
 
-      await renderCharacter(catalog, state.selections, "male");
-      await exportSplitItemAnimations(catalog, {
+      await renderCharacter(catalog, state, state.selections, "male");
+      await exportSplitItemAnimations(catalog, state, {
         loadImage: loadImageStub,
       });
 
@@ -892,7 +892,7 @@ describe("state/zip.ts", () => {
 
       const renderStub = sandbox.stub().resolves(nonEmptyAnimCanvas());
 
-      await exportSplitItemAnimations(catalog, {
+      await exportSplitItemAnimations(catalog, state, {
         renderSingleItemAnimation: renderStub,
       });
 
@@ -968,8 +968,8 @@ describe("state/zip.ts", () => {
         addStandardAnimationToZipCustomFolder,
       );
 
-      await renderCharacter(catalog, state.selections, "male");
-      await exportSplitItemAnimations(catalog, {
+      await renderCharacter(catalog, state, state.selections, "male");
+      await exportSplitItemAnimations(catalog, state, {
         loadImage: loadImageStub,
         addAnimationSliceToZip: addAnimationSliceToZipSpy,
         addStandardAnimationToZipCustomFolder:
@@ -1076,8 +1076,8 @@ describe("state/zip.ts", () => {
         addStandardAnimationToZipCustomFolder,
       );
 
-      await renderCharacter(catalog, state.selections, "male");
-      await exportSplitItemAnimations(catalog, {
+      await renderCharacter(catalog, state, state.selections, "male");
+      await exportSplitItemAnimations(catalog, state, {
         loadImage: loadImageStub,
         getImageToDraw: getImageToDrawStub,
         addAnimationSliceToZip: addAnimationSliceToZipSpy,
@@ -1131,7 +1131,7 @@ describe("state/zip.ts", () => {
         const renderStub = sandbox.stub().resolves(nonEmptyAnimCanvas());
         const addSpy = sinon.spy(addCanvasToZip);
 
-        await exportSplitItemAnimations(catalog, {
+        await exportSplitItemAnimations(catalog, state, {
           renderSingleItemAnimation: renderStub,
           addCanvasToZip: addSpy,
         });
@@ -1174,7 +1174,7 @@ describe("state/zip.ts", () => {
     }
 
     beforeEach(() => {
-      resetState();
+      state = createState();
       drawCalls.length = 0;
 
       sandbox = sinon.createSandbox();
@@ -1222,7 +1222,7 @@ describe("state/zip.ts", () => {
         return { up: [{ canvas: fc, frameNumber: 0 }] };
       });
 
-      await exportIndividualFrames(catalog, {
+      await exportIndividualFrames(catalog, state, {
         extractAnimationFromCanvas: extractStub,
         extractFramesFromAnimation: framesSpy,
       });
@@ -1241,7 +1241,7 @@ describe("state/zip.ts", () => {
       const extractStub = sandbox.stub().callsFake(() => smallAnimCanvas());
       const framesFake = sinon.spy(() => ({}));
 
-      await exportIndividualFrames(catalog, {
+      await exportIndividualFrames(catalog, state, {
         extractAnimationFromCanvas: extractStub,
         extractFramesFromAnimation: framesFake,
       });
@@ -1265,7 +1265,7 @@ describe("state/zip.ts", () => {
       });
       const framesFake = sinon.spy(() => ({}));
 
-      await exportIndividualFrames(catalog, {
+      await exportIndividualFrames(catalog, state, {
         extractAnimationFromCanvas: extractStub,
         extractFramesFromAnimation: framesFake,
       });
@@ -1294,7 +1294,7 @@ describe("state/zip.ts", () => {
         return { up: [{ canvas: fc, frameNumber: 0 }] };
       });
 
-      await exportIndividualFrames(catalog, {
+      await exportIndividualFrames(catalog, state, {
         extractAnimationFromCanvas: extractStub,
         extractFramesFromAnimation: framesSpy,
       });
@@ -1307,7 +1307,7 @@ describe("state/zip.ts", () => {
       const extractStub = sandbox.stub().callsFake(() => smallAnimCanvas());
       const framesFake = sinon.spy(() => ({}));
 
-      await exportIndividualFrames(catalog, {
+      await exportIndividualFrames(catalog, state, {
         extractAnimationFromCanvas: extractStub,
         extractFramesFromAnimation: framesFake,
       });
@@ -1338,7 +1338,7 @@ describe("state/zip.ts", () => {
         },
       };
 
-      await renderCharacter(catalog, state.selections, "male");
+      await renderCharacter(catalog, state, state.selections, "male");
 
       const extractStub = sandbox.stub().callsFake(() => smallAnimCanvas());
       const framesStub = sinon.stub().returns({});
@@ -1346,7 +1346,7 @@ describe("state/zip.ts", () => {
         up: [{ canvas: frameCanvas(), frameNumber: 1 }],
       }));
 
-      await exportIndividualFrames(catalog, {
+      await exportIndividualFrames(catalog, state, {
         extractAnimationFromCanvas: extractStub,
         extractFramesFromAnimation: framesStub,
         extractFramesFromCustomAnimation: extractCustomStub,

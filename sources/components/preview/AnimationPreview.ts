@@ -1,14 +1,14 @@
 // Animation Preview component
 import m from "mithril";
-import { state } from "../../state/state.ts";
+import type { State } from "../../state/state.ts";
 import { ANIMATIONS } from "../../state/constants.ts";
 import { CollapsibleSection } from "../CollapsibleSection.ts";
 import {
-  repaintStaticPreviewFrameForTests,
   setPreviewAnimation,
   startPreviewAnimation,
   stopPreviewAnimation,
   getCustomAnimations,
+  repaintStaticPreviewFrameForTests,
 } from "../../canvas/preview-animation.ts";
 import {
   initPreviewCanvas,
@@ -20,6 +20,7 @@ import { PreviewMetadataLoadingOverlay } from "./PreviewMetadataLoadingOverlay.t
 import type { CatalogReader } from "../../state/catalog.ts";
 
 type PreviewCanvasAttrs = {
+  state: State;
   selectedAnimation: string;
   zoomLevel: number;
   onFrameCycleUpdate: (frameCycle: string) => void;
@@ -32,10 +33,13 @@ type PreviewCanvasState = {
   pinch: PinchToZoom | null;
 };
 
-const PreviewCanvas: m.Component<PreviewCanvasAttrs, PreviewCanvasState> = {
+export const PreviewCanvas: m.Component<
+  PreviewCanvasAttrs,
+  PreviewCanvasState
+> = {
   oncreate(vnode) {
     const canvas = vnode.dom as HTMLCanvasElement;
-    const { selectedAnimation, onFrameCycleUpdate } = vnode.attrs;
+    const { state, selectedAnimation, onFrameCycleUpdate } = vnode.attrs;
     const zoomLevel = vnode.attrs.zoomLevel || 1;
 
     if (!window.canvasRenderer) {
@@ -45,7 +49,7 @@ const PreviewCanvas: m.Component<PreviewCanvasAttrs, PreviewCanvasState> = {
 
     initPreviewCanvas(canvas);
     const frames = setPreviewAnimation(selectedAnimation);
-    startPreviewAnimation();
+    startPreviewAnimation(state);
 
     if (frames) {
       onFrameCycleUpdate(frames.join("-"));
@@ -77,20 +81,20 @@ const PreviewCanvas: m.Component<PreviewCanvasAttrs, PreviewCanvasState> = {
     });
   },
   onupdate(vnode) {
-    const { selectedAnimation } = vnode.attrs;
+    const { state, selectedAnimation } = vnode.attrs;
 
     if (vnode.state.lastAnimation !== selectedAnimation) {
       if (window.canvasRenderer) {
         stopPreviewAnimation();
         setPreviewAnimation(selectedAnimation);
         initPreviewCanvas(vnode.dom as HTMLCanvasElement);
-        startPreviewAnimation();
+        startPreviewAnimation(state);
       }
       vnode.state.lastAnimation = selectedAnimation;
     }
 
     vnode.state.zoomLevel = state.previewCanvasZoomLevel || 1;
-    repaintStaticPreviewFrameForTests();
+    repaintStaticPreviewFrameForTests(state);
   },
   onremove(vnode) {
     vnode.state._pinchUnmounted = true;
@@ -114,10 +118,11 @@ type AnimationPreviewState = {
 };
 
 export const AnimationPreview: m.Component<
-  { catalog: CatalogReader },
+  { catalog: CatalogReader; state: State },
   AnimationPreviewState
 > = {
   oninit(vnode) {
+    const { state } = vnode.attrs;
     vnode.state.selectedAnimation = "walk";
     vnode.state.zoomLevel = state.previewCanvasZoomLevel || 1;
     if (window.canvasRenderer) {
@@ -128,9 +133,11 @@ export const AnimationPreview: m.Component<
     }
   },
   onupdate(vnode) {
+    const { state } = vnode.attrs;
     vnode.state.zoomLevel = state.previewCanvasZoomLevel || 1;
   },
   view(vnode) {
+    const { catalog, state } = vnode.attrs;
     const customAnims = Object.keys(getCustomAnimations());
     const allAnimations: AnimationOption[] = [
       ...ANIMATIONS,
@@ -237,6 +244,7 @@ export const AnimationPreview: m.Component<
             m(ScrollableContainer, { classes: "spritesheet-preview" }, [
               m("div.preview-canvas-root", [
                 m(PreviewCanvas, {
+                  state,
                   selectedAnimation: vnode.state.selectedAnimation,
                   zoomLevel: vnode.state.zoomLevel,
                   onFrameCycleUpdate: (frameCycle) => {
@@ -251,7 +259,8 @@ export const AnimationPreview: m.Component<
                     ])
                   : null,
                 m(PreviewMetadataLoadingOverlay, {
-                  catalog: vnode.attrs.catalog,
+                  catalog,
+                  state,
                 }),
               ]),
             ]),

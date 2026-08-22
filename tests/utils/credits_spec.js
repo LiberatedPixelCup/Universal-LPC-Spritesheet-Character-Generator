@@ -7,13 +7,15 @@ import {
 } from "../../sources/utils/credits.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
-import { state } from "../../sources/state/state.ts";
+import { createState } from "../../sources/state/state.ts";
+let state;
 
 describe("utils/credits.ts", () => {
   let previousSelectedAnimation;
   let catalog;
 
   beforeEach(() => {
+    state = createState();
     catalog = createCatalog();
     previousSelectedAnimation = state.selectedAnimation;
   });
@@ -130,6 +132,7 @@ describe("utils/credits.ts", () => {
         catalog,
         { slot: { itemId: "item1", variant: null } },
         "male",
+        state.selectedAnimation,
       );
 
       expect(result[0].fileName).to.equal("gear/run.png");

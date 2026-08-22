@@ -1,6 +1,6 @@
 import m from "mithril";
-import { state, selectDefaults } from "./state.ts";
-import type { Selection, Selections } from "./state.ts";
+import { selectDefaults } from "./state.ts";
+import type { Selection, Selections, State } from "./state.ts";
 import { parseRecolorKey } from "./palettes.ts";
 import { debugWarn } from "../utils/debug.ts";
 import {
@@ -40,15 +40,11 @@ function resolveHashParam(
   });
 }
 
-export function getState(): typeof state {
-  return state;
-}
-
-export function updateState(updates: Partial<typeof state>): void {
+export function updateState(state: State, updates: Partial<State>): void {
   Object.assign(state, updates);
 }
 
-export function resetState(): void {
+export function resetState(state: State): void {
   state.bodyType = "male";
   state.selections = {};
 }
@@ -185,11 +181,12 @@ export function buildNewSelection(
 export function getHashParamsforSelections(
   catalog: CatalogReader,
   selections: Selections,
+  bodyType: string,
 ): Record<string, string> {
   const params: Record<string, string> = {};
 
   // Add body type (using 'sex' for backwards compatibility with old URLs).
-  params.sex = state.bodyType;
+  params.sex = bodyType;
 
   // Add selections — old format: `type_name=Name_variant`.
   // e.g., "body=Body_color_light", "shoes=Sara_sara".
@@ -251,8 +248,15 @@ export function getHashParamsforSelections(
   return params;
 }
 
-export function syncSelectionsToHash(catalog: CatalogReader): void {
-  const params = getHashParamsforSelections(catalog, state.selections);
+export function syncSelectionsToHash(
+  catalog: CatalogReader,
+  state: State,
+): void {
+  const params = getHashParamsforSelections(
+    catalog,
+    state.selections,
+    state.bodyType,
+  );
   setHashParams(params);
 }
 
@@ -265,6 +269,7 @@ type WindowWithProfiler = Window & { profiler?: Profiler };
 
 export function loadSelectionsFromHash(
   catalog: CatalogReader,
+  state: State,
   hashString: string | null = null,
 ): void {
   const profiler = (window as WindowWithProfiler).profiler;
@@ -423,7 +428,7 @@ export function loadSelectionsFromHash(
   }
 
   // Ensure hash is in sync with loaded selections (handles any normalization).
-  syncSelectionsToHash(catalog);
+  syncSelectionsToHash(catalog, state);
 
   if (profiler) {
     profiler.mark("hash-loadSelectionsFromHash:end");
@@ -438,6 +443,7 @@ export function loadSelectionsFromHash(
 /** Wire up the browser hashchange event. */
 export function initHashChangeListener(
   catalog: CatalogReader,
+  state: State,
   listener?: () => void,
 ): void {
   if (listener) {
@@ -472,11 +478,11 @@ export function initHashChangeListener(
     }
 
     // Load from hash (updates state once).
-    loadSelectionsFromHash(catalog);
+    loadSelectionsFromHash(catalog, state);
 
     // If nothing loaded from hash, use defaults.
     if (Object.keys(state.selections).length === 0) {
-      await selectDefaults();
+      await selectDefaults(state);
     }
 
     // Trigger redraw which calls `App.onupdate` (syncs hash and renders canvas).

@@ -1,6 +1,6 @@
 // Palette utilities
 import { ok, err, type Result } from "neverthrow";
-import { state, getSelectionGroup, type Selections } from "./state.ts";
+import { getSelectionGroup, type Selections, type State } from "./state.ts";
 import {
   type CatalogReader,
   type ItemLite,
@@ -77,6 +77,7 @@ export function getMultiRecolors(
   catalog: CatalogReader,
   itemId: string,
   selections: Selections,
+  matchBodyColorEnabled: boolean = true,
 ): Record<string, string> | null {
   const meta = liteOrNull(catalog, itemId);
   if (!meta) return null;
@@ -120,7 +121,7 @@ export function getMultiRecolors(
   }
 
   // If body color, force match body color
-  if (meta.matchBodyColor && state.matchBodyColorEnabled) {
+  if (meta.matchBodyColor && matchBodyColorEnabled) {
     const bodyColor = getBodyColor(catalog, itemId, selections).unwrapOr(null);
     if (bodyColor) recolors[meta.type_name] = bodyColor;
   }
@@ -287,12 +288,18 @@ export const CUSTOM_VERSION: string = "custom";
 /** Palette options + currently-selected colors for the item's selection group. */
 export function getPaletteOptions(
   catalog: CatalogReader,
+  state: State,
   itemId: string,
   meta: ItemLite,
 ): [PaletteOption[], Record<string, string>] {
   const selectionGroup = getSelectionGroup(itemId);
   const paletteOptions: PaletteOption[] = [];
-  const selectedColors = getMultiRecolors(catalog, itemId, state.selections);
+  const selectedColors = getMultiRecolors(
+    catalog,
+    itemId,
+    state.selections,
+    state.matchBodyColorEnabled,
+  );
 
   if (meta.recolors && meta.recolors.length > 0) {
     meta.recolors.forEach((color, idx) => {

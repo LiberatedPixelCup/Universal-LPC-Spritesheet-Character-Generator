@@ -4,8 +4,10 @@ import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { Download } from "../../../sources/components/download/Download.ts";
 import { createCatalog } from "../../../sources/state/catalog.ts";
-import { state } from "../../../sources/state/state.ts";
+import { createState } from "../../../sources/state/state.ts";
+let state;
 import { seedCatalog } from "../../browser-catalog-fixture.js";
+import { createFakeJSZip } from "../../helpers/fake-jszip.js";
 
 const ZIP_TITLE = "Wait for layer data to finish loading";
 
@@ -28,6 +30,7 @@ describe("Download", function () {
   let catalog;
 
   beforeEach(function () {
+    state = createState();
     host = document.createElement("div");
     document.body.appendChild(host);
     previousRenderer = window.canvasRenderer;
@@ -62,7 +65,8 @@ describe("Download", function () {
 
   it("disables ZIP buttons until layer data is ready", function () {
     m.mount(host, {
-      view: () => m(Download, { catalog: { isLayersReady: () => false } }),
+      view: () =>
+        m(Download, { catalog: { isLayersReady: () => false }, state }),
     });
 
     const zips = zipButtons(host);
@@ -75,7 +79,8 @@ describe("Download", function () {
 
   it("enables ZIP buttons when layer data is ready", function () {
     m.mount(host, {
-      view: () => m(Download, { catalog: { isLayersReady: () => true } }),
+      view: () =>
+        m(Download, { catalog: { isLayersReady: () => true }, state }),
     });
 
     const zips = zipButtons(host);
@@ -86,13 +91,31 @@ describe("Download", function () {
     }
   });
 
+  it("starts split-by-animation export from the ZIP button", function () {
+    window.JSZip = createFakeJSZip();
+    m.mount(host, {
+      view: () =>
+        m(Download, { catalog: { isLayersReady: () => true }, state }),
+    });
+
+    const button = buttonByText(host, "ZIP: Split by animation");
+    assert.notEqual(button, null);
+    button.click();
+    buttonByText(host, "ZIP: Split by item").click();
+    buttonByText(host, "ZIP: Split by animation and item").click();
+    buttonByText(host, "ZIP: Split by animation and frame").click();
+
+    assert.strictEqual(alertStub.calledWith("JSZip library not loaded"), false);
+  });
+
   it("shows a loading spinner for each running zip export", function () {
     state.zipByAnimation.isRunning = true;
     state.zipByItem.isRunning = true;
     state.zipByAnimationAndItem.isRunning = true;
     state.zipIndividualFrames.isRunning = true;
     m.mount(host, {
-      view: () => m(Download, { catalog: { isLayersReady: () => true } }),
+      view: () =>
+        m(Download, { catalog: { isLayersReady: () => true }, state }),
     });
 
     assert.strictEqual(host.querySelectorAll("span.loading").length, 4);
@@ -100,7 +123,7 @@ describe("Download", function () {
 
   it("renders PNG, credits, and clipboard buttons", function () {
     m.mount(host, {
-      view: () => m(Download, { catalog }),
+      view: () => m(Download, { catalog, state }),
     });
 
     assert.notEqual(buttonByText(host, "Spritesheet (PNG)"), null);
@@ -118,7 +141,7 @@ describe("Download", function () {
     });
 
     m.mount(host, {
-      view: () => m(Download, { catalog }),
+      view: () => m(Download, { catalog, state }),
     });
     buttonByText(host, "Export to Clipboard (JSON)").click();
     await Promise.resolve();
@@ -146,7 +169,7 @@ describe("Download", function () {
     });
 
     m.mount(host, {
-      view: () => m(Download, { catalog }),
+      view: () => m(Download, { catalog, state }),
     });
     buttonByText(host, "Import from Clipboard (JSON)").click();
     await Promise.resolve();
@@ -175,7 +198,7 @@ describe("Download", function () {
     });
 
     m.mount(host, {
-      view: () => m(Download, { catalog }),
+      view: () => m(Download, { catalog, state }),
     });
     buttonByText(host, "Credits (TXT)").click();
     buttonByText(host, "Credits (CSV)").click();

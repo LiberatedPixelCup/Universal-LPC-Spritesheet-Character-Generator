@@ -1,6 +1,6 @@
 // Recursive tree node component
 import m from "mithril";
-import { state, getSelectionGroup } from "../../state/state.ts";
+import { getSelectionGroup, type State } from "../../state/state.ts";
 import type {
   CatalogReader,
   CategoryTreeNode,
@@ -29,12 +29,14 @@ export type TreeNodeAttrs = {
   };
   pathPrefix?: string;
   catalog: CatalogReader;
+  state: State;
 };
 
 type ItemListCtx = {
+  catalog: CatalogReader;
+  state: State;
   isNodeAnimCompatible: boolean;
   searchQuery: string;
-  catalog: CatalogReader;
 };
 
 function renderSkeletons(itemIds: string[]) {
@@ -51,7 +53,7 @@ function renderSkeletons(itemIds: string[]) {
 }
 
 function renderItem(itemId: string, meta: ItemMerged, ctx: ItemListCtx) {
-  const { isNodeAnimCompatible, searchQuery, catalog } = ctx;
+  const { catalog, state, isNodeAnimCompatible, searchQuery } = ctx;
   const displayName = meta.name;
   const hasVariants = meta.variants && meta.variants.length > 0;
   const hasRecolors = !hasVariants && meta.recolors && meta.recolors.length > 0;
@@ -60,9 +62,13 @@ function renderItem(itemId: string, meta: ItemMerged, ctx: ItemListCtx) {
     searchQuery.length >= 2 &&
     matchesSearch(meta.name, searchQuery);
 
-  const isLicenseCompatibleFlag = isItemLicenseCompatible(itemId, catalog);
+  const isLicenseCompatibleFlag = isItemLicenseCompatible(
+    catalog,
+    state,
+    itemId,
+  );
   const isAnimCompatibleFlag =
-    isItemAnimationCompatible(itemId, catalog) && isNodeAnimCompatible;
+    isItemAnimationCompatible(catalog, state, itemId) && isNodeAnimCompatible;
   const isCompatible = isLicenseCompatibleFlag && isAnimCompatibleFlag;
 
   // Build tooltip text (license list needs credits chunk)
@@ -138,6 +144,7 @@ function renderItem(itemId: string, meta: ItemMerged, ctx: ItemListCtx) {
       tooltipText,
       showItemTooltips,
       catalog,
+      state,
     });
   }
   return m(ItemWithVariants, {
@@ -149,11 +156,12 @@ function renderItem(itemId: string, meta: ItemMerged, ctx: ItemListCtx) {
     tooltipText,
     showItemTooltips,
     catalog,
+    state,
   });
 }
 
 function renderItemList(itemIds: string[], ctx: ItemListCtx) {
-  const { isNodeAnimCompatible, searchQuery, catalog } = ctx;
+  const { catalog, state, isNodeAnimCompatible, searchQuery } = ctx;
   return itemIds
     .filter((itemId) => {
       const liteResult = catalog.getItemLite(itemId);
@@ -161,7 +169,10 @@ function renderItemList(itemIds: string[], ctx: ItemListCtx) {
       const lite = liteResult.value;
       // Filter: Only show items compatible with current body type
       if (!lite.required.includes(state.bodyType)) return false;
-      if (!isItemAnimationCompatible(itemId, catalog) || !isNodeAnimCompatible)
+      if (
+        !isItemAnimationCompatible(catalog, state, itemId) ||
+        !isNodeAnimCompatible
+      )
         return false;
       // Filter: Only show items matching search query
       if (
@@ -182,11 +193,11 @@ function renderItemList(itemIds: string[], ctx: ItemListCtx) {
 
 export const TreeNode: m.Component<TreeNodeAttrs> = {
   view(vnode) {
-    const { name, node, pathPrefix = "", catalog } = vnode.attrs;
+    const { name, node, pathPrefix = "", catalog, state } = vnode.attrs;
     const nodePath = pathPrefix ? `${pathPrefix}-${name}` : name;
     const searchQuery = state.searchQuery;
     const hasSearchMatches = nodeHasMatches(node, searchQuery, catalog);
-    const isNodeAnimCompatible = isNodeAnimationCompatible(node);
+    const isNodeAnimCompatible = isNodeAnimationCompatible(node, state);
 
     // Filter: Only show items compatible with current body type
     if (
@@ -226,9 +237,10 @@ export const TreeNode: m.Component<TreeNodeAttrs> = {
 
     const itemIds = node.items ?? [];
     const itemListCtx: ItemListCtx = {
+      catalog,
+      state,
       isNodeAnimCompatible,
       searchQuery,
-      catalog,
     };
 
     return m(
@@ -261,6 +273,7 @@ export const TreeNode: m.Component<TreeNodeAttrs> = {
                 node: childNode,
                 pathPrefix: nodePath,
                 catalog,
+                state,
               }),
             ),
             // Render items in this category. Skeletons until lite registers,

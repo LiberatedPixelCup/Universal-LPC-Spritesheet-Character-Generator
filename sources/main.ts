@@ -64,7 +64,11 @@ window.setPaletteRecolorMode = setPaletteRecolorMode;
 window.getPaletteRecolorConfig = getPaletteRecolorConfig;
 
 // Import state management
-import { configureStateCatalog, initState, state } from "./state/state.ts";
+import {
+  configureStateCatalog,
+  createState,
+  initState,
+} from "./state/state.ts";
 import { initHashChangeListener } from "./state/hash.ts";
 
 // Import components
@@ -76,6 +80,7 @@ import { FullSpritesheetPreview } from "./components/preview/FullSpritesheetPrev
 import { PerformanceProfiler } from "./performance-profiler.ts";
 
 const applicationCatalog = createCatalog();
+const applicationState = createState();
 configureStateCatalog(applicationCatalog);
 installCatalogReadinessHooksForVisualTooling(applicationCatalog);
 
@@ -98,7 +103,7 @@ window.canvasRenderer = canvasRenderer;
 
 // Expose initialization function to be called after canvas is ready
 window.setDefaultSelections = async function () {
-  await initState();
+  await initState(applicationState);
 };
 
 // Start metadata chunk fetches as soon as the entry module runs (no DOM required),
@@ -132,13 +137,22 @@ document.addEventListener("DOMContentLoaded", () => {
   // Mount roots are static markup in index.html; assert non-null.
   // main.ts is the composition root; App and sibling previews receive the same catalog.
   m.mount(document.getElementById("mithril-filters")!, {
-    view: () => m(App, { catalog: applicationCatalog }),
+    view: () =>
+      m(App, { catalog: applicationCatalog, state: applicationState }),
   });
   m.mount(document.getElementById("mithril-preview")!, {
-    view: () => m(AnimationPreview, { catalog: applicationCatalog }),
+    view: () =>
+      m(AnimationPreview, {
+        catalog: applicationCatalog,
+        state: applicationState,
+      }),
   });
   m.mount(document.getElementById("mithril-spritesheet-preview")!, {
-    view: () => m(FullSpritesheetPreview, { catalog: applicationCatalog }),
+    view: () =>
+      m(FullSpritesheetPreview, {
+        catalog: applicationCatalog,
+        state: applicationState,
+      }),
   });
 
   clearShellLoadingClass();
@@ -153,10 +167,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     canvasRenderer.initCanvas();
 
-    initHashChangeListener(applicationCatalog);
+    initHashChangeListener(applicationCatalog, applicationState);
 
     // Before first render: overlay uses this; during render, `isRenderingCharacter` hides overlay.
-    state.previewBootstrapRenderDone = true;
+    applicationState.previewBootstrapRenderDone = true;
 
     if (window.setDefaultSelections) {
       await window.setDefaultSelections();

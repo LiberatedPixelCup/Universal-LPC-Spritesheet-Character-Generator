@@ -4,7 +4,6 @@ import {
   loadSelectionsFromHash,
 } from "./hash.ts";
 import { getAllCredits } from "../utils/credits.ts";
-import { state } from "./state.ts";
 import type { Selections, State } from "./state.ts";
 import type { DrawCall } from "../canvas/renderer.ts";
 import type { CatalogReader } from "./catalog.ts";
@@ -78,9 +77,11 @@ type JsonDeps = {
   getHashParamsforSelections: (
     catalog: CatalogReader,
     selections: Selections,
+    bodyType: string,
   ) => Record<string, string>;
   loadSelectionsFromHash: (
     catalog: CatalogReader,
+    state: State,
     hashString?: string | null,
   ) => void;
   getAllCredits: (
@@ -132,7 +133,11 @@ export function exportStateAsJSON(
   layers: readonly unknown[],
 ): string {
   const hash = jsonDeps.createHashStringFromParams(
-    jsonDeps.getHashParamsforSelections(catalog, state.selections),
+    jsonDeps.getHashParamsforSelections(
+      catalog,
+      state.selections,
+      state.bodyType,
+    ),
   );
   const url = `${jsonDeps.getLocationOrigin()}${jsonDeps.getLocationPathname()}#${hash}`;
   const exportedState = {
@@ -181,6 +186,7 @@ type ImportedState = ImportedV2 | ImportedV1;
  */
 export function importStateFromJSON(
   catalog: CatalogReader,
+  state: State,
   jsonString: string,
 ): Partial<State> | undefined {
   try {
@@ -214,7 +220,7 @@ export function importStateFromJSON(
     } else if (importedState.version === 1) {
       const url = new URL(importedState.url);
       const hash = url.hash.toString().substring(1);
-      jsonDeps.loadSelectionsFromHash(catalog, hash);
+      jsonDeps.loadSelectionsFromHash(catalog, state, hash);
       return undefined;
     } else {
       throw new Error("Unsupported version");

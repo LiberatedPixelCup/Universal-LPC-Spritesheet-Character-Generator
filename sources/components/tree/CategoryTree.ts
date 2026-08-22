@@ -1,11 +1,11 @@
 // Main tree component
 import m from "mithril";
 import {
-  state,
   resetAll,
   getSelectionGroup,
   applyMatchBodyColor,
 } from "../../state/state.ts";
+import type { State } from "../../state/state.ts";
 import type {
   CatalogReader,
   CategoryTree as CategoryTreeShape,
@@ -14,7 +14,7 @@ import { renderResult } from "../../utils/render-result.ts";
 import { BodyTypeSelector } from "./BodyTypeSelector.ts";
 import { TreeNode } from "./TreeNode.ts";
 
-type CategoryTreeAttrs = { catalog: CatalogReader };
+type CategoryTreeAttrs = { catalog: CatalogReader; state: State };
 
 function renderLoadingHost() {
   return m("div.box.has-background-light.category-tree-panel", [
@@ -30,7 +30,11 @@ function renderLoadingHost() {
   ]);
 }
 
-function renderTree(categoryTree: CategoryTreeShape, catalog: CatalogReader) {
+function renderTree(
+  catalog: CatalogReader,
+  state: State,
+  categoryTree: CategoryTreeShape,
+) {
   const liteReady = catalog.isLiteReady();
 
   return m("div.box.has-background-light.category-tree-panel", [
@@ -41,7 +45,7 @@ function renderTree(categoryTree: CategoryTreeShape, catalog: CatalogReader) {
         m("div.buttons.mb-0", [
           m(
             "button.button.is-danger.is-small",
-            { onclick: resetAll },
+            { onclick: () => resetAll(state) },
             "Reset all",
           ),
           m(
@@ -120,6 +124,7 @@ function renderTree(categoryTree: CategoryTreeShape, catalog: CatalogReader) {
                 const bodySelection = state.selections[bodySelectionGroup];
                 if (bodySelection?.variant) {
                   applyMatchBodyColor(
+                    state,
                     bodySelection.variant,
                     bodySelection.recolor ?? bodySelection.variant,
                   );
@@ -140,7 +145,7 @@ function renderTree(categoryTree: CategoryTreeShape, catalog: CatalogReader) {
     ]),
     m("div", [
       // Body Type as first tree item
-      m(BodyTypeSelector),
+      m(BodyTypeSelector, { state }),
       // Rest of the category tree
       Object.entries(categoryTree.children ?? {}).map(
         ([categoryName, categoryNode]) =>
@@ -149,6 +154,7 @@ function renderTree(categoryTree: CategoryTreeShape, catalog: CatalogReader) {
             name: categoryName,
             node: categoryNode,
             catalog,
+            state,
           }),
       ),
     ]),
@@ -157,10 +163,10 @@ function renderTree(categoryTree: CategoryTreeShape, catalog: CatalogReader) {
 
 export const CategoryTree: m.Component<CategoryTreeAttrs> = {
   view(vnode) {
-    const { catalog } = vnode.attrs;
+    const { catalog, state } = vnode.attrs;
     return renderResult(
       catalog.getCategoryTree(),
-      (categoryTree) => renderTree(categoryTree, catalog),
+      (categoryTree) => renderTree(catalog, state, categoryTree),
       () => renderLoadingHost(),
     );
   },

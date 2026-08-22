@@ -9,7 +9,7 @@ import type {
   LoadError,
 } from "../../state/catalog.ts";
 import { renderResult } from "../../utils/render-result.ts";
-import { state, getSelectionGroup } from "../../state/state.ts";
+import { getSelectionGroup, type State } from "../../state/state.ts";
 import { ucwords } from "../../utils/helpers.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
 import {
@@ -42,6 +42,7 @@ export type PaletteSelectModalAttrs = {
   onClose: () => void;
   onSelect: (recolor: string) => void;
   catalog: CatalogReader;
+  state: State;
 };
 
 /**
@@ -49,6 +50,7 @@ export type PaletteSelectModalAttrs = {
  * then counts recolor tiles for every expanded `opt.versions` category.
  */
 function prepareAndCountPalettePreviewCanvases(
+  state: State,
   itemId: string,
   opt: PaletteOption,
   paletteMeta: PaletteMetadata,
@@ -120,12 +122,14 @@ function renderModal(
     onClose,
     onSelect,
     catalog,
+    state,
   } = attrs;
 
   const selectionGroup = opt.type_name ?? getSelectionGroup(itemId);
   const selection = state.selections[selectionGroup];
   const activeRecolor = selection?.recolor ?? selectedColors[selectionGroup];
   const previewCanvasTotal = prepareAndCountPalettePreviewCanvases(
+    state,
     itemId,
     opt,
     paletteMeta,
@@ -266,6 +270,7 @@ function renderModal(
                                     rootViewNode.state.palettePreviewGateSeq;
                                   void drawRecolorPreview(
                                     catalog,
+                                    state,
                                     itemId,
                                     meta,
                                     canvas,

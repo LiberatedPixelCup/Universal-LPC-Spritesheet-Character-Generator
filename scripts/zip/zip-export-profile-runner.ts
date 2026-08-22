@@ -28,7 +28,10 @@ import {
   loadSelectionsFromHash,
   resetState,
 } from "../../sources/state/hash.ts";
-import { configureStateCatalog, state } from "../../sources/state/state.ts";
+import {
+  configureStateCatalog,
+  createState,
+} from "../../sources/state/state.ts";
 import {
   createCatalog,
   type AliasMetadata,
@@ -116,11 +119,12 @@ async function runProfiles(
     paletteMetadata: w.paletteMetadata,
   });
   configureStateCatalog(catalog);
+  const state = createState();
 
-  resetState();
+  resetState(state);
   drawCalls.length = 0;
 
-  loadSelectionsFromHash(catalog, resolveProfileHashString());
+  loadSelectionsFromHash(catalog, state, resolveProfileHashString());
 
   window.alert = () => {};
   if (window.m?.redraw) {
@@ -169,25 +173,25 @@ async function runProfiles(
   ctx.fillStyle = "#445566";
   ctx.fillRect(0, 0, SHEET_WIDTH, SHEET_HEIGHT);
 
-  await renderCharacter(catalog, state.selections, state.bodyType);
+  await renderCharacter(catalog, state, state.selections, state.bodyType);
 
   if (run("splitAnimations")) {
-    await exportSplitAnimations(catalog);
+    await exportSplitAnimations(catalog, state);
     state.zipByAnimation.isRunning = false;
   }
 
   if (run("splitItemSheets")) {
-    await exportSplitItemSheets(catalog);
+    await exportSplitItemSheets(catalog, state);
     state.zipByItem.isRunning = false;
   }
 
   if (run("splitItemAnimations")) {
-    await exportSplitItemAnimations(catalog);
+    await exportSplitItemAnimations(catalog, state);
     state.zipByAnimationAndItem.isRunning = false;
   }
 
   if (run("individualFrames")) {
-    await exportIndividualFrames(catalog);
+    await exportIndividualFrames(catalog, state);
     if (state.zipIndividualFrames) {
       state.zipIndividualFrames.isRunning = false;
     }
@@ -204,7 +208,7 @@ async function runProfiles(
   const profiles = w.__zipExportProfiles || {};
   return {
     profiles,
-    selectionLabel: "zip-profile-default-hash.js",
+    selectionLabel: "zip-profile-default-hash.ts",
     useRealJsZip,
     only: only === null ? "all" : only,
   };

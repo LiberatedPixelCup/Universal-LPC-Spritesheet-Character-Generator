@@ -141,7 +141,7 @@ export function getLayersToLoad(
 
     // Replace template variables like ${head}.
     if (layerPath.includes("${")) {
-      layerPath = replaceInPath(catalog, layerPath, selections, meta);
+      layerPath = replaceInPath(catalog, layerPath, selections, meta, bodyType);
     }
 
     const hasCustomAnim = layer.custom_animation;

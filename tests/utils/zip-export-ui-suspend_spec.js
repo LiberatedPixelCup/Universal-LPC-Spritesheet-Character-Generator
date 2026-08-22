@@ -5,11 +5,14 @@ import {
   beginZipExportUiSuspend,
   endZipExportUiSuspend,
 } from "../../sources/utils/zip-export-ui-suspend.ts";
+import { createState } from "../../sources/state/state.ts";
+
+let state;
 
 /** Drain nested suspend depth so module state does not leak between tests. */
 function drainZipExportUiSuspend() {
   for (let i = 0; i < 10; i++) {
-    endZipExportUiSuspend();
+    endZipExportUiSuspend(state);
   }
 }
 
@@ -17,6 +20,7 @@ describe("utils/zip-export-ui-suspend.ts", () => {
   let savedM;
 
   beforeEach(() => {
+    state = createState();
     savedM = globalThis.m;
     globalThis.m = {
       redraw: sinon.spy(),
@@ -36,7 +40,7 @@ describe("utils/zip-export-ui-suspend.ts", () => {
     globalThis.m.redraw();
     expect(redraw.called).to.equal(false);
 
-    endZipExportUiSuspend();
+    endZipExportUiSuspend(state);
     globalThis.m.redraw();
     expect(redraw.calledOnce).to.equal(true);
   });
@@ -50,17 +54,17 @@ describe("utils/zip-export-ui-suspend.ts", () => {
     globalThis.m.redraw();
     expect(redraw.called).to.equal(false);
 
-    endZipExportUiSuspend();
+    endZipExportUiSuspend(state);
     globalThis.m.redraw();
     expect(redraw.called).to.equal(false);
 
-    endZipExportUiSuspend();
+    endZipExportUiSuspend(state);
     globalThis.m.redraw();
     expect(redraw.calledOnce).to.equal(true);
   });
 
   it("endZipExportUiSuspend is safe when suspend depth is already zero", () => {
-    expect(() => endZipExportUiSuspend()).to.not.throw();
+    expect(() => endZipExportUiSuspend(state)).to.not.throw();
   });
 
   it("beginZipExportUiSuspend does not throw when globalThis.m is missing", () => {

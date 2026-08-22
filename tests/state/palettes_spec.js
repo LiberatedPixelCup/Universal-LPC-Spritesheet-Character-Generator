@@ -2,7 +2,11 @@ import { expect } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { createCatalog } from "../../sources/state/catalog.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
-import { configureStateCatalog, state } from "../../sources/state/state.ts";
+import {
+  configureStateCatalog,
+  createState,
+} from "../../sources/state/state.ts";
+let state;
 import {
   getMultiRecolors,
   getPaletteOptions,
@@ -14,6 +18,7 @@ describe("state/palettes.ts", () => {
   let catalog;
 
   beforeEach(() => {
+    state = createState();
     previousSelections = state.selections;
     previousMatchBodyColorEnabled = state.matchBodyColorEnabled;
     state.matchBodyColorEnabled = true;
@@ -324,6 +329,7 @@ describe("state/palettes.ts", () => {
 
     const [paletteOptions, selectedColors] = getPaletteOptions(
       catalog,
+      state,
       "head_ears_elven",
       catalog.getItemLite("head_ears_elven").unwrapOr(null),
     );
@@ -342,6 +348,7 @@ describe("state/palettes.ts", () => {
   it("defaults source-backed recolors to source in getPaletteOptions", () => {
     const [paletteOptions, selectedColors] = getPaletteOptions(
       catalog,
+      state,
       "hair_long_tied_test",
       catalog.getItemLite("hair_long_tied_test").unwrapOr(null),
     );
@@ -375,6 +382,7 @@ describe("state/palettes.ts", () => {
       catalog,
       "heads_human_male",
       state.selections,
+      state.matchBodyColorEnabled,
     );
 
     expect(recolors).to.deep.equal({ head: "light", eyes: "green" });
@@ -428,6 +436,7 @@ describe("state/palettes.ts", () => {
       catalog,
       "heads_human_male",
       state.selections,
+      state.matchBodyColorEnabled,
     );
 
     expect(recolors).to.deep.equal({ head: "light", eyes: "lpcr.black" });

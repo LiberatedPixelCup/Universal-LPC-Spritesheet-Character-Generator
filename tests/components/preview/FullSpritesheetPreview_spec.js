@@ -3,7 +3,8 @@ import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { FullSpritesheetPreview } from "../../../sources/components/preview/FullSpritesheetPreview.ts";
 import * as canvasRenderer from "../../../sources/canvas/renderer.ts";
-import { state } from "../../../sources/state/state.ts";
+import { createState } from "../../../sources/state/state.ts";
+let state;
 import { createCatalog } from "../../../sources/state/catalog.ts";
 
 describe("FullSpritesheetPreview", function () {
@@ -12,6 +13,7 @@ describe("FullSpritesheetPreview", function () {
   let catalog;
 
   beforeEach(function () {
+    state = createState();
     host = document.createElement("div");
     document.body.appendChild(host);
     previousRenderer = window.canvasRenderer;
@@ -39,7 +41,9 @@ describe("FullSpritesheetPreview", function () {
   });
 
   it("renders the spritesheet canvas and default checkbox state", function () {
-    m.mount(host, { view: () => m(FullSpritesheetPreview, { catalog }) });
+    m.mount(host, {
+      view: () => m(FullSpritesheetPreview, { catalog, state }),
+    });
 
     assert.notEqual(host.querySelector("#spritesheet-preview"), null);
     const checkboxes = host.querySelectorAll('input[type="checkbox"]');
@@ -49,7 +53,9 @@ describe("FullSpritesheetPreview", function () {
   });
 
   it("writes transparency grid and mask flags from the checkboxes", function () {
-    m.mount(host, { view: () => m(FullSpritesheetPreview, { catalog }) });
+    m.mount(host, {
+      view: () => m(FullSpritesheetPreview, { catalog, state }),
+    });
 
     const checkboxes = host.querySelectorAll('input[type="checkbox"]');
     checkboxes[0].checked = false;
@@ -62,7 +68,9 @@ describe("FullSpritesheetPreview", function () {
   });
 
   it("writes fullSpritesheetCanvasZoomLevel from the zoom slider", function () {
-    m.mount(host, { view: () => m(FullSpritesheetPreview, { catalog }) });
+    m.mount(host, {
+      view: () => m(FullSpritesheetPreview, { catalog, state }),
+    });
 
     const slider = host.querySelector("input[type=range]");
     slider.value = "0.8";
@@ -75,7 +83,9 @@ describe("FullSpritesheetPreview", function () {
 
   it("shows a busy overlay while the character is rendering", function () {
     state.isRenderingCharacter = true;
-    m.mount(host, { view: () => m(FullSpritesheetPreview, { catalog }) });
+    m.mount(host, {
+      view: () => m(FullSpritesheetPreview, { catalog, state }),
+    });
 
     const busy = host.querySelector(".preview-canvas-busy");
     assert.notEqual(busy, null);

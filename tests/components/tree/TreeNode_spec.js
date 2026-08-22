@@ -2,13 +2,14 @@ import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { TreeNode } from "../../../sources/components/tree/TreeNode.ts";
-import { configureStateCatalog, state } from "../../../sources/state/state.ts";
+import {
+  configureStateCatalog,
+  createState,
+} from "../../../sources/state/state.ts";
+let state;
 import { createCatalog } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
-import {
-  resetState,
-  setEnabledAnimations,
-} from "../../../sources/state/filters.ts";
+import { setEnabledAnimations } from "../../../sources/state/filters.ts";
 import { seedCatalog } from "../../browser-catalog-fixture.js";
 
 describe("TreeNode", function () {
@@ -18,7 +19,7 @@ describe("TreeNode", function () {
   beforeEach(function () {
     catalog = createCatalog();
     configureStateCatalog(catalog);
-    resetState();
+    state = createState();
     state.expandedNodes = {};
     state.searchQuery = "";
     host = document.createElement("div");
@@ -30,7 +31,6 @@ describe("TreeNode", function () {
     if (host.parentNode) {
       host.parentNode.removeChild(host);
     }
-    resetState();
   });
 
   it("renders nothing when the node is restricted to other body types", function () {
@@ -53,7 +53,7 @@ describe("TreeNode", function () {
       children: {},
     };
 
-    m.render(host, m(TreeNode, { name: "Armor", node, catalog }));
+    m.render(host, m(TreeNode, { name: "Armor", node, catalog, state }));
 
     assert.strictEqual(host.querySelector(".tree-label"), null);
     assert.strictEqual(host.textContent.trim(), "");
@@ -76,6 +76,7 @@ describe("TreeNode", function () {
       host,
       m(TreeNode, {
         catalog,
+        state,
         name: "Headgear",
         node: { items: ["tn_alpha"], children: {} },
       }),
@@ -103,6 +104,7 @@ describe("TreeNode", function () {
       host,
       m(TreeNode, {
         catalog,
+        state,
         name: "Warehouse",
         node: { items: ["pending-id"], children: {} },
       }),
@@ -135,6 +137,7 @@ describe("TreeNode", function () {
       host,
       m(TreeNode, {
         catalog,
+        state,
         name: "outer_category",
         node: {
           label: "Custom Label",
@@ -155,6 +158,7 @@ describe("TreeNode", function () {
       host,
       m(TreeNode, {
         catalog,
+        state,
         name: "outer_category",
         node: {
           label: "Custom Label",
@@ -179,6 +183,7 @@ describe("TreeNode", function () {
       host,
       m(TreeNode, {
         catalog,
+        state,
         name: "armor",
         node: { items: [], children: {} },
       }),
@@ -204,6 +209,7 @@ describe("TreeNode", function () {
       host,
       m(TreeNode, {
         catalog,
+        state,
         name: "Gear",
         node: { items: ["tn_search_hat"], children: {} },
       }),
@@ -238,6 +244,7 @@ describe("TreeNode", function () {
       host,
       m(TreeNode, {
         catalog,
+        state,
         name: "capes",
         node: { items: ["tn_pick"], children: {} },
       }),
@@ -254,6 +261,7 @@ describe("TreeNode", function () {
       host,
       m(TreeNode, {
         catalog,
+        state,
         name: "capes",
         node: { items: ["tn_pick"], children: {} },
       }),
@@ -266,12 +274,13 @@ describe("TreeNode", function () {
 
   it("shows animation mismatch styling on the category row and blocks expand", function () {
     seedCatalog(catalog, {}, { categoryTree: { items: [], children: {} } });
-    setEnabledAnimations(["run"]);
+    setEnabledAnimations(state, ["run"]);
 
     m.render(
       host,
       m(TreeNode, {
         catalog,
+        state,
         name: "AnimCat",
         node: {
           animations: ["walk"],
@@ -298,6 +307,7 @@ describe("TreeNode", function () {
       host,
       m(TreeNode, {
         catalog,
+        state,
         name: "parent",
         node: {
           items: [],

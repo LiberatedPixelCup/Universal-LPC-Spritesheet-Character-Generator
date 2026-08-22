@@ -2,10 +2,13 @@ import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { CategoryTree } from "../../../sources/components/tree/CategoryTree.ts";
-import { configureStateCatalog, state } from "../../../sources/state/state.ts";
+import {
+  configureStateCatalog,
+  createState,
+} from "../../../sources/state/state.ts";
+let state;
 import { createCatalog } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
-import { resetState } from "../../../sources/state/filters.ts";
 import { seedCatalog } from "../../browser-catalog-fixture.js";
 
 describe("CategoryTree", function () {
@@ -15,7 +18,7 @@ describe("CategoryTree", function () {
   beforeEach(function () {
     catalog = createCatalog();
     configureStateCatalog(catalog);
-    resetState();
+    state = createState();
     state.expandedNodes = {};
     state.searchQuery = "";
     host = document.createElement("div");
@@ -27,11 +30,10 @@ describe("CategoryTree", function () {
     if (host.parentNode) {
       host.parentNode.removeChild(host);
     }
-    resetState();
   });
 
   it("shows loading panel until the category index is ready", function () {
-    m.render(host, m(CategoryTree, { catalog }));
+    m.render(host, m(CategoryTree, { catalog, state }));
 
     assert.ok(host.querySelector(".category-tree-loading-overlay"));
     assert.strictEqual(
@@ -58,7 +60,7 @@ describe("CategoryTree", function () {
       paletteMetadata: { versions: {}, materials: {} },
     });
 
-    m.render(host, m(CategoryTree, { catalog }));
+    m.render(host, m(CategoryTree, { catalog, state }));
 
     const expandBtn = [...host.querySelectorAll("button")].find(
       (b) => b.textContent.trim() === "Expand Selected",
@@ -93,7 +95,7 @@ describe("CategoryTree", function () {
     );
     state.expandedNodes.Gear = true;
 
-    m.render(host, m(CategoryTree, { catalog }));
+    m.render(host, m(CategoryTree, { catalog, state }));
 
     assert.strictEqual(
       host.querySelector("h3.title")?.textContent?.trim(),
@@ -164,7 +166,7 @@ describe("CategoryTree", function () {
     };
     state.expandedNodes = {};
 
-    m.render(host, m(CategoryTree, { catalog }));
+    m.render(host, m(CategoryTree, { catalog, state }));
 
     const expandBtn = [...host.querySelectorAll("button")].find(
       (b) => b.textContent.trim() === "Expand Selected",
@@ -200,7 +202,7 @@ describe("CategoryTree", function () {
     );
     state.expandedNodes = { Gear: true };
 
-    m.render(host, m(CategoryTree, { catalog }));
+    m.render(host, m(CategoryTree, { catalog, state }));
 
     const collapseBtn = [...host.querySelectorAll("button")].find(
       (b) => b.textContent.trim() === "Collapse All",

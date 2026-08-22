@@ -8,11 +8,14 @@ import { expect } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { createCatalog } from "../../sources/state/catalog.ts";
+import { createState } from "../../sources/state/state.ts";
+let state;
 
 describe("state/json.ts", () => {
   let catalog;
 
   beforeEach(() => {
+    state = createState();
     catalog = createCatalog();
     resetJsonDeps();
   });
@@ -61,7 +64,7 @@ describe("state/json.ts", () => {
         selections: { body: { itemId: "1" } },
         selectedAnimation: "idle",
       });
-      const result = importStateFromJSON(catalog, json);
+      const result = importStateFromJSON(catalog, state, json);
       expect(result.bodyType).to.equal("female");
       expect(result.selections.body.itemId).to.equal("1");
       expect(result.selectedAnimation).to.equal("idle");
@@ -72,6 +75,7 @@ describe("state/json.ts", () => {
       setJsonDeps({ loadSelectionsFromHash });
       importStateFromJSON(
         catalog,
+        state,
         JSON.stringify({
           version: 1,
           url: "https://example.com/app/#body=Body_light",
@@ -79,13 +83,14 @@ describe("state/json.ts", () => {
       );
       expect(loadSelectionsFromHash.calledOnce).to.be.true;
       expect(loadSelectionsFromHash.firstCall.args[0]).to.equal(catalog);
-      expect(loadSelectionsFromHash.firstCall.args[1]).to.equal(
+      expect(loadSelectionsFromHash.firstCall.args[1]).to.equal(state);
+      expect(loadSelectionsFromHash.firstCall.args[2]).to.equal(
         "body=Body_light",
       );
     });
 
     it("throws for invalid JSON", () => {
-      expect(() => importStateFromJSON(catalog, "not json")).to.throw(
+      expect(() => importStateFromJSON(catalog, state, "not json")).to.throw(
         SyntaxError,
       );
     });
@@ -94,6 +99,7 @@ describe("state/json.ts", () => {
       expect(() =>
         importStateFromJSON(
           catalog,
+          state,
           JSON.stringify({ version: 2, bodyType: "male" }),
         ),
       ).to.throw("Invalid JSON format");
@@ -101,7 +107,7 @@ describe("state/json.ts", () => {
 
     it("throws when version 1 has no url", () => {
       expect(() =>
-        importStateFromJSON(catalog, JSON.stringify({ version: 1 })),
+        importStateFromJSON(catalog, state, JSON.stringify({ version: 1 })),
       ).to.throw("Invalid JSON format");
     });
 
@@ -109,6 +115,7 @@ describe("state/json.ts", () => {
       expect(() =>
         importStateFromJSON(
           catalog,
+          state,
           JSON.stringify({
             version: 3,
             bodyType: "m",

@@ -3,11 +3,14 @@ import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { App } from "../../sources/components/App.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
-import { configureStateCatalog, state } from "../../sources/state/state.ts";
+import {
+  configureStateCatalog,
+  createState,
+} from "../../sources/state/state.ts";
+let state;
 import {
   getSetHashCalledTimes,
   resetHashCalledTimes,
-  resetState as resetHashState,
   setHash,
 } from "../../sources/state/hash.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
@@ -19,6 +22,7 @@ describe("App", function () {
   let catalog;
 
   beforeEach(function () {
+    state = createState();
     host = document.createElement("div");
     document.body.appendChild(host);
     previousRenderer = window.canvasRenderer;
@@ -30,10 +34,6 @@ describe("App", function () {
     window.isTesting = true;
     setHash("");
     resetHashCalledTimes();
-    state.selections = {};
-    state.bodyType = "male";
-    state.customUploadedImage = null;
-    state.customImageZPos = 0;
   });
 
   afterEach(function () {
@@ -47,17 +47,12 @@ describe("App", function () {
       window.canvasRenderer = previousRenderer;
     }
     window.isTesting = previousTesting;
-    resetHashState();
     resetHashCalledTimes();
-    state.selections = {};
-    state.bodyType = "male";
-    state.customUploadedImage = null;
-    state.customImageZPos = 0;
   });
 
   it("renders Download, Filters, Credits, and Advanced Tools", function () {
     m.mount(host, {
-      view: () => m(App, { catalog }),
+      view: () => m(App, { catalog, state }),
     });
 
     const titles = [...host.querySelectorAll("h3.collapsible-title")].map(
@@ -71,7 +66,7 @@ describe("App", function () {
 
   it("syncs the hash when selections change and skips render without canvasRenderer", function () {
     m.mount(host, {
-      view: () => m(App, { catalog }),
+      view: () => m(App, { catalog, state }),
     });
     resetHashCalledTimes();
 
@@ -92,7 +87,7 @@ describe("App", function () {
 
   it("syncs the hash when bodyType or custom overlay state changes", function () {
     m.mount(host, {
-      view: () => m(App, { catalog }),
+      view: () => m(App, { catalog, state }),
     });
     resetHashCalledTimes();
 
