@@ -11,6 +11,7 @@
  *   node scripts/profile/app-profile.ts --url http://127.0.0.1:5173
  *   node scripts/profile/app-profile.ts --hash 'sex=male&body=Body_Color_light'
  *   node scripts/profile/app-profile.ts --out custom/path.json
+ *   node scripts/profile/app-profile.ts --headed --channel chrome
  *
  * Environment:
  *   APP_PROFILE_PORT — Vite port when this script starts the server (default 5178).
@@ -22,7 +23,12 @@ import { spawn, type ChildProcess } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { chromium, type Browser, type Page } from "playwright";
+import {
+  chromium,
+  type Browser,
+  type LaunchOptions,
+  type Page,
+} from "playwright";
 
 import { ZIP_PROFILE_DEFAULT_HASH } from "../zip/zip-profile-default-hash.ts";
 import { waitForHomepageReady } from "../../tests/visual/home-helpers.ts";
@@ -40,6 +46,13 @@ const DEFAULT_PORT = 5178;
 export type AppProfileRecolorMode = "webgl" | "cpu";
 type RecolorChoice = AppProfileRecolorMode | "both";
 
+export type AppProfileRenderer = {
+  vendor: string | null;
+  renderer: string | null;
+  unmaskedVendor: string | null;
+  unmaskedRenderer: string | null;
+};
+
 export type AppProfileModeResult = {
   requestedMode: AppProfileRecolorMode;
   activeMode: string;
@@ -54,6 +67,9 @@ export type AppProfileFile = {
   hash2: string | null;
   actions: string[];
   userAgent: string;
+  headed: boolean;
+  channel: string | null;
+  renderer: AppProfileRenderer;
   recolor: RecolorChoice;
   profiles: Partial<Record<AppProfileRecolorMode, AppProfileModeResult>>;
 };
@@ -64,6 +80,8 @@ type AppProfileOpts = {
   hash: string;
   hash2: string;
   recolor: RecolorChoice;
+  headed: boolean;
+  channel: string | null;
 };
 
 type AppProfileWindow = Window & {
@@ -105,7 +123,7 @@ function parseArgs(argv: string[]): AppProfileOpts {
   const args = argv.slice(2);
   if (args.includes("--help") || args.includes("-h")) {
     process.stdout.write(
-      "Usage: node scripts/profile/app-profile.ts [--recolor webgl|cpu|both] [--url <origin>] [--hash <h>] [--hash2 <h>] [--out <path>]\n",
+      "Usage: node scripts/profile/app-profile.ts [--recolor webgl|cpu|both] [--url <origin>] [--hash <h>] [--hash2 <h>] [--out <path>] [--headed] [--channel chrome]\n",
     );
     process.exit(0);
   }
@@ -114,6 +132,8 @@ function parseArgs(argv: string[]): AppProfileOpts {
   let hash = ZIP_PROFILE_DEFAULT_HASH;
   let hash2 = APP_PROFILE_SECOND_HASH;
   let recolor: RecolorChoice = "both";
+  let headed = false;
+  let channel: string | null = null;
   for (let i = 0; i < args.length; i++) {
     const a = args[i];
     const next = args[i + 1];
@@ -135,6 +155,13 @@ function parseArgs(argv: string[]): AppProfileOpts {
       }
       recolor = next;
       i++;
+    } else if (a === "--headed") {
+      headed = true;
+    } else if (a === "--channel" && next && !next.startsWith("-")) {
+      channel = next;
+      i++;
+    } else if (a === "--channel") {
+      throw new Error("--channel requires a browser name (e.g. chrome)");
     } else {
       throw new Error(`Unknown argument: ${a}`);
     }
@@ -145,6 +172,77 @@ function parseArgs(argv: string[]): AppProfileOpts {
     hash,
     hash2,
     recolor,
+    headed,
+    channel,
+  };
+}
+
+function hardwareGpuArgs(): string[] {
+  const args = ["--ignore-gpu-blocklist"];
+  if (process.platform === "darwin") {
+    args.push("--use-angle=metal");
+  } else if (process.platform === "win32") {
+    args.push("--use-angle=d3d11");
+  }
+  return args;
+}
+
+function buildLaunchOptions(opts: AppProfileOpts): LaunchOptions {
+  const launch: LaunchOptions = { headless: !opts.headed };
+  if (opts.channel) {
+    launch.channel = opts.channel;
+  }
+  if (opts.headed || opts.channel) {
+    launch.args = hardwareGpuArgs();
+  }
+  return launch;
+}
+
+function emptyRenderer(): AppProfileRenderer {
+  return {
+    vendor: null,
+    renderer: null,
+    unmaskedVendor: null,
+    unmaskedRenderer: null,
+  };
+}
+
+export function rendererLabel(info: AppProfileRenderer): string {
+  return info.unmaskedRenderer ?? info.renderer ?? "(no WebGL)";
+}
+
+export function isSoftwareWebGLRenderer(info: AppProfileRenderer): boolean {
+  const text = [info.unmaskedRenderer, info.renderer]
+    .filter((s): s is string => typeof s === "string" && s.length > 0)
+    .join(" ")
+    .toLowerCase();
+  if (text === "") return true;
+  return /swiftshader|llvmpipe|softpipe|microsoft basic render|software adapter/.test(
+    text,
+  );
+}
+
+function collectWebGLRendererInPage(): AppProfileRenderer {
+  const canvas = document.createElement("canvas");
+  const gl = canvas.getContext("webgl");
+  if (!gl) {
+    return {
+      vendor: null,
+      renderer: null,
+      unmaskedVendor: null,
+      unmaskedRenderer: null,
+    };
+  }
+  const debugExt = gl.getExtension("WEBGL_debug_renderer_info");
+  return {
+    vendor: String(gl.getParameter(gl.VENDOR)),
+    renderer: String(gl.getParameter(gl.RENDERER)),
+    unmaskedVendor: debugExt
+      ? String(gl.getParameter(debugExt.UNMASKED_VENDOR_WEBGL))
+      : null,
+    unmaskedRenderer: debugExt
+      ? String(gl.getParameter(debugExt.UNMASKED_RENDERER_WEBGL))
+      : null,
   };
 }
 
@@ -243,6 +341,7 @@ async function runOneMode(
   firstUrl: string;
   actions: string[];
   userAgent: string;
+  renderer: AppProfileRenderer;
   result: AppProfileModeResult;
 }> {
   const firstUrl = profilePageUrl(base, hash, recolor);
@@ -288,10 +387,13 @@ async function runOneMode(
     );
   }
 
+  const renderer = await page.evaluate(collectWebGLRendererInPage);
+
   return {
     firstUrl,
     actions,
     userAgent: await page.evaluate(() => navigator.userAgent),
+    renderer,
     result: {
       requestedMode: recolor,
       activeMode,
@@ -329,12 +431,14 @@ async function main(): Promise<void> {
       await waitForHttpOk(spawnedBase, 120000);
     }
 
-    browser = await chromium.launch({ headless: true });
+    browser = await chromium.launch(buildLaunchOptions(opts));
     const pageErrors: string[] = [];
     let firstUrl = "";
     let actions: string[] = [];
     let userAgent = "";
+    let renderer = emptyRenderer();
     const profiles: AppProfileFile["profiles"] = {};
+    const wantsHardwareGpu = opts.headed || opts.channel !== null;
 
     for (const mode of modes) {
       const page = await browser.newPage();
@@ -343,8 +447,17 @@ async function main(): Promise<void> {
       firstUrl = ran.firstUrl;
       actions = ran.actions;
       userAgent = ran.userAgent;
+      if (mode === "webgl" || renderer.unmaskedRenderer === null) {
+        renderer = ran.renderer;
+      }
       profiles[mode] = ran.result;
       await page.close();
+    }
+
+    if (wantsHardwareGpu && isSoftwareWebGLRenderer(renderer)) {
+      throw new Error(
+        `Requested a hardware GPU (--headed / --channel) but WebGL renderer is ${JSON.stringify(rendererLabel(renderer))}. Install Google Chrome, pass --channel chrome, and run outside a sandbox.`,
+      );
     }
 
     if (pageErrors.length > 0) {
@@ -358,6 +471,9 @@ async function main(): Promise<void> {
       hash2: opts.hash2 !== opts.hash ? opts.hash2 : null,
       actions,
       userAgent,
+      headed: opts.headed,
+      channel: opts.channel,
+      renderer,
       recolor: opts.recolor,
       profiles,
     };
@@ -366,6 +482,7 @@ async function main(): Promise<void> {
     mkdirSync(path.dirname(opts.outPath), { recursive: true });
     writeFileSync(opts.outPath, json, "utf8");
     process.stderr.write(`Wrote ${path.relative(REPO_ROOT, opts.outPath)}\n`);
+    process.stderr.write(`WebGL renderer: ${rendererLabel(renderer)}\n`);
     process.stdout.write(`${json}\n`);
   } finally {
     if (browser) {
@@ -377,7 +494,13 @@ async function main(): Promise<void> {
   }
 }
 
-main().catch((err: unknown) => {
-  console.error(err);
-  process.exit(1);
-});
+const isMain =
+  process.argv[1] !== undefined &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+
+if (isMain) {
+  main().catch((err: unknown) => {
+    console.error(err);
+    process.exit(1);
+  });
+}

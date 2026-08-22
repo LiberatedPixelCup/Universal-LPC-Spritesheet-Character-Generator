@@ -19,10 +19,11 @@ import {
   type RenderCharacterCounters,
   type RenderCharacterPhaseReport,
 } from "../../sources/performance-profiler.ts";
-import type {
-  AppProfileFile,
-  AppProfileModeResult,
-  AppProfileRecolorMode,
+import {
+  rendererLabel,
+  type AppProfileFile,
+  type AppProfileModeResult,
+  type AppProfileRecolorMode,
 } from "./app-profile.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -352,6 +353,26 @@ function main(): void {
   lines.push(`  after:  ${path.relative(REPO_ROOT, afterPath)}`);
   if (after.generatedAt)
     lines.push(`           generatedAt: ${after.generatedAt}`);
+  if (before.renderer || after.renderer) {
+    const beforeRenderer = before.renderer
+      ? rendererLabel(before.renderer)
+      : "(missing)";
+    const afterRenderer = after.renderer
+      ? rendererLabel(after.renderer)
+      : "(missing)";
+    lines.push(`  renderer: ${beforeRenderer} → ${afterRenderer}`);
+    if (
+      before.headed !== undefined ||
+      after.headed !== undefined ||
+      before.channel !== undefined ||
+      after.channel !== undefined
+    ) {
+      lines.push(
+        `  launch: headed ${String(before.headed ?? false)} channel ${before.channel ?? "(bundled)"}` +
+          ` → headed ${String(after.headed ?? false)} channel ${after.channel ?? "(bundled)"}`,
+      );
+    }
+  }
   lines.push("");
 
   if (before.hash !== after.hash || before.hash2 !== after.hash2) {

@@ -31,7 +31,7 @@ The profiler tracks these expensive operations:
 
 ### Headless app profiler
 
-Use these when **`loadImage()`**, **`renderCharacter()`**, hash hydration, or palette recolor changed. They open headless Chromium, drive the live app the way a human would (`?debug=true`, wait for catalog + first paint, change the selection once), then write **`profiler.snapshot()`** — the same data as **`window.profiler.report()`**, as JSON.
+Use these when **`loadImage()`**, **`renderCharacter()`**, hash hydration, or palette recolor changed. They open Chromium (headless Playwright Chromium by default), drive the live app the way a human would (`?debug=true`, wait for catalog + first paint, change the selection once), then write **`profiler.snapshot()`** — the same data as **`window.profiler.report()`**, as JSON. The JSON also records **`renderer`** (`WEBGL_debug_renderer_info`: vendor, renderer, unmasked vendor/renderer). Headless Playwright Chromium is usually SwiftShader (software GL). For a real GPU, pass **`--headed --channel chrome`** (installed Google Chrome, Metal/D3D). That combination fails if the unmasked renderer still looks like SwiftShader / llvmpipe.
 
 Default **`--recolor both`** runs that sequence twice: WebGL (Chromium default) and **`?recolor=cpu`**. The JSON `profiles.webgl` / `profiles.cpu` objects include `activeMode` and `recolorStats` so you can confirm the CPU path actually ran. `diff:app-profile` prints both sections.
 
@@ -47,11 +47,13 @@ They do **not** replace checking WebGL and the CPU fallback **visually**; for th
 Take a baseline on the same machine, then diff after your change.
 
 ```bash
-npm run profile:app:baseline
+npm run profile:app:baseline -- --headed --channel chrome
 # …make your change…
-npm run profile:app
+npm run profile:app -- --headed --channel chrome
 npm run diff:app-profile -- tmp/baseline-app-profile.json tmp/app-profile.json
 ```
+
+Omit `--headed --channel chrome` for the default headless Playwright Chromium (usually SwiftShader). Do not diff a GPU baseline against a headless run. The JSON `renderer.unmaskedRenderer` and the `headed` / `channel` fields record which path you used.
 
 A positive Δ means the after run was slower. Look at `renderCharacter` phases (`snapshot().renderCharacter.calls`), `image-load:*`, and `hash-loadSelectionsFromHash`. A few milliseconds is noise; `renderCharacter` can swing tens of ms between two runs on the same machine.
 
@@ -61,6 +63,7 @@ JSON lands under `tmp/` (gitignored) and is also printed on stdout. Pass `--out 
 
 - One recolor path only: `npm run profile:app -- --recolor webgl` or `--recolor cpu`
 - Custom selections: `npm run profile:app -- --hash 'sex=male&body=Body_Color_light' --hash2 '…'`
+- Real GPU (headed Google Chrome): `npm run profile:app -- --headed --channel chrome` (same flags on `profile:app:baseline`)
 - The default first hash is the full outfit in `scripts/zip/zip-profile-default-hash.ts`. The default second hash drops layered gear (body + head + expression only).
 
 ### ZIP export (download packs)

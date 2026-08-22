@@ -277,7 +277,7 @@ Every script in [`package.json`](package.json). Run them from the repository roo
 
 | Command | What it does | When |
 | --- | --- | --- |
-| `npm run profile:app` | Headless live-app profile (WebGL + CPU by default) | `loadImage()`, `renderCharacter()`, hash hydration, or palette recolor changed |
+| `npm run profile:app` | Live-app profile (WebGL + CPU by default). Headless Playwright Chromium unless `--headed --channel chrome` | `loadImage()`, `renderCharacter()`, hash hydration, or palette recolor changed |
 | `npm run profile:app:baseline` | Same run, written to `tmp/baseline-app-profile.json` | Take a baseline **before** your change |
 | `npm run diff:app-profile` | Diffs two app-profile JSON files; positive Δ is slower | Comparing baseline against your change |
 | `npm run profile:zip:quick` | Headless ZIP profile with a fake JSZip | Drawing, slicing, or PNG encode changed |
@@ -543,6 +543,7 @@ Symptoms that look like catalog or test bugs are often environment. Check these 
 | Codecov patch fails with no Mocha failure | Browser spec is not imported from [`tests/tests.js`](tests/tests.js) | Add `import "./path/foo_spec.ts";` (real on-disk extension) |
 | Testem cannot bind | Port **7357** is busy | `TESTEM_PORT=7360 npm run test:server` |
 | `npm run test:visual` or `profile:app` / `profile:zip` cannot launch a browser | Playwright browsers not installed | `npx playwright install chromium` (or `--with-deps`) |
+| `profile:app --channel chrome` cannot launch | Google Chrome is not installed, or Playwright cannot see it | Install Chrome; run from a normal terminal, not a sandbox |
 | `npm run test:browser:coverage` fails to launch Firefox | Firefox is not installed locally | `VITE_COVERAGE=true node ./node_modules/testem/testem.js ci --launch Chrome`. Firefox-only lines will read as uncovered |
 
 More on stale metadata: [File Generation](#file-generation). More on coverage collection: [Unit-test coverage](#unit-test-coverage).
