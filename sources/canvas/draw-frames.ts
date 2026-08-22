@@ -4,10 +4,9 @@ import {
   type CustomAnimationDefinition,
 } from "../custom-animations.ts";
 
-// Both HTMLImageElement and HTMLCanvasElement expose a numeric .height
-// and are accepted by CanvasRenderingContext2D.drawImage — the full API
-// surface this function uses, so it can treat them interchangeably.
-type SpriteSource = HTMLImageElement | HTMLCanvasElement;
+// HTMLImageElement, HTMLCanvasElement, and ImageBitmap all expose a numeric
+// .height and are accepted by CanvasRenderingContext2D.drawImage.
+export type SpriteSource = HTMLImageElement | HTMLCanvasElement | ImageBitmap;
 
 export function drawFrameToFrame(
   destCtx: CanvasRenderingContext2D,

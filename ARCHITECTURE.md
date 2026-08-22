@@ -125,7 +125,7 @@ only branch point:
 const shouldUseWebGL = config.useWebGL && !config.forceCPU;
 if (shouldUseWebGL) {
   try {
-    return recolorImageWebGL(sourceImage, paletteMappings);
+    return await recolorImageWebGL(sourceImage, paletteMappings);
   } catch (error) {
     return recolorImageCPU(sourceImage, paletteMappings);
   }

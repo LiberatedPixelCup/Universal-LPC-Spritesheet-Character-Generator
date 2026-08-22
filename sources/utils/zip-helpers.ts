@@ -5,7 +5,10 @@ import {
   STANDARD_ANIMATION_FRAMES_PER_ROW,
   DIRECTIONS,
 } from "../state/constants.ts";
-import { drawFramesToCustomAnimation } from "../canvas/draw-frames.ts";
+import {
+  drawFramesToCustomAnimation,
+  type SpriteSource,
+} from "../canvas/draw-frames.ts";
 import {
   customAnimationSize,
   type CustomAnimationDefinition,
@@ -80,7 +83,7 @@ function createFrameCanvasPool(
 
 function blitFrameFromSheet(
   destCtx: CanvasRenderingContext2D,
-  sourceCanvas: HTMLCanvasElement,
+  sourceCanvas: SpriteSource,
   sourceX: number,
   sourceY: number,
   size: number,
@@ -100,7 +103,7 @@ function blitFrameFromSheet(
 }
 
 function normalizeAnimationSrcRect(
-  src: HTMLCanvasElement,
+  src: SpriteSource,
   srcRect: DOMRect | RectLike | undefined,
 ): RectLike {
   return srcRect
@@ -118,27 +121,9 @@ function normalizeAnimationSrcRect(
       };
 }
 
-function animationSubregionHasContent(
-  src: HTMLCanvasElement,
-  x: number,
-  y: number,
-  width: number,
-  height: number,
-): boolean {
-  const fromSubregion =
-    x !== 0 || y !== 0 || width !== src.width || height !== src.height;
-  if (fromSubregion) {
-    const srcCtx = get2DContext(src, true);
-    if (!hasContentInRegion(srcCtx, x, y, width, height)) {
-      return false;
-    }
-  }
-  return true;
-}
-
 /** Draws the slice from `src` onto `animCanvas` (must already match width/height). */
 function drawAnimationSliceOntoCanvas(
-  src: HTMLCanvasElement,
+  src: SpriteSource,
   x: number,
   y: number,
   width: number,
@@ -162,18 +147,19 @@ export type AnimationSliceError = { kind: "empty-subregion" };
  * Use {@link addCanvasToZip} for the "encode the whole source" case.
  */
 export function newAnimationFromSheet(
-  src: HTMLCanvasElement,
+  src: SpriteSource,
   srcRect: DOMRect | RectLike,
 ): Result<HTMLCanvasElement, AnimationSliceError> {
   const { x, y, width, height } = normalizeAnimationSrcRect(src, srcRect);
-  if (!animationSubregionHasContent(src, x, y, width, height)) {
-    return err({ kind: "empty-subregion" });
-  }
-
   const animCanvas = document.createElement("canvas");
   animCanvas.width = width;
   animCanvas.height = height;
   drawAnimationSliceOntoCanvas(src, x, y, width, height, animCanvas);
+  if (
+    !hasContentInRegion(get2DContext(animCanvas, true), 0, 0, width, height)
+  ) {
+    return err({ kind: "empty-subregion" });
+  }
 
   return ok(animCanvas);
 }
@@ -267,7 +253,7 @@ export type ZipAddError = { kind: "missing-src" } | { kind: "empty-subregion" };
 export async function addAnimationSliceToZip(
   folder: ZipFolder,
   fileName: string,
-  srcCanvas: HTMLCanvasElement,
+  srcCanvas: SpriteSource,
   srcRect: DOMRect | RectLike,
   options: ZipPhaseOptions = {},
 ): Promise<Result<HTMLCanvasElement, ZipAddError>> {
@@ -311,7 +297,7 @@ export async function addCanvasToZip(
  * sprite) onto a new canvas sized to that animation via `customAnimationSize`.
  */
 export function newStandardAnimationForCustomAnimation(
-  src: HTMLCanvasElement | HTMLImageElement,
+  src: SpriteSource,
   custAnim: CustomAnimationDefinition,
 ): HTMLCanvasElement {
   const custCanvas = document.createElement("canvas");
@@ -334,7 +320,7 @@ export function newStandardAnimationForCustomAnimation(
 export async function addStandardAnimationToZipCustomFolder(
   custAnimFolder: ZipFolder,
   itemFileName: string,
-  src: HTMLCanvasElement | HTMLImageElement,
+  src: SpriteSource,
   custAnim: CustomAnimationDefinition,
   options: ZipPhaseOptions = {},
 ): Promise<HTMLCanvasElement | undefined> {
