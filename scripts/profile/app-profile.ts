@@ -202,6 +202,7 @@ function collectSnapshotInPage(): ProfilerSnapshot {
     },
     memory: profiler.getMemoryUsage?.() ?? null,
     measures,
+    renderCharacter: { calls: [] },
   };
 }
 

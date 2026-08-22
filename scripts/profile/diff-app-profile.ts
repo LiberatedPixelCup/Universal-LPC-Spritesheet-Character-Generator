@@ -13,7 +13,12 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import type { ProfilerSnapshot } from "../../sources/performance-profiler.ts";
+import {
+  RENDER_CHARACTER_PHASE_KEYS,
+  type ProfilerSnapshot,
+  type RenderCharacterCounters,
+  type RenderCharacterPhaseReport,
+} from "../../sources/performance-profiler.ts";
 import type {
   AppProfileFile,
   AppProfileModeResult,
@@ -232,6 +237,106 @@ function diffSnapshots(
     );
   }
   lines.push("");
+
+  diffRenderCharacterPhases(lines, pb, pa);
+}
+
+function emptyPhaseReport(): RenderCharacterPhaseReport {
+  const phasesMs = Object.fromEntries(
+    RENDER_CHARACTER_PHASE_KEYS.map((k) => [k, 0]),
+  ) as RenderCharacterPhaseReport["phasesMs"];
+  const counters: RenderCharacterCounters = {
+    drawCalls: 0,
+    selections: 0,
+    customAnims: 0,
+    canvasWidth: 0,
+    canvasHeight: 0,
+    imageCacheHits: 0,
+    imageLoads: 0,
+    recolorSkipped: 0,
+    recolorCacheHits: 0,
+    recolorMisses: 0,
+  };
+  return { totalMs: 0, unaccountedMs: 0, phasesMs, counters };
+}
+
+function diffRenderCharacterPhases(
+  lines: string[],
+  pb: ProfilerSnapshot,
+  pa: ProfilerSnapshot,
+): void {
+  const beforeCalls = pb.renderCharacter?.calls ?? [];
+  const afterCalls = pa.renderCharacter?.calls ?? [];
+  const n = Math.max(beforeCalls.length, afterCalls.length);
+  lines.push("── renderCharacter phases ──");
+  if (n === 0) {
+    lines.push("  (no renderCharacter phase reports)");
+    lines.push("");
+    return;
+  }
+  for (let i = 0; i < n; i++) {
+    const b = beforeCalls[i] ?? emptyPhaseReport();
+    const a = afterCalls[i] ?? emptyPhaseReport();
+    lines.push(
+      `  call ${i}: total ${fmt(b.totalMs)} → ${fmt(a.totalMs)}` +
+        ` (Δ ${signed((a.totalMs ?? 0) - (b.totalMs ?? 0))})` +
+        `  unaccounted ${fmt(b.unaccountedMs)} → ${fmt(a.unaccountedMs)}`,
+    );
+    const pw = {
+      name: "phase".length,
+      before: "before".length,
+      after: "after".length,
+      delta: "Δ".length,
+    };
+    const phaseRows = [
+      {
+        name: "totalMs",
+        before: fmt(b.totalMs),
+        after: fmt(a.totalMs),
+        delta: signed((a.totalMs ?? 0) - (b.totalMs ?? 0)),
+      },
+      ...RENDER_CHARACTER_PHASE_KEYS.map((phase) => {
+        const bv = b.phasesMs[phase] ?? 0;
+        const av = a.phasesMs[phase] ?? 0;
+        return {
+          name: phase,
+          before: fmt(bv),
+          after: fmt(av),
+          delta: signed(av - bv),
+        };
+      }),
+    ];
+    for (const r of phaseRows) {
+      pw.name = Math.max(pw.name, r.name.length);
+      pw.before = Math.max(pw.before, r.before.length);
+      pw.after = Math.max(pw.after, r.after.length);
+      pw.delta = Math.max(pw.delta, r.delta.length);
+    }
+    lines.push(
+      `    ${pad("phase", pw.name)}  ${pad("before", pw.before)}  ${pad("after", pw.after)}  ${pad("Δ", pw.delta)}`,
+    );
+    lines.push(
+      `    ${"-".repeat(pw.name)}  ${"-".repeat(pw.before)}  ${"-".repeat(pw.after)}  ${"-".repeat(pw.delta)}`,
+    );
+    for (const r of phaseRows) {
+      lines.push(
+        `    ${pad(r.name, pw.name)}  ${pad(r.before, pw.before)}  ${pad(r.after, pw.after)}  ${pad(r.delta, pw.delta)}`,
+      );
+    }
+    const counterKeys = [
+      ...new Set([...Object.keys(b.counters), ...Object.keys(a.counters)]),
+    ].sort();
+    for (const key of counterKeys) {
+      const bv = b.counters[key as keyof RenderCharacterCounters] ?? 0;
+      const av = a.counters[key as keyof RenderCharacterCounters] ?? 0;
+      lines.push(`    ${key}: ${fmt(bv)} → ${fmt(av)} (Δ ${signed(av - bv)})`);
+    }
+    lines.push("");
+  }
+}
+
+function signed(n: number): string {
+  return `${n >= 0 ? "+" : ""}${fmt(n)}`;
 }
 
 function main(): void {

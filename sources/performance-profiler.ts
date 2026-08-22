@@ -10,6 +10,7 @@ import {
  * Performance Profiler for LPC Spritesheet Generator
  *
  * - {@link PerformanceProfiler}: real-time monitoring (marks/measures, FPS) when enabled.
+ * - {@link beginRenderCharacterSpan}: per-step timings for `runRenderCharacter`.
  * - {@link createZipExportProfiler}: phase timings for ZIP export (metadata.json + optional DEBUG table).
  *
  * Usage (global profiler):
@@ -44,6 +45,64 @@ type MetricsByCategory = {
 
 export type ProfilerMeasureRow = { name: string; durationMs: number };
 
+/** Fixed phase keys for one `runRenderCharacter` call. */
+export const RENDER_CHARACTER_PHASE_KEYS = [
+  "mithrilRedrawStart",
+  "buildDrawCalls",
+  "sizeCanvas",
+  "loadImages",
+  "recolor",
+  "draw",
+  "customLoad",
+  "customRecolor",
+  "customDraw",
+  "mithrilRedrawEnd",
+] as const;
+
+export type RenderCharacterPhaseName =
+  (typeof RENDER_CHARACTER_PHASE_KEYS)[number];
+
+export type RenderCharacterCounters = {
+  drawCalls: number;
+  selections: number;
+  customAnims: number;
+  canvasWidth: number;
+  canvasHeight: number;
+  imageCacheHits: number;
+  imageLoads: number;
+  recolorSkipped: number;
+  recolorCacheHits: number;
+  recolorMisses: number;
+};
+
+export type RenderCharacterPhaseReport = {
+  totalMs: number;
+  phasesMs: Record<RenderCharacterPhaseName, number>;
+  unaccountedMs: number;
+  counters: RenderCharacterCounters;
+};
+
+export type RenderCharacterSnapshot = {
+  calls: RenderCharacterPhaseReport[];
+};
+
+/** Duck-typed host so `renderer.ts` can pass `window.profiler`. */
+export type RenderCharacterProfilerHost = {
+  enabled: boolean;
+  recordRenderCharacterCall: (report: RenderCharacterPhaseReport) => void;
+};
+
+export type RenderCharacterSpan = {
+  sync: <T>(name: RenderCharacterPhaseName, fn: () => T) => T;
+  async: <T>(
+    name: RenderCharacterPhaseName,
+    fn: () => T | Promise<T>,
+  ) => Promise<T>;
+  addPhaseMs: (name: RenderCharacterPhaseName, ms: number) => void;
+  setCounter: (name: keyof RenderCharacterCounters, value: number) => void;
+  finish: () => RenderCharacterPhaseReport | null;
+};
+
 /** Machine-readable form of {@link PerformanceProfiler.report}. */
 export type ProfilerSnapshot = {
   enabled: boolean;
@@ -55,6 +114,7 @@ export type ProfilerSnapshot = {
     jsHeapSizeLimit: string;
   } | null;
   measures: ProfilerMeasureRow[];
+  renderCharacter: RenderCharacterSnapshot;
 };
 
 function emptyMetrics(): MetricsByCategory {
@@ -63,6 +123,54 @@ function emptyMetrics(): MetricsByCategory {
     draws: { count: 0, totalTime: 0 },
     previews: { count: 0, totalTime: 0 },
     domUpdates: { count: 0, totalTime: 0 },
+  };
+}
+
+function emptyRenderCharacterPhases(): Record<
+  RenderCharacterPhaseName,
+  number
+> {
+  return {
+    mithrilRedrawStart: 0,
+    buildDrawCalls: 0,
+    sizeCanvas: 0,
+    loadImages: 0,
+    recolor: 0,
+    draw: 0,
+    customLoad: 0,
+    customRecolor: 0,
+    customDraw: 0,
+    mithrilRedrawEnd: 0,
+  };
+}
+
+function emptyRenderCharacterCounters(): RenderCharacterCounters {
+  return {
+    drawCalls: 0,
+    selections: 0,
+    customAnims: 0,
+    canvasWidth: 0,
+    canvasHeight: 0,
+    imageCacheHits: 0,
+    imageLoads: 0,
+    recolorSkipped: 0,
+    recolorCacheHits: 0,
+    recolorMisses: 0,
+  };
+}
+
+function emptyRenderCharacterSnapshot(): RenderCharacterSnapshot {
+  return { calls: [] };
+}
+
+function copyRenderCharacterReport(
+  report: RenderCharacterPhaseReport,
+): RenderCharacterPhaseReport {
+  return {
+    totalMs: report.totalMs,
+    unaccountedMs: report.unaccountedMs,
+    phasesMs: { ...report.phasesMs },
+    counters: { ...report.counters },
   };
 }
 
@@ -85,6 +193,7 @@ export class PerformanceProfiler {
   fpsFrames: number;
   fpsStartTime: number | null;
   currentFps: number;
+  renderCharacterCalls: RenderCharacterPhaseReport[];
 
   constructor(options: PerformanceProfilerOptions = {}) {
     this.enabled = options.enabled ?? false;
@@ -93,6 +202,7 @@ export class PerformanceProfiler {
     this.verbose = options.verbose || false;
 
     this.metrics = emptyMetrics();
+    this.renderCharacterCalls = [];
 
     this.fpsFrames = 0;
     this.fpsStartTime = null;
@@ -258,6 +368,7 @@ export class PerformanceProfiler {
         metrics: emptyMetrics(),
         memory: null,
         measures: [],
+        renderCharacter: emptyRenderCharacterSnapshot(),
       };
     }
 
@@ -277,6 +388,9 @@ export class PerformanceProfiler {
       },
       memory: this.getMemoryUsage(),
       measures,
+      renderCharacter: {
+        calls: this.renderCharacterCalls.map(copyRenderCharacterReport),
+      },
     };
   }
 
@@ -322,14 +436,41 @@ export class PerformanceProfiler {
       debugGroupEnd();
     }
 
+    const rcCalls = snap.renderCharacter.calls;
+    if (rcCalls.length > 0) {
+      debugGroup(`🎨 renderCharacter phases (${rcCalls.length} calls)`);
+      for (let i = 0; i < rcCalls.length; i++) {
+        const call = rcCalls[i];
+        debugGroup(
+          `call ${i} (${call.totalMs} ms total, ${call.unaccountedMs} ms unaccounted)`,
+        );
+        const rows = RENDER_CHARACTER_PHASE_KEYS.map((phase) => ({
+          phase,
+          ms: call.phasesMs[phase],
+        }));
+        rows.sort((a, b) => b.ms - a.ms);
+        debugTable(rows);
+        debugTable(call.counters);
+        debugGroupEnd();
+      }
+      debugGroupEnd();
+    }
+
     debugLog(
       "\n💡 Tip: Open DevTools → Performance tab and click Record to see visual timeline",
     );
     debugGroupEnd();
   }
 
+  /** Append one completed `runRenderCharacter` phase report. */
+  recordRenderCharacterCall(report: RenderCharacterPhaseReport): void {
+    if (!this.enabled) return;
+    this.renderCharacterCalls.push(copyRenderCharacterReport(report));
+  }
+
   /** Clear all performance marks and measures. */
   clear(): void {
+    this.renderCharacterCalls = [];
     if (!this.enabled) return;
 
     try {
@@ -355,6 +496,108 @@ function zipProfilerNowMs(): number {
 
 function zipProfilerRoundMs(ms: number): number {
   return Math.round(ms * 10) / 10;
+}
+
+function roundRenderCharacterPhases(
+  phases: Record<RenderCharacterPhaseName, number>,
+): Record<RenderCharacterPhaseName, number> {
+  const out = emptyRenderCharacterPhases();
+  for (const key of RENDER_CHARACTER_PHASE_KEYS) {
+    out[key] = zipProfilerRoundMs(phases[key]);
+  }
+  return out;
+}
+
+/**
+ * Per-`runRenderCharacter` phase timer. When `profiler` is missing or
+ * disabled, `sync` / `async` just run `fn()` (no User Timing, no publish).
+ * Sub-phases are not fed through {@link PerformanceProfiler.measure}.
+ */
+export function beginRenderCharacterSpan(
+  profiler?: Partial<RenderCharacterProfilerHost> | null,
+): RenderCharacterSpan {
+  const record = profiler?.recordRenderCharacterCall?.bind(profiler);
+  const enabled = Boolean(profiler?.enabled && typeof record === "function");
+  const t0 = zipProfilerNowMs();
+  const phases = emptyRenderCharacterPhases();
+  const counters = emptyRenderCharacterCounters();
+
+  function userMark(
+    name: RenderCharacterPhaseName,
+    kind: "start" | "end",
+  ): void {
+    if (!enabled || typeof performance === "undefined") return;
+    try {
+      performance.mark(`rc:${name}-${kind}`);
+    } catch {
+      /* ignore quota / duplicate mark */
+    }
+  }
+
+  function sync<T>(name: RenderCharacterPhaseName, fn: () => T): T {
+    if (!enabled) return fn();
+    userMark(name, "start");
+    const start = zipProfilerNowMs();
+    try {
+      return fn();
+    } finally {
+      phases[name] += zipProfilerNowMs() - start;
+      userMark(name, "end");
+    }
+  }
+
+  async function asyncPhase<T>(
+    name: RenderCharacterPhaseName,
+    fn: () => T | Promise<T>,
+  ): Promise<T> {
+    if (!enabled) return await fn();
+    userMark(name, "start");
+    const start = zipProfilerNowMs();
+    try {
+      return await fn();
+    } finally {
+      phases[name] += zipProfilerNowMs() - start;
+      userMark(name, "end");
+    }
+  }
+
+  function addPhaseMs(name: RenderCharacterPhaseName, ms: number): void {
+    if (!enabled) return;
+    phases[name] += ms;
+  }
+
+  function setCounter(
+    name: keyof RenderCharacterCounters,
+    value: number,
+  ): void {
+    if (!enabled) return;
+    counters[name] = value;
+  }
+
+  function finish(): RenderCharacterPhaseReport | null {
+    if (!enabled || typeof record !== "function") return null;
+    let phaseSum = 0;
+    for (const key of RENDER_CHARACTER_PHASE_KEYS) {
+      phaseSum += phases[key];
+    }
+    const totalMs = zipProfilerNowMs() - t0;
+    const report: RenderCharacterPhaseReport = {
+      totalMs: zipProfilerRoundMs(totalMs),
+      phasesMs: roundRenderCharacterPhases(phases),
+      unaccountedMs: zipProfilerRoundMs(totalMs - phaseSum),
+      counters: { ...counters },
+    };
+    record(report);
+    return report;
+  }
+
+  return {
+    sync,
+    async: asyncPhase,
+    addPhaseMs,
+    setCounter,
+    finish,
+  };
 }
 
 /** Default keys so ZIP profile JSON has a stable `counters` shape (zeros omitted until first increment). */

@@ -14,6 +14,7 @@ import { describe, it, beforeEach } from "mocha-globals";
 import {
   getImageToDraw,
   clearRecolorCache,
+  getRecolorCacheStats,
 } from "../../sources/canvas/palette-recolor.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
@@ -91,6 +92,11 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
     );
 
     expect(first).to.equal(second);
+    expect(getRecolorCacheStats()).to.deep.equal({
+      skipped: 0,
+      cacheHits: 1,
+      misses: 1,
+    });
   });
 
   it("produces different canvases when recolors differ", async () => {
@@ -172,6 +178,20 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
     );
 
     expect(result).to.equal(img);
+    expect(getRecolorCacheStats().skipped).to.equal(1);
+  });
+
+  it("increments recolorSkipped when the item has no palette config", async () => {
+    const img = solidColorCanvas(255, 0, 0);
+    const result = await getImageToDraw(
+      catalog,
+      img,
+      "missing-item",
+      { body: "olive" },
+      "spritesheets/body/bodies/male/walk.png",
+    );
+    expect(result).to.equal(img);
+    expect(getRecolorCacheStats().skipped).to.equal(1);
   });
 
   it("clearRecolorCache() drops all entries so the next call recomputes", async () => {

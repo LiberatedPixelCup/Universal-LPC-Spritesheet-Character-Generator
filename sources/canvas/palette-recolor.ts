@@ -266,6 +266,28 @@ const recolorCache = new Map<
   Promise<HTMLImageElement | HTMLCanvasElement>
 >();
 
+export type RecolorCacheStats = {
+  skipped: number;
+  cacheHits: number;
+  misses: number;
+};
+
+let recolorCacheStats: RecolorCacheStats = {
+  skipped: 0,
+  cacheHits: 0,
+  misses: 0,
+};
+
+/** Snapshot of always-on `getImageToDraw` skip / cache counters. */
+export function getRecolorCacheStats(): RecolorCacheStats {
+  return { ...recolorCacheStats };
+}
+
+/** Reset skip / cache counters. Also called from {@link clearRecolorCache}. */
+export function resetRecolorCacheStats(): void {
+  recolorCacheStats = { skipped: 0, cacheHits: 0, misses: 0 };
+}
+
 /**
  * Get image to draw - applies recoloring if needed based on palette configuration.
  * Async because palette loading is lazy (loads on first use). When `spritePath`
@@ -280,11 +302,13 @@ export async function getImageToDraw(
   spritePath: string | null = null,
 ): Promise<HTMLImageElement | HTMLCanvasElement> {
   if (!recolors) {
+    recolorCacheStats.skipped++;
     return img; // No recolor specified, return original image
   }
   const meta = catalog.getItemLite(itemId).unwrapOr(null);
   const paletteConfig = getPalettesFromMeta(catalog, meta).unwrapOr(null);
   if (!paletteConfig) {
+    recolorCacheStats.skipped++;
     return img; // Item doesn't use palette recoloring
   }
 
@@ -294,6 +318,7 @@ export async function getImageToDraw(
   if (cacheKey) {
     const hit = recolorCache.get(cacheKey);
     if (hit) {
+      recolorCacheStats.cacheHits++;
       // LRU touch
       recolorCache.delete(cacheKey);
       recolorCache.set(cacheKey, hit);
@@ -301,6 +326,7 @@ export async function getImageToDraw(
     }
   }
 
+  recolorCacheStats.misses++;
   const promise = recolorWithPalette(catalog, img, recolors, paletteConfig);
 
   if (cacheKey) {
@@ -332,6 +358,7 @@ export async function getImageToDraw(
 /** Clear the recolor cache. Mainly for tests; callable at runtime too. */
 export function clearRecolorCache(): void {
   recolorCache.clear();
+  resetRecolorCacheStats();
 }
 
 /**
