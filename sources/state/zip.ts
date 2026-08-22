@@ -504,7 +504,8 @@ export const exportSplitItemAnimations = async (
           );
           if (!spritePath) continue;
           let img: HTMLImageElement | undefined;
-          let imgCanvas: HTMLImageElement | HTMLCanvasElement | undefined;
+          let imgCanvas:
+            HTMLImageElement | HTMLCanvasElement | ImageBitmap | undefined;
           await profiler.phase(
             "render_imageLoadDecode_customItemSprite",
             async () => {
@@ -549,7 +550,7 @@ export const exportSplitItemAnimations = async (
             const sliceResult = await addSlice(
               animFolder,
               itemFileName,
-              imgCanvas as HTMLCanvasElement,
+              imgCanvas,
               srcRect,
             );
             if (sliceResult.isOk()) succeeded = true;

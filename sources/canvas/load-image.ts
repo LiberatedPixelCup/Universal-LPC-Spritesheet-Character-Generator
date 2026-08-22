@@ -4,6 +4,23 @@ let loadedImages: Record<string, HTMLImageElement> = {};
 /** In-flight loads: same `src` shares one `Image` and one profiler span. */
 const inFlight = new Map<string, Promise<HTMLImageElement>>();
 
+export type ImageLoadStats = {
+  cacheHits: number;
+  loads: number;
+};
+
+let imageLoadStats: ImageLoadStats = { cacheHits: 0, loads: 0 };
+
+/** Snapshot of always-on `loadImage` cache / network counters. */
+export function getImageLoadStats(): ImageLoadStats {
+  return { ...imageLoadStats };
+}
+
+/** Reset cache / network counters. Also called from {@link resetImageLoadCache}. */
+export function resetImageLoadStats(): void {
+  imageLoadStats = { cacheHits: 0, loads: 0 };
+}
+
 /** Profiler is attached to `window.profiler` by `main.ts`; absent in tests / Node. */
 type WindowWithProfiler = Window & {
   profiler?: {
@@ -19,17 +36,20 @@ type WindowWithProfiler = Window & {
 export function resetImageLoadCache(): void {
   loadedImages = {};
   inFlight.clear();
+  resetImageLoadStats();
 }
 
 /** Load an image. Rejects with `Error("Failed to load <src>")` on error. */
 export function loadImage(src: string): Promise<HTMLImageElement> {
   if (loadedImages[src]) {
+    imageLoadStats.cacheHits++;
     return Promise.resolve(loadedImages[src]);
   }
   const existing = inFlight.get(src);
   if (existing) {
     return existing;
   }
+  imageLoadStats.loads++;
 
   // Register in-flight *before* creating the Image. The Promise constructor runs
   // the executor synchronously; if we only `set` after `new Promise(...)`, a

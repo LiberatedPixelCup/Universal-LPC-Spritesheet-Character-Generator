@@ -3,6 +3,8 @@ import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import {
   PerformanceProfiler,
+  beginRenderCharacterSpan,
+  RENDER_CHARACTER_PHASE_KEYS,
   createZipExportProfiler,
 } from "../sources/performance-profiler.ts";
 
@@ -34,6 +36,17 @@ describe("performance-profiler.ts", () => {
     it("report() is a no-op when disabled (does not throw)", () => {
       const p = new PerformanceProfiler({ enabled: false });
       expect(() => p.report()).to.not.throw();
+    });
+
+    it("snapshot() is empty when disabled", () => {
+      const p = new PerformanceProfiler({ enabled: false });
+      const snap = p.snapshot();
+      expect(snap.enabled).to.be.false;
+      expect(snap.fps).to.equal(0);
+      expect(snap.measures).to.deep.equal([]);
+      expect(snap.renderCharacter.calls).to.deep.equal([]);
+      expect(snap.metrics.draws.count).to.equal(0);
+      expect(snap.memory).to.equal(null);
     });
   });
 
@@ -84,6 +97,106 @@ describe("performance-profiler.ts", () => {
       expect(p.enabled).to.be.true;
       p.disable();
       expect(p.enabled).to.be.false;
+    });
+
+    it("snapshot() copies metrics and User Timing measures", () => {
+      const p = new PerformanceProfiler({ enabled: true });
+      p.mark("snap:start");
+      p.mark("snap:end");
+      p.measure("draw_snapshot", "snap:start", "snap:end");
+      const snap = p.snapshot();
+      expect(snap.enabled).to.be.true;
+      expect(snap.metrics.draws.count).to.equal(1);
+      expect(snap.measures.some((m) => m.name === "draw_snapshot")).to.be.true;
+      expect(snap.renderCharacter.calls).to.deep.equal([]);
+      snap.metrics.draws.count = 99;
+      expect(p.metrics.draws.count).to.equal(1);
+    });
+
+    it("clear() drops renderCharacter calls", () => {
+      const p = new PerformanceProfiler({ enabled: true });
+      const span = beginRenderCharacterSpan(p);
+      span.sync("buildDrawCalls", () => cpuWork(50_000));
+      span.finish();
+      expect(p.snapshot().renderCharacter.calls).to.have.length(1);
+      p.clear();
+      expect(p.snapshot().renderCharacter.calls).to.deep.equal([]);
+    });
+  });
+
+  describe("beginRenderCharacterSpan", () => {
+    let sandbox;
+
+    beforeEach(() => {
+      sandbox = sinon.createSandbox();
+      sandbox.stub(globalThis, "requestAnimationFrame").returns(1);
+      sandbox.stub(globalThis, "setInterval").returns(999);
+    });
+
+    afterEach(() => {
+      sandbox.restore();
+    });
+
+    it("records phases, counters, and unaccountedMs when enabled", async () => {
+      const p = new PerformanceProfiler({ enabled: true });
+      const span = beginRenderCharacterSpan(p);
+      span.sync("mithrilRedrawStart", () => cpuWork(80_000));
+      span.sync("buildDrawCalls", () => cpuWork(80_000));
+      await span.async("loadImages", async () => {
+        cpuWork(80_000);
+      });
+      span.addPhaseMs("recolor", 1.25);
+      span.addPhaseMs("draw", 0.5);
+      span.setCounter("drawCalls", 12);
+      span.setCounter("selections", 3);
+      const report = span.finish();
+      expect(report).to.not.equal(null);
+      expect(report.phasesMs.buildDrawCalls).to.be.at.least(0);
+      expect(report.phasesMs.loadImages).to.be.at.least(0);
+      expect(report.phasesMs.recolor).to.be.at.least(1.2);
+      expect(report.phasesMs.draw).to.be.at.least(0.5);
+      expect(report.counters.drawCalls).to.equal(12);
+      expect(report.counters.selections).to.equal(3);
+      expect(report.totalMs).to.be.at.least(report.phasesMs.buildDrawCalls);
+      expect(report.unaccountedMs).to.be.a("number");
+      for (const key of RENDER_CHARACTER_PHASE_KEYS) {
+        expect(report.phasesMs).to.have.property(key);
+      }
+      const snap = p.snapshot();
+      expect(snap.renderCharacter.calls).to.have.length(1);
+      expect(snap.renderCharacter.calls[0].counters.drawCalls).to.equal(12);
+      snap.renderCharacter.calls[0].counters.drawCalls = 99;
+      expect(p.snapshot().renderCharacter.calls[0].counters.drawCalls).to.equal(
+        12,
+      );
+    });
+
+    it("runs fn and does not publish when profiler is missing or disabled", () => {
+      let ran = 0;
+      const missing = beginRenderCharacterSpan();
+      missing.sync("buildDrawCalls", () => {
+        ran++;
+      });
+      expect(missing.finish()).to.equal(null);
+
+      const p = new PerformanceProfiler({ enabled: false });
+      const disabled = beginRenderCharacterSpan(p);
+      disabled.sync("draw", () => {
+        ran++;
+      });
+      disabled.addPhaseMs("recolor", 10);
+      disabled.setCounter("drawCalls", 5);
+      expect(disabled.finish()).to.equal(null);
+      expect(p.snapshot().renderCharacter.calls).to.deep.equal([]);
+      expect(ran).to.equal(2);
+    });
+
+    it("report() includes renderCharacter phase tables when calls exist", () => {
+      const p = new PerformanceProfiler({ enabled: true });
+      const span = beginRenderCharacterSpan(p);
+      span.sync("draw", () => cpuWork(20_000));
+      span.finish();
+      expect(() => p.report()).to.not.throw();
     });
   });
 

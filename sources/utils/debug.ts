@@ -29,6 +29,14 @@ export function getDebugParam(): boolean {
   return debugParam === "true" || (debugParam !== "false" && isLocalhost());
 }
 
+/** `?recolor=cpu` forces the CPU palette path before first paint. Other values ignored. */
+export function getRecolorParam(): "cpu" | "webgl" | null {
+  if (typeof window === "undefined") return null;
+  const raw = new URLSearchParams(window.location.search).get("recolor");
+  if (raw === "cpu" || raw === "webgl") return raw;
+  return null;
+}
+
 if (typeof window !== "undefined") {
   if (window.__TEST_DEBUG_LOCKED__) {
     // Browser test harness (tests/vitest-setup.js) sets window.DEBUG from import.meta.env.VITEST_DEBUG

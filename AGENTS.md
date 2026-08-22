@@ -74,9 +74,10 @@ Do not skip license/credit updates when touching art or definitions.
 Canvas rendering must work on **both** WebGL and the CPU fallback, and
 you cannot confirm that yourself — it needs a browser. Ask the user to
 follow [Force CPU Mode](PALETTE_RECOLOR_GUIDE.md#force-cpu-mode-testing)
-([canvas-render](.cursor/skills/canvas-render/SKILL.md)). For ZIP export,
-match the headless script to the change:
-[PERFORMANCE_PROFILING.md](PERFORMANCE_PROFILING.md).
+([canvas-render](.cursor/skills/canvas-render/SKILL.md)). For render or
+ZIP **timing**, run the matching headless profiler; do not ask the user
+to open DevTools:
+[performance-profiling](.cursor/skills/performance-profiling/SKILL.md).
 
 | Change | Check |
 | --- | --- |
@@ -85,4 +86,5 @@ match the headless script to the change:
 | `scripts/` | `node --test <file>` + `npm run test:node:coverage` (all Node specs) |
 | Either of the above, path in [`codecov.yml`](codecov.yml) `ignore:` | Skip the coverage run; it owes no test ([coverage](.cursor/skills/coverage/SKILL.md)) |
 | Layout, first-paint CSS, or PurgeCSS safelist | `npm run test:visual` ([visual-test](.cursor/skills/visual-test/SKILL.md)) |
+| `sources/canvas/`, `load-image`, `renderCharacter`, or ZIP export drawing | matching `profile:app` / `profile:zip` ([performance-profiling](.cursor/skills/performance-profiling/SKILL.md)) |
 | Lockfile merge/rebase | `npm run lockfile:fix` (not `npm install`) |

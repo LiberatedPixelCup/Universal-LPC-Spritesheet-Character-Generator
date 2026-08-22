@@ -32,6 +32,7 @@ ignore:
   - scripts/computed-style/**
   - scripts/imageProcessing/**
   - scripts/zip/**
+  - scripts/profile/**
   - scripts/fixture-builder.ts
   - scripts/generate-purgecss-safelist-hints.ts
   - scripts/issue382-golden-playwright.ts

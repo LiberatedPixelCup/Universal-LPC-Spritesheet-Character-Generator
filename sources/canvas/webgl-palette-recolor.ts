@@ -2,20 +2,55 @@
 // Uses GPU shaders for fast color replacement
 
 import { get2DContext } from "./canvas-utils.ts";
-import { debugLog } from "../utils/debug.ts";
+import { debugLog, debugWarn } from "../utils/debug.ts";
 
 export type PaletteMapping = { source: string[]; target: string[] };
+
+/** WebGL snapshot; CPU recolor still returns a canvas. */
+export type RecolorOutput = HTMLCanvasElement | ImageBitmap;
 
 // Shared WebGL resources for reuse
 let sharedGL: WebGLRenderingContext | null = null;
 let sharedCanvas: HTMLCanvasElement | null = null;
 let sharedProgram: WebGLProgram | null = null;
+let sharedImageTexture: WebGLTexture | null = null;
+let sharedPaletteTexture: WebGLTexture | null = null;
+let sharedImageLocation: WebGLUniformLocation | null = null;
+let sharedPaletteLocation: WebGLUniformLocation | null = null;
+let sharedPaletteSizeLocation: WebGLUniformLocation | null = null;
+
+/** True when the shared canvas still holds a result that has not been copied. */
+let liveUnsnapshotted = false;
+
+type LiveSnapshotHandler = (snap: RecolorOutput) => void;
+let liveSnapshotHandler: LiveSnapshotHandler | null = null;
+
+/**
+ * Called when a deferred live result is copied so the LRU can store the
+ * snapshot. `palette-recolor.ts` installs this at module load.
+ */
+export function setWebGLLiveSnapshotHandler(
+  handler: LiveSnapshotHandler | null,
+): void {
+  liveSnapshotHandler = handler;
+}
+
+/** Drop a deferred live result without copying (cache clear / GL reset). */
+export function discardWebGLLiveSnapshot(): void {
+  liveUnsnapshotted = false;
+}
 
 /** @internal Test helper — drop shared GL so the next call re-inits. */
 export function resetSharedWebGLForTests(): void {
+  discardWebGLLiveSnapshot();
   sharedGL = null;
   sharedCanvas = null;
   sharedProgram = null;
+  sharedImageTexture = null;
+  sharedPaletteTexture = null;
+  sharedImageLocation = null;
+  sharedPaletteLocation = null;
+  sharedPaletteSizeLocation = null;
 }
 
 /**
@@ -133,16 +168,33 @@ function hexToRgbNormalized(hex: string): [number, number, number] {
   ];
 }
 
+function setNearestClamp(gl: WebGLRenderingContext): void {
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+}
+
+function createReusableTexture(gl: WebGLRenderingContext): WebGLTexture {
+  const texture = gl.createTexture();
+  if (!texture) {
+    throw new Error("Failed to allocate WebGL texture");
+  }
+  gl.bindTexture(gl.TEXTURE_2D, texture);
+  setNearestClamp(gl);
+  return texture;
+}
+
 /**
- * Create a palette texture from one or more palette mappings.
+ * Pack source/target palettes into the shared 32×2 palette texture.
  * All source colors are concatenated into row 0; target colors at the same
  * index sit in row 1. The shader loops up to `u_paletteSize` slots, so N
  * regions can be recolored in a single pass by packing them back-to-back.
  */
-function createPaletteTexture(
+function uploadPaletteTexture(
   gl: WebGLRenderingContext,
   paletteMappings: PaletteMapping[],
-): { texture: WebGLTexture; totalSize: number } {
+): number {
   const data = new Uint8Array(32 * 2 * 4); // 32 colors × 2 rows × RGBA
   const TARGET_ROW_OFFSET = 32 * 4;
 
@@ -164,11 +216,8 @@ function createPaletteTexture(
     }
   }
 
-  const texture = gl.createTexture();
-  if (!texture) {
-    throw new Error("Failed to allocate WebGL palette texture");
-  }
-  gl.bindTexture(gl.TEXTURE_2D, texture);
+  gl.activeTexture(gl.TEXTURE1);
+  gl.bindTexture(gl.TEXTURE_2D, sharedPaletteTexture);
   gl.texImage2D(
     gl.TEXTURE_2D,
     0,
@@ -180,30 +229,16 @@ function createPaletteTexture(
     gl.UNSIGNED_BYTE,
     data,
   );
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-
-  return { texture, totalSize: slot };
+  return slot;
 }
 
-function createImageTexture(
+function uploadImageTexture(
   gl: WebGLRenderingContext,
   image: HTMLImageElement | HTMLCanvasElement,
-): WebGLTexture {
-  const texture = gl.createTexture();
-  if (!texture) {
-    throw new Error("Failed to allocate WebGL image texture");
-  }
-  gl.bindTexture(gl.TEXTURE_2D, texture);
+): void {
+  gl.activeTexture(gl.TEXTURE0);
+  gl.bindTexture(gl.TEXTURE_2D, sharedImageTexture);
   gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-
-  return texture;
 }
 
 /** Setup a full-screen quad for rendering. */
@@ -265,22 +300,90 @@ function initSharedWebGL(): void {
   sharedProgram = createProgram(sharedGL, VERTEX_SHADER, FRAGMENT_SHADER);
   sharedGL.useProgram(sharedProgram);
 
+  sharedImageTexture = createReusableTexture(sharedGL);
+  sharedPaletteTexture = createReusableTexture(sharedGL);
+  sharedImageLocation = sharedGL.getUniformLocation(sharedProgram, "u_image");
+  sharedPaletteLocation = sharedGL.getUniformLocation(
+    sharedProgram,
+    "u_palette",
+  );
+  sharedPaletteSizeLocation = sharedGL.getUniformLocation(
+    sharedProgram,
+    "u_paletteSize",
+  );
+
   // Setup quad geometry once
   setupQuad(sharedGL, sharedProgram);
 
   debugLog("WebGL palette recoloring initialized (shared context)");
 }
 
+function copySharedCanvasTo2D(canvas: HTMLCanvasElement): HTMLCanvasElement {
+  const resultCanvas = document.createElement("canvas");
+  resultCanvas.width = canvas.width;
+  resultCanvas.height = canvas.height;
+  const ctx = get2DContext(resultCanvas);
+  ctx.drawImage(canvas, 0, 0);
+  return resultCanvas;
+}
+
 /**
- * Recolor an image using WebGL palette mapping (with shared context).
- * Accepts a list of (source, target) palette mappings and applies them all in
- * a single shader pass by packing them into one palette texture. The combined
- * total must fit within the 32-slot palette texture.
+ * Snapshot the current WebGL canvas. `createImageBitmap` copies without
+ * detaching the drawing buffer, so a later same-size recolor can reuse the
+ * canvas. Fall back to a 2D canvas copy when the API is missing or throws.
  */
-export function recolorImageWebGL(
+async function snapshotSharedCanvas(
+  canvas: HTMLCanvasElement,
+): Promise<RecolorOutput> {
+  if (typeof createImageBitmap === "function") {
+    try {
+      // Start the copy before yielding so a later draw cannot clobber it.
+      return await createImageBitmap(canvas);
+    } catch (error) {
+      debugWarn("createImageBitmap failed, copying to a 2D canvas", error);
+    }
+  }
+  return copySharedCanvasTo2D(canvas);
+}
+
+function closeUnusedSnapshot(value: RecolorOutput): void {
+  if (typeof ImageBitmap !== "undefined" && value instanceof ImageBitmap) {
+    value.close();
+  }
+}
+
+/**
+ * Copy a deferred live result before the next draw clobbers the shared canvas.
+ * Must run inside {@link enqueueRecolor}.
+ */
+export async function commitWebGLLiveSnapshot(): Promise<void> {
+  if (!liveUnsnapshotted || !sharedCanvas) return;
+  const snap = await snapshotSharedCanvas(sharedCanvas);
+  liveUnsnapshotted = false;
+  if (liveSnapshotHandler) {
+    liveSnapshotHandler(snap);
+  } else {
+    closeUnusedSnapshot(snap);
+  }
+}
+
+let recolorTail: Promise<unknown> = Promise.resolve();
+
+/** Serialize shared-canvas draws and deferred snapshots. */
+export function enqueueRecolor<T>(fn: () => Promise<T>): Promise<T> {
+  const next = recolorTail.then(fn, fn);
+  recolorTail = next.then(
+    () => undefined,
+    () => undefined,
+  );
+  return next;
+}
+
+export async function recolorImageWebGLNow(
   sourceImage: HTMLImageElement | HTMLCanvasElement,
   paletteMappings: PaletteMapping[],
-): HTMLCanvasElement {
+  snapshot: boolean,
+): Promise<RecolorOutput> {
   // Initialize shared resources if needed
   if (!sharedGL) {
     initSharedWebGL();
@@ -305,49 +408,52 @@ export function recolorImageWebGL(
     // Use the shared program
     gl.useProgram(program);
 
-    // Create textures (these are temporary and must be created per operation)
-    const imageTexture = createImageTexture(gl, sourceImage);
-    const { texture: paletteTexture, totalSize } = createPaletteTexture(
-      gl,
-      paletteMappings,
-    );
+    uploadImageTexture(gl, sourceImage);
+    const totalSize = uploadPaletteTexture(gl, paletteMappings);
 
-    // Set uniforms
-    const imageLocation = gl.getUniformLocation(program, "u_image");
-    const paletteLocation = gl.getUniformLocation(program, "u_palette");
-    const paletteSizeLocation = gl.getUniformLocation(program, "u_paletteSize");
-
-    gl.uniform1i(imageLocation, 0);
-    gl.uniform1i(paletteLocation, 1);
-    gl.uniform1f(paletteSizeLocation, totalSize);
-
-    // Bind textures
-    gl.activeTexture(gl.TEXTURE0);
-    gl.bindTexture(gl.TEXTURE_2D, imageTexture);
-    gl.activeTexture(gl.TEXTURE1);
-    gl.bindTexture(gl.TEXTURE_2D, paletteTexture);
+    gl.uniform1i(sharedImageLocation, 0);
+    gl.uniform1i(sharedPaletteLocation, 1);
+    gl.uniform1f(sharedPaletteSizeLocation, totalSize);
 
     // Render
     gl.clearColor(0, 0, 0, 0);
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 
-    // Cleanup textures (but keep program and buffers)
-    gl.deleteTexture(imageTexture);
-    gl.deleteTexture(paletteTexture);
-
-    // Copy result to a new 2D canvas (so we can return it and free WebGL canvas)
-    const resultCanvas = document.createElement("canvas");
-    resultCanvas.width = canvas.width;
-    resultCanvas.height = canvas.height;
-    const ctx = get2DContext(resultCanvas);
-    ctx.drawImage(canvas, 0, 0);
-
-    return resultCanvas;
+    if (!snapshot) {
+      liveUnsnapshotted = true;
+      return canvas;
+    }
+    liveUnsnapshotted = false;
+    return snapshotSharedCanvas(canvas);
   } catch (error) {
     console.error("WebGL recoloring failed:", error);
     throw error;
   }
+}
+
+/**
+ * Recolor an image using WebGL palette mapping (with shared context).
+ * Accepts a list of (source, target) palette mappings and applies them all in
+ * a single shader pass by packing them into one palette texture. The combined
+ * total must fit within the 32-slot palette texture.
+ *
+ * Returns a stable snapshot (ImageBitmap or 2D canvas). Cacheable
+ * `getImageToDraw` misses skip this copy and return the live canvas. Outside
+ * `renderCharacter` the next WebGL recolor snapshots into the LRU first;
+ * during a render, copies wait until idle (or the next render).
+ *
+ * Recolors are queued so two callers cannot draw into the shared canvas while
+ * the previous snapshot is still copying.
+ */
+export function recolorImageWebGL(
+  sourceImage: HTMLImageElement | HTMLCanvasElement,
+  paletteMappings: PaletteMapping[],
+): Promise<RecolorOutput> {
+  return enqueueRecolor(async () => {
+    await commitWebGLLiveSnapshot();
+    return recolorImageWebGLNow(sourceImage, paletteMappings, true);
+  });
 }
 
 /** Check if WebGL is available. */

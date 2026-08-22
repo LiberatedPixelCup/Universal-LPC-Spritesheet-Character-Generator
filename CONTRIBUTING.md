@@ -277,18 +277,23 @@ Every script in [`package.json`](package.json). Run them from the repository roo
 
 | Command | What it does | When |
 | --- | --- | --- |
+| `npm run profile:app` | Live-app profile (WebGL + CPU by default). Headless Playwright Chromium unless `--headed --channel chrome` | `loadImage()`, `renderCharacter()`, hash hydration, or palette recolor changed |
+| `npm run profile:app:baseline` | Same run, written to `tmp/baseline-app-profile.json` | Take a baseline **before** your change |
+| `npm run diff:app-profile` | Diffs two app-profile JSON files; positive Δ is slower | Comparing baseline against your change |
 | `npm run profile:zip:quick` | Headless ZIP profile with a fake JSZip | Drawing, slicing, or PNG encode changed |
 | `npm run profile:zip` | Headless ZIP profile with real JSZip. Slower | `generateAsync` or `zip-helpers` changed |
 | `npm run profile:zip:baseline` / `:baseline:quick` | Same runs, written to `tmp/baseline-*.json` | Take a baseline **before** your change |
-| `npm run diff:zip-profile` | Diffs two profile JSON files; positive Δ is slower | Comparing baseline against your change |
+| `npm run diff:zip-profile` | Diffs two ZIP-profile JSON files; positive Δ is slower | Comparing baseline against your change |
 | `npm run compute-style-dump` | Dumps computed CSS for one URL for text diffing | Comparing CSS between two branches or worktrees |
 | `npm run compute-style-dump:mobile` | Same at the mobile viewport | Responsive debugging |
 | `npm run compute-style-diff-all` | Dumps and diffs both URLs across all Argos viewports and page states | Wide CSS refactors, e.g. a Bulma upgrade |
 | `npm run compute-style-diff-all:preview-ports` | Same against ports 4176 and 4177 | Two `npm run preview` instances |
 
-Both `profile:zip` variants and the computed-style scripts need `dist/` to exist
-(`npm run dev` or `npm run build` once) and Chromium installed
-(`npx playwright install`). Details: [PERFORMANCE_PROFILING.md](PERFORMANCE_PROFILING.md).
+`profile:zip` variants and the computed-style scripts need `dist/` to exist
+(`npm run dev` or `npm run build` once). `profile:app` starts Vite itself.
+All of them need Chromium (`npx playwright install`). Details:
+[PERFORMANCE_PROFILING.md](PERFORMANCE_PROFILING.md),
+[performance-profiling](.cursor/skills/performance-profiling/SKILL.md).
 
 **Maintenance**
 
@@ -537,7 +542,8 @@ Symptoms that look like catalog or test bugs are often environment. Check these 
 | A new definition is invisible, or a spec passes for someone else | `.cache/` fingerprint skipped generation | `VITE_REGENERATE_SOURCES=1 npm run dev`, or delete `.cache/` |
 | Codecov patch fails with no Mocha failure | Browser spec is not imported from [`tests/tests.js`](tests/tests.js) | Add `import "./path/foo_spec.ts";` (real on-disk extension) |
 | Testem cannot bind | Port **7357** is busy | `TESTEM_PORT=7360 npm run test:server` |
-| `npm run test:visual` cannot launch a browser | Playwright browsers not installed | `npx playwright install chromium` (or `--with-deps`) |
+| `npm run test:visual` or `profile:app` / `profile:zip` cannot launch a browser | Playwright browsers not installed | `npx playwright install chromium` (or `--with-deps`) |
+| `profile:app --channel chrome` cannot launch | Google Chrome is not installed, or Playwright cannot see it | Install Chrome; run from a normal terminal, not a sandbox |
 | `npm run test:browser:coverage` fails to launch Firefox | Firefox is not installed locally | `VITE_COVERAGE=true node ./node_modules/testem/testem.js ci --launch Chrome`. Firefox-only lines will read as uncovered |
 
 More on stale metadata: [File Generation](#file-generation). More on coverage collection: [Unit-test coverage](#unit-test-coverage).
@@ -555,7 +561,7 @@ When a change makes documentation stale, update the file that owns that topic. [
 | `dist/` metadata, `.cache/`, Vite metadata plugin | [generated-metadata](.cursor/skills/generated-metadata/SKILL.md), [File Generation](#file-generation) |
 | Coverage gates or `codecov.yml` | [coverage](.cursor/skills/coverage/SKILL.md), [Unit-test coverage](#unit-test-coverage) |
 | Layout, first-paint CSS, PurgeCSS safelist, Playwright | [visual-test](.cursor/skills/visual-test/SKILL.md), [`vite/purgecss-critical-safelist.ts`](vite/purgecss-critical-safelist.ts) |
-| ZIP export timing | [PERFORMANCE_PROFILING.md](PERFORMANCE_PROFILING.md) |
+| ZIP export or render timing | [PERFORMANCE_PROFILING.md](PERFORMANCE_PROFILING.md), [performance-profiling](.cursor/skills/performance-profiling/SKILL.md) |
 | `.js` → `.ts` conversion, erasable syntax, `tsc` | [typescript](.cursor/skills/typescript/SKILL.md) |
 | New npm script or CI workflow | [Commands](#commands), [CI checks](#ci-checks) |
 

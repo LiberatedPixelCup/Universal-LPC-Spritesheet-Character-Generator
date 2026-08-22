@@ -30,6 +30,7 @@ import {
   canvas as rendererCanvas,
 } from "../../sources/canvas/renderer.ts";
 import { resetImageLoadCache } from "../../sources/canvas/load-image.ts";
+import { PerformanceProfiler } from "../../sources/performance-profiler.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
 import { createState } from "../../sources/state/state.ts";
@@ -384,6 +385,83 @@ describe("canvas/renderer.ts", () => {
       expect(bodyCalls.every((d) => d.needsRecolor === true)).to.equal(true);
     });
 
+    it("keeps walk-band content after a palette change", async () => {
+      const paletteMetadata = {
+        versions: {},
+        materials: {
+          body: {
+            default: "ulpc",
+            base: "light",
+            palettes: {
+              ulpc: {
+                light: ["#FF0000"],
+                olive: ["#00FF00"],
+                bronze: ["#0000FF"],
+              },
+            },
+          },
+        },
+      };
+      seedCatalog(
+        catalog,
+        {
+          "body-body": walkItemMeta({
+            name: "Body Color",
+            type_name: "body",
+            recolors: [
+              {
+                label: "Body",
+                type_name: null,
+                material: "body",
+                default: "ulpc",
+                base: "ulpc.light",
+                variants: ["light", "olive", "bronze"],
+              },
+            ],
+          }),
+        },
+        { paletteMetadata },
+      );
+
+      const walk = ANIMATION_CONFIGS.walk;
+      const walkY = walk.row * FRAME_SIZE;
+      const walkH = walk.num * FRAME_SIZE;
+      const walkBandHasContent = () => {
+        const ctx = rendererCanvas.getContext("2d");
+        return hasContentInRegion(ctx, 0, walkY, SHEET_WIDTH, walkH);
+      };
+
+      await renderCharacter(
+        catalog,
+        state,
+        {
+          body: {
+            itemId: "body-body",
+            variant: null,
+            recolor: "olive",
+            name: "Body Color",
+          },
+        },
+        "male",
+      );
+      expect(walkBandHasContent()).to.equal(true);
+
+      await renderCharacter(
+        catalog,
+        state,
+        {
+          body: {
+            itemId: "body-body",
+            variant: null,
+            recolor: "bronze",
+            name: "Body Color",
+          },
+        },
+        "male",
+      );
+      expect(walkBandHasContent()).to.equal(true);
+    });
+
     it("queues custom-upload drawCalls from state.customUploadedImage", async () => {
       seedCatalog(catalog, {});
       state.customUploadedImage = await imageFromFilledCanvas(8, 8, "#00ff00");
@@ -400,6 +478,45 @@ describe("canvas/renderer.ts", () => {
         true,
       );
       expect(customCalls.every((d) => d.zPos === 42)).to.equal(true);
+    });
+
+    it("records a renderCharacter phase report when window.profiler is enabled", async () => {
+      const prevProfiler = window.profiler;
+      sandbox.stub(globalThis, "requestAnimationFrame").returns(1);
+      sandbox.stub(globalThis, "setInterval").returns(999);
+      const p = new PerformanceProfiler({
+        enabled: true,
+        logSlowOperations: false,
+      });
+      window.profiler = p;
+      try {
+        seedCatalog(catalog, { walk_only: walkItemMeta() });
+        await renderCharacter(
+          catalog,
+          state,
+          {
+            slot: {
+              itemId: "walk_only",
+              variant: "olive",
+              name: "Walk",
+            },
+          },
+          "male",
+        );
+        const calls = p.snapshot().renderCharacter.calls;
+        expect(calls).to.have.length(1);
+        expect(calls[0].phasesMs).to.include.keys(
+          "buildDrawCalls",
+          "sizeCanvas",
+          "loadImages",
+          "recolor",
+          "draw",
+        );
+        expect(calls[0].counters.drawCalls).to.be.at.least(1);
+        expect(calls[0].counters.selections).to.equal(1);
+      } finally {
+        window.profiler = prevProfiler;
+      }
     });
   });
 

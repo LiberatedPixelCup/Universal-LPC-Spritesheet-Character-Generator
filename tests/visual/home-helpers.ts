@@ -63,12 +63,8 @@ export async function waitForCatalogAllReady(page: Page): Promise<void> {
   }
 }
 
-export async function gotoHomepageReady(
-  page: Page,
-  baseUrl = process.env.PLAYWRIGHT_TEST_BASE_URL ?? "http://127.0.0.1:4173",
-): Promise<void> {
-  const normalized = `${baseUrl.replace(/\/$/, "")}/`;
-  await page.goto(normalized, { waitUntil: "load" });
+/** Catalog + preview canvases ready. Call after `page.goto` (any query/hash). */
+export async function waitForHomepageReady(page: Page): Promise<void> {
   try {
     await page.waitForLoadState("networkidle", { timeout: 45_000 });
   } catch {
@@ -104,6 +100,15 @@ export async function gotoHomepageReady(
       }),
   );
   await scrollVisualCaptureToTop(page);
+}
+
+export async function gotoHomepageReady(
+  page: Page,
+  baseUrl = process.env.PLAYWRIGHT_TEST_BASE_URL ?? "http://127.0.0.1:4173",
+): Promise<void> {
+  const normalized = `${baseUrl.replace(/\/$/, "")}/`;
+  await page.goto(normalized, { waitUntil: "load" });
+  await waitForHomepageReady(page);
 }
 
 /**

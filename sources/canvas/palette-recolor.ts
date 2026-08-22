@@ -4,10 +4,16 @@
 import { ok, err, type Result } from "neverthrow";
 import {
   recolorImageWebGL,
+  recolorImageWebGLNow,
+  enqueueRecolor,
+  commitWebGLLiveSnapshot,
+  discardWebGLLiveSnapshot,
+  setWebGLLiveSnapshotHandler,
   isWebGLAvailable,
   type PaletteMapping,
+  type RecolorOutput,
 } from "./webgl-palette-recolor.ts";
-import { debugLog, debugWarn } from "../utils/debug.ts";
+import { debugLog, debugWarn, getRecolorParam } from "../utils/debug.ts";
 import { get2DContext } from "./canvas-utils.ts";
 import type { CatalogReader, ItemMerged } from "../state/catalog.ts";
 import type { State } from "../state/state.ts";
@@ -18,7 +24,7 @@ import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../state/constants.ts";
 
 // Configuration flags
 const config = {
-  forceCPU: false, // Set to true to force CPU mode even if WebGL is available
+  forceCPU: getRecolorParam() === "cpu",
   useWebGL: isWebGLAvailable(),
 };
 
@@ -207,16 +213,16 @@ export function getPaletteRecolorConfig(): RecolorConfig {
  * Recolor an image using one or more palette mappings in a single pass.
  * Automatically uses WebGL if available, falls back to CPU.
  */
-export function recolorImage(
+export async function recolorImage(
   sourceImage: HTMLImageElement | HTMLCanvasElement,
   paletteMappings: PaletteMapping[],
-): HTMLCanvasElement {
+): Promise<RecolorOutput> {
   const shouldUseWebGL = config.useWebGL && !config.forceCPU;
 
   if (shouldUseWebGL) {
     try {
       recolorStats.webgl++;
-      return recolorImageWebGL(sourceImage, paletteMappings);
+      return await recolorImageWebGL(sourceImage, paletteMappings);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.warn("⚠️ WebGL recoloring failed, falling back to CPU:", error);
@@ -252,25 +258,240 @@ export async function loadPalette(
 }
 
 /**
- * Bounded LRU cache of recolored canvases, keyed by (spritePath, recolors).
+ * Bounded LRU cache of recolored snapshots, keyed by (spritePath, recolors).
  * A JS Map preserves insertion order; `get → delete → set` moves an entry to
  * the end (most-recently-used), and eviction always drops the head.
  *
- * We store the in-flight Promise rather than the resolved canvas so that
+ * We store the in-flight Promise rather than the resolved snapshot so that
  * concurrent callers for the same key (e.g. main render + a tree preview)
  * share one recolor operation instead of starting duplicates.
  */
 const RECOLOR_CACHE_CAP = 250;
-const recolorCache = new Map<
-  string,
-  Promise<HTMLImageElement | HTMLCanvasElement>
+type RecolorCacheValue = HTMLImageElement | RecolorOutput;
+const recolorCache = new Map<string, Promise<RecolorCacheValue>>();
+const resolvedRecolorValues = new WeakMap<
+  Promise<RecolorCacheValue>,
+  RecolorCacheValue
 >();
+
+/** Cache key whose pixels are still on the shared WebGL canvas. */
+let pendingLiveKey: string | null = null;
+
+type DeferredRecolorJob = {
+  cacheKey: string;
+  img: HTMLImageElement | HTMLCanvasElement;
+  mappings: PaletteMapping[];
+};
+
+let deferSnapshots = false;
+let deferGeneration = 0;
+const deferredJobs = new Map<string, DeferredRecolorJob>();
+const deferredInFlight = new Map<string, Promise<RecolorCacheValue>>();
+let fillInFlight: Promise<void> | null = null;
+type IdleHandle =
+  | { kind: "idle"; id: number }
+  | { kind: "timeout"; id: ReturnType<typeof setTimeout> };
+let idleHandle: IdleHandle | null = null;
+
+function installSnapshotAtKey(cacheKey: string, snap: RecolorOutput): void {
+  const p = Promise.resolve(snap);
+  recolorCache.set(cacheKey, p);
+  resolvedRecolorValues.set(p, snap);
+  while (recolorCache.size > RECOLOR_CACHE_CAP) {
+    const oldestKey = recolorCache.keys().next().value;
+    if (oldestKey === undefined || oldestKey === cacheKey) break;
+    const oldest = recolorCache.get(oldestKey);
+    recolorCache.delete(oldestKey);
+    if (oldest) closeSettledCacheEntry(oldest);
+  }
+}
+
+function installLiveSnapshot(snap: RecolorOutput): void {
+  if (!pendingLiveKey) {
+    closeIfImageBitmap(snap);
+    return;
+  }
+  installSnapshotAtKey(pendingLiveKey, snap);
+  pendingLiveKey = null;
+}
+
+function rememberDeferredInFlight(
+  cacheKey: string,
+  promise: Promise<RecolorCacheValue>,
+): void {
+  deferredInFlight.set(cacheKey, promise);
+  void promise.finally(() => {
+    if (deferredInFlight.get(cacheKey) === promise) {
+      deferredInFlight.delete(cacheKey);
+    }
+  });
+}
+
+function cancelIdleRecolorCacheFill(): void {
+  if (!idleHandle) return;
+  if (idleHandle.kind === "idle") {
+    const cancel = (globalThis as { cancelIdleCallback?: (id: number) => void })
+      .cancelIdleCallback;
+    cancel?.(idleHandle.id);
+  } else {
+    clearTimeout(idleHandle.id);
+  }
+  idleHandle = null;
+}
+
+/**
+ * Skip LRU snapshots until {@link endDeferredRecolorSnapshots}. Used around
+ * `renderCharacter` so first paint only blits the live WebGL canvas.
+ */
+export function beginDeferredRecolorSnapshots(): void {
+  deferGeneration += 1;
+  cancelIdleRecolorCacheFill();
+  deferSnapshots = true;
+}
+
+/**
+ * Stop deferring and fill the LRU on idle (`requestIdleCallback`, or
+ * `setTimeout(0)`). The next `renderCharacter` waits for any leftover fill.
+ */
+export function endDeferredRecolorSnapshots(): void {
+  deferSnapshots = false;
+  const gen = deferGeneration;
+  cancelIdleRecolorCacheFill();
+  const run = (): void => {
+    if (gen !== deferGeneration) return;
+    void flushDeferredRecolorCache();
+  };
+  const ric = (
+    globalThis as {
+      requestIdleCallback?: (cb: () => void) => number;
+    }
+  ).requestIdleCallback;
+  if (typeof ric === "function") {
+    idleHandle = { kind: "idle", id: ric(run) };
+  } else {
+    idleHandle = { kind: "timeout", id: setTimeout(run, 0) };
+  }
+}
+
+async function fillDeferredRecolorCacheNow(): Promise<void> {
+  const gen = deferGeneration;
+  const jobs = [...deferredJobs.values()];
+  deferredJobs.clear();
+  if (jobs.length === 0 && pendingLiveKey === null) return;
+  await enqueueRecolor(async () => {
+    if (gen !== deferGeneration) return;
+    await commitWebGLLiveSnapshot();
+    for (const job of jobs) {
+      if (gen !== deferGeneration) return;
+      if (recolorCache.has(job.cacheKey)) continue;
+      const snap = await recolorImageWebGLNow(job.img, job.mappings, true);
+      installSnapshotAtKey(job.cacheKey, snap);
+    }
+  });
+}
+
+/** Finish any leftover deferred LRU copies. Safe to call when there are none. */
+export function flushDeferredRecolorCache(): Promise<void> {
+  deferSnapshots = false;
+  cancelIdleRecolorCacheFill();
+  if (fillInFlight) return fillInFlight;
+  fillInFlight = fillDeferredRecolorCacheNow().finally(() => {
+    fillInFlight = null;
+  });
+  return fillInFlight;
+}
+
+export function bindWebGLLiveSnapshotHandler(): void {
+  setWebGLLiveSnapshotHandler(installLiveSnapshot);
+}
+
+bindWebGLLiveSnapshotHandler();
+
+function closeIfImageBitmap(value: RecolorCacheValue): void {
+  if (typeof ImageBitmap !== "undefined" && value instanceof ImageBitmap) {
+    value.close();
+  }
+}
+
+function closeSettledCacheEntry(entry: Promise<RecolorCacheValue>): void {
+  const value = resolvedRecolorValues.get(entry);
+  if (value) {
+    closeIfImageBitmap(value);
+    resolvedRecolorValues.delete(entry);
+  }
+}
+
+export type RecolorCacheStats = {
+  skipped: number;
+  cacheHits: number;
+  misses: number;
+};
+
+let recolorCacheStats: RecolorCacheStats = {
+  skipped: 0,
+  cacheHits: 0,
+  misses: 0,
+};
+
+/** Snapshot of always-on `getImageToDraw` skip / cache counters. */
+export function getRecolorCacheStats(): RecolorCacheStats {
+  return { ...recolorCacheStats };
+}
+
+/** Reset skip / cache counters. Also called from {@link clearRecolorCache}. */
+export function resetRecolorCacheStats(): void {
+  recolorCacheStats = { skipped: 0, cacheHits: 0, misses: 0 };
+}
+
+function startRecolorMiss(
+  catalog: CatalogReader,
+  img: HTMLImageElement | HTMLCanvasElement,
+  recolors: Record<string, string>,
+  paletteConfig: Record<string, PaletteForItem>,
+  cacheKey: string | null,
+  shouldUseWebGL: boolean,
+): Promise<RecolorCacheValue> {
+  if (!cacheKey || !shouldUseWebGL) {
+    return recolorWithPalette(catalog, img, recolors, paletteConfig);
+  }
+  return enqueueRecolor(async () => {
+    if (deferSnapshots) {
+      discardWebGLLiveSnapshot();
+    } else {
+      await commitWebGLLiveSnapshot();
+    }
+    const mappings = collectPaletteMappings(catalog, recolors, paletteConfig);
+    if (mappings.length === 0) return img;
+    try {
+      recolorStats.webgl++;
+      const live = await recolorImageWebGLNow(img, mappings, false);
+      pendingLiveKey = cacheKey;
+      if (deferSnapshots) {
+        deferredJobs.set(cacheKey, { cacheKey, img, mappings });
+      }
+      return live;
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.warn("⚠️ WebGL recoloring failed, falling back to CPU:", error);
+      recolorStats.fallback++;
+      pendingLiveKey = null;
+      return recolorImageCPU(img, mappings);
+    }
+  });
+}
 
 /**
  * Get image to draw - applies recoloring if needed based on palette configuration.
  * Async because palette loading is lazy (loads on first use). When `spritePath`
  * is supplied, the recolored result is memoized so repeated renders for the
  * same (spritePath, recolors) skip the entire recolor pipeline.
+ *
+ * On the WebGL path a cacheable miss returns the shared canvas so the
+ * compositor can `drawImage` it immediately. Outside a deferred window the
+ * next WebGL recolor copies that canvas into the LRU first. During
+ * `renderCharacter`, snapshots are skipped and filled on idle (or before
+ * the next render). Callers must draw before awaiting another cacheable
+ * miss (the renderer already does).
  */
 export async function getImageToDraw(
   catalog: CatalogReader,
@@ -278,13 +499,15 @@ export async function getImageToDraw(
   itemId: string,
   recolors: Record<string, string> | null | undefined,
   spritePath: string | null = null,
-): Promise<HTMLImageElement | HTMLCanvasElement> {
+): Promise<RecolorCacheValue> {
   if (!recolors) {
+    recolorCacheStats.skipped++;
     return img; // No recolor specified, return original image
   }
   const meta = catalog.getItemLite(itemId).unwrapOr(null);
   const paletteConfig = getPalettesFromMeta(catalog, meta).unwrapOr(null);
   if (!paletteConfig) {
+    recolorCacheStats.skipped++;
     return img; // Item doesn't use palette recoloring
   }
 
@@ -294,16 +517,39 @@ export async function getImageToDraw(
   if (cacheKey) {
     const hit = recolorCache.get(cacheKey);
     if (hit) {
+      recolorCacheStats.cacheHits++;
       // LRU touch
       recolorCache.delete(cacheKey);
       recolorCache.set(cacheKey, hit);
       return hit;
     }
+    const inflight = deferSnapshots
+      ? deferredInFlight.get(cacheKey)
+      : undefined;
+    if (inflight) {
+      recolorCacheStats.cacheHits++;
+      return inflight;
+    }
   }
 
-  const promise = recolorWithPalette(catalog, img, recolors, paletteConfig);
+  recolorCacheStats.misses++;
+  const shouldUseWebGL = config.useWebGL && !config.forceCPU;
+  const promise = startRecolorMiss(
+    catalog,
+    img,
+    recolors,
+    paletteConfig,
+    cacheKey,
+    shouldUseWebGL,
+  );
+  void promise.then((value) => {
+    resolvedRecolorValues.set(promise, value);
+  });
 
-  if (cacheKey) {
+  const cacheLiveWebGL = Boolean(cacheKey && deferSnapshots && shouldUseWebGL);
+  if (cacheKey && cacheLiveWebGL) rememberDeferredInFlight(cacheKey, promise);
+
+  if (cacheKey && !cacheLiveWebGL) {
     recolorCache.set(cacheKey, promise);
     // On rejection, drop the entry so retries aren't poisoned by a stale failure.
     promise.catch(() => {
@@ -314,7 +560,12 @@ export async function getImageToDraw(
     while (recolorCache.size > RECOLOR_CACHE_CAP) {
       const oldestKey = recolorCache.keys().next().value;
       if (oldestKey === undefined) break;
+      const oldest = recolorCache.get(oldestKey);
       recolorCache.delete(oldestKey);
+      // Skip the in-flight miss we just inserted; only close settled bitmaps.
+      if (oldest && oldest !== promise) {
+        closeSettledCacheEntry(oldest);
+      }
     }
   }
 
@@ -331,21 +582,27 @@ export async function getImageToDraw(
 
 /** Clear the recolor cache. Mainly for tests; callable at runtime too. */
 export function clearRecolorCache(): void {
+  deferGeneration += 1;
+  cancelIdleRecolorCacheFill();
+  deferSnapshots = false;
+  deferredJobs.clear();
+  deferredInFlight.clear();
+  pendingLiveKey = null;
+  for (const entry of recolorCache.values()) {
+    closeSettledCacheEntry(entry);
+  }
   recolorCache.clear();
+  resetRecolorCacheStats();
 }
 
 /**
- * Recolor an image using a specified palette type.
- * Automatically loads the palette on first use (lazy loading).
+ * Gather (source, target) palette mappings so they can be applied in one pass.
  */
-export async function recolorWithPalette(
+function collectPaletteMappings(
   catalog: CatalogReader,
-  sourceImage: HTMLImageElement | HTMLCanvasElement,
   targetColors: Record<string, string>,
   sourcePalettes: Record<string, PaletteForItem>,
-): Promise<HTMLCanvasElement | HTMLImageElement> {
-  // Gather all (source, target) palette mappings so they can be applied
-  // in a single shader pass.
+): PaletteMapping[] {
   const mappings: PaletteMapping[] = [];
   for (const [typeName, palette] of Object.entries(sourcePalettes)) {
     const targetColor = targetColors[typeName];
@@ -362,7 +619,24 @@ export async function recolorWithPalette(
     }
     mappings.push({ source: palette.colors, target: targetPalette });
   }
+  return mappings;
+}
 
+/**
+ * Recolor an image using a specified palette type.
+ * Automatically loads the palette on first use (lazy loading).
+ */
+export async function recolorWithPalette(
+  catalog: CatalogReader,
+  sourceImage: HTMLImageElement | HTMLCanvasElement,
+  targetColors: Record<string, string>,
+  sourcePalettes: Record<string, PaletteForItem>,
+): Promise<RecolorCacheValue> {
+  const mappings = collectPaletteMappings(
+    catalog,
+    targetColors,
+    sourcePalettes,
+  );
   return mappings.length > 0
     ? recolorImage(sourceImage, mappings)
     : sourceImage;

@@ -10,6 +10,8 @@ The app includes a performance profiler that is automatically enabled when:
 
 The DEBUG flag and profiler are initialized in `sources/main.ts`. Only `?debug=true` and `?debug=false` override localhost detection (`sources/utils/debug.ts`). Other values (for example `?debug=1`) fall through to the localhost check.
 
+`?recolor=cpu` forces the CPU palette path **before first paint** (`getRecolorParam()` in `sources/utils/debug.ts`, applied in `sources/canvas/palette-recolor.ts`). `window.setPaletteRecolorMode("cpu")` still works from the console after load, but does not rewind the first render.
+
 ## Profiled Operations
 
 The profiler tracks these expensive operations:
@@ -25,6 +27,44 @@ The profiler tracks these expensive operations:
 - **Operation:** `renderCharacter()` in `sources/canvas/renderer.ts`
 - **Measures:** Total rendering time including image loading and canvas operations
 - **Format:** `renderCharacter`
+- **Phases:** `profiler.snapshot().renderCharacter.calls[]` — one report per completed `runRenderCharacter`. Each report has `totalMs`, `phasesMs`, `unaccountedMs`, and `counters`. Phase keys: `mithrilRedrawStart`, `buildDrawCalls`, `sizeCanvas`, `loadImages`, `recolor`, `draw`, `customLoad`, `customRecolor`, `customDraw`, `mithrilRedrawEnd`. Counters include `drawCalls`, `selections`, `customAnims`, canvas size, and image/recolor cache hits vs loads/misses. `diff:app-profile` prints a `── renderCharacter phases ──` section (per call index).
+
+### Headless app profiler
+
+Use these when **`loadImage()`**, **`renderCharacter()`**, hash hydration, or palette recolor changed. They open Chromium (headless Playwright Chromium by default), drive the live app the way a human would (`?debug=true`, wait for catalog + first paint, change the selection once), then write **`profiler.snapshot()`** — the same data as **`window.profiler.report()`**, as JSON. The JSON also records **`renderer`** (`WEBGL_debug_renderer_info`: vendor, renderer, unmasked vendor/renderer). Headless Playwright Chromium is usually SwiftShader (software GL). For a real GPU, pass **`--headed --channel chrome`** (installed Google Chrome, Metal/D3D). That combination fails if the unmasked renderer still looks like SwiftShader / llvmpipe.
+
+Default **`--recolor both`** runs that sequence twice: WebGL (Chromium default) and **`?recolor=cpu`**. The JSON `profiles.webgl` / `profiles.cpu` objects include `activeMode` and `recolorStats` so you can confirm the CPU path actually ran. `diff:app-profile` prints both sections.
+
+They do **not** replace checking WebGL and the CPU fallback **visually**; for that, see [Force CPU Mode](PALETTE_RECOLOR_GUIDE.md#force-cpu-mode-testing). They are also not a substitute for the ZIP scripts below.
+
+**Before you run**
+
+1. Install Chromium once: `npx playwright install`
+2. The script starts Vite itself on `127.0.0.1` (default port `5178`, override with `APP_PROFILE_PORT`). Pass `--url http://127.0.0.1:5173` to attach to an already-running `npm run dev` instead.
+
+**Compare to a baseline**
+
+Take a baseline on the same machine, then diff after your change.
+
+```bash
+npm run profile:app:baseline -- --headed --channel chrome
+# …make your change…
+npm run profile:app -- --headed --channel chrome
+npm run diff:app-profile -- tmp/baseline-app-profile.json tmp/app-profile.json
+```
+
+Omit `--headed --channel chrome` for the default headless Playwright Chromium (usually SwiftShader). Do not diff a GPU baseline against a headless run. The JSON `renderer.unmaskedRenderer` and the `headed` / `channel` fields record which path you used.
+
+A positive Δ means the after run was slower. Look at `renderCharacter` phases (`snapshot().renderCharacter.calls`), `image-load:*`, and `hash-loadSelectionsFromHash`. A few milliseconds is noise; `renderCharacter` can swing tens of ms between two runs on the same machine.
+
+JSON lands under `tmp/` (gitignored) and is also printed on stdout. Pass `--out <path>` to write somewhere else.
+
+**Optional**
+
+- One recolor path only: `npm run profile:app -- --recolor webgl` or `--recolor cpu`
+- Custom selections: `npm run profile:app -- --hash 'sex=male&body=Body_Color_light' --hash2 '…'`
+- Real GPU (headed Google Chrome): `npm run profile:app -- --headed --channel chrome` (same flags on `profile:app:baseline`)
+- The default first hash is the full outfit in `scripts/zip/zip-profile-default-hash.ts`. The default second hash drops layered gear (body + head + expression only).
 
 ### ZIP export (download packs)
 
@@ -41,7 +81,7 @@ After each export, `zipGenerateBlobWithProfiler` stores the latest `toMetadata()
 
 #### Headless ZIP scripts
 
-Use these when ZIP **export** drawing or packaging changed. They open headless Chromium only. They do **not** replace checking WebGL and the CPU fallback in the app; for that, call `window.profiler.report()` (see [Using the Profiler](#using-the-profiler)).
+Use these when ZIP **export** drawing or packaging changed. They open headless Chromium only. They do **not** replace checking WebGL and the CPU fallback in the app, and they do **not** replace the [headless app profiler](#headless-app-profiler) for `loadImage()` / `renderCharacter()`.
 
 A full run can take several minutes (the runner waits up to 10 minutes).
 
@@ -129,6 +169,12 @@ Counters (`pngEncodeCount`, `drawAndSliceCount`, etc.) are defined on `ZIP_EXPOR
 // Full report (categories, FPS, User Timing measures)
 window.profiler.report();
 
+// Same data as report(), as JSON (headless scripts call this)
+window.profiler.snapshot();
+
+// Per-step renderCharacter timings (phasesMs, counters)
+window.profiler.snapshot().renderCharacter.calls;
+
 // Inspect measures by name (Performance API — not a method on profiler)
 performance.getEntriesByName("renderCharacter", "measure");
 
@@ -189,5 +235,5 @@ if (profiler) {
 
 - Use meaningful operation names (e.g., `render-body`, `load-sprites`)
 - Add profiling marks around suspected bottlenecks
-- Use the profiler.report() to identify patterns and outliers
-- Compare measurements before/after optimizations
+- Use `profiler.report()` or `profiler.snapshot()` to identify patterns and outliers
+- Compare measurements before/after optimizations on the same machine (`profile:app` / `profile:zip`)

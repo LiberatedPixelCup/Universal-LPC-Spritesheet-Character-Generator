@@ -2,21 +2,33 @@
  * Tests for the bounded LRU recolor cache inside `getImageToDraw`.
  *
  * Invariants guarded:
- * - Same (spritePath, recolors) returns the same cached canvas reference.
- * - Different recolors produce different canvases (no false key collision).
+ * - Same (spritePath, recolors) returns the same cached reference.
+ * - Different recolors / paths stay distinct after the compositor draws
+ *   (WebGL may return the live shared canvas until the next miss).
  * - `spritePath = null` bypasses cache (custom uploads, etc.).
  * - `!recolors` short-circuits before cache (raw image returned).
  * - `clearRecolorCache()` empties the cache.
  * - Concurrent callers for the same key share one in-flight Promise.
  */
 import { expect } from "chai";
+import sinon from "sinon";
 import { describe, it, beforeEach } from "mocha-globals";
 import {
   getImageToDraw,
   clearRecolorCache,
+  getRecolorCacheStats,
+  setPaletteRecolorMode,
+  beginDeferredRecolorSnapshots,
+  endDeferredRecolorSnapshots,
+  flushDeferredRecolorCache,
 } from "../../sources/canvas/palette-recolor.ts";
+import { isWebGLAvailable } from "../../sources/canvas/webgl-palette-recolor.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
+import {
+  drawSnapshotToDest,
+  assertOpaqueRemap,
+} from "./palette-recolor-test-helpers.js";
 
 const RECOLOR_ITEM_ID = "body";
 
@@ -91,6 +103,11 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
     );
 
     expect(first).to.equal(second);
+    expect(getRecolorCacheStats()).to.deep.equal({
+      skipped: 0,
+      cacheHits: 1,
+      misses: 1,
+    });
   });
 
   it("produces different canvases when recolors differ", async () => {
@@ -104,6 +121,7 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
       { body: "olive" },
       path,
     );
+    const oliveDest = drawSnapshotToDest(olive);
     const bronze = await getImageToDraw(
       catalog,
       img,
@@ -111,8 +129,19 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
       { body: "bronze" },
       path,
     );
+    const bronzeDest = drawSnapshotToDest(bronze);
+    assertOpaqueRemap(oliveDest, { r: 0, g: 255, b: 0 });
+    assertOpaqueRemap(bronzeDest, { r: 0, g: 0, b: 255 });
 
-    expect(olive).to.not.equal(bronze);
+    const oliveHit = await getImageToDraw(
+      catalog,
+      img,
+      RECOLOR_ITEM_ID,
+      { body: "olive" },
+      path,
+    );
+    expect(oliveHit).to.not.equal(bronze);
+    assertOpaqueRemap(drawSnapshotToDest(oliveHit), { r: 0, g: 255, b: 0 });
   });
 
   it("produces different canvases when spritePath differs", async () => {
@@ -126,6 +155,7 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
       recolors,
       "spritesheets/body/bodies/male/walk.png",
     );
+    const aDest = drawSnapshotToDest(a);
     const b = await getImageToDraw(
       catalog,
       img,
@@ -133,8 +163,18 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
       recolors,
       "spritesheets/body/bodies/male/slash.png",
     );
+    const bDest = drawSnapshotToDest(b);
+    assertOpaqueRemap(aDest, { r: 0, g: 255, b: 0 });
+    assertOpaqueRemap(bDest, { r: 0, g: 255, b: 0 });
 
-    expect(a).to.not.equal(b);
+    const aHit = await getImageToDraw(
+      catalog,
+      img,
+      RECOLOR_ITEM_ID,
+      recolors,
+      "spritesheets/body/bodies/male/walk.png",
+    );
+    expect(aHit).to.not.equal(b);
   });
 
   it("bypasses cache when spritePath is null (uncacheable inputs)", async () => {
@@ -172,6 +212,20 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
     );
 
     expect(result).to.equal(img);
+    expect(getRecolorCacheStats().skipped).to.equal(1);
+  });
+
+  it("increments recolorSkipped when the item has no palette config", async () => {
+    const img = solidColorCanvas(255, 0, 0);
+    const result = await getImageToDraw(
+      catalog,
+      img,
+      "missing-item",
+      { body: "olive" },
+      "spritesheets/body/bodies/male/walk.png",
+    );
+    expect(result).to.equal(img);
+    expect(getRecolorCacheStats().skipped).to.equal(1);
   });
 
   it("clearRecolorCache() drops all entries so the next call recomputes", async () => {
@@ -186,7 +240,9 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
       recolors,
       path,
     );
+    assertOpaqueRemap(drawSnapshotToDest(first), { r: 0, g: 255, b: 0 });
     clearRecolorCache();
+    expect(getRecolorCacheStats().misses).to.equal(0);
     const second = await getImageToDraw(
       catalog,
       img,
@@ -195,7 +251,8 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
       path,
     );
 
-    expect(first).to.not.equal(second);
+    expect(getRecolorCacheStats().misses).to.equal(1);
+    assertOpaqueRemap(drawSnapshotToDest(second), { r: 0, g: 255, b: 0 });
   });
 
   it("concurrent callers for the same key resolve to the same canvas", async () => {
@@ -211,5 +268,90 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
 
     expect(a).to.equal(b);
     expect(b).to.equal(c);
+  });
+
+  it("closes ImageBitmaps evicted from the LRU cache", async function () {
+    if (!isWebGLAvailable() || typeof ImageBitmap === "undefined") {
+      this.skip();
+    }
+    setPaletteRecolorMode("webgl");
+    const closeSpy = sinon.spy(ImageBitmap.prototype, "close");
+    try {
+      const img = solidColorCanvas(255, 0, 0);
+      await getImageToDraw(
+        catalog,
+        img,
+        RECOLOR_ITEM_ID,
+        { body: "olive" },
+        "spritesheets/evict/0.png",
+      );
+      for (let i = 1; i <= 250; i++) {
+        await getImageToDraw(
+          catalog,
+          img,
+          RECOLOR_ITEM_ID,
+          { body: "olive" },
+          `spritesheets/evict/${i}.png`,
+        );
+      }
+      expect(closeSpy.called).to.equal(true);
+    } finally {
+      closeSpy.restore();
+      clearRecolorCache();
+    }
+  });
+
+  it("still caches CPU results while WebGL snapshots are deferred", async () => {
+    setPaletteRecolorMode("cpu");
+    const img = solidColorCanvas(255, 0, 0);
+    const path = "spritesheets/body/bodies/male/walk.png";
+    beginDeferredRecolorSnapshots();
+    try {
+      const first = await getImageToDraw(
+        catalog,
+        img,
+        RECOLOR_ITEM_ID,
+        { body: "olive" },
+        path,
+      );
+      const second = await getImageToDraw(
+        catalog,
+        img,
+        RECOLOR_ITEM_ID,
+        { body: "olive" },
+        path,
+      );
+      expect(first).to.equal(second);
+      expect(getRecolorCacheStats()).to.deep.equal({
+        skipped: 0,
+        cacheHits: 1,
+        misses: 1,
+      });
+    } finally {
+      endDeferredRecolorSnapshots();
+      await flushDeferredRecolorCache();
+      if (isWebGLAvailable()) {
+        setPaletteRecolorMode("webgl");
+      }
+    }
+  });
+
+  it("does not close an in-flight ImageBitmap on clearRecolorCache", async function () {
+    if (!isWebGLAvailable() || typeof ImageBitmap === "undefined") {
+      this.skip();
+    }
+    setPaletteRecolorMode("webgl");
+    const img = solidColorCanvas(255, 0, 0);
+    const pending = getImageToDraw(
+      catalog,
+      img,
+      RECOLOR_ITEM_ID,
+      { body: "olive" },
+      "spritesheets/inflight/walk.png",
+    );
+    clearRecolorCache();
+    const result = await pending;
+    expect(result).to.be.instanceOf(HTMLCanvasElement);
+    assertOpaqueRemap(drawSnapshotToDest(result), { r: 0, g: 255, b: 0 });
   });
 });
