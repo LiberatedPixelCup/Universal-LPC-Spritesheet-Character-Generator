@@ -18,7 +18,7 @@ JSON or the diff. Phase names and console commands:
 
 | What changed | Command | Notes |
 | --- | --- | --- |
-| `loadImage()`, `renderCharacter()`, hash hydration, preview | `npm run profile:app` | Live app, `?debug=true`, one selection change, then `profiler.snapshot()` |
+| `loadImage()`, `renderCharacter()`, hash hydration, preview, palette recolor | `npm run profile:app` | Live app, `?debug=true`. Default `--recolor both` (WebGL + `?recolor=cpu`). |
 | Drawing, slicing, or PNG encode | `npm run profile:zip:quick` | Fake JSZip. Ignore `generateZip`. |
 | Real zip packaging (`generateAsync`, `zip-helpers`) | `npm run profile:zip` | Real JSZip. Slower. |
 
@@ -30,9 +30,10 @@ is not a substitute for `profile:app`, and the other way around.
 `npx serve`. `profile:app` starts Vite itself on `127.0.0.1:5178` (override
 `APP_PROFILE_PORT`) unless you pass `--url http://127.0.0.1:5173`.
 
-A full ZIP run can take several minutes (up to 10). App profile is usually
-1–2 minutes (Vite boot + two renders). Request full permissions; Playwright
-needs a real browser.
+A full ZIP run can take several minutes (up to 10). App profile with both
+recolor modes is usually 2–4 minutes. Request full permissions; Playwright
+needs a real browser. If `PLAYWRIGHT_BROWSERS_PATH` points at a Cursor
+sandbox cache, the script unsets it.
 
 ## Workflow
 
@@ -45,6 +46,10 @@ npm run profile:app:baseline
 npm run profile:app
 npm run diff:app-profile -- tmp/baseline-app-profile.json tmp/app-profile.json
 ```
+
+`diff:app-profile` prints **two** sections when both files contain both
+modes: `======== webgl ========` and `======== cpu ========`. Compare
+like-with-like. One mode only: `--recolor webgl` or `--recolor cpu`.
 
 ```bash
 npm run profile:zip:baseline:quick
@@ -63,6 +68,10 @@ JSON lands under `tmp/` (gitignored) and is also printed on stdout.
 A positive Δ means the after run was slower. Compare on the same machine.
 A few milliseconds is noise. `renderCharacter` can swing tens of ms between
 two runs; repeat once if a single Δ is the only evidence.
+
+Confirm `activeMode` and `recolorStats` in each section: CPU must show
+`activeMode: cpu` and `cpu > 0` if the outfit recolours. WebGL should show
+`webgl > 0` (or `cpu` if this Chromium has no GL).
 
 **App profile** (`profiler.snapshot()`, same buckets as `profiler.report()`):
 
@@ -90,6 +99,4 @@ Custom app hashes: `npm run profile:app -- --hash '…' --hash2 '…'`.
 ## Still ask the user
 
 WebGL vs CPU **visual** correctness is not this skill:
-[canvas-render](../canvas-render/SKILL.md). Headless Chromium is one GPU
-path. Do not claim both recolor implementations were timed unless you
-passed `setPaletteRecolorMode` yourself.
+[canvas-render](../canvas-render/SKILL.md). Timing both recolor paths is.

@@ -5,8 +5,8 @@
  *   node scripts/profile/diff-app-profile.ts <before.json> <after.json>
  *   node scripts/profile/diff-app-profile.ts --before tmp/baseline.json --after tmp/current.json
  *
- * Prints metric and measure deltas (after − before). Positive Δ means slower.
- * Exit code 0 always (reporting tool).
+ * Prints per-recolor-mode metric and measure deltas (after − before).
+ * Positive Δ means slower. Exit code 0 always (reporting tool).
  */
 
 import { readFileSync } from "node:fs";
@@ -14,15 +14,16 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import type { ProfilerSnapshot } from "../../sources/performance-profiler.ts";
+import type {
+  AppProfileFile,
+  AppProfileModeResult,
+  AppProfileRecolorMode,
+} from "./app-profile.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.join(__dirname, "..", "..");
 
-type AppProfileFile = {
-  generatedAt?: string;
-  hash?: string;
-  hash2?: string | null;
-  actions?: string[];
+type LegacyAppProfileFile = AppProfileFile & {
   profiler?: ProfilerSnapshot;
 };
 
@@ -56,9 +57,34 @@ function parseArgs(argv: string[]): { beforePath: string; afterPath: string } {
   return { beforePath, afterPath };
 }
 
-function loadProfile(p: string): AppProfileFile {
+function loadProfile(p: string): LegacyAppProfileFile {
   const raw = readFileSync(p, "utf8");
-  return JSON.parse(raw) as AppProfileFile;
+  return JSON.parse(raw) as LegacyAppProfileFile;
+}
+
+function modesOf(file: LegacyAppProfileFile): AppProfileRecolorMode[] {
+  if (file.profiles && Object.keys(file.profiles).length > 0) {
+    return (["webgl", "cpu"] as const).filter((m) => file.profiles[m]);
+  }
+  if (file.profiler) return ["webgl"];
+  return [];
+}
+
+function modeResult(
+  file: LegacyAppProfileFile,
+  mode: AppProfileRecolorMode,
+): AppProfileModeResult | undefined {
+  const fromProfiles = file.profiles?.[mode];
+  if (fromProfiles) return fromProfiles;
+  if (mode === "webgl" && file.profiler) {
+    return {
+      requestedMode: "webgl",
+      activeMode: "webgl",
+      recolorStats: { webgl: 0, cpu: 0, fallback: 0 },
+      profiler: file.profiler,
+    };
+  }
+  return undefined;
 }
 
 function round1(n: number): number {
@@ -93,34 +119,11 @@ function pad(s: string, n: number): string {
   return s + " ".repeat(Math.max(0, n - s.length));
 }
 
-function main(): void {
-  const { beforePath, afterPath } = parseArgs(process.argv);
-  const before = loadProfile(beforePath);
-  const after = loadProfile(afterPath);
-  const pb = before.profiler;
-  const pa = after.profiler;
-
-  const lines: string[] = [];
-  lines.push("App profile diff");
-  lines.push(`  before: ${path.relative(REPO_ROOT, beforePath)}`);
-  if (before.generatedAt)
-    lines.push(`           generatedAt: ${before.generatedAt}`);
-  lines.push(`  after:  ${path.relative(REPO_ROOT, afterPath)}`);
-  if (after.generatedAt)
-    lines.push(`           generatedAt: ${after.generatedAt}`);
-  lines.push("");
-
-  if (before.hash !== after.hash || before.hash2 !== after.hash2) {
-    lines.push("  (warning: compare like-with-like — hash or hash2 differ.)");
-    lines.push("");
-  }
-
-  if (!pb || !pa) {
-    lines.push("  (missing profiler snapshot in before or after)");
-    process.stdout.write(lines.join("\n") + "\n");
-    return;
-  }
-
+function diffSnapshots(
+  lines: string[],
+  pb: ProfilerSnapshot,
+  pa: ProfilerSnapshot,
+): void {
   lines.push(`  fps: ${fmt(pb.fps)} → ${fmt(pa.fps)}`);
   lines.push("");
   lines.push("── metrics ──");
@@ -229,6 +232,57 @@ function main(): void {
     );
   }
   lines.push("");
+}
+
+function main(): void {
+  const { beforePath, afterPath } = parseArgs(process.argv);
+  const before = loadProfile(beforePath);
+  const after = loadProfile(afterPath);
+
+  const lines: string[] = [];
+  lines.push("App profile diff");
+  lines.push(`  before: ${path.relative(REPO_ROOT, beforePath)}`);
+  if (before.generatedAt)
+    lines.push(`           generatedAt: ${before.generatedAt}`);
+  lines.push(`  after:  ${path.relative(REPO_ROOT, afterPath)}`);
+  if (after.generatedAt)
+    lines.push(`           generatedAt: ${after.generatedAt}`);
+  lines.push("");
+
+  if (before.hash !== after.hash || before.hash2 !== after.hash2) {
+    lines.push("  (warning: compare like-with-like — hash or hash2 differ.)");
+    lines.push("");
+  }
+
+  const modes = new Set([...modesOf(before), ...modesOf(after)]);
+  if (modes.size === 0) {
+    lines.push("  (missing profiler snapshot in before or after)");
+    process.stdout.write(lines.join("\n") + "\n");
+    return;
+  }
+
+  for (const mode of ["webgl", "cpu"] as const) {
+    if (!modes.has(mode)) continue;
+    const b = modeResult(before, mode);
+    const a = modeResult(after, mode);
+    lines.push(`======== ${mode} ========`);
+    if (!b) {
+      lines.push("  (missing in before)");
+      lines.push("");
+      continue;
+    }
+    if (!a) {
+      lines.push("  (missing in after)");
+      lines.push("");
+      continue;
+    }
+    lines.push(
+      `  activeMode: ${b.activeMode} → ${a.activeMode}` +
+        `  stats before webgl=${b.recolorStats.webgl} cpu=${b.recolorStats.cpu}` +
+        `  after webgl=${a.recolorStats.webgl} cpu=${a.recolorStats.cpu}`,
+    );
+    diffSnapshots(lines, b.profiler, a.profiler);
+  }
 
   process.stdout.write(lines.join("\n") + "\n");
 }

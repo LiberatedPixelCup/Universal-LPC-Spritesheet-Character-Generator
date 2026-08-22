@@ -2,10 +2,12 @@
  * Drive the live app the way a human would and dump `window.profiler.snapshot()`.
  *
  * Starts Vite (unless `--url`), opens Chromium with `?debug=true`, waits for
- * catalog + first render, changes the hash once, then writes JSON under `tmp/`.
+ * catalog + first render, changes the hash once. Default `--recolor both`
+ * does that twice: WebGL (Chromium default) and `?recolor=cpu`.
  *
  * Usage:
  *   node scripts/profile/app-profile.ts
+ *   node scripts/profile/app-profile.ts --recolor cpu
  *   node scripts/profile/app-profile.ts --url http://127.0.0.1:5173
  *   node scripts/profile/app-profile.ts --hash 'sex=male&body=Body_Color_light'
  *   node scripts/profile/app-profile.ts --out custom/path.json
@@ -35,11 +37,33 @@ const APP_PROFILE_SECOND_HASH =
 
 const DEFAULT_PORT = 5178;
 
+export type AppProfileRecolorMode = "webgl" | "cpu";
+type RecolorChoice = AppProfileRecolorMode | "both";
+
+export type AppProfileModeResult = {
+  requestedMode: AppProfileRecolorMode;
+  activeMode: string;
+  recolorStats: { webgl: number; cpu: number; fallback: number };
+  profiler: ProfilerSnapshot;
+};
+
+export type AppProfileFile = {
+  generatedAt: string;
+  url: string;
+  hash: string;
+  hash2: string | null;
+  actions: string[];
+  userAgent: string;
+  recolor: RecolorChoice;
+  profiles: Partial<Record<AppProfileRecolorMode, AppProfileModeResult>>;
+};
+
 type AppProfileOpts = {
   outPath: string;
   url: string | null;
   hash: string;
   hash2: string;
+  recolor: RecolorChoice;
 };
 
 type AppProfileWindow = Window & {
@@ -49,6 +73,17 @@ type AppProfileWindow = Window & {
     metrics?: ProfilerSnapshot["metrics"];
     currentFps?: number;
     getMemoryUsage?: () => ProfilerSnapshot["memory"];
+    clear?: () => void;
+  };
+  getPaletteRecolorConfig?: () => {
+    forceCPU: boolean;
+    useWebGL: boolean;
+    activeMode: string;
+  };
+  getPaletteRecolorStats?: () => {
+    webgl: number;
+    cpu: number;
+    fallback: number;
   };
 };
 
@@ -70,7 +105,7 @@ function parseArgs(argv: string[]): AppProfileOpts {
   const args = argv.slice(2);
   if (args.includes("--help") || args.includes("-h")) {
     process.stdout.write(
-      "Usage: node scripts/profile/app-profile.ts [--url <origin>] [--hash <h>] [--hash2 <h>] [--out <path>]\n",
+      "Usage: node scripts/profile/app-profile.ts [--recolor webgl|cpu|both] [--url <origin>] [--hash <h>] [--hash2 <h>] [--out <path>]\n",
     );
     process.exit(0);
   }
@@ -78,6 +113,7 @@ function parseArgs(argv: string[]): AppProfileOpts {
   let url: string | null = null;
   let hash = ZIP_PROFILE_DEFAULT_HASH;
   let hash2 = APP_PROFILE_SECOND_HASH;
+  let recolor: RecolorChoice = "both";
   for (let i = 0; i < args.length; i++) {
     const a = args[i];
     const next = args[i + 1];
@@ -93,6 +129,12 @@ function parseArgs(argv: string[]): AppProfileOpts {
     } else if (a === "--hash2" && next) {
       hash2 = next.replace(/^#/, "");
       i++;
+    } else if (a === "--recolor" && next) {
+      if (next !== "webgl" && next !== "cpu" && next !== "both") {
+        throw new Error("--recolor must be webgl, cpu, or both");
+      }
+      recolor = next;
+      i++;
     } else {
       throw new Error(`Unknown argument: ${a}`);
     }
@@ -102,12 +144,22 @@ function parseArgs(argv: string[]): AppProfileOpts {
     url,
     hash,
     hash2,
+    recolor,
   };
 }
 
-function profilePageUrl(base: string, hash: string): string {
+function modesToRun(choice: RecolorChoice): AppProfileRecolorMode[] {
+  return choice === "both" ? ["webgl", "cpu"] : [choice];
+}
+
+function profilePageUrl(
+  base: string,
+  hash: string,
+  recolor: AppProfileRecolorMode,
+): string {
   const u = new URL(base);
   u.searchParams.set("debug", "true");
+  if (recolor === "cpu") u.searchParams.set("recolor", "cpu");
   u.hash = hash;
   return u.href;
 }
@@ -159,11 +211,106 @@ async function renderCharacterMeasureCount(page: Page): Promise<number> {
   );
 }
 
+async function driveSelectionChange(
+  page: Page,
+  hash: string,
+  hash2: string,
+  actions: string[],
+): Promise<void> {
+  if (!hash2 || hash2 === hash) return;
+  const before = await renderCharacterMeasureCount(page);
+  await page.evaluate((h) => {
+    window.location.hash = h;
+  }, hash2);
+  await page.waitForFunction(
+    (n) =>
+      performance.getEntriesByName("renderCharacter", "measure").length > n,
+    before,
+    { timeout: 120000 },
+  );
+  await waitForHomepageReady(page);
+  actions.push(`hash:${hash2}`);
+}
+
+async function runOneMode(
+  page: Page,
+  base: string,
+  hash: string,
+  hash2: string,
+  recolor: AppProfileRecolorMode,
+): Promise<{
+  firstUrl: string;
+  actions: string[];
+  userAgent: string;
+  result: AppProfileModeResult;
+}> {
+  const firstUrl = profilePageUrl(base, hash, recolor);
+  await page.goto(firstUrl, { waitUntil: "load", timeout: 120000 });
+  await waitForHomepageReady(page);
+
+  const actions = [`load:${hash}`];
+  await driveSelectionChange(page, hash, hash2, actions);
+
+  await new Promise((r) => setTimeout(r, 2100));
+
+  const snapshot = await page.evaluate(collectSnapshotInPage);
+  if (!snapshot.enabled) {
+    throw new Error(
+      "profiler.snapshot() reported enabled=false; expected ?debug=true on localhost",
+    );
+  }
+
+  const config = await page.evaluate(() => {
+    const w = window as AppProfileWindow;
+    return w.getPaletteRecolorConfig?.() ?? null;
+  });
+  const stats = await page.evaluate(() => {
+    const w = window as AppProfileWindow;
+    return (
+      w.getPaletteRecolorStats?.() ?? {
+        webgl: 0,
+        cpu: 0,
+        fallback: 0,
+      }
+    );
+  });
+
+  const activeMode = config?.activeMode ?? "unknown";
+  if (recolor === "cpu" && activeMode !== "cpu") {
+    throw new Error(
+      `Requested CPU recolor but activeMode is ${JSON.stringify(activeMode)}`,
+    );
+  }
+  if (recolor === "cpu" && stats.cpu === 0 && stats.webgl > 0) {
+    throw new Error(
+      `Requested CPU recolor but stats are webgl=${stats.webgl} cpu=${stats.cpu}`,
+    );
+  }
+
+  return {
+    firstUrl,
+    actions,
+    userAgent: await page.evaluate(() => navigator.userAgent),
+    result: {
+      requestedMode: recolor,
+      activeMode,
+      recolorStats: stats,
+      profiler: snapshot,
+    },
+  };
+}
+
 async function main(): Promise<void> {
+  const sandboxCache = process.env.PLAYWRIGHT_BROWSERS_PATH;
+  if (sandboxCache?.includes("cursor-sandbox-cache")) {
+    delete process.env.PLAYWRIGHT_BROWSERS_PATH;
+  }
+
   const opts = parseArgs(process.argv);
   const port = parsePort();
   const spawnedBase = `http://127.0.0.1:${port}/`;
   const base = opts.url ? opts.url.replace(/\/?$/, "/") : spawnedBase;
+  const modes = modesToRun(opts.recolor);
 
   let vite: ChildProcess | undefined;
   let browser: Browser | undefined;
@@ -182,51 +329,36 @@ async function main(): Promise<void> {
     }
 
     browser = await chromium.launch({ headless: true });
-    const page = await browser.newPage();
     const pageErrors: string[] = [];
-    page.on("pageerror", (e) => pageErrors.push(String(e)));
+    let firstUrl = "";
+    let actions: string[] = [];
+    let userAgent = "";
+    const profiles: AppProfileFile["profiles"] = {};
 
-    const firstUrl = profilePageUrl(base, opts.hash);
-    await page.goto(firstUrl, { waitUntil: "load", timeout: 120000 });
-    await waitForHomepageReady(page);
-
-    const actions = [`load:${opts.hash}`];
-    if (opts.hash2 && opts.hash2 !== opts.hash) {
-      const before = await renderCharacterMeasureCount(page);
-      await page.evaluate((h) => {
-        window.location.hash = h;
-      }, opts.hash2);
-      await page.waitForFunction(
-        (n) =>
-          performance.getEntriesByName("renderCharacter", "measure").length > n,
-        before,
-        { timeout: 120000 },
-      );
-      await waitForHomepageReady(page);
-      actions.push(`hash:${opts.hash2}`);
+    for (const mode of modes) {
+      const page = await browser.newPage();
+      page.on("pageerror", (e) => pageErrors.push(`${mode}: ${String(e)}`));
+      const ran = await runOneMode(page, base, opts.hash, opts.hash2, mode);
+      firstUrl = ran.firstUrl;
+      actions = ran.actions;
+      userAgent = ran.userAgent;
+      profiles[mode] = ran.result;
+      await page.close();
     }
 
-    // FPS monitor updates every 2s once enabled.
-    await new Promise((r) => setTimeout(r, 2100));
-
-    const snapshot = await page.evaluate(collectSnapshotInPage);
-    if (!snapshot.enabled) {
-      throw new Error(
-        "profiler.snapshot() reported enabled=false; expected ?debug=true on localhost",
-      );
-    }
     if (pageErrors.length > 0) {
       throw new Error(`Page errors: ${pageErrors.join("; ")}`);
     }
 
-    const payload = {
+    const payload: AppProfileFile = {
       generatedAt: new Date().toISOString(),
       url: firstUrl,
       hash: opts.hash,
       hash2: opts.hash2 !== opts.hash ? opts.hash2 : null,
       actions,
-      userAgent: await page.evaluate(() => navigator.userAgent),
-      profiler: snapshot,
+      userAgent,
+      recolor: opts.recolor,
+      profiles,
     };
 
     const json = JSON.stringify(payload, null, 2);

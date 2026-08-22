@@ -10,6 +10,8 @@ The app includes a performance profiler that is automatically enabled when:
 
 The DEBUG flag and profiler are initialized in `sources/main.ts`. Only `?debug=true` and `?debug=false` override localhost detection (`sources/utils/debug.ts`). Other values (for example `?debug=1`) fall through to the localhost check.
 
+`?recolor=cpu` forces the CPU palette path **before first paint** (`getRecolorParam()` in `sources/utils/debug.ts`, applied in `sources/canvas/palette-recolor.ts`). `window.setPaletteRecolorMode("cpu")` still works from the console after load, but does not rewind the first render.
+
 ## Profiled Operations
 
 The profiler tracks these expensive operations:
@@ -28,9 +30,11 @@ The profiler tracks these expensive operations:
 
 ### Headless app profiler
 
-Use these when **`loadImage()`**, **`renderCharacter()`**, or hash hydration changed. They open headless Chromium, drive the live app the way a human would (`?debug=true`, wait for catalog + first paint, change the selection once), then write **`profiler.snapshot()`** — the same data as **`window.profiler.report()`**, as JSON.
+Use these when **`loadImage()`**, **`renderCharacter()`**, hash hydration, or palette recolor changed. They open headless Chromium, drive the live app the way a human would (`?debug=true`, wait for catalog + first paint, change the selection once), then write **`profiler.snapshot()`** — the same data as **`window.profiler.report()`**, as JSON.
 
-They do **not** replace checking WebGL and the CPU fallback visually; for that, see [Force CPU Mode](PALETTE_RECOLOR_GUIDE.md#force-cpu-mode-testing). They are also not a substitute for the ZIP scripts below.
+Default **`--recolor both`** runs that sequence twice: WebGL (Chromium default) and **`?recolor=cpu`**. The JSON `profiles.webgl` / `profiles.cpu` objects include `activeMode` and `recolorStats` so you can confirm the CPU path actually ran. `diff:app-profile` prints both sections.
+
+They do **not** replace checking WebGL and the CPU fallback **visually**; for that, see [Force CPU Mode](PALETTE_RECOLOR_GUIDE.md#force-cpu-mode-testing). They are also not a substitute for the ZIP scripts below.
 
 **Before you run**
 
@@ -54,6 +58,7 @@ JSON lands under `tmp/` (gitignored) and is also printed on stdout. Pass `--out 
 
 **Optional**
 
+- One recolor path only: `npm run profile:app -- --recolor webgl` or `--recolor cpu`
 - Custom selections: `npm run profile:app -- --hash 'sex=male&body=Body_Color_light' --hash2 '…'`
 - The default first hash is the full outfit in `scripts/zip/zip-profile-default-hash.ts`. The default second hash drops layered gear (body + head + expression only).
 
