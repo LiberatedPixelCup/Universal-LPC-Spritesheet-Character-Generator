@@ -12,6 +12,7 @@ import "./canvas/load-images_spec.js";
 import "./canvas/mask_spec.js";
 import "./canvas/palette-recolor-cache_spec.ts";
 import "./canvas/palette-recolor-merge_spec.ts";
+import "./canvas/palette-recolor-mode_spec.ts";
 import "./canvas/palette-recolor-webgl_spec.js";
 import "./canvas/palette-recolor-isolation_spec.ts";
 import "./canvas/preview-animation_spec.js";
