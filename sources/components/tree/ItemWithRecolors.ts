@@ -41,6 +41,7 @@ type ItemWithRecolorsState = {
  * incompatible items are left unchanged; the caller still opens the popover.
  */
 function applyRememberedColorsOnSwitch(
+  state: State,
   itemId: string,
   meta: ItemMerged,
   paletteOptions: PaletteOption[],
@@ -63,12 +64,13 @@ function applyRememberedColorsOnSwitch(
     const recolor =
       mapped ?? (idx === 0 ? meta.recolors[0]?.variants?.[0] : mapped);
     if (recolor) {
-      selectItem(itemId, recolor, false, opt.type_name ? idx : null);
+      selectItem(state, itemId, recolor, false, opt.type_name ? idx : null);
     }
   }
 }
 
 function openPaletteModal(
+  state: State,
   rootViewNode: { state: ItemWithRecolorsState },
   modalIdx: number,
   itemId: string,
@@ -79,6 +81,7 @@ function openPaletteModal(
   isCompatible: boolean,
 ): void {
   applyRememberedColorsOnSwitch(
+    state,
     itemId,
     meta,
     paletteOptions,
@@ -331,6 +334,7 @@ export const ItemWithRecolors: m.Component<
                       e.stopPropagation();
                       if (!paletteReady) return;
                       openPaletteModal(
+                        state,
                         rootViewNode,
                         0,
                         itemId,
@@ -417,6 +421,7 @@ export const ItemWithRecolors: m.Component<
                                   e.stopPropagation();
                                   if (!paletteReady) return;
                                   openPaletteModal(
+                                    state,
                                     rootViewNode,
                                     idx,
                                     itemId,
