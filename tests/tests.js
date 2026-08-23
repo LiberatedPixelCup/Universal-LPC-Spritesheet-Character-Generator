@@ -6,23 +6,23 @@ config.truncateThreshold = 0; // Disable truncation of assertion errors
 
 // Import all test files
 import "./canvas/canvas-utils_spec.js";
-import "./canvas/draw-frames_spec.js";
-import "./canvas/download_spec.js";
-import "./canvas/load-images_spec.ts";
 import "./canvas/mask_spec.js";
-import "./canvas/palette-recolor-cache_spec.ts";
+import "./canvas/download_spec.js";
+import "./canvas/draw-frames_spec.js";
+import "./canvas/load-images_spec.ts";
 import "./canvas/palette-recolor-merge_spec.ts";
+import "./canvas/palette-recolor-cache_spec.ts";
 import "./canvas/palette-recolor-mode_spec.ts";
 import "./canvas/palette-recolor-webgl_spec.ts";
 import "./canvas/palette-recolor-deferred_spec.ts";
 import "./canvas/palette-recolor-isolation_spec.ts";
 import "./canvas/palette-recolor-preview_spec.ts";
-import "./canvas/preview-animation_spec.js";
 import "./canvas/preview-canvas_spec.js";
+import "./canvas/preview-animation_spec.js";
 import "./canvas/renderer_spec.ts";
 import "./canvas/renderer-composite_spec.ts";
-import "./canvas/render-call-count_spec.ts";
 import "./canvas/render-work_spec.ts";
+import "./canvas/render-call-count_spec.ts";
 import "./components/App_spec.js";
 import "./components/advanced/AdvancedTools_spec.js";
 import "./components/CollapsibleSection_spec.js";
