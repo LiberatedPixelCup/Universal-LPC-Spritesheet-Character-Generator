@@ -20,7 +20,11 @@ import {
   isWebGLAvailable,
   resetSharedWebGLForTests,
 } from "../../sources/canvas/webgl-palette-recolor.ts";
-import { createCatalog } from "../../sources/state/catalog.ts";
+import {
+  createCatalog,
+  type CatalogReader,
+  type CatalogWriter,
+} from "../../sources/state/catalog.ts";
 import { SHEET_WIDTH } from "../../sources/canvas/renderer.ts";
 import {
   solidCanvas,
@@ -52,7 +56,8 @@ function stackedDest(height: number): HTMLCanvasElement {
 }
 
 describe("canvas/palette-recolor compositor isolation", function () {
-  let catalog: ReturnType<typeof createCatalog>;
+  let catalog: CatalogReader;
+  let catalogWriter: CatalogWriter;
 
   before(function (this: { skip: () => void }) {
     if (!isWebGLAvailable()) {
@@ -61,8 +66,8 @@ describe("canvas/palette-recolor compositor isolation", function () {
   });
 
   beforeEach(() => {
-    catalog = createCatalog();
-    seedRecolorCatalog(catalog);
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
+    seedRecolorCatalog(catalogWriter);
     clearRecolorCache();
     resetSharedWebGLForTests();
     setPaletteRecolorMode("webgl");

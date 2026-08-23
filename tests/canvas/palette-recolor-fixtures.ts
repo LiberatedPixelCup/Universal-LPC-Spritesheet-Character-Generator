@@ -1,5 +1,5 @@
 /** Shared body-recolor catalog fixtures for palette-recolor browser specs. */
-import { createCatalog } from "../../sources/state/catalog.ts";
+import type { CatalogWriter } from "../../sources/state/catalog.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
 
 export const RECOLOR_ITEM_ID = "body";
@@ -36,8 +36,6 @@ export const paletteMetadata = {
   },
 };
 
-export function seedRecolorCatalog(
-  catalog: ReturnType<typeof createCatalog>,
-): void {
-  seedCatalog(catalog, itemMetadata, { paletteMetadata });
+export function seedRecolorCatalog(writer: CatalogWriter): void {
+  seedCatalog(writer, itemMetadata, { paletteMetadata });
 }

@@ -23,68 +23,33 @@ import {
   flushDeferredRecolorCache,
 } from "../../sources/canvas/palette-recolor.ts";
 import { isWebGLAvailable } from "../../sources/canvas/webgl-palette-recolor.ts";
-import { createCatalog } from "../../sources/state/catalog.ts";
-import { seedCatalog } from "../browser-catalog-fixture.js";
+import {
+  createCatalog,
+  type CatalogReader,
+  type CatalogWriter,
+} from "../../sources/state/catalog.ts";
 import {
   drawSnapshotToDest,
   assertOpaqueRemap,
+  solidCanvas,
 } from "./palette-recolor-test-helpers.ts";
-
-const RECOLOR_ITEM_ID = "body";
-
-const itemMetadata = {
-  [RECOLOR_ITEM_ID]: {
-    name: "Body",
-    type_name: "body",
-    recolors: [
-      {
-        material: "body",
-        default: "ulpc",
-        base: "ulpc.light",
-      },
-    ],
-  },
-};
-
-const paletteMetadata = {
-  versions: {},
-  materials: {
-    body: {
-      default: "ulpc",
-      base: "light",
-      palettes: {
-        ulpc: {
-          light: ["#FF0000"],
-          olive: ["#00FF00"],
-          bronze: ["#0000FF"],
-        },
-      },
-    },
-  },
-};
-
-function solidColorCanvas(r, g, b, w = 8, h = 8) {
-  const c = document.createElement("canvas");
-  c.width = w;
-  c.height = h;
-  const ctx = c.getContext("2d");
-  ctx.fillStyle = `rgb(${r},${g},${b})`;
-  ctx.fillRect(0, 0, w, h);
-  return c;
-}
+import {
+  RECOLOR_ITEM_ID,
+  seedRecolorCatalog,
+} from "./palette-recolor-fixtures.ts";
 
 describe("canvas/palette-recolor.ts recolor cache", () => {
-  let catalog;
-  let catalogWriter;
+  let catalog: CatalogReader;
+  let catalogWriter: CatalogWriter;
 
   beforeEach(() => {
     ({ reader: catalog, writer: catalogWriter } = createCatalog());
-    seedCatalog(catalogWriter, itemMetadata, { paletteMetadata });
+    seedRecolorCatalog(catalogWriter);
     clearRecolorCache();
   });
 
   it("returns the same canvas reference on cache hit (same spritePath + recolors)", async () => {
-    const img = solidColorCanvas(255, 0, 0);
+    const img = solidCanvas(255, 0, 0);
     const recolors = { body: "olive" };
     const path = "spritesheets/body/bodies/male/walk.png";
 
@@ -112,7 +77,7 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
   });
 
   it("produces different canvases when recolors differ", async () => {
-    const img = solidColorCanvas(255, 0, 0);
+    const img = solidCanvas(255, 0, 0);
     const path = "spritesheets/body/bodies/male/walk.png";
 
     const olive = await getImageToDraw(
@@ -146,7 +111,7 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
   });
 
   it("produces different canvases when spritePath differs", async () => {
-    const img = solidColorCanvas(255, 0, 0);
+    const img = solidCanvas(255, 0, 0);
     const recolors = { body: "olive" };
 
     const a = await getImageToDraw(
@@ -179,7 +144,7 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
   });
 
   it("bypasses cache when spritePath is null (uncacheable inputs)", async () => {
-    const img = solidColorCanvas(255, 0, 0);
+    const img = solidCanvas(255, 0, 0);
     const recolors = { body: "olive" };
 
     const first = await getImageToDraw(
@@ -201,7 +166,7 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
   });
 
   it("returns the input image unchanged when recolors is null (no cache entry)", async () => {
-    const img = solidColorCanvas(255, 0, 0);
+    const img = solidCanvas(255, 0, 0);
     const path = "spritesheets/body/bodies/male/walk.png";
 
     const result = await getImageToDraw(
@@ -217,7 +182,7 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
   });
 
   it("increments recolorSkipped when the item has no palette config", async () => {
-    const img = solidColorCanvas(255, 0, 0);
+    const img = solidCanvas(255, 0, 0);
     const result = await getImageToDraw(
       catalog,
       img,
@@ -230,7 +195,7 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
   });
 
   it("clearRecolorCache() drops all entries so the next call recomputes", async () => {
-    const img = solidColorCanvas(255, 0, 0);
+    const img = solidCanvas(255, 0, 0);
     const recolors = { body: "olive" };
     const path = "spritesheets/body/bodies/male/walk.png";
 
@@ -257,7 +222,7 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
   });
 
   it("concurrent callers for the same key resolve to the same canvas", async () => {
-    const img = solidColorCanvas(255, 0, 0);
+    const img = solidCanvas(255, 0, 0);
     const recolors = { body: "olive" };
     const path = "spritesheets/body/bodies/male/walk.png";
 
@@ -271,14 +236,16 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
     expect(b).to.equal(c);
   });
 
-  it("closes ImageBitmaps evicted from the LRU cache", async function () {
+  it("closes ImageBitmaps evicted from the LRU cache", async function (this: {
+    skip: () => void;
+  }) {
     if (!isWebGLAvailable() || typeof ImageBitmap === "undefined") {
       this.skip();
     }
     setPaletteRecolorMode("webgl");
     const closeSpy = sinon.spy(ImageBitmap.prototype, "close");
     try {
-      const img = solidColorCanvas(255, 0, 0);
+      const img = solidCanvas(255, 0, 0);
       await getImageToDraw(
         catalog,
         img,
@@ -304,7 +271,7 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
 
   it("still caches CPU results while WebGL snapshots are deferred", async () => {
     setPaletteRecolorMode("cpu");
-    const img = solidColorCanvas(255, 0, 0);
+    const img = solidCanvas(255, 0, 0);
     const path = "spritesheets/body/bodies/male/walk.png";
     beginDeferredRecolorSnapshots();
     try {
@@ -337,12 +304,14 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
     }
   });
 
-  it("does not close an in-flight ImageBitmap on clearRecolorCache", async function () {
+  it("does not close an in-flight ImageBitmap on clearRecolorCache", async function (this: {
+    skip: () => void;
+  }) {
     if (!isWebGLAvailable() || typeof ImageBitmap === "undefined") {
       this.skip();
     }
     setPaletteRecolorMode("webgl");
-    const img = solidColorCanvas(255, 0, 0);
+    const img = solidCanvas(255, 0, 0);
     const pending = getImageToDraw(
       catalog,
       img,

@@ -1,9 +1,23 @@
 declare module "chai" {
+  type Assertion = {
+    equal: (expected: unknown) => void;
+    include: (expected: unknown) => void;
+    instanceOf: (ctor: unknown) => void;
+    a: (type: string) => void;
+    true: boolean;
+    false: boolean;
+    exist: boolean;
+    at: { least: (n: number) => void };
+  };
+
   export const expect: (actual: unknown) => {
-    to: {
-      equal: (expected: unknown) => void;
-      deep: { include: (expected: unknown) => void };
-      be: { instanceOf: (ctor: unknown) => void; a: (type: string) => void };
+    to: Assertion & {
+      deep: {
+        include: (expected: unknown) => void;
+        equal: (expected: unknown) => void;
+      };
+      be: Assertion;
+      not: Assertion & { be: Assertion; equal: (expected: unknown) => void };
     };
   };
 }
