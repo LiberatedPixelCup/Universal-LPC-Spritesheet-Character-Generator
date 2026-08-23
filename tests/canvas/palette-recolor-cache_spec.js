@@ -28,7 +28,7 @@ import { seedCatalog } from "../browser-catalog-fixture.js";
 import {
   drawSnapshotToDest,
   assertOpaqueRemap,
-} from "./palette-recolor-test-helpers.js";
+} from "./palette-recolor-test-helpers.ts";
 
 const RECOLOR_ITEM_ID = "body";
 

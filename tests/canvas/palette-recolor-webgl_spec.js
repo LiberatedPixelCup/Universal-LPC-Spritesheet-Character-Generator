@@ -41,7 +41,7 @@ import {
   as2dCanvas,
   drawSnapshotToDest,
   assertOpaqueRemap,
-} from "./palette-recolor-test-helpers.js";
+} from "./palette-recolor-test-helpers.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
 import { SHEET_WIDTH } from "../../sources/canvas/renderer.ts";

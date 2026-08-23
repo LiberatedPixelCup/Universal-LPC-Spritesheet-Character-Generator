@@ -34,7 +34,7 @@ import {
 import { seedCatalog } from "../browser-catalog-fixture.js";
 import { createState } from "../../sources/state/state.ts";
 import { ANIMATION_OFFSETS } from "../../sources/state/constants.ts";
-import { readPixel } from "./palette-recolor-test-helpers.js";
+import { readPixel } from "./palette-recolor-test-helpers.ts";
 import m from "mithril";
 
 const WALK_Y = ANIMATION_OFFSETS.walk;

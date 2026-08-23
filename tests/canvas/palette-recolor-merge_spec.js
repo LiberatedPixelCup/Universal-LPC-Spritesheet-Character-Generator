@@ -19,7 +19,7 @@ import {
   solidCanvas,
   splitCanvas,
   readPixel,
-} from "./palette-recolor-test-helpers.js";
+} from "./palette-recolor-test-helpers.ts";
 
 describe("canvas/palette-recolor.ts single-pass merge (CPU path)", () => {
   let previousMode;
