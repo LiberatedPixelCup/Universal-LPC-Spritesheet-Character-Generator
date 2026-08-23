@@ -258,8 +258,8 @@ describe("state/hash.ts", () => {
         },
       });
 
-      loadSelectionsFromHash(catalog);
-      expect(getState().selections).to.deep.equal({
+      loadSelectionsFromHash(catalog, state);
+      expect(state.selections).to.deep.equal({
         eyebrows: {
           itemId: "1",
           subId: null,

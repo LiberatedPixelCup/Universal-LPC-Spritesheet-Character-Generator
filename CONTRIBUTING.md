@@ -477,7 +477,7 @@ Node specs are listed and run via [`tests/node/run-node-tests.js`](tests/node/ru
 
 #### Unit-test coverage
 
-CI measures **unit-test** line coverage only: [`c8`](https://github.com/bcoe/c8) around the Node runner for **`scripts/`** (and local Vite-plugin reports), and Istanbul (`vite-plugin-istanbul`) in the Testem browser suite for **`sources/`**. Reports upload from [`.github/workflows/ci.yml`](.github/workflows/ci.yml) to Codecov as flags **`node`** (`scripts/`) and **`browser`** (`sources/`). Playwright / Argos visual tests are not instrumented.
+CI measures **unit-test** line coverage only: [`c8`](https://github.com/bcoe/c8) around the Node runner for **`scripts/`** (and local Vite-plugin reports), and Istanbul (`vite-plugin-istanbul`) in the Testem browser suite for **`sources/`**. Reports upload from [`.github/workflows/ci.yml`](.github/workflows/ci.yml) to Codecov as flags **`node`** (`scripts/`) and **`browser`** (`sources/`). Each step sets **`disable_search: true`** so only the processed `lcov.info` is sent — not raw `coverage-final.json` or `coverage/node/tmp/*.json`. The marker also drops Istanbul `FN` / `BRDA` rows; Codecov patch is **line** coverage (`DA`) only. Playwright / Argos visual tests are not instrumented.
 
 **Run locally**
 

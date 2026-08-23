@@ -627,6 +627,9 @@ function fillStraightLineSourceMapHoles(
 /**
  * Marks non-executable lines as hit in an lcov.info file so Codecov patch
  * does not fail on documentation-only or erased TypeScript diffs.
+ * Drops FN/FNDA and BRDA records: Istanbul source maps land those on type
+ * aliases and parameter lists, and Codecov treats a zero BRDA as a miss even
+ * when DA is hit. The gate is line coverage (DA) only.
  *
  * @param {string} lcovPath
  * @param {{ root?: string }} [options]
@@ -680,6 +683,9 @@ function processRecord(record, root) {
       continue;
     }
     if (/^LF:/.test(line) || /^LH:/.test(line)) continue;
+    // Function/branch rows use a different source-map than DA. Zero BRDA on
+    // a type or signature line fails codecov/patch after DA was marked hit.
+    if (/^(FN|FNDA|FNF|FNH|BRDA|BRF|BRH):/.test(line)) continue;
     otherLines.push(line);
   }
 

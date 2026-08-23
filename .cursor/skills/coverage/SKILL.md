@@ -87,5 +87,23 @@ So a documentation-only or comment-only diff is expected to pass the 100% patch
 gate. If you see comments counted as missed lines, the post-processing step did
 not run — check that the coverage script finished rather than adding a test.
 
+## Patch failed on a line local DA already marks hit
+
+Two upload problems have caused this. Check both before adding a test or
+editing the marker's line classifier.
+
+1. `codecov-action@v5` searches the tree unless `disable_search: true`.
+   `files:` is additive. Without that flag the browser step also uploaded
+   `coverage/browser/coverage-final.json` and `coverage/node/tmp/*.json`.
+2. Istanbul `BRDA` / `FN` rows use a worse source map than `DA`. They land
+   on type aliases and `function foo(` / `name: Type,` lines with zeros.
+   Codecov then reports a miss or partial even when `DA` is hit. The marker
+   drops those records so the uploaded lcov is line coverage only.
+
+Do not widen [`mark-non-executable-lines.js`](../../../scripts/coverage/mark-non-executable-lines.js)
+for a signature line already in `nonExecutableLineNumbers`. Do not add a
+test for the parameter list. Extracting a named type (`RootViewRef`) is
+fine for readability; it does not satisfy the gate by itself.
+
 Full description of the CI wiring:
 [CONTRIBUTING.md](../../../CONTRIBUTING.md#unit-test-coverage).

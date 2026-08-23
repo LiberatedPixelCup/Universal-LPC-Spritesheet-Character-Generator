@@ -58,6 +58,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage/node/lcov.info
+          disable_search: true
           flags: node
           name: node
           fail_ci_if_error: false
@@ -67,6 +68,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage/browser/lcov.info
+          disable_search: true
           flags: browser
           name: browser
           fail_ci_if_error: false
