@@ -137,6 +137,39 @@ describe("canvas/renderer.ts", () => {
       expect(isOffscreenCanvasInitialized()).to.equal(false);
       expect(getCanvas().isErr()).to.equal(true);
     });
+
+    it("renderCharacter throws when the offscreen canvas is not initialized", async () => {
+      resetOffscreenCanvasStateForTests();
+      const { reader: catalog, writer } = createCatalog();
+      seedCatalog(writer, { walk_only: walkItemMeta() });
+      const localState = createState();
+      const localSandbox = sinon.createSandbox();
+      localSandbox.stub(m, "redraw");
+      localSandbox.stub(console, "error");
+      try {
+        let thrown: unknown = null;
+        try {
+          await renderCharacter(
+            catalog,
+            localState,
+            {
+              slot: {
+                itemId: "walk_only",
+                variant: "olive",
+                name: "Walk",
+              },
+            },
+            "male",
+          );
+        } catch (error) {
+          thrown = error;
+        }
+        expect(thrown).to.be.instanceOf(Error);
+        expect((thrown as Error).message).to.equal("Canvas not initialized");
+      } finally {
+        localSandbox.restore();
+      }
+    });
   });
 
   describe("extractAnimationFromCanvas", () => {
@@ -299,6 +332,63 @@ describe("canvas/renderer.ts", () => {
         "male",
       );
       expect(drawCalls.map((d) => d.animation)).to.include("backslash");
+    });
+
+    it("maps watering-only metadata to thrust drawCalls", async () => {
+      seedCatalog(catalogWriter, {
+        water_item: walkItemMeta({ animations: ["watering"] }),
+      });
+      await renderCharacter(
+        catalog,
+        state,
+        {
+          slot: {
+            itemId: "water_item",
+            variant: "olive",
+            name: "Water",
+          },
+        },
+        "male",
+      );
+      expect(drawCalls.map((d) => d.animation)).to.include("thrust");
+    });
+
+    it("warns and skips a layer with no path for the body type", async () => {
+      const prevDebug = window.DEBUG;
+      window.DEBUG = true;
+      const warnSpy = sandbox!.spy(console, "warn");
+      try {
+        seedCatalog(catalogWriter, {
+          no_male_path: walkItemMeta({
+            layers: {
+              layer_1: {
+                zPos: 10,
+                female: "body/bodies/female/",
+              },
+            },
+          }),
+        });
+        await renderCharacter(
+          catalog,
+          state,
+          {
+            slot: {
+              itemId: "no_male_path",
+              variant: "olive",
+              name: "No male",
+            },
+          },
+          "male",
+        );
+        expect(drawCalls).to.have.length(0);
+        expect(
+          warnSpy.args.some((call) =>
+            String(call[0]).includes("has no path for bodyType male"),
+          ),
+        ).to.equal(true);
+      } finally {
+        window.DEBUG = prevDebug;
+      }
     });
 
     it("maps 1h_halfslash metadata to halfslash drawCalls", async () => {
