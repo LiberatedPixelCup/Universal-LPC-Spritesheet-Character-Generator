@@ -15,3 +15,5 @@ computed-style-diff-output/
 .tool-versions
 /coverage/
 /.nyc_output/
+/.claude/skills/*
+!/.claude/skills/README.md

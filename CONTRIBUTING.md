@@ -155,6 +155,8 @@ It is highly recommended to simply drop the aliases on the sheet definition that
 | `sources/styles/` | PurgeCSS SCSS entries (`critical-entry.scss`, `deferred-entry.scss`) |
 | `dist/` | Vite output including five `*-metadata.js` modules; gitignored — do not commit |
 | `coverage/` | Local/CI coverage HTML + `lcov.info`; gitignored — do not commit |
+| `.agents/skills/` | Canonical agent skills (`SKILL.md`); Cursor, Codex, and Copilot load this folder |
+| `.claude/skills/` | Generated local links for Claude Code; gitignored except README — `npm run skills:link` |
 
 App CSS lives under **`styles/`**. PurgeCSS entry SCSS lives under **`sources/styles/`**. **`index.html`** is the Vite shell (layout, stylesheets, `sources/main.ts`). Change it only when you mean to adjust the page structure or global assets.
 
@@ -295,7 +297,9 @@ Both `profile:zip` variants and the computed-style scripts need `dist/` to exist
 | Command | What it does | When |
 | --- | --- | --- |
 | `npm run lockfile:fix` | Restores `package-lock.json` keeping other-platform optional deps | After a lockfile merge or rebase conflict. Never `npm install` |
+| `npm run skills:link` | Creates `.claude/skills/<name>` links to `.agents/skills/<name>` (POSIX symlink, Windows junction) | After clone if you skipped `npm ci`, or if a Claude skill folder is missing. `prepare` runs this on install |
 | `npm run prebuild` | Clears `dist/` except `spritesheets/`; runs automatically before `build` | Not called directly |
+| `prepare` | Runs `skills:link`; npm runs it on `npm ci` / `npm install` | Not called directly |
 
 #### CI checks
 
@@ -553,16 +557,17 @@ When a change makes documentation stale, update the file that owns that topic. [
 
 | Change | Update |
 | --- | --- |
-| `sheet_definitions/`, credits, variants, aliases, z-positions | [sheet-definition](.cursor/skills/sheet-definition/SKILL.md); commit dirty `CREDITS.csv` / `z_positions.csv`; [z-positions](#z-positions) |
+| `sheet_definitions/`, credits, variants, aliases, z-positions | [sheet-definition](.agents/skills/sheet-definition/SKILL.md); commit dirty `CREDITS.csv` / `z_positions.csv`; [z-positions](#z-positions) |
 | Bootstrap, render path, module roles | [ARCHITECTURE.md](ARCHITECTURE.md) |
-| `sources/canvas/`, palette recolor, WebGL vs CPU | [canvas-render](.cursor/skills/canvas-render/SKILL.md), [PALETTE_RECOLOR_GUIDE.md](PALETTE_RECOLOR_GUIDE.md) |
-| Catalog, `state`, hash | [catalog](.cursor/skills/catalog/SKILL.md), [Catalog and state](#catalog-and-state) |
-| `dist/` metadata, `.cache/`, Vite metadata plugin | [generated-metadata](.cursor/skills/generated-metadata/SKILL.md), [File Generation](#file-generation) |
-| Coverage gates or `codecov.yml` | [coverage](.cursor/skills/coverage/SKILL.md), [Unit-test coverage](#unit-test-coverage) |
-| Layout, first-paint CSS, PurgeCSS safelist, Playwright | [visual-test](.cursor/skills/visual-test/SKILL.md), [`vite/purgecss-critical-safelist.ts`](vite/purgecss-critical-safelist.ts) |
+| `sources/canvas/`, palette recolor, WebGL vs CPU | [canvas-render](.agents/skills/canvas-render/SKILL.md), [PALETTE_RECOLOR_GUIDE.md](PALETTE_RECOLOR_GUIDE.md) |
+| Catalog, `state`, hash | [catalog](.agents/skills/catalog/SKILL.md), [Catalog and state](#catalog-and-state) |
+| `dist/` metadata, `.cache/`, Vite metadata plugin | [generated-metadata](.agents/skills/generated-metadata/SKILL.md), [File Generation](#file-generation) |
+| Coverage gates or `codecov.yml` | [coverage](.agents/skills/coverage/SKILL.md), [Unit-test coverage](#unit-test-coverage) |
+| Layout, first-paint CSS, PurgeCSS safelist, Playwright | [visual-test](.agents/skills/visual-test/SKILL.md), [`vite/purgecss-critical-safelist.ts`](vite/purgecss-critical-safelist.ts) |
 | ZIP export timing | [PERFORMANCE_PROFILING.md](PERFORMANCE_PROFILING.md) |
-| `.js` → `.ts` conversion, erasable syntax, `tsc` | [typescript](.cursor/skills/typescript/SKILL.md) |
+| `.js` → `.ts` conversion, erasable syntax, `tsc` | [typescript](.agents/skills/typescript/SKILL.md) |
 | New npm script or CI workflow | [Commands](#commands), [CI checks](#ci-checks) |
+| Agent skills (`SKILL.md`) | [`.agents/skills/`](.agents/skills/); run `npm run skills:link` so Claude Code sees the new folder |
 
 #### z-positions
 

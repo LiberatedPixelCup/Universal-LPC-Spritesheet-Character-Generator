@@ -141,7 +141,7 @@ return recolorImageCPU(sourceImage, paletteMappings);
 runs when WebGL is unavailable, when it is forced off, or when the WebGL call
 throws.
 
-This is why [canvas-render](.cursor/skills/canvas-render/SKILL.md) asks for both
+This is why [canvas-render](.agents/skills/canvas-render/SKILL.md) asks for both
 paths to be checked after a rendering change: the two implementations can
 silently disagree on output, and only one of them runs on any given machine.
 Verifying it needs a real browser.
