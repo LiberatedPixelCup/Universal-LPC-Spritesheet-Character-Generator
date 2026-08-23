@@ -8,7 +8,7 @@ config.truncateThreshold = 0; // Disable truncation of assertion errors
 import "./canvas/canvas-utils_spec.js";
 import "./canvas/draw-frames_spec.js";
 import "./canvas/download_spec.js";
-import "./canvas/load-images_spec.js";
+import "./canvas/load-images_spec.ts";
 import "./canvas/mask_spec.js";
 import "./canvas/palette-recolor-cache_spec.ts";
 import "./canvas/palette-recolor-merge_spec.ts";

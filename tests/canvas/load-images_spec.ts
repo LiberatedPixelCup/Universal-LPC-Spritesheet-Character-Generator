@@ -7,12 +7,14 @@ import {
   resetImageLoadCache,
 } from "../../sources/canvas/load-image.ts";
 
-describe("canvas/load-image.ts", () => {
+describe("canvas/load-image.ts", function () {
+  this.timeout(10_000);
+
   describe("loadImage", () => {
     it("should load an image successfully", async () => {
       const src = "/spritesheets/arms/bracers/thin/hurt.png";
       const img = await loadImage(src);
-      expect(img).to.be.an.instanceof(Image);
+      expect(img).to.be.instanceOf(Image);
       expect(img.src).to.include(src);
     });
 
@@ -20,7 +22,7 @@ describe("canvas/load-image.ts", () => {
       const src = "/spritesheets/arms/bracers/thin/hurt.png";
       const img1 = await loadImage(src);
       const img2 = await loadImage(src);
-      expect(img1).to.equal(img2); // Cached image should be returned
+      expect(img1).to.equal(img2);
     });
 
     it("increments imageLoads on first fetch and imageCacheHits on cache hit", async () => {
@@ -46,9 +48,10 @@ describe("canvas/load-image.ts", () => {
       const src = "/spritesheets/arms/bracers/thin/invalid.png";
       try {
         await loadImage(src);
+        throw new Error("expected loadImage to reject");
       } catch (err) {
-        expect(err).to.be.an("error");
-        expect(err.message).to.include(`Failed to load ${src}`);
+        expect(err).to.be.instanceOf(Error);
+        expect((err as Error).message).to.include(`Failed to load ${src}`);
       }
     });
   });
@@ -60,10 +63,13 @@ describe("canvas/load-image.ts", () => {
         { spritePath: "/spritesheets/arms/bracers/thin/walk.png" },
       ];
       const results = await loadImagesInParallel(items);
-      expect(results).to.be.an("array").with.lengthOf(2);
+      expect(results.length).to.equal(2);
       results.forEach((result, index) => {
-        expect(result.success).to.be.true;
-        expect(result.img).to.be.an.instanceof(Image);
+        expect(result.success).to.equal(true);
+        expect(result.img).to.be.instanceOf(Image);
+        if (!result.img) {
+          throw new Error("expected loaded image");
+        }
         expect(result.img.src).to.include(items[index].spritePath);
       });
     });
@@ -74,16 +80,19 @@ describe("canvas/load-image.ts", () => {
         { spritePath: "/spritesheets/arms/bracers/thin/invalid.png" },
       ];
       const results = await loadImagesInParallel(items);
-      expect(results).to.be.an("array").with.lengthOf(2);
+      expect(results.length).to.equal(2);
 
       const successResult = results[0];
-      expect(successResult.success).to.be.true;
-      expect(successResult.img).to.be.an.instanceof(Image);
+      expect(successResult.success).to.equal(true);
+      expect(successResult.img).to.be.instanceOf(Image);
+      if (!successResult.img) {
+        throw new Error("expected loaded image");
+      }
       expect(successResult.img.src).to.include(items[0].spritePath);
 
       const failureResult = results[1];
-      expect(failureResult.success).to.be.false;
-      expect(failureResult.img).to.be.null;
+      expect(failureResult.success).to.equal(false);
+      expect(failureResult.img).to.equal(null);
     });
 
     it("should use a custom path extractor function", async () => {
@@ -91,14 +100,17 @@ describe("canvas/load-image.ts", () => {
         { customPath: "/spritesheets/arms/bracers/thin/hurt.png" },
         { customPath: "/spritesheets/arms/bracers/thin/walk.png" },
       ];
-      const getPath = (item) => item.customPath;
+      const getPath = (item: { customPath: string }) => item.customPath;
       const results = await loadImagesInParallel(items, getPath);
-      expect(results).to.be.an("array").with.lengthOf(2);
+      expect(results.length).to.equal(2);
       results.forEach((result, index) => {
-        expect(result.success).to.be.true;
-        expect(result.img).to.be.an.instanceof(Image);
+        expect(result.success).to.equal(true);
+        expect(result.img).to.be.instanceOf(Image);
+        if (!result.img) {
+          throw new Error("expected loaded image");
+        }
         expect(result.img.src).to.include(items[index].customPath);
       });
     });
   });
-}, 10_000);
+});
