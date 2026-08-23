@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import sinon from "sinon";
-import { ok } from "neverthrow";
+import { err, ok } from "neverthrow";
 import { downloadFile, downloadAsPNG } from "../../sources/canvas/download.ts";
 
 describe("canvas/download.ts", () => {
@@ -120,6 +120,18 @@ describe("canvas/download.ts", () => {
 
       // Verify revokeObjectURL was called
       expect(revokeObjectURLStub.calledOnceWith("blob:url")).to.be.true;
+    });
+
+    it("logs and skips the download when the canvas is not initialized", async () => {
+      const errorStub = sinon.stub(console, "error");
+      const getCanvasBlobErr = async () =>
+        err({ kind: "canvas-not-initialized" });
+
+      await downloadAsPNG("test.png", getCanvasBlobErr);
+
+      expect(errorStub.calledOnce).to.be.true;
+      expect(createObjectURLStub.called).to.be.false;
+      expect(createElementStub.called).to.be.false;
     });
 
     it("should use default filename if not provided", async () => {
