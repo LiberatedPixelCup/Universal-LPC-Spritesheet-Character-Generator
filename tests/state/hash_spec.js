@@ -248,6 +248,28 @@ describe("state/hash.ts", () => {
       });
     });
 
+    it("matches old hash variants that used underscores for spaces (issue #296)", () => {
+      setHash("#eyebrows=Thin_Eyebrows_dark_brown");
+      seedCatalog(catalog, {
+        1: {
+          type_name: "eyebrows",
+          name: "Thin_Eyebrows",
+          variants: ["dark brown"],
+        },
+      });
+
+      loadSelectionsFromHash(catalog);
+      expect(getState().selections).to.deep.equal({
+        eyebrows: {
+          itemId: "1",
+          subId: null,
+          variant: "dark brown",
+          name: "Thin_Eyebrows (dark brown)",
+          recolor: "",
+        },
+      });
+    });
+
     it("should load recolor options", () => {
       setHash("#body=Body_light");
       seedCatalog(catalog, {
