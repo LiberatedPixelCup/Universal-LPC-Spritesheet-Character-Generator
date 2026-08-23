@@ -10,7 +10,8 @@ coverage:
         # Comment, blank, erased TypeScript, Istanbul-uninstrumented
         # lines (argument-only / shorthand), and straight-line DA:0
         # source-map holes in an entered function are marked hit in
-        # uploaded lcov. See mark-non-executable-lines.js.
+        # uploaded lcov. FN/BRDA rows are dropped (source-map holes on
+        # types/signatures look like misses). See mark-non-executable-lines.js.
     changes:
       default:
         if_not_found: success

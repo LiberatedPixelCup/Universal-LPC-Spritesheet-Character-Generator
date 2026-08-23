@@ -35,6 +35,8 @@ type ItemWithRecolorsState = {
   palettePreviewCompleted?: number;
 };
 
+type PaletteModalHost = { state: ItemWithRecolorsState };
+
 /**
  * When switching to a different same-type recolor asset, apply the mapped
  * remembered color(s) immediately. First pick, already-selected, and
@@ -71,7 +73,7 @@ function applyRememberedColorsOnSwitch(
 
 function openPaletteModal(
   state: State,
-  rootViewNode: { state: ItemWithRecolorsState },
+  rootViewNode: PaletteModalHost,
   modalIdx: number,
   itemId: string,
   meta: ItemMerged,

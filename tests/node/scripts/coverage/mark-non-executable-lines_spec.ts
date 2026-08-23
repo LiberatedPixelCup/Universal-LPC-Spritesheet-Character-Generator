@@ -353,6 +353,51 @@ end_of_record
   assert.match(updated, /^DA:6,1$/m);
 });
 
+test("applyNonExecutableHits drops FN and BRDA so Codecov uses DA only", () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "lcov-brda-"));
+  const sourceRel = path.join("src", "host.ts");
+  const sourceAbs = path.join(root, sourceRel);
+  fs.mkdirSync(path.dirname(sourceAbs));
+  fs.writeFileSync(
+    sourceAbs,
+    `type PaletteModalHost = { state: { show: boolean } };
+function openPaletteModal(
+  state: { ok: boolean },
+) {
+  return state;
+}
+`,
+  );
+
+  const lcov = `TN:
+SF:${sourceRel}
+FN:2,openPaletteModal
+FNDA:9,openPaletteModal
+FNF:1
+FNH:1
+BRDA:1,0,0,0
+BRDA:2,1,0,0
+BRDA:2,1,1,0
+BRF:3
+BRH:0
+DA:1,1
+DA:2,1
+DA:5,1
+LF:3
+LH:3
+end_of_record
+`;
+
+  const updated = applyNonExecutableHits(lcov, root);
+
+  assert.doesNotMatch(updated, /^FN:/m);
+  assert.doesNotMatch(updated, /^FNDA:/m);
+  assert.doesNotMatch(updated, /^BRDA:/m);
+  assert.doesNotMatch(updated, /^BRF:/m);
+  assert.match(updated, /^DA:1,1$/m);
+  assert.match(updated, /^DA:2,1$/m);
+});
+
 test("applyNonExecutableHits fills omitted counters but keeps explicit DA:0 misses", () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "lcov-omit-"));
   const sourceRel = path.join("src", "calls.ts");
