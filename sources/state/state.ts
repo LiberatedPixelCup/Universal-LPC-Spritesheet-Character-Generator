@@ -212,8 +212,7 @@ export async function selectDefaults(state: State): Promise<void> {
   };
 
   deps.syncSelectionsToHash(state);
-  await deps.renderCharacter(state, state.selections, state.bodyType);
-  // Trigger redraw to update preview canvas after offscreen render completes
+  // App.onupdate owns renderCharacter when selections change.
   deps.redraw();
 }
 
@@ -271,7 +270,7 @@ export async function initState(state: State): Promise<void> {
   if (Object.keys(state.selections).length === 0) {
     await deps.selectDefaults(state);
   } else if (deps.getCanvasRenderer()) {
-    await deps.renderCharacter(state, state.selections, state.bodyType);
+    // App.onupdate owns renderCharacter when selections change.
     deps.redraw();
   }
 }

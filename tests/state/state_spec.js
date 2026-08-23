@@ -143,10 +143,7 @@ describe("state/state.ts", () => {
         },
       });
       expect(deps.syncSelectionsToHash.calledOnce).to.be.true;
-      expect(deps.renderCharacter.calledOnce).to.be.true;
-      expect(deps.renderCharacter.firstCall.args[0]).to.equal(state);
-      expect(deps.renderCharacter.firstCall.args[1]).to.equal(state.selections);
-      expect(deps.renderCharacter.firstCall.args[2]).to.equal(state.bodyType);
+      expect(deps.renderCharacter.called).to.be.false;
       expect(deps.redraw.calledOnce).to.be.true;
     });
 
@@ -217,7 +214,7 @@ describe("state/state.ts", () => {
       expect(state.customUploadedImage).to.be.null;
       expect(state.customImageZPos).to.equal(0);
       expect(deps.syncSelectionsToHash.calledOnce).to.be.true;
-      expect(deps.renderCharacter.calledOnce).to.be.true;
+      expect(deps.renderCharacter.called).to.be.false;
       expect(deps.redraw.callCount).to.equal(2);
     });
   });
@@ -238,7 +235,7 @@ describe("state/state.ts", () => {
       expect(selectDefaultsStub.calledOnce).to.be.true;
     });
 
-    it("renders when hash produced selections and canvas renderer exists", async () => {
+    it("redraws when hash produced selections and canvas renderer exists", async () => {
       const selectDefaultsStub = sinon.stub().resolves();
       const renderCharacter = sinon.stub().resolves();
       const redraw = sinon.stub();
@@ -255,7 +252,7 @@ describe("state/state.ts", () => {
       await initState(state);
 
       expect(selectDefaultsStub.called).to.be.false;
-      expect(renderCharacter.calledOnce).to.be.true;
+      expect(renderCharacter.called).to.be.false;
       expect(redraw.calledOnce).to.be.true;
     });
 

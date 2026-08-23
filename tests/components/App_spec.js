@@ -1,5 +1,6 @@
 import m from "mithril";
 import { assert } from "chai";
+import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { App } from "../../sources/components/App.ts";
 import { createApplicationModels } from "../../sources/models/application.ts";
@@ -7,6 +8,9 @@ import { createCatalog } from "../../sources/state/catalog.ts";
 import {
   configureStateCatalog,
   createState,
+  initState,
+  resetStateDeps,
+  setStateDeps,
 } from "../../sources/state/state.ts";
 let state;
 import {
@@ -14,7 +18,22 @@ import {
   resetHashCalledTimes,
   setHash,
 } from "../../sources/state/hash.ts";
+import {
+  initCanvas,
+  resetRenderCharacterQueueForTests,
+} from "../../sources/canvas/renderer.ts";
+import { PerformanceProfiler } from "../../sources/performance-profiler.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
+
+const TEST_BODY_ITEM = {
+  name: "Test Body",
+  type_name: "body",
+  animations: ["walk"],
+  required: ["male"],
+  recolors: [],
+  layers: {},
+  credits: [],
+};
 
 describe("App", function () {
   let host;
@@ -23,6 +42,8 @@ describe("App", function () {
   let catalog;
   let catalogWriter;
   let models;
+  let sandbox;
+  let previousProfiler;
 
   function appView() {
     return m(App, {
@@ -38,10 +59,12 @@ describe("App", function () {
     document.body.appendChild(host);
     previousRenderer = window.canvasRenderer;
     previousTesting = window.isTesting;
+    previousProfiler = window.profiler;
     ({ reader: catalog, writer: catalogWriter } = createCatalog());
     seedCatalog(catalogWriter, {});
     models = createApplicationModels(catalog, state);
     configureStateCatalog(catalog);
+    sandbox = sinon.createSandbox();
     delete window.canvasRenderer;
     window.isTesting = true;
     setHash("");
@@ -49,6 +72,10 @@ describe("App", function () {
   });
 
   afterEach(function () {
+    sandbox.restore();
+    resetStateDeps();
+    resetRenderCharacterQueueForTests();
+    window.profiler = previousProfiler;
     m.mount(host, null);
     if (host.parentNode) {
       host.parentNode.removeChild(host);
@@ -105,18 +132,72 @@ describe("App", function () {
     resetHashCalledTimes();
 
     seedCatalog(catalogWriter, {
-      item1: {
-        name: "Test Body",
-        type_name: "body",
-        animations: ["walk"],
-        layers: {},
-        credits: [],
-      },
+      item1: TEST_BODY_ITEM,
     });
     state.selections = { body: { itemId: "item1", variant: null } };
     m.redraw.sync();
 
     assert.isAbove(getSetHashCalledTimes(), 0);
+  });
+
+  function enableProfiler() {
+    sandbox.stub(globalThis, "requestAnimationFrame").returns(1);
+    sandbox.stub(globalThis, "setInterval").returns(999);
+    const profiler = new PerformanceProfiler({
+      enabled: true,
+      logSlowOperations: false,
+    });
+    window.profiler = profiler;
+    return profiler;
+  }
+
+  async function waitForRenderCalls(profiler) {
+    for (let i = 0; i < 20; i++) {
+      if (profiler.snapshot().renderCharacter.calls.length > 0) {
+        return;
+      }
+      await Promise.resolve();
+    }
+  }
+
+  it("renders when canvasRenderer exists and selections change", async function () {
+    const profiler = enableProfiler();
+    initCanvas();
+    window.canvasRenderer = {};
+    m.mount(host, {
+      view: appView,
+    });
+    seedCatalog(catalogWriter, {
+      item1: TEST_BODY_ITEM,
+    });
+    state.selections = { body: { itemId: "item1", variant: null } };
+    m.redraw.sync();
+    await waitForRenderCalls(profiler);
+
+    assert.isAbove(profiler.snapshot().renderCharacter.calls.length, 0);
+  });
+
+  it("renders after initState hydrates selections when App is mounted", async function () {
+    const profiler = enableProfiler();
+    initCanvas();
+    window.canvasRenderer = {};
+    seedCatalog(catalogWriter, {
+      item1: TEST_BODY_ITEM,
+    });
+    setStateDeps({
+      loadSelectionsFromHash: (s) => {
+        s.selections = { body: { itemId: "item1", variant: null } };
+      },
+    });
+    m.mount(host, {
+      view: appView,
+    });
+
+    await initState(state);
+    m.redraw.sync();
+    await waitForRenderCalls(profiler);
+
+    assert.isAbove(profiler.snapshot().renderCharacter.calls.length, 0);
   });
 
   it("syncs the hash when bodyType or custom overlay state changes", function () {
