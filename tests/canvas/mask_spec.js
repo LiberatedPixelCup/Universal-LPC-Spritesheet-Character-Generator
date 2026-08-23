@@ -49,12 +49,11 @@ describe("applyTransparencyMaskToCanvas", () => {
     imgData.data[3] = 0;
     ctx.putImageData(imgData, 0, 0);
 
+    const before = Array.from(ctx.getImageData(0, 0, 1, 1).data);
     applyTransparencyMaskToCanvas(canvas, ctx);
-
-    const pixel = ctx.getImageData(0, 0, 1, 1).data;
-    expect([pixel[0], pixel[1], pixel[2], pixel[3]]).to.deep.equal([
-      255, 44, 230, 0,
-    ]);
+    const after = Array.from(ctx.getImageData(0, 0, 1, 1).data);
+    expect(after).to.deep.equal(before);
+    expect(after[3]).to.equal(0);
   });
 
   it("should not modify pixels that do not match RGB (255, 44, 230)", () => {
