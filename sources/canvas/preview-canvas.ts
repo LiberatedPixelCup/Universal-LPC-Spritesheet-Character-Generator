@@ -15,6 +15,12 @@ import {
 export let previewCanvas: HTMLCanvasElement | null = null;
 export let previewCtx: CanvasRenderingContext2D | null = null;
 
+/** Browser specs reset module preview state so zoom/init cases start clean. */
+export function resetPreviewCanvasForTests(): void {
+  previewCanvas = null;
+  previewCtx = null;
+}
+
 /**
  * Size the DOM spritesheet preview canvas to match the offscreen buffer (or standard sheet size
  * before init) so layout does not jump when the first copy runs.
