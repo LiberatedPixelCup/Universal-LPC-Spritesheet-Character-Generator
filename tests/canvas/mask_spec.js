@@ -41,6 +41,22 @@ describe("applyTransparencyMaskToCanvas", () => {
     }
   });
 
+  it("leaves already-transparent mask-colored pixels unchanged", () => {
+    const imgData = ctx.createImageData(1, 1);
+    imgData.data[0] = 255;
+    imgData.data[1] = 44;
+    imgData.data[2] = 230;
+    imgData.data[3] = 0;
+    ctx.putImageData(imgData, 0, 0);
+
+    applyTransparencyMaskToCanvas(canvas, ctx);
+
+    const pixel = ctx.getImageData(0, 0, 1, 1).data;
+    expect([pixel[0], pixel[1], pixel[2], pixel[3]]).to.deep.equal([
+      255, 44, 230, 0,
+    ]);
+  });
+
   it("should not modify pixels that do not match RGB (255, 44, 230)", () => {
     // Fill the canvas with a different color
     ctx.fillStyle = "rgb(0, 0, 0)";
