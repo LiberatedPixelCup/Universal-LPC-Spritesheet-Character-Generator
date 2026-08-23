@@ -19,7 +19,7 @@ import "./canvas/palette-recolor-isolation_spec.ts";
 import "./canvas/preview-animation_spec.js";
 import "./canvas/preview-canvas_spec.js";
 import "./canvas/renderer-issue-364_spec.js";
-import "./canvas/renderer_spec.js";
+import "./canvas/renderer_spec.ts";
 import "./canvas/renderer-composite_spec.ts";
 import "./canvas/render-call-count_spec.ts";
 import "./canvas/render-work_spec.ts";

@@ -10,19 +10,17 @@
  * `walk.png` sheets under `body/bodies/male/`.
  */
 import { expect } from "chai";
-import sinon from "sinon";
+import sinon, { type SinonSandbox } from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import {
   initCanvas,
   isOffscreenCanvasInitialized,
   resetOffscreenCanvasStateForTests,
-  resetRenderCharacterQueueForTests,
   getCanvas,
   extractAnimationFromCanvas,
   renderCharacter,
   renderSingleItem,
   renderSingleItemAnimation,
-  addedCustomAnimations,
   drawCalls,
   customAreaItems,
   SHEET_WIDTH,
@@ -31,42 +29,41 @@ import {
 } from "../../sources/canvas/renderer.ts";
 import { resetImageLoadCache } from "../../sources/canvas/load-image.ts";
 import { PerformanceProfiler } from "../../sources/performance-profiler.ts";
-import { createCatalog } from "../../sources/state/catalog.ts";
+import {
+  createCatalog,
+  type CatalogReader,
+  type CatalogWriter,
+} from "../../sources/state/catalog.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
-import { createState } from "../../sources/state/state.ts";
-let state;
+import { createState, type State } from "../../sources/state/state.ts";
 import {
   ANIMATION_CONFIGS,
   FRAME_SIZE,
 } from "../../sources/state/constants.ts";
 import { hasContentInRegion } from "../../sources/canvas/canvas-utils.ts";
+import {
+  ALL_BODY_TYPES,
+  walkItemMeta,
+  resetRendererModuleState,
+} from "./renderer-test-helpers.ts";
+import m from "mithril";
 
-const ALL_BODY_TYPES = [
-  "male",
-  "female",
-  "teen",
-  "child",
-  "muscular",
-  "pregnant",
-];
-
-/** Standard walk item pointing at real body sheets (path ok; load needs recolors). */
-function walkItemMeta(overrides = {}) {
-  return {
-    name: "Walk item",
-    type_name: "misc",
-    required: ["male"],
-    animations: ["walk"],
-    recolors: [],
-    layers: {
-      layer_1: {
-        zPos: 10,
-        male: "body/bodies/male/",
-      },
-    },
-    ...overrides,
-  };
+function requireOffscreenCanvas(): HTMLCanvasElement {
+  if (!rendererCanvas) {
+    throw new Error("renderer canvas missing");
+  }
+  return rendererCanvas;
 }
+
+function require2dContext(canvas: HTMLCanvasElement): CanvasRenderingContext2D {
+  const ctx = canvas.getContext("2d");
+  if (!ctx) {
+    throw new Error("2d context unavailable");
+  }
+  return ctx;
+}
+
+let state: State;
 
 const WHEELCHAIR_ITEM_META = {
   name: "Wheel item",
@@ -83,28 +80,25 @@ const WHEELCHAIR_ITEM_META = {
   },
 };
 
-function resetRendererModuleState() {
-  resetRenderCharacterQueueForTests();
-  drawCalls.length = 0;
-  for (const k of Object.keys(customAreaItems)) {
-    delete customAreaItems[k];
-  }
-  addedCustomAnimations.clear();
-  initCanvas();
-}
-
-async function imageFromFilledCanvas(width, height, color) {
+async function imageFromFilledCanvas(
+  width: number,
+  height: number,
+  color: string,
+): Promise<HTMLImageElement> {
   const c = document.createElement("canvas");
   c.width = width;
   c.height = height;
   const ctx = c.getContext("2d");
+  if (!ctx) {
+    throw new Error("2d context unavailable");
+  }
   ctx.fillStyle = color;
   ctx.fillRect(0, 0, width, height);
   const img = new Image();
   img.src = c.toDataURL("image/png");
-  await new Promise((resolve, reject) => {
-    img.onload = resolve;
-    img.onerror = reject;
+  await new Promise<void>((resolve, reject) => {
+    img.onload = () => resolve();
+    img.onerror = () => reject(new Error("image load failed"));
   });
   return img;
 }
@@ -166,16 +160,18 @@ describe("canvas/renderer.ts", () => {
       const srcY = walk.row * FRAME_SIZE;
       const expectedHeight = walk.num * FRAME_SIZE;
 
-      const ctx = rendererCanvas.getContext("2d");
+      const ctx = require2dContext(requireOffscreenCanvas());
       ctx.fillStyle = "#ff00aa";
       ctx.fillRect(0, srcY, 4, 4);
 
       const extracted = extractAnimationFromCanvas("walk");
-      expect(extracted).to.not.equal(null);
+      if (!extracted) {
+        throw new Error("expected extracted walk animation");
+      }
       expect(extracted.width).to.equal(SHEET_WIDTH);
       expect(extracted.height).to.equal(expectedHeight);
 
-      const pixel = extracted.getContext("2d").getImageData(0, 0, 1, 1).data;
+      const pixel = require2dContext(extracted).getImageData(0, 0, 1, 1).data;
       expect([pixel[0], pixel[1], pixel[2], pixel[3]]).to.deep.equal([
         255, 0, 170, 255,
       ]);
@@ -185,9 +181,9 @@ describe("canvas/renderer.ts", () => {
   describe("renderCharacter drawCalls / layering", function () {
     this.timeout(15_000);
 
-    let sandbox;
-    let catalog;
-    let catalogWriter;
+    let sandbox: SinonSandbox | null;
+    let catalog: CatalogReader;
+    let catalogWriter: CatalogWriter;
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
@@ -196,9 +192,7 @@ describe("canvas/renderer.ts", () => {
       state.customImageZPos = 100;
       initCanvas();
       ({ reader: catalog, writer: catalogWriter } = createCatalog());
-      if (typeof m !== "undefined" && m.redraw) {
-        sandbox.stub(m, "redraw");
-      }
+      sandbox.stub(m, "redraw");
     });
 
     afterEach(() => {
@@ -404,7 +398,7 @@ describe("canvas/renderer.ts", () => {
         },
       };
       seedCatalog(
-        catalog,
+        catalogWriter,
         {
           "body-body": walkItemMeta({
             name: "Body Color",
@@ -428,8 +422,13 @@ describe("canvas/renderer.ts", () => {
       const walkY = walk.row * FRAME_SIZE;
       const walkH = walk.num * FRAME_SIZE;
       const walkBandHasContent = () => {
-        const ctx = rendererCanvas.getContext("2d");
-        return hasContentInRegion(ctx, 0, walkY, SHEET_WIDTH, walkH);
+        return hasContentInRegion(
+          require2dContext(requireOffscreenCanvas()),
+          0,
+          walkY,
+          SHEET_WIDTH,
+          walkH,
+        );
       };
 
       await renderCharacter(
@@ -483,15 +482,15 @@ describe("canvas/renderer.ts", () => {
 
     it("records a renderCharacter phase report when window.profiler is enabled", async () => {
       const prevProfiler = window.profiler;
-      sandbox.stub(globalThis, "requestAnimationFrame").returns(1);
-      sandbox.stub(globalThis, "setInterval").returns(999);
+      sandbox!.stub(globalThis, "requestAnimationFrame").returns(1);
+      sandbox!.stub(globalThis, "setInterval").returns(999);
       const p = new PerformanceProfiler({
         enabled: true,
         logSlowOperations: false,
       });
       window.profiler = p;
       try {
-        seedCatalog(catalog, { walk_only: walkItemMeta() });
+        seedCatalog(catalogWriter, { walk_only: walkItemMeta() });
         await renderCharacter(
           catalog,
           state,
@@ -524,9 +523,9 @@ describe("canvas/renderer.ts", () => {
   describe("renderCharacter custom animation geometry", function () {
     this.timeout(15_000);
 
-    let sandbox;
-    let catalog;
-    let catalogWriter;
+    let sandbox: SinonSandbox | null;
+    let catalog: CatalogReader;
+    let catalogWriter: CatalogWriter;
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
@@ -536,9 +535,7 @@ describe("canvas/renderer.ts", () => {
       seedCatalog(catalogWriter, {
         wheel_item: WHEELCHAIR_ITEM_META,
       });
-      if (typeof m !== "undefined" && m.redraw) {
-        sandbox.stub(m, "redraw");
-      }
+      sandbox.stub(m, "redraw");
     });
 
     afterEach(() => {
@@ -564,7 +561,7 @@ describe("canvas/renderer.ts", () => {
         "male",
       );
 
-      expect(rendererCanvas.height).to.be.greaterThan(SHEET_HEIGHT);
+      expect(requireOffscreenCanvas().height).to.be.greaterThan(SHEET_HEIGHT);
       expect(customAreaItems).to.have.property("wheelchair");
       const area = customAreaItems.wheelchair;
       expect(area.some((entry) => entry.type === "custom_sprite")).to.equal(
@@ -576,18 +573,16 @@ describe("canvas/renderer.ts", () => {
   describe("renderSingleItem / renderSingleItemAnimation", function () {
     this.timeout(15_000);
 
-    let sandbox;
-    let catalog;
-    let catalogWriter;
+    let sandbox: SinonSandbox | null;
+    let catalog: CatalogReader;
+    let catalogWriter: CatalogWriter;
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
       state = createState();
       initCanvas();
       ({ reader: catalog, writer: catalogWriter } = createCatalog());
-      if (typeof m !== "undefined" && m.redraw) {
-        sandbox.stub(m, "redraw");
-      }
+      sandbox.stub(m, "redraw");
     });
 
     afterEach(() => {
@@ -650,7 +645,9 @@ describe("canvas/renderer.ts", () => {
         "male",
         {},
       );
-      expect(result).to.not.equal(null);
+      if (!result) {
+        throw new Error("expected a walk item canvas");
+      }
       expect(result.width).to.equal(SHEET_WIDTH);
       expect(result.height).to.equal(SHEET_HEIGHT);
     });
@@ -667,7 +664,9 @@ describe("canvas/renderer.ts", () => {
         "walk",
         {},
       );
-      expect(result).to.not.equal(null);
+      if (!result) {
+        throw new Error("expected a single-anim canvas");
+      }
       expect(result.width).to.equal(SHEET_WIDTH);
       expect(result.height).to.equal(walk.num * FRAME_SIZE);
     });
@@ -682,8 +681,10 @@ describe("canvas/renderer.ts", () => {
         "male",
         {},
       );
-      expect(result).to.not.equal(null);
-      const ctx = result.getContext("2d");
+      if (!result) {
+        throw new Error("expected a walk item canvas");
+      }
+      const ctx = require2dContext(result);
       const walk = ANIMATION_CONFIGS.walk;
       const walkY = walk.row * FRAME_SIZE;
       expect(
@@ -701,7 +702,9 @@ describe("canvas/renderer.ts", () => {
         "male",
         {},
       );
-      expect(result).to.not.equal(null);
+      if (!result) {
+        throw new Error("expected a custom-animation canvas");
+      }
       expect(result.height).to.be.greaterThan(SHEET_HEIGHT);
     });
   });
