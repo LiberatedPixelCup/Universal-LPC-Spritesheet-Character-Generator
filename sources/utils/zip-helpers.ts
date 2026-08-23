@@ -155,13 +155,17 @@ export function newAnimationFromSheet(
   animCanvas.width = width;
   animCanvas.height = height;
   drawAnimationSliceOntoCanvas(src, x, y, width, height, animCanvas);
-  if (
-    !hasContentInRegion(get2DContext(animCanvas, true), 0, 0, width, height)
-  ) {
-    return err({ kind: "empty-subregion" });
-  }
+  return animationSliceResult(animCanvas, width, height);
+}
 
-  return ok(animCanvas);
+function animationSliceResult(
+  animCanvas: HTMLCanvasElement,
+  width: number,
+  height: number,
+): Result<HTMLCanvasElement, AnimationSliceError> {
+  const sliceCtx = get2DContext(animCanvas, true);
+  if (hasContentInRegion(sliceCtx, 0, 0, width, height)) return ok(animCanvas);
+  return err({ kind: "empty-subregion" });
 }
 
 /** Subset of `ZipExportProfiler` used by this module's instrumentation hooks. */

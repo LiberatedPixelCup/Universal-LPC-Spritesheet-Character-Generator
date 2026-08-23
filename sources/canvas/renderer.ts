@@ -42,6 +42,7 @@ import type { Selections, State } from "../state/state.ts";
 import {
   beginRenderCharacterSpan,
   type RenderCharacterProfilerHost,
+  type RenderCharacterSpan,
   type ZipExportProfiler,
 } from "../performance-profiler.ts";
 
@@ -196,6 +197,77 @@ export function resetOffscreenCanvasStateForTests(): void {
 /** @internal Test helper (e.g. Node without a DOM) */
 export function setOffscreenCanvasInitializedForTests(value: boolean): void {
   offscreenCanvasInitialized = value;
+}
+
+function loadStandardSpriteForDrawCall(item: DrawCall, spritePath: string) {
+  return loadImage(spritePath)
+    .then((img) => ({ item, img, success: true }))
+    .catch(() => {
+      debugWarn(`Failed to load sprite: ${spritePath}`);
+      return {
+        item,
+        img: null as HTMLImageElement | null,
+        success: false,
+      };
+    });
+}
+
+async function loadCustomAreaImages(
+  areaItems: CustomAreaItem[],
+  span: RenderCharacterSpan,
+): Promise<LoadedImage<CustomAreaItem>[]> {
+  const customLoadStart = performance.now();
+  const loadedCustomImages = await loadImagesInParallel(areaItems);
+  span.addPhaseMs("customLoad", performance.now() - customLoadStart);
+  return loadedCustomImages;
+}
+
+async function recolorAndDrawCustomAreaItem(
+  catalog: CatalogReader,
+  destCtx: CanvasRenderingContext2D,
+  areaItem: CustomAreaItem,
+  img: HTMLImageElement,
+  customAnimDef: (typeof customAnimations)[string],
+  offsetY: number,
+  span: RenderCharacterSpan,
+): Promise<void> {
+  const recolorStart = performance.now();
+  const imageToUse = await getImageToDraw(
+    catalog,
+    img,
+    areaItem.itemId,
+    areaItem.recolors,
+    areaItem.spritePath,
+  );
+  span.addPhaseMs("customRecolor", performance.now() - recolorStart);
+
+  const drawStart = performance.now();
+  if (areaItem.type === "custom_sprite") {
+    if (customAnimDef.sourceSingleAnimation) {
+      drawSingleAnimSpriteToCustomAnimation(
+        destCtx,
+        customAnimDef,
+        offsetY,
+        imageToUse,
+      );
+    } else {
+      destCtx.drawImage(imageToUse, 0, offsetY);
+    }
+  } else if (areaItem.type === "extracted_frames") {
+    drawFramesToCustomAnimation(destCtx, customAnimDef, offsetY, imageToUse);
+  }
+  span.addPhaseMs("customDraw", performance.now() - drawStart);
+}
+
+function finishRenderCharacterRedraw(
+  state: State,
+  span: RenderCharacterSpan,
+): void {
+  const redrawEndStart = performance.now();
+  endDeferredRecolorSnapshots();
+  state.renderCharacter.isRendering = state.isRenderingCharacter = false;
+  m.redraw();
+  span.addPhaseMs("mithrilRedrawEnd", performance.now() - redrawEndStart);
 }
 
 /** Commit 10: one render at a time; new calls wait behind the in-flight one. */
@@ -497,17 +569,7 @@ async function runRenderCharacter(
             success: true,
           });
         }
-        const { spritePath } = item.source;
-        return loadImage(spritePath)
-          .then((img) => ({ item, img, success: true }))
-          .catch(() => {
-            debugWarn(`Failed to load sprite: ${spritePath}`);
-            return {
-              item,
-              img: null as HTMLImageElement | null,
-              success: false,
-            };
-          });
+        return loadStandardSpriteForDrawCall(item, item.source.spritePath);
       });
 
       return Promise.all(loadPromises);
@@ -589,57 +651,25 @@ async function runRenderCharacter(
         // Sort by zPos to get correct layer order
         areaItems.sort((a, b) => a.zPos - b.zPos);
 
-        const loadedCustomImages = await span.async("customLoad", () =>
-          loadImagesInParallel(areaItems),
-        );
+        const loadedCustomImages = await loadCustomAreaImages(areaItems, span);
 
         // Draw in zPos order
         for (const { item: areaItem, img, success } of loadedCustomImages) {
-          if (success && img) {
-            const recolorStart = performance.now();
-            const imageToUse = await getImageToDraw(
-              catalog,
-              img,
-              areaItem.itemId,
-              areaItem.recolors,
-              areaItem.spritePath,
-            );
-            span.addPhaseMs("customRecolor", performance.now() - recolorStart);
-
-            const drawStart = performance.now();
-            if (areaItem.type === "custom_sprite") {
-              if (customAnimDef.sourceSingleAnimation) {
-                // Extract frames from native 4-row (n/w/s/e) tool sprite
-                drawSingleAnimSpriteToCustomAnimation(
-                  destCtx,
-                  customAnimDef,
-                  offsetY,
-                  imageToUse,
-                );
-              } else {
-                // Draw pre-built custom animation sheet directly (e.g. wheelchair, fishing rod)
-                destCtx.drawImage(imageToUse, 0, offsetY);
-              }
-            } else if (areaItem.type === "extracted_frames") {
-              // Extract and draw frames from standard sprite
-              drawFramesToCustomAnimation(
-                destCtx,
-                customAnimDef,
-                offsetY,
-                imageToUse,
-              );
-            }
-            span.addPhaseMs("customDraw", performance.now() - drawStart);
-          }
+          if (!success || !img) continue;
+          await recolorAndDrawCustomAreaItem(
+            catalog,
+            destCtx,
+            areaItem,
+            img,
+            customAnimDef,
+            offsetY,
+            span,
+          );
         }
       }
     }
   } finally {
-    span.sync("mithrilRedrawEnd", () => {
-      endDeferredRecolorSnapshots();
-      state.renderCharacter.isRendering = state.isRenderingCharacter = false;
-      m.redraw();
-    });
+    finishRenderCharacterRedraw(state, span);
 
     const imageStats1 = getImageLoadStats();
     const recolorStats1 = getRecolorCacheStats();

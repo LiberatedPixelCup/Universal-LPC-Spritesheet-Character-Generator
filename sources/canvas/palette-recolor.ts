@@ -306,6 +306,29 @@ function installSnapshotAtKey(cacheKey: string, snap: RecolorOutput): void {
   }
 }
 
+function storeCacheableRecolorMiss(
+  cacheKey: string,
+  promise: Promise<RecolorCacheValue>,
+): void {
+  recolorCache.set(cacheKey, promise);
+  // On rejection, drop the entry so retries aren't poisoned by a stale failure.
+  promise.catch(() => {
+    if (recolorCache.get(cacheKey) === promise) {
+      recolorCache.delete(cacheKey);
+    }
+  });
+  while (recolorCache.size > RECOLOR_CACHE_CAP) {
+    const oldestKey = recolorCache.keys().next().value;
+    if (oldestKey === undefined) break;
+    const oldest = recolorCache.get(oldestKey);
+    recolorCache.delete(oldestKey);
+    // Skip the in-flight miss we just inserted; only close settled bitmaps.
+    if (oldest && oldest !== promise) {
+      closeSettledCacheEntry(oldest);
+    }
+  }
+}
+
 function installLiveSnapshot(snap: RecolorOutput): void {
   if (!pendingLiveKey) {
     closeIfImageBitmap(snap);
@@ -427,11 +450,18 @@ export type RecolorCacheStats = {
   misses: number;
 };
 
-let recolorCacheStats: RecolorCacheStats = {
-  skipped: 0,
-  cacheHits: 0,
-  misses: 0,
-};
+function emptyRecolorCacheStats(): RecolorCacheStats {
+  return { skipped: 0, cacheHits: 0, misses: 0 };
+}
+
+function noteRecolorSkipped(
+  img: HTMLImageElement | HTMLCanvasElement,
+): HTMLImageElement | HTMLCanvasElement {
+  recolorCacheStats.skipped++;
+  return img;
+}
+
+let recolorCacheStats = emptyRecolorCacheStats();
 
 /** Snapshot of always-on `getImageToDraw` skip / cache counters. */
 export function getRecolorCacheStats(): RecolorCacheStats {
@@ -440,7 +470,7 @@ export function getRecolorCacheStats(): RecolorCacheStats {
 
 /** Reset skip / cache counters. Also called from {@link clearRecolorCache}. */
 export function resetRecolorCacheStats(): void {
-  recolorCacheStats = { skipped: 0, cacheHits: 0, misses: 0 };
+  recolorCacheStats = emptyRecolorCacheStats();
 }
 
 function startRecolorMiss(
@@ -454,7 +484,23 @@ function startRecolorMiss(
   if (!cacheKey || !shouldUseWebGL) {
     return recolorWithPalette(catalog, img, recolors, paletteConfig);
   }
-  return enqueueRecolor(async () => {
+  return enqueueCacheableWebGLMiss(
+    catalog,
+    img,
+    recolors,
+    paletteConfig,
+    cacheKey,
+  );
+}
+
+function enqueueCacheableWebGLMiss(
+  catalog: CatalogReader,
+  img: HTMLImageElement | HTMLCanvasElement,
+  recolors: Record<string, string>,
+  paletteConfig: Record<string, PaletteForItem>,
+  cacheKey: string,
+): Promise<RecolorCacheValue> {
+  const job = async () => {
     if (deferSnapshots) {
       discardWebGLLiveSnapshot();
     } else {
@@ -475,9 +521,10 @@ function startRecolorMiss(
       console.warn("⚠️ WebGL recoloring failed, falling back to CPU:", error);
       recolorStats.fallback++;
       pendingLiveKey = null;
-      return recolorImageCPU(img, mappings);
     }
-  });
+    return recolorImageCPU(img, mappings);
+  };
+  return enqueueRecolor(job);
 }
 
 /**
@@ -501,14 +548,12 @@ export async function getImageToDraw(
   spritePath: string | null = null,
 ): Promise<RecolorCacheValue> {
   if (!recolors) {
-    recolorCacheStats.skipped++;
-    return img; // No recolor specified, return original image
+    return noteRecolorSkipped(img);
   }
   const meta = catalog.getItemLite(itemId).unwrapOr(null);
   const paletteConfig = getPalettesFromMeta(catalog, meta).unwrapOr(null);
   if (!paletteConfig) {
-    recolorCacheStats.skipped++;
-    return img; // Item doesn't use palette recoloring
+    return noteRecolorSkipped(img);
   }
 
   const cacheKey = spritePath
@@ -550,23 +595,7 @@ export async function getImageToDraw(
   if (cacheKey && cacheLiveWebGL) rememberDeferredInFlight(cacheKey, promise);
 
   if (cacheKey && !cacheLiveWebGL) {
-    recolorCache.set(cacheKey, promise);
-    // On rejection, drop the entry so retries aren't poisoned by a stale failure.
-    promise.catch(() => {
-      if (recolorCache.get(cacheKey) === promise) {
-        recolorCache.delete(cacheKey);
-      }
-    });
-    while (recolorCache.size > RECOLOR_CACHE_CAP) {
-      const oldestKey = recolorCache.keys().next().value;
-      if (oldestKey === undefined) break;
-      const oldest = recolorCache.get(oldestKey);
-      recolorCache.delete(oldestKey);
-      // Skip the in-flight miss we just inserted; only close settled bitmaps.
-      if (oldest && oldest !== promise) {
-        closeSettledCacheEntry(oldest);
-      }
-    }
+    storeCacheableRecolorMiss(cacheKey, promise);
   }
 
   try {

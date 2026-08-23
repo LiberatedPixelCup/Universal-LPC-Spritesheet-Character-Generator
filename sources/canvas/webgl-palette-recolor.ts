@@ -111,15 +111,24 @@ void main() {
 }
 `;
 
+function throwShaderAllocationFailed(): never {
+  const message = "Failed to allocate WebGL shader";
+  throw new Error(message);
+}
+
+function requireShader(shader: WebGLShader | null): WebGLShader {
+  if (shader) {
+    return shader;
+  }
+  return throwShaderAllocationFailed();
+}
+
 function compileShader(
   gl: WebGLRenderingContext,
   type: GLenum,
   source: string,
 ): WebGLShader {
-  const shader = gl.createShader(type);
-  if (!shader) {
-    throw new Error("Failed to allocate WebGL shader");
-  }
+  const shader = requireShader(gl.createShader(type));
   gl.shaderSource(shader, source);
   gl.compileShader(shader);
 
@@ -356,15 +365,16 @@ function closeUnusedSnapshot(value: RecolorOutput): void {
  * Copy a deferred live result before the next draw clobbers the shared canvas.
  * Must run inside {@link enqueueRecolor}.
  */
+async function snapshotCurrentSharedCanvas(): Promise<RecolorOutput> {
+  return snapshotSharedCanvas(sharedCanvas as HTMLCanvasElement);
+}
+
 export async function commitWebGLLiveSnapshot(): Promise<void> {
   if (!liveUnsnapshotted || !sharedCanvas) return;
-  const snap = await snapshotSharedCanvas(sharedCanvas);
+  const snap = await snapshotCurrentSharedCanvas();
   liveUnsnapshotted = false;
-  if (liveSnapshotHandler) {
-    liveSnapshotHandler(snap);
-  } else {
-    closeUnusedSnapshot(snap);
-  }
+  if (liveSnapshotHandler) liveSnapshotHandler(snap);
+  else closeUnusedSnapshot(snap);
 }
 
 let recolorTail: Promise<unknown> = Promise.resolve();

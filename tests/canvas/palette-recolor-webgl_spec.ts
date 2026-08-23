@@ -19,10 +19,14 @@ import {
 } from "../../sources/canvas/palette-recolor.ts";
 import {
   recolorImageWebGL,
+  recolorImageWebGLNow,
+  enqueueRecolor,
+  commitWebGLLiveSnapshot,
   isWebGLAvailable,
   resetSharedWebGLForTests,
   setWebGLLiveSnapshotHandler,
   type PaletteMapping,
+  type RecolorOutput,
 } from "../../sources/canvas/webgl-palette-recolor.ts";
 import {
   solidCanvas,
@@ -200,9 +204,17 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
   });
 
   it("throws when WebGL cannot allocate a shader", async () => {
-    const stub = sinon
-      .stub(WebGLRenderingContext.prototype, "createShader")
-      .returns(null);
+    resetSharedWebGLForTests();
+    const stubs = [
+      sinon.stub(WebGLRenderingContext.prototype, "createShader").returns(null),
+    ];
+    if (typeof WebGL2RenderingContext !== "undefined") {
+      stubs.push(
+        sinon
+          .stub(WebGL2RenderingContext.prototype, "createShader")
+          .returns(null),
+      );
+    }
     try {
       let thrown: unknown = null;
       try {
@@ -217,7 +229,7 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
         /Failed to allocate WebGL shader/,
       );
     } finally {
-      stub.restore();
+      for (const stub of stubs) stub.restore();
     }
   });
 
@@ -420,6 +432,27 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
     } finally {
       closeSpy.restore();
       clearRecolorCache();
+    }
+  });
+
+  it("delivers a committed live snapshot to the installed handler", async () => {
+    let received: RecolorOutput | null = null;
+    setWebGLLiveSnapshotHandler((snap) => {
+      received = snap;
+    });
+    try {
+      const img = solidCanvas(255, 0, 0);
+      const mappings: PaletteMapping[] = [
+        { source: ["#FF0000"], target: ["#0000FF"] },
+      ];
+      await enqueueRecolor(async () => {
+        await recolorImageWebGLNow(img, mappings, false);
+        await commitWebGLLiveSnapshot();
+      });
+      expect(received).to.not.equal(null);
+      assertOpaqueRemap(drawSnapshotToDest(received!), { r: 0, g: 0, b: 255 });
+    } finally {
+      bindWebGLLiveSnapshotHandler();
     }
   });
 
