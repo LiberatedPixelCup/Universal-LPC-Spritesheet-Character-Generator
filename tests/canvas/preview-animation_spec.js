@@ -15,6 +15,7 @@ import { initPreviewCanvas } from "../../sources/canvas/preview-canvas.ts";
 import {
   initCanvas,
   resetOffscreenCanvasStateForTests,
+  canvas as rendererCanvas,
 } from "../../sources/canvas/renderer.ts";
 import { ANIMATION_CONFIGS } from "../../sources/state/constants.ts";
 import { customAnimations } from "../../sources/custom-animations.ts";
@@ -118,6 +119,35 @@ describe("canvas/preview-animation.ts", () => {
       window.__DISABLE_PREVIEW_ANIMATION__ = true;
       setPreviewAnimation("walk");
       expect(() => repaintStaticPreviewFrameForTests(state)).to.not.throw();
+    });
+
+    it("draws a transparency grid when showTransparencyGrid is on", () => {
+      window.__DISABLE_PREVIEW_ANIMATION__ = true;
+      state.showTransparencyGrid = true;
+      state.applyTransparencyMask = false;
+      setPreviewAnimation("walk");
+      const ctx = previewEl.getContext("2d");
+      ctx.clearRect(0, 0, previewEl.width, previewEl.height);
+      repaintStaticPreviewFrameForTests(state);
+      const pixel = ctx.getImageData(0, 0, 1, 1).data;
+      expect(pixel[3]).to.equal(255);
+    });
+
+    it("keys magenta out of the preview when applyTransparencyMask is on", () => {
+      window.__DISABLE_PREVIEW_ANIMATION__ = true;
+      state.showTransparencyGrid = false;
+      state.applyTransparencyMask = true;
+      setPreviewAnimation("walk");
+      if (!rendererCanvas) {
+        throw new Error("renderer canvas missing");
+      }
+      const offCtx = rendererCanvas.getContext("2d");
+      offCtx.fillStyle = "rgb(255, 44, 230)";
+      const walkY = ANIMATION_CONFIGS.walk.row * 64;
+      offCtx.fillRect(64, walkY, 64, 64);
+      repaintStaticPreviewFrameForTests(state);
+      const pixel = previewEl.getContext("2d").getImageData(64, 0, 1, 1).data;
+      expect(pixel[3]).to.equal(0);
     });
   });
 });
