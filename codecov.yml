@@ -38,7 +38,7 @@ ignore:
   - scripts/update_sheet_definitions.ts
   - scripts/generateSources/source_inputs_fingerprint.ts
   - vite/**
-  - vite.config.js
+  - vite.config.ts
   - testem.cjs
   - sources/performance-profiler.ts
   - sources/utils/debug.ts
