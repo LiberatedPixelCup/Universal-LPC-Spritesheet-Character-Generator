@@ -1,8 +1,7 @@
 /**
- * WebGL palette recolor + CPU fallback coverage.
+ * WebGL↔CPU pixel parity, texture reuse, and snapshot / createImageBitmap.
  *
- * Always-run: mode/stats routing and fallback when WebGL init fails.
- * Gated: WebGL↔CPU pixel parity (skipped when `isWebGLAvailable()` is false).
+ * Gated: skipped when `isWebGLAvailable()` is false.
  */
 import { expect } from "chai";
 import sinon from "sinon";
@@ -13,6 +12,7 @@ import {
   getPaletteRecolorConfig,
   getRecolorStats,
   resetRecolorStats,
+  type RecolorMode,
   getImageToDraw,
   clearRecolorCache,
   bindWebGLLiveSnapshotHandler,
@@ -22,6 +22,7 @@ import {
   isWebGLAvailable,
   resetSharedWebGLForTests,
   setWebGLLiveSnapshotHandler,
+  type PaletteMapping,
 } from "../../sources/canvas/webgl-palette-recolor.ts";
 import {
   solidCanvas,
@@ -31,47 +32,28 @@ import {
   drawSnapshotToDest,
   assertOpaqueRemap,
 } from "./palette-recolor-test-helpers.ts";
-import { createCatalog } from "../../sources/state/catalog.ts";
-import { seedCatalog } from "../browser-catalog-fixture.js";
+import {
+  createCatalog,
+  type CatalogReader,
+} from "../../sources/state/catalog.ts";
 import { SHEET_WIDTH } from "../../sources/canvas/renderer.ts";
+import {
+  RECOLOR_ITEM_ID,
+  seedRecolorCatalog,
+} from "./palette-recolor-fixtures.ts";
 
-const RECOLOR_ITEM_ID = "body";
+type SkipThis = { skip: () => void };
 
-const itemMetadata = {
-  [RECOLOR_ITEM_ID]: {
-    name: "Body",
-    type_name: "body",
-    recolors: [
-      {
-        material: "body",
-        default: "ulpc",
-        base: "ulpc.light",
-      },
-    ],
-  },
-};
-
-const paletteMetadata = {
-  versions: {},
-  materials: {
-    body: {
-      default: "ulpc",
-      base: "light",
-      palettes: {
-        ulpc: {
-          light: ["#FF0000"],
-          olive: ["#00FF00"],
-          bronze: ["#0000FF"],
-        },
-      },
-    },
-  },
-};
+function seededCatalog(): CatalogReader {
+  const { reader, writer } = createCatalog();
+  seedRecolorCatalog(writer);
+  return reader;
+}
 
 describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
-  let previousMode;
+  let previousMode: RecolorMode;
 
-  before(function () {
+  before(function (this: SkipThis) {
     if (!isWebGLAvailable()) {
       this.skip();
     }
@@ -88,7 +70,7 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
     resetSharedWebGLForTests();
   });
 
-  beforeEach(function () {
+  beforeEach(function (this: SkipThis) {
     if (!isWebGLAvailable()) {
       this.skip();
     }
@@ -119,7 +101,10 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
     expect(getRecolorStats().fallback).to.equal(0);
   });
 
-  async function assertWebGlCpuParity(img, mappings) {
+  async function assertWebGlCpuParity(
+    img: HTMLCanvasElement,
+    mappings: PaletteMapping[],
+  ): Promise<void> {
     setPaletteRecolorMode("cpu");
     const cpuOut = await recolorImage(img, mappings);
     setPaletteRecolorMode("webgl");
@@ -131,12 +116,23 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
 
     const cpuCanvas = as2dCanvas(cpuOut);
     const glCanvas = as2dCanvas(glOut);
-    const cpuData = cpuCanvas
-      .getContext("2d")
-      .getImageData(0, 0, cpuCanvas.width, cpuCanvas.height).data;
-    const glData = glCanvas
-      .getContext("2d")
-      .getImageData(0, 0, glCanvas.width, glCanvas.height).data;
+    const cpuCtx = cpuCanvas.getContext("2d");
+    const glCtx = glCanvas.getContext("2d");
+    if (!cpuCtx || !glCtx) {
+      throw new Error("2d context unavailable");
+    }
+    const cpuData = cpuCtx.getImageData(
+      0,
+      0,
+      cpuCanvas.width,
+      cpuCanvas.height,
+    ).data;
+    const glData = glCtx.getImageData(
+      0,
+      0,
+      glCanvas.width,
+      glCanvas.height,
+    ).data;
     expect(Array.from(glData)).to.deep.equal(Array.from(cpuData));
   }
 
@@ -208,7 +204,7 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
       .stub(WebGLRenderingContext.prototype, "createTexture")
       .returns(null);
     try {
-      let thrown = null;
+      let thrown: unknown = null;
       try {
         await recolorImageWebGL(solidCanvas(255, 0, 0), [
           { source: ["#FF0000"], target: ["#0000FF"] },
@@ -217,7 +213,9 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
         thrown = error;
       }
       expect(thrown).to.not.equal(null);
-      expect(thrown.message).to.match(/Failed to allocate WebGL texture/);
+      expect((thrown as Error).message).to.match(
+        /Failed to allocate WebGL texture/,
+      );
     } finally {
       stub.restore();
     }
@@ -257,8 +255,7 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
   });
 
   it("getImageToDraw palette change keeps both results opaque and different", async () => {
-    const catalog = createCatalog();
-    seedCatalog(catalog, itemMetadata, { paletteMetadata });
+    const catalog = seededCatalog();
     clearRecolorCache();
     const img = solidCanvas(255, 0, 0, SHEET_WIDTH, 64);
     const path = "spritesheets/body/bodies/male/walk.png";
@@ -292,12 +289,11 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
     assertOpaqueRemap(drawSnapshotToDest(oliveHit), { r: 0, g: 255, b: 0 });
   });
 
-  it("getImageToDraw defers the WebGL snapshot until the next cacheable miss", async function () {
+  it("getImageToDraw defers the WebGL snapshot until the next cacheable miss", async function (this: SkipThis) {
     if (typeof createImageBitmap !== "function") {
       this.skip();
     }
-    const catalog = createCatalog();
-    seedCatalog(catalog, itemMetadata, { paletteMetadata });
+    const catalog = seededCatalog();
     clearRecolorCache();
     const img = solidCanvas(255, 0, 0, SHEET_WIDTH, 64);
     const bitmapSpy = sinon.spy(globalThis, "createImageBitmap");
@@ -339,8 +335,7 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
   });
 
   it("getImageToDraw returns the source when every mapping is skipped", async () => {
-    const catalog = createCatalog();
-    seedCatalog(catalog, itemMetadata, { paletteMetadata });
+    const catalog = seededCatalog();
     clearRecolorCache();
     const img = solidCanvas(255, 0, 0, SHEET_WIDTH, 64);
     const out = await getImageToDraw(
@@ -354,8 +349,7 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
   });
 
   it("getImageToDraw falls back to CPU when a live WebGL draw throws", async () => {
-    const catalog = createCatalog();
-    seedCatalog(catalog, itemMetadata, { paletteMetadata });
+    const catalog = seededCatalog();
     clearRecolorCache();
     const drawStub = sinon
       .stub(WebGLRenderingContext.prototype, "drawArrays")
@@ -380,12 +374,11 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
     }
   });
 
-  it("closes a copy-on-write snapshot after clearRecolorCache", async function () {
+  it("closes a copy-on-write snapshot after clearRecolorCache", async function (this: SkipThis) {
     if (typeof ImageBitmap === "undefined") {
       this.skip();
     }
-    const catalog = createCatalog();
-    seedCatalog(catalog, itemMetadata, { paletteMetadata });
+    const catalog = seededCatalog();
     clearRecolorCache();
     const closeSpy = sinon.spy(ImageBitmap.prototype, "close");
     try {
@@ -408,12 +401,11 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
     }
   });
 
-  it("closes a live snapshot when no cache key is pending", async function () {
+  it("closes a live snapshot when no cache key is pending", async function (this: SkipThis) {
     if (typeof ImageBitmap === "undefined") {
       this.skip();
     }
-    const catalog = createCatalog();
-    seedCatalog(catalog, itemMetadata, { paletteMetadata });
+    const catalog = seededCatalog();
     clearRecolorCache();
     setWebGLLiveSnapshotHandler(null);
     const closeSpy = sinon.spy(ImageBitmap.prototype, "close");
@@ -437,7 +429,7 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
     }
   });
 
-  it("snapshots with createImageBitmap when available", async function () {
+  it("snapshots with createImageBitmap when available", async function (this: SkipThis) {
     if (typeof createImageBitmap !== "function") {
       this.skip();
     }
@@ -450,7 +442,7 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
 
   it("copies to a 2D canvas when createImageBitmap is missing", async () => {
     const original = globalThis.createImageBitmap;
-    globalThis.createImageBitmap = undefined;
+    Reflect.deleteProperty(globalThis, "createImageBitmap");
     try {
       resetSharedWebGLForTests();
       const out = await recolorImageWebGL(solidCanvas(255, 0, 0), [
@@ -463,7 +455,7 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
     }
   });
 
-  it("copies to a 2D canvas when createImageBitmap throws", async function () {
+  it("copies to a 2D canvas when createImageBitmap throws", async function (this: SkipThis) {
     if (typeof createImageBitmap !== "function") {
       this.skip();
     }

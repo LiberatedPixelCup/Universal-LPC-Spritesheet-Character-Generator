@@ -8,6 +8,7 @@ declare module "chai" {
     false: boolean;
     exist: boolean;
     at: { least: (n: number) => void };
+    match: (pattern: RegExp) => void;
   };
 
   export const expect: (actual: unknown) => {

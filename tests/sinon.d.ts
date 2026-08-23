@@ -2,11 +2,13 @@ declare module "sinon" {
   export type SinonSpy = {
     called: boolean;
     calledOnce: boolean;
+    callCount: number;
     args: unknown[][];
     firstCall: { args: unknown[]; returnValue: unknown };
     restore: () => void;
     callsFake: (fn: (...args: never[]) => unknown) => SinonSpy;
     returns: (value: unknown) => SinonSpy;
+    throws: (error: Error) => SinonSpy;
   };
 
   export type SinonSandbox = {
