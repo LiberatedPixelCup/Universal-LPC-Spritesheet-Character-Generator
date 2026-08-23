@@ -29,7 +29,10 @@ import {
 } from "../../sources/state/catalog.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
 import { createState } from "../../sources/state/state.ts";
-import { ANIMATION_OFFSETS } from "../../sources/state/constants.ts";
+import {
+  ANIMATION_OFFSETS,
+  FRAME_SIZE,
+} from "../../sources/state/constants.ts";
 import { readPixel } from "./palette-recolor-test-helpers.ts";
 import { resetRendererModuleState } from "./renderer-test-helpers.ts";
 import m from "mithril";
@@ -42,6 +45,8 @@ const GREEN = { r: 0, g: 255, b: 0, a: 255 };
 const BLUE = { r: 0, g: 0, b: 255, a: 255 };
 const MAGENTA = { r: 255, g: 0, b: 255, a: 255 };
 const CYAN = { r: 0, g: 255, b: 255, a: 255 };
+const YELLOW = { r: 255, g: 255, b: 0, a: 255 };
+const ORANGE = { r: 255, g: 128, b: 0, a: 255 };
 const EMPTY = { r: 0, g: 0, b: 0, a: 0 };
 const OLIVE = { r: 0, g: 255, b: 0, a: 255 };
 const BRONZE = { r: 0, g: 0, b: 255, a: 255 };
@@ -108,7 +113,33 @@ function spriteForSrc(src: string): HTMLCanvasElement | "reject" {
   if (src.includes("/plain/")) return alphaCanvas(255, 0, 255, 255);
   if (src.includes("/recolor/")) return alphaCanvas(255, 0, 0, 255);
   if (src.includes("/wheel/")) return alphaCanvas(0, 255, 255, 255);
+  if (src.includes("/sit-body/")) return sitExtractSheet();
+  if (src.includes("/axe/")) return toolAxeSheet();
   return "reject";
+}
+
+/** 4-row sit sheet (≤256px): `sit-n,2` is column 2 of the north row. */
+function sitExtractSheet(): HTMLCanvasElement {
+  const c = document.createElement("canvas");
+  c.width = FRAME_SIZE * 3;
+  c.height = FRAME_SIZE * 4;
+  const ctx = c.getContext("2d");
+  if (!ctx) throw new Error("2d context");
+  ctx.fillStyle = "rgb(255,255,0)";
+  ctx.fillRect(FRAME_SIZE * 2, 0, FRAME_SIZE, FRAME_SIZE);
+  return c;
+}
+
+/** 4-row 64px tool sheet: `slash-n,5` is column 5 of the north row. */
+function toolAxeSheet(): HTMLCanvasElement {
+  const c = document.createElement("canvas");
+  c.width = FRAME_SIZE * 6;
+  c.height = FRAME_SIZE * 4;
+  const ctx = c.getContext("2d");
+  if (!ctx) throw new Error("2d context");
+  ctx.fillStyle = "rgb(255,128,0)";
+  ctx.fillRect(FRAME_SIZE * 5, 0, FRAME_SIZE, FRAME_SIZE);
+  return c;
 }
 
 function walkItem(
@@ -519,5 +550,62 @@ describe("canvas/renderer.ts dest pixels", function () {
     expect(target.height).to.equal(SHEET_HEIGHT);
     expect(readPixel(target, 0, WALK_Y)).to.deep.include(RED);
     expect(readPixel(target, 0, 0)).to.deep.include(EMPTY);
+  });
+
+  it("extracts sit frames into the wheelchair custom band", async () => {
+    seedCatalog(catalogWriter, {
+      sit_body: walkItem("test/sit-body/", 50, { animations: ["sit"] }),
+      wheel_item: {
+        name: "Wheel item",
+        type_name: "misc",
+        required: ["male"],
+        animations: ["walk"],
+        recolors: [],
+        layers: {
+          layer_1: {
+            zPos: 10,
+            custom_animation: "wheelchair",
+            male: "test/wheel/",
+          },
+        },
+      },
+    });
+    await renderCharacter(
+      catalog,
+      state,
+      {
+        body: { itemId: "sit_body", variant: "olive", name: "Sit" },
+        slot: { itemId: "wheel_item", variant: "cyan", name: "Wheel" },
+      },
+      "male",
+    );
+    assertPixel(0, SHEET_HEIGHT, YELLOW);
+  });
+
+  it("blits a sourceSingleAnimation tool sprite into the custom axe band", async () => {
+    seedCatalog(catalogWriter, {
+      axe_item: {
+        name: "Axe item",
+        type_name: "misc",
+        required: ["male"],
+        animations: ["walk"],
+        recolors: [],
+        layers: {
+          layer_1: {
+            zPos: 10,
+            custom_animation: "tool_axe",
+            male: "test/axe/",
+          },
+        },
+      },
+    });
+    await renderCharacter(
+      catalog,
+      state,
+      { slot: { itemId: "axe_item", variant: "olive", name: "Axe" } },
+      "male",
+    );
+    const centered = (128 - FRAME_SIZE) / 2;
+    assertPixel(centered, SHEET_HEIGHT + centered, ORANGE);
   });
 });
