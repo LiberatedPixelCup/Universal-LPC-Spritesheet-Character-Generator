@@ -44,6 +44,28 @@ describe("canvas/load-image.ts", function () {
       expect(getImageLoadStats().cacheHits).to.equal(0);
     });
 
+    it("marks and measures when window.profiler is set", async () => {
+      resetImageLoadCache();
+      const marks: string[] = [];
+      const measures: string[] = [];
+      const prev = window.profiler;
+      window.profiler = {
+        mark: (name: string) => {
+          marks.push(name);
+        },
+        measure: (name: string, start: string, end: string) => {
+          measures.push(`${name}:${start}:${end}`);
+        },
+      };
+      try {
+        await loadImage("/spritesheets/arms/bracers/thin/hurt.png");
+        expect(marks.length).to.be.greaterThan(0);
+        expect(measures.length).to.be.greaterThan(0);
+      } finally {
+        window.profiler = prev;
+      }
+    });
+
     it("should reject if the image fails to load", async () => {
       const src = "/spritesheets/arms/bracers/thin/invalid.png";
       try {
