@@ -3,6 +3,10 @@ import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import sinon from "sinon";
 import { err, ok } from "neverthrow";
 import { downloadFile, downloadAsPNG } from "../../sources/canvas/download.ts";
+import {
+  initCanvas,
+  resetOffscreenCanvasStateForTests,
+} from "../../sources/canvas/renderer.ts";
 
 describe("canvas/download.ts", () => {
   describe("downloadFile", () => {
@@ -132,6 +136,33 @@ describe("canvas/download.ts", () => {
       expect(errorStub.calledOnce).to.be.true;
       expect(createObjectURLStub.called).to.be.false;
       expect(createElementStub.called).to.be.false;
+    });
+
+    it("uses the renderer canvas when getCanvasBlobFunc is omitted", async () => {
+      createElementStub.restore();
+      const createElement = document.createElement.bind(document);
+      createElementStub = sinon
+        .stub(document, "createElement")
+        .callsFake((tagName) => {
+          const element = createElement(tagName);
+          if (tagName === "a") {
+            element.click = sinon.stub();
+            clickStub = element.click;
+          }
+          return element;
+        });
+      initCanvas();
+      try {
+        await downloadAsPNG("from-canvas.png");
+        expect(createObjectURLStub.calledOnce).to.be.true;
+        expect(clickStub.calledOnce).to.be.true;
+        const anchor = createElementStub
+          .getCalls()
+          .find((call) => call.args[0] === "a").returnValue;
+        expect(anchor.download).to.equal("from-canvas.png");
+      } finally {
+        resetOffscreenCanvasStateForTests();
+      }
     });
 
     it("should use default filename if not provided", async () => {
