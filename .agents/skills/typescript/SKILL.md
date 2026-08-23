@@ -103,24 +103,26 @@ Checklist for a conversion:
 6. Check [`codecov.yml`](../../../codecov.yml) `ignore:`. If the file is not
    ignored, it now owes covered lines: [coverage](../coverage/SKILL.md).
 
-## The first `.ts` browser spec
+## Adding a `.ts` browser spec
 
-There is no precedent to copy yet: every browser spec imported from
-[`tests/tests.js`](../../../tests/tests.js) is still `*_spec.js`, and no
-`*_spec.ts` exists outside `tests/node/`. Two things differ from the lines
-around it:
+Canvas already has several TypeScript specs (`renderer_spec.ts`,
+`renderer-composite_spec.ts`, `load-images_spec.ts`, and the
+`palette-recolor-*_spec.ts` files). Leftover `*_spec.js` files under
+[`tests/`](../../../tests/) stay JS until converted. Two things differ from
+those leftover `.js` specs:
 
 - Register it with its **real extension**, since relative imports use the
   on-disk extension:
 
   ```javascript
-  import "./components/MyComponent_spec.ts";
+  import "./canvas/renderer-composite_spec.ts";
   ```
 
 - It is type-checked under `@tsconfig/strictest` as soon as it exists, which
-  existing `.js` specs are not (`checkJs` is off). Run `npm run type-check`;
-  expect to annotate DOM hosts and catalog handles, as in the example in
-  [CONTRIBUTING.md](../../../CONTRIBUTING.md#unit-and-component-specs).
+  leftover `.js` specs are not (`checkJs` is off). Run `npm run type-check`;
+  annotate DOM hosts, sinon sandboxes, and catalog handles the way
+  [`renderer-composite_spec.ts`](../../../tests/canvas/renderer-composite_spec.ts)
+  already does.
 
 Everything else about writing the spec is unchanged:
 [write-spec](../write-spec/SKILL.md).

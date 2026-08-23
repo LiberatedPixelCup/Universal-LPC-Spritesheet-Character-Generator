@@ -27,7 +27,7 @@ New specs are TypeScript (`*_spec.ts`). Do not add a new `.js` spec.
   skip this, Mocha never runs the spec and Codecov patch fails with no test
   failure. A `.ts` spec is registered with its real extension
   (`import "./foo_spec.ts";`) — see
-  [typescript](../typescript/SKILL.md#the-first-ts-browser-spec).
+  [typescript](../typescript/SKILL.md#adding-a-ts-browser-spec).
 
 New `.ts` specs are type-checked: `tests` is in `tsconfig.json` `include` under
 `@tsconfig/strictest`, so run `npm run type-check` as well.
