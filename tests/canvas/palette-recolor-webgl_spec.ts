@@ -199,6 +199,28 @@ describe("canvas/webgl-palette-recolor.ts pixel parity", function () {
     }
   });
 
+  it("throws when WebGL cannot allocate a shader", async () => {
+    const stub = sinon
+      .stub(WebGLRenderingContext.prototype, "createShader")
+      .returns(null);
+    try {
+      let thrown: unknown = null;
+      try {
+        await recolorImageWebGL(solidCanvas(255, 0, 0), [
+          { source: ["#FF0000"], target: ["#0000FF"] },
+        ]);
+      } catch (error) {
+        thrown = error;
+      }
+      expect(thrown).to.not.equal(null);
+      expect((thrown as Error).message).to.match(
+        /Failed to allocate WebGL shader/,
+      );
+    } finally {
+      stub.restore();
+    }
+  });
+
   it("throws when WebGL cannot allocate a texture", async () => {
     const stub = sinon
       .stub(WebGLRenderingContext.prototype, "createTexture")
