@@ -21,47 +21,16 @@ import {
   resetSharedWebGLForTests,
 } from "../../sources/canvas/webgl-palette-recolor.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
-import { seedCatalog } from "../browser-catalog-fixture.js";
 import { SHEET_WIDTH } from "../../sources/canvas/renderer.ts";
 import {
   solidCanvas,
   drawSnapshotToDest,
   assertOpaqueRemap,
 } from "./palette-recolor-test-helpers.ts";
-
-const RECOLOR_ITEM_ID = "body";
-
-const itemMetadata = {
-  [RECOLOR_ITEM_ID]: {
-    name: "Body",
-    type_name: "body",
-    recolors: [
-      {
-        material: "body",
-        default: "ulpc",
-        base: "ulpc.light",
-      },
-    ],
-  },
-};
-
-const paletteMetadata = {
-  versions: {},
-  materials: {
-    body: {
-      default: "ulpc",
-      base: "light",
-      palettes: {
-        ulpc: {
-          light: ["#FF0000"],
-          olive: ["#00FF00"],
-          bronze: ["#0000FF"],
-          teal: ["#00FFFF"],
-        },
-      },
-    },
-  },
-};
+import {
+  RECOLOR_ITEM_ID,
+  seedRecolorCatalog,
+} from "./palette-recolor-fixtures.ts";
 
 const OLIVE = { r: 0, g: 255, b: 0 };
 const BRONZE = { r: 0, g: 0, b: 255 };
@@ -93,7 +62,7 @@ describe("canvas/palette-recolor compositor isolation", function () {
 
   beforeEach(() => {
     catalog = createCatalog();
-    seedCatalog(catalog, itemMetadata, { paletteMetadata });
+    seedRecolorCatalog(catalog);
     clearRecolorCache();
     resetSharedWebGLForTests();
     setPaletteRecolorMode("webgl");
