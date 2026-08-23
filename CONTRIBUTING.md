@@ -272,7 +272,8 @@ Every script in [`package.json`](package.json). Run them from the repository roo
 | `npm run test:node` | Every Node spec under `tests/node/`. Ignores extra CLI args | Broad Node check. For one file use `node --test <file>` |
 | `npm run test:server` | Testem in watch mode with a browser picker | Iterating on browser specs; supports `?grep=` |
 | `npm run test:browser:coverage` | Full browser suite with Istanbul; writes `coverage/browser/` | After a gated `sources/` edit |
-| `npm run test:node:coverage` | Every Node spec under `c8`; writes `coverage/node/` | After a gated `scripts/` edit |
+| `npm run test:node:coverage` | Every Node spec under `c8`; writes `coverage/node/`; prints remaining patch `DA:0` | After a gated `scripts/` edit |
+| `npm run coverage:patch` | Prints remaining patch `DA:0` from existing `coverage/*/lcov.info` | After a coverage run, or to re-read the table |
 | `npm run test:visual` | Playwright visual suite; starts its own server | After a layout or CSS change |
 | `npm run test:visual:headed` | Same, with a visible browser | Debugging a visual failure |
 
@@ -324,7 +325,7 @@ statuses run on pull requests to `master`. All use Node 24.
 | Check | Workflow | Runs | Fails when |
 | --- | --- | --- | --- |
 | **Lint** | `lint.yml` | `npm run lint`, then `npm run type-check` | An ESLint error or any type error, including in `tests/` |
-| **Test browsers** | `ci.yml` | `npm run test:node:coverage`, then `npm run test:browser:coverage` under Xvfb | A Node or browser spec fails |
+| **Test browsers** | `ci.yml` | `npm run test:node:coverage`, then `npm run test:browser:coverage` under Xvfb | A Node or browser spec fails, or the patch-miss table still has `DA:0` |
 | **Validate site sources** | `validate-site-sources.yml` | `npm run validate-site-sources`, then asserts a clean tree | `CREDITS.csv` or `z_positions.csv` would change, meaning you did not commit the regenerated file |
 | **Visual regression (Argos)** | `visual.yml` | `npm run test:visual` | A Playwright failure. Screenshot review happens in Argos, not the check |
 | **Deploy** | `deploy.yml` | `npm run build` to GitHub Pages | Only on `master`, not a PR gate |
@@ -521,11 +522,11 @@ Plain **`npm test`** / **`npm run test:server`** stay uninstrumented. Coverage H
 
 If you changed patch-gated code under **`scripts/`** (see [`codecov.yml`](codecov.yml) `ignore:`), run **`npm run test:node:coverage`**. Browser coverage will not see those files. If you changed **`sources/`**, run **`npm run test:browser:coverage`**.
 
-**Confirm new lines locally** — Open **`coverage/browser/index.html`** or **`coverage/node/index.html`** (or the terminal report) and check that every new or edited production line is marked hit. Do not wait for Codecov CI.
+**Confirm new lines locally** — Read the printed patch-miss table from **`test:node:coverage`** / **`test:browser:coverage`** (or **`npm run coverage:patch`**), and open **`coverage/browser/index.html`** or **`coverage/node/index.html`**. Do not wait for the Codecov PR comment; it does not list line numbers.
 
 **PR checks** (see [`codecov.yml`](codecov.yml)):
 
-- **`codecov/patch`** — every new or edited production line under `sources/` (browser) or the generate-sources scripts (Node) must be executed by a unit test (100% patch). Comments, blank lines, erased TypeScript, and lines Istanbul does not give a statement counter (argument-only lines, object shorthands, function headers, or source-map holes with no `DA` row) do not count. A `DA:0` row on a straight-line statement in an already-entered function is treated as a neighbor source-map hole; `DA:0` inside a nested branch still fails until a test executes that statement.
+- **`codecov/patch`** — every new or edited production line under `sources/` (browser) or the generate-sources scripts (Node) must be executed by a unit test (100% patch). Comments, blank lines, erased TypeScript, and lines Istanbul does not give a statement counter (argument-only lines, object shorthands, function headers, or source-map holes with no `DA` row) do not count. A `DA:0` row on a straight-line statement in an already-entered function or `try` / `finally`, or on a control-flow header whose body already has a hit, is treated as a neighbor source-map hole; `DA:0` inside an unentered then / catch still fails until a test executes that statement.
 - **`codecov/changes`** — existing production lines must not lose hits (deleted or weakened unit tests).
 - There is **no** overall coverage-percentage gate. Adding a large file will not fail the PR just because the project average moved.
 

@@ -9,20 +9,23 @@ coverage:
         if_not_found: success
         # Comment, blank, erased TypeScript, Istanbul-uninstrumented
         # lines (argument-only / shorthand), and straight-line DA:0
-        # source-map holes in an entered function are marked hit in
-        # uploaded lcov. FN/BRDA rows are dropped (source-map holes on
-        # types/signatures look like misses). See mark-non-executable-lines.js.
+        # source-map holes in an entered function, entered try/finally,
+        # or a control-flow header whose body already has a hit are
+        # marked hit in uploaded lcov. FN/BRDA rows are dropped
+        # (source-map holes on types/signatures look like misses).
+        # See mark-non-executable-lines.js.
     changes:
       default:
         if_not_found: success
 
 comment:
-  layout: "condensed_header, condensed_files, condensed_footer"
+  layout: "condensed_header, condensed_files, condensed_footer, flags"
   behavior: default
   require_changes: false
   require_base: false
   require_head: true
   hide_project_coverage: true
+  after_n_builds: 2
 
 ignore:
   - tests/**

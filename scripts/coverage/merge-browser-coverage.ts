@@ -4,6 +4,7 @@ import libCoverage from "istanbul-lib-coverage";
 import libReport from "istanbul-lib-report";
 import reports from "istanbul-reports";
 import { markNonExecutableLinesInLcov } from "./mark-non-executable-lines.js";
+import { reportPatchMissesFromLcov } from "./report-patch-misses.ts";
 
 const outDir = path.join("coverage", "browser");
 
@@ -41,4 +42,10 @@ const context = libReport.createContext({
 reports.create("lcovonly", { file: "lcov.info" }).execute(context);
 reports.create("text").execute(context);
 reports.create("html").execute(context);
-markNonExecutableLinesInLcov(path.join(outDir, "lcov.info"));
+const lcovPath = path.join(outDir, "lcov.info");
+markNonExecutableLinesInLcov(lcovPath);
+const patch = reportPatchMissesFromLcov({
+  lcovPath,
+  roots: ["sources"],
+});
+if (patch.exitCode !== 0) process.exit(patch.exitCode);

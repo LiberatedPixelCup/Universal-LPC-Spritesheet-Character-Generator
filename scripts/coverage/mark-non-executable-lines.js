@@ -583,9 +583,9 @@ function directFunctionBodyStatementLines(text) {
       ts.isBlock(node.body)
     ) {
       functions.push({
-        statementLines: node.body.statements.map(
-          (statement) => lineSpan(sourceFile, statement).start,
-        ),
+        statementLines: node.body.statements
+          .filter((statement) => !isControlFlowStatement(statement))
+          .map((statement) => lineSpan(sourceFile, statement).start),
       });
     }
     ts.forEachChild(node, visit);
@@ -593,6 +593,90 @@ function directFunctionBodyStatementLines(text) {
 
   visit(sourceFile);
   return functions;
+}
+
+/**
+ * @param {ts.Node} node
+ * @returns {boolean}
+ */
+function isControlFlowStatement(node) {
+  return (
+    ts.isIfStatement(node) ||
+    ts.isWhileStatement(node) ||
+    ts.isDoStatement(node) ||
+    ts.isForStatement(node) ||
+    ts.isForOfStatement(node) ||
+    ts.isForInStatement(node) ||
+    ts.isSwitchStatement(node)
+  );
+}
+
+/**
+ * Direct statements of try / catch / finally blocks. Same neighbor-hole
+ * rule as a function body: a recorded hit in that block promotes sibling
+ * DA:0 statements in the same block only.
+ *
+ * @param {string} text
+ * @returns {Array<{ statementLines: number[] }>}
+ */
+function tryFinallyCatchBlockStatementLines(text) {
+  const sourceFile = ts.createSourceFile(
+    "file.ts",
+    text,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  );
+  /** @type {Array<{ statementLines: number[] }>} */
+  const blocks = [];
+
+  /** @param {ts.Block | undefined} block */
+  function pushBlock(block) {
+    if (!block) return;
+    blocks.push({
+      statementLines: block.statements.map(
+        (statement) => lineSpan(sourceFile, statement).start,
+      ),
+    });
+  }
+
+  /** @param {ts.Node} node */
+  function visit(node) {
+    if (ts.isTryStatement(node)) {
+      pushBlock(node.tryBlock);
+      pushBlock(node.catchClause?.block);
+      pushBlock(node.finallyBlock);
+    }
+    ts.forEachChild(node, visit);
+  }
+
+  visit(sourceFile);
+  return blocks;
+}
+
+/**
+ * @param {Map<number, number>} daHits
+ * @param {Map<number, number>} recordedHits
+ * @param {Set<number>} instrumented
+ * @param {Array<{ statementLines: number[] }>} groups
+ */
+function promoteEnteredBlockStatements(
+  daHits,
+  recordedHits,
+  instrumented,
+  groups,
+) {
+  for (const group of groups) {
+    const bodyHasHits = group.statementLines.some(
+      (line) => (recordedHits.get(line) ?? 0) > 0,
+    );
+    if (!bodyHasHits) continue;
+    for (const line of group.statementLines) {
+      if (!instrumented.has(line)) continue;
+      const prev = daHits.get(line);
+      if (prev == null || prev <= 0) daHits.set(line, 1);
+    }
+  }
 }
 
 /**
@@ -611,16 +695,170 @@ function fillStraightLineSourceMapHoles(
   text,
   instrumented,
 ) {
-  for (const fn of directFunctionBodyStatementLines(text)) {
-    const bodyHasHits = fn.statementLines.some(
-      (line) => (recordedHits.get(line) ?? 0) > 0,
-    );
-    if (!bodyHasHits) continue;
-    for (const line of fn.statementLines) {
-      if (!instrumented.has(line)) continue;
-      const prev = daHits.get(line);
-      if (prev == null || prev <= 0) daHits.set(line, 1);
+  promoteEnteredBlockStatements(
+    daHits,
+    recordedHits,
+    instrumented,
+    directFunctionBodyStatementLines(text),
+  );
+  promoteEnteredBlockStatements(
+    daHits,
+    recordedHits,
+    instrumented,
+    tryFinallyCatchBlockStatementLines(text),
+  );
+}
+
+/**
+ * Line of the `)` that closes `if (` / `while (` / `for (` after `offset`.
+ *
+ * @param {string} text
+ * @param {number} offset
+ * @returns {number}
+ */
+function closeParenLine(text, offset) {
+  let i = offset;
+  while (i < text.length) {
+    const ch = text[i];
+    if (ch === ")") return lineOfOffset(text, i);
+    if (ch === " " || ch === "\t" || ch === "\n" || ch === "\r") {
+      i += 1;
+      continue;
     }
+    break;
+  }
+  return lineOfOffset(text, Math.max(0, offset - 1));
+}
+
+/**
+ * Header lines of if / while / for / do (keyword + condition, including
+ * wrapped continuations). Does not include then / else / loop bodies.
+ *
+ * @param {ts.SourceFile} sourceFile
+ * @param {string} text
+ * @param {ts.Node} node
+ * @returns {number[]}
+ */
+function controlFlowHeaderLines(sourceFile, text, node) {
+  if (ts.isIfStatement(node) || ts.isWhileStatement(node)) {
+    const start = lineSpan(sourceFile, node).start;
+    const end = closeParenLine(text, node.expression.getEnd());
+    return linesFromTo(start, end);
+  }
+  if (ts.isDoStatement(node)) {
+    const start = lineSpan(sourceFile, node.expression).start;
+    const end = closeParenLine(text, node.expression.getEnd());
+    return linesFromTo(start, end);
+  }
+  if (
+    ts.isForStatement(node) ||
+    ts.isForOfStatement(node) ||
+    ts.isForInStatement(node)
+  ) {
+    const start = lineSpan(sourceFile, node).start;
+    const last =
+      (ts.isForStatement(node) &&
+        (node.incrementor ?? node.condition ?? node.initializer)) ||
+      (ts.isForOfStatement(node) || ts.isForInStatement(node)
+        ? node.expression
+        : undefined);
+    const end = last
+      ? closeParenLine(text, last.getEnd())
+      : lineSpan(sourceFile, node).start;
+    return linesFromTo(start, end);
+  }
+  return [];
+}
+
+/**
+ * True when a recorded hit falls on a line inside `node` (then / else /
+ * loop body). The header is not part of this span.
+ *
+ * @param {ts.SourceFile} sourceFile
+ * @param {ts.Node | undefined} node
+ * @param {Map<number, number>} recordedHits
+ * @returns {boolean}
+ */
+function recordedHitInNode(sourceFile, node, recordedHits) {
+  if (!node) return false;
+  const span = lineSpan(sourceFile, node);
+  for (let line = span.start; line <= span.end; line++) {
+    if ((recordedHits.get(line) ?? 0) > 0) return true;
+  }
+  return false;
+}
+
+/**
+ * Header lines of if / while / for / do whose body already has a recorded
+ * hit. A hit in `else` still promotes `if (`, not the unentered then-body.
+ *
+ * @param {string} text
+ * @param {Map<number, number>} recordedHits
+ * @returns {Set<number>}
+ */
+function controlFlowHeaderLinesWhenBodyHit(text, recordedHits) {
+  const sourceFile = ts.createSourceFile(
+    "file.ts",
+    text,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  );
+  /** @type {Set<number>} */
+  const headers = new Set();
+
+  /** @param {ts.Node} node */
+  function visit(node) {
+    let bodyHit = false;
+    if (ts.isIfStatement(node)) {
+      bodyHit =
+        recordedHitInNode(sourceFile, node.thenStatement, recordedHits) ||
+        recordedHitInNode(sourceFile, node.elseStatement, recordedHits);
+    } else if (
+      ts.isWhileStatement(node) ||
+      ts.isDoStatement(node) ||
+      ts.isForStatement(node) ||
+      ts.isForOfStatement(node) ||
+      ts.isForInStatement(node)
+    ) {
+      bodyHit = recordedHitInNode(sourceFile, node.statement, recordedHits);
+    }
+    if (bodyHit) {
+      for (const line of controlFlowHeaderLines(sourceFile, text, node)) {
+        headers.add(line);
+      }
+    }
+    ts.forEachChild(node, visit);
+  }
+
+  visit(sourceFile);
+  return headers;
+}
+
+/**
+ * @param {number} start
+ * @param {number} end
+ * @returns {number[]}
+ */
+function linesFromTo(start, end) {
+  /** @type {number[]} */
+  const lines = [];
+  for (let line = start; line <= end; line++) lines.push(line);
+  return lines;
+}
+
+/**
+ * Promote DA:0 on if / while / for / do headers when a statement in that
+ * construct's body already has a recorded hit.
+ *
+ * @param {Map<number, number>} daHits
+ * @param {Map<number, number>} recordedHits
+ * @param {string} text
+ */
+function fillControlFlowHeaderSourceMapHoles(daHits, recordedHits, text) {
+  for (const line of controlFlowHeaderLinesWhenBodyHit(text, recordedHits)) {
+    const prev = daHits.get(line);
+    if (prev == null || prev <= 0) daHits.set(line, 1);
   }
 }
 
@@ -701,6 +939,7 @@ function processRecord(record, root) {
     if (!daHits.has(line)) daHits.set(line, 1);
   }
   fillStraightLineSourceMapHoles(daHits, recordedHits, text, instrumented);
+  fillControlFlowHeaderSourceMapHoles(daHits, recordedHits, text);
 
   const daLines = [...daHits.entries()]
     .sort((a, b) => a[0] - b[0])

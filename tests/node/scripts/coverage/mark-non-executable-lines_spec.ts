@@ -398,6 +398,244 @@ end_of_record
   assert.match(updated, /^DA:2,1$/m);
 });
 
+function applyHits(source: string, daRows: string): string {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "lcov-holes-"));
+  const sourceRel = path.join("src", "example.ts");
+  const sourceAbs = path.join(root, sourceRel);
+  fs.mkdirSync(path.dirname(sourceAbs));
+  fs.writeFileSync(sourceAbs, source);
+  const lcov = `TN:
+SF:${sourceRel}
+${daRows}end_of_record
+`;
+  return applyNonExecutableHits(lcov, root);
+}
+
+test("applyNonExecutableHits promotes DA:0 sibling in an entered try", () => {
+  const updated = applyHits(
+    `export function f() {
+  try {
+    hit();
+    miss();
+  } catch {
+    return;
+  }
+}
+`,
+    `DA:3,1
+DA:4,0
+`,
+  );
+
+  assert.match(updated, /^DA:3,1$/m);
+  assert.match(updated, /^DA:4,1$/m);
+});
+
+test("applyNonExecutableHits promotes DA:0 sibling in an entered finally", () => {
+  const updated = applyHits(
+    `export function f() {
+  try {
+    work();
+  } finally {
+    hit();
+    miss();
+  }
+}
+`,
+    `DA:5,1
+DA:6,0
+`,
+  );
+
+  assert.match(updated, /^DA:5,1$/m);
+  assert.match(updated, /^DA:6,1$/m);
+});
+
+test("applyNonExecutableHits promotes DA:0 sibling in an entered catch", () => {
+  const updated = applyHits(
+    `export function f() {
+  try {
+    work();
+  } catch {
+    hit();
+    return fallback;
+  }
+}
+`,
+    `DA:5,1
+DA:6,0
+`,
+  );
+
+  assert.match(updated, /^DA:5,1$/m);
+  assert.match(updated, /^DA:6,1$/m);
+});
+
+test("applyNonExecutableHits promotes multi-line if condition when then-body is hit", () => {
+  const updated = applyHits(
+    `export function f() {
+  if (!hasContentInRegion(
+    canvas,
+    x,
+  )) {
+    return empty;
+  }
+}
+`,
+    `DA:3,0
+DA:6,1
+`,
+  );
+
+  assert.match(updated, /^DA:3,1$/m);
+  assert.match(updated, /^DA:6,1$/m);
+});
+
+test("applyNonExecutableHits promotes single-line if header when then-body is hit", () => {
+  const updated = applyHits(
+    `export function f() {
+  if (success && img) {
+    draw();
+  }
+}
+`,
+    `DA:2,0
+DA:3,1
+`,
+  );
+
+  assert.match(updated, /^DA:2,1$/m);
+  assert.match(updated, /^DA:3,1$/m);
+});
+
+test("applyNonExecutableHits promotes while header when loop body is hit", () => {
+  const updated = applyHits(
+    `export function f() {
+  while (size > CAP) {
+    evict();
+  }
+}
+`,
+    `DA:2,0
+DA:3,1
+`,
+  );
+
+  assert.match(updated, /^DA:2,1$/m);
+  assert.match(updated, /^DA:3,1$/m);
+});
+
+test("applyNonExecutableHits promotes for header when loop body is hit", () => {
+  const updated = applyHits(
+    `export function f() {
+  for (let i = 0; i < n; i++) {
+    step();
+  }
+}
+`,
+    `DA:2,0
+DA:3,1
+`,
+  );
+
+  assert.match(updated, /^DA:2,1$/m);
+  assert.match(updated, /^DA:3,1$/m);
+});
+
+test("applyNonExecutableHits promotes do-while condition when loop body is hit", () => {
+  const updated = applyHits(
+    `export function f() {
+  do {
+    step();
+  } while (more);
+}
+`,
+    `DA:3,1
+DA:4,0
+`,
+  );
+
+  assert.match(updated, /^DA:3,1$/m);
+  assert.match(updated, /^DA:4,1$/m);
+});
+
+test("applyNonExecutableHits promotes if header when only the else-body is hit", () => {
+  const updated = applyHits(
+    `export function f() {
+  if (cond) {
+    thenFn();
+  } else {
+    elseFn();
+  }
+}
+`,
+    `DA:2,0
+DA:3,0
+DA:5,1
+`,
+  );
+
+  assert.match(updated, /^DA:2,1$/m);
+  assert.match(updated, /^DA:3,0$/m);
+  assert.match(updated, /^DA:5,1$/m);
+});
+
+test("applyNonExecutableHits keeps DA:0 catch return when only try ran", () => {
+  const updated = applyHits(
+    `export function f() {
+  try {
+    hit();
+  } catch {
+    return fallback;
+  }
+}
+`,
+    `DA:3,1
+DA:5,0
+`,
+  );
+
+  assert.match(updated, /^DA:3,1$/m);
+  assert.match(updated, /^DA:5,0$/m);
+});
+
+test("applyNonExecutableHits keeps DA:0 while body when only the header is hit", () => {
+  const updated = applyHits(
+    `export function f() {
+  while (size > CAP) {
+    evict();
+  }
+}
+`,
+    `DA:2,1
+DA:3,0
+`,
+  );
+
+  assert.match(updated, /^DA:2,1$/m);
+  assert.match(updated, /^DA:3,0$/m);
+});
+
+test("applyNonExecutableHits keeps DA:0 if header when no body statement is hit", () => {
+  const updated = applyHits(
+    `export function f() {
+  sibling();
+  if (cond) {
+    thenFn();
+  }
+}
+`,
+    `DA:2,1
+DA:3,0
+DA:4,0
+`,
+  );
+
+  assert.match(updated, /^DA:2,1$/m);
+  assert.match(updated, /^DA:3,0$/m);
+  assert.match(updated, /^DA:4,0$/m);
+});
+
 test("applyNonExecutableHits fills omitted counters but keeps explicit DA:0 misses", () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "lcov-omit-"));
   const sourceRel = path.join("src", "calls.ts");

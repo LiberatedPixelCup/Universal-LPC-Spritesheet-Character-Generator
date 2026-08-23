@@ -61,6 +61,45 @@ A spec that is not imported from [`tests/tests.js`](../../../tests/tests.js)
 never runs. That produces uncovered lines with **no test failure** — the most
 common cause of a surprising patch failure on a browser change.
 
+## Hole vs miss
+
+A `DA:0` is a **hole** when a neighbor or the block body already has a hit
+and an existing spec already asserts the behavior. Do not add another spec
+for that line. Concise wrappers such as `span.async("name", () => fn())`
+and `span.sync(...)` in a `finally` are the usual cases that look uncovered.
+
+[`mark-non-executable-lines.js`](../../../scripts/coverage/mark-non-executable-lines.js)
+promotes those holes when they are a straight-line statement in an entered
+function or `try` / `finally` / `catch`, or a control-flow header (`if (` /
+`while (` / `for (` / `do`) whose body already has a recorded hit. It does
+**not** promote a then-body just because `if (` ran, or a catch-only
+`return` just because the function or `try` was entered.
+
+If the marker still leaves `DA:0` on a wrapper, extract a named helper so
+those lines become a function body. `fillStraightLineSourceMapHoles`
+already covers that.
+
+A `DA:0` is a **real miss** when no neighbor or body hit exists, or no spec
+asserts the behavior. Add a spec.
+
+## Patch miss table
+
+Do not wait for the Codecov PR comment. It still will not list line numbers.
+
+After `test:browser:coverage` / `test:node:coverage`, the same scripts print
+`file:line` plus the trimmed source for every remaining patch `DA:0`, and
+exit 1 if any remain. Read that table (or the **Test browsers** job log
+when the local HTML is stale).
+
+Standalone, against reports that already exist:
+
+```bash
+npm run coverage:patch
+```
+
+`--base` overrides the merge-base ref. Precedence is `--base`, then
+`GITHUB_BASE_REF` (as `origin/<name>`), then `origin/master`.
+
 ## The gates
 
 - **`codecov/patch`** — 100% of new or edited production lines under `sources/`
@@ -104,7 +143,10 @@ editing the marker's line classifier.
 Do not widen [`mark-non-executable-lines.js`](../../../scripts/coverage/mark-non-executable-lines.js)
 for a signature line already in `nonExecutableLineNumbers`. Do not add a
 test for the parameter list. Extracting a named type (`RootViewRef`) is
-fine for readability; it does not satisfy the gate by itself.
+fine for readability; it does not satisfy the gate by itself. The marker
+may promote entered `try` / `finally` statements and headers whose body
+already has a hit; it still must not promote then-bodies or catch-only
+returns.
 
 Full description of the CI wiring:
 [CONTRIBUTING.md](../../../CONTRIBUTING.md#unit-test-coverage).
