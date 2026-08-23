@@ -27,7 +27,7 @@ The profiler tracks these expensive operations:
 - **Operation:** `renderCharacter()` in `sources/canvas/renderer.ts`
 - **Measures:** Total rendering time including image loading and canvas operations
 - **Format:** `renderCharacter`
-- **Phases:** `profiler.snapshot().renderCharacter.calls[]` — one report per completed `runRenderCharacter`. Each report has `totalMs`, `phasesMs`, `unaccountedMs`, and `counters`. Phase keys: `mithrilRedrawStart`, `buildDrawCalls`, `sizeCanvas`, `loadImages`, `recolor`, `draw`, `customLoad`, `customRecolor`, `customDraw`, `mithrilRedrawEnd`. Counters include `drawCalls`, `selections`, `customAnims`, canvas size, and image/recolor cache hits vs loads/misses. `diff:app-profile` prints a `── renderCharacter phases ──` section (per call index).
+- **Phases:** `profiler.snapshot().renderCharacter.calls[]` — one report per completed `runRenderCharacter`. Each report has `totalMs`, `phasesMs`, `unaccountedMs`, and `counters`. Phase keys: `mithrilRedrawStart`, `buildDrawCalls`, `sizeCanvas`, `loadImages`, `recolor`, `draw`, `customLoad`, `customRecolor`, `customDraw`, `mithrilRedrawEnd`. Counters include `drawCalls`, `selections`, `customAnims`, canvas size, and image/recolor cache hits vs loads/misses. `diff:app-profile` prints a `── renderCharacter phases ──` section (per call index). Unit tests lock those counters as a work budget in [`tests/canvas/render-work_spec.ts`](tests/canvas/render-work_spec.ts); this document and `npm run profile:app` are the timing check, not that budget.
 
 ### Headless app profiler
 

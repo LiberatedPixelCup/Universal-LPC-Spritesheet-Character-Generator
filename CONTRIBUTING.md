@@ -71,6 +71,16 @@ If you add this animations list, users can filter the results based on the anima
 
 As such, if you wish to include less than this list, such as only walk and slash, you should still include the animations definition to restrict it to just those assets. Users will still be able to access your asset, but it won't appear if the animations filter is used and you did not include that animation in your sheet definition.
 
+#### Adding a standard animation row
+
+This is for a new row on the universal LPC sheet (a new `ANIMATION_OFFSETS` key), not for listing which rows an existing asset supports (that is the `"animations"` array above).
+
+- [`sources/state/constants.ts`](sources/state/constants.ts): add the UI entry to `ANIMATIONS` (`folderName` if the spritesheet folder is not the `value`), the y-key to `ANIMATION_OFFSETS`, and `row` / `num` / `cycle` to `ANIMATION_CONFIGS`. Add the name to `ANIMATION_DEFAULTS` only if sheet definitions that omit `"animations"` should include it.
+- [`sources/canvas/renderer.ts`](sources/canvas/renderer.ts): raise `SHEET_HEIGHT` if the new `row + num` is past the current last band (`1h_halfslash` at row 50, 4 rows). Add a `buildDrawCalls` alias branch only if the metadata name is not the offset key (`combat` → `combat_idle`, `1h_slash` → `backslash`, and similar).
+- Body sheets: `spritesheets/body/bodies/<bodyType>/<folder>.png` (and any other bases that must support the row).
+- [`tests/canvas/render-work_spec.ts`](tests/canvas/render-work_spec.ts): append the **metadata** name to `FULL_OFFSET_ANIMATIONS` (not the offset key). If the new band is now last, point the height formula at that `ANIMATION_CONFIGS` entry instead of `1h_halfslash`.
+- Filters, preview, and ZIP only if those call sites gain a new name — copy a neighboring entry; do not invent keys.
+
 The category tree and items in the app come from generated metadata, not from HTML. After you add or change definitions, run **File Generation** (below) and commit the updated **`CREDITS.csv`**, **`scripts/zPositioning/z_positions.csv`**, and any other tracked outputs that changed. The app’s **five** `dist/*-metadata.js` modules (see [File Generation](#file-generation)) are built by **Vite** when you run **`npm run dev`** or **`npm run build`**; they are not committed (**`/dist/`** is gitignored).
 
 #### URL hash
@@ -435,7 +445,7 @@ This runs Testem in dev mode (browser picker / watch) against the same **[`tests
 
 #### Unit and component specs
 
-[`tests/tests.js`](tests/tests.js) imports every browser spec listed there. New specs are TypeScript (`*_spec.ts`); do not add a new `.js` spec. **`tests/node/`** is exercised by **`before_tests`** and by **`npm run test:node`** directly. [`tests/node/run-node-tests.js`](tests/node/run-node-tests.js) collects both **`_spec.js`** and **`_spec.ts`** under **`tests/node/`**.
+[`tests/tests.js`](tests/tests.js) imports every browser spec listed there. New specs are TypeScript (`*_spec.ts`); do not add a new `.js` spec. **`tests/node/`** is exercised by **`before_tests`** and by **`npm run test:node`** directly. [`tests/node/run-node-tests.js`](tests/node/run-node-tests.js) collects both **`_spec.js`** and **`_spec.ts`** under **`tests/node/`**. [`tests/canvas/render-work_spec.ts`](tests/canvas/render-work_spec.ts) is the per-composite work budget (`drawCalls`, sheet size, image lookups); [`tests/canvas/render-call-count_spec.ts`](tests/canvas/render-call-count_spec.ts) is how many times `renderCharacter` runs; `npm run profile:app` is timing.
 
 [`tests/vitest-setup.js`](tests/vitest-setup.js) loads **`sources/vendor-globals.ts`** and sets test flags on **`window`**. Specs create independent catalogs with **`createCatalog()`** and independent state with **`createState()`**, and register only the metadata stages and records they exercise. Shared helpers in [`tests/browser-catalog-fixture.js`](tests/browser-catalog-fixture.js) seed explicit fixture catalogs for larger ZIP scenarios. See [Catalog and state](#catalog-and-state).
 
@@ -564,6 +574,7 @@ When a change makes documentation stale, update the file that owns that topic. [
 | Change | Update |
 | --- | --- |
 | `sheet_definitions/`, credits, variants, aliases, z-positions | [sheet-definition](.agents/skills/sheet-definition/SKILL.md); commit dirty `CREDITS.csv` / `z_positions.csv`; [z-positions](#z-positions) |
+| `constants.ts` animation lists / new LPC sheet row | [Adding a standard animation row](#adding-a-standard-animation-row) |
 | Bootstrap, render path, module roles | [ARCHITECTURE.md](ARCHITECTURE.md) |
 | `sources/canvas/`, palette recolor, WebGL vs CPU | [canvas-render](.agents/skills/canvas-render/SKILL.md), [PALETTE_RECOLOR_GUIDE.md](PALETTE_RECOLOR_GUIDE.md) |
 | Catalog, `state`, hash | [catalog](.agents/skills/catalog/SKILL.md), [Catalog and state](#catalog-and-state) |

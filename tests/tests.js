@@ -20,6 +20,7 @@ import "./canvas/renderer-issue-364_spec.js";
 import "./canvas/renderer_spec.js";
 import "./canvas/renderer-composite_spec.ts";
 import "./canvas/render-call-count_spec.ts";
+import "./canvas/render-work_spec.ts";
 import "./components/App_spec.js";
 import "./components/advanced/AdvancedTools_spec.js";
 import "./components/CollapsibleSection_spec.js";
