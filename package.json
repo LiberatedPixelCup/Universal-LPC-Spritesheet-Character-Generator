@@ -27,7 +27,7 @@
     "z-positions:update": "node scripts/zPositioning/update_zpos.ts",
     "test": "npm run test:node && node ./node_modules/testem/testem.js ci",
     "test:node": "node ./tests/node/run-node-tests.js",
-    "test:node:coverage": "rimraf coverage/node && c8 node ./tests/node/run-node-tests.js && node scripts/coverage/mark-non-executable-lines.js coverage/node/lcov.info && node scripts/coverage/report-patch-misses.ts --lcov coverage/node/lcov.info --roots scripts",
+    "test:node:coverage": "rimraf coverage/node && c8 node ./tests/node/run-node-tests.js && node scripts/coverage/mark-non-executable-lines.js coverage/node/lcov.info && node scripts/coverage/report-patch-misses.ts --no-fail --lcov coverage/node/lcov.info --roots scripts",
     "coverage:patch": "node scripts/coverage/report-patch-misses.ts",
     "test:server": "node ./node_modules/testem/testem.js",
     "test:browser:coverage": "rimraf coverage/browser && VITE_COVERAGE=true node ./node_modules/testem/testem.js ci",

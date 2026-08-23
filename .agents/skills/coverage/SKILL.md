@@ -87,11 +87,12 @@ asserts the behavior. Add a spec.
 Do not wait for the Codecov PR comment. It still will not list line numbers.
 
 After `test:browser:coverage` / `test:node:coverage`, the same scripts print
-`file:line` plus the trimmed source for every remaining patch `DA:0`, and
-exit 1 if any remain. Read that table (or the **Test browsers** job log
-when the local HTML is stale).
+`file:line` plus the trimmed source for every remaining patch `DA:0`. Those
+commands stay green so CI can upload `lcov` to Codecov. The **`codecov/patch`**
+check is what fails on a miss. Read that table (or the **Test browsers** job
+log when the local HTML is stale).
 
-Standalone, against reports that already exist:
+Standalone, against reports that already exist (`exit 1` if any miss):
 
 ```bash
 npm run coverage:patch

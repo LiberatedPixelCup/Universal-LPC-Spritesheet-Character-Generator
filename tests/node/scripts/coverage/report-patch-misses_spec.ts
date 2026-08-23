@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -339,4 +339,52 @@ end_of_record
 
   assert.equal(status, 1);
   assert.match(output, /sources\/example\.ts:3\tmiss\(\);/);
+});
+
+test("CLI --no-fail prints the table and exits 0", () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "patch-miss-nofail-"));
+  git(["init", "-b", "main"], root);
+  git(
+    ["-c", "commit.gpgsign=false", "commit", "--allow-empty", "-m", "base"],
+    root,
+  );
+  writeSource(
+    root,
+    "sources/example.ts",
+    "export function f() {\n  hit();\n  miss();\n}\n",
+  );
+  git(["add", "sources/example.ts"], root);
+  git(["-c", "commit.gpgsign=false", "commit", "-m", "head"], root);
+  const lcovPath = path.join(root, "lcov.info");
+  fs.writeFileSync(
+    lcovPath,
+    `TN:
+SF:sources/example.ts
+DA:3,0
+end_of_record
+`,
+  );
+
+  const result = spawnSync(
+    process.execPath,
+    [
+      SCRIPT,
+      "--no-fail",
+      "--base",
+      "HEAD~1",
+      "--lcov",
+      lcovPath,
+      "--roots",
+      "sources",
+      "--root",
+      root,
+    ],
+    { cwd: root, encoding: "utf8" },
+  );
+
+  assert.equal(result.status, 0);
+  assert.match(
+    `${result.stdout}${result.stderr}`,
+    /sources\/example\.ts:3\tmiss\(\);/,
+  );
 });

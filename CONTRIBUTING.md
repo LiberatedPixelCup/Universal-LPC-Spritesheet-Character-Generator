@@ -273,7 +273,7 @@ Every script in [`package.json`](package.json). Run them from the repository roo
 | `npm run test:server` | Testem in watch mode with a browser picker | Iterating on browser specs; supports `?grep=` |
 | `npm run test:browser:coverage` | Full browser suite with Istanbul; writes `coverage/browser/` | After a gated `sources/` edit |
 | `npm run test:node:coverage` | Every Node spec under `c8`; writes `coverage/node/`; prints remaining patch `DA:0` | After a gated `scripts/` edit |
-| `npm run coverage:patch` | Prints remaining patch `DA:0` from existing `coverage/*/lcov.info` | After a coverage run, or to re-read the table |
+| `npm run coverage:patch` | Prints remaining patch `DA:0` from existing `coverage/*/lcov.info` and exits 1 if any | After a coverage run, or to re-read the table |
 | `npm run test:visual` | Playwright visual suite; starts its own server | After a layout or CSS change |
 | `npm run test:visual:headed` | Same, with a visible browser | Debugging a visual failure |
 
@@ -325,7 +325,7 @@ statuses run on pull requests to `master`. All use Node 24.
 | Check | Workflow | Runs | Fails when |
 | --- | --- | --- | --- |
 | **Lint** | `lint.yml` | `npm run lint`, then `npm run type-check` | An ESLint error or any type error, including in `tests/` |
-| **Test browsers** | `ci.yml` | `npm run test:node:coverage`, then `npm run test:browser:coverage` under Xvfb | A Node or browser spec fails, or the patch-miss table still has `DA:0` |
+| **Test browsers** | `ci.yml` | `npm run test:node:coverage`, then `npm run test:browser:coverage` under Xvfb | A Node or browser spec fails. A patch miss is printed in the log and fails **`codecov/patch`**, not this job |
 | **Validate site sources** | `validate-site-sources.yml` | `npm run validate-site-sources`, then asserts a clean tree | `CREDITS.csv` or `z_positions.csv` would change, meaning you did not commit the regenerated file |
 | **Visual regression (Argos)** | `visual.yml` | `npm run test:visual` | A Playwright failure. Screenshot review happens in Argos, not the check |
 | **Deploy** | `deploy.yml` | `npm run build` to GitHub Pages | Only on `master`, not a PR gate |

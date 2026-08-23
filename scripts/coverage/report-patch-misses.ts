@@ -226,9 +226,11 @@ export function reportPatchMissesFromLcov(options: {
   changedLines?: Map<string, Set<number>>;
   ignore?: string[];
   write?: (text: string) => void;
+  failOnMiss?: boolean;
 }): { misses: PatchMiss[]; exitCode: number } {
   const sourceRoot = options.sourceRoot ?? process.cwd();
   const write = options.write ?? ((text) => console.error(text));
+  const failOnMiss = options.failOnMiss ?? true;
   const lcov = fs.readFileSync(options.lcovPath, "utf8");
   const ignore = options.ignore ?? loadCodecovIgnore(sourceRoot);
   let changedLines = options.changedLines;
@@ -241,7 +243,7 @@ export function reportPatchMissesFromLcov(options: {
       write(
         `Could not diff against ${base}. Pass --base or fetch the PR base.\n${message}\n`,
       );
-      return { misses: [], exitCode: 1 };
+      return { misses: [], exitCode: failOnMiss ? 1 : 0 };
     }
   }
   const misses = collectPatchMisses({
@@ -253,12 +255,16 @@ export function reportPatchMissesFromLcov(options: {
   });
   const table = formatPatchMissTable(misses);
   if (table) write(table);
-  return { misses, exitCode: misses.length === 0 ? 0 : 1 };
+  return {
+    misses,
+    exitCode: failOnMiss && misses.length > 0 ? 1 : 0,
+  };
 }
 
 export function main(argv: readonly string[] = process.argv.slice(2)): number {
   const sourceRoot = parseArgValue(argv, "--root") ?? process.cwd();
   const base = parseArgValue(argv, "--base");
+  const failOnMiss = !argv.includes("--no-fail");
   const explicitLcov = parseArgValues(argv, "--lcov");
   const explicitRoots = parseArgValues(argv, "--roots").flatMap((value) =>
     value.split(","),
@@ -283,6 +289,7 @@ export function main(argv: readonly string[] = process.argv.slice(2)): number {
       roots: job.roots,
       sourceRoot,
       base,
+      failOnMiss,
     });
     if (result.exitCode !== 0) exitCode = 1;
   }

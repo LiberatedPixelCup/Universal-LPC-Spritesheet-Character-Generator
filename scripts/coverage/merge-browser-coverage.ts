@@ -44,8 +44,8 @@ reports.create("text").execute(context);
 reports.create("html").execute(context);
 const lcovPath = path.join(outDir, "lcov.info");
 markNonExecutableLinesInLcov(lcovPath);
-const patch = reportPatchMissesFromLcov({
+reportPatchMissesFromLcov({
   lcovPath,
   roots: ["sources"],
+  failOnMiss: false,
 });
-if (patch.exitCode !== 0) process.exit(patch.exitCode);
