@@ -4,8 +4,7 @@
  * Asserts planning state (`drawCalls`, `customAreaItems`), canvas geometry, and
  * extract/single-item size contracts — not full-sheet pixel goldens.
  *
- * Real sprite URLs (no global Image stub): same rationale as
- * `renderer-issue-364_spec.js`. Failed loads are fine for drawCall planning;
+ * Real sprite URLs (no global Image stub). Failed loads are fine for drawCall planning;
  * content smoke passes a truthy `recolors` arg so paths resolve to existing
  * `walk.png` sheets under `body/bodies/male/`.
  */
@@ -21,6 +20,7 @@ import {
   renderCharacter,
   renderSingleItem,
   renderSingleItemAnimation,
+  addedCustomAnimations,
   drawCalls,
   customAreaItems,
   SHEET_WIDTH,
@@ -567,6 +567,24 @@ describe("canvas/renderer.ts", () => {
       expect(area.some((entry) => entry.type === "custom_sprite")).to.equal(
         true,
       );
+    });
+
+    it("records custom animation names on the exported addedCustomAnimations set after renderCharacter", async () => {
+      await renderCharacter(
+        catalog,
+        state,
+        {
+          slot: {
+            itemId: "wheel_item",
+            variant: "brass",
+            name: "Wheel",
+          },
+        },
+        "male",
+      );
+
+      expect(addedCustomAnimations.size).to.be.at.least(1);
+      expect(addedCustomAnimations.has("wheelchair")).to.equal(true);
     });
   });
 
