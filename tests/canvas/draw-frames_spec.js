@@ -1,6 +1,7 @@
 import {
   drawFrameToFrame,
   drawFramesToCustomAnimation,
+  drawSingleAnimSpriteToCustomAnimation,
 } from "../../sources/canvas/draw-frames.ts";
 import { expect } from "chai";
 import { describe, it, beforeEach } from "mocha-globals";
@@ -188,6 +189,62 @@ describe("drawFramesToCustomAnimation", () => {
       64,
       0,
       0,
+      64,
+      64,
+    ]);
+  });
+});
+
+describe("drawSingleAnimSpriteToCustomAnimation", () => {
+  let ctx;
+
+  beforeEach(() => {
+    ctx = {
+      drawImage: sinon.spy(),
+    };
+  });
+
+  it("copies same-size frames from a 4-row source", () => {
+    const customAnimDef = {
+      frameSize: 128,
+      frames: [["slash-n,5"]],
+    };
+    const src = { width: 768, height: 512 };
+
+    drawSingleAnimSpriteToCustomAnimation(ctx, customAnimDef, 10, src);
+
+    expect(ctx.drawImage.calledOnce).to.be.true;
+    expect(ctx.drawImage.getCall(0).args).to.deep.equal([
+      src,
+      640,
+      0,
+      128,
+      128,
+      0,
+      10,
+      128,
+      128,
+    ]);
+  });
+
+  it("centers a smaller 4-row source in a larger dest frame", () => {
+    const customAnimDef = {
+      frameSize: 128,
+      frames: [["slash-n,5"]],
+    };
+    const src = { width: 384, height: 256 };
+
+    drawSingleAnimSpriteToCustomAnimation(ctx, customAnimDef, 0, src);
+
+    expect(ctx.drawImage.calledOnce).to.be.true;
+    expect(ctx.drawImage.getCall(0).args).to.deep.equal([
+      src,
+      320,
+      0,
+      64,
+      64,
+      32,
+      32,
       64,
       64,
     ]);
