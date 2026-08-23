@@ -13,8 +13,13 @@ import {
   recolorWithPalette,
   setPaletteRecolorMode,
   getPaletteRecolorConfig,
+  type RecolorMode,
 } from "../../sources/canvas/palette-recolor.ts";
-import { createCatalog } from "../../sources/state/catalog.ts";
+import {
+  createCatalog,
+  type CatalogReader,
+  type CatalogWriter,
+} from "../../sources/state/catalog.ts";
 import {
   solidCanvas,
   splitCanvas,
@@ -22,9 +27,9 @@ import {
 } from "./palette-recolor-test-helpers.ts";
 
 describe("canvas/palette-recolor.ts single-pass merge (CPU path)", () => {
-  let previousMode;
-  let catalog;
-  let catalogWriter;
+  let previousMode: RecolorMode;
+  let catalog: CatalogReader;
+  let catalogWriter: CatalogWriter;
 
   before(() => {
     ({ reader: catalog, writer: catalogWriter } = createCatalog());
@@ -32,6 +37,9 @@ describe("canvas/palette-recolor.ts single-pass merge (CPU path)", () => {
       versions: {},
       materials: {
         body: {
+          type: "material",
+          label: "Body",
+          desc: "",
           default: "ulpc",
           base: "light",
           palettes: {
@@ -134,13 +142,17 @@ describe("canvas/palette-recolor.ts single-pass merge (CPU path)", () => {
 
   it("falls back to the item source key when target color is missing", async () => {
     const paletteMeta = catalog.getPaletteMetadata().unwrapOr(null);
-    expect(paletteMeta).to.not.equal(null);
+    if (!paletteMeta) {
+      throw new Error("expected palette metadata");
+    }
 
     const bodyMaterial = paletteMeta.materials.body;
     const version = bodyMaterial.default;
     const variants = Object.keys(bodyMaterial.palettes[version] ?? {});
     const sourceVariant = variants.find((v) => v !== bodyMaterial.base);
-    expect(sourceVariant).to.not.equal(undefined);
+    if (!sourceVariant) {
+      throw new Error("expected a non-base palette variant");
+    }
 
     const sourceColors = bodyMaterial.palettes[version][sourceVariant];
     const srcHex = sourceColors[0];
