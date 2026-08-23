@@ -9,13 +9,9 @@ import { expect } from "chai";
 import sinon, { type SinonSandbox } from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import {
-  initCanvas,
   renderCharacter,
   resetRenderCharacterQueueForTests,
   resetOffscreenCanvasStateForTests,
-  addedCustomAnimations,
-  drawCalls,
-  customAreaItems,
   canvas as rendererCanvas,
   SHEET_WIDTH,
   SHEET_HEIGHT,
@@ -35,6 +31,7 @@ import { seedCatalog } from "../browser-catalog-fixture.js";
 import { createState } from "../../sources/state/state.ts";
 import { ANIMATION_OFFSETS } from "../../sources/state/constants.ts";
 import { readPixel } from "./palette-recolor-test-helpers.ts";
+import { resetRendererModuleState } from "./renderer-test-helpers.ts";
 import m from "mithril";
 
 const WALK_Y = ANIMATION_OFFSETS.walk;
@@ -158,16 +155,6 @@ function recolorBodyItem(pathPrefix: string): Record<string, unknown> {
       },
     },
   };
-}
-
-function resetRendererModuleState(): void {
-  resetRenderCharacterQueueForTests();
-  drawCalls.length = 0;
-  for (const k of Object.keys(customAreaItems)) {
-    delete customAreaItems[k];
-  }
-  addedCustomAnimations.clear();
-  initCanvas();
 }
 
 function destPixel(x: number, y: number): Rgba {
