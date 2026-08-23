@@ -16,6 +16,7 @@ import "./canvas/palette-recolor-mode_spec.ts";
 import "./canvas/palette-recolor-webgl_spec.ts";
 import "./canvas/palette-recolor-deferred_spec.ts";
 import "./canvas/palette-recolor-isolation_spec.ts";
+import "./canvas/palette-recolor-preview_spec.ts";
 import "./canvas/preview-animation_spec.js";
 import "./canvas/preview-canvas_spec.js";
 import "./canvas/renderer_spec.ts";
