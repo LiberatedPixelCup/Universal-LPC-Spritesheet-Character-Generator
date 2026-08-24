@@ -45,13 +45,14 @@ module runs, before any DOM exists:
    `sources/state/` does not need the catalog instance threaded in. Tests may
    override effects with `setStateDeps` / `resetStateDeps`.
 3. `DEBUG = getDebugParam()`, then `window.profiler = new PerformanceProfiler(...)`.
-4. `void loadAllMetadata(applicationCatalog)` starts the metadata fetch without
-   blocking, so download and parse overlap HTML parsing.
+4. `createLoadedCatalog()` starts the metadata fetch without blocking, so
+   download and parse overlap HTML parsing while bootstrap receives only the
+   catalog reader.
 
 [`sources/install-item-metadata.ts`](sources/install-item-metadata.ts) does a
-parallel `import()` of all five chunks and calls the matching
-the matching writer `register*Metadata` method as each one lands, so readiness is **staged**
-rather than all-or-nothing. Each registration triggers a coalesced redraw.
+parallel `import()` of all five chunks and calls the matching writer
+`register*Metadata` method as each one lands, so readiness is **staged** rather
+than all-or-nothing. Each registration triggers a coalesced redraw.
 
 On `DOMContentLoaded`, three separate Mithril roots mount against the same
 catalog and state instances:
