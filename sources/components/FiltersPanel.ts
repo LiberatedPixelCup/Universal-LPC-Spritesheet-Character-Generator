@@ -13,7 +13,7 @@ import type { CurrentSelectionsModel } from "../models/current-selections.ts";
 type FiltersPanelAttrs = {
   catalog: CatalogReader;
   state: State;
-  currentSelections: CurrentSelectionsModel;
+  currentSelections: () => CurrentSelectionsModel;
 };
 
 export const FiltersPanel: m.Component<FiltersPanelAttrs> = {

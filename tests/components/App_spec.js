@@ -76,6 +76,28 @@ describe("App", function () {
     assert.include(titles, "Advanced Tools");
   });
 
+  it("does not build current selections while Filters is collapsed", function () {
+    let currentSelectionsCalls = 0;
+    models = {
+      currentSelections: () => {
+        currentSelectionsCalls += 1;
+        return { kind: "empty" };
+      },
+    };
+    m.mount(host, { view: appView });
+    assert.strictEqual(currentSelectionsCalls, 1);
+
+    const filtersTitle = [
+      ...host.querySelectorAll("h3.collapsible-title"),
+    ].find((element) => element.textContent === "Filters");
+    filtersTitle.parentElement.dispatchEvent(
+      new MouseEvent("click", { bubbles: true }),
+    );
+    m.redraw.sync();
+
+    assert.strictEqual(currentSelectionsCalls, 1);
+  });
+
   it("syncs the hash when selections change and skips render without canvasRenderer", function () {
     m.mount(host, {
       view: appView,

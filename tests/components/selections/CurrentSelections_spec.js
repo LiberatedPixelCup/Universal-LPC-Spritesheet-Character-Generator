@@ -21,7 +21,7 @@ describe("CurrentSelections", function () {
     m.render(
       host,
       m(CurrentSelections, {
-        model: createCurrentSelectionsModel(catalog, state),
+        model: () => createCurrentSelectionsModel(catalog, state),
       }),
     );
   }
@@ -53,7 +53,7 @@ describe("CurrentSelections", function () {
     m.render(
       host,
       m(CurrentSelections, {
-        model: {
+        model: () => ({
           kind: "ready",
           items: [
             {
@@ -66,7 +66,7 @@ describe("CurrentSelections", function () {
               },
             },
           ],
-        },
+        }),
       }),
     );
 
