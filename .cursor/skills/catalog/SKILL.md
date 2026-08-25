@@ -12,9 +12,13 @@ description: >-
 
 ## Production
 
-Thread `catalog: CatalogReader` and `state: State` from bootstrap through
-attrs. Do not read a hidden global. Views must not receive `CatalogWriter`
-(`register*Metadata`, `loadCatalogFromFixtures`).
+Thread `catalog: CatalogReader` and `state: State` from bootstrap to a UI
+composition boundary. Prefer passing a narrow model below that boundary when
+one exists; `CurrentSelections` is the first example. Build those models in
+`main.ts`, then have components forward or consume their assigned slices rather
+than constructing dependencies themselves. Do not read a hidden global. Views
+must not receive `CatalogWriter` (`register*Metadata`,
+`loadCatalogFromFixtures`).
 
 Getters return `Result<T, LoadError>` (`neverthrow`). `LoadError` is
 `{ kind: "loading"; chunk }` or `{ kind: "not-found"; id }`.

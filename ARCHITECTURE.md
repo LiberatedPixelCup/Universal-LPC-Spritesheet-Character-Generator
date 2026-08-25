@@ -192,6 +192,8 @@ Verifying it needs a real browser.
 
 `App` composes `Download`, `FiltersPanel`, `Credits`, and `AdvancedTools`;
 `FiltersPanel` composes the `filters/`, `selections/`, and `tree/` components.
+The bootstrap in `main.ts` constructs the render-ready application model graph;
+components receive and forward their model slice instead of constructing it.
 
 ## ZIP export
 

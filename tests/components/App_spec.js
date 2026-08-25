@@ -2,6 +2,7 @@ import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { App } from "../../sources/components/App.ts";
+import { createApplicationModels } from "../../sources/models/application.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
 import {
   configureStateCatalog,
@@ -21,6 +22,15 @@ describe("App", function () {
   let previousTesting;
   let catalog;
   let catalogWriter;
+  let models;
+
+  function appView() {
+    return m(App, {
+      catalog,
+      state,
+      models,
+    });
+  }
 
   beforeEach(function () {
     state = createState();
@@ -30,6 +40,7 @@ describe("App", function () {
     previousTesting = window.isTesting;
     ({ reader: catalog, writer: catalogWriter } = createCatalog());
     seedCatalog(catalogWriter, {});
+    models = createApplicationModels(catalog, state);
     configureStateCatalog(catalog);
     delete window.canvasRenderer;
     window.isTesting = true;
@@ -53,7 +64,7 @@ describe("App", function () {
 
   it("renders Download, Filters, Credits, and Advanced Tools", function () {
     m.mount(host, {
-      view: () => m(App, { catalog, state }),
+      view: appView,
     });
 
     const titles = [...host.querySelectorAll("h3.collapsible-title")].map(
@@ -67,7 +78,7 @@ describe("App", function () {
 
   it("syncs the hash when selections change and skips render without canvasRenderer", function () {
     m.mount(host, {
-      view: () => m(App, { catalog, state }),
+      view: appView,
     });
     resetHashCalledTimes();
 
@@ -88,7 +99,7 @@ describe("App", function () {
 
   it("syncs the hash when bodyType or custom overlay state changes", function () {
     m.mount(host, {
-      view: () => m(App, { catalog, state }),
+      view: appView,
     });
     resetHashCalledTimes();
 

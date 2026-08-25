@@ -1,100 +1,43 @@
 // Current selections component
 import m from "mithril";
-import type { CatalogReader } from "../../state/catalog.ts";
-import type { State } from "../../state/state.ts";
-import {
-  isItemLicenseCompatible,
-  isItemAnimationCompatible,
-} from "../../state/filters.ts";
+import type { CurrentSelectionsModel } from "../../models/current-selections.ts";
 
-type CurrentSelectionsAttrs = {
-  catalog: CatalogReader;
-  state: State;
-};
-
-export const CurrentSelections: m.Component<CurrentSelectionsAttrs> = {
+export const CurrentSelections: m.Component<{
+  model: CurrentSelectionsModel;
+}> = {
   view(vnode) {
-    const { catalog, state } = vnode.attrs;
-    if (!catalog.isLiteReady()) {
+    const { model } = vnode.attrs;
+    if (model.kind === "loading") {
       return m("div", [
         m("h3.title.is-5", "Current Selections"),
         m("p.is-size-7.has-text-grey", "Loading item list…"),
       ]);
     }
 
-    const selectionCount = Object.keys(state.selections).length;
-
-    if (selectionCount === 0) {
+    if (model.kind === "empty") {
       return m("div", [
         m("h3.title.is-5", "Current Selections"),
         m("p.has-text-grey", "No items selected yet"),
       ]);
     }
 
-    const creditsReady = catalog.isCreditsReady();
-
     return m("div", [
       m("h3.title.is-5", "Current Selections"),
       m(
         "div.tags",
-        Object.entries(state.selections).map(([selectionKey, selection]) => {
-          const isLicenseCompatible = isItemLicenseCompatible(
-            catalog,
-            state,
-            selection.itemId,
-          );
-          const isAnimCompatible = isItemAnimationCompatible(
-            catalog,
-            state,
-            selection.itemId,
-          );
-          const isCompatible = isLicenseCompatible && isAnimCompatible;
-          const metaResult = catalog.getItemMerged(selection.itemId);
-          const meta = metaResult.isOk() ? metaResult.value : null;
-
-          const allLicenses = new Set<string>();
-          if (meta) {
-            for (const credit of meta.credits) {
-              for (const lic of credit.licenses) {
-                allLicenses.add(lic.trim());
-              }
-            }
-          }
-          const licensesText = !creditsReady
-            ? "License info loading…"
-            : allLicenses.size > 0
-              ? `Licenses: ${Array.from(allLicenses).join(", ")}`
-              : "No license info";
-
-          const supportedAnims = meta?.animations ?? [];
-          const animsText =
-            supportedAnims.length > 0
-              ? `Animations: ${supportedAnims.join(", ")}`
-              : "No animation info";
-
-          let tooltipText = "";
-          if (!isCompatible) {
-            const issues: string[] = [];
-            if (!isLicenseCompatible) issues.push("licenses");
-            if (!isAnimCompatible) issues.push("animations");
-            tooltipText = `⚠️ Incompatible with selected ${issues.join(" and ")}\n`;
-          }
-          tooltipText += `${licensesText}\n${animsText}`;
-
+        model.items.map((item) => {
           return m(
             "span.tag.is-medium",
             {
-              key: selectionKey,
-              class: isCompatible ? "is-info" : "is-warning",
-              title: creditsReady ? tooltipText : undefined,
+              key: item.key,
+              class: item.isCompatible ? "is-info" : "is-warning",
+              title: item.tooltip,
             },
             [
-              m("span", selection.name),
-              !isCompatible ? m("span.ml-1", "⚠️") : null,
+              m("span", item.name),
+              !item.isCompatible ? m("span.ml-1", "⚠️") : null,
               m("button.delete.is-small", {
-                onclick: () => {
-                  delete state.selections[selectionKey];
-                },
+                onclick: item.remove,
               }),
             ],
           );

@@ -8,9 +8,14 @@ import { FiltersPanel } from "./FiltersPanel.ts";
 import { Credits } from "./download/Credits.ts";
 import { AdvancedTools } from "./advanced/AdvancedTools.ts";
 import { renderCharacter } from "../canvas/renderer.ts";
+import type { ApplicationModels } from "../models/application.ts";
 
 /** App threads the catalog owned by application bootstrap through the UI. */
-type AppAttrs = { catalog: CatalogReader; state: State };
+type AppAttrs = {
+  catalog: CatalogReader;
+  state: State;
+  models: ApplicationModels;
+};
 
 type AppState = {
   prevSelections: string;
@@ -61,10 +66,14 @@ export const App: m.Component<AppAttrs, AppState> = {
     }
   },
   view(vnode) {
-    const { catalog, state } = vnode.attrs;
+    const { catalog, state, models } = vnode.attrs;
     return m("div", [
       m(Download, { catalog, state }),
-      m(FiltersPanel, { catalog, state }),
+      m(FiltersPanel, {
+        catalog,
+        state,
+        currentSelections: models.currentSelections(),
+      }),
       m(Credits, { catalog, state }),
       m(AdvancedTools, { state }),
     ]);

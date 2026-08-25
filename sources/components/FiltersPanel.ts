@@ -8,12 +8,17 @@ import { CurrentSelections } from "./selections/CurrentSelections.ts";
 import { CategoryTree } from "./tree/CategoryTree.ts";
 import { CollapsibleSection } from "./CollapsibleSection.ts";
 import type { State } from "../state/state.ts";
+import type { CurrentSelectionsModel } from "../models/current-selections.ts";
 
-type FiltersPanelAttrs = { catalog: CatalogReader; state: State };
+type FiltersPanelAttrs = {
+  catalog: CatalogReader;
+  state: State;
+  currentSelections: CurrentSelectionsModel;
+};
 
 export const FiltersPanel: m.Component<FiltersPanelAttrs> = {
   view(vnode) {
-    const { catalog, state } = vnode.attrs;
+    const { catalog, state, currentSelections } = vnode.attrs;
     return m(
       CollapsibleSection,
       {
@@ -39,7 +44,12 @@ export const FiltersPanel: m.Component<FiltersPanelAttrs> = {
             m(AnimationFilters, { catalog, state }),
           ),
         ]),
-        m("div.mb-4", m(CurrentSelections, { catalog, state })),
+        m(
+          "div.mb-4",
+          m(CurrentSelections, {
+            model: currentSelections,
+          }),
+        ),
         m(CategoryTree, { catalog, state }),
       ],
     );

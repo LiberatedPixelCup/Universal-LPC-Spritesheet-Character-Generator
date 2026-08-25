@@ -4,6 +4,7 @@ import m from "mithril";
 import "./styles/critical-entry.scss";
 import "./vendor-globals.ts";
 import { createLoadedCatalog } from "./install-item-metadata.ts";
+import { createApplicationModels } from "./models/application.ts";
 import type { CatalogReader } from "./state/catalog.ts";
 
 // Import debug first so `window.DEBUG` is set before other modules run.
@@ -81,6 +82,10 @@ import { PerformanceProfiler } from "./performance-profiler.ts";
 
 const applicationCatalog = createLoadedCatalog();
 const applicationState = createState();
+const applicationModels = createApplicationModels(
+  applicationCatalog,
+  applicationState,
+);
 configureStateCatalog(applicationCatalog);
 installCatalogReadinessHooksForVisualTooling(applicationCatalog);
 
@@ -134,7 +139,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // main.ts is the composition root; App and sibling previews receive the same catalog.
   m.mount(document.getElementById("mithril-filters")!, {
     view: () =>
-      m(App, { catalog: applicationCatalog, state: applicationState }),
+      m(App, {
+        catalog: applicationCatalog,
+        state: applicationState,
+        models: applicationModels,
+      }),
   });
   m.mount(document.getElementById("mithril-preview")!, {
     view: () =>
