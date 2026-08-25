@@ -6,6 +6,8 @@ export const CurrentSelections: m.Component<{
   createModel: () => CurrentSelectionsModel;
 }> = {
   view(vnode) {
+    // Only called when the node is actually rendered
+    // Currently it is shown by default, so it is called in each redraw
     const model = vnode.attrs.createModel();
     if (model.kind === "loading") {
       return m("div", [
