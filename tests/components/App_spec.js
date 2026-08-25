@@ -79,7 +79,7 @@ describe("App", function () {
   it("does not build current selections while Filters is collapsed", function () {
     let currentSelectionsCalls = 0;
     models = {
-      currentSelections: () => {
+      createCurrentSelectionsModel: () => {
         currentSelectionsCalls += 1;
         return { kind: "empty" };
       },

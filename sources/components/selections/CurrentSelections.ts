@@ -3,10 +3,10 @@ import m from "mithril";
 import type { CurrentSelectionsModel } from "../../models/current-selections.ts";
 
 export const CurrentSelections: m.Component<{
-  model: () => CurrentSelectionsModel;
+  createModel: () => CurrentSelectionsModel;
 }> = {
   view(vnode) {
-    const model = vnode.attrs.model();
+    const model = vnode.attrs.createModel();
     if (model.kind === "loading") {
       return m("div", [
         m("h3.title.is-5", "Current Selections"),

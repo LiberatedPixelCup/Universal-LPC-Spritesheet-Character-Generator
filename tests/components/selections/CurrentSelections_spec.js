@@ -2,7 +2,7 @@ import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { CurrentSelections } from "../../../sources/components/selections/CurrentSelections.ts";
-import { createCurrentSelectionsModel } from "../../../sources/models/current-selections.ts";
+import { currentSelectionsModelFactory } from "../../../sources/models/current-selections.ts";
 import { createState } from "../../../sources/state/state.ts";
 let state;
 import { createCatalog } from "../../../sources/state/catalog.ts";
@@ -21,7 +21,7 @@ describe("CurrentSelections", function () {
     m.render(
       host,
       m(CurrentSelections, {
-        model: () => createCurrentSelectionsModel(catalog, state),
+        createModel: () => currentSelectionsModelFactory.create(catalog, state),
       }),
     );
   }
@@ -53,7 +53,7 @@ describe("CurrentSelections", function () {
     m.render(
       host,
       m(CurrentSelections, {
-        model: () => ({
+        createModel: () => ({
           kind: "ready",
           items: [
             {

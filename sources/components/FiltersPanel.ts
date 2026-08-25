@@ -13,12 +13,12 @@ import type { CurrentSelectionsModel } from "../models/current-selections.ts";
 type FiltersPanelAttrs = {
   catalog: CatalogReader;
   state: State;
-  currentSelections: () => CurrentSelectionsModel;
+  createCurrentSelectionsModel: () => CurrentSelectionsModel;
 };
 
 export const FiltersPanel: m.Component<FiltersPanelAttrs> = {
   view(vnode) {
-    const { catalog, state, currentSelections } = vnode.attrs;
+    const { catalog, state, createCurrentSelectionsModel } = vnode.attrs;
     return m(
       CollapsibleSection,
       {
@@ -47,7 +47,7 @@ export const FiltersPanel: m.Component<FiltersPanelAttrs> = {
         m(
           "div.mb-4",
           m(CurrentSelections, {
-            model: currentSelections,
+            createModel: createCurrentSelectionsModel,
           }),
         ),
         m(CategoryTree, { catalog, state }),

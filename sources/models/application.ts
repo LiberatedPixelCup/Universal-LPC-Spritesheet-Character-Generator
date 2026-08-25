@@ -1,12 +1,12 @@
 import type { CatalogReader } from "../state/catalog.ts";
 import type { State } from "../state/state.ts";
 import {
-  createCurrentSelectionsModel,
+  currentSelectionsModelFactory,
   type CurrentSelectionsModel,
 } from "./current-selections.ts";
 
 export type ApplicationModels = {
-  currentSelections(): CurrentSelectionsModel;
+  createCurrentSelectionsModel(): CurrentSelectionsModel;
 };
 
 /** Builds the render-ready model graph at the application composition root. */
@@ -15,6 +15,7 @@ export function createApplicationModels(
   state: State,
 ): ApplicationModels {
   return {
-    currentSelections: () => createCurrentSelectionsModel(catalog, state),
+    createCurrentSelectionsModel: () =>
+      currentSelectionsModelFactory.create(catalog, state),
   };
 }

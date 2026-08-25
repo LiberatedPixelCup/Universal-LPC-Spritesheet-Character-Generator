@@ -72,7 +72,7 @@ export const App: m.Component<AppAttrs, AppState> = {
       m(FiltersPanel, {
         catalog,
         state,
-        currentSelections: models.currentSelections,
+        createCurrentSelectionsModel: models.createCurrentSelectionsModel,
       }),
       m(Credits, { catalog, state }),
       m(AdvancedTools, { state }),

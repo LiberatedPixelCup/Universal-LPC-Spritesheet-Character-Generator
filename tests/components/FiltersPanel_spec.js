@@ -14,8 +14,10 @@ describe("FiltersPanel", () => {
   beforeEach(() => {
     const catalog = { isLiteReady: () => true };
     const state = { selections: {} };
-    const currentSelections = () => ({ kind: "empty" });
-    vnode = FiltersPanel.view({ attrs: { catalog, state, currentSelections } });
+    const createCurrentSelectionsModel = () => ({ kind: "empty" });
+    vnode = FiltersPanel.view({
+      attrs: { catalog, state, createCurrentSelectionsModel },
+    });
   });
 
   it("should render the CollapsibleSection component with correct attributes", () => {
@@ -45,7 +47,9 @@ describe("FiltersPanel", () => {
   it("should render the CurrentSelections component", () => {
     const currentSelections = vnode.children[2].children[0];
     expect(currentSelections.tag).to.equal(CurrentSelections);
-    expect(currentSelections.attrs.model()).to.deep.equal({ kind: "empty" });
+    expect(currentSelections.attrs.createModel()).to.deep.equal({
+      kind: "empty",
+    });
   });
 
   it("should render the CategoryTree component", () => {
