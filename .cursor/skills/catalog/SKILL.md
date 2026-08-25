@@ -13,8 +13,8 @@ description: >-
 ## Production
 
 Thread `catalog: CatalogReader` and `state: State` from bootstrap through
-attrs. Do not read a hidden global. Views must not call `CatalogWriter`
-(`registerFrom*`, `loadCatalogFromFixtures`).
+attrs. Do not read a hidden global. Views must not receive `CatalogWriter`
+(`register*Metadata`, `loadCatalogFromFixtures`).
 
 Getters return `Result<T, LoadError>` (`neverthrow`). `LoadError` is
 `{ kind: "loading"; chunk }` or `{ kind: "not-found"; id }`.
@@ -32,8 +32,10 @@ Only [`sources/main.ts`](../../../sources/main.ts) calls
 `configureStateCatalog`. That binds the catalog for `sources/state/` so those
 modules do not take a catalog argument on every call. It is not a hidden
 global for UI — components still receive `catalog` and `state` as attrs.
-[`sources/install-item-metadata.ts`](../../../sources/install-item-metadata.ts)
-only registers chunks into the catalog it is given.
+`createCatalog()` returns separate `{ reader, writer }` runtime objects backed
+by the same private stores. [`sources/install-item-metadata.ts`](../../../sources/install-item-metadata.ts)
+starts registration with the writer and returns only the reader to production
+bootstrap.
 
 ## Importing generated metadata
 
@@ -52,18 +54,19 @@ built — run `npm run dev` or `npm run build`. Stale `.cache/` or a missing
 
 ## Tests
 
-`createCatalog()` and `createState()`. Never the production catalog or the
-bootstrap state instance.
+Destructure `{ reader, writer } = createCatalog()` and create a fresh
+`createState()`. Never use the production reader or bootstrap state instance.
 
 Call `configureStateCatalog(catalog)` when the spec exercises `sources/state/`
 effects. Override individual effects with `setStateDeps` and restore them with
 `resetStateDeps`.
 
-- [`seedCatalog`](../../../tests/browser-catalog-fixture.js) — explicit fixtures
+- [`seedCatalog`](../../../tests/browser-catalog-fixture.js) — pass the writer
+  to seed explicit fixtures; pass the paired reader to consumers
 - `seedCatalogWithGeneratedContext` — keeps generated palette/alias/tree/index
   context; needs generated metadata, so run `npm run dev` or `npm run build`
   first
-- `registerFrom*Module` — one readiness stage
+- `register*Metadata` — one readiness stage
 
 A new spec has to actually hit the lines it covers: [coverage](../coverage/SKILL.md).
 

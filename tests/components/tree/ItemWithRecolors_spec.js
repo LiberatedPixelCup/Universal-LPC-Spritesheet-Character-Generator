@@ -127,9 +127,10 @@ function liteItem(name, typeName, recolors) {
 describe("ItemWithRecolors", function () {
   let host;
   let catalog;
+  let catalogWriter;
 
   beforeEach(function () {
-    catalog = createCatalog();
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
     configureStateCatalog(catalog);
     state = createState();
     state.expandedNodes = {};
@@ -148,7 +149,7 @@ describe("ItemWithRecolors", function () {
 
   function seedRecolorShirt() {
     seedCatalog(
-      catalog,
+      catalogWriter,
       {
         iwr_shirt: {
           name: "Recolor Tee",
@@ -189,7 +190,7 @@ describe("ItemWithRecolors", function () {
   }
 
   function seedItems(itemMetadata) {
-    seedCatalog(catalog, itemMetadata, {
+    seedCatalog(catalogWriter, itemMetadata, {
       categoryTree: { items: [], children: {} },
       paletteMetadata: clothPaletteMetadata,
     });
@@ -294,7 +295,7 @@ describe("ItemWithRecolors", function () {
 
   it("uses body-body as expandedNodes key when the display name is Body Color", function () {
     seedCatalog(
-      catalog,
+      catalogWriter,
       {
         iwr_body: {
           name: "Body Color",

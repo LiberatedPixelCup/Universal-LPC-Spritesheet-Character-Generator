@@ -10,9 +10,9 @@ const emptyPalette = { versions: {}, materials: {} };
 const emptyTree = { items: [], children: {} };
 
 /** Seed a specific catalog instance from a merged item map. */
-export function seedCatalog(catalog, itemMetadata, extras = {}) {
+export function seedCatalog(writer, itemMetadata, extras = {}) {
   const byTypeName = buildItemsByTypeNameLite(itemMetadata);
-  catalog.loadCatalogFromFixtures({
+  writer.loadCatalogFromFixtures({
     itemMetadata,
     aliasMetadata: extras.aliasMetadata ?? {},
     categoryTree: extras.categoryTree ?? emptyTree,
@@ -25,9 +25,9 @@ export function seedCatalog(catalog, itemMetadata, extras = {}) {
 }
 
 /** Seed fixture items while retaining generated palette, alias, tree, and index context. */
-export function seedCatalogWithGeneratedContext(catalog, fixtureItems) {
+export function seedCatalogWithGeneratedContext(writer, fixtureItems) {
   const byTypeName = buildItemsByTypeNameLite(fixtureItems);
-  catalog.loadCatalogFromFixtures({
+  writer.loadCatalogFromFixtures({
     itemMetadata: fixtureItems,
     aliasMetadata,
     categoryTree,

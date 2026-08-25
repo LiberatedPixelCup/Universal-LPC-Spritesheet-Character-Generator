@@ -15,9 +15,10 @@ import { seedCatalog } from "../../browser-catalog-fixture.js";
 describe("TreeNode", function () {
   let host;
   let catalog;
+  let catalogWriter;
 
   beforeEach(function () {
-    catalog = createCatalog();
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
     configureStateCatalog(catalog);
     state = createState();
     state.expandedNodes = {};
@@ -34,7 +35,7 @@ describe("TreeNode", function () {
   });
 
   it("renders nothing when the node is restricted to other body types", function () {
-    seedCatalog(catalog, {
+    seedCatalog(catalogWriter, {
       tn_hidden: {
         name: "Female only",
         type_name: "hat",
@@ -60,7 +61,7 @@ describe("TreeNode", function () {
   });
 
   it("renders nothing when search is active and nothing in the subtree matches", function () {
-    seedCatalog(catalog, {
+    seedCatalog(catalogWriter, {
       tn_alpha: {
         name: "Alpha Helm",
         type_name: "hat",
@@ -86,7 +87,7 @@ describe("TreeNode", function () {
   });
 
   it("shows skeleton rows for item ids until lite metadata is registered", function () {
-    catalog.registerFromIndexModule({
+    catalogWriter.registerIndexMetadata({
       aliasMetadata: {},
       categoryTree: { items: [], children: {} },
       metadataIndexes: {
@@ -94,9 +95,7 @@ describe("TreeNode", function () {
         hashMatch: { itemsByTypeName: {} },
       },
     });
-    catalog.registerFromPaletteModule({
-      paletteMetadata: { versions: {}, materials: {} },
-    });
+    catalogWriter.registerPaletteMetadata({ versions: {}, materials: {} });
 
     state.expandedNodes.Warehouse = true;
 
@@ -117,7 +116,7 @@ describe("TreeNode", function () {
 
   it("renders display label, simple item row, and expand/collapse from the category row", function () {
     seedCatalog(
-      catalog,
+      catalogWriter,
       {
         tn_hat: {
           name: "TreeNode Hat",
@@ -177,7 +176,11 @@ describe("TreeNode", function () {
   });
 
   it("capitalizes the category key when label is omitted", function () {
-    seedCatalog(catalog, {}, { categoryTree: { items: [], children: {} } });
+    seedCatalog(
+      catalogWriter,
+      {},
+      { categoryTree: { items: [], children: {} } },
+    );
 
     m.render(
       host,
@@ -193,7 +196,7 @@ describe("TreeNode", function () {
   });
 
   it("auto-expands when search matches an item name", function () {
-    seedCatalog(catalog, {
+    seedCatalog(catalogWriter, {
       tn_search_hat: {
         name: "Unique Search Hat",
         type_name: "hat",
@@ -225,7 +228,7 @@ describe("TreeNode", function () {
 
   it("selects and clears a simple item via the tree row", function () {
     seedCatalog(
-      catalog,
+      catalogWriter,
       {
         tn_pick: {
           name: "Pickable Cape",
@@ -273,7 +276,11 @@ describe("TreeNode", function () {
   });
 
   it("shows animation mismatch styling on the category row and blocks expand", function () {
-    seedCatalog(catalog, {}, { categoryTree: { items: [], children: {} } });
+    seedCatalog(
+      catalogWriter,
+      {},
+      { categoryTree: { items: [], children: {} } },
+    );
     setEnabledAnimations(state, ["run"]);
 
     m.render(
@@ -299,7 +306,11 @@ describe("TreeNode", function () {
   });
 
   it("nests child TreeNodes under pathPrefix", function () {
-    seedCatalog(catalog, {}, { categoryTree: { items: [], children: {} } });
+    seedCatalog(
+      catalogWriter,
+      {},
+      { categoryTree: { items: [], children: {} } },
+    );
     state.expandedNodes.parent = true;
     state.expandedNodes["parent-child"] = true;
 

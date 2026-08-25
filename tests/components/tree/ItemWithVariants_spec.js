@@ -14,9 +14,10 @@ import { seedCatalog } from "../../browser-catalog-fixture.js";
 describe("ItemWithVariants", function () {
   let host;
   let catalog;
+  let catalogWriter;
 
   beforeEach(function () {
-    catalog = createCatalog();
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
     configureStateCatalog(catalog);
     state = createState();
     state.expandedNodes = {};
@@ -34,7 +35,7 @@ describe("ItemWithVariants", function () {
 
   function seedVariantItem() {
     seedCatalog(
-      catalog,
+      catalogWriter,
       {
         iwv_cloak: {
           name: "Variant Cloak",
@@ -133,7 +134,7 @@ describe("ItemWithVariants", function () {
 
   it("uses body-body as expandedNodes key when the display name is Body Color", function () {
     seedCatalog(
-      catalog,
+      catalogWriter,
       {
         iwv_body_color: {
           name: "Body Color",

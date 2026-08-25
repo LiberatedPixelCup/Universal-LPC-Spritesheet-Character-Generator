@@ -20,14 +20,15 @@ describe("AnimationPreview", function () {
   let host;
   let previousRenderer;
   let catalog;
+  let catalogWriter;
 
   beforeEach(function () {
     state = createState();
     host = document.createElement("div");
     document.body.appendChild(host);
     previousRenderer = window.canvasRenderer;
-    catalog = createCatalog();
-    catalog.registerFromLayersModule({ itemLayers: {} });
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
+    catalogWriter.registerLayersMetadata({});
     window.canvasRenderer = canvasRenderer;
     window.__DISABLE_PREVIEW_ANIMATION__ = true;
     canvasRenderer.initCanvas();

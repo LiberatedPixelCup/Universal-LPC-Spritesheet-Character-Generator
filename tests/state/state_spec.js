@@ -32,7 +32,7 @@ describe("state/state.ts", () => {
   });
 
   beforeEach(() => {
-    configureStateCatalog(createCatalog());
+    configureStateCatalog(createCatalog().reader);
     resetStateDeps();
     state = createState();
   });

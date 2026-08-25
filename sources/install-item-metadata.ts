@@ -8,7 +8,9 @@
  * `creditsMetadata` separately (no merged per-item objects). Tests merge as needed.
  */
 import {
+  createCatalog,
   type AliasMetadata,
+  type CatalogReader,
   type CatalogWriter,
   type CategoryTree,
   type Credit,
@@ -28,8 +30,6 @@ type LoadedChunks = {
   metadataIndexes: MetadataIndexes;
 };
 
-let metadataLoadStarted = false;
-
 let metadataRedrawRaf: number | null = null;
 
 function safeRedraw(): void {
@@ -48,16 +48,11 @@ function safeRedraw(): void {
  * Parallel `import()` of the five metadata modules; each registers as soon as its file loads.
  */
 export function loadAllMetadata(catalog: CatalogWriter): Promise<LoadedChunks> {
-  if (metadataLoadStarted) {
-    throw new Error("loadAllMetadata() may only be called once");
-  }
-  metadataLoadStarted = true;
-
   return (async (): Promise<LoadedChunks> => {
     const [indexMod, paletteMod, itemMod, creditsMod, layersMod] =
       await Promise.all([
         import("../index-metadata.js").then((mod) => {
-          catalog.registerFromIndexModule({
+          catalog.registerIndexMetadata({
             aliasMetadata: mod.aliasMetadata,
             categoryTree: mod.categoryTree,
             metadataIndexes: mod.metadataIndexes,
@@ -66,24 +61,22 @@ export function loadAllMetadata(catalog: CatalogWriter): Promise<LoadedChunks> {
           return mod;
         }),
         import("../palette-metadata.js").then((mod) => {
-          catalog.registerFromPaletteModule({
-            paletteMetadata: mod.paletteMetadata,
-          });
+          catalog.registerPaletteMetadata(mod.paletteMetadata);
           safeRedraw();
           return mod;
         }),
         import("../item-metadata.js").then((mod) => {
-          catalog.registerFromItemModule({ itemMetadata: mod.itemMetadata });
+          catalog.registerItemMetadata(mod.itemMetadata);
           safeRedraw();
           return mod;
         }),
         import("../credits-metadata.js").then((mod) => {
-          catalog.registerFromCreditsModule({ itemCredits: mod.itemCredits });
+          catalog.registerCreditsMetadata(mod.itemCredits);
           safeRedraw();
           return mod;
         }),
         import("../layers-metadata.js").then((mod) => {
-          catalog.registerFromLayersModule({ itemLayers: mod.itemLayers });
+          catalog.registerLayersMetadata(mod.itemLayers);
           safeRedraw();
           return mod;
         }),
@@ -99,4 +92,14 @@ export function loadAllMetadata(catalog: CatalogWriter): Promise<LoadedChunks> {
       metadataIndexes: indexMod.metadataIndexes,
     };
   })();
+}
+
+/**
+ * Create the production catalog, start registering generated chunks, and
+ * expose only its runtime reader capability to application code.
+ */
+export function createLoadedCatalog(): CatalogReader {
+  const { reader, writer } = createCatalog();
+  void loadAllMetadata(writer);
+  return reader;
 }

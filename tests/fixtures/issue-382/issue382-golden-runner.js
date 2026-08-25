@@ -40,13 +40,13 @@ function setStatus(text) {
 }
 
 async function runGoldens() {
-  const catalog = createCatalog();
+  const { reader: catalog, writer } = createCatalog();
   setStatus("Resetting state...");
   state = createState();
   drawCalls.length = 0;
 
   setStatus("Seeding browser catalog...");
-  seedCatalogWithGeneratedContext(catalog, issue382ItemMetadata);
+  seedCatalogWithGeneratedContext(writer, issue382ItemMetadata);
 
   setStatus("Importing selections...");
   Object.assign(

@@ -110,8 +110,8 @@ async function runProfiles(
     throw new Error("Profile runner missing catalog metadata globals");
   }
 
-  const catalog = createCatalog();
-  catalog.loadCatalogFromFixtures({
+  const { reader: catalog, writer } = createCatalog();
+  writer.loadCatalogFromFixtures({
     itemMetadata: w.itemMetadata,
     aliasMetadata: w.aliasMetadata,
     categoryTree: w.categoryTree,

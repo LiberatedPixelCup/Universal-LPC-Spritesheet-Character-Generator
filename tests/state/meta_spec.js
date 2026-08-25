@@ -12,25 +12,23 @@ import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 
 function createCatalogWithItem(itemId, item) {
-  const catalog = createCatalog();
+  const { reader: catalog, writer } = createCatalog();
   const { credits = [], layers = {}, ...liteOverrides } = item;
-  catalog.registerFromItemModule({
-    itemMetadata: {
-      [itemId]: {
-        name: itemId,
-        type_name: "test",
-        required: [],
-        animations: [],
-        recolors: [],
-        matchBodyColor: false,
-        variants: [],
-        path: [],
-        ...liteOverrides,
-      },
+  writer.registerItemMetadata({
+    [itemId]: {
+      name: itemId,
+      type_name: "test",
+      required: [],
+      animations: [],
+      recolors: [],
+      matchBodyColor: false,
+      variants: [],
+      path: [],
+      ...liteOverrides,
     },
   });
-  catalog.registerFromCreditsModule({ itemCredits: { [itemId]: credits } });
-  catalog.registerFromLayersModule({ itemLayers: { [itemId]: layers } });
+  writer.registerCreditsMetadata({ [itemId]: credits });
+  writer.registerLayersMetadata({ [itemId]: layers });
   return catalog;
 }
 
@@ -38,7 +36,7 @@ describe("state/meta.ts", () => {
   let catalog;
 
   beforeEach(() => {
-    catalog = createCatalog();
+    ({ reader: catalog } = createCatalog());
     resetPathDeps();
   });
 

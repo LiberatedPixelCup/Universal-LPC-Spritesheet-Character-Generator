@@ -2,7 +2,7 @@
  * Central catalog module — state, registration, and the typed Result-returning
  * consumer API in one place.
  *
- * Loaders call `registerFromXModule` after each dynamic import; consumers use
+ * Loaders call the matching `register*Metadata` method after each dynamic import; consumers use
  * the typed getters (returning `Result<T, LoadError>` from neverthrow) and
  * either `isXReady()` (sync) or `catalog.ready.onXReady` (async) for readiness
  * signals.
@@ -20,8 +20,9 @@
  * Consumer-side code pairs this with the `renderResult` helper (in the render
  * tree) or with `.match` / `.unwrapOr` / `if (r.isErr())` (everywhere else).
  *
- * `createCatalog()` constructs independent instances. Application bootstrap
- * owns the production instance; tests and standalone tools create their own.
+ * `createCatalog()` constructs independent reader/writer capability pairs.
+ * Application code receives the reader; metadata installers and fixtures hold
+ * the writer only while registering data into the paired private stores.
  */
 
 import { ok, err, type Result } from "neverthrow";
@@ -203,26 +204,19 @@ export type CatalogReader = {
   readonly ready: CatalogReady;
 };
 
-/** Write-only surface — only the boot path (`install-item-metadata.ts`) and
- *  test setup should hold this. */
+/** Write-only surface — only metadata installation and fixture setup hold it. */
 export type CatalogWriter = {
-  registerFromIndexModule(exports_: {
+  registerIndexMetadata(metadata: {
     aliasMetadata: AliasMetadata;
     categoryTree: CategoryTree;
     metadataIndexes: MetadataIndexes;
   }): void;
-  registerFromPaletteModule(exports_: {
-    paletteMetadata: PaletteMetadata;
-  }): void;
-  registerFromItemModule(exports_: {
-    itemMetadata: Record<string, ItemLite>;
-  }): void;
-  registerFromCreditsModule(exports_: {
-    itemCredits: Record<string, Credit[]>;
-  }): void;
-  registerFromLayersModule(exports_: {
-    itemLayers: Record<string, Record<string, LayerEntry>>;
-  }): void;
+  registerPaletteMetadata(paletteMetadata: PaletteMetadata): void;
+  registerItemMetadata(itemMetadata: Record<string, ItemLite>): void;
+  registerCreditsMetadata(itemCredits: Record<string, Credit[]>): void;
+  registerLayersMetadata(
+    itemLayers: Record<string, Record<string, LayerEntry>>,
+  ): void;
   loadCatalogFromFixtures(fixtureGlobals: {
     itemMetadata: Record<string, unknown>;
     aliasMetadata: AliasMetadata;
@@ -230,10 +224,14 @@ export type CatalogWriter = {
     metadataIndexes: MetadataIndexes;
     paletteMetadata: PaletteMetadata;
   }): void;
-  resetForTests(): void;
 };
 
-export type Catalog = CatalogReader & CatalogWriter;
+export type CatalogHandles = {
+  /** Runtime object containing no writer methods. */
+  reader: CatalogReader;
+  /** Runtime object containing no reader methods. */
+  writer: CatalogWriter;
+};
 
 // ────────────────────────────────────────────────────────────────────────────
 // Internal helpers — pure, outside the factory
@@ -291,15 +289,13 @@ const notFound = (id: string): LoadError => ({ kind: "not-found", id });
 // Factory
 // ────────────────────────────────────────────────────────────────────────────
 
-export function createCatalog(): Catalog {
-  // All stage trackers and stores live in this closure — unreachable from
-  // outside the factory. Mutation only happens through the registrar methods
-  // returned below.
-  let indexStage = makeStage();
-  let liteStage = makeStage();
-  let creditsStage = makeStage();
-  let paletteStage = makeStage();
-  let layersStage = makeStage();
+export function createCatalog(): CatalogHandles {
+  // Both capabilities close over these stores, but neither exposes the other.
+  const indexStage = makeStage();
+  const liteStage = makeStage();
+  const creditsStage = makeStage();
+  const paletteStage = makeStage();
+  const layersStage = makeStage();
 
   let aliasMetadataStore: AliasMetadata | null = null;
   let categoryTreeStore: CategoryTree | null = null;
@@ -359,7 +355,7 @@ export function createCatalog(): Catalog {
     },
   };
 
-  return {
+  const reader: CatalogReader = {
     ready,
 
     // readiness predicates
@@ -414,7 +410,7 @@ export function createCatalog(): Catalog {
 
     getPaletteMetadata() {
       if (!paletteStage.resolved) return err(loading("palette"));
-      // Non-null by construction: registerFromPaletteModule sets the store
+      // Non-null by construction: registerPaletteMetadata sets the store
       // before resolving the stage.
       return ok(paletteMetadataStore!);
     },
@@ -450,45 +446,59 @@ export function createCatalog(): Catalog {
         SlimByTypeNameRow[]
       >;
     },
+  };
 
-    // writer — only `install-item-metadata.ts` and test setup should call these
-    registerFromIndexModule(exports_) {
-      aliasMetadataStore = exports_.aliasMetadata;
-      categoryTreeStore = exports_.categoryTree;
-      metadataIndexesStore = expandMetadataIndexesWithInternedArrays(
-        exports_.metadataIndexes,
-      ) as MetadataIndexes;
-      indexStage.resolve();
-      expandInternedItemLitesInStore();
-    },
+  function registerIndexMetadata(metadata: {
+    aliasMetadata: AliasMetadata;
+    categoryTree: CategoryTree;
+    metadataIndexes: MetadataIndexes;
+  }): void {
+    aliasMetadataStore = metadata.aliasMetadata;
+    categoryTreeStore = metadata.categoryTree;
+    metadataIndexesStore = expandMetadataIndexesWithInternedArrays(
+      metadata.metadataIndexes,
+    ) as MetadataIndexes;
+    indexStage.resolve();
+    expandInternedItemLitesInStore();
+  }
 
-    registerFromPaletteModule(exports_) {
-      paletteMetadataStore = exports_.paletteMetadata;
-      paletteStage.resolve();
-    },
+  function registerPaletteMetadata(paletteMetadata: PaletteMetadata): void {
+    paletteMetadataStore = paletteMetadata;
+    paletteStage.resolve();
+  }
 
-    registerFromItemModule(exports_) {
-      itemLiteStore = exports_.itemMetadata;
-      expandInternedItemLitesInStore();
-      liteStage.resolve();
-    },
+  function registerItemMetadata(itemMetadata: Record<string, ItemLite>): void {
+    itemLiteStore = itemMetadata;
+    expandInternedItemLitesInStore();
+    liteStage.resolve();
+  }
 
-    registerFromCreditsModule(exports_) {
-      itemCreditsStore = exports_.itemCredits;
-      creditsStage.resolve();
-    },
+  function registerCreditsMetadata(
+    itemCredits: Record<string, Credit[]>,
+  ): void {
+    itemCreditsStore = itemCredits;
+    creditsStage.resolve();
+  }
 
-    registerFromLayersModule(exports_) {
-      itemLayersStore = exports_.itemLayers;
-      layersStage.resolve();
-    },
+  function registerLayersMetadata(
+    itemLayers: Record<string, Record<string, LayerEntry>>,
+  ): void {
+    itemLayersStore = itemLayers;
+    layersStage.resolve();
+  }
+
+  const writer: CatalogWriter = {
+    registerIndexMetadata,
+    registerPaletteMetadata,
+    registerItemMetadata,
+    registerCreditsMetadata,
+    registerLayersMetadata,
 
     /**
      * Loads the catalog from `extractMetadataGlobalsFromWrites` / `runBuild`
      * `.globals` (merged `itemMetadata` is split into lite, credits, layers).
      */
     loadCatalogFromFixtures(fixtureGlobals) {
-      this.resetForTests();
       const {
         itemMetadata,
         aliasMetadata,
@@ -496,34 +506,15 @@ export function createCatalog(): Catalog {
         metadataIndexes,
         paletteMetadata,
       } = fixtureGlobals;
-      this.registerFromIndexModule({
-        aliasMetadata,
-        categoryTree,
-        metadataIndexes,
-      });
-      this.registerFromPaletteModule({ paletteMetadata });
+      registerIndexMetadata({ aliasMetadata, categoryTree, metadataIndexes });
+      registerPaletteMetadata(paletteMetadata);
       const { itemMetadataLite, itemCredits, itemLayers } =
         splitFullItemMetadataForCatalog(itemMetadata);
-      this.registerFromItemModule({ itemMetadata: itemMetadataLite });
-      this.registerFromCreditsModule({ itemCredits });
-      this.registerFromLayersModule({ itemLayers });
-    },
-
-    /** Reset this instance before replacing all stages with fixture data. */
-    resetForTests() {
-      indexStage = makeStage();
-      liteStage = makeStage();
-      creditsStage = makeStage();
-      paletteStage = makeStage();
-      layersStage = makeStage();
-
-      aliasMetadataStore = null;
-      categoryTreeStore = null;
-      metadataIndexesStore = null;
-      itemLiteStore = null;
-      itemCreditsStore = null;
-      itemLayersStore = null;
-      paletteMetadataStore = null;
+      registerItemMetadata(itemMetadataLite);
+      registerCreditsMetadata(itemCredits);
+      registerLayersMetadata(itemLayers);
     },
   };
+
+  return { reader, writer };
 }

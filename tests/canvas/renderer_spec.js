@@ -186,6 +186,7 @@ describe("canvas/renderer.ts", () => {
 
     let sandbox;
     let catalog;
+    let catalogWriter;
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
@@ -193,7 +194,7 @@ describe("canvas/renderer.ts", () => {
       state.customUploadedImage = null;
       state.customImageZPos = 100;
       initCanvas();
-      catalog = createCatalog();
+      ({ reader: catalog, writer: catalogWriter } = createCatalog());
       if (typeof m !== "undefined" && m.redraw) {
         sandbox.stub(m, "redraw");
       }
@@ -210,7 +211,7 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("skips items whose required list excludes the body type", async () => {
-      seedCatalog(catalog, { walk_only: walkItemMeta() });
+      seedCatalog(catalogWriter, { walk_only: walkItemMeta() });
       await renderCharacter(
         catalog,
         state,
@@ -227,7 +228,7 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("skips selections that have a subId", async () => {
-      seedCatalog(catalog, { walk_only: walkItemMeta() });
+      seedCatalog(catalogWriter, { walk_only: walkItemMeta() });
       // `subId` is checked for truthiness in the renderer (0 would not skip).
       await renderCharacter(
         catalog,
@@ -246,7 +247,7 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("queues walk and omits alias folders for a walk-only item", async () => {
-      seedCatalog(catalog, { walk_only: walkItemMeta() });
+      seedCatalog(catalogWriter, { walk_only: walkItemMeta() });
       await renderCharacter(
         catalog,
         state,
@@ -268,7 +269,7 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("maps combat metadata to combat_idle drawCalls", async () => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         combat_item: walkItemMeta({ animations: ["combat"] }),
       });
       await renderCharacter(
@@ -287,7 +288,7 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("maps 1h_slash metadata to backslash drawCalls", async () => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         slash_item: walkItemMeta({ animations: ["1h_slash"] }),
       });
       await renderCharacter(
@@ -306,7 +307,7 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("maps 1h_halfslash metadata to halfslash drawCalls", async () => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         half_item: walkItemMeta({ animations: ["1h_halfslash"] }),
       });
       await renderCharacter(
@@ -325,7 +326,7 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("sorts drawCalls by ascending zPos", async () => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         layered: walkItemMeta({
           layers: {
             layer_1: {
@@ -360,7 +361,7 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("sets needsRecolor for body-body with a non-light variant", async () => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         "body-body": walkItemMeta({
           name: "Body Color",
           type_name: "body",
@@ -385,7 +386,7 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("queues custom-upload drawCalls from state.customUploadedImage", async () => {
-      seedCatalog(catalog, {});
+      seedCatalog(catalogWriter, {});
       state.customUploadedImage = await imageFromFilledCanvas(8, 8, "#00ff00");
       state.customImageZPos = 42;
 
@@ -408,13 +409,14 @@ describe("canvas/renderer.ts", () => {
 
     let sandbox;
     let catalog;
+    let catalogWriter;
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
       state = createState();
       initCanvas();
-      catalog = createCatalog();
-      seedCatalog(catalog, {
+      ({ reader: catalog, writer: catalogWriter } = createCatalog());
+      seedCatalog(catalogWriter, {
         wheel_item: WHEELCHAIR_ITEM_META,
       });
       if (typeof m !== "undefined" && m.redraw) {
@@ -459,12 +461,13 @@ describe("canvas/renderer.ts", () => {
 
     let sandbox;
     let catalog;
+    let catalogWriter;
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
       state = createState();
       initCanvas();
-      catalog = createCatalog();
+      ({ reader: catalog, writer: catalogWriter } = createCatalog());
       if (typeof m !== "undefined" && m.redraw) {
         sandbox.stub(m, "redraw");
       }
@@ -480,7 +483,7 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("returns null for a missing item", async () => {
-      seedCatalog(catalog, {});
+      seedCatalog(catalogWriter, {});
       const result = await renderSingleItem(
         catalog,
         "does_not_exist",
@@ -493,7 +496,7 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("returns null for an unsupported body type", async () => {
-      seedCatalog(catalog, { walk_only: walkItemMeta() });
+      seedCatalog(catalogWriter, { walk_only: walkItemMeta() });
       const result = await renderSingleItem(
         catalog,
         "walk_only",
@@ -506,7 +509,7 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("returns null for an unknown animation name", async () => {
-      seedCatalog(catalog, { walk_only: walkItemMeta() });
+      seedCatalog(catalogWriter, { walk_only: walkItemMeta() });
       const result = await renderSingleItemAnimation(
         catalog,
         "walk_only",
@@ -520,7 +523,7 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("returns a standard sheet-sized canvas for a walk item", async () => {
-      seedCatalog(catalog, { walk_only: walkItemMeta() });
+      seedCatalog(catalogWriter, { walk_only: walkItemMeta() });
       // Truthy recolors omit the variant segment so paths hit existing walk.png.
       const result = await renderSingleItem(
         catalog,
@@ -536,7 +539,7 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("returns a single-anim canvas with height num * FRAME_SIZE", async () => {
-      seedCatalog(catalog, { walk_only: walkItemMeta() });
+      seedCatalog(catalogWriter, { walk_only: walkItemMeta() });
       const walk = ANIMATION_CONFIGS.walk;
       const result = await renderSingleItemAnimation(
         catalog,
@@ -553,7 +556,7 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("draws content into the walk band for a successful single-item render", async () => {
-      seedCatalog(catalog, { walk_only: walkItemMeta() });
+      seedCatalog(catalogWriter, { walk_only: walkItemMeta() });
       const result = await renderSingleItem(
         catalog,
         "walk_only",
@@ -572,7 +575,7 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("returns a taller-than-sheet canvas for a custom-animation-only item", async () => {
-      seedCatalog(catalog, { wheel_item: WHEELCHAIR_ITEM_META });
+      seedCatalog(catalogWriter, { wheel_item: WHEELCHAIR_ITEM_META });
       const result = await renderSingleItem(
         catalog,
         "wheel_item",

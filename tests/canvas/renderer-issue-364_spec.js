@@ -46,13 +46,14 @@ const ISSUE_364_METADATA = {
 describe("canvas/renderer.ts issue #364 (addedCustomAnimations export)", () => {
   let sandbox;
   let catalog;
+  let catalogWriter;
 
   beforeEach(() => {
     sandbox = sinon.createSandbox();
     state = createState();
     initCanvas();
-    catalog = createCatalog();
-    seedCatalog(catalog, ISSUE_364_METADATA);
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
+    seedCatalog(catalogWriter, ISSUE_364_METADATA);
     state.selections = {
       slot: {
         itemId: "issue364_wheel_item",

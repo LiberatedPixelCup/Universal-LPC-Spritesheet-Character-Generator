@@ -14,9 +14,10 @@ import { seedCatalog } from "../../browser-catalog-fixture.js";
 describe("CategoryTree", function () {
   let host;
   let catalog;
+  let catalogWriter;
 
   beforeEach(function () {
-    catalog = createCatalog();
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
     configureStateCatalog(catalog);
     state = createState();
     state.expandedNodes = {};
@@ -48,7 +49,7 @@ describe("CategoryTree", function () {
   });
 
   it("disables Expand Selected while the item list (lite) is not ready", function () {
-    catalog.registerFromIndexModule({
+    catalogWriter.registerIndexMetadata({
       aliasMetadata: {},
       categoryTree: { items: [], children: {} },
       metadataIndexes: {
@@ -56,9 +57,7 @@ describe("CategoryTree", function () {
         hashMatch: { itemsByTypeName: {} },
       },
     });
-    catalog.registerFromPaletteModule({
-      paletteMetadata: { versions: {}, materials: {} },
-    });
+    catalogWriter.registerPaletteMetadata({ versions: {}, materials: {} });
 
     m.render(host, m(CategoryTree, { catalog, state }));
 
@@ -72,7 +71,7 @@ describe("CategoryTree", function () {
 
   it("renders toolbar, match-body-color control, body selector, and category items", function () {
     seedCatalog(
-      catalog,
+      catalogWriter,
       {
         ct_hat_1: {
           name: "Category Tree Hat",
@@ -139,7 +138,7 @@ describe("CategoryTree", function () {
 
   it("Expand Selected expands paths for the current selection", function () {
     seedCatalog(
-      catalog,
+      catalogWriter,
       {
         ct_hat_1: {
           name: "Category Tree Hat",
@@ -179,7 +178,7 @@ describe("CategoryTree", function () {
 
   it("Collapse All clears expanded nodes", function () {
     seedCatalog(
-      catalog,
+      catalogWriter,
       {
         ct_hat_1: {
           name: "Category Tree Hat",

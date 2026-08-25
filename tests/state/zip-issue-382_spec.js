@@ -54,13 +54,14 @@ describe("state/zip.ts issue #382 regression (longsword + full outfit)", () => {
   let fakeZip;
   let alertStub;
   let catalog;
+  let catalogWriter;
 
   beforeEach(async () => {
-    catalog = createCatalog();
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
     state = createState();
     drawCalls.length = 0;
 
-    seedCatalogWithGeneratedContext(catalog, issue382ItemMetadata);
+    seedCatalogWithGeneratedContext(catalogWriter, issue382ItemMetadata);
 
     applyImportedStateFromFixture(catalog);
 

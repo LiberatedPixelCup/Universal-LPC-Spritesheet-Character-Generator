@@ -14,9 +14,10 @@ import { seedCatalog } from "../../browser-catalog-fixture.js";
 describe("CurrentSelections", function () {
   let host;
   let catalog;
+  let catalogWriter;
 
   beforeEach(function () {
-    catalog = createCatalog();
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
     state = createState();
     host = document.createElement("div");
     document.body.appendChild(host);
@@ -38,7 +39,7 @@ describe("CurrentSelections", function () {
   });
 
   it("shows empty copy when catalog is ready but nothing is selected", function () {
-    seedCatalog(catalog, {
+    seedCatalog(catalogWriter, {
       sel_body: {
         name: "Body",
         type_name: "body",
@@ -56,7 +57,7 @@ describe("CurrentSelections", function () {
   });
 
   it("renders selection tags with titles, license/animation lines, and delete controls", function () {
-    seedCatalog(catalog, {
+    seedCatalog(catalogWriter, {
       sel_hat: {
         name: "Test Hat",
         type_name: "hat",
@@ -106,7 +107,7 @@ describe("CurrentSelections", function () {
   });
 
   it("uses warning styling when license filters exclude item credits", function () {
-    seedCatalog(catalog, {
+    seedCatalog(catalogWriter, {
       sel_gpl_item: {
         name: "GPL Asset",
         type_name: "misc",
@@ -132,7 +133,7 @@ describe("CurrentSelections", function () {
   });
 
   it("uses warning styling when animation filters exclude item animations", function () {
-    seedCatalog(catalog, {
+    seedCatalog(catalogWriter, {
       sel_walk_only: {
         name: "Walk Only",
         type_name: "hat",
@@ -156,7 +157,7 @@ describe("CurrentSelections", function () {
   });
 
   it("remove control deletes that selection and updates the view", function () {
-    seedCatalog(catalog, {
+    seedCatalog(catalogWriter, {
       sel_a: {
         name: "Item A",
         type_name: "hat",

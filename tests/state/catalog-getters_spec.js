@@ -3,13 +3,14 @@ import { describe, it, beforeEach } from "mocha-globals";
 import { createCatalog } from "../../sources/state/catalog.ts";
 
 let catalog;
+let writer;
 const ITEM_METADATA = {
   a: { name: "A", type_name: "body", required: ["male"] },
 };
 
 describe("state/catalog.ts", () => {
   beforeEach(() => {
-    catalog = createCatalog();
+    ({ reader: catalog, writer } = createCatalog());
   });
 
   describe("getItemLite", () => {
@@ -22,7 +23,7 @@ describe("state/catalog.ts", () => {
     });
 
     it("returns Ok(item) after lite chunk loads with valid id", () => {
-      catalog.registerFromItemModule({ itemMetadata: ITEM_METADATA });
+      writer.registerItemMetadata(ITEM_METADATA);
       const r = catalog.getItemLite("a");
       expect(r.isOk()).to.be.true;
       if (r.isOk()) {
@@ -32,7 +33,7 @@ describe("state/catalog.ts", () => {
     });
 
     it("returns Err({kind:'not-found'}) after load with unknown id", () => {
-      catalog.registerFromItemModule({ itemMetadata: ITEM_METADATA });
+      writer.registerItemMetadata(ITEM_METADATA);
       const r = catalog.getItemLite("ghost");
       expect(r.isErr()).to.be.true;
       if (r.isErr()) {
@@ -49,7 +50,7 @@ describe("state/catalog.ts", () => {
     });
 
     it("returns Ok with empty layers/credits when only lite is loaded", () => {
-      catalog.registerFromItemModule({ itemMetadata: ITEM_METADATA });
+      writer.registerItemMetadata(ITEM_METADATA);
       const r = catalog.getItemMerged("a");
       expect(r.isOk()).to.be.true;
       if (r.isOk()) {
@@ -60,14 +61,14 @@ describe("state/catalog.ts", () => {
     });
 
     it("returns Err({kind:'not-found'}) for unknown id", () => {
-      catalog.registerFromItemModule({ itemMetadata: ITEM_METADATA });
+      writer.registerItemMetadata(ITEM_METADATA);
       const r = catalog.getItemMerged("ghost");
       expect(r.isErr()).to.be.true;
       if (r.isErr()) expect(r.error.kind).to.equal("not-found");
     });
 
     it("merges credits and layers when those chunks have loaded", () => {
-      catalog.loadCatalogFromFixtures({
+      writer.loadCatalogFromFixtures({
         itemMetadata: {
           a: {
             name: "A",
@@ -97,7 +98,7 @@ describe("state/catalog.ts", () => {
     });
 
     it("returns Err({kind:'not-found'}) for unknown id when credits chunk is loaded", () => {
-      catalog.registerFromCreditsModule({ itemCredits: {} });
+      writer.registerCreditsMetadata({});
       const r = catalog.getItemCredits("ghost");
       expect(r.isErr()).to.be.true;
       if (r.isErr()) {
@@ -106,16 +107,14 @@ describe("state/catalog.ts", () => {
     });
 
     it("returns Ok(credits) when chunk is loaded and id has entries", () => {
-      catalog.registerFromCreditsModule({
-        itemCredits: { a: [{ file: "f", licenses: ["MIT"] }] },
-      });
+      writer.registerCreditsMetadata({ a: [{ file: "f", licenses: ["MIT"] }] });
       const r = catalog.getItemCredits("a");
       expect(r.isOk()).to.be.true;
       if (r.isOk()) expect(r.value[0].licenses).to.deep.equal(["MIT"]);
     });
 
     it("returns Ok([]) when chunk is loaded and id has an empty array entry", () => {
-      catalog.registerFromCreditsModule({ itemCredits: { a: [] } });
+      writer.registerCreditsMetadata({ a: [] });
       const r = catalog.getItemCredits("a");
       expect(r.isOk()).to.be.true;
       if (r.isOk()) expect(r.value).to.deep.equal([]);
@@ -130,7 +129,7 @@ describe("state/catalog.ts", () => {
     });
 
     it("returns Err({kind:'not-found'}) for unknown id when layers chunk is loaded", () => {
-      catalog.registerFromLayersModule({ itemLayers: {} });
+      writer.registerLayersMetadata({});
       const r = catalog.getItemLayers("ghost");
       expect(r.isErr()).to.be.true;
       if (r.isErr()) {
@@ -139,7 +138,7 @@ describe("state/catalog.ts", () => {
     });
 
     it("returns Ok({}) when chunk is loaded and id has an empty object entry", () => {
-      catalog.registerFromLayersModule({ itemLayers: { a: {} } });
+      writer.registerLayersMetadata({ a: {} });
       const r = catalog.getItemLayers("a");
       expect(r.isOk()).to.be.true;
       if (r.isOk()) expect(r.value).to.deep.equal({});
@@ -154,9 +153,7 @@ describe("state/catalog.ts", () => {
     });
 
     it("returns Ok(meta) when palette chunk is loaded", () => {
-      catalog.registerFromPaletteModule({
-        paletteMetadata: { versions: {}, materials: { skin: {} } },
-      });
+      writer.registerPaletteMetadata({ versions: {}, materials: { skin: {} } });
       const r = catalog.getPaletteMetadata();
       expect(r.isOk()).to.be.true;
       if (r.isOk()) expect(r.value.materials).to.have.property("skin");
@@ -177,7 +174,7 @@ describe("state/catalog.ts", () => {
     });
 
     it("all return Ok after index chunk loads", () => {
-      catalog.registerFromIndexModule({
+      writer.registerIndexMetadata({
         aliasMetadata: { aliasFlag: 1 },
         categoryTree: { items: ["a"], children: {} },
         metadataIndexes: { byTypeName: {}, hashMatch: {} },

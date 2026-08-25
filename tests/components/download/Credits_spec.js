@@ -17,12 +17,13 @@ function buttonByText(host, text) {
 describe("Credits", function () {
   let host;
   let catalog;
+  let catalogWriter;
 
   beforeEach(function () {
     state = createState();
     host = document.createElement("div");
     document.body.appendChild(host);
-    catalog = createCatalog();
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
     state.previewBootstrapRenderDone = true;
     state.selections = {};
     state.bodyType = "male";
@@ -52,7 +53,7 @@ describe("Credits", function () {
   });
 
   it("shows empty copy when ready but nothing is credited", function () {
-    seedCatalog(catalog, {});
+    seedCatalog(catalogWriter, {});
     m.mount(host, {
       view: () => m(Credits, { catalog, state }),
     });
@@ -62,7 +63,7 @@ describe("Credits", function () {
   });
 
   it("lists credits and downloads TXT/CSV files", function () {
-    seedCatalog(catalog, {
+    seedCatalog(catalogWriter, {
       item1: {
         animations: ["walk"],
         layers: {

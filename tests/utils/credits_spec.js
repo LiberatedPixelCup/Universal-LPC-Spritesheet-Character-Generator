@@ -13,10 +13,11 @@ let state;
 describe("utils/credits.ts", () => {
   let previousSelectedAnimation;
   let catalog;
+  let catalogWriter;
 
   beforeEach(() => {
     state = createState();
-    catalog = createCatalog();
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
     previousSelectedAnimation = state.selectedAnimation;
   });
 
@@ -26,12 +27,12 @@ describe("utils/credits.ts", () => {
 
   describe("getAllCredits", () => {
     it("returns an empty array when selections is empty", () => {
-      seedCatalog(catalog, {});
+      seedCatalog(catalogWriter, {});
       expect(getAllCredits(catalog, {}, "male")).to.deep.equal([]);
     });
 
     it("skips items with no metadata or no credits", () => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         noCredits: {
           animations: ["walk"],
           layers: { layer_1: { male: "a/" } },
@@ -47,7 +48,7 @@ describe("utils/credits.ts", () => {
     });
 
     it("includes a credit when the used sprite path matches the credit file prefix", () => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         item1: {
           animations: ["walk"],
           layers: {
@@ -81,7 +82,7 @@ describe("utils/credits.ts", () => {
     });
 
     it("uses variant path segments when selection has a variant", () => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         item1: {
           animations: ["walk"],
           layers: {
@@ -110,7 +111,7 @@ describe("utils/credits.ts", () => {
     });
 
     it("uses state.selectedAnimation when building paths", () => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         item1: {
           animations: ["walk", "run"],
           layers: {
@@ -139,7 +140,7 @@ describe("utils/credits.ts", () => {
     });
 
     it("uses the first listed animation when walk is not available", () => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         item1: {
           animations: ["idle", "jump"],
           layers: {
@@ -167,7 +168,7 @@ describe("utils/credits.ts", () => {
     });
 
     it("matches credit when used path equals credit.file exactly", () => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         item1: {
           animations: ["walk"],
           layers: {
@@ -196,7 +197,7 @@ describe("utils/credits.ts", () => {
     });
 
     it("does not emit duplicate entries for the same used path", () => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         item1: {
           animations: ["walk"],
           layers: {

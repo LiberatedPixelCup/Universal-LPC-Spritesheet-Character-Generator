@@ -16,13 +16,14 @@ describe("state/palettes.ts", () => {
   let previousSelections;
   let previousMatchBodyColorEnabled;
   let catalog;
+  let catalogWriter;
 
   beforeEach(() => {
     state = createState();
     previousSelections = state.selections;
     previousMatchBodyColorEnabled = state.matchBodyColorEnabled;
     state.matchBodyColorEnabled = true;
-    catalog = createCatalog();
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
 
     const paletteMetadata = {
       materials: {
@@ -275,7 +276,7 @@ describe("state/palettes.ts", () => {
       },
     };
 
-    seedCatalog(catalog, testItemMetadata, { paletteMetadata });
+    seedCatalog(catalogWriter, testItemMetadata, { paletteMetadata });
     configureStateCatalog(catalog);
     state.selections = {};
   });

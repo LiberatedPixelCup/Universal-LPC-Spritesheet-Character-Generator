@@ -63,10 +63,11 @@ function solidColorCanvas(r, g, b, w = 8, h = 8) {
 
 describe("canvas/palette-recolor.ts recolor cache", () => {
   let catalog;
+  let catalogWriter;
 
   beforeEach(() => {
-    catalog = createCatalog();
-    seedCatalog(catalog, itemMetadata, { paletteMetadata });
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
+    seedCatalog(catalogWriter, itemMetadata, { paletteMetadata });
     clearRecolorCache();
   });
 

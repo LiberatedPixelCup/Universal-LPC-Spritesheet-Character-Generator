@@ -20,6 +20,7 @@ describe("App", function () {
   let previousRenderer;
   let previousTesting;
   let catalog;
+  let catalogWriter;
 
   beforeEach(function () {
     state = createState();
@@ -27,8 +28,8 @@ describe("App", function () {
     document.body.appendChild(host);
     previousRenderer = window.canvasRenderer;
     previousTesting = window.isTesting;
-    catalog = createCatalog();
-    seedCatalog(catalog, {});
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
+    seedCatalog(catalogWriter, {});
     configureStateCatalog(catalog);
     delete window.canvasRenderer;
     window.isTesting = true;
@@ -70,7 +71,7 @@ describe("App", function () {
     });
     resetHashCalledTimes();
 
-    seedCatalog(catalog, {
+    seedCatalog(catalogWriter, {
       item1: {
         name: "Test Body",
         type_name: "body",

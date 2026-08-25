@@ -8,7 +8,7 @@
  * item record lives in the lite item map.
  *
  * Emitted `index-metadata.js` may store interned rows (`v` / `r` into `variantArrays` /
- * `recolorVariantArrays`); `catalog.registerFromIndexModule` expands `byTypeName` to the slim row
+ * `recolorVariantArrays`); `writer.registerIndexMetadata` expands `byTypeName` to the slim row
  * shape and keeps the two array tables for expanding interned `item-metadata.js` lites. Emitted
  * `item-metadata.js` may store per-item `v` / `r` and stripped `recolors[0].variants` only.
  */

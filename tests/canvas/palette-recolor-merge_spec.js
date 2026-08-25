@@ -24,21 +24,20 @@ import {
 describe("canvas/palette-recolor.ts single-pass merge (CPU path)", () => {
   let previousMode;
   let catalog;
+  let catalogWriter;
 
   before(() => {
-    catalog = createCatalog();
-    catalog.registerFromPaletteModule({
-      paletteMetadata: {
-        versions: {},
-        materials: {
-          body: {
-            default: "ulpc",
-            base: "light",
-            palettes: {
-              ulpc: {
-                light: ["#FF0000"],
-                olive: ["#00FF00"],
-              },
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
+    catalogWriter.registerPaletteMetadata({
+      versions: {},
+      materials: {
+        body: {
+          default: "ulpc",
+          base: "light",
+          palettes: {
+            ulpc: {
+              light: ["#FF0000"],
+              olive: ["#00FF00"],
             },
           },
         },
