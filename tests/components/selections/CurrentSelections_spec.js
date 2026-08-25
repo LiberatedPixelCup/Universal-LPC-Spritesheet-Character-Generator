@@ -95,6 +95,48 @@ describe("CurrentSelections", function () {
     assert.strictEqual(host.querySelector(".tag"), null);
   });
 
+  it("replaces loading license copy when credits become ready", function () {
+    catalogWriter.registerItemMetadata({
+      sel_hat: {
+        name: "Test Hat",
+        type_name: "hat",
+        required: [],
+        animations: ["walk"],
+        recolors: [],
+        matchBodyColor: false,
+        variants: [],
+        path: [],
+      },
+    });
+    state.selections = {
+      hat: { itemId: "sel_hat", name: "Test Hat" },
+    };
+
+    const loadingModel = currentSelectionsModelFactory.create(catalog, state);
+    assert.strictEqual(loadingModel.kind, "ready");
+    assert.strictEqual(
+      loadingModel.items[0].tooltip,
+      "License info loading…\nAnimations: walk",
+    );
+
+    catalogWriter.registerCreditsMetadata({
+      sel_hat: [
+        {
+          file: "hat.png",
+          authors: [],
+          licenses: ["CC0"],
+          urls: [],
+        },
+      ],
+    });
+    const readyModel = currentSelectionsModelFactory.create(catalog, state);
+    assert.strictEqual(readyModel.kind, "ready");
+    assert.strictEqual(
+      readyModel.items[0].tooltip,
+      "Licenses: CC0\nAnimations: walk",
+    );
+  });
+
   it("renders selection tags with titles, license/animation lines, and delete controls", function () {
     seedCatalog(catalogWriter, {
       sel_hat: {

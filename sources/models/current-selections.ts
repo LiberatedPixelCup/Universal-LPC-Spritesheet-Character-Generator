@@ -9,7 +9,7 @@ export type CurrentSelectionItemModel = {
   readonly key: string;
   readonly name: string;
   readonly isCompatible: boolean;
-  readonly tooltip?: string;
+  readonly tooltip: string;
   remove(): void;
 };
 
@@ -72,9 +72,7 @@ export const currentSelectionsModelFactory = {
           key,
           name: selection.name,
           isCompatible,
-          tooltip: creditsReady
-            ? `${incompatibility}${licensesText}\n${animationsText}`
-            : undefined,
+          tooltip: `${incompatibility}${licensesText}\n${animationsText}`,
           remove: () => {
             delete state.selections[key];
           },
