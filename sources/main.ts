@@ -3,8 +3,9 @@
 import m from "mithril";
 import "./styles/critical-entry.scss";
 import "./vendor-globals.ts";
-import { loadAllMetadata } from "./install-item-metadata.ts";
-import { createCatalog, type CatalogReader } from "./state/catalog.ts";
+import { createLoadedCatalog } from "./install-item-metadata.ts";
+import { createApplicationModels } from "./models/application.ts";
+import type { CatalogReader } from "./state/catalog.ts";
 
 // Import debug first so `window.DEBUG` is set before other modules run.
 import { debugLog, getDebugParam } from "./utils/debug.ts";
@@ -79,8 +80,13 @@ import { FullSpritesheetPreview } from "./components/preview/FullSpritesheetPrev
 // Import performance profiler
 import { PerformanceProfiler } from "./performance-profiler.ts";
 
-const applicationCatalog = createCatalog();
+// Start metadata fetch at entry-module time so it overlaps HTML parse.
+const applicationCatalog = createLoadedCatalog();
 const applicationState = createState();
+const applicationModels = createApplicationModels(
+  applicationCatalog,
+  applicationState,
+);
 configureStateCatalog(applicationCatalog);
 installCatalogReadinessHooksForVisualTooling(applicationCatalog);
 
@@ -105,10 +111,6 @@ window.canvasRenderer = canvasRenderer;
 window.setDefaultSelections = async function () {
   await initState(applicationState);
 };
-
-// Start metadata chunk fetches as soon as the entry module runs (no DOM required),
-// so download/parse overlaps HTML parse and the rest of this file.
-void loadAllMetadata(applicationCatalog);
 
 // TODO: this dynamic import doesn't actually load the deferred CSS in prod.
 // `load-deferred-styles.ts` has no JS exports (only `import "./deferred-entry.scss"`),
@@ -138,7 +140,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // main.ts is the composition root; App and sibling previews receive the same catalog.
   m.mount(document.getElementById("mithril-filters")!, {
     view: () =>
-      m(App, { catalog: applicationCatalog, state: applicationState }),
+      m(App, {
+        catalog: applicationCatalog,
+        state: applicationState,
+        models: applicationModels,
+      }),
   });
   m.mount(document.getElementById("mithril-preview")!, {
     view: () =>

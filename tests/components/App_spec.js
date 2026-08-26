@@ -2,6 +2,7 @@ import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { App } from "../../sources/components/App.ts";
+import { createApplicationModels } from "../../sources/models/application.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
 import {
   configureStateCatalog,
@@ -20,6 +21,16 @@ describe("App", function () {
   let previousRenderer;
   let previousTesting;
   let catalog;
+  let catalogWriter;
+  let models;
+
+  function appView() {
+    return m(App, {
+      catalog,
+      state,
+      models,
+    });
+  }
 
   beforeEach(function () {
     state = createState();
@@ -27,8 +38,9 @@ describe("App", function () {
     document.body.appendChild(host);
     previousRenderer = window.canvasRenderer;
     previousTesting = window.isTesting;
-    catalog = createCatalog();
-    seedCatalog(catalog, {});
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
+    seedCatalog(catalogWriter, {});
+    models = createApplicationModels(catalog, state);
     configureStateCatalog(catalog);
     delete window.canvasRenderer;
     window.isTesting = true;
@@ -52,7 +64,7 @@ describe("App", function () {
 
   it("renders Download, Filters, Credits, and Advanced Tools", function () {
     m.mount(host, {
-      view: () => m(App, { catalog, state }),
+      view: appView,
     });
 
     const titles = [...host.querySelectorAll("h3.collapsible-title")].map(
@@ -64,13 +76,35 @@ describe("App", function () {
     assert.include(titles, "Advanced Tools");
   });
 
+  it("does not build current selections while Filters is collapsed", function () {
+    let currentSelectionsCalls = 0;
+    models = {
+      createCurrentSelectionsModel: () => {
+        currentSelectionsCalls += 1;
+        return { kind: "empty" };
+      },
+    };
+    m.mount(host, { view: appView });
+    assert.strictEqual(currentSelectionsCalls, 1);
+
+    const filtersTitle = [
+      ...host.querySelectorAll("h3.collapsible-title"),
+    ].find((element) => element.textContent === "Filters");
+    filtersTitle.parentElement.dispatchEvent(
+      new MouseEvent("click", { bubbles: true }),
+    );
+    m.redraw.sync();
+
+    assert.strictEqual(currentSelectionsCalls, 1);
+  });
+
   it("syncs the hash when selections change and skips render without canvasRenderer", function () {
     m.mount(host, {
-      view: () => m(App, { catalog, state }),
+      view: appView,
     });
     resetHashCalledTimes();
 
-    seedCatalog(catalog, {
+    seedCatalog(catalogWriter, {
       item1: {
         name: "Test Body",
         type_name: "body",
@@ -87,7 +121,7 @@ describe("App", function () {
 
   it("syncs the hash when bodyType or custom overlay state changes", function () {
     m.mount(host, {
-      view: () => m(App, { catalog, state }),
+      view: appView,
     });
     resetHashCalledTimes();
 

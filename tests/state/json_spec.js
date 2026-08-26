@@ -16,7 +16,7 @@ describe("state/json.ts", () => {
 
   beforeEach(() => {
     state = createState();
-    catalog = createCatalog();
+    ({ reader: catalog } = createCatalog());
     resetJsonDeps();
   });
 

@@ -109,18 +109,19 @@ describe("canvas/canvas-utils.ts", () => {
 
   describe("getZPos", () => {
     let catalog;
+    let catalogWriter;
 
     beforeEach(() => {
-      catalog = createCatalog();
+      ({ reader: catalog, writer: catalogWriter } = createCatalog());
     });
 
     it("returns 100 when item id is missing from itemMetadata", () => {
-      seedCatalog(catalog, {});
+      seedCatalog(catalogWriter, {});
       expect(getZPos(catalog, "unknown-id")).to.equal(100);
     });
 
     it("returns layer zPos for the default layer (layer_1)", () => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         itemA: {
           layers: {
             layer_1: { zPos: 42 },
@@ -131,7 +132,7 @@ describe("canvas/canvas-utils.ts", () => {
     });
 
     it("returns zPos for layer_N when layerNum is provided", () => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         itemB: {
           layers: {
             layer_1: { zPos: 1 },
@@ -143,14 +144,14 @@ describe("canvas/canvas-utils.ts", () => {
     });
 
     it("returns 100 when metadata exists but the layer is missing", () => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         itemC: { layers: { layer_1: { zPos: 5 } } },
       });
       expect(getZPos(catalog, "itemC", 3)).to.equal(100);
     });
 
     it("returns 100 when the layer has no zPos", () => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         itemD: {
           layers: {
             layer_1: {},
@@ -161,7 +162,7 @@ describe("canvas/canvas-utils.ts", () => {
     });
 
     it("returns 100 when metadata has no layers object", () => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         itemE: {},
       });
       expect(getZPos(catalog, "itemE")).to.equal(100);

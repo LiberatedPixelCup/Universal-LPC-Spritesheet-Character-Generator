@@ -86,10 +86,11 @@ describe("utils/helpers.ts", () => {
 
   describe("nodeHasMatches", () => {
     let catalog;
+    let catalogWriter;
 
     beforeEach(() => {
-      catalog = createCatalog();
-      seedCatalog(catalog, {
+      ({ reader: catalog, writer: catalogWriter } = createCatalog());
+      seedCatalog(catalogWriter, {
         1: { name: "Sword" },
         2: { name: "Shield" },
       });

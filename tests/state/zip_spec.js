@@ -107,9 +107,10 @@ const CUSTOM_ANIMATION_ONLY_ITEM_METADATA = {
 
 describe("state/zip.ts", () => {
   let catalog;
+  let catalogWriter;
 
   beforeEach(() => {
-    catalog = createCatalog();
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
   });
 
   describe("exportSplitAnimations", () => {
@@ -226,7 +227,7 @@ describe("state/zip.ts", () => {
     });
 
     it("calls addAnimationSliceToZip for custom/<name>.png when addedCustomAnimations is non-empty after renderCharacter", async () => {
-      seedCatalogWithGeneratedContext(catalog, ZIP_SPEC_ITEM_METADATA);
+      seedCatalogWithGeneratedContext(catalogWriter, ZIP_SPEC_ITEM_METADATA);
       state.selections = {
         body: {
           itemId: "body",
@@ -278,7 +279,7 @@ describe("state/zip.ts", () => {
       state = createState();
       drawCalls.length = 0;
 
-      seedCatalogWithGeneratedContext(catalog, ZIP_SPEC_ITEM_METADATA);
+      seedCatalogWithGeneratedContext(catalogWriter, ZIP_SPEC_ITEM_METADATA);
 
       state.selections = {
         body: {
@@ -535,7 +536,7 @@ describe("state/zip.ts", () => {
     describe("issue #364 (custom-animation-only items)", () => {
       beforeEach(async () => {
         seedCatalogWithGeneratedContext(
-          catalog,
+          catalogWriter,
           CUSTOM_ANIMATION_ONLY_ITEM_METADATA,
         );
         state.selections = {
@@ -683,7 +684,7 @@ describe("state/zip.ts", () => {
       state = createState();
       drawCalls.length = 0;
 
-      seedCatalogWithGeneratedContext(catalog, ZIP_SPEC_ITEM_METADATA);
+      seedCatalogWithGeneratedContext(catalogWriter, ZIP_SPEC_ITEM_METADATA);
 
       state.selections = {
         body: {
@@ -1110,7 +1111,7 @@ describe("state/zip.ts", () => {
     describe("issue #364 (custom-animation-only items)", () => {
       beforeEach(async () => {
         seedCatalogWithGeneratedContext(
-          catalog,
+          catalogWriter,
           CUSTOM_ANIMATION_ONLY_ITEM_METADATA,
         );
         state.selections = {
@@ -1319,7 +1320,7 @@ describe("state/zip.ts", () => {
     });
 
     it("writes custom frame paths under custom/walk_128/ when renderCharacter adds that custom animation", async () => {
-      seedCatalogWithGeneratedContext(catalog, ZIP_SPEC_ITEM_METADATA);
+      seedCatalogWithGeneratedContext(catalogWriter, ZIP_SPEC_ITEM_METADATA);
       state.selections = {
         body: {
           itemId: "body",

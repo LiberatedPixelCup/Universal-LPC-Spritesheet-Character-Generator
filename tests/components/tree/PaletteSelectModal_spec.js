@@ -107,9 +107,10 @@ function rootViewNodeStub() {
 describe("PaletteSelectModal", function () {
   let host;
   let catalog;
+  let catalogWriter;
 
   beforeEach(function () {
-    catalog = createCatalog();
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
     configureStateCatalog(catalog);
     state = createState();
     state.expandedNodes = {};
@@ -155,7 +156,7 @@ describe("PaletteSelectModal", function () {
   it("shows loading layer copy when lite is ready but layers are not", function () {
     const itemMetadata = psmShirtItem();
     const byTypeName = buildItemsByTypeNameLite(itemMetadata);
-    catalog.registerFromIndexModule({
+    catalogWriter.registerIndexMetadata({
       aliasMetadata: {},
       categoryTree: { items: [], children: {} },
       metadataIndexes: {
@@ -163,13 +164,11 @@ describe("PaletteSelectModal", function () {
         hashMatch: { itemsByTypeName: byTypeName },
       },
     });
-    catalog.registerFromPaletteModule({
-      paletteMetadata: modalPaletteMetadata,
-    });
+    catalogWriter.registerPaletteMetadata(modalPaletteMetadata);
     const { itemMetadataLite, itemCredits } =
       splitItemMetadataForRegisters(itemMetadata);
-    catalog.registerFromItemModule({ itemMetadata: itemMetadataLite });
-    catalog.registerFromCreditsModule({ itemCredits });
+    catalogWriter.registerItemMetadata(itemMetadataLite);
+    catalogWriter.registerCreditsMetadata(itemCredits);
     assert.strictEqual(catalog.isPaletteReady(), true);
     assert.strictEqual(catalog.isLiteReady(), true);
     assert.strictEqual(catalog.isLayersReady(), false);
@@ -184,7 +183,7 @@ describe("PaletteSelectModal", function () {
   });
 
   it("renders header, version row, and variant tiles when catalog data is ready", async function () {
-    seedCatalog(catalog, psmShirtItem(), {
+    seedCatalog(catalogWriter, psmShirtItem(), {
       categoryTree: { items: [], children: {} },
       paletteMetadata: modalPaletteMetadata,
     });
@@ -236,7 +235,7 @@ describe("PaletteSelectModal", function () {
   });
 
   it("invokes onClose when the header close button is clicked", function () {
-    seedCatalog(catalog, psmShirtItem(), {
+    seedCatalog(catalogWriter, psmShirtItem(), {
       categoryTree: { items: [], children: {} },
       paletteMetadata: modalPaletteMetadata,
     });
@@ -260,7 +259,7 @@ describe("PaletteSelectModal", function () {
   });
 
   it("invokes onSelect with the recolor key when a variant tile is clicked", function () {
-    seedCatalog(catalog, psmShirtItem(), {
+    seedCatalog(catalogWriter, psmShirtItem(), {
       categoryTree: { items: [], children: {} },
       paletteMetadata: modalPaletteMetadata,
     });
@@ -283,7 +282,7 @@ describe("PaletteSelectModal", function () {
   });
 
   it("uses compact canvas dimensions when compactDisplay is enabled", function () {
-    seedCatalog(catalog, psmShirtItem(), {
+    seedCatalog(catalogWriter, psmShirtItem(), {
       categoryTree: { items: [], children: {} },
       paletteMetadata: modalPaletteMetadata,
     });
@@ -299,7 +298,7 @@ describe("PaletteSelectModal", function () {
   });
 
   it("does not render a source tile when sourceColors is missing", function () {
-    seedCatalog(catalog, psmShirtItem(), {
+    seedCatalog(catalogWriter, psmShirtItem(), {
       categoryTree: { items: [], children: {} },
       paletteMetadata: modalPaletteMetadata,
     });
@@ -314,7 +313,7 @@ describe("PaletteSelectModal", function () {
   });
 
   it("renders a source tile first when sourceColors is provided", function () {
-    seedCatalog(catalog, psmShirtItem(), {
+    seedCatalog(catalogWriter, psmShirtItem(), {
       categoryTree: { items: [], children: {} },
       paletteMetadata: modalPaletteMetadata,
     });
@@ -337,7 +336,7 @@ describe("PaletteSelectModal", function () {
   });
 
   it("invokes onSelect with source when source tile is clicked", function () {
-    seedCatalog(catalog, psmShirtItem(), {
+    seedCatalog(catalogWriter, psmShirtItem(), {
       categoryTree: { items: [], children: {} },
       paletteMetadata: modalPaletteMetadata,
     });
@@ -366,7 +365,7 @@ describe("PaletteSelectModal", function () {
   });
 
   it("renders source in a standalone block above version categories", function () {
-    seedCatalog(catalog, psmShirtItem(), {
+    seedCatalog(catalogWriter, psmShirtItem(), {
       categoryTree: { items: [], children: {} },
       paletteMetadata: modalPaletteMetadata,
     });

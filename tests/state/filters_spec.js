@@ -19,10 +19,11 @@ import { describe, it, beforeEach } from "mocha-globals";
 
 describe("state/filters.ts", () => {
   let catalog;
+  let catalogWriter;
   let state;
 
   beforeEach(() => {
-    catalog = createCatalog();
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
     state = createState();
   });
 
@@ -113,7 +114,7 @@ describe("state/filters.ts", () => {
     });
 
     it("should return true if item metadata has no credits", () => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         item1: { credits: [] },
       });
       const result = isItemLicenseCompatible(catalog, state, "item1");
@@ -123,7 +124,7 @@ describe("state/filters.ts", () => {
     it("should return false if no licenses are enabled", () => {
       setEnabledLicenses(state, []);
       setLicenseConfig([{ key: "license1", versions: ["license1 1.0"] }]);
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         item1: {
           credits: [{ licenses: ["license1 1.0"] }],
         },
@@ -138,7 +139,7 @@ describe("state/filters.ts", () => {
         { key: "license1", versions: ["license1 1.0"] },
         { key: "license2", versions: ["license2 1.0"] },
       ]);
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         item1: {
           credits: [{ licenses: ["license1 1.0", "license2 1.0"] }],
         },
@@ -154,7 +155,7 @@ describe("state/filters.ts", () => {
         { key: "license2", versions: ["license2 1.0"] },
         { key: "license3", versions: ["license3 1.0"] },
       ]);
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         item1: {
           credits: [{ licenses: ["license1 1.0", "license2 1.0"] }],
         },
@@ -166,7 +167,7 @@ describe("state/filters.ts", () => {
     it("should trim license strings before comparison", () => {
       setEnabledLicenses(state, ["license1"]);
       setLicenseConfig([{ key: "license1", versions: ["license1 1.0"] }]);
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         item1: {
           credits: [{ licenses: [" license1 1.0 "] }],
         },
@@ -178,7 +179,7 @@ describe("state/filters.ts", () => {
 
   describe("isItemAnimationCompatible", () => {
     beforeEach(() => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         item1: {
           animations: ["walk", "run"],
         },

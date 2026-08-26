@@ -6,10 +6,11 @@ import { getItemFileName } from "../../sources/utils/fileName.ts";
 
 describe("getItemFileName", () => {
   let catalog;
+  let catalogWriter;
 
   beforeEach(() => {
-    catalog = createCatalog();
-    seedCatalog(catalog, {
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
+    seedCatalog(catalogWriter, {
       1: {
         layers: {
           layer_1: { zPos: 50 },

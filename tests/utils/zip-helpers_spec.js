@@ -639,7 +639,7 @@ describe("utils/zip-helpers.ts", () => {
         const layerList = [];
 
         addCharacterJsonAndCredits(
-          createCatalog(),
+          createCatalog().reader,
           state,
           zip,
           creditsFolder,

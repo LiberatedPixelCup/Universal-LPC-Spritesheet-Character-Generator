@@ -3,10 +3,40 @@ import { describe, it, beforeEach } from "mocha-globals";
 import { createCatalog } from "../../sources/state/catalog.ts";
 
 let catalog;
+let writer;
 
 describe("state/catalog.ts", () => {
   beforeEach(() => {
-    catalog = createCatalog();
+    ({ reader: catalog, writer } = createCatalog());
+  });
+
+  it("exposes disjoint reader and writer capabilities at runtime", () => {
+    expect(catalog).not.to.have.property("registerItemMetadata");
+    expect(catalog).not.to.have.property("loadCatalogFromFixtures");
+    expect(writer).not.to.have.property("getItemLite");
+    expect(writer).not.to.have.property("ready");
+  });
+
+  it("keeps independently seeded reader/writer pairs isolated", () => {
+    const first = createCatalog();
+    const second = createCatalog();
+    const fixture = (name) => ({
+      itemMetadata: { shared: { name, variants: [], recolors: [] } },
+      aliasMetadata: {},
+      categoryTree: { items: [], children: {} },
+      metadataIndexes: { byTypeName: {}, hashMatch: {} },
+      paletteMetadata: { versions: {}, materials: {} },
+    });
+
+    first.writer.loadCatalogFromFixtures(fixture("First"));
+    second.writer.loadCatalogFromFixtures(fixture("Second"));
+
+    expect(first.reader.getItemLite("shared").unwrapOr(null).name).to.equal(
+      "First",
+    );
+    expect(second.reader.getItemLite("shared").unwrapOr(null).name).to.equal(
+      "Second",
+    );
   });
 
   describe("isXReady predicates", () => {
@@ -19,7 +49,7 @@ describe("state/catalog.ts", () => {
     });
 
     it("flips true once the matching register* runs", () => {
-      catalog.registerFromIndexModule({
+      writer.registerIndexMetadata({
         aliasMetadata: {},
         categoryTree: { items: [], children: {} },
         metadataIndexes: { byTypeName: {}, hashMatch: {} },
@@ -27,26 +57,24 @@ describe("state/catalog.ts", () => {
       expect(catalog.isIndexReady()).to.be.true;
       expect(catalog.isLiteReady()).to.be.false;
 
-      catalog.registerFromItemModule({ itemMetadata: {} });
+      writer.registerItemMetadata({});
       expect(catalog.isLiteReady()).to.be.true;
 
-      catalog.registerFromCreditsModule({ itemCredits: {} });
+      writer.registerCreditsMetadata({});
       expect(catalog.isCreditsReady()).to.be.true;
 
-      catalog.registerFromLayersModule({ itemLayers: {} });
+      writer.registerLayersMetadata({});
       expect(catalog.isLayersReady()).to.be.true;
 
-      catalog.registerFromPaletteModule({
-        paletteMetadata: { versions: {}, materials: {} },
-      });
+      writer.registerPaletteMetadata({ versions: {}, materials: {} });
       expect(catalog.isPaletteReady()).to.be.true;
     });
   });
 
   describe("catalog readiness promises", () => {
-    it("onIndexReady settles after registerFromIndexModule, alias data is queryable", async () => {
+    it("onIndexReady settles after registerIndexMetadata, alias data is queryable", async () => {
       const done = catalog.ready.onIndexReady;
-      catalog.registerFromIndexModule({
+      writer.registerIndexMetadata({
         aliasMetadata: { x: { typeName: "y", name: "n", variant: "v" } },
         categoryTree: { items: [], children: {} },
         metadataIndexes: { byTypeName: {}, hashMatch: {} },
@@ -58,16 +86,15 @@ describe("state/catalog.ts", () => {
     });
 
     it("onAllReady settles after every chunk loads", async () => {
-      // Note: loadCatalogFromFixtures internally resets stages (recreating
-      // their backing promises), so we capture `onAllReady` AFTER the call.
-      catalog.loadCatalogFromFixtures({
+      const allReady = catalog.ready.onAllReady;
+      writer.loadCatalogFromFixtures({
         itemMetadata: { a: { name: "A", layers: {}, credits: [] } },
         aliasMetadata: {},
         categoryTree: { items: [], children: {} },
         metadataIndexes: { byTypeName: {}, hashMatch: {} },
         paletteMetadata: { versions: {}, materials: {} },
       });
-      await catalog.ready.onAllReady;
+      await allReady;
       expect(catalog.isIndexReady()).to.be.true;
       expect(catalog.isLiteReady()).to.be.true;
       expect(catalog.isCreditsReady()).to.be.true;
@@ -76,14 +103,14 @@ describe("state/catalog.ts", () => {
     });
   });
 
-  describe("registerFromIndexModule", () => {
+  describe("registerIndexMetadata", () => {
     it("expands interned item lites from shared index variant tables", () => {
       const variantArrays = [["male", "female"]];
       const recolorVariantArrays = [[]];
       const byType = {
         body: [{ itemId: "b1", name: "Body", type_name: "body", v: 0, r: 0 }],
       };
-      catalog.registerFromIndexModule({
+      writer.registerIndexMetadata({
         aliasMetadata: {},
         categoryTree: { items: [], children: {} },
         metadataIndexes: {
@@ -93,10 +120,8 @@ describe("state/catalog.ts", () => {
           hashMatch: { itemsByTypeName: byType },
         },
       });
-      catalog.registerFromItemModule({
-        itemMetadata: {
-          b1: { name: "Body", type_name: "body", v: 0, r: 0, recolors: [] },
-        },
+      writer.registerItemMetadata({
+        b1: { name: "Body", type_name: "body", v: 0, r: 0, recolors: [] },
       });
       const lite = catalog.getItemLite("b1").unwrapOr(null);
       expect(lite).to.not.equal(null);
@@ -137,7 +162,7 @@ describe("state/catalog.ts", () => {
         },
         paletteMetadata: { versions: {}, materials: {} },
       };
-      catalog.loadCatalogFromFixtures(fixtureGlobals);
+      writer.loadCatalogFromFixtures(fixtureGlobals);
       await catalog.ready.onAllReady;
 
       expect(catalog.getCategoryTree().unwrapOr(null)).to.equal(

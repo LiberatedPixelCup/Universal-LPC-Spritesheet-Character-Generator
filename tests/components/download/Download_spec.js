@@ -28,14 +28,15 @@ describe("Download", function () {
   let previousRenderer;
   let alertStub;
   let catalog;
+  let catalogWriter;
 
   beforeEach(function () {
     state = createState();
     host = document.createElement("div");
     document.body.appendChild(host);
     previousRenderer = window.canvasRenderer;
-    catalog = createCatalog();
-    seedCatalog(catalog, {});
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
+    seedCatalog(catalogWriter, {});
     window.canvasRenderer = {};
     alertStub = sinon.stub(window, "alert");
     state.zipByAnimation = { isRunning: false };

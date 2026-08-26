@@ -24,10 +24,11 @@ import { seedCatalog } from "../browser-catalog-fixture.js";
 describe("state/hash.ts", () => {
   let sandbox;
   let catalog;
+  let catalogWriter;
   let state;
 
   beforeEach(() => {
-    catalog = createCatalog();
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
     state = createState();
     sandbox = sinon.createSandbox();
     sandbox.stub(window, "addEventListener").callsFake(() => {});
@@ -113,7 +114,7 @@ describe("state/hash.ts", () => {
           body: { itemId: "1", variant: "light" },
         },
       });
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         1: { type_name: "body", name: "Body", variants: ["light"] },
       });
 
@@ -135,7 +136,7 @@ describe("state/hash.ts", () => {
           body: { itemId: "1", recolor: "light" },
         },
       });
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         1: {
           type_name: "body",
           name: "Body",
@@ -164,7 +165,7 @@ describe("state/hash.ts", () => {
           eyes: { itemId: "1", subId: 1, recolor: "blue" },
         },
       });
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         1: {
           type_name: "body",
           name: "Body",
@@ -202,7 +203,7 @@ describe("state/hash.ts", () => {
           body: { itemId: "1", variant: "light" },
         },
       });
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         1: { type_name: "body", name: "Body", variants: ["light"] },
       });
 
@@ -214,7 +215,7 @@ describe("state/hash.ts", () => {
   describe("loadSelectionsFromHash", () => {
     it("should load selections from hash", () => {
       setHash("#body=Body_light");
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         1: { type_name: "body", name: "Body", variants: ["light"] },
       });
 
@@ -232,7 +233,7 @@ describe("state/hash.ts", () => {
 
     it("should be case insensitive", () => {
       setHash("#body=Body_color_light");
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         1: { type_name: "body", name: "Body_Color", variants: ["light"] },
       });
 
@@ -250,7 +251,7 @@ describe("state/hash.ts", () => {
 
     it("matches old hash variants that used underscores for spaces (issue #296)", () => {
       setHash("#eyebrows=Thin_Eyebrows_dark_brown");
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         1: {
           type_name: "eyebrows",
           name: "Thin_Eyebrows",
@@ -272,7 +273,7 @@ describe("state/hash.ts", () => {
 
     it("should load recolor options", () => {
       setHash("#body=Body_light");
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         1: {
           type_name: "body",
           name: "Body",
@@ -296,7 +297,7 @@ describe("state/hash.ts", () => {
 
     it("should load multiple recolor options", () => {
       setHash("#body=Body_light&eyes=Eyes_blue");
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         1: {
           type_name: "body",
           name: "Body",
@@ -334,7 +335,7 @@ describe("state/hash.ts", () => {
 
     it("should remove subcolor if doesn't exist on item", () => {
       setHash("#body=Body_light&eyes=Eyes_blue");
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         1: {
           type_name: "body",
           name: "Body",
@@ -358,7 +359,7 @@ describe("state/hash.ts", () => {
 
     it("should remove subcolor if type name does not match", () => {
       setHash("#body=Body_light&eyes=Eyes_blue");
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         1: {
           type_name: "body",
           name: "Body",
@@ -390,7 +391,7 @@ describe("state/hash.ts", () => {
     it("should forward to robe belt", () => {
       setHash("#body=Body_color_light&belt=Other_belts_white");
       seedCatalog(
-        catalog,
+        catalogWriter,
         {
           1: { type_name: "body", name: "Body_Color", variants: ["light"] },
           2: { type_name: "belt", name: "Other_belts", variants: ["white"] },
@@ -434,7 +435,7 @@ describe("state/hash.ts", () => {
     it("should forward to waist = robe belt", () => {
       setHash("#body=Body_color_light&belt=Other_belts_white");
       seedCatalog(
-        catalog,
+        catalogWriter,
         {
           1: { type_name: "body", name: "Body_Color", variants: ["light"] },
           2: { type_name: "belt", name: "Other_belts", variants: ["white"] },
@@ -478,7 +479,7 @@ describe("state/hash.ts", () => {
     it("should forward only type name, wrinkes > wrinkles", () => {
       setHash("#body=Body_color_light&wrinkes=Wrinkles_light");
       seedCatalog(
-        catalog,
+        catalogWriter,
         {
           1: { type_name: "body", name: "Body_Color", variants: ["light"] },
           2: { type_name: "belt", name: "Other_belts", variants: ["white"] },
@@ -520,7 +521,7 @@ describe("state/hash.ts", () => {
     });
 
     it("loads selections from catalog only (no window metadata globals)", () => {
-      seedCatalog(catalog, {
+      seedCatalog(catalogWriter, {
         1: { type_name: "body", name: "Body", variants: ["light"] },
       });
 

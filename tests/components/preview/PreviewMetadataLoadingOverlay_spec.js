@@ -13,11 +13,12 @@ import { createCatalog } from "../../../sources/state/catalog.ts";
 describe("PreviewMetadataLoadingOverlay", function () {
   let host;
   let catalog;
+  let catalogWriter;
 
   beforeEach(function () {
     state = createState();
-    catalog = createCatalog();
-    catalog.registerFromLayersModule({ itemLayers: {} });
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
+    catalogWriter.registerLayersMetadata({});
     host = document.createElement("div");
     document.body.appendChild(host);
   });
@@ -60,7 +61,7 @@ describe("PreviewMetadataLoadingOverlay", function () {
   });
 
   it("renders overlay with status semantics while layer data is not ready", function () {
-    catalog = createCatalog();
+    ({ reader: catalog } = createCatalog());
 
     m.render(host, m(PreviewMetadataLoadingOverlay, { catalog, state }));
 

@@ -36,20 +36,23 @@ failure here means `dist/` was never built, not that the import is wrong.
 [`sources/main.ts`](sources/main.ts) is the composition root. As the entry
 module runs, before any DOM exists:
 
-1. `createCatalog()` produces `applicationCatalog`
-   ([`sources/state/catalog.ts`](sources/state/catalog.ts)), and `createState()`
-   produces `applicationState` ([`sources/state/state.ts`](sources/state/state.ts)).
+1. `createCatalog()` produces separate reader/writer capabilities over shared
+   private stores ([`sources/state/catalog.ts`](sources/state/catalog.ts)).
+   `createLoadedCatalog()` starts metadata registration with the writer and
+   returns only `applicationCatalog`, the reader. `createState()` produces
+   `applicationState` ([`sources/state/state.ts`](sources/state/state.ts)).
 2. `configureStateCatalog(applicationCatalog)` points the state layer at it, so
    `sources/state/` does not need the catalog instance threaded in. Tests may
    override effects with `setStateDeps` / `resetStateDeps`.
 3. `DEBUG = getDebugParam()`, then `window.profiler = new PerformanceProfiler(...)`.
-4. `void loadAllMetadata(applicationCatalog)` starts the metadata fetch without
-   blocking, so download and parse overlap HTML parsing.
+4. `createLoadedCatalog()` starts the metadata fetch without blocking, so
+   download and parse overlap HTML parsing while bootstrap receives only the
+   catalog reader.
 
 [`sources/install-item-metadata.ts`](sources/install-item-metadata.ts) does a
-parallel `import()` of all five chunks and calls the matching
-`catalog.registerFrom*Module` as each one lands, so readiness is **staged**
-rather than all-or-nothing. Each registration triggers a coalesced redraw.
+parallel `import()` of all five chunks and calls the matching writer
+`register*Metadata` method as each one lands, so readiness is **staged** rather
+than all-or-nothing. Each registration triggers a coalesced redraw.
 
 On `DOMContentLoaded`, three separate Mithril roots mount against the same
 catalog and state instances:
@@ -149,7 +152,7 @@ Verifying it needs a real browser.
 
 | File | Role |
 | --- | --- |
-| `catalog.ts` | `createCatalog()`, the `registerFrom*Module` writers, `Result`-returning getters, staged readiness predicates and promises |
+| `catalog.ts` | `createCatalog()` reader/writer capability pairs, `Result`-returning getters, registration methods, and staged readiness |
 | `constants.ts` | `FRAME_SIZE`, `BODY_TYPES`, `ANIMATIONS`, `LICENSE_CONFIG`, animation offsets and configs |
 | `filters.ts` | License and animation compatibility predicates that gate tree visibility |
 | `hash.ts` | Hash read/write, `loadSelectionsFromHash`, `syncSelectionsToHash`, `initHashChangeListener` |
@@ -177,6 +180,13 @@ Verifying it needs a real browser.
 | `preview-animation.ts` | The rAF preview loop |
 | `download.ts` | Single-PNG download |
 
+### `sources/models/`
+
+| File | Role |
+| --- | --- |
+| `application.ts` | `createApplicationModels()` composition-root factories; `ApplicationModels` bag of lazy model constructors |
+| `current-selections.ts` | Render-ready Current Selections snapshot and remove commands |
+
 ### `sources/components/`
 
 | Directory | Role |
@@ -190,6 +200,8 @@ Verifying it needs a real browser.
 
 `App` composes `Download`, `FiltersPanel`, `Credits`, and `AdvancedTools`;
 `FiltersPanel` composes the `filters/`, `selections/`, and `tree/` components.
+The bootstrap in `main.ts` constructs the render-ready application model graph;
+components receive and forward their model slice instead of constructing it.
 
 ## ZIP export
 

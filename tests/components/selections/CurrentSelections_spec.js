@@ -2,6 +2,7 @@ import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { CurrentSelections } from "../../../sources/components/selections/CurrentSelections.ts";
+import { currentSelectionsModelFactory } from "../../../sources/models/current-selections.ts";
 import { createState } from "../../../sources/state/state.ts";
 let state;
 import { createCatalog } from "../../../sources/state/catalog.ts";
@@ -14,9 +15,19 @@ import { seedCatalog } from "../../browser-catalog-fixture.js";
 describe("CurrentSelections", function () {
   let host;
   let catalog;
+  let catalogWriter;
+
+  function renderCurrentSelections() {
+    m.render(
+      host,
+      m(CurrentSelections, {
+        createModel: () => currentSelectionsModelFactory.create(catalog, state),
+      }),
+    );
+  }
 
   beforeEach(function () {
-    catalog = createCatalog();
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
     state = createState();
     host = document.createElement("div");
     document.body.appendChild(host);
@@ -30,15 +41,44 @@ describe("CurrentSelections", function () {
   });
 
   it("shows loading copy when item list (lite) is not ready", function () {
-    m.render(host, m(CurrentSelections, { catalog, state }));
+    renderCurrentSelections();
 
     assert.include(host.textContent, "Current Selections");
     assert.include(host.textContent, "Loading item list…");
     assert.strictEqual(host.querySelector(".tags"), null);
   });
 
+  it("renders a supplied snapshot and invokes its command", function () {
+    let removed = false;
+    m.render(
+      host,
+      m(CurrentSelections, {
+        createModel: () => ({
+          kind: "ready",
+          items: [
+            {
+              key: "hat",
+              name: "Snapshot Hat",
+              isCompatible: true,
+              tooltip: "Snapshot tooltip",
+              remove: () => {
+                removed = true;
+              },
+            },
+          ],
+        }),
+      }),
+    );
+
+    assert.include(host.textContent, "Snapshot Hat");
+    host
+      .querySelector("button.delete")
+      .dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    assert.isTrue(removed);
+  });
+
   it("shows empty copy when catalog is ready but nothing is selected", function () {
-    seedCatalog(catalog, {
+    seedCatalog(catalogWriter, {
       sel_body: {
         name: "Body",
         type_name: "body",
@@ -49,14 +89,56 @@ describe("CurrentSelections", function () {
     });
     state.selections = {};
 
-    m.render(host, m(CurrentSelections, { catalog, state }));
+    renderCurrentSelections();
 
     assert.include(host.textContent, "No items selected yet");
     assert.strictEqual(host.querySelector(".tag"), null);
   });
 
+  it("replaces loading license copy when credits become ready", function () {
+    catalogWriter.registerItemMetadata({
+      sel_hat: {
+        name: "Test Hat",
+        type_name: "hat",
+        required: [],
+        animations: ["walk"],
+        recolors: [],
+        matchBodyColor: false,
+        variants: [],
+        path: [],
+      },
+    });
+    state.selections = {
+      hat: { itemId: "sel_hat", name: "Test Hat" },
+    };
+
+    const loadingModel = currentSelectionsModelFactory.create(catalog, state);
+    assert.strictEqual(loadingModel.kind, "ready");
+    assert.strictEqual(
+      loadingModel.items[0].tooltip,
+      "License info loading…\nAnimations: walk",
+    );
+
+    catalogWriter.registerCreditsMetadata({
+      sel_hat: [
+        {
+          file: "hat.png",
+          authors: [],
+          licenses: ["CC0"],
+          urls: [],
+        },
+      ],
+    });
+    const readyModel = currentSelectionsModelFactory.create(catalog, state);
+    assert.strictEqual(readyModel.kind, "ready");
+    assert.strictEqual(
+      readyModel.items[0].tooltip,
+      "Licenses: CC0\nAnimations: walk",
+    );
+  });
+
   it("renders selection tags with titles, license/animation lines, and delete controls", function () {
-    seedCatalog(catalog, {
+    seedCatalog(catalogWriter, {
       sel_hat: {
         name: "Test Hat",
         type_name: "hat",
@@ -79,7 +161,7 @@ describe("CurrentSelections", function () {
       coat: { itemId: "sel_coat", name: "Winter Coat (long)" },
     };
 
-    m.render(host, m(CurrentSelections, { catalog, state }));
+    renderCurrentSelections();
 
     const heading = host.querySelector("h3.title");
     assert.notEqual(heading, null);
@@ -106,7 +188,7 @@ describe("CurrentSelections", function () {
   });
 
   it("uses warning styling when license filters exclude item credits", function () {
-    seedCatalog(catalog, {
+    seedCatalog(catalogWriter, {
       sel_gpl_item: {
         name: "GPL Asset",
         type_name: "misc",
@@ -121,7 +203,7 @@ describe("CurrentSelections", function () {
       misc: { itemId: "sel_gpl_item", name: "GPL Asset" },
     };
 
-    m.render(host, m(CurrentSelections, { catalog, state }));
+    renderCurrentSelections();
 
     const tag = host.querySelector("span.tag.is-medium.is-warning");
     assert.notEqual(tag, null);
@@ -132,7 +214,7 @@ describe("CurrentSelections", function () {
   });
 
   it("uses warning styling when animation filters exclude item animations", function () {
-    seedCatalog(catalog, {
+    seedCatalog(catalogWriter, {
       sel_walk_only: {
         name: "Walk Only",
         type_name: "hat",
@@ -147,7 +229,7 @@ describe("CurrentSelections", function () {
       hat: { itemId: "sel_walk_only", name: "Walk Only" },
     };
 
-    m.render(host, m(CurrentSelections, { catalog, state }));
+    renderCurrentSelections();
 
     const tag = host.querySelector("span.tag.is-medium.is-warning");
     assert.notEqual(tag, null);
@@ -156,7 +238,7 @@ describe("CurrentSelections", function () {
   });
 
   it("remove control deletes that selection and updates the view", function () {
-    seedCatalog(catalog, {
+    seedCatalog(catalogWriter, {
       sel_a: {
         name: "Item A",
         type_name: "hat",
@@ -170,7 +252,7 @@ describe("CurrentSelections", function () {
       only: { itemId: "sel_a", name: "Item A" },
     };
 
-    m.render(host, m(CurrentSelections, { catalog, state }));
+    renderCurrentSelections();
 
     const del = host.querySelector("button.delete.is-small");
     assert.notEqual(del, null);
@@ -178,7 +260,7 @@ describe("CurrentSelections", function () {
 
     assert.deepEqual(state.selections, {});
     // `m.render` roots do not always redraw after inline handlers in tests; re-sync the tree.
-    m.render(host, m(CurrentSelections, { catalog, state }));
+    renderCurrentSelections();
     assert.include(host.textContent, "No items selected yet");
   });
 });

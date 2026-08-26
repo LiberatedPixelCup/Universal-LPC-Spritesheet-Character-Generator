@@ -9,14 +9,14 @@ import {
 } from "../../../sources/canvas/renderer.ts";
 
 test("getPreviewCanvasState walks through pending kinds in order, then ready", () => {
-  const catalog = createCatalog();
+  const { reader: catalog, writer } = createCatalog();
   const state = createState();
   resetOffscreenCanvasStateForTests();
   state.previewBootstrapRenderDone = false;
   state.isRenderingCharacter = false;
 
   assert.equal(getPreviewCanvasState(catalog, state).kind, "loading-layers");
-  catalog.registerFromLayersModule({ itemLayers: {} });
+  writer.registerLayersMetadata({});
   assert.equal(
     getPreviewCanvasState(catalog, state).kind,
     "canvas-not-initialized",
@@ -31,11 +31,11 @@ test("getPreviewCanvasState walks through pending kinds in order, then ready", (
 });
 
 test("getPreviewCanvasState reports `rendering` while a render is in flight, even with pending preconditions", () => {
-  const catalog = createCatalog();
+  const { reader: catalog, writer } = createCatalog();
   const state = createState();
   resetOffscreenCanvasStateForTests();
   state.previewBootstrapRenderDone = false;
-  catalog.registerFromLayersModule({ itemLayers: {} });
+  writer.registerLayersMetadata({});
   setOffscreenCanvasInitializedForTests(true);
   assert.equal(getPreviewCanvasState(catalog, state).kind, "bootstrap-pending");
   state.isRenderingCharacter = true;

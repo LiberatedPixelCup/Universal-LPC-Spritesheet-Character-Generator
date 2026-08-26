@@ -15,14 +15,15 @@ import { describe, it, beforeEach, afterEach } from "mocha-globals";
 
 describe("state/path.ts", () => {
   let catalog;
+  let catalogWriter;
 
   beforeEach(() => {
-    catalog = createCatalog();
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
     resetPathDeps();
   });
 
   function seedTemplateCatalog() {
-    seedCatalog(catalog, {
+    seedCatalog(catalogWriter, {
       headItem: {
         type_name: "head",
         name: "human",

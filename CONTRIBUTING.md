@@ -380,15 +380,15 @@ The **Validate site sources** workflow (`.github/workflows/validate-site-sources
 
 #### Catalog and state
 
-The app creates a catalog and a state object in **[`sources/main.ts`](sources/main.ts)**. It loads the generated modules with **parallel `import()`** and registers each chunk into that catalog (entry: [`sources/install-item-metadata.ts`](sources/install-item-metadata.ts)). Only **`main.ts`** calls **`configureStateCatalog`**, so production state operations can read that catalog instance without threading it through every `sources/state/` function. That binding is not a hidden global for UI to read.
+The app creates a catalog reader and a state object in **[`sources/main.ts`](sources/main.ts)**. `createCatalog()` produces separate runtime reader/writer capabilities over the same private stores. [`sources/install-item-metadata.ts`](sources/install-item-metadata.ts) keeps the writer, registers generated modules with parallel **`import()`**, and returns only the reader to bootstrap. Only **`main.ts`** calls **`configureStateCatalog`**, so production state operations can read that reader without threading it through every `sources/state/` function. That binding is not a hidden global for UI to read.
 
-UI components are Mithril **`m.Component<Attrs, State>`** objects; thread **`catalog: CatalogReader`** and **`state: State`** through attrs from bootstrap. Do not read a hidden global catalog or a module-level `state`.
+UI components are Mithril **`m.Component<Attrs, State>`** objects. Thread **`catalog: CatalogReader`** and **`state: State`** to composition boundaries, then prefer render-ready models with narrow commands for leaf components. `CurrentSelections` demonstrates this: `main.ts` builds the application model graph, while `App` and `FiltersPanel` only forward the relevant slice; the leaf receives neither catalog nor application state. Do not read a hidden global catalog or a module-level `state`.
 
-Getters return **`Result<T, LoadError>`** from **`neverthrow`**. `LoadError` is `{ kind: "loading"; chunk }` or `{ kind: "not-found"; id }` ([`sources/state/catalog.ts`](sources/state/catalog.ts)). In views, use **`renderResult`** from [`sources/utils/render-result.ts`](sources/utils/render-result.ts). Elsewhere use **`.match`** / **`.unwrapOr`** / **`if (r.isErr())`**. Production code uses typed getters (`catalog.getCategoryTree()`, `catalog.getItemLite()`, `catalog.getItemLayers()`, `catalog.getItemCredits()`, `catalog.getPaletteMetadata()`, `catalog.getMetadataIndexes()`, …), not ad hoc globals. Views must not call **`CatalogWriter`** methods (`registerFrom*`, `loadCatalogFromFixtures`).
+Getters return **`Result<T, LoadError>`** from **`neverthrow`**. `LoadError` is `{ kind: "loading"; chunk }` or `{ kind: "not-found"; id }` ([`sources/state/catalog.ts`](sources/state/catalog.ts)). In views, use **`renderResult`** from [`sources/utils/render-result.ts`](sources/utils/render-result.ts). Elsewhere use **`.match`** / **`.unwrapOr`** / **`if (r.isErr())`**. Production code uses typed getters (`catalog.getCategoryTree()`, `catalog.getItemLite()`, `catalog.getItemLayers()`, `catalog.getItemCredits()`, `catalog.getPaletteMetadata()`, `catalog.getMetadataIndexes()`, …), not ad hoc globals. Views must not call **`CatalogWriter`** methods (`register*Metadata`, `loadCatalogFromFixtures`).
 
 **Staged loading** — Each catalog exposes **`isIndexReady()`**, **`isLiteReady()`**, **`isCreditsReady()`**, **`isPaletteReady()`**, and **`isLayersReady()`** as synchronous predicates. Its **`catalog.ready`** object provides **`onIndexReady`**, **`onLiteReady`**, …, and **`onAllReady`** (each a **`Promise<void>`** that resolves once). The UI and bootstrap can treat **index** (tree skeleton), **lite** (item rows, hash), **credits** (license text), **palette**, and **layers** (canvas, sprite paths) as separate readiness stages.
 
-**Tests** — Create a catalog with **`createCatalog()`** and a state object with **`createState()`**. Seed the catalog; call **`configureStateCatalog(catalog)`** when the spec exercises `sources/state/` effects. Override individual effects with **`setStateDeps`** and restore them with **`resetStateDeps`**. Use **`seedCatalog`** in [`tests/browser-catalog-fixture.js`](tests/browser-catalog-fixture.js) for explicit fixtures. **`seedCatalogWithGeneratedContext`** keeps generated palette, alias, tree, and index context and imports **`dist/index-metadata.js`** — run **`npm run dev`** or **`npm run build`** first. Alternatively register one stage with **`registerFrom*Module`**.
+**Tests** — Destructure **`{ reader, writer } = createCatalog()`** and create a state object with **`createState()`**. Seed through the writer and pass the reader to consumers; call **`configureStateCatalog(reader)`** when the spec exercises `sources/state/` effects. Override individual effects with **`setStateDeps`** and restore them with **`resetStateDeps`**. Use **`seedCatalog`** in [`tests/browser-catalog-fixture.js`](tests/browser-catalog-fixture.js) for explicit fixtures. **`seedCatalogWithGeneratedContext`** keeps generated palette, alias, tree, and index context and imports **`dist/index-metadata.js`** — run **`npm run dev`** or **`npm run build`** first. Alternatively register one stage through the writer with its **`register*Metadata`** method.
 
 #### Running Tests
 
@@ -435,13 +435,17 @@ Typical patterns:
 - Import **`describe`**, **`it`**, **`beforeEach`**, **`afterEach`** (and suite-level **`before`** / **`after`** when needed) from **`"mocha-globals"`** (re-exported in [`tests/bdd-globals.js`](tests/bdd-globals.js)) and **`assert`** or **`expect`** from **`"chai"`**.
 - Render with **`m.render(…)`** using the global **`m`**.
 - Use **`beforeEach` / `afterEach`** to create and remove DOM containers.
-- Thread **`catalog: CatalogReader`** and **`state: State`**. Do not omit them from component attrs.
+- Seed through the writer and pass the paired reader to consumers. Thread **`catalog: CatalogReader`** and **`state: State`** into components that take them; for a leaf component that takes a render-ready model instead, build the model in the spec and pass it as its attr ([`tests/components/selections/CurrentSelections_spec.js`](tests/components/selections/CurrentSelections_spec.js)).
 
 Example (`tests/components/MyComponent_spec.ts`):
 
 ```typescript
 import { MyComponent } from "../../sources/components/MyComponent.ts";
-import { createCatalog } from "../../sources/state/catalog.ts";
+import {
+  createCatalog,
+  type CatalogReader,
+  type CatalogWriter,
+} from "../../sources/state/catalog.ts";
 import { createState, type State } from "../../sources/state/state.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
 import { assert } from "chai";
@@ -449,13 +453,14 @@ import { describe, it, beforeEach, afterEach } from "mocha-globals";
 
 describe("MyComponent", () => {
   let container: HTMLDivElement;
-  let catalog: ReturnType<typeof createCatalog>;
+  let catalog: CatalogReader;
+  let catalogWriter: CatalogWriter;
   let state: State;
 
   beforeEach(() => {
-    catalog = createCatalog();
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
     state = createState();
-    seedCatalog(catalog, {});
+    seedCatalog(catalogWriter, {});
     container = document.createElement("div");
     document.body.appendChild(container);
   });
