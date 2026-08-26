@@ -286,6 +286,7 @@ Every script in [`package.json`](package.json). Run them from the repository roo
 | `npm run z-positions:update` | Writes edited `z_positions.csv` **back** to the JSON | After bulk-editing z-positions in the CSV |
 | `npm run fixture:issue382` | Rebuilds the issue-382 regression fixtures under `tests/fixtures/` | Rarely. Review the diff; do not regenerate blindly. Do not run as a drive-by after an item-lite emit change — it would drop `priority` / `tags` / `licenses` from the committed snapshot |
 | `npm run metadata:size` | Reports raw, gzip, and brotli bytes per generated metadata module plus the item + index pair. Optional `--json`, `--baseline`, `--bench`. Does not write `dist/` or `CREDITS.csv` | After an emit change, or to record a size baseline |
+| `npm run metadata:size:check` | Same generation as `metadata:size`, then fails if `item-metadata.js` raw exceeds 500 KiB or the item + index pair exceeds 600 KiB | After an emit change. CI runs this. Raising a budget is deliberate, not a drive-by |
 
 **Performance and diagnostics**
 
@@ -331,7 +332,7 @@ statuses run on pull requests to `master`. All use Node 24.
 | --- | --- | --- | --- |
 | **Lint** | `lint.yml` | `npm run lint`, then `npm run type-check` | An ESLint error or any type error, including in `tests/` |
 | **Test browsers** | `ci.yml` | `npm run test:node:coverage`, then `npm run test:browser:coverage` under Xvfb | A Node or browser spec fails. A patch miss is printed in the log and fails **`codecov/patch`**, not this job |
-| **Validate site sources** | `validate-site-sources.yml` | `npm run validate-site-sources`, then asserts a clean tree | `CREDITS.csv` or `z_positions.csv` would change, meaning you did not commit the regenerated file |
+| **Validate site sources** | `validate-site-sources.yml` | `npm run validate-site-sources`, then asserts a clean tree, then `npm run metadata:size:check` | `CREDITS.csv` or `z_positions.csv` would change (you did not commit the regenerated file), or generated `item-metadata.js` / the item + index pair exceeds the byte budget. Raising a budget is deliberate. Load time is local (`profile:load`), not this check |
 | **Visual regression (Argos)** | `visual.yml` | `npm run test:visual` | A Playwright failure. Screenshot review happens in Argos, not the check |
 | **Deploy** | `deploy.yml` | `npm run build` to GitHub Pages | Only on `master`, not a PR gate |
 | **`codecov/patch`** | Codecov | Compares uploaded `lcov` | Any new or edited gated production line is uncovered |
@@ -394,7 +395,7 @@ Vite is responsible for the five `dist/*-metadata.js` files when the plugin runs
 
 **`index.html`** is the Vite entry shell (layout, stylesheets, `sources/main.ts`). It is not emitted by `generate_sources.ts`. Change it only when you mean to adjust the page structure or global assets.
 
-The **Validate site sources** workflow (`.github/workflows/validate-site-sources.yml`) runs **`npm run validate-site-sources`** and fails if the working tree is dirty afterward. PRs that touch definitions must include regenerated **`CREDITS.csv`** and **`scripts/zPositioning/z_positions.csv`** whenever those files change.
+The **Validate site sources** workflow (`.github/workflows/validate-site-sources.yml`) runs **`npm run validate-site-sources`**, fails if the working tree is dirty afterward, then runs **`npm run metadata:size:check`**. PRs that touch definitions must include regenerated **`CREDITS.csv`** and **`scripts/zPositioning/z_positions.csv`** whenever those files change.
 
 **What to commit**
 

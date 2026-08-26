@@ -96,10 +96,13 @@ A positive Δ means the after run was slower. A few milliseconds is noise. Treat
 
 ### Metadata size (generator output)
 
-`npm run metadata:size` regenerates the five metadata modules **in memory** (no `dist/`, no Vite) and reports raw, gzip, and brotli bytes per module plus the item + index pair. This is a proxy for Vite's bundled-chunk warning, not the built `dist/assets/*.js` sizes. Report-only; there is no budget gate yet.
+`npm run metadata:size` regenerates the five metadata modules **in memory** (no `dist/`, no Vite) and reports raw, gzip, and brotli bytes per module plus the item + index pair. This is a **proxy for Vite's bundled-chunk warning**, not the built `dist/assets/*.js` sizes.
+
+`npm run metadata:size:check` runs the same generation and exits non-zero if **`item-metadata.js` raw exceeds 500 KiB** (Vite's 500 kB warning; current interned emit is ~393 KiB, so the extra is headroom) or the **item + index pair raw exceeds 600 KiB** (so intern cannot shuffle bytes into `index-metadata.js`). CI runs that check in **Validate site sources** after the git-diff assert. Raising a budget is a deliberate commit, not a drive-by. Load time is local (`profile:load`), not this gate.
 
 ```bash
 npm run metadata:size
+npm run metadata:size:check
 npm run metadata:size -- --json tmp/baseline-metadata-size.json --bench
 npm run metadata:size -- --baseline tmp/baseline-metadata-size.json
 ```

@@ -21,6 +21,7 @@ JSON or the diff. Phase names and console commands:
 | --- | --- | --- |
 | `loadImage()`, `renderCharacter()`, hash hydration, preview, palette recolor | `npm run profile:app` | Live app, `?debug=true`. Default `--recolor both` (WebGL + `?recolor=cpu`). Headless Playwright Chromium is SwiftShader; real GPU: `--headed --channel chrome`. |
 | `loadAllMetadata`, metadata chunks, catalog bootstrap | `npm run profile:load` | Production `vite preview`, not Vite serve. Median of 5 navigations. Port `4178` (`APP_LOAD_PROFILE_PORT`). |
+| Generated metadata payload bytes | `npm run metadata:size` / `metadata:size:check` | Generator output, not Vite chunks. CI gates 500 KiB item / 600 KiB pair. |
 | Drawing, slicing, or PNG encode | `npm run profile:zip:quick` | Fake JSZip. Ignore `generateZip`. |
 | Real zip packaging (`generateAsync`, `zip-helpers`) | `npm run profile:zip` | Real JSZip. Slower. |
 

@@ -32,8 +32,8 @@ jobs:
       - name: Assert git diff
         run: |
           if [[ `git status --porcelain` ]]; then
-            echo "Differences found after (re)generation of CREDITS.csv and z_positions (not dist/item-metadata.js; that is built by Vite)."
-            echo "Please refer to the README in order to learn how to generate the site's sources properly."
+            echo "Differences found after (re)generation of CREDITS.csv and z_positions (not dist/*-metadata.js; those are built by Vite)."
+            echo "Please refer to CONTRIBUTING.md (File Generation) to regenerate and commit CREDITS.csv and z_positions.csv."
             echo ""
             echo "Files changed:"
             git status --porcelain
@@ -45,3 +45,6 @@ jobs:
             git ls-files --others --exclude-standard
             exit -1
           fi
+
+      - name: Check generated metadata size
+        run: npm run metadata:size:check

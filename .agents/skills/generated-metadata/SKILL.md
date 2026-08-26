@@ -36,8 +36,9 @@ Deleting `.cache/` has the same effect. Details:
 [File Generation](../../../CONTRIBUTING.md#file-generation).
 
 After changing emit (`scripts/generateSources/`), run `npm run metadata:size`
-(and `metadata:size:check` once that gate exists) so payload regressions are
-visible. Do not hand-edit `dist/` or add a sixth metadata module.
+and `npm run metadata:size:check`. The check is the CI budget (item raw
+500 KiB, item + index pair 600 KiB). Raising a budget is deliberate.
+Do not hand-edit `dist/` or add a sixth metadata module.
 
 ## Intern tables
 

@@ -11,6 +11,7 @@
  *   node scripts/profile/metadata-size.ts --json tmp/baseline-metadata-size.json
  *   node scripts/profile/metadata-size.ts --json tmp/baseline-metadata-size.json --bench
  *   node scripts/profile/metadata-size.ts --baseline tmp/baseline-metadata-size.json
+ *   node scripts/profile/metadata-size.ts --check
  *
  * @see PERFORMANCE_PROFILING.md
  */
@@ -34,6 +35,11 @@ const REPO_ROOT = path.join(__dirname, "..", "..");
 const DEFAULT_JSON_PATH = path.join(REPO_ROOT, "tmp", "metadata-size.json");
 const BENCH_RUNS = 40;
 const KIB = 1024;
+
+/** Vite's default chunk-size warning (keep headroom; do not tighten to current size). */
+export const ITEM_METADATA_RAW_BUDGET_BYTES = 500 * KIB;
+/** Pair budget so intern cannot shuffle bytes into index-metadata.js. */
+export const ITEM_INDEX_PAIR_RAW_BUDGET_BYTES = 600 * KIB;
 
 export const PAIR_MODULE_NAMES = [
   "item-metadata.js",
@@ -69,14 +75,22 @@ type CliOpts = {
   jsonPath: string | null;
   baselinePath: string | null;
   bench: boolean;
+  check: boolean;
+};
+
+export type BudgetViolation = {
+  name: string;
+  actual: number;
+  budget: number;
 };
 
 function usage(): string {
   return [
-    "Usage: node scripts/profile/metadata-size.ts [--json [path]] [--baseline <path>] [--bench]",
+    "Usage: node scripts/profile/metadata-size.ts [--json [path]] [--baseline <path>] [--bench] [--check]",
     "  --json [path]       Write the report as JSON (default: tmp/metadata-size.json)",
     "  --baseline <path>   Print byte deltas against a previous --json report",
     "  --bench             Median of JSON.parse(lite) and expandInternedItemLite over every item",
+    "  --check             Exit 1 if item-metadata.js raw exceeds 500 KiB or the item+index pair exceeds 600 KiB",
   ].join("\n");
 }
 
@@ -89,6 +103,7 @@ export function parseArgs(argv: readonly string[]): CliOpts {
   let jsonPath: string | null = null;
   let baselinePath: string | null = null;
   let bench = false;
+  let check = false;
   for (let i = 0; i < args.length; i++) {
     const a = args[i];
     const next = args[i + 1];
@@ -106,11 +121,13 @@ export function parseArgs(argv: readonly string[]): CliOpts {
       throw new Error("--baseline requires a path");
     } else if (a === "--bench") {
       bench = true;
+    } else if (a === "--check") {
+      check = true;
     } else {
       throw new Error(`Unknown argument: ${a}\n${usage()}`);
     }
   }
-  return { jsonPath, baselinePath, bench };
+  return { jsonPath, baselinePath, bench, check };
 }
 
 function measureBytes(source: string): ByteSizes {
@@ -304,6 +321,26 @@ export function collectMetadataSizes(opts: {
   return report;
 }
 
+export function checkBudgets(report: MetadataSizeReport): BudgetViolation[] {
+  const violations: BudgetViolation[] = [];
+  const item = report.modules["item-metadata.js"];
+  if (item !== undefined && item.raw > ITEM_METADATA_RAW_BUDGET_BYTES) {
+    violations.push({
+      name: "item-metadata.js",
+      actual: item.raw,
+      budget: ITEM_METADATA_RAW_BUDGET_BYTES,
+    });
+  }
+  if (report.pair.raw > ITEM_INDEX_PAIR_RAW_BUDGET_BYTES) {
+    violations.push({
+      name: "item+index pair",
+      actual: report.pair.raw,
+      budget: ITEM_INDEX_PAIR_RAW_BUDGET_BYTES,
+    });
+  }
+  return violations;
+}
+
 function formatKiB(bytes: number): string {
   return `${(bytes / KIB).toFixed(1)} KiB`;
 }
@@ -365,6 +402,18 @@ function printTable(report: MetadataSizeReport): void {
     lines.push(`  expandInternedItemLite:    ${fmt(expand)}`);
   }
   process.stdout.write(`${lines.join("\n")}\n`);
+}
+
+function printBudgetFailures(violations: BudgetViolation[]): void {
+  const lines = [
+    "Generated metadata size budget exceeded (generator output, not the Vite chunk):",
+    ...violations.map(
+      (v) =>
+        `  ${v.name}  ${formatBytesCell(v.actual)}  exceeds  ${formatBytesCell(v.budget)}`,
+    ),
+    "Raising a budget is a deliberate commit, not a drive-by. Load time is local: npm run profile:load",
+  ];
+  console.error(lines.join("\n"));
 }
 
 function signedBytes(n: number): string {
@@ -447,6 +496,16 @@ export function main(argv: readonly string[] = process.argv): void {
       "utf8",
     );
     process.stderr.write(`Wrote ${path.relative(REPO_ROOT, opts.jsonPath)}\n`);
+  }
+  if (opts.check) {
+    const violations = checkBudgets(report);
+    if (violations.length > 0) {
+      printBudgetFailures(violations);
+      process.exit(1);
+    }
+    process.stdout.write(
+      "Size budgets ok (item-metadata.js raw <= 500 KiB; item+index pair raw <= 600 KiB).\n",
+    );
   }
 }
 

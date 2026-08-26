@@ -185,6 +185,8 @@ The generator includes built-in performance profiling tools to help identify ren
 - Override with `?debug=true` or `?debug=false` in the URL
 - View metrics in Chrome DevTools → Performance tab
 - Run `profiler.report()` in the console for a summary
+- Catalog load (production preview): `npm run profile:load`
+- Metadata bytes (CI budget): `npm run metadata:size` / `npm run metadata:size:check`
 
 **What it tracks:**
 
