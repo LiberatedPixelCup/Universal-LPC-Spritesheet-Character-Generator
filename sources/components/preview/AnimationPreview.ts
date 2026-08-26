@@ -1,7 +1,7 @@
 // Animation Preview component
 import m from "mithril";
 import type { State } from "../../state/state.ts";
-import { ANIMATIONS } from "../../state/constants.ts";
+import { ANIMATIONS, FRAME_SIZE } from "../../state/constants.ts";
 import { CollapsibleSection } from "../CollapsibleSection.ts";
 import {
   setPreviewAnimation,
@@ -104,8 +104,17 @@ export const PreviewCanvas: m.Component<
       stopPreviewAnimation();
     }
   },
-  view() {
-    return m("canvas#previewAnimations");
+  view(vnode) {
+    let frameSize = FRAME_SIZE;
+    const customAnimDef =
+      getCustomAnimations()?.[vnode.attrs.selectedAnimation];
+    if (customAnimDef) {
+      frameSize = customAnimDef.frameSize;
+    }
+    return m("canvas#previewAnimations", {
+      width: 4 * frameSize,
+      height: frameSize,
+    });
   },
 };
 

@@ -46,7 +46,10 @@ describe("FullSpritesheetPreview", function () {
       view: () => m(FullSpritesheetPreview, { catalog, state }),
     });
 
-    assert.notEqual(host.querySelector("#spritesheet-preview"), null);
+    const sheet = host.querySelector("#spritesheet-preview");
+    assert.notEqual(sheet, null);
+    assert.strictEqual(sheet.width, canvasRenderer.SHEET_WIDTH);
+    assert.strictEqual(sheet.height, canvasRenderer.SHEET_HEIGHT);
     const checkboxes = host.querySelectorAll('input[type="checkbox"]');
     assert.strictEqual(checkboxes.length, 2);
     assert.strictEqual(checkboxes[0].checked, true);
