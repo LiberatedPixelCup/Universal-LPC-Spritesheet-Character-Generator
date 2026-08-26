@@ -66,6 +66,18 @@ JSON lands under `tmp/` (gitignored) and is also printed on stdout. Pass `--out 
 - Real GPU (headed Google Chrome): `npm run profile:app -- --headed --channel chrome` (same flags on `profile:app:baseline`)
 - The default first hash is the full outfit in `scripts/zip/zip-profile-default-hash.ts`. The default second hash drops layered gear (body + head + expression only).
 
+### Metadata size (generator output)
+
+`npm run metadata:size` regenerates the five metadata modules **in memory** (no `dist/`, no Vite) and reports raw, gzip, and brotli bytes per module plus the item + index pair. This is a proxy for Vite's bundled-chunk warning, not the built `dist/assets/*.js` sizes. Report-only; there is no budget gate yet.
+
+```bash
+npm run metadata:size
+npm run metadata:size -- --json tmp/baseline-metadata-size.json --bench
+npm run metadata:size -- --baseline tmp/baseline-metadata-size.json
+```
+
+`--bench` times `JSON.parse` of the lite payload and `expandInternedItemLite` across every item (median of ~40 runs). Compare on the same machine.
+
 ### ZIP export (download packs)
 
 ZIP generation uses **`createZipExportProfiler`** in `sources/performance-profiler.ts`, wired from `sources/state/zip.ts` (split-by-animation, split-by-item, split-by-animation-and-item, individual frames).
@@ -236,4 +248,4 @@ if (profiler) {
 - Use meaningful operation names (e.g., `render-body`, `load-sprites`)
 - Add profiling marks around suspected bottlenecks
 - Use `profiler.report()` or `profiler.snapshot()` to identify patterns and outliers
-- Compare measurements before/after optimizations on the same machine (`profile:app` / `profile:zip`)
+- Compare measurements before/after optimizations on the same machine (`profile:app` / `profile:zip` / `metadata:size`)

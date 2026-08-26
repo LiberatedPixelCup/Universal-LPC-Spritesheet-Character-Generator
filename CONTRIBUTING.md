@@ -285,6 +285,7 @@ Every script in [`package.json`](package.json). Run them from the repository roo
 | `npm run z-positions` | Writes `z_positions.csv` from the JSON | Inspecting z-positions without the credits pass |
 | `npm run z-positions:update` | Writes edited `z_positions.csv` **back** to the JSON | After bulk-editing z-positions in the CSV |
 | `npm run fixture:issue382` | Rebuilds the issue-382 regression fixtures under `tests/fixtures/` | Rarely. Review the diff; do not regenerate blindly |
+| `npm run metadata:size` | Reports raw, gzip, and brotli bytes per generated metadata module plus the item + index pair. Optional `--json`, `--baseline`, `--bench`. Does not write `dist/` or `CREDITS.csv` | After an emit change, or to record a size baseline |
 
 **Performance and diagnostics**
 

@@ -39,6 +39,7 @@
     "profile:zip:baseline": "node scripts/zip/zip-export-profile.ts --out tmp/baseline-zip-export-profile.json",
     "profile:zip:baseline:quick": "node scripts/zip/zip-export-profile.ts --quick --out tmp/baseline-zip-export-profile-quick.json",
     "diff:zip-profile": "node scripts/zip/diff-zip-profile.ts",
+    "metadata:size": "node scripts/profile/metadata-size.ts",
     "profile:app": "node scripts/profile/app-profile.ts",
     "profile:app:baseline": "node scripts/profile/app-profile.ts --out tmp/baseline-app-profile.json",
     "diff:app-profile": "node scripts/profile/diff-app-profile.ts",
