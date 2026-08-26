@@ -9,16 +9,19 @@ export type SourceInputsFingerprintDeps = {
 };
 
 /**
- * SHA-256 of all file contents under `sheet_definitions` and `palette_definitions` (repo-relative roots).
+ * SHA-256 of all file contents under `sheet_definitions`, `palette_definitions`,
+ * and `scripts/generateSources` (repo-relative roots).
  */
 export function computeSourceInputsFingerprint(
   deps?: SourceInputsFingerprintDeps,
 ): string {
   const { root = process.cwd(), readFileSync = fs.readFileSync } = deps ?? {};
   const h = createHash("sha256");
-  const relRoots = ["sheet_definitions", "palette_definitions"].sort((a, b) =>
-    a.localeCompare(b, ["en"]),
-  );
+  const relRoots = [
+    "sheet_definitions",
+    "palette_definitions",
+    "scripts/generateSources",
+  ].sort((a, b) => a.localeCompare(b, ["en"]));
 
   for (const name of relRoots) {
     const abs = path.join(root, name);

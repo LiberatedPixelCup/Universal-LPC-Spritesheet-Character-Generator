@@ -337,7 +337,7 @@ Markdown formatting, so `npm run format:check` is optional for a docs-only chang
 
 #### File Generation
 
-**Generated metadata modules (`dist/`, gitignored)** — The Vite metadata plugin (see [`vite/vite-plugin-item-metadata.ts`](vite/vite-plugin-item-metadata.ts)) runs **`generateSources`** on dev/build and writes **five** ES modules under **`dist/`** from the sheet JSON under **`sheet_definitions/`** and **`palette_definitions/`**. It hashes both trees; if the hash matches a gitignored [`.cache/`](.cache/) copy from the last run and **`dist/index-metadata.js` already exists**, it **skips** all generation. Otherwise it also regenerates **[CREDITS.csv](CREDITS.csv)** and **[scripts/zPositioning/z_positions.csv](scripts/zPositioning/z_positions.csv)** in line with `npm run validate-site-sources`. Set **`VITE_REGENERATE_SOURCES=1`** to always run the full pipeline. Do not edit the generated `dist` files by hand.
+**Generated metadata modules (`dist/`, gitignored)** — The Vite metadata plugin (see [`vite/vite-plugin-item-metadata.ts`](vite/vite-plugin-item-metadata.ts)) runs **`generateSources`** on dev/build and writes **five** ES modules under **`dist/`** from the sheet JSON under **`sheet_definitions/`** and **`palette_definitions/`**. It hashes those trees plus **`scripts/generateSources/`**; if the hash matches a gitignored [`.cache/`](.cache/) copy from the last run and **`dist/index-metadata.js` already exists**, it **skips** all generation. Otherwise it also regenerates **[CREDITS.csv](CREDITS.csv)** and **[scripts/zPositioning/z_positions.csv](scripts/zPositioning/z_positions.csv)** in line with `npm run validate-site-sources`. Set **`VITE_REGENERATE_SOURCES=1`** to always run the full pipeline. Do not edit the generated `dist` files by hand.
 
 | File                      | Main exports (named)                                                                                    |
 | ------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -353,12 +353,12 @@ imports these as **`../<name>-metadata.js`**, not as a `dist/` path; a
 See [ARCHITECTURE.md](ARCHITECTURE.md#generated-metadata-and-the-dist-alias).
 
 **When generation is skipped (stale metadata)** — The plugin fingerprints
-`sheet_definitions/` and `palette_definitions/` and stores the result under
-[`.cache/`](.cache/) (gitignored). On the next run, if the fingerprint matches
-**and** `dist/index-metadata.js` exists, it skips generation entirely. That is
-what makes `npm run dev` fast, but it also means `dist/` can lag behind reality
-if the fingerprint inputs did not change or the cache is stale from an
-interrupted run.
+`sheet_definitions/`, `palette_definitions/`, and `scripts/generateSources/`
+and stores the result under [`.cache/`](.cache/) (gitignored). On the next
+run, if the fingerprint matches **and** `dist/index-metadata.js` exists, it
+skips generation entirely. That is what makes `npm run dev` fast, but it also
+means `dist/` can lag behind reality if the fingerprint inputs did not change
+or the cache is stale from an interrupted run.
 
 Symptoms: a seeded catalog resolves nothing, `not-found` errors for items you
 just added, or a spec that passes for someone else. Force the full pipeline:

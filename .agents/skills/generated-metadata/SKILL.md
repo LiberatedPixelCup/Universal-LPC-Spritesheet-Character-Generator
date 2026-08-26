@@ -19,11 +19,12 @@ A resolve failure means `dist/` was never built. After a fresh clone, run
 `npm run dev` or `npm run build` once before specs, ZIP profiles, or
 `seedCatalogWithGeneratedContext`. `profile:app` starts Vite itself.
 
-The plugin fingerprints `sheet_definitions/` and `palette_definitions/` under
-`.cache/` (gitignored). If the fingerprint matches and
-`dist/index-metadata.js` exists, generation is skipped. Symptoms: a seeded
-catalog resolves nothing, `not-found` for an item you just added, or a spec
-that passes for someone else.
+The plugin fingerprints `sheet_definitions/`, `palette_definitions/`, and
+`scripts/generateSources/` under `.cache/` (gitignored). If the fingerprint
+matches and `dist/index-metadata.js` exists, generation is skipped. A
+generator emit change without a definition change used to reuse stale
+`dist/`. Symptoms: a seeded catalog resolves nothing, `not-found` for an
+item you just added, or a spec that passes for someone else.
 
 Force the full pipeline:
 

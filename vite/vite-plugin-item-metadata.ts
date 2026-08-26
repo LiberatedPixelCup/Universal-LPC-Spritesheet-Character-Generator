@@ -44,10 +44,12 @@ function shouldForceRegenerateFromEnv(): boolean {
 }
 
 /**
- * Vite plugin: generates five metadata ES modules under `dist/`, and when `sheet_definitions/`
- * + `palette_definitions/` inputs are unchanged, skips re-running. When inputs are new, changed,
- * or `dist` metadata is missing, also runs `z_positions` + `CREDITS.csv` (same as `validate-site-sources`).
- * Use `VITE_REGENERATE_SOURCES=1` to always run the full pipeline.
+ * Vite plugin: generates five metadata ES modules under `dist/`, and when
+ * `sheet_definitions/`, `palette_definitions/`, and `scripts/generateSources/`
+ * inputs are unchanged, skips re-running. When inputs are new, changed, or
+ * `dist` metadata is missing, also runs `z_positions` + `CREDITS.csv` (same as
+ * `validate-site-sources`). Use `VITE_REGENERATE_SOURCES=1` to always run the
+ * full pipeline.
  */
 export function vitePluginItemMetadata(
   env: MetadataEnv = "production",

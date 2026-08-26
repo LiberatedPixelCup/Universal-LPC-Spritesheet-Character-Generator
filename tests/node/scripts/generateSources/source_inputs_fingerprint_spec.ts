@@ -13,6 +13,9 @@ import {
 function writeTree(root: string) {
   fs.mkdirSync(path.join(root, "sheet_definitions"), { recursive: true });
   fs.mkdirSync(path.join(root, "palette_definitions"), { recursive: true });
+  fs.mkdirSync(path.join(root, "scripts", "generateSources"), {
+    recursive: true,
+  });
   fs.writeFileSync(
     path.join(root, "sheet_definitions", "body.json"),
     '{"name":"body"}',
@@ -20,6 +23,10 @@ function writeTree(root: string) {
   fs.writeFileSync(
     path.join(root, "palette_definitions", "skin.json"),
     '{"name":"skin"}',
+  );
+  fs.writeFileSync(
+    path.join(root, "scripts", "generateSources", "state.ts"),
+    "export {}\n",
   );
 }
 
@@ -35,6 +42,22 @@ test("computeSourceInputsFingerprint is stable for the same tree and changes whe
   fs.writeFileSync(
     path.join(root, "sheet_definitions", "body.json"),
     '{"name":"body","changed":true}',
+  );
+  const third = computeSourceInputsFingerprint({ root });
+  assert.notEqual(third, first);
+});
+
+test("computeSourceInputsFingerprint changes when generateSources changes", () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "fingerprint-"));
+  writeTree(root);
+
+  const first = computeSourceInputsFingerprint({ root });
+  const second = computeSourceInputsFingerprint({ root });
+  assert.equal(first, second);
+
+  fs.writeFileSync(
+    path.join(root, "scripts", "generateSources", "state.ts"),
+    "export const changed = 1;\n",
   );
   const third = computeSourceInputsFingerprint({ root });
   assert.notEqual(third, first);
