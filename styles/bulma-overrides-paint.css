@@ -498,9 +498,25 @@
   column-gap: 0;
 }
 
-#header-left h1.title,
+/*
+ * Header wrap is first paint (index.html). Pin the loaded metrics here so
+ * body { font-family: monospace; font-size: 16px; line-height: 24px } and
+ * Bulma .title (sans, 1.5rem) cannot restyle h1/subtitle between critical
+ * CSS and deferred main.css (.subtitle padding-left: 50px lives there).
+ */
+#header-left h1.title {
+  font-family: monospace;
+  font-size: 1.5rem;
+  line-height: 1.125;
+  font-weight: 600;
+}
+
 #header-left span.subtitle {
   font-family: monospace;
+  font-size: 1rem;
+  line-height: 1.25;
+  font-weight: 400;
+  padding-left: 50px;
 }
 
 #mithril-filters .label,
