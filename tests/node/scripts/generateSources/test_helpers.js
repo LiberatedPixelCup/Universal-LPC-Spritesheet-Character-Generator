@@ -102,19 +102,29 @@ export function mergeMetadataForTests(writes) {
     "itemMetadata",
   );
   let lite = rawLite;
-  if (indexSrc.includes("const variantArrays = ")) {
-    const variantArrays = /** @type {string[][]} */ (
-      extractTopLevelJsonLiteral(indexSrc, "variantArrays")
-    );
-    const recolorVariantArrays = /** @type {string[][]} */ (
-      extractTopLevelJsonLiteral(indexSrc, "recolorVariantArrays")
-    );
+  const hasVariantArrays = indexSrc.includes("const variantArrays = ");
+  const hasPaletteArrays = indexSrc.includes("const paletteArrays = ");
+  if (hasVariantArrays || hasPaletteArrays) {
+    const variantArrays = hasVariantArrays
+      ? /** @type {string[][]} */ (
+          extractTopLevelJsonLiteral(indexSrc, "variantArrays")
+        )
+      : undefined;
+    const recolorVariantArrays = hasVariantArrays
+      ? /** @type {string[][]} */ (
+          extractTopLevelJsonLiteral(indexSrc, "recolorVariantArrays")
+        )
+      : undefined;
+    const paletteArrays = hasPaletteArrays
+      ? extractTopLevelJsonLiteral(indexSrc, "paletteArrays")
+      : undefined;
     lite = {};
     for (const id of Object.keys(rawLite)) {
       lite[id] = expandInternedItemLite(
         rawLite[id],
         variantArrays,
         recolorVariantArrays,
+        paletteArrays,
       );
     }
   }
@@ -147,7 +157,11 @@ export function extractMetadataGlobalsFromWrites(writes) {
   const byTypeName = /** @type {Record<string, object[]>} */ (
     extractTopLevelJsonLiteral(indexSrc, "byTypeName")
   );
-  const metadataIndexes = indexSrc.includes("const variantArrays = ")
+  const hasVariantArrays = indexSrc.includes("const variantArrays = ");
+  const paletteArrays = indexSrc.includes("const paletteArrays = ")
+    ? extractTopLevelJsonLiteral(indexSrc, "paletteArrays")
+    : undefined;
+  const metadataIndexes = hasVariantArrays
     ? expandMetadataIndexesWithInternedArrays({
         variantArrays: /** @type {string[][]} */ (
           extractTopLevelJsonLiteral(indexSrc, "variantArrays")
@@ -157,10 +171,12 @@ export function extractMetadataGlobalsFromWrites(writes) {
         ),
         byTypeName,
         hashMatch: { itemsByTypeName: byTypeName },
+        ...(paletteArrays !== undefined ? { paletteArrays } : {}),
       })
     : {
         byTypeName,
         hashMatch: { itemsByTypeName: byTypeName },
+        ...(paletteArrays !== undefined ? { paletteArrays } : {}),
       };
   return {
     itemMetadata: mergeMetadataForTests(writes),

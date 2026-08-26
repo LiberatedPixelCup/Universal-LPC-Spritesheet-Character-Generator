@@ -136,11 +136,12 @@ function collectItemIdsFromExport(
 async function loadFullItemMetadata(): Promise<
   Record<string, FixtureItemRecord>
 > {
-  const { expandInternedItemLite, isInternedItemLite } = await import(
-    pathToFileURL(
-      path.join(REPO_ROOT, "sources", "state", "resolve-hash-param.ts"),
-    ).href
-  );
+  const { expandInternedItemLite, hasInternedPalettes, isInternedItemLite } =
+    await import(
+      pathToFileURL(
+        path.join(REPO_ROOT, "sources", "state", "resolve-hash-param.ts"),
+      ).href
+    );
   const itemUrl = pathToFileURL(ITEM_METADATA_PATH).href;
   const indexUrl = pathToFileURL(INDEX_METADATA_PATH).href;
   const layersPath = path.join(REPO_ROOT, "dist", "layers-metadata.js");
@@ -152,11 +153,12 @@ async function loadFullItemMetadata(): Promise<
     import(pathToFileURL(creditsPath).href),
   ]);
   const lite = itemMod.itemMetadata as Record<string, unknown> | undefined;
-  const { variantArrays, recolorVariantArrays } =
+  const { variantArrays, recolorVariantArrays, paletteArrays } =
     (indexMod.metadataIndexes as
       | {
           variantArrays?: unknown;
           recolorVariantArrays?: unknown;
+          paletteArrays?: unknown;
         }
       | undefined) ?? {};
   const itemLayers = layersMod.itemLayers as Record<string, unknown>;
@@ -169,15 +171,12 @@ async function loadFullItemMetadata(): Promise<
   const meta: Record<string, FixtureItemRecord> = {};
   for (const id of Object.keys(lite)) {
     let entry: unknown = lite[id];
-    if (
-      isInternedItemLite(entry) &&
-      Array.isArray(variantArrays) &&
-      Array.isArray(recolorVariantArrays)
-    ) {
+    if (isInternedItemLite(entry) || hasInternedPalettes(entry)) {
       entry = expandInternedItemLite(
         entry,
         variantArrays,
         recolorVariantArrays,
+        paletteArrays,
       );
     }
     meta[id] = {

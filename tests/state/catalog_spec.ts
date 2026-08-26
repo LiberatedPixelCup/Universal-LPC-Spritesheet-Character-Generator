@@ -9,14 +9,54 @@ import {
   type CatalogWriter,
   type ItemLite,
   type MetadataIndexes,
+  type PaletteMap,
 } from "../../sources/state/catalog.ts";
+import {
+  expandInternedItemLite,
+  expandMetadataIndexesWithInternedArrays,
+  hasInternedPalettes,
+} from "../../sources/state/resolve-hash-param.ts";
 
 type CatalogFixtureGlobals = Parameters<
   CatalogWriter["loadCatalogFromFixtures"]
 >[0];
 
+const EMPTY_INDEX = {
+  aliasMetadata: {} as AliasMetadata,
+  categoryTree: { items: [] as string[], children: {} },
+};
+
+const BODY_PALETTES: PaletteMap = {
+  ulpc: {
+    light: ["#271920", "#99423c"],
+    bronze: ["#1A1213", "#442725"],
+  },
+};
+
 let catalog: CatalogReader;
 let writer: CatalogWriter;
+
+function registerIndex(metadataIndexes: unknown): void {
+  writer.registerIndexMetadata({
+    ...EMPTY_INDEX,
+    metadataIndexes: metadataIndexes as unknown as MetadataIndexes,
+  });
+}
+
+function registerLite(itemMetadata: unknown): void {
+  writer.registerItemMetadata(
+    itemMetadata as unknown as Record<string, ItemLite>,
+  );
+}
+
+function requireLite(id: string): ItemLite {
+  const lite = catalog.getItemLite(id).unwrapOr(null);
+  expect(lite).to.not.equal(null);
+  if (lite === null) {
+    throw new Error(`expected item lite ${id}`);
+  }
+  return lite;
+}
 
 describe("state/catalog.ts", () => {
   beforeEach(() => {
@@ -126,26 +166,282 @@ describe("state/catalog.ts", () => {
       const byType = {
         body: [{ itemId: "b1", name: "Body", type_name: "body", v: 0, r: 0 }],
       };
-      writer.registerIndexMetadata({
-        aliasMetadata: {},
-        categoryTree: { items: [], children: {} },
-        metadataIndexes: {
-          variantArrays,
-          recolorVariantArrays,
-          byTypeName: byType,
-          hashMatch: { itemsByTypeName: byType },
-        } as unknown as MetadataIndexes,
+      registerIndex({
+        variantArrays,
+        recolorVariantArrays,
+        byTypeName: byType,
+        hashMatch: { itemsByTypeName: byType },
       });
-      writer.registerItemMetadata({
+      registerLite({
         b1: { name: "Body", type_name: "body", v: 0, r: 0, recolors: [] },
-      } as unknown as Record<string, ItemLite>);
-      const lite = catalog.getItemLite("b1").unwrapOr(null);
-      expect(lite).to.not.equal(null);
-      if (lite === null) {
-        throw new Error("expected expanded item lite");
-      }
+      });
+      const lite = requireLite("b1");
       expect(lite.variants).to.deep.equal(["male", "female"]);
       expect(lite).to.not.have.property("v");
+    });
+
+    it("restores recolor palettes from paletteArrays and drops p", () => {
+      registerIndex({
+        variantArrays: [["male"]],
+        recolorVariantArrays: [["light"]],
+        paletteArrays: [BODY_PALETTES],
+        byTypeName: {},
+        hashMatch: {},
+      });
+      registerLite({
+        b1: {
+          name: "Body",
+          type_name: "body",
+          v: 0,
+          r: 0,
+          recolors: [{ material: "body", p: 0 }],
+        },
+      });
+      const lite = requireLite("b1");
+      expect(lite.variants).to.deep.equal(["male"]);
+      expect(lite.recolors[0].variants).to.deep.equal(["light"]);
+      expect(lite.recolors[0].palettes).to.deep.equal(BODY_PALETTES);
+      expect(lite.recolors[0]).to.not.have.property("p");
+      expect(lite).to.not.have.property("v");
+    });
+
+    it("restores palettes when the record has p but no v / r", () => {
+      registerIndex({
+        paletteArrays: [BODY_PALETTES],
+        byTypeName: {},
+        hashMatch: {},
+      });
+      registerLite({
+        ears: {
+          name: "Ears",
+          type_name: "ears",
+          variants: ["male"],
+          recolors: [{ material: "body", p: 0 }],
+        },
+      });
+      const lite = requireLite("ears");
+      expect(lite.variants).to.deep.equal(["male"]);
+      expect(lite).to.not.have.property("v");
+      expect(lite.recolors[0].palettes).to.deep.equal(BODY_PALETTES);
+    });
+
+    it("leaves palettes unchanged when the record has v / r but no p", () => {
+      const palettes = { ulpc: { light: ["#abc"] } };
+      registerIndex({
+        variantArrays: [["male"]],
+        recolorVariantArrays: [[]],
+        paletteArrays: [BODY_PALETTES],
+        byTypeName: {
+          body: [{ itemId: "b1", name: "Body", type_name: "body", v: 0, r: 0 }],
+        },
+        hashMatch: {},
+      });
+      registerLite({
+        b1: {
+          name: "Body",
+          type_name: "body",
+          v: 0,
+          r: 0,
+          recolors: [{ material: "body", palettes }],
+        },
+      });
+      const lite = requireLite("b1");
+      expect(lite.variants).to.deep.equal(["male"]);
+      expect(lite.recolors[0].palettes).to.equal(palettes);
+      expect(lite.recolors[0]).to.not.have.property("p");
+    });
+
+    it("leaves an existing palettes object alone and is idempotent", () => {
+      const palettes = { ulpc: { light: ["#abc"] } };
+      registerIndex({
+        paletteArrays: [BODY_PALETTES],
+        byTypeName: {},
+        hashMatch: {},
+      });
+      registerLite({
+        b1: {
+          name: "Body",
+          type_name: "body",
+          recolors: [{ material: "body", palettes, p: 0 }],
+        },
+      });
+      const lite = requireLite("b1");
+      expect(lite.recolors[0].palettes).to.equal(palettes);
+      expect(lite.recolors[0]).to.not.have.property("p");
+      const again = expandInternedItemLite(lite, undefined, undefined, [
+        BODY_PALETTES,
+      ]) as ItemLite;
+      expect(again.recolors[0].palettes).to.equal(palettes);
+    });
+
+    it("clones nested palette version objects so items do not share maps", () => {
+      registerIndex({
+        paletteArrays: [BODY_PALETTES],
+        byTypeName: {},
+        hashMatch: {},
+      });
+      registerLite({
+        a: {
+          name: "A",
+          type_name: "body",
+          recolors: [{ material: "body", p: 0 }],
+        },
+        b: {
+          name: "B",
+          type_name: "body",
+          recolors: [{ material: "body", p: 0 }],
+        },
+      });
+      const liteA = requireLite("a");
+      const liteB = requireLite("b");
+      liteA.recolors[0].palettes.ulpc.olive = ["#00ff00"];
+      expect(liteB.recolors[0].palettes.ulpc).to.not.have.property("olive");
+      const indexes = catalog.getMetadataIndexes().unwrapOr(null);
+      expect(indexes).to.not.equal(null);
+      expect(indexes?.paletteArrays?.[0].ulpc).to.not.have.property("olive");
+      expect(indexes?.paletteArrays?.[0]).to.deep.equal(BODY_PALETTES);
+    });
+
+    it("lands palettes: {} when p is out of range or paletteArrays is absent", () => {
+      registerIndex({
+        paletteArrays: [BODY_PALETTES],
+        byTypeName: {},
+        hashMatch: {},
+      });
+      registerLite({
+        oob: {
+          name: "Oob",
+          type_name: "body",
+          recolors: [{ material: "body", p: 9 }],
+        },
+      });
+      expect(requireLite("oob").recolors[0].palettes).to.deep.equal({});
+
+      const second: CatalogHandles = createCatalog();
+      catalog = second.reader;
+      writer = second.writer;
+      registerIndex({ byTypeName: {}, hashMatch: {} });
+      registerLite({
+        missing: {
+          name: "Missing",
+          type_name: "body",
+          recolors: [{ material: "body", p: 0 }],
+        },
+      });
+      expect(requireLite("missing").recolors[0].palettes).to.deep.equal({});
+    });
+
+    it("restores palettes for both lite-then-index and index-then-lite", () => {
+      const internedLite = {
+        b1: {
+          name: "Body",
+          type_name: "body",
+          recolors: [{ material: "body", p: 0 }],
+        },
+      };
+      const internedIndex = {
+        paletteArrays: [BODY_PALETTES],
+        byTypeName: {},
+        hashMatch: {},
+      };
+
+      registerLite(internedLite);
+      registerIndex(internedIndex);
+      expect(requireLite("b1").recolors[0].palettes).to.deep.equal(
+        BODY_PALETTES,
+      );
+
+      const second: CatalogHandles = createCatalog();
+      catalog = second.reader;
+      writer = second.writer;
+      registerIndex(internedIndex);
+      registerLite(internedLite);
+      expect(requireLite("b1").recolors[0].palettes).to.deep.equal(
+        BODY_PALETTES,
+      );
+    });
+
+    it("keeps paletteArrays through expandMetadataIndexesWithInternedArrays", () => {
+      const paletteArrays = [BODY_PALETTES];
+      expect(
+        expandMetadataIndexesWithInternedArrays(null)?.paletteArrays,
+      ).to.equal(undefined);
+      expect(
+        expandMetadataIndexesWithInternedArrays({
+          paletteArrays,
+        } as unknown as MetadataIndexes)?.paletteArrays,
+      ).to.equal(paletteArrays);
+
+      const noInternTables = expandMetadataIndexesWithInternedArrays({
+        byTypeName: { body: [] },
+        hashMatch: {},
+        paletteArrays,
+      });
+      expect(noInternTables?.paletteArrays).to.equal(paletteArrays);
+
+      const alreadyExpanded = expandMetadataIndexesWithInternedArrays({
+        byTypeName: {
+          body: [
+            {
+              itemId: "b1",
+              name: "Body",
+              type_name: "body",
+              variants: ["male"],
+              recolors: [],
+            },
+          ],
+        },
+        hashMatch: {},
+        variantArrays: [["male"]],
+        recolorVariantArrays: [[]],
+        paletteArrays,
+      });
+      expect(alreadyExpanded?.paletteArrays).to.equal(paletteArrays);
+
+      const internedRows = {
+        body: [{ itemId: "b1", name: "Body", type_name: "body", v: 0, r: 0 }],
+      };
+      const expanded = expandMetadataIndexesWithInternedArrays({
+        byTypeName: internedRows,
+        hashMatch: { itemsByTypeName: internedRows },
+        variantArrays: [["male"]],
+        recolorVariantArrays: [[]],
+        paletteArrays,
+      } as unknown as MetadataIndexes);
+      expect(expanded?.paletteArrays).to.equal(paletteArrays);
+      expect(expanded?.byTypeName.body[0].variants).to.deep.equal(["male"]);
+    });
+
+    it("treats non-records and recolors without p as not interned palettes", () => {
+      expect(hasInternedPalettes(null)).to.equal(false);
+      expect(hasInternedPalettes("x")).to.equal(false);
+      expect(hasInternedPalettes({})).to.equal(false);
+      expect(
+        hasInternedPalettes({ recolors: [{ material: "body" }] }),
+      ).to.equal(false);
+      expect(hasInternedPalettes({ recolors: [null, { p: 0 }] })).to.equal(
+        true,
+      );
+
+      const expanded = expandInternedItemLite(
+        {
+          name: "Mixed",
+          type_name: "body",
+          recolors: [
+            null,
+            1,
+            { material: "cloth" },
+            { material: "body", p: 0 },
+          ],
+        } as unknown as ItemLite,
+        undefined,
+        undefined,
+        [BODY_PALETTES],
+      ) as ItemLite;
+      expect(expanded.recolors[0]).to.equal(null);
+      expect(expanded.recolors[1]).to.equal(1);
+      expect(expanded.recolors[2]).to.deep.equal({ material: "cloth" });
+      expect(expanded.recolors[3].palettes).to.deep.equal(BODY_PALETTES);
     });
   });
 

@@ -8,25 +8,38 @@
  * item record lives in the lite item map.
  *
  * Emitted `index-metadata.js` may store interned rows (`v` / `r` into `variantArrays` /
- * `recolorVariantArrays`); `writer.registerIndexMetadata` expands `byTypeName` to the slim row
- * shape and keeps the two array tables for expanding interned `item-metadata.js` lites. Emitted
- * `item-metadata.js` may store per-item `v` / `r` and stripped `recolors[0].variants` only.
+ * `recolorVariantArrays`) and `paletteArrays`; `writer.registerIndexMetadata` expands
+ * `byTypeName` to the slim row shape and keeps the array tables for expanding interned
+ * `item-metadata.js` lites. Emitted `item-metadata.js` may store per-item `v` / `r`,
+ * per-recolor `p`, and stripped `recolors[0].variants` / `recolors[].palettes`. Palette
+ * restore (`p` / `paletteArrays`) is independent of variant restore.
  */
 
 import type {
   ItemLite,
   MetadataIndexes,
+  PaletteMap,
+  PaletteRecolor,
   SlimByTypeNameRow,
 } from "./catalog.ts";
 
 /**
+ * Recolor as emitted with interned palette maps: `p` indexes `paletteArrays` in
+ * `index-metadata.js`. The expanded form is `PaletteRecolor` (`palettes` required).
+ */
+export type InternedPaletteRecolor = Omit<PaletteRecolor, "palettes"> & {
+  p: number;
+};
+
+/**
  * Lite item as emitted with interned variant indices: `v` / `r` point into the
  * shared `variantArrays` / `recolorVariantArrays` tables in `index-metadata.js`.
- * The expanded form is `ItemLite`.
+ * Recolors may also carry `p` instead of `palettes`. The expanded form is `ItemLite`.
  */
-export type InternedItemLite = Omit<ItemLite, "variants"> & {
+export type InternedItemLite = Omit<ItemLite, "variants" | "recolors"> & {
   v: number;
   r: number;
+  recolors: Array<PaletteRecolor | InternedPaletteRecolor>;
 };
 
 /**
@@ -83,6 +96,7 @@ export function expandMetadataIndexesWithInternedArrays(
   const {
     variantArrays: variantArraysKept,
     recolorVariantArrays: recolorVariantArraysKept,
+    paletteArrays: paletteArraysKept,
     ...rest
   } = metadataIndexes;
   return {
@@ -91,6 +105,9 @@ export function expandMetadataIndexesWithInternedArrays(
     hashMatch: { itemsByTypeName: expanded },
     variantArrays: variantArraysKept,
     recolorVariantArrays: recolorVariantArraysKept,
+    ...(paletteArraysKept !== undefined
+      ? { paletteArrays: paletteArraysKept }
+      : {}),
   };
 }
 
@@ -104,39 +121,106 @@ export function isInternedItemLite(lite: unknown): boolean {
   );
 }
 
+/** True when any recolor stores interned `p` instead of (or besides) a palettes map. */
+export function hasInternedPalettes(lite: unknown): boolean {
+  if (lite == null || typeof lite !== "object") return false;
+  const recolors = (lite as { recolors?: unknown }).recolors;
+  if (!Array.isArray(recolors)) return false;
+  return recolors.some(
+    (color) =>
+      color != null &&
+      typeof color === "object" &&
+      typeof (color as { p?: unknown }).p === "number",
+  );
+}
+
+type LooseRecolor = {
+  variants?: string[];
+  palettes?: PaletteMap;
+  p?: number;
+} & Record<string, unknown>;
+
+/** Outer map + each nested version object; colour arrays are shared. */
+function clonePaletteMap(map: PaletteMap): PaletteMap {
+  const cloned: PaletteMap = {};
+  for (const [key, nested] of Object.entries(map)) {
+    cloned[key] = { ...nested };
+  }
+  return cloned;
+}
+
+function expandInternedPaletteRecolors(
+  recolors: LooseRecolor[],
+  paletteArrays?: PaletteMap[],
+): LooseRecolor[] {
+  return recolors.map((color) => {
+    if (
+      color == null ||
+      typeof color !== "object" ||
+      typeof color.p !== "number"
+    ) {
+      return color;
+    }
+    const { p, palettes: existing, ...rest } = color;
+    if (
+      existing != null &&
+      typeof existing === "object" &&
+      !Array.isArray(existing)
+    ) {
+      return { ...rest, palettes: existing };
+    }
+    const table = Array.isArray(paletteArrays) ? paletteArrays[p] : undefined;
+    const palettes =
+      table != null && typeof table === "object" && !Array.isArray(table)
+        ? clonePaletteMap(table)
+        : {};
+    return { ...rest, palettes };
+  });
+}
+
 /**
- * Restores `variants` and `recolors[0].variants` from the shared tables (same as `index-metadata.js`).
+ * Restores `variants`, `recolors[0].variants`, and per-recolor `palettes` from
+ * the shared tables (same as `index-metadata.js`). Palette restore is gated on
+ * `p`, not on `v` / `r`.
  */
 export function expandInternedItemLite(
   lite: ItemLite | InternedItemLite,
   variantArrays?: string[][],
   recolorVariantArrays?: string[][],
+  paletteArrays?: PaletteMap[],
 ): ItemLite | InternedItemLite {
+  let out: ItemLite | InternedItemLite = lite;
   if (
-    !isInternedItemLite(lite) ||
-    !Array.isArray(variantArrays) ||
-    !Array.isArray(recolorVariantArrays)
+    isInternedItemLite(lite) &&
+    Array.isArray(variantArrays) &&
+    Array.isArray(recolorVariantArrays)
   ) {
-    return lite;
-  }
-  type LooseRecolor = { variants?: string[] } & Record<string, unknown>;
-  const interned = lite as unknown as Omit<InternedItemLite, "recolors"> & {
-    recolors?: LooseRecolor[];
-  };
-  const { v, r, recolors: rcIn, ...rest } = interned;
-  const variants = variantArrays[v] ?? [];
-  const rList = recolorVariantArrays[r] ?? [];
-  let recolors: LooseRecolor[] = Array.isArray(rcIn) ? rcIn : [];
-  if (recolors.length > 0) {
-    const [head, ...tail] = recolors;
-    if (head && typeof head === "object") {
-      const merged0 = { ...head, variants: rList.length ? [...rList] : [] };
-      recolors = [merged0, ...tail];
+    const interned = lite as unknown as Omit<InternedItemLite, "recolors"> & {
+      recolors?: LooseRecolor[];
+    };
+    const { v, r, recolors: rcIn, ...rest } = interned;
+    const variants = variantArrays[v] ?? [];
+    const rList = recolorVariantArrays[r] ?? [];
+    let recolors: LooseRecolor[] = Array.isArray(rcIn) ? rcIn : [];
+    if (recolors.length > 0) {
+      const [head, ...tail] = recolors;
+      if (head && typeof head === "object") {
+        const merged0 = { ...head, variants: rList.length ? [...rList] : [] };
+        recolors = [merged0, ...tail];
+      }
+    } else if (rList.length > 0) {
+      recolors = [{ variants: [...rList] }];
     }
-  } else if (rList.length > 0) {
-    recolors = [{ variants: [...rList] }];
+    out = { ...rest, variants, recolors } as unknown as ItemLite;
   }
-  return { ...rest, variants, recolors } as unknown as ItemLite;
+  if (hasInternedPalettes(out)) {
+    const recolors = expandInternedPaletteRecolors(
+      (out as { recolors: LooseRecolor[] }).recolors,
+      paletteArrays,
+    );
+    out = { ...out, recolors } as unknown as ItemLite;
+  }
+  return out;
 }
 
 type ItemLikeForSlimRow = Pick<ItemLite, "name" | "type_name"> & {

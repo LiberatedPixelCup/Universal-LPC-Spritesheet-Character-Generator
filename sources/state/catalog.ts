@@ -30,6 +30,7 @@ import {
   buildItemsByTypeNameLite,
   expandInternedItemLite,
   expandMetadataIndexesWithInternedArrays,
+  hasInternedPalettes,
   isInternedItemLite,
 } from "./resolve-hash-param.ts";
 
@@ -143,10 +144,11 @@ export type SlimByTypeNameRow = {
 export type MetadataIndexes = {
   byTypeName: Record<string, SlimByTypeNameRow[]>;
   hashMatch: { itemsByTypeName?: Record<string, SlimByTypeNameRow[]> };
-  // Only emitted when the build interned variant indices — production
+  // Only emitted when the build interned variant / palette tables — production
   // `index-metadata.js` includes them; in-memory test fixtures usually don't.
   variantArrays?: string[][];
   recolorVariantArrays?: string[][];
+  paletteArrays?: PaletteMap[];
 };
 
 export type PaletteMaterialMeta = {
@@ -306,25 +308,24 @@ export function createCatalog(): CatalogHandles {
   let paletteMetadataStore: PaletteMetadata | null = null;
 
   /**
-   * Fills `variants` and `recolors[0].variants` from `metadataIndexesStore`
-   * when the lite chunk was emitted with interned `v` / `r` (shared tables
-   * live only in `index-metadata.js`).
+   * Fills `variants`, `recolors[0].variants`, and per-recolor `palettes` from
+   * `metadataIndexesStore` when the lite chunk was interned (`v` / `r` / `p`;
+   * shared tables live only in `index-metadata.js`). Palette restore is
+   * independent of variant intern.
    */
   function expandInternedItemLitesInStore(): void {
     if (itemLiteStore === null || metadataIndexesStore === null) return;
-    const { variantArrays, recolorVariantArrays } = metadataIndexesStore;
-    if (!Array.isArray(variantArrays) || !Array.isArray(recolorVariantArrays)) {
-      return;
-    }
+    const { variantArrays, recolorVariantArrays, paletteArrays } =
+      metadataIndexesStore;
     for (const itemId of Object.keys(itemLiteStore)) {
       const cur = itemLiteStore[itemId];
-      if (isInternedItemLite(cur)) {
-        itemLiteStore[itemId] = expandInternedItemLite(
-          cur,
-          variantArrays,
-          recolorVariantArrays,
-        ) as ItemLite;
-      }
+      if (!isInternedItemLite(cur) && !hasInternedPalettes(cur)) continue;
+      itemLiteStore[itemId] = expandInternedItemLite(
+        cur,
+        variantArrays,
+        recolorVariantArrays,
+        paletteArrays,
+      ) as ItemLite;
     }
   }
 

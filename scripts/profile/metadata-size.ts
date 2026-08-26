@@ -26,6 +26,7 @@ import {
   expandInternedItemLite,
   type InternedItemLite,
 } from "../../sources/state/resolve-hash-param.ts";
+import type { PaletteMap } from "../../sources/state/catalog.ts";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.join(__dirname, "..", "..");
@@ -255,6 +256,9 @@ function runBench(
     indexSrc,
     "recolorVariantArrays",
   ) as string[][];
+  const paletteArrays = indexSrc.includes("const paletteArrays = ")
+    ? (extractTopLevelJsonLiteral(indexSrc, "paletteArrays") as PaletteMap[])
+    : undefined;
   const parsed = JSON.parse(liteJson) as Record<string, InternedItemLite>;
   const ids = Object.keys(parsed);
 
@@ -264,7 +268,12 @@ function runBench(
 
   const expand = bench(() => {
     for (const id of ids) {
-      expandInternedItemLite(parsed[id]!, variantArrays, recolorVariantArrays);
+      expandInternedItemLite(
+        parsed[id]!,
+        variantArrays,
+        recolorVariantArrays,
+        paletteArrays,
+      );
     }
   }, BENCH_RUNS);
 

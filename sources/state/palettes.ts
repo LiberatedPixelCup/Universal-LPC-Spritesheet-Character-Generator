@@ -305,7 +305,7 @@ export function getPaletteOptions(
     meta.recolors.forEach((color, idx) => {
       const subGroup =
         idx !== 0 ? (color.type_name ?? selectionGroup) : selectionGroup;
-      const versions = Object.keys(color.palettes);
+      const versions = Object.keys(color.palettes ?? {});
       const selectedColor = selectedColors?.[subGroup] ?? null;
 
       const [material, version, recolor] = parseRecolorKey(

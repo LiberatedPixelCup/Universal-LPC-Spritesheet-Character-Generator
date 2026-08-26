@@ -29,6 +29,9 @@ declare module "*/palette-metadata.js" {
 
 declare module "*/item-metadata.js" {
   import type { ItemLite } from "./state/catalog.ts";
+  // Emitted records may intern `v` / `r` / `p`; `registerItemMetadata` expands
+  // those to `ItemLite` (`variants` plus `recolors[].palettes` maps) before
+  // getters see the store.
   export const itemMetadata: Record<string, ItemLite>;
 }
 

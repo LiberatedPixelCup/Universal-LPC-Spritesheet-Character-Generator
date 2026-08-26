@@ -523,4 +523,112 @@ describe("state/palettes.ts", () => {
 
     expect(recolors).to.equal(null);
   });
+
+  describe("getPaletteOptions interned palettes", () => {
+    it("reads versions from a restored palettes map", () => {
+      const { reader, writer } = createCatalog();
+      writer.registerPaletteMetadata({
+        versions: {},
+        materials: {
+          body: {
+            type: "material",
+            label: "Body",
+            desc: "",
+            default: "ulpc",
+            base: "light",
+            palettes: {
+              ulpc: {
+                light: ["#271920", "#99423c"],
+                bronze: ["#1A1213", "#442725"],
+              },
+            },
+          },
+        },
+      });
+      writer.registerIndexMetadata({
+        aliasMetadata: {},
+        categoryTree: { items: [], children: {} },
+        metadataIndexes: {
+          byTypeName: {},
+          hashMatch: {},
+          paletteArrays: [
+            {
+              ulpc: {
+                light: ["#271920", "#99423c"],
+                bronze: ["#1A1213", "#442725"],
+              },
+            },
+          ],
+        },
+      });
+      writer.registerItemMetadata({
+        body: {
+          name: "Body",
+          type_name: "body",
+          required: [],
+          animations: [],
+          matchBodyColor: false,
+          variants: [],
+          path: [],
+          recolors: [
+            { material: "body", default: "ulpc", base: "ulpc.light", p: 0 },
+          ],
+        },
+      });
+      configureStateCatalog(reader);
+      const localState = createState();
+      const lite = reader.getItemLite("body").unwrapOr(null);
+      const [paletteOptions] = getPaletteOptions(
+        reader,
+        localState,
+        "body",
+        lite,
+      );
+      expect(paletteOptions).to.have.lengthOf(1);
+      expect(paletteOptions[0].versions).to.deep.equal(["ulpc"]);
+    });
+
+    it("does not throw when palettes is missing because index has not registered", () => {
+      const { reader, writer } = createCatalog();
+      writer.registerPaletteMetadata({
+        versions: {},
+        materials: {
+          body: {
+            type: "material",
+            label: "Body",
+            desc: "",
+            default: "ulpc",
+            base: "light",
+            palettes: {
+              ulpc: { light: ["#271920"] },
+            },
+          },
+        },
+      });
+      writer.registerItemMetadata({
+        body: {
+          name: "Body",
+          type_name: "body",
+          required: [],
+          animations: [],
+          matchBodyColor: false,
+          variants: [],
+          path: [],
+          recolors: [
+            { material: "body", default: "ulpc", base: "ulpc.light", p: 0 },
+          ],
+        },
+      });
+      configureStateCatalog(reader);
+      const localState = createState();
+      const lite = reader.getItemLite("body").unwrapOr(null);
+      const [paletteOptions] = getPaletteOptions(
+        reader,
+        localState,
+        "body",
+        lite,
+      );
+      expect(paletteOptions[0].versions).to.deep.equal([]);
+    });
+  });
 });

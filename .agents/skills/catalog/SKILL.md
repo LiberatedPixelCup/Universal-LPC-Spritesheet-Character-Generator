@@ -78,6 +78,24 @@ effects. Override individual effects with `setStateDeps` and restore them with
 
 A new spec has to actually hit the lines it covers: [coverage](../coverage/SKILL.md).
 
+## Emitted vs expanded `ItemLite`
+
+`dist/item-metadata.js` may intern variant strings and recolor palette maps.
+`registerItemMetadata` / `registerIndexMetadata` expand those into the runtime
+shapes getters return. Do not read `v` / `r` / `p` off `getItemLite`.
+
+| Field | Emitted (interned) | Expanded (runtime `ItemLite`) |
+| --- | --- | --- |
+| `variants` | omitted; `v` indexes `variantArrays` | `string[]` |
+| `recolors[0].variants` | omitted; `r` indexes `recolorVariantArrays` | `string[]` |
+| `recolors[].palettes` | omitted; `p` indexes `paletteArrays` | `PaletteMap` |
+| licenses / tags / priority | not on lite (credits chunk / sheet JSON / generator sort) | not on lite |
+
+`MetadataIndexes` may include `variantArrays`, `recolorVariantArrays`, and
+`paletteArrays`. Expansion keeps those tables on the index store. Palette
+restore (`hasInternedPalettes`) does not require `v` / `r`. Until the index
+chunk arrives, `getPaletteOptions` treats missing `palettes` as `{}`.
+
 ## URL hash
 
 Shape: `type_name=Item_variant` (e.g. `expression=Neutral_light`). Old hashes
