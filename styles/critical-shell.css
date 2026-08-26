@@ -47,7 +47,30 @@ p {
   width: calc(100% - 30px);
   padding: 10px;
   box-sizing: border-box;
+  /* Huge-desktop Argos is a single 75px row; do not raise the default. */
   min-height: 75px;
+}
+
+/*
+ * Wrapped header heights (includes #sponsors-links margin-top: -12px).
+ * Floors match loaded Argos/Lighthouse widths so first paint does not grow.
+ */
+@media (max-width: 2559px) {
+  #header-left {
+    min-height: 106px;
+  }
+}
+
+@media (max-width: 1023px) {
+  #header-left {
+    min-height: 126px;
+  }
+}
+
+@media (max-width: 430px) {
+  #header-left {
+    min-height: 240px;
+  }
 }
 
 #columns-container {
