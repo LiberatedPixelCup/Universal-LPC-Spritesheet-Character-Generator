@@ -28,6 +28,7 @@ declare module "chai" {
         be: Assertion;
         equal: (expected: unknown) => void;
         include: (expected: unknown) => void;
+        have: Assertion;
       };
       have: Assertion;
     };
