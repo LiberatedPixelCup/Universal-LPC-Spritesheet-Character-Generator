@@ -84,7 +84,9 @@
 /* Category tree: overlay host is positioned so the outer .box stays static (computed-style parity w/ older builds). */
 .category-tree-loading-host {
   position: relative;
-  min-height: 14rem;
+  /* Collapsed category tree is ~677px on a 412px viewport; 14rem was the
+     post-mount → catalog jump. This host is replaced when the tree renders. */
+  min-height: 42rem;
 }
 
 .category-tree-loading-overlay {

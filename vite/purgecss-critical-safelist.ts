@@ -51,6 +51,7 @@ export function getPurgeSafelist(): ComplexSafelist {
       "is-warning",
       "loading",
       "loading-shell-animation",
+      "loading-shell-credits",
       "loading-shell-filters",
       "loading-shell-spritesheet",
       "mb-0",
