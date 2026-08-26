@@ -140,11 +140,17 @@ type LooseRecolor = {
   p?: number;
 } & Record<string, unknown>;
 
-/** Outer map + each nested version object; colour arrays are shared. */
+/**
+ * Outer map plus each nested version object; colour arrays are shared.
+ * Generated item palettes are `Record<string, string[]>` (version → names);
+ * those arrays are shared rather than spread into a new object.
+ */
 function clonePaletteMap(map: PaletteMap): PaletteMap {
   const cloned: PaletteMap = {};
   for (const [key, nested] of Object.entries(map)) {
-    cloned[key] = { ...nested };
+    cloned[key] = Array.isArray(nested)
+      ? (nested as unknown as Record<string, string[]>)
+      : { ...nested };
   }
   return cloned;
 }
@@ -178,6 +184,10 @@ function expandInternedPaletteRecolors(
   });
 }
 
+type InternedLiteWithLooseRecolors = Omit<InternedItemLite, "recolors"> & {
+  recolors?: LooseRecolor[];
+};
+
 /**
  * Restores `variants`, `recolors[0].variants`, and per-recolor `palettes` from
  * the shared tables (same as `index-metadata.js`). Palette restore is gated on
@@ -195,9 +205,7 @@ export function expandInternedItemLite(
     Array.isArray(variantArrays) &&
     Array.isArray(recolorVariantArrays)
   ) {
-    const interned = lite as unknown as Omit<InternedItemLite, "recolors"> & {
-      recolors?: LooseRecolor[];
-    };
+    const interned = lite as unknown as InternedLiteWithLooseRecolors;
     const { v, r, recolors: rcIn, ...rest } = interned;
     const variants = variantArrays[v] ?? [];
     const rList = recolorVariantArrays[r] ?? [];

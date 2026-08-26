@@ -346,9 +346,9 @@ Markdown formatting, so `npm run format:check` is optional for a docs-only chang
 
 | File                      | Main exports (named)                                                                                    |
 | ------------------------- | ------------------------------------------------------------------------------------------------------- |
-| **`index-metadata.js`**   | `aliasMetadata`, `categoryTree`, `metadataIndexes` (path/hash indexes: `byTypeName`, `hashMatch`, etc.) |
+| **`index-metadata.js`**   | `aliasMetadata`, `categoryTree`, `metadataIndexes` (path/hash indexes: `byTypeName`, `hashMatch`, intern tables `variantArrays` / `recolorVariantArrays` / `paletteArrays`) |
 | **`palette-metadata.js`** | `paletteMetadata`                                                                                       |
-| **`item-metadata.js`**    | `itemMetadata` — per-item **lite** records: `name`, `type_name`, `required`, `animations`, `path`, `replace_in_path`, `matchBodyColor`, preview offsets, interned `v` / `r` / recolors. No `layers` or `credits`. Deliberately omitted: `licenses` (credits chunk / `CREDITS.csv`), `tags` / `required_tags` / `excluded_tags` (sheet JSON), `priority` (generator tree sort; node `priority` still lives on `categoryTree`) |
+| **`item-metadata.js`**    | `itemMetadata` — per-item **lite** records: `name`, `type_name`, `required`, `animations`, `path`, `replace_in_path`, `matchBodyColor`, preview offsets, interned `v` / `r` / per-recolor `p`. Unique palettes live in `paletteArrays` on the index chunk, not as embedded maps. No `layers` or `credits`. Deliberately omitted: `licenses` (credits chunk / `CREDITS.csv`), `tags` / `required_tags` / `excluded_tags` (sheet JSON), `priority` (generator tree sort; node `priority` still lives on `categoryTree`) |
 | **`credits-metadata.js`** | `itemCredits` — map `itemId → credits[]`                                                                |
 | **`layers-metadata.js`**  | `itemLayers` — map `itemId → layer objects`                                                             |
 

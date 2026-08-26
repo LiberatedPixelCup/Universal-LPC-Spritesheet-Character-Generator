@@ -34,3 +34,22 @@ VITE_REGENERATE_SOURCES=1 npm run dev
 
 Deleting `.cache/` has the same effect. Details:
 [File Generation](../../../CONTRIBUTING.md#file-generation).
+
+After changing emit (`scripts/generateSources/`), run `npm run metadata:size`
+(and `metadata:size:check` once that gate exists) so payload regressions are
+visible. Do not hand-edit `dist/` or add a sixth metadata module.
+
+## Intern tables
+
+Emitted `index-metadata.js` stores shared tables; `item-metadata.js` stores
+indices. `registerIndexMetadata` / `registerItemMetadata` expand them.
+
+| Table | Indexed by | Restores |
+| --- | --- | --- |
+| `variantArrays` | per-item `v` | `ItemLite.variants` |
+| `recolorVariantArrays` | per-item `r` | `recolors[0].variants` |
+| `paletteArrays` | per-recolor `p` | `recolors[].palettes` |
+
+Emitted lite has `v` / `r` / `p` and omits the expanded arrays/maps. Not
+emitted on lite: `licenses`, `tags`, `required_tags`, `excluded_tags`,
+`priority` (credits chunk / sheet JSON / generator tree sort).

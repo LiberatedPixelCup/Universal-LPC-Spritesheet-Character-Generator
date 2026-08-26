@@ -60,6 +60,12 @@ test("build1-basic aligns merged metadata and index-metadata.js indexes", async 
   const [recolor] = metadata.head_nose_big.recolors!;
   assert.equal(recolor.default, "ulpc");
   assert.equal(recolor.base, "ulpc.skin");
+  assert.equal(typeof recolor.palettes, "object");
+  assert.equal(Array.isArray(recolor.palettes), false);
+  assert.ok(
+    Object.keys(recolor.palettes as Record<string, string[]>).length > 0,
+  );
+  assert.equal("p" in recolor, false);
   assert.ok(recolor.variants!.includes("light"));
   assert.ok(recolor.variants!.includes("lpcr.ashen"));
   assert.ok(recolor.variants!.includes("all.lpcr.indigo"));

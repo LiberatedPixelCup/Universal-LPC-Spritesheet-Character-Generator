@@ -205,6 +205,30 @@ describe("state/catalog.ts", () => {
       expect(lite).to.not.have.property("v");
     });
 
+    it("restores production-shaped palettes whose version keys map to colour-name arrays", () => {
+      const generatedPalettes = {
+        "body.ulpc": ["light", "olive"],
+        "body.lpcr": ["ivory"],
+      };
+      registerIndex({
+        paletteArrays: [generatedPalettes],
+        byTypeName: {},
+        hashMatch: {},
+      });
+      registerLite({
+        body: {
+          name: "Body",
+          type_name: "body",
+          variants: [],
+          recolors: [{ material: "body", p: 0 }],
+        },
+      });
+      const lite = requireLite("body");
+      expect(lite.recolors[0].palettes).to.deep.equal(generatedPalettes);
+      const versionNames = lite.recolors[0].palettes["body.ulpc"] as unknown;
+      expect(Array.isArray(versionNames)).to.equal(true);
+    });
+
     it("restores palettes when the record has p but no v / r", () => {
       registerIndex({
         paletteArrays: [BODY_PALETTES],

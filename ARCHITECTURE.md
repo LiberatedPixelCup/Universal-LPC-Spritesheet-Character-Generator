@@ -31,6 +31,15 @@ This catches everyone once. The file is not next to the importer, and it does
 not exist at all until `npm run dev` or `npm run build` has run. A resolve
 failure here means `dist/` was never built, not that the import is wrong.
 
+Lite records intern repeated strings and palette maps: `v` / `r` index
+`variantArrays` / `recolorVariantArrays`, and each recolor's `p` indexes
+`paletteArrays`. Those tables live on `index-metadata.js`. Catalog register
+expands them into the runtime `ItemLite` shape (`variants` arrays and
+`recolors[].palettes` maps), so lite expansion depends on the index chunk
+as well as `item-metadata.js`. See
+[`resolve-hash-param.ts`](sources/state/resolve-hash-param.ts) and
+[`catalog.ts`](sources/state/catalog.ts).
+
 ## Bootstrap
 
 [`sources/main.ts`](sources/main.ts) is the composition root. As the entry
@@ -52,7 +61,9 @@ module runs, before any DOM exists:
 [`sources/install-item-metadata.ts`](sources/install-item-metadata.ts) does a
 parallel `import()` of all five chunks and calls the matching writer
 `register*Metadata` method as each one lands, so readiness is **staged** rather
-than all-or-nothing. Each registration triggers a coalesced redraw.
+than all-or-nothing. Each registration triggers a coalesced redraw. Interned
+lite palettes restore when the index chunk registers (either order); until
+then `getPaletteOptions` treats missing `palettes` as `{}`.
 
 On `DOMContentLoaded`, three separate Mithril roots mount against the same
 catalog and state instances:
@@ -155,7 +166,7 @@ Verifying it needs a real browser.
 
 | File | Role |
 | --- | --- |
-| `catalog.ts` | `createCatalog()` reader/writer capability pairs, `Result`-returning getters, registration methods, and staged readiness |
+| `catalog.ts` | `createCatalog()` reader/writer capability pairs, `Result`-returning getters, registration methods, staged readiness, and intern expansion of `v` / `r` / `p` |
 | `constants.ts` | `FRAME_SIZE`, `BODY_TYPES`, `ANIMATIONS`, `LICENSE_CONFIG`, animation offsets and configs |
 | `filters.ts` | License and animation compatibility predicates that gate tree visibility |
 | `hash.ts` | Hash read/write, `loadSelectionsFromHash`, `syncSelectionsToHash`, `initHashChangeListener` |
@@ -164,7 +175,7 @@ Verifying it needs a real browser.
 | `palettes.ts` | Recolor resolution: `getMultiRecolors`, `getTargetPalette`, `parseRecolorKey` |
 | `path.ts` | Sprite URL building (`getSpritePath`, `replaceInPath`) |
 | `preview-canvas-loading.ts` | Preview overlay state machine |
-| `resolve-hash-param.ts` | Hash value to item id resolution, including aliases |
+| `resolve-hash-param.ts` | Hash value to item id resolution, including aliases, and expansion of interned `v` / `r` / `p` |
 | `state.ts` | `createState()`, `selectItem`, `selectDefaults`, `initState`, `configureStateCatalog`, and the `setStateDeps` / `resetStateDeps` / `getStateDeps` test seam |
 | `zip.ts` | The four ZIP export orchestrators |
 

@@ -24,10 +24,12 @@ import {
   sortDirTree,
   readDirTree,
   parseJson,
+  internRecolorPaletteMaps,
   internSlimByTypeNameRows,
   splitItemMetadataMaps,
   type GeneratorItem,
 } from "../../../../scripts/generateSources/state.ts";
+import { expandInternedItemLite } from "../../../../sources/state/resolve-hash-param.ts";
 import type { SlimByTypeNameRow } from "../../../../sources/state/catalog.ts";
 import { populateAndSortCategoryTree } from "../../../../scripts/generateSources/tree.ts";
 import {
@@ -452,4 +454,237 @@ test("mergeMetadataForTests round-trip still carries kept lite fields", () => {
   assert.equal(item.preview_column, 1);
   assert.equal(item.preview_x_offset, 4);
   assert.equal(item.preview_y_offset, -2);
+});
+
+const BODY_ULPC_NAMES = { "body.ulpc": ["light", "olive"] };
+const CLOTH_ULPC_NAMES = { "cloth.ulpc": ["red"] };
+
+type InternedLiteRecolor = {
+  palettes?: unknown;
+  p?: number;
+  variants?: string[];
+  material?: string;
+};
+
+function itemWithPaletteMap(
+  name: string,
+  palettes: Record<string, string[]>,
+): GeneratorItem {
+  return {
+    name,
+    type_name: "t",
+    variants: ["male"],
+    recolors: [{ material: "body", variants: ["light", "olive"], palettes }],
+  };
+}
+
+test("internRecolorPaletteMaps shares an index for deep-equal maps in first-seen order", () => {
+  const { paletteArrays } = internRecolorPaletteMaps({
+    a: itemWithPaletteMap("A", BODY_ULPC_NAMES),
+    b: itemWithPaletteMap("B", BODY_ULPC_NAMES),
+    c: itemWithPaletteMap("C", CLOTH_ULPC_NAMES),
+  });
+  assert.equal(paletteArrays.length, 2);
+  assert.deepEqual(paletteArrays[0], BODY_ULPC_NAMES);
+  assert.deepEqual(paletteArrays[1], CLOTH_ULPC_NAMES);
+});
+
+test("internRecolorPaletteMaps skips token-array palettes and missing palettes keys", () => {
+  const { paletteArrays } = internRecolorPaletteMaps({
+    tokens: {
+      name: "Tokens",
+      recolors: [{ material: "body", palettes: ["ulpc"] }],
+    },
+    missing: {
+      name: "Missing",
+      recolors: [{ material: "body", variants: ["light"] }],
+    },
+    holes: {
+      name: "Holes",
+      recolors: [
+        null as never,
+        { material: "body", palettes: BODY_ULPC_NAMES },
+      ],
+    },
+    empty: { name: "Empty" },
+  });
+  assert.deepEqual(paletteArrays, [BODY_ULPC_NAMES]);
+});
+
+test("maps not in paletteArrays stay expanded and null recolors are left alone", () => {
+  const { paletteArrays } = internRecolorPaletteMaps({
+    a: itemWithPaletteMap("A", BODY_ULPC_NAMES),
+  });
+  const interned = buildInternedItemMetadataLiteMap(
+    {
+      b: {
+        name: "B",
+        recolors: [
+          null as never,
+          1 as never,
+          { material: "cloth", palettes: CLOTH_ULPC_NAMES },
+        ],
+      },
+    },
+    {},
+    paletteArrays,
+  );
+  const recs = (interned.b as { recolors: InternedLiteRecolor[] }).recolors;
+  assert.equal(recs[0], null);
+  assert.equal(recs[1], 1);
+  assert.deepEqual(recs[2].palettes, CLOTH_ULPC_NAMES);
+  assert.equal("p" in recs[2], false);
+});
+
+test("vr == null fallback still emits p for internable palette maps", () => {
+  const lite = {
+    fallback: {
+      name: "Fallback",
+      recolors: [{ material: "body", palettes: BODY_ULPC_NAMES }],
+    },
+  };
+  const { paletteArrays } = internRecolorPaletteMaps(lite);
+  const interned = buildInternedItemMetadataLiteMap(lite, {}, paletteArrays);
+  const record = interned.fallback as {
+    name: string;
+    recolors: InternedLiteRecolor[];
+  };
+  assert.equal(record.name, "Fallback");
+  assert.equal("v" in record, false);
+  assert.equal("r" in record, false);
+  assert.equal(record.recolors[0].p, 0);
+  assert.equal("palettes" in record.recolors[0], false);
+});
+
+test("token-array palettes are not interned and keep their value", () => {
+  resetTestState();
+  itemMetadata.tokens = {
+    name: "Tokens",
+    type_name: "t",
+    recolors: [{ material: "body", palettes: ["ulpc"] }],
+  };
+  const lite = extractTopLevelConstJson(
+    buildItemMetadataLiteJs(itemMetadata),
+    "itemMetadata",
+  ) as Record<string, { recolors: InternedLiteRecolor[] }>;
+  assert.deepEqual(lite.tokens.recolors[0].palettes, ["ulpc"]);
+  assert.equal("p" in lite.tokens.recolors[0], false);
+});
+
+test("a recolor with no palettes key is untouched", () => {
+  resetTestState();
+  itemMetadata.none = {
+    name: "None",
+    type_name: "t",
+    recolors: [{ material: "body", variants: ["light"] }],
+  };
+  const lite = extractTopLevelConstJson(
+    buildItemMetadataLiteJs(itemMetadata),
+    "itemMetadata",
+  ) as Record<string, { recolors: InternedLiteRecolor[] }>;
+  assert.equal("palettes" in lite.none.recolors[0], false);
+  assert.equal("p" in lite.none.recolors[0], false);
+  assert.deepEqual(lite.none.recolors[0].variants, []);
+});
+
+test("buildItemMetadataLiteJs emits p and no embedded palette maps", () => {
+  resetTestState();
+  itemMetadata.one = itemWithPaletteMap("One", BODY_ULPC_NAMES);
+  const itemJs = buildItemMetadataLiteJs(itemMetadata);
+  assert.match(itemJs, /"p":/);
+  assert.doesNotMatch(itemJs, /"body\.ulpc"/);
+  assert.doesNotMatch(itemJs, /"palettes":\{/);
+});
+
+test("index and lite p indices resolve against the same paletteArrays", () => {
+  resetTestState();
+  itemMetadata.one = itemWithPaletteMap("One", BODY_ULPC_NAMES);
+  itemMetadata.two = itemWithPaletteMap("Two", BODY_ULPC_NAMES);
+  itemMetadata.three = itemWithPaletteMap("Three", CLOTH_ULPC_NAMES);
+  const indexJs = buildIndexMetadataJs(
+    aliasMetadata,
+    categoryTree,
+    itemMetadata,
+  );
+  const lite = extractTopLevelConstJson(
+    buildItemMetadataLiteJs(itemMetadata),
+    "itemMetadata",
+  ) as Record<string, { recolors: InternedLiteRecolor[] }>;
+  const paletteArrays = extractTopLevelConstJson(
+    indexJs,
+    "paletteArrays",
+  ) as Record<string, string[]>[];
+  assert.deepEqual(paletteArrays[lite.one.recolors[0].p!], BODY_ULPC_NAMES);
+  assert.equal(lite.one.recolors[0].p, lite.two.recolors[0].p);
+  assert.deepEqual(paletteArrays[lite.three.recolors[0].p!], CLOTH_ULPC_NAMES);
+  assert.notEqual(lite.one.recolors[0].p, lite.three.recolors[0].p);
+});
+
+test("expand round-trip deep-equals the pre-intern lite", () => {
+  resetTestState();
+  itemMetadata.round = {
+    name: "Round",
+    type_name: "t",
+    required: ["male"],
+    animations: ["walk"],
+    path: ["body", "round"],
+    replace_in_path: {},
+    matchBodyColor: false,
+    variants: ["male"],
+    recolors: [
+      {
+        material: "body",
+        variants: ["light", "olive"],
+        palettes: BODY_ULPC_NAMES,
+      },
+    ],
+  };
+  const preIntern = splitItemMetadataMaps(itemMetadata).itemMetadataLite.round;
+  const writes = buildAllMetadataModules("production", { itemMetadata });
+  const indexSrc = writes.get("index-metadata.js") ?? "";
+  const rawLite = extractTopLevelConstJson(
+    writes.get("item-metadata.js") ?? "",
+    "itemMetadata",
+  ) as Record<string, Parameters<typeof expandInternedItemLite>[0]>;
+  const expanded = expandInternedItemLite(
+    rawLite.round,
+    extractTopLevelConstJson(indexSrc, "variantArrays") as string[][],
+    extractTopLevelConstJson(indexSrc, "recolorVariantArrays") as string[][],
+    extractTopLevelConstJson(indexSrc, "paletteArrays") as never,
+  );
+  assert.deepEqual(expanded, preIntern);
+});
+
+test("interned palette emit is byte-identical across two runs", () => {
+  resetTestState();
+  itemMetadata.one = itemWithPaletteMap("One", BODY_ULPC_NAMES);
+  itemMetadata.two = itemWithPaletteMap("Two", CLOTH_ULPC_NAMES);
+  const indexA = buildIndexMetadataJs(
+    aliasMetadata,
+    categoryTree,
+    itemMetadata,
+  );
+  const indexB = buildIndexMetadataJs(
+    aliasMetadata,
+    categoryTree,
+    itemMetadata,
+  );
+  const itemA = buildItemMetadataLiteJs(itemMetadata);
+  const itemB = buildItemMetadataLiteJs(itemMetadata);
+  assert.equal(indexA, indexB);
+  assert.equal(itemA, itemB);
+});
+
+test("development pretty intern emit round-trips palettes like production", () => {
+  resetTestState();
+  itemMetadata.round = itemWithPaletteMap("Round", BODY_ULPC_NAMES);
+  const prod = mergeMetadataForTests(
+    buildAllMetadataModules("production", { itemMetadata }),
+  ) as Record<string, GeneratorItem>;
+  const dev = mergeMetadataForTests(
+    buildAllMetadataModules("development", { itemMetadata }),
+  ) as Record<string, GeneratorItem>;
+  assert.deepEqual(dev.round.recolors, prod.round.recolors);
+  assert.deepEqual(prod.round.recolors![0].palettes, BODY_ULPC_NAMES);
+  assert.equal("p" in (prod.round.recolors![0] as InternedLiteRecolor), false);
 });

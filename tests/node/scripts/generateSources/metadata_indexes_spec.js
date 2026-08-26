@@ -95,6 +95,23 @@ test("buildIndexMetadataJs serializes non-empty aliasMetadata from shared state"
   assert.match(js, /"oldkey"/);
 });
 
+test("buildIndexMetadataJs emits paletteArrays and exposes it on metadataIndexes", () => {
+  resetTestState();
+  itemMetadata.item = {
+    name: "I",
+    type_name: "itype",
+    layers: {},
+    credits: [],
+    recolors: [{ material: "body", palettes: { "body.ulpc": ["light"] } }],
+  };
+  const js = buildIndexMetadataJs(aliasMetadata, categoryTree, itemMetadata);
+  assert.match(js, /const paletteArrays = /);
+  assert.match(
+    js,
+    /const metadataIndexes = \{[\s\S]*paletteArrays,[\s\S]*byTypeName/,
+  );
+});
+
 test("internSlimByTypeNameRows + expand round-trips to buildMetadataIndexes rows", () => {
   resetTestState();
   itemMetadata.a = {

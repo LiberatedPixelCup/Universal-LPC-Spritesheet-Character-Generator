@@ -5,6 +5,7 @@ import type {
   Credit,
   ItemLite,
   LayerEntry,
+  PaletteMap,
   PaletteMetadata,
   SlimByTypeNameRow,
 } from "../../sources/state/catalog.ts";
@@ -268,6 +269,66 @@ export function internSlimByTypeNameRows(
   return { variantArrays, recolorVariantArrays, byTypeName };
 }
 
+/** True when `palettes` is already an expanded map, not a string-token list. */
+function isInternablePaletteMap(palettes: unknown): palettes is PaletteMap {
+  return (
+    palettes != null && typeof palettes === "object" && !Array.isArray(palettes)
+  );
+}
+
+/**
+ * Deduplicate expanded recolor `palettes` maps across items (JSON-key /
+ * first-seen index). Iterate `Object.entries(fullItemMetadata)` from both
+ * index and lite builders so `p` indices match. Token-array `palettes` and
+ * recolors with no `palettes` key are skipped.
+ */
+export function internRecolorPaletteMaps(
+  fullItemMetadata: Record<string, GeneratorItem>,
+): { paletteArrays: PaletteMap[] } {
+  const pKey = new Map<string, number>();
+  const paletteArrays: PaletteMap[] = [];
+  for (const [, item] of Object.entries(fullItemMetadata)) {
+    const recolors = item.recolors;
+    if (!Array.isArray(recolors)) continue;
+    for (const recolor of recolors) {
+      const palettes = recolor?.palettes;
+      if (!isInternablePaletteMap(palettes)) continue;
+      const k = JSON.stringify(palettes);
+      if (pKey.has(k)) continue;
+      const idx = paletteArrays.length;
+      pKey.set(k, idx);
+      paletteArrays.push(palettes);
+    }
+  }
+  return { paletteArrays };
+}
+
+function paletteIndexByJsonKey(
+  paletteArrays: PaletteMap[] | undefined,
+): Map<string, number> | undefined {
+  if (paletteArrays === undefined) return undefined;
+  const pKey = new Map<string, number>();
+  for (let i = 0; i < paletteArrays.length; i++) {
+    pKey.set(JSON.stringify(paletteArrays[i]), i);
+  }
+  return pKey;
+}
+
+function internPalettesOnRecolors(
+  recolors: NonNullable<GeneratorItem["recolors"]>,
+  pKey: Map<string, number> | undefined,
+): unknown[] {
+  if (pKey === undefined) return recolors;
+  return recolors.map((entry) => {
+    if (!entry || typeof entry !== "object") return entry;
+    if (!isInternablePaletteMap(entry.palettes)) return entry;
+    const idx = pKey.get(JSON.stringify(entry.palettes));
+    if (idx === undefined) return entry;
+    const { palettes: _drop, ...rest } = entry;
+    return { ...rest, p: idx };
+  });
+}
+
 /**
  * Drop duplicate variant strings on `recolors[0]`; runtime restores them from
  * `recolorVariantArrays[r]` in `index-metadata.js`.
@@ -307,11 +368,13 @@ function omitUnusedLiteEmitFields(
 
 /**
  * Replace `variants` / `recolors[0].variants` with interned `v` / `r` indexes,
+ * replace expanded recolor `palettes` maps with `p` indexes into `paletteArrays`,
  * and drop generator-only lite keys from every emit path including `vr == null`.
  */
 export function buildInternedItemMetadataLiteMap(
   itemMetadataLite: Record<string, Omit<GeneratorItem, "layers" | "credits">>,
   internedByTypeName: Record<string, InternedSlimByTypeNameRow[]>,
+  paletteArrays?: PaletteMap[],
 ): Record<string, unknown> {
   const itemIdToVr = new Map<string, { v: number; r: number }>();
   for (const rows of Object.values(internedByTypeName)) {
@@ -319,11 +382,16 @@ export function buildInternedItemMetadataLiteMap(
       itemIdToVr.set(row.itemId, { v: row.v, r: row.r });
     }
   }
+  const pKey = paletteIndexByJsonKey(paletteArrays);
   const out: Record<string, unknown> = {};
   for (const [itemId, lite] of Object.entries(itemMetadataLite)) {
     const vr = itemIdToVr.get(itemId);
     if (vr == null) {
-      out[itemId] = omitUnusedLiteEmitFields(lite);
+      const omitted = omitUnusedLiteEmitFields(lite);
+      if (Array.isArray(lite.recolors)) {
+        omitted.recolors = internPalettesOnRecolors(lite.recolors, pKey);
+      }
+      out[itemId] = omitted;
       continue;
     }
     const { variants: _dropV, recolors, ...rest } = lite;
@@ -331,7 +399,10 @@ export function buildInternedItemMetadataLiteMap(
       ...omitUnusedLiteEmitFields(rest),
       v: vr.v,
       r: vr.r,
-      recolors: stripRecolorEntryZeroVariantsForEmit(recolors ?? []),
+      recolors: internPalettesOnRecolors(
+        stripRecolorEntryZeroVariantsForEmit(recolors ?? []),
+        pKey,
+      ),
     };
   }
   return out;
@@ -363,12 +434,14 @@ export function buildIndexMetadataJs(
   );
   const { variantArrays, recolorVariantArrays, byTypeName } =
     internSlimByTypeNameRows(byTypeNameFull);
+  const { paletteArrays } = internRecolorPaletteMaps(fullItemMetadata);
   const variantArraysJson = JSON.stringify(variantArrays, null, indent);
   const recolorVariantArraysJson = JSON.stringify(
     recolorVariantArrays,
     null,
     indent,
   );
+  const paletteArraysJson = JSON.stringify(paletteArrays, null, indent);
   const byTypeJson = JSON.stringify(byTypeName, null, indent);
   const aliasJson = JSON.stringify(aliasMetadataArg, null, indent);
   const treeJson = JSON.stringify(categoryTreeArg, null, indent);
@@ -378,11 +451,14 @@ const variantArrays = ${variantArraysJson};
 
 const recolorVariantArrays = ${recolorVariantArraysJson};
 
+const paletteArrays = ${paletteArraysJson};
+
 const byTypeName = ${byTypeJson};
 
 const metadataIndexes = {
   variantArrays,
   recolorVariantArrays,
+  paletteArrays,
   byTypeName,
   hashMatch: { itemsByTypeName: byTypeName },
 };
@@ -417,9 +493,11 @@ export function buildItemMetadataLiteJs(
   );
   const { byTypeName: internedByType } =
     internSlimByTypeNameRows(byTypeNameFull);
+  const { paletteArrays } = internRecolorPaletteMaps(fullItemMetadata);
   const internedLite = buildInternedItemMetadataLiteMap(
     itemMetadataLite,
     internedByType,
+    paletteArrays,
   );
   const itemJson = JSON.stringify(internedLite, null, indent);
   return buildNamedConstModule("itemMetadata", itemJson, ["itemMetadata"]);
