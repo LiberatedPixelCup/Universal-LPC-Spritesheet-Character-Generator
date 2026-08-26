@@ -529,6 +529,9 @@
   font-size: 1.5rem;
   line-height: 1.125;
   font-weight: 600;
+  /* Loaded computed margin; h1 { margin: 10px 0 } in this file loses to
+   * .title on first paint then wins later and drops the heading ~10px. */
+  margin: 10px 0 0;
 }
 
 #header-left span.subtitle {
