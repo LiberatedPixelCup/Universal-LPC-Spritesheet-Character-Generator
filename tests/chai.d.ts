@@ -13,7 +13,7 @@ declare module "chai" {
     at: { least: (n: number) => void };
     match: (pattern: RegExp) => void;
     length: (n: number) => void;
-    property: (name: string) => Assertion;
+    property: (name: string, value?: unknown) => Assertion;
     greaterThan: (n: number) => void;
   };
 
