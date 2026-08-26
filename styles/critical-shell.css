@@ -116,3 +116,32 @@ canvas {
   gap: 1rem;
   margin-top: -12px;
 }
+
+/*
+ * First-paint CLS: reserved height for shells Mithril replaces on mount.
+ * Do not put min-height on the mount roots themselves (that would remain
+ * after hydrate and show up in Argos).
+ */
+.loading-shell-filters,
+.loading-shell-animation,
+.loading-shell-spritesheet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Stacked mobile: keep preview below the fold until the chooser hydrates. */
+.loading-shell-filters {
+  min-height: 100dvh;
+}
+
+/* Collapsible header + animation/zoom row + 256×64 preview canvas. */
+.loading-shell-animation {
+  min-height: calc(8rem + 64px);
+}
+
+/* Matches .scrollable-container max-height after the spritesheet canvas sizes. */
+.loading-shell-spritesheet {
+  min-height: 70vh;
+}

@@ -236,6 +236,8 @@ If you develop on **macOS** or **Linux**, install **rsync 3.x** and ensure it is
 **Critical CSS (PurgeCSS)**  
 First-paint CSS is trimmed by PurgeCSS. If you add a class used on first paint (or only from TypeScript), make sure it is still present after a production build. Extend the safelist in [`vite/purgecss-critical-safelist.ts`](vite/purgecss-critical-safelist.ts) when the scanner would drop it. Most styles live under **`styles/`**. PurgeCSS entry SCSS lives under **`sources/styles/`**. A class that exists only at runtime and is not scanned or safelisted can be purged and ship a blank control.
 
+`index.html` reserves first-paint height with **loading-shell** children inside `#mithril-filters`, `#mithril-preview`, and `#mithril-spritesheet-preview` (see [`styles/critical-shell.css`](styles/critical-shell.css)). Those nodes are replaced when Mithril mounts; do not put the reserved `min-height` on the mount roots (it would remain after hydrate).
+
 **Browsers**
 
 - **`npm test`** (browser suite via [Testem](https://github.com/testem/testem) + [Vite](https://vitejs.dev/)) uses **Chrome** and **Firefox** as configured in [`testem.cjs`](testem.cjs). CI installs them with **`browser-actions/setup-chrome`** and **`browser-actions/setup-firefox`** (see [`.github/workflows/ci.yml`](.github/workflows/ci.yml)).
