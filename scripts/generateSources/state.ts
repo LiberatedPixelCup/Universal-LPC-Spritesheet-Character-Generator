@@ -286,7 +286,30 @@ function stripRecolorEntryZeroVariantsForEmit(
   });
 }
 
-function buildInternedItemMetadataLiteMap(
+/** Generator-only keys. Emitted item lite omits these; in-memory GeneratorItem keeps them. */
+export const UNUSED_LITE_EMIT_KEYS = [
+  "licenses",
+  "tags",
+  "required_tags",
+  "excluded_tags",
+  "priority",
+] as const;
+
+function omitUnusedLiteEmitFields(
+  lite: Omit<GeneratorItem, "layers" | "credits">,
+): Record<string, unknown> {
+  const out: Record<string, unknown> = { ...lite };
+  for (const key of UNUSED_LITE_EMIT_KEYS) {
+    delete out[key];
+  }
+  return out;
+}
+
+/**
+ * Replace `variants` / `recolors[0].variants` with interned `v` / `r` indexes,
+ * and drop generator-only lite keys from every emit path including `vr == null`.
+ */
+export function buildInternedItemMetadataLiteMap(
   itemMetadataLite: Record<string, Omit<GeneratorItem, "layers" | "credits">>,
   internedByTypeName: Record<string, InternedSlimByTypeNameRow[]>,
 ): Record<string, unknown> {
@@ -300,12 +323,12 @@ function buildInternedItemMetadataLiteMap(
   for (const [itemId, lite] of Object.entries(itemMetadataLite)) {
     const vr = itemIdToVr.get(itemId);
     if (vr == null) {
-      out[itemId] = lite;
+      out[itemId] = omitUnusedLiteEmitFields(lite);
       continue;
     }
     const { variants: _dropV, recolors, ...rest } = lite;
     out[itemId] = {
-      ...rest,
+      ...omitUnusedLiteEmitFields(rest),
       v: vr.v,
       r: vr.r,
       recolors: stripRecolorEntryZeroVariantsForEmit(recolors ?? []),

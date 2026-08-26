@@ -4,10 +4,12 @@ import path from "node:path";
 import {
   PALETTES_DIR,
   SHEETS_DIR,
+  UNUSED_LITE_EMIT_KEYS,
   aliasMetadata,
   buildAllMetadataModules,
   buildCreditsMetadataJs,
   buildIndexMetadataJs,
+  buildInternedItemMetadataLiteMap,
   buildItemMetadataLiteJs,
   buildLayersMetadataJs,
   buildMetadataIndexes,
@@ -27,7 +29,14 @@ import {
   type GeneratorItem,
 } from "../../../../scripts/generateSources/state.ts";
 import type { SlimByTypeNameRow } from "../../../../sources/state/catalog.ts";
-import { buildPath, resetTestState } from "./test_helpers.js";
+import { populateAndSortCategoryTree } from "../../../../scripts/generateSources/tree.ts";
+import {
+  buildPath,
+  extractTopLevelConstJson,
+  mergeMetadataForTests,
+  resetTestState,
+  runBuild,
+} from "./test_helpers.js";
 
 test("state exports expected constant directory suffixes", () => {
   assert.ok(SHEETS_DIR.endsWith(path.sep));
@@ -297,4 +306,150 @@ test("parseJson throws for a non-existent file", () => {
   );
 
   assert.throws(() => parseJson(fullPath), /ENOENT|no such file/);
+});
+
+function assertNoUnusedLiteKeys(
+  record: Record<string, unknown>,
+  label: string,
+): void {
+  for (const key of UNUSED_LITE_EMIT_KEYS) {
+    assert.equal(
+      Object.prototype.hasOwnProperty.call(record, key),
+      false,
+      `${label} should omit ${key}`,
+    );
+  }
+}
+
+function generatorItemWithUnusedAndKeptFields(
+  overrides: GeneratorItem = {},
+): GeneratorItem {
+  return {
+    name: "Kept Name",
+    type_name: "kept_type",
+    required: ["male", "female"],
+    animations: ["walk", "idle"],
+    path: ["body", "kept"],
+    replace_in_path: { male: { adult: "male" } },
+    matchBodyColor: true,
+    preview_row: 3,
+    preview_column: 1,
+    preview_x_offset: 4,
+    preview_y_offset: -2,
+    variants: ["light"],
+    recolors: [{ material: "body", variants: ["light"] }],
+    licenses: { male: ["CC-BY 3.0"], female: ["OGA-BY 3.0"] },
+    tags: ["tag-a"],
+    required_tags: ["need-a"],
+    excluded_tags: ["skip-a"],
+    priority: 40,
+    ...overrides,
+  };
+}
+
+test("emitted lite JSON omits licenses, tags, required_tags, excluded_tags, and priority", async () => {
+  const result = await runBuild("build1-basic");
+  const lite = extractTopLevelConstJson(
+    result.writes.get("item-metadata.js") ?? "",
+    "itemMetadata",
+  ) as Record<string, Record<string, unknown>>;
+  const ids = Object.keys(lite);
+  assert.ok(ids.length > 0);
+  for (const id of ids) {
+    assertNoUnusedLiteKeys(lite[id], id);
+  }
+
+  resetTestState();
+  itemMetadata.populated = generatorItemWithUnusedAndKeptFields();
+  const populatedLite = extractTopLevelConstJson(
+    buildItemMetadataLiteJs(itemMetadata),
+    "itemMetadata",
+  ) as Record<string, Record<string, unknown>>;
+  assertNoUnusedLiteKeys(populatedLite.populated, "populated");
+  assert.equal(populatedLite.populated.name, "Kept Name");
+});
+
+test("vr == null fallback also omits unused lite emit fields", () => {
+  const lite = {
+    fallback: generatorItemWithUnusedAndKeptFields({
+      name: "Fallback",
+    }),
+  };
+  const interned = buildInternedItemMetadataLiteMap(lite, {});
+  const record = interned.fallback as Record<string, unknown>;
+  assert.equal(record.name, "Fallback");
+  assertNoUnusedLiteKeys(record, "vr==null fallback");
+  assert.equal("v" in record, false);
+  assert.equal("r" in record, false);
+});
+
+test("emit does not mutate in-memory fullItemMetadata licenses", () => {
+  resetTestState();
+  const licenses = { male: ["CC-BY 3.0"], female: ["OGA-BY 3.0"] };
+  itemMetadata.kept = generatorItemWithUnusedAndKeptFields({ licenses });
+  const before = itemMetadata.kept.licenses;
+  assert.deepEqual(before, licenses);
+
+  buildItemMetadataLiteJs(itemMetadata);
+
+  assert.strictEqual(itemMetadata.kept.licenses, before);
+  assert.deepEqual(itemMetadata.kept.licenses, licenses);
+  assert.deepEqual(itemMetadata.kept.tags, ["tag-a"]);
+  assert.equal(itemMetadata.kept.priority, 40);
+});
+
+test("runBuild csvGenerated still contains license columns", async () => {
+  const result = await runBuild("build1-basic");
+  assert.match(result.csvGenerated, /^filename,notes,authors,licenses,urls\n/);
+  assert.match(result.csvGenerated, /CC-BY 3\.0/);
+  assert.match(result.csvGenerated, /OGA-BY 3\.0/);
+});
+
+test("generated categoryTree item order still follows in-memory priority", () => {
+  resetTestState();
+  itemMetadata.item_z = {
+    name: "Aardvark",
+    priority: 20,
+    path: ["body", "item_z"],
+    type_name: "t",
+  };
+  itemMetadata.item_a = {
+    name: "Zebra",
+    priority: 10,
+    path: ["body", "item_a"],
+    type_name: "t",
+  };
+
+  populateAndSortCategoryTree();
+  assert.deepEqual(categoryTree.children!.body!.items, ["item_a", "item_z"]);
+
+  const tree = extractTopLevelConstJson(
+    buildIndexMetadataJs(aliasMetadata, categoryTree, itemMetadata),
+    "categoryTree",
+  ) as { children: { body: { items: string[] } } };
+  assert.deepEqual(tree.children.body.items, ["item_a", "item_z"]);
+  assert.equal(itemMetadata.item_a.priority, 10);
+  assert.equal(itemMetadata.item_z.priority, 20);
+});
+
+test("mergeMetadataForTests round-trip still carries kept lite fields", () => {
+  resetTestState();
+  const full = generatorItemWithUnusedAndKeptFields();
+  itemMetadata.kept = full;
+  const writes = buildAllMetadataModules("production", {
+    itemMetadata,
+  });
+  const merged = mergeMetadataForTests(writes) as Record<string, GeneratorItem>;
+  const item = merged.kept;
+  assert.equal(item.name, "Kept Name");
+  assert.equal(item.type_name, "kept_type");
+  assert.deepEqual(item.required, ["male", "female"]);
+  assert.deepEqual(item.animations, ["walk", "idle"]);
+  assert.deepEqual(item.path, ["body", "kept"]);
+  assert.deepEqual(item.replace_in_path, { male: { adult: "male" } });
+  assert.equal(item.matchBodyColor, true);
+  assert.equal(item.preview_row, 3);
+  assert.equal(item.preview_column, 1);
+  assert.equal(item.preview_x_offset, 4);
+  assert.equal(item.preview_y_offset, -2);
 });

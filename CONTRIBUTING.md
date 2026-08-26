@@ -284,7 +284,7 @@ Every script in [`package.json`](package.json). Run them from the repository roo
 | `npm run validate-site-sources` | Regenerates `CREDITS.csv` and `z_positions.csv` in parallel | After any `sheet_definitions/` or `palette_definitions/` edit. A CI gate |
 | `npm run z-positions` | Writes `z_positions.csv` from the JSON | Inspecting z-positions without the credits pass |
 | `npm run z-positions:update` | Writes edited `z_positions.csv` **back** to the JSON | After bulk-editing z-positions in the CSV |
-| `npm run fixture:issue382` | Rebuilds the issue-382 regression fixtures under `tests/fixtures/` | Rarely. Review the diff; do not regenerate blindly |
+| `npm run fixture:issue382` | Rebuilds the issue-382 regression fixtures under `tests/fixtures/` | Rarely. Review the diff; do not regenerate blindly. Do not run as a drive-by after an item-lite emit change — it would drop `priority` / `tags` / `licenses` from the committed snapshot |
 | `npm run metadata:size` | Reports raw, gzip, and brotli bytes per generated metadata module plus the item + index pair. Optional `--json`, `--baseline`, `--bench`. Does not write `dist/` or `CREDITS.csv` | After an emit change, or to record a size baseline |
 
 **Performance and diagnostics**
@@ -348,7 +348,7 @@ Markdown formatting, so `npm run format:check` is optional for a docs-only chang
 | ------------------------- | ------------------------------------------------------------------------------------------------------- |
 | **`index-metadata.js`**   | `aliasMetadata`, `categoryTree`, `metadataIndexes` (path/hash indexes: `byTypeName`, `hashMatch`, etc.) |
 | **`palette-metadata.js`** | `paletteMetadata`                                                                                       |
-| **`item-metadata.js`**    | `itemMetadata` — per-item **lite** records (no `layers`, no `credits`)                                  |
+| **`item-metadata.js`**    | `itemMetadata` — per-item **lite** records: `name`, `type_name`, `required`, `animations`, `path`, `replace_in_path`, `matchBodyColor`, preview offsets, interned `v` / `r` / recolors. No `layers` or `credits`. Deliberately omitted: `licenses` (credits chunk / `CREDITS.csv`), `tags` / `required_tags` / `excluded_tags` (sheet JSON), `priority` (generator tree sort; node `priority` still lives on `categoryTree`) |
 | **`credits-metadata.js`** | `itemCredits` — map `itemId → credits[]`                                                                |
 | **`layers-metadata.js`**  | `itemLayers` — map `itemId → layer objects`                                                             |
 
@@ -356,6 +356,9 @@ How the app loads these modules: [Catalog and state](#catalog-and-state). Note t
 imports these as **`../<name>-metadata.js`**, not as a `dist/` path; a
 `resolve.alias` in [`vite/wiring.ts`](vite/wiring.ts) rewrites the specifier.
 See [ARCHITECTURE.md](ARCHITECTURE.md#generated-metadata-and-the-dist-alias).
+Do not run **`npm run fixture:issue382`** as a drive-by after changing the lite
+emit shape; it would drop `priority` / `tags` / `licenses` from the committed
+snapshot.
 
 **When generation is skipped (stale metadata)** — The plugin fingerprints
 `sheet_definitions/`, `palette_definitions/`, and `scripts/generateSources/`

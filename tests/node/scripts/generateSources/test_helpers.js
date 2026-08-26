@@ -87,7 +87,7 @@ function extractTopLevelJsonLiteral(outputText, constName) {
   throw new Error(`Unclosed JSON for const ${constName}`);
 }
 
-function extractTopLevelConstJson(outputText, constName) {
+export function extractTopLevelConstJson(outputText, constName) {
   return extractTopLevelJsonLiteral(outputText, constName);
 }
 
