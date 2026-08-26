@@ -1,11 +1,12 @@
 ---
 name: performance-profiling
 description: >-
-  Run the headless app and ZIP profilers and interpret the JSON the way a
-  human would from window.profiler.report() and the ZIP console table. Use
-  when editing sources/canvas/, load-image, renderer, zip export, zip-helpers,
-  performance-profiler, or when the user mentions performance, profiling,
-  slow render, FPS, or ZIP export timing.
+  Run the headless app, catalog-load, and ZIP profilers and interpret the JSON
+  the way a human would from window.profiler.report(), profile:load, and the
+  ZIP console table. Use when editing sources/canvas/, load-image, renderer,
+  zip export, zip-helpers, performance-profiler, install-item-metadata,
+  loadAllMetadata, or when the user mentions performance, profiling, slow
+  render, FPS, catalog load, or ZIP export timing.
 ---
 
 # Performance profiling
@@ -19,19 +20,25 @@ JSON or the diff. Phase names and console commands:
 | What changed | Command | Notes |
 | --- | --- | --- |
 | `loadImage()`, `renderCharacter()`, hash hydration, preview, palette recolor | `npm run profile:app` | Live app, `?debug=true`. Default `--recolor both` (WebGL + `?recolor=cpu`). Headless Playwright Chromium is SwiftShader; real GPU: `--headed --channel chrome`. |
+| `loadAllMetadata`, metadata chunks, catalog bootstrap | `npm run profile:load` | Production `vite preview`, not Vite serve. Median of 5 navigations. Port `4178` (`APP_LOAD_PROFILE_PORT`). |
 | Drawing, slicing, or PNG encode | `npm run profile:zip:quick` | Fake JSZip. Ignore `generateZip`. |
 | Real zip packaging (`generateAsync`, `zip-helpers`) | `npm run profile:zip` | Real JSZip. Slower. |
 
 These are not interchangeable. Match the command to the change. The ZIP pair
-is not a substitute for `profile:app`, and the other way around.
+is not a substitute for `profile:app`, and `profile:load` is not a substitute
+for either (Vite serve pretty-prints metadata; `window.profiler` starts after
+catalog import).
 
 **Before any of them:** `npx playwright install` once. ZIP scripts need
 `dist/*-metadata.js` (`npm run dev` or `npm run build` once) and use
-`npx serve`. `profile:app` starts Vite itself on `127.0.0.1:5178` (override
+`npx serve`. `profile:app` starts Vite serve on `127.0.0.1:5178` (override
 `APP_PROFILE_PORT`) unless you pass `--url http://127.0.0.1:5173`.
+`profile:load` runs `vite build` then `vite preview` on `127.0.0.1:4178`
+unless you pass `--url`.
 
 A full ZIP run can take several minutes (up to 10). App profile with both
-recolor modes is usually 2–4 minutes. Request full permissions; Playwright
+recolor modes is usually 2–4 minutes. `profile:load` is a production build
+plus five homepage navigations. Request full permissions; Playwright
 needs a real browser. If `PLAYWRIGHT_BROWSERS_PATH` points at a Cursor
 sandbox cache, the script unsets it.
 
@@ -46,6 +53,20 @@ npm run profile:app:baseline
 npm run profile:app
 npm run diff:app-profile -- tmp/baseline-app-profile.json tmp/app-profile.json
 ```
+
+Catalog bootstrap / metadata payload:
+
+```bash
+npm run profile:load:baseline
+# …make the change…
+npm run profile:load
+npm run diff:app-load-profile -- tmp/baseline-app-load-profile.json tmp/app-load-profile.json
+```
+
+A few milliseconds on `indexReadyMs` / `liteReadyMs` is noise; 50 ms+ median
+is worth a second look (first-paint gates). A 50 ms+ move on
+`catalogReadyMs` alone can be the credits/palette tail. `diff:app-load-profile`
+always exits 0.
 
 `diff:app-profile` prints **two** sections when both files contain both
 modes: `======== webgl ========` and `======== cpu ========`. Compare
@@ -85,6 +106,15 @@ GPU. Hardware looks like `ANGLE (Apple, … Metal …)` or an NVIDIA/AMD name.
 - Category totals: `imageLoads`, `draws`, `previews`, `domUpdates`
 - Slow-operation threshold is 50ms (`slowThresholdMs`)
 - `diff:app-profile` prints `── renderCharacter phases ──` (call 0 vs call 0, call 1 vs call 1)
+
+**Catalog load profile** (`profile:load`, production `vite preview`):
+
+- `indexReadyMs` — navigation time origin to `__LPC_waitCatalogIndexReady()`
+- `liteReadyMs` — navigation time origin to `__LPC_waitCatalogLiteReady()` (hash / `initCanvas` wait on index+lite)
+- `catalogReadyMs` — navigation time origin to `__LPC_waitCatalogAllReady()` (credits, palette, layers too)
+- `catalog-load` / `catalog-chunk:*` — User Timing around each metadata import
+- metadata `*-metadata*` resources — `transferSize`, `decodedBodySize`, `duration`
+- A few milliseconds is noise; 50 ms+ on `indexReadyMs` or `liteReadyMs` median is worth a second look
 
 **ZIP profile** (`phasesMs` / metadata):
 

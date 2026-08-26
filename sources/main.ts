@@ -3,9 +3,11 @@
 import m from "mithril";
 import "./styles/critical-entry.scss";
 import "./vendor-globals.ts";
-import { createLoadedCatalog } from "./install-item-metadata.ts";
+import {
+  createLoadedCatalog,
+  installCatalogReadinessHooksForVisualTooling,
+} from "./install-item-metadata.ts";
 import { createApplicationModels } from "./models/application.ts";
-import type { CatalogReader } from "./state/catalog.ts";
 
 // Import debug first so `window.DEBUG` is set before other modules run.
 import { debugLog, getDebugParam } from "./utils/debug.ts";
@@ -197,32 +199,4 @@ function clearShellLoadingClass(): void {
   for (const id of SHELL_LOADING_ROOT_IDS) {
     document.getElementById(id)?.classList.remove("loading");
   }
-}
-
-/**
- * Expose metadata readiness to Playwright, Argos, and dump-computed-styles.
- * These tools execute in a separate browser context and need a global bridge
- * to wait for dynamically imported catalog chunks before inspecting the UI.
- */
-function installCatalogReadinessHooksForVisualTooling(
-  catalog: CatalogReader,
-): void {
-  (
-    globalThis as unknown as {
-      __LPC_waitCatalogAllReady: () => Promise<void>;
-    }
-  ).__LPC_waitCatalogAllReady = async () => {
-    await catalog.ready.onAllReady;
-  };
-
-  (
-    globalThis as unknown as {
-      __LPC_arePaletteModalMetadataChunksReady: () => boolean;
-    }
-  ).__LPC_arePaletteModalMetadataChunksReady = () =>
-    catalog.isIndexReady() &&
-    catalog.isLiteReady() &&
-    catalog.isCreditsReady() &&
-    catalog.isPaletteReady() &&
-    catalog.isLayersReady();
 }

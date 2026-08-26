@@ -39,6 +39,7 @@ waiting for CI.
 | `sources/`, `scripts/`, `vite/`, `tests/` | [typescript](.agents/skills/typescript/SKILL.md), then [run-one-spec](.agents/skills/run-one-spec/SKILL.md) and [coverage](.agents/skills/coverage/SKILL.md) |
 | `sources/canvas/`, palette recolor, z-positions | [canvas-render](.agents/skills/canvas-render/SKILL.md) — needs the user; you cannot check both paths |
 | `sources/canvas/`, `load-image`, `renderCharacter`, ZIP export drawing | [performance-profiling](.agents/skills/performance-profiling/SKILL.md) — do not ask the user to open DevTools |
+| `install-item-metadata.ts`, `loadAllMetadata`, catalog bootstrap | [performance-profiling](.agents/skills/performance-profiling/SKILL.md) — `profile:load`, not `profile:app` |
 | Layout, first-paint CSS, PurgeCSS safelist | [visual-test](.agents/skills/visual-test/SKILL.md) |
 
 Update whatever doc the change makes stale

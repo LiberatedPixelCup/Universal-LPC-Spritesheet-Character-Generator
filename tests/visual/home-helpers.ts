@@ -5,6 +5,8 @@ import type { Page } from "@playwright/test";
 
 declare global {
   interface Window {
+    __LPC_waitCatalogIndexReady?: () => Promise<void>;
+    __LPC_waitCatalogLiteReady?: () => Promise<void>;
     __LPC_waitCatalogAllReady?: () => Promise<void>;
     __LPC_arePaletteModalMetadataChunksReady?: () => boolean;
   }

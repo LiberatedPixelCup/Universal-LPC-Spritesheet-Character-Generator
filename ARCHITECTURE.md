@@ -70,6 +70,7 @@ awaits `onIndexReady` and `onLiteReady`, then calls `initCanvas()`,
 
 Bootstrap also installs a few **sanctioned globals** for tooling, not for app
 code to read: `window.profiler`, `window.canvasRenderer`,
+`__LPC_waitCatalogIndexReady`, `__LPC_waitCatalogLiteReady`,
 `__LPC_waitCatalogAllReady`, and `__LPC_arePaletteModalMetadataChunksReady`.
 
 ## Selection flow

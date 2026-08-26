@@ -66,6 +66,34 @@ JSON lands under `tmp/` (gitignored) and is also printed on stdout. Pass `--out 
 - Real GPU (headed Google Chrome): `npm run profile:app -- --headed --channel chrome` (same flags on `profile:app:baseline`)
 - The default first hash is the full outfit in `scripts/zip/zip-profile-default-hash.ts`. The default second hash drops layered gear (body + head + expression only).
 
+### Headless catalog load profiler
+
+Use this when **catalog bootstrap** changed (`loadAllMetadata`, metadata chunks, `install-item-metadata.ts`). `profile:app` cannot answer “did the app load faster”: it starts **Vite serve** (pretty-printed metadata) and constructs `window.profiler` **after** `createLoadedCatalog()`.
+
+`npm run profile:load` does `vite build` then `vite preview` on `127.0.0.1` (default port `4178`, override `APP_LOAD_PROFILE_PORT`), opens Chromium with `?debug=true`, and repeats a fresh-page `goto` + `waitForHomepageReady` (default `--repeat 5`). Pass `--url http://127.0.0.1:4173` to attach to an already-running preview.
+
+It prints median / min / max for:
+
+- `navigation.duration`
+- `indexReadyMs` — navigation time origin to `__LPC_waitCatalogIndexReady()` resolving (`performance.now()`). Hash hydration and `initCanvas()` wait on this plus lite.
+- `liteReadyMs` — navigation time origin to `__LPC_waitCatalogLiteReady()` resolving
+- `catalogReadyMs` — navigation time origin to `__LPC_waitCatalogAllReady()` resolving (credits, palette, and layers too)
+- `catalog-load` and `catalog-chunk:*` User Timing (`index`, `item`, `credits`, `palette`, `layers`)
+- metadata resource entries (`*-metadata*`) with `transferSize`, `decodedBodySize`, `duration`
+
+Those User Timing names are always recorded in `loadAllMetadata` (not `window.profiler`). JSON lands under `tmp/` (gitignored).
+
+**Compare to a baseline**
+
+```bash
+npm run profile:load:baseline
+# …make your change…
+npm run profile:load
+npm run diff:app-load-profile -- tmp/baseline-app-load-profile.json tmp/app-load-profile.json
+```
+
+A positive Δ means the after run was slower. A few milliseconds is noise. Treat a **50 ms+** move on `indexReadyMs` or `liteReadyMs` median as worth a second look (first-paint gates; same bar as the live profiler’s slow-operation threshold). A 50 ms+ move on `catalogReadyMs` alone can be the credits/palette tail; note it, but do not treat it as the intern’s load verdict. `diff:app-load-profile` always exits 0.
+
 ### Metadata size (generator output)
 
 `npm run metadata:size` regenerates the five metadata modules **in memory** (no `dist/`, no Vite) and reports raw, gzip, and brotli bytes per module plus the item + index pair. This is a proxy for Vite's bundled-chunk warning, not the built `dist/assets/*.js` sizes. Report-only; there is no budget gate yet.
@@ -248,4 +276,4 @@ if (profiler) {
 - Use meaningful operation names (e.g., `render-body`, `load-sprites`)
 - Add profiling marks around suspected bottlenecks
 - Use `profiler.report()` or `profiler.snapshot()` to identify patterns and outliers
-- Compare measurements before/after optimizations on the same machine (`profile:app` / `profile:zip` / `metadata:size`)
+- Compare measurements before/after optimizations on the same machine (`profile:app` / `profile:load` / `profile:zip` / `metadata:size`)

@@ -15,7 +15,7 @@ layout, or a class in
 Add cases under [`tests/visual/`](../../../tests/visual/). Reuse waits in
 [`home-helpers.ts`](../../../tests/visual/home-helpers.ts). Wait for catalog
 readiness via `__LPC_waitCatalogAllReady` (installed in
-[`sources/main.ts`](../../../sources/main.ts)). Do not import visual specs
+[`sources/install-item-metadata.ts`](../../../sources/install-item-metadata.ts)). Do not import visual specs
 from `tests/tests.js`. They are not Codecov-instrumented.
 
 Argos upload needs `ARGOS_TOKEN`. Isolated run:
