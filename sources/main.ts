@@ -80,6 +80,7 @@ import { FullSpritesheetPreview } from "./components/preview/FullSpritesheetPrev
 // Import performance profiler
 import { PerformanceProfiler } from "./performance-profiler.ts";
 
+// Start metadata fetch at entry-module time so it overlaps HTML parse.
 const applicationCatalog = createLoadedCatalog();
 const applicationState = createState();
 const applicationModels = createApplicationModels(

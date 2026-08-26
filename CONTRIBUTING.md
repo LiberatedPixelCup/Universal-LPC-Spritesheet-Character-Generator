@@ -435,13 +435,17 @@ Typical patterns:
 - Import **`describe`**, **`it`**, **`beforeEach`**, **`afterEach`** (and suite-level **`before`** / **`after`** when needed) from **`"mocha-globals"`** (re-exported in [`tests/bdd-globals.js`](tests/bdd-globals.js)) and **`assert`** or **`expect`** from **`"chai"`**.
 - Render with **`m.render(…)`** using the global **`m`**.
 - Use **`beforeEach` / `afterEach`** to create and remove DOM containers.
-- Thread **`catalog: CatalogReader`** and **`state: State`**. Do not omit them from component attrs.
+- Seed through the writer and pass the paired reader to consumers. Thread **`catalog: CatalogReader`** and **`state: State`** into components that take them; for a leaf component that takes a render-ready model instead, build the model in the spec and pass it as its attr ([`tests/components/selections/CurrentSelections_spec.js`](tests/components/selections/CurrentSelections_spec.js)).
 
 Example (`tests/components/MyComponent_spec.ts`):
 
 ```typescript
 import { MyComponent } from "../../sources/components/MyComponent.ts";
-import { createCatalog } from "../../sources/state/catalog.ts";
+import {
+  createCatalog,
+  type CatalogReader,
+  type CatalogWriter,
+} from "../../sources/state/catalog.ts";
 import { createState, type State } from "../../sources/state/state.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
 import { assert } from "chai";
@@ -449,13 +453,14 @@ import { describe, it, beforeEach, afterEach } from "mocha-globals";
 
 describe("MyComponent", () => {
   let container: HTMLDivElement;
-  let catalog: ReturnType<typeof createCatalog>;
+  let catalog: CatalogReader;
+  let catalogWriter: CatalogWriter;
   let state: State;
 
   beforeEach(() => {
-    catalog = createCatalog();
+    ({ reader: catalog, writer: catalogWriter } = createCatalog());
     state = createState();
-    seedCatalog(catalog, {});
+    seedCatalog(catalogWriter, {});
     container = document.createElement("div");
     document.body.appendChild(container);
   });

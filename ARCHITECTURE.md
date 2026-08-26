@@ -180,6 +180,13 @@ Verifying it needs a real browser.
 | `preview-animation.ts` | The rAF preview loop |
 | `download.ts` | Single-PNG download |
 
+### `sources/models/`
+
+| File | Role |
+| --- | --- |
+| `application.ts` | `createApplicationModels()` composition-root factories; `ApplicationModels` bag of lazy model constructors |
+| `current-selections.ts` | Render-ready Current Selections snapshot and remove commands |
+
 ### `sources/components/`
 
 | Directory | Role |

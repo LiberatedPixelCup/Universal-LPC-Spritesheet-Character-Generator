@@ -97,6 +97,9 @@ export function loadAllMetadata(catalog: CatalogWriter): Promise<LoadedChunks> {
 /**
  * Create the production catalog, start registering generated chunks, and
  * expose only its runtime reader capability to application code.
+ *
+ * Call this as the entry module runs, before `DOMContentLoaded`, so chunk
+ * download and parse overlap HTML parsing.
  */
 export function createLoadedCatalog(): CatalogReader {
   const { reader, writer } = createCatalog();

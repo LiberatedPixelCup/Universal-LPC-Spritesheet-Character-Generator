@@ -60,6 +60,10 @@ built — run `npm run dev` or `npm run build`. Stale `.cache/` or a missing
 
 Destructure `{ reader, writer } = createCatalog()` and create a fresh
 `createState()`. Never use the production reader or bootstrap state instance.
+Create a new catalog rather than re-seeding: `loadCatalogFromFixtures` and
+`register*Metadata` overwrite the stores but cannot move a resolved stage
+back to unresolved. A spec that re-seeds expecting a fresh "loading"
+catalog will silently see resolved stages instead.
 
 Call `configureStateCatalog(catalog)` when the spec exercises `sources/state/`
 effects. Override individual effects with `setStateDeps` and restore them with
