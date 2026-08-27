@@ -103,7 +103,7 @@ preview. The measured URL is always the bare homepage with **`?debug=false`**.
 | `--check` | Compare **measured** viewport medians to the budgets file (`--budgets`, default `scripts/profile/cls-budgets.json`). Unknown keys in that file error. `--check --preset tablet` gates tablet only. |
 | `--budgets <path>` | Budget JSON for `--check`, resolved against the repo root. Default `scripts/profile/cls-budgets.json`. Delayed check passes `scripts/profile/cls-budgets-delayed.json`. |
 | `--save-lhr <path>` | Write the raw Lighthouse result **before** extract. One preset: that path as-is. Several: `-<preset>` before the extension. A missing CLS audit or `runtimeError` still leaves the dump. Use it to inspect a failed run (see Local vs CI) and to refresh the committed fixture (see Upgrading). |
-| `--delay-css-ms n` | Insert a proxy that waits `n` ms before serving hashed production CSS under `/assets/*.css` (not `.css.map`). Same set the HTML plugin reorders. Default: off. CI delayed step is pinned at **3000** (`CLS_CI_DELAY_CSS_MS` in `cls-profile.ts`; `profile:cls:check:delayed`). Local debug may use another value; that is not a budget source. The JSON records `delayCssMs` and `delayedStylesheetHits`. A delayed run that matched **0** stylesheets fails after writing JSON — that is not a green jump lab. Never write a delayed median into `cls-budgets.json`. **Ports:** with no `--url`, proxy listens on **4179** and `vite preview` on **4180**. With `--url http://127.0.0.1:4173/`, proxy listens on **4179** and Lighthouse uses that origin (CSS is delayed). With `--url` already on **4179**, proxy listens on **4180** so it does not collide with the preview. The proxy rewrites `Host` to the preview origin (for example `127.0.0.1:4180`), not the listen port. CI delayed uses `CLS_PROFILE_PORT=4188` (proxy 4188 / preview 4189; `CLS_CI_DELAYED_PROFILE_PORT`) so a leftover un-delayed preview cannot `EADDRINUSE` the second step. Preview is not 4190: Node `fetch` (undici) rejects that port (ManageSieve). `waitForHttpOk` uses `node:http`, not `fetch`. |
+| `--delay-css-ms n` | Insert a proxy that waits `n` ms before serving hashed production CSS under `/assets/*.css` (not `.css.map`). Same set the HTML plugin reorders. Default: off. CI delayed step is pinned at **3000** (`CLS_CI_DELAY_CSS_MS` in `cls-profile.ts`; `profile:cls:check:delayed`). Local debug may use another value; that is not a budget source. The JSON records `delayCssMs` and `delayedStylesheetHits`. A delayed run that matched **0** stylesheets fails after writing JSON — that is not a green jump lab. Never write a delayed median into `cls-budgets.json`. **Ports:** with no `--url`, proxy listens on **4179** and `vite preview` on **4180**. With `--url http://127.0.0.1:4173/`, proxy listens on **4179** and Lighthouse uses that origin (CSS is delayed). With `--url` already on **4179**, proxy listens on **4180** so it does not collide with the preview. The proxy rewrites `Host` to the preview origin (for example `127.0.0.1:4180`), not the listen port. CI delayed uses `CLS_PROFILE_PORT=4188` (proxy 4188 / preview 4189; `CLS_CI_DELAYED_PROFILE_PORT`) so a leftover un-delayed preview cannot `EADDRINUSE` the second step. `waitForHttpOk` probes with `node:http`, not `fetch`, so a port undici refuses as "bad" (4190 / ManageSieve) surfaces the real error instead of a 120 s timeout. |
 | `--help` / `-h` | Usage. |
 
 Chrome resolution, in order: `CHROME_PATH` (CI) → `chrome-launcher`
@@ -156,7 +156,10 @@ ok/over). Details live in the JSON. Use `process.stdout.write` /
   throttling profile, UA, `process.platform`, preset width × height,
   `delayCssMs` (0 means no CSS-delay proxy) and `delayedStylesheetHits`
   (stylesheet GETs the proxy actually held; a delayed run with 0 hits
-  fails).
+  fails). `chromeFlags` is the literal `CLS_CHROME_FLAGS` this script
+  passes, **not** the resolved command line — `chrome-launcher` prepends its
+  own defaults, and those are not recorded. The Chrome build is in the
+  sample UA (`HeadlessChrome/<version>`).
 - Raising a budget is a **deliberate commit**, same rule as
   `metadata:size:check`. Never paste a laptop median into
   `cls-budgets.json`. Never paste a delayed median into that file.
@@ -355,10 +358,13 @@ against an existing preview (or a full run). Confirm Chrome still launches
 fallback).
 
 **Do not** rebase `cls-budgets.json` (or delayed budgets) for a launcher-only
-bump unless CI CLS actually moved. A launcher bump that also changes default
-`chromeFlags` *can* move CLS; compare provenance `chromeFlags` in the new
-artifact to the previous one. If flags changed, treat it like a Lighthouse
-bump and re-baseline **both** labs from CI in the same PR.
+bump unless CI CLS actually moved. A launcher bump that changes
+`Launcher.defaultFlags()` *can* move CLS, and **the artifact will not show
+it**: provenance `chromeFlags` records only the two flags this script passes,
+so it reads identically across launcher versions. Diff the launcher changelog
+(or `Launcher.defaultFlags()` before and after) instead. If the defaults
+moved, treat it like a Lighthouse bump and re-baseline **both** labs from CI
+in the same PR.
 
 ### Chrome in CI (not an npm package)
 
@@ -459,10 +465,12 @@ go in `cls-budgets.json`. Delayed medians (`delayCssMs` 3000) go in
 definition (`CLS_CI_DELAY_CSS_MS`). Changing the pin without re-baselining
 delayed budgets is the same class of error as a Lighthouse bump.
 
-**Node `fetch` rejects port 4190.** Undici treats 4190 as ManageSieve ("bad
-port"). Delayed CI therefore uses `CLS_PROFILE_PORT=4188` (preview 4189),
-and `waitForHttpOk` uses `node:http` so a restricted port fails with the
-real error instead of a 120s timeout.
+**Preview probes use `node:http`, not `fetch`.** Undici refuses several ports
+outright (4190 as ManageSieve, a "bad port"), which reads as a 120s preview
+timeout rather than a bind error. `waitForHttpOk` uses `node:http` so any
+restricted or unreachable port fails with its real error. The delayed
+`CLS_PROFILE_PORT=4188` pin is **not** about that list — it keeps preview
+(4189) off the un-delayed lab's 4179 / 4180.
 
 **Local ≠ CI.** macOS vs Linux fonts and scrollbars. Never paste a laptop
 median into `cls-budgets.json`.

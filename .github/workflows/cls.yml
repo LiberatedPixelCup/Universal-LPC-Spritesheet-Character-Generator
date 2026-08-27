@@ -62,8 +62,9 @@ jobs:
         run: npm run profile:cls:check:delayed -- --repeat 3 --skip-build
         env:
           CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
-          # Preview is this + 1 when delaying CSS. Not 4189: Node fetch
-          # rejects 4190 (ManageSieve). Must match CLS_CI_DELAYED_PROFILE_PORT.
+          # Preview is this + 1 when delaying CSS. Clear of the un-delayed
+          # lab's 4179 / 4180 so its leftover preview cannot EADDRINUSE this
+          # run. Must match CLS_CI_DELAYED_PROFILE_PORT.
           CLS_PROFILE_PORT: 4188
 
       - name: Upload CLS profile

@@ -64,8 +64,9 @@ export const CLS_ONLY_AUDITS = [
 export const CLS_CI_DELAY_CSS_MS = 3000;
 
 /**
- * Delayed CI `CLS_PROFILE_PORT`. Preview binds this + 1; 4189 would put
- * preview on 4190, which Node `fetch` (undici) rejects as ManageSieve.
+ * Delayed CI `CLS_PROFILE_PORT`. Preview binds this + 1. Kept clear of the
+ * un-delayed lab's default 4179 / 4180 so a leftover preview from the first
+ * CI run cannot `EADDRINUSE` the second.
  */
 export const CLS_CI_DELAYED_PROFILE_PORT = 4188;
 

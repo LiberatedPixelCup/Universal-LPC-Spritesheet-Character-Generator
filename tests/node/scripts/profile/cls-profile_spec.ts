@@ -435,9 +435,17 @@ test("parseArgs check:delayed script shape", () => {
   assert.ok(opts.budgetsPath.endsWith(`${path.sep}cls-budgets-delayed.json`));
 });
 
-test("delayed CI profile port keeps vite preview off Node's blocked 4190", () => {
+test("delayed CI ports cannot collide with the un-delayed lab's preview", () => {
   assert.equal(CLS_CI_DELAYED_PROFILE_PORT, 4188);
-  assert.notEqual(upstreamPortForProxy(CLS_CI_DELAYED_PROFILE_PORT), 4190);
+  const undelayed = parseClsProfilePort({});
+  const delayedPair = [
+    CLS_CI_DELAYED_PROFILE_PORT,
+    upstreamPortForProxy(CLS_CI_DELAYED_PROFILE_PORT),
+  ];
+  for (const port of delayedPair) {
+    assert.notEqual(port, undelayed);
+    assert.notEqual(port, upstreamPortForProxy(undelayed));
+  }
   const yml = fs.readFileSync(
     path.join(
       path.dirname(fileURLToPath(import.meta.url)),
