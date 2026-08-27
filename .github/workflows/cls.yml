@@ -7,6 +7,9 @@ on:
   pull_request:
     branches:
       - master
+  # Re-measure on demand for a branch whose PR does not target master, or to
+  # re-baseline budgets without an empty commit.
+  workflow_dispatch:
 
 jobs:
   cls:
