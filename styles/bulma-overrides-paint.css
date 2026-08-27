@@ -152,26 +152,6 @@
   align-content: flex-start;
   justify-content: flex-start;
   margin-bottom: -0.5rem;
-  /* Huge-desktop wrap is 84px; do not raise the default. */
-  min-height: 84px;
-}
-
-/*
- * Wrapped Download button-row floors (CLS). Same trick as header 1b:
- * at or under the shortest loaded height at that width so Argos does not
- * gain empty bands. 130px is 1440 and tablet; 314px is Lighthouse 412 and
- * Argos 390.
- */
-@media (max-width: 2559px) {
-  #download-buttons.buttons {
-    min-height: 130px;
-  }
-}
-
-@media (max-width: 430px) {
-  #download-buttons.buttons {
-    min-height: 314px;
-  }
 }
 
 /* CategoryTree "Available Items" header toolbar — global .buttons uses flex-start + gap 0; 0.9 centers this row. */
