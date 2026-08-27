@@ -13,7 +13,8 @@
  *
  * Environment:
  *   CLS_PROFILE_PORT — preview (or CSS-delay proxy) port when this script starts the server (default 4179).
- *     With --delay-css-ms, vite preview binds this port + 1.
+ *     With --delay-css-ms and no --url, vite preview binds this port + 1.
+ *     With --url on the same port, the CSS-delay proxy binds this port + 1.
  *   CHROME_PATH — Chrome binary (CI).
  *
  * @see CLS.md
@@ -556,8 +557,58 @@ export function shouldDelayStylesheetPath(pathname: string): boolean {
   );
 }
 
+export function originPort(origin: string): number | null {
+  try {
+    const u = new URL(origin);
+    if (u.port) {
+      const n = Number.parseInt(u.port, 10);
+      return Number.isInteger(n) ? n : null;
+    }
+    if (u.protocol === "http:") {
+      return 80;
+    }
+    if (u.protocol === "https:") {
+      return 443;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
 export function upstreamPortForProxy(publicPort: number): number {
   return publicPort + 1;
+}
+
+/** Host header Vite preview expects (proxy listen port ≠ upstream port). */
+export function hostHeaderForUpstream(upstreamOrigin: string): string {
+  const u = new URL(upstreamOrigin);
+  const hostname = u.hostname || "127.0.0.1";
+  const port = originPort(upstreamOrigin);
+  if (port === null || port === 80) {
+    return hostname;
+  }
+  return `${hostname}:${port}`;
+}
+
+/**
+ * Where the CSS-delay proxy listens, and where Lighthouse must navigate.
+ * Never bind the proxy to the same port as an attached `--url` preview.
+ * Spawned preview (no `--url`): proxy on CLS_PROFILE_PORT, preview on +1.
+ * `--url`: proxy on CLS_PROFILE_PORT unless that is the upstream port, then +1.
+ */
+export function cssDelayProxyListenPort(
+  clsProfilePort: number,
+  upstreamOrigin: string | null,
+): number {
+  if (upstreamOrigin === null) {
+    return clsProfilePort;
+  }
+  const upstream = originPort(upstreamOrigin);
+  if (upstream !== null && upstream === clsProfilePort) {
+    return upstreamPortForProxy(clsProfilePort);
+  }
+  return clsProfilePort;
 }
 
 function sleep(ms: number): Promise<void> {
@@ -593,6 +644,8 @@ function startCssDelayProxy(options: {
           if (shouldDelayStylesheetPath(reqUrl.pathname)) {
             await sleep(options.delayCssMs);
           }
+          const headers = { ...clientReq.headers };
+          headers.host = hostHeaderForUpstream(options.upstreamOrigin);
           const proxyReq = httpRequest(
             {
               hostname: upstream.hostname,
@@ -600,7 +653,7 @@ function startCssDelayProxy(options: {
                 upstream.port || (upstream.protocol === "https:" ? 443 : 80),
               path: `${reqUrl.pathname}${reqUrl.search}`,
               method: clientReq.method,
-              headers: clientReq.headers,
+              headers,
             },
             (proxyRes) => {
               clientRes.writeHead(proxyRes.statusCode ?? 502, proxyRes.headers);
@@ -776,18 +829,25 @@ export async function main(
   }
   const opts: CliOpts = parsed;
   const port = parseClsProfilePort();
-  const proxyPort = port;
-  const previewPort = opts.delayCssMs > 0 ? upstreamPortForProxy(port) : port;
-  const upstreamBase = opts.url ?? `http://127.0.0.1:${previewPort}/`;
+  const attachedUrl = opts.url;
+  const previewPort =
+    attachedUrl === null
+      ? opts.delayCssMs > 0
+        ? upstreamPortForProxy(port)
+        : port
+      : (originPort(attachedUrl) ?? port);
+  const upstreamBase = attachedUrl ?? `http://127.0.0.1:${previewPort}/`;
+  const proxyListenPort =
+    opts.delayCssMs > 0 ? cssDelayProxyListenPort(port, attachedUrl) : port;
   const measuredBase =
-    opts.delayCssMs > 0 ? `http://127.0.0.1:${proxyPort}/` : upstreamBase;
+    opts.delayCssMs > 0 ? `http://127.0.0.1:${proxyListenPort}/` : upstreamBase;
   const url = loadPageUrl(measuredBase);
 
   let preview: ChildProcess | undefined;
   let proxy: Server | undefined;
   let chrome: Awaited<ReturnType<typeof launch>> | undefined;
   try {
-    if (!opts.url) {
+    if (attachedUrl === null) {
       runViteBuild();
       preview = spawn(
         "npx",
@@ -814,7 +874,7 @@ export async function main(
         `CSS delay proxy: ${opts.delayCssMs} ms on main / deferred stylesheets → ${measuredBase}\n`,
       );
       proxy = await startCssDelayProxy({
-        listenPort: proxyPort,
+        listenPort: proxyListenPort,
         upstreamOrigin: upstreamBase.replace(/\/?$/, "/"),
         delayCssMs: opts.delayCssMs,
       });

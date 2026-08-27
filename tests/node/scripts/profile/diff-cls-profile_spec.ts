@@ -135,6 +135,18 @@ test("formatClsProfileDiff warns when lighthouseVersion or platform differ", () 
   assert.match(text, /platform differs \(darwin → linux\)/);
 });
 
+test("formatClsProfileDiff warns when delayCssMs differs", () => {
+  const before = profile({ delayCssMs: 0 });
+  const after = profile({ delayCssMs: 3000 });
+  const text = formatClsProfileDiff(
+    before,
+    after,
+    "/before.json",
+    "/after.json",
+  );
+  assert.match(text, /delayCssMs differs \(0 → 3000\)/);
+});
+
 test("formatClsProfileDiff returns a string and does not throw", () => {
   const text = formatClsProfileDiff(
     profile(),

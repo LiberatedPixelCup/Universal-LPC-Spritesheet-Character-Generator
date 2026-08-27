@@ -82,11 +82,11 @@ which production users do not get.
 | --- | --- |
 | `--preset mobile` / `tablet` / `mediumDesktop` | One viewport. Default is all three. `lighthouseMobile` is a dump preset, not a `profile:cls` flag. |
 | `--repeat N` | Navigations per preset. Default **1** locally; CI uses **3**. `--check` gates on the **median**. |
-| `--url http://127.0.0.1:4173` | Attach to an existing production preview (trailing slash stored). Still appends `?debug=false`. |
+| `--url http://127.0.0.1:4173` | Attach to an existing production preview (trailing slash stored). Still appends `?debug=false`. With `--delay-css-ms`, Lighthouse navigates the **proxy**, not this origin. |
 | `--out` / `--json` | JSON path, resolved against the repo root. Default `tmp/cls-profile.json`. `:baseline` writes `tmp/baseline-cls-profile.json`. |
 | `--check` | Compare medians to `scripts/profile/cls-budgets.json`. Unknown keys in that file error. |
 | `--save-lhr <path>` | Write the raw Lighthouse result for the (last) preset. How the committed fixture is refreshed. |
-| `--delay-css-ms n` | **Local debug only** (not CI). Insert a proxy in front of the preview that waits `n` ms before serving `/assets/main-*.css` and `/assets/load-deferred-styles-*.css`. Use this to reproduce deferred-CSS layout shift on localhost. Default: off. With this flag, Lighthouse still uses port **4179**; `vite preview` binds **4180** (`CLS_PROFILE_PORT` + 1). Start around 2000–4000 ms. The JSON records `delayCssMs`. Never mix a delayed run into `cls-budgets.json`. |
+| `--delay-css-ms n` | **Local debug only** (not CI). Insert a proxy that waits `n` ms before serving `/assets/main-*.css` and `/assets/load-deferred-styles-*.css`. Default: off. Start around 2000–4000 ms. The JSON records `delayCssMs`. Never mix a delayed run into `cls-budgets.json`. **Ports:** with no `--url`, proxy listens on **4179** and `vite preview` on **4180**. With `--url http://127.0.0.1:4173/`, proxy listens on **4179** and Lighthouse uses that origin (CSS is delayed). With `--url` already on **4179**, proxy listens on **4180** so it does not collide with the preview. The proxy rewrites `Host` to the preview origin (for example `127.0.0.1:4180`), not the listen port. |
 | `--help` / `-h` | Usage. |
 
 Chrome resolution, in order: `CHROME_PATH` (CI) → `chrome-launcher`

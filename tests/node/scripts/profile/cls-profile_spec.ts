@@ -10,8 +10,11 @@ import {
   CLS_ONLY_AUDITS,
   CLS_PRESET_NAMES,
   checkClsAgainstBudgets,
+  cssDelayProxyListenPort,
   extractClsSample,
+  hostHeaderForUpstream,
   lighthouseSettingsForPreset,
+  originPort,
   parseArgs,
   parseBudgetsJson,
   parseClsProfilePort,
@@ -139,6 +142,31 @@ test("shouldDelayStylesheetPath matches production CSS asset names", () => {
 
 test("upstreamPortForProxy is public port + 1", () => {
   assert.equal(upstreamPortForProxy(4179), 4180);
+});
+
+test("originPort reads explicit and default ports", () => {
+  assert.equal(originPort("http://127.0.0.1:4173/"), 4173);
+  assert.equal(originPort("http://127.0.0.1:4179/"), 4179);
+  assert.equal(originPort("http://example.com/"), 80);
+  assert.equal(originPort("not a url"), null);
+});
+
+test("cssDelayProxyListenPort avoids colliding with --url", () => {
+  assert.equal(cssDelayProxyListenPort(4179, null), 4179);
+  assert.equal(cssDelayProxyListenPort(4179, "http://127.0.0.1:4173/"), 4179);
+  assert.equal(cssDelayProxyListenPort(4179, "http://127.0.0.1:4179/"), 4180);
+});
+
+test("hostHeaderForUpstream matches the preview port, not the proxy", () => {
+  assert.equal(
+    hostHeaderForUpstream("http://127.0.0.1:4180/"),
+    "127.0.0.1:4180",
+  );
+  assert.equal(
+    hostHeaderForUpstream("http://127.0.0.1:4173/"),
+    "127.0.0.1:4173",
+  );
+  assert.equal(hostHeaderForUpstream("http://127.0.0.1/"), "127.0.0.1");
 });
 
 test("parseArgs --repeat 0 and non-integers throw", () => {

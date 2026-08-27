@@ -155,6 +155,12 @@ export function formatClsProfileDiff(
     );
   }
 
+  if (before.delayCssMs !== after.delayCssMs) {
+    lines.push(
+      `  warning: delayCssMs differs (${before.delayCssMs} → ${after.delayCssMs}); do not treat Δ as a layout change`,
+    );
+  }
+
   return `${lines.join("\n")}\n`;
 }
 
