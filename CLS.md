@@ -99,7 +99,7 @@ which production users do not get.
 | `--check` | Compare medians to the budgets file (`--budgets`, default `scripts/profile/cls-budgets.json`). Unknown keys in that file error. |
 | `--budgets <path>` | Budget JSON for `--check`, resolved against the repo root. Default `scripts/profile/cls-budgets.json`. The delayed check (once gated) passes `scripts/profile/cls-budgets-delayed.json`. |
 | `--save-lhr <path>` | Write the raw Lighthouse result **before** extract. One preset: that path as-is. Several: `-<preset>` before the extension. A missing CLS audit or `runtimeError` still leaves the dump. Use it to inspect a failed run (see Local vs CI) and to refresh the committed fixture (see Upgrading). |
-| `--delay-css-ms n` | Insert a proxy that waits `n` ms before serving `/assets/main-*.css` and `/assets/load-deferred-styles-*.css`. Default: off. CI delayed step is pinned at **3000** (`CLS_CI_DELAY_CSS_MS` in `cls-profile.ts`; `profile:cls:delayed`). Local debug may use another value; that is not a budget source. The JSON records `delayCssMs`. Never write a delayed median into `cls-budgets.json`. **Ports:** with no `--url`, proxy listens on **4179** and `vite preview` on **4180**. With `--url http://127.0.0.1:4173/`, proxy listens on **4179** and Lighthouse uses that origin (CSS is delayed). With `--url` already on **4179**, proxy listens on **4180** so it does not collide with the preview. The proxy rewrites `Host` to the preview origin (for example `127.0.0.1:4180`), not the listen port. CI delayed uses `CLS_PROFILE_PORT=4189` (proxy 4189 / preview 4190) so a leftover un-delayed preview cannot `EADDRINUSE` the second step. |
+| `--delay-css-ms n` | Insert a proxy that waits `n` ms before serving `/assets/main-*.css` and `/assets/load-deferred-styles-*.css`. Default: off. CI delayed step is pinned at **3000** (`CLS_CI_DELAY_CSS_MS` in `cls-profile.ts`; `profile:cls:delayed`). Local debug may use another value; that is not a budget source. The JSON records `delayCssMs`. Never write a delayed median into `cls-budgets.json`. **Ports:** with no `--url`, proxy listens on **4179** and `vite preview` on **4180**. With `--url http://127.0.0.1:4173/`, proxy listens on **4179** and Lighthouse uses that origin (CSS is delayed). With `--url` already on **4179**, proxy listens on **4180** so it does not collide with the preview. The proxy rewrites `Host` to the preview origin (for example `127.0.0.1:4180`), not the listen port. CI delayed uses `CLS_PROFILE_PORT=4188` (proxy 4188 / preview 4189; `CLS_CI_DELAYED_PROFILE_PORT`) so a leftover un-delayed preview cannot `EADDRINUSE` the second step. Preview is not 4190: Node `fetch` (undici) rejects that port (ManageSieve). `waitForHttpOk` uses `node:http`, not `fetch`. |
 | `--help` / `-h` | Usage. |
 
 Chrome resolution, in order: `CHROME_PATH` (CI) → `chrome-launcher`
@@ -381,8 +381,8 @@ check named **CLS (Lighthouse)**. It runs on `push` / `pull_request` to
   [`scripts/profile/cls-budgets.json`](scripts/profile/cls-budgets.json)
   (un-delayed CI median plus slack). **No `--delay-css-ms`.**
 - Then `npm run profile:cls:delayed -- --repeat 3` with
-  `if: ${{ !cancelled() }}` and `CLS_PROFILE_PORT: 4189` (proxy 4189 /
-  preview 4190) so a leftover un-delayed preview cannot `EADDRINUSE` the
+  `if: ${{ !cancelled() }}` and `CLS_PROFILE_PORT: 4188` (proxy 4188 /
+  preview 4189) so a leftover un-delayed preview cannot `EADDRINUSE` the
   second run. Delayed is **report-only** until
   `scripts/profile/cls-budgets-delayed.json` exists; the job currently
   fails only on the un-delayed `:check`. The delayed step still runs after
@@ -438,6 +438,11 @@ go in `cls-budgets.json`. Delayed medians (`delayCssMs` 3000) will go in
 `cls-budgets-delayed.json`. 3000 ms is part of the delayed metric
 definition (`CLS_CI_DELAY_CSS_MS`). Changing the pin without re-baselining
 delayed budgets is the same class of error as a Lighthouse bump.
+
+**Node `fetch` rejects port 4190.** Undici treats 4190 as ManageSieve ("bad
+port"). Delayed CI therefore uses `CLS_PROFILE_PORT=4188` (preview 4189),
+and `waitForHttpOk` uses `node:http` so a restricted port fails with the
+real error instead of a 120s timeout.
 
 **Local ≠ CI.** macOS vs Linux fonts and scrollbars. Never paste a laptop
 median into `cls-budgets.json`.

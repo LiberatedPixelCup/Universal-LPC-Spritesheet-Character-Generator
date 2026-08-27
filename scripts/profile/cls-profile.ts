@@ -62,6 +62,12 @@ export const CLS_ONLY_AUDITS = [
 /** CI delayed lab pin. Changing this invalidates delayed budgets. */
 export const CLS_CI_DELAY_CSS_MS = 3000;
 
+/**
+ * Delayed CI `CLS_PROFILE_PORT`. Preview binds this + 1; 4189 would put
+ * preview on 4190, which Node `fetch` (undici) rejects as ManageSieve.
+ */
+export const CLS_CI_DELAYED_PROFILE_PORT = 4188;
+
 export type ScreenEmulationSettings = {
   mobile: boolean;
   width: number;
@@ -758,20 +764,41 @@ function startCssDelayProxy(options: {
   });
 }
 
-async function waitForHttpOk(url: string, maxMs: number): Promise<void> {
+function httpGetStatus(url: string): Promise<number> {
+  return new Promise((resolve, reject) => {
+    const req = http.get(url, (res) => {
+      res.resume();
+      resolve(res.statusCode ?? 0);
+    });
+    req.on("error", reject);
+  });
+}
+
+/**
+ * Probe with `node:http`, not `fetch`. Undici refuses several ports
+ * (including 4190 / ManageSieve) as "bad port", which used to look like a
+ * 120s preview timeout on the delayed CI listen port + 1.
+ */
+export async function waitForHttpOk(url: string, maxMs: number): Promise<void> {
   const start = Date.now();
+  let lastError: unknown;
   while (Date.now() - start < maxMs) {
     try {
-      const r = await fetch(url);
-      if (r.ok) {
+      const status = await httpGetStatus(url);
+      if (status >= 200 && status < 300) {
         return;
       }
-    } catch {
-      /* retry */
+      lastError = new Error(`HTTP ${String(status)}`);
+    } catch (err) {
+      lastError = err;
     }
-    await new Promise((r) => setTimeout(r, 200));
+    await sleep(200);
   }
-  throw new Error(`Timeout waiting for preview: ${url}`);
+  const detail =
+    lastError instanceof Error ? lastError.message : String(lastError ?? "");
+  throw new Error(
+    `Timeout waiting for preview: ${url}${detail ? ` (${detail})` : ""}`,
+  );
 }
 
 function runViteBuild(): void {

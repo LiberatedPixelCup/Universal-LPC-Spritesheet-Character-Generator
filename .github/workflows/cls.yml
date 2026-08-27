@@ -59,7 +59,9 @@ jobs:
         run: npm run profile:cls:delayed -- --repeat 3
         env:
           CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
-          CLS_PROFILE_PORT: 4189
+          # Preview is this + 1 when delaying CSS. Not 4189: Node fetch
+          # rejects 4190 (ManageSieve). Must match CLS_CI_DELAYED_PROFILE_PORT.
+          CLS_PROFILE_PORT: 4188
 
       - name: Upload CLS profile
         if: always()

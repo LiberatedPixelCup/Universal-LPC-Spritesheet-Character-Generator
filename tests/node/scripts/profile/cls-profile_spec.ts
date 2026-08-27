@@ -4,11 +4,13 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { spawn } from "node:child_process";
+import http from "node:http";
 import { fileURLToPath } from "node:url";
 
 import { VIEWPORT_PRESETS } from "../../../../scripts/computed-style/computed-style-dump-shared.ts";
 import {
   CLS_CHROME_FLAGS,
+  CLS_CI_DELAYED_PROFILE_PORT,
   CLS_CI_DELAY_CSS_MS,
   CLS_ONLY_AUDITS,
   CLS_PRESET_NAMES,
@@ -27,6 +29,7 @@ import {
   stopChildProcess,
   summarizeRepeats,
   upstreamPortForProxy,
+  waitForHttpOk,
   type ClsPresetResult,
   type LhrLike,
 } from "../../../../scripts/profile/cls-profile.ts";
@@ -353,6 +356,39 @@ test("package.json delayed scripts match CLS_CI_DELAY_CSS_MS", () => {
     baselineDelayed.includes("--out tmp/baseline-cls-profile-delayed.json"),
     baselineDelayed,
   );
+});
+
+test("delayed CI profile port keeps vite preview off Node's blocked 4190", () => {
+  assert.equal(CLS_CI_DELAYED_PROFILE_PORT, 4188);
+  assert.notEqual(upstreamPortForProxy(CLS_CI_DELAYED_PROFILE_PORT), 4190);
+  const yml = fs.readFileSync(
+    path.join(
+      path.dirname(fileURLToPath(import.meta.url)),
+      "../../../../.github/workflows/cls.yml",
+    ),
+    "utf8",
+  );
+  assert.match(yml, /CLS_PROFILE_PORT:\s*4188/);
+  assert.doesNotMatch(yml, /CLS_PROFILE_PORT:\s*4189/);
+});
+
+test("waitForHttpOk probes with node:http", async () => {
+  const server = http.createServer((_req, res) => {
+    res.writeHead(200);
+    res.end("ok");
+  });
+  await new Promise<void>((resolve) => {
+    server.listen(0, "127.0.0.1", () => resolve());
+  });
+  const addr = server.address();
+  assert.ok(addr && typeof addr === "object");
+  try {
+    await waitForHttpOk(`http://127.0.0.1:${String(addr.port)}/`, 2000);
+  } finally {
+    await new Promise<void>((resolve, reject) => {
+      server.close((err) => (err ? reject(err) : resolve()));
+    });
+  }
 });
 
 test("lighthouseSettingsForPreset mobile matches Lighthouse Moto G Power", () => {
