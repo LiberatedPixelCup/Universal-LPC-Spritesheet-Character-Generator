@@ -85,7 +85,7 @@ which production users do not get.
 | `--url http://127.0.0.1:4173` | Attach to an existing production preview (trailing slash stored). Still appends `?debug=false`. With `--delay-css-ms`, Lighthouse navigates the **proxy**, not this origin. |
 | `--out` / `--json` | JSON path, resolved against the repo root. Default `tmp/cls-profile.json`. `:baseline` writes `tmp/baseline-cls-profile.json`. |
 | `--check` | Compare medians to `scripts/profile/cls-budgets.json`. Unknown keys in that file error. |
-| `--save-lhr <path>` | Write the raw Lighthouse result **before** extract. One preset: that path as-is. Several: `-<preset>` before the extension. A missing CLS audit or `runtimeError` still leaves the dump. How the committed fixture is refreshed (see Upgrading). |
+| `--save-lhr <path>` | Write the raw Lighthouse result **before** extract. One preset: that path as-is. Several: `-<preset>` before the extension. A missing CLS audit or `runtimeError` still leaves the dump. Use it to inspect a failed run (see Local vs CI) and to refresh the committed fixture (see Upgrading). |
 | `--delay-css-ms n` | **Local debug only** (not CI). Insert a proxy that waits `n` ms before serving `/assets/main-*.css` and `/assets/load-deferred-styles-*.css`. Default: off. Start around 2000–4000 ms. The JSON records `delayCssMs`. Never mix a delayed run into `cls-budgets.json`. **Ports:** with no `--url`, proxy listens on **4179** and `vite preview` on **4180**. With `--url http://127.0.0.1:4173/`, proxy listens on **4179** and Lighthouse uses that origin (CSS is delayed). With `--url` already on **4179**, proxy listens on **4180** so it does not collide with the preview. The proxy rewrites `Host` to the preview origin (for example `127.0.0.1:4180`), not the listen port. |
 | `--help` / `-h` | Usage. |
 
@@ -151,15 +151,31 @@ How to get the CI numbers:
 4. Read each preset's `summary.median`, plus `lighthouseVersion` and Chrome
    provenance, before rewriting budgets.
 
-Every re-baseline reads that file. Do not skip it.
+That artifact is **only** `tmp/cls-profile.json`. There is no raw Lighthouse
+result in it. Culprits in that JSON are enough for a normal over-budget
+failure. If nodes are empty, the run printed the empty-culprits warning, or
+you need Lighthouse's own tables, re-run the **same** `--preset` locally
+with **no** `--delay-css-ms` (matching CI) and `--save-lhr`:
+
+```bash
+npm run profile:cls -- --preset tablet --repeat 1 --save-lhr tmp/lhr-tablet.full.json
+```
+
+Do not use that dump as a budget. Do not compare it to
+`tests/fixtures/lighthouse/lhr-delayed.json` (a delayed local trim for
+extract tests, not a CI dump).
+
+Every re-baseline reads the `cls-profile` artifact. Do not skip it.
 
 ## 7. Finding the shifter
 
 1. Open `tmp/cls-profile.json` and read `layout-shifts` nodes (selector +
    score + `subItems`).
-2. Map the node to a dump target: `#header-left`, `#mithril-filters > div`,
+2. If those nodes are empty or you need Lighthouse's own tables, `--save-lhr`
+   locally (see Local vs CI). Then dumps.
+3. Map the node to a dump target: `#header-left`, `#mithril-filters > div`,
    the download box, a `.loading-shell-*` class.
-3. Only then use DevTools Performance → Experience. Agents: do not ask the
+4. Only then use DevTools Performance → Experience. Agents: do not ask the
    user for DevTools when the JSON already names the node.
 
 ## 8. Debugging with computed-style dumps
@@ -336,6 +352,7 @@ check named **CLS (Lighthouse)**. It runs on `push` / `pull_request` to
   [`scripts/profile/cls-budgets.json`](scripts/profile/cls-budgets.json)
   (un-delayed CI median plus slack). **No `--delay-css-ms`.**
 - Uploads `tmp/cls-profile.json` as artifact `cls-profile`, `if: always()`.
+  The full LHR is not attached; inspect with `--save-lhr` locally.
 - Timeout ~30 minutes: production build plus **9** applied-throttling
   navigations (3 presets × 3 repeats). A timeout is not a CLS regression.
 - The check fails only when a viewport **exceeds the committed budget**, not

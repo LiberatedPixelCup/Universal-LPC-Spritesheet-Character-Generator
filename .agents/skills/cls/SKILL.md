@@ -46,9 +46,11 @@ not reshape the JSON by eye.
 
 ## Debug
 
-1. Read `layout-shifts` nodes in `tmp/cls-profile.json`.
-   If un-delayed CLS is ~0 but the user sees a jump, re-run with
-   `--delay-css-ms` (local only) at the same `--preset`.
+1. Read `layout-shifts` nodes in `tmp/cls-profile.json` (local run or the
+   CI `cls-profile` artifact). If un-delayed CLS is ~0 but the user sees a
+   jump, re-run with `--delay-css-ms` (local only) at the same `--preset`.
+   If culprits are empty or you need the raw audits, `--save-lhr` locally
+   — the GitHub artifact is not an LHR. [CLS.md](../../../CLS.md) section 6.
 2. Dump the **matching** viewport: CLS `mobile` →
    `npm run compute-style-dump:lighthouse-mobile` (412×823), **not**
    `compute-style-dump:mobile` (Argos 390). Tablet / mediumDesktop use the

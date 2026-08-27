@@ -592,6 +592,7 @@ Symptoms that look like catalog or test bugs are often environment. Check these 
 | `npm run test:visual` or `profile:app` / `profile:load` / `profile:zip` cannot launch a browser | Playwright browsers not installed | `npx playwright install chromium` (or `--with-deps`) |
 | `npm run profile:cls` cannot find Chrome | No system Chrome, and Playwright Chromium fallback failed | Install Chrome, or set `CHROME_PATH`. See [CLS.md](CLS.md) |
 | Local `profile:cls` median differs from CI | Fonts, scrollbars, CPU; macOS ≠ Linux | Compare local-to-local; budgets come from the `cls-profile` artifact. [CLS.md](CLS.md) |
+| CI CLS is red and culprit nodes are empty, or you need the raw Lighthouse tables | Artifact is only `tmp/cls-profile.json` | Local `--save-lhr` at the same `--preset`, no delay. [CLS.md](CLS.md) |
 | Un-delayed `profile:cls` is ~0 but PSI / a real network shows a jump | Localhost serves `main-*.css` immediately | Local only: `npm run profile:cls -- --preset tablet --delay-css-ms 3000`. Do not add that flag to CI. [CLS.md](CLS.md) |
 | Need to bump Lighthouse, chrome-launcher, or CI Chrome | Measurement-definition or discovery change | [CLS.md](CLS.md) “Upgrading Lighthouse and chrome-launcher”. Do not rebase budgets from a laptop |
 | `profile:app --channel chrome` cannot launch | Google Chrome is not installed, or Playwright cannot see it | Install Chrome; run from a normal terminal, not a sandbox |
