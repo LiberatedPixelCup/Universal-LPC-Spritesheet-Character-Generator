@@ -50,6 +50,7 @@
     "profile:load": "node scripts/profile/app-load-profile.ts",
     "profile:load:baseline": "node scripts/profile/app-load-profile.ts --out tmp/baseline-app-load-profile.json",
     "diff:app-load-profile": "node scripts/profile/diff-app-load-profile.ts",
+    "diff:cls-profile": "node scripts/profile/diff-cls-profile.ts",
     "compute-style-dump": "node scripts/computed-style/dump-computed-styles.ts",
     "compute-style-dump:mobile": "node scripts/computed-style/dump-computed-styles.ts --preset mobile",
     "compute-style-dump:lighthouse-mobile": "node scripts/computed-style/dump-computed-styles.ts --preset lighthouseMobile",
