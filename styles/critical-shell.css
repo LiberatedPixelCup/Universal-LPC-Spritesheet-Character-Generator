@@ -31,6 +31,15 @@ h3 {
   margin: 4px 0px 0px 0px;
 }
 
+/*
+ * Minireset (`html,body,…,h3 { margin: 0 }`) is emitted after this file in the
+ * critical bundle, so the h3 rule above loses on first paint. Deferred main.css
+ * then restores 4px and the Download title drops. h3.title beats minireset.
+ */
+h3.title {
+  margin: 4px 0 0;
+}
+
 p {
   margin: 10px 0px;
 }
