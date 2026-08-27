@@ -28,7 +28,8 @@ JSON or the diff. Phase names and console commands:
 These are not interchangeable. Match the command to the change. The ZIP pair
 is not a substitute for `profile:app`, and `profile:load` is not a substitute
 for either (Vite serve pretty-prints metadata; `window.profiler` starts after
-catalog import).
+catalog import). Layout shift during load is [cls](../cls/SKILL.md), not a
+row on this table.
 
 **Before any of them:** `npx playwright install` once. ZIP scripts need
 `dist/*-metadata.js` (`npm run dev` or `npm run build` once) and use
