@@ -317,6 +317,46 @@ test("extractClsSample reads CLS and layout-shifts nodes from the fixture LHR", 
   assert.equal(sample.platform, process.platform);
 });
 
+test("extractClsSample keeps two distinct layout-shifts selectors", () => {
+  const lhr: LhrLike = {
+    lighthouseVersion: "13.4.1",
+    audits: {
+      "cumulative-layout-shift": { numericValue: 0.14, score: 0.72 },
+      "layout-shifts": {
+        details: {
+          type: "table",
+          items: [
+            {
+              node: { type: "node", selector: "div.box.loading-shell-filters" },
+              score: 0.1,
+            },
+            {
+              node: {
+                type: "node",
+                selector:
+                  "div#mithril-spritesheet-preview > div.box > div.collapsible-content > div.preview-canvas-area",
+              },
+              score: 0.04,
+            },
+          ],
+        },
+      },
+    },
+  };
+  const sample = extractClsSample(
+    lhr,
+    "mediumDesktop",
+    lighthouseSettingsForPreset("mediumDesktop"),
+  );
+  assert.deepEqual(
+    sample.nodes.map((n) => n.selector),
+    [
+      "div.box.loading-shell-filters",
+      "div#mithril-spritesheet-preview > div.box > div.collapsible-content > div.preview-canvas-area",
+    ],
+  );
+});
+
 test("extractClsSample skips the cls-culprits-insight Total row", () => {
   const lhr: LhrLike = {
     lighthouseVersion: "13.4.1",
