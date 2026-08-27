@@ -56,6 +56,41 @@ p {
 }
 
 /*
+ * Download (and every other CollapsibleSection) mounts before deferred main.css.
+ * Pin the same chrome as main.css so the arrow, title row, and 1rem body gap
+ * do not appear after first paint.
+ */
+.collapsible-header {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+.collapsible-title {
+  flex: 1;
+}
+
+.collapsible-content {
+  margin-top: 1rem;
+}
+
+.tree-arrow {
+  display: inline-block;
+  width: 1rem;
+  text-align: center;
+  margin-right: 0.5rem;
+}
+
+.tree-arrow.collapsed::before {
+  content: "▶";
+}
+
+.tree-arrow.expanded::before {
+  content: "▼";
+}
+
+/*
  * Wrapped header heights (includes #sponsors-links margin-top: -12px).
  * Floors match loaded Argos/Lighthouse widths so first paint does not grow.
  */
