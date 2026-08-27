@@ -276,7 +276,7 @@ Pinned **exact** in `package.json` (no caret).
    `lighthouseVersion` is the new pin, culprits are still populated (or the
    warning is expected), and record each preset's median.
 6. In **the same PR**, write new budgets (CI median + the usual slack, about
-   +0.02 or ~20%, whichever is larger) and keep `:check` on. If the new
+   +0.005 or ~20%, whichever is larger) and keep `:check` on. If the new
    median is *lower*, still rewrite the file so slack is relative to the new
    measurement, not a mix of two Lighthouse versions.
 7. PR description: old pin → new pin, per-preset old median / new median /
