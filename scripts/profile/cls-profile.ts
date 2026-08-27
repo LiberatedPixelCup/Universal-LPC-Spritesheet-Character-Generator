@@ -721,7 +721,7 @@ async function resolveChromePath(): Promise<string> {
   return chromium.executablePath();
 }
 
-function saveLhrPathForPreset(
+export function saveLhrPathForPreset(
   basePath: string,
   preset: ClsPreset,
   presetCount: number,
@@ -790,7 +790,7 @@ async function runLighthouseOnUrl(
   url: string,
   port: number,
   preset: ClsPreset,
-): Promise<{ sample: ClsSample; lhr: LhrLike }> {
+): Promise<{ lhr: LhrLike; settings: LighthousePresetSettings }> {
   const settings = lighthouseSettingsForPreset(preset);
   const result = await lighthouse(url, {
     port,
@@ -810,8 +810,7 @@ async function runLighthouseOnUrl(
   if (result === undefined) {
     throw new Error(`Lighthouse returned no result for ${preset}`);
   }
-  const lhr = result.lhr as LhrLike;
-  return { sample: extractClsSample(lhr, preset, settings), lhr };
+  return { lhr: result.lhr as LhrLike, settings };
 }
 
 export async function main(
@@ -894,15 +893,11 @@ export async function main(
       const samples: ClsSample[] = [];
       for (let i = 0; i < opts.repeat; i++) {
         process.stderr.write(`${preset} navigation ${i + 1}/${opts.repeat}…\n`);
-        const { sample, lhr } = await runLighthouseOnUrl(
+        const { lhr, settings } = await runLighthouseOnUrl(
           url,
           chrome.port,
           preset,
         );
-        samples.push(sample);
-        if (!lighthouseVersion) {
-          lighthouseVersion = sample.lighthouseVersion;
-        }
         if (opts.saveLhrPath) {
           const out = saveLhrPathForPreset(
             opts.saveLhrPath,
@@ -912,6 +907,11 @@ export async function main(
           mkdirSync(path.dirname(out), { recursive: true });
           writeFileSync(out, `${JSON.stringify(lhr, null, 2)}\n`, "utf8");
           process.stderr.write(`Wrote LHR ${path.relative(REPO_ROOT, out)}\n`);
+        }
+        const sample = extractClsSample(lhr, preset, settings);
+        samples.push(sample);
+        if (!lighthouseVersion) {
+          lighthouseVersion = sample.lighthouseVersion;
         }
       }
       const settings = lighthouseSettingsForPreset(preset);

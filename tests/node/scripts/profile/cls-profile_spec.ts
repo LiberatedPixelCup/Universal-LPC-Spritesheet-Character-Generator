@@ -18,6 +18,7 @@ import {
   parseArgs,
   parseBudgetsJson,
   parseClsProfilePort,
+  saveLhrPathForPreset,
   shouldDelayStylesheetPath,
   summarizeRepeats,
   upstreamPortForProxy,
@@ -185,6 +186,28 @@ test("parseArgs --help does not exit", () => {
   assert.deepEqual(opts, { help: true });
   const opts2 = parseArgs(["node", "cls-profile.ts", "-h"]);
   assert.deepEqual(opts2, { help: true });
+});
+
+test("saveLhrPathForPreset is unchanged for one preset", () => {
+  assert.equal(
+    saveLhrPathForPreset("/tmp/lhr.json", "mobile", 1),
+    "/tmp/lhr.json",
+  );
+});
+
+test("saveLhrPathForPreset suffixes the preset when running more than one", () => {
+  assert.equal(
+    saveLhrPathForPreset("/tmp/lhr.json", "mobile", 3),
+    "/tmp/lhr-mobile.json",
+  );
+  assert.equal(
+    saveLhrPathForPreset("/tmp/lhr.json", "tablet", 3),
+    "/tmp/lhr-tablet.json",
+  );
+  assert.equal(
+    saveLhrPathForPreset("/tmp/lhr", "mediumDesktop", 2),
+    "/tmp/lhr-mediumDesktop.json",
+  );
 });
 
 test("parseArgs unknown flag and missing values throw", () => {
