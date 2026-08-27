@@ -37,6 +37,7 @@ function profile(overrides: Partial<ClsProfileFile> = {}): ClsProfileFile {
     url: "http://127.0.0.1:4179/?debug=false",
     repeat: 3,
     delayCssMs: 0,
+    delayedStylesheetHits: 0,
     lighthouseVersion: "13.4.1",
     chromePath: "/usr/bin/google-chrome",
     chromeFlags: ["--headless=new", "--no-sandbox"],

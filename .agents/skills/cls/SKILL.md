@@ -40,6 +40,8 @@ Two labs:
 - Delayed `profile:cls:check:delayed` (`--delay-css-ms 3000`) is the **jump
   gate**
   ([`cls-budgets-delayed.json`](../../../scripts/profile/cls-budgets-delayed.json)).
+  A delayed run with `delayedStylesheetHits` 0 is a broken proxy, not a
+  green jump. `--check --preset` gates only that viewport.
   Do not paste delayed medians into `cls-budgets.json`.
 
 See [CLS.md](../../../CLS.md).

@@ -131,6 +131,8 @@ export type ClsProfileFile = {
   url: string;
   repeat: number;
   delayCssMs: number;
+  /** Stylesheet GETs the CSS-delay proxy actually held; 0 when delay is off. */
+  delayedStylesheetHits: number;
   lighthouseVersion: string;
   chromePath: string;
   chromeFlags: readonly string[];
@@ -175,7 +177,7 @@ function usage(): string {
     "  --check            Fail if a preset median exceeds the budgets file",
     "  --budgets <path>   Budget JSON for --check (default: scripts/profile/cls-budgets.json)",
     "  --save-lhr <path>  Write the raw LHR JSON (per-preset suffix when running more than one)",
-    "  --delay-css-ms n   Delay production main / deferred CSS (assets/*.css) by n ms via a local proxy",
+    "  --delay-css-ms n   Delay /assets/*.css by n ms via a local proxy (fail if none matched)",
   ].join("\n");
 }
 
@@ -502,21 +504,24 @@ export function summarizeRepeats(values: number[]): LoadStats {
   };
 }
 
-export function parseBudgetsJson(raw: unknown): Record<string, number> {
+export function parseBudgetsJson(
+  raw: unknown,
+  label = "budgets file",
+): Record<string, number> {
   if (!isRecord(raw)) {
-    throw new Error("cls-budgets.json must be an object");
+    throw new Error(`${label} must be an object`);
   }
   const unknownKeys = Object.keys(raw).filter((k) => !isClsPreset(k));
   if (unknownKeys.length > 0) {
     throw new Error(
-      `cls-budgets.json has unknown preset key(s): ${unknownKeys.join(", ")}`,
+      `${label} has unknown preset key(s): ${unknownKeys.join(", ")}`,
     );
   }
   const out: Record<string, number> = {};
   for (const [name, v] of Object.entries(raw)) {
     if (typeof v !== "number" || !Number.isFinite(v) || v < 0) {
       throw new Error(
-        `cls-budgets.json ${name} must be a finite number >= 0, got ${String(v)}`,
+        `${label} ${name} must be a finite number >= 0, got ${String(v)}`,
       );
     }
     out[name] = v;
@@ -530,6 +535,7 @@ export function loadBudgetsOrThrow(
   try {
     return parseBudgetsJson(
       JSON.parse(readFileSync(budgetsPath, "utf8")) as unknown,
+      path.basename(budgetsPath),
     );
   } catch (err) {
     if (
@@ -550,16 +556,18 @@ export function loadBudgetsOrThrow(
 export function checkClsAgainstBudgets(
   results: readonly Pick<ClsPresetResult, "preset" | "summary">[],
   budgets: Record<string, number>,
+  presetsToCheck: readonly ClsPreset[] = results.map((r) => r.preset),
 ): BudgetViolation[] {
   const unknownKeys = Object.keys(budgets).filter((k) => !isClsPreset(k));
   if (unknownKeys.length > 0) {
     throw new Error(
-      `cls-budgets.json has unknown preset key(s): ${unknownKeys.join(", ")}`,
+      `budgets file has unknown preset key(s): ${unknownKeys.join(", ")}`,
     );
   }
   const violations: BudgetViolation[] = [];
   const byPreset = new Map(results.map((r) => [r.preset, r]));
-  for (const name of CLS_PRESET_NAMES) {
+  const names = [...new Set(presetsToCheck)];
+  for (const name of names) {
     const budget = budgets[name];
     const result = byPreset.get(name);
     if (budget === undefined) {
@@ -599,12 +607,36 @@ function loadPageUrl(base: string): string {
   return u.href;
 }
 
-/** Production CSS linked from index.html or the deferred chunk filename pattern. */
+/** Production CSS linked from index.html or emitted as a hashed /assets/*.css chunk. */
 export function shouldDelayStylesheetPath(pathname: string): boolean {
-  return (
-    /\/assets\/main-[^/]+\.css$/i.test(pathname) ||
-    /\/assets\/load-deferred-styles-[^/]+\.css$/i.test(pathname)
-  );
+  return /\/assets\/[^/]+\.css$/i.test(pathname);
+}
+
+/**
+ * `--delay-css-ms` is not a jump lab if the proxy never held a stylesheet.
+ * Zero hits means the hashed CSS left `/assets/*.css` (or was not requested).
+ */
+export function assertDelayedStylesheetHits(
+  delayCssMs: number,
+  hits: number,
+): void {
+  if (delayCssMs <= 0) {
+    return;
+  }
+  if (hits < 1) {
+    throw new Error(
+      `--delay-css-ms ${String(delayCssMs)} matched 0 stylesheets under /assets/*.css; the jump lab did not delay CSS`,
+    );
+  }
+}
+
+export async function stopLaunchedChrome(
+  chrome: { kill: () => void | Promise<unknown> } | undefined,
+): Promise<void> {
+  if (chrome === undefined) {
+    return;
+  }
+  await chrome.kill();
 }
 
 export function originPort(origin: string): number | null {
@@ -724,6 +756,7 @@ function startCssDelayProxy(options: {
   listenPort: number;
   upstreamOrigin: string;
   delayCssMs: number;
+  hits: { count: number };
 }): Promise<Server> {
   const upstream = new URL(options.upstreamOrigin);
   return new Promise((resolve, reject) => {
@@ -733,6 +766,7 @@ function startCssDelayProxy(options: {
           const reqPath = clientReq.url ?? "/";
           const reqUrl = new URL(reqPath, options.upstreamOrigin);
           if (shouldDelayStylesheetPath(reqUrl.pathname)) {
+            options.hits.count += 1;
             await sleep(options.delayCssMs);
           }
           const headers = { ...clientReq.headers };
@@ -968,6 +1002,7 @@ export async function main(
   let preview: ChildProcess | undefined;
   let proxy: Server | undefined;
   let chrome: Awaited<ReturnType<typeof launch>> | undefined;
+  const delayedHits = { count: 0 };
   try {
     if (attachedUrl === null) {
       if (opts.skipBuild) {
@@ -1002,6 +1037,7 @@ export async function main(
         listenPort: proxyListenPort,
         upstreamOrigin: upstreamBase.replace(/\/?$/, "/"),
         delayCssMs: opts.delayCssMs,
+        hits: delayedHits,
       });
       await waitForHttpOk(measuredBase, 120000);
     }
@@ -1060,6 +1096,7 @@ export async function main(
       url,
       repeat: opts.repeat,
       delayCssMs: opts.delayCssMs,
+      delayedStylesheetHits: delayedHits.count,
       lighthouseVersion,
       chromePath,
       chromeFlags: CLS_CHROME_FLAGS,
@@ -1072,9 +1109,15 @@ export async function main(
     writeFileSync(opts.outPath, `${JSON.stringify(file, null, 2)}\n`, "utf8");
     process.stderr.write(`Wrote ${path.relative(REPO_ROOT, opts.outPath)}\n`);
 
+    assertDelayedStylesheetHits(opts.delayCssMs, delayedHits.count);
+
     if (checkBudgets !== null) {
       process.stdout.write(`${formatClsTable(file, checkBudgets)}\n`);
-      const violations = checkClsAgainstBudgets(presetResults, checkBudgets);
+      const violations = checkClsAgainstBudgets(
+        presetResults,
+        checkBudgets,
+        opts.presets,
+      );
       if (violations.length > 0) {
         for (const v of violations) {
           process.stderr.write(
@@ -1090,7 +1133,11 @@ export async function main(
     process.stdout.write(`${formatClsTable(file, null)}\n`);
     return 0;
   } finally {
-    chrome?.kill();
+    try {
+      await stopLaunchedChrome(chrome);
+    } catch {
+      /* already gone */
+    }
     if (preview) {
       await stopChildProcess(preview);
     }

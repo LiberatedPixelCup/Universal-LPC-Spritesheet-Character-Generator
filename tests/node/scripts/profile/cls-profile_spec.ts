@@ -14,6 +14,7 @@ import {
   CLS_CI_DELAY_CSS_MS,
   CLS_ONLY_AUDITS,
   CLS_PRESET_NAMES,
+  assertDelayedStylesheetHits,
   assertSkipBuildDist,
   checkClsAgainstBudgets,
   cssDelayProxyListenPort,
@@ -28,6 +29,7 @@ import {
   saveLhrPathForPreset,
   shouldDelayStylesheetPath,
   stopChildProcess,
+  stopLaunchedChrome,
   summarizeRepeats,
   upstreamPortForProxy,
   waitForHttpOk,
@@ -79,6 +81,22 @@ test("parseArgs --preset restricts to one viewport", () => {
     }
     assert.deepEqual(opts.presets, [name]);
   }
+});
+
+test("parseArgs --check --preset tablet is a one-viewport check", () => {
+  const opts = parseArgs([
+    "node",
+    "cls-profile.ts",
+    "--check",
+    "--preset",
+    "tablet",
+  ]);
+  assert.ok(!("help" in opts));
+  if ("help" in opts) {
+    return;
+  }
+  assert.equal(opts.check, true);
+  assert.deepEqual(opts.presets, ["tablet"]);
 });
 
 test("parseArgs unknown --preset throws", () => {
@@ -147,12 +165,17 @@ test("parseArgs --delay-css-ms", () => {
   );
 });
 
-test("shouldDelayStylesheetPath matches production CSS asset names", () => {
+test("shouldDelayStylesheetPath matches any hashed /assets/*.css", () => {
   assert.equal(shouldDelayStylesheetPath("/assets/main-D4rbq9Ei.css"), true);
   assert.equal(
     shouldDelayStylesheetPath("/assets/load-deferred-styles-L0fhUdhH.css"),
     true,
   );
+  assert.equal(
+    shouldDelayStylesheetPath("/assets/critical-entry-AbCd1234.css"),
+    true,
+  );
+  assert.equal(shouldDelayStylesheetPath("/assets/index-xyz.css"), true);
   assert.equal(shouldDelayStylesheetPath("/assets/vendor-D5qM2qLl.js"), false);
   assert.equal(
     shouldDelayStylesheetPath("/assets/main-D4rbq9Ei.css.map"),
@@ -164,6 +187,29 @@ test("shouldDelayStylesheetPath matches production CSS asset names", () => {
     shouldDelayStylesheetPath("/assets/main-D4rbq9Ei.css?v=1"),
     false,
   );
+});
+
+test("assertDelayedStylesheetHits fails closed when delay matched nothing", () => {
+  assertDelayedStylesheetHits(0, 0);
+  assertDelayedStylesheetHits(3000, 2);
+  assert.throws(
+    () => assertDelayedStylesheetHits(3000, 0),
+    /matched 0 stylesheets/,
+  );
+});
+
+test("stopLaunchedChrome awaits kill and no-ops when undefined", async () => {
+  await stopLaunchedChrome(undefined);
+  let killed = false;
+  await stopLaunchedChrome({
+    kill: async () => {
+      await new Promise<void>((resolve) => {
+        setTimeout(resolve, 10);
+      });
+      killed = true;
+    },
+  });
+  assert.equal(killed, true);
 });
 
 test("upstreamPortForProxy is public port + 1", () => {
@@ -846,8 +892,14 @@ test("checkClsAgainstBudgets pass / over / missing", () => {
   const missingResult = checkClsAgainstBudgets(
     [result("mobile", 0.1)],
     budgets,
+    [...CLS_PRESET_NAMES],
   );
   assert.ok(missingResult.some((v) => v.reason === "missing-result"));
+
+  const onePreset = checkClsAgainstBudgets([result("tablet", 0.1)], budgets, [
+    "tablet",
+  ]);
+  assert.deepEqual(onePreset, []);
 
   const missingBudget = checkClsAgainstBudgets(
     [
@@ -861,6 +913,18 @@ test("checkClsAgainstBudgets pass / over / missing", () => {
   assert.ok(missingBudget.some((v) => v.reason === "missing-budget"));
 });
 
+test("checkClsAgainstBudgets defaults to measured presets only", () => {
+  const budgets = { mobile: 0.2, tablet: 0.3, mediumDesktop: 0.25 };
+  assert.deepEqual(
+    checkClsAgainstBudgets([result("tablet", 0.1)], budgets),
+    [],
+  );
+  const over = checkClsAgainstBudgets([result("tablet", 0.4)], budgets);
+  assert.equal(over.length, 1);
+  assert.equal(over[0]?.preset, "tablet");
+  assert.equal(over[0]?.reason, "over-budget");
+});
+
 test("checkClsAgainstBudgets unknown key throws", () => {
   assert.throws(
     () =>
@@ -868,14 +932,19 @@ test("checkClsAgainstBudgets unknown key throws", () => {
         mobile: 0.2,
         hugeDesktop: 0.1,
       }),
-    /unknown preset/,
+    /budgets file has unknown preset/,
   );
 });
 
 test("parseBudgetsJson rejects unknown keys and bad values", () => {
   assert.throws(
     () => parseBudgetsJson({ mobile: 0.1, nope: 0.2 }),
-    /unknown preset/,
+    /budgets file has unknown preset/,
+  );
+  assert.throws(
+    () =>
+      parseBudgetsJson({ mobile: 0.1, nope: 0.2 }, "cls-budgets-delayed.json"),
+    /cls-budgets-delayed.json has unknown preset/,
   );
   assert.throws(() => parseBudgetsJson({ mobile: -0.1 }), /finite number/);
   assert.throws(() => parseBudgetsJson({ mobile: "0.1" }), /finite number/);
@@ -903,7 +972,10 @@ test("loadBudgetsOrThrow surfaces parseBudgetsJson errors", () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "cls-budgets-"));
   const badKeys = path.join(dir, "unknown.json");
   fs.writeFileSync(badKeys, `${JSON.stringify({ mobile: 0.1, nope: 0.2 })}\n`);
-  assert.throws(() => loadBudgetsOrThrow(badKeys), /unknown preset/);
+  assert.throws(
+    () => loadBudgetsOrThrow(badKeys),
+    /unknown.json has unknown preset/,
+  );
   const malformed = path.join(dir, "malformed.json");
   fs.writeFileSync(malformed, "{");
   assert.throws(() => loadBudgetsOrThrow(malformed));
