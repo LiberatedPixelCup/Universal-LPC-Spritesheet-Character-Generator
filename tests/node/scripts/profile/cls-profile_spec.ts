@@ -402,6 +402,42 @@ test("extractClsSample reads subItem causes in every cause shape", () => {
   ]);
 });
 
+test("extractClsSample falls through to insight when layout-shifts details are empty", () => {
+  const lhr: LhrLike = {
+    lighthouseVersion: "13.4.1",
+    audits: {
+      "cumulative-layout-shift": { numericValue: 0.05, score: 1 },
+      "layout-shifts": {
+        details: { type: "table", items: [] },
+      },
+      "cls-culprits-insight": {
+        details: {
+          type: "list",
+          items: [
+            {
+              type: "table",
+              items: [
+                {
+                  node: { type: "node", selector: "#mithril-filters > div" },
+                  score: 0.05,
+                },
+              ],
+            },
+          ],
+        },
+      },
+    },
+  };
+  const sample = extractClsSample(
+    lhr,
+    "mobile",
+    lighthouseSettingsForPreset("mobile"),
+  );
+  assert.equal(sample.nodes.length, 1);
+  assert.equal(sample.nodes[0]?.selector, "#mithril-filters > div");
+  assert.equal(sample.nodes[0]?.score, 0.05);
+});
+
 test("extractClsSample falls back to cls-culprits-insight on the delayed fixture", () => {
   const lhr = readFixtureLhr();
   delete lhr.audits?.["layout-shifts"];

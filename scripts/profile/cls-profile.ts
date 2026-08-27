@@ -443,7 +443,8 @@ export function extractClsSample(
   let nodes: ClsShiftNode[] = [];
   if (layoutShifts?.details !== undefined) {
     nodes = extractShiftNodes(layoutShifts.details);
-  } else if (insight?.details !== undefined) {
+  }
+  if (nodes.length === 0 && insight?.details !== undefined) {
     nodes = extractShiftNodes(insight.details);
   }
   return {
@@ -913,6 +914,11 @@ export async function main(
           process.stderr.write(`Wrote LHR ${path.relative(REPO_ROOT, out)}\n`);
         }
         const sample = extractClsSample(lhr, preset, settings);
+        if (sample.nodes.length === 0) {
+          process.stderr.write(
+            `warning: ${preset} has no layout-shift culprits (CLS ${sample.numericValue}); empty nodes is not "no shift"\n`,
+          );
+        }
         samples.push(sample);
         if (!lighthouseVersion) {
           lighthouseVersion = sample.lighthouseVersion;

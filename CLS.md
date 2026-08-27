@@ -121,12 +121,12 @@ ok/over). Details live in the JSON. Use `process.stdout.write` /
   `cls-culprits-insight`. The insight audit is a declared replacement for
   the table; requesting both keeps the fallback real if Lighthouse drops
   `layout-shifts`.
-- If `layout-shifts` is missing, the script falls back to
-  `cls-culprits-insight`. That audit is a list of tables and prepends a
-  synthetic **Total** row (`node.type === "text"`) per cluster; the
-  extractor skips those so they are not ranked as culprits. If both
-  audits are missing, **nodes are empty and a warning is printed** — that
-  is not "no shift."
+- If `layout-shifts` is missing **or present with no parseable nodes**, the
+  script falls back to `cls-culprits-insight`. That audit is a list of
+  tables and prepends a synthetic **Total** row (`node.type === "text"`)
+  per cluster; the extractor skips those so they are not ranked as
+  culprits. If both audits are missing or yield no nodes, **nodes are
+  empty and a warning is printed** — that is not "no shift."
 - `--check` and the printed table use the **median** of `--repeat` samples.
   The JSON keeps every sample plus min / median / max.
 - **Provenance** (treat two runs without these as incomparable):
