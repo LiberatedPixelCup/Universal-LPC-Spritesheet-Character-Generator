@@ -1,48 +1,92 @@
 {
   "lighthouseVersion": "13.4.1",
-  "userAgent": "Mozilla/5.0 (fixture) Chrome/136.0.0.0 Safari/537.36",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
   "audits": {
     "cumulative-layout-shift": {
       "id": "cumulative-layout-shift",
-      "title": "Cumulative Layout Shift",
-      "numericValue": 0.142,
-      "numericUnit": "unitless",
-      "score": 0.72,
-      "scoreDisplayMode": "numeric",
+      "numericValue": 0.102741778580851,
+      "score": 0.89,
       "details": {
         "type": "debugdata",
-        "items": [{ "cumulativeLayoutShiftMainFrame": 0.142 }]
+        "items": [
+          {
+            "cumulativeLayoutShiftMainFrame": 0.102741778580851
+          }
+        ]
       }
     },
     "layout-shifts": {
       "id": "layout-shifts",
-      "title": "Avoid large layout shifts",
-      "score": 0,
       "details": {
         "type": "table",
-        "headings": [],
         "items": [
           {
             "node": {
               "type": "node",
-              "selector": "div.box.loading-shell-filters",
-              "nodeLabel": "loading-shell-filters",
-              "snippet": "<div class=\"box loading-shell-filters\">"
+              "selector": "div > div.box > div.collapsible-content > div.box",
+              "nodeLabel": "Available Items\nReset all\nCollapse All\nExpand Selected\nCompactDisplay\n Match bo…",
+              "snippet": "<div class=\"box has-background-light category-tree-panel\">"
             },
-            "score": 0.12,
-            "subItems": {
-              "type": "subitems",
-              "items": [{ "cause": "Web font loaded" }]
-            }
+            "score": 0.102741778580851
           },
           {
             "node": {
               "type": "node",
-              "selector": "#header-left",
-              "nodeLabel": "header-left",
-              "snippet": "<section id=\"header-left\">"
+              "selector": "div > div.box > div.collapsible-content > div.box",
+              "nodeLabel": "Available Items\nReset all\nCollapse All\nExpand Selected\nCompactDisplay\n Match bo…",
+              "snippet": "<div class=\"box has-background-light category-tree-panel\">"
             },
-            "score": 0.022
+            "score": 0.002592976610884587
+          }
+        ]
+      }
+    },
+    "cls-culprits-insight": {
+      "id": "cls-culprits-insight",
+      "details": {
+        "type": "list",
+        "items": [
+          {
+            "type": "table",
+            "items": [
+              {
+                "node": {
+                  "type": "text",
+                  "value": "Total"
+                },
+                "score": 0.002592976610884587
+              },
+              {
+                "node": {
+                  "type": "node",
+                  "selector": "div > div.box > div.collapsible-content > div.box",
+                  "nodeLabel": "Available Items\nReset all\nCollapse All\nExpand Selected\nCompactDisplay\n Match bo…",
+                  "snippet": "<div class=\"box has-background-light category-tree-panel\">"
+                },
+                "score": 0.002592976610884587
+              }
+            ]
+          },
+          {
+            "type": "table",
+            "items": [
+              {
+                "node": {
+                  "type": "text",
+                  "value": "Total"
+                },
+                "score": 0.102741778580851
+              },
+              {
+                "node": {
+                  "type": "node",
+                  "selector": "div > div.box > div.collapsible-content > div.box",
+                  "nodeLabel": "Available Items\nReset all\nCollapse All\nExpand Selected\nCompactDisplay\n Match bo…",
+                  "snippet": "<div class=\"box has-background-light category-tree-panel\">"
+                },
+                "score": 0.102741778580851
+              }
+            ]
           }
         ]
       }

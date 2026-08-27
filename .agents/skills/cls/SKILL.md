@@ -39,6 +39,11 @@ Do not hand-edit [`scripts/profile/cls-budgets.json`](../../../scripts/profile/c
 without a CI `cls-profile` artifact. Local macOS medians will not match Linux
 CI.
 
+After a Lighthouse bump, refresh
+[`tests/fixtures/lighthouse/lhr-mobile.json`](../../../tests/fixtures/lighthouse/lhr-mobile.json)
+via the recipe in [CLS.md](../../../CLS.md) (trimmed `--save-lhr` dump). Do
+not reshape the JSON by eye.
+
 ## Debug
 
 1. Read `layout-shifts` nodes in `tmp/cls-profile.json`.

@@ -30,6 +30,11 @@ const FIXTURE = fileURLToPath(
   new URL("../../../fixtures/lighthouse/lhr-mobile.json", import.meta.url),
 );
 
+/** Trimmed local delayed-tablet LHR; not a CI median or budget reference. */
+function readFixtureLhr(): LhrLike {
+  return JSON.parse(fs.readFileSync(FIXTURE, "utf8")) as LhrLike;
+}
+
 test("parseArgs defaults", () => {
   const opts = parseArgs(["node", "cls-profile.ts"]);
   assert.equal("help" in opts && opts.help, false);
@@ -279,18 +284,25 @@ test("dump lighthouseMobile is 412x823 and dump mobile stays Argos 390x844", () 
 });
 
 test("extractClsSample reads CLS and layout-shifts nodes from the fixture LHR", () => {
-  const lhr = JSON.parse(fs.readFileSync(FIXTURE, "utf8")) as LhrLike;
+  const lhr = readFixtureLhr();
   const sample = extractClsSample(
     lhr,
     "mobile",
     lighthouseSettingsForPreset("mobile"),
   );
-  assert.equal(sample.numericValue, 0.142);
-  assert.equal(sample.score, 0.72);
-  assert.equal(sample.nodes.length, 2);
-  assert.equal(sample.nodes[0]?.selector, "div.box.loading-shell-filters");
-  assert.equal(sample.nodes[0]?.score, 0.12);
-  assert.deepEqual(sample.nodes[0]?.causes, ["Web font loaded"]);
+  assert.equal(sample.numericValue, 0.102741778580851);
+  assert.ok(sample.nodes.length >= 2);
+  assert.equal(
+    sample.nodes[0]?.selector,
+    "div > div.box > div.collapsible-content > div.box",
+  );
+  for (const node of sample.nodes) {
+    assert.equal(typeof node.selector, "string");
+    assert.notEqual(node.selector, "");
+    assert.equal(typeof node.score, "number");
+    assert.ok(Number.isFinite(node.score));
+    assert.ok(Array.isArray(node.causes));
+  }
   assert.equal(sample.preset, "mobile");
   assert.equal(sample.width, 412);
   assert.equal(sample.height, 823);
@@ -344,36 +356,25 @@ test("extractClsSample skips the cls-culprits-insight Total row", () => {
   );
 });
 
-test("extractClsSample falls back to cls-culprits-insight", () => {
-  const lhr: LhrLike = {
-    lighthouseVersion: "13.4.1",
-    audits: {
-      "cumulative-layout-shift": { numericValue: 0.05, score: 1 },
-      "cls-culprits-insight": {
-        details: {
-          type: "list",
-          items: [
-            {
-              type: "table",
-              items: [
-                {
-                  node: { type: "node", selector: "#mithril-filters > div" },
-                  score: 0.05,
-                },
-              ],
-            },
-          ],
-        },
-      },
-    },
-  };
+test("extractClsSample falls back to cls-culprits-insight on the delayed fixture", () => {
+  const lhr = readFixtureLhr();
+  delete lhr.audits?.["layout-shifts"];
   const sample = extractClsSample(
     lhr,
     "tablet",
     lighthouseSettingsForPreset("tablet"),
   );
-  assert.equal(sample.numericValue, 0.05);
-  assert.equal(sample.nodes[0]?.selector, "#mithril-filters > div");
+  assert.equal(sample.numericValue, 0.102741778580851);
+  assert.ok(sample.nodes.length >= 2);
+  assert.equal(
+    sample.nodes.some((n) => n.selector === "Total"),
+    false,
+  );
+  for (const node of sample.nodes) {
+    assert.notEqual(node.selector, "");
+    assert.equal(typeof node.score, "number");
+    assert.ok(Number.isFinite(node.score));
+  }
 });
 
 test("extractClsSample empty nodes when culprit audits absent", () => {

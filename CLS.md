@@ -85,7 +85,7 @@ which production users do not get.
 | `--url http://127.0.0.1:4173` | Attach to an existing production preview (trailing slash stored). Still appends `?debug=false`. With `--delay-css-ms`, Lighthouse navigates the **proxy**, not this origin. |
 | `--out` / `--json` | JSON path, resolved against the repo root. Default `tmp/cls-profile.json`. `:baseline` writes `tmp/baseline-cls-profile.json`. |
 | `--check` | Compare medians to `scripts/profile/cls-budgets.json`. Unknown keys in that file error. |
-| `--save-lhr <path>` | Write the raw Lighthouse result for the (last) preset. How the committed fixture is refreshed. |
+| `--save-lhr <path>` | Write the raw Lighthouse result **before** extract. One preset: that path as-is. Several: `-<preset>` before the extension. A missing CLS audit or `runtimeError` still leaves the dump. How the committed fixture is refreshed (see Upgrading). |
 | `--delay-css-ms n` | **Local debug only** (not CI). Insert a proxy that waits `n` ms before serving `/assets/main-*.css` and `/assets/load-deferred-styles-*.css`. Default: off. Start around 2000–4000 ms. The JSON records `delayCssMs`. Never mix a delayed run into `cls-budgets.json`. **Ports:** with no `--url`, proxy listens on **4179** and `vite preview` on **4180**. With `--url http://127.0.0.1:4173/`, proxy listens on **4179** and Lighthouse uses that origin (CSS is delayed). With `--url` already on **4179**, proxy listens on **4180** so it does not collide with the preview. The proxy rewrites `Host` to the preview origin (for example `127.0.0.1:4180`), not the listen port. |
 | `--help` / `-h` | Usage. |
 
@@ -241,10 +241,32 @@ Pinned **exact** in `package.json` (no caret).
 
    If the lockfile conflicts after a rebase, `npm run lockfile:fix` — never
    `npm install` to "resolve" it.
-3. Run `node --test tests/node/scripts/profile/cls-profile_spec.ts`. If
-   `layout-shifts` vanished from a real LHR, the fallback chain must still
-   return empty nodes rather than throw; then extend the chain and refresh
-   the fixture with `--save-lhr`.
+3. Refresh [`tests/fixtures/lighthouse/lhr-mobile.json`](tests/fixtures/lighthouse/lhr-mobile.json)
+   from a **trimmed real dump**, not by editing JSON by eye:
+
+   ```bash
+   npm run profile:cls -- --preset mobile --repeat 1 --delay-css-ms 3000 --save-lhr tmp/lhr-mobile.full.json
+   ```
+
+   Accept the dump only when `cumulative-layout-shift.numericValue` is finite
+   and non-zero, `layout-shifts.details.items` has **2 or more** rows, and
+   `cls-culprits-insight.details` is present (list of tables). If delayed
+   **mobile** has fewer than two rows (render-blocking `main.css` can delay
+   FCP instead of shifting), use `--preset tablet` — extraction is
+   preset-independent. Raise `--delay-css-ms` (4000, then 6000) rather than
+   inventing rows. Do not commit the full file (`tmp/` is gitignored).
+
+   Trim to `lighthouseVersion`, `userAgent`, and the three audits
+   (`cumulative-layout-shift` with `debugdata` details, `layout-shifts` table
+   items, `cls-culprits-insight` list including its synthetic Total rows).
+   Drop traces, screenshots, `configSettings`, unused audits, and oversized
+   headings. Write it prettier-clean. Retarget the happy-path spec to the new
+   `numericValue` / first selector. Do not invent audit IDs or `details.type`.
+
+   **Provenance:** `--delay-css-ms` is proxy-side, so the LHR has no
+   `delayCssMs` field. The fixture looks like an ordinary run with a larger
+   CLS. It is a **local delayed** dump, not a CI median and not a budget
+   reference. `--save-lhr` writes even if extraction then fails.
 4. Do **not** set `cls-budgets.json` from a laptop run.
 5. Push the version bump (and any extract/fixture edits) and wait for
    `cls.yml`. Read `tmp/cls-profile.json` from the artifact: confirm
