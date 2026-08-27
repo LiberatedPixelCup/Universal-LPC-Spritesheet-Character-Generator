@@ -18,6 +18,7 @@ import {
   assertSkipBuildDist,
   checkClsAgainstBudgets,
   cssDelayProxyListenPort,
+  endClientResponse,
   extractClsSample,
   hostHeaderForUpstream,
   lighthouseSettingsForPreset,
@@ -28,6 +29,7 @@ import {
   parseClsProfilePort,
   saveLhrPathForPreset,
   shouldDelayStylesheetPath,
+  startCssDelayProxy,
   stopChildProcess,
   stopLaunchedChrome,
   summarizeRepeats,
@@ -196,6 +198,206 @@ test("assertDelayedStylesheetHits fails closed when delay matched nothing", () =
     () => assertDelayedStylesheetHits(3000, 0),
     /matched 0 stylesheets/,
   );
+});
+
+function listenOn(server: http.Server): Promise<number> {
+  return new Promise((resolve) => {
+    server.listen(0, "127.0.0.1", () => {
+      const addr = server.address();
+      resolve(typeof addr === "object" && addr !== null ? addr.port : 0);
+    });
+  });
+}
+
+function closeHttpServer(server: http.Server): Promise<void> {
+  return new Promise((resolve) => {
+    server.closeAllConnections();
+    server.close(() => resolve());
+  });
+}
+
+function getThrough(url: string): Promise<{ status: number; body: string }> {
+  return new Promise((resolve, reject) => {
+    const req = http.get(url, (res) => {
+      let body = "";
+      res.setEncoding("utf8");
+      res.on("data", (chunk: string) => {
+        body += chunk;
+      });
+      res.on("end", () => {
+        resolve({ status: res.statusCode ?? 0, body });
+      });
+    });
+    req.on("error", reject);
+  });
+}
+
+type ProxyRig = {
+  proxy: http.Server;
+  upstream: http.Server;
+  origin: string;
+  upstreamOrigin: string;
+  hits: { count: number };
+  /** Paths the stand-in preview was actually asked for. */
+  upstreamPaths: string[];
+};
+
+/** Stand-in preview: `/assets/*.css` returns CSS, anything else echoes Host. */
+async function startProxyRig(delayCssMs: number): Promise<ProxyRig> {
+  const upstreamPaths: string[] = [];
+  const upstream = http.createServer((req, res) => {
+    upstreamPaths.push(req.url ?? "");
+    if (req.url?.endsWith(".css") === true) {
+      res.writeHead(200, { "content-type": "text/css" });
+      res.end(".a{color:red}");
+      return;
+    }
+    res.writeHead(200, { "content-type": "text/html" });
+    res.end(req.headers.host ?? "");
+  });
+  const upstreamPort = await listenOn(upstream);
+  const upstreamOrigin = `http://127.0.0.1:${String(upstreamPort)}/`;
+  const hits = { count: 0 };
+  const proxy = await startCssDelayProxy({
+    listenPort: 0,
+    upstreamOrigin,
+    delayCssMs,
+    hits,
+  });
+  const addr = proxy.address();
+  const port = typeof addr === "object" && addr !== null ? addr.port : 0;
+  return {
+    proxy,
+    upstream,
+    origin: `http://127.0.0.1:${String(port)}`,
+    upstreamOrigin,
+    hits,
+    upstreamPaths,
+  };
+}
+
+test("startCssDelayProxy holds /assets/*.css, counts it, and proxies the body", async () => {
+  const rig = await startProxyRig(150);
+  try {
+    const started = Date.now();
+    const css = await getThrough(`${rig.origin}/assets/main-D4rbq9Ei.css`);
+    const heldMs = Date.now() - started;
+    assert.equal(css.status, 200);
+    assert.equal(css.body, ".a{color:red}");
+    assert.ok(heldMs >= 150, `held only ${String(heldMs)}ms`);
+    assert.equal(rig.hits.count, 1);
+
+    const html = await getThrough(`${rig.origin}/`);
+    assert.equal(html.status, 200);
+    assert.equal(rig.hits.count, 1);
+  } finally {
+    await closeHttpServer(rig.proxy);
+    await closeHttpServer(rig.upstream);
+  }
+});
+
+test("startCssDelayProxy sends the upstream Host, not its own listen port", async () => {
+  const rig = await startProxyRig(1);
+  try {
+    const echoed = await getThrough(`${rig.origin}/`);
+    assert.equal(echoed.body, hostHeaderForUpstream(rig.upstreamOrigin));
+    assert.notEqual(echoed.body, new URL(rig.origin).host);
+  } finally {
+    await closeHttpServer(rig.proxy);
+    await closeHttpServer(rig.upstream);
+  }
+});
+
+test("startCssDelayProxy drops a client that aborts during the hold without fetching upstream", async () => {
+  const rig = await startProxyRig(300);
+  try {
+    await new Promise<void>((resolve) => {
+      const req = http.get(`${rig.origin}/assets/main-D4rbq9Ei.css`, (res) => {
+        res.resume();
+      });
+      req.on("error", () => undefined);
+      setTimeout(() => {
+        req.destroy();
+        resolve();
+      }, 20);
+    });
+    await new Promise<void>((resolve) => {
+      setTimeout(resolve, 400);
+    });
+    // Held, so it counts as a delayed stylesheet, but the preview is never
+    // asked for a body no one is waiting on.
+    assert.equal(rig.hits.count, 1);
+    assert.deepEqual(rig.upstreamPaths, []);
+    const after = await getThrough(`${rig.origin}/`);
+    assert.equal(after.status, 200);
+    assert.deepEqual(rig.upstreamPaths, ["/"]);
+  } finally {
+    await closeHttpServer(rig.proxy);
+    await closeHttpServer(rig.upstream);
+  }
+});
+
+test("startCssDelayProxy answers 502 when the preview is gone", async () => {
+  const rig = await startProxyRig(1);
+  await closeHttpServer(rig.upstream);
+  try {
+    const res = await getThrough(`${rig.origin}/`);
+    assert.equal(res.status, 502);
+  } finally {
+    await closeHttpServer(rig.proxy);
+  }
+});
+
+test("startCssDelayProxy rejects when the listen port is taken", async () => {
+  const squatter = http.createServer(() => undefined);
+  const port = await listenOn(squatter);
+  try {
+    await assert.rejects(
+      startCssDelayProxy({
+        listenPort: port,
+        upstreamOrigin: "http://127.0.0.1:1/",
+        delayCssMs: 1,
+        hits: { count: 0 },
+      }),
+      /EADDRINUSE/,
+    );
+  } finally {
+    await closeHttpServer(squatter);
+  }
+});
+
+test("endClientResponse writes once and skips a destroyed response", async () => {
+  const seen: string[] = [];
+  const server = http.createServer((req, res) => {
+    if (req.url === "/destroyed") {
+      res.destroy();
+      endClientResponse(res, 502, "late");
+      seen.push("destroyed-ok");
+      return;
+    }
+    endClientResponse(res, 502, "first");
+    endClientResponse(res, 500, "second");
+    seen.push("ended-ok");
+  });
+  const port = await listenOn(server);
+  try {
+    const first = await getThrough(`http://127.0.0.1:${String(port)}/`);
+    assert.equal(first.status, 502);
+    assert.equal(first.body, "first");
+    await new Promise<void>((resolve) => {
+      const req = http.get(
+        `http://127.0.0.1:${String(port)}/destroyed`,
+        (res) => {
+          res.resume();
+          res.on("end", resolve);
+        },
+      );
+      req.on("error", () => resolve());
+    });
+    assert.deepEqual([...seen].sort(), ["destroyed-ok", "ended-ok"]);
+  } finally {
+    await closeHttpServer(server);
+  }
 });
 
 test("stopLaunchedChrome awaits kill and no-ops when undefined", async () => {

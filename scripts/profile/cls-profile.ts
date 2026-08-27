@@ -23,7 +23,11 @@
 
 import { spawn, spawnSync, type ChildProcess } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import http, { type Server, request as httpRequest } from "node:http";
+import http, {
+  type Server,
+  type ServerResponse,
+  request as httpRequest,
+} from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -753,7 +757,36 @@ function closeServer(server: Server): Promise<void> {
   });
 }
 
-function startCssDelayProxy(options: {
+/**
+ * Reply only if the client is still there. A stylesheet held for
+ * `--delay-css-ms` outlives plenty of navigations, so by the time an error
+ * lands the response is often already destroyed or ended, and `writeHead`
+ * on an ended response throws `ERR_HTTP_HEADERS_SENT`.
+ */
+export function endClientResponse(
+  res: ServerResponse,
+  status: number,
+  body: string,
+): void {
+  if (res.destroyed || res.writableEnded) {
+    return;
+  }
+  if (!res.headersSent) {
+    res.writeHead(status);
+  }
+  res.end(body);
+}
+
+/**
+ * Delay `/assets/*.css` in front of `vite preview`.
+ *
+ * Chrome abandons held stylesheets whenever Lighthouse closes the trace, so
+ * aborts are routine rather than exceptional. Node drops writes to a
+ * destroyed response quietly, but the request still has to be unwound: skip
+ * the upstream fetch when the client is already gone, and release the
+ * upstream socket instead of draining a body nobody will read.
+ */
+export function startCssDelayProxy(options: {
   listenPort: number;
   upstreamOrigin: string;
   delayCssMs: number;
@@ -762,6 +795,8 @@ function startCssDelayProxy(options: {
   const upstream = new URL(options.upstreamOrigin);
   return new Promise((resolve, reject) => {
     const server = http.createServer((clientReq, clientRes) => {
+      clientReq.on("error", () => undefined);
+      clientRes.on("error", () => undefined);
       void (async () => {
         try {
           const reqPath = clientReq.url ?? "/";
@@ -769,6 +804,9 @@ function startCssDelayProxy(options: {
           if (shouldDelayStylesheetPath(reqUrl.pathname)) {
             options.hits.count += 1;
             await sleep(options.delayCssMs);
+          }
+          if (clientReq.destroyed || clientRes.destroyed) {
+            return;
           }
           const headers = { ...clientReq.headers };
           headers.host = hostHeaderForUpstream(options.upstreamOrigin);
@@ -782,27 +820,37 @@ function startCssDelayProxy(options: {
               headers,
             },
             (proxyRes) => {
+              if (clientRes.destroyed) {
+                proxyRes.destroy();
+                return;
+              }
               clientRes.writeHead(proxyRes.statusCode ?? 502, proxyRes.headers);
               proxyRes.pipe(clientRes);
             },
           );
           proxyReq.on("error", (err) => {
-            if (!clientRes.headersSent) {
-              clientRes.writeHead(502);
-            }
-            clientRes.end(String(err));
+            endClientResponse(clientRes, 502, String(err));
+          });
+          clientRes.on("close", () => {
+            proxyReq.destroy();
           });
           clientReq.pipe(proxyReq);
         } catch (err) {
-          if (!clientRes.headersSent) {
-            clientRes.writeHead(500);
-          }
-          clientRes.end(String(err));
+          endClientResponse(clientRes, 500, String(err));
         }
       })();
     });
-    server.on("error", reject);
-    server.listen(options.listenPort, "127.0.0.1", () => resolve(server));
+    const onListenError = (err: Error): void => {
+      reject(err);
+    };
+    server.on("error", onListenError);
+    server.listen(options.listenPort, "127.0.0.1", () => {
+      server.removeListener("error", onListenError);
+      server.on("error", (err) => {
+        process.stderr.write(`CSS delay proxy error: ${err.message}\n`);
+      });
+      resolve(server);
+    });
   });
 }
 
