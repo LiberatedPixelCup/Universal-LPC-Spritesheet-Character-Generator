@@ -14,7 +14,8 @@
  *
  * Options:
  *   --viewport WxH        Explicit size (default 1440x900 = Argos medium desktop)
- *   --preset NAME         Shorthand: mobile | tablet | mediumDesktop | hugeDesktop (same as tests/visual/home.spec.js)
+ *   --preset NAME         Shorthand: mobile | lighthouseMobile | tablet | mediumDesktop | hugeDesktop
+ *                         (Argos sizes from tests/visual/home.spec.js, plus lighthouseMobile 412×823)
  *   --out <file>          Write to file instead of stdout
  *   --out-dir <dir>       Implies --label required; writes <dir>/<label>.txt
  *
@@ -106,7 +107,8 @@ Options:
   --out-dir <dir>        Write <dir>/<label>.txt (requires --label)
   --label <name>         Filename stem when using --out-dir
   --viewport WxH         Default ${DEFAULT_VIEWPORT.width}x${DEFAULT_VIEWPORT.height}
-  --preset NAME          mobile | tablet | mediumDesktop | hugeDesktop (Argos / home.spec.js)
+  --preset NAME          mobile | lighthouseMobile | tablet | mediumDesktop | hugeDesktop
+                         (Argos / home.spec.js, plus lighthouseMobile 412×823)
   --page NAME            ${COMPUTED_STYLE_DUMP_PAGES.join(" | ")} (default: human-male-skintone)
   --no-skintone-modal    Same as --page homepage (palette targets <no match> on other pages)
   --help, -h

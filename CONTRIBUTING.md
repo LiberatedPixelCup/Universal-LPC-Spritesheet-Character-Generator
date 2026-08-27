@@ -305,7 +305,8 @@ Every script in [`package.json`](package.json). Run them from the repository roo
 | `npm run profile:zip:baseline` / `:baseline:quick` | Same runs, written to `tmp/baseline-*.json` | Take a baseline **before** your change |
 | `npm run diff:zip-profile` | Diffs two ZIP-profile JSON files; positive Δ is slower | Comparing baseline against your change |
 | `npm run compute-style-dump` | Dumps computed CSS for one URL for text diffing | Comparing CSS between two branches or worktrees |
-| `npm run compute-style-dump:mobile` | Same at the mobile viewport | Responsive debugging |
+| `npm run compute-style-dump:mobile` | Same at the Argos mobile viewport (390×844) | Responsive debugging |
+| `npm run compute-style-dump:lighthouse-mobile` | Same at Lighthouse mobile (412×823). Not Argos `mobile` | CLS debugging at the PageSpeed viewport |
 | `npm run compute-style-diff-all` | Dumps and diffs both URLs across all Argos viewports and page states | Wide CSS refactors, e.g. a Bulma upgrade |
 | `npm run compute-style-diff-all:preview-ports` | Same against ports 4176 and 4177 | Two `npm run preview` instances |
 

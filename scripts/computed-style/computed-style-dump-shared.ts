@@ -84,9 +84,11 @@ export const COMPUTED_STYLE_DUMP_PAGES: readonly ComputedStyleDumpPage[] = [
   "filters-search-arm",
 ];
 
-/** Same dimensions as tests/visual/home.spec.js (Argos). */
+/** Same dimensions as tests/visual/home.spec.js (Argos), plus Lighthouse mobile. */
 export const VIEWPORT_PRESETS: Record<string, ViewportSize> = {
   mobile: { width: 390, height: 844 },
+  /** Lighthouse / PageSpeed Moto G Power CSS pixels. Not Argos `mobile`. */
+  lighthouseMobile: { width: 412, height: 823 },
   tablet: { width: 834, height: 1112 },
   mediumDesktop: { width: 1440, height: 900 },
   hugeDesktop: { width: 2560, height: 1440 },
