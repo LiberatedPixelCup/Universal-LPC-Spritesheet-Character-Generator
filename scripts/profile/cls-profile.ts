@@ -59,6 +59,9 @@ export const CLS_ONLY_AUDITS = [
   "cls-culprits-insight",
 ] as const;
 
+/** CI delayed lab pin. Changing this invalidates delayed budgets. */
+export const CLS_CI_DELAY_CSS_MS = 3000;
+
 export type ScreenEmulationSettings = {
   mobile: boolean;
   width: number;
@@ -160,7 +163,8 @@ function usage(): string {
     "  --preset NAME      mobile | tablet | mediumDesktop (default: all three)",
     "  --repeat n         Fresh Lighthouse navigations per preset (default 1)",
     "  --out / --json     Write JSON (default: tmp/cls-profile.json)",
-    "  --check            Fail if a preset median exceeds scripts/profile/cls-budgets.json",
+    "  --check            Fail if a preset median exceeds the budgets file",
+    "  --budgets <path>   Budget JSON for --check (default: scripts/profile/cls-budgets.json)",
     "  --save-lhr <path>  Write the raw LHR JSON (per-preset suffix when running more than one)",
     "  --delay-css-ms n   Delay production main / deferred CSS (assets/*.css) by n ms via a local proxy",
   ].join("\n");
@@ -197,6 +201,7 @@ export function parseArgs(argv: readonly string[]): ParsedCli {
   let check = false;
   let saveLhrPath: string | null = null;
   let delayCssMs = 0;
+  let budgetsPath: string | null = null;
   const presets: ClsPreset[] = [];
   for (let i = 0; i < args.length; i++) {
     const a = args[i];
@@ -236,6 +241,9 @@ export function parseArgs(argv: readonly string[]): ParsedCli {
       }
       delayCssMs = n;
       i += 1;
+    } else if (a === "--budgets" && next && !next.startsWith("-")) {
+      budgetsPath = path.resolve(REPO_ROOT, next);
+      i += 1;
     } else if (a === "--check") {
       check = true;
     } else if (
@@ -245,7 +253,8 @@ export function parseArgs(argv: readonly string[]): ParsedCli {
       a === "--preset" ||
       a === "--repeat" ||
       a === "--save-lhr" ||
-      a === "--delay-css-ms"
+      a === "--delay-css-ms" ||
+      a === "--budgets"
     ) {
       throw new Error(`${a} requires a value\n${usage()}`);
     } else {
@@ -259,7 +268,7 @@ export function parseArgs(argv: readonly string[]): ParsedCli {
     check,
     presets: presets.length > 0 ? presets : [...CLS_PRESET_NAMES],
     saveLhrPath,
-    budgetsPath: DEFAULT_BUDGETS,
+    budgetsPath: budgetsPath ?? DEFAULT_BUDGETS,
     delayCssMs,
   };
 }

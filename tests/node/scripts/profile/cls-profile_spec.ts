@@ -9,6 +9,7 @@ import { fileURLToPath } from "node:url";
 import { VIEWPORT_PRESETS } from "../../../../scripts/computed-style/computed-style-dump-shared.ts";
 import {
   CLS_CHROME_FLAGS,
+  CLS_CI_DELAY_CSS_MS,
   CLS_ONLY_AUDITS,
   CLS_PRESET_NAMES,
   checkClsAgainstBudgets,
@@ -57,6 +58,11 @@ test("parseArgs defaults", () => {
   assert.ok(opts.outPath.endsWith(`${path.sep}tmp${path.sep}cls-profile.json`));
   assert.equal(opts.saveLhrPath, null);
   assert.equal(opts.delayCssMs, 0);
+  assert.ok(
+    opts.budgetsPath.endsWith(
+      `${path.sep}scripts${path.sep}profile${path.sep}cls-budgets.json`,
+    ),
+  );
 });
 
 test("parseArgs --preset restricts to one viewport", () => {
@@ -236,6 +242,116 @@ test("parseArgs unknown flag and missing values throw", () => {
   assert.throws(
     () => parseArgs(["node", "cls-profile.ts", "--url"]),
     /requires a value/,
+  );
+  assert.throws(
+    () => parseArgs(["node", "cls-profile.ts", "--budgets"]),
+    /requires a value/,
+  );
+});
+
+test("parseArgs --budgets with --check resolves under the repo root", () => {
+  const opts = parseArgs([
+    "node",
+    "cls-profile.ts",
+    "--check",
+    "--budgets",
+    "tmp/other-budgets.json",
+  ]);
+  assert.ok(!("help" in opts));
+  if ("help" in opts) {
+    return;
+  }
+  assert.equal(opts.check, true);
+  assert.equal(opts.delayCssMs, 0);
+  assert.ok(
+    opts.budgetsPath.endsWith(`${path.sep}tmp${path.sep}other-budgets.json`),
+  );
+});
+
+test("parseArgs --budgets does not imply --check", () => {
+  const opts = parseArgs([
+    "node",
+    "cls-profile.ts",
+    "--budgets",
+    "scripts/profile/cls-budgets.json",
+  ]);
+  assert.ok(!("help" in opts));
+  if ("help" in opts) {
+    return;
+  }
+  assert.equal(opts.check, false);
+  assert.ok(
+    opts.budgetsPath.endsWith(
+      `${path.sep}scripts${path.sep}profile${path.sep}cls-budgets.json`,
+    ),
+  );
+});
+
+test("CLS_CI_DELAY_CSS_MS is the delayed CI pin", () => {
+  assert.equal(CLS_CI_DELAY_CSS_MS, 3000);
+});
+
+test("parseArgs delayed script shape matches profile:cls:delayed", () => {
+  const opts = parseArgs([
+    "node",
+    "cls-profile.ts",
+    "--delay-css-ms",
+    String(CLS_CI_DELAY_CSS_MS),
+    "--out",
+    "tmp/cls-profile-delayed.json",
+  ]);
+  assert.ok(!("help" in opts));
+  if ("help" in opts) {
+    return;
+  }
+  assert.equal(opts.delayCssMs, CLS_CI_DELAY_CSS_MS);
+  assert.equal(opts.check, false);
+  assert.ok(opts.outPath.endsWith(`${path.sep}cls-profile-delayed.json`));
+  assert.ok(
+    opts.budgetsPath.endsWith(
+      `${path.sep}scripts${path.sep}profile${path.sep}cls-budgets.json`,
+    ),
+  );
+});
+
+test("parseArgs baseline delayed script shape", () => {
+  const opts = parseArgs([
+    "node",
+    "cls-profile.ts",
+    "--delay-css-ms",
+    String(CLS_CI_DELAY_CSS_MS),
+    "--out",
+    "tmp/baseline-cls-profile-delayed.json",
+  ]);
+  assert.ok(!("help" in opts));
+  if ("help" in opts) {
+    return;
+  }
+  assert.equal(opts.delayCssMs, CLS_CI_DELAY_CSS_MS);
+  assert.ok(
+    opts.outPath.endsWith(`${path.sep}baseline-cls-profile-delayed.json`),
+  );
+});
+
+test("package.json delayed scripts match CLS_CI_DELAY_CSS_MS", () => {
+  const pkgPath = path.join(
+    path.dirname(fileURLToPath(import.meta.url)),
+    "../../../../package.json",
+  );
+  const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8")) as {
+    scripts: Record<string, string>;
+  };
+  const delayFlag = `--delay-css-ms ${String(CLS_CI_DELAY_CSS_MS)}`;
+  const delayed = pkg.scripts["profile:cls:delayed"];
+  const baselineDelayed = pkg.scripts["profile:cls:baseline:delayed"];
+  assert.equal(typeof delayed, "string");
+  assert.equal(typeof baselineDelayed, "string");
+  assert.ok(delayed.includes(delayFlag), delayed);
+  assert.ok(baselineDelayed.includes(delayFlag), baselineDelayed);
+  assert.ok(delayed.includes("--out tmp/cls-profile-delayed.json"), delayed);
+  assert.ok(
+    baselineDelayed.includes("--out tmp/baseline-cls-profile-delayed.json"),
+    baselineDelayed,
   );
 });
 

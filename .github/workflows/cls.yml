@@ -15,7 +15,7 @@ jobs:
   cls:
     name: CLS (Lighthouse)
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     permissions:
       contents: read
     steps:
@@ -54,9 +54,18 @@ jobs:
         env:
           CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
 
+      - name: Measure delayed lab CLS
+        if: ${{ !cancelled() }}
+        run: npm run profile:cls:delayed -- --repeat 3
+        env:
+          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+          CLS_PROFILE_PORT: 4189
+
       - name: Upload CLS profile
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: cls-profile
-          path: tmp/cls-profile.json
+          path: |
+            tmp/cls-profile.json
+            tmp/cls-profile-delayed.json

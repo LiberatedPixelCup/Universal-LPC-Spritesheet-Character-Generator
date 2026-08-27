@@ -12,10 +12,19 @@ Lab CLS is Lighthouse's `cumulative-layout-shift` audit on a **production**
 `vite preview` of the bare homepage. It is not `window.profiler.snapshot()`,
 not PageSpeed Insights field data, and not an Argos screenshot.
 
-Google's "good" lab CLS is **≤ 0.1**. The first committed budgets in
-[`scripts/profile/cls-budgets.json`](scripts/profile/cls-budgets.json) are
-**regression slack around the CI median**, not that bar. Do not treat a green
-`--check` as "CLS is good."
+Google's "good" lab CLS is **≤ 0.1**. There are **two labs**, and a green
+un-delayed `--check` is not "the jump is gone":
+
+- Un-delayed
+  [`scripts/profile/cls-budgets.json`](scripts/profile/cls-budgets.json) is
+  the **hydrate floor** (CSS already on the page). Slack around the
+  un-delayed CI median, not Google's bar.
+- Delayed CI (`--delay-css-ms 3000`, `CLS_CI_DELAY_CSS_MS`) is the **jump
+  gate**. Budgets for that lab will live in
+  `scripts/profile/cls-budgets-delayed.json` after the first delayed CI
+  artifact (`delayCssMs` 3000). Until then the delayed step is report-only.
+
+Do not treat either green run as "CLS is good."
 
 ## 2. Viewports and the `mobile` name collision
 
@@ -50,18 +59,18 @@ equal PSI.** Matching the Moto G Power viewport and UA makes it the closest
 comparable, but the value is a **regression signal**, not a PSI prediction. Do
 not "fix" a gap against PSI by changing throttling.
 
-**Localhost still under-exposes deferred CSS.** Production `index.html` links
-`/assets/main-*.css` in the head. Applied Slow 4G against `127.0.0.1` still
-serves that file in milliseconds, so hydrate often happens on an already-styled
-page. CI medians around 0.000 / 0.003 / 0.010 (mobile / tablet / medium
-desktop) with `layout-shifts` nodes populated are a successful lab of *this*
-preview, not a PSI clone and not proof that tablet/desktop have no visible
-jump on a real network.
+**Localhost still under-exposes deferred CSS on the un-delayed lab.**
+Production `index.html` links `/assets/main-*.css` in the head. Applied Slow
+4G against `127.0.0.1` still serves that file in milliseconds, so hydrate
+often happens on an already-styled page. Un-delayed CI medians around 0.000 /
+0.003 / 0.010 (mobile / tablet / medium desktop) with `layout-shifts` nodes
+populated are a successful lab of *this* preview, not a PSI clone and not
+proof that tablet/desktop have no visible jump on a real network.
 
-To reproduce the shell→styled jump **locally**, pass `--delay-css-ms` (see
-Commands). Do **not** pass that flag in `cls.yml`; budgets stay on the
-un-delayed CI lab. A delayed or hosted Lighthouse run is a debug / follow-up
-measurement, not a replacement for the gate.
+The **delayed** CI step (`profile:cls:delayed`, `--delay-css-ms 3000`) is the
+tablet / medium-desktop jump lab. Local `--delay-css-ms` at a value other
+than that pin is still debug, not a budget source. Never write a delayed
+median into `cls-budgets.json`.
 
 ## 4. Commands
 
@@ -69,7 +78,10 @@ measurement, not a replacement for the gate.
 npm run profile:cls
 npm run profile:cls:baseline
 npm run profile:cls:check
+npm run profile:cls:delayed
+npm run profile:cls:baseline:delayed
 npm run diff:cls-profile -- tmp/baseline-cls-profile.json tmp/cls-profile.json
+npm run diff:cls-profile -- tmp/baseline-cls-profile-delayed.json tmp/cls-profile-delayed.json
 ```
 
 The script runs `vite build` then `vite preview` on `127.0.0.1` (default port
@@ -84,9 +96,10 @@ which production users do not get.
 | `--repeat N` | Navigations per preset. Default **1** locally; CI uses **3**. `--check` gates on the **median**. |
 | `--url http://127.0.0.1:4173` | Attach to an existing production preview (trailing slash stored). Still appends `?debug=false`. With `--delay-css-ms`, Lighthouse navigates the **proxy**, not this origin. |
 | `--out` / `--json` | JSON path, resolved against the repo root. Default `tmp/cls-profile.json`. `:baseline` writes `tmp/baseline-cls-profile.json`. |
-| `--check` | Compare medians to `scripts/profile/cls-budgets.json`. Unknown keys in that file error. |
+| `--check` | Compare medians to the budgets file (`--budgets`, default `scripts/profile/cls-budgets.json`). Unknown keys in that file error. |
+| `--budgets <path>` | Budget JSON for `--check`, resolved against the repo root. Default `scripts/profile/cls-budgets.json`. The delayed check (once gated) passes `scripts/profile/cls-budgets-delayed.json`. |
 | `--save-lhr <path>` | Write the raw Lighthouse result **before** extract. One preset: that path as-is. Several: `-<preset>` before the extension. A missing CLS audit or `runtimeError` still leaves the dump. Use it to inspect a failed run (see Local vs CI) and to refresh the committed fixture (see Upgrading). |
-| `--delay-css-ms n` | **Local debug only** (not CI). Insert a proxy that waits `n` ms before serving `/assets/main-*.css` and `/assets/load-deferred-styles-*.css`. Default: off. Start around 2000–4000 ms. The JSON records `delayCssMs`. Never mix a delayed run into `cls-budgets.json`. **Ports:** with no `--url`, proxy listens on **4179** and `vite preview` on **4180**. With `--url http://127.0.0.1:4173/`, proxy listens on **4179** and Lighthouse uses that origin (CSS is delayed). With `--url` already on **4179**, proxy listens on **4180** so it does not collide with the preview. The proxy rewrites `Host` to the preview origin (for example `127.0.0.1:4180`), not the listen port. |
+| `--delay-css-ms n` | Insert a proxy that waits `n` ms before serving `/assets/main-*.css` and `/assets/load-deferred-styles-*.css`. Default: off. CI delayed step is pinned at **3000** (`CLS_CI_DELAY_CSS_MS` in `cls-profile.ts`; `profile:cls:delayed`). Local debug may use another value; that is not a budget source. The JSON records `delayCssMs`. Never write a delayed median into `cls-budgets.json`. **Ports:** with no `--url`, proxy listens on **4179** and `vite preview` on **4180**. With `--url http://127.0.0.1:4173/`, proxy listens on **4179** and Lighthouse uses that origin (CSS is delayed). With `--url` already on **4179**, proxy listens on **4180** so it does not collide with the preview. The proxy rewrites `Host` to the preview origin (for example `127.0.0.1:4180`), not the listen port. CI delayed uses `CLS_PROFILE_PORT=4189` (proxy 4189 / preview 4190) so a leftover un-delayed preview cannot `EADDRINUSE` the second step. |
 | `--help` / `-h` | Usage. |
 
 Chrome resolution, in order: `CHROME_PATH` (CI) → `chrome-launcher`
@@ -103,7 +116,8 @@ not** add `--hide-scrollbars`: that would mask wrap-driven shift.
 Exit codes: `profile:cls` exits 0 on a completed run. `profile:cls:check` exits
 **1** if any viewport is over budget (or a budgeted preset is missing), after
 printing the table. `--check` validates the budgets file **before** measuring,
-so a missing or malformed file fails in seconds rather than after a full run.
+so a missing or malformed file (including a bad `--budgets` path) fails in
+seconds rather than after a full run.
 A crashed navigation inside `--repeat` **aborts that preset**; there is no
 2-of-3 median. `diff:cls-profile` always exits 0.
 
@@ -137,44 +151,53 @@ ok/over). Details live in the JSON. Use `process.stdout.write` /
   `delayCssMs` (0 means no CSS-delay proxy).
 - Raising a budget is a **deliberate commit**, same rule as
   `metadata:size:check`. Never paste a laptop median into
-  `cls-budgets.json`.
+  `cls-budgets.json`. Never paste a delayed median into that file.
 
 ## 6. Local vs CI, and reading the artifact
 
 Budgets are **CI medians plus slack**, not laptop numbers. macOS vs Linux
 differs on fonts, scrollbars, and CPU. Compare local-to-local; treat GitHub
-as the gate.
+as the gate. Re-baseline each budget file from its matching JSON
+(`delayCssMs` 0 vs 3000).
 
 How to get the CI numbers:
 
 1. Open the **CLS (Lighthouse)** check on the workflow run (`.github/workflows/cls.yml`).
 2. Artifacts → **`cls-profile`**.
-3. Inside: `tmp/cls-profile.json`.
-4. Read each preset's `summary.median`, plus `lighthouseVersion` and Chrome
-   provenance, before rewriting budgets.
+3. Inside, at the artifact **root** (GitHub `upload-artifact` strips the
+   common `tmp/` prefix): `cls-profile.json` (un-delayed) and
+   `cls-profile-delayed.json` (`delayCssMs` 3000).
+4. Read each preset's `summary.median`, plus `lighthouseVersion`,
+   `delayCssMs`, and Chrome provenance, before rewriting the matching
+   budgets file.
 
-That artifact is **only** `tmp/cls-profile.json`. There is no raw Lighthouse
-result in it. Culprits in that JSON are enough for a normal over-budget
-failure. If nodes are empty, the run printed the empty-culprits warning, or
-you need Lighthouse's own tables, re-run the **same** `--preset` locally
-with **no** `--delay-css-ms` (matching CI) and `--save-lhr`:
+There is no raw Lighthouse result in the artifact. Culprits in those JSON
+files are enough for a normal over-budget failure. If nodes are empty, the
+run printed the empty-culprits warning, or you need Lighthouse's own tables,
+re-run the **same** `--preset` locally with `--save-lhr` and the **same
+delay as that lab** (none vs `--delay-css-ms 3000`):
 
 ```bash
 npm run profile:cls -- --preset tablet --repeat 1 --save-lhr tmp/lhr-tablet.full.json
+npm run profile:cls:delayed -- --preset tablet --repeat 1 --save-lhr tmp/lhr-tablet-delayed.full.json
 ```
 
-Do not use that dump as a budget. Do not compare it to
+Do not use those dumps as a budget. Do not compare them to
 `tests/fixtures/lighthouse/lhr-delayed.json` (a delayed local trim for
 extract tests, not a CI dump).
 
-Every re-baseline reads the `cls-profile` artifact. Do not skip it.
+Every re-baseline reads the matching file from the `cls-profile` artifact.
+Do not skip it.
 
 ## 7. Finding the shifter
 
-1. Open `tmp/cls-profile.json` and read `layout-shifts` nodes (selector +
-   score + `subItems`).
+1. For the hydrate floor, open `tmp/cls-profile.json` (or the un-delayed
+   artifact file) and read `layout-shifts` nodes (selector + score +
+   `subItems`). For the tablet / medium-desktop jump, open
+   `tmp/cls-profile-delayed.json` or a local `profile:cls:delayed` run —
+   not the un-delayed file.
 2. If those nodes are empty or you need Lighthouse's own tables, `--save-lhr`
-   locally (see Local vs CI). Then dumps.
+   locally with the **same** delay as that lab (see Local vs CI). Then dumps.
 3. Map the node to a dump target: `#header-left`, `#mithril-filters > div`,
    the download box, a `.loading-shell-*` class.
 4. Only then use DevTools Performance → Experience. Agents: do not ask the
@@ -288,15 +311,19 @@ Pinned **exact** in `package.json` (no caret).
    `delayCssMs` field. The fixture looks like an ordinary run with a larger
    CLS. It is a **local delayed** dump, not a CI median and not a budget
    reference. `--save-lhr` writes even if extraction then fails.
-4. Do **not** set `cls-budgets.json` from a laptop run.
+4. Do **not** set `cls-budgets.json` or delayed budgets from a laptop run.
 5. Push the version bump (and any extract/fixture edits) and wait for
-   `cls.yml`. Read `tmp/cls-profile.json` from the artifact: confirm
-   `lighthouseVersion` is the new pin, culprits are still populated (or the
-   warning is expected), and record each preset's median.
-6. In **the same PR**, write new budgets (CI median + the usual slack, about
-   +0.005 or ~20%, whichever is larger) and keep `:check` on. If the new
-   median is *lower*, still rewrite the file so slack is relative to the new
-   measurement, not a mix of two Lighthouse versions.
+   `cls.yml`. One run produces both artifact files. Confirm
+   `lighthouseVersion` is the new pin, `delayCssMs` is 0 vs 3000 on the
+   matching file, culprits are still populated (or the warning is expected),
+   and record each preset's median.
+6. In **the same PR**, rewrite **both** budget files (CI median + the usual
+   slack). Keep un-delayed `:check` on. Delayed `:check:delayed` lands after
+   the first delayed artifact. If a new median is *lower*, still rewrite so
+   slack is relative to the new measurement, not a mix of two Lighthouse
+   versions. Changing `CLS_CI_DELAY_CSS_MS` is the same class of
+   measurement-definition change: re-baseline delayed budgets from CI in
+   the same PR.
 7. PR description: old pin → new pin, per-preset old median / new median /
    new budget, and whether the culprit audit ID changed.
 
@@ -320,11 +347,11 @@ against an existing preview (or a full run). Confirm Chrome still launches
 (`CHROME_PATH` on CI, installed Chrome locally, Playwright Chromium
 fallback).
 
-**Do not** rebase `cls-budgets.json` for a launcher-only bump unless CI CLS
-actually moved. A launcher bump that also changes default `chromeFlags` *can*
-move CLS; compare provenance `chromeFlags` in the new artifact to the
-previous one. If flags changed, treat it like a Lighthouse bump and
-re-baseline from CI in the same PR.
+**Do not** rebase `cls-budgets.json` (or delayed budgets) for a launcher-only
+bump unless CI CLS actually moved. A launcher bump that also changes default
+`chromeFlags` *can* move CLS; compare provenance `chromeFlags` in the new
+artifact to the previous one. If flags changed, treat it like a Lighthouse
+bump and re-baseline **both** labs from CI in the same PR.
 
 ### Chrome in CI (not an npm package)
 
@@ -353,12 +380,23 @@ check named **CLS (Lighthouse)**. It runs on `push` / `pull_request` to
 - `npm run profile:cls:check -- --repeat 3` against
   [`scripts/profile/cls-budgets.json`](scripts/profile/cls-budgets.json)
   (un-delayed CI median plus slack). **No `--delay-css-ms`.**
-- Uploads `tmp/cls-profile.json` as artifact `cls-profile`, `if: always()`.
-  The full LHR is not attached; inspect with `--save-lhr` locally.
-- Timeout ~30 minutes: production build plus **9** applied-throttling
-  navigations (3 presets × 3 repeats). A timeout is not a CLS regression.
-- The check fails only when a viewport **exceeds the committed budget**, not
-  when CLS is above Google's 0.1.
+- Then `npm run profile:cls:delayed -- --repeat 3` with
+  `if: ${{ !cancelled() }}` and `CLS_PROFILE_PORT: 4189` (proxy 4189 /
+  preview 4190) so a leftover un-delayed preview cannot `EADDRINUSE` the
+  second run. Delayed is **report-only** until
+  `scripts/profile/cls-budgets-delayed.json` exists; the job currently
+  fails only on the un-delayed `:check`. The delayed step still runs after
+  an un-delayed budget failure so the jump lab is in the artifact.
+- Uploads both `tmp/cls-profile.json` and `tmp/cls-profile-delayed.json`
+  as artifact `cls-profile`, `if: always()`. The download has those
+  filenames at the artifact root (`tmp/` stripped). The full LHR is not
+  attached; inspect with `--save-lhr` locally at the same delay as that lab.
+- Timeout **45** minutes: two sequential labs, each a production build plus
+  **9** applied-throttling navigations (3 presets × 3 repeats). A timeout
+  is not a CLS regression.
+- The un-delayed check fails when a viewport **exceeds the committed
+  budget**, not when CLS is above Google's 0.1. Delayed is report-only
+  until its budgets file exists.
 
 ## 12. Known risks
 
@@ -375,9 +413,9 @@ Lighthouse closed the trace before hydrate. Do not lower budgets. Raise
 Lighthouse `nonSimulatedSettingsOverrides`) or re-validate with a
 `PerformanceObserver({ type: "layout-shift" })` through catalog-ready.
 
-**CI runtime.** Nine applied-throttling navigations make this the slowest new
-job. A timeout is not a CLS regression; raise `timeout-minutes` if the build
-itself is healthy.
+**CI runtime.** Eighteen applied-throttling navigations (two labs) make this
+the slowest new job. A timeout is not a CLS regression; raise
+`timeout-minutes` if the build itself is healthy.
 
 **`npm ci` cost.** Lighthouse's tree slows **every** workflow that runs
 `npm ci`, not only `cls.yml`. That cost was accepted for a pinned version
@@ -390,14 +428,16 @@ upgrading). Do not widen slack to hide it.
 **Not PageSpeed.** Applied `devtools` throttling vs PSI `simulate`. A gap vs
 PSI is expected.
 
-**Localhost CSS is not Slow 4G.** Un-delayed `profile:cls` on `127.0.0.1` can
-read ~0 while PSI is ~0.09 because `main-*.css` is local. Use
-`--delay-css-ms` locally (or a hosted preview) to see the jump. Do not put
-`--delay-css-ms` on `cls.yml` or paste a delayed median into budgets.
+**Localhost CSS is not Slow 4G.** Un-delayed `profile:cls` on `127.0.0.1`
+can read ~0 while PSI is ~0.09 because `main-*.css` is local. That hydrate
+floor is still a real regression lab. The delayed CI step (`--delay-css-ms
+3000`) is the jump lab for tablet / medium desktop.
 
-**`--delay-css-ms` is not CI.** Mixing it into the gate would make a CSS-timing
-change and a layout change look the same, and would add ~3s per stylesheet
-request on every navigation.
+**Do not mix labs in one budget file.** Un-delayed medians (`delayCssMs` 0)
+go in `cls-budgets.json`. Delayed medians (`delayCssMs` 3000) will go in
+`cls-budgets-delayed.json`. 3000 ms is part of the delayed metric
+definition (`CLS_CI_DELAY_CSS_MS`). Changing the pin without re-baselining
+delayed budgets is the same class of error as a Lighthouse bump.
 
 **Local ≠ CI.** macOS vs Linux fonts and scrollbars. Never paste a laptop
 median into `cls-budgets.json`.

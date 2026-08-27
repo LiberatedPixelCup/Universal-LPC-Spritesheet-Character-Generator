@@ -24,20 +24,28 @@ This is **not** Argos and **not** `window.profiler`:
 ```bash
 npm run profile:cls
 npm run profile:cls -- --preset mobile
-npm run profile:cls -- --preset tablet --delay-css-ms 3000
 npm run profile:cls:check
+npm run profile:cls:delayed
+npm run profile:cls:baseline:delayed
 ```
 
 Production `vite preview` with `?debug=false`. Default port 4179. Culprits
 are in the JSON `layout-shifts` nodes, not the CLS audit `debugdata`.
 
-Un-delayed localhost CLS is a **regression** lab (CSS arrives immediately).
-To reproduce deferred-CSS jump, pass `--delay-css-ms` locally — **never** in
-CI or when writing `cls-budgets.json`. See [CLS.md](../../../CLS.md).
+Two labs:
+
+- Un-delayed `profile:cls:check` is the **hydrate floor**
+  ([`cls-budgets.json`](../../../scripts/profile/cls-budgets.json)).
+- Delayed `profile:cls:delayed` (`--delay-css-ms 3000`) is the **jump
+  gate**. Do not paste delayed medians into `cls-budgets.json`. Delayed
+  budgets (`cls-budgets-delayed.json`) come from a delayed CI artifact
+  (`delayCssMs` 3000).
+
+See [CLS.md](../../../CLS.md).
 
 Do not hand-edit [`scripts/profile/cls-budgets.json`](../../../scripts/profile/cls-budgets.json)
-without a CI `cls-profile` artifact. Local macOS medians will not match Linux
-CI.
+or delayed budgets without the matching CI `cls-profile` artifact. Local
+macOS medians will not match Linux CI.
 
 After a Lighthouse bump, refresh
 [`tests/fixtures/lighthouse/lhr-delayed.json`](../../../tests/fixtures/lighthouse/lhr-delayed.json)
@@ -46,11 +54,11 @@ not reshape the JSON by eye.
 
 ## Debug
 
-1. Read `layout-shifts` nodes in `tmp/cls-profile.json` (local run or the
-   CI `cls-profile` artifact). If un-delayed CLS is ~0 but the user sees a
-   jump, re-run with `--delay-css-ms` (local only) at the same `--preset`.
-   If culprits are empty or you need the raw audits, `--save-lhr` locally
-   — the GitHub artifact is not an LHR. [CLS.md](../../../CLS.md) section 6.
+1. Hydrate floor: `layout-shifts` nodes in `tmp/cls-profile.json`. Jump:
+   `tmp/cls-profile-delayed.json` or `profile:cls:delayed` at the same
+   `--preset`. If culprits are empty or you need the raw audits,
+   `--save-lhr` locally with the **same** delay as that lab — the GitHub
+   artifact is not an LHR. [CLS.md](../../../CLS.md) section 6.
 2. Dump the **matching** viewport: CLS `mobile` →
    `npm run compute-style-dump:lighthouse-mobile` (412×823), **not**
    `compute-style-dump:mobile` (Argos 390). Tablet / mediumDesktop use the
@@ -58,5 +66,6 @@ not reshape the JSON by eye.
 3. Dumps are post-hydrate. A hydrate-only jump will not show as a single-URL
    dump diff.
 
-After a CSS change run `profile:cls` **and** `npm run test:visual`. New skill
-folder: `npm run skills:link` so `.claude/skills/cls` exists (gitignored).
+After a CSS change run un-delayed **and** delayed `profile:cls` **and**
+`npm run test:visual`. New skill folder: `npm run skills:link` so
+`.claude/skills/cls` exists (gitignored).

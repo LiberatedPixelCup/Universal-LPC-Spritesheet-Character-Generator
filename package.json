@@ -47,6 +47,8 @@
     "profile:cls": "node scripts/profile/cls-profile.ts",
     "profile:cls:baseline": "node scripts/profile/cls-profile.ts --out tmp/baseline-cls-profile.json",
     "profile:cls:check": "node scripts/profile/cls-profile.ts --check",
+    "profile:cls:delayed": "node scripts/profile/cls-profile.ts --delay-css-ms 3000 --out tmp/cls-profile-delayed.json",
+    "profile:cls:baseline:delayed": "node scripts/profile/cls-profile.ts --delay-css-ms 3000 --out tmp/baseline-cls-profile-delayed.json",
     "profile:load": "node scripts/profile/app-load-profile.ts",
     "profile:load:baseline": "node scripts/profile/app-load-profile.ts --out tmp/baseline-app-load-profile.json",
     "diff:app-load-profile": "node scripts/profile/diff-app-load-profile.ts",

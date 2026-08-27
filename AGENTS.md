@@ -27,7 +27,8 @@ local links. Walkthroughs are in [ARCHITECTURE.md](ARCHITECTURE.md) and
   ([catalog](.agents/skills/catalog/SKILL.md))
 - Start with `npm test`, or run `npm install` after a lockfile conflict
   (`npm run lockfile:fix`)
-- Hand-edit `cls-budgets.json` without a CI `cls-profile` artifact
+- Hand-edit `cls-budgets.json` or `cls-budgets-delayed.json` without the
+  matching CI `cls-profile` artifact (`delayCssMs` 0 vs 3000)
   ([cls](.agents/skills/cls/SKILL.md), [CLS.md](CLS.md))
 
 ## After you edit
