@@ -49,14 +49,17 @@ jobs:
       - name: Install dependencies
         run: npm ci --ignore-scripts
 
+      - name: Build production
+        run: npm run build
+
       - name: Measure lab CLS
-        run: npm run profile:cls:check -- --repeat 3
+        run: npm run profile:cls:check -- --repeat 3 --skip-build
         env:
           CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
 
       - name: Measure delayed lab CLS
         if: ${{ !cancelled() }}
-        run: npm run profile:cls:delayed -- --repeat 3
+        run: npm run profile:cls:delayed -- --repeat 3 --skip-build
         env:
           CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
           # Preview is this + 1 when delaying CSS. Not 4189: Node fetch

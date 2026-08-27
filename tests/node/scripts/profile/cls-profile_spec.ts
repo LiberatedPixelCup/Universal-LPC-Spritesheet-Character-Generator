@@ -14,6 +14,7 @@ import {
   CLS_CI_DELAY_CSS_MS,
   CLS_ONLY_AUDITS,
   CLS_PRESET_NAMES,
+  assertSkipBuildDist,
   checkClsAgainstBudgets,
   cssDelayProxyListenPort,
   extractClsSample,
@@ -61,6 +62,7 @@ test("parseArgs defaults", () => {
   assert.ok(opts.outPath.endsWith(`${path.sep}tmp${path.sep}cls-profile.json`));
   assert.equal(opts.saveLhrPath, null);
   assert.equal(opts.delayCssMs, 0);
+  assert.equal(opts.skipBuild, false);
   assert.ok(
     opts.budgetsPath.endsWith(
       `${path.sep}scripts${path.sep}profile${path.sep}cls-budgets.json`,
@@ -370,6 +372,28 @@ test("delayed CI profile port keeps vite preview off Node's blocked 4190", () =>
   );
   assert.match(yml, /CLS_PROFILE_PORT:\s*4188/);
   assert.doesNotMatch(yml, /CLS_PROFILE_PORT:\s*4189/);
+  assert.match(yml, /name: Build production/);
+  assert.match(yml, /npm run build/);
+  assert.match(yml, /profile:cls:check -- --repeat 3 --skip-build/);
+  assert.match(yml, /profile:cls:delayed -- --repeat 3 --skip-build/);
+});
+
+test("parseArgs --skip-build does not attach --url", () => {
+  const opts = parseArgs(["node", "cls-profile.ts", "--skip-build"]);
+  assert.ok(!("help" in opts));
+  if ("help" in opts) {
+    return;
+  }
+  assert.equal(opts.skipBuild, true);
+  assert.equal(opts.url, null);
+});
+
+test("assertSkipBuildDist throws when dist/index.html is missing", () => {
+  const missing = path.join(os.tmpdir(), "cls-no-dist", "index.html");
+  assert.throws(
+    () => assertSkipBuildDist(missing),
+    /--skip-build requires dist/,
+  );
 });
 
 test("waitForHttpOk probes with node:http", async () => {

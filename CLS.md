@@ -85,16 +85,18 @@ npm run diff:cls-profile -- tmp/baseline-cls-profile-delayed.json tmp/cls-profil
 ```
 
 The script runs `vite build` then `vite preview` on `127.0.0.1` (default port
-**4179**, override `CLS_PROFILE_PORT`) unless you pass `--url`. The measured
-URL is always the bare homepage with **`?debug=false`**. `vite preview` on
-loopback would otherwise auto-enable `window.DEBUG` (profiler + `debugLog`),
-which production users do not get.
+**4179**, override `CLS_PROFILE_PORT`) unless you pass `--url` or
+`--skip-build`. `--skip-build` reuses existing `dist/` and still starts
+preview. The measured URL is always the bare homepage with **`?debug=false`**.
+`vite preview` on loopback would otherwise auto-enable `window.DEBUG`
+(profiler + `debugLog`), which production users do not get.
 
 | Flag | Effect |
 | --- | --- |
 | `--preset mobile` / `tablet` / `mediumDesktop` | One viewport. Default is all three. `lighthouseMobile` is a dump preset, not a `profile:cls` flag. |
 | `--repeat N` | Navigations per preset. Default **1** locally; CI uses **3**. `--check` gates on the **median**. |
-| `--url http://127.0.0.1:4173` | Attach to an existing production preview (trailing slash stored). Still appends `?debug=false`. With `--delay-css-ms`, Lighthouse navigates the **proxy**, not this origin. |
+| `--url http://127.0.0.1:4173` | Attach to an existing production preview (trailing slash stored). Still appends `?debug=false`. With `--delay-css-ms`, Lighthouse navigates the **proxy**, not this origin. Skips `vite build` and `vite preview`. |
+| `--skip-build` | Reuse existing `dist/` and still spawn `vite preview`. Fails if `dist/index.html` is missing. CI uses this after a dedicated **Build production** step so rsync noise is not in the Lighthouse log. |
 | `--out` / `--json` | JSON path, resolved against the repo root. Default `tmp/cls-profile.json`. `:baseline` writes `tmp/baseline-cls-profile.json`. |
 | `--check` | Compare medians to the budgets file (`--budgets`, default `scripts/profile/cls-budgets.json`). Unknown keys in that file error. |
 | `--budgets <path>` | Budget JSON for `--check`, resolved against the repo root. Default `scripts/profile/cls-budgets.json`. The delayed check (once gated) passes `scripts/profile/cls-budgets-delayed.json`. |
@@ -376,11 +378,13 @@ check named **CLS (Lighthouse)**. It runs on `push` / `pull_request` to
   font-metric-dependent.
 - **rsync** is installed. `vite build` shells out to `rsync -ahu --delete
   --info=progress2` on Linux (`--info=progress2` needs rsync 3.x). A missing
-  rsync fails the build, which reads as a CLS failure.
-- `npm run profile:cls:check -- --repeat 3` against
+  rsync fails the **Build production** step. Both labs reuse that `dist/`
+  (`--skip-build`); they do not rebuild. Delayed only inserts the CSS-delay
+  proxy — it does not need a second production bundle.
+- `npm run profile:cls:check -- --repeat 3 --skip-build` against
   [`scripts/profile/cls-budgets.json`](scripts/profile/cls-budgets.json)
   (un-delayed CI median plus slack). **No `--delay-css-ms`.**
-- Then `npm run profile:cls:delayed -- --repeat 3` with
+- Then `npm run profile:cls:delayed -- --repeat 3 --skip-build` with
   `if: ${{ !cancelled() }}` and `CLS_PROFILE_PORT: 4188` (proxy 4188 /
   preview 4189) so a leftover un-delayed preview cannot `EADDRINUSE` the
   second run. Delayed is **report-only** until
@@ -391,9 +395,9 @@ check named **CLS (Lighthouse)**. It runs on `push` / `pull_request` to
   as artifact `cls-profile`, `if: always()`. The download has those
   filenames at the artifact root (`tmp/` stripped). The full LHR is not
   attached; inspect with `--save-lhr` locally at the same delay as that lab.
-- Timeout **45** minutes: two sequential labs, each a production build plus
-  **9** applied-throttling navigations (3 presets × 3 repeats). A timeout
-  is not a CLS regression.
+- Timeout **45** minutes: one production build plus two sequential labs,
+  **9** applied-throttling navigations each (3 presets × 3 repeats). A
+  timeout is not a CLS regression.
 - The un-delayed check fails when a viewport **exceeds the committed
   budget**, not when CLS is above Google's 0.1. Delayed is report-only
   until its budgets file exists.

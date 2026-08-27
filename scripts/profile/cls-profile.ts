@@ -9,6 +9,7 @@
  *   node scripts/profile/cls-profile.ts
  *   node scripts/profile/cls-profile.ts --preset mobile --url http://127.0.0.1:4173
  *   node scripts/profile/cls-profile.ts --check --repeat 3
+ *   node scripts/profile/cls-profile.ts --skip-build --check --repeat 3
  *   node scripts/profile/cls-profile.ts --preset tablet --delay-css-ms 3000
  *
  * Environment:
@@ -21,7 +22,7 @@
  */
 
 import { spawn, spawnSync, type ChildProcess } from "node:child_process";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import http, { type Server, request as httpRequest } from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -154,6 +155,7 @@ export type CliOpts = {
   saveLhrPath: string | null;
   budgetsPath: string;
   delayCssMs: number;
+  skipBuild: boolean;
 };
 
 export type ParsedCli = { help: true } | CliOpts;
@@ -166,6 +168,7 @@ function usage(): string {
   return [
     "Usage: node scripts/profile/cls-profile.ts [options]",
     "  --url <origin>     Attach to an already-running preview (skips vite build + preview)",
+    "  --skip-build       Reuse existing dist/ (still starts vite preview unless --url)",
     "  --preset NAME      mobile | tablet | mediumDesktop (default: all three)",
     "  --repeat n         Fresh Lighthouse navigations per preset (default 1)",
     "  --out / --json     Write JSON (default: tmp/cls-profile.json)",
@@ -208,6 +211,7 @@ export function parseArgs(argv: readonly string[]): ParsedCli {
   let saveLhrPath: string | null = null;
   let delayCssMs = 0;
   let budgetsPath: string | null = null;
+  let skipBuild = false;
   const presets: ClsPreset[] = [];
   for (let i = 0; i < args.length; i++) {
     const a = args[i];
@@ -252,6 +256,8 @@ export function parseArgs(argv: readonly string[]): ParsedCli {
       i += 1;
     } else if (a === "--check") {
       check = true;
+    } else if (a === "--skip-build") {
+      skipBuild = true;
     } else if (
       a === "--out" ||
       a === "--json" ||
@@ -276,6 +282,7 @@ export function parseArgs(argv: readonly string[]): ParsedCli {
     saveLhrPath,
     budgetsPath: budgetsPath ?? DEFAULT_BUDGETS,
     delayCssMs,
+    skipBuild,
   };
 }
 
@@ -813,6 +820,16 @@ function runViteBuild(): void {
   }
 }
 
+export function assertSkipBuildDist(
+  indexPath: string = path.join(REPO_ROOT, "dist", "index.html"),
+): void {
+  if (!existsSync(indexPath)) {
+    throw new Error(
+      "--skip-build requires dist/index.html; run npm run build first",
+    );
+  }
+}
+
 async function resolveChromePath(): Promise<string> {
   const env = process.env.CHROME_PATH;
   if (env !== undefined && env !== "") {
@@ -953,7 +970,11 @@ export async function main(
   let chrome: Awaited<ReturnType<typeof launch>> | undefined;
   try {
     if (attachedUrl === null) {
-      runViteBuild();
+      if (opts.skipBuild) {
+        assertSkipBuildDist();
+      } else {
+        runViteBuild();
+      }
       preview = spawn(
         vitePreviewBin(),
         [

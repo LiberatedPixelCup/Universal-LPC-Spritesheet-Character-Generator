@@ -319,7 +319,8 @@ Every script in [`package.json`](package.json). Run them from the repository roo
 `profile:zip` variants and the computed-style scripts need `dist/` to exist
 (`npm run dev` or `npm run build` once). `profile:app` starts Vite serve.
 `profile:load` and `profile:cls` run `vite build` then `vite preview`
-(production compact JSON). `profile:app` / `profile:load` / ZIP scripts need
+(production compact JSON) unless `profile:cls` is given `--url` or
+`--skip-build`. `profile:app` / `profile:load` / ZIP scripts need
 Chromium (`npx playwright install`). `profile:cls` needs Chrome
 (`chrome-launcher`, or `CHROME_PATH` in CI). Details:
 [PERFORMANCE_PROFILING.md](PERFORMANCE_PROFILING.md),
@@ -346,7 +347,7 @@ statuses run on pull requests to `master`. All use Node 24.
 | **Test browsers** | `ci.yml` | `npm run test:node:coverage`, then `npm run test:browser:coverage` under Xvfb | A Node or browser spec fails. A patch miss is printed in the log and fails **`codecov/patch`**, not this job |
 | **Validate site sources** | `validate-site-sources.yml` | `npm run validate-site-sources`, then asserts a clean tree, then `npm run metadata:size:check` | `CREDITS.csv` or `z_positions.csv` would change (you did not commit the regenerated file), or generated `item-metadata.js` / the item + index pair exceeds the byte budget. Raising a budget is deliberate. Load time is local (`profile:load`), not this check |
 | **Visual regression (Argos)** | `visual.yml` | `npm run test:visual` | A Playwright failure. Screenshot review happens in Argos, not the check |
-| **CLS (Lighthouse)** | `cls.yml` | Un-delayed `profile:cls:check -- --repeat 3`, then delayed `profile:cls:delayed -- --repeat 3` (`CLS_PROFILE_PORT=4188`) | Un-delayed viewport median exceeds [`scripts/profile/cls-budgets.json`](scripts/profile/cls-budgets.json). Delayed is report-only until `cls-budgets-delayed.json` exists. Slack around the matching CI lab, not Google's 0.1. Details: [CLS.md](CLS.md) |
+| **CLS (Lighthouse)** | `cls.yml` | `npm run build`, then un-delayed `profile:cls:check -- --repeat 3 --skip-build`, then delayed `profile:cls:delayed -- --repeat 3 --skip-build` (`CLS_PROFILE_PORT=4188`) | Un-delayed viewport median exceeds [`scripts/profile/cls-budgets.json`](scripts/profile/cls-budgets.json). Delayed is report-only until `cls-budgets-delayed.json` exists. Slack around the matching CI lab, not Google's 0.1. Details: [CLS.md](CLS.md) |
 | **Deploy** | `deploy.yml` | `npm run build` to GitHub Pages | Only on `master`, not a PR gate |
 | **`codecov/patch`** | Codecov | Compares uploaded `lcov` | Any new or edited gated production line is uncovered |
 | **`codecov/changes`** | Codecov | Compares uploaded `lcov` | Previously covered lines lose hits |
