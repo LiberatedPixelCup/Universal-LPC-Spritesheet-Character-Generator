@@ -24,10 +24,13 @@
 import { spawn, spawnSync, type ChildProcess } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import http, {
+  type ClientRequest,
+  type IncomingMessage,
+  type RequestOptions,
   type Server,
   type ServerResponse,
-  request as httpRequest,
 } from "node:http";
+import https from "node:https";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -651,6 +654,38 @@ export async function stopLaunchedChrome(
   await chrome.kill();
 }
 
+export function defaultPortForProtocol(protocol: string): number | null {
+  if (protocol === "http:") {
+    return 80;
+  }
+  if (protocol === "https:") {
+    return 443;
+  }
+  return null;
+}
+
+/**
+ * `http.request` vs `https.request` for an attached `--url`. Passing an
+ * https origin to `http.request` is plaintext on the TLS port (socket
+ * error / 502), not a jump lab.
+ */
+export type UpstreamRequest = (
+  options: RequestOptions,
+  callback?: (res: IncomingMessage) => void,
+) => ClientRequest;
+
+export function requestFnForProtocol(protocol: string): UpstreamRequest {
+  if (protocol === "https:") {
+    return https.request;
+  }
+  if (protocol === "http:") {
+    return http.request;
+  }
+  throw new Error(
+    `CSS-delay proxy upstream must be http: or https:, got ${JSON.stringify(protocol)}`,
+  );
+}
+
 export function originPort(origin: string): number | null {
   try {
     const u = new URL(origin);
@@ -658,13 +693,7 @@ export function originPort(origin: string): number | null {
       const n = Number.parseInt(u.port, 10);
       return Number.isInteger(n) ? n : null;
     }
-    if (u.protocol === "http:") {
-      return 80;
-    }
-    if (u.protocol === "https:") {
-      return 443;
-    }
-    return null;
+    return defaultPortForProtocol(u.protocol);
   } catch {
     return null;
   }
@@ -679,7 +708,8 @@ export function hostHeaderForUpstream(upstreamOrigin: string): string {
   const u = new URL(upstreamOrigin);
   const hostname = u.hostname || "127.0.0.1";
   const port = originPort(upstreamOrigin);
-  if (port === null || port === 80) {
+  const defaultPort = defaultPortForProtocol(u.protocol);
+  if (port === null || (defaultPort !== null && port === defaultPort)) {
     return hostname;
   }
   return `${hostname}:${port}`;
@@ -792,6 +822,10 @@ export function endClientResponse(
  * destroyed response quietly, but the request still has to be unwound: skip
  * the upstream fetch when the client is already gone, and release the
  * upstream socket instead of draining a body nobody will read.
+ *
+ * The proxy itself is HTTP on loopback. An https `--url` still uses TLS
+ * (`https.request`) to the preview; a self-signed cert fails verification
+ * and surfaces as 502.
  */
 export function startCssDelayProxy(options: {
   listenPort: number;
@@ -800,6 +834,8 @@ export function startCssDelayProxy(options: {
   hits: { count: number };
 }): Promise<Server> {
   const upstream = new URL(options.upstreamOrigin);
+  const request = requestFnForProtocol(upstream.protocol);
+  const defaultPort = defaultPortForProtocol(upstream.protocol) ?? 80;
   return new Promise((resolve, reject) => {
     const server = http.createServer((clientReq, clientRes) => {
       clientReq.on("error", () => undefined);
@@ -817,11 +853,10 @@ export function startCssDelayProxy(options: {
           }
           const headers = { ...clientReq.headers };
           headers.host = hostHeaderForUpstream(options.upstreamOrigin);
-          const proxyReq = httpRequest(
+          const proxyReq = request(
             {
               hostname: upstream.hostname,
-              port:
-                upstream.port || (upstream.protocol === "https:" ? 443 : 80),
+              port: upstream.port || defaultPort,
               path: `${reqUrl.pathname}${reqUrl.search}`,
               method: clientReq.method,
               headers,

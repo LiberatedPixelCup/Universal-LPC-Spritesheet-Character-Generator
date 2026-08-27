@@ -3,8 +3,9 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { spawn } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import http from "node:http";
+import https from "node:https";
 import { fileURLToPath } from "node:url";
 
 import { VIEWPORT_PRESETS } from "../../../../scripts/computed-style/computed-style-dump-shared.ts";
@@ -18,12 +19,14 @@ import {
   assertSkipBuildDist,
   checkClsAgainstBudgets,
   cssDelayProxyListenPort,
+  defaultPortForProtocol,
   endClientResponse,
   extractClsSample,
   hostHeaderForUpstream,
   lighthouseSettingsForPreset,
   loadBudgetsOrThrow,
   originPort,
+  requestFnForProtocol,
   parseArgs,
   parseBudgetsJson,
   parseClsProfilePort,
@@ -205,7 +208,7 @@ test("assertDelayedStylesheetHits fails closed when delay matched nothing", () =
   );
 });
 
-function listenOn(server: http.Server): Promise<number> {
+function listenOn(server: http.Server | https.Server): Promise<number> {
   return new Promise((resolve) => {
     server.listen(0, "127.0.0.1", () => {
       const addr = server.address();
@@ -214,11 +217,45 @@ function listenOn(server: http.Server): Promise<number> {
   });
 }
 
-function closeHttpServer(server: http.Server): Promise<void> {
+function closeHttpServer(server: http.Server | https.Server): Promise<void> {
   return new Promise((resolve) => {
     server.closeAllConnections();
     server.close(() => resolve());
   });
+}
+
+function selfSignedTls(): { key: string; cert: string } {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "cls-tls-"));
+  const keyPath = path.join(dir, "key.pem");
+  const certPath = path.join(dir, "cert.pem");
+  const result = spawnSync(
+    "openssl",
+    [
+      "req",
+      "-x509",
+      "-newkey",
+      "ec",
+      "-pkeyopt",
+      "ec_paramgen_curve:P-256",
+      "-keyout",
+      keyPath,
+      "-out",
+      certPath,
+      "-days",
+      "1",
+      "-nodes",
+      "-subj",
+      "/CN=127.0.0.1",
+    ],
+    { encoding: "utf8" },
+  );
+  if (result.status !== 0) {
+    throw new Error(`openssl failed: ${result.stderr}`);
+  }
+  return {
+    key: fs.readFileSync(keyPath, "utf8"),
+    cert: fs.readFileSync(certPath, "utf8"),
+  };
 }
 
 function getThrough(url: string): Promise<{ status: number; body: string }> {
@@ -360,6 +397,48 @@ test("startCssDelayProxy answers 502 when the preview is gone", async () => {
   }
 });
 
+test("requestFnForProtocol selects HTTPS transport for https --url", () => {
+  assert.equal(requestFnForProtocol("http:"), http.request);
+  assert.equal(requestFnForProtocol("https:"), https.request);
+  assert.throws(() => requestFnForProtocol("ftp:"), /must be http: or https:/);
+  assert.throws(() => {
+    void startCssDelayProxy({
+      listenPort: 0,
+      upstreamOrigin: "ftp://127.0.0.1/",
+      delayCssMs: 1,
+      hits: { count: 0 },
+    });
+  }, /must be http: or https:/);
+});
+
+test("startCssDelayProxy uses TLS when --url is https", async () => {
+  const { key, cert } = selfSignedTls();
+  const upstream = https.createServer({ key, cert }, (_req, res) => {
+    res.writeHead(200, { "content-type": "text/html" });
+    res.end("ok");
+  });
+  const upstreamPort = await listenOn(upstream);
+  const hits = { count: 0 };
+  const proxy = await startCssDelayProxy({
+    listenPort: 0,
+    upstreamOrigin: `https://127.0.0.1:${String(upstreamPort)}/`,
+    delayCssMs: 1,
+    hits,
+  });
+  try {
+    const addr = proxy.address();
+    const port = typeof addr === "object" && addr !== null ? addr.port : 0;
+    const res = await getThrough(`http://127.0.0.1:${String(port)}/`);
+    // TLS was used; a self-signed cert then fails verification (502).
+    // Plaintext HTTP to the TLS port would not mention a certificate.
+    assert.equal(res.status, 502);
+    assert.match(res.body, /certificate|unable to verify/i);
+  } finally {
+    await closeHttpServer(proxy);
+    await closeHttpServer(upstream);
+  }
+});
+
 test("startCssDelayProxy rejects when the listen port is taken", async () => {
   const squatter = http.createServer(() => undefined);
   const port = await listenOn(squatter);
@@ -434,7 +513,12 @@ test("originPort reads explicit and default ports", () => {
   assert.equal(originPort("http://127.0.0.1:4173/"), 4173);
   assert.equal(originPort("http://127.0.0.1:4179/"), 4179);
   assert.equal(originPort("http://example.com/"), 80);
+  assert.equal(originPort("https://example.com/"), 443);
+  assert.equal(originPort("https://example.com:8443/"), 8443);
   assert.equal(originPort("not a url"), null);
+  assert.equal(defaultPortForProtocol("http:"), 80);
+  assert.equal(defaultPortForProtocol("https:"), 443);
+  assert.equal(defaultPortForProtocol("ftp:"), null);
 });
 
 test("cssDelayProxyListenPort avoids colliding with --url", () => {
@@ -453,6 +537,15 @@ test("hostHeaderForUpstream matches the preview port, not the proxy", () => {
     "127.0.0.1:4173",
   );
   assert.equal(hostHeaderForUpstream("http://127.0.0.1/"), "127.0.0.1");
+  assert.equal(hostHeaderForUpstream("https://example.com/"), "example.com");
+  assert.equal(
+    hostHeaderForUpstream("https://example.com:8443/"),
+    "example.com:8443",
+  );
+  assert.equal(
+    hostHeaderForUpstream("http://example.com:443/"),
+    "example.com:443",
+  );
 });
 
 test("parseArgs --repeat 0 and non-integers throw", () => {

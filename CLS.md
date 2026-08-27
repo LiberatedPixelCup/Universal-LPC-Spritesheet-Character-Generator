@@ -97,7 +97,7 @@ preview. The measured URL is always the bare homepage with **`?debug=false`**.
 | --- | --- |
 | `--preset mobile` / `tablet` / `mediumDesktop` | One viewport. Default is all three. `lighthouseMobile` is a dump preset, not a `profile:cls` flag. Combined with `--check`, only the measured viewport is gated (CI omits `--preset` and checks all three). |
 | `--repeat N` | Navigations per preset. Default **1** locally; CI uses **3**. `--check` gates on the **median**. |
-| `--url http://127.0.0.1:4173` | Attach to an existing production preview (trailing slash stored). Still appends `?debug=false`. With `--delay-css-ms`, Lighthouse navigates the **proxy**, not this origin. Skips `vite build` and `vite preview`. |
+| `--url http://127.0.0.1:4173` | Attach to an existing production preview (trailing slash stored). Still appends `?debug=false`. With `--delay-css-ms`, Lighthouse navigates the **proxy**, not this origin. The proxy listens HTTP on loopback; an `https://` `--url` uses TLS (`node:https.request`) to the preview — plaintext `http.request` to port 443 is a 502, not a jump lab. A self-signed cert fails verification and 502s. Skips `vite build` and `vite preview`. |
 | `--skip-build` | Reuse existing `dist/` and still spawn `vite preview`. Fails if `dist/index.html` is missing. CI uses this after a dedicated **Build production** step so rsync noise is not in the Lighthouse log. |
 | `--out` / `--json` | JSON path, resolved against the repo root. Default `tmp/cls-profile.json`. `:baseline` writes `tmp/baseline-cls-profile.json`. |
 | `--check` | Compare **measured** viewport medians to the budgets file (`--budgets`, default `scripts/profile/cls-budgets.json`). Unknown keys in that file error. `--check --preset tablet` gates tablet only. |
