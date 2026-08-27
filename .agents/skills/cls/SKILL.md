@@ -40,7 +40,7 @@ without a CI `cls-profile` artifact. Local macOS medians will not match Linux
 CI.
 
 After a Lighthouse bump, refresh
-[`tests/fixtures/lighthouse/lhr-mobile.json`](../../../tests/fixtures/lighthouse/lhr-mobile.json)
+[`tests/fixtures/lighthouse/lhr-delayed.json`](../../../tests/fixtures/lighthouse/lhr-delayed.json)
 via the recipe in [CLS.md](../../../CLS.md) (trimmed `--save-lhr` dump). Do
 not reshape the JSON by eye.
 

@@ -241,20 +241,23 @@ Pinned **exact** in `package.json` (no caret).
 
    If the lockfile conflicts after a rebase, `npm run lockfile:fix` — never
    `npm install` to "resolve" it.
-3. Refresh [`tests/fixtures/lighthouse/lhr-mobile.json`](tests/fixtures/lighthouse/lhr-mobile.json)
+3. Refresh [`tests/fixtures/lighthouse/lhr-delayed.json`](tests/fixtures/lighthouse/lhr-delayed.json)
    from a **trimmed real dump**, not by editing JSON by eye:
 
    ```bash
-   npm run profile:cls -- --preset mobile --repeat 1 --delay-css-ms 3000 --save-lhr tmp/lhr-mobile.full.json
+   npm run profile:cls -- --preset tablet --repeat 1 --delay-css-ms 3000 --save-lhr tmp/lhr-delayed.full.json
    ```
 
    Accept the dump only when `cumulative-layout-shift.numericValue` is finite
    and non-zero, `layout-shifts.details.items` has **2 or more** rows, and
-   `cls-culprits-insight.details` is present (list of tables). If delayed
-   **mobile** has fewer than two rows (render-blocking `main.css` can delay
-   FCP instead of shifting), use `--preset tablet` — extraction is
-   preset-independent. Raise `--delay-css-ms` (4000, then 6000) rather than
-   inventing rows. Do not commit the full file (`tmp/` is gitignored).
+   `cls-culprits-insight.details` is present (list of tables). Raise
+   `--delay-css-ms` (4000, then 6000) rather than inventing rows. Do not
+   commit the full file (`tmp/` is gitignored).
+
+   The preset is `tablet` on purpose, and the fixture name carries no preset.
+   Extraction reads only `lhr.audits`, so any viewport works — but delayed
+   **mobile** yields empty `layout-shifts` here (render-blocking `main.css`
+   delays FCP instead of shifting), even at 6000 ms.
 
    Trim to `lighthouseVersion`, `userAgent`, and the three audits
    (`cumulative-layout-shift` with `debugdata` details, `layout-shifts` table

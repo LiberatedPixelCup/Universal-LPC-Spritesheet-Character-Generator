@@ -27,10 +27,15 @@ import {
 } from "../../../../scripts/profile/cls-profile.ts";
 
 const FIXTURE = fileURLToPath(
-  new URL("../../../fixtures/lighthouse/lhr-mobile.json", import.meta.url),
+  new URL("../../../fixtures/lighthouse/lhr-delayed.json", import.meta.url),
 );
 
-/** Trimmed local delayed-tablet LHR; not a CI median or budget reference. */
+/**
+ * Trimmed real LHR from a local `--delay-css-ms` run at `--preset tablet`.
+ * Extraction is preset-independent, so the presets asserted below are the
+ * extractor's input, not the dump's. Its CLS is neither a CI median nor a
+ * budget reference.
+ */
 function readFixtureLhr(): LhrLike {
   return JSON.parse(fs.readFileSync(FIXTURE, "utf8")) as LhrLike;
 }
@@ -354,6 +359,47 @@ test("extractClsSample skips the cls-culprits-insight Total row", () => {
     sample.nodes.some((n) => n.selector === "Total"),
     false,
   );
+});
+
+test("extractClsSample reads subItem causes in every cause shape", () => {
+  const lhr: LhrLike = {
+    lighthouseVersion: "13.4.1",
+    audits: {
+      "cumulative-layout-shift": { numericValue: 0.3, score: 0.5 },
+      "layout-shifts": {
+        details: {
+          type: "table",
+          items: [
+            {
+              node: { type: "node", selector: "#header-left" },
+              score: 0.3,
+              subItems: {
+                type: "subitems",
+                items: [
+                  { cause: "Web font loaded" },
+                  { cause: { formattedDefault: "Unsized image element" } },
+                  { cause: { value: "Injected iframe" } },
+                  { cause: { unrecognized: true } },
+                  "not a record",
+                ],
+              },
+            },
+          ],
+        },
+      },
+    },
+  };
+  const sample = extractClsSample(
+    lhr,
+    "mobile",
+    lighthouseSettingsForPreset("mobile"),
+  );
+  assert.equal(sample.nodes.length, 1);
+  assert.deepEqual(sample.nodes[0]?.causes, [
+    "Web font loaded",
+    "Unsized image element",
+    "Injected iframe",
+  ]);
 });
 
 test("extractClsSample falls back to cls-culprits-insight on the delayed fixture", () => {
