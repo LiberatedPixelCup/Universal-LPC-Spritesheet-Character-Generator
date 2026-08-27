@@ -1,0 +1,51 @@
+{
+  "lighthouseVersion": "13.4.1",
+  "userAgent": "Mozilla/5.0 (fixture) Chrome/136.0.0.0 Safari/537.36",
+  "audits": {
+    "cumulative-layout-shift": {
+      "id": "cumulative-layout-shift",
+      "title": "Cumulative Layout Shift",
+      "numericValue": 0.142,
+      "numericUnit": "unitless",
+      "score": 0.72,
+      "scoreDisplayMode": "numeric",
+      "details": {
+        "type": "debugdata",
+        "items": [{ "cumulativeLayoutShiftMainFrame": 0.142 }]
+      }
+    },
+    "layout-shifts": {
+      "id": "layout-shifts",
+      "title": "Avoid large layout shifts",
+      "score": 0,
+      "details": {
+        "type": "table",
+        "headings": [],
+        "items": [
+          {
+            "node": {
+              "type": "node",
+              "selector": "div.box.loading-shell-filters",
+              "nodeLabel": "loading-shell-filters",
+              "snippet": "<div class=\"box loading-shell-filters\">"
+            },
+            "score": 0.12,
+            "subItems": {
+              "type": "subitems",
+              "items": [{ "cause": "Web font loaded" }]
+            }
+          },
+          {
+            "node": {
+              "type": "node",
+              "selector": "#header-left",
+              "nodeLabel": "header-left",
+              "snippet": "<section id=\"header-left\">"
+            },
+            "score": 0.022
+          }
+        ]
+      }
+    }
+  }
+}
