@@ -9,9 +9,11 @@
  *   node scripts/profile/cls-profile.ts
  *   node scripts/profile/cls-profile.ts --preset mobile --url http://127.0.0.1:4173
  *   node scripts/profile/cls-profile.ts --check --repeat 3
+ *   node scripts/profile/cls-profile.ts --preset tablet --delay-css-ms 3000
  *
  * Environment:
- *   CLS_PROFILE_PORT — preview port when this script starts the server (default 4179).
+ *   CLS_PROFILE_PORT — preview (or CSS-delay proxy) port when this script starts the server (default 4179).
+ *     With --delay-css-ms, vite preview binds this port + 1.
  *   CHROME_PATH — Chrome binary (CI).
  *
  * @see CLS.md
@@ -19,6 +21,7 @@
 
 import { spawn, spawnSync, type ChildProcess } from "node:child_process";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import http, { type Server, request as httpRequest } from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -115,6 +118,7 @@ export type ClsProfileFile = {
   generatedAt: string;
   url: string;
   repeat: number;
+  delayCssMs: number;
   lighthouseVersion: string;
   chromePath: string;
   chromeFlags: readonly string[];
@@ -138,6 +142,7 @@ export type CliOpts = {
   presets: ClsPreset[];
   saveLhrPath: string | null;
   budgetsPath: string;
+  delayCssMs: number;
 };
 
 export type ParsedCli = { help: true } | CliOpts;
@@ -155,6 +160,7 @@ function usage(): string {
     "  --out / --json     Write JSON (default: tmp/cls-profile.json)",
     "  --check            Fail if a preset median exceeds scripts/profile/cls-budgets.json",
     "  --save-lhr <path>  Write the raw LHR JSON (per-preset suffix when running more than one)",
+    "  --delay-css-ms n   Delay production main / deferred CSS (assets/*.css) by n ms via a local proxy",
   ].join("\n");
 }
 
@@ -188,6 +194,7 @@ export function parseArgs(argv: readonly string[]): ParsedCli {
   let repeat = DEFAULT_REPEAT;
   let check = false;
   let saveLhrPath: string | null = null;
+  let delayCssMs = 0;
   const presets: ClsPreset[] = [];
   for (let i = 0; i < args.length; i++) {
     const a = args[i];
@@ -220,6 +227,13 @@ export function parseArgs(argv: readonly string[]): ParsedCli {
     } else if (a === "--save-lhr" && next && !next.startsWith("-")) {
       saveLhrPath = path.resolve(REPO_ROOT, next);
       i += 1;
+    } else if (a === "--delay-css-ms" && next && !next.startsWith("-")) {
+      const n = Number.parseInt(next, 10);
+      if (!Number.isInteger(n) || n < 1) {
+        throw new Error(`--delay-css-ms must be an integer >= 1, got: ${next}`);
+      }
+      delayCssMs = n;
+      i += 1;
     } else if (a === "--check") {
       check = true;
     } else if (
@@ -228,7 +242,8 @@ export function parseArgs(argv: readonly string[]): ParsedCli {
       a === "--url" ||
       a === "--preset" ||
       a === "--repeat" ||
-      a === "--save-lhr"
+      a === "--save-lhr" ||
+      a === "--delay-css-ms"
     ) {
       throw new Error(`${a} requires a value\n${usage()}`);
     } else {
@@ -243,6 +258,7 @@ export function parseArgs(argv: readonly string[]): ParsedCli {
     presets: presets.length > 0 ? presets : [...CLS_PRESET_NAMES],
     saveLhrPath,
     budgetsPath: DEFAULT_BUDGETS,
+    delayCssMs,
   };
 }
 
@@ -532,6 +548,85 @@ function loadPageUrl(base: string): string {
   return u.href;
 }
 
+/** Production CSS linked from index.html or the deferred chunk filename pattern. */
+export function shouldDelayStylesheetPath(pathname: string): boolean {
+  return (
+    /\/assets\/main-[^/]+\.css$/i.test(pathname) ||
+    /\/assets\/load-deferred-styles-[^/]+\.css$/i.test(pathname)
+  );
+}
+
+export function upstreamPortForProxy(publicPort: number): number {
+  return publicPort + 1;
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+function closeServer(server: Server): Promise<void> {
+  return new Promise((resolve, reject) => {
+    server.close((err) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve();
+    });
+  });
+}
+
+function startCssDelayProxy(options: {
+  listenPort: number;
+  upstreamOrigin: string;
+  delayCssMs: number;
+}): Promise<Server> {
+  const upstream = new URL(options.upstreamOrigin);
+  return new Promise((resolve, reject) => {
+    const server = http.createServer((clientReq, clientRes) => {
+      void (async () => {
+        try {
+          const reqPath = clientReq.url ?? "/";
+          const reqUrl = new URL(reqPath, options.upstreamOrigin);
+          if (shouldDelayStylesheetPath(reqUrl.pathname)) {
+            await sleep(options.delayCssMs);
+          }
+          const proxyReq = httpRequest(
+            {
+              hostname: upstream.hostname,
+              port:
+                upstream.port || (upstream.protocol === "https:" ? 443 : 80),
+              path: `${reqUrl.pathname}${reqUrl.search}`,
+              method: clientReq.method,
+              headers: clientReq.headers,
+            },
+            (proxyRes) => {
+              clientRes.writeHead(proxyRes.statusCode ?? 502, proxyRes.headers);
+              proxyRes.pipe(clientRes);
+            },
+          );
+          proxyReq.on("error", (err) => {
+            if (!clientRes.headersSent) {
+              clientRes.writeHead(502);
+            }
+            clientRes.end(String(err));
+          });
+          clientReq.pipe(proxyReq);
+        } catch (err) {
+          if (!clientRes.headersSent) {
+            clientRes.writeHead(500);
+          }
+          clientRes.end(String(err));
+        }
+      })();
+    });
+    server.on("error", reject);
+    server.listen(options.listenPort, "127.0.0.1", () => resolve(server));
+  });
+}
+
 async function waitForHttpOk(url: string, maxMs: number): Promise<void> {
   const start = Date.now();
   while (Date.now() - start < maxMs) {
@@ -681,11 +776,15 @@ export async function main(
   }
   const opts: CliOpts = parsed;
   const port = parseClsProfilePort();
-  const spawnedBase = `http://127.0.0.1:${port}/`;
-  const base = opts.url ?? spawnedBase;
-  const url = loadPageUrl(base);
+  const proxyPort = port;
+  const previewPort = opts.delayCssMs > 0 ? upstreamPortForProxy(port) : port;
+  const upstreamBase = opts.url ?? `http://127.0.0.1:${previewPort}/`;
+  const measuredBase =
+    opts.delayCssMs > 0 ? `http://127.0.0.1:${proxyPort}/` : upstreamBase;
+  const url = loadPageUrl(measuredBase);
 
   let preview: ChildProcess | undefined;
+  let proxy: Server | undefined;
   let chrome: Awaited<ReturnType<typeof launch>> | undefined;
   try {
     if (!opts.url) {
@@ -698,7 +797,7 @@ export async function main(
           "--host",
           "127.0.0.1",
           "--port",
-          String(port),
+          String(previewPort),
           "--strictPort",
         ],
         {
@@ -707,7 +806,19 @@ export async function main(
           shell: process.platform === "win32",
         },
       );
-      await waitForHttpOk(spawnedBase, 120000);
+      await waitForHttpOk(upstreamBase.replace(/\/?$/, "/"), 120000);
+    }
+
+    if (opts.delayCssMs > 0) {
+      process.stderr.write(
+        `CSS delay proxy: ${opts.delayCssMs} ms on main / deferred stylesheets → ${measuredBase}\n`,
+      );
+      proxy = await startCssDelayProxy({
+        listenPort: proxyPort,
+        upstreamOrigin: upstreamBase.replace(/\/?$/, "/"),
+        delayCssMs: opts.delayCssMs,
+      });
+      await waitForHttpOk(measuredBase, 120000);
     }
 
     const chromePath = await resolveChromePath();
@@ -757,6 +868,7 @@ export async function main(
       generatedAt: new Date().toISOString(),
       url,
       repeat: opts.repeat,
+      delayCssMs: opts.delayCssMs,
       lighthouseVersion,
       chromePath,
       chromeFlags: CLS_CHROME_FLAGS,
@@ -808,6 +920,9 @@ export async function main(
   } finally {
     chrome?.kill();
     preview?.kill("SIGTERM");
+    if (proxy) {
+      await closeServer(proxy).catch(() => undefined);
+    }
   }
 }
 

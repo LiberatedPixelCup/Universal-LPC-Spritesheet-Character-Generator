@@ -101,8 +101,9 @@ Lab CLS is a Lighthouse layout-shift score, not `profiler.snapshot()`. Use
 jump may have changed. Default preview port **4179** (`CLS_PROFILE_PORT`),
 clear of `profile:load` (4178) and `npm run preview` (4173).
 
-Walkthrough, viewports (CLS `mobile` is 412×823, not Argos 390), budgets, and
-dump debugging: [CLS.md](CLS.md). Agent procedure:
+Walkthrough, viewports (CLS `mobile` is 412×823, not Argos 390), budgets,
+`--delay-css-ms` (local debug of deferred CSS; never CI), and dump debugging:
+[CLS.md](CLS.md). Agent procedure:
 [cls](.agents/skills/cls/SKILL.md).
 
 ### Metadata size (generator output)

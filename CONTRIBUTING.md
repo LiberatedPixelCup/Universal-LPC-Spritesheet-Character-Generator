@@ -300,7 +300,7 @@ Every script in [`package.json`](package.json). Run them from the repository roo
 | `npm run profile:load` | Production catalog-load profile (`vite build` + `vite preview`). Median of 5 fresh navigations: `indexReadyMs`, `liteReadyMs`, `catalogReadyMs` | `loadAllMetadata`, metadata chunks, or catalog bootstrap changed |
 | `npm run profile:load:baseline` | Same run, written to `tmp/baseline-app-load-profile.json` | Take a load baseline **before** your change |
 | `npm run diff:app-load-profile` | Diffs two load-profile JSON files; positive Δ is slower. Always exits 0 | Comparing load baseline against your change |
-| `npm run profile:cls` | Production lab CLS via Lighthouse (`vite build` + `vite preview`, `?debug=false`). Median of `--repeat` navigations at 412×823 / tablet / medium desktop | First-paint CSS, loading shells, or layout shift. Walkthrough: [CLS.md](CLS.md) |
+| `npm run profile:cls` | Production lab CLS via Lighthouse (`vite build` + `vite preview`, `?debug=false`). Median of `--repeat` navigations at 412×823 / tablet / medium desktop. Optional `--delay-css-ms` is local debug only (not CI) | First-paint CSS, loading shells, or layout shift. Walkthrough: [CLS.md](CLS.md) |
 | `npm run profile:cls:baseline` | Same run, written to `tmp/baseline-cls-profile.json` | Take a CLS baseline **before** your change |
 | `npm run profile:cls:check` | Same run, then fails if a viewport median exceeds [`scripts/profile/cls-budgets.json`](scripts/profile/cls-budgets.json) | After a CSS change, or in CI once budgets exist |
 | `npm run diff:cls-profile` | Diffs two CLS-profile JSON files; positive Δ is more shift. Always exits 0 | Comparing CLS baseline against your change |
@@ -592,6 +592,7 @@ Symptoms that look like catalog or test bugs are often environment. Check these 
 | `npm run test:visual` or `profile:app` / `profile:load` / `profile:zip` cannot launch a browser | Playwright browsers not installed | `npx playwright install chromium` (or `--with-deps`) |
 | `npm run profile:cls` cannot find Chrome | No system Chrome, and Playwright Chromium fallback failed | Install Chrome, or set `CHROME_PATH`. See [CLS.md](CLS.md) |
 | Local `profile:cls` median differs from CI | Fonts, scrollbars, CPU; macOS ≠ Linux | Compare local-to-local; budgets come from the `cls-profile` artifact. [CLS.md](CLS.md) |
+| Un-delayed `profile:cls` is ~0 but PSI / a real network shows a jump | Localhost serves `main-*.css` immediately | Local only: `npm run profile:cls -- --preset tablet --delay-css-ms 3000`. Do not add that flag to CI. [CLS.md](CLS.md) |
 | Need to bump Lighthouse, chrome-launcher, or CI Chrome | Measurement-definition or discovery change | [CLS.md](CLS.md) “Upgrading Lighthouse and chrome-launcher”. Do not rebase budgets from a laptop |
 | `profile:app --channel chrome` cannot launch | Google Chrome is not installed, or Playwright cannot see it | Install Chrome; run from a normal terminal, not a sandbox |
 | `npm run test:browser:coverage` fails to launch Firefox | Firefox is not installed locally | `VITE_COVERAGE=true node ./node_modules/testem/testem.js ci --launch Chrome`. Firefox-only lines will read as uncovered |

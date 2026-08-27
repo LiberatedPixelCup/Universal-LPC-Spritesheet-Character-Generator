@@ -15,7 +15,9 @@ import {
   parseArgs,
   parseBudgetsJson,
   parseClsProfilePort,
+  shouldDelayStylesheetPath,
   summarizeRepeats,
+  upstreamPortForProxy,
   type ClsPresetResult,
   type LhrLike,
 } from "../../../../scripts/profile/cls-profile.ts";
@@ -36,6 +38,7 @@ test("parseArgs defaults", () => {
   assert.equal(opts.url, null);
   assert.ok(opts.outPath.endsWith(`${path.sep}tmp${path.sep}cls-profile.json`));
   assert.equal(opts.saveLhrPath, null);
+  assert.equal(opts.delayCssMs, 0);
 });
 
 test("parseArgs --preset restricts to one viewport", () => {
@@ -96,6 +99,46 @@ test("parseArgs --json is an alias of --out", () => {
     return;
   }
   assert.ok(opts.outPath.endsWith(`${path.sep}tmp${path.sep}a.json`));
+});
+
+test("parseArgs --delay-css-ms", () => {
+  const opts = parseArgs(["node", "cls-profile.ts", "--delay-css-ms", "3000"]);
+  assert.ok(!("help" in opts));
+  if ("help" in opts) {
+    return;
+  }
+  assert.equal(opts.delayCssMs, 3000);
+  assert.throws(
+    () => parseArgs(["node", "cls-profile.ts", "--delay-css-ms", "0"]),
+    /--delay-css-ms/,
+  );
+  assert.throws(
+    () => parseArgs(["node", "cls-profile.ts", "--delay-css-ms"]),
+    /--delay-css-ms requires a value/,
+  );
+});
+
+test("shouldDelayStylesheetPath matches production CSS asset names", () => {
+  assert.equal(shouldDelayStylesheetPath("/assets/main-D4rbq9Ei.css"), true);
+  assert.equal(
+    shouldDelayStylesheetPath("/assets/load-deferred-styles-L0fhUdhH.css"),
+    true,
+  );
+  assert.equal(shouldDelayStylesheetPath("/assets/vendor-D5qM2qLl.js"), false);
+  assert.equal(
+    shouldDelayStylesheetPath("/assets/main-D4rbq9Ei.css.map"),
+    false,
+  );
+  assert.equal(shouldDelayStylesheetPath("/sources/styles/main.css"), false);
+  assert.equal(shouldDelayStylesheetPath("/"), false);
+  assert.equal(
+    shouldDelayStylesheetPath("/assets/main-D4rbq9Ei.css?v=1"),
+    false,
+  );
+});
+
+test("upstreamPortForProxy is public port + 1", () => {
+  assert.equal(upstreamPortForProxy(4179), 4180);
 });
 
 test("parseArgs --repeat 0 and non-integers throw", () => {

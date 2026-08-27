@@ -24,11 +24,16 @@ This is **not** Argos and **not** `window.profiler`:
 ```bash
 npm run profile:cls
 npm run profile:cls -- --preset mobile
+npm run profile:cls -- --preset tablet --delay-css-ms 3000
 npm run profile:cls:check
 ```
 
 Production `vite preview` with `?debug=false`. Default port 4179. Culprits
 are in the JSON `layout-shifts` nodes, not the CLS audit `debugdata`.
+
+Un-delayed localhost CLS is a **regression** lab (CSS arrives immediately).
+To reproduce deferred-CSS jump, pass `--delay-css-ms` locally — **never** in
+CI or when writing `cls-budgets.json`. See [CLS.md](../../../CLS.md).
 
 Do not hand-edit [`scripts/profile/cls-budgets.json`](../../../scripts/profile/cls-budgets.json)
 without a CI `cls-profile` artifact. Local macOS medians will not match Linux
@@ -37,6 +42,8 @@ CI.
 ## Debug
 
 1. Read `layout-shifts` nodes in `tmp/cls-profile.json`.
+   If un-delayed CLS is ~0 but the user sees a jump, re-run with
+   `--delay-css-ms` (local only) at the same `--preset`.
 2. Dump the **matching** viewport: CLS `mobile` →
    `npm run compute-style-dump:lighthouse-mobile` (412×823), **not**
    `compute-style-dump:mobile` (Argos 390). Tablet / mediumDesktop use the

@@ -50,6 +50,19 @@ equal PSI.** Matching the Moto G Power viewport and UA makes it the closest
 comparable, but the value is a **regression signal**, not a PSI prediction. Do
 not "fix" a gap against PSI by changing throttling.
 
+**Localhost still under-exposes deferred CSS.** Production `index.html` links
+`/assets/main-*.css` in the head. Applied Slow 4G against `127.0.0.1` still
+serves that file in milliseconds, so hydrate often happens on an already-styled
+page. CI medians around 0.000 / 0.003 / 0.010 (mobile / tablet / medium
+desktop) with `layout-shifts` nodes populated are a successful lab of *this*
+preview, not a PSI clone and not proof that tablet/desktop have no visible
+jump on a real network.
+
+To reproduce the shell→styled jump **locally**, pass `--delay-css-ms` (see
+Commands). Do **not** pass that flag in `cls.yml`; budgets stay on the
+un-delayed CI lab. A delayed or hosted Lighthouse run is a debug / follow-up
+measurement, not a replacement for the gate.
+
 ## 4. Commands
 
 ```bash
@@ -73,6 +86,7 @@ which production users do not get.
 | `--out` / `--json` | JSON path, resolved against the repo root. Default `tmp/cls-profile.json`. `:baseline` writes `tmp/baseline-cls-profile.json`. |
 | `--check` | Compare medians to `scripts/profile/cls-budgets.json`. Unknown keys in that file error. |
 | `--save-lhr <path>` | Write the raw Lighthouse result for the (last) preset. How the committed fixture is refreshed. |
+| `--delay-css-ms n` | **Local debug only** (not CI). Insert a proxy in front of the preview that waits `n` ms before serving `/assets/main-*.css` and `/assets/load-deferred-styles-*.css`. Use this to reproduce deferred-CSS layout shift on localhost. Default: off. With this flag, Lighthouse still uses port **4179**; `vite preview` binds **4180** (`CLS_PROFILE_PORT` + 1). Start around 2000–4000 ms. The JSON records `delayCssMs`. Never mix a delayed run into `cls-budgets.json`. |
 | `--help` / `-h` | Usage. |
 
 Chrome resolution, in order: `CHROME_PATH` (CI) → `chrome-launcher`
@@ -107,7 +121,8 @@ ok/over). Details live in the JSON. Use `process.stdout.write` /
   The JSON keeps every sample plus min / median / max.
 - **Provenance** (treat two runs without these as incomparable):
   `lighthouseVersion`, Chrome path, `chromeFlags`, `throttlingMethod`,
-  throttling profile, UA, `process.platform`, preset width × height.
+  throttling profile, UA, `process.platform`, preset width × height,
+  `delayCssMs` (0 means no CSS-delay proxy).
 - Raising a budget is a **deliberate commit**, same rule as
   `metadata:size:check`. Never paste a laptop median into
   `cls-budgets.json`.
@@ -321,6 +336,15 @@ upgrading). Do not widen slack to hide it.
 
 **Not PageSpeed.** Applied `devtools` throttling vs PSI `simulate`. A gap vs
 PSI is expected.
+
+**Localhost CSS is not Slow 4G.** Un-delayed `profile:cls` on `127.0.0.1` can
+read ~0 while PSI is ~0.09 because `main-*.css` is local. Use
+`--delay-css-ms` locally (or a hosted preview) to see the jump. Do not put
+`--delay-css-ms` on `cls.yml` or paste a delayed median into budgets.
+
+**`--delay-css-ms` is not CI.** Mixing it into the gate would make a CSS-timing
+change and a layout change look the same, and would add ~3s per stylesheet
+request on every navigation.
 
 **Local ≠ CI.** macOS vs Linux fonts and scrollbars. Never paste a laptop
 median into `cls-budgets.json`.
