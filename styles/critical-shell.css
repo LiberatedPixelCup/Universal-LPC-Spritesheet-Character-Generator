@@ -51,6 +51,10 @@ p {
   min-height: 75px;
 }
 
+#header-left > div {
+  display: flex;
+}
+
 /*
  * Wrapped header heights (includes #sponsors-links margin-top: -12px).
  * Floors match loaded Argos/Lighthouse widths so first paint does not grow.
