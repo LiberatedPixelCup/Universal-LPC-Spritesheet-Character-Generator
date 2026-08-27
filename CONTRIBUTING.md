@@ -179,11 +179,11 @@ Install these on your machine before you run builds or tests. Versions match wha
 **Git**  
 Used for clone, branch, and PR workflow. [Download Git](https://git-scm.com/downloads) or use your OS package manager (`git` is often pre-installed on macOS and Linux).
 
-**Node.js 22.18+ (CI: Node.js 24) and npm**  
-[`package.json`](package.json) `engines.node` is **`>=22.18.0`** so Node can run first-party **`.ts`** files with [type stripping](https://nodejs.org/docs/latest/api/typescript.html) (no `tsx` / compile step). CI uses **Node.js 24** (see [`.github/workflows/`](.github/workflows/)). Install from [nodejs.org](https://nodejs.org/) or a version manager such as [fnm](https://github.com/Schniz/fnm) or [nvm](https://github.com/nvm-sh/nvm), then confirm your runtime:
+**Node.js 22.19+ (CI: Node.js 24) and npm**  
+[`package.json`](package.json) `engines.node` is **`>=22.19.0`** so Node can run first-party **`.ts`** files with [type stripping](https://nodejs.org/docs/latest/api/typescript.html) (no `tsx` / compile step), and so `lighthouse@13.4.1` (`engines.node` `>=22.19`) can run. CI uses **Node.js 24** (see [`.github/workflows/`](.github/workflows/)). Install from [nodejs.org](https://nodejs.org/) or a version manager such as [fnm](https://github.com/Schniz/fnm) or [nvm](https://github.com/nvm-sh/nvm), then confirm your runtime:
 
 ```bash
-node -v   # v22.18+ locally; CI is v24.x
+node -v   # v22.19+ locally; CI is v24.x
 npm -v    # npm ships with Node
 ```
 

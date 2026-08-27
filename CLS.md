@@ -94,6 +94,9 @@ Chrome resolution, in order: `CHROME_PATH` (CI) → `chrome-launcher`
 `PLAYWRIGHT_BROWSERS_PATH` when it points at a Cursor sandbox cache, same as
 the other profilers.
 
+`lighthouse@13.4.1` requires **Node ≥ 22.19**. The repo `engines.node` matches
+that; CI is Node 24.
+
 `chromeFlags` are `--headless=new` and `--no-sandbox` locally and in CI. **Do
 not** add `--hide-scrollbars`: that would mask wrap-driven shift.
 
