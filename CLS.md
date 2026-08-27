@@ -102,8 +102,10 @@ not** add `--hide-scrollbars`: that would mask wrap-driven shift.
 
 Exit codes: `profile:cls` exits 0 on a completed run. `profile:cls:check` exits
 **1** if any viewport is over budget (or a budgeted preset is missing), after
-printing the table. A crashed navigation inside `--repeat` **aborts that
-preset**; there is no 2-of-3 median. `diff:cls-profile` always exits 0.
+printing the table. `--check` validates the budgets file **before** measuring,
+so a missing or malformed file fails in seconds rather than after a full run.
+A crashed navigation inside `--repeat` **aborts that preset**; there is no
+2-of-3 median. `diff:cls-profile` always exits 0.
 
 Stdout is a table (preset, median, min, max; with `--check`, budget and
 ok/over). Details live in the JSON. Use `process.stdout.write` /

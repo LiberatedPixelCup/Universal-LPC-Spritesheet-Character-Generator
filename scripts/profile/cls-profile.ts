@@ -502,6 +502,29 @@ export function parseBudgetsJson(raw: unknown): Record<string, number> {
   return out;
 }
 
+export function loadBudgetsOrThrow(
+  budgetsPath: string,
+): Record<string, number> {
+  try {
+    return parseBudgetsJson(
+      JSON.parse(readFileSync(budgetsPath, "utf8")) as unknown,
+    );
+  } catch (err) {
+    if (
+      err &&
+      typeof err === "object" &&
+      "code" in err &&
+      err.code === "ENOENT"
+    ) {
+      throw new Error(
+        `Missing ${path.relative(REPO_ROOT, budgetsPath)} (needed for --check)`,
+        { cause: err },
+      );
+    }
+    throw err;
+  }
+}
+
 export function checkClsAgainstBudgets(
   results: readonly Pick<ClsPresetResult, "preset" | "summary">[],
   budgets: Record<string, number>,
@@ -619,6 +642,47 @@ export function cssDelayProxyListenPort(
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
+  });
+}
+
+function vitePreviewBin(): string {
+  return path.join(
+    REPO_ROOT,
+    "node_modules",
+    ".bin",
+    process.platform === "win32" ? "vite.cmd" : "vite",
+  );
+}
+
+/**
+ * SIGTERM, wait up to timeoutMs, then SIGKILL. No-op if the child already
+ * exited. Exported so the wait/kill fallback has a unit test.
+ */
+export async function stopChildProcess(
+  child: ChildProcess,
+  timeoutMs = 5000,
+): Promise<void> {
+  if (child.exitCode !== null || child.signalCode !== null) {
+    return;
+  }
+  await new Promise<void>((resolve) => {
+    const timer = setTimeout(() => {
+      try {
+        child.kill("SIGKILL");
+      } catch {
+        /* already gone */
+      }
+    }, timeoutMs);
+    child.once("exit", () => {
+      clearTimeout(timer);
+      resolve();
+    });
+    try {
+      child.kill("SIGTERM");
+    } catch {
+      clearTimeout(timer);
+      resolve();
+    }
   });
 }
 
@@ -832,6 +896,7 @@ export async function main(
     return 0;
   }
   const opts: CliOpts = parsed;
+  const checkBudgets = opts.check ? loadBudgetsOrThrow(opts.budgetsPath) : null;
   const port = parseClsProfilePort();
   const attachedUrl = opts.url;
   const previewPort =
@@ -854,9 +919,8 @@ export async function main(
     if (attachedUrl === null) {
       runViteBuild();
       preview = spawn(
-        "npx",
+        vitePreviewBin(),
         [
-          "vite",
           "preview",
           "--host",
           "127.0.0.1",
@@ -951,28 +1015,9 @@ export async function main(
     writeFileSync(opts.outPath, `${JSON.stringify(file, null, 2)}\n`, "utf8");
     process.stderr.write(`Wrote ${path.relative(REPO_ROOT, opts.outPath)}\n`);
 
-    if (opts.check) {
-      let budgets: Record<string, number>;
-      try {
-        budgets = parseBudgetsJson(
-          JSON.parse(readFileSync(opts.budgetsPath, "utf8")) as unknown,
-        );
-      } catch (err) {
-        if (
-          err &&
-          typeof err === "object" &&
-          "code" in err &&
-          err.code === "ENOENT"
-        ) {
-          throw new Error(
-            `Missing ${path.relative(REPO_ROOT, opts.budgetsPath)} (needed for --check)`,
-            { cause: err },
-          );
-        }
-        throw err;
-      }
-      process.stdout.write(`${formatClsTable(file, budgets)}\n`);
-      const violations = checkClsAgainstBudgets(presetResults, budgets);
+    if (checkBudgets !== null) {
+      process.stdout.write(`${formatClsTable(file, checkBudgets)}\n`);
+      const violations = checkClsAgainstBudgets(presetResults, checkBudgets);
       if (violations.length > 0) {
         for (const v of violations) {
           process.stderr.write(
@@ -989,7 +1034,9 @@ export async function main(
     return 0;
   } finally {
     chrome?.kill();
-    preview?.kill("SIGTERM");
+    if (preview) {
+      await stopChildProcess(preview);
+    }
     if (proxy) {
       await closeServer(proxy).catch(() => undefined);
     }

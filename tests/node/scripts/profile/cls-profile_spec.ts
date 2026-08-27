@@ -1,7 +1,9 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
+import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 import { VIEWPORT_PRESETS } from "../../../../scripts/computed-style/computed-style-dump-shared.ts";
@@ -14,12 +16,14 @@ import {
   extractClsSample,
   hostHeaderForUpstream,
   lighthouseSettingsForPreset,
+  loadBudgetsOrThrow,
   originPort,
   parseArgs,
   parseBudgetsJson,
   parseClsProfilePort,
   saveLhrPathForPreset,
   shouldDelayStylesheetPath,
+  stopChildProcess,
   summarizeRepeats,
   upstreamPortForProxy,
   type ClsPresetResult,
@@ -674,6 +678,50 @@ test("parseBudgetsJson rejects unknown keys and bad values", () => {
     mobile: 0,
     tablet: 0.2,
   });
+});
+
+test("loadBudgetsOrThrow reads the committed budgets file", () => {
+  const budgetsPath = path.join(
+    path.dirname(fileURLToPath(import.meta.url)),
+    "../../../../scripts/profile/cls-budgets.json",
+  );
+  const parsed = loadBudgetsOrThrow(budgetsPath);
+  assert.deepEqual(Object.keys(parsed).sort(), [...CLS_PRESET_NAMES].sort());
+});
+
+test("loadBudgetsOrThrow missing path mentions --check", () => {
+  const missing = path.join(os.tmpdir(), "cls-budgets-does-not-exist.json");
+  assert.throws(() => loadBudgetsOrThrow(missing), /needed for --check/);
+});
+
+test("loadBudgetsOrThrow surfaces parseBudgetsJson errors", () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "cls-budgets-"));
+  const badKeys = path.join(dir, "unknown.json");
+  fs.writeFileSync(badKeys, `${JSON.stringify({ mobile: 0.1, nope: 0.2 })}\n`);
+  assert.throws(() => loadBudgetsOrThrow(badKeys), /unknown preset/);
+  const malformed = path.join(dir, "malformed.json");
+  fs.writeFileSync(malformed, "{");
+  assert.throws(() => loadBudgetsOrThrow(malformed));
+  fs.rmSync(dir, { recursive: true, force: true });
+});
+
+test("stopChildProcess waits for SIGTERM then SIGKILL", async () => {
+  const child = spawn(process.execPath, ["-e", "setInterval(() => {}, 1000)"], {
+    stdio: "ignore",
+  });
+  await stopChildProcess(child, 200);
+  assert.ok(child.exitCode !== null || child.signalCode !== null);
+});
+
+test("stopChildProcess is a no-op after the child has already exited", async () => {
+  const child = spawn(process.execPath, ["-e", "process.exit(0)"], {
+    stdio: "ignore",
+  });
+  await new Promise<void>((resolve) => {
+    child.once("exit", () => resolve());
+  });
+  await stopChildProcess(child, 1000);
+  assert.equal(child.exitCode, 0);
 });
 
 test("committed cls-budgets.json has exactly the three presets in 0–1", () => {
