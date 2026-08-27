@@ -297,10 +297,9 @@ check named **CLS (Lighthouse)**. It runs on `push` / `pull_request` to
 - **rsync** is installed. `vite build` shells out to `rsync -ahu --delete
   --info=progress2` on Linux (`--info=progress2` needs rsync 3.x). A missing
   rsync fails the build, which reads as a CLS failure.
-- Until budgets exist, the job is **report-only**:
-  `npm run profile:cls -- --repeat 3`. After
-  `cls-budgets.json` is committed from a CI artifact, the step becomes
-  `npm run profile:cls:check -- --repeat 3`.
+- `npm run profile:cls:check -- --repeat 3` against
+  [`scripts/profile/cls-budgets.json`](scripts/profile/cls-budgets.json)
+  (un-delayed CI median plus slack). **No `--delay-css-ms`.**
 - Uploads `tmp/cls-profile.json` as artifact `cls-profile`, `if: always()`.
 - Timeout ~30 minutes: production build plus **9** applied-throttling
   navigations (3 presets × 3 repeats). A timeout is not a CLS regression.

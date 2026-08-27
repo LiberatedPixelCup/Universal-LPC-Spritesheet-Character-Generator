@@ -344,7 +344,7 @@ statuses run on pull requests to `master`. All use Node 24.
 | **Test browsers** | `ci.yml` | `npm run test:node:coverage`, then `npm run test:browser:coverage` under Xvfb | A Node or browser spec fails. A patch miss is printed in the log and fails **`codecov/patch`**, not this job |
 | **Validate site sources** | `validate-site-sources.yml` | `npm run validate-site-sources`, then asserts a clean tree, then `npm run metadata:size:check` | `CREDITS.csv` or `z_positions.csv` would change (you did not commit the regenerated file), or generated `item-metadata.js` / the item + index pair exceeds the byte budget. Raising a budget is deliberate. Load time is local (`profile:load`), not this check |
 | **Visual regression (Argos)** | `visual.yml` | `npm run test:visual` | A Playwright failure. Screenshot review happens in Argos, not the check |
-| **CLS (Lighthouse)** | `cls.yml` | `npm run profile:cls -- --repeat 3` (advisory until `cls-budgets.json` is baselined from a CI artifact) | Report-only for now. After budgets land, fails when a viewport median exceeds the committed slack — not Google's 0.1. Details: [CLS.md](CLS.md) |
+| **CLS (Lighthouse)** | `cls.yml` | `npm run profile:cls:check -- --repeat 3` | A viewport median exceeds [`scripts/profile/cls-budgets.json`](scripts/profile/cls-budgets.json) (CI slack around the un-delayed lab, not Google's 0.1). Details: [CLS.md](CLS.md) |
 | **Deploy** | `deploy.yml` | `npm run build` to GitHub Pages | Only on `master`, not a PR gate |
 | **`codecov/patch`** | Codecov | Compares uploaded `lcov` | Any new or edited gated production line is uncovered |
 | **`codecov/changes`** | Codecov | Compares uploaded `lcov` | Previously covered lines lose hits |

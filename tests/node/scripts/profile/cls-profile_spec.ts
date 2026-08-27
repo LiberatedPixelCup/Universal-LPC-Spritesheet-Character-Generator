@@ -457,6 +457,28 @@ test("parseBudgetsJson rejects unknown keys and bad values", () => {
   });
 });
 
+test("committed cls-budgets.json has exactly the three presets in 0–1", () => {
+  const budgetsPath = path.join(
+    path.dirname(fileURLToPath(import.meta.url)),
+    "../../../../scripts/profile/cls-budgets.json",
+  );
+  const parsed = parseBudgetsJson(
+    JSON.parse(fs.readFileSync(budgetsPath, "utf8")) as unknown,
+  );
+  const keys = Object.keys(parsed).sort();
+  const expected = [...CLS_PRESET_NAMES].sort();
+  assert.deepEqual(keys, expected);
+  for (const name of CLS_PRESET_NAMES) {
+    const value = parsed[name];
+    assert.equal(typeof value, "number");
+    assert.ok(Number.isFinite(value));
+    assert.ok(
+      value !== undefined && value >= 0 && value <= 1,
+      `${name}=${String(value)}`,
+    );
+  }
+});
+
 test("parseClsProfilePort", () => {
   assert.equal(parseClsProfilePort({}), 4179);
   assert.equal(parseClsProfilePort({ CLS_PROFILE_PORT: "" }), 4179);

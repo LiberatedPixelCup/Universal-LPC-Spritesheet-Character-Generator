@@ -47,7 +47,7 @@ jobs:
         run: npm ci --ignore-scripts
 
       - name: Measure lab CLS
-        run: npm run profile:cls -- --repeat 3
+        run: npm run profile:cls:check -- --repeat 3
         env:
           CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
 
