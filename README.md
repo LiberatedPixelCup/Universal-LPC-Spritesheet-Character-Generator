@@ -186,6 +186,7 @@ The generator includes built-in performance profiling tools to help identify ren
 - View metrics in Chrome DevTools → Performance tab
 - Run `profiler.report()` in the console for a summary
 - Catalog load (production preview): `npm run profile:load`
+- Lab CLS (Lighthouse, production preview): `npm run profile:cls` — see [CLS.md](CLS.md)
 - Metadata bytes (CI budget): `npm run metadata:size` / `npm run metadata:size:check`
 
 **What it tracks:**
