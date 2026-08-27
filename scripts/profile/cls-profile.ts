@@ -56,6 +56,7 @@ export const CLS_CHROME_FLAGS = ["--headless=new", "--no-sandbox"] as const;
 export const CLS_ONLY_AUDITS = [
   "cumulative-layout-shift",
   "layout-shifts",
+  "cls-culprits-insight",
 ] as const;
 
 export type ScreenEmulationSettings = {
@@ -348,6 +349,9 @@ function shiftNodesFromTableItems(items: unknown[]): ClsShiftNode[] {
   const nodes: ClsShiftNode[] = [];
   for (const item of items) {
     if (!isRecord(item)) {
+      continue;
+    }
+    if (isRecord(item.node) && item.node.type === "text") {
       continue;
     }
     const selector = nodeSelector(item.node);

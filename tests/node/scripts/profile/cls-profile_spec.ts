@@ -236,6 +236,7 @@ test("lighthouseSettingsForPreset mobile matches Lighthouse Moto G Power", () =>
   assert.equal(s.screenEmulation.disabled, false);
   assert.ok(s.onlyAudits.includes("cumulative-layout-shift"));
   assert.ok(s.onlyAudits.includes("layout-shifts"));
+  assert.ok(s.onlyAudits.includes("cls-culprits-insight"));
   assert.equal(s.throttling.cpuSlowdownMultiplier, 4);
   assert.match(s.emulatedUserAgent, /Mobile/i);
 });
@@ -258,7 +259,7 @@ test("lighthouseSettingsForPreset tablet and mediumDesktop match Argos CSS pixel
   assert.equal(md.screenEmulation.disabled, false);
 });
 
-test("every preset onlyAudits includes both CLS audits; chromeFlags omit hide-scrollbars", () => {
+test("every preset onlyAudits includes the three CLS audits; chromeFlags omit hide-scrollbars", () => {
   for (const name of CLS_PRESET_NAMES) {
     const s = lighthouseSettingsForPreset(name);
     assert.deepEqual([...s.onlyAudits], [...CLS_ONLY_AUDITS]);
@@ -297,6 +298,50 @@ test("extractClsSample reads CLS and layout-shifts nodes from the fixture LHR", 
   assert.equal(sample.lighthouseVersion, "13.4.1");
   assert.deepEqual([...sample.chromeFlags], [...CLS_CHROME_FLAGS]);
   assert.equal(sample.platform, process.platform);
+});
+
+test("extractClsSample skips the cls-culprits-insight Total row", () => {
+  const lhr: LhrLike = {
+    lighthouseVersion: "13.4.1",
+    audits: {
+      "cumulative-layout-shift": { numericValue: 0.2, score: 0.6 },
+      "cls-culprits-insight": {
+        details: {
+          type: "list",
+          items: [
+            {
+              type: "table",
+              items: [
+                {
+                  node: { type: "text", value: "Total" },
+                  score: 0.2,
+                },
+                {
+                  node: {
+                    type: "node",
+                    selector: "div.box.loading-shell-filters",
+                  },
+                  score: 0.12,
+                },
+              ],
+            },
+          ],
+        },
+      },
+    },
+  };
+  const sample = extractClsSample(
+    lhr,
+    "mobile",
+    lighthouseSettingsForPreset("mobile"),
+  );
+  assert.equal(sample.nodes.length, 1);
+  assert.equal(sample.nodes[0]?.selector, "div.box.loading-shell-filters");
+  assert.equal(sample.nodes[0]?.score, 0.12);
+  assert.equal(
+    sample.nodes.some((n) => n.selector === "Total"),
+    false,
+  );
 });
 
 test("extractClsSample falls back to cls-culprits-insight", () => {
