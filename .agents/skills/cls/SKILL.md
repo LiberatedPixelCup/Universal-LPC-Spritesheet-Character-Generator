@@ -44,6 +44,9 @@ Two labs:
   green jump. `--check --preset` gates only that viewport.
   Do not paste delayed medians into `cls-budgets.json`.
 
+`diff:cls-profile` always exits 0. A `hostUserAgent` warning is Chrome-build
+churn (`chrome-version: latest`), not a layout regression.
+
 Both budget files are slack around a CI median, never Google's 0.1. Delayed
 tablet sits **above** 0.1 today; green there means the jump has not grown,
 not that it is fixed.

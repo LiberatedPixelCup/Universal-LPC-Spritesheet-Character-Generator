@@ -6,6 +6,7 @@
  *   node scripts/profile/diff-cls-profile.ts --before tmp/baseline.json --after tmp/current.json
  *
  * Prints per-preset median deltas (after − before). Positive Δ means more shift.
+ * Warns when lighthouseVersion, platform, delayCssMs, or hostUserAgent differ.
  * Exit code 0 always (reporting tool).
  *
  * @see CLS.md
@@ -80,6 +81,25 @@ function byPreset(
     map.set(preset.preset, preset);
   }
   return map;
+}
+
+/** Unique sample `hostUserAgent`s; null when none were recorded. */
+export function hostUserAgentLabel(file: ClsProfileFile): string | null {
+  const uas: string[] = [];
+  const seen = new Set<string>();
+  for (const preset of file.presets) {
+    for (const sample of preset.samples) {
+      if (sample.hostUserAgent === "" || seen.has(sample.hostUserAgent)) {
+        continue;
+      }
+      seen.add(sample.hostUserAgent);
+      uas.push(sample.hostUserAgent);
+    }
+  }
+  if (uas.length === 0) {
+    return null;
+  }
+  return uas.join(" | ");
 }
 
 export function formatClsProfileDiff(
@@ -158,6 +178,14 @@ export function formatClsProfileDiff(
   if (before.delayCssMs !== after.delayCssMs) {
     lines.push(
       `  warning: delayCssMs differs (${before.delayCssMs} → ${after.delayCssMs}); do not treat Δ as a layout change`,
+    );
+  }
+
+  const beforeUa = hostUserAgentLabel(before);
+  const afterUa = hostUserAgentLabel(after);
+  if (beforeUa !== null && afterUa !== null && beforeUa !== afterUa) {
+    lines.push(
+      `  warning: hostUserAgent differs (${beforeUa} → ${afterUa}); CI Chrome floats independently of lighthouseVersion; do not treat Δ as a layout change`,
     );
   }
 

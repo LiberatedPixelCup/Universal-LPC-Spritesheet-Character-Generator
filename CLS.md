@@ -125,7 +125,10 @@ so a missing or malformed file (including a bad `--budgets` path) fails in
 seconds rather than after a full run. A delayed run that matched 0
 `/assets/*.css` files also exits **1** (after writing JSON).
 A crashed navigation inside `--repeat` **aborts that preset**; there is no
-2-of-3 median. `diff:cls-profile` always exits 0.
+2-of-3 median. `diff:cls-profile` always exits 0. It still prints a
+warning when `lighthouseVersion`, `platform`, `delayCssMs`, or
+`hostUserAgent` differ — CI installs `chrome-version: latest`, so a
+Chrome-build Δ is not a layout regression.
 
 Stdout is a table (preset, median, min, max; with `--check`, budget and
 ok/over). Details live in the JSON. Use `process.stdout.write` /
@@ -162,8 +165,10 @@ ok/over). Details live in the JSON. Use `process.stdout.write` /
 - **Two UAs, and they answer different questions.** `hostUserAgent` is the
   browser that ran the lab, so it carries the Chrome build
   (`HeadlessChrome/<version>`) — that is the field to diff when CI Chrome
-  floats. `emulatedUserAgent` is what the page was served and is fixed by
-  the preset, so it moves only when Lighthouse changes its UA strings.
+  floats. `diff:cls-profile` warns when it differs between files, same as
+  `lighthouseVersion` / `platform` / `delayCssMs`. `emulatedUserAgent` is
+  what the page was served and is fixed by the preset, so it moves only
+  when Lighthouse changes its UA strings.
 - Raising a budget is a **deliberate commit**, same rule as
   `metadata:size:check`. Never paste a laptop median into
   `cls-budgets.json`. Never paste a delayed median into that file.
@@ -279,8 +284,8 @@ rule as raising `metadata:size` limits.
 Do not confuse **`chrome-launcher` (npm)** with **Chrome the browser**. CI
 installs Chrome via `browser-actions/setup-chrome` `chrome-version: latest`.
 That binary can move CLS with no `package.json` change. If a CLS PR is red
-and nobody bumped Lighthouse, compare `hostUserAgent`
-(`HeadlessChrome/<version>`) in the artifact against the last green run.
+and nobody bumped Lighthouse, `diff:cls-profile` warns when `hostUserAgent`
+(`HeadlessChrome/<version>`) moved; confirm against the last green artifact.
 
 ### Lighthouse (defines CLS)
 
@@ -375,8 +380,9 @@ in the same PR.
 `setup-chrome@v2` with `chrome-version: latest` is intentionally floating.
 Pinning a Chrome major in `cls.yml` is a later decision if budget churn from
 Chrome updates becomes the main noise. Until then: if CLS fails and
-`package.json` is unchanged, diff the artifact's `hostUserAgent` against the
-last green run before raising budgets or reverting layout.
+`package.json` is unchanged, `diff:cls-profile` warns when `hostUserAgent`
+moved. Confirm that against the last green artifact before raising budgets
+or reverting layout.
 
 ## 11. CI
 

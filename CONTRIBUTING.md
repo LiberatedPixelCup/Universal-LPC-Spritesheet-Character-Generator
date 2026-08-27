@@ -306,7 +306,7 @@ Every script in [`package.json`](package.json). Run them from the repository roo
 | `npm run profile:cls:delayed` | Same as `profile:cls` with `--delay-css-ms 3000`, written to `tmp/cls-profile-delayed.json` | Tablet / medium-desktop jump lab. Diff against `:baseline:delayed` |
 | `npm run profile:cls:baseline:delayed` | Delayed run, written to `tmp/baseline-cls-profile-delayed.json` | Take a delayed CLS baseline **before** a CSS change |
 | `npm run profile:cls:check:delayed` | Delayed run, then fails if a **measured** viewport median exceeds [`scripts/profile/cls-budgets-delayed.json`](scripts/profile/cls-budgets-delayed.json), or if the proxy delayed 0 stylesheets | After a CSS change, or in CI (jump lab) |
-| `npm run diff:cls-profile` | Diffs two CLS-profile JSON files; positive Δ is more shift. Always exits 0 | Comparing CLS baseline against your change |
+| `npm run diff:cls-profile` | Diffs two CLS-profile JSON files; positive Δ is more shift. Warns when Lighthouse, platform, CSS delay, or host Chrome UA differ. Always exits 0 | Comparing CLS baseline against your change |
 | `npm run profile:zip:quick` | Headless ZIP profile with a fake JSZip | Drawing, slicing, or PNG encode changed |
 | `npm run profile:zip` | Headless ZIP profile with real JSZip. Slower | `generateAsync` or `zip-helpers` changed |
 | `npm run profile:zip:baseline` / `:baseline:quick` | Same runs, written to `tmp/baseline-*.json` | Take a baseline **before** your change |

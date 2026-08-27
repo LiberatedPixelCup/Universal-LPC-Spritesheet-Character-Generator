@@ -11,6 +11,7 @@ import type {
 } from "../../../../scripts/profile/cls-profile.ts";
 import {
   formatClsProfileDiff,
+  hostUserAgentLabel,
   loadProfile,
   parseArgs,
 } from "../../../../scripts/profile/diff-cls-profile.ts";
@@ -28,6 +29,31 @@ function preset(
     height: name === "mobile" ? 823 : name === "tablet" ? 1112 : 900,
     samples: [],
     summary: { median, min: median, max: median, n: 1 },
+  };
+}
+
+function withHostUa(
+  result: ClsPresetResult,
+  hostUserAgent: string,
+): ClsPresetResult {
+  return {
+    ...result,
+    samples: [
+      {
+        numericValue: result.summary.median,
+        score: null,
+        nodes: [],
+        lighthouseVersion: "13.4.1",
+        chromeFlags: ["--headless=new", "--no-sandbox"],
+        throttlingMethod: "devtools",
+        platform: "linux",
+        preset: result.preset,
+        width: result.width,
+        height: result.height,
+        hostUserAgent,
+        emulatedUserAgent: "",
+      },
+    ],
   };
 }
 
@@ -146,6 +172,71 @@ test("formatClsProfileDiff warns when delayCssMs differs", () => {
     "/after.json",
   );
   assert.match(text, /delayCssMs differs \(0 → 3000\)/);
+});
+
+test("formatClsProfileDiff warns when hostUserAgent differs", () => {
+  const before = profile({
+    presets: [withHostUa(preset("mobile", 0.1), "HeadlessChrome/131.0.6778.0")],
+  });
+  const after = profile({
+    presets: [
+      withHostUa(preset("mobile", 0.12), "HeadlessChrome/132.0.6834.0"),
+    ],
+  });
+  const text = formatClsProfileDiff(
+    before,
+    after,
+    "/before.json",
+    "/after.json",
+  );
+  assert.match(
+    text,
+    /hostUserAgent differs \(HeadlessChrome\/131\.0\.6778\.0 → HeadlessChrome\/132\.0\.6834\.0\)/,
+  );
+  assert.match(text, /CI Chrome floats independently of lighthouseVersion/);
+});
+
+test("formatClsProfileDiff does not warn when hostUserAgent is missing or equal", () => {
+  const empty = formatClsProfileDiff(
+    profile(),
+    profile(),
+    "/before.json",
+    "/after.json",
+  );
+  assert.doesNotMatch(empty, /hostUserAgent differs/);
+
+  const ua = "Mozilla/5.0 HeadlessChrome/131.0.6778.0";
+  const before = profile({
+    presets: [withHostUa(preset("mobile", 0.1), ua)],
+  });
+  const after = profile({
+    presets: [withHostUa(preset("mobile", 0.12), ua)],
+  });
+  const text = formatClsProfileDiff(
+    before,
+    after,
+    "/before.json",
+    "/after.json",
+  );
+  assert.doesNotMatch(text, /hostUserAgent differs/);
+});
+
+test("hostUserAgentLabel skips blanks and dedupes", () => {
+  assert.equal(hostUserAgentLabel(profile()), null);
+  const labeled = profile({
+    presets: [
+      withHostUa(preset("mobile", 0.1), "HeadlessChrome/131.0.6778.0"),
+      withHostUa(preset("tablet", 0.05), "HeadlessChrome/131.0.6778.0"),
+    ],
+  });
+  assert.equal(hostUserAgentLabel(labeled), "HeadlessChrome/131.0.6778.0");
+  const mixed = profile({
+    presets: [
+      withHostUa(preset("mobile", 0.1), ""),
+      withHostUa(preset("tablet", 0.05), "HeadlessChrome/132.0.6834.0"),
+    ],
+  });
+  assert.equal(hostUserAgentLabel(mixed), "HeadlessChrome/132.0.6834.0");
 });
 
 test("formatClsProfileDiff returns a string and does not throw", () => {
