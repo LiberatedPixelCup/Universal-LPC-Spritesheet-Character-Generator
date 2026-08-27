@@ -46,3 +46,18 @@
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica",
     "Arial", sans-serif;
 }
+
+/*
+ * Bulma `generic` sets html/body font-size from relative vars, which keeps the
+ * keyword font size Chrome remaps for `font-family: monospace` — every `.box`
+ * paints at the 13px fixed-font default until deferred main.css declares 16px.
+ * Same values as styles/critical-shell.css, after Bulma so they win.
+ */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-size: 16px;
+  line-height: 24px;
+}
