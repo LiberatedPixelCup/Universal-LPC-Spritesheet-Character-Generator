@@ -27,6 +27,7 @@ npm run profile:cls -- --preset mobile
 npm run profile:cls:check
 npm run profile:cls:delayed
 npm run profile:cls:baseline:delayed
+npm run profile:cls:check:delayed
 ```
 
 Production `vite preview` with `?debug=false`. Default port 4179. Culprits
@@ -36,10 +37,10 @@ Two labs:
 
 - Un-delayed `profile:cls:check` is the **hydrate floor**
   ([`cls-budgets.json`](../../../scripts/profile/cls-budgets.json)).
-- Delayed `profile:cls:delayed` (`--delay-css-ms 3000`) is the **jump
-  gate**. Do not paste delayed medians into `cls-budgets.json`. Delayed
-  budgets (`cls-budgets-delayed.json`) come from a delayed CI artifact
-  (`delayCssMs` 3000).
+- Delayed `profile:cls:check:delayed` (`--delay-css-ms 3000`) is the **jump
+  gate**
+  ([`cls-budgets-delayed.json`](../../../scripts/profile/cls-budgets-delayed.json)).
+  Do not paste delayed medians into `cls-budgets.json`.
 
 See [CLS.md](../../../CLS.md).
 

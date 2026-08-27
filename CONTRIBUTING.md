@@ -305,6 +305,7 @@ Every script in [`package.json`](package.json). Run them from the repository roo
 | `npm run profile:cls:check` | Un-delayed run, then fails if a viewport median exceeds [`scripts/profile/cls-budgets.json`](scripts/profile/cls-budgets.json) | After a CSS change, or in CI (hydrate floor) |
 | `npm run profile:cls:delayed` | Same as `profile:cls` with `--delay-css-ms 3000`, written to `tmp/cls-profile-delayed.json` | Tablet / medium-desktop jump lab. Diff against `:baseline:delayed` |
 | `npm run profile:cls:baseline:delayed` | Delayed run, written to `tmp/baseline-cls-profile-delayed.json` | Take a delayed CLS baseline **before** a CSS change |
+| `npm run profile:cls:check:delayed` | Delayed run, then fails if a viewport median exceeds [`scripts/profile/cls-budgets-delayed.json`](scripts/profile/cls-budgets-delayed.json) | After a CSS change, or in CI (jump lab) |
 | `npm run diff:cls-profile` | Diffs two CLS-profile JSON files; positive Δ is more shift. Always exits 0 | Comparing CLS baseline against your change |
 | `npm run profile:zip:quick` | Headless ZIP profile with a fake JSZip | Drawing, slicing, or PNG encode changed |
 | `npm run profile:zip` | Headless ZIP profile with real JSZip. Slower | `generateAsync` or `zip-helpers` changed |
@@ -347,7 +348,7 @@ statuses run on pull requests to `master`. All use Node 24.
 | **Test browsers** | `ci.yml` | `npm run test:node:coverage`, then `npm run test:browser:coverage` under Xvfb | A Node or browser spec fails. A patch miss is printed in the log and fails **`codecov/patch`**, not this job |
 | **Validate site sources** | `validate-site-sources.yml` | `npm run validate-site-sources`, then asserts a clean tree, then `npm run metadata:size:check` | `CREDITS.csv` or `z_positions.csv` would change (you did not commit the regenerated file), or generated `item-metadata.js` / the item + index pair exceeds the byte budget. Raising a budget is deliberate. Load time is local (`profile:load`), not this check |
 | **Visual regression (Argos)** | `visual.yml` | `npm run test:visual` | A Playwright failure. Screenshot review happens in Argos, not the check |
-| **CLS (Lighthouse)** | `cls.yml` | `npm run build`, then un-delayed `profile:cls:check -- --repeat 3 --skip-build`, then delayed `profile:cls:delayed -- --repeat 3 --skip-build` (`CLS_PROFILE_PORT=4188`) | Un-delayed viewport median exceeds [`scripts/profile/cls-budgets.json`](scripts/profile/cls-budgets.json). Delayed is report-only until `cls-budgets-delayed.json` exists. Slack around the matching CI lab, not Google's 0.1. Details: [CLS.md](CLS.md) |
+| **CLS (Lighthouse)** | `cls.yml` | `npm run build`, then un-delayed `profile:cls:check -- --repeat 3 --skip-build`, then delayed `profile:cls:check:delayed -- --repeat 3 --skip-build` (`CLS_PROFILE_PORT=4188`) | Either lab exceeds its budget file ([`cls-budgets.json`](scripts/profile/cls-budgets.json) / [`cls-budgets-delayed.json`](scripts/profile/cls-budgets-delayed.json)). Slack around the matching CI lab, not Google's 0.1. Details: [CLS.md](CLS.md) |
 | **Deploy** | `deploy.yml` | `npm run build` to GitHub Pages | Only on `master`, not a PR gate |
 | **`codecov/patch`** | Codecov | Compares uploaded `lcov` | Any new or edited gated production line is uncovered |
 | **`codecov/changes`** | Codecov | Compares uploaded `lcov` | Previously covered lines lose hits |

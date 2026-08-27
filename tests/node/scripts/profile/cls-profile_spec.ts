@@ -349,15 +349,44 @@ test("package.json delayed scripts match CLS_CI_DELAY_CSS_MS", () => {
   const delayFlag = `--delay-css-ms ${String(CLS_CI_DELAY_CSS_MS)}`;
   const delayed = pkg.scripts["profile:cls:delayed"];
   const baselineDelayed = pkg.scripts["profile:cls:baseline:delayed"];
+  const checkDelayed = pkg.scripts["profile:cls:check:delayed"];
   assert.equal(typeof delayed, "string");
   assert.equal(typeof baselineDelayed, "string");
+  assert.equal(typeof checkDelayed, "string");
   assert.ok(delayed.includes(delayFlag), delayed);
   assert.ok(baselineDelayed.includes(delayFlag), baselineDelayed);
+  assert.ok(checkDelayed.includes(delayFlag), checkDelayed);
+  assert.ok(
+    checkDelayed.includes("--budgets scripts/profile/cls-budgets-delayed.json"),
+    checkDelayed,
+  );
   assert.ok(delayed.includes("--out tmp/cls-profile-delayed.json"), delayed);
   assert.ok(
     baselineDelayed.includes("--out tmp/baseline-cls-profile-delayed.json"),
     baselineDelayed,
   );
+});
+
+test("parseArgs check:delayed script shape", () => {
+  const opts = parseArgs([
+    "node",
+    "cls-profile.ts",
+    "--check",
+    "--delay-css-ms",
+    String(CLS_CI_DELAY_CSS_MS),
+    "--out",
+    "tmp/cls-profile-delayed.json",
+    "--budgets",
+    "scripts/profile/cls-budgets-delayed.json",
+  ]);
+  assert.ok(!("help" in opts));
+  if ("help" in opts) {
+    return;
+  }
+  assert.equal(opts.check, true);
+  assert.equal(opts.delayCssMs, CLS_CI_DELAY_CSS_MS);
+  assert.ok(opts.outPath.endsWith(`${path.sep}cls-profile-delayed.json`));
+  assert.ok(opts.budgetsPath.endsWith(`${path.sep}cls-budgets-delayed.json`));
 });
 
 test("delayed CI profile port keeps vite preview off Node's blocked 4190", () => {
@@ -375,7 +404,7 @@ test("delayed CI profile port keeps vite preview off Node's blocked 4190", () =>
   assert.match(yml, /name: Build production/);
   assert.match(yml, /npm run build/);
   assert.match(yml, /profile:cls:check -- --repeat 3 --skip-build/);
-  assert.match(yml, /profile:cls:delayed -- --repeat 3 --skip-build/);
+  assert.match(yml, /profile:cls:check:delayed -- --repeat 3 --skip-build/);
 });
 
 test("parseArgs --skip-build does not attach --url", () => {
@@ -920,6 +949,41 @@ test("committed cls-budgets.json has exactly the three presets in 0–1", () => 
       `${name}=${String(value)}`,
     );
   }
+});
+
+test("committed cls-budgets-delayed.json has exactly the three presets in 0–1", () => {
+  const budgetsPath = path.join(
+    path.dirname(fileURLToPath(import.meta.url)),
+    "../../../../scripts/profile/cls-budgets-delayed.json",
+  );
+  const parsed = parseBudgetsJson(
+    JSON.parse(fs.readFileSync(budgetsPath, "utf8")) as unknown,
+  );
+  const keys = Object.keys(parsed).sort();
+  const expected = [...CLS_PRESET_NAMES].sort();
+  assert.deepEqual(keys, expected);
+  for (const name of CLS_PRESET_NAMES) {
+    const value = parsed[name];
+    assert.equal(typeof value, "number");
+    assert.ok(Number.isFinite(value));
+    assert.ok(
+      value !== undefined && value >= 0 && value <= 1,
+      `${name}=${String(value)}`,
+    );
+  }
+});
+
+test("un-delayed and delayed budget files are not identical", () => {
+  const dir = path.join(
+    path.dirname(fileURLToPath(import.meta.url)),
+    "../../../../scripts/profile",
+  );
+  const undelayed = fs.readFileSync(path.join(dir, "cls-budgets.json"), "utf8");
+  const delayed = fs.readFileSync(
+    path.join(dir, "cls-budgets-delayed.json"),
+    "utf8",
+  );
+  assert.notEqual(undelayed, delayed);
 });
 
 test("parseClsProfilePort", () => {
