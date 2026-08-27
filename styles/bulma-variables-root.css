@@ -3,7 +3,8 @@
  * Parity: bulma-overrides-paint in critical, bulma-overrides-rest in deferred; main.css @imports both via bulma-overrides.css.
  */
 
-:root {
+:root,
+[data-theme="light"] {
   --bulma-scheme-h: 0deg;
   --bulma-scheme-s: 0%;
   --bulma-text-h: 0deg;

@@ -6,7 +6,8 @@
  * (Same header as bulma-overrides.css — v1 → v0.9.4 visual parity)
  */
 
-:root {
+:root,
+[data-theme="light"] {
   --bulma-scheme-h: 0deg;
   --bulma-scheme-s: 0%;
   --bulma-text-h: 0deg;
