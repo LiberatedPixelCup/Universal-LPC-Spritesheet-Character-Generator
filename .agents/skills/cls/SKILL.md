@@ -44,6 +44,10 @@ Two labs:
   green jump. `--check --preset` gates only that viewport.
   Do not paste delayed medians into `cls-budgets.json`.
 
+Both budget files are slack around a CI median, never Google's 0.1. Delayed
+tablet sits **above** 0.1 today; green there means the jump has not grown,
+not that it is fixed.
+
 See [CLS.md](../../../CLS.md).
 
 Do not hand-edit [`scripts/profile/cls-budgets.json`](../../../scripts/profile/cls-budgets.json)

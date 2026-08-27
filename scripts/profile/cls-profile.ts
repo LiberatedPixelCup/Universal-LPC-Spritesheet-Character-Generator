@@ -71,6 +71,9 @@ export const CLS_CI_DELAY_CSS_MS = 3000;
  * Delayed CI `CLS_PROFILE_PORT`. Preview binds this + 1. Kept clear of the
  * un-delayed lab's default 4179 / 4180 so a leftover preview from the first
  * CI run cannot `EADDRINUSE` the second.
+ *
+ * The script itself reads the env var, not this constant; it exists so the
+ * spec can assert `cls.yml` and this file agree.
  */
 export const CLS_CI_DELAYED_PROFILE_PORT = 4188;
 
@@ -113,7 +116,10 @@ export type ClsSample = {
   preset: ClsPreset;
   width: number;
   height: number;
-  userAgent: string;
+  /** Host Chrome UA. Carries the browser build as `HeadlessChrome/<version>`. */
+  hostUserAgent: string;
+  /** UA the page was served, fixed by the preset. Not the host build. */
+  emulatedUserAgent: string;
 };
 
 export type LoadStats = {
@@ -487,7 +493,8 @@ export function extractClsSample(
     preset,
     width: settings.screenEmulation.width,
     height: settings.screenEmulation.height,
-    userAgent: lhr.userAgent ?? lhr.environment?.hostUserAgent ?? "",
+    hostUserAgent: lhr.userAgent ?? lhr.environment?.hostUserAgent ?? "",
+    emulatedUserAgent: settings.emulatedUserAgent,
   };
 }
 

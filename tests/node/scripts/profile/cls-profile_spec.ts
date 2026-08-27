@@ -185,9 +185,14 @@ test("shouldDelayStylesheetPath matches any hashed /assets/*.css", () => {
   );
   assert.equal(shouldDelayStylesheetPath("/sources/styles/main.css"), false);
   assert.equal(shouldDelayStylesheetPath("/"), false);
+  // The proxy passes URL.pathname, so a query never reaches this matcher and
+  // a versioned stylesheet is still held.
   assert.equal(
-    shouldDelayStylesheetPath("/assets/main-D4rbq9Ei.css?v=1"),
-    false,
+    shouldDelayStylesheetPath(
+      new URL("/assets/main-D4rbq9Ei.css?v=1", "http://127.0.0.1:4179/")
+        .pathname,
+    ),
+    true,
   );
 });
 
@@ -247,7 +252,8 @@ async function startProxyRig(delayCssMs: number): Promise<ProxyRig> {
   const upstreamPaths: string[] = [];
   const upstream = http.createServer((req, res) => {
     upstreamPaths.push(req.url ?? "");
-    if (req.url?.endsWith(".css") === true) {
+    const { pathname } = new URL(req.url ?? "/", "http://127.0.0.1/");
+    if (pathname.endsWith(".css")) {
       res.writeHead(200, { "content-type": "text/css" });
       res.end(".a{color:red}");
       return;
@@ -287,9 +293,15 @@ test("startCssDelayProxy holds /assets/*.css, counts it, and proxies the body", 
     assert.ok(heldMs >= 150, `held only ${String(heldMs)}ms`);
     assert.equal(rig.hits.count, 1);
 
+    const versioned = await getThrough(
+      `${rig.origin}/assets/main-D4rbq9Ei.css?v=1`,
+    );
+    assert.equal(versioned.status, 200);
+    assert.equal(rig.hits.count, 2);
+
     const html = await getThrough(`${rig.origin}/`);
     assert.equal(html.status, 200);
-    assert.equal(rig.hits.count, 1);
+    assert.equal(rig.hits.count, 2);
   } finally {
     await closeHttpServer(rig.proxy);
     await closeHttpServer(rig.upstream);
@@ -780,6 +792,13 @@ test("extractClsSample reads CLS and layout-shifts nodes from the fixture LHR", 
   assert.equal(sample.lighthouseVersion, "13.4.1");
   assert.deepEqual([...sample.chromeFlags], [...CLS_CHROME_FLAGS]);
   assert.equal(sample.platform, process.platform);
+  // Host UA carries the Chrome build; the emulated UA is the preset's.
+  assert.match(sample.hostUserAgent, /HeadlessChrome\/\d+/);
+  assert.equal(
+    sample.emulatedUserAgent,
+    lighthouseSettingsForPreset("mobile").emulatedUserAgent,
+  );
+  assert.notEqual(sample.emulatedUserAgent, sample.hostUserAgent);
 });
 
 test("extractClsSample keeps two distinct layout-shifts selectors", () => {

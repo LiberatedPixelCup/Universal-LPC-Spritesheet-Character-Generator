@@ -153,13 +153,17 @@ ok/over). Details live in the JSON. Use `process.stdout.write` /
   The JSON keeps every sample plus min / median / max.
 - **Provenance** (treat two runs without these as incomparable):
   `lighthouseVersion`, Chrome path, `chromeFlags`, `throttlingMethod`,
-  throttling profile, UA, `process.platform`, preset width × height,
+  throttling profile, `process.platform`, preset width × height,
   `delayCssMs` (0 means no CSS-delay proxy) and `delayedStylesheetHits`
   (stylesheet GETs the proxy actually held; a delayed run with 0 hits
   fails). `chromeFlags` is the literal `CLS_CHROME_FLAGS` this script
   passes, **not** the resolved command line — `chrome-launcher` prepends its
-  own defaults, and those are not recorded. The Chrome build is in the
-  sample UA (`HeadlessChrome/<version>`).
+  own defaults, and those are not recorded.
+- **Two UAs, and they answer different questions.** `hostUserAgent` is the
+  browser that ran the lab, so it carries the Chrome build
+  (`HeadlessChrome/<version>`) — that is the field to diff when CI Chrome
+  floats. `emulatedUserAgent` is what the page was served and is fixed by
+  the preset, so it moves only when Lighthouse changes its UA strings.
 - Raising a budget is a **deliberate commit**, same rule as
   `metadata:size:check`. Never paste a laptop median into
   `cls-budgets.json`. Never paste a delayed median into that file.
@@ -275,8 +279,8 @@ rule as raising `metadata:size` limits.
 Do not confuse **`chrome-launcher` (npm)** with **Chrome the browser**. CI
 installs Chrome via `browser-actions/setup-chrome` `chrome-version: latest`.
 That binary can move CLS with no `package.json` change. If a CLS PR is red
-and nobody bumped Lighthouse, check the workflow log for Chrome version
-against the JSON provenance field.
+and nobody bumped Lighthouse, compare `hostUserAgent`
+(`HeadlessChrome/<version>`) in the artifact against the last green run.
 
 ### Lighthouse (defines CLS)
 
@@ -371,8 +375,8 @@ in the same PR.
 `setup-chrome@v2` with `chrome-version: latest` is intentionally floating.
 Pinning a Chrome major in `cls.yml` is a later decision if budget churn from
 Chrome updates becomes the main noise. Until then: if CLS fails and
-`package.json` is unchanged, diff Chrome version in the artifact vs the last
-green run before raising budgets or reverting layout.
+`package.json` is unchanged, diff the artifact's `hostUserAgent` against the
+last green run before raising budgets or reverting layout.
 
 ## 11. CI
 
