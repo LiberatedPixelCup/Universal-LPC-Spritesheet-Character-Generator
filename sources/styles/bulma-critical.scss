@@ -28,3 +28,36 @@
   @include light.light-theme;
   @include setup.setup-theme;
 }
+
+/*
+ * light-theme sets Inter. That stack is narrower than the BlinkMacSystemFont
+ * stack in paint CSS, so Download ZIP buttons wrap on Inter at first paint and
+ * reflow when deferred paint `:root` wins. Same selector, later, same stack as
+ * styles/bulma-variables-root.css / bulma-overrides-paint.css.
+ */
+:root,
+[data-theme="light"] {
+  --bulma-family-primary:
+    BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
+  --bulma-family-secondary:
+    BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
+}
+
+/*
+ * Bulma `generic` sets html/body font-size from relative vars, which keeps the
+ * keyword font size Chrome remaps for `font-family: monospace` — every `.box`
+ * paints at the 13px fixed-font default until deferred main.css declares 16px.
+ * Same values as styles/critical-shell.css, after Bulma so they win.
+ */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-size: 16px;
+  line-height: 24px;
+}

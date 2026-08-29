@@ -53,7 +53,10 @@ export const Credits: m.Component<{ catalog: CatalogReader; state: State }> = {
         ]),
 
         !state.previewBootstrapRenderDone
-          ? m("p.has-text-grey", "Loading selections…")
+          ? m(
+              "div.loading-shell-credits",
+              m("p.has-text-grey", "Loading selections…"),
+            )
           : allCredits.length > 0
             ? [
                 m(

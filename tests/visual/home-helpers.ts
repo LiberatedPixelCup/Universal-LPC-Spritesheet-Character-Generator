@@ -33,7 +33,8 @@ export async function scrollVisualCaptureToTop(page: Page): Promise<void> {
  * `globalThis.__LPC_waitCatalogAllReady` (see `sources/state/catalog.ts`).
  * Otherwise, if `__LPC_arePaletteModalMetadataChunksReady` exists, wait until it is true
  * (so palette / skintone modals are not opened while the UI still says “Loading layer data…”).
- * Legacy dists without those hooks: only then fall back to “#mithril-filters” un-spinner.
+ * Legacy dists without those hooks: only then fall back to “#mithril-filters”
+ * no longer showing the first-paint loading shell (or the older root spinner).
  */
 export async function waitForCatalogAllReady(page: Page): Promise<void> {
   /* Playwright: options are the 3rd arg; the 2nd is passed to the page function. */
@@ -43,7 +44,11 @@ export async function waitForCatalogAllReady(page: Page): Promise<void> {
         return true;
       }
       const el = document.getElementById("mithril-filters");
-      if (!el || el.classList.contains("loading")) {
+      if (
+        !el ||
+        el.classList.contains("loading") ||
+        el.querySelector(".loading-shell-filters")
+      ) {
         return false;
       }
       if (

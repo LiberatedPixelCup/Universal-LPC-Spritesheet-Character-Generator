@@ -13,7 +13,10 @@ import { customAnimations } from "../../../sources/custom-animations.ts";
 import * as canvasRenderer from "../../../sources/canvas/renderer.ts";
 import { createState } from "../../../sources/state/state.ts";
 let state;
-import { ANIMATION_CONFIGS } from "../../../sources/state/constants.ts";
+import {
+  ANIMATION_CONFIGS,
+  FRAME_SIZE,
+} from "../../../sources/state/constants.ts";
 import { createCatalog } from "../../../sources/state/catalog.ts";
 
 describe("AnimationPreview", function () {
@@ -60,7 +63,10 @@ describe("AnimationPreview", function () {
     assert.notEqual(select, null);
     assert.strictEqual(select.value, "walk");
     assert.notEqual(host.querySelector("input[type=range]"), null);
-    assert.notEqual(host.querySelector("#previewAnimations"), null);
+    const preview = host.querySelector("#previewAnimations");
+    assert.notEqual(preview, null);
+    assert.strictEqual(preview.width, 4 * FRAME_SIZE);
+    assert.strictEqual(preview.height, FRAME_SIZE);
     assert.include(host.textContent, ANIMATION_CONFIGS.walk.cycle.join("-"));
   });
 
@@ -90,6 +96,20 @@ describe("AnimationPreview", function () {
 
     assert.strictEqual(state.selectedAnimation, "wheelchair");
     assert.include(host.textContent, "2-2");
+  });
+
+  it("sizes the preview canvas to a custom animation frame size", function () {
+    setCurrentCustomAnimations({ tool_rod: customAnimations.tool_rod });
+    m.mount(host, { view: () => m(AnimationPreview, { catalog, state }) });
+
+    const select = host.querySelector("select");
+    select.value = "tool_rod";
+    select.dispatchEvent(new Event("change", { bubbles: true }));
+    m.redraw.sync();
+
+    const preview = host.querySelector("#previewAnimations");
+    assert.strictEqual(preview.width, 4 * customAnimations.tool_rod.frameSize);
+    assert.strictEqual(preview.height, customAnimations.tool_rod.frameSize);
   });
 
   it("writes previewCanvasZoomLevel from the zoom slider", function () {

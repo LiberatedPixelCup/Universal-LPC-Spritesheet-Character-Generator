@@ -31,6 +31,15 @@ h3 {
   margin: 4px 0px 0px 0px;
 }
 
+/*
+ * Minireset (`html,body,…,h3 { margin: 0 }`) is emitted after this file in the
+ * critical bundle, so the h3 rule above loses on first paint. Deferred main.css
+ * then restores 4px and the Download title drops. h3.title beats minireset.
+ */
+h3.title {
+  margin: 4px 0 0;
+}
+
 p {
   margin: 10px 0px;
 }
@@ -47,7 +56,47 @@ p {
   width: calc(100% - 30px);
   padding: 10px;
   box-sizing: border-box;
+  /* Huge-desktop Argos is a single 75px row; do not raise the default. */
   min-height: 75px;
+}
+
+#header-left > div {
+  display: flex;
+}
+
+/*
+ * Download (and every other CollapsibleSection) mounts before deferred main.css.
+ * Pin the same chrome as main.css so the arrow, title row, and 1rem body gap
+ * do not appear after first paint.
+ */
+.collapsible-header {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+.collapsible-title {
+  flex: 1;
+}
+
+.collapsible-content {
+  margin-top: 1rem;
+}
+
+.tree-arrow {
+  display: inline-block;
+  width: 1rem;
+  text-align: center;
+  margin-right: 0.5rem;
+}
+
+.tree-arrow.collapsed::before {
+  content: "▶";
+}
+
+.tree-arrow.expanded::before {
+  content: "▼";
 }
 
 #columns-container {
@@ -115,4 +164,37 @@ canvas {
   justify-content: space-evenly;
   gap: 1rem;
   margin-top: -12px;
+}
+
+/*
+ * First-paint CLS: reserved height for shells Mithril replaces on mount.
+ * Sizes match the hydrated panels (not 100dvh / 70vh guesses — those were
+ * shorter than the chooser and taller than a centered spinner, so hydrate
+ * reshuffled visible content and CLS went up). Do not put min-height on the
+ * mount roots (that would remain after hydrate and show up in Argos).
+ */
+.loading-shell-filters,
+.loading-shell-animation,
+.loading-shell-spritesheet {
+  box-sizing: border-box;
+}
+
+/* ~Download+Filters+Credits+Advanced with the 42rem tree loading host. */
+.loading-shell-filters {
+  min-height: 80rem;
+}
+
+/* Collapsible header + animation/zoom controls + 256×64 canvas (~330px). */
+.loading-shell-animation {
+  min-height: 21rem;
+}
+
+/* Collapsible header + toolbar + 70vh spritesheet scrollport (~823px). */
+.loading-shell-spritesheet {
+  min-height: calc(70vh + 10rem);
+}
+
+/* Credits list is max-height 300px once selections exist; hold that while loading. */
+.loading-shell-credits {
+  min-height: 300px;
 }

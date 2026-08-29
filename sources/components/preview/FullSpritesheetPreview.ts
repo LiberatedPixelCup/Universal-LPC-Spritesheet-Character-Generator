@@ -7,7 +7,12 @@ import {
   copyToPreviewCanvas,
   primeSpritesheetPreviewCanvasElement,
 } from "../../canvas/preview-canvas.ts";
-import { isOffscreenCanvasInitialized } from "../../canvas/renderer.ts";
+import {
+  canvas as offscreenCanvas,
+  isOffscreenCanvasInitialized,
+  SHEET_HEIGHT,
+  SHEET_WIDTH,
+} from "../../canvas/renderer.ts";
 import { ScrollableContainer } from "./ScrollableContainer.ts";
 import { PreviewMetadataLoadingOverlay } from "./PreviewMetadataLoadingOverlay.ts";
 import type { CatalogReader } from "../../state/catalog.ts";
@@ -123,7 +128,15 @@ const SpritesheetCanvas: m.Component<
     vnode.state._pinchCreatePromise = null;
   },
   view() {
-    return m("canvas#spritesheet-preview");
+    const width =
+      isOffscreenCanvasInitialized() && offscreenCanvas
+        ? offscreenCanvas.width
+        : SHEET_WIDTH;
+    const height =
+      isOffscreenCanvasInitialized() && offscreenCanvas
+        ? offscreenCanvas.height
+        : SHEET_HEIGHT;
+    return m("canvas#spritesheet-preview", { width, height });
   },
 };
 

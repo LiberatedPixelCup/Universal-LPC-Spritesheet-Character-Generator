@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Universal LPC Sprite Sheet Character Generator</title>
 </head>
 <body>
@@ -29,12 +30,26 @@
 
 	<div id="columns-container" class="columns is-desktop">
 		<div id="chooser-column" class="column">
-			<div id="mithril-filters" class="loading"></div>
+			<div id="mithril-filters">
+				<div class="box loading-shell-filters">
+					<div class="category-tree-loading-host">
+						<span class="loading" aria-label="Loading filters"></span>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div id="preview-column" class="column">
-			<div id="mithril-preview" class="loading"></div>
-			<div id="mithril-spritesheet-preview" class="loading"></div>
+			<div id="mithril-preview">
+				<div class="box loading-shell-animation">
+					<span class="loading" aria-label="Loading animation preview"></span>
+				</div>
+			</div>
+			<div id="mithril-spritesheet-preview">
+				<div class="box loading-shell-spritesheet">
+					<span class="loading" aria-label="Loading spritesheet preview"></span>
+				</div>
+			</div>
 		</div>
 	</div>
 	<script type="module" src="sources/main.ts"></script>
