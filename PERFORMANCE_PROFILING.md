@@ -94,6 +94,18 @@ npm run diff:app-load-profile -- tmp/baseline-app-load-profile.json tmp/app-load
 
 A positive Δ means the after run was slower. A few milliseconds is noise. Treat a **50 ms+** move on `indexReadyMs` or `liteReadyMs` median as worth a second look (first-paint gates; same bar as the live profiler’s slow-operation threshold). A 50 ms+ move on `catalogReadyMs` alone can be the credits/palette tail; note it, but do not treat it as the intern’s load verdict. `diff:app-load-profile` always exits 0.
 
+### Headless CLS profiler
+
+Lab CLS is a Lighthouse layout-shift score, not `profiler.snapshot()`. Use
+`npm run profile:cls` when loading shells, first-paint CSS, or wrap-driven
+jump may have changed. Default preview port **4179** (`CLS_PROFILE_PORT`),
+clear of `profile:load` (4178) and `npm run preview` (4173).
+
+Walkthrough, viewports (CLS `mobile` is 412×823, not Argos 390), budgets,
+`--delay-css-ms` (delayed CI is the jump gate; un-delayed is the hydrate
+floor), and dump debugging: [CLS.md](CLS.md). Agent procedure:
+[cls](.agents/skills/cls/SKILL.md).
+
 ### Metadata size (generator output)
 
 `npm run metadata:size` regenerates the five metadata modules **in memory** (no `dist/`, no Vite) and reports raw, gzip, and brotli bytes per module plus the item + index pair. This is a **proxy for Vite's bundled-chunk warning**, not the built `dist/assets/*.js` sizes.

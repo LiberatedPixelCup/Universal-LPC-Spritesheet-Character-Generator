@@ -1,0 +1,1257 @@
+#!/usr/bin/env node
+/**
+ * Drive a production preview and report lab CLS at Lighthouse mobile plus
+ * Argos tablet / medium desktop, with applied (devtools) throttling.
+ *
+ * Default: `vite build` then `vite preview` on 127.0.0.1 (not Vite serve).
+ *
+ * Usage:
+ *   node scripts/profile/cls-profile.ts
+ *   node scripts/profile/cls-profile.ts --preset mobile --url http://127.0.0.1:4173
+ *   node scripts/profile/cls-profile.ts --check --repeat 3
+ *   node scripts/profile/cls-profile.ts --skip-build --check --repeat 3
+ *   node scripts/profile/cls-profile.ts --preset tablet --delay-css-ms 3000
+ *
+ * Environment:
+ *   CLS_PROFILE_PORT — preview (or CSS-delay proxy) port when this script starts the server (default 4179).
+ *     With --delay-css-ms and no --url, vite preview binds this port + 1.
+ *     With --url on the same port, the CSS-delay proxy binds this port + 1.
+ *   CHROME_PATH — Chrome binary (CI).
+ *
+ * @see CLS.md
+ */
+
+import { spawn, spawnSync, type ChildProcess } from "node:child_process";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import http, {
+  type ClientRequest,
+  type IncomingMessage,
+  type RequestOptions,
+  type Server,
+  type ServerResponse,
+} from "node:http";
+import https from "node:https";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+import { Launcher, launch } from "chrome-launcher";
+import lighthouse from "lighthouse";
+import {
+  nonSimulatedSettingsOverrides,
+  throttling,
+  userAgents,
+} from "lighthouse/core/config/constants.js";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const REPO_ROOT = path.join(__dirname, "..", "..");
+
+const DEFAULT_PORT = 4179;
+const DEFAULT_REPEAT = 1;
+const DEFAULT_OUT = path.join(REPO_ROOT, "tmp", "cls-profile.json");
+const DEFAULT_BUDGETS = path.join(
+  REPO_ROOT,
+  "scripts",
+  "profile",
+  "cls-budgets.json",
+);
+
+export const CLS_PRESET_NAMES = ["mobile", "tablet", "mediumDesktop"] as const;
+export type ClsPreset = (typeof CLS_PRESET_NAMES)[number];
+
+/** Headless flags shared local and CI. Do not add --hide-scrollbars. */
+export const CLS_CHROME_FLAGS = ["--headless=new", "--no-sandbox"] as const;
+
+export const CLS_ONLY_AUDITS = [
+  "cumulative-layout-shift",
+  "layout-shifts",
+  "cls-culprits-insight",
+] as const;
+
+/** CI delayed lab pin. Changing this invalidates delayed budgets. */
+export const CLS_CI_DELAY_CSS_MS = 3000;
+
+/**
+ * Delayed CI `CLS_PROFILE_PORT`. Preview binds this + 1. Kept clear of the
+ * un-delayed lab's default 4179 / 4180 so a leftover preview from the first
+ * CI run cannot `EADDRINUSE` the second.
+ *
+ * The script itself reads the env var, not this constant; it exists so the
+ * spec can assert `cls.yml` and this file agree.
+ */
+export const CLS_CI_DELAYED_PROFILE_PORT = 4188;
+
+export type ScreenEmulationSettings = {
+  mobile: boolean;
+  width: number;
+  height: number;
+  deviceScaleFactor: number;
+  disabled: boolean;
+};
+
+export type LighthousePresetSettings = {
+  formFactor: "mobile" | "desktop";
+  screenEmulation: ScreenEmulationSettings;
+  throttlingMethod: "devtools";
+  throttling:
+    (typeof throttling)["mobileSlow4G"] | (typeof throttling)["desktopDense4G"];
+  emulatedUserAgent: string;
+  onlyAudits: readonly string[];
+  pauseAfterFcpMs: number;
+  pauseAfterLoadMs: number;
+  networkQuietThresholdMs: number;
+  cpuQuietThresholdMs: number;
+};
+
+export type ClsShiftNode = {
+  selector: string;
+  score: number | null;
+  causes: string[];
+};
+
+export type ClsSample = {
+  numericValue: number;
+  score: number | null;
+  nodes: ClsShiftNode[];
+  lighthouseVersion: string;
+  chromeFlags: readonly string[];
+  throttlingMethod: "devtools";
+  platform: NodeJS.Platform;
+  preset: ClsPreset;
+  width: number;
+  height: number;
+  /** Host Chrome UA. Carries the browser build as `HeadlessChrome/<version>`. */
+  hostUserAgent: string;
+  /** UA the page was served, fixed by the preset. Not the host build. */
+  emulatedUserAgent: string;
+};
+
+export type LoadStats = {
+  median: number;
+  min: number;
+  max: number;
+  n: number;
+};
+
+export type ClsPresetResult = {
+  preset: ClsPreset;
+  width: number;
+  height: number;
+  samples: ClsSample[];
+  summary: LoadStats;
+};
+
+export type ClsProfileFile = {
+  generatedAt: string;
+  url: string;
+  repeat: number;
+  delayCssMs: number;
+  /** Stylesheet GETs the CSS-delay proxy actually held; 0 when delay is off. */
+  delayedStylesheetHits: number;
+  lighthouseVersion: string;
+  chromePath: string;
+  chromeFlags: readonly string[];
+  throttlingMethod: "devtools";
+  platform: NodeJS.Platform;
+  presets: ClsPresetResult[];
+};
+
+export type BudgetViolation = {
+  preset: string;
+  actual: number;
+  budget: number | null;
+  reason: "over-budget" | "missing-result" | "missing-budget";
+};
+
+export type CliOpts = {
+  outPath: string;
+  url: string | null;
+  repeat: number;
+  check: boolean;
+  presets: ClsPreset[];
+  saveLhrPath: string | null;
+  budgetsPath: string;
+  delayCssMs: number;
+  skipBuild: boolean;
+};
+
+export type ParsedCli = { help: true } | CliOpts;
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === "object";
+}
+
+function usage(): string {
+  return [
+    "Usage: node scripts/profile/cls-profile.ts [options]",
+    "  --url <origin>     Attach to an already-running preview (skips vite build + preview)",
+    "  --skip-build       Reuse existing dist/ (still starts vite preview unless --url)",
+    "  --preset NAME      mobile | tablet | mediumDesktop (default: all three)",
+    "  --repeat n         Fresh Lighthouse navigations per preset (default 1)",
+    "  --out / --json     Write JSON (default: tmp/cls-profile.json)",
+    "  --check            Fail if a preset median exceeds the budgets file",
+    "  --budgets <path>   Budget JSON for --check (default: scripts/profile/cls-budgets.json)",
+    "  --save-lhr <path>  Write the raw LHR JSON (per-preset suffix when running more than one)",
+    "  --delay-css-ms n   Delay /assets/*.css by n ms via a local proxy (fail if none matched)",
+  ].join("\n");
+}
+
+export function isClsPreset(name: string): name is ClsPreset {
+  return (CLS_PRESET_NAMES as readonly string[]).includes(name);
+}
+
+export function parseClsProfilePort(
+  env: NodeJS.ProcessEnv = process.env,
+): number {
+  const raw = env.CLS_PROFILE_PORT;
+  if (raw === undefined || raw === "") {
+    return DEFAULT_PORT;
+  }
+  const n = Number.parseInt(raw, 10);
+  if (!Number.isInteger(n) || n < 1 || n > 65535) {
+    throw new Error(
+      `CLS_PROFILE_PORT must be an integer 1–65535, got: ${JSON.stringify(raw)}`,
+    );
+  }
+  return n;
+}
+
+export function parseArgs(argv: readonly string[]): ParsedCli {
+  const args = argv.slice(2);
+  if (args.includes("--help") || args.includes("-h")) {
+    return { help: true };
+  }
+  let outPath: string | null = null;
+  let url: string | null = null;
+  let repeat = DEFAULT_REPEAT;
+  let check = false;
+  let saveLhrPath: string | null = null;
+  let delayCssMs = 0;
+  let budgetsPath: string | null = null;
+  let skipBuild = false;
+  const presets: ClsPreset[] = [];
+  for (let i = 0; i < args.length; i++) {
+    const a = args[i];
+    const next = args[i + 1];
+    if ((a === "--out" || a === "--json") && next && !next.startsWith("-")) {
+      outPath = path.resolve(REPO_ROOT, next);
+      i += 1;
+    } else if (a === "--url" && next && !next.startsWith("-")) {
+      url = next.replace(/\/?$/, "/");
+      i += 1;
+    } else if (a === "--preset" && next && !next.startsWith("-")) {
+      if (!isClsPreset(next)) {
+        throw new Error(
+          `Unknown --preset ${JSON.stringify(next)} (not a profile:cls flag). ` +
+            `Use mobile | tablet | mediumDesktop. lighthouseMobile is a compute-style dump preset.\n${usage()}`,
+        );
+      }
+      if (presets.length > 0) {
+        throw new Error(`Only one --preset is allowed\n${usage()}`);
+      }
+      presets.push(next);
+      i += 1;
+    } else if (a === "--repeat" && next && !next.startsWith("-")) {
+      const n = Number.parseInt(next, 10);
+      if (!Number.isInteger(n) || n < 1) {
+        throw new Error(`--repeat must be an integer >= 1, got: ${next}`);
+      }
+      repeat = n;
+      i += 1;
+    } else if (a === "--save-lhr" && next && !next.startsWith("-")) {
+      saveLhrPath = path.resolve(REPO_ROOT, next);
+      i += 1;
+    } else if (a === "--delay-css-ms" && next && !next.startsWith("-")) {
+      const n = Number.parseInt(next, 10);
+      if (!Number.isInteger(n) || n < 1) {
+        throw new Error(`--delay-css-ms must be an integer >= 1, got: ${next}`);
+      }
+      delayCssMs = n;
+      i += 1;
+    } else if (a === "--budgets" && next && !next.startsWith("-")) {
+      budgetsPath = path.resolve(REPO_ROOT, next);
+      i += 1;
+    } else if (a === "--check") {
+      check = true;
+    } else if (a === "--skip-build") {
+      skipBuild = true;
+    } else if (
+      a === "--out" ||
+      a === "--json" ||
+      a === "--url" ||
+      a === "--preset" ||
+      a === "--repeat" ||
+      a === "--save-lhr" ||
+      a === "--delay-css-ms" ||
+      a === "--budgets"
+    ) {
+      throw new Error(`${a} requires a value\n${usage()}`);
+    } else {
+      throw new Error(`Unknown argument: ${a}\n${usage()}`);
+    }
+  }
+  return {
+    outPath: outPath ?? DEFAULT_OUT,
+    url,
+    repeat,
+    check,
+    presets: presets.length > 0 ? presets : [...CLS_PRESET_NAMES],
+    saveLhrPath,
+    budgetsPath: budgetsPath ?? DEFAULT_BUDGETS,
+    delayCssMs,
+    skipBuild,
+  };
+}
+
+export function lighthouseSettingsForPreset(
+  preset: ClsPreset,
+): LighthousePresetSettings {
+  const pauses = nonSimulatedSettingsOverrides;
+  const common = {
+    throttlingMethod: "devtools" as const,
+    onlyAudits: CLS_ONLY_AUDITS,
+    pauseAfterFcpMs: pauses.pauseAfterFcpMs,
+    pauseAfterLoadMs: pauses.pauseAfterLoadMs,
+    networkQuietThresholdMs: pauses.networkQuietThresholdMs,
+    cpuQuietThresholdMs: pauses.cpuQuietThresholdMs,
+    screenEmulation: {
+      disabled: false,
+    },
+  };
+  if (preset === "mobile") {
+    return {
+      ...common,
+      formFactor: "mobile",
+      screenEmulation: {
+        mobile: true,
+        width: 412,
+        height: 823,
+        deviceScaleFactor: 1.75,
+        disabled: false,
+      },
+      throttling: throttling.mobileSlow4G,
+      emulatedUserAgent: userAgents.mobile,
+    };
+  }
+  const desktop =
+    preset === "tablet"
+      ? { width: 834, height: 1112 }
+      : { width: 1440, height: 900 };
+  return {
+    ...common,
+    formFactor: "desktop",
+    screenEmulation: {
+      mobile: false,
+      width: desktop.width,
+      height: desktop.height,
+      deviceScaleFactor: 1,
+      disabled: false,
+    },
+    throttling: throttling.desktopDense4G,
+    emulatedUserAgent: userAgents.desktop,
+  };
+}
+
+function nodeSelector(node: unknown): string {
+  if (!isRecord(node)) {
+    return "";
+  }
+  if (typeof node.selector === "string" && node.selector !== "") {
+    return node.selector;
+  }
+  if (typeof node.nodeLabel === "string" && node.nodeLabel !== "") {
+    return node.nodeLabel;
+  }
+  if (typeof node.snippet === "string") {
+    return node.snippet;
+  }
+  if (typeof node.value === "string") {
+    return node.value;
+  }
+  return "";
+}
+
+function causeText(cause: unknown): string {
+  if (typeof cause === "string") {
+    return cause;
+  }
+  if (isRecord(cause) && typeof cause.formattedDefault === "string") {
+    return cause.formattedDefault;
+  }
+  if (isRecord(cause) && typeof cause.value === "string") {
+    return cause.value;
+  }
+  return "";
+}
+
+function shiftNodesFromTableItems(items: unknown[]): ClsShiftNode[] {
+  const nodes: ClsShiftNode[] = [];
+  for (const item of items) {
+    if (!isRecord(item)) {
+      continue;
+    }
+    if (isRecord(item.node) && item.node.type === "text") {
+      continue;
+    }
+    const selector = nodeSelector(item.node);
+    const score =
+      typeof item.score === "number" && Number.isFinite(item.score)
+        ? item.score
+        : null;
+    const causes: string[] = [];
+    if (isRecord(item.subItems) && Array.isArray(item.subItems.items)) {
+      for (const sub of item.subItems.items) {
+        if (!isRecord(sub)) {
+          continue;
+        }
+        const text = causeText(sub.cause);
+        if (text) {
+          causes.push(text);
+        }
+      }
+    }
+    if (selector !== "" || score !== null) {
+      nodes.push({ selector, score, causes });
+    }
+  }
+  return nodes;
+}
+
+function extractShiftNodes(details: unknown): ClsShiftNode[] {
+  if (!isRecord(details)) {
+    return [];
+  }
+  if (details.type === "table" && Array.isArray(details.items)) {
+    return shiftNodesFromTableItems(details.items);
+  }
+  if (details.type === "list" && Array.isArray(details.items)) {
+    const nodes: ClsShiftNode[] = [];
+    for (const inner of details.items) {
+      if (isRecord(inner) && Array.isArray(inner.items)) {
+        nodes.push(...shiftNodesFromTableItems(inner.items));
+      }
+    }
+    return nodes;
+  }
+  return [];
+}
+
+export type LhrLike = {
+  lighthouseVersion?: string;
+  userAgent?: string;
+  runtimeError?: { code?: string; message?: string };
+  environment?: { hostUserAgent?: string };
+  audits?: Record<
+    string,
+    {
+      numericValue?: number | null;
+      score?: number | null;
+      details?: unknown;
+    }
+  >;
+};
+
+function requireFiniteCls(value: unknown): number {
+  if (typeof value !== "number" || !Number.isFinite(value)) {
+    throw new Error(
+      `cumulative-layout-shift.numericValue missing or not finite: ${String(value)}`,
+    );
+  }
+  return value;
+}
+
+export function extractClsSample(
+  lhr: LhrLike,
+  preset: ClsPreset,
+  settings: LighthousePresetSettings,
+): ClsSample {
+  if (lhr.runtimeError) {
+    throw new Error(
+      `Lighthouse runtimeError: ${lhr.runtimeError.message ?? lhr.runtimeError.code}`,
+    );
+  }
+  const clsAudit = lhr.audits?.["cumulative-layout-shift"];
+  if (!clsAudit) {
+    throw new Error(
+      "Lighthouse result is missing the cumulative-layout-shift audit",
+    );
+  }
+  const numericValue = requireFiniteCls(clsAudit.numericValue);
+  const layoutShifts = lhr.audits?.["layout-shifts"];
+  const insight = lhr.audits?.["cls-culprits-insight"];
+  let nodes: ClsShiftNode[] = [];
+  if (layoutShifts?.details !== undefined) {
+    nodes = extractShiftNodes(layoutShifts.details);
+  }
+  if (nodes.length === 0 && insight?.details !== undefined) {
+    nodes = extractShiftNodes(insight.details);
+  }
+  return {
+    numericValue,
+    score: typeof clsAudit.score === "number" ? clsAudit.score : null,
+    nodes,
+    lighthouseVersion: lhr.lighthouseVersion ?? "unknown",
+    chromeFlags: CLS_CHROME_FLAGS,
+    throttlingMethod: "devtools",
+    platform: process.platform,
+    preset,
+    width: settings.screenEmulation.width,
+    height: settings.screenEmulation.height,
+    hostUserAgent: lhr.userAgent ?? lhr.environment?.hostUserAgent ?? "",
+    emulatedUserAgent: settings.emulatedUserAgent,
+  };
+}
+
+export function summarizeRepeats(values: number[]): LoadStats {
+  if (values.length === 0) {
+    throw new Error("summarizeRepeats of empty list");
+  }
+  const sorted = [...values].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  const median =
+    sorted.length % 2 === 1
+      ? sorted[mid]!
+      : (sorted[mid - 1]! + sorted[mid]!) / 2;
+  return {
+    median,
+    min: sorted[0]!,
+    max: sorted[sorted.length - 1]!,
+    n: values.length,
+  };
+}
+
+export function parseBudgetsJson(
+  raw: unknown,
+  label = "budgets file",
+): Record<string, number> {
+  if (!isRecord(raw)) {
+    throw new Error(`${label} must be an object`);
+  }
+  const unknownKeys = Object.keys(raw).filter((k) => !isClsPreset(k));
+  if (unknownKeys.length > 0) {
+    throw new Error(
+      `${label} has unknown preset key(s): ${unknownKeys.join(", ")}`,
+    );
+  }
+  const out: Record<string, number> = {};
+  for (const [name, v] of Object.entries(raw)) {
+    if (typeof v !== "number" || !Number.isFinite(v) || v < 0) {
+      throw new Error(
+        `${label} ${name} must be a finite number >= 0, got ${String(v)}`,
+      );
+    }
+    out[name] = v;
+  }
+  return out;
+}
+
+export function loadBudgetsOrThrow(
+  budgetsPath: string,
+): Record<string, number> {
+  try {
+    return parseBudgetsJson(
+      JSON.parse(readFileSync(budgetsPath, "utf8")) as unknown,
+      path.basename(budgetsPath),
+    );
+  } catch (err) {
+    if (
+      err &&
+      typeof err === "object" &&
+      "code" in err &&
+      err.code === "ENOENT"
+    ) {
+      throw new Error(
+        `Missing ${path.relative(REPO_ROOT, budgetsPath)} (needed for --check)`,
+        { cause: err },
+      );
+    }
+    throw err;
+  }
+}
+
+export function checkClsAgainstBudgets(
+  results: readonly Pick<ClsPresetResult, "preset" | "summary">[],
+  budgets: Record<string, number>,
+  presetsToCheck: readonly ClsPreset[] = results.map((r) => r.preset),
+): BudgetViolation[] {
+  const unknownKeys = Object.keys(budgets).filter((k) => !isClsPreset(k));
+  if (unknownKeys.length > 0) {
+    throw new Error(
+      `budgets file has unknown preset key(s): ${unknownKeys.join(", ")}`,
+    );
+  }
+  const violations: BudgetViolation[] = [];
+  const byPreset = new Map(results.map((r) => [r.preset, r]));
+  const names = [...new Set(presetsToCheck)];
+  for (const name of names) {
+    const budget = budgets[name];
+    const result = byPreset.get(name);
+    if (budget === undefined) {
+      violations.push({
+        preset: name,
+        actual: result?.summary.median ?? NaN,
+        budget: null,
+        reason: "missing-budget",
+      });
+      continue;
+    }
+    if (!result) {
+      violations.push({
+        preset: name,
+        actual: NaN,
+        budget,
+        reason: "missing-result",
+      });
+      continue;
+    }
+    if (result.summary.median > budget) {
+      violations.push({
+        preset: name,
+        actual: result.summary.median,
+        budget,
+        reason: "over-budget",
+      });
+    }
+  }
+  return violations;
+}
+
+function loadPageUrl(base: string): string {
+  const u = new URL(base);
+  u.searchParams.set("debug", "false");
+  u.hash = "";
+  return u.href;
+}
+
+/** Production CSS linked from index.html or emitted as a hashed /assets/*.css chunk. */
+export function shouldDelayStylesheetPath(pathname: string): boolean {
+  return /\/assets\/[^/]+\.css$/i.test(pathname);
+}
+
+/**
+ * `--delay-css-ms` is not a jump lab if the proxy never held a stylesheet.
+ * Zero hits means the hashed CSS left `/assets/*.css` (or was not requested).
+ */
+export function assertDelayedStylesheetHits(
+  delayCssMs: number,
+  hits: number,
+): void {
+  if (delayCssMs <= 0) {
+    return;
+  }
+  if (hits < 1) {
+    throw new Error(
+      `--delay-css-ms ${String(delayCssMs)} matched 0 stylesheets under /assets/*.css; the jump lab did not delay CSS`,
+    );
+  }
+}
+
+export async function stopLaunchedChrome(
+  chrome: { kill: () => void | Promise<unknown> } | undefined,
+): Promise<void> {
+  if (chrome === undefined) {
+    return;
+  }
+  await chrome.kill();
+}
+
+export function defaultPortForProtocol(protocol: string): number | null {
+  if (protocol === "http:") {
+    return 80;
+  }
+  if (protocol === "https:") {
+    return 443;
+  }
+  return null;
+}
+
+/**
+ * `http.request` vs `https.request` for an attached `--url`. Passing an
+ * https origin to `http.request` is plaintext on the TLS port (socket
+ * error / 502), not a jump lab.
+ */
+export type UpstreamRequest = (
+  options: RequestOptions,
+  callback?: (res: IncomingMessage) => void,
+) => ClientRequest;
+
+export function requestFnForProtocol(protocol: string): UpstreamRequest {
+  if (protocol === "https:") {
+    return https.request;
+  }
+  if (protocol === "http:") {
+    return http.request;
+  }
+  throw new Error(
+    `CSS-delay proxy upstream must be http: or https:, got ${JSON.stringify(protocol)}`,
+  );
+}
+
+export function originPort(origin: string): number | null {
+  try {
+    const u = new URL(origin);
+    if (u.port) {
+      const n = Number.parseInt(u.port, 10);
+      return Number.isInteger(n) ? n : null;
+    }
+    return defaultPortForProtocol(u.protocol);
+  } catch {
+    return null;
+  }
+}
+
+export function upstreamPortForProxy(publicPort: number): number {
+  return publicPort + 1;
+}
+
+/** Host header Vite preview expects (proxy listen port ≠ upstream port). */
+export function hostHeaderForUpstream(upstreamOrigin: string): string {
+  const u = new URL(upstreamOrigin);
+  const hostname = u.hostname || "127.0.0.1";
+  const port = originPort(upstreamOrigin);
+  const defaultPort = defaultPortForProtocol(u.protocol);
+  if (port === null || (defaultPort !== null && port === defaultPort)) {
+    return hostname;
+  }
+  return `${hostname}:${port}`;
+}
+
+/**
+ * Where the CSS-delay proxy listens, and where Lighthouse must navigate.
+ * Never bind the proxy to the same port as an attached `--url` preview.
+ * Spawned preview (no `--url`): proxy on CLS_PROFILE_PORT, preview on +1.
+ * `--url`: proxy on CLS_PROFILE_PORT unless that is the upstream port, then +1.
+ */
+export function cssDelayProxyListenPort(
+  clsProfilePort: number,
+  upstreamOrigin: string | null,
+): number {
+  if (upstreamOrigin === null) {
+    return clsProfilePort;
+  }
+  const upstream = originPort(upstreamOrigin);
+  if (upstream !== null && upstream === clsProfilePort) {
+    return upstreamPortForProxy(clsProfilePort);
+  }
+  return clsProfilePort;
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+function vitePreviewBin(): string {
+  return path.join(
+    REPO_ROOT,
+    "node_modules",
+    ".bin",
+    process.platform === "win32" ? "vite.cmd" : "vite",
+  );
+}
+
+/**
+ * SIGTERM, wait up to timeoutMs, then SIGKILL. No-op if the child already
+ * exited. Exported so the wait/kill fallback has a unit test.
+ */
+export async function stopChildProcess(
+  child: ChildProcess,
+  timeoutMs = 5000,
+): Promise<void> {
+  if (child.exitCode !== null || child.signalCode !== null) {
+    return;
+  }
+  await new Promise<void>((resolve) => {
+    const timer = setTimeout(() => {
+      try {
+        child.kill("SIGKILL");
+      } catch {
+        /* already gone */
+      }
+    }, timeoutMs);
+    child.once("exit", () => {
+      clearTimeout(timer);
+      resolve();
+    });
+    try {
+      child.kill("SIGTERM");
+    } catch {
+      clearTimeout(timer);
+      resolve();
+    }
+  });
+}
+
+function closeServer(server: Server): Promise<void> {
+  return new Promise((resolve, reject) => {
+    server.close((err) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve();
+    });
+  });
+}
+
+/**
+ * Reply only if the client is still there. A stylesheet held for
+ * `--delay-css-ms` outlives plenty of navigations, so by the time an error
+ * lands the response is often already destroyed or ended, and `writeHead`
+ * on an ended response throws `ERR_HTTP_HEADERS_SENT`.
+ */
+export function endClientResponse(
+  res: ServerResponse,
+  status: number,
+  body: string,
+): void {
+  if (res.destroyed || res.writableEnded) {
+    return;
+  }
+  if (!res.headersSent) {
+    res.writeHead(status);
+  }
+  res.end(body);
+}
+
+/**
+ * Delay `/assets/*.css` in front of `vite preview`.
+ *
+ * Chrome abandons held stylesheets whenever Lighthouse closes the trace, so
+ * aborts are routine rather than exceptional. Node drops writes to a
+ * destroyed response quietly, but the request still has to be unwound: skip
+ * the upstream fetch when the client is already gone, and release the
+ * upstream socket instead of draining a body nobody will read.
+ *
+ * The proxy itself is HTTP on loopback. An https `--url` still uses TLS
+ * (`https.request`) to the preview; a self-signed cert fails verification
+ * and surfaces as 502.
+ */
+export function startCssDelayProxy(options: {
+  listenPort: number;
+  upstreamOrigin: string;
+  delayCssMs: number;
+  hits: { count: number };
+}): Promise<Server> {
+  const upstream = new URL(options.upstreamOrigin);
+  const request = requestFnForProtocol(upstream.protocol);
+  const defaultPort = defaultPortForProtocol(upstream.protocol) ?? 80;
+  return new Promise((resolve, reject) => {
+    const server = http.createServer((clientReq, clientRes) => {
+      clientReq.on("error", () => undefined);
+      clientRes.on("error", () => undefined);
+      void (async () => {
+        try {
+          const reqPath = clientReq.url ?? "/";
+          const reqUrl = new URL(reqPath, options.upstreamOrigin);
+          if (shouldDelayStylesheetPath(reqUrl.pathname)) {
+            options.hits.count += 1;
+            await sleep(options.delayCssMs);
+          }
+          if (clientReq.destroyed || clientRes.destroyed) {
+            return;
+          }
+          const headers = { ...clientReq.headers };
+          headers.host = hostHeaderForUpstream(options.upstreamOrigin);
+          const proxyReq = request(
+            {
+              hostname: upstream.hostname,
+              port: upstream.port || defaultPort,
+              path: `${reqUrl.pathname}${reqUrl.search}`,
+              method: clientReq.method,
+              headers,
+            },
+            (proxyRes) => {
+              if (clientRes.destroyed) {
+                proxyRes.destroy();
+                return;
+              }
+              clientRes.writeHead(proxyRes.statusCode ?? 502, proxyRes.headers);
+              proxyRes.pipe(clientRes);
+            },
+          );
+          proxyReq.on("error", (err) => {
+            endClientResponse(clientRes, 502, String(err));
+          });
+          clientRes.on("close", () => {
+            proxyReq.destroy();
+          });
+          clientReq.pipe(proxyReq);
+        } catch (err) {
+          endClientResponse(clientRes, 500, String(err));
+        }
+      })();
+    });
+    const onListenError = (err: Error): void => {
+      reject(err);
+    };
+    server.on("error", onListenError);
+    server.listen(options.listenPort, "127.0.0.1", () => {
+      server.removeListener("error", onListenError);
+      server.on("error", (err) => {
+        process.stderr.write(`CSS delay proxy error: ${err.message}\n`);
+      });
+      resolve(server);
+    });
+  });
+}
+
+function httpGetStatus(url: string): Promise<number> {
+  return new Promise((resolve, reject) => {
+    const req = http.get(url, (res) => {
+      res.resume();
+      resolve(res.statusCode ?? 0);
+    });
+    req.on("error", reject);
+  });
+}
+
+/**
+ * Probe with `node:http`, not `fetch`. Undici refuses several ports
+ * (including 4190 / ManageSieve) as "bad port", which used to look like a
+ * 120s preview timeout on the delayed CI listen port + 1.
+ */
+export async function waitForHttpOk(url: string, maxMs: number): Promise<void> {
+  const start = Date.now();
+  let lastError: unknown;
+  while (Date.now() - start < maxMs) {
+    try {
+      const status = await httpGetStatus(url);
+      if (status >= 200 && status < 300) {
+        return;
+      }
+      lastError = new Error(`HTTP ${String(status)}`);
+    } catch (err) {
+      lastError = err;
+    }
+    await sleep(200);
+  }
+  const detail =
+    lastError instanceof Error ? lastError.message : String(lastError ?? "");
+  throw new Error(
+    `Timeout waiting for preview: ${url}${detail ? ` (${detail})` : ""}`,
+  );
+}
+
+function runViteBuild(): void {
+  process.stderr.write("Building production bundle…\n");
+  const result = spawnSync("npx", ["vite", "build"], {
+    cwd: REPO_ROOT,
+    stdio: "inherit",
+    shell: process.platform === "win32",
+  });
+  if (result.status !== 0) {
+    throw new Error(`vite build failed with status ${result.status}`);
+  }
+}
+
+export function assertSkipBuildDist(
+  indexPath: string = path.join(REPO_ROOT, "dist", "index.html"),
+): void {
+  if (!existsSync(indexPath)) {
+    throw new Error(
+      "--skip-build requires dist/index.html; run npm run build first",
+    );
+  }
+}
+
+async function resolveChromePath(): Promise<string> {
+  const env = process.env.CHROME_PATH;
+  if (env !== undefined && env !== "") {
+    return env;
+  }
+  const installed = Launcher.getFirstInstallation();
+  if (installed) {
+    return installed;
+  }
+  const { chromium } = await import("playwright");
+  return chromium.executablePath();
+}
+
+export function saveLhrPathForPreset(
+  basePath: string,
+  preset: ClsPreset,
+  presetCount: number,
+): string {
+  if (presetCount === 1) {
+    return basePath;
+  }
+  const ext = path.extname(basePath);
+  const stem = ext ? basePath.slice(0, -ext.length) : basePath;
+  return `${stem}-${preset}${ext || ".json"}`;
+}
+
+function formatClsTable(
+  file: ClsProfileFile,
+  budgets: Record<string, number> | null,
+): string {
+  const rows = file.presets.map((p) => {
+    const budget = budgets?.[p.preset];
+    const over =
+      budget !== undefined && p.summary.median > budget ? "over" : "ok";
+    return {
+      preset: p.preset,
+      median: p.summary.median.toFixed(3),
+      min: p.summary.min.toFixed(3),
+      max: p.summary.max.toFixed(3),
+      budget: budget === undefined ? "—" : budget.toFixed(3),
+      status: budget === undefined ? "" : over,
+    };
+  });
+  const w = {
+    preset: Math.max(8, ...rows.map((r) => r.preset.length)),
+    median: 8,
+    min: 8,
+    max: 8,
+    budget: 8,
+    status: 6,
+  };
+  const pad = (s: string, n: number, right = false): string =>
+    s.length >= n
+      ? s
+      : right
+        ? " ".repeat(n - s.length) + s
+        : s + " ".repeat(n - s.length);
+  const header =
+    budgets === null
+      ? `  ${pad("preset", w.preset)}  ${pad("median", w.median, true)}  ${pad("min", w.min, true)}  ${pad("max", w.max, true)}`
+      : `  ${pad("preset", w.preset)}  ${pad("median", w.median, true)}  ${pad("min", w.min, true)}  ${pad("max", w.max, true)}  ${pad("budget", w.budget, true)}  ${pad("status", w.status)}`;
+  const sep =
+    budgets === null
+      ? `  ${"-".repeat(w.preset)}  ${"-".repeat(w.median)}  ${"-".repeat(w.min)}  ${"-".repeat(w.max)}`
+      : `  ${"-".repeat(w.preset)}  ${"-".repeat(w.median)}  ${"-".repeat(w.min)}  ${"-".repeat(w.max)}  ${"-".repeat(w.budget)}  ${"-".repeat(w.status)}`;
+  const body = rows.map((r) =>
+    budgets === null
+      ? `  ${pad(r.preset, w.preset)}  ${pad(r.median, w.median, true)}  ${pad(r.min, w.min, true)}  ${pad(r.max, w.max, true)}`
+      : `  ${pad(r.preset, w.preset)}  ${pad(r.median, w.median, true)}  ${pad(r.min, w.min, true)}  ${pad(r.max, w.max, true)}  ${pad(r.budget, w.budget, true)}  ${pad(r.status, w.status)}`,
+  );
+  return [
+    `CLS profile (devtools throttling, n=${file.repeat})`,
+    header,
+    sep,
+    ...body,
+  ].join("\n");
+}
+
+async function runLighthouseOnUrl(
+  url: string,
+  port: number,
+  preset: ClsPreset,
+): Promise<{ lhr: LhrLike; settings: LighthousePresetSettings }> {
+  const settings = lighthouseSettingsForPreset(preset);
+  const result = await lighthouse(url, {
+    port,
+    logLevel: "error",
+    output: "json",
+    onlyAudits: [...settings.onlyAudits],
+    formFactor: settings.formFactor,
+    screenEmulation: settings.screenEmulation,
+    throttlingMethod: settings.throttlingMethod,
+    throttling: settings.throttling,
+    emulatedUserAgent: settings.emulatedUserAgent,
+    pauseAfterFcpMs: settings.pauseAfterFcpMs,
+    pauseAfterLoadMs: settings.pauseAfterLoadMs,
+    networkQuietThresholdMs: settings.networkQuietThresholdMs,
+    cpuQuietThresholdMs: settings.cpuQuietThresholdMs,
+  });
+  if (result === undefined) {
+    throw new Error(`Lighthouse returned no result for ${preset}`);
+  }
+  return { lhr: result.lhr as LhrLike, settings };
+}
+
+export async function main(
+  argv: readonly string[] = process.argv,
+): Promise<number> {
+  const sandboxCache = process.env.PLAYWRIGHT_BROWSERS_PATH;
+  if (sandboxCache?.includes("cursor-sandbox-cache")) {
+    delete process.env.PLAYWRIGHT_BROWSERS_PATH;
+  }
+
+  const parsed = parseArgs(argv);
+  if ("help" in parsed) {
+    process.stdout.write(`${usage()}\n`);
+    return 0;
+  }
+  const opts: CliOpts = parsed;
+  const checkBudgets = opts.check ? loadBudgetsOrThrow(opts.budgetsPath) : null;
+  const port = parseClsProfilePort();
+  const attachedUrl = opts.url;
+  const previewPort =
+    attachedUrl === null
+      ? opts.delayCssMs > 0
+        ? upstreamPortForProxy(port)
+        : port
+      : (originPort(attachedUrl) ?? port);
+  const upstreamBase = attachedUrl ?? `http://127.0.0.1:${previewPort}/`;
+  const proxyListenPort =
+    opts.delayCssMs > 0 ? cssDelayProxyListenPort(port, attachedUrl) : port;
+  const measuredBase =
+    opts.delayCssMs > 0 ? `http://127.0.0.1:${proxyListenPort}/` : upstreamBase;
+  const url = loadPageUrl(measuredBase);
+
+  let preview: ChildProcess | undefined;
+  let proxy: Server | undefined;
+  let chrome: Awaited<ReturnType<typeof launch>> | undefined;
+  const delayedHits = { count: 0 };
+  try {
+    if (attachedUrl === null) {
+      if (opts.skipBuild) {
+        assertSkipBuildDist();
+      } else {
+        runViteBuild();
+      }
+      preview = spawn(
+        vitePreviewBin(),
+        [
+          "preview",
+          "--host",
+          "127.0.0.1",
+          "--port",
+          String(previewPort),
+          "--strictPort",
+        ],
+        {
+          cwd: REPO_ROOT,
+          stdio: "ignore",
+          shell: process.platform === "win32",
+        },
+      );
+      await waitForHttpOk(upstreamBase.replace(/\/?$/, "/"), 120000);
+    }
+
+    if (opts.delayCssMs > 0) {
+      process.stderr.write(
+        `CSS delay proxy: ${opts.delayCssMs} ms on main / deferred stylesheets → ${measuredBase}\n`,
+      );
+      proxy = await startCssDelayProxy({
+        listenPort: proxyListenPort,
+        upstreamOrigin: upstreamBase.replace(/\/?$/, "/"),
+        delayCssMs: opts.delayCssMs,
+        hits: delayedHits,
+      });
+      await waitForHttpOk(measuredBase, 120000);
+    }
+
+    const chromePath = await resolveChromePath();
+    process.stderr.write(`Chrome: ${chromePath}\n`);
+    chrome = await launch({
+      chromePath,
+      chromeFlags: [...CLS_CHROME_FLAGS],
+    });
+
+    const presetResults: ClsPresetResult[] = [];
+    let lighthouseVersion = "";
+    for (const preset of opts.presets) {
+      const samples: ClsSample[] = [];
+      for (let i = 0; i < opts.repeat; i++) {
+        process.stderr.write(`${preset} navigation ${i + 1}/${opts.repeat}…\n`);
+        const { lhr, settings } = await runLighthouseOnUrl(
+          url,
+          chrome.port,
+          preset,
+        );
+        if (opts.saveLhrPath) {
+          const out = saveLhrPathForPreset(
+            opts.saveLhrPath,
+            preset,
+            opts.presets.length,
+          );
+          mkdirSync(path.dirname(out), { recursive: true });
+          writeFileSync(out, `${JSON.stringify(lhr, null, 2)}\n`, "utf8");
+          process.stderr.write(`Wrote LHR ${path.relative(REPO_ROOT, out)}\n`);
+        }
+        const sample = extractClsSample(lhr, preset, settings);
+        if (sample.nodes.length === 0) {
+          process.stderr.write(
+            `warning: ${preset} has no layout-shift culprits (CLS ${sample.numericValue}); empty nodes is not "no shift"\n`,
+          );
+        }
+        samples.push(sample);
+        if (!lighthouseVersion) {
+          lighthouseVersion = sample.lighthouseVersion;
+        }
+      }
+      const settings = lighthouseSettingsForPreset(preset);
+      presetResults.push({
+        preset,
+        width: settings.screenEmulation.width,
+        height: settings.screenEmulation.height,
+        samples,
+        summary: summarizeRepeats(samples.map((s) => s.numericValue)),
+      });
+    }
+
+    const file: ClsProfileFile = {
+      generatedAt: new Date().toISOString(),
+      url,
+      repeat: opts.repeat,
+      delayCssMs: opts.delayCssMs,
+      delayedStylesheetHits: delayedHits.count,
+      lighthouseVersion,
+      chromePath,
+      chromeFlags: CLS_CHROME_FLAGS,
+      throttlingMethod: "devtools",
+      platform: process.platform,
+      presets: presetResults,
+    };
+
+    mkdirSync(path.dirname(opts.outPath), { recursive: true });
+    writeFileSync(opts.outPath, `${JSON.stringify(file, null, 2)}\n`, "utf8");
+    process.stderr.write(`Wrote ${path.relative(REPO_ROOT, opts.outPath)}\n`);
+
+    assertDelayedStylesheetHits(opts.delayCssMs, delayedHits.count);
+
+    if (checkBudgets !== null) {
+      process.stdout.write(`${formatClsTable(file, checkBudgets)}\n`);
+      const violations = checkClsAgainstBudgets(
+        presetResults,
+        checkBudgets,
+        opts.presets,
+      );
+      if (violations.length > 0) {
+        for (const v of violations) {
+          process.stderr.write(
+            `${v.preset}: ${v.reason} actual=${v.actual} budget=${String(v.budget)}\n`,
+          );
+        }
+        return 1;
+      }
+      process.stdout.write("CLS budgets ok.\n");
+      return 0;
+    }
+
+    process.stdout.write(`${formatClsTable(file, null)}\n`);
+    return 0;
+  } finally {
+    try {
+      await stopLaunchedChrome(chrome);
+    } catch {
+      /* already gone */
+    }
+    if (preview) {
+      await stopChildProcess(preview);
+    }
+    if (proxy) {
+      await closeServer(proxy).catch(() => undefined);
+    }
+  }
+}
+
+const isMain =
+  process.argv[1] !== undefined &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+
+if (isMain) {
+  main().then(
+    (code) => {
+      if (code !== 0) {
+        process.exit(code);
+      }
+    },
+    (err: unknown) => {
+      console.error(err instanceof Error ? err.message : err);
+      process.exit(1);
+    },
+  );
+}

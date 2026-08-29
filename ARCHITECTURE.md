@@ -74,7 +74,7 @@ catalog and state instances:
 | `#mithril-preview` | [`AnimationPreview`](sources/components/preview/AnimationPreview.ts) |
 | `#mithril-spritesheet-preview` | [`FullSpritesheetPreview`](sources/components/preview/FullSpritesheetPreview.ts) |
 
-Each mount root starts with a **loading-shell** child (reserved height, spinner) so first paint does not use a 24×24 `.loading` root. Mithril replaces those children on mount; they are not part of the hydrated layout.
+Each mount root starts with a **loading-shell** child (reserved height, spinner) so first paint does not use a 24×24 `.loading` root. Mithril replaces those children on mount; they are not part of the hydrated layout. Reserved height exists to limit lab CLS; measurement and debugging: [CLS.md](CLS.md).
 
 Mounting happens immediately; hash hydration waits. The async block after mount
 awaits `onIndexReady` and `onLiteReady`, then calls `initCanvas()`,

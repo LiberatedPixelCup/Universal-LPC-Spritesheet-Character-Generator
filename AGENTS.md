@@ -27,6 +27,9 @@ local links. Walkthroughs are in [ARCHITECTURE.md](ARCHITECTURE.md) and
   ([catalog](.agents/skills/catalog/SKILL.md))
 - Start with `npm test`, or run `npm install` after a lockfile conflict
   (`npm run lockfile:fix`)
+- Hand-edit `cls-budgets.json` or `cls-budgets-delayed.json` without the
+  matching CI `cls-profile` artifact (`delayCssMs` 0 vs 3000)
+  ([cls](.agents/skills/cls/SKILL.md), [CLS.md](CLS.md))
 
 ## After you edit
 
@@ -41,7 +44,8 @@ waiting for CI.
 | `sources/canvas/`, `load-image`, `renderCharacter`, ZIP export drawing | [performance-profiling](.agents/skills/performance-profiling/SKILL.md) — do not ask the user to open DevTools |
 | `install-item-metadata.ts`, `loadAllMetadata`, catalog bootstrap | [performance-profiling](.agents/skills/performance-profiling/SKILL.md) — `profile:load`, not `profile:app` |
 | `scripts/generateSources/` | [generated-metadata](.agents/skills/generated-metadata/SKILL.md) — `npm run metadata:size:check` |
-| Layout, first-paint CSS, PurgeCSS safelist | [visual-test](.agents/skills/visual-test/SKILL.md) |
+| First-paint CSS, layout shift, loading shells | [cls](.agents/skills/cls/SKILL.md) |
+| Layout, PurgeCSS safelist, Playwright / Argos | [visual-test](.agents/skills/visual-test/SKILL.md) |
 
 Update whatever doc the change makes stale
 ([Doc ownership](CONTRIBUTING.md#doc-ownership)).

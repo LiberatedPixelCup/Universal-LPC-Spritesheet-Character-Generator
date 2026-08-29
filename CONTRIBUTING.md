@@ -179,11 +179,11 @@ Install these on your machine before you run builds or tests. Versions match wha
 **Git**  
 Used for clone, branch, and PR workflow. [Download Git](https://git-scm.com/downloads) or use your OS package manager (`git` is often pre-installed on macOS and Linux).
 
-**Node.js 22.18+ (CI: Node.js 24) and npm**  
-[`package.json`](package.json) `engines.node` is **`>=22.18.0`** so Node can run first-party **`.ts`** files with [type stripping](https://nodejs.org/docs/latest/api/typescript.html) (no `tsx` / compile step). CI uses **Node.js 24** (see [`.github/workflows/`](.github/workflows/)). Install from [nodejs.org](https://nodejs.org/) or a version manager such as [fnm](https://github.com/Schniz/fnm) or [nvm](https://github.com/nvm-sh/nvm), then confirm your runtime:
+**Node.js 22.19+ (CI: Node.js 24) and npm**  
+[`package.json`](package.json) `engines.node` is **`>=22.19.0`** so Node can run first-party **`.ts`** files with [type stripping](https://nodejs.org/docs/latest/api/typescript.html) (no `tsx` / compile step), and so `lighthouse@13.4.1` (`engines.node` `>=22.19`) can run. CI uses **Node.js 24** (see [`.github/workflows/`](.github/workflows/)). Install from [nodejs.org](https://nodejs.org/) or a version manager such as [fnm](https://github.com/Schniz/fnm) or [nvm](https://github.com/nvm-sh/nvm), then confirm your runtime:
 
 ```bash
-node -v   # v22.18+ locally; CI is v24.x
+node -v   # v22.19+ locally; CI is v24.x
 npm -v    # npm ships with Node
 ```
 
@@ -300,21 +300,33 @@ Every script in [`package.json`](package.json). Run them from the repository roo
 | `npm run profile:load` | Production catalog-load profile (`vite build` + `vite preview`). Median of 5 fresh navigations: `indexReadyMs`, `liteReadyMs`, `catalogReadyMs` | `loadAllMetadata`, metadata chunks, or catalog bootstrap changed |
 | `npm run profile:load:baseline` | Same run, written to `tmp/baseline-app-load-profile.json` | Take a load baseline **before** your change |
 | `npm run diff:app-load-profile` | Diffs two load-profile JSON files; positive Δ is slower. Always exits 0 | Comparing load baseline against your change |
+| `npm run profile:cls` | Production lab CLS via Lighthouse (`vite build` + `vite preview`, `?debug=false`). Median of `--repeat` navigations at 412×823 / tablet / medium desktop. Optional `--delay-css-ms` (CI delayed lab is pinned at 3000) | First-paint CSS, loading shells, or layout shift. Walkthrough: [CLS.md](CLS.md) |
+| `npm run profile:cls:baseline` | Same run, written to `tmp/baseline-cls-profile.json` | Take a CLS baseline **before** your change |
+| `npm run profile:cls:check` | Un-delayed run, then fails if a **measured** viewport median exceeds [`scripts/profile/cls-budgets.json`](scripts/profile/cls-budgets.json) | After a CSS change, or in CI (hydrate floor). `--preset` limits which viewport is gated |
+| `npm run profile:cls:delayed` | Same as `profile:cls` with `--delay-css-ms 3000`, written to `tmp/cls-profile-delayed.json` | Tablet / medium-desktop jump lab. Diff against `:baseline:delayed` |
+| `npm run profile:cls:baseline:delayed` | Delayed run, written to `tmp/baseline-cls-profile-delayed.json` | Take a delayed CLS baseline **before** a CSS change |
+| `npm run profile:cls:check:delayed` | Delayed run, then fails if a **measured** viewport median exceeds [`scripts/profile/cls-budgets-delayed.json`](scripts/profile/cls-budgets-delayed.json), or if the proxy delayed 0 stylesheets | After a CSS change, or in CI (jump lab) |
+| `npm run diff:cls-profile` | Diffs two CLS-profile JSON files; positive Δ is more shift. Warns when Lighthouse, platform, CSS delay, or host Chrome UA differ. Always exits 0 | Comparing CLS baseline against your change |
 | `npm run profile:zip:quick` | Headless ZIP profile with a fake JSZip | Drawing, slicing, or PNG encode changed |
 | `npm run profile:zip` | Headless ZIP profile with real JSZip. Slower | `generateAsync` or `zip-helpers` changed |
 | `npm run profile:zip:baseline` / `:baseline:quick` | Same runs, written to `tmp/baseline-*.json` | Take a baseline **before** your change |
 | `npm run diff:zip-profile` | Diffs two ZIP-profile JSON files; positive Δ is slower | Comparing baseline against your change |
 | `npm run compute-style-dump` | Dumps computed CSS for one URL for text diffing | Comparing CSS between two branches or worktrees |
-| `npm run compute-style-dump:mobile` | Same at the mobile viewport | Responsive debugging |
+| `npm run compute-style-dump:mobile` | Same at the Argos mobile viewport (390×844) | Responsive debugging |
+| `npm run compute-style-dump:lighthouse-mobile` | Same at Lighthouse mobile (412×823). Not Argos `mobile` | CLS debugging at the PageSpeed viewport |
 | `npm run compute-style-diff-all` | Dumps and diffs both URLs across all Argos viewports and page states | Wide CSS refactors, e.g. a Bulma upgrade |
 | `npm run compute-style-diff-all:preview-ports` | Same against ports 4176 and 4177 | Two `npm run preview` instances |
 
 `profile:zip` variants and the computed-style scripts need `dist/` to exist
 (`npm run dev` or `npm run build` once). `profile:app` starts Vite serve.
-`profile:load` runs `vite build` then `vite preview` (production compact
-JSON). All of them need Chromium (`npx playwright install`). Details:
+`profile:load` and `profile:cls` run `vite build` then `vite preview`
+(production compact JSON) unless `profile:cls` is given `--url` or
+`--skip-build`. `profile:app` / `profile:load` / ZIP scripts need
+Chromium (`npx playwright install`). `profile:cls` needs Chrome
+(`chrome-launcher`, or `CHROME_PATH` in CI). Details:
 [PERFORMANCE_PROFILING.md](PERFORMANCE_PROFILING.md),
-[performance-profiling](.agents/skills/performance-profiling/SKILL.md).
+[performance-profiling](.agents/skills/performance-profiling/SKILL.md),
+[CLS.md](CLS.md).
 
 **Maintenance**
 
@@ -327,7 +339,7 @@ JSON). All of them need Chromium (`npx playwright install`). Details:
 
 #### CI checks
 
-Five workflows in [`.github/workflows/`](.github/workflows/) plus two Codecov
+Six workflows in [`.github/workflows/`](.github/workflows/) plus two Codecov
 statuses run on pull requests to `master`. All use Node 24.
 
 | Check | Workflow | Runs | Fails when |
@@ -336,6 +348,7 @@ statuses run on pull requests to `master`. All use Node 24.
 | **Test browsers** | `ci.yml` | `npm run test:node:coverage`, then `npm run test:browser:coverage` under Xvfb | A Node or browser spec fails. A patch miss is printed in the log and fails **`codecov/patch`**, not this job |
 | **Validate site sources** | `validate-site-sources.yml` | `npm run validate-site-sources`, then asserts a clean tree, then `npm run metadata:size:check` | `CREDITS.csv` or `z_positions.csv` would change (you did not commit the regenerated file), or generated `item-metadata.js` / the item + index pair exceeds the byte budget. Raising a budget is deliberate. Load time is local (`profile:load`), not this check |
 | **Visual regression (Argos)** | `visual.yml` | `npm run test:visual` | A Playwright failure. Screenshot review happens in Argos, not the check |
+| **CLS (Lighthouse)** | `cls.yml` | `npm run build`, then un-delayed `profile:cls:check -- --repeat 3 --skip-build`, then delayed `profile:cls:check:delayed -- --repeat 3 --skip-build` (`CLS_PROFILE_PORT=4188`) | Either lab exceeds its budget file ([`cls-budgets.json`](scripts/profile/cls-budgets.json) / [`cls-budgets-delayed.json`](scripts/profile/cls-budgets-delayed.json)), or the delayed proxy matched 0 `/assets/*.css` files. Slack around the matching CI lab, not Google's 0.1. Details: [CLS.md](CLS.md) |
 | **Deploy** | `deploy.yml` | `npm run build` to GitHub Pages | Only on `master`, not a PR gate |
 | **`codecov/patch`** | Codecov | Compares uploaded `lcov` | Any new or edited gated production line is uncovered |
 | **`codecov/changes`** | Codecov | Compares uploaded `lcov` | Previously covered lines lose hits |
@@ -581,6 +594,12 @@ Symptoms that look like catalog or test bugs are often environment. Check these 
 | Codecov patch fails with no Mocha failure | Browser spec is not imported from [`tests/tests.js`](tests/tests.js) | Add `import "./path/foo_spec.ts";` (real on-disk extension) |
 | Testem cannot bind | Port **7357** is busy | `TESTEM_PORT=7360 npm run test:server` |
 | `npm run test:visual` or `profile:app` / `profile:load` / `profile:zip` cannot launch a browser | Playwright browsers not installed | `npx playwright install chromium` (or `--with-deps`) |
+| `npm run profile:cls` cannot find Chrome | No system Chrome, and Playwright Chromium fallback failed | Install Chrome, or set `CHROME_PATH`. See [CLS.md](CLS.md) |
+| Local `profile:cls` median differs from CI | Fonts, scrollbars, CPU; macOS ≠ Linux | Compare local-to-local; budgets come from the `cls-profile` artifact. [CLS.md](CLS.md) |
+| CI CLS is red and culprit nodes are empty, or you need the raw Lighthouse tables | Artifact is JSON only (`cls-profile.json` / `cls-profile-delayed.json` at the download root) | Local `--save-lhr` at the same `--preset` and the same delay as that lab. [CLS.md](CLS.md) |
+| CI delayed CLS is red with `matched 0 stylesheets` | Proxy never held `/assets/*.css` (rename or emit path) | Inspect `delayedStylesheetHits` in `cls-profile-delayed.json`. Not a layout regression. [CLS.md](CLS.md) |
+| Un-delayed `profile:cls` is ~0 but PSI / a real network shows a jump | Localhost serves `main-*.css` immediately | `npm run profile:cls:delayed -- --preset tablet` (or the delayed CI artifact). Do not write those numbers into `cls-budgets.json`. [CLS.md](CLS.md) |
+| Need to bump Lighthouse, chrome-launcher, or CI Chrome | Measurement-definition or discovery change | [CLS.md](CLS.md) “Upgrading Lighthouse and chrome-launcher”. Do not rebase budgets from a laptop |
 | `profile:app --channel chrome` cannot launch | Google Chrome is not installed, or Playwright cannot see it | Install Chrome; run from a normal terminal, not a sandbox |
 | `npm run test:browser:coverage` fails to launch Firefox | Firefox is not installed locally | `VITE_COVERAGE=true node ./node_modules/testem/testem.js ci --launch Chrome`. Firefox-only lines will read as uncovered |
 
@@ -600,6 +619,7 @@ When a change makes documentation stale, update the file that owns that topic. [
 | `dist/` metadata, `.cache/`, Vite metadata plugin | [generated-metadata](.agents/skills/generated-metadata/SKILL.md), [File Generation](#file-generation) |
 | Coverage gates or `codecov.yml` | [coverage](.agents/skills/coverage/SKILL.md), [Unit-test coverage](#unit-test-coverage) |
 | Layout, first-paint CSS, PurgeCSS safelist, Playwright | [visual-test](.agents/skills/visual-test/SKILL.md), [`vite/purgecss-critical-safelist.ts`](vite/purgecss-critical-safelist.ts) |
+| CLS / first-paint layout shift / loading shells | [CLS.md](CLS.md), [cls](.agents/skills/cls/SKILL.md) |
 | ZIP export, render, or catalog-load timing | [PERFORMANCE_PROFILING.md](PERFORMANCE_PROFILING.md), [performance-profiling](.agents/skills/performance-profiling/SKILL.md) |
 | `.js` → `.ts` conversion, erasable syntax, `tsc` | [typescript](.agents/skills/typescript/SKILL.md) |
 | New npm script or CI workflow | [Commands](#commands), [CI checks](#ci-checks) |

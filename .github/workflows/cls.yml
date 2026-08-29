@@ -1,0 +1,77 @@
+name: CLS (Lighthouse)
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  # Re-measure on demand for a branch whose PR does not target master, or to
+  # re-baseline budgets without an empty commit.
+  workflow_dispatch:
+
+jobs:
+  cls:
+    name: CLS (Lighthouse)
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: npm
+
+      - name: Install Chrome
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v2.1.1
+        with:
+          chrome-version: "latest"
+
+      - name: Install Linux system fonts and rsync
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            rsync \
+            fonts-liberation \
+            fonts-noto-color-emoji \
+            fonts-noto-cjk \
+            fonts-wqy-zenhei \
+            fonts-dejavu \
+            fonts-freefont-ttf
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Build production
+        run: npm run build
+
+      - name: Measure lab CLS
+        run: npm run profile:cls:check -- --repeat 3 --skip-build
+        env:
+          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+
+      - name: Measure delayed lab CLS
+        if: ${{ !cancelled() }}
+        run: npm run profile:cls:check:delayed -- --repeat 3 --skip-build
+        env:
+          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+          # Preview is this + 1 when delaying CSS. Clear of the un-delayed
+          # lab's 4179 / 4180 so its leftover preview cannot EADDRINUSE this
+          # run. Must match CLS_CI_DELAYED_PROFILE_PORT.
+          CLS_PROFILE_PORT: 4188
+
+      - name: Upload CLS profile
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cls-profile
+          path: |
+            tmp/cls-profile.json
+            tmp/cls-profile-delayed.json

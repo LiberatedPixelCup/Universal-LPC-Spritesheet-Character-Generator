@@ -166,7 +166,7 @@ If an engine is not listed above, try Google. However, it is very likely that yo
 
 #### Tooling
 
-Requires **Node.js 22.18+** (`package.json` `engines`; CI uses Node 24) so `node` can run first-party `.ts` files. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, [Commands](CONTRIBUTING.md#commands) for every npm script, and [ARCHITECTURE.md](ARCHITECTURE.md) for how the app is wired at runtime.
+Requires **Node.js 22.19+** (`package.json` `engines`; CI uses Node 24) so `node` can run first-party `.ts` files. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, [Commands](CONTRIBUTING.md#commands) for every npm script, and [ARCHITECTURE.md](ARCHITECTURE.md) for how the app is wired at runtime.
 
 - **Lint:** `npm run lint`
 - **Type-check:** `npm run type-check`
@@ -186,6 +186,7 @@ The generator includes built-in performance profiling tools to help identify ren
 - View metrics in Chrome DevTools → Performance tab
 - Run `profiler.report()` in the console for a summary
 - Catalog load (production preview): `npm run profile:load`
+- Lab CLS (Lighthouse, production preview): `npm run profile:cls` — see [CLS.md](CLS.md)
 - Metadata bytes (CI budget): `npm run metadata:size` / `npm run metadata:size:check`
 
 **What it tracks:**

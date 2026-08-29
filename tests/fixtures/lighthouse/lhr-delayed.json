@@ -1,0 +1,95 @@
+{
+  "lighthouseVersion": "13.4.1",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+  "audits": {
+    "cumulative-layout-shift": {
+      "id": "cumulative-layout-shift",
+      "numericValue": 0.102741778580851,
+      "score": 0.89,
+      "details": {
+        "type": "debugdata",
+        "items": [
+          {
+            "cumulativeLayoutShiftMainFrame": 0.102741778580851
+          }
+        ]
+      }
+    },
+    "layout-shifts": {
+      "id": "layout-shifts",
+      "details": {
+        "type": "table",
+        "items": [
+          {
+            "node": {
+              "type": "node",
+              "selector": "div > div.box > div.collapsible-content > div.box",
+              "nodeLabel": "Available Items\nReset all\nCollapse All\nExpand Selected\nCompactDisplay\n Match bo…",
+              "snippet": "<div class=\"box has-background-light category-tree-panel\">"
+            },
+            "score": 0.102741778580851
+          },
+          {
+            "node": {
+              "type": "node",
+              "selector": "div > div.box > div.collapsible-content > div.box",
+              "nodeLabel": "Available Items\nReset all\nCollapse All\nExpand Selected\nCompactDisplay\n Match bo…",
+              "snippet": "<div class=\"box has-background-light category-tree-panel\">"
+            },
+            "score": 0.002592976610884587
+          }
+        ]
+      }
+    },
+    "cls-culprits-insight": {
+      "id": "cls-culprits-insight",
+      "details": {
+        "type": "list",
+        "items": [
+          {
+            "type": "table",
+            "items": [
+              {
+                "node": {
+                  "type": "text",
+                  "value": "Total"
+                },
+                "score": 0.002592976610884587
+              },
+              {
+                "node": {
+                  "type": "node",
+                  "selector": "div > div.box > div.collapsible-content > div.box",
+                  "nodeLabel": "Available Items\nReset all\nCollapse All\nExpand Selected\nCompactDisplay\n Match bo…",
+                  "snippet": "<div class=\"box has-background-light category-tree-panel\">"
+                },
+                "score": 0.002592976610884587
+              }
+            ]
+          },
+          {
+            "type": "table",
+            "items": [
+              {
+                "node": {
+                  "type": "text",
+                  "value": "Total"
+                },
+                "score": 0.102741778580851
+              },
+              {
+                "node": {
+                  "type": "node",
+                  "selector": "div > div.box > div.collapsible-content > div.box",
+                  "nodeLabel": "Available Items\nReset all\nCollapse All\nExpand Selected\nCompactDisplay\n Match bo…",
+                  "snippet": "<div class=\"box has-background-light category-tree-panel\">"
+                },
+                "score": 0.102741778580851
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
