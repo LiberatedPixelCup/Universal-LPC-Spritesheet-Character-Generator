@@ -1,143 +1,133 @@
-import {
-  AnimationFilters,
-  isAnimationCompatible,
-  setAnimationCompatible,
-  getAnimations,
-  setAnimations,
-} from "../../../sources/components/filters/AnimationFilters.ts";
+import { AnimationFilters } from "../../../sources/components/filters/AnimationFilters.ts";
+import { animationFiltersModelFactory } from "../../../sources/models/animation-filters.ts";
+import { createCatalog } from "../../../sources/state/catalog.ts";
 import { createState } from "../../../sources/state/state.ts";
-let state;
-import { expect } from "chai";
+import { setAnimations } from "../../../sources/state/filters.ts";
+import { ANIMATIONS } from "../../../sources/state/constants.ts";
+import { seedCatalog } from "../../browser-catalog-fixture.js";
+import { assert } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 
-describe("AnimationFilters Component", () => {
-  let container;
+describe("AnimationFilters Component", function () {
+  let host;
   let alertStub;
 
   beforeEach(function () {
-    state = createState();
-    // Create a fresh container for each test
-    container = document.createElement("div");
-    document.body.appendChild(container);
-
-    // Reset state before each test
-    state.selections = {};
-    state.enabledAnimations = {};
-
-    // stub the isAnimationCompatible method for dependency injection
-    const animationCompatibleStub = (_catalog, _state, itemId) =>
-      itemId === "item1";
-    setAnimationCompatible({
-      isItemAnimationCompatible: animationCompatibleStub,
-    });
-
-    // stub ANIMATIONS for dependency injection
-    const animationsStub = [
-      { value: "anim1", label: "Animation 1" },
-      { value: "anim2", label: "Animation 2" },
-      { value: "anim3", label: "Animation 3" },
-    ];
-    setAnimations(animationsStub);
-
-    alertStub = sinon.stub(window, "alert").callsFake((message) => {
-      // eslint-disable-next-line no-console
-      console.log("ALERT:", message);
-    });
+    host = document.createElement("div");
+    document.body.appendChild(host);
+    alertStub = sinon.stub(window, "alert");
+    setAnimations(ANIMATIONS);
   });
 
   afterEach(function () {
-    // Cleanup after each test
-    if (container && container.parentNode) {
-      container.parentNode.removeChild(container);
-    }
-
+    m.mount(host, null);
+    host.remove();
     alertStub.restore();
   });
 
-  it("checks animation compatibility through the public helper", () => {
-    const catalog = { isLiteReady: () => true };
-    expect(isAnimationCompatible(catalog, state, "item1")).to.equal(true);
-    expect(isAnimationCompatible(catalog, state, "item2")).to.equal(false);
+  function render(model) {
+    m.mount(host, {
+      view: () => m(AnimationFilters, { createModel: () => model }),
+    });
+  }
+
+  function expand() {
+    host.querySelector("span.tree-arrow").click();
+    m.redraw.sync();
+  }
+
+  it("renders its summary, loading state, and supplied options", function () {
+    let enabled;
+    render({
+      liteReady: false,
+      summary: "(1/3)",
+      incompatibleCount: 0,
+      options: [
+        {
+          value: "walk",
+          label: "Walk",
+          enabled: true,
+          setEnabled(value) {
+            enabled = value;
+          },
+        },
+      ],
+      removeIncompatible: () => 0,
+    });
+
+    assert.include(host.textContent, "(1/3)");
+    expand();
+    assert.include(host.textContent, "Loading item list…");
+
+    const checkbox = host.querySelector("input[type=checkbox]");
+    assert.isTrue(checkbox.checked);
+    assert.isTrue(checkbox.disabled);
+    checkbox.checked = false;
+    checkbox.dispatchEvent(new Event("change", { bubbles: true }));
+    assert.isFalse(enabled);
   });
 
-  it("should display the correct count of enabled animations", () => {
-    state.enabledAnimations = {
-      anim1: true,
-      anim2: false,
-      anim3: true,
-    };
+  it("renders a warning and reports removals through the UI", function () {
+    render({
+      liteReady: true,
+      summary: "(1/1)",
+      incompatibleCount: 1,
+      options: [],
+      removeIncompatible: () => 1,
+    });
+    expand();
 
-    const enabledCount = Object.values(state.enabledAnimations).filter(
-      Boolean,
-    ).length;
-    const totalCount = getAnimations().length;
-
-    m.render(
-      container,
-      m(AnimationFilters, { catalog: { isLiteReady: () => true }, state }),
-    );
-
-    const labelText = container.querySelector(
-      ".tree-label .is-size-7",
-    ).textContent;
-
-    expect(labelText).to.include(`(${enabledCount}/${totalCount})`);
+    assert.include(host.textContent, "1 selected item is incompatible");
+    host.querySelector("button.is-warning").click();
+    assert.isTrue(alertStub.calledOnceWith("Removed 1 incompatible item(s)"));
   });
 
-  it("should remove incompatible items when the button is clicked", () => {
+  it("reports when a rendered incompatibility is gone before removal", function () {
+    render({
+      liteReady: true,
+      summary: "(1/1)",
+      incompatibleCount: 1,
+      options: [],
+      removeIncompatible: () => 0,
+    });
+    expand();
+
+    host.querySelector("button.is-warning").click();
+    assert.isTrue(alertStub.calledOnceWith("No incompatible items found"));
+  });
+
+  it("derives compatibility and commands from catalog and state", function () {
+    const { reader: catalog, writer } = createCatalog();
+    const state = createState();
+    seedCatalog(writer, {
+      compatible: { name: "Compatible", animations: ["walk"] },
+      incompatible: { name: "Incompatible", animations: ["jump"] },
+    });
+    state.enabledAnimations = { walk: true };
     state.selections = {
-      group1: { itemId: "item1" },
-      group2: { itemId: "item2" },
+      first: { itemId: "compatible", name: "Compatible" },
+      second: { itemId: "incompatible", name: "Incompatible" },
     };
 
-    state.enabledAnimations = {
-      anim1: true,
-    };
+    const model = animationFiltersModelFactory.create(catalog, state);
+    assert.strictEqual(model.summary, `(1/${ANIMATIONS.length})`);
+    assert.strictEqual(model.incompatibleCount, 1);
+    model.options.find((option) => option.value === "walk").setEnabled(false);
+    assert.isFalse(state.enabledAnimations.walk);
 
-    m.mount(container, {
-      view: () =>
-        m(AnimationFilters, { catalog: { isLiteReady: () => true }, state }),
-    });
-
-    const expandButton = container.querySelector("span.tree-arrow");
-    expandButton.click(); // Expand to show content
-    m.redraw.sync();
-
-    const removeButton = container.querySelector("button.is-small.is-warning");
-
-    removeButton.click();
-    m.redraw.sync();
-
-    expect(state.selections).to.deep.equal({
-      group1: { itemId: "item1" },
-    });
-
-    expect(alertStub.calledOnce).to.be.true;
+    state.enabledAnimations.walk = true;
+    assert.strictEqual(model.removeIncompatible(), 1);
+    assert.deepEqual(Object.keys(state.selections), ["first"]);
   });
 
-  it("should display a warning if there are incompatible items", () => {
-    state.selections = {
-      group1: { itemId: "item1" },
-      group2: { itemId: "item2" },
-    };
+  it("uses the all summary when no animations are enabled", function () {
+    const { reader: catalog } = createCatalog();
+    const state = createState();
+    state.enabledAnimations = {};
 
-    state.enabledAnimations = {
-      anim1: true,
-    };
-
-    m.mount(container, {
-      view: () =>
-        m(AnimationFilters, { catalog: { isLiteReady: () => true }, state }),
-    });
-
-    const expandButton = container.querySelector("span.tree-arrow");
-    expandButton.click(); // Expand to show content
-    m.redraw.sync();
-
-    const warning = container.querySelector(".notification.is-warning");
-
-    expect(warning).to.not.be.null;
-    expect(warning.textContent).to.include("1 selected item is incompatible");
+    const model = animationFiltersModelFactory.create(catalog, state);
+    assert.isFalse(model.liteReady);
+    assert.strictEqual(model.summary, "(All)");
   });
 });

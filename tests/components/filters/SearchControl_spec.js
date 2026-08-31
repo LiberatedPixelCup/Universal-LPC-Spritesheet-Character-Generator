@@ -1,63 +1,76 @@
-// SearchControl component tests - Browser compatible
-import { createState } from "../../../sources/state/state.ts";
-let state;
 import { SearchControl } from "../../../sources/components/filters/SearchControl.ts";
+import { searchControlModelFactory } from "../../../sources/models/search-control.ts";
+import { createCatalog } from "../../../sources/state/catalog.ts";
+import { createState } from "../../../sources/state/state.ts";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 
 describe("SearchControl", function () {
-  let container;
+  let host;
 
   beforeEach(function () {
-    state = createState();
-    // Reset state before each test
-    state.searchQuery = "";
-
-    // Create a fresh container for each test
-    container = document.createElement("div");
-    document.body.appendChild(container);
+    host = document.createElement("div");
+    document.body.appendChild(host);
   });
 
   afterEach(function () {
-    // Cleanup after each test
-    if (container && container.parentNode) {
-      container.parentNode.removeChild(container);
-    }
+    m.render(host, null);
+    host.remove();
   });
 
-  it("renders a search input field", function () {
+  it("renders the supplied value and invokes its command", function () {
+    let changedTo;
     m.render(
-      container,
-      m(SearchControl, { catalog: { isLiteReady: () => true }, state }),
+      host,
+      m(SearchControl, {
+        createModel: () => ({
+          value: "hat",
+          disabled: false,
+          setValue(value) {
+            changedTo = value;
+          },
+        }),
+      }),
     );
 
-    // Should render an input with type=search and placeholder attribute
-    const input = container.querySelector(
-      "input[type=search][placeholder=Search]",
-    );
-    assert.notEqual(input, null);
+    const input = host.querySelector("input[type=search]");
+    assert.strictEqual(input.value, "hat");
+    input.value = "helmet";
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+    assert.strictEqual(changedTo, "helmet");
   });
 
-  it("displays the label 'Search:'", function () {
+  it("renders the loading state", function () {
     m.render(
-      container,
-      m(SearchControl, { catalog: { isLiteReady: () => true }, state }),
+      host,
+      m(SearchControl, {
+        createModel: () => ({
+          value: "",
+          disabled: true,
+          title: "Loading item list…",
+          setValue() {},
+        }),
+      }),
     );
 
-    // Should have a label with text "Search:"
-    assert.include(container.textContent, "Search:");
+    const input = host.querySelector("input");
+    assert.isTrue(input.disabled);
+    assert.strictEqual(input.title, "Loading item list…");
   });
 
-  it("input reflects current state value", function () {
-    const test_query = "test query";
-    state.searchQuery = test_query;
-    m.render(
-      container,
-      m(SearchControl, { catalog: { isLiteReady: () => true }, state }),
-    );
+  it("creates a live search command from catalog and state", function () {
+    const { reader: catalog, writer } = createCatalog();
+    const state = createState();
+    const loadingModel = searchControlModelFactory.create(catalog, state);
+    assert.isTrue(loadingModel.disabled);
 
-    // Input value should match state
-    const input = container.querySelector("input");
-    assert.strictEqual(input.value, test_query);
+    loadingModel.setValue("armor");
+    assert.strictEqual(state.searchQuery, "armor");
+
+    writer.registerItemMetadata({ items: {} });
+    const readyModel = searchControlModelFactory.create(catalog, state);
+    assert.isFalse(readyModel.disabled);
+    assert.strictEqual(readyModel.value, "armor");
+    assert.isUndefined(readyModel.title);
   });
 });

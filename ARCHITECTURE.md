@@ -201,6 +201,9 @@ Verifying it needs a real browser.
 | File | Role |
 | --- | --- |
 | `application.ts` | `createApplicationModels()` composition-root factories; `ApplicationModels` bag of lazy model constructors |
+| `search-control.ts` | Render-ready search value, loading presentation, and update command |
+| `license-filters.ts` | License filter options, readiness, compatibility summary, and mutation commands |
+| `animation-filters.ts` | Animation filter options, compatibility summary, and mutation commands |
 | `current-selections.ts` | Render-ready Current Selections snapshot and remove commands |
 
 ### `sources/components/`
@@ -217,7 +220,10 @@ Verifying it needs a real browser.
 `App` composes `Download`, `FiltersPanel`, `Credits`, and `AdvancedTools`;
 `FiltersPanel` composes the `filters/`, `selections/`, and `tree/` components.
 The bootstrap in `main.ts` constructs the render-ready application model graph;
-components receive and forward their model slice instead of constructing it.
+components receive and forward lazy constructors for their model slice instead
+of constructing application dependencies. Leaves invoke those constructors from
+`view`, so a collapsed parent does not build models for children Mithril does
+not render.
 
 ## ZIP export
 

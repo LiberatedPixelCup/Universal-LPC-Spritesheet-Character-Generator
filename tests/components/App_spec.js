@@ -103,16 +103,51 @@ describe("App", function () {
     assert.include(titles, "Advanced Tools");
   });
 
-  it("does not build current selections while Filters is collapsed", function () {
-    let currentSelectionsCalls = 0;
+  it("does not build filter models while Filters is collapsed", function () {
+    const calls = {
+      search: 0,
+      license: 0,
+      animation: 0,
+      currentSelections: 0,
+    };
     models = {
+      createSearchControlModel: () => {
+        calls.search += 1;
+        return { value: "", disabled: false, setValue() {} };
+      },
+      createLicenseFiltersModel: () => {
+        calls.license += 1;
+        return {
+          liteReady: true,
+          creditsReady: true,
+          summary: "(0/0 enabled)",
+          options: [],
+          incompatibleCount: 0,
+          removeIncompatible: () => 0,
+        };
+      },
+      createAnimationFiltersModel: () => {
+        calls.animation += 1;
+        return {
+          liteReady: true,
+          summary: "(All)",
+          options: [],
+          incompatibleCount: 0,
+          removeIncompatible: () => 0,
+        };
+      },
       createCurrentSelectionsModel: () => {
-        currentSelectionsCalls += 1;
+        calls.currentSelections += 1;
         return { kind: "empty" };
       },
     };
     m.mount(host, { view: appView });
-    assert.strictEqual(currentSelectionsCalls, 1);
+    assert.deepEqual(calls, {
+      search: 1,
+      license: 1,
+      animation: 1,
+      currentSelections: 1,
+    });
 
     const filtersTitle = [
       ...host.querySelectorAll("h3.collapsible-title"),
@@ -122,7 +157,12 @@ describe("App", function () {
     );
     m.redraw.sync();
 
-    assert.strictEqual(currentSelectionsCalls, 1);
+    assert.deepEqual(calls, {
+      search: 1,
+      license: 1,
+      animation: 1,
+      currentSelections: 1,
+    });
   });
 
   it("syncs the hash when selections change and skips render without canvasRenderer", function () {
