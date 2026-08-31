@@ -1,129 +1,141 @@
-import {
-  LicenseFilters,
-  setLicenseCompatible,
-  getLicenseConfig,
-  setLicenseConfig,
-} from "../../../sources/components/filters/LicenseFilters.ts";
+import { LicenseFilters } from "../../../sources/components/filters/LicenseFilters.ts";
+import { licenseFiltersModelFactory } from "../../../sources/models/license-filters.ts";
+import { createCatalog } from "../../../sources/state/catalog.ts";
 import { createState } from "../../../sources/state/state.ts";
-let state;
-import { expect } from "chai";
+import { seedCatalog } from "../../browser-catalog-fixture.js";
+import { assert } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 
-describe("LicenseFilters Component", () => {
-  let container;
+describe("LicenseFilters Component", function () {
+  let host;
   let alertStub;
 
-  beforeEach(() => {
-    state = createState();
-    // Create a fresh container for each test
-    container = document.createElement("div");
-    document.body.appendChild(container);
-
-    // Reset state before each test
-    state.selections = {};
-    state.enabledAnimations = {};
-
-    // stub the isLicenseCompatible method for dependency injection
-    const licenseCompatibleStub = (_catalog, _state, itemId) =>
-      itemId === "item1";
-    setLicenseCompatible({ isItemLicenseCompatible: licenseCompatibleStub });
-
-    // stub LICENSES for dependency injection
-    const licensesStub = [
-      { key: "l1", label: "license1", versions: ["l1v1", "l1v2"] },
-      { key: "l2", label: "license2", versions: "l2" },
-    ];
-    setLicenseConfig(licensesStub);
-
-    alertStub = sinon
-      .stub(window, "alert")
-      // eslint-disable-next-line no-console
-      .callsFake((message) => console.log("ALERT:", message));
+  beforeEach(function () {
+    host = document.createElement("div");
+    document.body.appendChild(host);
+    alertStub = sinon.stub(window, "alert");
   });
 
   afterEach(function () {
-    // Cleanup after each test
-    if (container && container.parentNode) {
-      container.parentNode.removeChild(container);
-    }
-
+    m.mount(host, null);
+    host.remove();
     alertStub.restore();
   });
 
-  it("should render the correct number of enabled licenses", () => {
-    state.enabledLicenses = { l1: true, l2: false, l3: true };
-    const enabledCount = Object.values(state.enabledLicenses).filter(
-      Boolean,
-    ).length;
-    const totalCount = getLicenseConfig().length;
+  function render(model) {
+    m.mount(host, {
+      view: () => m(LicenseFilters, { createModel: () => model }),
+    });
+  }
 
-    m.render(
-      container,
-      m(LicenseFilters, {
-        catalog: { isLiteReady: () => true, isCreditsReady: () => true },
-        state,
-      }),
-    );
+  function expand() {
+    host.querySelector("span.tree-arrow").click();
+    m.redraw.sync();
+  }
 
-    const labelText = container.querySelector(
-      ".tree-label .is-size-7",
-    ).textContent;
+  it("renders its summary, loading states, and supplied options", function () {
+    let enabled;
+    render({
+      liteReady: false,
+      creditsReady: false,
+      summary: "(1/2 enabled)",
+      incompatibleCount: 0,
+      options: [
+        {
+          key: "CC0",
+          label: "CC0",
+          enabled: true,
+          setEnabled(value) {
+            enabled = value;
+          },
+        },
+      ],
+      removeIncompatible: () => 0,
+    });
 
-    expect(labelText).to.include(`(${enabledCount}/${totalCount} enabled)`);
+    assert.include(host.textContent, "(1/2 enabled)");
+    expand();
+    assert.include(host.textContent, "Loading item list…");
+    assert.include(host.textContent, "Loading asset license data…");
+
+    const checkbox = host.querySelector("input[type=checkbox]");
+    assert.isTrue(checkbox.checked);
+    assert.isTrue(checkbox.disabled);
+    checkbox.checked = false;
+    checkbox.dispatchEvent(new Event("change", { bubbles: true }));
+    assert.isFalse(enabled);
   });
 
-  it("should display a warning if there are incompatible items", () => {
-    state.selections = {
-      item1: { itemId: "item1" },
-      item2: { itemId: "item2" },
-    };
-    state.enabledLicenses = { l1: true };
-
-    m.mount(container, {
-      view: () =>
-        m(LicenseFilters, {
-          catalog: { isLiteReady: () => true, isCreditsReady: () => true },
-          state,
-        }),
+  it("renders a warning and reports removals through the UI", function () {
+    render({
+      liteReady: true,
+      creditsReady: true,
+      summary: "(1/1 enabled)",
+      incompatibleCount: 2,
+      options: [],
+      removeIncompatible: () => 2,
     });
+    expand();
 
-    const expandButton = container.querySelector("span.tree-arrow");
-    expandButton.click(); // Expand to show content
-    m.redraw.sync();
-
-    const warning = container.querySelector(".notification.is-warning");
-
-    expect(warning).to.not.be.null;
-    expect(warning.textContent).to.include("1 selected item is incompatible");
+    assert.include(host.textContent, "2 selected items are incompatible");
+    host.querySelector("button.is-warning").click();
+    assert.isTrue(alertStub.calledOnceWith("Removed 2 incompatible item(s)"));
   });
 
-  it("should remove incompatible items when the button is clicked", () => {
+  it("reports when a rendered incompatibility is gone before removal", function () {
+    render({
+      liteReady: true,
+      creditsReady: true,
+      summary: "(1/1 enabled)",
+      incompatibleCount: 1,
+      options: [],
+      removeIncompatible: () => 0,
+    });
+    expand();
+
+    host.querySelector("button.is-warning").click();
+    assert.isTrue(alertStub.calledOnceWith("No incompatible items found"));
+  });
+
+  it("derives compatibility and commands from catalog and state", function () {
+    const { reader: catalog, writer } = createCatalog();
+    const state = createState();
+    seedCatalog(writer, {
+      compatible: {
+        name: "Compatible",
+        credits: [{ licenses: ["CC0"] }],
+      },
+      incompatible: {
+        name: "Incompatible",
+        credits: [{ licenses: ["CC-BY 4.0"] }],
+      },
+    });
+    state.enabledLicenses = { CC0: true };
     state.selections = {
-      item1: { itemId: "item1" },
-      item2: { itemId: "item2" },
+      first: { itemId: "compatible", name: "Compatible" },
+      second: { itemId: "incompatible", name: "Incompatible" },
     };
-    state.enabledLicenses = { l1: true };
 
-    m.mount(container, {
-      view: () =>
-        m(LicenseFilters, {
-          catalog: { isLiteReady: () => true, isCreditsReady: () => true },
-          state,
-        }),
-    });
+    const model = licenseFiltersModelFactory.create(catalog, state);
+    assert.strictEqual(model.summary, "(1/5 enabled)");
+    assert.strictEqual(model.incompatibleCount, 1);
+    model.options.find((option) => option.key === "CC0").setEnabled(false);
+    assert.isFalse(state.enabledLicenses.CC0);
 
-    const expandButton = container.querySelector("span.tree-arrow");
-    expandButton.click(); // Expand to show content
-    m.redraw.sync();
+    state.enabledLicenses.CC0 = true;
+    assert.strictEqual(model.removeIncompatible(), 1);
+    assert.deepEqual(Object.keys(state.selections), ["first"]);
+  });
 
-    const removeButton = container.querySelector("button.is-small.is-warning");
+  it("does not report incompatibilities before credits are ready", function () {
+    const { reader: catalog } = createCatalog();
+    const state = createState();
+    state.selections.item = { itemId: "item", name: "Item" };
 
-    removeButton.click();
-    m.redraw.sync();
-
-    expect(state.selections).to.deep.equal({
-      item1: { itemId: "item1" },
-    });
+    const model = licenseFiltersModelFactory.create(catalog, state);
+    assert.isFalse(model.liteReady);
+    assert.isFalse(model.creditsReady);
+    assert.strictEqual(model.incompatibleCount, 0);
   });
 });

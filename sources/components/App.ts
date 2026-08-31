@@ -73,6 +73,9 @@ export const App: m.Component<AppAttrs, AppState> = {
         catalog,
         state,
         // Models are meant to be created lazily when the leaf components need it
+        createSearchControlModel: models.createSearchControlModel,
+        createLicenseFiltersModel: models.createLicenseFiltersModel,
+        createAnimationFiltersModel: models.createAnimationFiltersModel,
         createCurrentSelectionsModel: models.createCurrentSelectionsModel,
       }),
       m(Credits, { catalog, state }),

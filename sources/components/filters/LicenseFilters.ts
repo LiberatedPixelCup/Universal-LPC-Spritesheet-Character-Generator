@@ -1,96 +1,29 @@
 // License Filters component
 import m from "mithril";
-import type { State } from "../../state/state.ts";
-import type { CatalogReader } from "../../state/catalog.ts";
-import { isItemLicenseCompatible } from "../../state/filters.ts";
-import { LICENSE_CONFIG } from "../../state/constants.ts";
-
-type LicenseOption = {
-  key: string;
-  label: string;
-  url?: string;
-  urlLabel?: string;
-};
-type LicenseFiltersDeps = {
-  isItemLicenseCompatible: typeof isItemLicenseCompatible;
-  licenseConfig: readonly LicenseOption[];
-};
-
-// Dependency injection for testability
-const deps: LicenseFiltersDeps = {
-  isItemLicenseCompatible,
-  licenseConfig: LICENSE_CONFIG,
-};
-
-export function setLicenseCompatible(
-  overrides: Pick<LicenseFiltersDeps, "isItemLicenseCompatible">,
-): void {
-  deps.isItemLicenseCompatible = overrides.isItemLicenseCompatible;
-}
-export function isLicenseCompatible(
-  catalog: CatalogReader,
-  state: State,
-  itemId: string,
-): boolean {
-  return deps.isItemLicenseCompatible(catalog, state, itemId);
-}
-
-export function setLicenseConfig(config: readonly LicenseOption[]): void {
-  deps.licenseConfig = config;
-}
-export function getLicenseConfig(): readonly LicenseOption[] {
-  return deps.licenseConfig;
-}
+import type { LicenseFiltersModel } from "../../models/license-filters.ts";
 
 type LicenseFiltersState = { isExpanded: boolean };
-type LicenseFiltersAttrs = {
-  catalog: CatalogReader;
-  state: State;
-};
 
 export const LicenseFilters: m.Component<
-  LicenseFiltersAttrs,
+  { createModel: () => LicenseFiltersModel },
   LicenseFiltersState
 > = {
   oninit(vnode) {
     vnode.state.isExpanded = false;
   },
   view(vnode) {
-    const { catalog, state } = vnode.attrs;
-    const liteReady = catalog.isLiteReady();
+    const model = vnode.attrs.createModel();
 
     const removeIncompatibleItems = () => {
-      const toRemove: string[] = [];
-      for (const [selectionGroup, selection] of Object.entries(
-        state.selections,
-      )) {
-        if (!isLicenseCompatible(catalog, state, selection.itemId)) {
-          toRemove.push(selectionGroup);
-        }
-      }
-
-      if (toRemove.length > 0) {
-        toRemove.forEach((key) => delete state.selections[key]);
-        alert(`Removed ${toRemove.length} incompatible item(s)`);
+      const removedCount = model.removeIncompatible();
+      if (removedCount > 0) {
+        alert(`Removed ${removedCount} incompatible item(s)`);
       } else {
         alert("No incompatible items found");
       }
     };
 
-    const creditsReady = catalog.isCreditsReady();
-
-    const incompatibleSelections = creditsReady
-      ? Object.values(state.selections).filter(
-          (selection) => !isLicenseCompatible(catalog, state, selection.itemId),
-        )
-      : [];
-    const hasIncompatibleItems =
-      creditsReady && incompatibleSelections.length > 0;
-
-    const enabledCount = Object.values(state.enabledLicenses).filter(
-      Boolean,
-    ).length;
-    const totalCount = getLicenseConfig().length;
+    const hasIncompatibleItems = model.incompatibleCount > 0;
 
     return m("div.box.mb-4.has-background-light", [
       m(
@@ -105,18 +38,15 @@ export const LicenseFilters: m.Component<
             class: vnode.state.isExpanded ? "expanded" : "collapsed",
           }),
           m("span.title.is-6.is-inline", "License Filters"),
-          m(
-            "span.is-size-7.has-text-grey.ml-2",
-            `(${enabledCount}/${totalCount} enabled)`,
-          ),
+          m("span.is-size-7.has-text-grey.ml-2", model.summary),
         ],
       ),
       vnode.state.isExpanded
         ? m("div.content.mt-3", [
-            !liteReady
+            !model.liteReady
               ? m("p.is-size-7.has-text-grey.mb-3", "Loading item list…")
               : null,
-            !creditsReady
+            !model.creditsReady
               ? m(
                   "p.is-size-7.has-text-grey.mb-3",
                   "Loading asset license data…",
@@ -124,15 +54,15 @@ export const LicenseFilters: m.Component<
               : null,
             m(
               "ul.tree-list",
-              getLicenseConfig().map((license) =>
+              model.options.map((license) =>
                 m("li", { key: license.key, class: "mb-2" }, [
                   m("label.checkbox", [
                     m("input[type=checkbox]", {
-                      checked: state.enabledLicenses[license.key],
-                      disabled: !liteReady,
+                      checked: license.enabled,
+                      disabled: !model.liteReady,
                       onchange: (e: Event) => {
                         const target = e.target as HTMLInputElement;
-                        state.enabledLicenses[license.key] = target.checked;
+                        license.setEnabled(target.checked);
                       },
                     }),
                     ` ${license.label} `,
@@ -155,7 +85,7 @@ export const LicenseFilters: m.Component<
                     m("p.is-size-7", [
                       m(
                         "strong",
-                        `${incompatibleSelections.length} selected item${incompatibleSelections.length > 1 ? "s are" : " is"} incompatible`,
+                        `${model.incompatibleCount} selected item${model.incompatibleCount > 1 ? "s are" : " is"} incompatible`,
                       ),
                       " with your current license selection. ",
                       m("span.has-text-grey", "(marked with ⚠️ above)"),
@@ -165,9 +95,9 @@ export const LicenseFilters: m.Component<
                     "button.button.is-small.is-warning.mt-2",
                     {
                       onclick: removeIncompatibleItems,
-                      title: `Remove ${incompatibleSelections.length} incompatible item${incompatibleSelections.length > 1 ? "s" : ""}`,
+                      title: `Remove ${model.incompatibleCount} incompatible item${model.incompatibleCount > 1 ? "s" : ""}`,
                     },
-                    `Remove ${incompatibleSelections.length} Incompatible Asset${incompatibleSelections.length > 1 ? "s" : ""}`,
+                    `Remove ${model.incompatibleCount} Incompatible Asset${model.incompatibleCount > 1 ? "s" : ""}`,
                   ),
                 ]
               : null,

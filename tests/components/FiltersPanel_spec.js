@@ -14,9 +14,19 @@ describe("FiltersPanel", () => {
   beforeEach(() => {
     const catalog = { isLiteReady: () => true };
     const state = { selections: {} };
+    const createSearchControlModel = () => ({ value: "", disabled: false });
+    const createLicenseFiltersModel = () => ({ summary: "licenses" });
+    const createAnimationFiltersModel = () => ({ summary: "animations" });
     const createCurrentSelectionsModel = () => ({ kind: "empty" });
     vnode = FiltersPanel.view({
-      attrs: { catalog, state, createCurrentSelectionsModel },
+      attrs: {
+        catalog,
+        state,
+        createSearchControlModel,
+        createLicenseFiltersModel,
+        createAnimationFiltersModel,
+        createCurrentSelectionsModel,
+      },
     });
   });
 
@@ -31,6 +41,10 @@ describe("FiltersPanel", () => {
   it("should render the SearchControl component", () => {
     const searchControl = vnode.children[0].children[0];
     expect(searchControl.tag).to.equal(SearchControl);
+    expect(searchControl.attrs.createModel()).to.deep.equal({
+      value: "",
+      disabled: false,
+    });
   });
 
   it("should render LicenseFilters and AnimationFilters in a responsive wrapper", () => {
@@ -42,6 +56,12 @@ describe("FiltersPanel", () => {
 
     expect(licenseFilters.tag).to.equal(LicenseFilters);
     expect(animationFilters.tag).to.equal(AnimationFilters);
+    expect(licenseFilters.attrs.createModel()).to.deep.equal({
+      summary: "licenses",
+    });
+    expect(animationFilters.attrs.createModel()).to.deep.equal({
+      summary: "animations",
+    });
   });
 
   it("should render the CurrentSelections component", () => {

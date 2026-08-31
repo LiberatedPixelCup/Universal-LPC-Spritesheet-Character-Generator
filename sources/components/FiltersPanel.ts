@@ -9,16 +9,29 @@ import { CategoryTree } from "./tree/CategoryTree.ts";
 import { CollapsibleSection } from "./CollapsibleSection.ts";
 import type { State } from "../state/state.ts";
 import type { CurrentSelectionsModel } from "../models/current-selections.ts";
+import type { SearchControlModel } from "../models/search-control.ts";
+import type { LicenseFiltersModel } from "../models/license-filters.ts";
+import type { AnimationFiltersModel } from "../models/animation-filters.ts";
 
 type FiltersPanelAttrs = {
   catalog: CatalogReader;
   state: State;
+  createSearchControlModel: () => SearchControlModel;
+  createLicenseFiltersModel: () => LicenseFiltersModel;
+  createAnimationFiltersModel: () => AnimationFiltersModel;
   createCurrentSelectionsModel: () => CurrentSelectionsModel;
 };
 
 export const FiltersPanel: m.Component<FiltersPanelAttrs> = {
   view(vnode) {
-    const { catalog, state, createCurrentSelectionsModel } = vnode.attrs;
+    const {
+      catalog,
+      state,
+      createSearchControlModel,
+      createLicenseFiltersModel,
+      createAnimationFiltersModel,
+      createCurrentSelectionsModel,
+    } = vnode.attrs;
     return m(
       CollapsibleSection,
       {
@@ -26,7 +39,10 @@ export const FiltersPanel: m.Component<FiltersPanelAttrs> = {
         defaultOpen: true,
       },
       [
-        m("div.mb-4", m(SearchControl, { catalog, state })),
+        m(
+          "div.mb-4",
+          m(SearchControl, { createModel: createSearchControlModel }),
+        ),
         // Responsive wrapper for License and Animation filters
         m("div.columns.is-multiline.m-0", [
           m(
@@ -34,14 +50,14 @@ export const FiltersPanel: m.Component<FiltersPanelAttrs> = {
             {
               class: "filters-column",
             },
-            m(LicenseFilters, { catalog, state }),
+            m(LicenseFilters, { createModel: createLicenseFiltersModel }),
           ),
           m(
             "div.column.is-half-desktop.is-12-mobile",
             {
               class: "filters-column",
             },
-            m(AnimationFilters, { catalog, state }),
+            m(AnimationFilters, { createModel: createAnimationFiltersModel }),
           ),
         ]),
         m(

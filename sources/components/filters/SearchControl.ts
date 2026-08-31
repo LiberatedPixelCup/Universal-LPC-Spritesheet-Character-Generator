@@ -1,25 +1,20 @@
 // Search control component
 import m from "mithril";
-import type { CatalogReader } from "../../state/catalog.ts";
-import type { State } from "../../state/state.ts";
+import type { SearchControlModel } from "../../models/search-control.ts";
 
-type SearchControlAttrs = {
-  catalog: CatalogReader;
-  state: State;
-};
-
-export const SearchControl: m.Component<SearchControlAttrs> = {
+export const SearchControl: m.Component<{
+  createModel: () => SearchControlModel;
+}> = {
   view(vnode) {
-    const { catalog, state } = vnode.attrs;
-    const liteReady = catalog.isLiteReady();
+    const model = vnode.attrs.createModel();
     return m("div.field", [
       m("label.label", "Search:"),
       m("input.input[type=search][placeholder=Search]", {
-        value: state.searchQuery,
-        disabled: !liteReady,
-        title: liteReady ? undefined : "Loading item list…",
+        value: model.value,
+        disabled: model.disabled,
+        title: model.title,
         oninput: (e: Event) => {
-          state.searchQuery = (e.target as HTMLInputElement).value;
+          model.setValue((e.target as HTMLInputElement).value);
         },
       }),
     ]);

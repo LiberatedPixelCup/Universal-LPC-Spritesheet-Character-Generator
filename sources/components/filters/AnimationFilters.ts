@@ -1,87 +1,29 @@
 // Animation Filters component
 import m from "mithril";
-import type { CatalogReader } from "../../state/catalog.ts";
-import type { State } from "../../state/state.ts";
-import { isItemAnimationCompatible } from "../../state/filters.ts";
-import { ANIMATIONS } from "../../state/constants.ts";
-
-type AnimationOption = { value: string; label: string };
-type AnimationFiltersDeps = {
-  isItemAnimationCompatible: typeof isItemAnimationCompatible;
-  animations: readonly AnimationOption[];
-};
-
-// Dependency injection for testability
-const deps: AnimationFiltersDeps = {
-  isItemAnimationCompatible,
-  animations: ANIMATIONS,
-};
-
-export function setAnimationCompatible(
-  overrides: Pick<AnimationFiltersDeps, "isItemAnimationCompatible">,
-): void {
-  deps.isItemAnimationCompatible = overrides.isItemAnimationCompatible;
-}
-export function isAnimationCompatible(
-  catalog: CatalogReader,
-  state: State,
-  itemId: string,
-): boolean {
-  return deps.isItemAnimationCompatible(catalog, state, itemId);
-}
-
-export function setAnimations(anims: readonly AnimationOption[]): void {
-  deps.animations = anims;
-}
-export function getAnimations(): readonly AnimationOption[] {
-  return deps.animations;
-}
+import type { AnimationFiltersModel } from "../../models/animation-filters.ts";
 
 type AnimationFiltersState = { isExpanded: boolean };
-type AnimationFiltersAttrs = {
-  catalog: CatalogReader;
-  state: State;
-};
 
 export const AnimationFilters: m.Component<
-  AnimationFiltersAttrs,
+  { createModel: () => AnimationFiltersModel },
   AnimationFiltersState
 > = {
   oninit(vnode) {
     vnode.state.isExpanded = false;
   },
   view(vnode) {
-    const { catalog, state } = vnode.attrs;
-    const liteReady = catalog.isLiteReady();
+    const model = vnode.attrs.createModel();
 
     const removeIncompatibleItems = () => {
-      const toRemove: string[] = [];
-      for (const [selectionGroup, selection] of Object.entries(
-        state.selections,
-      )) {
-        if (!isAnimationCompatible(catalog, state, selection.itemId)) {
-          toRemove.push(selectionGroup);
-        }
-      }
-
-      if (toRemove.length > 0) {
-        toRemove.forEach((key) => delete state.selections[key]);
-        alert(`Removed ${toRemove.length} incompatible item(s)`);
+      const removedCount = model.removeIncompatible();
+      if (removedCount > 0) {
+        alert(`Removed ${removedCount} incompatible item(s)`);
       } else {
         alert("No incompatible items found");
       }
     };
 
-    const incompatibleSelections = Object.values(state.selections).filter(
-      (selection) => !isAnimationCompatible(catalog, state, selection.itemId),
-    );
-    const hasIncompatibleItems = incompatibleSelections.length > 0;
-
-    const enabledCount = Object.values(state.enabledAnimations).filter(
-      Boolean,
-    ).length;
-    const totalCount = getAnimations().length;
-    const isFilterActive = enabledCount > 0;
+    const hasIncompatibleItems = model.incompatibleCount > 0;
 
     return m("div.box.mb-4.has-background-light", [
       m(
@@ -96,28 +38,25 @@ export const AnimationFilters: m.Component<
             class: vnode.state.isExpanded ? "expanded" : "collapsed",
           }),
           m("span.title.is-inline.is-6", "Animation Filters"),
-          m(
-            "span.is-size-7.has-text-grey.ml-2",
-            isFilterActive ? `(${enabledCount}/${totalCount})` : "(All)",
-          ),
+          m("span.is-size-7.has-text-grey.ml-2", model.summary),
         ],
       ),
       vnode.state.isExpanded
         ? m("div.content.mt-3", [
-            !liteReady
+            !model.liteReady
               ? m("p.is-size-7.has-text-grey.mb-3", "Loading item list…")
               : null,
             m(
               "ul.tree-list",
-              getAnimations().map((anim) =>
+              model.options.map((anim) =>
                 m("li", { key: anim.value, class: "mb-2" }, [
                   m("label.checkbox", [
                     m("input[type=checkbox]", {
-                      checked: state.enabledAnimations[anim.value],
-                      disabled: !liteReady,
+                      checked: anim.enabled,
+                      disabled: !model.liteReady,
                       onchange: (e: Event) => {
                         const target = e.target as HTMLInputElement;
-                        state.enabledAnimations[anim.value] = target.checked;
+                        anim.setEnabled(target.checked);
                       },
                     }),
                     ` ${anim.label}`,
@@ -131,7 +70,7 @@ export const AnimationFilters: m.Component<
                     m("p.is-size-7", [
                       m(
                         "strong",
-                        `${incompatibleSelections.length} selected item${incompatibleSelections.length > 1 ? "s are" : " is"} incompatible`,
+                        `${model.incompatibleCount} selected item${model.incompatibleCount > 1 ? "s are" : " is"} incompatible`,
                       ),
                       " with your current animation selection. ",
                       m("span.has-text-grey", "(marked with ⚠️ above)"),
@@ -141,9 +80,9 @@ export const AnimationFilters: m.Component<
                     "button.button.is-small.is-warning.mt-2",
                     {
                       onclick: removeIncompatibleItems,
-                      title: `Remove ${incompatibleSelections.length} incompatible item${incompatibleSelections.length > 1 ? "s" : ""}`,
+                      title: `Remove ${model.incompatibleCount} incompatible item${model.incompatibleCount > 1 ? "s" : ""}`,
                     },
-                    `Remove ${incompatibleSelections.length} Incompatible Asset${incompatibleSelections.length > 1 ? "s" : ""}`,
+                    `Remove ${model.incompatibleCount} Incompatible Asset${model.incompatibleCount > 1 ? "s" : ""}`,
                   ),
                 ]
               : null,
