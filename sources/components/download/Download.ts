@@ -1,180 +1,127 @@
-// Download component
 import m from "mithril";
-import type { State } from "../../state/state.ts";
-import { drawCalls } from "../../canvas/renderer.ts";
-import {
-  getAllCredits,
-  creditsToCsv,
-  creditsToTxt,
-} from "../../utils/credits.ts";
+import type {
+  ClipboardCommandResult,
+  DownloadModel,
+} from "../../models/download.ts";
 import { CollapsibleSection } from "../CollapsibleSection.ts";
-import { downloadFile, downloadAsPNG } from "../../canvas/download.ts";
-import {
-  importStateFromJSON,
-  exportStateAsJSON,
-  serializeLayersForJson,
-} from "../../state/json.ts";
-import {
-  exportSplitAnimations,
-  exportSplitItemSheets,
-  exportSplitItemAnimations,
-  exportIndividualFrames,
-} from "../../state/zip.ts";
-import { debugLog } from "../../utils/debug.ts";
-import type { CatalogReader } from "../../state/catalog.ts";
 
-const zipExportTitle = "Wait for layer data to finish loading";
+function reportClipboardResult(
+  result: ClipboardCommandResult,
+  successMessage: string,
+  errorLogMessage: string,
+  failureMessage: string,
+): void {
+  if (result.kind === "success") {
+    alert(successMessage);
+  } else if (result.kind === "failure") {
+    console.error(errorLogMessage, result.error);
+    alert(failureMessage);
+  }
+}
 
-export const Download: m.Component<{ catalog: CatalogReader; state: State }> = {
+const DownloadContent: m.Component<{
+  createModel: () => DownloadModel;
+}> = {
   view(vnode) {
-    const { catalog, state } = vnode.attrs;
-    const zipDisabled = !catalog.isLayersReady();
+    const model = vnode.attrs.createModel();
+    return m(
+      "div.buttons.is-flex.is-flex-wrap-wrap",
+      { id: "download-buttons" },
+      [
+        m(
+          "button.button.is-small.is-primary",
+          { onclick: model.saveSpritesheet },
+          "Spritesheet (PNG)",
+        ),
+        m(
+          "button.button.is-small",
+          { onclick: model.downloadCreditsTxt },
+          "Credits (TXT)",
+        ),
+        m(
+          "button.button.is-small",
+          { onclick: model.downloadCreditsCsv },
+          "Credits (CSV)",
+        ),
+        m(
+          "button.button.is-small.is-info",
+          {
+            disabled: model.zipDisabled,
+            title: model.zipTitle,
+            onclick: model.exportZipByAnimation,
+          },
+          "ZIP: Split by animation",
+        ),
+        model.zipByAnimationRunning ? m("span.loading") : null,
+        m(
+          "button.button.is-small.is-info",
+          {
+            disabled: model.zipDisabled,
+            title: model.zipTitle,
+            onclick: model.exportZipByItem,
+          },
+          "ZIP: Split by item",
+        ),
+        model.zipByItemRunning ? m("span.loading") : null,
+        m(
+          "button.button.is-small.is-info",
+          {
+            disabled: model.zipDisabled,
+            title: model.zipTitle,
+            onclick: model.exportZipByAnimationAndItem,
+          },
+          "ZIP: Split by animation and item",
+        ),
+        model.zipByAnimationAndItemRunning ? m("span.loading") : null,
+        m(
+          "button.button.is-small.is-info",
+          {
+            disabled: model.zipDisabled,
+            title: model.zipTitle,
+            onclick: model.exportZipByAnimationAndFrame,
+          },
+          "ZIP: Split by animation and frame",
+        ),
+        model.zipIndividualFramesRunning ? m("span.loading") : null,
+        m(
+          "button.button.is-small.is-link",
+          {
+            onclick: async () =>
+              reportClipboardResult(
+                await model.exportJsonToClipboard(),
+                "Exported to clipboard!",
+                "Failed to copy to clipboard:",
+                "Failed to copy to clipboard. Please check browser permissions.",
+              ),
+          },
+          "Export to Clipboard (JSON)",
+        ),
+        m(
+          "button.button.is-small.is-link",
+          {
+            onclick: async () =>
+              reportClipboardResult(
+                await model.importJsonFromClipboard(),
+                "Imported successfully!",
+                "Failed to import from clipboard:",
+                "Failed to import. Please check clipboard content and browser permissions.",
+              ),
+          },
+          "Import from Clipboard (JSON)",
+        ),
+      ],
+    );
+  },
+};
 
-    const exportToClipboard = async (): Promise<void> => {
-      if (!window.canvasRenderer) return;
-      try {
-        const json = exportStateAsJSON(
-          catalog,
-          state,
-          serializeLayersForJson(drawCalls),
-        );
-        debugLog(json);
-        await navigator.clipboard.writeText(json);
-        alert("Exported to clipboard!");
-      } catch (err) {
-        console.error("Failed to copy to clipboard:", err);
-        alert("Failed to copy to clipboard. Please check browser permissions.");
-      }
-    };
-
-    const importFromClipboard = async (): Promise<void> => {
-      if (!window.canvasRenderer) return;
-      try {
-        const json = await navigator.clipboard.readText();
-        debugLog(json);
-        const imported = importStateFromJSON(catalog, state, json);
-        Object.assign(state, imported);
-
-        m.redraw();
-        alert("Imported successfully!");
-      } catch (err) {
-        console.error("Failed to import from clipboard:", err);
-        alert(
-          "Failed to import. Please check clipboard content and browser permissions.",
-        );
-      }
-    };
-
-    const saveAsPNG = () => {
-      if (!window.canvasRenderer) return;
-      downloadAsPNG("character-spritesheet.png");
-    };
-
-    const exportZipSplitByAnimation = () =>
-      exportSplitAnimations(catalog, state);
-    const exportZipSplitByItem = () => exportSplitItemSheets(catalog, state);
-    const exportZipSplitByAnimationAndItem = () =>
-      exportSplitItemAnimations(catalog, state);
-    const exportZipSplitByAnimationAndFrame = () =>
-      exportIndividualFrames(catalog, state);
-
+export const Download: m.Component<{
+  createModel: () => DownloadModel;
+}> = {
+  view(vnode) {
     return m(
       CollapsibleSection,
-      {
-        title: "Download",
-        defaultOpen: true,
-      },
-      [
-        m("div.buttons.is-flex.is-flex-wrap-wrap", { id: "download-buttons" }, [
-          m(
-            "button.button.is-small.is-primary",
-            { onclick: saveAsPNG },
-            "Spritesheet (PNG)",
-          ),
-          m(
-            "button.button.is-small",
-            {
-              onclick: () => {
-                const allCredits = getAllCredits(
-                  catalog,
-                  state.selections,
-                  state.bodyType,
-                );
-                const txtContent = creditsToTxt(allCredits);
-                downloadFile(txtContent, "credits.txt", "text/plain");
-              },
-            },
-            "Credits (TXT)",
-          ),
-          m(
-            "button.button.is-small",
-            {
-              onclick: () => {
-                const allCredits = getAllCredits(
-                  catalog,
-                  state.selections,
-                  state.bodyType,
-                );
-                const csvContent = creditsToCsv(allCredits);
-                downloadFile(csvContent, "credits.csv", "text/csv");
-              },
-            },
-            "Credits (CSV)",
-          ),
-          m(
-            "button.button.is-small.is-info",
-            {
-              disabled: zipDisabled,
-              title: zipDisabled ? zipExportTitle : undefined,
-              onclick: exportZipSplitByAnimation,
-            },
-            "ZIP: Split by animation",
-          ),
-          state.zipByAnimation.isRunning ? m("span.loading") : null,
-          m(
-            "button.button.is-small.is-info",
-            {
-              disabled: zipDisabled,
-              title: zipDisabled ? zipExportTitle : undefined,
-              onclick: exportZipSplitByItem,
-            },
-            "ZIP: Split by item",
-          ),
-          state.zipByItem.isRunning ? m("span.loading") : null,
-          m(
-            "button.button.is-small.is-info",
-            {
-              disabled: zipDisabled,
-              title: zipDisabled ? zipExportTitle : undefined,
-              onclick: exportZipSplitByAnimationAndItem,
-            },
-            "ZIP: Split by animation and item",
-          ),
-          state.zipByAnimationAndItem.isRunning ? m("span.loading") : null,
-          m(
-            "button.button.is-small.is-info",
-            {
-              disabled: zipDisabled,
-              title: zipDisabled ? zipExportTitle : undefined,
-              onclick: exportZipSplitByAnimationAndFrame,
-            },
-            "ZIP: Split by animation and frame",
-          ),
-          state.zipIndividualFrames && state.zipIndividualFrames.isRunning
-            ? m("span.loading")
-            : null,
-          m(
-            "button.button.is-small.is-link",
-            { onclick: exportToClipboard },
-            "Export to Clipboard (JSON)",
-          ),
-          m(
-            "button.button.is-small.is-link",
-            { onclick: importFromClipboard },
-            "Import from Clipboard (JSON)",
-          ),
-        ]),
-      ],
+      { title: "Download", defaultOpen: true },
+      m(DownloadContent, { createModel: vnode.attrs.createModel }),
     );
   },
 };
