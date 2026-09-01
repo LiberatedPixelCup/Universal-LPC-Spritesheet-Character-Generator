@@ -3,211 +3,312 @@ import { assert } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { Download } from "../../../sources/components/download/Download.ts";
+import { downloadModelFactory } from "../../../sources/models/download.ts";
 import { createCatalog } from "../../../sources/state/catalog.ts";
 import { createState } from "../../../sources/state/state.ts";
-let state;
 import { seedCatalog } from "../../browser-catalog-fixture.js";
-import { createFakeJSZip } from "../../helpers/fake-jszip.js";
 
 const ZIP_TITLE = "Wait for layer data to finish loading";
 
 function buttonByText(host, text) {
   return [...host.querySelectorAll("button")].find(
-    (btn) => btn.textContent.trim() === text,
+    (button) => button.textContent.trim() === text,
   );
 }
 
 function zipButtons(host) {
-  return [...host.querySelectorAll("button")].filter((btn) =>
-    btn.textContent.includes("ZIP:"),
+  return [...host.querySelectorAll("button")].filter((button) =>
+    button.textContent.includes("ZIP:"),
   );
+}
+
+function createModel(overrides = {}) {
+  return {
+    zipDisabled: false,
+    zipByAnimationRunning: false,
+    zipByItemRunning: false,
+    zipByAnimationAndItemRunning: false,
+    zipIndividualFramesRunning: false,
+    saveSpritesheet() {},
+    downloadCreditsTxt() {},
+    downloadCreditsCsv() {},
+    exportZipByAnimation: async () => {},
+    exportZipByItem: async () => {},
+    exportZipByAnimationAndItem: async () => {},
+    exportZipByAnimationAndFrame: async () => {},
+    exportJsonToClipboard: async () => ({ kind: "unavailable" }),
+    importJsonFromClipboard: async () => ({ kind: "unavailable" }),
+    ...overrides,
+  };
 }
 
 describe("Download", function () {
   let host;
-  let previousRenderer;
   let alertStub;
-  let catalog;
-  let catalogWriter;
+  let previousRenderer;
 
   beforeEach(function () {
-    state = createState();
     host = document.createElement("div");
     document.body.appendChild(host);
-    previousRenderer = window.canvasRenderer;
-    ({ reader: catalog, writer: catalogWriter } = createCatalog());
-    seedCatalog(catalogWriter, {});
-    window.canvasRenderer = {};
     alertStub = sinon.stub(window, "alert");
-    state.zipByAnimation = { isRunning: false };
-    state.zipByItem = { isRunning: false };
-    state.zipByAnimationAndItem = { isRunning: false };
-    state.zipIndividualFrames = { isRunning: false };
-    state.bodyType = "male";
-    state.selections = {};
+    previousRenderer = window.canvasRenderer;
+    window.canvasRenderer = {};
   });
 
   afterEach(function () {
     m.mount(host, null);
-    if (host.parentNode) {
-      host.parentNode.removeChild(host);
-    }
-    window.canvasRenderer = previousRenderer;
+    host.remove();
     alertStub.restore();
     sinon.restore();
-    state.zipByAnimation = { isRunning: false };
-    state.zipByItem = { isRunning: false };
-    state.zipByAnimationAndItem = { isRunning: false };
-    state.zipIndividualFrames = { isRunning: false };
-    state.bodyType = "male";
-    state.selections = {};
-    state.selectedAnimation = "walk";
+    window.canvasRenderer = previousRenderer;
   });
 
-  it("disables ZIP buttons until layer data is ready", function () {
-    m.mount(host, {
-      view: () =>
-        m(Download, { catalog: { isLayersReady: () => false }, state }),
-    });
+  it("renders readiness and running snapshots", function () {
+    m.render(
+      host,
+      m(Download, {
+        createModel: () =>
+          createModel({
+            zipDisabled: true,
+            zipTitle: ZIP_TITLE,
+            zipByAnimationRunning: true,
+            zipByItemRunning: true,
+            zipByAnimationAndItemRunning: true,
+            zipIndividualFramesRunning: true,
+          }),
+      }),
+    );
 
-    const zips = zipButtons(host);
-    assert.strictEqual(zips.length, 4);
-    for (const btn of zips) {
-      assert.strictEqual(btn.disabled, true);
-      assert.strictEqual(btn.title, ZIP_TITLE);
+    for (const button of zipButtons(host)) {
+      assert.isTrue(button.disabled);
+      assert.strictEqual(button.title, ZIP_TITLE);
     }
+    assert.strictEqual(host.querySelectorAll("span.loading").length, 4);
   });
 
-  it("enables ZIP buttons when layer data is ready", function () {
-    m.mount(host, {
-      view: () =>
-        m(Download, { catalog: { isLayersReady: () => true }, state }),
-    });
+  it("invokes every supplied download command", function () {
+    const commands = {
+      saveSpritesheet: sinon.spy(),
+      downloadCreditsTxt: sinon.spy(),
+      downloadCreditsCsv: sinon.spy(),
+      exportZipByAnimation: sinon.spy(),
+      exportZipByItem: sinon.spy(),
+      exportZipByAnimationAndItem: sinon.spy(),
+      exportZipByAnimationAndFrame: sinon.spy(),
+    };
+    m.render(host, m(Download, { createModel: () => createModel(commands) }));
 
-    const zips = zipButtons(host);
-    assert.strictEqual(zips.length, 4);
-    for (const btn of zips) {
-      assert.strictEqual(btn.disabled, false);
-      assert.strictEqual(btn.title, "");
-    }
-  });
-
-  it("starts split-by-animation export from the ZIP button", function () {
-    window.JSZip = createFakeJSZip();
-    m.mount(host, {
-      view: () =>
-        m(Download, { catalog: { isLayersReady: () => true }, state }),
-    });
-
-    const button = buttonByText(host, "ZIP: Split by animation");
-    assert.notEqual(button, null);
-    button.click();
+    buttonByText(host, "Spritesheet (PNG)").click();
+    buttonByText(host, "Credits (TXT)").click();
+    buttonByText(host, "Credits (CSV)").click();
+    buttonByText(host, "ZIP: Split by animation").click();
     buttonByText(host, "ZIP: Split by item").click();
     buttonByText(host, "ZIP: Split by animation and item").click();
     buttonByText(host, "ZIP: Split by animation and frame").click();
 
-    assert.strictEqual(alertStub.calledWith("JSZip library not loaded"), false);
+    for (const command of Object.values(commands))
+      assert.isTrue(command.calledOnce);
   });
 
-  it("shows a loading spinner for each running zip export", function () {
+  it("shows clipboard result messages while preserving the unavailable no-op", async function () {
+    const exportJsonToClipboard = sinon.stub().resolves({ kind: "success" });
+    const error = new Error("bad import");
+    const importJsonFromClipboard = sinon
+      .stub()
+      .onFirstCall()
+      .resolves({ kind: "failure", error })
+      .onSecondCall()
+      .resolves({ kind: "unavailable" });
+    const consoleError = sinon.stub(console, "error");
+    m.render(
+      host,
+      m(Download, {
+        createModel: () =>
+          createModel({ exportJsonToClipboard, importJsonFromClipboard }),
+      }),
+    );
+
+    buttonByText(host, "Export to Clipboard (JSON)").click();
+    await Promise.resolve();
+    await Promise.resolve();
+    assert.isTrue(alertStub.calledWith("Exported to clipboard!"));
+
+    buttonByText(host, "Import from Clipboard (JSON)").click();
+    await Promise.resolve();
+    await Promise.resolve();
+    assert.isTrue(
+      alertStub.calledWith(
+        "Failed to import. Please check clipboard content and browser permissions.",
+      ),
+    );
+    assert.isTrue(
+      consoleError.calledWith("Failed to import from clipboard:", error),
+    );
+
+    const alertCount = alertStub.callCount;
+    buttonByText(host, "Import from Clipboard (JSON)").click();
+    await Promise.resolve();
+    await Promise.resolve();
+    assert.strictEqual(alertStub.callCount, alertCount);
+  });
+
+  it("does not build the model while the section is collapsed", function () {
+    let calls = 0;
+    m.mount(host, {
+      view: () =>
+        m(Download, {
+          createModel: () => {
+            calls += 1;
+            return createModel();
+          },
+        }),
+    });
+    assert.strictEqual(calls, 1);
+
+    host.querySelector("h3.collapsible-title").parentElement.click();
+    m.redraw.sync();
+    assert.strictEqual(calls, 1);
+    m.redraw.sync();
+    assert.strictEqual(calls, 1);
+
+    host.querySelector("h3.collapsible-title").parentElement.click();
+    m.redraw.sync();
+    assert.strictEqual(calls, 2);
+  });
+
+  it("redraws after a returned import Promise resolves", async function () {
+    const observed = { bodyType: "male" };
+    m.mount(host, {
+      view: () => [
+        m(Download, {
+          createModel: () =>
+            createModel({
+              importJsonFromClipboard: async () => {
+                await Promise.resolve();
+                observed.bodyType = "female";
+                return { kind: "success" };
+              },
+            }),
+        }),
+        m("span#observed-body-type", observed.bodyType),
+      ],
+    });
+
+    buttonByText(host, "Import from Clipboard (JSON)").click();
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+    assert.strictEqual(
+      host.querySelector("#observed-body-type").textContent,
+      "female",
+    );
+  });
+
+  it("factory snapshots readiness and running states", function () {
+    const { reader: catalog, writer } = createCatalog();
+    const state = createState();
     state.zipByAnimation.isRunning = true;
     state.zipByItem.isRunning = true;
     state.zipByAnimationAndItem.isRunning = true;
     state.zipIndividualFrames.isRunning = true;
-    m.mount(host, {
-      view: () =>
-        m(Download, { catalog: { isLayersReady: () => true }, state }),
-    });
 
-    assert.strictEqual(host.querySelectorAll("span.loading").length, 4);
+    const loadingModel = downloadModelFactory.create(catalog, state);
+    assert.isTrue(loadingModel.zipDisabled);
+    assert.strictEqual(loadingModel.zipTitle, ZIP_TITLE);
+    assert.isTrue(loadingModel.zipByAnimationRunning);
+    assert.isTrue(loadingModel.zipByItemRunning);
+    assert.isTrue(loadingModel.zipByAnimationAndItemRunning);
+    assert.isTrue(loadingModel.zipIndividualFramesRunning);
+
+    writer.registerLayersMetadata({});
+    const readyModel = downloadModelFactory.create(catalog, state);
+    assert.isFalse(readyModel.zipDisabled);
+    assert.isUndefined(readyModel.zipTitle);
   });
 
-  it("renders PNG, credits, and clipboard buttons", function () {
-    m.mount(host, {
-      view: () => m(Download, { catalog, state }),
-    });
-
-    assert.notEqual(buttonByText(host, "Spritesheet (PNG)"), null);
-    assert.notEqual(buttonByText(host, "Credits (TXT)"), null);
-    assert.notEqual(buttonByText(host, "Credits (CSV)"), null);
-    assert.notEqual(buttonByText(host, "Export to Clipboard (JSON)"), null);
-    assert.notEqual(buttonByText(host, "Import from Clipboard (JSON)"), null);
-  });
-
-  it("exports JSON to the clipboard", async function () {
+  it("factory exports and imports JSON through the clipboard", async function () {
+    const { reader: catalog, writer } = createCatalog();
+    const state = createState();
+    seedCatalog(writer, {});
     const writeText = sinon.stub().resolves();
-    Object.defineProperty(navigator, "clipboard", {
-      configurable: true,
-      value: { writeText, readText: sinon.stub() },
-    });
-
-    m.mount(host, {
-      view: () => m(Download, { catalog, state }),
-    });
-    buttonByText(host, "Export to Clipboard (JSON)").click();
-    await Promise.resolve();
-    await Promise.resolve();
-
-    assert.strictEqual(writeText.calledOnce, true);
-    const json = JSON.parse(writeText.firstCall.args[0]);
-    assert.strictEqual(json.version, 2);
-    assert.strictEqual(json.bodyType, "male");
-    assert.strictEqual(alertStub.calledOnce, true);
-  });
-
-  it("imports JSON from the clipboard into state", async function () {
     const readText = sinon.stub().resolves(
       JSON.stringify({
         version: 2,
         bodyType: "female",
-        selections: { body: { itemId: "1" } },
+        selections: {},
         selectedAnimation: "idle",
       }),
     );
     Object.defineProperty(navigator, "clipboard", {
       configurable: true,
-      value: { writeText: sinon.stub(), readText },
+      value: { writeText, readText },
     });
 
-    m.mount(host, {
-      view: () => m(Download, { catalog, state }),
+    const model = downloadModelFactory.create(catalog, state);
+    assert.deepEqual(await model.exportJsonToClipboard(), { kind: "success" });
+    assert.strictEqual(JSON.parse(writeText.firstCall.args[0]).version, 2);
+    assert.deepEqual(await model.importJsonFromClipboard(), {
+      kind: "success",
     });
-    buttonByText(host, "Import from Clipboard (JSON)").click();
-    await Promise.resolve();
-    await Promise.resolve();
-
     assert.strictEqual(state.bodyType, "female");
-    assert.strictEqual(state.selections.body.itemId, "1");
     assert.strictEqual(state.selectedAnimation, "idle");
-    assert.strictEqual(alertStub.calledOnce, true);
   });
 
-  it("downloads credits.txt and credits.csv", function () {
-    const createObjectURLStub = sinon
+  it("factory reports clipboard failures and unavailable rendering", async function () {
+    const { reader: catalog } = createCatalog();
+    const state = createState();
+    const error = new Error("clipboard denied");
+    Object.defineProperty(navigator, "clipboard", {
+      configurable: true,
+      value: {
+        writeText: sinon.stub().rejects(error),
+        readText: sinon.stub().rejects(error),
+      },
+    });
+    const model = downloadModelFactory.create(catalog, state);
+
+    assert.deepEqual(await model.exportJsonToClipboard(), {
+      kind: "failure",
+      error,
+    });
+    assert.deepEqual(await model.importJsonFromClipboard(), {
+      kind: "failure",
+      error,
+    });
+
+    delete window.canvasRenderer;
+    assert.deepEqual(await model.exportJsonToClipboard(), {
+      kind: "unavailable",
+    });
+    assert.deepEqual(await model.importJsonFromClipboard(), {
+      kind: "unavailable",
+    });
+    model.saveSpritesheet();
+  });
+
+  it("factory delegates credits and ZIP commands", async function () {
+    const { reader: catalog, writer } = createCatalog();
+    const state = createState();
+    seedCatalog(writer, {});
+    const createObjectURL = sinon
       .stub(URL, "createObjectURL")
       .returns("blob:url");
     sinon.stub(URL, "revokeObjectURL");
     const nativeCreate = document.createElement.bind(document);
-    const anchors = [];
     sinon.stub(document, "createElement").callsFake((tag) => {
-      const el = nativeCreate(tag);
-      if (tag === "a") {
-        el.click = sinon.stub();
-        anchors.push(el);
-      }
-      return el;
+      const element = nativeCreate(tag);
+      if (tag === "a") element.click = sinon.stub();
+      return element;
     });
+    delete window.JSZip;
 
-    m.mount(host, {
-      view: () => m(Download, { catalog, state }),
-    });
-    buttonByText(host, "Credits (TXT)").click();
-    buttonByText(host, "Credits (CSV)").click();
-
-    assert.strictEqual(createObjectURLStub.calledTwice, true);
-    assert.deepEqual(
-      anchors.map((a) => a.download),
-      ["credits.txt", "credits.csv"],
-    );
+    const model = downloadModelFactory.create(catalog, state);
+    model.downloadCreditsTxt();
+    model.downloadCreditsCsv();
+    assert.isTrue(createObjectURL.calledTwice);
+    await model.exportZipByAnimation();
+    await model.exportZipByItem();
+    await model.exportZipByAnimationAndItem();
+    await model.exportZipByAnimationAndFrame();
+    assert.strictEqual(alertStub.callCount, 4);
   });
 });

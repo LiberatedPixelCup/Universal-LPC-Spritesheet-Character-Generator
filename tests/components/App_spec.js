@@ -111,6 +111,7 @@ describe("App", function () {
       currentSelections: 0,
     };
     models = {
+      ...createApplicationModels(catalog, state),
       createSearchControlModel: () => {
         calls.search += 1;
         return { value: "", disabled: false, setValue() {} };

@@ -16,8 +16,12 @@ import {
   animationFiltersModelFactory,
   type AnimationFiltersModel,
 } from "./animation-filters.ts";
+import { downloadModelFactory, type DownloadModel } from "./download.ts";
+import { creditsModelFactory, type CreditsModel } from "./credits.ts";
 
 export type ApplicationModels = {
+  createDownloadModel(): DownloadModel;
+  createCreditsModel(): CreditsModel;
   createSearchControlModel(): SearchControlModel;
   createLicenseFiltersModel(): LicenseFiltersModel;
   createAnimationFiltersModel(): AnimationFiltersModel;
@@ -30,6 +34,8 @@ export function createApplicationModels(
   state: State,
 ): ApplicationModels {
   return {
+    createDownloadModel: () => downloadModelFactory.create(catalog, state),
+    createCreditsModel: () => creditsModelFactory.create(catalog, state),
     createSearchControlModel: () =>
       searchControlModelFactory.create(catalog, state),
     createLicenseFiltersModel: () =>

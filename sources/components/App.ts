@@ -68,7 +68,7 @@ export const App: m.Component<AppAttrs, AppState> = {
   view(vnode) {
     const { catalog, state, models } = vnode.attrs;
     return m("div", [
-      m(Download, { catalog, state }),
+      m(Download, { createModel: models.createDownloadModel }),
       m(FiltersPanel, {
         catalog,
         state,
@@ -78,7 +78,7 @@ export const App: m.Component<AppAttrs, AppState> = {
         createAnimationFiltersModel: models.createAnimationFiltersModel,
         createCurrentSelectionsModel: models.createCurrentSelectionsModel,
       }),
-      m(Credits, { catalog, state }),
+      m(Credits, { createModel: models.createCreditsModel }),
       m(AdvancedTools, { state }),
     ]);
   },

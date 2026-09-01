@@ -1,25 +1,60 @@
-// Credits/Attribution component
 import m from "mithril";
-import type { State } from "../../state/state.ts";
-import {
-  getAllCredits,
-  creditsToCsv,
-  creditsToTxt,
-} from "../../utils/credits.ts";
+import type { CreditsModel } from "../../models/credits.ts";
 import { CollapsibleSection } from "../CollapsibleSection.ts";
-import { downloadFile } from "../../canvas/download.ts";
-import type { CatalogReader } from "../../state/catalog.ts";
 
-export const Credits: m.Component<{ catalog: CatalogReader; state: State }> = {
+const CreditsContent: m.Component<{
+  createModel: () => CreditsModel;
+}> = {
   view(vnode) {
-    const { catalog, state } = vnode.attrs;
-    const allCredits = getAllCredits(
-      catalog,
-      state.selections,
-      state.bodyType,
-      state.selectedAnimation,
-    );
+    const model = vnode.attrs.createModel();
+    if (model.kind === "loading") {
+      return m(
+        "div.loading-shell-credits",
+        m("p.has-text-grey", "Loading selections…"),
+      );
+    }
+    if (model.kind === "empty") {
+      return m("p.has-text-grey", "No items selected");
+    }
 
+    return [
+      m(
+        "div.content.has-background-light.p-3",
+        model.credits.map((credit) =>
+          m("div.mb-3", { key: credit.key }, [
+            m("strong.is-size-6", credit.fileName),
+            credit.notes ? m("p.is-size-7", credit.notes) : null,
+            m("p.is-size-7", [
+              m("strong", "Licenses: "),
+              credit.licenses.join(", "),
+            ]),
+            m("p.is-size-7", [
+              m("strong", "Authors: "),
+              credit.authors.join(", "),
+            ]),
+          ]),
+        ),
+      ),
+      m("div.buttons.mt-3", [
+        m(
+          "button.button.is-small",
+          { onclick: model.downloadTxt },
+          "Download TXT",
+        ),
+        m(
+          "button.button.is-small",
+          { onclick: model.downloadCsv },
+          "Download CSV",
+        ),
+      ]),
+    ];
+  },
+};
+
+export const Credits: m.Component<{
+  createModel: () => CreditsModel;
+}> = {
+  view(vnode) {
     return m(
       CollapsibleSection,
       {
@@ -51,51 +86,7 @@ export const Credits: m.Component<{ catalog: CatalogReader; state: State }> = {
             "here",
           ),
         ]),
-
-        !state.previewBootstrapRenderDone
-          ? m(
-              "div.loading-shell-credits",
-              m("p.has-text-grey", "Loading selections…"),
-            )
-          : allCredits.length > 0
-            ? [
-                m(
-                  "div.content.has-background-light.p-3",
-                  allCredits.map((credit) =>
-                    m("div.mb-3", { key: credit.file }, [
-                      m("strong.is-size-6", credit.fileName),
-                      credit.notes ? m("p.is-size-7", credit.notes) : null,
-                      m("p.is-size-7", [
-                        m("strong", "Licenses: "),
-                        credit.licenses.join(", "),
-                      ]),
-                      m("p.is-size-7", [
-                        m("strong", "Authors: "),
-                        credit.authors.join(", "),
-                      ]),
-                    ]),
-                  ),
-                ),
-                m("div.buttons.mt-3", [
-                  m(
-                    "button.button.is-small",
-                    {
-                      onclick: () =>
-                        downloadFile(creditsToTxt(allCredits), "credits.txt"),
-                    },
-                    "Download TXT",
-                  ),
-                  m(
-                    "button.button.is-small",
-                    {
-                      onclick: () =>
-                        downloadFile(creditsToCsv(allCredits), "credits.csv"),
-                    },
-                    "Download CSV",
-                  ),
-                ]),
-              ]
-            : m("p.has-text-grey", "No items selected"),
+        m(CreditsContent, { createModel: vnode.attrs.createModel }),
       ],
     );
   },

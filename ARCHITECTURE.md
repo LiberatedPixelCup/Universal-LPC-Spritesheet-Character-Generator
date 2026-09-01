@@ -205,6 +205,8 @@ Verifying it needs a real browser.
 | `license-filters.ts` | License filter options, readiness, compatibility summary, and mutation commands |
 | `animation-filters.ts` | Animation filter options, compatibility summary, and mutation commands |
 | `current-selections.ts` | Render-ready Current Selections snapshot and remove commands |
+| `download.ts` | Download readiness/progress snapshots and PNG, credits, ZIP, and clipboard commands |
+| `credits.ts` | Loading/empty/ready attribution snapshot and credit download commands |
 
 ### `sources/components/`
 
@@ -223,7 +225,9 @@ The bootstrap in `main.ts` constructs the render-ready application model graph;
 components receive and forward lazy constructors for their model slice instead
 of constructing application dependencies. Leaves invoke those constructors from
 `view`, so a collapsed parent does not build models for children Mithril does
-not render.
+not render. Components that own their `CollapsibleSection`, such as Download
+and Credits, keep the section wrapper model-free and invoke the constructor in
+an internal content leaf.
 
 ## ZIP export
 
