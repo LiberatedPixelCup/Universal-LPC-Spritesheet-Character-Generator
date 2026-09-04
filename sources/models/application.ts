@@ -16,6 +16,10 @@ import {
   animationFiltersModelFactory,
   type AnimationFiltersModel,
 } from "./animation-filters.ts";
+import {
+  categoryTreeModelFactory,
+  type CategoryTreeModel,
+} from "./category-tree.ts";
 import { downloadModelFactory, type DownloadModel } from "./download.ts";
 import { creditsModelFactory, type CreditsModel } from "./credits.ts";
 
@@ -26,6 +30,7 @@ export type ApplicationModels = {
   createLicenseFiltersModel(): LicenseFiltersModel;
   createAnimationFiltersModel(): AnimationFiltersModel;
   createCurrentSelectionsModel(): CurrentSelectionsModel;
+  createCategoryTreeModel(): CategoryTreeModel;
 };
 
 /** Builds the render-ready model graph at the application composition root. */
@@ -44,5 +49,7 @@ export function createApplicationModels(
       animationFiltersModelFactory.create(catalog, state),
     createCurrentSelectionsModel: () =>
       currentSelectionsModelFactory.create(catalog, state),
+    createCategoryTreeModel: () =>
+      categoryTreeModelFactory.create(catalog, state),
   };
 }
