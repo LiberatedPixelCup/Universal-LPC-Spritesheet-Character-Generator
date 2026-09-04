@@ -100,7 +100,9 @@ export const ItemWithVariants: m.Component<
                           const canvas = canvasVnode.dom as HTMLCanvasElement;
                           void variant.loadPreview(canvas).then((preview) => {
                             (
-                              canvasVnode.state as { redraw?: () => void }
+                              canvasVnode.state as {
+                                redraw?: (size: number) => void;
+                              }
                             ).redraw = preview.redraw;
                             vnode.state.imagesLoaded += preview.imagesLoaded;
                             m.redraw();
@@ -108,8 +110,10 @@ export const ItemWithVariants: m.Component<
                         },
                         onupdate: (canvasVnode: m.VnodeDOM) => {
                           (
-                            canvasVnode.state as { redraw?: () => void }
-                          ).redraw?.();
+                            canvasVnode.state as {
+                              redraw?: (size: number) => void;
+                            }
+                          ).redraw?.(variant.size);
                         },
                       }),
                     ],

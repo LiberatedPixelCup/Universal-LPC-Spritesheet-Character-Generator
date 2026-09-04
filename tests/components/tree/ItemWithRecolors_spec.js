@@ -303,12 +303,30 @@ describe("ItemWithRecolors", function () {
     );
   });
 
-  // TODO (unimplemented): Same Testem/Mithril issue as ItemWithVariants — `.tree-label` click
-  // often does not toggle `expandedNodes` for non–Body Color item ids; Body Color → `body-body`
-  // still works (see test below). Intended: `state.expandedNodes.iwr_shirt === true` and
-  // `.palette-recolor-list` present after click.
-  it("row label expands expandedNodes when starting collapsed", function () {
-    this.skip();
+  it("row label expands a collapsed item", function () {
+    let isExpanded = false;
+    const createModel = () => ({
+      name: "Recolor Tee",
+      isSearchMatch: false,
+      isCompatible: true,
+      isExpanded,
+      isSelected: false,
+      paletteReady: true,
+      compactDisplay: false,
+      paletteOptions: [],
+      selectedColors: {},
+      toggle: () => {
+        isExpanded = !isExpanded;
+      },
+      drawPreview: async () => 0,
+    });
+    m.render(host, m(ItemWithRecolorsComponent, { createModel }));
+    assert.strictEqual(host.querySelector("canvas.variant-canvas"), null);
+
+    host.querySelector(".tree-label").click();
+    m.render(host, m(ItemWithRecolorsComponent, { createModel }));
+
+    assert.notEqual(host.querySelector("canvas.variant-canvas"), null);
   });
 
   it("uses body-body as expandedNodes key when the display name is Body Color", function () {
@@ -400,6 +418,38 @@ describe("ItemWithRecolors", function () {
     assert.strictEqual(canvas.getAttribute("width"), "32");
     assert.strictEqual(canvas.getAttribute("height"), "32");
     assert.ok(canvas.className.includes("compact-display"));
+  });
+
+  it("redraws a mounted preview whenever compact sizing changes", async function () {
+    let compactDisplay = false;
+    const drawnWidths = [];
+    const createModel = () => ({
+      name: "Recolor Tee",
+      isSearchMatch: false,
+      isCompatible: true,
+      isExpanded: true,
+      isSelected: false,
+      paletteReady: true,
+      compactDisplay,
+      paletteOptions: [],
+      selectedColors: {},
+      toggle() {},
+      drawPreview: async (canvas) => {
+        drawnWidths.push(canvas.width);
+        return 1;
+      },
+    });
+
+    m.render(host, m(ItemWithRecolorsComponent, { createModel }));
+    await Promise.resolve();
+    compactDisplay = true;
+    m.render(host, m(ItemWithRecolorsComponent, { createModel }));
+    await Promise.resolve();
+    compactDisplay = false;
+    m.render(host, m(ItemWithRecolorsComponent, { createModel }));
+    await Promise.resolve();
+
+    assert.deepEqual(drawnWidths, [64, 32, 64]);
   });
 
   describe("remember colors when switching assets (#522)", function () {

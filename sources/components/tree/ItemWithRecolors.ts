@@ -12,9 +12,16 @@ type ItemWithRecolorsState = {
   showPaletteModal: number | null;
   isLoading?: boolean;
   imagesLoaded: number;
-  oldSelectedColors: string;
+  lastPreviewKey: string;
   _palettePreviewLastTotal?: number;
 };
+
+function previewKey(
+  selectedColors: Record<string, string>,
+  compactDisplay: boolean,
+): string {
+  return JSON.stringify([compactDisplay, selectedColors]);
+}
 
 function openPaletteModal(
   option: RecolorPaletteOptionModel,
@@ -120,11 +127,14 @@ export const ItemWithRecolors: m.Component<
                           const canvas = canvasVnode.dom as HTMLCanvasElement;
                           const cs = canvasVnode.state as {
                             renderId?: number;
-                            lastColorsKey?: string;
+                            lastPreviewKey?: string;
                           };
                           const renderId = (cs.renderId ?? 0) + 1;
                           cs.renderId = renderId;
-                          cs.lastColorsKey = JSON.stringify(selectedColors);
+                          cs.lastPreviewKey = previewKey(
+                            selectedColors,
+                            compactDisplay,
+                          );
                           void model.drawPreview(
                             canvas,
                             selectedColors,
@@ -135,11 +145,14 @@ export const ItemWithRecolors: m.Component<
                           const canvas = canvasVnode.dom as HTMLCanvasElement;
                           const cs = canvasVnode.state as {
                             renderId?: number;
-                            lastColorsKey?: string;
+                            lastPreviewKey?: string;
                           };
-                          const key = JSON.stringify(selectedColors);
-                          if (cs.lastColorsKey === key) return;
-                          cs.lastColorsKey = key;
+                          const key = previewKey(
+                            selectedColors,
+                            compactDisplay,
+                          );
+                          if (cs.lastPreviewKey === key) return;
+                          cs.lastPreviewKey = key;
                           const renderId = (cs.renderId ?? 0) + 1;
                           cs.renderId = renderId;
                           void model.drawPreview(
@@ -249,23 +262,25 @@ export const ItemWithRecolors: m.Component<
                               await model.drawPreview(canvas);
                             if (imagesLoaded > 0) {
                               rootViewNode.state.imagesLoaded += imagesLoaded;
-                              rootViewNode.state.oldSelectedColors =
-                                JSON.stringify(selectedColors);
+                              rootViewNode.state.lastPreviewKey = previewKey(
+                                selectedColors,
+                                compactDisplay,
+                              );
                             }
                           },
                           onupdate: async (canvasVnode: m.VnodeDOM) => {
-                            if (
-                              rootViewNode.state.oldSelectedColors ===
-                              JSON.stringify(selectedColors)
-                            ) {
+                            const key = previewKey(
+                              selectedColors,
+                              compactDisplay,
+                            );
+                            if (rootViewNode.state.lastPreviewKey === key) {
                               return;
                             }
                             const canvas = canvasVnode.dom as HTMLCanvasElement;
                             const imagesLoaded =
                               await model.drawPreview(canvas);
                             if (imagesLoaded > 0) {
-                              rootViewNode.state.oldSelectedColors =
-                                JSON.stringify(selectedColors);
+                              rootViewNode.state.lastPreviewKey = key;
                             }
                           },
                         }),

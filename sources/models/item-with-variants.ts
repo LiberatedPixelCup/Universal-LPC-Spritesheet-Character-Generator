@@ -14,7 +14,7 @@ export type VariantItemModel = {
   select(): void;
   loadPreview(
     canvas: HTMLCanvasElement,
-  ): Promise<{ redraw: () => void; imagesLoaded: number }>;
+  ): Promise<{ redraw: (size: number) => void; imagesLoaded: number }>;
 };
 
 export type ItemWithVariantsModel = {
@@ -100,7 +100,7 @@ export const itemWithVariantsModelFactory = {
                   variant,
                 );
                 const loaded = await Promise.all(layers.map(loadLayer));
-                const draw = () => {
+                const draw = (currentSize: number) => {
                   const context = canvas.getContext("2d", {
                     willReadFrequently: true,
                   });
@@ -124,12 +124,12 @@ export const itemWithVariantsModelFactory = {
                       FRAME_SIZE,
                       0,
                       0,
-                      size,
-                      size,
+                      currentSize,
+                      currentSize,
                     );
                   }
                 };
-                draw();
+                draw(size);
                 return { redraw: draw, imagesLoaded: loaded.length };
               },
             };
