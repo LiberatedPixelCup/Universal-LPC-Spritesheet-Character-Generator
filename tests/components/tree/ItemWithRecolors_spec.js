@@ -1,7 +1,8 @@
 import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
-import { ItemWithRecolors } from "../../../sources/components/tree/ItemWithRecolors.ts";
+import { ItemWithRecolors as ItemWithRecolorsComponent } from "../../../sources/components/tree/ItemWithRecolors.ts";
+import { itemWithRecolorsModelFactory } from "../../../sources/models/item-with-recolors.ts";
 import {
   configureStateCatalog,
   createState,
@@ -10,6 +11,23 @@ let state;
 import { createCatalog } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
 import { seedCatalog } from "../../browser-catalog-fixture.js";
+
+const ItemWithRecolors = {
+  view: (vnode) =>
+    m(ItemWithRecolorsComponent, {
+      createModel: () =>
+        itemWithRecolorsModelFactory.create(
+          vnode.attrs.catalog,
+          vnode.attrs.state,
+          vnode.attrs.itemId,
+          vnode.attrs.meta,
+          vnode.attrs.isSearchMatch,
+          vnode.attrs.isCompatible,
+          vnode.attrs.tooltipText,
+          vnode.attrs.showItemTooltips ?? true,
+        ),
+    }),
+};
 
 /** Minimal `paletteMetadata.materials` + one recolor-only item (mirrors palettes_spec fixtures). */
 const clothPaletteMetadata = {

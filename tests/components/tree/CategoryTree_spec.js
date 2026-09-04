@@ -1,7 +1,8 @@
 import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
-import { CategoryTree } from "../../../sources/components/tree/CategoryTree.ts";
+import { CategoryTree as CategoryTreeComponent } from "../../../sources/components/tree/CategoryTree.ts";
+import { categoryTreeModelFactory } from "../../../sources/models/category-tree.ts";
 import {
   configureStateCatalog,
   createState,
@@ -10,6 +11,14 @@ let state;
 import { createCatalog } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
 import { seedCatalog } from "../../browser-catalog-fixture.js";
+
+const CategoryTree = {
+  view: (vnode) =>
+    m(CategoryTreeComponent, {
+      createModel: () =>
+        categoryTreeModelFactory.create(vnode.attrs.catalog, vnode.attrs.state),
+    }),
+};
 
 describe("CategoryTree", function () {
   let host;

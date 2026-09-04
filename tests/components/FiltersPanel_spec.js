@@ -12,20 +12,18 @@ describe("FiltersPanel", () => {
   let vnode;
 
   beforeEach(() => {
-    const catalog = { isLiteReady: () => true };
-    const state = { selections: {} };
     const createSearchControlModel = () => ({ value: "", disabled: false });
     const createLicenseFiltersModel = () => ({ summary: "licenses" });
     const createAnimationFiltersModel = () => ({ summary: "animations" });
     const createCurrentSelectionsModel = () => ({ kind: "empty" });
+    const createCategoryTreeModel = () => ({ isLoading: true });
     vnode = FiltersPanel.view({
       attrs: {
-        catalog,
-        state,
         createSearchControlModel,
         createLicenseFiltersModel,
         createAnimationFiltersModel,
         createCurrentSelectionsModel,
+        createCategoryTreeModel,
       },
     });
   });
@@ -75,5 +73,6 @@ describe("FiltersPanel", () => {
   it("should render the CategoryTree component", () => {
     const categoryTree = vnode.children[3];
     expect(categoryTree.tag).to.equal(CategoryTree);
+    expect(categoryTree.attrs.createModel()).to.deep.equal({ isLoading: true });
   });
 });

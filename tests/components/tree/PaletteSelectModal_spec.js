@@ -1,7 +1,8 @@
 import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
-import { PaletteSelectModal } from "../../../sources/components/tree/PaletteSelectModal.ts";
+import { PaletteSelectModal as PaletteSelectModalComponent } from "../../../sources/components/tree/PaletteSelectModal.ts";
+import { paletteSelectModalModelFactory } from "../../../sources/models/palette-select-modal.ts";
 import {
   configureStateCatalog,
   createState,
@@ -11,6 +12,23 @@ import { createCatalog } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
 import { buildItemsByTypeNameLite } from "../../../sources/state/resolve-hash-param.ts";
 import { seedCatalog } from "../../browser-catalog-fixture.js";
+
+const PaletteSelectModal = {
+  view: (vnode) =>
+    m(PaletteSelectModalComponent, {
+      createModel: () =>
+        paletteSelectModalModelFactory.create(
+          vnode.attrs.catalog,
+          vnode.attrs.state,
+          vnode.attrs.itemId,
+          vnode.attrs.opt,
+          vnode.attrs.selectedColors,
+          vnode.attrs.compactDisplay,
+          vnode.attrs.onSelect,
+        ),
+      onClose: vnode.attrs.onClose,
+    }),
+};
 
 const PSM_SHIRT = "psm_shirt";
 

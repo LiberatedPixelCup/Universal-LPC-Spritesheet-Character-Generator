@@ -1,7 +1,8 @@
 import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
-import { ItemWithVariants } from "../../../sources/components/tree/ItemWithVariants.ts";
+import { ItemWithVariants as ItemWithVariantsComponent } from "../../../sources/components/tree/ItemWithVariants.ts";
+import { itemWithVariantsModelFactory } from "../../../sources/models/item-with-variants.ts";
 import {
   configureStateCatalog,
   createState,
@@ -10,6 +11,23 @@ let state;
 import { createCatalog } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
 import { seedCatalog } from "../../browser-catalog-fixture.js";
+
+const ItemWithVariants = {
+  view: (vnode) =>
+    m(ItemWithVariantsComponent, {
+      createModel: () =>
+        itemWithVariantsModelFactory.create(
+          vnode.attrs.catalog,
+          vnode.attrs.state,
+          vnode.attrs.itemId,
+          vnode.attrs.meta,
+          vnode.attrs.isSearchMatch,
+          vnode.attrs.isCompatible,
+          vnode.attrs.tooltipText,
+          vnode.attrs.showItemTooltips ?? true,
+        ),
+    }),
+};
 
 describe("ItemWithVariants", function () {
   let host;

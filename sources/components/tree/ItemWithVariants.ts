@@ -1,89 +1,32 @@
-// Item with variants component
 import m from "mithril";
 import classNames from "classnames";
-import {
-  getSelectionGroup,
-  selectItem,
-  type State,
-} from "../../state/state.ts";
-import { getLayersToLoad } from "../../state/meta.ts";
-import type { LayerToLoad } from "../../state/meta.ts";
-import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
-import { capitalize } from "../../utils/helpers.ts";
-import type { CatalogReader, ItemMerged } from "../../state/catalog.ts";
-
-export type ItemWithVariantsAttrs = {
-  itemId: string;
-  meta: ItemMerged;
-  isSearchMatch: boolean;
-  isCompatible: boolean;
-  tooltipText: string;
-  showItemTooltips?: boolean;
-  catalog: CatalogReader;
-  state: State;
-};
-
-type ItemWithVariantsState = {
-  isLoading: boolean;
-  imagesToLoad: number;
-  imagesLoaded: number;
-};
-
-type CanvasState = {
-  loadedLayers?: Array<{ img: HTMLImageElement | null; layer: LayerToLoad }>;
-};
+import type { ItemWithVariantsModel } from "../../models/item-with-variants.ts";
 
 export const ItemWithVariants: m.Component<
-  ItemWithVariantsAttrs,
-  ItemWithVariantsState
+  { createModel: () => ItemWithVariantsModel },
+  { isLoading: boolean; imagesToLoad: number; imagesLoaded: number }
 > = {
   view(vnode) {
-    const {
-      itemId,
-      meta,
-      isSearchMatch,
-      isCompatible,
-      tooltipText,
-      showItemTooltips = true,
-      catalog,
-      state,
-    } = vnode.attrs;
-    const rowTitle = showItemTooltips ? tooltipText : undefined;
-    const compactDisplay = state.compactDisplay;
-    const displayName = meta.name;
-    const rootViewNode = vnode;
-    let nodePath = itemId;
-    if (displayName === "Body Color") {
-      nodePath = "body-body";
-    }
-    const isExpanded = state.expandedNodes[nodePath] || false;
-    const layers = getLayersToLoad(
-      catalog,
-      meta,
-      state.bodyType,
-      state.selections,
-    );
-
+    const model = vnode.attrs.createModel();
     return m(
       "div",
       {
         class: classNames({
-          "search-result": isSearchMatch,
-          "has-text-grey": !isCompatible,
+          "search-result": model.isSearchMatch,
+          "has-text-grey": !model.isCompatible,
         }),
         oninit: () => {
-          rootViewNode.state.isLoading = meta.variants.length > 0;
-          rootViewNode.state.imagesToLoad =
-            meta.variants.length * layers.length;
-          rootViewNode.state.imagesLoaded = 0;
+          vnode.state.isLoading = model.variants.length > 0;
+          vnode.state.imagesToLoad = model.imagesToLoad;
+          vnode.state.imagesLoaded = 0;
         },
         onupdate: () => {
-          if (isExpanded && rootViewNode.state.isLoading) {
-            if (
-              rootViewNode.state.imagesLoaded >= rootViewNode.state.imagesToLoad
-            ) {
-              rootViewNode.state.isLoading = false;
-            }
+          if (
+            model.isExpanded &&
+            vnode.state.isLoading &&
+            vnode.state.imagesLoaded >= vnode.state.imagesToLoad
+          ) {
+            vnode.state.isLoading = false;
           }
         },
       },
@@ -91,191 +34,87 @@ export const ItemWithVariants: m.Component<
         m(
           "div.tree-label",
           {
-            title: rowTitle,
+            title: model.tooltip,
             onclick: () => {
-              state.expandedNodes[nodePath] = !isExpanded;
-              if (state.expandedNodes[nodePath]) {
-                rootViewNode.state.isLoading = meta.variants.length > 0;
-                rootViewNode.state.imagesToLoad =
-                  meta.variants.length * layers.length;
-                rootViewNode.state.imagesLoaded = 0;
+              const imagesToLoad = model.toggle();
+              if (!model.isExpanded) {
+                vnode.state.isLoading = true;
+                vnode.state.imagesToLoad = imagesToLoad;
+                vnode.state.imagesLoaded = 0;
               }
             },
           },
           [
             m("span.tree-arrow", {
-              class: isExpanded ? "expanded" : "collapsed",
+              class: model.isExpanded ? "expanded" : "collapsed",
             }),
-            m("span", displayName),
-            !isCompatible ? m("span.ml-1", "⚠️") : null,
+            m("span", model.name),
+            !model.isCompatible ? m("span.ml-1", "⚠️") : null,
           ],
         ),
-        isExpanded
+        model.isExpanded
           ? m("div", [
               m("div", {
-                class: rootViewNode.state.isLoading ? "loading" : "",
+                class: vnode.state.isLoading ? "loading" : "",
               }),
               m(
                 "div.variants-container.ml-5.is-flex.is-flex-wrap-wrap",
-                meta.variants.map((variant) => {
-                  const selectionGroup = getSelectionGroup(itemId);
-                  const isSelected =
-                    state.selections[selectionGroup]?.itemId === itemId &&
-                    state.selections[selectionGroup]?.variant === variant;
-                  const variantDisplayName = variant.replaceAll("_", " ");
-
-                  // Get preview metadata from item metadata
-                  const previewRow = meta.preview_row ?? 2;
-                  const previewCol =
-                    (meta as { preview_column?: number }).preview_column ?? 0;
-                  const previewXOffset =
-                    (meta as { preview_x_offset?: number }).preview_x_offset ??
-                    0;
-                  const previewYOffset =
-                    (meta as { preview_y_offset?: number }).preview_y_offset ??
-                    0;
-
-                  return m(
+                model.variants.map((variant) =>
+                  m(
                     "div.variant-item.is-flex.is-flex-direction-column.is-align-items-center.is-clickable",
                     {
-                      key: variant,
+                      key: variant.key,
                       class: classNames({
                         "has-background-link-light has-text-weight-bold has-text-link":
-                          isSelected,
-                        "is-not-compatible": !isCompatible,
+                          variant.isSelected,
+                        "is-not-compatible": !variant.isCompatible,
                       }),
-                      title: rowTitle,
-                      onmouseover: (e: MouseEvent) => {
-                        if (!isCompatible) return;
-                        const div = e.currentTarget as HTMLElement;
-                        if (!isSelected)
-                          div.classList.add("has-background-white-ter");
+                      title: model.tooltip,
+                      onmouseover: (event: MouseEvent) => {
+                        if (!variant.isCompatible || variant.isSelected) return;
+                        (event.currentTarget as HTMLElement).classList.add(
+                          "has-background-white-ter",
+                        );
                       },
-                      onmouseout: (e: MouseEvent) => {
-                        if (!isCompatible) return;
-                        const div = e.currentTarget as HTMLElement;
-
-                        if (!isSelected)
-                          div.classList.remove("has-background-white-ter");
+                      onmouseout: (event: MouseEvent) => {
+                        if (!variant.isCompatible || variant.isSelected) return;
+                        (event.currentTarget as HTMLElement).classList.remove(
+                          "has-background-white-ter",
+                        );
                       },
-                      onclick: () => {
-                        if (!isCompatible) return; // Prevent selecting incompatible
-                        selectItem(state, itemId, variant, isSelected);
-                      },
+                      onclick: variant.select,
                     },
                     [
                       m(
                         "span.variant-display-name.has-text-centered.is-size-7",
-                        capitalize(variantDisplayName),
+                        variant.label,
                       ),
                       m("canvas.variant-canvas.box.p-0", {
-                        width: compactDisplay ? COMPACT_FRAME_SIZE : FRAME_SIZE,
-                        height: compactDisplay
-                          ? COMPACT_FRAME_SIZE
-                          : FRAME_SIZE,
-                        class: compactDisplay ? " compact-display" : "",
-                        style: isSelected
+                        width: variant.size,
+                        height: variant.size,
+                        class: variant.compactDisplay ? " compact-display" : "",
+                        style: variant.isSelected
                           ? " hsl(217, 71%, 53%)"
                           : " hsl(0, 0%, 86%)",
                         oncreate: (canvasVnode: m.VnodeDOM) => {
                           const canvas = canvasVnode.dom as HTMLCanvasElement;
-                          const cs = canvasVnode.state as CanvasState;
-                          const ctx = canvas.getContext("2d", {
-                            willReadFrequently: true,
-                          });
-                          if (!ctx) return;
-
-                          // Get Layers to Load for Variant
-                          const layersToLoad = getLayersToLoad(
-                            catalog,
-                            meta,
-                            state.bodyType,
-                            state.selections,
-                            variant,
-                          );
-
-                          // Load and draw all layers
-                          Promise.all(
-                            layersToLoad.map((layer) => {
-                              return new Promise<{
-                                img: HTMLImageElement | null;
-                                layer: LayerToLoad;
-                              }>((resolve) => {
-                                const img = new Image();
-                                img.onload = () => resolve({ img, layer });
-                                img.onerror = () =>
-                                  resolve({ img: null, layer });
-                                img.src = layer.path;
-                              });
-                            }),
-                          ).then((loadedLayers) => {
-                            cs.loadedLayers = loadedLayers;
-                            // Draw each layer in zPos order
-                            for (const { img } of loadedLayers) {
-                              if (img) {
-                                const size = compactDisplay
-                                  ? COMPACT_FRAME_SIZE
-                                  : FRAME_SIZE;
-                                const srcX =
-                                  previewCol * FRAME_SIZE + previewXOffset;
-                                const srcY =
-                                  previewRow * FRAME_SIZE + previewYOffset;
-                                ctx.drawImage(
-                                  img,
-                                  srcX,
-                                  srcY,
-                                  FRAME_SIZE,
-                                  FRAME_SIZE,
-                                  0,
-                                  0,
-                                  size,
-                                  size,
-                                );
-                              }
-                            }
-                            rootViewNode.state.imagesLoaded +=
-                              loadedLayers.length;
+                          void variant.loadPreview(canvas).then((preview) => {
+                            (
+                              canvasVnode.state as { redraw?: () => void }
+                            ).redraw = preview.redraw;
+                            vnode.state.imagesLoaded += preview.imagesLoaded;
                             m.redraw();
                           });
                         },
                         onupdate: (canvasVnode: m.VnodeDOM) => {
-                          const canvas = canvasVnode.dom as HTMLCanvasElement;
-                          const cs = canvasVnode.state as CanvasState;
-                          const ctx = canvas.getContext("2d", {
-                            willReadFrequently: true,
-                          });
-                          if (!ctx) return;
-
-                          // Process Layers Loaded for Variant
-                          if (cs.loadedLayers) {
-                            for (const { img } of cs.loadedLayers) {
-                              if (img) {
-                                const size = compactDisplay
-                                  ? COMPACT_FRAME_SIZE
-                                  : FRAME_SIZE;
-                                const srcX =
-                                  previewCol * FRAME_SIZE + previewXOffset;
-                                const srcY =
-                                  previewRow * FRAME_SIZE + previewYOffset;
-                                ctx.drawImage(
-                                  img,
-                                  srcX,
-                                  srcY,
-                                  FRAME_SIZE,
-                                  FRAME_SIZE,
-                                  0,
-                                  0,
-                                  size,
-                                  size,
-                                );
-                              }
-                            }
-                          }
+                          (
+                            canvasVnode.state as { redraw?: () => void }
+                          ).redraw?.();
                         },
                       }),
                     ],
-                  );
-                }),
+                  ),
+                ),
               ),
             ])
           : null,

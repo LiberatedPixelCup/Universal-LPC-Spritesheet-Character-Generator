@@ -205,6 +205,10 @@ Verifying it needs a real browser.
 | `license-filters.ts` | License filter options, readiness, compatibility summary, and mutation commands |
 | `animation-filters.ts` | Animation filter options, compatibility summary, and mutation commands |
 | `current-selections.ts` | Render-ready Current Selections snapshot and remove commands |
+| `category-tree.ts` | Lazy category/node graph, toolbar and body-type models, simple item rows |
+| `item-with-variants.ts` | Variant row state, selection commands, and lazy layer-preview work |
+| `item-with-recolors.ts` | Recolor row state, remembered-color commands, and preview work |
+| `palette-select-modal.ts` | Staged modal model, palette-version rows, tiles, and lazy previews |
 | `download.ts` | Download readiness/progress snapshots and PNG, credits, ZIP, and clipboard commands |
 | `credits.ts` | Loading/empty/ready attribution snapshot and credit download commands |
 
@@ -227,7 +231,9 @@ of constructing application dependencies. Leaves invoke those constructors from
 `view`, so a collapsed parent does not build models for children Mithril does
 not render. Components that own their `CollapsibleSection`, such as Download
 and Credits, keep the section wrapper model-free and invoke the constructor in
-an internal content leaf.
+an internal content leaf. The category tree follows the same rule at every
+level: it creates a child model only when that part of the tree is displayed,
+so collapsed branches do not read item metadata or start preview work.
 
 ## ZIP export
 

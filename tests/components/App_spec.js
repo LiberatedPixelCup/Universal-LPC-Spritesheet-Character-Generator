@@ -109,6 +109,7 @@ describe("App", function () {
       license: 0,
       animation: 0,
       currentSelections: 0,
+      categoryTree: 0,
     };
     models = {
       ...createApplicationModels(catalog, state),
@@ -141,6 +142,10 @@ describe("App", function () {
         calls.currentSelections += 1;
         return { kind: "empty" };
       },
+      createCategoryTreeModel: () => {
+        calls.categoryTree += 1;
+        return { isLoading: true };
+      },
     };
     m.mount(host, { view: appView });
     assert.deepEqual(calls, {
@@ -148,6 +153,7 @@ describe("App", function () {
       license: 1,
       animation: 1,
       currentSelections: 1,
+      categoryTree: 1,
     });
 
     const filtersTitle = [
@@ -163,6 +169,7 @@ describe("App", function () {
       license: 1,
       animation: 1,
       currentSelections: 1,
+      categoryTree: 1,
     });
   });
 
