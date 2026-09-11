@@ -1,140 +1,58 @@
 // Item with recolors component
 import m from "mithril";
 import classNames from "classnames";
-import {
-  getSelectionGroup,
-  selectItem,
-  type State,
-} from "../../state/state.ts";
-import type { CatalogReader, ItemMerged } from "../../state/catalog.ts";
-import { drawRecolorPreview } from "../../canvas/palette-recolor.ts";
-import { getPaletteOptions, type PaletteOption } from "../../state/palettes.ts";
+import type {
+  ItemWithRecolorsModel,
+  RecolorPaletteOptionModel,
+} from "../../models/item-with-recolors.ts";
 import { PaletteSelectModal } from "./PaletteSelectModal.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
-
-export type ItemWithRecolorsAttrs = {
-  itemId: string;
-  meta: ItemMerged;
-  isSearchMatch: boolean;
-  isCompatible: boolean;
-  tooltipText: string;
-  showItemTooltips?: boolean;
-  catalog: CatalogReader;
-  state: State;
-};
 
 type ItemWithRecolorsState = {
   showPaletteModal: number | null;
   isLoading?: boolean;
   imagesLoaded: number;
-  oldSelectedColors: string;
+  lastPreviewKey: string;
   _palettePreviewLastTotal?: number;
-  // Mutated by `PaletteSelectModal` via the `rootViewNode` ref it receives.
-  palettePreviewGateSeq?: number;
-  palettePreviewExpected?: number;
-  palettePreviewCompleted?: number;
 };
 
-type PaletteModalHost = { state: ItemWithRecolorsState };
-
-/**
- * When switching to a different same-type recolor asset, apply the mapped
- * remembered color(s) immediately. First pick, already-selected, and
- * incompatible items are left unchanged; the caller still opens the popover.
- */
-function applyRememberedColorsOnSwitch(
-  state: State,
-  itemId: string,
-  meta: ItemMerged,
-  paletteOptions: PaletteOption[],
+function previewKey(
   selectedColors: Record<string, string>,
-  isSelected: boolean,
-  isCompatible: boolean,
-): void {
-  if (isSelected || !isCompatible) {
-    return;
-  }
-  if (!state.selections[getSelectionGroup(itemId)]) {
-    return;
-  }
-
-  for (let idx = 0; idx < paletteOptions.length; idx++) {
-    const opt = paletteOptions[idx];
-    const group =
-      idx !== 0 ? (opt.type_name ?? meta.type_name) : meta.type_name;
-    const mapped = selectedColors[group];
-    const recolor =
-      mapped ?? (idx === 0 ? meta.recolors[0]?.variants?.[0] : mapped);
-    if (recolor) {
-      selectItem(state, itemId, recolor, false, opt.type_name ? idx : null);
-    }
-  }
+  compactDisplay: boolean,
+): string {
+  return JSON.stringify([compactDisplay, selectedColors]);
 }
 
 function openPaletteModal(
-  state: State,
-  rootViewNode: PaletteModalHost,
+  option: RecolorPaletteOptionModel,
+  rootViewNode: { state: ItemWithRecolorsState },
   modalIdx: number,
-  itemId: string,
-  meta: ItemMerged,
-  paletteOptions: PaletteOption[],
-  selectedColors: Record<string, string>,
-  isSelected: boolean,
-  isCompatible: boolean,
 ): void {
-  applyRememberedColorsOnSwitch(
-    state,
-    itemId,
-    meta,
-    paletteOptions,
-    selectedColors,
-    isSelected,
-    isCompatible,
-  );
+  option.prepareSelection();
   rootViewNode.state._palettePreviewLastTotal = undefined;
   rootViewNode.state.showPaletteModal = modalIdx;
   m.redraw();
 }
 
 export const ItemWithRecolors: m.Component<
-  ItemWithRecolorsAttrs,
+  { createModel: () => ItemWithRecolorsModel },
   ItemWithRecolorsState
 > = {
   view(vnode) {
+    const model = vnode.attrs.createModel();
     const {
-      itemId,
-      meta,
       isSearchMatch,
       isCompatible,
-      tooltipText,
-      showItemTooltips = true,
-      catalog,
-      state,
-    } = vnode.attrs;
-    const rowTitle = showItemTooltips ? tooltipText : undefined;
-    const compactDisplay = state.compactDisplay;
-    const displayName = meta.name;
+      compactDisplay,
+      paletteOptions,
+      selectedColors,
+      isSelected,
+      paletteReady,
+    } = model;
+    const rowTitle = model.tooltip;
+    const displayName = model.name;
     const rootViewNode = vnode;
-    let nodePath = itemId;
-    if (displayName === "Body Color") {
-      nodePath = "body-body";
-    }
-
-    // Check Selection Status
-    const selectionGroup = getSelectionGroup(itemId);
-    const isExpanded = state.expandedNodes[nodePath] || false;
-    const selection = state.selections[selectionGroup];
-    const isSelected = selection?.itemId === itemId;
-
-    const paletteReady = catalog.isPaletteReady();
-
-    // Build palette/color options for all recolor fields
-    const [paletteOptions, selectedColors] = getPaletteOptions(
-      catalog,
-      state,
-      itemId,
-      meta,
-    );
+    const isExpanded = model.isExpanded;
 
     // Check Selection Status
     let paletteModal = null;
@@ -143,31 +61,13 @@ export const ItemWithRecolors: m.Component<
       typeof rootViewNode.state.showPaletteModal === "number"
     ) {
       const idx = rootViewNode.state.showPaletteModal;
-      const opt = paletteOptions[idx];
+      const option = paletteOptions[idx];
       paletteModal = m(PaletteSelectModal, {
-        itemId,
-        opt,
-        selectedColors,
-        compactDisplay,
-        rootViewNode,
-        catalog,
-        state,
+        createModel: option.createModalModel,
         onClose: () => {
           rootViewNode.state.showPaletteModal = null;
           rootViewNode.state._palettePreviewLastTotal = undefined;
           m.redraw();
-        },
-        onSelect: (recolor) => {
-          const subSelectGroup =
-            opt.type_name !== meta.type_name ? opt.type_name : null;
-          selectItem(
-            state,
-            itemId,
-            recolor,
-            isSelected &&
-              selectedColors[subSelectGroup ?? meta.type_name] === recolor,
-            opt.type_name ? idx : null,
-          );
         },
       });
     }
@@ -186,7 +86,7 @@ export const ItemWithRecolors: m.Component<
           {
             title: rowTitle,
             onclick: () => {
-              state.expandedNodes[nodePath] = !isExpanded;
+              model.toggle();
             },
           },
           [
@@ -227,16 +127,15 @@ export const ItemWithRecolors: m.Component<
                           const canvas = canvasVnode.dom as HTMLCanvasElement;
                           const cs = canvasVnode.state as {
                             renderId?: number;
-                            lastColorsKey?: string;
+                            lastPreviewKey?: string;
                           };
                           const renderId = (cs.renderId ?? 0) + 1;
                           cs.renderId = renderId;
-                          cs.lastColorsKey = JSON.stringify(selectedColors);
-                          drawRecolorPreview(
-                            catalog,
-                            state,
-                            itemId,
-                            meta,
+                          cs.lastPreviewKey = previewKey(
+                            selectedColors,
+                            compactDisplay,
+                          );
+                          void model.drawPreview(
                             canvas,
                             selectedColors,
                             () => cs.renderId !== renderId,
@@ -246,18 +145,17 @@ export const ItemWithRecolors: m.Component<
                           const canvas = canvasVnode.dom as HTMLCanvasElement;
                           const cs = canvasVnode.state as {
                             renderId?: number;
-                            lastColorsKey?: string;
+                            lastPreviewKey?: string;
                           };
-                          const key = JSON.stringify(selectedColors);
-                          if (cs.lastColorsKey === key) return;
-                          cs.lastColorsKey = key;
+                          const key = previewKey(
+                            selectedColors,
+                            compactDisplay,
+                          );
+                          if (cs.lastPreviewKey === key) return;
+                          cs.lastPreviewKey = key;
                           const renderId = (cs.renderId ?? 0) + 1;
                           cs.renderId = renderId;
-                          drawRecolorPreview(
-                            catalog,
-                            state,
-                            itemId,
-                            meta,
+                          void model.drawPreview(
                             canvas,
                             selectedColors,
                             () => cs.renderId !== renderId,
@@ -335,17 +233,7 @@ export const ItemWithRecolors: m.Component<
                     onclick: (e: MouseEvent) => {
                       e.stopPropagation();
                       if (!paletteReady) return;
-                      openPaletteModal(
-                        state,
-                        rootViewNode,
-                        0,
-                        itemId,
-                        meta,
-                        paletteOptions,
-                        selectedColors,
-                        isSelected,
-                        isCompatible,
-                      );
+                      openPaletteModal(paletteOptions[0], rootViewNode, 0);
                     },
                   },
                   [
@@ -370,39 +258,29 @@ export const ItemWithRecolors: m.Component<
                           class: compactDisplay ? " compact-display" : "",
                           oncreate: async (canvasVnode: m.VnodeDOM) => {
                             const canvas = canvasVnode.dom as HTMLCanvasElement;
-                            const imagesLoaded = await drawRecolorPreview(
-                              catalog,
-                              state,
-                              itemId,
-                              meta,
-                              canvas,
-                              selectedColors,
-                            );
+                            const imagesLoaded =
+                              await model.drawPreview(canvas);
                             if (imagesLoaded > 0) {
                               rootViewNode.state.imagesLoaded += imagesLoaded;
-                              rootViewNode.state.oldSelectedColors =
-                                JSON.stringify(selectedColors);
+                              rootViewNode.state.lastPreviewKey = previewKey(
+                                selectedColors,
+                                compactDisplay,
+                              );
                             }
                           },
                           onupdate: async (canvasVnode: m.VnodeDOM) => {
-                            if (
-                              rootViewNode.state.oldSelectedColors ===
-                              JSON.stringify(selectedColors)
-                            ) {
+                            const key = previewKey(
+                              selectedColors,
+                              compactDisplay,
+                            );
+                            if (rootViewNode.state.lastPreviewKey === key) {
                               return;
                             }
                             const canvas = canvasVnode.dom as HTMLCanvasElement;
-                            const imagesLoaded = await drawRecolorPreview(
-                              catalog,
-                              state,
-                              itemId,
-                              meta,
-                              canvas,
-                              selectedColors,
-                            );
+                            const imagesLoaded =
+                              await model.drawPreview(canvas);
                             if (imagesLoaded > 0) {
-                              rootViewNode.state.oldSelectedColors =
-                                JSON.stringify(selectedColors);
+                              rootViewNode.state.lastPreviewKey = key;
                             }
                           },
                         }),
@@ -422,17 +300,7 @@ export const ItemWithRecolors: m.Component<
                                 onclick: (e: MouseEvent) => {
                                   e.stopPropagation();
                                   if (!paletteReady) return;
-                                  openPaletteModal(
-                                    state,
-                                    rootViewNode,
-                                    idx,
-                                    itemId,
-                                    meta,
-                                    paletteOptions,
-                                    selectedColors,
-                                    isSelected,
-                                    isCompatible,
-                                  );
+                                  openPaletteModal(opt, rootViewNode, idx);
                                 },
                               },
                               [

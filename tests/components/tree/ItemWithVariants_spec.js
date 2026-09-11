@@ -1,7 +1,8 @@
 import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
-import { ItemWithVariants } from "../../../sources/components/tree/ItemWithVariants.ts";
+import { ItemWithVariants as ItemWithVariantsComponent } from "../../../sources/components/tree/ItemWithVariants.ts";
+import { itemWithVariantsModelFactory } from "../../../sources/models/item-with-variants.ts";
 import {
   configureStateCatalog,
   createState,
@@ -10,6 +11,23 @@ let state;
 import { createCatalog } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
 import { seedCatalog } from "../../browser-catalog-fixture.js";
+
+const ItemWithVariants = {
+  view: (vnode) =>
+    m(ItemWithVariantsComponent, {
+      createModel: () =>
+        itemWithVariantsModelFactory.create(
+          vnode.attrs.catalog,
+          vnode.attrs.state,
+          vnode.attrs.itemId,
+          vnode.attrs.meta,
+          vnode.attrs.isSearchMatch,
+          vnode.attrs.isCompatible,
+          vnode.attrs.tooltipText,
+          vnode.attrs.showItemTooltips ?? true,
+        ),
+    }),
+};
 
 describe("ItemWithVariants", function () {
   let host;
@@ -122,14 +140,28 @@ describe("ItemWithVariants", function () {
     assert.ok(host.textContent.includes("Red"));
   });
 
-  // TODO (unimplemented): Enable when the category row reliably receives clicks after variant
-  // canvases mount. With the grid open, each canvas uses oncreate + Promise.all + m.redraw(); in
-  // Testem, a subsequent native click() on `.tree-label` often did not run Mithril's toggle
-  // (expand-from-collapsed — e.g. Body Color — still works). Intended checks:
-  //   assert.strictEqual(state.expandedNodes.iwv_cloak, false);
-  //   assert.strictEqual(host.querySelectorAll(".variant-item").length, 0);
-  it("row label collapses when expanded (expandedNodes keyed by item id)", function () {
-    this.skip();
+  it("row label collapses an expanded item", function () {
+    let isExpanded = true;
+    const createModel = () => ({
+      name: "Variant Cloak",
+      isSearchMatch: false,
+      isCompatible: true,
+      tooltip: "tip",
+      isExpanded,
+      imagesToLoad: 0,
+      variants: [],
+      toggle: () => {
+        isExpanded = !isExpanded;
+        return 0;
+      },
+    });
+    m.render(host, m(ItemWithVariantsComponent, { createModel }));
+    assert.notEqual(host.querySelector(".variants-container"), null);
+
+    host.querySelector(".tree-label").click();
+    m.render(host, m(ItemWithVariantsComponent, { createModel }));
+
+    assert.strictEqual(host.querySelector(".variants-container"), null);
   });
 
   it("uses body-body as expandedNodes key when the display name is Body Color", function () {
@@ -285,5 +317,43 @@ describe("ItemWithVariants", function () {
     assert.strictEqual(canvas.getAttribute("width"), "32");
     assert.strictEqual(canvas.getAttribute("height"), "32");
     assert.ok(canvas.className.includes("compact-display"));
+  });
+
+  it("redraws a mounted preview at the current compact size", async function () {
+    let compactDisplay = false;
+    const redrawSizes = [];
+    const createModel = () => ({
+      name: "Variant Cloak",
+      isSearchMatch: false,
+      isCompatible: true,
+      tooltip: "tip",
+      isExpanded: true,
+      imagesToLoad: 0,
+      toggle: () => 0,
+      variants: [
+        {
+          key: "dark_blue",
+          label: "Dark blue",
+          isSelected: false,
+          isCompatible: true,
+          size: compactDisplay ? 32 : 64,
+          compactDisplay,
+          select() {},
+          loadPreview: async () => ({
+            redraw: (size) => redrawSizes.push(size),
+            imagesLoaded: 0,
+          }),
+        },
+      ],
+    });
+
+    m.render(host, m(ItemWithVariantsComponent, { createModel }));
+    await Promise.resolve();
+    compactDisplay = true;
+    m.render(host, m(ItemWithVariantsComponent, { createModel }));
+
+    const canvas = host.querySelector("canvas.variant-canvas");
+    assert.strictEqual(canvas.getAttribute("width"), "32");
+    assert.deepEqual(redrawSizes, [32]);
   });
 });

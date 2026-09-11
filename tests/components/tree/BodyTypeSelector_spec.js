@@ -1,15 +1,24 @@
 import { expect } from "chai";
 import { describe, it, beforeEach } from "mocha-globals";
 import { BodyTypeSelector } from "../../../sources/components/tree/BodyTypeSelector.ts";
-import { createState } from "../../../sources/state/state.ts";
-let state;
 
 describe("BodyTypeSelector Component", () => {
   let vnode;
+  let selected;
 
   beforeEach(() => {
-    state = createState();
-    vnode = { state: {}, attrs: { state } };
+    selected = undefined;
+    const model = {
+      selected: "female",
+      options: [
+        { value: "male", label: "Male" },
+        { value: "female", label: "Female" },
+      ],
+      select(value) {
+        selected = value;
+      },
+    };
+    vnode = { state: {}, attrs: { model } };
     BodyTypeSelector.oninit(vnode);
   });
 
@@ -31,19 +40,12 @@ describe("BodyTypeSelector Component", () => {
     const view = BodyTypeSelector.view(vnode);
     const buttonsContainer = view.children[1].children[0];
 
-    expect(buttonsContainer.children).to.have.lengthOf(6); // 6 body types
+    expect(buttonsContainer.children).to.have.lengthOf(2);
     const buttonLabels = buttonsContainer.children.map(
       (button) => button.children[0].children,
     );
 
-    expect(buttonLabels).to.deep.equal([
-      "Male",
-      "Female",
-      "Teen",
-      "Child",
-      "Muscular",
-      "Pregnant",
-    ]);
+    expect(buttonLabels).to.deep.equal(["Male", "Female"]);
   });
 
   it("should not render body type buttons when collapsed", () => {
@@ -53,30 +55,28 @@ describe("BodyTypeSelector Component", () => {
     expect(view.children[1]).to.be.null;
   });
 
-  it("should update state.bodyType when a button is clicked", () => {
+  it("should pass the selected value to the model", () => {
     vnode.state.isExpanded = true;
     const view = BodyTypeSelector.view(vnode);
     const buttonsContainer = view.children[1].children[0];
 
     const maleButton = buttonsContainer.children[0];
     maleButton.attrs.onclick();
-    expect(state.bodyType).to.equal("male");
+    expect(selected).to.equal("male");
 
     const femaleButton = buttonsContainer.children[1];
     femaleButton.attrs.onclick();
-    expect(state.bodyType).to.equal("female");
+    expect(selected).to.equal("female");
   });
 
   it('should apply "is-primary" class to the selected body type button', () => {
-    state.bodyType = "male";
-    vnode.state.isExpanded = true;
     const view = BodyTypeSelector.view(vnode);
     const buttonsContainer = view.children[1].children[0];
 
     const maleButton = buttonsContainer.children[0];
     const femaleButton = buttonsContainer.children[1];
 
-    expect(maleButton.attrs.className).to.include("is-primary");
-    expect(femaleButton.attrs.className).to.not.include("is-primary");
+    expect(maleButton.attrs.className).to.not.include("is-primary");
+    expect(femaleButton.attrs.className).to.include("is-primary");
   });
 });
