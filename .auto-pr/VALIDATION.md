@@ -1,0 +1,1 @@
+- [x] Reviewed the updated README text and verified the added note sits next to the animation frame guidance.
