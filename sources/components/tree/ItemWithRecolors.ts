@@ -61,9 +61,8 @@ export const ItemWithRecolors: m.Component<
       typeof rootViewNode.state.showPaletteModal === "number"
     ) {
       const idx = rootViewNode.state.showPaletteModal;
-      const option = paletteOptions[idx];
       paletteModal = m(PaletteSelectModal, {
-        createModel: option.createModalModel,
+        createModel: paletteOptions[idx].createModalModel,
         onClose: () => {
           rootViewNode.state.showPaletteModal = null;
           rootViewNode.state._palettePreviewLastTotal = undefined;
@@ -85,9 +84,7 @@ export const ItemWithRecolors: m.Component<
           "div.tree-label",
           {
             title: rowTitle,
-            onclick: () => {
-              model.toggle();
-            },
+            onclick: model.toggle,
           },
           [
             m("span.tree-arrow", {

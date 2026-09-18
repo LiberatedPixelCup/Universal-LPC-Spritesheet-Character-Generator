@@ -13,6 +13,7 @@ import {
 } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
 import { createState } from "../../../sources/state/state.ts";
+import { seedCatalog } from "../../browser-catalog-fixture.js";
 
 describe("Tree models", () => {
   let host: HTMLDivElement;
@@ -67,6 +68,35 @@ describe("Tree models", () => {
 
     expect(model).to.not.equal(null);
     expect(model?.items).to.deep.equal([]);
+  });
+
+  it("marks expanded items as search matches when the query hits their name", () => {
+    const { reader, writer } = createCatalog();
+    seedCatalog(writer, {
+      hat_search: {
+        name: "Searchable Hat",
+        type_name: "hat",
+        required: [...BODY_TYPES],
+        animations: ["walk"],
+        credits: [],
+        layers: {},
+      },
+    });
+    const state = createState();
+    state.searchQuery = "Search";
+    const model = treeNodeModelFactory.create(reader, state, "gear", {
+      items: ["hat_search"],
+      children: {},
+    });
+
+    expect(model).to.not.equal(null);
+    expect(model?.isExpanded).to.equal(true);
+    expect(model?.items).to.have.length(1);
+    expect(model?.items[0]).to.include({
+      kind: "simple",
+      name: "Searchable Hat",
+      isSearchMatch: true,
+    });
   });
 
   it("does not invoke child providers while the parent is collapsed", () => {

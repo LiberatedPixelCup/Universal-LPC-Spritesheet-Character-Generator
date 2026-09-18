@@ -129,6 +129,10 @@ function itemTooltip(
   return `${warning}${licensesText}\n${animationsText}`;
 }
 
+function itemMatchesSearch(name: string, searchQuery: string): boolean {
+  return searchQuery.length >= 2 && matchesSearch(name, searchQuery);
+}
+
 function createItemModel(
   catalog: CatalogReader,
   state: State,
@@ -148,8 +152,7 @@ function createItemModel(
     licenseCompatible,
     animationCompatible,
   );
-  const isSearchMatch =
-    searchQuery.length >= 2 && matchesSearch(meta.name, searchQuery);
+  const isSearchMatch = itemMatchesSearch(meta.name, searchQuery);
   const showTooltip = catalog.isCreditsReady();
 
   if (meta.variants?.length) {

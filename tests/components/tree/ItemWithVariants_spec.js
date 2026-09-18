@@ -164,6 +164,40 @@ describe("ItemWithVariants", function () {
     assert.strictEqual(host.querySelector(".variants-container"), null);
   });
 
+  it("row label expands a collapsed item", function () {
+    let isExpanded = false;
+    const variant = {
+      key: "red",
+      label: "Red",
+      isSelected: false,
+      isCompatible: true,
+      size: 64,
+      compactDisplay: false,
+      select() {},
+      loadPreview: async () => ({ redraw() {}, imagesLoaded: 0 }),
+    };
+    const createModel = () => ({
+      name: "Variant Cloak",
+      isSearchMatch: false,
+      isCompatible: true,
+      tooltip: "tip",
+      isExpanded,
+      imagesToLoad: 2,
+      variants: isExpanded ? [variant] : [],
+      toggle: () => {
+        isExpanded = !isExpanded;
+        return 2;
+      },
+    });
+    m.render(host, m(ItemWithVariantsComponent, { createModel }));
+    assert.strictEqual(host.querySelector(".variants-container"), null);
+
+    host.querySelector(".tree-label").click();
+    m.render(host, m(ItemWithVariantsComponent, { createModel }));
+
+    assert.notEqual(host.querySelector(".variants-container"), null);
+  });
+
   it("uses body-body as expandedNodes key when the display name is Body Color", function () {
     seedCatalog(
       catalogWriter,

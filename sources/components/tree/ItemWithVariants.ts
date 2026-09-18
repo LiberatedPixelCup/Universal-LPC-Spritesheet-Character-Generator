@@ -2,9 +2,24 @@ import m from "mithril";
 import classNames from "classnames";
 import type { ItemWithVariantsModel } from "../../models/item-with-variants.ts";
 
+type VariantLoadState = {
+  isLoading: boolean;
+  imagesToLoad: number;
+  imagesLoaded: number;
+};
+
+function resetVariantLoadCounters(
+  state: VariantLoadState,
+  imagesToLoad: number,
+): void {
+  state.isLoading = true;
+  state.imagesToLoad = imagesToLoad;
+  state.imagesLoaded = 0;
+}
+
 export const ItemWithVariants: m.Component<
   { createModel: () => ItemWithVariantsModel },
-  { isLoading: boolean; imagesToLoad: number; imagesLoaded: number }
+  VariantLoadState
 > = {
   view(vnode) {
     const model = vnode.attrs.createModel();
@@ -38,9 +53,7 @@ export const ItemWithVariants: m.Component<
             onclick: () => {
               const imagesToLoad = model.toggle();
               if (!model.isExpanded) {
-                vnode.state.isLoading = true;
-                vnode.state.imagesToLoad = imagesToLoad;
-                vnode.state.imagesLoaded = 0;
+                resetVariantLoadCounters(vnode.state, imagesToLoad);
               }
             },
           },
