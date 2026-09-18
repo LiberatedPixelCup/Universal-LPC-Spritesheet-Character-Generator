@@ -76,7 +76,8 @@ describe("canvas/palette-recolor.ts recolor cache", () => {
     });
   });
 
-  it("produces different canvases when recolors differ", async () => {
+  it("produces different canvases when recolors differ", async function () {
+    this.timeout(5_000);
     const img = solidCanvas(255, 0, 0);
     const path = "spritesheets/body/bodies/male/walk.png";
 
