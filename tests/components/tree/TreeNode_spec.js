@@ -1,7 +1,8 @@
 import m from "mithril";
 import { assert } from "chai";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
-import { TreeNode } from "../../../sources/components/tree/TreeNode.ts";
+import { TreeNode as TreeNodeComponent } from "../../../sources/components/tree/TreeNode.ts";
+import { treeNodeModelFactory } from "../../../sources/models/category-tree.ts";
 import {
   configureStateCatalog,
   createState,
@@ -11,6 +12,20 @@ import { createCatalog } from "../../../sources/state/catalog.ts";
 import { BODY_TYPES } from "../../../sources/state/constants.ts";
 import { setEnabledAnimations } from "../../../sources/state/filters.ts";
 import { seedCatalog } from "../../browser-catalog-fixture.js";
+
+const TreeNode = {
+  view: (vnode) =>
+    m(TreeNodeComponent, {
+      createModel: () =>
+        treeNodeModelFactory.create(
+          vnode.attrs.catalog,
+          vnode.attrs.state,
+          vnode.attrs.name,
+          vnode.attrs.node,
+          vnode.attrs.pathPrefix,
+        ),
+    }),
+};
 
 describe("TreeNode", function () {
   let host;
