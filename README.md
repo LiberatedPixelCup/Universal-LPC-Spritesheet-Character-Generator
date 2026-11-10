@@ -149,6 +149,27 @@ If an engine is not listed above, try Google. However, it is very likely that yo
   <dd>Additional expansion of animations and bases proposed by <a href="https://github.com/ElizaWy">@ElizaWy</a> and others. New animations included bow, climb, run, and jump. New bases included child and elderly. Many of the assets in this repository are not yet drawn for these new animations and bases. Help wanted.</dd>
 </dl>
 
+#### Oversize animation frame sizes
+
+ULPC's default frame size is 64x64, but some weapon and tool animations
+use larger frames. These are defined in `sources/custom-animations.ts`:
+
+| Animation | Frame size |
+|---|---|
+| `backslash_128` | 128px |
+| `halfslash_128` | 128px |
+| `slash_128` | 128px |
+| `thrust_128` | 128px |
+| `tool_axe` | 128px |
+| `tool_hammer` | 128px |
+| `tool_rod` | 128px |
+| `walk_128` | 128px |
+| `slash_oversize` | 192px |
+| `slash_reverse_oversize` | 192px |
+| `thrust_oversize` | 192px |
+| `tool_whip` | 192px |
+| `whip_oversize` | 192px |
+
 ### Alternative LPC Character generators
 
 - https://pflat.itch.io/lpc-character-generator
