@@ -251,6 +251,25 @@ describe("utils/zip-helpers.ts", () => {
       expect(d[3]).to.equal(255);
       expect(d[1]).to.be.greaterThan(100);
     });
+
+    it("remaps a native-layout tool sprite when singleAnimationSource is set", () => {
+      // 6-frame slash layout, 4 rows of 64px; slash-n frame 5 is solid red.
+      const src = document.createElement("canvas");
+      src.width = 6 * 64;
+      src.height = 4 * 64;
+      const ctx = src.getContext("2d");
+      ctx.fillStyle = "#ff0000";
+      ctx.fillRect(5 * 64, 0, 64, 64);
+
+      const axe = customAnimations.tool_axe;
+      const out = newStandardAnimationForCustomAnimation(src, axe, {
+        singleAnimationSource: true,
+      });
+
+      // tool_axe column 0 of the north row is slash-n,5, centred in 128px.
+      const d = out.getContext("2d").getImageData(32 + 10, 32 + 10, 1, 1).data;
+      expect([d[0], d[1], d[2], d[3]]).to.deep.equal([255, 0, 0, 255]);
+    });
   });
 
   describe("addStandardAnimationToZipCustomFolder", () => {
