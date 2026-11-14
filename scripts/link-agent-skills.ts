@@ -128,7 +128,7 @@ export function linkAgentSkills(options: LinkAgentSkillsOptions): void {
 
     if (kind === "directory") {
       throw new Error(
-        `${path.join(CLAUDE_SKILLS, name)} is a directory, not a link. Remove it and run npm run skills:link.`,
+        `${path.posix.join(CLAUDE_SKILLS, name)} is a directory, not a link. Remove it and run npm run skills:link.`,
       );
     }
 
