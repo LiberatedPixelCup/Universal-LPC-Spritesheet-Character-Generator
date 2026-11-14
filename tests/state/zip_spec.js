@@ -1035,6 +1035,8 @@ describe("state/zip.ts", () => {
       expect(bodyFolder.root).to.equal("custom/walk_128/");
       expect(bodyFile).to.equal(expectedFileNames["body"]);
       expect(bodyCanvas).to.be.instanceOf(HTMLCanvasElement);
+      // Options from the exporter must survive the profiler wrapper.
+      expect(stdToCustCalls[0].args[4].singleAnimationSource).to.equal(false);
 
       const [headFolder, headFile, headCanvas] = stdToCustCalls[1].args;
       expect(headFolder.root).to.equal("custom/walk_128/");

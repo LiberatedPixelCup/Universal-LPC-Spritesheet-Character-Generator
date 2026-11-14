@@ -367,13 +367,13 @@ export const exportSplitItemAnimations = async (
       profiler,
     });
   const addStandardAnimationToZipCustomFolderFn: typeof baseAddStandardAnimationToZipCustomFolder =
-    (custAnimFolder, itemFileName, src, custAnim) =>
+    (custAnimFolder, itemFileName, src, custAnim, options) =>
       baseAddStandardAnimationToZipCustomFolder(
         custAnimFolder,
         itemFileName,
         src,
         custAnim,
-        { profiler },
+        { ...options, profiler },
       );
   const renderSingleItemAnimationFn =
     deps.renderSingleItemAnimation ?? renderSingleItemAnimation;
@@ -537,12 +537,17 @@ export const exportSplitItemAnimations = async (
           // Try the "extracted_frames" rendering first; fall back to the raw
           // slice when that path doesn't apply or yields no canvas.
           let succeeded = false;
-          if (layer.type === "extracted_frames") {
+          // Tool sprites (axe, hammer) are in the native slash layout, so
+          // they need the same frame remapping the flattened render does.
+          const isSingleAnimTool =
+            layer.type === "custom_sprite" && !!custAnim.sourceSingleAnimation;
+          if (layer.type === "extracted_frames" || isSingleAnimTool) {
             const fromExtracted = await addStandardAnimationToZipCustomFolderFn(
               animFolder,
               itemFileName,
               imgCanvas,
               custAnim,
+              { singleAnimationSource: isSingleAnimTool },
             );
             if (fromExtracted) succeeded = true;
           }
