@@ -253,22 +253,31 @@ describe("utils/zip-helpers.ts", () => {
     });
 
     it("remaps a native-layout tool sprite when singleAnimationSource is set", () => {
-      // 6-frame slash layout, 4 rows of 64px; slash-n frame 5 is solid red.
+      // Real tool sprites (tools/axe/bg.png) are 768x512: 6 columns x 4 rows
+      // of 128px frames in slash layout. slash-n frame 5 is solid red.
       const src = document.createElement("canvas");
-      src.width = 6 * 64;
-      src.height = 4 * 64;
+      src.width = 6 * 128;
+      src.height = 4 * 128;
       const ctx = src.getContext("2d");
       ctx.fillStyle = "#ff0000";
-      ctx.fillRect(5 * 64, 0, 64, 64);
+      ctx.fillRect(5 * 128, 0, 128, 128);
 
       const axe = customAnimations.tool_axe;
+      const pixel = (canvas, x, y) =>
+        Array.from(canvas.getContext("2d").getImageData(x, y, 1, 1).data);
+
       const out = newStandardAnimationForCustomAnimation(src, axe, {
         singleAnimationSource: true,
       });
+      // tool_axe's first frame (north row, column 0) is slash-n,5.
+      expect(pixel(out, 64, 64)).to.deep.equal([255, 0, 0, 255]);
+      // Frame 6 of the north row is slash-n,0, which is empty in the source.
+      expect(pixel(out, 6 * 128 + 64, 64)[3]).to.equal(0);
 
-      // tool_axe column 0 of the north row is slash-n,5, centred in 128px.
-      const d = out.getContext("2d").getImageData(32 + 10, 32 + 10, 1, 1).data;
-      expect([d[0], d[1], d[2], d[3]]).to.deep.equal([255, 0, 0, 255]);
+      // Without the option the 768x512 sheet is read as a universal sheet,
+      // so the frame is not remapped.
+      const plain = newStandardAnimationForCustomAnimation(src, axe);
+      expect(pixel(plain, 64, 64)).to.not.deep.equal([255, 0, 0, 255]);
     });
   });
 
