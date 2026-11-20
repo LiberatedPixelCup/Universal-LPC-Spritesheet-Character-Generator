@@ -346,6 +346,7 @@ statuses run on pull requests to `master`. All use Node 24.
 | --- | --- | --- | --- |
 | **Lint** | `lint.yml` | `npm run lint`, then `npm run type-check` | An ESLint error or any type error, including in `tests/` |
 | **Test browsers** | `ci.yml` | `npm run test:node:coverage`, then `npm run test:browser:coverage` under Xvfb | A Node or browser spec fails. A patch miss is printed in the log and fails **`codecov/patch`**, not this job |
+| **Node tests (Windows)** | `ci.yml` | `npm run test:node` on `windows-latest` | A Node spec fails on Windows (path separators, symlinks vs junctions) |
 | **Validate site sources** | `validate-site-sources.yml` | `npm run validate-site-sources`, then asserts a clean tree, then `npm run metadata:size:check` | `CREDITS.csv` or `z_positions.csv` would change (you did not commit the regenerated file), or generated `item-metadata.js` / the item + index pair exceeds the byte budget. Raising a budget is deliberate. Load time is local (`profile:load`), not this check |
 | **Visual regression (Argos)** | `visual.yml` | `npm run test:visual` | A Playwright failure. Screenshot review happens in Argos, not the check |
 | **CLS (Lighthouse)** | `cls.yml` | `npm run build`, then un-delayed `profile:cls:check -- --repeat 3 --skip-build`, then delayed `profile:cls:check:delayed -- --repeat 3 --skip-build` (`CLS_PROFILE_PORT=4188`) | Either lab exceeds its budget file ([`cls-budgets.json`](scripts/profile/cls-budgets.json) / [`cls-budgets-delayed.json`](scripts/profile/cls-budgets-delayed.json)), or the delayed proxy matched 0 `/assets/*.css` files. Slack around the matching CI lab, not Google's 0.1. Details: [CLS.md](CLS.md) |
@@ -466,7 +467,7 @@ npm run test:server
 
 This runs Testem in dev mode (browser picker / watch) against the same **[`tests_run.html`](tests_run.html)** harness.
 
-**CI:** [`.github/workflows/ci.yml`](.github/workflows/ci.yml) installs **Chrome** and **Firefox**, starts **Xvfb**, and runs **`npm run test:node:coverage`** plus **`npm run test:browser:coverage`** on pushes and pull requests to **`master`**, then uploads `lcov` to [Codecov](https://codecov.io/gh/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator). That workflow uses `npm ci --ignore-scripts`; locally, install with **`npm ci`** (and **`npm run lockfile:fix`** after a lockfile merge or rebase — not `npm install`, which drops other-platform optional dependencies).
+**CI:** [`.github/workflows/ci.yml`](.github/workflows/ci.yml) installs **Chrome** and **Firefox**, starts **Xvfb**, and runs **`npm run test:node:coverage`** plus **`npm run test:browser:coverage`** on pushes and pull requests to **`master`**, then uploads `lcov` to [Codecov](https://codecov.io/gh/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator). A second job in the same workflow runs **`npm run test:node`** on **`windows-latest`** so the Node specs stay green on Windows. That workflow uses `npm ci --ignore-scripts`; locally, install with **`npm ci`** (and **`npm run lockfile:fix`** after a lockfile merge or rebase — not `npm install`, which drops other-platform optional dependencies).
 
 #### Unit and component specs
 

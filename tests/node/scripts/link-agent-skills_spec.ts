@@ -31,6 +31,22 @@ function claudeDest(root: string, name = "catalog"): string {
   return path.join(root, ".claude", "skills", name);
 }
 
+/**
+ * The script writes a repo-relative POSIX symlink everywhere except Windows,
+ * where it writes a junction with an absolute target. Check whichever one the
+ * current platform should have produced.
+ */
+function assertLinksToSkill(root: string, dest: string, name = "catalog") {
+  if (process.platform === "win32") {
+    assert.equal(
+      fs.realpathSync(dest),
+      fs.realpathSync(path.join(root, ".agents", "skills", name)),
+    );
+  } else {
+    assert.equal(fs.readlinkSync(dest), posixRelativeSkillTarget(name));
+  }
+}
+
 test("posixRelativeSkillTarget is a repo-relative POSIX path", () => {
   assert.equal(
     posixRelativeSkillTarget("catalog"),
@@ -64,12 +80,12 @@ test("defaultRepoRoot is the repository root", () => {
   assert.ok(fs.existsSync(path.join(defaultRepoRoot(), "package.json")));
 });
 
-test("linkAgentSkills creates a POSIX symlink and is a no-op on the second run", () => {
+test("linkAgentSkills creates a link and is a no-op on the second run", () => {
   const root = makeSkillRoot();
   linkAgentSkills({ root });
   const dest = claudeDest(root);
   assert.ok(fs.lstatSync(dest).isSymbolicLink());
-  assert.equal(fs.readlinkSync(dest), posixRelativeSkillTarget("catalog"));
+  assertLinksToSkill(root, dest);
   assert.ok(
     fs.existsSync(path.join(dest, "SKILL.md")),
     "link should resolve to the canonical SKILL.md",
@@ -99,16 +115,21 @@ test("linkAgentSkills replaces a leftover regular file", () => {
   fs.writeFileSync(dest, posixRelativeSkillTarget("catalog"));
   linkAgentSkills({ root });
   assert.ok(fs.lstatSync(dest).isSymbolicLink());
-  assert.equal(fs.readlinkSync(dest), posixRelativeSkillTarget("catalog"));
+  assertLinksToSkill(root, dest);
 });
 
 test("linkAgentSkills replaces a symlink that points at the wrong target", () => {
   const root = makeSkillRoot();
   const dest = claudeDest(root);
   fs.mkdirSync(path.dirname(dest), { recursive: true });
-  fs.symlinkSync("/tmp/other-skill", dest);
+  if (process.platform === "win32") {
+    // Plain symlinks need extra privileges on Windows; junctions do not.
+    fs.symlinkSync(path.join(os.tmpdir(), "other-skill"), dest, "junction");
+  } else {
+    fs.symlinkSync("/tmp/other-skill", dest);
+  }
   linkAgentSkills({ root });
-  assert.equal(fs.readlinkSync(dest), posixRelativeSkillTarget("catalog"));
+  assertLinksToSkill(root, dest);
 });
 
 test("linkAgentSkills refuses a real non-link directory", () => {
