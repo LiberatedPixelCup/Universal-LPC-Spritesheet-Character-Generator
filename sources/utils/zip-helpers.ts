@@ -7,6 +7,7 @@ import {
 } from "../state/constants.ts";
 import {
   drawFramesToCustomAnimation,
+  drawSingleAnimSpriteToCustomAnimation,
   type SpriteSource,
 } from "../canvas/draw-frames.ts";
 import {
@@ -303,6 +304,7 @@ export async function addCanvasToZip(
 export function newStandardAnimationForCustomAnimation(
   src: SpriteSource,
   custAnim: CustomAnimationDefinition,
+  options: { singleAnimationSource?: boolean } = {},
 ): HTMLCanvasElement {
   const custCanvas = document.createElement("canvas");
   const { width: custWidth, height: custHeight } =
@@ -313,7 +315,13 @@ export function newStandardAnimationForCustomAnimation(
   if (!custCtx) {
     throw new Error("Failed to get canvas context");
   }
-  drawFramesToCustomAnimation(custCtx, custAnim, 0, src);
+  if (options.singleAnimationSource) {
+    // A tool sprite (axe, hammer) in its native slash layout: remap its
+    // frames the same way the flattened render does.
+    drawSingleAnimSpriteToCustomAnimation(custCtx, custAnim, 0, src);
+  } else {
+    drawFramesToCustomAnimation(custCtx, custAnim, 0, src);
+  }
   return custCanvas;
 }
 
@@ -326,12 +334,14 @@ export async function addStandardAnimationToZipCustomFolder(
   itemFileName: string,
   src: SpriteSource,
   custAnim: CustomAnimationDefinition,
-  options: ZipPhaseOptions = {},
+  options: ZipPhaseOptions & { singleAnimationSource?: boolean } = {},
 ): Promise<HTMLCanvasElement | undefined> {
   const profiler = options.profiler ?? null;
   let custCanvas: HTMLCanvasElement | undefined;
   await runZipProfilerPhase(profiler, "drawAndSlice", async () => {
-    custCanvas = newStandardAnimationForCustomAnimation(src, custAnim);
+    custCanvas = newStandardAnimationForCustomAnimation(src, custAnim, {
+      singleAnimationSource: options.singleAnimationSource,
+    });
   });
   if (!custCanvas) {
     return undefined;
