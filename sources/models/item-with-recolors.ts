@@ -9,6 +9,7 @@ import {
 
 export type ItemWithRecolorsModel = {
   readonly name: string;
+  readonly bodyType: string;
   readonly isSearchMatch: boolean;
   readonly isCompatible: boolean;
   readonly tooltip?: string;
@@ -123,6 +124,7 @@ export const itemWithRecolorsModelFactory = {
 
     return {
       name: meta.name,
+      bodyType: state.bodyType,
       isSearchMatch,
       isCompatible,
       tooltip: showTooltip ? tooltip : undefined,

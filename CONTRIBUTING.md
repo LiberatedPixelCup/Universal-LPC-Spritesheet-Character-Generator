@@ -91,6 +91,9 @@ The shareable selection is everything after `#` in the address bar: `key=value` 
 #sex=male&body=Body_Color_light&head=Human_Male_light&expression=Neutral_light
 ```
 
+A hash with only a valid body type (for example, `#sex=male`) restores an
+outfit with no items. Opening the page without a hash loads the default outfit.
+
 Each value is `Item_variant`. For example, `expression=Neutral_light` is `type_name` `expression`, item `Neutral`, variant `light`.
 
 Old hashes must keep working. Do not rewrite or delete old hash keys in place. To forward a renamed asset, put `aliases` on the **destination** definition — see [Renaming an Asset](#renaming-an-asset).

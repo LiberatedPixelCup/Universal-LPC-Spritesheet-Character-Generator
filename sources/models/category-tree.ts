@@ -333,12 +333,12 @@ export const categoryTreeModelFactory = {
       setMatchBodyColor: (enabled) => {
         state.matchBodyColorEnabled = enabled;
         if (!enabled) return;
-        const body = state.selections[getSelectionGroup("body-body")];
-        if (body?.variant) {
+        const body = state.selections[getSelectionGroup("body")];
+        if (body) {
           applyMatchBodyColor(
             state,
-            body.variant,
-            body.recolor ?? body.variant,
+            body.variant || body.recolor || null,
+            body.recolor || body.variant || null,
           );
         }
       },

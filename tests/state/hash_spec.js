@@ -33,6 +33,8 @@ describe("state/hash.ts", () => {
     sandbox = sinon.createSandbox();
     sandbox.stub(window, "addEventListener").callsFake(() => {});
     window.isTesting = true;
+    setHash("");
+    resetHashCalledTimes();
   });
 
   afterEach(() => {
@@ -566,6 +568,29 @@ describe("state/hash.ts", () => {
       await handler();
 
       expect(state.selections.body).to.exist;
+    });
+
+    it("preserves the outfit on navigation anchors and restores explicit empty outfits", async () => {
+      seedCatalog(catalogWriter, {
+        1: { type_name: "body", name: "Body", variants: ["light"] },
+      });
+      initHashChangeListener(catalog, state);
+      const handler = window.addEventListener.getCall(0).args[1];
+      setHash("#body=Body_light");
+      await handler();
+      const selections = state.selections;
+      expect(selections.body).to.exist;
+      setHash("#credits-section");
+      await handler();
+      expect(state.selections).to.equal(selections);
+      setHash("#sex=child");
+      await handler();
+      expect(state.bodyType).to.equal("child");
+      expect(state.selections).to.deep.equal({});
+      setHash("#sex=child");
+      const writesBefore = getSetHashCalledTimes();
+      await handler();
+      expect(getSetHashCalledTimes()).to.equal(writesBefore);
     });
 
     it("should not throw an error if no callback is provided", () => {

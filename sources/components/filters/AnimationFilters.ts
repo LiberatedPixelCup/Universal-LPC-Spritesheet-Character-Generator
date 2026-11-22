@@ -4,6 +4,8 @@ import type { AnimationFiltersModel } from "../../models/animation-filters.ts";
 
 type AnimationFiltersState = { isExpanded: boolean };
 
+const ANIMATION_FILTERS_BODY_ID = "lpc-animation-filters-body";
+
 export const AnimationFilters: m.Component<
   { createModel: () => AnimationFiltersModel },
   AnimationFiltersState
@@ -25,10 +27,13 @@ export const AnimationFilters: m.Component<
 
     const hasIncompatibleItems = model.incompatibleCount > 0;
 
-    return m("div.box.mb-4.has-background-light", [
+    return m("div.box.lpc-filter-card", [
       m(
-        "div.tree-label",
+        "button.tree-label.lpc-filter-disclosure",
         {
+          type: "button",
+          "aria-expanded": String(vnode.state.isExpanded),
+          "aria-controls": ANIMATION_FILTERS_BODY_ID,
           onclick: () => {
             vnode.state.isExpanded = !vnode.state.isExpanded;
           },
@@ -36,20 +41,21 @@ export const AnimationFilters: m.Component<
         [
           m("span.tree-arrow", {
             class: vnode.state.isExpanded ? "expanded" : "collapsed",
+            "aria-hidden": "true",
           }),
-          m("span.title.is-inline.is-6", "Animation Filters"),
-          m("span.is-size-7.has-text-grey.ml-2", model.summary),
+          m("span.lpc-filter-title", "Animation Filters"),
+          m("span.lpc-filter-summary", model.summary),
         ],
       ),
       vnode.state.isExpanded
-        ? m("div.content.mt-3", [
+        ? m("div.lpc-filter-body", { id: ANIMATION_FILTERS_BODY_ID }, [
             !model.liteReady
-              ? m("p.is-size-7.has-text-grey.mb-3", "Loading item list…")
+              ? m("p.lpc-helper-text", "Loading item list…")
               : null,
             m(
-              "ul.tree-list",
+              "ul.tree-list.lpc-filter-list",
               model.options.map((anim) =>
-                m("li", { key: anim.value, class: "mb-2" }, [
+                m("li", { key: anim.value }, [
                   m("label.checkbox", [
                     m("input[type=checkbox]", {
                       checked: anim.enabled,
@@ -59,26 +65,27 @@ export const AnimationFilters: m.Component<
                         anim.setEnabled(target.checked);
                       },
                     }),
-                    ` ${anim.label}`,
+                    m("span", anim.label),
                   ]),
                 ]),
               ),
             ),
             hasIncompatibleItems
               ? [
-                  m("div.notification.is-warning.is-light.p-3.mt-2", [
-                    m("p.is-size-7", [
+                  m("div.lpc-warning-box", [
+                    m("p", [
                       m(
                         "strong",
                         `${model.incompatibleCount} selected item${model.incompatibleCount > 1 ? "s are" : " is"} incompatible`,
                       ),
                       " with your current animation selection. ",
-                      m("span.has-text-grey", "(marked with ⚠️ above)"),
+                      m("span", "(marked with ⚠️ below)"),
                     ]),
                   ]),
                   m(
-                    "button.button.is-small.is-warning.mt-2",
+                    "button.button.is-small.is-warning.lpc-btn-warning.mt-2",
                     {
+                      type: "button",
                       onclick: removeIncompatibleItems,
                       title: `Remove ${model.incompatibleCount} incompatible item${model.incompatibleCount > 1 ? "s" : ""}`,
                     },

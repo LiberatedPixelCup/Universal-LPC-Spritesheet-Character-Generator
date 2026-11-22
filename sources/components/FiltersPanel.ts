@@ -34,31 +34,26 @@ export const FiltersPanel: m.Component<FiltersPanelAttrs> = {
       {
         title: "Filters",
         defaultOpen: true,
+        boxClass: "box lpc-filters-panel",
       },
       [
         m(
-          "div.mb-4",
+          "div.lpc-search-field",
           m(SearchControl, { createModel: createSearchControlModel }),
         ),
         // Responsive wrapper for License and Animation filters
-        m("div.columns.is-multiline.m-0", [
+        m("div.lpc-filter-groups", [
           m(
-            "div.column.is-half-desktop.is-12-mobile",
-            {
-              class: "filters-column",
-            },
+            "div.lpc-filter-col.filters-column",
             m(LicenseFilters, { createModel: createLicenseFiltersModel }),
           ),
           m(
-            "div.column.is-half-desktop.is-12-mobile",
-            {
-              class: "filters-column",
-            },
+            "div.lpc-filter-col.filters-column",
             m(AnimationFilters, { createModel: createAnimationFiltersModel }),
           ),
         ]),
         m(
-          "div.mb-4",
+          "div.lpc-selections-block",
           m(CurrentSelections, {
             createModel: createCurrentSelectionsModel,
           }),

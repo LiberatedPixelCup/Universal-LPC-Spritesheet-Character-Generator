@@ -4,15 +4,15 @@ import { BodyTypeSelector } from "./BodyTypeSelector.ts";
 import { TreeNode } from "./TreeNode.ts";
 
 function renderLoadingHost() {
-  return m("div.box.has-background-light.category-tree-panel", [
+  return m("div.box.category-tree-panel", [
     m("div.category-tree-loading-host", [
       m(
         "div.category-tree-loading-overlay",
         { "aria-busy": "true", "aria-live": "polite" },
         m("span.loading", { "aria-label": "Loading category index" }),
       ),
-      m("h3.title.is-5.mb-3", "Available Items"),
-      m("p.has-text-grey.is-size-7", "Loading category index…"),
+      m("h3.title.is-5.lpc-subpanel-title", "Available Items"),
+      m("p.lpc-helper-text", "Loading category index…"),
     ]),
   ]);
 }
@@ -24,25 +24,20 @@ export const CategoryTree: m.Component<{
     const model = vnode.attrs.createModel();
     if (model.isLoading) return renderLoadingHost();
 
-    return m("div.box.has-background-light.category-tree-panel", [
-      m(
-        "div.is-flex.is-justify-content-space-between.is-align-items-center.mb-3",
-        [
-          m("h3.title.is-5.mb-0", "Available Items"),
-          m("div.buttons.mb-0", [
-            m(
-              "button.button.is-danger.is-small",
-              { onclick: model.reset },
-              "Reset all",
-            ),
+    return m("div.box.category-tree-panel", [
+      m("div.lpc-tree-header", [
+        m("h3.title.is-5.lpc-subpanel-title.mb-0", "Available Items"),
+        m("div.lpc-tree-toolbar", [
+          m("div.buttons.mb-0.lpc-tree-actions", [
             m(
               "button.button.is-small",
-              { onclick: model.collapseAll },
+              { type: "button", onclick: model.collapseAll },
               "Collapse All",
             ),
             m(
               "button.button.is-small",
               {
+                type: "button",
                 disabled: !model.liteReady,
                 title: model.liteReady ? undefined : "Loading item list…",
                 onclick: model.expandSelected,
@@ -52,15 +47,24 @@ export const CategoryTree: m.Component<{
             m(
               "button.button.is-small",
               {
-                class: model.compactDisplay ? "is-link" : "",
+                type: "button",
+                "aria-pressed": String(model.compactDisplay),
+                class: model.compactDisplay ? "is-link lpc-btn-active" : "",
                 onclick: model.toggleCompactDisplay,
               },
-              "CompactDisplay",
+              "Compact Display",
             ),
           ]),
-        ],
-      ),
-      m("div.mb-3", [
+          m("div.buttons.mb-0.lpc-tree-reset", [
+            m(
+              "button.button.is-danger.is-small.lpc-btn-danger",
+              { type: "button", onclick: model.reset },
+              "Reset all",
+            ),
+          ]),
+        ]),
+      ]),
+      m("div.lpc-match-body-color", [
         m(
           "label.checkbox",
           {
@@ -78,16 +82,16 @@ export const CategoryTree: m.Component<{
                 );
               },
             }),
-            " Match body color",
+            m("span", "Match body color"),
           ],
         ),
         m(
-          "p.is-size-7.has-text-grey.mt-1.ml-4",
+          "p.lpc-match-body-help",
           { id: "match-body-color-label" },
           "Auto-update heads, ears, and other items when body color changes",
         ),
       ]),
-      m("div", [
+      m("div.lpc-tree-root", [
         m(BodyTypeSelector, { model: model.bodyTypes }),
         model.roots.map((root) =>
           m(TreeNode, {

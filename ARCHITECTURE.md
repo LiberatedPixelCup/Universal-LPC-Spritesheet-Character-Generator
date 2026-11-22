@@ -110,6 +110,11 @@ flowchart TD
 saw last, and does nothing when they match. If a change does not reach the
 canvas, that diff is the first place to look.
 
+Animation Preview uses `state.selectedAnimation` for the selected option and
+playback. Changing only the animation reuses the composited sheet. When an
+import requests a custom animation and changes the outfit, the view keeps the
+request until the latest character render determines which animations are available.
+
 The URL hash is the shareable document format, so it is a compatibility surface
 rather than an implementation detail — see [URL hash](CONTRIBUTING.md#url-hash).
 

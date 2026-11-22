@@ -49,13 +49,22 @@ export const App: m.Component<AppAttrs, AppState> = {
     ) {
       syncSelectionsToHash(catalog, state);
       if (window.canvasRenderer) {
-        // Render to offscreen canvas (async)
-        renderCharacter(catalog, state, state.selections, state.bodyType).then(
-          () => {
-            // Trigger redraw to update preview canvas after offscreen render completes
-            m.redraw();
-          },
+        const render = renderCharacter(
+          catalog,
+          state,
+          state.selections,
+          state.bodyType,
         );
+        state.pendingCharacterRender = render;
+        const finish = () => {
+          if (state.pendingCharacterRender !== render) return;
+          state.pendingCharacterRender = null;
+          m.redraw();
+        };
+        void render.then(finish, (error: unknown) => {
+          console.error("Character render failed:", error);
+          finish();
+        });
       }
 
       // Update tracked state
@@ -67,7 +76,7 @@ export const App: m.Component<AppAttrs, AppState> = {
   },
   view(vnode) {
     const { state, models } = vnode.attrs;
-    return m("div", [
+    return m("div.lpc-app-stack", [
       m(Download, { createModel: models.createDownloadModel }),
       m(FiltersPanel, {
         // Models are meant to be created lazily when the leaf components need it

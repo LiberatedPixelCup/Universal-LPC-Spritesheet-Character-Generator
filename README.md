@@ -1,5 +1,11 @@
-LPC Spritesheet Character Generator
+Open Spritesheet
 =============================================
+
+Open Spritesheet is an offline macOS character spritesheet editor. It builds on the [Universal LPC Spritesheet Character Generator](https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator) and exports PNG spritesheets, animation ZIPs, and artwork attribution.
+
+Download the Apple Silicon installer from [GitHub Releases](https://github.com/teakay1311/OpenSpritesheet/releases/latest), or see [macOS build instructions](macos/README.md).
+
+The application is distributed under [GPL-3.0](LICENSE). The new macOS packaging code is separately available under [Apache-2.0](macos/LICENSE). The bundled artwork retains its individual licenses and credits as recorded in [CREDITS.csv](CREDITS.csv).
 
 #### Translations
 
@@ -11,7 +17,7 @@ LPC Spritesheet Character Generator
 
 This generator attempts to include all [LPC](https://lpc.opengameart.org) created character art up to now.
 
-Try it [here](https://liberatedpixelcup.github.io/Universal-LPC-Spritesheet-Character-Generator/).
+Try the upstream generator [in your browser](https://liberatedpixelcup.github.io/Universal-LPC-Spritesheet-Character-Generator/).
 
 The Liberated Pixel Effort is a collaborative effort from a number of different great artists who helped produce sprites for the project.
 **If you wish to use LPC sprites in your project, you will need to credit everyone who helped contribute to the LPC sprites you are using.** See [below](#licensing-and-attribution-credits) for how to do this.

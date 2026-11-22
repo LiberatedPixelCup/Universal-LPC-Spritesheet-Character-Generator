@@ -172,10 +172,10 @@ export async function openHumanMaleSkintonePalette(
   const { forComputedStyleDump = false } = opts;
   const tree = page.locator("#chooser-column");
   const clickTreeLabel = async (exact: string) => {
-    const row = tree.locator("div.tree-label").filter({
+    const row = tree.locator(".tree-label").filter({
       has: page.getByText(exact, { exact: true }),
     });
-    row.first().evaluate((el) => (el.style.scrollMarginTop = "-12px"));
+    await row.first().evaluate((el) => (el.style.scrollMarginTop = "12px"));
     await row.first().scrollIntoViewIfNeeded();
     await row.first().click();
   };
@@ -186,11 +186,11 @@ export async function openHumanMaleSkintonePalette(
   await clickTreeLabel("Human Male");
 
   const skintone = tree
-    .locator(".palette-recolor-item label")
-    .filter({ hasText: /^Skintone$/ });
-  skintone.evaluate((el) => (el.style.scrollMarginTop = "-12px"));
-  await skintone.scrollIntoViewIfNeeded();
-  await skintone.click();
+    .locator(".palette-recolor-item")
+    .filter({ hasText: /Skintone/ });
+  await skintone.first().evaluate((el) => (el.style.scrollMarginTop = "12px"));
+  await skintone.first().scrollIntoViewIfNeeded();
+  await skintone.first().click();
 
   await page.locator(".palette-modal").waitFor({ state: "visible" });
   if (forComputedStyleDump) {
@@ -229,12 +229,19 @@ export async function openHumanMaleSkintonePalette(
 }
 
 /**
- * Closes the skintone / palette modal if it is open (overlay click).
+ * Closes the skintone / palette modal if it is open (backdrop click outside dialog bounds).
  */
 export async function closeSkintonePaletteModal(page: Page): Promise<void> {
-  const overlay = page.locator(".palette-modal-overlay");
-  await overlay.click({ position: { x: 2, y: 2 } });
-  await page.locator(".palette-modal").waitFor({ state: "hidden" });
+  const modal = page.locator(".palette-modal");
+  const box = await modal.boundingBox();
+  if (box) {
+    const clickX = box.x > 6 ? Math.max(2, box.x - 4) : 2;
+    const clickY = box.y > 6 ? Math.max(2, box.y - 4) : 2;
+    await page.mouse.click(clickX, clickY);
+  } else {
+    await page.keyboard.press("Escape");
+  }
+  await modal.waitFor({ state: "hidden" });
 }
 
 /**
@@ -245,21 +252,22 @@ export async function openLicenseAnimationAdvancedAndSearchArm(
   page: Page,
 ): Promise<void> {
   const licenseCol = page.locator("div.filters-column").first();
-  const licenseTreeLabel = licenseCol.locator("div.tree-label").first();
-  licenseTreeLabel.evaluate((el) => (el.style.scrollMarginTop = "-12px"));
+  const licenseTreeLabel = licenseCol.locator(".tree-label").first();
+  await licenseTreeLabel.evaluate((el) => (el.style.scrollMarginTop = "12px"));
   await licenseTreeLabel.scrollIntoViewIfNeeded();
   await licenseTreeLabel.click();
 
   const animCol = page.locator("div.filters-column").nth(1);
-  const animTreeLabel = animCol.locator("div.tree-label").first();
-  animTreeLabel.evaluate((el) => (el.style.scrollMarginTop = "-12px"));
+  const animTreeLabel = animCol.locator(".tree-label").first();
+  await animTreeLabel.evaluate((el) => (el.style.scrollMarginTop = "12px"));
   await animTreeLabel.scrollIntoViewIfNeeded();
   await animTreeLabel.click();
 
-  const advancedHeader = page.locator(".collapsible-header").filter({
-    has: page.getByRole("heading", { name: "Advanced Tools", exact: true }),
-  });
-  advancedHeader.evaluate((el) => (el.style.scrollMarginTop = "-12px"));
+  const advancedHeader = page
+    .locator("h3.collapsible-title")
+    .filter({ hasText: "Advanced Tools" })
+    .locator("button.collapsible-header");
+  await advancedHeader.evaluate((el) => (el.style.scrollMarginTop = "12px"));
   await advancedHeader.scrollIntoViewIfNeeded();
   await advancedHeader.click();
   await page.locator("#customFileInput").waitFor({ state: "visible" });

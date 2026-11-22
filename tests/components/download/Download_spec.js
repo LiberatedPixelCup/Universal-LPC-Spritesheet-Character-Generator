@@ -165,13 +165,13 @@ describe("Download", function () {
     });
     assert.strictEqual(calls, 1);
 
-    host.querySelector("h3.collapsible-title").parentElement.click();
+    host.querySelector("button.collapsible-header").click();
     m.redraw.sync();
     assert.strictEqual(calls, 1);
     m.redraw.sync();
     assert.strictEqual(calls, 1);
 
-    host.querySelector("h3.collapsible-title").parentElement.click();
+    host.querySelector("button.collapsible-header").click();
     m.redraw.sync();
     assert.strictEqual(calls, 2);
   });

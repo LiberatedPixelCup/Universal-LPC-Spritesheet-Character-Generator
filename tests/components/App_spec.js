@@ -159,9 +159,9 @@ describe("App", function () {
     const filtersTitle = [
       ...host.querySelectorAll("h3.collapsible-title"),
     ].find((element) => element.textContent === "Filters");
-    filtersTitle.parentElement.dispatchEvent(
-      new MouseEvent("click", { bubbles: true }),
-    );
+    filtersTitle
+      .querySelector("button.collapsible-header")
+      .dispatchEvent(new MouseEvent("click", { bubbles: true }));
     m.redraw.sync();
 
     assert.deepEqual(calls, {
@@ -248,7 +248,7 @@ describe("App", function () {
     assert.isAbove(profiler.snapshot().renderCharacter.calls.length, 0);
   });
 
-  it("syncs the hash when bodyType or custom overlay state changes", function () {
+  it("syncs the hash for bodyType changes without rewriting it for overlay changes", function () {
     m.mount(host, {
       view: appView,
     });
@@ -261,6 +261,6 @@ describe("App", function () {
 
     state.customImageZPos = 10;
     m.redraw.sync();
-    assert.isAbove(getSetHashCalledTimes(), afterBody);
+    assert.strictEqual(getSetHashCalledTimes(), afterBody);
   });
 });

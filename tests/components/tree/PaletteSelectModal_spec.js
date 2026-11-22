@@ -164,7 +164,13 @@ describe("PaletteSelectModal", function () {
 
     assert.strictEqual(catalog.isPaletteReady(), false);
     assert.include(host.textContent, "Loading palette data…");
-    assert.notEqual(host.querySelector(".palette-modal-overlay"), null);
+    assert.notEqual(host.querySelector("dialog.palette-modal"), null);
+    assert.notEqual(
+      host.querySelector(
+        'dialog.palette-modal button[aria-label="Close palette"]',
+      ),
+      null,
+    );
     assert.strictEqual(
       host.querySelector(".palette-modal")?.getAttribute("data-previews-ready"),
       "false",
@@ -234,7 +240,195 @@ describe("PaletteSelectModal", function () {
     );
   });
 
-  it("invokes onClose when the overlay is clicked", function () {
+  it("derives the preview source from the selected head and skips unresolved layers", function () {
+    const fixture = psmShirtItem();
+    const item = fixture[PSM_SHIRT];
+    item.layers = { layer_1: { male: "head/faces/${head}/neutral/", zPos: 3 } };
+    item.replace_in_path = { head: { Human_Male: "male", Elder: "elderly" } };
+    seedCatalog(
+      catalogWriter,
+      {
+        ...fixture,
+        adult: { name: "Human Male", type_name: "head", variants: ["light"] },
+        elder: { name: "Elder", type_name: "head", variants: ["light"] },
+        malformed: { ...item, replace_in_path: undefined },
+      },
+      { paletteMetadata: modalPaletteMetadata },
+    );
+    const previewKey = (itemId = PSM_SHIRT) =>
+      paletteSelectModalModelFactory.create(
+        catalog,
+        state,
+        itemId,
+        clothOptFromPaletteOptions(),
+        {},
+        false,
+        () => {},
+      ).previewLayersKey;
+
+    assert.strictEqual(previewKey(), "[]");
+    state.selections = {
+      head: { itemId: "adult", name: "Human Male", variant: "light" },
+    };
+    assert.deepEqual(JSON.parse(previewKey()), [
+      ["spritesheets/head/faces/male/neutral/walk.png", 3],
+    ]);
+    state.selections = {
+      head: { itemId: "elder", name: "Elder", variant: "light" },
+    };
+    assert.deepEqual(JSON.parse(previewKey()), [
+      ["spritesheets/head/faces/elderly/neutral/walk.png", 3],
+    ]);
+    assert.strictEqual(previewKey("malformed"), "[]");
+  });
+
+  it("keys previews by the other recolor channels and the visible tile identities", function () {
+    seedCatalog(catalogWriter, psmShirtItem(), {
+      paletteMetadata: modalPaletteMetadata,
+    });
+    const contentKey = (colors, option = clothOptFromPaletteOptions()) =>
+      paletteSelectModalModelFactory.create(
+        catalog,
+        state,
+        PSM_SHIRT,
+        option,
+        colors,
+        false,
+        () => {},
+      ).previewContentKey;
+    const walnut = contentKey({
+      handle: "walnut",
+      reel: "iron",
+      clothes: "red",
+    });
+    assert.strictEqual(
+      contentKey({ reel: "iron", clothes: "bluegray", handle: "walnut" }),
+      walnut,
+    );
+    assert.notEqual(contentKey({ handle: "oak", reel: "iron" }), walnut);
+    assert.notEqual(contentKey({ reel: "iron" }), walnut);
+    assert.strictEqual(contentKey({ handle: "walnut", reel: "iron" }), walnut);
+    assert.notEqual(
+      contentKey(
+        { handle: "walnut", reel: "iron" },
+        {
+          ...clothOptFromPaletteOptions(),
+          type_name: "handle",
+        },
+      ),
+      walnut,
+    );
+
+    catalogWriter.registerPaletteMetadata({
+      ...modalPaletteMetadata,
+      materials: {
+        cloth: {
+          ...modalPaletteMetadata.materials.cloth,
+          palettes: { ulpc: { red: ["#000000"], green: ["#ffffff"] } },
+        },
+      },
+    });
+    assert.notEqual(contentKey({ handle: "walnut", reel: "iron" }), walnut);
+  });
+
+  it("replaces only the canvas when its source changes and ignores stale draws", async function () {
+    const draws = [];
+    const readyModel = {
+      bodyType: "child",
+      previewLayersKey: "[]",
+      previewContentKey: "[]",
+      title: "Cloth",
+      size: 64,
+      compactDisplay: false,
+      previewCount: 1,
+      versions: [
+        {
+          key: "cloth.ulpc",
+          label: "Universal LPC",
+          isSource: false,
+          isExpanded: true,
+          toggle() {},
+          tiles: [
+            {
+              key: "red",
+              label: "Red",
+              colors: [],
+              isSelected: false,
+              select() {},
+              draw: (canvas, isStale) =>
+                new Promise((resolve, reject) => {
+                  draws.push({ canvas, isStale, resolve, reject });
+                }),
+            },
+          ],
+        },
+      ],
+    };
+    let model = readyModel;
+    const render = () =>
+      m.render(
+        host,
+        m(PaletteSelectModalComponent, {
+          createModel: () => model,
+          onClose: () => m.render(host, null),
+        }),
+      );
+    const settle = async (draw, rejected = false) => {
+      if (rejected) draw.reject(new Error("Missing preview"));
+      else draw.resolve(1);
+      await Promise.resolve();
+      render();
+    };
+
+    render();
+    const dialog = host.querySelector("dialog");
+    const button = dialog.querySelector(".lpc-palette-tile");
+    button.focus();
+    const isReady = () => dialog.dataset.previewsReady === "true";
+    assert.isFalse(isReady());
+
+    model = { ...readyModel, previewLayersKey: '[["sprite.png",0]]' };
+    render();
+    render();
+    assert.lengthOf(draws, 2);
+    model = {
+      ...readyModel,
+      previewContentKey: '["clothes",[["handle","oak"]],[]]',
+    };
+    render();
+    assert.lengthOf(draws, 3);
+    assert.notStrictEqual(draws[0].canvas, draws[2].canvas);
+    assert.strictEqual(host.querySelector("dialog"), dialog);
+    assert.strictEqual(dialog.querySelector(".lpc-palette-tile"), button);
+    assert.strictEqual(document.activeElement, button);
+    assert.isTrue(draws[0].isStale());
+    assert.isTrue(draws[1].isStale());
+    assert.isFalse(draws[2].isStale());
+
+    await settle(draws[0]);
+    await settle(draws[1]);
+    assert.isFalse(isReady());
+    await settle(draws[2], true);
+    assert.isTrue(isReady());
+
+    model = { ...readyModel, bodyType: "male" };
+    render();
+    model = { loadingMessage: "Loading palette data…" };
+    render();
+    assert.isTrue(draws[3].isStale());
+    assert.isFalse(isReady());
+    model = { ...readyModel, bodyType: "male" };
+    render();
+    assert.lengthOf(draws, 5);
+    assert.isFalse(isReady());
+    dialog.querySelector(".lpc-palette-close").click();
+    assert.isTrue(draws[4].isStale());
+    draws[4].resolve(1);
+    await Promise.resolve();
+    assert.isNull(host.querySelector("dialog"));
+  });
+
+  it("invokes onClose when the backdrop is clicked", function () {
     let closed = 0;
     m.render(
       host,
@@ -248,7 +442,7 @@ describe("PaletteSelectModal", function () {
       ),
     );
 
-    host.querySelector(".palette-modal-overlay").click();
+    host.querySelector("dialog.palette-modal").click();
     assert.strictEqual(closed, 1);
   });
 

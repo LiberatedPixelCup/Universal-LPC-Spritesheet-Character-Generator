@@ -23,7 +23,7 @@ export function getPurgeContentGlobs(repoRoot: string): string[] {
 export function getPurgeSafelist(): ComplexSafelist {
   return {
     keyframes: ["spin", "skeleton-pulse"],
-    variables: [/^--bulma-/, /^--skeleton-/],
+    variables: [/^--bulma-/, /^--skeleton-/, /^--lpc-/],
     standard: [
       "active",
       "collapsed",
@@ -95,6 +95,12 @@ export function getPurgeSafelist(): ComplexSafelist {
       "variants-container",
       "box",
     ],
-    greedy: [/^skeleton-/, /^preview-canvas/, /^category-tree/],
+    greedy: [
+      /^skeleton-/,
+      /^preview-canvas/,
+      /^category-tree/,
+      /^lpc-/,
+      /^palette-/,
+    ],
   };
 }

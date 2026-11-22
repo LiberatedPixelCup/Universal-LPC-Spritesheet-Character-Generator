@@ -12,6 +12,7 @@ import {
 import { customAnimations } from "../../../sources/custom-animations.ts";
 import * as canvasRenderer from "../../../sources/canvas/renderer.ts";
 import { createState } from "../../../sources/state/state.ts";
+import { importStateFromJSON } from "../../../sources/state/json.ts";
 let state;
 import {
   ANIMATION_CONFIGS,
@@ -124,16 +125,69 @@ describe("AnimationPreview", function () {
     assert.include(host.textContent, "150%");
   });
 
-  it("synchronizes its local zoom during component updates", function () {
-    state.previewCanvasZoomLevel = 1.75;
-    const vnode = {
-      attrs: { catalog, state },
-      state: { zoomLevel: 1 },
-    };
+  it("restores canvas zoom when the animation panel reopens", function () {
+    m.mount(host, { view: () => m(AnimationPreview, { catalog, state }) });
+    state.previewCanvasZoomLevel = 2;
+    m.redraw.sync();
+    const original = host.querySelector("#previewAnimations");
+    const toggle = host.querySelector("button.collapsible-header");
 
-    AnimationPreview.onupdate(vnode);
+    toggle.click();
+    m.redraw.sync();
+    assert.isNull(host.querySelector("#previewAnimations"));
+    toggle.click();
+    m.redraw.sync();
 
-    assert.strictEqual(vnode.state.zoomLevel, 1.75);
+    const reopened = host.querySelector("#previewAnimations");
+    assert.notStrictEqual(reopened, original);
+    assert.strictEqual(reopened.style.zoom, "2");
+  });
+
+  it("uses imported animation even when the outfit is unchanged", function () {
+    m.mount(host, { view: () => m(AnimationPreview, { catalog, state }) });
+    Object.assign(
+      state,
+      importStateFromJSON(
+        catalog,
+        state,
+        JSON.stringify({
+          version: 2,
+          bodyType: state.bodyType,
+          selections: state.selections,
+          selectedAnimation: "slash",
+        }),
+      ),
+    );
+    m.redraw.sync();
+
+    assert.strictEqual(host.querySelector("select").value, "slash");
+    assert.strictEqual(
+      host.querySelector(".lpc-frame-cycle").textContent,
+      ANIMATION_CONFIGS.slash.cycle.join("-"),
+    );
+  });
+
+  it("preserves a custom animation request until the outfit has rendered", function () {
+    state.previewBootstrapRenderDone = true;
+    state.pendingCharacterRender = Promise.resolve();
+    state.selectedAnimation = "wheelchair";
+    m.mount(host, { view: () => m(AnimationPreview, { catalog, state }) });
+
+    assert.strictEqual(state.selectedAnimation, "wheelchair");
+    assert.strictEqual(host.querySelector("select").value, "walk");
+    setCurrentCustomAnimations({ wheelchair: customAnimations.wheelchair });
+    state.pendingCharacterRender = null;
+    m.redraw.sync();
+    assert.strictEqual(host.querySelector("select").value, "wheelchair");
+
+    setCurrentCustomAnimations({});
+    state.pendingCharacterRender = Promise.resolve();
+    m.redraw.sync();
+    assert.strictEqual(state.selectedAnimation, "wheelchair");
+    state.pendingCharacterRender = null;
+    m.redraw.sync();
+    assert.strictEqual(state.selectedAnimation, "walk");
+    assert.strictEqual(host.querySelector("select").value, "walk");
   });
 
   it("repaints the preview canvas when preview zoom changes", function () {

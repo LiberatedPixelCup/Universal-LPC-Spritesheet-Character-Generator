@@ -28,18 +28,28 @@ function renderItem(item: TreeItemModel) {
     });
   }
   return m(
-    "div.tree-node",
+    "button.tree-node.lpc-tree-item-btn",
     {
       key: item.key,
+      type: "button",
+      "aria-pressed": String(item.isSelected),
       class: classNames({
         "search-result": item.isSearchMatch,
         "has-text-grey": !item.isCompatible,
+        "lpc-tree-item-selected": item.isSelected,
       }),
-      style: item.isSelected ? " font-weight: bold; color: #3273dc;" : "",
       title: item.tooltip,
       onclick: item.select,
     },
-    [item.name, !item.isCompatible ? m("span.ml-1", "⚠️") : null],
+    [
+      m("span", item.name),
+      !item.isCompatible
+        ? m("span.ml-1", { "aria-hidden": "true" }, "⚠️")
+        : null,
+      item.isSelected
+        ? m("span.lpc-selected-indicator", { "aria-hidden": "true" }, "✓")
+        : null,
+    ],
   );
 }
 
@@ -51,10 +61,12 @@ export const TreeNode: m.Component<{
     if (!model) return null;
 
     return m(
-      "div",
+      "div.lpc-tree-branch",
       m(
-        "div.tree-label",
+        "button.tree-label.lpc-tree-disclosure",
         {
+          type: "button",
+          "aria-expanded": String(model.isExpanded),
           class: classNames({ "has-text-grey": !model.isCompatible }),
           title: model.title,
           onclick: model.toggle,
@@ -62,13 +74,16 @@ export const TreeNode: m.Component<{
         [
           m("span.tree-arrow", {
             class: model.isExpanded ? "expanded" : "collapsed",
+            "aria-hidden": "true",
           }),
           m("span", model.name),
-          !model.isCompatible ? m("span.ml-1", "⚠️") : null,
+          !model.isCompatible
+            ? m("span.ml-1", { "aria-hidden": "true" }, "⚠️")
+            : null,
         ],
       ),
       model.isExpanded
-        ? m("div.ml-4", [
+        ? m("div.lpc-tree-children", [
             model.children.map((child) =>
               m(TreeNode, {
                 key: child.key,

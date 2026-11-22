@@ -25,12 +25,7 @@ export const creditsModelFactory = {
   create(catalog: CatalogReader, state: State): CreditsModel {
     if (!state.previewBootstrapRenderDone) return { kind: "loading" };
 
-    const credits = getAllCredits(
-      catalog,
-      state.selections,
-      state.bodyType,
-      state.selectedAnimation,
-    );
+    const credits = getAllCredits(catalog, state.selections, state.bodyType);
     if (credits.length === 0) return { kind: "empty" };
 
     return {
@@ -43,7 +38,8 @@ export const creditsModelFactory = {
         authors: credit.authors,
       })),
       downloadTxt: () => downloadFile(creditsToTxt(credits), "credits.txt"),
-      downloadCsv: () => downloadFile(creditsToCsv(credits), "credits.csv"),
+      downloadCsv: () =>
+        downloadFile(creditsToCsv(credits), "credits.csv", "text/csv"),
     };
   },
 };

@@ -143,6 +143,43 @@ function liteItem(name, typeName, recolors) {
 }
 
 describe("ItemWithRecolors", function () {
+  it("replaces an expanded thumbnail on body changes and cancels the old draw", function () {
+    const host = document.createElement("div");
+    document.body.appendChild(host);
+    const draws = [];
+    let bodyType = "male";
+    const render = () =>
+      m.render(
+        host,
+        m(ItemWithRecolorsComponent, {
+          createModel: () => ({
+            name: "Body Color",
+            bodyType,
+            isExpanded: true,
+            isCompatible: true,
+            paletteReady: true,
+            paletteOptions: [],
+            selectedColors: {},
+            drawPreview: async (canvas, _colors, isCancelled) => {
+              draws.push({ canvas, isCancelled });
+              return 1;
+            },
+          }),
+        }),
+      );
+    try {
+      render();
+      bodyType = "child";
+      render();
+      assert.lengthOf(draws, 2);
+      assert.notStrictEqual(draws[0].canvas, draws[1].canvas);
+      assert.isTrue(draws[0].isCancelled());
+      assert.isFalse(draws[1].isCancelled());
+    } finally {
+      m.render(host, null);
+      host.remove();
+    }
+  });
   let host;
   let catalog;
   let catalogWriter;
@@ -248,8 +285,7 @@ describe("ItemWithRecolors", function () {
   }
 
   function assertModalOpen() {
-    assert.notEqual(host.querySelector(".palette-modal"), null);
-    assert.notEqual(host.querySelector(".palette-modal-overlay"), null);
+    assert.notEqual(host.querySelector("dialog.palette-modal"), null);
   }
 
   it("renders the item row with a collapsed tree label", function () {
@@ -398,12 +434,11 @@ describe("ItemWithRecolors", function () {
     swatch.click();
     m.redraw.sync();
 
-    assert.notEqual(host.querySelector(".palette-modal"), null);
-    assert.notEqual(host.querySelector(".palette-modal-overlay"), null);
+    assert.notEqual(host.querySelector("dialog.palette-modal"), null);
 
-    host.querySelector(".palette-modal-overlay").click();
+    host.querySelector("dialog.palette-modal").click();
     m.redraw.sync();
-    assert.strictEqual(host.querySelector(".palette-modal"), null);
+    assert.strictEqual(host.querySelector("dialog.palette-modal"), null);
   });
 
   it("uses compact canvas sizing when compactDisplay is enabled", function () {

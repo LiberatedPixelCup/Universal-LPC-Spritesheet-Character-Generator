@@ -4,54 +4,55 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Universal LPC Sprite Sheet Character Generator</title>
+	<title>Open Spritesheet</title>
 </head>
 <body>
-	<section id="header-left" class="sticky">
-		<div class="is-flex is-align-items-center is-flex-wrap-wrap" style="gap: 1rem;">
-			<h1 class="title is-4 mb-0">
-				Universal LPC Spritesheet Generator
-				<a href="https://github.com/liberatedpixelcup/Universal-LPC-Spritesheet-Character-Generator" class="ml-2">
-					<img src="sources/github-mark.png" alt="View on GitHub" style="width:24px;height:24px;vertical-align:middle;">
-				</a>
-			</h1>
-			<span class="subtitle is-6 mb-0 has-text-grey">
-				Free/Libre pixel art from the <a href="https://lpc.opengameart.org">Liberated Pixel Cup</a>
-				<span class="mx-2">|</span>
-				You must <a href="#credits-section">credit the authors</a>
-			</span>
-			<span id="sponsors-links" class="subtitle is-6 mb-0">
+	<header id="header-left" class="lpc-header">
+		<div class="lpc-header-inner">
+			<div class="lpc-header-brand">
+				<h1 class="title lpc-app-title">
+					<span>Open Spritesheet</span>
+					<a href="https://github.com/teakay1311/OpenSpritesheet" class="lpc-github-link">
+						<img src="sources/github-mark.png" alt="View on GitHub" width="24" height="24" class="lpc-github-mark">
+					</a>
+				</h1>
+				<p class="lpc-header-tagline">
+					Free/Libre pixel art from the <a href="https://lpc.opengameart.org">Liberated Pixel Cup</a>
+					<span class="lpc-sep" aria-hidden="true">·</span>
+					You must <a href="#credits-section">credit the authors</a>
+				</p>
+			</div>
+			<div id="sponsors-links" class="lpc-header-links">
 				<a href="https://www.netlify.com/">Site previews by Netlify</a>
-				<span class="mx-2">|</span>
+				<span class="lpc-sep" aria-hidden="true">·</span>
 				<a href="https://argos-ci.com?utm_source=LiberatedPixelCup&utm_campaign=oss">Visual testing by Argos</a>
-			</span>
+			</div>
 		</div>
-	</section>
+	</header>
 
-	<div id="columns-container" class="columns is-desktop">
-		<div id="chooser-column" class="column">
-			<div id="mithril-filters">
-				<div class="box loading-shell-filters">
-					<div class="category-tree-loading-host">
-						<span class="loading" aria-label="Loading filters"></span>
+	<main id="columns-container" class="lpc-main">
+		<div class="lpc-workbench">
+			<div id="mithril-preview" class="lpc-animation-slot">
+				<div class="box lpc-panel lpc-animation-panel loading-shell-animation">
+					<span class="loading" aria-label="Loading animation preview"></span>
+				</div>
+			</div>
+			<div id="chooser-column" class="lpc-chooser-column">
+				<div id="mithril-filters">
+					<div class="box lpc-panel loading-shell-filters">
+						<div class="category-tree-loading-host">
+							<span class="loading" aria-label="Loading filters"></span>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
-		<div id="preview-column" class="column">
-			<div id="mithril-preview">
-				<div class="box loading-shell-animation">
-					<span class="loading" aria-label="Loading animation preview"></span>
-				</div>
-			</div>
-			<div id="mithril-spritesheet-preview">
-				<div class="box loading-shell-spritesheet">
-					<span class="loading" aria-label="Loading spritesheet preview"></span>
-				</div>
+		<div id="mithril-spritesheet-preview" class="lpc-spritesheet-slot">
+			<div class="box lpc-panel lpc-spritesheet-panel loading-shell-spritesheet">
+				<span class="loading" aria-label="Loading spritesheet preview"></span>
 			</div>
 		</div>
-	</div>
+	</main>
 	<script type="module" src="sources/main.ts"></script>
 </body>
 </html>

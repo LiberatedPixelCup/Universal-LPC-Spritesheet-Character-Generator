@@ -4,6 +4,8 @@ import type { BodyTypeSelectorModel } from "../../models/category-tree.ts";
 
 type BodyTypeSelectorState = { isExpanded: boolean };
 
+const BODY_TYPE_GROUP_ID = "lpc-body-type-options";
+
 export const BodyTypeSelector: m.Component<
   { model: BodyTypeSelectorModel },
   BodyTypeSelectorState
@@ -13,10 +15,13 @@ export const BodyTypeSelector: m.Component<
   },
   view(vnode) {
     const { model } = vnode.attrs;
-    return m("div.mb-3", [
+    return m("div.lpc-body-type-block", [
       m(
-        "div.tree-label",
+        "button.tree-label.lpc-tree-disclosure",
         {
+          type: "button",
+          "aria-expanded": String(vnode.state.isExpanded),
+          "aria-controls": BODY_TYPE_GROUP_ID,
           onclick: () => {
             vnode.state.isExpanded = !vnode.state.isExpanded;
           },
@@ -24,26 +29,31 @@ export const BodyTypeSelector: m.Component<
         [
           m("span.tree-arrow", {
             class: vnode.state.isExpanded ? "expanded" : "collapsed",
+            "aria-hidden": "true",
           }),
           m("span.has-text-weight-semibold", "Body Type"),
         ],
       ),
       vnode.state.isExpanded
-        ? m("div.ml-4.mt-2", [
+        ? m("div.lpc-body-type-group", { id: BODY_TYPE_GROUP_ID }, [
             m(
-              "div.buttons.ml-4",
-              model.options.map((option) =>
-                m(
+              "div.buttons.lpc-body-type-buttons",
+              model.options.map((option) => {
+                const isSelected = model.selected === option.value;
+                return m(
                   "button.button.is-small",
                   {
-                    class: model.selected === option.value ? "is-primary" : "",
+                    key: option.value,
+                    type: "button",
+                    "aria-pressed": String(isSelected),
+                    class: isSelected ? "is-primary lpc-body-btn-selected" : "",
                     onclick: () => {
                       model.select(option.value);
                     },
                   },
                   option.label,
-                ),
-              ),
+                );
+              }),
             ),
           ])
         : null,

@@ -3,7 +3,7 @@ import { assert } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { AdvancedTools } from "../../../sources/components/advanced/AdvancedTools.ts";
-import { createState } from "../../../sources/state/state.ts";
+import { clearCustomImage, createState } from "../../../sources/state/state.ts";
 let state;
 
 function expandAdvancedTools(host) {
@@ -120,5 +120,31 @@ describe("AdvancedTools", function () {
     assert.strictEqual(state.customUploadedImage, null);
     assert.strictEqual(state.customImageZPos, 0);
     assert.strictEqual(fileInput.value, "");
+  });
+
+  it("discards an in-flight upload after reset and accepts the same filename again", function () {
+    const requests = [];
+    sinon.stub(window, "Image").callsFake(function () {
+      requests.push(this);
+    });
+    sinon.stub(URL, "createObjectURL").returns("blob:fake");
+    m.mount(host, { view: () => m(AdvancedTools, { state }) });
+    expandAdvancedTools(host);
+    const input = host.querySelector("#customFileInput");
+    const choose = () => {
+      const data = new DataTransfer();
+      data.items.add(new File(["x"], "overlay.png", { type: "image/png" }));
+      input.files = data.files;
+      input.dispatchEvent(new Event("change", { bubbles: true }));
+    };
+
+    choose();
+    clearCustomImage(state);
+    m.redraw.sync();
+    assert.strictEqual(input.value, "");
+    choose();
+    requests[1].onload();
+    requests[0].onload();
+    assert.strictEqual(state.customUploadedImage, requests[1]);
   });
 });

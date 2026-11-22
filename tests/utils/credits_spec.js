@@ -110,6 +110,99 @@ describe("utils/credits.ts", () => {
       expect(result[0].fileName).to.equal("arms/bracers/walk/light_brown.png");
     });
 
+    it("matches real sprite paths for custom layers with and without variants", () => {
+      const credit = (file) => ({
+        file,
+        authors: ["Artist"],
+        licenses: ["CC-BY"],
+        urls: [],
+      });
+      seedCatalog(catalogWriter, {
+        chair: {
+          animations: ["wheelchair"],
+          layers: {
+            layer_1: {
+              male: "body/wheelchair/background/",
+              custom_animation: "wheelchair",
+            },
+          },
+          credits: [credit("body/wheelchair/background")],
+        },
+        rod: {
+          animations: ["walk", "tool_rod"],
+          layers: {
+            layer_1: { male: "tools/rod/standard/" },
+            layer_2: { male: "tools/rod/bg", custom_animation: "tool_rod" },
+            layer_3: { female: "tools/rod/fg", custom_animation: "tool_rod" },
+          },
+          credits: [
+            credit("tools/rod/standard/walk.png"),
+            credit("tools/rod/bg.png"),
+            credit("tools/rod/fg.png"),
+          ],
+        },
+      });
+      const selections = {
+        wheelchair: { itemId: "chair", variant: "matte black" },
+        tool: { itemId: "rod", variant: null },
+      };
+      expect(
+        getAllCredits(catalog, selections, "male").map((c) => c.fileName),
+      ).to.deep.equal([
+        "body/wheelchair/background/matte_black.png",
+        "tools/rod/standard/walk.png",
+        "tools/rod/bg.png",
+      ]);
+
+      expect(
+        getAllCredits(
+          catalog,
+          { wheelchair: { itemId: "chair", variant: null } },
+          "male",
+        ),
+      ).to.deep.equal([]);
+    });
+
+    it("uses the custom walk layer for bow credits without changing other requests", () => {
+      const bow = {
+        animations: ["walk", "hurt", "walk_128"],
+        layers: {
+          layer_1: { male: "bow/universal/background/" },
+          layer_2: {
+            male: "bow/walk/background/",
+            custom_animation: "walk_128",
+          },
+        },
+        credits: [{ file: "bow", authors: ["Artist"], licenses: [], urls: [] }],
+      };
+      seedCatalog(catalogWriter, {
+        weapon_ranged_bow_great: bow,
+        weapon_other_with_custom_walk: { ...bow },
+      });
+      const creditPaths = (itemId, animation, variant = "light") =>
+        getAllCredits(
+          catalog,
+          { weapon: { itemId, variant } },
+          "male",
+          animation,
+        ).map(({ fileName }) => fileName);
+
+      for (const animation of [undefined, "walk", "walk_128"]) {
+        expect(creditPaths("weapon_ranged_bow_great", animation)).to.deep.equal(
+          ["bow/walk/background/light.png"],
+        );
+      }
+      expect(creditPaths("weapon_ranged_bow_great", "hurt")).to.deep.equal([
+        "bow/universal/background/hurt/light.png",
+      ]);
+      expect(
+        creditPaths("weapon_ranged_bow_great", undefined, null),
+      ).to.deep.equal([]);
+      expect(creditPaths("weapon_other_with_custom_walk")).to.deep.equal([
+        "bow/universal/background/walk/light.png",
+      ]);
+    });
+
     it("uses state.selectedAnimation when building paths", () => {
       seedCatalog(catalogWriter, {
         item1: {
@@ -246,6 +339,22 @@ describe("utils/credits.ts", () => {
       const lines = csv.trim().split("\n");
       expect(lines[0]).to.equal("filename,notes,authors,licenses,urls");
       expect(lines[1]).to.equal('"a/b.png","note","A, B","L1, L2","u1, u2"');
+    });
+
+    it("escapes quotes in every CSV field and preserves embedded line breaks", () => {
+      const csv = creditsToCsv([
+        {
+          fileName: 'gear/"great".png',
+          notes: 'Cung "normal", ghi chú\nDòng hai',
+          authors: ['"A"', "B"],
+          licenses: ['Giấy "phép"'],
+          urls: ['https://example.org/"path"'],
+        },
+      ]);
+      expect(csv).to.equal(
+        "filename,notes,authors,licenses,urls\n" +
+          '"gear/""great"".png","Cung ""normal"", ghi chú\nDòng hai","""A"", B","Giấy ""phép""","https://example.org/""path"""\n',
+      );
     });
 
     it("uses empty string for missing notes", () => {

@@ -4,6 +4,8 @@ import type { LicenseFiltersModel } from "../../models/license-filters.ts";
 
 type LicenseFiltersState = { isExpanded: boolean };
 
+const LICENSE_FILTERS_BODY_ID = "lpc-license-filters-body";
+
 export const LicenseFilters: m.Component<
   { createModel: () => LicenseFiltersModel },
   LicenseFiltersState
@@ -25,10 +27,13 @@ export const LicenseFilters: m.Component<
 
     const hasIncompatibleItems = model.incompatibleCount > 0;
 
-    return m("div.box.mb-4.has-background-light", [
+    return m("div.box.lpc-filter-card", [
       m(
-        "div.tree-label",
+        "button.tree-label.lpc-filter-disclosure",
         {
+          type: "button",
+          "aria-expanded": String(vnode.state.isExpanded),
+          "aria-controls": LICENSE_FILTERS_BODY_ID,
           onclick: () => {
             vnode.state.isExpanded = !vnode.state.isExpanded;
           },
@@ -36,38 +41,38 @@ export const LicenseFilters: m.Component<
         [
           m("span.tree-arrow", {
             class: vnode.state.isExpanded ? "expanded" : "collapsed",
+            "aria-hidden": "true",
           }),
-          m("span.title.is-6.is-inline", "License Filters"),
-          m("span.is-size-7.has-text-grey.ml-2", model.summary),
+          m("span.lpc-filter-title", "License Filters"),
+          m("span.lpc-filter-summary", model.summary),
         ],
       ),
       vnode.state.isExpanded
-        ? m("div.content.mt-3", [
+        ? m("div.lpc-filter-body", { id: LICENSE_FILTERS_BODY_ID }, [
             !model.liteReady
-              ? m("p.is-size-7.has-text-grey.mb-3", "Loading item list…")
+              ? m("p.lpc-helper-text", "Loading item list…")
               : null,
             !model.creditsReady
-              ? m(
-                  "p.is-size-7.has-text-grey.mb-3",
-                  "Loading asset license data…",
-                )
+              ? m("p.lpc-helper-text", "Loading asset license data…")
               : null,
             m(
-              "ul.tree-list",
+              "ul.tree-list.lpc-filter-list",
               model.options.map((license) =>
-                m("li", { key: license.key, class: "mb-2" }, [
-                  m("label.checkbox", [
-                    m("input[type=checkbox]", {
-                      checked: license.enabled,
-                      disabled: !model.liteReady,
-                      onchange: (e: Event) => {
-                        const target = e.target as HTMLInputElement;
-                        license.setEnabled(target.checked);
-                      },
-                    }),
-                    ` ${license.label} `,
+                m("li", { key: license.key }, [
+                  m("div.lpc-license-option", [
+                    m("label.checkbox", [
+                      m("input[type=checkbox]", {
+                        checked: license.enabled,
+                        disabled: !model.liteReady,
+                        onchange: (e: Event) => {
+                          const target = e.target as HTMLInputElement;
+                          license.setEnabled(target.checked);
+                        },
+                      }),
+                      m("span", license.label),
+                    ]),
                     m(
-                      "a.is-size-7",
+                      "a.lpc-license-link",
                       {
                         href: license.url,
                         target: "_blank",
@@ -81,19 +86,20 @@ export const LicenseFilters: m.Component<
             ),
             hasIncompatibleItems
               ? [
-                  m("div.notification.is-warning.is-light.p-3.mt-2", [
-                    m("p.is-size-7", [
+                  m("div.lpc-warning-box", [
+                    m("p", [
                       m(
                         "strong",
                         `${model.incompatibleCount} selected item${model.incompatibleCount > 1 ? "s are" : " is"} incompatible`,
                       ),
                       " with your current license selection. ",
-                      m("span.has-text-grey", "(marked with ⚠️ above)"),
+                      m("span", "(marked with ⚠️ below)"),
                     ]),
                   ]),
                   m(
-                    "button.button.is-small.is-warning.mt-2",
+                    "button.button.is-small.is-warning.lpc-btn-warning.mt-2",
                     {
+                      type: "button",
                       onclick: removeIncompatibleItems,
                       title: `Remove ${model.incompatibleCount} incompatible item${model.incompatibleCount > 1 ? "s" : ""}`,
                     },

@@ -1,197 +1,52 @@
 /*
- * First-paint layout: header, columns, preview canvas shell (sync with critical Bulma).
- * Remaining app rules live in main.css (deferred).
+ * First-paint loading shells & critical geometry (Spec v1.2, UI-01).
+ * Loading-shell children are replaced by Mithril on mount; never place
+ * min-height on mount roots (#mithril-filters, #mithril-preview, #mithril-spritesheet-preview).
  */
 
-html {
-  font-size: 16px;
-}
-
-body {
-  height: calc(100dvh - 12px);
-  overflow-y: hidden;
-  font-family: monospace;
-  font-size: 16px;
-  line-height: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-h1 {
-  margin: 10px 0px;
-}
-
-h2 {
-  margin: 10px 0px;
-}
-
-h3 {
-  margin: 4px 0px 0px 0px;
-}
-
-/*
- * Minireset (`html,body,…,h3 { margin: 0 }`) is emitted after this file in the
- * critical bundle, so the h3 rule above loses on first paint. Deferred main.css
- * then restores 4px and the Download title drops. h3.title beats minireset.
- */
-h3.title {
-  margin: 4px 0 0;
-}
-
-p {
-  margin: 10px 0px;
-}
-
-.sticky {
-  position: sticky;
-  top: 0;
-  opacity: 1;
-  background-color: white;
-  z-index: 100;
-}
-
-#header-left {
-  width: calc(100% - 30px);
-  padding: 10px;
-  box-sizing: border-box;
-  /* Huge-desktop Argos is a single 75px row; do not raise the default. */
-  min-height: 75px;
-}
-
-#header-left > div {
-  display: flex;
-}
-
-/*
- * Download (and every other CollapsibleSection) mounts before deferred main.css.
- * Pin the same chrome as main.css so the arrow, title row, and 1rem body gap
- * do not appear after first paint.
- */
-.collapsible-header {
-  cursor: pointer;
-  user-select: none;
-  display: flex;
-  align-items: center;
-}
-
-.collapsible-title {
-  flex: 1;
-}
-
-.collapsible-content {
-  margin-top: 1rem;
-}
-
-.tree-arrow {
-  display: inline-block;
-  width: 1rem;
-  text-align: center;
-  margin-right: 0.5rem;
-}
-
-.tree-arrow.collapsed::before {
-  content: "▶";
-}
-
-.tree-arrow.expanded::before {
-  content: "▼";
-}
-
-#columns-container {
-  align-self: auto;
-  width: 100%;
-  max-width: none;
-  box-sizing: border-box;
-  flex: 1;
-  margin-top: 0;
-  overflow-y: auto;
-}
-
-#chooser-column {
-  padding: 1rem;
-  overflow-y: auto;
-  scroll-behavior: smooth;
-  scroll-padding-top: 12px;
-}
-
-#preview-column {
-  padding: 1rem;
-  overflow-y: auto;
-}
-
-#credits-section > .collapsible-content > .content {
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-#animations-preview,
-#spritesheet-preview {
-  touch-action: pan-x pan-y;
-}
-
-canvas {
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
-}
-
-#previewAnimations,
-#spritesheet-preview {
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
-}
-
-.spritesheet-preview {
-  position: relative;
-}
-
-.scrollable-container {
-  overflow: auto;
-  max-width: 100%;
-  max-height: 70vh;
-  cursor: grab;
-  user-select: none;
-}
-
-#sponsors-links {
-  font-family: monospace;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  gap: 1rem;
-  margin-top: -12px;
-}
-
-/*
- * First-paint CLS: reserved height for shells Mithril replaces on mount.
- * Sizes match the hydrated panels (not 100dvh / 70vh guesses — those were
- * shorter than the chooser and taller than a centered spinner, so hydrate
- * reshuffled visible content and CLS went up). Do not put min-height on the
- * mount roots (that would remain after hydrate and show up in Argos).
- */
 .loading-shell-filters,
 .loading-shell-animation,
 .loading-shell-spritesheet {
   box-sizing: border-box;
 }
 
-/* ~Download+Filters+Credits+Advanced with the 42rem tree loading host. */
+/* Reserved height for hydrated Download + Filters + Credits + Advanced stack */
 .loading-shell-filters {
-  min-height: 80rem;
+  min-height: 76rem;
 }
 
-/* Collapsible header + animation/zoom controls + 256×64 canvas (~330px). */
+/* Reserved height matching hydrated Animation Preview panel */
 .loading-shell-animation {
-  min-height: 21rem;
+  min-height: 298.5px;
 }
 
-/* Collapsible header + toolbar + 70vh spritesheet scrollport (~823px). */
+@media (min-width: 360px) and (max-width: 767.98px) and (min-height: 760px) and (orientation: portrait) and (pointer: coarse) {
+  .loading-shell-animation {
+    min-height: 271.5px;
+  }
+}
+
+@media (min-width: 768px) {
+  .loading-shell-animation {
+    min-height: 240px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .loading-shell-animation {
+    min-height: 233.5px;
+  }
+}
+
+/* Reserved height matching hydrated Full Spritesheet Preview panel */
 .loading-shell-spritesheet {
-  min-height: calc(70vh + 10rem);
+  min-height: 38rem;
+}
+
+@media (min-width: 1024px) {
+  .loading-shell-spritesheet {
+    min-height: 30.5rem;
+  }
 }
 
 /* Credits list is max-height 300px once selections exist; hold that while loading. */

@@ -27,6 +27,21 @@ let currentCustomAnimations: Record<string, CustomAnimationDefinition> = {};
 let customAnimYPositions: Record<string, number> = {}; // Y positions of custom animations in canvas
 export let activeCustomAnimation: string | null = null; // Currently selected custom animation for preview
 
+const configs = ANIMATION_CONFIGS as Record<
+  string,
+  { row: number; num: number; cycle: number[] } | undefined
+>;
+
+export function getPreviewFrameCycle(animationName: string): number[] {
+  const custom = customAnimations[animationName];
+  if (custom) {
+    return custom.frames[0]
+      .slice(custom.skipFirstFrameInPreview ? 1 : 0)
+      .map((spec) => parseInt(spec.split(",")[1]));
+  }
+  return configs[animationName]?.cycle ?? [];
+}
+
 /**
  * Set which animation to preview
  */
@@ -50,21 +65,11 @@ export function setPreviewAnimation(animationName: string): number[] {
     animRowNum = 4; // Show all 4 directions
     currentFrameIndex = 0;
 
-    // For display: extract source column numbers from the first row's frame specs
-    // e.g. ["slash-n,5","slash-n,5","slash-n,4",...] → [5,5,4,...]
-    const displayFrames = customAnimDef.frames[0]
-      .slice(skipFirstFrame ? 1 : 0)
-      .map((spec) => parseInt(spec.split(",")[1]));
-
-    return displayFrames;
+    return getPreviewFrameCycle(animationName);
   }
 
   // Standard animation
   activeCustomAnimation = null;
-  const configs = ANIMATION_CONFIGS as Record<
-    string,
-    { row: number; num: number; cycle: number[] } | undefined
-  >;
   const config = configs[animationName];
   if (!config) {
     console.error("Unknown animation:", animationName);

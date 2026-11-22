@@ -148,11 +148,9 @@ describe("ItemWithVariants", function () {
       isCompatible: true,
       tooltip: "tip",
       isExpanded,
-      imagesToLoad: 0,
       variants: [],
       toggle: () => {
         isExpanded = !isExpanded;
-        return 0;
       },
     });
     m.render(host, m(ItemWithVariantsComponent, { createModel }));
@@ -174,7 +172,7 @@ describe("ItemWithVariants", function () {
       size: 64,
       compactDisplay: false,
       select() {},
-      loadPreview: async () => ({ redraw() {}, imagesLoaded: 0 }),
+      loadPreview: async () => () => {},
     };
     const createModel = () => ({
       name: "Variant Cloak",
@@ -182,11 +180,9 @@ describe("ItemWithVariants", function () {
       isCompatible: true,
       tooltip: "tip",
       isExpanded,
-      imagesToLoad: 2,
       variants: isExpanded ? [variant] : [],
       toggle: () => {
         isExpanded = !isExpanded;
-        return 2;
       },
     });
     m.render(host, m(ItemWithVariantsComponent, { createModel }));
@@ -196,6 +192,48 @@ describe("ItemWithVariants", function () {
     m.render(host, m(ItemWithVariantsComponent, { createModel }));
 
     assert.notEqual(host.querySelector(".variants-container"), null);
+  });
+
+  it("settles the spinner on completion and ignores thumbnails from a closed branch", async function () {
+    let isExpanded = true;
+    const loads = [];
+    const variant = {
+      key: "red",
+      label: "Red",
+      isCompatible: true,
+      size: 64,
+      loadPreview: () =>
+        new Promise((resolve, reject) => loads.push({ resolve, reject })),
+    };
+    m.mount(host, {
+      view: () =>
+        m(ItemWithVariantsComponent, {
+          createModel: () => ({
+            name: "Variant Cloak",
+            isCompatible: true,
+            isExpanded,
+            variants: isExpanded ? [variant] : [],
+            toggle: () => {
+              isExpanded = !isExpanded;
+            },
+          }),
+        }),
+    });
+    const disclosure = host.querySelector("button.lpc-tree-disclosure");
+    disclosure.click();
+    m.redraw.sync();
+    disclosure.click();
+    m.redraw.sync();
+    loads[0].resolve(() => {});
+    await Promise.resolve();
+    m.redraw.sync();
+    assert.isNotNull(host.querySelector("div.loading"));
+
+    loads[1].reject(new Error("missing thumbnail"));
+    await Promise.resolve();
+    m.redraw.sync();
+    assert.isNull(host.querySelector("div.loading"));
+    m.mount(host, null);
   });
 
   it("uses body-body as expandedNodes key when the display name is Body Color", function () {
@@ -362,8 +400,7 @@ describe("ItemWithVariants", function () {
       isCompatible: true,
       tooltip: "tip",
       isExpanded: true,
-      imagesToLoad: 0,
-      toggle: () => 0,
+      toggle: () => {},
       variants: [
         {
           key: "dark_blue",
@@ -373,10 +410,7 @@ describe("ItemWithVariants", function () {
           size: compactDisplay ? 32 : 64,
           compactDisplay,
           select() {},
-          loadPreview: async () => ({
-            redraw: (size) => redrawSizes.push(size),
-            imagesLoaded: 0,
-          }),
+          loadPreview: async () => (size) => redrawSizes.push(size),
         },
       ],
     });

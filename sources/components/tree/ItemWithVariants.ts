@@ -2,124 +2,97 @@ import m from "mithril";
 import classNames from "classnames";
 import type { ItemWithVariantsModel } from "../../models/item-with-variants.ts";
 
-type VariantLoadState = {
-  isLoading: boolean;
-  imagesToLoad: number;
-  imagesLoaded: number;
-};
-
-function resetVariantLoadCounters(
-  state: VariantLoadState,
-  imagesToLoad: number,
-): void {
-  state.isLoading = true;
-  state.imagesToLoad = imagesToLoad;
-  state.imagesLoaded = 0;
-}
+type VariantLoadState = { settledPreviews: Set<string> };
 
 export const ItemWithVariants: m.Component<
   { createModel: () => ItemWithVariantsModel },
   VariantLoadState
 > = {
+  oninit(vnode) {
+    vnode.state.settledPreviews = new Set();
+  },
   view(vnode) {
     const model = vnode.attrs.createModel();
+    const { settledPreviews } = vnode.state;
+    const isLoading = model.variants.some(
+      (variant) => !settledPreviews.has(variant.key),
+    );
     return m(
-      "div",
+      "div.lpc-tree-item-row",
       {
         class: classNames({
           "search-result": model.isSearchMatch,
           "has-text-grey": !model.isCompatible,
         }),
-        oninit: () => {
-          vnode.state.isLoading = model.variants.length > 0;
-          vnode.state.imagesToLoad = model.imagesToLoad;
-          vnode.state.imagesLoaded = 0;
-        },
-        onupdate: () => {
-          if (
-            model.isExpanded &&
-            vnode.state.isLoading &&
-            vnode.state.imagesLoaded >= vnode.state.imagesToLoad
-          ) {
-            vnode.state.isLoading = false;
-          }
-        },
       },
       [
         m(
-          "div.tree-label",
+          "button.tree-label.lpc-tree-disclosure",
           {
+            type: "button",
+            "aria-expanded": String(model.isExpanded),
             title: model.tooltip,
-            onclick: () => {
-              const imagesToLoad = model.toggle();
-              if (!model.isExpanded) {
-                resetVariantLoadCounters(vnode.state, imagesToLoad);
-              }
-            },
+            onclick: model.toggle,
           },
           [
             m("span.tree-arrow", {
               class: model.isExpanded ? "expanded" : "collapsed",
+              "aria-hidden": "true",
             }),
             m("span", model.name),
-            !model.isCompatible ? m("span.ml-1", "⚠️") : null,
+            !model.isCompatible
+              ? m("span.ml-1", { "aria-hidden": "true" }, "⚠️")
+              : null,
           ],
         ),
         model.isExpanded
           ? m("div", [
               m("div", {
-                class: vnode.state.isLoading ? "loading" : "",
+                class: isLoading ? "loading" : "",
               }),
               m(
-                "div.variants-container.ml-5.is-flex.is-flex-wrap-wrap",
+                "div.variants-container",
                 model.variants.map((variant) =>
                   m(
-                    "div.variant-item.is-flex.is-flex-direction-column.is-align-items-center.is-clickable",
+                    "button.variant-item.lpc-variant-tile",
                     {
                       key: variant.key,
+                      type: "button",
+                      "aria-pressed": String(variant.isSelected),
+                      "aria-disabled": !variant.isCompatible
+                        ? "true"
+                        : undefined,
                       class: classNames({
-                        "has-background-link-light has-text-weight-bold has-text-link":
+                        "is-clickable": variant.isCompatible,
+                        "has-background-link-light lpc-tile-selected":
                           variant.isSelected,
                         "is-not-compatible": !variant.isCompatible,
                       }),
                       title: model.tooltip,
-                      onmouseover: (event: MouseEvent) => {
-                        if (!variant.isCompatible || variant.isSelected) return;
-                        (event.currentTarget as HTMLElement).classList.add(
-                          "has-background-white-ter",
-                        );
-                      },
-                      onmouseout: (event: MouseEvent) => {
-                        if (!variant.isCompatible || variant.isSelected) return;
-                        (event.currentTarget as HTMLElement).classList.remove(
-                          "has-background-white-ter",
-                        );
-                      },
                       onclick: variant.select,
                     },
                     [
-                      m(
-                        "span.variant-display-name.has-text-centered.is-size-7",
-                        variant.label,
-                      ),
-                      m("canvas.variant-canvas.box.p-0", {
+                      m("span.variant-display-name", variant.label),
+                      m("canvas.variant-canvas", {
                         width: variant.size,
                         height: variant.size,
-                        class: variant.compactDisplay ? " compact-display" : "",
-                        style: variant.isSelected
-                          ? " hsl(217, 71%, 53%)"
-                          : " hsl(0, 0%, 86%)",
+                        "aria-hidden": "true",
+                        class: variant.compactDisplay ? "compact-display" : "",
                         oncreate: (canvasVnode: m.VnodeDOM) => {
                           const canvas = canvasVnode.dom as HTMLCanvasElement;
-                          void variant.loadPreview(canvas).then((preview) => {
+                          const settle = () => {
+                            if (!canvas.isConnected) return;
+                            settledPreviews.add(variant.key);
+                            m.redraw();
+                          };
+                          void variant.loadPreview(canvas).then((redraw) => {
                             (
                               canvasVnode.state as {
                                 redraw?: (size: number) => void;
                               }
-                            ).redraw = preview.redraw;
-                            vnode.state.imagesLoaded += preview.imagesLoaded;
-                            m.redraw();
-                          });
+                            ).redraw = redraw;
+                            settle();
+                          }, settle);
                         },
                         onupdate: (canvasVnode: m.VnodeDOM) => {
                           (
@@ -127,6 +100,9 @@ export const ItemWithVariants: m.Component<
                               redraw?: (size: number) => void;
                             }
                           ).redraw?.(variant.size);
+                        },
+                        onremove: () => {
+                          settledPreviews.delete(variant.key);
                         },
                       }),
                     ],

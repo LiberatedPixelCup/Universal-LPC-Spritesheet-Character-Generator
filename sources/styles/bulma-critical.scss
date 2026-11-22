@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-/*! Critical Bulma: columns, title, box, helpers for static header + preview shell */
+/*! Critical Bulma: base reset, elements, form, helpers for static shell + app UI */
 @forward "bulma/sass/utilities";
 @forward "bulma/sass/base/minireset";
 @forward "bulma/sass/base/generic";
@@ -29,35 +29,26 @@
   @include setup.setup-theme;
 }
 
-/*
- * light-theme sets Inter. That stack is narrower than the BlinkMacSystemFont
- * stack in paint CSS, so Download ZIP buttons wrap on Inter at first paint and
- * reflow when deferred paint `:root` wins. Same selector, later, same stack as
- * styles/bulma-variables-root.css / bulma-overrides-paint.css.
- */
+/* Override Bulma light-theme font & body tokens immediately after theme emit */
 :root,
 [data-theme="light"] {
   --bulma-family-primary:
-    BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica",
-    "Arial", sans-serif;
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
   --bulma-family-secondary:
-    BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica",
-    "Arial", sans-serif;
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  --bulma-body-background-color: #f5f6f1;
+  --bulma-body-color: #1c2824;
+  --bulma-body-font-size: 15px;
+  --bulma-body-line-height: 22px;
 }
 
-/*
- * Bulma `generic` sets html/body font-size from relative vars, which keeps the
- * keyword font size Chrome remaps for `font-family: monospace` — every `.box`
- * paints at the 13px fixed-font default until deferred main.css declares 16px.
- * Same values as styles/critical-shell.css, after Bulma so they win.
- */
 html {
   font-size: 16px;
 }
 
 body {
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 15px;
+  line-height: 22px;
 }

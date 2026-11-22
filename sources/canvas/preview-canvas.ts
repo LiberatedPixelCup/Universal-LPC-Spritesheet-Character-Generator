@@ -98,9 +98,7 @@ export function copyToPreviewCanvas(
   }
 
   // Apply zoom via CSS
-  if (zoomLevel !== 1) {
-    previewCanvasElement.style.zoom = zoomLevel.toString();
-  }
+  previewCanvasElement.style.zoom = zoomLevel === 1 ? "" : zoomLevel.toString();
 }
 
 /** Initialize the preview canvas. */

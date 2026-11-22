@@ -1,157 +1,294 @@
 /**
- * Palette Recolor Node Styles
+ * Palette Recolor Node & Modal Styles (UI-03 & UI-04)
  */
+
 .palette-swatch {
-    border: 1px solid #000;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    overflow-x: hidden;
-    line-height: 1.5;
-    background: #000;
-    cursor: pointer;
+  border: 1px solid var(--lpc-control-border, #7a8b82);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  line-height: 1.5;
+  background: #1c2824;
+  flex-shrink: 0;
 }
+
 .palette-swatch span {
-    height: 1rem;
-    flex: 1;
-    padding: 0;
-    margin: 0;
+  height: 14px;
+  flex: 1;
+  padding: 0;
+  margin: 0;
 }
 
 .palette-recolor-list {
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25em;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1 1 200px;
+  min-width: 0;
 }
-.palette-recolor-list .palette-recolor-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.25em;
-    cursor: pointer;
-    width: auto;
-    gap: 0.5em;
+
+button.palette-recolor-item.lpc-swatch-btn {
+  appearance: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 100%;
+  min-height: 40px;
+  padding: 6px 10px;
+  background-color: var(--lpc-surface, #ffffff);
+  border: 1px solid var(--lpc-control-border, #7a8b82);
+  border-radius: var(--lpc-radius-control, 8px);
+  color: var(--lpc-text, #1c2824);
+  font-family: var(--lpc-font-sans, sans-serif);
+  font-size: 14px;
+  line-height: 20px;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color var(--lpc-transition, 140ms ease),
+    border-color var(--lpc-transition, 140ms ease);
 }
-.palette-recolor-list .palette-recolor-item label {
-    width: 90px;
-    min-width: 90px;
-    max-width: 90px;
-    display: inline-block;
-    text-align: right;
-    margin-right: 0.5em;
-    cursor: pointer;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+
+button.palette-recolor-item.lpc-swatch-btn:hover:not(.is-not-compatible) {
+  background-color: var(--lpc-surface-hover, #eaeee8);
+  border-color: var(--lpc-text, #1c2824);
 }
-.palette-recolor-list .palette-recolor-item div.palette-swatch {
-    min-width: 140px;
-    max-width: 200px;
-    flex-shrink: 0;
+
+.lpc-swatch-label {
+  min-width: 72px;
+  max-width: 120px;
+  font-weight: 500;
+  color: var(--lpc-text, #1c2824);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+button.palette-recolor-item .palette-swatch {
+  flex: 1 1 120px;
+  min-width: 96px;
+  max-width: 200px;
 }
 
 /**
- * Palette Recolor Modal Styles
+ * Palette Recolor Native Dialog Modal (UI-04)
  */
-.palette-modal {
-    position: fixed;
-    top: 9vh;
-    left: 25vw;
-    right: 50vw;
-    margin: 0;
-    min-width: 280px;
-    background: #fff;
-    border: 1px solid #ccc;
-    padding: 0;
-    z-index: 1000;
-    max-height: 85vh;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 2px 16px #0002;
-}
-.palette-modal header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 1rem;
-    border-bottom: 1px solid #eee;
-    background: #fafafa;
-    top: 0;
-    z-index: 2;
-}
-.palette-modal header h4 {
-    margin: 0;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-.palette-modal header button {
-    background: none;
-    border: none;
-    font-size: 1.5em;
-    cursor: pointer;
+dialog.palette-modal {
+  position: fixed;
+  margin: auto;
+  padding: 0;
+  width: min(640px, calc(100vw - 48px));
+  max-width: calc(100vw - 24px);
+  max-height: min(85dvh, calc(100dvh - 24px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)));
+  background: var(--lpc-surface, #ffffff);
+  color: var(--lpc-text, #1c2824);
+  border: 1px solid var(--lpc-separator, #d6dfd8);
+  border-radius: var(--lpc-radius-panel, 12px);
+  box-shadow: 0 12px 32px rgba(28, 40, 36, 0.18);
+  overflow: hidden;
+  font-family: var(--lpc-font-sans, sans-serif);
 }
 
-.palette-modal section {
-    flex: 1 1 auto;
-    min-height: 0;
-    overflow-y: auto;
-    padding: 0 1em;
+dialog.palette-modal[open] {
+  display: flex;
+  flex-direction: column;
 }
-.palette-modal section .palette-version {
-    font-weight: bold;
-    margin: 0.5em 0 0.2em 0;
+
+dialog.palette-modal::backdrop {
+  background: var(--lpc-backdrop, rgba(28, 40, 36, 0.34));
 }
-.palette-modal section .palette-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.5em;
-    cursor: pointer;
+
+.lpc-palette-dialog-inner {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-height: inherit;
+  width: 100%;
+  box-sizing: border-box;
 }
-.palette-modal .variants-container.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    row-gap: 0;
-    column-gap: 10px;
+
+.palette-modal header.lpc-palette-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--lpc-separator, #d6dfd8);
+  background: var(--lpc-surface, #ffffff);
+  flex: 0 0 auto;
 }
-.palette-modal .grid > .cell {
-    justify-content: center;
+
+.palette-modal header.lpc-palette-header h4 {
+  margin: 0;
+  font-family: var(--lpc-font-sans, sans-serif);
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  color: var(--lpc-text, #1c2824);
 }
-.palette-modal .variant-canvas {
-    margin: 0;
-    margin-bottom: 0.5rem;
-    padding: 0;
+
+.palette-modal header.lpc-palette-header button.lpc-palette-close {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 10px;
+  margin: -4px -4px -4px 0;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--lpc-radius-control, 8px);
+  color: var(--lpc-text, #1c2824);
+  font-family: var(--lpc-font-sans, sans-serif);
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color var(--lpc-transition, 140ms ease),
+    border-color var(--lpc-transition, 140ms ease);
 }
+
+.palette-modal header.lpc-palette-header button.lpc-palette-close:hover {
+  background-color: var(--lpc-surface-subtle, #f2f4ef);
+  border-color: var(--lpc-control-border, #7a8b82);
+}
+
+.palette-modal section.lpc-palette-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 12px 16px 16px;
+}
+
+.lpc-palette-loading {
+  margin: 12px 0;
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--lpc-muted, #4f6057);
+}
+
+.palette-modal .palette-modal-source-block,
+.palette-modal .palette-modal-version-block {
+  margin-bottom: 12px;
+}
+
+.palette-modal button.tree-label.lpc-palette-version-btn {
+  appearance: none;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--lpc-radius-control, 8px);
+  width: 100%;
+  min-height: 40px;
+  padding: 6px 8px;
+  margin: 0 0 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  cursor: pointer;
+  color: var(--lpc-text, #1c2824);
+  font-family: var(--lpc-font-sans, sans-serif);
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 600;
+}
+
+.palette-modal button.tree-label.lpc-palette-version-btn:hover {
+  background-color: var(--lpc-surface-subtle, #f2f4ef);
+}
+
+.palette-modal .palette-version {
+  font-weight: 600;
+  color: var(--lpc-text, #1c2824);
+}
+
+.palette-modal .variants-container.lpc-palette-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 96px), 1fr));
+  gap: 10px;
+  margin: 0;
+  max-height: none;
+  overflow: visible;
+}
+
+.palette-modal .lpc-palette-grid > .cell {
+  display: flex;
+  min-width: 0;
+}
+
+.palette-modal button.variant-item.lpc-palette-tile {
+  appearance: none;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  min-height: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 8px;
+  background-color: var(--lpc-surface, #ffffff);
+  border: 1px solid var(--lpc-separator, #d6dfd8);
+  border-radius: var(--lpc-radius-control, 8px);
+  color: var(--lpc-text, #1c2824);
+  font-family: var(--lpc-font-sans, sans-serif);
+  cursor: pointer;
+  transition:
+    background-color var(--lpc-transition, 140ms ease),
+    border-color var(--lpc-transition, 140ms ease);
+}
+
+.palette-modal button.variant-item.lpc-palette-tile:hover {
+  background-color: var(--lpc-surface-hover, #eaeee8);
+  border-color: var(--lpc-control-border, #7a8b82);
+}
+
+.palette-modal button.variant-item.lpc-palette-tile.has-background-link-light,
+.palette-modal button.variant-item.lpc-palette-tile.lpc-tile-selected {
+  background-color: var(--lpc-selected, #e4f2eb) !important;
+  border-color: var(--lpc-selected-border, #235d48) !important;
+  box-shadow: inset 0 0 0 1px var(--lpc-selected-border, #235d48);
+  color: var(--lpc-accent, #235d48) !important;
+  font-weight: 600;
+}
+
 .palette-modal .variant-display-name {
-    white-space: nowrap;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
+
+.palette-modal .variant-canvas {
+  margin: 0;
+  padding: 0;
+}
+
 .palette-modal .palette-swatch {
-    width: 100%;
-    height: 1rem;
-    overflow: hidden;
-}
-.palette-modal footer {
-    flex: 1 1 auto;
-    min-height: 0.5rem;
+  width: 100%;
+  height: 14px;
 }
 
-.palette-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0,0,0,0.05);
-    z-index: 999;
+@media (max-width: 767.98px) {
+  dialog.palette-modal {
+    width: calc(100vw - 24px);
+    max-width: calc(100vw - 24px);
+  }
 }
 
-/* Full width through Bulma desktop (tablet + small desktop). Widescreen+ keeps the 25vw inset. */
-@media (max-width: 1215px) {
-    .palette-modal {
-        max-width: 100vw;
-        width: 100vw;
-        left: 0;
-        right: 0;
-        border-radius: 0;
-    }
+@media (max-width: 1023.98px), (pointer: coarse) {
+  button.palette-recolor-item.lpc-swatch-btn {
+    min-height: 44px;
+  }
+
+  .palette-modal button.tree-label.lpc-palette-version-btn {
+    min-height: 44px;
+  }
 }

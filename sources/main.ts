@@ -138,6 +138,29 @@ let hashHydrationInitDone = false;
 
 // Wait for DOM to be ready, then mount UI; catalog may already be loading or ready.
 document.addEventListener("DOMContentLoaded", () => {
+  document
+    .querySelector('header a[href="#credits-section"]')
+    ?.addEventListener("click", (event) => {
+      const click = event as MouseEvent;
+      if (
+        click.defaultPrevented ||
+        click.button !== 0 ||
+        click.metaKey ||
+        click.ctrlKey ||
+        click.shiftKey ||
+        click.altKey
+      ) {
+        return;
+      }
+      const credits = document.getElementById("credits-section");
+      if (!credits) return;
+      click.preventDefault();
+      credits.scrollIntoView({ block: "start" });
+      credits
+        .querySelector<HTMLButtonElement>("button.collapsible-header")
+        ?.focus({ preventScroll: true });
+    });
+
   // Mount roots are static markup in index.html; assert non-null.
   // main.ts is the composition root; App and sibling previews receive the same catalog.
   m.mount(document.getElementById("mithril-filters")!, {

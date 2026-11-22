@@ -1,9 +1,14 @@
 // Advanced Tools component - Custom file upload with z-position
 import m from "mithril";
-import type { State } from "../../state/state.ts";
+import { clearCustomImage, type State } from "../../state/state.ts";
 import { CollapsibleSection } from "../CollapsibleSection.ts";
 
-export const AdvancedTools: m.Component<{ state: State }> = {
+const CUSTOM_ZPOS_INPUT_ID = "customImageZPosInput";
+
+export const AdvancedTools: m.Component<
+  { state: State },
+  { fileRequest?: number }
+> = {
   view(vnode) {
     const { state } = vnode.attrs;
     const handleFileUpload = (e: Event) => {
@@ -11,8 +16,11 @@ export const AdvancedTools: m.Component<{ state: State }> = {
       const file = target.files?.[0];
       if (!file) return;
 
+      const request = ++state.customImageRequest;
+      vnode.state.fileRequest = request;
       const img = new Image();
       img.onload = () => {
+        if (request !== state.customImageRequest) return;
         state.customUploadedImage = img;
         m.redraw();
       };
@@ -26,29 +34,25 @@ export const AdvancedTools: m.Component<{ state: State }> = {
       m.redraw();
     };
 
-    const clearCustomImage = () => {
-      state.customUploadedImage = null;
-      state.customImageZPos = 0;
-      const fileInput = document.getElementById(
-        "customFileInput",
-      ) as HTMLInputElement | null;
-      if (fileInput) fileInput.value = "";
-      m.redraw();
-    };
-
     return m(
       CollapsibleSection,
       {
         title: "Advanced Tools",
         defaultOpen: false,
+        boxClass: "box lpc-advanced-panel",
       },
-      [
-        m("div.field", [
-          m("label.label", "Custom File Upload"),
+      m("div.lpc-advanced-form", [
+        m("div.field.lpc-advanced-field", [
+          m("label.label", { for: "customFileInput" }, "Custom File Upload"),
           m("div.control", [
             m("input.input[type=file]#customFileInput", {
               accept: "image/*",
               onchange: handleFileUpload,
+              onupdate: (inputVnode) => {
+                if (vnode.state.fileRequest !== state.customImageRequest) {
+                  (inputVnode.dom as HTMLInputElement).value = "";
+                }
+              },
             }),
           ]),
           m(
@@ -56,10 +60,11 @@ export const AdvancedTools: m.Component<{ state: State }> = {
             "Upload a local image file to overlay on the spritesheet",
           ),
         ]),
-        m("div.field", [
-          m("label.label", "Z-Position"),
+        m("div.field.lpc-advanced-field", [
+          m("label.label", { for: CUSTOM_ZPOS_INPUT_ID }, "Z-Position"),
           m("div.control", [
             m("input.input[type=number]", {
+              id: CUSTOM_ZPOS_INPUT_ID,
               value: state.customImageZPos,
               oninput: handleZPosChange,
               placeholder: "0",
@@ -77,18 +82,19 @@ export const AdvancedTools: m.Component<{ state: State }> = {
           ]),
         ]),
         state.customUploadedImage &&
-          m("div.field", [
+          m("div.field.lpc-advanced-field", [
             m("div.control", [
               m(
-                "button.button.is-small.is-warning",
+                "button.button.is-small.is-warning.lpc-btn-warning",
                 {
-                  onclick: clearCustomImage,
+                  type: "button",
+                  onclick: () => clearCustomImage(state),
                 },
                 "Clear Custom Image",
               ),
             ]),
           ]),
-      ],
+      ]),
     );
   },
 };

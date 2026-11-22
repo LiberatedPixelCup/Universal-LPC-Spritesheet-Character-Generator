@@ -2,12 +2,14 @@
 import m from "mithril";
 import type { State } from "../../state/state.ts";
 import { ANIMATIONS, FRAME_SIZE } from "../../state/constants.ts";
+import { customAnimations } from "../../custom-animations.ts";
 import { CollapsibleSection } from "../CollapsibleSection.ts";
 import {
   setPreviewAnimation,
   startPreviewAnimation,
   stopPreviewAnimation,
   getCustomAnimations,
+  getPreviewFrameCycle,
   repaintStaticPreviewFrameForTests,
 } from "../../canvas/preview-animation.ts";
 import {
@@ -19,11 +21,13 @@ import { ScrollableContainer } from "./ScrollableContainer.ts";
 import { PreviewMetadataLoadingOverlay } from "./PreviewMetadataLoadingOverlay.ts";
 import type { CatalogReader } from "../../state/catalog.ts";
 
+const ANIMATION_SELECT_ID = "lpc-animation-select";
+const ANIMATION_ZOOM_ID = "lpc-animation-zoom";
+
 type PreviewCanvasAttrs = {
   state: State;
   selectedAnimation: string;
   zoomLevel: number;
-  onFrameCycleUpdate: (frameCycle: string) => void;
 };
 
 type PreviewCanvasState = {
@@ -39,7 +43,7 @@ export const PreviewCanvas: m.Component<
 > = {
   oncreate(vnode) {
     const canvas = vnode.dom as HTMLCanvasElement;
-    const { state, selectedAnimation, onFrameCycleUpdate } = vnode.attrs;
+    const { state, selectedAnimation } = vnode.attrs;
     const zoomLevel = vnode.attrs.zoomLevel || 1;
 
     if (!window.canvasRenderer) {
@@ -47,13 +51,10 @@ export const PreviewCanvas: m.Component<
       return;
     }
 
+    setPreviewAnimation(selectedAnimation);
     initPreviewCanvas(canvas);
-    const frames = setPreviewAnimation(selectedAnimation);
+    setPreviewCanvasZoom(zoomLevel);
     startPreviewAnimation(state);
-
-    if (frames) {
-      onFrameCycleUpdate(frames.join("-"));
-    }
 
     vnode.state.zoomLevel = zoomLevel;
     vnode.state.lastAnimation = selectedAnimation;
@@ -93,7 +94,11 @@ export const PreviewCanvas: m.Component<
       vnode.state.lastAnimation = selectedAnimation;
     }
 
-    vnode.state.zoomLevel = state.previewCanvasZoomLevel || 1;
+    const zoomLevel = state.previewCanvasZoomLevel || 1;
+    if (vnode.state.zoomLevel !== zoomLevel) {
+      vnode.state.zoomLevel = zoomLevel;
+      setPreviewCanvasZoom(zoomLevel);
+    }
     repaintStaticPreviewFrameForTests(state);
   },
   onremove(vnode) {
@@ -120,31 +125,10 @@ export const PreviewCanvas: m.Component<
 
 type AnimationOption = { value: string; label: string };
 
-type AnimationPreviewState = {
-  selectedAnimation: string;
-  zoomLevel: number;
-  frameCycle: string;
-};
-
-export const AnimationPreview: m.Component<
-  { catalog: CatalogReader; state: State },
-  AnimationPreviewState
-> = {
-  oninit(vnode) {
-    const { state } = vnode.attrs;
-    vnode.state.selectedAnimation = "walk";
-    vnode.state.zoomLevel = state.previewCanvasZoomLevel || 1;
-    if (window.canvasRenderer) {
-      const frames = setPreviewAnimation("walk");
-      vnode.state.frameCycle = frames ? frames.join("-") : "";
-    } else {
-      vnode.state.frameCycle = "";
-    }
-  },
-  onupdate(vnode) {
-    const { state } = vnode.attrs;
-    vnode.state.zoomLevel = state.previewCanvasZoomLevel || 1;
-  },
+export const AnimationPreview: m.Component<{
+  catalog: CatalogReader;
+  state: State;
+}> = {
   view(vnode) {
     const { catalog, state } = vnode.attrs;
     const customAnims = Object.keys(getCustomAnimations());
@@ -156,109 +140,96 @@ export const AnimationPreview: m.Component<
       })),
     ];
 
-    if (
-      !allAnimations.find(
-        (anim) => anim.value === vnode.state.selectedAnimation,
-      )
-    ) {
-      vnode.state.selectedAnimation = "walk";
-      state.selectedAnimation = "walk";
-      if (window.canvasRenderer) {
-        const frames = setPreviewAnimation("walk");
-        vnode.state.frameCycle = frames ? frames.join("-") : "";
-      }
+    const available = allAnimations.some(
+      (anim) => anim.value === state.selectedAnimation,
+    );
+    const awaitingOutfit =
+      Object.hasOwn(customAnimations, state.selectedAnimation) &&
+      (!state.previewBootstrapRenderDone ||
+        state.pendingCharacterRender !== null);
+    const selectedAnimation = available ? state.selectedAnimation : "walk";
+    if (!available && !awaitingOutfit) {
+      state.selectedAnimation = selectedAnimation;
     }
+
+    const frameCycle = getPreviewFrameCycle(selectedAnimation).join("-");
+    const zoomLevel = state.previewCanvasZoomLevel || 1;
+    const zoomPct = `${Math.round(zoomLevel * 100)}%`;
 
     return m(
       CollapsibleSection,
       {
         title: "Animation Preview",
         defaultOpen: true,
-        boxClass: "box",
+        boxClass: "box lpc-animation-panel",
       },
       [
-        m("div.columns.is-multiline", [
-          m("div.column", [
-            m("div.field.is-horizontal.is-align-items-center", [
-              m("div.field-label.is-normal", [
-                m("label.label.mb-0", "Animation"),
-              ]),
-              m("div.field-body", [
-                m("div.field.has-addons.mb-0", [
-                  m("div.control", [
-                    m("div.select", [
-                      m(
-                        "select",
-                        {
-                          value: vnode.state.selectedAnimation,
-                          onchange: (e: Event) => {
-                            const target = e.target as HTMLSelectElement;
-                            vnode.state.selectedAnimation = target.value;
-                            state.selectedAnimation =
-                              vnode.state.selectedAnimation;
-                            if (window.canvasRenderer) {
-                              const frames = setPreviewAnimation(target.value);
-                              vnode.state.frameCycle = frames
-                                ? frames.join("-")
-                                : "";
-                            }
-                          },
-                        },
-                        allAnimations.map((anim) =>
-                          m("option", { value: anim.value }, anim.label),
-                        ),
-                      ),
-                    ]),
-                  ]),
-                  m("div.control", [
-                    m("span.button.is-static.is-light", vnode.state.frameCycle),
-                  ]),
-                ]),
-              ]),
-            ]),
-          ]),
-          m("div.column", [
-            m("div.field.is-horizontal.is-align-items-center", [
-              m("div.field-label.is-normal", [
-                m(
-                  "label.label.mb-0",
-                  `Zoom: ${Math.round(vnode.state.zoomLevel * 100)}%`,
+        m("div.lpc-anim-controls", [
+          m("div.lpc-anim-select-group", [
+            m(
+              "label.lpc-control-label.mb-0",
+              { for: ANIMATION_SELECT_ID },
+              "Animation",
+            ),
+            m("div.select.lpc-select", [
+              m(
+                "select",
+                {
+                  id: ANIMATION_SELECT_ID,
+                  value: selectedAnimation,
+                  onupdate: (select: m.VnodeDOM) => {
+                    // Mithril sets value before inserting new options on updates.
+                    const element = select.dom as HTMLSelectElement;
+                    if (element.value !== selectedAnimation) {
+                      element.value = selectedAnimation;
+                    }
+                  },
+                  onchange: (e: Event) => {
+                    const target = e.target as HTMLSelectElement;
+                    state.selectedAnimation = target.value;
+                  },
+                },
+                allAnimations.map((anim) =>
+                  m("option", { value: anim.value }, anim.label),
                 ),
-              ]),
-              m("div.field-body", [
-                m("div.field.mb-0", [
-                  m("div.control.is-expanded", [
-                    m("input.is-fullwidth[type=range]", {
-                      min: 0.5,
-                      max: 2,
-                      step: 0.1,
-                      value: vnode.state.zoomLevel,
-                      oninput: (e: Event) => {
-                        const target = e.target as HTMLInputElement;
-                        vnode.state.zoomLevel = parseFloat(target.value);
-                        state.previewCanvasZoomLevel = vnode.state.zoomLevel;
-                        if (window.canvasRenderer) {
-                          setPreviewCanvasZoom(vnode.state.zoomLevel);
-                        }
-                      },
-                    }),
-                  ]),
-                ]),
-              ]),
+              ),
             ]),
+            frameCycle
+              ? m(
+                  "span.lpc-frame-cycle",
+                  { "aria-label": "Frame cycle" },
+                  frameCycle,
+                )
+              : null,
+          ]),
+          m("div.lpc-anim-zoom-group", [
+            m("label.lpc-control-label.mb-0", { for: ANIMATION_ZOOM_ID }, [
+              "Zoom: ",
+              m("span.lpc-zoom-value", zoomPct),
+            ]),
+            m("input.lpc-range[type=range]", {
+              id: ANIMATION_ZOOM_ID,
+              min: 0.5,
+              max: 2,
+              step: 0.1,
+              value: zoomLevel,
+              oninput: (e: Event) => {
+                const target = e.target as HTMLInputElement;
+                state.previewCanvasZoomLevel = parseFloat(target.value);
+              },
+            }),
           ]),
         ]),
-        m("div.mt-3", [
-          m("div.preview-canvas-area", [
-            m(ScrollableContainer, { classes: "spritesheet-preview" }, [
+        m("div.preview-canvas-area.lpc-anim-viewport", [
+          m(
+            ScrollableContainer,
+            { classes: "spritesheet-preview lpc-anim-scroll" },
+            [
               m("div.preview-canvas-root", [
                 m(PreviewCanvas, {
                   state,
-                  selectedAnimation: vnode.state.selectedAnimation,
-                  zoomLevel: vnode.state.zoomLevel,
-                  onFrameCycleUpdate: (frameCycle) => {
-                    vnode.state.frameCycle = frameCycle;
-                  },
+                  selectedAnimation,
+                  zoomLevel,
                 }),
                 state.isRenderingCharacter
                   ? m("div.preview-canvas-busy", { "aria-hidden": true }, [
@@ -272,8 +243,8 @@ export const AnimationPreview: m.Component<
                   state,
                 }),
               ]),
-            ]),
-          ]),
+            ],
+          ),
         ]),
       ],
     );

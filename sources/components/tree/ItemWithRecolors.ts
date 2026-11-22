@@ -11,24 +11,29 @@ import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../../state/constants.ts";
 type ItemWithRecolorsState = {
   showPaletteModal: number | null;
   isLoading?: boolean;
-  imagesLoaded: number;
-  lastPreviewKey: string;
   _palettePreviewLastTotal?: number;
+  returnFocusEl?: HTMLElement | null;
+  disclosureEl?: HTMLElement | null;
 };
 
+type ThumbnailState = { renderId?: number; previewKey?: string };
+
 function previewKey(
+  bodyType: string,
   selectedColors: Record<string, string>,
   compactDisplay: boolean,
 ): string {
-  return JSON.stringify([compactDisplay, selectedColors]);
+  return JSON.stringify([bodyType, compactDisplay, selectedColors]);
 }
 
 function openPaletteModal(
   option: RecolorPaletteOptionModel,
   rootViewNode: { state: ItemWithRecolorsState },
   modalIdx: number,
+  opener?: HTMLElement | null,
 ): void {
   option.prepareSelection();
+  rootViewNode.state.returnFocusEl = opener ?? null;
   rootViewNode.state._palettePreviewLastTotal = undefined;
   rootViewNode.state.showPaletteModal = modalIdx;
   m.redraw();
@@ -41,6 +46,7 @@ export const ItemWithRecolors: m.Component<
   view(vnode) {
     const model = vnode.attrs.createModel();
     const {
+      bodyType,
       isSearchMatch,
       isCompatible,
       compactDisplay,
@@ -53,6 +59,23 @@ export const ItemWithRecolors: m.Component<
     const displayName = model.name;
     const rootViewNode = vnode;
     const isExpanded = model.isExpanded;
+    const drawThumbnail = (canvasVnode: m.VnodeDOM) => {
+      const thumbnail = canvasVnode.state as ThumbnailState;
+      const key = previewKey(bodyType, selectedColors, compactDisplay);
+      if (thumbnail.previewKey === key) return;
+      thumbnail.previewKey = key;
+      const renderId = (thumbnail.renderId ?? 0) + 1;
+      thumbnail.renderId = renderId;
+      void model.drawPreview(
+        canvasVnode.dom as HTMLCanvasElement,
+        selectedColors,
+        () => thumbnail.renderId !== renderId,
+      );
+    };
+    const cancelThumbnail = (canvasVnode: m.VnodeDOM) => {
+      const thumbnail = canvasVnode.state as ThumbnailState;
+      thumbnail.renderId = (thumbnail.renderId ?? 0) + 1;
+    };
 
     // Check Selection Status
     let paletteModal = null;
@@ -61,18 +84,23 @@ export const ItemWithRecolors: m.Component<
       typeof rootViewNode.state.showPaletteModal === "number"
     ) {
       const idx = rootViewNode.state.showPaletteModal;
-      paletteModal = m(PaletteSelectModal, {
-        createModel: paletteOptions[idx].createModalModel,
-        onClose: () => {
-          rootViewNode.state.showPaletteModal = null;
-          rootViewNode.state._palettePreviewLastTotal = undefined;
-          m.redraw();
-        },
-      });
+      const targetOption = paletteOptions[idx];
+      if (targetOption) {
+        paletteModal = m(PaletteSelectModal, {
+          createModel: targetOption.createModalModel,
+          returnFocusTo: rootViewNode.state.returnFocusEl ?? null,
+          fallbackFocusTo: rootViewNode.state.disclosureEl ?? null,
+          onClose: () => {
+            rootViewNode.state.showPaletteModal = null;
+            rootViewNode.state._palettePreviewLastTotal = undefined;
+            m.redraw();
+          },
+        });
+      }
     }
 
     return m(
-      "div",
+      "div.lpc-tree-item-row",
       {
         class: classNames({
           "search-result": isSearchMatch,
@@ -81,229 +109,101 @@ export const ItemWithRecolors: m.Component<
       },
       [
         m(
-          "div.tree-label",
+          "button.tree-label.lpc-tree-disclosure",
           {
+            type: "button",
+            "aria-expanded": String(isExpanded),
             title: rowTitle,
+            oncreate: (btnVnode: m.VnodeDOM) => {
+              rootViewNode.state.disclosureEl = btnVnode.dom as HTMLElement;
+            },
+            onupdate: (btnVnode: m.VnodeDOM) => {
+              rootViewNode.state.disclosureEl = btnVnode.dom as HTMLElement;
+            },
             onclick: model.toggle,
           },
           [
             m("span.tree-arrow", {
               class: isExpanded ? "expanded" : "collapsed",
+              "aria-hidden": "true",
             }),
             m("span", displayName),
-            !isCompatible ? m("span.ml-1", "⚠️") : null,
+            !isCompatible
+              ? m("span.ml-1", { "aria-hidden": "true" }, "⚠️")
+              : null,
           ],
         ),
         paletteModal,
         isExpanded && !paletteReady
-          ? m("div.ml-4.mt-2", [
+          ? m("div.lpc-recolor-loading", [
               m(
                 "div.skeleton-row.skeleton-row--stacked",
                 { "aria-busy": "true" },
                 [
                   m("span.skeleton-row__bar.skeleton-row__bar--long"),
                   m("span.skeleton-row__bar.skeleton-row__bar--medium"),
-                  m(
-                    "div",
-                    {
-                      class: classNames({
-                        "variant-item is-flex is-flex-direction-column is-align-items-center is-clickable": true,
-                        "has-background-link-light has-text-weight-bold has-text-link":
-                          isSelected,
-                        "is-not-compatible": !isCompatible,
-                      }),
-                    },
-                    [
-                      m("canvas.variant-canvas.box.p-0", {
-                        width: compactDisplay ? COMPACT_FRAME_SIZE : FRAME_SIZE,
-                        height: compactDisplay
-                          ? COMPACT_FRAME_SIZE
-                          : FRAME_SIZE,
-                        class: compactDisplay ? " compact-display" : "",
-                        oncreate: (canvasVnode: m.VnodeDOM) => {
-                          const canvas = canvasVnode.dom as HTMLCanvasElement;
-                          const cs = canvasVnode.state as {
-                            renderId?: number;
-                            lastPreviewKey?: string;
-                          };
-                          const renderId = (cs.renderId ?? 0) + 1;
-                          cs.renderId = renderId;
-                          cs.lastPreviewKey = previewKey(
-                            selectedColors,
-                            compactDisplay,
-                          );
-                          void model.drawPreview(
-                            canvas,
-                            selectedColors,
-                            () => cs.renderId !== renderId,
-                          );
-                        },
-                        onupdate: (canvasVnode: m.VnodeDOM) => {
-                          const canvas = canvasVnode.dom as HTMLCanvasElement;
-                          const cs = canvasVnode.state as {
-                            renderId?: number;
-                            lastPreviewKey?: string;
-                          };
-                          const key = previewKey(
-                            selectedColors,
-                            compactDisplay,
-                          );
-                          if (cs.lastPreviewKey === key) return;
-                          cs.lastPreviewKey = key;
-                          const renderId = (cs.renderId ?? 0) + 1;
-                          cs.renderId = renderId;
-                          void model.drawPreview(
-                            canvas,
-                            selectedColors,
-                            () => cs.renderId !== renderId,
-                          );
-                        },
-                        onremove: (canvasVnode: m.VnodeDOM) => {
-                          const cs = canvasVnode.state as {
-                            renderId?: number;
-                          };
-                          cs.renderId = (cs.renderId ?? 0) + 1;
-                        },
-                      }),
-                    ],
-                  ),
-                  // Small color icons for each recolor category
-                  paletteOptions.length
-                    ? m(
-                        "div.ml-3.is-align-items-center.palette-recolor-list",
-                        paletteOptions.map((opt, idx) => {
-                          const gradient = (opt.colors ?? []).slice().reverse();
-                          return m(
-                            "div.is-flex.palette-recolor-item",
-                            {
-                              onclick: (e: MouseEvent) => {
-                                e.stopPropagation();
-                                rootViewNode.state._palettePreviewLastTotal =
-                                  undefined;
-                                rootViewNode.state.showPaletteModal = idx;
-                                m.redraw();
-                              },
-                            },
-                            [
-                              m("label", opt.label),
-                              m(
-                                "div.palette-swatch",
-                                gradient.map((color) =>
-                                  m("span", {
-                                    style: {
-                                      backgroundColor: color,
-                                    },
-                                  }),
-                                ),
-                              ),
-                            ],
-                          );
-                        }),
-                      )
-                    : null,
-                ],
-              ),
-              m("p.is-size-7.has-text-grey.mt-2", "Loading palette data…"),
-            ])
-          : isExpanded
-            ? m("div", [
-                m("div", {
-                  class: rootViewNode.state.isLoading ? "loading" : "",
-                }),
-                m(
-                  "div.is-flex.is-align-items-center",
-                  {
-                    title: rowTitle,
-                    onmouseover: (e: MouseEvent) => {
-                      if (!isCompatible) return;
-                      const div = e.currentTarget as HTMLElement;
-                      if (!isSelected)
-                        div.classList.add("has-background-white-ter");
-                    },
-                    onmouseout: (e: MouseEvent) => {
-                      if (!isCompatible) return;
-                      const div = e.currentTarget as HTMLElement;
-
-                      if (!isSelected)
-                        div.classList.remove("has-background-white-ter");
-                    },
-                    onclick: (e: MouseEvent) => {
-                      e.stopPropagation();
-                      if (!paletteReady) return;
-                      openPaletteModal(paletteOptions[0], rootViewNode, 0);
-                    },
-                  },
-                  [
+                  m("div.lpc-recolor-row", [
                     m(
                       "div",
                       {
                         class: classNames({
-                          "variant-item is-flex is-flex-direction-column is-align-items-center is-clickable": true,
-                          "has-background-link-light has-text-weight-bold has-text-link":
+                          "variant-item lpc-recolor-thumb-btn is-clickable": true,
+                          "has-background-link-light lpc-tile-selected":
                             isSelected,
                           "is-not-compatible": !isCompatible,
                         }),
                       },
                       [
-                        m("canvas.variant-canvas.box.p-0", {
+                        m("canvas.variant-canvas", {
+                          key: bodyType,
                           width: compactDisplay
                             ? COMPACT_FRAME_SIZE
                             : FRAME_SIZE,
                           height: compactDisplay
                             ? COMPACT_FRAME_SIZE
                             : FRAME_SIZE,
-                          class: compactDisplay ? " compact-display" : "",
-                          oncreate: async (canvasVnode: m.VnodeDOM) => {
-                            const canvas = canvasVnode.dom as HTMLCanvasElement;
-                            const imagesLoaded =
-                              await model.drawPreview(canvas);
-                            if (imagesLoaded > 0) {
-                              rootViewNode.state.imagesLoaded += imagesLoaded;
-                              rootViewNode.state.lastPreviewKey = previewKey(
-                                selectedColors,
-                                compactDisplay,
-                              );
-                            }
-                          },
-                          onupdate: async (canvasVnode: m.VnodeDOM) => {
-                            const key = previewKey(
-                              selectedColors,
-                              compactDisplay,
-                            );
-                            if (rootViewNode.state.lastPreviewKey === key) {
-                              return;
-                            }
-                            const canvas = canvasVnode.dom as HTMLCanvasElement;
-                            const imagesLoaded =
-                              await model.drawPreview(canvas);
-                            if (imagesLoaded > 0) {
-                              rootViewNode.state.lastPreviewKey = key;
-                            }
-                          },
+                          "aria-hidden": "true",
+                          class: compactDisplay ? "compact-display" : "",
+                          oncreate: drawThumbnail,
+                          onupdate: drawThumbnail,
+                          onremove: cancelThumbnail,
                         }),
                       ],
                     ),
-                    // Small color icons for each recolor category
                     paletteOptions.length
                       ? m(
-                          "div.ml-3.is-align-items-center.palette-recolor-list",
+                          "div.palette-recolor-list",
                           paletteOptions.map((opt, idx) => {
                             const gradient = (opt.colors ?? [])
                               .slice()
                               .reverse();
                             return m(
-                              "div.is-flex.palette-recolor-item",
+                              "button.palette-recolor-item.lpc-swatch-btn",
                               {
+                                key: `${opt.label ?? idx}-${idx}`,
+                                type: "button",
+                                "aria-disabled": !isCompatible
+                                  ? "true"
+                                  : undefined,
+                                class: classNames({
+                                  "is-not-compatible": !isCompatible,
+                                }),
                                 onclick: (e: MouseEvent) => {
                                   e.stopPropagation();
-                                  if (!paletteReady) return;
-                                  openPaletteModal(opt, rootViewNode, idx);
+                                  if (!isCompatible) return;
+                                  rootViewNode.state.returnFocusEl =
+                                    e.currentTarget as HTMLElement;
+                                  rootViewNode.state._palettePreviewLastTotal =
+                                    undefined;
+                                  rootViewNode.state.showPaletteModal = idx;
+                                  m.redraw();
                                 },
                               },
                               [
-                                m("label", opt.label),
+                                m("span.lpc-swatch-label", opt.label),
                                 m(
-                                  "div.palette-swatch",
+                                  "span.palette-swatch",
+                                  { "aria-hidden": "true" },
                                   gradient.map((color) =>
                                     m("span", {
                                       style: {
@@ -317,8 +217,107 @@ export const ItemWithRecolors: m.Component<
                           }),
                         )
                       : null,
-                  ],
-                ),
+                  ]),
+                ],
+              ),
+              m("p.lpc-helper-text.mt-2", "Loading palette data…"),
+            ])
+          : isExpanded
+            ? m("div", [
+                m("div", {
+                  class: rootViewNode.state.isLoading ? "loading" : "",
+                }),
+                m("div.lpc-recolor-row", { title: rowTitle }, [
+                  m(
+                    "button.variant-item.lpc-recolor-thumb-btn",
+                    {
+                      type: "button",
+                      "aria-label": `Choose color for ${displayName}`,
+                      "aria-pressed": String(isSelected),
+                      "aria-disabled": !isCompatible ? "true" : undefined,
+                      class: classNames({
+                        "is-clickable": isCompatible,
+                        "has-background-link-light lpc-tile-selected":
+                          isSelected,
+                        "is-not-compatible": !isCompatible,
+                      }),
+                      onclick: (e: MouseEvent) => {
+                        e.stopPropagation();
+                        if (
+                          !isCompatible ||
+                          !paletteReady ||
+                          !paletteOptions.length
+                        )
+                          return;
+                        openPaletteModal(
+                          paletteOptions[0],
+                          rootViewNode,
+                          0,
+                          e.currentTarget as HTMLElement,
+                        );
+                      },
+                    },
+                    [
+                      m("canvas.variant-canvas", {
+                        key: bodyType,
+                        width: compactDisplay ? COMPACT_FRAME_SIZE : FRAME_SIZE,
+                        height: compactDisplay
+                          ? COMPACT_FRAME_SIZE
+                          : FRAME_SIZE,
+                        "aria-hidden": "true",
+                        class: compactDisplay ? "compact-display" : "",
+                        oncreate: drawThumbnail,
+                        onupdate: drawThumbnail,
+                        onremove: cancelThumbnail,
+                      }),
+                    ],
+                  ),
+                  paletteOptions.length
+                    ? m(
+                        "div.palette-recolor-list",
+                        paletteOptions.map((opt, idx) => {
+                          const gradient = (opt.colors ?? []).slice().reverse();
+                          return m(
+                            "button.palette-recolor-item.lpc-swatch-btn",
+                            {
+                              key: `${opt.label ?? idx}-${idx}`,
+                              type: "button",
+                              "aria-disabled": !isCompatible
+                                ? "true"
+                                : undefined,
+                              class: classNames({
+                                "is-not-compatible": !isCompatible,
+                              }),
+                              onclick: (e: MouseEvent) => {
+                                e.stopPropagation();
+                                if (!isCompatible || !paletteReady) return;
+                                openPaletteModal(
+                                  opt,
+                                  rootViewNode,
+                                  idx,
+                                  e.currentTarget as HTMLElement,
+                                );
+                              },
+                            },
+                            [
+                              m("span.lpc-swatch-label", opt.label),
+                              m(
+                                "span.palette-swatch",
+                                { "aria-hidden": "true" },
+                                gradient.map((color) =>
+                                  m("span", {
+                                    style: {
+                                      backgroundColor: color,
+                                    },
+                                  }),
+                                ),
+                              ),
+                            ],
+                          );
+                        }),
+                      )
+                    : null,
+                ]),
               ])
             : null,
       ],

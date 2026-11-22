@@ -1,6 +1,7 @@
 import m from "mithril";
 import { selectDefaults } from "./state.ts";
 import type { Selection, Selections, State } from "./state.ts";
+import { BODY_TYPES } from "./constants.ts";
 import { parseRecolorKey } from "./palettes.ts";
 import { debugWarn } from "../utils/debug.ts";
 import {
@@ -59,6 +60,7 @@ let _setHashCalledTimes = 0;
  * value is immutable in tests).
  */
 type WindowWithTesting = Window & { isTesting?: boolean };
+export type HashWriteMode = "push" | "replace";
 
 export function getHash(): string {
   const w = window as WindowWithTesting;
@@ -66,14 +68,21 @@ export function getHash(): string {
   return window.location.hash;
 }
 
-export function setHash(hash: string): void {
+export function setHash(hash: string, mode: HashWriteMode = "push"): void {
   const w = window as WindowWithTesting;
   if (w.isTesting) {
     _hash = hash[0] === "#" ? hash.substring(1) : hash;
     _setHashCalledTimes++;
     return;
   }
-  window.location.hash = hash;
+  if (mode === "replace") {
+    const fragment = hash.startsWith("#") ? hash : "#" + hash;
+    if (window.location.hash !== fragment) {
+      window.history.replaceState(window.history.state, "", fragment);
+    }
+  } else {
+    window.location.hash = hash;
+  }
 }
 
 export function resetHashCalledTimes(): void {
@@ -251,13 +260,25 @@ export function getHashParamsforSelections(
 export function syncSelectionsToHash(
   catalog: CatalogReader,
   state: State,
+  mode: HashWriteMode = "push",
 ): void {
-  const params = getHashParamsforSelections(
-    catalog,
-    state.selections,
-    state.bodyType,
+  const hash = selectionHash(catalog, state);
+  if (getHash() !== hash) setHash(hash, mode);
+}
+
+function selectionHash(catalog: CatalogReader, state: State): string {
+  return (
+    "#" +
+    createHashStringFromParams(
+      getHashParamsforSelections(catalog, state.selections, state.bodyType),
+    )
   );
-  setHashParams(params);
+}
+
+/** The app serializes an intentionally empty outfit as only a body type. */
+export function isEmptyOutfitHash(hash: string): boolean {
+  const fragment = hash.replace(/^#\??/, "");
+  return BODY_TYPES.some((bodyType) => fragment === `sex=${bodyType}`);
 }
 
 /** Profiler hook is a global injected by the test harness; absent in production. */
@@ -271,6 +292,7 @@ export function loadSelectionsFromHash(
   catalog: CatalogReader,
   state: State,
   hashString: string | null = null,
+  mode: HashWriteMode = "push",
 ): void {
   const profiler = (window as WindowWithProfiler).profiler;
   if (profiler) {
@@ -428,7 +450,7 @@ export function loadSelectionsFromHash(
   }
 
   // Ensure hash is in sync with loaded selections (handles any normalization).
-  syncSelectionsToHash(catalog, state);
+  syncSelectionsToHash(catalog, state, mode);
 
   if (profiler) {
     profiler.mark("hash-loadSelectionsFromHash:end");
@@ -454,35 +476,17 @@ export function initHashChangeListener(
   // Listen for browser back/forward navigation.
   window.addEventListener("hashchange", async function () {
     const currentHash = getHash();
+    if (currentHash.length > 1 && !currentHash.includes("=")) return;
+    if (currentHash === selectionHash(catalog, state)) return;
 
-    // Distinguish external changes (browser navigation) from our own updates:
-    // `afterStateChange()` updates the hash; we don't want to reload from it.
-    // External changes show as a hash that differs from the one we'd produce.
-    const expectedHash =
-      "#" +
-      Object.entries({
-        bodyType: state.bodyType,
-        ...Object.fromEntries(
-          Object.values(state.selections).map((s): [string, string] => [
-            s.itemId,
-            String(s.subId),
-          ]),
-        ),
-      })
-        .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
-        .join("&");
-
-    // Hash matches what we'd produce — it's our own update; ignore.
-    if (currentHash === expectedHash) {
+    // Normalize old URLs in the entry being restored.
+    loadSelectionsFromHash(catalog, state, currentHash.slice(1), "replace");
+    if (
+      Object.keys(state.selections).length === 0 &&
+      !isEmptyOutfitHash(currentHash)
+    ) {
+      await selectDefaults(state, "replace");
       return;
-    }
-
-    // Load from hash (updates state once).
-    loadSelectionsFromHash(catalog, state);
-
-    // If nothing loaded from hash, use defaults.
-    if (Object.keys(state.selections).length === 0) {
-      await selectDefaults(state);
     }
 
     // Trigger redraw which calls `App.onupdate` (syncs hash and renders canvas).

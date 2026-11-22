@@ -82,13 +82,13 @@ describe("Credits", function () {
     });
     assert.strictEqual(calls, 1);
 
-    host.querySelector("h3.collapsible-title").parentElement.click();
+    host.querySelector("button.collapsible-header").click();
     m.redraw.sync();
     assert.strictEqual(calls, 1);
     m.redraw.sync();
     assert.strictEqual(calls, 1);
 
-    host.querySelector("h3.collapsible-title").parentElement.click();
+    host.querySelector("button.collapsible-header").click();
     m.redraw.sync();
     assert.strictEqual(calls, 2);
   });
@@ -129,6 +129,7 @@ describe("Credits", function () {
     });
     state.previewBootstrapRenderDone = true;
     state.selections = { slot: { itemId: "item1", name: "Eyes" } };
+    state.selectedAnimation = "climb";
 
     const createObjectURL = sinon
       .stub(URL, "createObjectURL")
@@ -151,6 +152,7 @@ describe("Credits", function () {
     model.downloadTxt();
     model.downloadCsv();
     assert.isTrue(createObjectURL.calledTwice);
+    assert.strictEqual(createObjectURL.secondCall.args[0].type, "text/csv");
     assert.deepEqual(
       anchors.map((anchor) => anchor.download),
       ["credits.txt", "credits.csv"],
