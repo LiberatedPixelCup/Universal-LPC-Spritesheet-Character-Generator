@@ -6,7 +6,7 @@ let nextDialogId = 0;
 
 function isLoadingPaletteModel(
   model: PaletteSelectModalModel,
-): model is { readonly loadingMessage: string } {
+): model is { readonly loadingMessage: string; readonly loadFailed?: boolean } {
   return "loadingMessage" in model;
 }
 
@@ -278,7 +278,11 @@ export const PaletteSelectModal: m.Component<
             m(
               "section.lpc-palette-body",
               isLoading
-                ? m("p.lpc-palette-loading", model.loadingMessage)
+                ? m(
+                    "p.lpc-palette-loading",
+                    { role: model.loadFailed ? "alert" : "status" },
+                    model.loadingMessage,
+                  )
                 : renderReadyBody(model, vnode, vnode.state.gateSequence),
             ),
           ],

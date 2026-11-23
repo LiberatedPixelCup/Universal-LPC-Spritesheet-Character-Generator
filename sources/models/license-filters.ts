@@ -1,5 +1,5 @@
 import { LICENSE_CONFIG } from "../state/constants.ts";
-import type { CatalogReader } from "../state/catalog.ts";
+import { getCatalogFailure, type CatalogReader } from "../state/catalog.ts";
 import { isItemLicenseCompatible } from "../state/filters.ts";
 import type { State } from "../state/state.ts";
 
@@ -15,6 +15,7 @@ export type LicenseFilterOptionModel = {
 export type LicenseFiltersModel = {
   readonly liteReady: boolean;
   readonly creditsReady: boolean;
+  readonly loadError?: string;
   readonly summary: string;
   readonly options: readonly LicenseFilterOptionModel[];
   readonly incompatibleCount: number;
@@ -36,6 +37,7 @@ function incompatibleSelectionKeys(
 export const licenseFiltersModelFactory = {
   create(catalog: CatalogReader, state: State): LicenseFiltersModel {
     const creditsReady = catalog.isCreditsReady();
+    const loadError = getCatalogFailure(catalog, "index", "lite", "credits");
     const enabledCount = Object.values(state.enabledLicenses).filter(
       Boolean,
     ).length;
@@ -46,6 +48,7 @@ export const licenseFiltersModelFactory = {
     return {
       liteReady: catalog.isLiteReady(),
       creditsReady,
+      loadError,
       summary: `(${enabledCount}/${LICENSE_CONFIG.length} enabled)`,
       options: LICENSE_CONFIG.map((license) => ({
         key: license.key,
@@ -54,11 +57,19 @@ export const licenseFiltersModelFactory = {
         urlLabel: license.urlLabel,
         enabled: Boolean(state.enabledLicenses[license.key]),
         setEnabled(enabled) {
-          state.enabledLicenses[license.key] = enabled;
+          if (!getCatalogFailure(catalog, "index", "lite", "credits")) {
+            state.enabledLicenses[license.key] = enabled;
+          }
         },
       })),
       incompatibleCount,
       removeIncompatible() {
+        if (
+          state.isExportingZip ||
+          !catalog.isCreditsReady() ||
+          !catalog.isLiteReady()
+        )
+          return 0;
         const keys = incompatibleSelectionKeys(catalog, state);
         for (const key of keys) delete state.selections[key];
         return keys.length;

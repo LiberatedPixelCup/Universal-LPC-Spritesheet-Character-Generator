@@ -17,6 +17,7 @@ export type VariantItemModel = {
 
 export type ItemWithVariantsModel = {
   readonly name: string;
+  readonly bodyType?: string;
   readonly isSearchMatch: boolean;
   readonly isCompatible: boolean;
   readonly tooltip?: string;
@@ -53,6 +54,7 @@ export const itemWithVariantsModelFactory = {
     const size = compact ? COMPACT_FRAME_SIZE : FRAME_SIZE;
     return {
       name: meta.name,
+      bodyType: state.bodyType,
       isSearchMatch,
       isCompatible,
       tooltip: showTooltip ? tooltip : undefined,
@@ -91,6 +93,7 @@ export const itemWithVariantsModelFactory = {
                     willReadFrequently: true,
                   });
                   if (!context) return;
+                  context.clearRect(0, 0, canvas.width, canvas.height);
                   const row = meta.preview_row ?? 2;
                   const preview = meta as ItemMerged & {
                     preview_column?: number;

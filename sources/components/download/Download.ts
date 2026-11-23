@@ -15,7 +15,9 @@ function reportClipboardResult(
     alert(successMessage);
   } else if (result.kind === "failure") {
     console.error(errorLogMessage, result.error);
-    alert(failureMessage);
+    alert(result.message ?? failureMessage);
+  } else if (result.message) {
+    alert(result.message);
   }
 }
 
@@ -55,7 +57,12 @@ const DownloadContent: m.Component<{
         m("div.lpc-download-row", [
           m(
             "button.button.is-small.is-primary.lpc-btn-primary",
-            { type: "button", onclick: model.saveSpritesheet },
+            {
+              type: "button",
+              disabled: model.pngDisabled,
+              title: model.pngTitle,
+              onclick: model.saveSpritesheet,
+            },
             "Spritesheet (PNG)",
           ),
         ]),
@@ -98,12 +105,22 @@ const DownloadContent: m.Component<{
         m("div.lpc-download-row", [
           m(
             "button.button.is-small",
-            { type: "button", onclick: model.downloadCreditsTxt },
+            {
+              type: "button",
+              disabled: model.creditsDisabled,
+              title: model.creditsTitle,
+              onclick: model.downloadCreditsTxt,
+            },
             "Credits (TXT)",
           ),
           m(
             "button.button.is-small",
-            { type: "button", onclick: model.downloadCreditsCsv },
+            {
+              type: "button",
+              disabled: model.creditsDisabled,
+              title: model.creditsTitle,
+              onclick: model.downloadCreditsCsv,
+            },
             "Credits (CSV)",
           ),
         ]),
@@ -115,6 +132,8 @@ const DownloadContent: m.Component<{
             "button.button.is-small",
             {
               type: "button",
+              disabled: Boolean(model.copyTitle),
+              title: model.copyTitle,
               onclick: async () =>
                 reportClipboardResult(
                   await model.exportJsonToClipboard(),
@@ -129,6 +148,8 @@ const DownloadContent: m.Component<{
             "button.button.is-small",
             {
               type: "button",
+              disabled: Boolean(model.importTitle),
+              title: model.importTitle,
               onclick: async () =>
                 reportClipboardResult(
                   await model.importJsonFromClipboard(),

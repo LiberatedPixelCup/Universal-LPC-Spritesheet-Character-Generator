@@ -36,6 +36,7 @@ export type GenerateSourcesDeps = {
   writeMetadata?: boolean;
   writeCredits?: boolean;
   metadataOutputPath?: string;
+  bodySpritePaths?: readonly string[];
 };
 
 export function generateSources(
@@ -98,7 +99,9 @@ export function generateSources(
 
   if (writeMetadata) {
     const outDir = path.dirname(metadataOutputPath);
-    const modules = buildAllMetadataModules(env);
+    const modules = buildAllMetadataModules(env, {
+      bodySpritePaths: deps.bodySpritePaths,
+    });
     try {
       for (const [basename, source] of modules) {
         writeFileSyncFn(path.join(outDir, basename), source);

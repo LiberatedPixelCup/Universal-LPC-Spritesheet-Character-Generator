@@ -18,7 +18,7 @@
 
 import m from "mithril";
 import type { Result } from "neverthrow";
-import type { LoadError } from "../state/catalog.ts";
+import { formatLoadError, type LoadError } from "../state/catalog.ts";
 
 function defaultRenderError(error: LoadError): m.Children {
   switch (error.kind) {
@@ -26,8 +26,8 @@ function defaultRenderError(error: LoadError): m.Children {
       return m("div.result-loading", "Loading…");
     case "not-found":
       return m("div.result-error", `Not found: ${error.id}`);
-    default:
-      return m("div.result-error", "Unknown error");
+    case "load-failed":
+      return m("div.result-error", { role: "alert" }, formatLoadError(error));
   }
 }
 

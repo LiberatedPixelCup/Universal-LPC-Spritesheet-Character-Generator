@@ -423,5 +423,47 @@ describe("ItemWithVariants", function () {
     const canvas = host.querySelector("canvas.variant-canvas");
     assert.strictEqual(canvas.getAttribute("width"), "32");
     assert.deepEqual(redrawSizes, [32]);
+
+    // Unrelated redraw at the same size must not draw over the canvas again
+    m.render(host, m(ItemWithVariantsComponent, { createModel }));
+    assert.deepEqual(redrawSizes, [32]);
+  });
+
+  it("reloads variant previews when bodyType changes", async function () {
+    let bodyType = "male";
+    let loadCalls = 0;
+    const createModel = () => ({
+      name: "Variant Cloak",
+      bodyType,
+      isSearchMatch: false,
+      isCompatible: true,
+      tooltip: "tip",
+      isExpanded: true,
+      toggle: () => {},
+      variants: [
+        {
+          key: "dark_blue",
+          label: "Dark blue",
+          isSelected: false,
+          isCompatible: true,
+          size: 64,
+          compactDisplay: false,
+          select() {},
+          loadPreview: async () => {
+            loadCalls += 1;
+            return () => {};
+          },
+        },
+      ],
+    });
+
+    m.render(host, m(ItemWithVariantsComponent, { createModel }));
+    await Promise.resolve();
+    assert.strictEqual(loadCalls, 1);
+
+    bodyType = "female";
+    m.render(host, m(ItemWithVariantsComponent, { createModel }));
+    await Promise.resolve();
+    assert.strictEqual(loadCalls, 2);
   });
 });

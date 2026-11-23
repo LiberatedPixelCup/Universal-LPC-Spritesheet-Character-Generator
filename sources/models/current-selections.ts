@@ -1,4 +1,4 @@
-import type { CatalogReader } from "../state/catalog.ts";
+import { getCatalogFailure, type CatalogReader } from "../state/catalog.ts";
 import {
   isItemAnimationCompatible,
   isItemLicenseCompatible,
@@ -15,6 +15,7 @@ export type CurrentSelectionItemModel = {
 
 export type CurrentSelectionsModel =
   | { readonly kind: "loading" }
+  | { readonly kind: "failed"; readonly message: string }
   | { readonly kind: "empty" }
   | {
       readonly kind: "ready";
@@ -23,12 +24,15 @@ export type CurrentSelectionsModel =
 
 export const currentSelectionsModelFactory = {
   create(catalog: CatalogReader, state: State): CurrentSelectionsModel {
+    const failed = getCatalogFailure(catalog, "index", "lite");
+    if (failed) return { kind: "failed", message: failed };
     if (!catalog.isLiteReady()) return { kind: "loading" };
 
     const selections = Object.entries(state.selections);
     if (selections.length === 0) return { kind: "empty" };
 
     const creditsReady = catalog.isCreditsReady();
+    const creditsFailure = getCatalogFailure(catalog, "credits");
     return {
       kind: "ready",
       items: selections.map(([key, selection]) => {
@@ -50,7 +54,7 @@ export const currentSelectionsModelFactory = {
         }
 
         const licensesText = !creditsReady
-          ? "License info loading…"
+          ? (creditsFailure ?? "License info loading…")
           : licenses.size > 0
             ? `Licenses: ${Array.from(licenses).join(", ")}`
             : "No license info";
@@ -74,6 +78,7 @@ export const currentSelectionsModelFactory = {
           isCompatible,
           tooltip: `${incompatibility}${licensesText}\n${animationsText}`,
           remove: () => {
+            if (state.isExportingZip) return;
             delete state.selections[key];
           },
         };

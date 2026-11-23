@@ -60,8 +60,17 @@ node --input-type=module - "$app_root" "$version" <<'NODE'
 import fs from "node:fs";
 import path from "node:path";
 import { stripTypeScriptTypes } from "node:module";
+import ts from "typescript";
+
 const [target, version] = process.argv.slice(2);
 fs.writeFileSync(path.join(target, "main.mjs"), stripTypeScriptTypes(fs.readFileSync("macos/main.ts", "utf8")));
+
+const preloadTs = fs.readFileSync("macos/preload.ts", "utf8");
+const preloadCjs = ts.transpileModule(preloadTs, {
+  compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 }
+}).outputText;
+fs.writeFileSync(path.join(target, "preload.cjs"), preloadCjs);
+
 fs.writeFileSync(path.join(target, "package.json"), JSON.stringify({
   name: "open-spritesheet",
   productName: "Open Spritesheet",
@@ -72,14 +81,8 @@ fs.writeFileSync(path.join(target, "package.json"), JSON.stringify({
 NODE
 
 iconset="$build_dir/AppIcon.iconset"
-mkdir "$iconset"
-sips --padToHeightWidth 1536 1536 --padColor 000000 "Pixel Chibi Clicker Icon.png" \
-  --out "$build_dir/icon-square.png" >/dev/null
-for size in 16 32 128 256 512; do
-  sips -z "$size" "$size" "$build_dir/icon-square.png" --out "$iconset/icon_${size}x${size}.png" >/dev/null
-  retina=$((size * 2))
-  sips -z "$retina" "$retina" "$build_dir/icon-square.png" --out "$iconset/icon_${size}x${size}@2x.png" >/dev/null
-done
+mkdir -p "$iconset"
+swift scripts/generate_app_icon.swift "Pixel Chibi Clicker Icon.png" "$iconset"
 iconutil -c icns "$iconset" -o "$resources/OpenSpritesheet.icns"
 
 mv "$contents/MacOS/Electron" "$contents/MacOS/Open Spritesheet"

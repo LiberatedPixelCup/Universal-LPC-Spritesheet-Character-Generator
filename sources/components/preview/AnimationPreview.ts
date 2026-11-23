@@ -64,15 +64,15 @@ export const PreviewCanvas: m.Component<
       canvas,
       (scale) => {
         vnode.state.zoomLevel = scale;
+        state.previewCanvasZoomLevel = scale;
 
         if (window.canvasRenderer) {
+          setPreviewCanvasZoom(scale);
           m.redraw();
-          setPreviewCanvasZoom(vnode.state.zoomLevel);
         }
-
-        state.previewCanvasZoomLevel = vnode.state.zoomLevel;
       },
       vnode.state.zoomLevel,
+      { min: 0.5, max: 2 },
     ).then((pinch) => {
       if (vnode.state._pinchUnmounted) {
         pinch.destroy();
@@ -98,6 +98,7 @@ export const PreviewCanvas: m.Component<
     if (vnode.state.zoomLevel !== zoomLevel) {
       vnode.state.zoomLevel = zoomLevel;
       setPreviewCanvasZoom(zoomLevel);
+      vnode.state.pinch?.setZoom(zoomLevel);
     }
     repaintStaticPreviewFrameForTests(state);
   },

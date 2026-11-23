@@ -59,7 +59,9 @@ export const ItemWithRecolors: m.Component<
     const displayName = model.name;
     const rootViewNode = vnode;
     const isExpanded = model.isExpanded;
+    const showPalette = isExpanded && !model.paletteError;
     const drawThumbnail = (canvasVnode: m.VnodeDOM) => {
+      if (!paletteReady || !model.layersReady) return;
       const thumbnail = canvasVnode.state as ThumbnailState;
       const key = previewKey(bodyType, selectedColors, compactDisplay);
       if (thumbnail.previewKey === key) return;
@@ -134,7 +136,14 @@ export const ItemWithRecolors: m.Component<
           ],
         ),
         paletteModal,
-        isExpanded && !paletteReady
+        isExpanded &&
+          model.paletteError &&
+          m(
+            "p.lpc-helper-text.is-danger",
+            { role: "alert" },
+            model.paletteError,
+          ),
+        showPalette && !paletteReady
           ? m("div.lpc-recolor-loading", [
               m(
                 "div.skeleton-row.skeleton-row--stacked",
@@ -164,9 +173,6 @@ export const ItemWithRecolors: m.Component<
                             : FRAME_SIZE,
                           "aria-hidden": "true",
                           class: compactDisplay ? "compact-display" : "",
-                          oncreate: drawThumbnail,
-                          onupdate: drawThumbnail,
-                          onremove: cancelThumbnail,
                         }),
                       ],
                     ),
@@ -222,7 +228,7 @@ export const ItemWithRecolors: m.Component<
               ),
               m("p.lpc-helper-text.mt-2", "Loading palette data…"),
             ])
-          : isExpanded
+          : showPalette
             ? m("div", [
                 m("div", {
                   class: rootViewNode.state.isLoading ? "loading" : "",

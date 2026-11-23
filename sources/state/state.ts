@@ -61,9 +61,40 @@ export type State = {
   enabledLicenses: Record<string, boolean>;
   enabledAnimations: Record<string, boolean>;
 
+  // Session UI layout and navigation state (Spec v1.3)
+  selectedCategory: string;
+  categoryScrollPositions: Record<string, number>;
+  previousCategoryBeforeSearch: string;
+  isSidebarOpen: boolean;
+  activePreviewTab: "animation" | "spritesheet";
+  isExportModalOpen: boolean;
+  isCreditsModalOpen: boolean;
+  isAdvancedDrawerOpen: boolean;
+  isCategoriesDrawerOpen: boolean;
+  isMoreMenuOpen: boolean;
+
+  // Transient export concurrency and synchronization state
+  isExportingZip: boolean;
+  zipExportError: string | null;
+  canvasReadyForExport: boolean;
+  lastRenderError: string | null;
+  pendingPostZipHash: string | null;
+  pendingCustomImageResult: {
+    requestId: number;
+    image: HTMLImageElement | null;
+    zPos: number;
+  } | null;
+
   // transient (never saved)
   customImageRequest: number;
   pendingCharacterRender: Promise<void> | null;
+  renderedCharacter: {
+    selections: string;
+    bodyType: string;
+    customImage: HTMLImageElement | null;
+    customZPos: number;
+    matchBodyColorEnabled: boolean;
+  } | null;
   zipByAnimation: ZipMode;
   zipByItem: ZipMode;
   zipByAnimationAndItem: ZipMode;
@@ -144,7 +175,7 @@ export function createState(): State {
 
     // State that is currently not saved but could be in future
     selectedAnimation: "walk",
-    expandedNodes: {},
+    expandedNodes: { body: true },
     searchQuery: "",
     showTransparencyGrid: true,
     applyTransparencyMask: false,
@@ -163,9 +194,30 @@ export function createState(): State {
       ANIMATIONS.map((anim) => [anim.value, false]),
     ),
 
+    // Session UI layout and navigation state (Spec v1.3)
+    selectedCategory: "body",
+    categoryScrollPositions: {},
+    previousCategoryBeforeSearch: "body",
+    isSidebarOpen: true,
+    activePreviewTab: "animation",
+    isExportModalOpen: false,
+    isCreditsModalOpen: false,
+    isAdvancedDrawerOpen: false,
+    isCategoriesDrawerOpen: false,
+    isMoreMenuOpen: false,
+
+    // Transient export concurrency and synchronization state
+    isExportingZip: false,
+    zipExportError: null,
+    canvasReadyForExport: true,
+    lastRenderError: null,
+    pendingPostZipHash: null,
+    pendingCustomImageResult: null,
+
     // Following transient state should never be saved
     customImageRequest: 0,
     pendingCharacterRender: null,
+    renderedCharacter: null,
     zipByAnimation: { isRunning: false },
     zipByItem: { isRunning: false },
     zipByAnimationAndItem: { isRunning: false },
@@ -232,6 +284,7 @@ export async function selectDefaults(
 }
 
 export async function resetAll(state: State): Promise<void> {
+  if (state.isExportingZip) return;
   const deps = getStateDeps();
   state.selections = {};
   clearCustomImage(state);
@@ -303,6 +356,7 @@ export function selectItem(
   isSelected: boolean = false,
   subId: number | null = null,
 ): void {
+  if (state.isExportingZip) return;
   const deps = getStateDeps();
   const selectionGroup = getSelectionGroup(itemId);
   const subSelect =

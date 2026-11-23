@@ -121,6 +121,42 @@ describe("canvas/preview-animation.ts", () => {
       expect(() => repaintStaticPreviewFrameForTests(state)).to.not.throw();
     });
 
+    it("keeps the last animation pixels while the shared canvas is incomplete", () => {
+      window.__DISABLE_PREVIEW_ANIMATION__ = true;
+      state.showTransparencyGrid = false;
+      setPreviewAnimation("walk");
+      const offCtx = rendererCanvas.getContext("2d");
+      const ctx = previewEl.getContext("2d");
+      const walkY = ANIMATION_CONFIGS.walk.row * 64;
+      offCtx.fillStyle = "#ff0000";
+      offCtx.fillRect(64, walkY, 1, 1);
+      repaintStaticPreviewFrameForTests(state);
+      expect(Array.from(ctx.getImageData(0, 0, 1, 1).data)).to.deep.equal([
+        255, 0, 0, 255,
+      ]);
+
+      state.pendingCharacterRender = Promise.resolve();
+      offCtx.fillStyle = "#0000ff";
+      offCtx.fillRect(64, walkY, 1, 1);
+      repaintStaticPreviewFrameForTests(state);
+      expect(Array.from(ctx.getImageData(0, 0, 1, 1).data)).to.deep.equal([
+        255, 0, 0, 255,
+      ]);
+
+      state.pendingCharacterRender = null;
+      state.canvasReadyForExport = false;
+      repaintStaticPreviewFrameForTests(state);
+      expect(Array.from(ctx.getImageData(0, 0, 1, 1).data)).to.deep.equal([
+        255, 0, 0, 255,
+      ]);
+
+      state.canvasReadyForExport = true;
+      repaintStaticPreviewFrameForTests(state);
+      expect(Array.from(ctx.getImageData(0, 0, 1, 1).data)).to.deep.equal([
+        0, 0, 255, 255,
+      ]);
+    });
+
     it("draws a transparency grid when showTransparencyGrid is on", () => {
       window.__DISABLE_PREVIEW_ANIMATION__ = true;
       state.showTransparencyGrid = true;
@@ -148,6 +184,22 @@ describe("canvas/preview-animation.ts", () => {
       repaintStaticPreviewFrameForTests(state);
       const pixel = previewEl.getContext("2d").getImageData(64, 0, 1, 1).data;
       expect(pixel[3]).to.equal(0);
+    });
+
+    it("preserves checkerboard background under keyed-out magenta when both grid and mask are on", () => {
+      window.__DISABLE_PREVIEW_ANIMATION__ = true;
+      state.showTransparencyGrid = true;
+      state.applyTransparencyMask = true;
+      setPreviewAnimation("walk");
+      const offCtx = rendererCanvas.getContext("2d");
+      offCtx.fillStyle = "rgb(255, 44, 230)";
+      const walkY = ANIMATION_CONFIGS.walk.row * 64;
+      offCtx.fillRect(64, walkY, 64, 64);
+      repaintStaticPreviewFrameForTests(state);
+      const pixel = previewEl.getContext("2d").getImageData(0, 0, 1, 1).data;
+      expect([pixel[0], pixel[1], pixel[2], pixel[3]]).to.deep.equal([
+        204, 204, 204, 255,
+      ]);
     });
   });
 });

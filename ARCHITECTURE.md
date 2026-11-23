@@ -65,6 +65,12 @@ than all-or-nothing. Each registration triggers a coalesced redraw. Interned
 lite palettes restore when the index chunk registers (either order); until
 then `getPaletteOptions` treats missing `palettes` as `{}`.
 
+A failed import settles its own readiness promise with an error. The catalog
+reports `load-failed` for that chunk, while other chunks still register. The
+preview and export actions report failures for their dependencies. A rendered
+PNG can be exported while credits are unavailable. ZIP and character JSON
+include attribution and require both a current render and loaded credits.
+
 On `DOMContentLoaded`, three separate Mithril roots mount against the same
 catalog and state instances:
 
@@ -122,7 +128,13 @@ rather than an implementation detail — see [URL hash](CONTRIBUTING.md#url-hash
 
 [`sources/canvas/renderer.ts`](sources/canvas/renderer.ts) owns a single
 offscreen canvas. `renderCharacter` awaits the layers chunk and delegates to
-`runRenderCharacter`, which:
+`runRenderCharacter`. The app cancels a superseded render's wait for sprites
+or palette metadata. In-flight sprite requests remain reusable by other
+renders. Only a completed render publishes its draw calls,
+custom animation layout, and canvas version for the preview and exports.
+Both previews keep their last displayed pixels while compositing is pending.
+
+The compositor:
 
 1. Builds a `drawCalls` queue, walking `layer_1` through `layer_9` of every
    selection and skipping items whose `meta.required` excludes the current body
@@ -131,10 +143,12 @@ offscreen canvas. `renderCharacter` awaits the layers chunk and delegates to
    ([`canvas-utils.ts`](sources/canvas/canvas-utils.ts)), defaulting to `100`.
 3. Sorts with `drawCalls.sort((a, b) => a.zPos - b.zPos)`, so **lower `zPos`
    draws first and ends up behind**.
-4. Loads every sprite in parallel, then draws in that sorted order, passing each
-   image through `getImageToDraw` for palette recoloring. WebGL misses return
-   the live canvas for the compositor; LRU snapshots are filled on idle after
-   the render (or flushed before the next `renderCharacter`).
+4. Loads every sprite in parallel. Walk and other packaged standard sprites
+   on the selected Body's first layer must load before drawing. The layers
+   metadata contains the packaged Body paths. The renderer draws in sorted
+   order and passes each image through `getImageToDraw` for palette recoloring.
+   WebGL misses return the live canvas for the compositor. LRU snapshots are
+   filled on idle after the render or flushed before the next `renderCharacter`.
 5. Composites custom-animation regions below the standard sheet, sorted the same
    way.
 
@@ -228,8 +242,9 @@ Verifying it needs a real browser.
 | `download/` | PNG, JSON, and the four ZIP export buttons; credits panel |
 | `advanced/` | Custom PNG overlay upload and its z-position |
 
-`App` composes `Download`, `FiltersPanel`, `Credits`, and `AdvancedTools`;
-`FiltersPanel` composes the `filters/`, `selections/`, and `tree/` components.
+`App` composes the toolbar, chooser, previews, and on-demand tools. The chooser
+mounts one search control and category tree. `FiltersPanel` holds the license and
+animation filters, and Current Selections is displayed alongside the preview.
 The bootstrap in `main.ts` constructs the render-ready application model graph;
 components receive and forward lazy constructors for their model slice instead
 of constructing application dependencies. Leaves invoke those constructors from

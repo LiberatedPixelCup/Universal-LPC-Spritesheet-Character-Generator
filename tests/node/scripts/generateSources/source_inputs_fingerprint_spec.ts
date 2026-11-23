@@ -63,6 +63,26 @@ test("computeSourceInputsFingerprint changes when generateSources changes", () =
   assert.notEqual(third, first);
 });
 
+test("Body PNG names invalidate metadata on addition, rename and removal", (t) => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "fingerprint-body-"));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const body = path.join(root, "spritesheets", "body", "bodies", "male");
+  fs.mkdirSync(body, { recursive: true });
+  const empty = computeSourceInputsFingerprint({ root });
+  const run = path.join(body, "run.png");
+  const renamed = path.join(body, "renamed.png");
+  fs.writeFileSync(run, "initial content");
+  const added = computeSourceInputsFingerprint({ root });
+  assert.notEqual(added, empty);
+  fs.writeFileSync(run, "changed content");
+  fs.writeFileSync(path.join(body, "license.txt"), "ignored");
+  assert.equal(computeSourceInputsFingerprint({ root }), added);
+  fs.renameSync(run, renamed);
+  assert.notEqual(computeSourceInputsFingerprint({ root }), added);
+  fs.unlinkSync(renamed);
+  assert.equal(computeSourceInputsFingerprint({ root }), empty);
+});
+
 test("getSourceInputsCachePath, writeStored, and readStored round-trip", () => {
   const cwd = fs.mkdtempSync(path.join(os.tmpdir(), "fingerprint-cache-"));
   const cachePath = getSourceInputsCachePath(cwd);

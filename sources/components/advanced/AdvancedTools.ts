@@ -7,7 +7,7 @@ const CUSTOM_ZPOS_INPUT_ID = "customImageZPosInput";
 
 export const AdvancedTools: m.Component<
   { state: State },
-  { fileRequest?: number }
+  { fileRequest?: number; uploadError?: string | null }
 > = {
   view(vnode) {
     const { state } = vnode.attrs;
@@ -18,16 +18,35 @@ export const AdvancedTools: m.Component<
 
       const request = ++state.customImageRequest;
       vnode.state.fileRequest = request;
+      vnode.state.uploadError = null;
+      const objectUrl = URL.createObjectURL(file);
       const img = new Image();
       img.onload = () => {
+        URL.revokeObjectURL(objectUrl);
         if (request !== state.customImageRequest) return;
+        if (state.isExportingZip) {
+          state.pendingCustomImageResult = {
+            requestId: request,
+            image: img,
+            zPos: state.customImageZPos,
+          };
+          return;
+        }
         state.customUploadedImage = img;
         m.redraw();
       };
-      img.src = URL.createObjectURL(file);
+      img.onerror = () => {
+        URL.revokeObjectURL(objectUrl);
+        if (request !== state.customImageRequest) return;
+        vnode.state.uploadError = "Failed to load selected image file.";
+        target.value = "";
+        m.redraw();
+      };
+      img.src = objectUrl;
     };
 
     const handleZPosChange = (e: Event) => {
+      if (state.isExportingZip) return;
       const target = e.target as HTMLInputElement;
       const value = parseInt(target.value, 10);
       state.customImageZPos = isNaN(value) ? 0 : value;
@@ -59,6 +78,8 @@ export const AdvancedTools: m.Component<
             "p.help",
             "Upload a local image file to overlay on the spritesheet",
           ),
+          vnode.state.uploadError &&
+            m("p.help.is-danger", vnode.state.uploadError),
         ]),
         m("div.field.lpc-advanced-field", [
           m("label.label", { for: CUSTOM_ZPOS_INPUT_ID }, "Z-Position"),
@@ -66,6 +87,7 @@ export const AdvancedTools: m.Component<
             m("input.input[type=number]", {
               id: CUSTOM_ZPOS_INPUT_ID,
               value: state.customImageZPos,
+              disabled: state.isExportingZip,
               oninput: handleZPosChange,
               placeholder: "0",
             }),
@@ -88,7 +110,12 @@ export const AdvancedTools: m.Component<
                 "button.button.is-small.is-warning.lpc-btn-warning",
                 {
                   type: "button",
-                  onclick: () => clearCustomImage(state),
+                  disabled: state.isExportingZip,
+                  onclick: () => {
+                    if (state.isExportingZip) return;
+                    vnode.state.uploadError = null;
+                    clearCustomImage(state);
+                  },
                 },
                 "Clear Custom Image",
               ),

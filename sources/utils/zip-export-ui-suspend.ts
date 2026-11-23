@@ -11,13 +11,15 @@ import type { State } from "../state/state.ts";
  *
  * Nesting depth allows future overlapping guards; each export uses one pair.
  */
+type RedrawFn = (() => void) & { sync?: () => void };
+
 let suspendDepth = 0;
-let savedRedraw: (() => void) | null = null;
+let savedRedraw: RedrawFn | null = null;
 let resumePreviewAnimation = false;
 
 /** Mithril is attached to `globalThis.m` by `vendor-globals.ts`; treat as optional here. */
 type GlobalWithMithril = typeof globalThis & {
-  m?: { redraw?: () => void };
+  m?: { redraw?: RedrawFn };
 };
 
 export function beginZipExportUiSuspend(): void {
@@ -28,8 +30,10 @@ export function beginZipExportUiSuspend(): void {
   resumePreviewAnimation = stopPreviewAnimation();
   const mithril = (globalThis as GlobalWithMithril).m;
   if (mithril && typeof mithril.redraw === "function") {
-    savedRedraw = mithril.redraw.bind(mithril);
-    mithril.redraw = () => {};
+    savedRedraw = mithril.redraw;
+    const noopRedraw: RedrawFn = () => {};
+    noopRedraw.sync = () => {};
+    mithril.redraw = noopRedraw;
   }
 }
 

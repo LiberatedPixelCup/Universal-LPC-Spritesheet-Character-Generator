@@ -107,6 +107,15 @@ export function getHashParams(): Record<string, string> {
   return getHashParamsFromString(hash);
 }
 
+function safeDecodeURIComponent(value: string): string {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    debugWarn(`Malformed percent-encoding in URL hash segment: "${value}"`);
+    return value;
+  }
+}
+
 export function getHashParamsFromString(
   hashString: string,
 ): Record<string, string> {
@@ -116,7 +125,7 @@ export function getHashParamsFromString(
     if (key && value) {
       // Remove leading '?' from key if present
       const cleanKey = key.startsWith("?") ? key.substring(1) : key;
-      params[decodeURIComponent(cleanKey)] = decodeURIComponent(value);
+      params[safeDecodeURIComponent(cleanKey)] = safeDecodeURIComponent(value);
     }
   });
   return params;
@@ -275,6 +284,10 @@ function selectionHash(catalog: CatalogReader, state: State): string {
   );
 }
 
+function isValidBodyType(value: string): boolean {
+  return (BODY_TYPES as readonly string[]).includes(value);
+}
+
 /** The app serializes an intentionally empty outfit as only a body type. */
 export function isEmptyOutfitHash(hash: string): boolean {
   const fragment = hash.replace(/^#\??/, "");
@@ -312,7 +325,11 @@ export function loadSelectionsFromHash(
   for (let [typeName, nameAndVariant] of Object.entries(params)) {
     // Handle special parameters
     if (typeName === "bodyType" || typeName === "sex") {
-      state.bodyType = nameAndVariant;
+      if (isValidBodyType(nameAndVariant)) {
+        state.bodyType = nameAndVariant;
+      } else {
+        debugWarn(`Ignoring invalid bodyType in URL hash: "${nameAndVariant}"`);
+      }
       continue;
     }
 
@@ -445,8 +462,11 @@ export function loadSelectionsFromHash(
   state.selections = newSelections;
 
   // Load body type
-  if (params.bodyType) {
+  if (params.bodyType && isValidBodyType(params.bodyType)) {
     state.bodyType = params.bodyType;
+  }
+  if (!isValidBodyType(state.bodyType)) {
+    state.bodyType = BODY_TYPES[0];
   }
 
   // Ensure hash is in sync with loaded selections (handles any normalization).
@@ -478,6 +498,11 @@ export function initHashChangeListener(
     const currentHash = getHash();
     if (currentHash.length > 1 && !currentHash.includes("=")) return;
     if (currentHash === selectionHash(catalog, state)) return;
+
+    if (state.isExportingZip) {
+      state.pendingPostZipHash = currentHash;
+      return;
+    }
 
     // Normalize old URLs in the entry being restored.
     loadSelectionsFromHash(catalog, state, currentHash.slice(1), "replace");

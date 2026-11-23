@@ -78,4 +78,21 @@ describe("utils/zip-export-ui-suspend.ts", () => {
     expect(() => beginZipExportUiSuspend()).to.not.throw();
     drainZipExportUiSuspend();
   });
+
+  it("preserves m.redraw.sync across suspend and restore", () => {
+    const syncSpy = sinon.spy();
+    const redraw = Object.assign(sinon.spy(), { sync: syncSpy });
+    globalThis.m = { redraw };
+
+    beginZipExportUiSuspend();
+    expect(typeof globalThis.m.redraw.sync).to.equal("function");
+    globalThis.m.redraw.sync();
+    expect(syncSpy.called).to.equal(false);
+
+    endZipExportUiSuspend(state);
+    expect(globalThis.m.redraw).to.equal(redraw);
+    expect(globalThis.m.redraw.sync).to.equal(syncSpy);
+    globalThis.m.redraw.sync();
+    expect(syncSpy.calledOnce).to.equal(true);
+  });
 });

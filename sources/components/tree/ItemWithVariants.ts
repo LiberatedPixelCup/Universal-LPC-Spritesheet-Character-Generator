@@ -72,34 +72,42 @@ export const ItemWithVariants: m.Component<
                       onclick: variant.select,
                     },
                     [
-                      m("span.variant-display-name", variant.label),
+                      m(
+                        "span.variant-display-name",
+                        { key: "label" },
+                        variant.label,
+                      ),
                       m("canvas.variant-canvas", {
+                        key: `canvas-${model.bodyType ?? ""}`,
                         width: variant.size,
                         height: variant.size,
                         "aria-hidden": "true",
                         class: variant.compactDisplay ? "compact-display" : "",
                         oncreate: (canvasVnode: m.VnodeDOM) => {
                           const canvas = canvasVnode.dom as HTMLCanvasElement;
+                          const canvasState = canvasVnode.state as {
+                            redraw?: (size: number) => void;
+                            lastSize?: number;
+                          };
+                          canvasState.lastSize = variant.size;
                           const settle = () => {
                             if (!canvas.isConnected) return;
                             settledPreviews.add(variant.key);
                             m.redraw();
                           };
                           void variant.loadPreview(canvas).then((redraw) => {
-                            (
-                              canvasVnode.state as {
-                                redraw?: (size: number) => void;
-                              }
-                            ).redraw = redraw;
+                            canvasState.redraw = redraw;
                             settle();
                           }, settle);
                         },
                         onupdate: (canvasVnode: m.VnodeDOM) => {
-                          (
-                            canvasVnode.state as {
-                              redraw?: (size: number) => void;
-                            }
-                          ).redraw?.(variant.size);
+                          const canvasState = canvasVnode.state as {
+                            redraw?: (size: number) => void;
+                            lastSize?: number;
+                          };
+                          if (canvasState.lastSize === variant.size) return;
+                          canvasState.lastSize = variant.size;
+                          canvasState.redraw?.(variant.size);
                         },
                         onremove: () => {
                           settledPreviews.delete(variant.key);

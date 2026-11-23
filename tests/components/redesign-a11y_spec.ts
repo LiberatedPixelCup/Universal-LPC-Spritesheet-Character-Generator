@@ -273,6 +273,7 @@ describe("UI Redesign accessibility & focus regressions", function () {
             isExpanded,
             isSelected: false,
             paletteReady,
+            layersReady: true,
             compactDisplay: false,
             selectedColors: {},
             paletteOptions: [
@@ -332,6 +333,7 @@ describe("UI Redesign accessibility & focus regressions", function () {
       host,
       m(Download, {
         createModel: () => ({
+          pngDisabled: false,
           zipDisabled: false,
           zipByAnimationRunning: false,
           zipByItemRunning: false,
@@ -475,6 +477,7 @@ describe("UI Redesign accessibility & focus regressions", function () {
             isExpanded: true,
             isSelected: false,
             paletteReady,
+            layersReady: true,
             compactDisplay: false,
             selectedColors: {},
             paletteOptions: [
@@ -560,8 +563,11 @@ describe("UI Redesign accessibility & focus regressions", function () {
         }),
     });
     const dlg = host.querySelector<HTMLDialogElement>("dialog.palette-modal");
+    const closed = new Promise<Event>((resolve) => {
+      dlg!.addEventListener("close", resolve, { once: true });
+    });
     dlg!.close();
-    await new Promise((resolve) => setTimeout(resolve, 0));
+    await closed;
     expect(nativeCloseCalls).to.equal(1);
   });
 

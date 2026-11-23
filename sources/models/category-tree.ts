@@ -1,7 +1,8 @@
-import type {
-  CatalogReader,
-  CategoryTreeNode,
-  ItemMerged,
+import {
+  getCatalogFailure,
+  type CatalogReader,
+  type CategoryTreeNode,
+  type ItemMerged,
 } from "../state/catalog.ts";
 import {
   applyMatchBodyColor,
@@ -82,12 +83,14 @@ export type TreeNodeModel = {
 };
 
 export type CategoryTreeModel =
-  | { readonly isLoading: true }
+  | { readonly isLoading: true; readonly loadError?: string }
   | {
       readonly isLoading: false;
       readonly liteReady: boolean;
       readonly compactDisplay: boolean;
       readonly matchBodyColorEnabled: boolean;
+      readonly selectedCategory?: string;
+      readonly searchQuery?: string;
       readonly bodyTypes: BodyTypeSelectorModel;
       readonly roots: readonly ModelProvider<TreeNodeModel | null>[];
       reset(): void;
@@ -104,7 +107,8 @@ function itemTooltip(
   isLicenseCompatible: boolean,
   isAnimationCompatible: boolean,
 ): string {
-  let licensesText = "License info loading…";
+  let licensesText =
+    getCatalogFailure(catalog, "credits") ?? "License info loading…";
   if (catalog.isCreditsReady()) {
     const licenses = new Set<string>();
     for (const credit of catalog.getItemCredits(itemId).unwrapOr([])) {
@@ -201,7 +205,7 @@ function createItemModel(
     isSelected,
     tooltip: showTooltip ? tooltip : undefined,
     select: () => {
-      if (!isCompatible) return;
+      if (state.isExportingZip || !isCompatible) return;
       if (isSelected) delete state.selections[selectionGroup];
       else state.selections[selectionGroup] = { itemId, name: meta.name };
     },
@@ -287,6 +291,8 @@ export const treeNodeModelFactory = {
 
 export const categoryTreeModelFactory = {
   create(catalog: CatalogReader, state: State): CategoryTreeModel {
+    const loadError = getCatalogFailure(catalog, "index", "lite");
+    if (loadError) return { isLoading: true, loadError };
     const tree = catalog.getCategoryTree().unwrapOr(null);
     if (!tree) return { isLoading: true };
 
@@ -295,6 +301,8 @@ export const categoryTreeModelFactory = {
       liteReady: catalog.isLiteReady(),
       compactDisplay: state.compactDisplay,
       matchBodyColorEnabled: state.matchBodyColorEnabled,
+      selectedCategory: state.selectedCategory || "body",
+      searchQuery: state.searchQuery || "",
       bodyTypes: {
         selected: state.bodyType,
         options: BODY_TYPES.map((value) => ({
@@ -302,6 +310,7 @@ export const categoryTreeModelFactory = {
           label: capitalize(value),
         })),
         select: (value) => {
+          if (state.isExportingZip) return;
           state.bodyType = value;
         },
       },
@@ -316,6 +325,8 @@ export const categoryTreeModelFactory = {
       },
       expandSelected: () => {
         if (!catalog.isLiteReady()) return;
+        state.searchQuery = "";
+        state.selectedCategory = "all";
         for (const selection of Object.values(state.selections)) {
           const meta = catalog.getItemMerged(selection.itemId).unwrapOr(null);
           if (!meta) continue;
@@ -331,6 +342,7 @@ export const categoryTreeModelFactory = {
         state.compactDisplay = !state.compactDisplay;
       },
       setMatchBodyColor: (enabled) => {
+        if (state.isExportingZip) return;
         state.matchBodyColorEnabled = enabled;
         if (!enabled) return;
         const body = state.selections[getSelectionGroup("body")];

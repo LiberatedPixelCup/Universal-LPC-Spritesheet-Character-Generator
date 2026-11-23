@@ -1,5 +1,5 @@
 import { ANIMATIONS } from "../state/constants.ts";
-import type { CatalogReader } from "../state/catalog.ts";
+import { getCatalogFailure, type CatalogReader } from "../state/catalog.ts";
 import { isItemAnimationCompatible } from "../state/filters.ts";
 import type { State } from "../state/state.ts";
 
@@ -12,6 +12,7 @@ export type AnimationFilterOptionModel = {
 
 export type AnimationFiltersModel = {
   readonly liteReady: boolean;
+  readonly loadError?: string;
   readonly summary: string;
   readonly options: readonly AnimationFilterOptionModel[];
   readonly incompatibleCount: number;
@@ -39,6 +40,7 @@ export const animationFiltersModelFactory = {
 
     return {
       liteReady: catalog.isLiteReady(),
+      loadError: getCatalogFailure(catalog, "index", "lite"),
       summary:
         enabledCount > 0 ? `(${enabledCount}/${ANIMATIONS.length})` : "(All)",
       options: ANIMATIONS.map((animation) => ({
@@ -51,6 +53,7 @@ export const animationFiltersModelFactory = {
       })),
       incompatibleCount,
       removeIncompatible() {
+        if (state.isExportingZip) return 0;
         const keys = incompatibleSelectionKeys(catalog, state);
         for (const key of keys) delete state.selections[key];
         return keys.length;

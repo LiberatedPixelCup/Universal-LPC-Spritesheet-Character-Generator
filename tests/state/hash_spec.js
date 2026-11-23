@@ -82,6 +82,15 @@ describe("state/hash.ts", () => {
         "key 2": "value 2",
       });
     });
+
+    it("should not throw on malformed percent-encoding", () => {
+      expect(
+        getHashParamsFromString("body=Body_Color_light%&bad%E0=ok"),
+      ).to.deep.equal({
+        body: "Body_Color_light%",
+        "bad%E0": "ok",
+      });
+    });
   });
 
   describe("createHashStringFromParams", () => {
@@ -538,6 +547,30 @@ describe("state/hash.ts", () => {
           recolor: "",
         },
       });
+    });
+
+    it("ignores invalid sex/bodyType values in URL hash and normalizes poisoned bodyType", () => {
+      seedCatalog(catalogWriter, {
+        1: { type_name: "body", name: "Body", variants: ["light"] },
+      });
+
+      setHash("#sex=invalid_type&body=Body_light");
+      loadSelectionsFromHash(catalog, state);
+      expect(state.bodyType).to.equal("male");
+      expect(getHash()).to.equal("#sex=male&body=Body_light");
+
+      setHash("#bodyType=../../evil&body=Body_light");
+      loadSelectionsFromHash(catalog, state);
+      expect(state.bodyType).to.equal("male");
+
+      state.bodyType = "corrupted_value";
+      setHash("#body=Body_light");
+      loadSelectionsFromHash(catalog, state);
+      expect(state.bodyType).to.equal("male");
+
+      setHash("#bodyType=female&body=Body_light");
+      loadSelectionsFromHash(catalog, state);
+      expect(state.bodyType).to.equal("female");
     });
   });
 

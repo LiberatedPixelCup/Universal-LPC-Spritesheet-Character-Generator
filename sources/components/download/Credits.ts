@@ -13,6 +13,9 @@ const CreditsContent: m.Component<{
         m("p.lpc-helper-text", "Loading selections…"),
       );
     }
+    if (model.kind === "failed") {
+      return m("p.lpc-helper-text.is-danger", { role: "alert" }, model.message);
+    }
     if (model.kind === "empty") {
       return m("p.lpc-helper-text", "No items selected");
     }

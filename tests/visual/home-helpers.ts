@@ -1,7 +1,7 @@
 /**
  * Reset window and internal scroll regions so full-page captures align across viewports.
  */
-import type { Page } from "@playwright/test";
+import type { Locator, Page } from "@playwright/test";
 
 declare global {
   interface Window {
@@ -70,7 +70,44 @@ export async function waitForCatalogAllReady(page: Page): Promise<void> {
   }
 }
 
-/** Catalog + preview canvases ready. Call after `page.goto` (any query/hash). */
+export async function waitForPreviewReady(
+  page: Page,
+  tab: "Animation" | "Spritesheet",
+): Promise<void> {
+  const preview = page.getByRole("tablist", { name: "Preview modes" });
+  const panelId =
+    tab === "Animation" ? "mithril-preview" : "mithril-spritesheet-preview";
+  const canvasId =
+    tab === "Animation" ? "previewAnimations" : "spritesheet-preview";
+
+  await preview
+    .getByRole("tab", { name: tab, exact: true, selected: true })
+    .waitFor({ state: "visible", timeout: 120_000 });
+  await page.locator(`#${panelId} canvas#${canvasId}`).waitFor({
+    state: "visible",
+    timeout: 120_000,
+  });
+  await page.waitForFunction(
+    ({ panelId, canvasId }) => {
+      const panel = document.getElementById(panelId);
+      const canvas = panel?.querySelector<HTMLCanvasElement>(
+        `canvas#${canvasId}`,
+      );
+      return (
+        canvas &&
+        canvas.width > 0 &&
+        canvas.height > 0 &&
+        !panel?.querySelector(
+          ".preview-canvas-loading-overlay, .preview-canvas-busy",
+        )
+      );
+    },
+    { panelId, canvasId },
+    { timeout: 120_000 },
+  );
+}
+
+/** Catalog and the initial preview ready. Call after `page.goto` (any query/hash). */
 export async function waitForHomepageReady(page: Page): Promise<void> {
   try {
     await page.waitForLoadState("networkidle", { timeout: 45_000 });
@@ -78,24 +115,30 @@ export async function waitForHomepageReady(page: Page): Promise<void> {
     // Some environments never reach idle (long-polling, etc.); continue.
   }
   await waitForCatalogAllReady(page);
-  await page.waitForSelector("#mithril-preview canvas", {
-    state: "visible",
-    timeout: 120_000,
-  });
-  await page.waitForFunction(
-    () => {
-      const preview = document.getElementById("mithril-preview");
-      const sheet = document.getElementById("mithril-spritesheet-preview");
-      if (!preview || !sheet) {
-        return false;
-      }
-      return (
-        !preview.querySelector(".loading") && !sheet.querySelector(".loading")
-      );
-    },
-    undefined,
-    { timeout: 120_000 },
-  );
+  const hasPreviewTabs =
+    (await page.getByRole("tablist", { name: "Preview modes" }).count()) > 0;
+  if (hasPreviewTabs) {
+    await waitForPreviewReady(page, "Animation");
+  } else {
+    await page.waitForSelector("#mithril-preview canvas", {
+      state: "visible",
+      timeout: 120_000,
+    });
+    await page.waitForFunction(
+      () => {
+        const preview = document.getElementById("mithril-preview");
+        const sheet = document.getElementById("mithril-spritesheet-preview");
+        return (
+          preview &&
+          sheet &&
+          !preview.querySelector(".loading") &&
+          !sheet.querySelector(".loading")
+        );
+      },
+      undefined,
+      { timeout: 120_000 },
+    );
+  }
   await page.evaluate(
     () =>
       new Promise((resolve) => {
@@ -106,6 +149,7 @@ export async function waitForHomepageReady(page: Page): Promise<void> {
         });
       }),
   );
+  if (hasPreviewTabs) await waitForPreviewReady(page, "Animation");
   await scrollVisualCaptureToTop(page);
 }
 
@@ -157,9 +201,14 @@ function paletteModalPreviewCanvasesHaveOpaquePixels(): boolean {
   return true;
 }
 
+async function expandDisclosure(button: Locator): Promise<void> {
+  if ((await button.getAttribute("aria-expanded")) !== "true") {
+    await button.click();
+  }
+}
+
 /**
- * Expands Head → Heads → Human Heads → Human Male, then opens the Skintone palette modal.
- * (The top-level "Head" row must be expanded before "Heads" is visible.)
+ * Selects Head, expands its Human Male branch, and opens the Skintone palette modal.
  *
  * Use `forComputedStyleDump: true` for `dump-computed-styles` only: keep Argos/strict
  * waits for `data-previews-ready` and canvas pixels, but do not require them for style
@@ -171,19 +220,34 @@ export async function openHumanMaleSkintonePalette(
 ): Promise<void> {
   const { forComputedStyleDump = false } = opts;
   const tree = page.locator("#chooser-column");
-  const clickTreeLabel = async (exact: string) => {
+  const expandTreeLabel = async (exact: string) => {
     const row = tree.locator(".tree-label").filter({
       has: page.getByText(exact, { exact: true }),
     });
     await row.first().evaluate((el) => (el.style.scrollMarginTop = "12px"));
-    await row.first().scrollIntoViewIfNeeded();
-    await row.first().click();
+    await expandDisclosure(row.first());
   };
 
-  await clickTreeLabel("Head");
-  await clickTreeLabel("Heads");
-  await clickTreeLabel("Human Heads");
-  await clickTreeLabel("Human Male");
+  const categories = page.getByRole("button", {
+    name: "Toggle Categories Sidebar",
+    exact: true,
+  });
+  if (await categories.count()) {
+    const sidebar = page.locator(".lpc-workbench > .lpc-sidebar");
+    const drawer = page.locator(".lpc-drawer-content");
+    if (!(await sidebar.isVisible())) {
+      await categories.click();
+      await drawer.getByRole("tab", { name: "Head", exact: true }).click();
+      await drawer.waitFor({ state: "hidden" });
+    } else {
+      await sidebar.getByRole("tab", { name: "Head", exact: true }).click();
+    }
+  } else {
+    await expandTreeLabel("Head");
+  }
+  await expandTreeLabel("Heads");
+  await expandTreeLabel("Human Heads");
+  await expandTreeLabel("Human Male");
 
   const skintone = tree
     .locator(".palette-recolor-item")
@@ -245,41 +309,62 @@ export async function closeSkintonePaletteModal(page: Page): Promise<void> {
 }
 
 /**
- * Expands License Filters, Animation Filters, and Advanced Tools, then sets the
- * asset search query to "arm" (tree filters client-side; waits for a visible match).
+ * Finds an item matching "arm", expands both filter groups, and opens Advanced Tools.
  */
 export async function openLicenseAnimationAdvancedAndSearchArm(
   page: Page,
 ): Promise<void> {
-  const licenseCol = page.locator("div.filters-column").first();
-  const licenseTreeLabel = licenseCol.locator(".tree-label").first();
-  await licenseTreeLabel.evaluate((el) => (el.style.scrollMarginTop = "12px"));
-  await licenseTreeLabel.scrollIntoViewIfNeeded();
-  await licenseTreeLabel.click();
-
-  const animCol = page.locator("div.filters-column").nth(1);
-  const animTreeLabel = animCol.locator(".tree-label").first();
-  await animTreeLabel.evaluate((el) => (el.style.scrollMarginTop = "12px"));
-  await animTreeLabel.scrollIntoViewIfNeeded();
-  await animTreeLabel.click();
-
-  const advancedHeader = page
-    .locator("h3.collapsible-title")
-    .filter({ hasText: "Advanced Tools" })
-    .locator("button.collapsible-header");
-  await advancedHeader.evaluate((el) => (el.style.scrollMarginTop = "12px"));
-  await advancedHeader.scrollIntoViewIfNeeded();
-  await advancedHeader.click();
-  await page.locator("#customFileInput").waitFor({ state: "visible" });
-
-  const search = page.locator("input[type=search][placeholder=Search]");
-  search.evaluate((el) => (el.style.scrollMarginTop = "-12px"));
-  await search.scrollIntoViewIfNeeded();
+  const chooser = page.locator("#chooser-column");
+  const chooserHeader = chooser.locator(".lpc-chooser-header");
+  const hasChooserHeader = (await chooserHeader.count()) > 0;
+  const searchRegion = hasChooserHeader
+    ? chooserHeader.locator(":scope > .lpc-search-field")
+    : chooser;
+  const search = searchRegion.getByRole("searchbox", {
+    name: hasChooserHeader ? "Search" : /^Search:?$/,
+    exact: true,
+  });
+  await search.evaluate((el) => (el.style.scrollMarginTop = "-12px"));
   await search.fill("arm");
-  await page
-    .locator("#chooser-column .search-result")
+  const tree = hasChooserHeader
+    ? chooser.locator(
+        "#mithril-filters > .category-tree-panel > .lpc-tree-scroll-container",
+      )
+    : chooser;
+  await tree
+    .locator(".search-result")
     .first()
     .waitFor({ state: "visible", timeout: 60_000 });
+
+  const filters = chooser.locator(".lpc-filters-panel");
+  if (hasChooserHeader) {
+    await expandDisclosure(
+      filters.getByRole("button", { name: "Filters", exact: true }),
+    );
+  }
+  await expandDisclosure(
+    filters.getByRole("button", { name: /^License Filters/ }),
+  );
+  await expandDisclosure(
+    filters.getByRole("button", { name: /^Animation Filters/ }),
+  );
+
+  const more = page.getByRole("button", { name: "More options", exact: true });
+  if (await more.count()) {
+    await expandDisclosure(more);
+    await page
+      .getByRole("menuitem", { name: "Advanced Tools…", exact: true })
+      .click();
+    await page
+      .getByRole("dialog", { name: "Advanced Tools", exact: true })
+      .getByLabel("Custom File Upload", { exact: true })
+      .waitFor({ state: "visible" });
+  } else {
+    await expandDisclosure(
+      page.getByRole("button", { name: "Advanced Tools", exact: true }),
+    );
+    await page.locator("#customFileInput").waitFor({ state: "visible" });
+  }
 
   await page.mouse.move(0, 0);
 }

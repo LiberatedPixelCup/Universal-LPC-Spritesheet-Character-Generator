@@ -1,7 +1,8 @@
-import type {
-  CatalogReader,
-  ItemMerged,
-  PaletteMetadata,
+import {
+  getCatalogFailure,
+  type CatalogReader,
+  type ItemMerged,
+  type PaletteMetadata,
 } from "../state/catalog.ts";
 import { drawRecolorPreview } from "../canvas/palette-recolor.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../state/constants.ts";
@@ -35,7 +36,7 @@ export type PaletteVersionModel = {
 };
 
 export type PaletteSelectModalModel =
-  | { readonly loadingMessage: string }
+  | { readonly loadingMessage: string; readonly loadFailed?: boolean }
   | {
       readonly bodyType: string;
       readonly previewLayersKey: string;
@@ -164,6 +165,8 @@ export const paletteSelectModalModelFactory = {
     compactDisplay: boolean,
     select: (recolor: string) => void,
   ): PaletteSelectModalModel {
+    const failed = getCatalogFailure(catalog, "lite", "layers", "palette");
+    if (failed) return { loadingMessage: failed, loadFailed: true };
     if (!catalog.isPaletteReady()) {
       return { loadingMessage: "Loading palette data…" };
     }

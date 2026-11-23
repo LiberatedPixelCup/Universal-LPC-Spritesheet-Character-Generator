@@ -43,7 +43,46 @@ import {
   beginZipExportUiSuspend,
   endZipExportUiSuspend,
 } from "../utils/zip-export-ui-suspend.ts";
-import type { State } from "./state.ts";
+import { selectDefaults, type Selections, type State } from "./state.ts";
+import { isEmptyOutfitHash, loadSelectionsFromHash } from "./hash.ts";
+
+function createZipExportStateSnapshot(state: State): State {
+  const selections: Selections = {};
+  for (const [key, selection] of Object.entries(state.selections)) {
+    selections[key] = { ...selection };
+  }
+  return {
+    ...state,
+    selections,
+    enabledLicenses: { ...state.enabledLicenses },
+    enabledAnimations: { ...state.enabledAnimations },
+  };
+}
+
+export function syncPostZipState(catalog: CatalogReader, state: State): void {
+  if (!state) return;
+  state.isExportingZip = false;
+  if (state.pendingPostZipHash !== null) {
+    const hash = state.pendingPostZipHash;
+    state.pendingPostZipHash = null;
+    const rawHash = hash.startsWith("#") ? hash.slice(1) : hash;
+    loadSelectionsFromHash(catalog, state, rawHash, "replace");
+    if (
+      Object.keys(state.selections).length === 0 &&
+      !isEmptyOutfitHash(hash)
+    ) {
+      void selectDefaults(state, "replace");
+    }
+  }
+  if (state.pendingCustomImageResult) {
+    const res = state.pendingCustomImageResult;
+    state.pendingCustomImageResult = null;
+    if (res.requestId === state.customImageRequest) {
+      state.customUploadedImage = res.image;
+      state.customImageZPos = res.zPos;
+    }
+  }
+}
 
 declare global {
   interface Window {
@@ -77,6 +116,9 @@ export const exportSplitAnimations = async (
   const baseAddCanvasToZip = deps.addCanvasToZip ?? addCanvasToZip;
 
   if (!guardZipExportEnvironment()) return;
+  if (state.isExportingZip) return;
+  state.isExportingZip = true;
+  state.zipExportError = null;
 
   const profiler = createZipExportProfiler("splitAnimations");
 
@@ -102,7 +144,9 @@ export const exportSplitAnimations = async (
     state.zipByAnimation.isRunning = true;
     m.redraw();
     beginZipExportUiSuspend();
-    const bodyType = state.bodyType;
+    const exportState = createZipExportStateSnapshot(state);
+    const exportDrawCalls = [...drawCalls];
+    const bodyType = exportState.bodyType;
 
     // Create folder structure to match original
     const standardFolder = zip.folder("standard");
@@ -174,7 +218,13 @@ export const exportSplitAnimations = async (
     }
 
     await profiler.phase("staticFiles", async () => {
-      addCharacterJsonAndCredits(catalog, state, zip, creditsFolder, drawCalls);
+      addCharacterJsonAndCredits(
+        catalog,
+        exportState,
+        zip,
+        creditsFolder,
+        exportDrawCalls,
+      );
     });
 
     const metadata = {
@@ -198,8 +248,9 @@ export const exportSplitAnimations = async (
     downloadZipBlob(zipBlob, `lpc_${bodyType}_animations_${timestamp}.zip`);
 
     if (failedStandard.length > 0 || failedCustom.length > 0) {
+      const failedAll = [...failedStandard, ...failedCustom];
       alert(
-        `Export completed with some issues:\nFailed to export animations: ${failedStandard.join(
+        `Export completed with some issues:\nFailed to export animations: ${failedAll.join(
           ", ",
         )}`,
       );
@@ -208,11 +259,13 @@ export const exportSplitAnimations = async (
     }
   } catch (err) {
     console.error("Export failed:", err);
+    state.zipExportError = (err as Error).message;
     alert(`Export failed: ${(err as Error).message}`);
   } finally {
     endZipExportUiSuspend(state);
     if (state) {
       state.zipByAnimation.isRunning = false;
+      syncPostZipState(catalog, state);
     }
     m.redraw();
   }
@@ -236,6 +289,9 @@ export const exportSplitItemSheets = async (
   const renderSingleItemFn = deps.renderSingleItem ?? renderSingleItem;
 
   if (!guardZipExportEnvironment()) return;
+  if (state.isExportingZip) return;
+  state.isExportingZip = true;
+  state.zipExportError = null;
 
   try {
     const zip = new window.JSZip!();
@@ -244,7 +300,9 @@ export const exportSplitItemSheets = async (
     state.zipByItem.isRunning = true;
     m.redraw();
     beginZipExportUiSuspend();
-    const bodyType = state.bodyType;
+    const exportState = createZipExportStateSnapshot(state);
+    const exportDrawCalls = [...drawCalls];
+    const bodyType = exportState.bodyType;
 
     // Create folder structure
     const itemsFolder = zip.folder("items");
@@ -254,7 +312,7 @@ export const exportSplitItemSheets = async (
     const failedItems: string[] = [];
 
     // Render each item individually
-    for (const [, selection] of Object.entries(state.selections)) {
+    for (const [, selection] of Object.entries(exportState.selections)) {
       const { itemId, variant, name } = selection;
       const itemLayers = getSortedLayersWithCustomFallback(
         catalog,
@@ -265,8 +323,8 @@ export const exportSplitItemSheets = async (
       const recolors = getMultiRecolors(
         catalog,
         itemId,
-        state.selections,
-        state.matchBodyColorEnabled,
+        exportState.selections,
+        exportState.matchBodyColorEnabled,
       );
 
       // Render each layer of the item separately
@@ -285,7 +343,7 @@ export const exportSplitItemSheets = async (
             variant ?? null,
             recolors,
             bodyType,
-            state.selections,
+            exportState.selections,
             layer.layerNum,
             profiler,
           );
@@ -303,7 +361,13 @@ export const exportSplitItemSheets = async (
     }
 
     await profiler.phase("staticFiles", async () => {
-      addCharacterJsonAndCredits(catalog, state, zip, creditsFolder, drawCalls);
+      addCharacterJsonAndCredits(
+        catalog,
+        exportState,
+        zip,
+        creditsFolder,
+        exportDrawCalls,
+      );
     });
 
     const zipBlob = await zipGenerateBlobWithProfiler(profiler, zip);
@@ -323,11 +387,13 @@ export const exportSplitItemSheets = async (
     }
   } catch (err) {
     console.error("Export failed:", err);
+    state.zipExportError = (err as Error).message;
     alert(`Export failed: ${(err as Error).message}`);
   } finally {
     endZipExportUiSuspend(state);
     if (state) {
       state.zipByItem.isRunning = false;
+      syncPostZipState(catalog, state);
     }
     m.redraw();
   }
@@ -381,6 +447,9 @@ export const exportSplitItemAnimations = async (
   const getImageToDrawFn = deps.getImageToDraw ?? getImageToDraw;
 
   if (!guardZipExportEnvironment()) return;
+  if (state.isExportingZip) return;
+  state.isExportingZip = true;
+  state.zipExportError = null;
 
   try {
     const zip = new window.JSZip!();
@@ -389,7 +458,9 @@ export const exportSplitItemAnimations = async (
     state.zipByAnimationAndItem.isRunning = true;
     m.redraw();
     beginZipExportUiSuspend();
-    const bodyType = state.bodyType;
+    const exportState = createZipExportStateSnapshot(state);
+    const exportDrawCalls = [...drawCalls];
+    const bodyType = exportState.bodyType;
 
     // Create folder structure
     const standardFolder = zip.folder("standard");
@@ -402,6 +473,10 @@ export const exportSplitItemAnimations = async (
     const failedStandard: Record<string, string[]> = {};
     const exportedCustom: Record<string, string[]> = {};
     const failedCustom: Record<string, string[]> = {};
+    const alertableFailedCustom: Record<string, string[]> = {};
+    const selectedItemIds = new Set(
+      Object.values(exportState.selections).map((sel) => sel.itemId),
+    );
 
     // For each animation, create a folder and export each item
     for (const anim of animationList) {
@@ -412,7 +487,7 @@ export const exportSplitItemAnimations = async (
       failedStandard[anim.value] = [];
 
       // Export each item for this animation
-      for (const [, selection] of Object.entries(state.selections)) {
+      for (const [, selection] of Object.entries(exportState.selections)) {
         const { itemId, variant, name } = selection;
         const metaResult = catalog.getItemMerged(itemId);
         if (
@@ -432,8 +507,8 @@ export const exportSplitItemAnimations = async (
         const recolors = getMultiRecolors(
           catalog,
           itemId,
-          state.selections,
-          state.matchBodyColorEnabled,
+          exportState.selections,
+          exportState.matchBodyColorEnabled,
         );
 
         const itemLayers = getSortedLayersWithCustomFallback(
@@ -457,7 +532,7 @@ export const exportSplitItemAnimations = async (
               recolors,
               bodyType,
               anim.value,
-              state.selections,
+              exportState.selections,
               layer.layerNum,
               profiler,
             );
@@ -483,6 +558,7 @@ export const exportSplitItemAnimations = async (
     for (const customAnimName of Object.keys(customAreaItems)) {
       // Export items exclusive to custom animations
       for (const layer of customAreaItems[customAnimName]) {
+        if (!selectedItemIds.has(layer.itemId)) continue;
         debugLog("Processing layer for custom animation only export:", layer);
 
         const spritePath = layer.spritePath;
@@ -498,6 +574,7 @@ export const exportSplitItemAnimations = async (
         exportedCustom[customAnimName] = custExportedItems;
         const custFailedItems = failedCustom[customAnimName] ?? [];
 
+        let loadingExtractedSprite = false;
         try {
           debugLog(
             `Exporting item ${itemFileName} for custom animation ${customAnimName}`,
@@ -506,12 +583,14 @@ export const exportSplitItemAnimations = async (
           let img: HTMLImageElement | undefined;
           let imgCanvas:
             HTMLImageElement | HTMLCanvasElement | ImageBitmap | undefined;
+          loadingExtractedSprite = layer.type === "extracted_frames";
           await profiler.phase(
             "render_imageLoadDecode_customItemSprite",
             async () => {
               img = await loadImageFn(spritePath);
             },
           );
+          loadingExtractedSprite = false;
           if (!img) continue;
           await profiler.phase(
             "render_composite_customItemSprite",
@@ -569,12 +648,23 @@ export const exportSplitItemAnimations = async (
           );
           custFailedItems.push(itemFileName);
           failedCustom[customAnimName] = custFailedItems;
+          if (!loadingExtractedSprite) {
+            const alertItems = alertableFailedCustom[customAnimName] ?? [];
+            alertItems.push(itemFileName);
+            alertableFailedCustom[customAnimName] = alertItems;
+          }
         }
       }
     }
 
     await profiler.phase("staticFiles", async () => {
-      addCharacterJsonAndCredits(catalog, state, zip, creditsFolder, drawCalls);
+      addCharacterJsonAndCredits(
+        catalog,
+        exportState,
+        zip,
+        creditsFolder,
+        exportDrawCalls,
+      );
     });
 
     const metadata = {
@@ -601,15 +691,24 @@ export const exportSplitItemAnimations = async (
     );
 
     // Report failures if any
-    const failedCount = Object.values(failedStandard).reduce(
+    const failedStandardCount = Object.values(failedStandard).reduce(
       (sum, arr) => sum + arr.length,
       0,
     );
-    if (failedCount > 0) {
+    const failedCustomCount = Object.values(alertableFailedCustom).reduce(
+      (sum, arr) => sum + arr.length,
+      0,
+    );
+    if (failedStandardCount > 0 || failedCustomCount > 0) {
       let msg = "Export completed with some issues:\n";
       for (const [anim, items] of Object.entries(failedStandard)) {
         if (items.length > 0) {
           msg += `${anim}: ${items.join(", ")}\n`;
+        }
+      }
+      for (const [anim, items] of Object.entries(alertableFailedCustom)) {
+        if (items.length > 0) {
+          msg += `${anim} (custom): ${items.join(", ")}\n`;
         }
       }
       alert(msg);
@@ -618,11 +717,13 @@ export const exportSplitItemAnimations = async (
     }
   } catch (err) {
     console.error("Export failed:", err);
+    state.zipExportError = (err as Error).message;
     alert(`Export failed: ${(err as Error).message}`);
   } finally {
     endZipExportUiSuspend(state);
     if (state) {
       state.zipByAnimationAndItem.isRunning = false;
+      syncPostZipState(catalog, state);
     }
     m.redraw();
   }
@@ -673,6 +774,9 @@ export const exportIndividualFrames = async (
   };
 
   if (!guardZipExportEnvironment()) return;
+  if (state.isExportingZip) return;
+  state.isExportingZip = true;
+  state.zipExportError = null;
 
   const profiler = createZipExportProfiler("individualFrames");
 
@@ -683,7 +787,9 @@ export const exportIndividualFrames = async (
     state.zipIndividualFrames.isRunning = true;
     m.redraw();
     beginZipExportUiSuspend();
-    const bodyType = state.bodyType;
+    const exportState = createZipExportStateSnapshot(state);
+    const exportDrawCalls = [...drawCalls];
+    const bodyType = exportState.bodyType;
 
     // Create folder structure
     const standardFolder = zip.folder("standard");
@@ -879,7 +985,13 @@ export const exportIndividualFrames = async (
     );
 
     await profiler.phase("staticFiles", async () => {
-      addCharacterJsonAndCredits(catalog, state, zip, creditsFolder, drawCalls);
+      addCharacterJsonAndCredits(
+        catalog,
+        exportState,
+        zip,
+        creditsFolder,
+        exportDrawCalls,
+      );
     });
 
     const metadata = {
@@ -926,11 +1038,13 @@ export const exportIndividualFrames = async (
     }
   } catch (err) {
     console.error("Individual frames export failed:", err);
+    state.zipExportError = (err as Error).message;
     alert(`Export failed: ${(err as Error).message}`);
   } finally {
     endZipExportUiSuspend(state);
     if (state) {
       state.zipIndividualFrames.isRunning = false;
+      syncPostZipState(catalog, state);
     }
     m.redraw();
   }

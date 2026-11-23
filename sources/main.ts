@@ -76,8 +76,6 @@ import { initHashChangeListener } from "./state/hash.ts";
 
 // Import components
 import { App } from "./components/App.ts";
-import { AnimationPreview } from "./components/preview/AnimationPreview.ts";
-import { FullSpritesheetPreview } from "./components/preview/FullSpritesheetPreview.ts";
 
 // Import performance profiler
 import { PerformanceProfiler } from "./performance-profiler.ts";
@@ -162,29 +160,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   // Mount roots are static markup in index.html; assert non-null.
-  // main.ts is the composition root; App and sibling previews receive the same catalog.
-  m.mount(document.getElementById("mithril-filters")!, {
-    view: () =>
-      m(App, {
-        catalog: applicationCatalog,
-        state: applicationState,
-        models: applicationModels,
-      }),
-  });
-  m.mount(document.getElementById("mithril-preview")!, {
-    view: () =>
-      m(AnimationPreview, {
-        catalog: applicationCatalog,
-        state: applicationState,
-      }),
-  });
-  m.mount(document.getElementById("mithril-spritesheet-preview")!, {
-    view: () =>
-      m(FullSpritesheetPreview, {
-        catalog: applicationCatalog,
-        state: applicationState,
-      }),
-  });
+  // main.ts is the composition root; App coordinates the toolbar, sidebar, chooser, and preview tabs.
+  const appRoot =
+    document.getElementById("mithril-app") ??
+    document.getElementById("mithril-filters");
+  if (appRoot) {
+    m.mount(appRoot, {
+      view: () =>
+        m(App, {
+          catalog: applicationCatalog,
+          state: applicationState,
+          models: applicationModels,
+        }),
+    });
+  }
 
   clearShellLoadingClass();
 
@@ -197,6 +186,13 @@ document.addEventListener("DOMContentLoaded", () => {
     hashHydrationInitDone = true;
 
     canvasRenderer.initCanvas();
+    applicationState.renderedCharacter = {
+      selections: JSON.stringify(applicationState.selections),
+      bodyType: applicationState.bodyType,
+      customImage: applicationState.customUploadedImage,
+      customZPos: applicationState.customImageZPos,
+      matchBodyColorEnabled: applicationState.matchBodyColorEnabled,
+    };
 
     initHashChangeListener(applicationCatalog, applicationState);
 
@@ -208,11 +204,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     m.redraw();
-  })();
+  })().catch((cause: unknown) => {
+    console.error("Character initialization failed:", cause);
+    m.redraw();
+  });
 });
 
 /** Strips shell spinner from Mithril mount roots only (see index.html), not in-component spinners. */
 const SHELL_LOADING_ROOT_IDS = [
+  "mithril-app",
   "mithril-filters",
   "mithril-preview",
   "mithril-spritesheet-preview",

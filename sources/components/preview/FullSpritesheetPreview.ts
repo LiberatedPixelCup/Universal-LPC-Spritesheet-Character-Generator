@@ -8,7 +8,8 @@ import {
   primeSpritesheetPreviewCanvasElement,
 } from "../../canvas/preview-canvas.ts";
 import {
-  canvas as offscreenCanvas,
+  getCanvasRenderVersion,
+  isCharacterCanvasReady,
   isOffscreenCanvasInitialized,
   SHEET_HEIGHT,
   SHEET_WIDTH,
@@ -18,6 +19,7 @@ import { PreviewMetadataLoadingOverlay } from "./PreviewMetadataLoadingOverlay.t
 import type { CatalogReader } from "../../state/catalog.ts";
 
 const SPRITESHEET_ZOOM_ID = "lpc-spritesheet-zoom";
+const ZOOM_BOUNDS = { min: 0.5, max: 2 } as const;
 
 type SpritesheetCanvasAttrs = {
   state: State;
@@ -28,6 +30,8 @@ type SpritesheetCanvasAttrs = {
 
 type SpritesheetCanvasState = {
   zoomLevel: number;
+  lastContentKey: string | null;
+  lastZoom: number | null;
   pinch: PinchToZoom | null;
   _pinchUnmounted: boolean;
   _pinchCreatePromise: Promise<PinchToZoom> | null;
@@ -42,62 +46,61 @@ function syncFullSpritesheetFromOffscreen(
   vnode: m.VnodeDOM<SpritesheetCanvasAttrs, SpritesheetCanvasState>,
 ): void {
   const { state } = vnode.attrs;
-  if (!window.canvasRenderer) {
-    return;
-  }
-  if (!isOffscreenCanvasInitialized()) {
+  if (!window.canvasRenderer || !isOffscreenCanvasInitialized()) {
     return;
   }
 
   const domCanvas = vnode.dom as HTMLCanvasElement;
   const { showTransparencyGrid, applyTransparencyMask, zoomLevel } =
     vnode.attrs;
+  const contentKey = `${getCanvasRenderVersion()}|${showTransparencyGrid}|${applyTransparencyMask}`;
 
-  if (!vnode.state.pinch) {
+  if (
+    isCharacterCanvasReady(state) &&
+    vnode.state.lastContentKey !== contentKey
+  ) {
     copyToPreviewCanvas(
       domCanvas,
       showTransparencyGrid,
       applyTransparencyMask,
       zoomLevel,
     );
+    vnode.state.lastContentKey = contentKey;
+    vnode.state.lastZoom = zoomLevel;
     vnode.state.zoomLevel = zoomLevel;
-    if (!vnode.state._pinchCreatePromise) {
-      vnode.state._pinchCreatePromise = PinchToZoom.create(
-        domCanvas,
-        (scale) => {
-          if (!isOffscreenCanvasInitialized()) {
-            return;
-          }
-          vnode.state.zoomLevel = scale;
-          m.redraw();
-          copyToPreviewCanvas(
-            domCanvas,
-            state.showTransparencyGrid,
-            state.applyTransparencyMask,
-            vnode.state.zoomLevel,
-          );
-          state.fullSpritesheetCanvasZoomLevel = vnode.state.zoomLevel;
-        },
-        vnode.state.zoomLevel,
-      ).then((pinch) => {
-        vnode.state._pinchCreatePromise = null;
-        if (vnode.state._pinchUnmounted) {
-          pinch.destroy();
-          return pinch;
-        }
-        vnode.state.pinch = pinch;
-        return pinch;
-      });
-    }
-    return;
+    vnode.state.pinch?.setZoom(zoomLevel);
+  } else if (vnode.state.lastZoom !== zoomLevel) {
+    domCanvas.style.zoom = zoomLevel === 1 ? "" : zoomLevel.toString();
+    vnode.state.lastZoom = zoomLevel;
+    vnode.state.zoomLevel = zoomLevel;
+    vnode.state.pinch?.setZoom(zoomLevel);
   }
 
-  copyToPreviewCanvas(
-    domCanvas,
-    showTransparencyGrid,
-    applyTransparencyMask,
-    zoomLevel,
-  );
+  if (!vnode.state.pinch && !vnode.state._pinchCreatePromise) {
+    vnode.state._pinchCreatePromise = PinchToZoom.create(
+      domCanvas,
+      (scale) => {
+        if (!isOffscreenCanvasInitialized()) {
+          return;
+        }
+        vnode.state.zoomLevel = scale;
+        vnode.state.lastZoom = scale;
+        state.fullSpritesheetCanvasZoomLevel = scale;
+        domCanvas.style.zoom = scale === 1 ? "" : scale.toString();
+        m.redraw();
+      },
+      vnode.state.zoomLevel,
+      ZOOM_BOUNDS,
+    ).then((pinch) => {
+      vnode.state._pinchCreatePromise = null;
+      if (vnode.state._pinchUnmounted) {
+        pinch.destroy();
+        return pinch;
+      }
+      vnode.state.pinch = pinch;
+      return pinch;
+    });
+  }
 }
 
 const SpritesheetCanvas: m.Component<
@@ -106,10 +109,14 @@ const SpritesheetCanvas: m.Component<
 > = {
   oncreate(vnode) {
     vnode.state.zoomLevel = vnode.attrs.zoomLevel;
+    vnode.state.lastContentKey = null;
+    vnode.state.lastZoom = null;
     vnode.state._pinchUnmounted = false;
     vnode.state.pinch = null;
     vnode.state._pinchCreatePromise = null;
-    primeSpritesheetPreviewCanvasElement(vnode.dom as HTMLCanvasElement);
+    if (isCharacterCanvasReady(vnode.attrs.state)) {
+      primeSpritesheetPreviewCanvasElement(vnode.dom as HTMLCanvasElement);
+    }
     if (!window.canvasRenderer) {
       console.error("Canvas renderer not available yet");
       return;
@@ -129,35 +136,21 @@ const SpritesheetCanvas: m.Component<
     vnode.state._pinchCreatePromise = null;
   },
   view() {
-    const width =
-      isOffscreenCanvasInitialized() && offscreenCanvas
-        ? offscreenCanvas.width
-        : SHEET_WIDTH;
-    const height =
-      isOffscreenCanvasInitialized() && offscreenCanvas
-        ? offscreenCanvas.height
-        : SHEET_HEIGHT;
-    return m("canvas#spritesheet-preview", { width, height });
+    return m("canvas#spritesheet-preview", {
+      width: SHEET_WIDTH,
+      height: SHEET_HEIGHT,
+    });
   },
 };
 
-type FullSpritesheetPreviewState = { zoomLevel: number };
-
-export const FullSpritesheetPreview: m.Component<
-  { catalog: CatalogReader; state: State },
-  FullSpritesheetPreviewState
-> = {
-  oninit(vnode) {
-    const { state } = vnode.attrs;
-    vnode.state.zoomLevel = state.fullSpritesheetCanvasZoomLevel || 1;
-  },
-  onupdate(vnode) {
-    const { state } = vnode.attrs;
-    vnode.state.zoomLevel = state.fullSpritesheetCanvasZoomLevel || 1;
-  },
+export const FullSpritesheetPreview: m.Component<{
+  catalog: CatalogReader;
+  state: State;
+}> = {
   view(vnode) {
     const { catalog, state } = vnode.attrs;
-    const zoomPct = `${Math.round(vnode.state.zoomLevel * 100)}%`;
+    const zoomLevel = state.fullSpritesheetCanvasZoomLevel || 1;
+    const zoomPct = `${Math.round(zoomLevel * 100)}%`;
 
     return m(
       CollapsibleSection,
@@ -202,11 +195,10 @@ export const FullSpritesheetPreview: m.Component<
               min: 0.5,
               max: 2,
               step: 0.1,
-              value: vnode.state.zoomLevel,
+              value: zoomLevel,
               oninput: (e: Event) => {
                 const target = e.target as HTMLInputElement;
-                vnode.state.zoomLevel = parseFloat(target.value);
-                state.fullSpritesheetCanvasZoomLevel = vnode.state.zoomLevel;
+                state.fullSpritesheetCanvasZoomLevel = parseFloat(target.value);
                 m.redraw();
               },
             }),
@@ -224,7 +216,7 @@ export const FullSpritesheetPreview: m.Component<
                     state,
                     showTransparencyGrid: state.showTransparencyGrid,
                     applyTransparencyMask: state.applyTransparencyMask,
-                    zoomLevel: vnode.state.zoomLevel,
+                    zoomLevel,
                   }),
                   state.isRenderingCharacter
                     ? m("div.preview-canvas-busy", { "aria-hidden": true }, [

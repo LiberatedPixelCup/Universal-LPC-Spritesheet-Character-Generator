@@ -24,7 +24,7 @@ export function getItemFileName(
     throw new Error(
       "Requested layer number " + layerNum + " not found for item: " + itemId,
     );
-  const zPos = zOverride || layer.zPos || 100;
+  const zPos = zOverride ?? layer.zPos ?? 100;
   const altName = `${itemId}_${variant}`;
 
   // Format: "050 body_male_light" (zPos padded to 3 digits + space + name)

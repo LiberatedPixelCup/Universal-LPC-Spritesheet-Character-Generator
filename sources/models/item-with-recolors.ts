@@ -1,4 +1,8 @@
-import type { CatalogReader, ItemMerged } from "../state/catalog.ts";
+import {
+  getCatalogFailure,
+  type CatalogReader,
+  type ItemMerged,
+} from "../state/catalog.ts";
 import { drawRecolorPreview } from "../canvas/palette-recolor.ts";
 import { getPaletteOptions, type PaletteOption } from "../state/palettes.ts";
 import { getSelectionGroup, selectItem, type State } from "../state/state.ts";
@@ -16,6 +20,8 @@ export type ItemWithRecolorsModel = {
   readonly isExpanded: boolean;
   readonly isSelected: boolean;
   readonly paletteReady: boolean;
+  readonly layersReady: boolean;
+  readonly paletteError?: string;
   readonly compactDisplay: boolean;
   readonly paletteOptions: readonly RecolorPaletteOptionModel[];
   readonly selectedColors: Record<string, string>;
@@ -131,6 +137,8 @@ export const itemWithRecolorsModelFactory = {
       isExpanded,
       isSelected,
       paletteReady: catalog.isPaletteReady(),
+      layersReady: catalog.isLayersReady(),
+      paletteError: getCatalogFailure(catalog, "palette"),
       compactDisplay: state.compactDisplay,
       paletteOptions: optionModels,
       selectedColors,

@@ -125,6 +125,38 @@ describe("state/catalog.ts", () => {
   });
 
   describe("catalog readiness promises", () => {
+    it("settles failed chunks independently and retains merged lite data", async () => {
+      const creditsFailure = new Error("credits unavailable");
+      const layersFailure = new Error("layers unavailable");
+      const results = Promise.allSettled([
+        catalog.ready.onCreditsReady,
+        catalog.ready.onLayersReady,
+        catalog.ready.onAllReady,
+      ]);
+      writer.recordChunkFailure("credits", creditsFailure);
+      writer.recordChunkFailure("layers", layersFailure);
+      registerLite({ item: { name: "Item", variants: [], recolors: [] } });
+      expect(catalog.getItemMerged("item").unwrapOr(null)?.name).to.equal(
+        "Item",
+      );
+      expect(catalog.isCreditsReady()).to.equal(false);
+      expect(catalog.isLayersReady()).to.equal(false);
+      expect(catalog.getItemCredits("item")._unsafeUnwrapErr()).to.include({
+        kind: "load-failed",
+        chunk: "credits",
+      });
+      expect(catalog.chunkReady("layers")._unsafeUnwrapErr()).to.include({
+        kind: "load-failed",
+        chunk: "layers",
+      });
+      const finished = await results;
+      expect(finished.map(({ status }) => status)).to.deep.equal([
+        "rejected",
+        "rejected",
+        "rejected",
+      ]);
+    });
+
     it("onIndexReady settles after registerIndexMetadata, alias data is queryable", async () => {
       const done = catalog.ready.onIndexReady;
       writer.registerIndexMetadata({

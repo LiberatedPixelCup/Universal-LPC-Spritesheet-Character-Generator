@@ -5,7 +5,11 @@ import {
   generateSources,
   type GenerateSourcesDeps,
 } from "../scripts/generate_sources.ts";
-import type { MetadataEnv } from "../scripts/generateSources/state.ts";
+import {
+  BODY_SPRITE_DIR,
+  listBodySpritePaths,
+  type MetadataEnv,
+} from "../scripts/generateSources/state.ts";
 import {
   computeSourceInputsFingerprint,
   getSourceInputsCachePath,
@@ -45,8 +49,7 @@ function shouldForceRegenerateFromEnv(): boolean {
 
 /**
  * Vite plugin: generates five metadata ES modules under `dist/`, and when
- * `sheet_definitions/`, `palette_definitions/`, and `scripts/generateSources/`
- * inputs are unchanged, skips re-running. When inputs are new, changed, or
+ * definition, generator and Body PNG path inputs are unchanged, skips re-running. When inputs are new, changed, or
  * `dist` metadata is missing, also runs `z_positions` + `CREDITS.csv` (same as
  * `validate-site-sources`). Use `VITE_REGENERATE_SOURCES=1` to always run the
  * full pipeline.
@@ -66,12 +69,13 @@ export function vitePluginItemMetadata(
       writeMetadata: true,
       writeCredits: false,
       metadataOutputPath,
+      bodySpritePaths: listBodySpritePaths(root),
       env,
       writeFileSync: fs.writeFileSync,
     });
   }
 
-  function runFullSourcePipeline() {
+  function runFullSourcePipeline(bodySpritePaths = listBodySpritePaths(root)) {
     fs.mkdirSync(path.join(root, "dist"), { recursive: true });
     const metadataOutputPath = path.join(root, "dist", "item-metadata.js");
     writeZPositionsFromSheetsSync({ root });
@@ -79,21 +83,22 @@ export function vitePluginItemMetadata(
       writeMetadata: true,
       writeCredits: true,
       metadataOutputPath,
+      bodySpritePaths,
       env,
       writeFileSync: fs.writeFileSync,
     });
-    const fp = computeSourceInputsFingerprint({ root });
+    const fp = computeSourceInputsFingerprint({ root, bodySpritePaths });
     writeStoredSourceInputsFingerprint(getSourceInputsCachePath(root), fp);
   }
 
-  function shouldSkipByFingerprint() {
+  function shouldSkipByFingerprint(bodySpritePaths: readonly string[]) {
     if (shouldForceRegenerateFromEnv()) {
       return false;
     }
     if (!distMetadataExists(root)) {
       return false;
     }
-    const current = computeSourceInputsFingerprint({ root });
+    const current = computeSourceInputsFingerprint({ root, bodySpritePaths });
     const previous = readStoredSourceInputsFingerprint(
       getSourceInputsCachePath(root),
     );
@@ -105,10 +110,11 @@ export function vitePluginItemMetadata(
       runMetadataOnly();
       return;
     }
-    if (shouldSkipByFingerprint()) {
+    const bodySpritePaths = listBodySpritePaths(root);
+    if (shouldSkipByFingerprint(bodySpritePaths)) {
       return;
     }
-    runFullSourcePipeline();
+    runFullSourcePipeline(bodySpritePaths);
   }
 
   function scheduleRegenerate() {
@@ -137,8 +143,10 @@ export function vitePluginItemMetadata(
     configureServer(server) {
       const sheetDefinitions = path.join(root, "sheet_definitions");
       const paletteDefinitions = path.join(root, "palette_definitions");
+      const bodySprites = path.join(root, BODY_SPRITE_DIR);
       server.watcher.add(sheetDefinitions);
       server.watcher.add(paletteDefinitions);
+      server.watcher.add(bodySprites);
 
       const onFsEvent = (filePath: string) => {
         if (
@@ -149,9 +157,20 @@ export function vitePluginItemMetadata(
         }
       };
 
+      const onPathChange = (filePath: string) => {
+        if (
+          isPathInside(filePath, bodySprites) &&
+          path.extname(filePath) === ".png"
+        ) {
+          scheduleRegenerate();
+        } else {
+          onFsEvent(filePath);
+        }
+      };
+
       server.watcher.on("change", onFsEvent);
-      server.watcher.on("add", onFsEvent);
-      server.watcher.on("unlink", onFsEvent);
+      server.watcher.on("add", onPathChange);
+      server.watcher.on("unlink", onPathChange);
     },
   };
 }

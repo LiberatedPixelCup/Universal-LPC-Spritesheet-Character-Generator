@@ -52,6 +52,12 @@ export const CurrentSelections: m.Component<
       ]);
     }
 
+    if (model.kind === "failed") {
+      return m("div.lpc-selections", [
+        heading,
+        m("p.lpc-helper-text.is-danger", { role: "alert" }, model.message),
+      ]);
+    }
     if (model.kind === "empty") {
       return m("div.lpc-selections", [
         heading,

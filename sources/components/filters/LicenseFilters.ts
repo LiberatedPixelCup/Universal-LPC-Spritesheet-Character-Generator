@@ -49,12 +49,18 @@ export const LicenseFilters: m.Component<
       ),
       vnode.state.isExpanded
         ? m("div.lpc-filter-body", { id: LICENSE_FILTERS_BODY_ID }, [
-            !model.liteReady
-              ? m("p.lpc-helper-text", "Loading item list…")
-              : null,
-            !model.creditsReady
-              ? m("p.lpc-helper-text", "Loading asset license data…")
-              : null,
+            model.loadError
+              ? m(
+                  "p.lpc-helper-text.is-danger",
+                  { role: "alert" },
+                  model.loadError,
+                )
+              : [
+                  !model.liteReady &&
+                    m("p.lpc-helper-text", "Loading item list…"),
+                  !model.creditsReady &&
+                    m("p.lpc-helper-text", "Loading asset license data…"),
+                ],
             m(
               "ul.tree-list.lpc-filter-list",
               model.options.map((license) =>
@@ -63,7 +69,7 @@ export const LicenseFilters: m.Component<
                     m("label.checkbox", [
                       m("input[type=checkbox]", {
                         checked: license.enabled,
-                        disabled: !model.liteReady,
+                        disabled: !model.liteReady || Boolean(model.loadError),
                         onchange: (e: Event) => {
                           const target = e.target as HTMLInputElement;
                           license.setEnabled(target.checked);

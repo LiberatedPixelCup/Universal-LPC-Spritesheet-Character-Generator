@@ -98,4 +98,25 @@ describe("getItemFileName", () => {
     );
     expect(result).to.equal("075 body_male_light.png");
   });
+
+  it("should preserve zPos 0 instead of falling back to 100", () => {
+    seedCatalog(catalogWriter, {
+      1: {
+        layers: {
+          layer_1: { zPos: 50 },
+        },
+      },
+      shadow: {
+        layers: {
+          layer_1: { zPos: 0 },
+        },
+      },
+    });
+    expect(getItemFileName(catalog, "shadow", "shadow", "Shadow", 1)).to.equal(
+      "000 shadow.png",
+    );
+    expect(
+      getItemFileName(catalog, 1, "variant1", "body_male_light", 1, 0),
+    ).to.equal("000 body_male_light.png");
+  });
 });

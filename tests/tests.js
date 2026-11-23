@@ -64,6 +64,7 @@ import "./utils/zip-helpers_spec.js";
 import "./utils/zip-export-ui-suspend_spec.js";
 import "./state/zip_spec.js";
 import "./state/zip-issue-382_spec.js";
+import "./state/zip-concurrency_spec.ts";
 import "./performance-profiler_spec.js";
 
 after(async function () {

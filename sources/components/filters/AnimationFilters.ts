@@ -49,9 +49,15 @@ export const AnimationFilters: m.Component<
       ),
       vnode.state.isExpanded
         ? m("div.lpc-filter-body", { id: ANIMATION_FILTERS_BODY_ID }, [
-            !model.liteReady
-              ? m("p.lpc-helper-text", "Loading item list…")
-              : null,
+            model.loadError
+              ? m(
+                  "p.lpc-helper-text.is-danger",
+                  { role: "alert" },
+                  model.loadError,
+                )
+              : !model.liteReady
+                ? m("p.lpc-helper-text", "Loading item list…")
+                : null,
             m(
               "ul.tree-list.lpc-filter-list",
               model.options.map((anim) =>
@@ -59,7 +65,7 @@ export const AnimationFilters: m.Component<
                   m("label.checkbox", [
                     m("input[type=checkbox]", {
                       checked: anim.enabled,
-                      disabled: !model.liteReady,
+                      disabled: !model.liteReady || Boolean(model.loadError),
                       onchange: (e: Event) => {
                         const target = e.target as HTMLInputElement;
                         anim.setEnabled(target.checked);

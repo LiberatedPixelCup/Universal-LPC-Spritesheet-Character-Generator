@@ -3,7 +3,7 @@ import type { State } from "../state/state.ts";
 import { FRAME_SIZE, ANIMATION_CONFIGS } from "../state/constants.ts";
 import { get2DContext, drawTransparencyBackground } from "./canvas-utils.ts";
 import { applyTransparencyMaskToCanvas } from "./mask.ts";
-import { canvas } from "./renderer.ts";
+import { canvas, isCharacterCanvasReady } from "./renderer.ts";
 import { customAnimations } from "../custom-animations.ts";
 import type { CustomAnimationDefinition } from "../custom-animations.ts";
 
@@ -84,6 +84,30 @@ export function setPreviewAnimation(animationName: string): number[] {
   return animationFrames; // Return for display
 }
 
+// Reusable small canvas for masking only the visible preview frames
+let maskedFrameCanvas: HTMLCanvasElement | null = null;
+let maskedFrameCtx: CanvasRenderingContext2D | null = null;
+
+function getMaskedFrameBuffer(
+  width: number,
+  height: number,
+): { canvas: HTMLCanvasElement; ctx: CanvasRenderingContext2D } {
+  if (!maskedFrameCanvas || !maskedFrameCtx) {
+    maskedFrameCanvas = document.createElement("canvas");
+    maskedFrameCtx = get2DContext(maskedFrameCanvas, true);
+  }
+  if (
+    maskedFrameCanvas.width !== width ||
+    maskedFrameCanvas.height !== height
+  ) {
+    maskedFrameCanvas.width = width;
+    maskedFrameCanvas.height = height;
+  } else {
+    maskedFrameCtx.clearRect(0, 0, width, height);
+  }
+  return { canvas: maskedFrameCanvas, ctx: maskedFrameCtx };
+}
+
 /**
  * Draw one preview frame for a given index into `animationFrames` (the cycle).
  * Used by the animation loop and by visual tests (static frame, no rAF).
@@ -92,7 +116,12 @@ function paintPreviewFrameForCycleIndex(
   state: State,
   cycleIndex: number,
 ): void {
-  if (!previewCtx || !canvas || !previewCanvas) {
+  if (
+    !previewCtx ||
+    !canvas ||
+    !previewCanvas ||
+    !isCharacterCanvasReady(state)
+  ) {
     return;
   }
 
@@ -121,27 +150,18 @@ function paintPreviewFrameForCycleIndex(
     }
   }
 
-  let tmpCanvas: HTMLCanvasElement;
-  if (state.applyTransparencyMask) {
-    // using a tmpCanvas here to avoid modifying the original offscreen canvas
-    // which causes a bug if the user toggles the checkbox multiple times
-    tmpCanvas = document.createElement("canvas");
-    tmpCanvas.width = canvas.width;
-    tmpCanvas.height = canvas.height;
-    const tmpCtx = get2DContext(tmpCanvas);
-    tmpCtx.drawImage(canvas, 0, 0);
-    applyTransparencyMaskToCanvas(tmpCanvas, tmpCtx);
-  } else {
-    tmpCanvas = canvas;
-  }
+  const drawDestination = state.applyTransparencyMask
+    ? getMaskedFrameBuffer(previewCanvas.width, previewCanvas.height)
+    : null;
+  const targetCtx = drawDestination ? drawDestination.ctx : previewCtx;
 
-  // Draw stacked rows from main canvas to preview
+  // Draw stacked rows from main canvas to target context
   for (let i = 0; i < animRowNum; i++) {
     const srcY = activeCustomAnimation
       ? yOffset + i * frameSize // Custom animation: use Y offset + row * frameSize
       : (animRowStart + i) * FRAME_SIZE; // Standard animation: use row * 64
-    previewCtx.drawImage(
-      tmpCanvas,
+    targetCtx.drawImage(
+      canvas,
       currentFrame * frameSize, // source x
       srcY, // source y
       frameSize, // source width
@@ -151,6 +171,11 @@ function paintPreviewFrameForCycleIndex(
       frameSize, // dest width
       frameSize, // dest height
     );
+  }
+
+  if (drawDestination) {
+    applyTransparencyMaskToCanvas(drawDestination.canvas, drawDestination.ctx);
+    previewCtx.drawImage(drawDestination.canvas, 0, 0);
   }
 }
 

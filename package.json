@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "prebuild": "rimraf \"dist/!(spritesheets)\"",
+    "prebuild": "rimraf --glob \"dist/!(spritesheets)\"",
     "build": "vite build",
     "preview": "vite preview",
     "serve": "vite",

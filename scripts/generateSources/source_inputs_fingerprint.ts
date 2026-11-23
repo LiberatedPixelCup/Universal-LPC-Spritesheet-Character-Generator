@@ -1,16 +1,17 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
-import { readDirTree } from "./state.ts";
+import { listBodySpritePaths, readDirTree } from "./state.ts";
 
 export type SourceInputsFingerprintDeps = {
   root?: string;
+  bodySpritePaths?: readonly string[];
   readFileSync?: (filePath: string) => string | NodeJS.ArrayBufferView;
 };
 
 /**
  * SHA-256 of all file contents under `sheet_definitions`, `palette_definitions`,
- * and `scripts/generateSources` (repo-relative roots).
+ * and `scripts/generateSources`, plus Body PNG paths (repo-relative).
  */
 export function computeSourceInputsFingerprint(
   deps?: SourceInputsFingerprintDeps,
@@ -40,6 +41,7 @@ export function computeSourceInputsFingerprint(
       h.update("\0");
     }
   }
+  h.update(JSON.stringify(deps?.bodySpritePaths ?? listBodySpritePaths(root)));
   return h.digest("hex");
 }
 

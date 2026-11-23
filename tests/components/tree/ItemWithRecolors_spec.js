@@ -158,6 +158,7 @@ describe("ItemWithRecolors", function () {
             isExpanded: true,
             isCompatible: true,
             paletteReady: true,
+            layersReady: true,
             paletteOptions: [],
             selectedColors: {},
             drawPreview: async (canvas, _colors, isCancelled) => {
@@ -339,6 +340,33 @@ describe("ItemWithRecolors", function () {
     );
   });
 
+  it("waits for palette and layer metadata before drawing an expanded thumbnail", function () {
+    let paletteReady = false;
+    let layersReady = false;
+    let draws = 0;
+    const createModel = () => ({
+      name: "Recolor Tee",
+      bodyType: "male",
+      isExpanded: true,
+      isCompatible: true,
+      paletteReady,
+      layersReady,
+      paletteOptions: [],
+      selectedColors: {},
+      drawPreview: async () => ++draws,
+    });
+    m.render(host, m(ItemWithRecolorsComponent, { createModel }));
+    assert.equal(draws, 0);
+    paletteReady = true;
+    m.render(host, m(ItemWithRecolorsComponent, { createModel }));
+    assert.equal(draws, 0);
+    layersReady = true;
+    m.render(host, m(ItemWithRecolorsComponent, { createModel }));
+    assert.equal(draws, 1);
+    m.render(host, m(ItemWithRecolorsComponent, { createModel }));
+    assert.equal(draws, 1);
+  });
+
   it("row label expands a collapsed item", function () {
     let isExpanded = false;
     const createModel = () => ({
@@ -348,6 +376,7 @@ describe("ItemWithRecolors", function () {
       isExpanded,
       isSelected: false,
       paletteReady: true,
+      layersReady: true,
       compactDisplay: false,
       paletteOptions: [],
       selectedColors: {},
@@ -465,6 +494,7 @@ describe("ItemWithRecolors", function () {
       isExpanded: true,
       isSelected: false,
       paletteReady: true,
+      layersReady: true,
       compactDisplay,
       paletteOptions: [],
       selectedColors: {},
