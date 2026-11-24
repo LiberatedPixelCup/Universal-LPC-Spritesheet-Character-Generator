@@ -2,7 +2,7 @@
 
 #### Submissions
 
-**Important: all art submitted to this project must be available under one of the supported licenses; see the `Licensing and Attribution (Credits)` section in [README.md](README.md).**
+**Important: all art submitted to this project must be available under one of the supported licenses; see [Licensing and Attribution (Credits)](README.md#licensing-and-attribution-credits).**
 
 - If you are submitting art that was made by (or derived from work made by) someone else, please be sure that you have the rights to distribute that art under the licenses you choose.
 
