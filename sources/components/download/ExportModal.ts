@@ -1,4 +1,5 @@
 import m from "mithril";
+import { DownloadDialog } from "./DownloadDialog.ts";
 import type { State } from "../../state/state.ts";
 import type { DownloadModel } from "../../models/download.ts";
 
@@ -13,22 +14,17 @@ export const ExportModal: m.Component<ExportModalAttrs> = {
     const { state, createModel, onClose } = vnode.attrs;
     const model = createModel();
 
-    return m(
-      "div.modal.is-active.lpc-modal",
-      {
-        role: "dialog",
-        "aria-modal": "true",
-        "aria-labelledby": "export-dialog-title",
-      },
-      [
-        m("div.modal-background", { onclick: onClose }),
+    return m(DownloadDialog, {
+      titleId: "export-dialog-title",
+      onClose,
+      renderCard: (close) =>
         m("div.modal-card.lpc-modal-card", [
           m("header.modal-card-head.lpc-modal-header", [
             m("h3.modal-card-title#export-dialog-title", "Export Spritesheet"),
             m("button.delete", {
               type: "button",
               "aria-label": "Close export dialog",
-              onclick: onClose,
+              onclick: close,
             }),
           ]),
           m("section.modal-card-body.lpc-modal-body", [
@@ -138,13 +134,12 @@ export const ExportModal: m.Component<ExportModalAttrs> = {
               "button.button.is-small",
               {
                 type: "button",
-                onclick: onClose,
+                onclick: close,
               },
               "Close",
             ),
           ]),
         ]),
-      ],
-    );
+    });
   },
 };

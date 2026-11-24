@@ -7,6 +7,8 @@ export type ToolbarAttrs = {
   createDownloadModel: () => DownloadModel;
   categoriesExpanded: boolean;
   onToggleCategories: () => void;
+  onOpenExport: (opener: HTMLElement) => void;
+  onOpenCharacterCredits: (opener: HTMLElement | null) => void;
 };
 
 type ToolbarState = {
@@ -48,16 +50,11 @@ export const Toolbar: m.Component<ToolbarAttrs, ToolbarState> = {
       createDownloadModel,
       categoriesExpanded,
       onToggleCategories,
+      onOpenExport,
+      onOpenCharacterCredits,
     } = vnode.attrs;
     const downloadModel = createDownloadModel();
     const isElectron = Boolean(window.electronAPI?.isElectron);
-
-    const openExportModal = () => {
-      state.isCreditsModalOpen = false;
-      state.isMoreMenuOpen = false;
-      state.isExportModalOpen = true;
-      m.redraw();
-    };
 
     const toggleMoreMenu = () => {
       state.isMoreMenuOpen = !state.isMoreMenuOpen;
@@ -92,7 +89,8 @@ export const Toolbar: m.Component<ToolbarAttrs, ToolbarState> = {
             {
               type: "button",
               disabled: state.isExportingZip,
-              onclick: openExportModal,
+              onclick: (event: MouseEvent) =>
+                onOpenExport(event.currentTarget as HTMLButtonElement),
             },
             "Export…",
           ),
@@ -138,11 +136,12 @@ export const Toolbar: m.Component<ToolbarAttrs, ToolbarState> = {
                       {
                         type: "button",
                         role: "menuitem",
-                        onclick: () => {
-                          state.isMoreMenuOpen = false;
-                          state.isExportModalOpen = false;
-                          state.isCreditsModalOpen = true;
-                        },
+                        onclick: (event: MouseEvent) =>
+                          onOpenCharacterCredits(
+                            (event.currentTarget as HTMLButtonElement)
+                              .closest(".lpc-more-dropdown")
+                              ?.querySelector(".lpc-more-toggle") ?? null,
+                          ),
                       },
                       "Character Credits…",
                     ),

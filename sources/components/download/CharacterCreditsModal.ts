@@ -1,4 +1,5 @@
 import m from "mithril";
+import { DownloadDialog } from "./DownloadDialog.ts";
 import type { CreditsModel } from "../../models/credits.ts";
 
 export type CharacterCreditsModalAttrs = {
@@ -11,15 +12,10 @@ export const CharacterCreditsModal: m.Component<CharacterCreditsModalAttrs> = {
     const { createModel, onClose } = vnode.attrs;
     const model = createModel();
 
-    return m(
-      "div.modal.is-active.lpc-modal",
-      {
-        role: "dialog",
-        "aria-modal": "true",
-        "aria-labelledby": "credits-dialog-title",
-      },
-      [
-        m("div.modal-background", { onclick: onClose }),
+    return m(DownloadDialog, {
+      titleId: "credits-dialog-title",
+      onClose,
+      renderCard: (close) =>
         m("div.modal-card.lpc-modal-card.lpc-credits-modal-card", [
           m("header.modal-card-head.lpc-modal-header", [
             m(
@@ -29,7 +25,7 @@ export const CharacterCreditsModal: m.Component<CharacterCreditsModalAttrs> = {
             m("button.delete", {
               type: "button",
               "aria-label": "Close credits dialog",
-              onclick: onClose,
+              onclick: close,
             }),
           ]),
           m("section.modal-card-body.lpc-modal-body", [
@@ -118,13 +114,12 @@ export const CharacterCreditsModal: m.Component<CharacterCreditsModalAttrs> = {
               "button.button.is-small",
               {
                 type: "button",
-                onclick: onClose,
+                onclick: close,
               },
               "Close",
             ),
           ]),
         ]),
-      ],
-    );
+    });
   },
 };

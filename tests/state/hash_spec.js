@@ -18,6 +18,7 @@ import {
 } from "../../sources/state/hash.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
 import { createState } from "../../sources/state/state.ts";
+import { syncPostZipState } from "../../sources/state/zip.ts";
 import { initCanvas } from "../../sources/canvas/renderer.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
 
@@ -625,6 +626,48 @@ describe("state/hash.ts", () => {
       await handler();
       expect(getSetHashCalledTimes()).to.equal(writesBefore);
     });
+
+    for (const forward of [false, true]) {
+      it(`restores the latest outfit after ZIP history ${forward ? "Back then Forward" : "Back"}`, async () => {
+        const amber = "#sex=male&body=Body_Color_amber";
+        const light = "#sex=male&body=Body_Color_light";
+        seedCatalog(catalogWriter, {
+          body: {
+            type_name: "body",
+            name: "Body Color",
+            variants: ["amber", "light"],
+          },
+        });
+        loadSelectionsFromHash(catalog, state, amber, "replace");
+        expect(state.selections.body.variant).to.equal("amber");
+
+        initHashChangeListener(catalog, state);
+        const handler = window.addEventListener.getCall(0).args[1];
+        state.isExportingZip = true;
+        setHash(light);
+        await handler();
+        expect(state.pendingPostZipHash).to.equal(light);
+
+        if (forward) {
+          setHash(amber);
+          await handler();
+          expect(state.pendingPostZipHash).to.equal(null);
+        } else {
+          setHash("#credits-section");
+          await handler();
+          expect(state.pendingPostZipHash).to.equal(light);
+        }
+        expect(state.selections.body.variant).to.equal("amber");
+
+        syncPostZipState(catalog, state);
+        expect(state.isExportingZip).to.equal(false);
+        expect(state.pendingPostZipHash).to.equal(null);
+        expect(state.selections.body.variant).to.equal(
+          forward ? "amber" : "light",
+        );
+        expect(getHash()).to.equal(forward ? amber : light);
+      });
+    }
 
     it("should not throw an error if no callback is provided", () => {
       expect(() => initHashChangeListener(catalog, state)).to.not.throw();

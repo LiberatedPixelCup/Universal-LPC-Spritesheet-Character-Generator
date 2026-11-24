@@ -2006,8 +2006,24 @@ button.palette-recolor-item.is-not-compatible {
    Modals (Export & Credits)
    ========================================================================== */
 
-.modal.lpc-modal {
-  z-index: 200;
+dialog.lpc-modal {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+dialog.lpc-modal[open] {
+  display: flex;
+}
+
+dialog.lpc-modal::backdrop {
+  background: transparent;
 }
 
 .lpc-modal-card {

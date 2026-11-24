@@ -3,6 +3,7 @@ import { assert } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { App } from "../../sources/components/App.ts";
+import appStyles from "../../styles/lpc-redesign.css?inline";
 import { createApplicationModels } from "../../sources/models/application.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
 import {
@@ -455,6 +456,107 @@ describe("App", function () {
     assert.isTrue(state.isExportModalOpen);
     assert.include(host.textContent, "Render Error:");
     assert.include(host.textContent, "WebGL blew up");
+  });
+
+  it("uses a native modal and restores focus after switching via the Electron menu", function () {
+    let emitMenuAction;
+    window.electronAPI = {
+      isElectron: true,
+      onMenuAction(callback) {
+        emitMenuAction = callback;
+        return () => {};
+      },
+    };
+    m.mount(host, { view: () => [m("style", appStyles), appView()] });
+    const search = host.querySelector("input[type=search]");
+    search.focus();
+
+    emitMenuAction("export");
+    m.redraw.sync();
+    const exportDialog = host.querySelector(
+      'dialog[open][aria-labelledby="export-dialog-title"]',
+    );
+    assert.isOk(exportDialog);
+    assert.strictEqual(
+      document.activeElement,
+      exportDialog.querySelector(".delete"),
+    );
+
+    emitMenuAction("character-credits");
+    m.redraw.sync();
+    const creditsDialog = host.querySelector(
+      'dialog[open][aria-labelledby="credits-dialog-title"]',
+    );
+    assert.isOk(creditsDialog);
+    assert.isFalse(exportDialog.open);
+    assert.strictEqual(
+      document.activeElement,
+      creditsDialog.querySelector(".delete"),
+    );
+    creditsDialog.dispatchEvent(new Event("cancel", { cancelable: true }));
+    m.redraw.sync();
+    assert.isFalse(state.isCreditsModalOpen);
+    assert.strictEqual(document.activeElement, search);
+  });
+
+  it("reopens Export when close and reopen happen before the same redraw", async function () {
+    m.mount(host, { view: () => [m("style", appStyles), appView()] });
+    const exportButton = host.querySelector(".lpc-toolbar-export-btn");
+    exportButton.click();
+    m.redraw.sync();
+    const first = host.querySelector("dialog[open]");
+    assert.isOk(first);
+    first.dispatchEvent(new Event("cancel", { cancelable: true }));
+    exportButton.click();
+    m.redraw.sync();
+    const reopened = host.querySelector("dialog[open]");
+    assert.isOk(reopened);
+    assert.notStrictEqual(reopened, first);
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+    assert.isTrue(reopened.open);
+    assert.isTrue(state.isExportModalOpen);
+  });
+
+  it("waits for Palette Select and falls back to Categories when Export is disabled", function () {
+    let emitMenuAction;
+    window.electronAPI = {
+      isElectron: true,
+      onMenuAction(callback) {
+        emitMenuAction = callback;
+        return () => {};
+      },
+    };
+    m.mount(host, { view: () => [m("style", appStyles), appView()] });
+    const exportButton = host.querySelector(".lpc-toolbar-export-btn");
+    exportButton.focus();
+    const paletteDialog = document.createElement("dialog");
+    paletteDialog.className = "palette-modal";
+    document.body.appendChild(paletteDialog);
+    paletteDialog.showModal();
+    try {
+      emitMenuAction("export");
+      m.redraw.sync();
+      assert.isNull(host.querySelector("dialog[open]"));
+      assert.strictEqual(document.activeElement, paletteDialog);
+    } finally {
+      paletteDialog.close();
+      paletteDialog.remove();
+    }
+    m.redraw.sync();
+
+    const exportDialog = host.querySelector("dialog[open]");
+    assert.isOk(exportDialog);
+    state.isExportingZip = true;
+    m.redraw.sync();
+    assert.isTrue(exportButton.disabled);
+    exportDialog.querySelector(".modal-background").click();
+    m.redraw.sync();
+    assert.isFalse(state.isExportModalOpen);
+    assert.isTrue(state.isExportingZip);
+    assert.strictEqual(
+      document.activeElement,
+      host.querySelector(".lpc-categories-toggle"),
+    );
   });
 
   it("closes the Toolbar More menu on outside pointerdown and link clicks, with Character Credits (CSV) label", function () {

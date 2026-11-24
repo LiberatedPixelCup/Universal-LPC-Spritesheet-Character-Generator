@@ -497,12 +497,12 @@ export function initHashChangeListener(
   window.addEventListener("hashchange", async function () {
     const currentHash = getHash();
     if (currentHash.length > 1 && !currentHash.includes("=")) return;
-    if (currentHash === selectionHash(catalog, state)) return;
-
+    const matchesSelection = currentHash === selectionHash(catalog, state);
     if (state.isExportingZip) {
-      state.pendingPostZipHash = currentHash;
+      state.pendingPostZipHash = matchesSelection ? null : currentHash;
       return;
     }
+    if (matchesSelection) return;
 
     // Normalize old URLs in the entry being restored.
     loadSelectionsFromHash(catalog, state, currentHash.slice(1), "replace");

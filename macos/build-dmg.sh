@@ -3,7 +3,7 @@
 set -euo pipefail
 
 root=$(cd "$(dirname "$0")/.." && pwd)
-version=1.0.0
+version=1.0.1
 electron_version=45.4.1
 archive_name="electron-v${electron_version}-darwin-arm64.zip"
 archive_sha=d080c3b05a01bd16137f2c12ab9ebf083c577757fe846844ba325bafa8e8bdf4

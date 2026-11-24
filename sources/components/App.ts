@@ -24,7 +24,15 @@ export type AppAttrs = {
   models: ApplicationModels;
 };
 
+type DownloadDialogKind = "export" | "character-credits";
+
 type AppState = {
+  openDownloadDialog: (
+    kind: DownloadDialogKind,
+    opener?: HTMLElement | null,
+  ) => void;
+  downloadDialogOpener?: HTMLElement | null;
+  downloadDialogId: number;
   prevSelections: string;
   prevBodyType: string;
   prevCustomImage: HTMLImageElement | null;
@@ -88,6 +96,28 @@ export const App: m.Component<AppAttrs, AppState> = {
       m.redraw();
     };
 
+    vnode.state.downloadDialogId = 0;
+    vnode.state.openDownloadDialog = (kind, opener) => {
+      if (kind === "export" && state.isExportingZip) return;
+      if (!state.isExportModalOpen && !state.isCreditsModalOpen) {
+        // Close and reopen can be coalesced into a single Mithril redraw.
+        // A new key prevents reuse of the dialog that is already closing.
+        vnode.state.downloadDialogId += 1;
+        const active = document.activeElement;
+        vnode.state.downloadDialogOpener =
+          opener ??
+          (active instanceof HTMLElement &&
+          vnode.state.root?.contains(active) &&
+          !active.closest("dialog")
+            ? active
+            : null);
+      }
+      state.isMoreMenuOpen = false;
+      state.isExportModalOpen = kind === "export";
+      state.isCreditsModalOpen = kind === "character-credits";
+      m.redraw();
+    };
+
     vnode.state.handleKeydown = (event: KeyboardEvent) => {
       // Cmd+F or Ctrl+F -> Focus Search
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "f") {
@@ -102,13 +132,7 @@ export const App: m.Component<AppAttrs, AppState> = {
       // Escape -> Close topmost modal / drawer
       if (event.key === "Escape") {
         if (document.querySelector("dialog[open]")) return;
-        if (state.isExportModalOpen) {
-          state.isExportModalOpen = false;
-          m.redraw();
-        } else if (state.isCreditsModalOpen) {
-          state.isCreditsModalOpen = false;
-          m.redraw();
-        } else if (state.isAdvancedDrawerOpen) {
+        if (state.isAdvancedDrawerOpen) {
           state.isAdvancedDrawerOpen = false;
           m.redraw();
         } else if (state.isCategoriesDrawerOpen) {
@@ -125,12 +149,8 @@ export const App: m.Component<AppAttrs, AppState> = {
     if (window.electronAPI?.onMenuAction) {
       vnode.state.unsubscribeMenuAction = window.electronAPI.onMenuAction(
         (action: string) => {
-          if (action === "export") {
-            if (state.isExportingZip) return;
-            state.isCreditsModalOpen = false;
-            state.isMoreMenuOpen = false;
-            state.isExportModalOpen = true;
-            m.redraw();
+          if (action === "export" || action === "character-credits") {
+            vnode.state.openDownloadDialog(action);
           } else if (action === "find") {
             const searchInput =
               document.querySelector<HTMLInputElement>("input[type=search]");
@@ -139,11 +159,6 @@ export const App: m.Component<AppAttrs, AppState> = {
             vnode.state.toggleCategories();
           } else if (action === "advanced-tools") {
             state.isAdvancedDrawerOpen = true;
-            m.redraw();
-          } else if (action === "character-credits") {
-            state.isExportModalOpen = false;
-            state.isMoreMenuOpen = false;
-            state.isCreditsModalOpen = true;
             m.redraw();
           } else if (action === "copy-json") {
             void vnode.attrs.models
@@ -276,6 +291,22 @@ export const App: m.Component<AppAttrs, AppState> = {
       state.isCategoriesDrawerOpen = false;
     };
 
+    const closeDownloadDialog = () => {
+      const { root, downloadDialogOpener } = vnode.state;
+      vnode.state.downloadDialogOpener = null;
+      state.isExportModalOpen = false;
+      state.isCreditsModalOpen = false;
+      for (const target of [
+        downloadDialogOpener,
+        root?.querySelector<HTMLElement>(".lpc-toolbar-export-btn"),
+        root?.querySelector<HTMLElement>(".lpc-categories-toggle"),
+      ]) {
+        if (!target?.isConnected || target.matches(":disabled")) continue;
+        target.focus();
+        if (document.activeElement === target) break;
+      }
+    };
+
     return m("div.lpc-app-stack", [
       m(Toolbar, {
         state,
@@ -284,6 +315,10 @@ export const App: m.Component<AppAttrs, AppState> = {
           ? state.isSidebarOpen
           : state.isCategoriesDrawerOpen,
         onToggleCategories: vnode.state.toggleCategories,
+        onOpenExport: (opener: HTMLElement) =>
+          vnode.state.openDownloadDialog("export", opener),
+        onOpenCharacterCredits: (opener: HTMLElement | null) =>
+          vnode.state.openDownloadDialog("character-credits", opener),
       }),
       m("main.lpc-main#columns-container", [
         m("div.lpc-workbench", [
@@ -351,21 +386,27 @@ export const App: m.Component<AppAttrs, AppState> = {
             state.isAdvancedDrawerOpen = false;
           },
         }),
-      state.isExportModalOpen &&
-        m(ExportModal, {
-          state,
-          createModel: models.createDownloadModel,
-          onClose: () => {
-            state.isExportModalOpen = false;
-          },
-        }),
-      state.isCreditsModalOpen &&
-        m(CharacterCreditsModal, {
-          createModel: models.createCreditsModel,
-          onClose: () => {
-            state.isCreditsModalOpen = false;
-          },
-        }),
+      m.fragment(
+        {},
+        state.isExportModalOpen
+          ? [
+              m(ExportModal, {
+                key: vnode.state.downloadDialogId,
+                state,
+                createModel: models.createDownloadModel,
+                onClose: closeDownloadDialog,
+              }),
+            ]
+          : state.isCreditsModalOpen
+            ? [
+                m(CharacterCreditsModal, {
+                  key: vnode.state.downloadDialogId,
+                  createModel: models.createCreditsModel,
+                  onClose: closeDownloadDialog,
+                }),
+              ]
+            : [],
+      ),
     ]);
   },
 };
