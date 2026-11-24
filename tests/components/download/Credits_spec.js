@@ -82,13 +82,13 @@ describe("Credits", function () {
     });
     assert.strictEqual(calls, 1);
 
-    host.querySelector("h3.collapsible-title").parentElement.click();
+    host.querySelector("button.collapsible-header").click();
     m.redraw.sync();
     assert.strictEqual(calls, 1);
     m.redraw.sync();
     assert.strictEqual(calls, 1);
 
-    host.querySelector("h3.collapsible-title").parentElement.click();
+    host.querySelector("button.collapsible-header").click();
     m.redraw.sync();
     assert.strictEqual(calls, 2);
   });
@@ -107,6 +107,90 @@ describe("Credits", function () {
       creditsModelFactory.create(catalog, state).kind,
       "empty",
     );
+  });
+
+  it("factory stays loading until both credits and layers chunks are ready", function () {
+    const { reader: catalog, writer } = createCatalog();
+    const state = createState();
+    writer.registerIndexMetadata({
+      aliasMetadata: {},
+      categoryTree: {},
+      metadataIndexes: { byTypeName: {}, hashMatch: {} },
+    });
+    writer.registerItemMetadata({
+      item1: {
+        name: "Item 1",
+        type_name: "body",
+        required: ["male"],
+        animations: ["walk"],
+        recolors: [],
+        matchBodyColor: false,
+        variants: ["light"],
+        path: ["body"],
+      },
+    });
+    state.previewBootstrapRenderDone = true;
+    state.selections = { body: { itemId: "item1", name: "Item 1" } };
+
+    assert.strictEqual(
+      creditsModelFactory.create(catalog, state).kind,
+      "loading",
+    );
+    writer.registerCreditsMetadata({ item1: [] });
+    assert.strictEqual(
+      creditsModelFactory.create(catalog, state).kind,
+      "loading",
+    );
+    writer.registerLayersMetadata({ item1: {} });
+    assert.strictEqual(
+      creditsModelFactory.create(catalog, state).kind,
+      "empty",
+    );
+  });
+
+  it("downloads credits for current selections from an already-open dialog", async function () {
+    const { reader: catalog, writer } = createCatalog();
+    const state = createState();
+    seedCatalog(
+      writer,
+      Object.fromEntries(
+        ["previous", "current"].map((itemId) => [
+          itemId,
+          {
+            animations: ["walk"],
+            layers: { layer_1: { male: `eyes/${itemId}/` } },
+            credits: [
+              {
+                file: `eyes/${itemId}`,
+                authors: [itemId],
+                licenses: ["CC-BY-SA"],
+                urls: [],
+              },
+            ],
+          },
+        ]),
+      ),
+    );
+    state.previewBootstrapRenderDone = true;
+    state.selections = { slot: { itemId: "previous" } };
+    const model = creditsModelFactory.create(catalog, state);
+    assert.strictEqual(model.kind, "ready");
+    const createObjectURL = sinon
+      .stub(URL, "createObjectURL")
+      .returns("blob:url");
+    sinon.stub(URL, "revokeObjectURL");
+    sinon.stub(HTMLAnchorElement.prototype, "click");
+
+    state.selections = { slot: { itemId: "current" } };
+    model.downloadTxt();
+    model.downloadCsv();
+
+    for (const [blob] of createObjectURL.args) {
+      const content = await blob.text();
+      assert.include(content, "eyes/current/walk.png");
+      assert.notInclude(content, "eyes/previous/walk.png");
+    }
+    assert.isTrue(createObjectURL.calledTwice);
   });
 
   it("factory derives rows and downloads both formats", function () {
@@ -129,6 +213,7 @@ describe("Credits", function () {
     });
     state.previewBootstrapRenderDone = true;
     state.selections = { slot: { itemId: "item1", name: "Eyes" } };
+    state.selectedAnimation = "climb";
 
     const createObjectURL = sinon
       .stub(URL, "createObjectURL")
@@ -151,6 +236,7 @@ describe("Credits", function () {
     model.downloadTxt();
     model.downloadCsv();
     assert.isTrue(createObjectURL.calledTwice);
+    assert.strictEqual(createObjectURL.secondCall.args[0].type, "text/csv");
     assert.deepEqual(
       anchors.map((anchor) => anchor.download),
       ["credits.txt", "credits.csv"],

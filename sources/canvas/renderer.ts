@@ -69,6 +69,7 @@ const animationConfigByName = ANIMATION_CONFIGS as Record<
 function formatPathError(itemId: string, e: PathError): string {
   switch (e.kind) {
     case "loading":
+    case "load-failed":
     case "not-found":
       return `getSpritePath: ${formatLoadError(e)} (item ${itemId})`;
     case "missing-layer":
@@ -171,6 +172,12 @@ export let addedCustomAnimations: Set<string> = new Set();
 export let customAreaItems: Record<string, CustomAreaItem[]> = {};
 /** True after `initCanvas()` — offscreen buffer exists (main bootstrap runs this after S1∧S2). */
 let offscreenCanvasInitialized = false;
+/** Incremented whenever the offscreen canvas is initialized or redrawn. */
+let canvasRenderVersion = 0;
+
+export function getCanvasRenderVersion(): number {
+  return canvasRenderVersion;
+}
 
 /**
  * Initialize the canvas (creates offscreen canvas)
@@ -181,10 +188,19 @@ export function initCanvas(): void {
   canvas.width = SHEET_WIDTH;
   canvas.height = SHEET_HEIGHT;
   offscreenCanvasInitialized = true;
+  canvasRenderVersion += 1;
 }
 
 export function isOffscreenCanvasInitialized(): boolean {
   return offscreenCanvasInitialized;
+}
+
+export function isCharacterCanvasReady(state: State): boolean {
+  return (
+    state.canvasReadyForExport &&
+    !state.pendingCharacterRender &&
+    !state.isRenderingCharacter
+  );
 }
 
 /** @internal Test helper */
@@ -215,11 +231,31 @@ function loadStandardSpriteForDrawCall(item: DrawCall, spritePath: string) {
 async function loadCustomAreaImages(
   areaItems: CustomAreaItem[],
   span: RenderCharacterSpan,
+  signal?: AbortSignal,
 ): Promise<LoadedImage<CustomAreaItem>[]> {
   const customLoadStart = performance.now();
-  const loadedCustomImages = await loadImagesInParallel(areaItems);
+  const loadedCustomImages = await waitForRenderInput(
+    () => loadImagesInParallel(areaItems),
+    signal,
+  );
   span.addPhaseMs("customLoad", performance.now() - customLoadStart);
   return loadedCustomImages;
+}
+
+/** Release the render's wait while shared sprite requests finish normally. */
+function waitForRenderInput<T>(
+  start: () => Promise<T>,
+  signal?: AbortSignal,
+): Promise<T> {
+  if (!signal) return start();
+  signal.throwIfAborted();
+  let onAbort: () => void;
+  const wait = new Promise<T>((resolve, reject) => {
+    onAbort = () => reject(signal.reason);
+    signal.addEventListener("abort", onAbort, { once: true });
+    void start().then(resolve, reject);
+  });
+  return wait.finally(() => signal.removeEventListener("abort", onAbort));
 }
 
 async function recolorAndDrawCustomAreaItem(
@@ -230,8 +266,13 @@ async function recolorAndDrawCustomAreaItem(
   customAnimDef: (typeof customAnimations)[string],
   offsetY: number,
   span: RenderCharacterSpan,
+  signal?: AbortSignal,
 ): Promise<void> {
   const recolorStart = performance.now();
+  if (areaItem.recolors && !catalog.isPaletteReady()) {
+    await waitForRenderInput(() => catalog.ready.onPaletteReady, signal);
+    signal?.throwIfAborted();
+  }
   const imageToUse = await getImageToDraw(
     catalog,
     img,
@@ -239,6 +280,7 @@ async function recolorAndDrawCustomAreaItem(
     areaItem.recolors,
     areaItem.spritePath,
   );
+  signal?.throwIfAborted();
   span.addPhaseMs("customRecolor", performance.now() - recolorStart);
 
   const drawStart = performance.now();
@@ -281,6 +323,7 @@ export function resetRenderCharacterQueueForTests(): void {
 /**
  * Render character based on selections. Waits for layers metadata (S5), then runs serialized so
  * hash, defaults, and App updates cannot overlap expensive full renders.
+ * The App can cancel a superseded render while waiting for sprites or the palette.
  * The `onLayersReady` wait and serialized render queue
  * are outside the `renderCharacter` performance measure; marks wrap the first
  * Mithril redraw plus compositing in `runRenderCharacter`. Per-step timings
@@ -292,18 +335,28 @@ export async function renderCharacter(
   selections: Selections,
   bodyType: string,
   targetCanvas: HTMLCanvasElement | null = null,
+  signal?: AbortSignal,
 ): Promise<void> {
+  signal?.throwIfAborted();
+  const inputs: CharacterRenderInputs = {
+    selections: Object.fromEntries(
+      Object.entries(selections).map(([key, selection]) => [
+        key,
+        { ...selection },
+      ]),
+    ),
+    bodyType,
+    customImage: state.customUploadedImage,
+    customZPos: state.customImageZPos,
+    matchBodyColorEnabled: state.matchBodyColorEnabled,
+  };
   await catalog.ready.onLayersReady;
 
   const p = renderCharacterSerial.then(async () => {
+    signal?.throwIfAborted();
     await flushDeferredRecolorCache();
-    return runRenderCharacter(
-      catalog,
-      state,
-      selections,
-      bodyType,
-      targetCanvas,
-    );
+    signal?.throwIfAborted();
+    return runRenderCharacter(catalog, state, inputs, targetCanvas, signal);
   });
   renderCharacterSerial = p.then(
     () => {},
@@ -312,21 +365,36 @@ export async function renderCharacter(
   return p;
 }
 
+type CharacterRenderInputs = {
+  selections: Selections;
+  bodyType: string;
+  customImage: HTMLImageElement | null;
+  customZPos: number;
+  matchBodyColorEnabled: boolean;
+};
+
 async function runRenderCharacter(
   catalog: CatalogReader,
   state: State,
-  selections: Selections,
-  bodyType: string,
+  inputs: CharacterRenderInputs,
   targetCanvas: HTMLCanvasElement | null,
+  signal?: AbortSignal,
 ): Promise<void> {
+  const {
+    selections,
+    bodyType,
+    customImage,
+    customZPos,
+    matchBodyColorEnabled,
+  } = inputs;
   const profiler = window.profiler;
   const span = beginRenderCharacterSpan(profiler);
   const imageStats0 = getImageLoadStats();
   const recolorStats0 = getRecolorCacheStats();
 
-  // Build list of draw calls
-  drawCalls = [];
-  addedCustomAnimations = new Set(); // Track which custom animations we've added
+  const nextDrawCalls: DrawCall[] = [];
+  const nextCustomAnimations = new Set<string>();
+  const nextCustomAreaItems: Record<string, CustomAreaItem[]> = {};
 
   if (profiler) {
     profiler.mark("renderCharacter:start");
@@ -374,7 +442,7 @@ async function runRenderCharacter(
           catalog,
           itemId,
           selections,
-          state.matchBodyColorEnabled,
+          matchBodyColorEnabled,
         );
 
         // Process all layers for this item
@@ -389,7 +457,7 @@ async function runRenderCharacter(
           // Check if this layer has a custom animation
           if (layer.custom_animation) {
             const customAnimName = layer.custom_animation as string;
-            addedCustomAnimations.add(customAnimName);
+            nextCustomAnimations.add(customAnimName);
 
             // Get base path for this body type
             const basePath = layer[bodyType] as string | undefined;
@@ -466,7 +534,7 @@ async function runRenderCharacter(
               continue;
             }
 
-            drawCalls.push({
+            nextDrawCalls.push({
               itemId,
               name: selection.name,
               variant: variant ?? null,
@@ -483,15 +551,14 @@ async function runRenderCharacter(
       }
 
       // Add custom uploaded image as a draw call if present
-      if (state.customUploadedImage) {
-        const customImage = state.customUploadedImage;
+      if (customImage) {
         // Add custom image to be drawn at all standard animation positions
         for (const [animName, yPos] of Object.entries(ANIMATION_OFFSETS)) {
-          drawCalls.push({
+          nextDrawCalls.push({
             itemId: "custom-upload",
             variant: null,
             source: { kind: "custom", image: customImage },
-            zPos: state.customImageZPos,
+            zPos: customZPos,
             layerNum: 0,
             animation: animName,
             yPos,
@@ -501,7 +568,7 @@ async function runRenderCharacter(
 
       // Sort by zPos (lower zPos = drawn first = behind). Shadow (zPos=0) before
       // body (zPos=10), etc.
-      drawCalls.sort((a, b) => a.zPos - b.zPos);
+      nextDrawCalls.sort((a, b) => a.zPos - b.zPos);
     });
 
     const currentCustomAnimations: Record<
@@ -510,13 +577,57 @@ async function runRenderCharacter(
     > = {};
     const customAnimYPositions: Record<string, number> = {};
 
+    const loadedItems = await span.async("loadImages", () =>
+      waitForRenderInput(() => {
+        // Load all standard animation images in parallel and attach them to their items
+        const loadPromises = nextDrawCalls.map((item) => {
+          if (item.source.kind === "custom") {
+            // Already-decoded user-uploaded image
+            return Promise.resolve({
+              item,
+              img: item.source.image,
+              success: true,
+            });
+          }
+          return loadStandardSpriteForDrawCall(item, item.source.spritePath);
+        });
+
+        return Promise.all(loadPromises);
+      }, signal),
+    );
+
+    signal?.throwIfAborted();
+    const missingBody = loadedItems.find(
+      ({ item, success }) =>
+        !success &&
+        item.itemId === selections.body?.itemId &&
+        item.layerNum === 1 &&
+        item.source.kind === "catalog" &&
+        (item.animation === "walk" ||
+          catalog.hasPackagedBodySprite(item.source.spritePath)),
+    );
+    if (missingBody) {
+      const { name, itemId, animation } = missingBody.item;
+      throw new Error(
+        `Failed to load the required ${name ?? itemId} layer for ${animation}.`,
+      );
+    }
+
+    if (
+      !catalog.isPaletteReady() &&
+      loadedItems.some(({ item, success }) => success && item.recolors)
+    ) {
+      await waitForRenderInput(() => catalog.ready.onPaletteReady, signal);
+      signal?.throwIfAborted();
+    }
+
     span.sync("sizeCanvas", () => {
       // Calculate total canvas height needed (standard sheet + custom animations)
       let totalHeight = SHEET_HEIGHT;
       let totalWidth = SHEET_WIDTH;
 
-      if (addedCustomAnimations.size > 0 && customAnimations) {
-        for (const customAnimName of addedCustomAnimations) {
+      if (nextCustomAnimations.size > 0 && customAnimations) {
+        for (const customAnimName of nextCustomAnimations) {
           const customAnimDef = customAnimations[customAnimName];
           if (customAnimDef) {
             const animHeight =
@@ -537,13 +648,10 @@ async function runRenderCharacter(
       // Clear canvas (no transparency background on offscreen canvas)
       destCtx.clearRect(0, 0, destCanvas.width, destCanvas.height);
 
-      // Store custom animations for animation preview dropdown
-      setCurrentCustomAnimations(currentCustomAnimations);
-
       // Calculate custom animation Y positions first (needed for drawing standard items into custom areas)
-      if (addedCustomAnimations.size > 0 && customAnimations) {
+      if (nextCustomAnimations.size > 0 && customAnimations) {
         let currentY = SHEET_HEIGHT;
-        for (const customAnimName of addedCustomAnimations) {
+        for (const customAnimName of nextCustomAnimations) {
           customAnimYPositions[customAnimName] = currentY;
           const customAnimDef = customAnimations[customAnimName];
           if (customAnimDef) {
@@ -553,26 +661,6 @@ async function runRenderCharacter(
           }
         }
       }
-
-      // Store Y positions for external access
-      setCustomAnimYPositions(customAnimYPositions);
-    });
-
-    const loadedItems = await span.async("loadImages", () => {
-      // Load all standard animation images in parallel and attach them to their items
-      const loadPromises = drawCalls.map((item) => {
-        if (item.source.kind === "custom") {
-          // Already-decoded user-uploaded image
-          return Promise.resolve({
-            item,
-            img: item.source.image,
-            success: true,
-          });
-        }
-        return loadStandardSpriteForDrawCall(item, item.source.spritePath);
-      });
-
-      return Promise.all(loadPromises);
     });
 
     // Draw all items in sorted z-order
@@ -586,6 +674,7 @@ async function runRenderCharacter(
           item.recolors,
           item.source.kind === "catalog" ? item.source.spritePath : null,
         );
+        signal?.throwIfAborted();
         span.addPhaseMs("recolor", performance.now() - recolorStart);
         const drawStart = performance.now();
         destCtx.drawImage(imageToDraw, 0, item.yPos);
@@ -593,12 +682,10 @@ async function runRenderCharacter(
       }
     }
 
-    customAreaItems = {};
-
     // Now handle custom animations (wheelchair, etc.)
-    if (addedCustomAnimations.size > 0 && customAnimations) {
+    if (nextCustomAnimations.size > 0 && customAnimations) {
       // For each custom animation area, we need to draw layers in zPos order
-      for (const customAnimName of addedCustomAnimations) {
+      for (const customAnimName of nextCustomAnimations) {
         const customAnimDef = customAnimations[customAnimName];
         if (!customAnimDef) continue;
 
@@ -609,7 +696,6 @@ async function runRenderCharacter(
 
         // Collect all items that need to be drawn in this custom animation area
         const areaItems: CustomAreaItem[] = [];
-        customAreaItems[customAnimName] = areaItems;
 
         // 1. Add custom animation sprite layers (wheelchair background/foreground)
         for (const item of customAnimationItems) {
@@ -631,7 +717,7 @@ async function runRenderCharacter(
         // (e.g., body "sit" frames go into wheelchair custom animation).
         // Custom-source items have no spritePath to extract frames from, so skip them.
         if (baseAnim) {
-          for (const item of drawCalls) {
+          for (const item of nextDrawCalls) {
             if (item.animation === baseAnim && item.source.kind === "catalog") {
               areaItems.push({
                 type: "extracted_frames",
@@ -651,7 +737,12 @@ async function runRenderCharacter(
         // Sort by zPos to get correct layer order
         areaItems.sort((a, b) => a.zPos - b.zPos);
 
-        const loadedCustomImages = await loadCustomAreaImages(areaItems, span);
+        const loadedCustomImages = await loadCustomAreaImages(
+          areaItems,
+          span,
+          signal,
+        );
+        signal?.throwIfAborted();
 
         // Draw in zPos order
         for (const { item: areaItem, img, success } of loadedCustomImages) {
@@ -664,18 +755,27 @@ async function runRenderCharacter(
             customAnimDef,
             offsetY,
             span,
+            signal,
           );
         }
+        nextCustomAreaItems[customAnimName] = areaItems;
       }
     }
+    signal?.throwIfAborted();
+    drawCalls = nextDrawCalls;
+    addedCustomAnimations = nextCustomAnimations;
+    customAreaItems = nextCustomAreaItems;
+    setCurrentCustomAnimations(currentCustomAnimations);
+    setCustomAnimYPositions(customAnimYPositions);
+    canvasRenderVersion += 1;
   } finally {
     finishRenderCharacterRedraw(state, span);
 
     const imageStats1 = getImageLoadStats();
     const recolorStats1 = getRecolorCacheStats();
-    span.setCounter("drawCalls", drawCalls.length);
+    span.setCounter("drawCalls", nextDrawCalls.length);
     span.setCounter("selections", Object.keys(selections).length);
-    span.setCounter("customAnims", addedCustomAnimations.size);
+    span.setCounter("customAnims", nextCustomAnimations.size);
     span.setCounter("canvasWidth", renderCanvas?.width ?? 0);
     span.setCounter("canvasHeight", renderCanvas?.height ?? 0);
     span.setCounter(

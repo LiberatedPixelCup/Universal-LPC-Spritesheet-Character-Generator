@@ -29,6 +29,7 @@ import { ANIMATIONS, DIRECTIONS } from "../../sources/state/constants.ts";
 import { createFakeJSZip } from "../helpers/fake-jszip.js";
 import { seedCatalogWithGeneratedContext } from "../browser-catalog-fixture.js";
 import { createCatalog } from "../../sources/state/catalog.ts";
+import { setLoadImageForTests } from "../../sources/canvas/load-image.ts";
 
 /**
  * `noExport` on an entry in ANIMATIONS is handled differently per export:
@@ -104,6 +105,22 @@ const CUSTOM_ANIMATION_ONLY_ITEM_METADATA = {
     },
   },
 };
+
+async function renderZipFixture(
+  catalog,
+  loadImage = async () => {
+    const canvas = document.createElement("canvas");
+    canvas.getContext("2d").fillRect(0, 0, 1, 1);
+    return canvas;
+  },
+) {
+  setLoadImageForTests(loadImage);
+  try {
+    await renderCharacter(catalog, state, state.selections, "male");
+  } finally {
+    setLoadImageForTests(null);
+  }
+}
 
 describe("state/zip.ts", () => {
   let catalog;
@@ -248,7 +265,7 @@ describe("state/zip.ts", () => {
 
       const addSpy = sinon.spy(addAnimationSliceToZip);
 
-      await renderCharacter(catalog, state, state.selections, "male");
+      await renderZipFixture(catalog);
       await exportSplitAnimations(catalog, state, {
         addAnimationSliceToZip: addSpy,
       });
@@ -365,7 +382,7 @@ describe("state/zip.ts", () => {
       expect(renderCall.args[2]).to.equal("light");
       expect(renderCall.args[3]).to.equal(null);
       expect(renderCall.args[4]).to.equal(state.bodyType);
-      expect(renderCall.args[5]).to.equal(state.selections);
+      expect(renderCall.args[5]).to.deep.equal(state.selections);
       expect(renderCall.args[6]).to.equal(bodyLayers[0].layerNum);
     });
 
@@ -770,7 +787,7 @@ describe("state/zip.ts", () => {
       expect(rc.args[3]).to.equal(null);
       expect(rc.args[4]).to.equal(state.bodyType);
       expect(rc.args[5]).to.equal("walk");
-      expect(rc.args[6]).to.equal(state.selections);
+      expect(rc.args[6]).to.deep.equal(state.selections);
       expect(rc.args[7]).to.equal(bodyLayers[0].layerNum);
     });
 
@@ -853,7 +870,7 @@ describe("state/zip.ts", () => {
 
       const loadImageStub = sandbox.stub().resolves(nonEmptyAnimCanvas());
 
-      await renderCharacter(catalog, state, state.selections, "male");
+      await renderZipFixture(catalog, loadImageStub);
       await exportSplitItemAnimations(catalog, state, {
         loadImage: loadImageStub,
       });
@@ -969,7 +986,7 @@ describe("state/zip.ts", () => {
         addStandardAnimationToZipCustomFolder,
       );
 
-      await renderCharacter(catalog, state, state.selections, "male");
+      await renderZipFixture(catalog, loadImageStub);
       await exportSplitItemAnimations(catalog, state, {
         loadImage: loadImageStub,
         addAnimationSliceToZip: addAnimationSliceToZipSpy,
@@ -1049,6 +1066,29 @@ describe("state/zip.ts", () => {
       expect(swordCanvas).to.be.instanceOf(HTMLCanvasElement);
     });
 
+    it("records custom animation item failures in metadata without crashing export", async () => {
+      state.selections = {
+        weapon: {
+          itemId: "longsword",
+          variant: "longsword",
+          name: "Longsword (longsword)",
+        },
+      };
+      await renderCharacter(catalog, state, state.selections, "male");
+      await exportSplitItemAnimations(catalog, state, {
+        loadImage: sandbox.stub().rejects(new Error("custom sprite missing")),
+      });
+
+      const metadata = JSON.parse(fakeZip.files.get("credits/metadata.json"));
+      expect(metadata.customAnimations.failed.walk_128).to.be.an("array").that
+        .is.not.empty;
+      expect(alertStub.calledOnce).to.be.true;
+      expect(alertStub.firstCall.args[0]).to.include(
+        "Export completed with some issues",
+      );
+      expect(alertStub.firstCall.args[0]).to.include("walk_128 (custom):");
+    });
+
     it("uses recolored images in custom animation exports instead of raw loaded images", async () => {
       state.selections = {
         body: {
@@ -1079,7 +1119,7 @@ describe("state/zip.ts", () => {
         addStandardAnimationToZipCustomFolder,
       );
 
-      await renderCharacter(catalog, state, state.selections, "male");
+      await renderZipFixture(catalog, loadImageStub);
       await exportSplitItemAnimations(catalog, state, {
         loadImage: loadImageStub,
         getImageToDraw: getImageToDrawStub,
@@ -1341,7 +1381,7 @@ describe("state/zip.ts", () => {
         },
       };
 
-      await renderCharacter(catalog, state, state.selections, "male");
+      await renderZipFixture(catalog);
 
       const extractStub = sandbox.stub().callsFake(() => smallAnimCanvas());
       const framesStub = sinon.stub().returns({});

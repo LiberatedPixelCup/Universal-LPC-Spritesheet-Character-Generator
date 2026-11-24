@@ -13,6 +13,7 @@ import { buildSlimByTypeNameRow } from "../../sources/state/resolve-hash-param.t
 
 export const SHEETS_DIR = "sheet_definitions" + path.sep;
 export const PALETTES_DIR = "palette_definitions" + path.sep;
+export const BODY_SPRITE_DIR = "spritesheets/body/bodies";
 export const METADATA_OUTPUT = "item-metadata.js";
 export const onlyIfTemplate = false;
 
@@ -83,6 +84,7 @@ export type InternedSlimByTypeNameRow = Pick<
 };
 
 export type MetadataModuleSources = {
+  bodySpritePaths?: readonly string[];
   itemMetadata?: Record<string, GeneratorItem>;
   aliasMetadata?: AliasMetadata;
   categoryTree?: GeneratorTreeNode;
@@ -150,6 +152,22 @@ export function readDirTree(dirToRead: string): fs.Dirent[] {
       withFileTypes: true,
     })
     .sort(sortDirTree);
+}
+
+/** Sorted URL paths of Body PNGs mirrored into the packaged spritesheets. */
+export function listBodySpritePaths(root = process.cwd()): string[] {
+  const dir = path.join(root, BODY_SPRITE_DIR);
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir, { recursive: true, withFileTypes: true })
+    .filter((entry) => entry.isFile() && path.extname(entry.name) === ".png")
+    .map((entry) =>
+      path
+        .relative(root, path.join(entry.parentPath, entry.name))
+        .split(path.sep)
+        .join("/"),
+    )
+    .sort();
 }
 
 /**
@@ -516,11 +534,19 @@ export function buildCreditsMetadataJs(
 export function buildLayersMetadataJs(
   fullItemMetadata: Record<string, GeneratorItem>,
   env: MetadataEnv = "production",
+  bodySpritePaths: readonly string[] = listBodySpritePaths(),
 ): string {
   const indent = getMetadataJsonIndent(env);
   const { itemLayers } = splitItemMetadataMaps(fullItemMetadata);
   const json = JSON.stringify(itemLayers, null, indent);
-  return buildNamedConstModule("itemLayers", json, ["itemLayers"]);
+  const layersModule = buildNamedConstModule("itemLayers", json, [
+    "itemLayers",
+  ]);
+  return (
+    layersModule +
+    `export const bodySpritePaths = ${JSON.stringify(bodySpritePaths, null, indent)};
+`
+  );
 }
 
 export function buildAllMetadataModules(
@@ -539,6 +565,9 @@ export function buildAllMetadataModules(
   out.set("palette-metadata.js", buildPaletteMetadataJs(env));
   out.set("item-metadata.js", buildItemMetadataLiteJs(fullItems, env));
   out.set("credits-metadata.js", buildCreditsMetadataJs(fullItems, env));
-  out.set("layers-metadata.js", buildLayersMetadataJs(fullItems, env));
+  out.set(
+    "layers-metadata.js",
+    buildLayersMetadataJs(fullItems, env, sources.bodySpritePaths),
+  );
   return out;
 }

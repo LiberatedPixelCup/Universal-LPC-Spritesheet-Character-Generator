@@ -13,6 +13,8 @@ function messageForState(state: PreviewState): string | null {
     case "rendering":
     case "ready":
       return null;
+    case "failed":
+      return state.message;
     case "loading-layers":
     case "canvas-not-initialized":
     case "bootstrap-pending":
@@ -26,17 +28,22 @@ export const PreviewMetadataLoadingOverlay: m.Component<{
 }> = {
   view(vnode) {
     const { catalog, state } = vnode.attrs;
-    const message = messageForState(getPreviewCanvasState(catalog, state));
+    const preview = getPreviewCanvasState(catalog, state);
+    const message = messageForState(preview);
     if (!message) {
       return null;
     }
     return m(
       "div.preview-canvas-loading-overlay",
-      { role: "status", "aria-live": "polite" },
+      {
+        role: preview.kind === "failed" ? "alert" : "status",
+        "aria-live": "polite",
+      },
       m("div.preview-canvas-loading-inner", [
-        m("span.loading", {
-          "aria-hidden": true,
-        }),
+        preview.kind !== "failed" &&
+          m("span.loading", {
+            "aria-hidden": true,
+          }),
         m("span.is-size-7.has-text-grey.preview-canvas-loading-text", message),
       ]),
     );

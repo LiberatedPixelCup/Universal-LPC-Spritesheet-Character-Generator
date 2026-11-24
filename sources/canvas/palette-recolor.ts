@@ -17,7 +17,7 @@ import { debugLog, debugWarn, getRecolorParam } from "../utils/debug.ts";
 import { get2DContext } from "./canvas-utils.ts";
 import type { CatalogReader, ItemMerged } from "../state/catalog.ts";
 import type { State } from "../state/state.ts";
-import { getLayersToLoad } from "../state/meta.ts";
+import { getLayersToLoad, type LayerToLoad } from "../state/meta.ts";
 import { getPalettesFromMeta, getTargetPalette } from "../state/palettes.ts";
 import type { PaletteForItem } from "../state/palettes.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../state/constants.ts";
@@ -701,6 +701,7 @@ export async function drawRecolorPreview(
   canvas: HTMLCanvasElement,
   selectedColors: Record<string, string>,
   isStaleRender: () => boolean = () => false,
+  previewLayers?: readonly LayerToLoad[],
 ): Promise<number> {
   if (!canvas.isConnected) {
     return 0;
@@ -722,12 +723,9 @@ export async function drawRecolorPreview(
     (meta as { preview_x_offset?: number }).preview_x_offset ?? 0;
   const previewYOffset =
     (meta as { preview_y_offset?: number }).preview_y_offset ?? 0;
-  const layersToLoad = getLayersToLoad(
-    catalog,
-    meta,
-    state.bodyType,
-    state.selections,
-  );
+  const layersToLoad =
+    previewLayers ??
+    getLayersToLoad(catalog, meta, state.bodyType, state.selections);
 
   // Load and draw all layers
   const loadedLayers = await Promise.all(
@@ -766,6 +764,7 @@ export async function drawRecolorPreview(
         selectedColors,
         layer.path,
       );
+      if (isStale()) return 0;
       const size = compactDisplay ? COMPACT_FRAME_SIZE : FRAME_SIZE;
       const srcX = previewCol * FRAME_SIZE + previewXOffset;
       const srcY = previewRow * FRAME_SIZE + previewYOffset;

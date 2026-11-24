@@ -1,7 +1,13 @@
 // Global state and state operations
 import m from "mithril";
 import { LICENSE_CONFIG, ANIMATIONS, BODY_TYPES } from "./constants.ts";
-import { syncSelectionsToHash, loadSelectionsFromHash } from "./hash.ts";
+import {
+  getHash,
+  isEmptyOutfitHash,
+  loadSelectionsFromHash,
+  syncSelectionsToHash,
+  type HashWriteMode,
+} from "./hash.ts";
 import type { CatalogReader, ItemMerged } from "./catalog.ts";
 import { renderCharacter } from "../canvas/renderer.ts";
 
@@ -55,7 +61,40 @@ export type State = {
   enabledLicenses: Record<string, boolean>;
   enabledAnimations: Record<string, boolean>;
 
+  // Session UI layout and navigation state (Spec v1.3)
+  selectedCategory: string;
+  categoryScrollPositions: Record<string, number>;
+  previousCategoryBeforeSearch: string;
+  isSidebarOpen: boolean;
+  activePreviewTab: "animation" | "spritesheet";
+  isExportModalOpen: boolean;
+  isCreditsModalOpen: boolean;
+  isAdvancedDrawerOpen: boolean;
+  isCategoriesDrawerOpen: boolean;
+  isMoreMenuOpen: boolean;
+
+  // Transient export concurrency and synchronization state
+  isExportingZip: boolean;
+  zipExportError: string | null;
+  canvasReadyForExport: boolean;
+  lastRenderError: string | null;
+  pendingPostZipHash: string | null;
+  pendingCustomImageResult: {
+    requestId: number;
+    image: HTMLImageElement | null;
+    zPos: number;
+  } | null;
+
   // transient (never saved)
+  customImageRequest: number;
+  pendingCharacterRender: Promise<void> | null;
+  renderedCharacter: {
+    selections: string;
+    bodyType: string;
+    customImage: HTMLImageElement | null;
+    customZPos: number;
+    matchBodyColorEnabled: boolean;
+  } | null;
   zipByAnimation: ZipMode;
   zipByItem: ZipMode;
   zipByAnimationAndItem: ZipMode;
@@ -66,9 +105,9 @@ export type State = {
 
 type StateDeps = {
   getItemMetadata: (itemId: string) => MetadataView | null;
-  selectDefaults: (state: State) => Promise<void>;
+  selectDefaults: (state: State, mode?: HashWriteMode) => Promise<void>;
   redraw: () => void;
-  syncSelectionsToHash: (state: State) => void;
+  syncSelectionsToHash: (state: State, mode?: HashWriteMode) => void;
   renderCharacter: (
     state: State,
     selections: Selections,
@@ -86,10 +125,12 @@ function createDefaultStateDeps(catalog: CatalogReader): StateDeps {
     getItemMetadata: (itemId) => catalog.getItemMerged(itemId).unwrapOr(null),
     selectDefaults,
     redraw: () => m.redraw(),
-    syncSelectionsToHash: (state) => syncSelectionsToHash(catalog, state),
+    syncSelectionsToHash: (state, mode) =>
+      syncSelectionsToHash(catalog, state, mode),
     renderCharacter: (state, selections, bodyType) =>
       renderCharacter(catalog, state, selections, bodyType),
-    loadSelectionsFromHash: (state) => loadSelectionsFromHash(catalog, state),
+    loadSelectionsFromHash: (state) =>
+      loadSelectionsFromHash(catalog, state, null, "replace"),
     getCanvasRenderer: () =>
       (window as unknown as { canvasRenderer?: unknown }).canvasRenderer,
   };
@@ -134,7 +175,7 @@ export function createState(): State {
 
     // State that is currently not saved but could be in future
     selectedAnimation: "walk",
-    expandedNodes: {},
+    expandedNodes: { body: true },
     searchQuery: "",
     showTransparencyGrid: true,
     applyTransparencyMask: false,
@@ -153,7 +194,30 @@ export function createState(): State {
       ANIMATIONS.map((anim) => [anim.value, false]),
     ),
 
+    // Session UI layout and navigation state (Spec v1.3)
+    selectedCategory: "body",
+    categoryScrollPositions: {},
+    previousCategoryBeforeSearch: "body",
+    isSidebarOpen: true,
+    activePreviewTab: "animation",
+    isExportModalOpen: false,
+    isCreditsModalOpen: false,
+    isAdvancedDrawerOpen: false,
+    isCategoriesDrawerOpen: false,
+    isMoreMenuOpen: false,
+
+    // Transient export concurrency and synchronization state
+    isExportingZip: false,
+    zipExportError: null,
+    canvasReadyForExport: true,
+    lastRenderError: null,
+    pendingPostZipHash: null,
+    pendingCustomImageResult: null,
+
     // Following transient state should never be saved
+    customImageRequest: 0,
+    pendingCharacterRender: null,
+    renderedCharacter: null,
     zipByAnimation: { isRunning: false },
     zipByItem: { isRunning: false },
     zipByAnimationAndItem: { isRunning: false },
@@ -181,7 +245,10 @@ export function getSubSelectionGroup(itemId: string, idx: number): string {
 }
 
 // Select default items (body color light + human male light head)
-export async function selectDefaults(state: State): Promise<void> {
+export async function selectDefaults(
+  state: State,
+  mode: HashWriteMode = "push",
+): Promise<void> {
   const deps = getStateDeps();
   // itemId is now based on filename (e.g., "body").
   const bodyItemId = "body";
@@ -211,18 +278,24 @@ export async function selectDefaults(state: State): Promise<void> {
     name: "Neutral (light)",
   };
 
-  deps.syncSelectionsToHash(state);
+  deps.syncSelectionsToHash(state, mode);
   // App.onupdate owns renderCharacter when selections change.
   deps.redraw();
 }
 
 export async function resetAll(state: State): Promise<void> {
+  if (state.isExportingZip) return;
   const deps = getStateDeps();
   state.selections = {};
-  state.customUploadedImage = null;
-  state.customImageZPos = 0;
+  clearCustomImage(state);
   await deps.selectDefaults(state);
   deps.redraw();
+}
+
+export function clearCustomImage(state: State): void {
+  state.customImageRequest += 1;
+  state.customUploadedImage = null;
+  state.customImageZPos = 0;
 }
 
 /** When any body-colored part changes, propagate variant/recolor to other items with matchBodyColor. */
@@ -265,10 +338,11 @@ export function applyMatchBodyColor(
 
 export async function initState(state: State): Promise<void> {
   const deps = getStateDeps();
+  const emptyOutfit = isEmptyOutfitHash(getHash());
   deps.loadSelectionsFromHash(state);
 
-  if (Object.keys(state.selections).length === 0) {
-    await deps.selectDefaults(state);
+  if (Object.keys(state.selections).length === 0 && !emptyOutfit) {
+    await deps.selectDefaults(state, "replace");
   } else if (deps.getCanvasRenderer()) {
     // App.onupdate owns renderCharacter when selections change.
     deps.redraw();
@@ -282,6 +356,7 @@ export function selectItem(
   isSelected: boolean = false,
   subId: number | null = null,
 ): void {
+  if (state.isExportingZip) return;
   const deps = getStateDeps();
   const selectionGroup = getSelectionGroup(itemId);
   const subSelect =

@@ -180,5 +180,28 @@ describe("canvas/download.ts", () => {
       expect(blobArg).to.be.instanceOf(Blob);
       expect(blobArg.type).to.equal("image/png");
     });
+
+    it("returns false without unhandled rejection when toBlob yields null or getCanvasBlobFunc rejects", async () => {
+      createElementStub.restore();
+      const errorStub = sinon.stub(console, "error");
+      const toBlobStub = sinon
+        .stub(HTMLCanvasElement.prototype, "toBlob")
+        .callsFake((cb) => cb(null));
+      initCanvas();
+      try {
+        const okNull = await downloadAsPNG("broken.png");
+        expect(okNull).to.equal(false);
+        expect(errorStub.calledOnce).to.be.true;
+      } finally {
+        toBlobStub.restore();
+        resetOffscreenCanvasStateForTests();
+      }
+
+      const okRejected = await downloadAsPNG("broken2.png", async () => {
+        throw new Error("boom");
+      });
+      expect(okRejected).to.equal(false);
+      expect(errorStub.calledTwice).to.be.true;
+    });
   });
 });

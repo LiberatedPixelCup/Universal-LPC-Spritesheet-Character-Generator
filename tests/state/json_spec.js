@@ -57,6 +57,50 @@ describe("state/json.ts", () => {
   });
 
   describe("importStateFromJSON", () => {
+    it("normalizes legacy primary palette variants while preserving valid sprite variants", () => {
+      const { reader, writer } = createCatalog();
+      const palette = { default: "ulpc", variants: ["violet", "dark_brown"] };
+      writer.registerItemMetadata({
+        hair: {
+          name: "Natural",
+          type_name: "hair",
+          variants: [],
+          recolors: [palette],
+        },
+        hat: {
+          name: "Hat",
+          type_name: "hat",
+          variants: ["violet"],
+          recolors: [palette],
+        },
+      });
+      const selections = {
+        hair: { itemId: "hair", name: "Old name", variant: "Dark%20Brown" },
+        hat: { itemId: "hat", name: "Hat", variant: "violet" },
+        sub: { itemId: "hair", name: "Sub", subId: 1, variant: "violet" },
+        color: {
+          itemId: "hair",
+          name: "Color",
+          variant: "violet",
+          recolor: "dark_brown",
+        },
+      };
+      const imported = importStateFromJSON(
+        reader,
+        state,
+        JSON.stringify({ version: 2, bodyType: "male", selections }),
+      );
+      expect(imported.selections).to.deep.equal({
+        ...selections,
+        hair: {
+          ...selections.hair,
+          name: "Natural (dark_brown)",
+          variant: "",
+          recolor: "dark_brown",
+        },
+      });
+    });
+
     it("returns a merged state object for version 2", () => {
       const json = JSON.stringify({
         version: 2,
@@ -123,6 +167,91 @@ describe("state/json.ts", () => {
           }),
         ),
       ).to.throw("Unsupported version");
+    });
+
+    it("throws when JSON root is not an object or has invalid v2 field types", () => {
+      const invalidPayloads = [
+        "null",
+        "[]",
+        JSON.stringify({ version: 2, bodyType: 123, selections: {} }),
+        JSON.stringify({ version: 2, bodyType: "alien", selections: {} }),
+        JSON.stringify({ version: 2, bodyType: "male", selections: "bad" }),
+        JSON.stringify({
+          version: 2,
+          bodyType: "male",
+          selections: { body: { itemId: 123 } },
+        }),
+        JSON.stringify({
+          version: 2,
+          bodyType: "male",
+          selections: { body: { itemId: "1", subId: "bad" } },
+        }),
+        JSON.stringify({
+          version: 2,
+          bodyType: "male",
+          selections: {},
+          selectedAnimation: 99,
+        }),
+        JSON.stringify({
+          version: 2,
+          bodyType: "male",
+          selections: {},
+          showTransparencyGrid: "yes",
+        }),
+        JSON.stringify({
+          version: 2,
+          bodyType: "male",
+          selections: {},
+          enabledLicenses: "bad",
+        }),
+        JSON.stringify({
+          version: 2,
+          bodyType: "male",
+          selections: {},
+          enabledAnimations: { walk: "true" },
+        }),
+        JSON.stringify({ version: 1, url: 42 }),
+      ];
+
+      for (const payload of invalidPayloads) {
+        expect(() => importStateFromJSON(catalog, state, payload)).to.throw(
+          "Invalid JSON format",
+        );
+      }
+    });
+
+    it("strips forbidden prototype keys and accepts valid optional v2 flags", () => {
+      const raw =
+        '{"version":2,"bodyType":"female","selections":{"__proto__":{"itemId":"x"},"body":{"itemId":"1","name":"Body","variant":"light","recolor":null,"subId":0}},"showTransparencyGrid":false,"enabledLicenses":{"__proto__":true,"CC0":true},"enabledAnimations":{"walk":true}}';
+      const result = importStateFromJSON(catalog, state, raw);
+      expect(result.bodyType).to.equal("female");
+      expect(result.showTransparencyGrid).to.equal(false);
+      expect(Object.keys(result.selections)).to.deep.equal(["body"]);
+      expect(result.enabledLicenses).to.deep.equal({ CC0: true });
+      expect(result.enabledAnimations).to.deep.equal({ walk: true });
+    });
+
+    it("preserves existing enabledLicenses when imported enabledLicenses is empty or contains only unknown keys", () => {
+      const originalLicenses = { ...state.enabledLicenses };
+      const emptyPayload = JSON.stringify({
+        version: 2,
+        bodyType: "male",
+        selections: {},
+        enabledLicenses: {},
+        enabledAnimations: { unknown_anim: true, walk: true },
+      });
+      const resEmpty = importStateFromJSON(catalog, state, emptyPayload);
+      expect(resEmpty.enabledLicenses).to.deep.equal(originalLicenses);
+      expect(resEmpty.enabledAnimations).to.deep.equal({ walk: true });
+
+      const unknownPayload = JSON.stringify({
+        version: 2,
+        bodyType: "male",
+        selections: {},
+        enabledLicenses: { not_a_license: true },
+      });
+      const resUnknown = importStateFromJSON(catalog, state, unknownPayload);
+      expect(resUnknown.enabledLicenses).to.deep.equal(originalLicenses);
     });
   });
 });

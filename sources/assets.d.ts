@@ -43,4 +43,15 @@ declare module "*/credits-metadata.js" {
 declare module "*/layers-metadata.js" {
   import type { LayerEntry } from "./state/catalog.ts";
   export const itemLayers: Record<string, Record<string, LayerEntry>>;
+  export const bodySpritePaths: readonly string[];
+}
+
+interface Window {
+  electronAPI?: {
+    isElectron: boolean;
+    onMenuAction: (callback: (action: string) => void) => () => void;
+    readClipboardText?: () => Promise<string>;
+    writeClipboardText?: (text: string) => Promise<void>;
+    updateExportState?: (canExport: boolean) => void;
+  };
 }

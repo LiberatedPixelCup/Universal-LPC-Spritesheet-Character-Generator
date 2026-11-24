@@ -16,6 +16,7 @@ import {
   isOffscreenCanvasInitialized,
   resetOffscreenCanvasStateForTests,
   getCanvas,
+  getCanvasRenderVersion,
   extractAnimationFromCanvas,
   renderCharacter,
   renderSingleItem,
@@ -27,7 +28,10 @@ import {
   SHEET_HEIGHT,
   canvas as rendererCanvas,
 } from "../../sources/canvas/renderer.ts";
-import { resetImageLoadCache } from "../../sources/canvas/load-image.ts";
+import {
+  resetImageLoadCache,
+  setLoadImageForTests,
+} from "../../sources/canvas/load-image.ts";
 import { PerformanceProfiler } from "../../sources/performance-profiler.ts";
 import {
   createCatalog,
@@ -238,6 +242,255 @@ describe("canvas/renderer.ts", () => {
       }
     });
 
+    it("does not start sprite loads for an already-aborted render", async () => {
+      seedCatalog(catalogWriter, { body: walkItemMeta() });
+      const body = { itemId: "body", name: "Body", variant: "olive" };
+      const controller = new AbortController();
+      controller.abort();
+      let loadCount = 0;
+      setLoadImageForTests(async () => {
+        loadCount += 1;
+        return document.createElement("img");
+      });
+      const initialVersion = getCanvasRenderVersion();
+
+      const [outcome] = await Promise.allSettled([
+        renderCharacter(
+          catalog,
+          state,
+          { body },
+          "male",
+          null,
+          controller.signal,
+        ),
+      ]);
+      expect(outcome.status).to.equal("rejected");
+      expect((outcome as PromiseRejectedResult).reason).to.equal(
+        controller.signal.reason,
+      );
+      expect(loadCount).to.equal(0);
+      expect(state.isRenderingCharacter).to.equal(false);
+      expect(getCanvasRenderVersion()).to.equal(initialVersion);
+    });
+
+    it("finishes the next render while the canceled sprite is still unresolved", async () => {
+      seedCatalog(catalogWriter, { body: walkItemMeta() });
+      const body = { itemId: "body", name: "Body", variant: "olive" };
+      const controller = new AbortController();
+      let start!: () => void;
+      let release!: (img: HTMLImageElement) => void;
+      const started = new Promise<void>((resolve) => {
+        start = resolve;
+      });
+      const image = new Promise<HTMLImageElement>((resolve) => {
+        release = resolve;
+      });
+      setLoadImageForTests(() => {
+        start();
+        return image;
+      });
+      const initialVersion = getCanvasRenderVersion();
+      const canceled = Promise.allSettled([
+        renderCharacter(
+          catalog,
+          state,
+          { body },
+          "male",
+          null,
+          controller.signal,
+        ),
+      ]);
+      await started;
+      controller.abort();
+      const next = renderCharacter(catalog, state, {}, "male");
+      let timeout: number | undefined;
+      try {
+        const finished = await Promise.race([
+          next.then(() => true),
+          new Promise<boolean>((resolve) => {
+            timeout = window.setTimeout(() => resolve(false), 1000);
+          }),
+        ]);
+        if (!finished) {
+          throw new Error("The unresolved sprite held the render queue");
+        }
+        const [result] = await canceled;
+        expect(result.status).to.equal("rejected");
+        expect((result as PromiseRejectedResult).reason).to.equal(
+          controller.signal.reason,
+        );
+        expect(state.isRenderingCharacter).to.equal(false);
+        expect(getCanvasRenderVersion()).to.equal(initialVersion + 1);
+        expect(drawCalls).to.have.length(0);
+      } finally {
+        window.clearTimeout(timeout);
+        release(document.createElement("img"));
+        await Promise.allSettled([canceled, next]);
+      }
+      expect(getCanvasRenderVersion()).to.equal(initialVersion + 1);
+    });
+
+    it("does not publish a render canceled in the same turn that its sprite resolves", async () => {
+      seedCatalog(catalogWriter, { body: walkItemMeta() });
+      const body = { itemId: "body", name: "Body", variant: "olive" };
+      const controller = new AbortController();
+      let start!: () => void;
+      let release!: (img: HTMLImageElement) => void;
+      const started = new Promise<void>((resolve) => {
+        start = resolve;
+      });
+      const image = new Promise<HTMLImageElement>((resolve) => {
+        release = resolve;
+      });
+      setLoadImageForTests(() => {
+        start();
+        return image;
+      });
+      const initialVersion = getCanvasRenderVersion();
+      const outcome = Promise.allSettled([
+        renderCharacter(
+          catalog,
+          state,
+          { body },
+          "male",
+          null,
+          controller.signal,
+        ),
+      ]);
+      await started;
+      release(document.createElement("canvas") as unknown as HTMLImageElement);
+      controller.abort();
+      const [result] = await outcome;
+      expect(result.status).to.equal("rejected");
+      expect((result as PromiseRejectedResult).reason).to.equal(
+        controller.signal.reason,
+      );
+      expect(getCanvasRenderVersion()).to.equal(initialVersion);
+      expect(state.isRenderingCharacter).to.equal(false);
+
+      await renderCharacter(catalog, state, {}, "male");
+      expect(getCanvasRenderVersion()).to.equal(initialVersion + 1);
+      expect(drawCalls).to.have.length(0);
+    });
+
+    it("rejects a failed primary body walk load and keeps the render queue usable", async () => {
+      seedCatalog(catalogWriter, {
+        body: walkItemMeta({ name: "Body Color", type_name: "body" }),
+        optional: walkItemMeta(),
+      });
+      const body = { itemId: "body", name: "Body Color", variant: "olive" };
+      setLoadImageForTests(async () => {
+        throw new Error("Temporary image failure");
+      });
+
+      const failed = await Promise.allSettled([
+        renderCharacter(catalog, state, { body }, "male"),
+      ]);
+      expect(failed[0].status).to.equal("rejected");
+      expect(String((failed[0] as PromiseRejectedResult).reason)).to.include(
+        "walk",
+      );
+      expect(state.isRenderingCharacter).to.equal(false);
+
+      await renderCharacter(catalog, state, {}, "male");
+      await renderCharacter(
+        catalog,
+        state,
+        { misc: { ...body, itemId: "optional" } },
+        "male",
+      );
+
+      setLoadImageForTests(
+        async () =>
+          document.createElement("canvas") as unknown as HTMLImageElement,
+      );
+      await renderCharacter(catalog, state, { body }, "male");
+      expect(state.isRenderingCharacter).to.equal(false);
+    });
+
+    it("rejects a missing packaged Body Run and tolerates an animation the build lacks", async () => {
+      const layers = {
+        layer_1: { zPos: 10, male: "body/male/", child: "body/child/" },
+      };
+      seedCatalog(catalogWriter, {
+        body: walkItemMeta({
+          name: "Body Color",
+          type_name: "body",
+          required: ["male", "child"],
+          animations: ["walk", "run"],
+          layers,
+        }),
+      });
+      const packagedRun = "spritesheets/body/male/run/olive.png";
+      catalogWriter.registerLayersMetadata({ body: layers }, [packagedRun]);
+      const body = { itemId: "body", name: "Body Color", variant: "olive" };
+      const sprite = document.createElement(
+        "canvas",
+      ) as unknown as HTMLImageElement;
+      setLoadImageForTests(async (src) => {
+        if (src.includes("/run/"))
+          throw new Error("Fixture sprite unavailable");
+        return sprite;
+      });
+      const [failed] = await Promise.allSettled([
+        renderCharacter(catalog, state, { body }, "male"),
+      ]);
+      expect(failed.status).to.equal("rejected");
+      expect(String((failed as PromiseRejectedResult).reason)).to.include(
+        "for run",
+      );
+
+      await renderCharacter(catalog, state, { body }, "child");
+      setLoadImageForTests(async () => sprite);
+      await renderCharacter(catalog, state, { body }, "male");
+    });
+
+    it("requires palette metadata only when drawing a recolored layer", async () => {
+      catalogWriter.registerLayersMetadata({
+        body: { layer_1: { male: "body/bodies/male/" } },
+      });
+      catalogWriter.registerItemMetadata({
+        body: {
+          name: "Body",
+          type_name: "body",
+          required: ["male"],
+          animations: ["walk"],
+          recolors: [
+            {
+              type_name: null,
+              material: "body",
+              variants: ["light"],
+              palettes: {},
+            },
+          ],
+        } as unknown as Parameters<
+          CatalogWriter["registerItemMetadata"]
+        >[0][string],
+      });
+      catalogWriter.recordChunkFailure(
+        "palette",
+        new Error("palette unavailable"),
+      );
+      setLoadImageForTests(
+        async () =>
+          document.createElement("canvas") as unknown as HTMLImageElement,
+      );
+      const body = { itemId: "body", name: "Body", variant: "light" };
+      await renderCharacter(catalog, state, { body }, "male");
+      const [tinted] = await Promise.allSettled([
+        renderCharacter(
+          catalog,
+          state,
+          { body: { ...body, recolor: "light" } },
+          "male",
+        ),
+      ]);
+      expect(tinted.status).to.equal("rejected");
+      expect(String((tinted as PromiseRejectedResult).reason)).to.include(
+        "palette data",
+      );
+    });
+
     it("skips items whose required list excludes the body type", async () => {
       seedCatalog(catalogWriter, { walk_only: walkItemMeta() });
       await renderCharacter(
@@ -446,6 +699,10 @@ describe("canvas/renderer.ts", () => {
     });
 
     it("sets needsRecolor for body-body with a non-light variant", async () => {
+      setLoadImageForTests(
+        async () =>
+          document.createElement("canvas") as unknown as HTMLImageElement,
+      );
       seedCatalog(catalogWriter, {
         "body-body": walkItemMeta({
           name: "Body Color",

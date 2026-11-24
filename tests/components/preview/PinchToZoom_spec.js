@@ -253,4 +253,26 @@ describe("PinchToZoom", function () {
 
     el.remove();
   });
+
+  it("clamps zoom within optional bounds and syncs baseline via setZoom", async function () {
+    const el = document.createElement("div");
+    document.body.appendChild(el);
+    const onZoom = sinon.spy();
+    const pinch = await PinchToZoom.create(el, onZoom, 1.8, {
+      min: 0.5,
+      max: 2,
+    });
+
+    pinchMoveSpread(el, cx, y, 100, 150);
+    assert.strictEqual(onZoom.lastCall.args[0], 2);
+
+    pinch.setZoom(0.6);
+    assert.strictEqual(pinch.initialZoom, 0.6);
+    assert.strictEqual(pinch.currentZoom, 0.6);
+    pinchMoveSpread(el, cx, y, 100, 50);
+    assert.strictEqual(onZoom.lastCall.args[0], 0.5);
+
+    pinch.destroy();
+    el.remove();
+  });
 });

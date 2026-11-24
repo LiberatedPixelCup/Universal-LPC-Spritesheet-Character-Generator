@@ -299,5 +299,20 @@ describe("canvas/canvas-utils.ts", () => {
         }
       }
     });
+
+    it("falls back to direct fillRect loop when createPattern returns null", () => {
+      const canvas = createCanvas(16, 16);
+      const context = canvas.getContext("2d");
+      sinon.stub(context, "createPattern").returns(null);
+      try {
+        drawTransparencyBackground(context, 16, 16, 8);
+        const topLeft = [...context.getImageData(0, 0, 1, 1).data];
+        const topRight = [...context.getImageData(8, 0, 1, 1).data];
+        expect(topLeft).to.deep.equal([204, 204, 204, 255]);
+        expect(topRight).to.deep.equal([153, 153, 153, 255]);
+      } finally {
+        sinon.restore();
+      }
+    });
   });
 });

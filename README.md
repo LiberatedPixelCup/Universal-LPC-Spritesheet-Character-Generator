@@ -1,276 +1,35 @@
-LPC Spritesheet Character Generator
-=============================================
+# Open Spritesheet
 
-#### Translations
+<img src="./Pixel%20Chibi%20Clicker%20Icon.png" alt="Biểu tượng Open Spritesheet" width="96">
 
-[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/liberatedpixelcup/Universal-LPC-Spritesheet-Character-Generator/blob/master/README.md) [![zh](https://img.shields.io/badge/lang-zh-green.svg)](https://github.com/liberatedpixelcup/Universal-LPC-Spritesheet-Character-Generator/blob/master/lang/zh/README_ZH.md)
+Open Spritesheet là ứng dụng macOS chạy ngoại tuyến để tạo spritesheet nhân vật pixel theo bộ tài nguyên Liberated Pixel Cup (LPC). Bạn có thể tạo nhân vật, xem hoạt ảnh và xuất tệp ngay trên máy.
 
-#### Badges
+![Giao diện Open Spritesheet v1.0.1 trên macOS với danh mục thành phần và khung xem trước hoạt ảnh](readme-images/open-spritesheet-preview.png)
 
-[![codecov](https://codecov.io/gh/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator/graph/badge.svg?branch=master)](https://codecov.io/gh/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator)
+## Tính năng
 
-This generator attempts to include all [LPC](https://lpc.opengameart.org) created character art up to now.
+- Ghép các lớp nhân vật như cơ thể, tóc, trang phục và vũ khí. Chọn biến thể và bảng màu cho từng lớp.
+- Xem trước hoạt ảnh và spritesheet đầy đủ.
+- Xuất spritesheet dạng PNG hoặc đóng gói ZIP theo hoạt ảnh, thành phần hoặc từng khung hình.
+- Sao chép và nhập JSON để lưu hoặc khôi phục cấu hình nhân vật. Tải danh sách ghi công dưới dạng TXT hoặc CSV.
 
-Try it [here](https://liberatedpixelcup.github.io/Universal-LPC-Spritesheet-Character-Generator/).
+## Cài đặt trên macOS
 
-The Liberated Pixel Effort is a collaborative effort from a number of different great artists who helped produce sprites for the project.
-**If you wish to use LPC sprites in your project, you will need to credit everyone who helped contribute to the LPC sprites you are using.** See [below](#licensing-and-attribution-credits) for how to do this.
+Yêu cầu Mac dùng chip Apple Silicon và macOS 13 trở lên.
 
-Although this particular repository focuses on character sprites, LPC includes many tilesets and some other artwork as well. Tileset collections can be found on [OpenGameArt.org](https://opengameart.org)
+1. Tải tệp `OpenSpritesheet-*-mac-arm64.dmg` từ [bản phát hành mới nhất](https://github.com/teakay1311/OpenSpritesheet/releases/latest).
+2. Mở DMG và kéo **Open Spritesheet** vào **Applications**.
+3. Mở **Open Spritesheet** từ **Applications**.
 
-### History
+Bản cài dùng chữ ký ad-hoc và chưa được Apple notarize. Tệp `.sha256` đi kèm dùng để kiểm tra tính toàn vẹn của DMG.
 
-The concept of the Liberated Pixel Cup was introduced by Bart Kelsey and Chris Webber. It was originally a competition on [OpenGameArt.org](https://opengameart.org) sponsored by Creative Commons, Mozilla, and the Free Software Foundation. (Note: These organizations do not sponsor and are not involved with this generator.) The idea was to create a body of artwork with a common [style](https://lpc.opengameart.org/static/LPC-Style-Guide/build/index.html).
+<a name="licensing-and-attribution-credits"></a>
 
-This was originally based on https://github.com/makrohn/Universal-LPC-spritesheet, which contained an xcf file combining all the assets from pngs. That repository was originally included in this repository as a submodule, and probably represented the first (albeit offline) LPC Spritesheet Generator. Thanks to [@makrohn](https://github.com/makrohn) for creating it.
+## Giấy phép và ghi công
 
-[@Gaurav0](https://github.com/Gaurav0) was the original author of this repository. However, life came in the way and he did not keep up with maintaining it. Thanks to [@sanderfrenken](https://github.com/sanderfrenken) for maintaining the primary fork of the repository for many years.
+- Mã ứng dụng dùng [GPL-3.0](LICENSE). Mã đóng gói macOS dùng [Apache-2.0](macos/LICENSE).
+- Mỗi tài nguyên hình ảnh có giấy phép riêng. [CREDITS.csv](CREDITS.csv) ghi tác giả, giấy phép và nguồn của từng tài nguyên. Khi dùng spritesheet trong dự án của bạn, hãy ghi công theo giấy phép áp dụng. [Hướng dẫn ghi công chi tiết](https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator/blob/86a3719ee4a7e2e9fb27c7c152e29a741d3e930a/README.md#licensing-and-attribution-credits)
 
-[@jrconway3](https://github.com/jrconway3) and [@bluecarrot16](https://github.com/bluecarrot16) have been the key art focused maintainers of the repository.
+## Dự án gốc
 
-[@ElizaWy](https://github.com/ElizaWy) has revised and expanded the LPC paradigm. See https://github.com/ElizaWy/LPC
-
-### Licensing and Attribution (Credits)
-
-Each piece of artwork distributed from this project (all images in the `spritesheets` subdirectory) is licensed under one or more of the following supported open license(s):
-
-- [CC0](https://creativecommons.org/public-domain/cc0/)
-  - Allowed to be used under any circumstances, attribution not required
-- [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/deed.en)[^2]
-  - Must credit the authors, may not encrypt or protect[^1] AND
-  - Must distribute any derivative artwork or modifications under CC-BY-SA 4.0 or later
-- [CC-BY](https://creativecommons.org/licenses/by/4.0/)
-  - Must credit the authors, may not encrypt or protect[^1]
-- [OGA-BY](https://static.opengameart.org/OGA-BY-3.0.txt)
-  - Must credit the authors, may encrypt in DRM protected games
-- [GPL](https://www.gnu.org/licenses/gpl-3.0.en.html#license-text)
-  - Must distribute any derivative artwork or modifications under GPL 3.0 or later
-
-[^1]: It is unclear whether this means you cannot release your game on platforms like Steam and the App Store on iOS which use encryption to DRM protect your game. It could be enough to make the assets easily available separately for download, but the DRM clause does not clearly state this. It could be enough to make a DRM free version available to those who purchase the game on these platforms, but again, the DRM clause does not clearly state this. To be safe from any potential legal issues, I would recommend you use CC0 and/or OGA-BY assets only if you intend to publish on such platforms. The OGA-BY license removes the DRM clause for precisely this reason.
-
-[^2]: This is the most restrictive license for any art supplied by this generator. You may use all the art in this repository if you follow all the terms of this license. Yes, this license allows you to use the art in this generator in commercial games.
-
-**If you generate a sprite using this tool, or use individual images taken directly from the `spritesheets` subdirectory from this repo, you must at least credit all the authors (except for CC0 licensed artwork).**
-
-When using the generator, you can find download a text as csv or plain text file that contains all the license information of the selected assets in your spritesheet:
-
-![license-sheet](/readme-images/credits-sheet.png)
-
-Alternatively, you can also use the file [CREDITS.csv](/CREDITS.csv).
-
-This file lists the authors, license(s), and links to the original URL(s), for every image inside `spritesheets`.
-
-Concluding, to conform to the **attribution** requirement of the used artwork, you can either:
-
-- Distribute the entire [CREDITS.csv](/CREDITS.csv) file along with your project.
-- Distribute a composed list containing the credits for the assets you use in your project.
-
-Make sure this credits file is accessible from within your game or app and can be reasonably discovered by users (for instance, show the information on the "Credits" screen directly, or provide a visible link).
-
-**Importantly, the individual licenses may impose additional restrictions. It's your responsibility to conform to the licenses imposed by the artwork in use.**
-
-If you don't want to _show_ the entire credits file directly, should include a statement like this on your credits screen:
-
-> - Sprites by: Johannes Sjölund (wulax), Michael Whitlock (bigbeargames), Matthew Krohn (makrohn), Nila122, David Conway Jr. (JaidynReiman), Carlo Enrico Victoria (Nemisys), Thane Brimhall (pennomi), laetissima, bluecarrot16, Luke Mehl, Benjamin K. Smith (BenCreating), MuffinElZangano, Durrani, kheftel, Stephen Challener (Redshrike), William.Thompsonj, Marcel van de Steeg (MadMarcel), TheraHedwig, Evert, Pierre Vigier (pvigier), Eliza Wyatt (ElizaWy), Johannes Sjölund (wulax), Sander Frenken (castelonia), dalonedrau, Lanea Zimmerman (Sharm), Manuel Riecke (MrBeast), Barbara Riviera, Joe White, Mandi Paugh, Shaun Williams, Daniel Eddeland (daneeklu), Emilio J. Sanchez-Sierra, drjamgo, gr3yh47, tskaufma, Fabzy, Yamilian, Skorpio, kheftel, Tuomo Untinen (reemax), Tracy, thecilekli, LordNeo, Stafford McIntyre, PlatForge project, DCSS authors, DarkwallLKE, Charles Sanchez (CharlesGabriel), Radomir Dopieralski, macmanmatty, Cobra Hubbard (BlueVortexGames), Inboxninja, kcilds/Rocetti/Eredah, Napsio (Vitruvian Studio), The Foreman, AntumDeluge
-> - Sprites contributed as part of the Liberated Pixel Cup project from OpenGameArt.org: http://opengameart.org/content/lpc-collection
-> - License: Creative Commons Attribution-ShareAlike 3.0 (CC-BY-SA 3.0) <http://creativecommons.org/licenses/by-sa/3.0/>
-> - Detailed credits: [LINK TO CREDITS.CSV FILE]
-
-**For additional information on the licensing and attribution requirement, please refer here on [OpenGameArt.org](https://opengameart.org/content/faq#q-proprietary).**
-
-### [Contributing](CONTRIBUTING.md) ⤴
-
-### Test coverage
-
-Unit-test line coverage is reported on [Codecov](https://codecov.io/gh/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator) (free for this public repo). The [badge](https://codecov.io/gh/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator) above tracks the default branch.
-
-Coverage comes from Node (`node:test`) and Testem/Mocha in Chrome and Firefox only. Playwright visual tests are **not** included; they stay on Argos.
-
-Pull requests fail if **new or edited production lines** are not executed by a unit test, or if **existing production lines lose coverage** (deleted or weakened unit tests). They do **not** fail because the overall coverage percentage moved. See [CONTRIBUTING.md](CONTRIBUTING.md#unit-test-coverage) for how to run reports locally and what the checks mean.
-
-### Animation Frame Guide
-
-You can look at [the Animation Guide in Eliza's repository](https://github.com/ElizaWy/LPC/blob/f07f7f5892e67c932c68f70bb04472f2c64e46bc/Characters/_%20Guides%20%26%20Palettes/Animation%20Guides) for a detailed suggested guide to how she recommends you display your animations.
-
-Also, each animation has a frame cycle documented which you can see next to the animation preview.
-
-### Run This Project Locally for Development
-
-The UI is built with [Vite](https://vitejs.dev/). Use a dev server rather than opening `index.html` as a `file://` URL, since ES modules and asset paths expect HTTP and modern browsers restrict file URLs.
-
-**Recommended workflow**
-
-1. Run **`npm ci`** once. After a lockfile merge or rebase, use **`npm run lockfile:fix`**, not **`npm install`**.
-2. Start the app with **`npm run dev`** (default **http://localhost:5173**) or **`npm run serve:open`** to open it in your default browser.
-
-For a **production-like** build locally, run **`npm run build`** then **`npm run preview`** (Vite’s default preview port is **4173**; the dev server uses **5173** by default). To use another port, pass Vite’s **`--port`** flag (for example `npm run dev -- --port 3000`).
-
-Other local servers (Python `http.server`, `npx serve`, nginx, and so on) can serve the built tree for experimentation, but **`npm run dev`** is what this repository is set up for day to day.
-
-### Plugins and Development Tools for Use in Game Engines
-
-#### Godot
-
-There is a [plugin available for Godot 3.5](https://godotengine.org/asset-library/asset/1673)
-
-There is another [plugin available for Godot 4.2](https://godotengine.org/asset-library/asset/2212)
-
-#### RPG Maker MZ
-
-There is a project under development for a [set of plugins and demo game](https://github.com/LiberatedPixelCup/RPG_Maker_MZ_LPC_Starter_Kit) under this organization.
-
-#### Other Game Engines
-
-We would really like to see similar tools developed for other popular game engines. If you know of any that have been developed, please open a pull request to this repository and add it to this README.
-
-If an engine is not listed above, try Google. However, it is very likely that you will have to do some coding.
-
-### FAQ
-
-<dl>
-  <dt>May I use this art in my commercial game?</dt>
-  <dd>Yes, however you must follow all the terms of the license(s) for the art you are using. See <a href="#licensing-and-attribution-credits">Licensing and Attribution (Credits)</a></dd>
-  <dt>How do I use the output of this generator in &lt;insert game engine&gt;?</dt>
-  <dd>There may be resources available to do this already. We have added a <a href="#other-game-engines">list</a> for a few common game engines. If your favorite engine is not listed there, try Google. In most cases, however, you will still have to write some code.</dd>
-  <dt>I downloaded the image, but I forgot to get the &lt;url, credits, etc.&gt; How do I get back to where I was?</dt>
-  <dd>It is recommended that you "export to JSON" to avoid this problem in the future and save the json file with the png image file. See <a href="https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator/issues/143">Issue #143</a></dd>
-</dl>
-
-### Terms
-
-<dl>
-  <dt>Liberated Pixel Cup (LPC)</dt>
-  <dd>Originally a competition designed to create a large body of compatible art assets. Now also refers to that body of work and the style art marked as LPC attempts to follow.</dd>
-  <dt>Universal LPC (ULPC)</dt>
-  <dd>LPC originally expanded to add some new animation sizes and bases. This generator helped ensure that many assets covered all those bases and animations. LPC originally included only spellcast, slash, thrust, walk, shoot, and hurt animations for male and female adult bases. It also stuck to a standard 64x64 format. The most notable change in ULPC was to add weapons with oversize animation frames.</dd>
-  <dt>LPC Revised (LPCR)</dt>
-  <dd>LPC changes proposed by <a href="https://github.com/ElizaWy">@ElizaWy</a> that in some cases changed the number and order of animation frames, a new color palette, and the smaller heads.</dd>
-  <dt>LPC Expanded (LPCE)</dt>
-  <dd>Additional expansion of animations and bases proposed by <a href="https://github.com/ElizaWy">@ElizaWy</a> and others. New animations included bow, climb, run, and jump. New bases included child and elderly. Many of the assets in this repository are not yet drawn for these new animations and bases. Help wanted.</dd>
-</dl>
-
-#### Oversize animation frame sizes
-
-ULPC's default frame size is 64x64, but some weapon and tool animations
-use larger frames. These are defined in `sources/custom-animations.ts`:
-
-| Animation | Frame size |
-|---|---|
-| `backslash_128` | 128px |
-| `halfslash_128` | 128px |
-| `slash_128` | 128px |
-| `thrust_128` | 128px |
-| `tool_axe` | 128px |
-| `tool_hammer` | 128px |
-| `tool_rod` | 128px |
-| `walk_128` | 128px |
-| `slash_oversize` | 192px |
-| `slash_reverse_oversize` | 192px |
-| `thrust_oversize` | 192px |
-| `tool_whip` | 192px |
-| `whip_oversize` | 192px |
-
-### Alternative LPC Character generators
-
-- https://pflat.itch.io/lpc-character-generator
-- https://vitruvianstudio.github.io/
-
-### Tools
-
-- [lpctools](https://github.com/bluecarrot16/lpctools)
-- [how to install lpctools](tools/LPCTOOLS.md)
-- [recompile full sheets using lpctools](tools/REBUILD.md)
-- [convert assets to vitruvian studios](tools/VITRUVIAN.md)
-- [Calculate minimal bounding box offsets for oversize animations](https://github.com/matheoheo/LPCFramesAnalyzer)
-
-### Development
-
-#### Tooling
-
-Requires **Node.js 22.19+** (`package.json` `engines`; CI uses Node 24) so `node` can run first-party `.ts` files. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, [Commands](CONTRIBUTING.md#commands) for every npm script, and [ARCHITECTURE.md](ARCHITECTURE.md) for how the app is wired at runtime.
-
-- **Lint:** `npm run lint`
-- **Type-check:** `npm run type-check`
-- **Format:** `npm run format:check` (verify) or `npm run format` (apply)
-- **Tests:** `npm test` (Node checks plus browser tests). Visual regression: `npm run test:visual`. Details are in [CONTRIBUTING.md](CONTRIBUTING.md).
-
-**Generated files:** [CREDITS.csv](CREDITS.csv) and the z-position CSV under **`scripts/zPositioning/`** are updated by **`npm run validate-site-sources`**. **Vite** runs the metadata plugin; when inputs or **`dist/`** output warrant it, it can refresh those CSVs and always writes the **five** modules under **`dist/`** (`index-`, `palette-`, `item-`, `credits-`, `layers-metadata.js`). The app registers them in **[`sources/install-item-metadata.ts`](sources/install-item-metadata.ts)** into a **`CatalogReader`**. The **`dist/`** tree is gitignored—do not edit generated files by hand. **`npm run dev`** pretty-prints embedded JSON; **`npm run build`** writes compact (see [PR #432](https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator/pull/432)). See [CONTRIBUTING.md](CONTRIBUTING.md#catalog-and-state) for the catalog API and staged loading, and [File Generation](CONTRIBUTING.md#file-generation) for the full workflow.
-
-#### Performance Profiling
-
-The generator includes built-in performance profiling tools to help identify rendering bottlenecks and optimize performance. See [PERFORMANCE_PROFILING.md](PERFORMANCE_PROFILING.md) for detailed documentation.
-
-**Quick Start:**
-
-- Profiler is automatically enabled when running on `localhost`
-- Override with `?debug=true` or `?debug=false` in the URL
-- View metrics in Chrome DevTools → Performance tab
-- Run `profiler.report()` in the console for a summary
-- Catalog load (production preview): `npm run profile:load`
-- Lab CLS (Lighthouse, production preview): `npm run profile:cls` — see [CLS.md](CLS.md)
-- Metadata bytes (CI budget): `npm run metadata:size` / `npm run metadata:size:check`
-
-**What it tracks:**
-
-- Canvas rendering time (drawing, compositing)
-- Image loading performance
-- UI update operations
-- Frame rate (FPS)
-- Memory usage
-
-#### Palette Recoloring System
-
-The generator uses GPU-accelerated WebGL shaders for real-time palette-based recoloring of body colors. This provides significant performance improvements over traditional CPU-based pixel manipulation.
-
-**For Contributors:** See [PALETTE_RECOLOR_GUIDE.md](PALETTE_RECOLOR_GUIDE.md) for a complete guide on integrating items with the palette system.
-
-**Console Commands:**
-
-Check current rendering mode:
-
-```javascript
-getPaletteRecolorConfig();
-// Returns: { forceCPU: false, useWebGL: true, activeMode: "webgl" }
-```
-
-View recolor statistics:
-
-```javascript
-getPaletteRecolorStats();
-// Shows breakdown of WebGL vs CPU operations
-```
-
-Force CPU mode (useful for testing/debugging):
-
-```javascript
-setPaletteRecolorMode("cpu");
-```
-
-Switch back to WebGL mode:
-
-```javascript
-setPaletteRecolorMode("webgl");
-```
-
-**Technical Details:**
-
-- **WebGL Mode** (default): GPU-accelerated palette swapping using fragment shaders
-  - Single shared WebGL context to avoid browser context limits
-  - Palette encoded as texture for fast GPU lookups
-  - Significantly faster than CPU mode for multiple color variants (90ms-120ms vs 190ms-230ms per preview spreadsheet)
-- **CPU Mode** (fallback): Traditional per-pixel color replacement
-  - Automatically used if WebGL is unavailable
-  - Can be manually forced for compatibility testing
-- **Palette Flexibility**: Palettes support 1-32 colors per variant (not limited to 8)
-
-The system automatically detects WebGL availability and falls back to CPU mode if needed.
-
-### Examples
-
-![example](/readme-images/example.png)
-
-### Sponsors
-
-[![Deploys by Netlify](sources/netlify-badge-dark.svg)](https://www.netlify.com)
-
-[![Covered by Argos](sources/badge-large.svg)](https://argos-ci.com?utm_source=LiberatedPixelCup&utm_campaign=oss)
+Open Spritesheet phát triển từ [Universal LPC Spritesheet Character Generator](https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator). [Lịch sử dự án LPC](https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator/blob/86a3719ee4a7e2e9fb27c7c152e29a741d3e930a/README.md#history)

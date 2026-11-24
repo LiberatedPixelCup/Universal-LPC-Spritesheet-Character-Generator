@@ -8,6 +8,7 @@ type ScrollableContainerState = {
   startY: number;
   scrollLeft: number;
   scrollTop: number;
+  stopDragging?: () => void;
 };
 
 export const ScrollableContainer: m.Component<
@@ -25,6 +26,7 @@ export const ScrollableContainer: m.Component<
     const container = vnode.dom as HTMLElement;
 
     container.addEventListener("mousedown", (e) => {
+      if (e.button !== 0) return;
       vnode.state.isDragging = true;
       vnode.state.startX = e.pageX - container.offsetLeft;
       vnode.state.startY = e.pageY - container.offsetTop;
@@ -34,12 +36,15 @@ export const ScrollableContainer: m.Component<
     });
 
     const stopDragging = () => {
+      if (!vnode.state.isDragging) return;
       vnode.state.isDragging = false;
       container.style.cursor = "grab";
     };
+    vnode.state.stopDragging = stopDragging;
 
     container.addEventListener("mouseleave", stopDragging);
     container.addEventListener("mouseup", stopDragging);
+    window.addEventListener("mouseup", stopDragging);
 
     container.addEventListener("mousemove", (e) => {
       if (!vnode.state.isDragging) return;
@@ -51,6 +56,12 @@ export const ScrollableContainer: m.Component<
       container.scrollLeft = vnode.state.scrollLeft - walkX;
       container.scrollTop = vnode.state.scrollTop - walkY;
     });
+  },
+  onremove(vnode) {
+    if (vnode.state.stopDragging) {
+      window.removeEventListener("mouseup", vnode.state.stopDragging);
+      vnode.state.stopDragging = undefined;
+    }
   },
   view(vnode) {
     const { classes = "" } = vnode.attrs;

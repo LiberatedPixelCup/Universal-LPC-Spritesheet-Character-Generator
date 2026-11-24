@@ -75,6 +75,25 @@ export function getZPos(
   return layer?.zPos ?? 100;
 }
 
+const checkerboardTiles = new Map<number, HTMLCanvasElement>();
+
+function getCheckerboardTile(squareSize: number): HTMLCanvasElement {
+  const cached = checkerboardTiles.get(squareSize);
+  if (cached) return cached;
+  const tile = document.createElement("canvas");
+  tile.width = squareSize * 2;
+  tile.height = squareSize * 2;
+  const tileCtx = get2DContext(tile);
+  tileCtx.fillStyle = "#CCCCCC";
+  tileCtx.fillRect(0, 0, squareSize, squareSize);
+  tileCtx.fillRect(squareSize, squareSize, squareSize, squareSize);
+  tileCtx.fillStyle = "#999999";
+  tileCtx.fillRect(squareSize, 0, squareSize, squareSize);
+  tileCtx.fillRect(0, squareSize, squareSize, squareSize);
+  checkerboardTiles.set(squareSize, tile);
+  return tile;
+}
+
 /**
  * Draw a checkered transparency background (like image editors).
  */
@@ -84,17 +103,23 @@ export function drawTransparencyBackground(
   height: number,
   squareSize: number = 8,
 ): void {
+  const pattern = context.createPattern(
+    getCheckerboardTile(squareSize),
+    "repeat",
+  );
+  if (pattern) {
+    context.fillStyle = pattern;
+    context.fillRect(0, 0, width, height);
+    return;
+  }
+
   const lightGray = "#CCCCCC";
   const darkGray = "#999999";
-
   for (let y = 0; y < height; y += squareSize) {
     for (let x = 0; x < width; x += squareSize) {
-      // Alternate colors in a checkerboard pattern
       const isEvenRow = Math.floor(y / squareSize) % 2 === 0;
       const isEvenCol = Math.floor(x / squareSize) % 2 === 0;
-      const isLight = isEvenRow === isEvenCol;
-
-      context.fillStyle = isLight ? lightGray : darkGray;
+      context.fillStyle = isEvenRow === isEvenCol ? lightGray : darkGray;
       context.fillRect(x, y, squareSize, squareSize);
     }
   }

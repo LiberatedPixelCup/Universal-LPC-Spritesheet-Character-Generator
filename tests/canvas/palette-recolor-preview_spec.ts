@@ -16,6 +16,7 @@ import {
   type CatalogReader,
 } from "../../sources/state/catalog.ts";
 import { createState } from "../../sources/state/state.ts";
+import { getLayersToLoad } from "../../sources/state/meta.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
 import { walkItemMeta } from "./renderer-test-helpers.ts";
 import {
@@ -173,6 +174,44 @@ describe("canvas/palette-recolor preview / loadPalette / mode", () => {
         );
         stale = true;
         expect(await pending).to.equal(0);
+      } finally {
+        canvas.remove();
+      }
+    });
+
+    it("uses the supplied preview layers, including an empty snapshot", async () => {
+      const catalog = previewCatalog();
+      const state = createState();
+      const canvas = document.createElement("canvas");
+      document.body.appendChild(canvas);
+      const item = merged(catalog, "walk_item");
+      try {
+        const layers = getLayersToLoad(catalog, item, state.bodyType, {});
+        state.bodyType = "child";
+        expect(
+          await drawRecolorPreview(
+            catalog,
+            state,
+            "walk_item",
+            item,
+            canvas,
+            {},
+            undefined,
+            layers,
+          ),
+        ).to.equal(1);
+        expect(
+          await drawRecolorPreview(
+            catalog,
+            state,
+            "walk_item",
+            item,
+            canvas,
+            {},
+            undefined,
+            [],
+          ),
+        ).to.equal(0);
       } finally {
         canvas.remove();
       }

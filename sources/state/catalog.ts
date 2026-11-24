@@ -12,10 +12,8 @@
  *   - `Err({ kind: "loading" })` when the chunk has not registered yet.
  *   - `Err({ kind: "not-found" })` when the chunk is registered but the id is absent.
  *
- * Dynamic-import failures intentionally crash today (no `Err` variant): the
- * chunk loading machinery in `install-item-metadata.ts` propagates the
- * rejection. If we ever need to recover instead of crash, add a `"load-failed"`
- * variant here.
+ * A failed import is reported as `load-failed`. Its readiness promise
+ * rejects, while unrelated chunks can still register and be used.
  *
  * Consumer-side code pairs this with the `renderResult` helper (in the render
  * tree) or with `.match` / `.unwrapOr` / `if (r.isErr())` (everywhere else).
@@ -40,8 +38,24 @@ import {
 
 export type ChunkName = "index" | "lite" | "credits" | "palette" | "layers";
 
+type ChunkFailure = {
+  kind: "load-failed";
+  chunk: ChunkName;
+  cause: unknown;
+};
+
 export type LoadError =
-  { kind: "loading"; chunk: ChunkName } | { kind: "not-found"; id: string };
+  | { kind: "loading"; chunk: ChunkName }
+  | { kind: "not-found"; id: string }
+  | ChunkFailure;
+
+const chunkLabels: Record<ChunkName, string> = {
+  index: "category index",
+  lite: "item list",
+  credits: "credits data",
+  palette: "palette data",
+  layers: "layer data",
+};
 
 /** Human-readable description of a catalog `LoadError`. Shared formatter for
  *  every getter that returns `Result<T, LoadError>`. Exhaustive over `kind`. */
@@ -51,6 +65,8 @@ export function formatLoadError(e: LoadError): string {
       return `chunk "${e.chunk}" not loaded`;
     case "not-found":
       return `item ${e.id} not in catalog`;
+    case "load-failed":
+      return `Failed to load ${chunkLabels[e.chunk]}. Reload to try again.`;
   }
 }
 
@@ -193,6 +209,7 @@ export type CatalogReader = {
   getItemMerged(id: string): Result<ItemMerged, LoadError>;
   getItemCredits(id: string): Result<Credit[], LoadError>;
   getItemLayers(id: string): Result<Record<string, LayerEntry>, LoadError>;
+  hasPackagedBodySprite(spritePath: string): boolean;
   getPaletteMetadata(): Result<PaletteMetadata, LoadError>;
   getCategoryTree(): Result<CategoryTree, LoadError>;
   getMetadataIndexes(): Result<MetadataIndexes, LoadError>;
@@ -206,8 +223,23 @@ export type CatalogReader = {
   readonly ready: CatalogReady;
 };
 
+/** Report the first failed dependency in display order, even if others are still loading. */
+export function getCatalogFailure(
+  catalog: CatalogReader,
+  ...chunks: ChunkName[]
+): string | undefined {
+  for (const chunk of chunks) {
+    const status = catalog.chunkReady(chunk);
+    if (status.isErr() && status.error.kind === "load-failed") {
+      return formatLoadError(status.error);
+    }
+  }
+  return undefined;
+}
+
 /** Write-only surface — only metadata installation and fixture setup hold it. */
 export type CatalogWriter = {
+  recordChunkFailure(chunk: ChunkName, cause: unknown): void;
   registerIndexMetadata(metadata: {
     aliasMetadata: AliasMetadata;
     categoryTree: CategoryTree;
@@ -218,6 +250,7 @@ export type CatalogWriter = {
   registerCreditsMetadata(itemCredits: Record<string, Credit[]>): void;
   registerLayersMetadata(
     itemLayers: Record<string, Record<string, LayerEntry>>,
+    bodySpritePaths?: readonly string[],
   ): void;
   loadCatalogFromFixtures(fixtureGlobals: {
     itemMetadata: Record<string, unknown>;
@@ -242,20 +275,34 @@ export type CatalogHandles = {
 type Stage = {
   promise: Promise<void>;
   resolved: boolean;
-  resolve: () => void;
+  failure?: ChunkFailure;
+  resolve(): void;
+  fail(failure: ChunkFailure): void;
 };
 
 function makeStage(): Stage {
-  let resolveFn: (() => void) | undefined;
-  const promise = new Promise<void>((r) => {
-    resolveFn = r;
+  let resolvePromise: (() => void) | undefined;
+  let rejectPromise: ((reason: Error) => void) | undefined;
+  const promise = new Promise<void>((resolve, reject) => {
+    resolvePromise = resolve;
+    rejectPromise = reject;
   });
+  // A chunk can fail before a feature subscribes to its readiness promise.
+  void promise.catch(() => {});
   const stage: Stage = {
     promise,
     resolved: false,
-    resolve: () => {
+    resolve() {
+      if (stage.failure) return;
       stage.resolved = true;
-      resolveFn?.();
+      resolvePromise?.();
+    },
+    fail(failure) {
+      if (stage.resolved || stage.failure) return;
+      stage.failure = failure;
+      rejectPromise?.(
+        new Error(formatLoadError(failure), { cause: failure.cause }),
+      );
     },
   };
   return stage;
@@ -298,6 +345,18 @@ export function createCatalog(): CatalogHandles {
   const creditsStage = makeStage();
   const paletteStage = makeStage();
   const layersStage = makeStage();
+  const stages = {
+    index: indexStage,
+    lite: liteStage,
+    credits: creditsStage,
+    palette: paletteStage,
+    layers: layersStage,
+  };
+
+  function chunkReady(chunk: ChunkName): Result<true, LoadError> {
+    const stage = stages[chunk];
+    return stage.resolved ? ok(true) : err(stage.failure ?? loading(chunk));
+  }
 
   let aliasMetadataStore: AliasMetadata | null = null;
   let categoryTreeStore: CategoryTree | null = null;
@@ -305,6 +364,7 @@ export function createCatalog(): CatalogHandles {
   let itemLiteStore: Record<string, ItemLite> | null = null;
   let itemCreditsStore: Record<string, Credit[]> | null = null;
   let itemLayersStore: Record<string, Record<string, LayerEntry>> | null = null;
+  let packagedBodySprites = new Set<string>();
   let paletteMetadataStore: PaletteMetadata | null = null;
 
   /**
@@ -366,28 +426,19 @@ export function createCatalog(): CatalogHandles {
     isPaletteReady: () => paletteStage.resolved,
     isLayersReady: () => layersStage.resolved,
 
-    chunkReady(chunk) {
-      const stage = (
-        {
-          index: indexStage,
-          lite: liteStage,
-          credits: creditsStage,
-          palette: paletteStage,
-          layers: layersStage,
-        } as const
-      )[chunk];
-      return stage.resolved ? ok(true as const) : err(loading(chunk));
-    },
+    chunkReady,
 
     // result-returning getters
     getItemLite(id) {
-      if (!liteStage.resolved) return err(loading("lite"));
+      const status = chunkReady("lite");
+      if (status.isErr()) return err(status.error);
       const item = itemLiteStore?.[id];
       return item ? ok(item) : err(notFound(id));
     },
 
     getItemMerged(id) {
-      if (!liteStage.resolved) return err(loading("lite"));
+      const status = chunkReady("lite");
+      if (status.isErr()) return err(status.error);
       const lite = itemLiteStore?.[id];
       if (!lite) return err(notFound(id));
       const layers = layersStage.resolved ? (itemLayersStore?.[id] ?? {}) : {};
@@ -398,36 +449,44 @@ export function createCatalog(): CatalogHandles {
     },
 
     getItemCredits(id) {
-      if (!creditsStage.resolved) return err(loading("credits"));
+      const status = chunkReady("credits");
+      if (status.isErr()) return err(status.error);
       const credits = itemCreditsStore?.[id];
       return credits ? ok(credits) : err(notFound(id));
     },
 
     getItemLayers(id) {
-      if (!layersStage.resolved) return err(loading("layers"));
+      const status = chunkReady("layers");
+      if (status.isErr()) return err(status.error);
       const layers = itemLayersStore?.[id];
       return layers ? ok(layers) : err(notFound(id));
     },
 
+    hasPackagedBodySprite: (spritePath) => packagedBodySprites.has(spritePath),
+
     getPaletteMetadata() {
-      if (!paletteStage.resolved) return err(loading("palette"));
+      const status = chunkReady("palette");
+      if (status.isErr()) return err(status.error);
       // Non-null by construction: registerPaletteMetadata sets the store
       // before resolving the stage.
       return ok(paletteMetadataStore!);
     },
 
     getCategoryTree() {
-      if (!indexStage.resolved) return err(loading("index"));
+      const status = chunkReady("index");
+      if (status.isErr()) return err(status.error);
       return ok(categoryTreeStore!);
     },
 
     getMetadataIndexes() {
-      if (!indexStage.resolved) return err(loading("index"));
+      const status = chunkReady("index");
+      if (status.isErr()) return err(status.error);
       return ok(metadataIndexesStore!);
     },
 
     getAliasMetadata() {
-      if (!indexStage.resolved) return err(loading("index"));
+      const status = chunkReady("index");
+      if (status.isErr()) return err(status.error);
       return ok(aliasMetadataStore!);
     },
 
@@ -459,8 +518,8 @@ export function createCatalog(): CatalogHandles {
     metadataIndexesStore = expandMetadataIndexesWithInternedArrays(
       metadata.metadataIndexes,
     ) as MetadataIndexes;
-    indexStage.resolve();
     expandInternedItemLitesInStore();
+    indexStage.resolve();
   }
 
   function registerPaletteMetadata(paletteMetadata: PaletteMetadata): void {
@@ -483,12 +542,17 @@ export function createCatalog(): CatalogHandles {
 
   function registerLayersMetadata(
     itemLayers: Record<string, Record<string, LayerEntry>>,
+    bodySpritePaths: readonly string[] = [],
   ): void {
     itemLayersStore = itemLayers;
+    packagedBodySprites = new Set(bodySpritePaths);
     layersStage.resolve();
   }
 
   const writer: CatalogWriter = {
+    recordChunkFailure(chunk, cause) {
+      stages[chunk].fail({ kind: "load-failed", chunk, cause });
+    },
     registerIndexMetadata,
     registerPaletteMetadata,
     registerItemMetadata,

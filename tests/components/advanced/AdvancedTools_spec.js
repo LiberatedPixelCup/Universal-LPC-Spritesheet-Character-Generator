@@ -3,7 +3,8 @@ import { assert } from "chai";
 import sinon from "sinon";
 import { describe, it, beforeEach, afterEach } from "mocha-globals";
 import { AdvancedTools } from "../../../sources/components/advanced/AdvancedTools.ts";
-import { createState } from "../../../sources/state/state.ts";
+import { AdvancedToolsDrawer } from "../../../sources/components/advanced/AdvancedToolsDrawer.ts";
+import { clearCustomImage, createState } from "../../../sources/state/state.ts";
 let state;
 
 function expandAdvancedTools(host) {
@@ -120,5 +121,99 @@ describe("AdvancedTools", function () {
     assert.strictEqual(state.customUploadedImage, null);
     assert.strictEqual(state.customImageZPos, 0);
     assert.strictEqual(fileInput.value, "");
+  });
+
+  it("discards an in-flight upload after reset and accepts the same filename again", function () {
+    const requests = [];
+    sinon.stub(window, "Image").callsFake(function () {
+      requests.push(this);
+    });
+    sinon.stub(URL, "createObjectURL").returns("blob:fake");
+    m.mount(host, { view: () => m(AdvancedTools, { state }) });
+    expandAdvancedTools(host);
+    const input = host.querySelector("#customFileInput");
+    const choose = () => {
+      const data = new DataTransfer();
+      data.items.add(new File(["x"], "overlay.png", { type: "image/png" }));
+      input.files = data.files;
+      input.dispatchEvent(new Event("change", { bubbles: true }));
+    };
+
+    choose();
+    clearCustomImage(state);
+    m.redraw.sync();
+    assert.strictEqual(input.value, "");
+    choose();
+    requests[1].onload();
+    requests[0].onload();
+    assert.strictEqual(state.customUploadedImage, requests[1]);
+  });
+
+  it("revokes Object URLs, surfaces upload errors, and locks z-pos/clear during ZIP export", function () {
+    const requests = [];
+    sinon.stub(window, "Image").callsFake(function () {
+      requests.push(this);
+    });
+    sinon.stub(URL, "createObjectURL").returns("blob:fake-err");
+    const revokeSpy = sinon.stub(URL, "revokeObjectURL");
+
+    for (const isDrawer of [false, true]) {
+      requests.length = 0;
+      revokeSpy.resetHistory();
+      state = createState();
+      m.mount(host, {
+        view: () =>
+          isDrawer
+            ? m(AdvancedToolsDrawer, { state, onClose: () => {} })
+            : m(AdvancedTools, { state }),
+      });
+      if (!isDrawer) expandAdvancedTools(host);
+
+      const fileInput = host.querySelector('input[type="file"]');
+      const selectFile = (name) => {
+        const dt = new DataTransfer();
+        dt.items.add(new File(["img"], name, { type: "image/png" }));
+        fileInput.files = dt.files;
+        fileInput.dispatchEvent(new Event("change", { bubbles: true }));
+      };
+
+      selectFile("bad.png");
+      requests[0].onerror();
+      m.redraw.sync();
+      assert.isTrue(revokeSpy.calledWith("blob:fake-err"));
+      assert.include(host.textContent, "Failed to load selected image file.");
+
+      // Upload valid image and lock during ZIP export
+      selectFile("good.png");
+      requests[1].onload();
+      m.redraw.sync();
+      assert.strictEqual(state.customUploadedImage, requests[1]);
+      assert.notInclude(
+        host.textContent,
+        "Failed to load selected image file.",
+      );
+
+      state.isExportingZip = true;
+      m.redraw.sync();
+      const zInput = host.querySelector('input[type="number"]');
+      assert.isTrue(zInput.disabled);
+      zInput.value = "99";
+      zInput.dispatchEvent(new Event("input", { bubbles: true }));
+      assert.strictEqual(state.customImageZPos, 0);
+
+      const clearBtn = [...host.querySelectorAll("button")].find(
+        (btn) => btn.textContent.trim() === "Clear Custom Image",
+      );
+      assert.isTrue(clearBtn.disabled);
+      clearBtn.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+      assert.strictEqual(state.customUploadedImage, requests[1]);
+
+      state.isExportingZip = false;
+      m.redraw.sync();
+      clearBtn.click();
+      m.redraw.sync();
+      assert.isNull(state.customUploadedImage);
+      m.mount(host, null);
+    }
   });
 });

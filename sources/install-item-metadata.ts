@@ -16,6 +16,7 @@ import {
   type AliasMetadata,
   type CatalogReader,
   type CatalogWriter,
+  type ChunkName,
   type CategoryTree,
   type Credit,
   type ItemLite,
@@ -86,9 +87,30 @@ export function loadAllMetadata(catalog: CatalogWriter): Promise<LoadedChunks> {
 async function loadAllMetadataChunks(
   catalog: CatalogWriter,
 ): Promise<LoadedChunks> {
+  async function loadChunk<T>(
+    chunk: ChunkName,
+    measureName: string,
+    work: () => Promise<T>,
+  ): Promise<T> {
+    try {
+      return await measureAsync(measureName, work);
+    } catch (cause) {
+      catalog.recordChunkFailure(chunk, cause);
+      safeRedraw();
+      throw cause;
+    }
+  }
+
+  async function loadPalette() {
+    const mod = await import("../palette-metadata.js");
+    catalog.registerPaletteMetadata(mod.paletteMetadata);
+    safeRedraw();
+    return mod;
+  }
+
   const [indexMod, paletteMod, itemMod, creditsMod, layersMod] =
     await Promise.all([
-      measureAsync("catalog-chunk:index", async () => {
+      loadChunk("index", "catalog-chunk:index", async () => {
         const mod = await import("../index-metadata.js");
         catalog.registerIndexMetadata({
           aliasMetadata: mod.aliasMetadata,
@@ -98,27 +120,22 @@ async function loadAllMetadataChunks(
         safeRedraw();
         return mod;
       }),
-      measureAsync("catalog-chunk:palette", async () => {
-        const mod = await import("../palette-metadata.js");
-        catalog.registerPaletteMetadata(mod.paletteMetadata);
-        safeRedraw();
-        return mod;
-      }),
-      measureAsync("catalog-chunk:item", async () => {
+      loadChunk("palette", "catalog-chunk:palette", loadPalette),
+      loadChunk("lite", "catalog-chunk:item", async () => {
         const mod = await import("../item-metadata.js");
         catalog.registerItemMetadata(mod.itemMetadata);
         safeRedraw();
         return mod;
       }),
-      measureAsync("catalog-chunk:credits", async () => {
+      loadChunk("credits", "catalog-chunk:credits", async () => {
         const mod = await import("../credits-metadata.js");
         catalog.registerCreditsMetadata(mod.itemCredits);
         safeRedraw();
         return mod;
       }),
-      measureAsync("catalog-chunk:layers", async () => {
+      loadChunk("layers", "catalog-chunk:layers", async () => {
         const mod = await import("../layers-metadata.js");
-        catalog.registerLayersMetadata(mod.itemLayers);
+        catalog.registerLayersMetadata(mod.itemLayers, mod.bodySpritePaths);
         safeRedraw();
         return mod;
       }),
@@ -144,7 +161,9 @@ async function loadAllMetadataChunks(
  */
 export function createLoadedCatalog(): CatalogReader {
   const { reader, writer } = createCatalog();
-  void loadAllMetadata(writer);
+  void loadAllMetadata(writer).catch((cause: unknown) => {
+    console.error("Failed to load catalog metadata:", cause);
+  });
   return reader;
 }
 

@@ -46,6 +46,7 @@ import "./components/preview/ScrollableContainer_spec.js";
 import "./components/preview/PreviewMetadataLoadingOverlay_spec.js";
 import "./components/preview/PinchToZoom_spec.js";
 import "./components/selections/CurrentSelections_spec.js";
+import "./components/redesign-a11y_spec.ts";
 import "./install-item-metadata_spec.ts";
 import "./state/catalog_spec.ts";
 import "./state/catalog-getters_spec.js";
@@ -63,6 +64,7 @@ import "./utils/zip-helpers_spec.js";
 import "./utils/zip-export-ui-suspend_spec.js";
 import "./state/zip_spec.js";
 import "./state/zip-issue-382_spec.js";
+import "./state/zip-concurrency_spec.ts";
 import "./performance-profiler_spec.js";
 
 after(async function () {

@@ -18,6 +18,7 @@ import {
 } from "../../sources/state/hash.ts";
 import { createCatalog } from "../../sources/state/catalog.ts";
 import { createState } from "../../sources/state/state.ts";
+import { syncPostZipState } from "../../sources/state/zip.ts";
 import { initCanvas } from "../../sources/canvas/renderer.ts";
 import { seedCatalog } from "../browser-catalog-fixture.js";
 
@@ -33,6 +34,8 @@ describe("state/hash.ts", () => {
     sandbox = sinon.createSandbox();
     sandbox.stub(window, "addEventListener").callsFake(() => {});
     window.isTesting = true;
+    setHash("");
+    resetHashCalledTimes();
   });
 
   afterEach(() => {
@@ -78,6 +81,15 @@ describe("state/hash.ts", () => {
       expect(getHashParamsFromString(hashString)).to.deep.equal({
         "key 1": "value 1",
         "key 2": "value 2",
+      });
+    });
+
+    it("should not throw on malformed percent-encoding", () => {
+      expect(
+        getHashParamsFromString("body=Body_Color_light%&bad%E0=ok"),
+      ).to.deep.equal({
+        body: "Body_Color_light%",
+        "bad%E0": "ok",
       });
     });
   });
@@ -537,6 +549,30 @@ describe("state/hash.ts", () => {
         },
       });
     });
+
+    it("ignores invalid sex/bodyType values in URL hash and normalizes poisoned bodyType", () => {
+      seedCatalog(catalogWriter, {
+        1: { type_name: "body", name: "Body", variants: ["light"] },
+      });
+
+      setHash("#sex=invalid_type&body=Body_light");
+      loadSelectionsFromHash(catalog, state);
+      expect(state.bodyType).to.equal("male");
+      expect(getHash()).to.equal("#sex=male&body=Body_light");
+
+      setHash("#bodyType=../../evil&body=Body_light");
+      loadSelectionsFromHash(catalog, state);
+      expect(state.bodyType).to.equal("male");
+
+      state.bodyType = "corrupted_value";
+      setHash("#body=Body_light");
+      loadSelectionsFromHash(catalog, state);
+      expect(state.bodyType).to.equal("male");
+
+      setHash("#bodyType=female&body=Body_light");
+      loadSelectionsFromHash(catalog, state);
+      expect(state.bodyType).to.equal("female");
+    });
   });
 
   describe("initHashChangeListener", () => {
@@ -567,6 +603,71 @@ describe("state/hash.ts", () => {
 
       expect(state.selections.body).to.exist;
     });
+
+    it("preserves the outfit on navigation anchors and restores explicit empty outfits", async () => {
+      seedCatalog(catalogWriter, {
+        1: { type_name: "body", name: "Body", variants: ["light"] },
+      });
+      initHashChangeListener(catalog, state);
+      const handler = window.addEventListener.getCall(0).args[1];
+      setHash("#body=Body_light");
+      await handler();
+      const selections = state.selections;
+      expect(selections.body).to.exist;
+      setHash("#credits-section");
+      await handler();
+      expect(state.selections).to.equal(selections);
+      setHash("#sex=child");
+      await handler();
+      expect(state.bodyType).to.equal("child");
+      expect(state.selections).to.deep.equal({});
+      setHash("#sex=child");
+      const writesBefore = getSetHashCalledTimes();
+      await handler();
+      expect(getSetHashCalledTimes()).to.equal(writesBefore);
+    });
+
+    for (const forward of [false, true]) {
+      it(`restores the latest outfit after ZIP history ${forward ? "Back then Forward" : "Back"}`, async () => {
+        const amber = "#sex=male&body=Body_Color_amber";
+        const light = "#sex=male&body=Body_Color_light";
+        seedCatalog(catalogWriter, {
+          body: {
+            type_name: "body",
+            name: "Body Color",
+            variants: ["amber", "light"],
+          },
+        });
+        loadSelectionsFromHash(catalog, state, amber, "replace");
+        expect(state.selections.body.variant).to.equal("amber");
+
+        initHashChangeListener(catalog, state);
+        const handler = window.addEventListener.getCall(0).args[1];
+        state.isExportingZip = true;
+        setHash(light);
+        await handler();
+        expect(state.pendingPostZipHash).to.equal(light);
+
+        if (forward) {
+          setHash(amber);
+          await handler();
+          expect(state.pendingPostZipHash).to.equal(null);
+        } else {
+          setHash("#credits-section");
+          await handler();
+          expect(state.pendingPostZipHash).to.equal(light);
+        }
+        expect(state.selections.body.variant).to.equal("amber");
+
+        syncPostZipState(catalog, state);
+        expect(state.isExportingZip).to.equal(false);
+        expect(state.pendingPostZipHash).to.equal(null);
+        expect(state.selections.body.variant).to.equal(
+          forward ? "amber" : "light",
+        );
+        expect(getHash()).to.equal(forward ? amber : light);
+      });
+    }
 
     it("should not throw an error if no callback is provided", () => {
       expect(() => initHashChangeListener(catalog, state)).to.not.throw();

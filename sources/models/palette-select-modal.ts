@@ -1,10 +1,12 @@
-import type {
-  CatalogReader,
-  ItemMerged,
-  PaletteMetadata,
+import {
+  getCatalogFailure,
+  type CatalogReader,
+  type ItemMerged,
+  type PaletteMetadata,
 } from "../state/catalog.ts";
 import { drawRecolorPreview } from "../canvas/palette-recolor.ts";
 import { COMPACT_FRAME_SIZE, FRAME_SIZE } from "../state/constants.ts";
+import { getLayersToLoad, type LayerToLoad } from "../state/meta.ts";
 import {
   compilePaletteKey,
   CUSTOM_KEY,
@@ -12,6 +14,7 @@ import {
   type PaletteOption,
 } from "../state/palettes.ts";
 import { getSelectionGroup, type State } from "../state/state.ts";
+import { debugWarn } from "../utils/debug.ts";
 import { ucwords } from "../utils/helpers.ts";
 
 export type PaletteTileModel = {
@@ -33,8 +36,11 @@ export type PaletteVersionModel = {
 };
 
 export type PaletteSelectModalModel =
-  | { readonly loadingMessage: string }
+  | { readonly loadingMessage: string; readonly loadFailed?: boolean }
   | {
+      readonly bodyType: string;
+      readonly previewLayersKey: string;
+      readonly previewContentKey: string;
       readonly title: string;
       readonly size: number;
       readonly compactDisplay: boolean;
@@ -53,13 +59,26 @@ function createReadyModel(
   select: (recolor: string) => void,
   palette: PaletteMetadata,
 ): PaletteSelectModalModel {
+  let previewLayers: readonly LayerToLoad[] = [];
+  try {
+    previewLayers = getLayersToLoad(
+      catalog,
+      item,
+      state.bodyType,
+      state.selections,
+    ).filter(({ path }) => !path.includes("${"));
+  } catch (error) {
+    debugWarn(`Cannot resolve palette preview layers for ${itemId}`, error);
+  }
+
   const firstPath = `${itemId}-${option.idx}-${option.versions[0]}`;
   if (state.expandedNodes[firstPath] === undefined) {
     state.expandedNodes[firstPath] = true;
   }
   const selectionGroup = option.type_name ?? getSelectionGroup(itemId);
+  const previewColors = { ...selectedColors };
   const selection = state.selections[selectionGroup];
-  const activeRecolor = selection?.recolor ?? selectedColors[selectionGroup];
+  const activeRecolor = selection?.recolor ?? previewColors[selectionGroup];
   const versions = option.versions.map((category) => {
     const [material, version] = category.split(".");
     const path = `${itemId}-${option.idx}-${category}`;
@@ -73,7 +92,7 @@ function createReadyModel(
     const tiles = isExpanded
       ? Object.entries(recolors).map(([paletteName, colors]) => {
           const key = compilePaletteKey(material, version, paletteName, option);
-          const itemColors = { ...selectedColors, [selectionGroup]: key };
+          const itemColors = { ...previewColors, [selectionGroup]: key };
           return {
             key,
             label: ucwords(paletteName.replaceAll("_", " ")),
@@ -92,6 +111,7 @@ function createReadyModel(
                 canvas,
                 itemColors,
                 isCancelled,
+                previewLayers,
               ),
           };
         })
@@ -110,6 +130,20 @@ function createReadyModel(
     };
   });
   return {
+    bodyType: state.bodyType,
+    previewLayersKey: JSON.stringify(
+      previewLayers.map(({ path, zPos }) => [path, zPos]),
+    ),
+    previewContentKey: JSON.stringify([
+      selectionGroup,
+      Object.keys(previewColors)
+        .filter((group) => group !== selectionGroup)
+        .sort()
+        .map((group) => [group, previewColors[group]]),
+      versions
+        .filter(({ tiles }) => tiles.length > 0)
+        .map(({ key, tiles }) => [key, tiles.map((tile) => tile.key)]),
+    ]),
     title: option.label ?? "",
     size: compactDisplay ? COMPACT_FRAME_SIZE : FRAME_SIZE,
     compactDisplay,
@@ -131,6 +165,8 @@ export const paletteSelectModalModelFactory = {
     compactDisplay: boolean,
     select: (recolor: string) => void,
   ): PaletteSelectModalModel {
+    const failed = getCatalogFailure(catalog, "lite", "layers", "palette");
+    if (failed) return { loadingMessage: failed, loadFailed: true };
     if (!catalog.isPaletteReady()) {
       return { loadingMessage: "Loading palette data…" };
     }

@@ -7,6 +7,12 @@ import { variantToFilename } from "../utils/helpers.ts";
 
 type CreditWithFileName = Credit & { fileName: string };
 
+const BOWS_WITH_CUSTOM_WALK = new Set([
+  "weapon_ranged_bow_great",
+  "weapon_ranged_bow_normal",
+  "weapon_ranged_bow_recurve",
+]);
+
 /**
  * Collect credits from all selected items. Only includes credits for files
  * actually being used based on current bodyType.
@@ -29,12 +35,20 @@ export function getAllCredits(
 
     // Build set of actual file paths being used for this item
     const usedPaths = new Set<string>();
+    const variantFileName = variantToFilename(selection.variant ?? "");
+    const animation =
+      selectedAnimation ??
+      (meta.animations?.includes("walk") ? "walk" : meta.animations?.[0]);
+    const useCustomWalk =
+      BOWS_WITH_CUSTOM_WALK.has(itemId) &&
+      (animation === "walk" || animation === "walk_128");
 
     // Check each layer to get the base path for current bodyType
     for (let layerNum = 1; layerNum < 10; layerNum++) {
       const layerKey = `layer_${layerNum}`;
       const layer = meta.layers?.[layerKey];
       if (!layer) break;
+      if (useCustomWalk && layer.custom_animation !== "walk_128") continue;
 
       // Get the base path for current body type. `LayerEntry`'s index
       // signature widens body-type values to `string | number`; the
@@ -42,18 +56,19 @@ export function getAllCredits(
       let basePath = layer[bodyType] as string | undefined;
       if (!basePath) continue;
 
+      if (layer.custom_animation) {
+        if (!variantFileName && basePath.endsWith("/")) continue;
+        usedPaths.add(`${basePath}${variantFileName}.png`);
+        continue;
+      }
+
       // Replace template variables like ${head} if present
       basePath = replaceInPath(catalog, basePath, selections, meta, bodyType);
-
-      const animation =
-        selectedAnimation ??
-        (meta.animations?.includes("walk") ? "walk" : meta.animations?.[0]);
 
       // Build full sprite path for this layer and animation
       let fullPath = `${basePath}${animation}.png`;
       if (selection.variant) {
-        const fileName = variantToFilename(selection.variant);
-        fullPath = `${basePath}${animation}/${fileName}.png`;
+        fullPath = `${basePath}${animation}/${variantFileName}.png`;
       }
 
       usedPaths.add(fullPath);
@@ -95,7 +110,10 @@ export function creditsToCsv(allCredits: CreditWithFileName[]): string {
     const licenses = credit.licenses.join(", ");
     const urls = credit.urls.join(", ");
     const notes = credit.notes || "";
-    csvBody += `"${credit.fileName}","${notes}","${authors}","${licenses}","${urls}"\n`;
+    const fields = [credit.fileName, notes, authors, licenses, urls];
+    csvBody +=
+      fields.map((value) => `"${value.replaceAll('"', '""')}"`).join(",") +
+      "\n";
   });
   return csvBody;
 }

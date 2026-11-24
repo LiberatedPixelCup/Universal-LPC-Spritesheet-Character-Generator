@@ -1,5 +1,5 @@
 import { downloadFile } from "../canvas/download.ts";
-import type { CatalogReader } from "../state/catalog.ts";
+import { getCatalogFailure, type CatalogReader } from "../state/catalog.ts";
 import type { State } from "../state/state.ts";
 import { creditsToCsv, creditsToTxt, getAllCredits } from "../utils/credits.ts";
 
@@ -13,6 +13,7 @@ export type CreditRowModel = {
 
 export type CreditsModel =
   | { readonly kind: "loading" }
+  | { readonly kind: "failed"; readonly message: string }
   | { readonly kind: "empty" }
   | {
       readonly kind: "ready";
@@ -23,14 +24,25 @@ export type CreditsModel =
 
 export const creditsModelFactory = {
   create(catalog: CatalogReader, state: State): CreditsModel {
-    if (!state.previewBootstrapRenderDone) return { kind: "loading" };
-
-    const credits = getAllCredits(
+    const failed = getCatalogFailure(
       catalog,
-      state.selections,
-      state.bodyType,
-      state.selectedAnimation,
+      "index",
+      "lite",
+      "layers",
+      "credits",
     );
+    if (failed) return { kind: "failed", message: failed };
+    if (
+      !state.previewBootstrapRenderDone ||
+      !catalog.isCreditsReady() ||
+      !catalog.isLayersReady()
+    ) {
+      return { kind: "loading" };
+    }
+
+    const getCurrentCredits = () =>
+      getAllCredits(catalog, state.selections, state.bodyType);
+    const credits = getCurrentCredits();
     if (credits.length === 0) return { kind: "empty" };
 
     return {
@@ -42,8 +54,14 @@ export const creditsModelFactory = {
         licenses: credit.licenses,
         authors: credit.authors,
       })),
-      downloadTxt: () => downloadFile(creditsToTxt(credits), "credits.txt"),
-      downloadCsv: () => downloadFile(creditsToCsv(credits), "credits.csv"),
+      downloadTxt: () =>
+        downloadFile(creditsToTxt(getCurrentCredits()), "credits.txt"),
+      downloadCsv: () =>
+        downloadFile(
+          creditsToCsv(getCurrentCredits()),
+          "credits.csv",
+          "text/csv",
+        ),
     };
   },
 };

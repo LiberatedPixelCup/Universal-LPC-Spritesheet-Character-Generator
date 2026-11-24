@@ -2,7 +2,7 @@
 
 #### Submissions
 
-**Important: all art submitted to this project must be available under one of the supported licenses; see the `Licensing and Attribution (Credits)` section in [README.md](README.md).**
+**Important: all art submitted to this project must be available under one of the supported licenses; see [Licensing and Attribution (Credits)](README.md#licensing-and-attribution-credits).**
 
 - If you are submitting art that was made by (or derived from work made by) someone else, please be sure that you have the rights to distribute that art under the licenses you choose.
 
@@ -90,6 +90,9 @@ The shareable selection is everything after `#` in the address bar: `key=value` 
 ```
 #sex=male&body=Body_Color_light&head=Human_Male_light&expression=Neutral_light
 ```
+
+A hash with only a valid body type (for example, `#sex=male`) restores an
+outfit with no items. Opening the page without a hash loads the default outfit.
 
 Each value is `Item_variant`. For example, `expression=Neutral_light` is `type_name` `expression`, item `Neutral`, variant `light`.
 

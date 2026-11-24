@@ -88,6 +88,8 @@ describe("canvas/preview-canvas.ts", () => {
       const previewCanvas = document.createElement("canvas");
       copyToPreviewCanvas(previewCanvas, false, false, 1.5);
       expect(previewCanvas.style.zoom).to.equal("1.5");
+      copyToPreviewCanvas(previewCanvas, false, false, 1);
+      expect(previewCanvas.style.zoom).to.equal("");
     });
 
     it("draws a transparency grid under the offscreen copy", () => {

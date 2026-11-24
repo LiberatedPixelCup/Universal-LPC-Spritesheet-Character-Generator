@@ -2,9 +2,9 @@
   display: block;
   width: 24px;
   height: 24px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
+  border: 3px solid var(--lpc-separator, #d6dfd8);
   border-radius: 50%;
-  border-top-color: #000;
+  border-top-color: var(--lpc-accent, #235d48);
   animation: spin 1s ease-in-out infinite;
 }
 
@@ -16,19 +16,19 @@
 
 /* Gray pulse skeleton rows — placeholders while metadata chunks load (staged tree UI) */
 .skeleton-row {
-  --skeleton-base: #e0e0e0;
+  --skeleton-base: #d6dfd8;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  min-height: 1.75rem;
-  padding: 0.25rem 0 0.25rem 1.5rem;
+  min-height: 2.25rem;
+  padding: 0.25rem 0 0.25rem 0.75rem;
   pointer-events: none;
   user-select: none;
 }
 
 .skeleton-row__bar {
   height: 0.65rem;
-  border-radius: 2px;
+  border-radius: 4px;
   background-color: var(--skeleton-base);
   animation: skeleton-pulse 1.15s ease-in-out infinite;
 }
@@ -81,12 +81,10 @@
   }
 }
 
-/* Category tree: overlay host is positioned so the outer .box stays static (computed-style parity w/ older builds). */
+/* Category tree loading overlay host */
 .category-tree-loading-host {
   position: relative;
-  /* Collapsed category tree is ~677px on a 412px viewport; 14rem was the
-     post-mount → catalog jump. This host is replaced when the tree renders. */
-  min-height: 42rem;
+  min-height: 40rem;
 }
 
 .category-tree-loading-overlay {
@@ -97,14 +95,15 @@
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  background: rgba(245, 245, 245, 0.72);
+  background: rgba(245, 246, 241, 0.78);
+  border-radius: 8px;
 }
 
 .category-tree-loading-overlay .loading {
   margin: 0 auto;
 }
 
-/* Preview shell: overlays use inset:0 so they match canvas size (no extra band after load). */
+/* Preview shell overlays */
 .preview-canvas-area {
   position: relative;
 }
@@ -117,7 +116,6 @@
   position: relative;
   display: inline-block;
   vertical-align: top;
-  max-width: 100%;
 }
 
 .preview-canvas-busy {
@@ -128,8 +126,8 @@
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  background: rgba(245, 245, 245, 0.72);
-  border-radius: 4px;
+  background: rgba(238, 241, 236, 0.75);
+  border-radius: 6px;
 }
 
 .preview-canvas-loading-overlay {
@@ -139,8 +137,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(245, 245, 245, 0.88);
-  border-radius: 4px;
+  background: rgba(238, 241, 236, 0.9);
+  border-radius: 6px;
   pointer-events: auto;
   overflow: hidden;
 }
@@ -151,7 +149,7 @@
   justify-content: center;
   gap: 0.5rem;
   max-width: 100%;
-  padding: 0.125rem 0.35rem;
+  padding: 0.25rem 0.5rem;
   flex-wrap: nowrap;
 }
 
@@ -160,9 +158,10 @@
 }
 
 .preview-canvas-loading-text {
-  line-height: 1.2;
+  line-height: 1.3;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   min-width: 0;
+  color: var(--lpc-muted, #4f6057);
 }

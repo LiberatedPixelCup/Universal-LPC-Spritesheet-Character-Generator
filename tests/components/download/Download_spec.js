@@ -165,13 +165,13 @@ describe("Download", function () {
     });
     assert.strictEqual(calls, 1);
 
-    host.querySelector("h3.collapsible-title").parentElement.click();
+    host.querySelector("button.collapsible-header").click();
     m.redraw.sync();
     assert.strictEqual(calls, 1);
     m.redraw.sync();
     assert.strictEqual(calls, 1);
 
-    host.querySelector("h3.collapsible-title").parentElement.click();
+    host.querySelector("button.collapsible-header").click();
     m.redraw.sync();
     assert.strictEqual(calls, 2);
   });
@@ -214,15 +214,50 @@ describe("Download", function () {
     const loadingModel = downloadModelFactory.create(catalog, state);
     assert.isTrue(loadingModel.zipDisabled);
     assert.strictEqual(loadingModel.zipTitle, ZIP_TITLE);
+    assert.isTrue(loadingModel.creditsDisabled);
+    assert.strictEqual(
+      loadingModel.creditsTitle,
+      "Wait for credits data to finish loading",
+    );
     assert.isTrue(loadingModel.zipByAnimationRunning);
     assert.isTrue(loadingModel.zipByItemRunning);
     assert.isTrue(loadingModel.zipByAnimationAndItemRunning);
     assert.isTrue(loadingModel.zipIndividualFramesRunning);
 
     writer.registerLayersMetadata({});
+    assert.isTrue(downloadModelFactory.create(catalog, state).creditsDisabled);
+
+    writer.registerCreditsMetadata({});
+    writer.registerIndexMetadata({
+      aliasMetadata: {},
+      categoryTree: {},
+      metadataIndexes: { byTypeName: {}, hashMatch: {} },
+    });
+    writer.registerItemMetadata({});
     const readyModel = downloadModelFactory.create(catalog, state);
     assert.isFalse(readyModel.zipDisabled);
     assert.isUndefined(readyModel.zipTitle);
+    assert.isFalse(readyModel.creditsDisabled);
+    assert.isUndefined(readyModel.creditsTitle);
+  });
+
+  it("factory sets zipExportError when saveSpritesheet fails to encode PNG", async function () {
+    const { reader: catalog, writer } = createCatalog();
+    const state = createState();
+    seedCatalog(writer, {});
+    const errorStub = sinon.stub(console, "error");
+    sinon
+      .stub(HTMLCanvasElement.prototype, "toBlob")
+      .callsFake((cb) => cb(null));
+    const model = downloadModelFactory.create(catalog, state);
+
+    model.saveSpritesheet();
+    await new Promise((resolve) => setTimeout(resolve, 20));
+    assert.strictEqual(
+      state.zipExportError,
+      "Failed to export spritesheet PNG.",
+    );
+    assert.isTrue(errorStub.called);
   });
 
   it("factory exports and imports JSON through the clipboard", async function () {
@@ -253,9 +288,59 @@ describe("Download", function () {
     assert.strictEqual(state.selectedAnimation, "idle");
   });
 
-  it("factory reports clipboard failures and unavailable rendering", async function () {
-    const { reader: catalog } = createCatalog();
+  it("factory prefers Electron clipboard IPC over navigator.clipboard when available", async function () {
+    const { reader: catalog, writer } = createCatalog();
     const state = createState();
+    seedCatalog(writer, {});
+    const previousElectronAPI = window.electronAPI;
+    const writeClipboardText = sinon.stub().resolves();
+    const readClipboardText = sinon.stub().resolves(
+      JSON.stringify({
+        version: 2,
+        bodyType: "muscular",
+        selections: {},
+      }),
+    );
+    const navWrite = sinon.stub().rejects(new Error("should not call nav"));
+    const navRead = sinon.stub().rejects(new Error("should not call nav"));
+    Object.defineProperty(navigator, "clipboard", {
+      configurable: true,
+      value: { writeText: navWrite, readText: navRead },
+    });
+    window.electronAPI = {
+      isElectron: true,
+      onMenuAction: () => () => {},
+      writeClipboardText,
+      readClipboardText,
+    };
+
+    try {
+      const model = downloadModelFactory.create(catalog, state);
+      assert.deepEqual(await model.exportJsonToClipboard(), {
+        kind: "success",
+      });
+      assert.isTrue(writeClipboardText.calledOnce);
+      assert.isFalse(navWrite.called);
+
+      assert.deepEqual(await model.importJsonFromClipboard(), {
+        kind: "success",
+      });
+      assert.isTrue(readClipboardText.calledOnce);
+      assert.isFalse(navRead.called);
+      assert.strictEqual(state.bodyType, "muscular");
+    } finally {
+      if (previousElectronAPI === undefined) {
+        delete window.electronAPI;
+      } else {
+        window.electronAPI = previousElectronAPI;
+      }
+    }
+  });
+
+  it("factory reports clipboard failures and unavailable rendering", async function () {
+    const { reader: catalog, writer } = createCatalog();
+    const state = createState();
+    seedCatalog(writer, {});
     const error = new Error("clipboard denied");
     Object.defineProperty(navigator, "clipboard", {
       configurable: true,

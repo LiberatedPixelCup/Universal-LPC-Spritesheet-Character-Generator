@@ -12,20 +12,18 @@ export type VariantItemModel = {
   readonly size: number;
   readonly compactDisplay: boolean;
   select(): void;
-  loadPreview(
-    canvas: HTMLCanvasElement,
-  ): Promise<{ redraw: (size: number) => void; imagesLoaded: number }>;
+  loadPreview(canvas: HTMLCanvasElement): Promise<(size: number) => void>;
 };
 
 export type ItemWithVariantsModel = {
   readonly name: string;
+  readonly bodyType?: string;
   readonly isSearchMatch: boolean;
   readonly isCompatible: boolean;
   readonly tooltip?: string;
   readonly isExpanded: boolean;
-  readonly imagesToLoad: number;
   readonly variants: readonly VariantItemModel[];
-  toggle(): number;
+  toggle(): void;
 };
 
 function loadLayer(layer: LayerToLoad) {
@@ -54,25 +52,15 @@ export const itemWithVariantsModelFactory = {
     const isExpanded = state.expandedNodes[nodePath] || false;
     const compact = state.compactDisplay;
     const size = compact ? COMPACT_FRAME_SIZE : FRAME_SIZE;
-    const baseLayers = isExpanded
-      ? getLayersToLoad(catalog, meta, state.bodyType, state.selections)
-      : [];
-
     return {
       name: meta.name,
+      bodyType: state.bodyType,
       isSearchMatch,
       isCompatible,
       tooltip: showTooltip ? tooltip : undefined,
       isExpanded,
-      imagesToLoad: meta.variants.length * baseLayers.length,
       toggle: () => {
         state.expandedNodes[nodePath] = !isExpanded;
-        if (isExpanded) return 0;
-        return (
-          meta.variants.length *
-          getLayersToLoad(catalog, meta, state.bodyType, state.selections)
-            .length
-        );
       },
       variants: isExpanded
         ? meta.variants.map((variant) => {
@@ -105,6 +93,7 @@ export const itemWithVariantsModelFactory = {
                     willReadFrequently: true,
                   });
                   if (!context) return;
+                  context.clearRect(0, 0, canvas.width, canvas.height);
                   const row = meta.preview_row ?? 2;
                   const preview = meta as ItemMerged & {
                     preview_column?: number;
@@ -130,7 +119,7 @@ export const itemWithVariantsModelFactory = {
                   }
                 };
                 draw(size);
-                return { redraw: draw, imagesLoaded: loaded.length };
+                return draw;
               },
             };
           })
